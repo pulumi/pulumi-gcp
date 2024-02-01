@@ -14,21 +14,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationPolicyListPolicy {
+    /**
+     * @return One or the other must be set.
+     * 
+     */
     private List<GetOrganizationPolicyListPolicyAllow> allows;
+    /**
+     * @return One or the other must be set.
+     * 
+     */
     private List<GetOrganizationPolicyListPolicyDeny> denies;
+    /**
+     * @return If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+     * 
+     */
     private Boolean inheritFromParent;
+    /**
+     * @return The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+     * 
+     */
     private String suggestedValue;
 
     private GetOrganizationPolicyListPolicy() {}
+    /**
+     * @return One or the other must be set.
+     * 
+     */
     public List<GetOrganizationPolicyListPolicyAllow> allows() {
         return this.allows;
     }
+    /**
+     * @return One or the other must be set.
+     * 
+     */
     public List<GetOrganizationPolicyListPolicyDeny> denies() {
         return this.denies;
     }
+    /**
+     * @return If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+     * 
+     */
     public Boolean inheritFromParent() {
         return this.inheritFromParent;
     }
+    /**
+     * @return The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+     * 
+     */
     public String suggestedValue() {
         return this.suggestedValue;
     }

@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigRecoveryConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The configuration settings for scheduled snapshots.
+        /// </summary>
         [Input("scheduledSnapshotsConfig")]
         public Input<Inputs.EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigGetArgs>? ScheduledSnapshotsConfig { get; set; }
 

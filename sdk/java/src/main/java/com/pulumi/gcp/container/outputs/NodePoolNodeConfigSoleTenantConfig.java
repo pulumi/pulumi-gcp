@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigSoleTenantConfig {
+    /**
+     * @return .
+     * 
+     */
     private List<NodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities;
 
     private NodePoolNodeConfigSoleTenantConfig() {}
+    /**
+     * @return .
+     * 
+     */
     public List<NodePoolNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities() {
         return this.nodeAffinities;
     }

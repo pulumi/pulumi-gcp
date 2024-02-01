@@ -11,9 +11,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplicationAuto {
+    /**
+     * @return The customer-managed encryption configuration of the Secret.
+     * If no configuration is provided, Google-managed default
+     * encryption is used.
+     * 
+     */
     private List<GetSecretReplicationAutoCustomerManagedEncryption> customerManagedEncryptions;
 
     private GetSecretReplicationAuto() {}
+    /**
+     * @return The customer-managed encryption configuration of the Secret.
+     * If no configuration is provided, Google-managed default
+     * encryption is used.
+     * 
+     */
     public List<GetSecretReplicationAutoCustomerManagedEncryption> customerManagedEncryptions() {
         return this.customerManagedEncryptions;
     }

@@ -2541,17 +2541,27 @@ class GetBucketAutoclassResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  terminal_storage_class: str):
+        """
+        :param bool enabled: While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        :param str terminal_storage_class: The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
+        """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "terminal_storage_class", terminal_storage_class)
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="terminalStorageClass")
     def terminal_storage_class(self) -> str:
+        """
+        The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
+        """
         return pulumi.get(self, "terminal_storage_class")
 
 
@@ -2562,6 +2572,12 @@ class GetBucketCorResult(dict):
                  methods: Sequence[str],
                  origins: Sequence[str],
                  response_headers: Sequence[str]):
+        """
+        :param int max_age_seconds: The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses.
+        :param Sequence[str] methods: The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+        :param Sequence[str] origins: The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+        :param Sequence[str] response_headers: The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+        """
         pulumi.set(__self__, "max_age_seconds", max_age_seconds)
         pulumi.set(__self__, "methods", methods)
         pulumi.set(__self__, "origins", origins)
@@ -2570,21 +2586,33 @@ class GetBucketCorResult(dict):
     @property
     @pulumi.getter(name="maxAgeSeconds")
     def max_age_seconds(self) -> int:
+        """
+        The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses.
+        """
         return pulumi.get(self, "max_age_seconds")
 
     @property
     @pulumi.getter
     def methods(self) -> Sequence[str]:
+        """
+        The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+        """
         return pulumi.get(self, "methods")
 
     @property
     @pulumi.getter
     def origins(self) -> Sequence[str]:
+        """
+        The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+        """
         return pulumi.get(self, "origins")
 
     @property
     @pulumi.getter(name="responseHeaders")
     def response_headers(self) -> Sequence[str]:
+        """
+        The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+        """
         return pulumi.get(self, "response_headers")
 
 
@@ -2592,11 +2620,17 @@ class GetBucketCorResult(dict):
 class GetBucketCustomPlacementConfigResult(dict):
     def __init__(__self__, *,
                  data_locations: Sequence[str]):
+        """
+        :param Sequence[str] data_locations: The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
+        """
         pulumi.set(__self__, "data_locations", data_locations)
 
     @property
     @pulumi.getter(name="dataLocations")
     def data_locations(self) -> Sequence[str]:
+        """
+        The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
+        """
         return pulumi.get(self, "data_locations")
 
 
@@ -2604,11 +2638,17 @@ class GetBucketCustomPlacementConfigResult(dict):
 class GetBucketEncryptionResult(dict):
     def __init__(__self__, *,
                  default_kms_key_name: str):
+        """
+        :param str default_kms_key_name: A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
+        """
         pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
 
     @property
     @pulumi.getter(name="defaultKmsKeyName")
     def default_kms_key_name(self) -> str:
+        """
+        A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
+        """
         return pulumi.get(self, "default_kms_key_name")
 
 
@@ -2617,17 +2657,27 @@ class GetBucketLifecycleRuleResult(dict):
     def __init__(__self__, *,
                  actions: Sequence['outputs.GetBucketLifecycleRuleActionResult'],
                  conditions: Sequence['outputs.GetBucketLifecycleRuleConditionResult']):
+        """
+        :param Sequence['GetBucketLifecycleRuleActionArgs'] actions: The Lifecycle Rule's action configuration. A single block of this type is supported.
+        :param Sequence['GetBucketLifecycleRuleConditionArgs'] conditions: The Lifecycle Rule's condition configuration.
+        """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "conditions", conditions)
 
     @property
     @pulumi.getter
     def actions(self) -> Sequence['outputs.GetBucketLifecycleRuleActionResult']:
+        """
+        The Lifecycle Rule's action configuration. A single block of this type is supported.
+        """
         return pulumi.get(self, "actions")
 
     @property
     @pulumi.getter
     def conditions(self) -> Sequence['outputs.GetBucketLifecycleRuleConditionResult']:
+        """
+        The Lifecycle Rule's condition configuration.
+        """
         return pulumi.get(self, "conditions")
 
 
@@ -2636,17 +2686,27 @@ class GetBucketLifecycleRuleActionResult(dict):
     def __init__(__self__, *,
                  storage_class: str,
                  type: str):
+        """
+        :param str storage_class: The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
+        :param str type: The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
+        """
         pulumi.set(__self__, "storage_class", storage_class)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> str:
+        """
+        The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
+        """
         return pulumi.get(self, "storage_class")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
+        """
         return pulumi.get(self, "type")
 
 
@@ -2665,6 +2725,21 @@ class GetBucketLifecycleRuleConditionResult(dict):
                  noncurrent_time_before: str,
                  num_newer_versions: int,
                  with_state: str):
+        """
+        :param int age: Minimum age of an object in days to satisfy this condition.
+        :param str created_before: Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        :param str custom_time_before: Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        :param int days_since_custom_time: Number of days elapsed since the user-specified timestamp set on an object.
+        :param int days_since_noncurrent_time: Number of days elapsed since the noncurrent timestamp of an object. This
+               										condition is relevant only for versioned objects.
+        :param Sequence[str] matches_prefixes: One or more matching name prefixes to satisfy this condition.
+        :param Sequence[str] matches_storage_classes: Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
+        :param Sequence[str] matches_suffixes: One or more matching name suffixes to satisfy this condition.
+        :param bool no_age: While set true, age value will be omitted.Required to set true when age is unset in the config file.
+        :param str noncurrent_time_before: Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        :param int num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        :param str with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
+        """
         pulumi.set(__self__, "age", age)
         pulumi.set(__self__, "created_before", created_before)
         pulumi.set(__self__, "custom_time_before", custom_time_before)
@@ -2681,61 +2756,98 @@ class GetBucketLifecycleRuleConditionResult(dict):
     @property
     @pulumi.getter
     def age(self) -> int:
+        """
+        Minimum age of an object in days to satisfy this condition.
+        """
         return pulumi.get(self, "age")
 
     @property
     @pulumi.getter(name="createdBefore")
     def created_before(self) -> str:
+        """
+        Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        """
         return pulumi.get(self, "created_before")
 
     @property
     @pulumi.getter(name="customTimeBefore")
     def custom_time_before(self) -> str:
+        """
+        Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        """
         return pulumi.get(self, "custom_time_before")
 
     @property
     @pulumi.getter(name="daysSinceCustomTime")
     def days_since_custom_time(self) -> int:
+        """
+        Number of days elapsed since the user-specified timestamp set on an object.
+        """
         return pulumi.get(self, "days_since_custom_time")
 
     @property
     @pulumi.getter(name="daysSinceNoncurrentTime")
     def days_since_noncurrent_time(self) -> int:
+        """
+        Number of days elapsed since the noncurrent timestamp of an object. This
+        										condition is relevant only for versioned objects.
+        """
         return pulumi.get(self, "days_since_noncurrent_time")
 
     @property
     @pulumi.getter(name="matchesPrefixes")
     def matches_prefixes(self) -> Sequence[str]:
+        """
+        One or more matching name prefixes to satisfy this condition.
+        """
         return pulumi.get(self, "matches_prefixes")
 
     @property
     @pulumi.getter(name="matchesStorageClasses")
     def matches_storage_classes(self) -> Sequence[str]:
+        """
+        Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
+        """
         return pulumi.get(self, "matches_storage_classes")
 
     @property
     @pulumi.getter(name="matchesSuffixes")
     def matches_suffixes(self) -> Sequence[str]:
+        """
+        One or more matching name suffixes to satisfy this condition.
+        """
         return pulumi.get(self, "matches_suffixes")
 
     @property
     @pulumi.getter(name="noAge")
     def no_age(self) -> bool:
+        """
+        While set true, age value will be omitted.Required to set true when age is unset in the config file.
+        """
         return pulumi.get(self, "no_age")
 
     @property
     @pulumi.getter(name="noncurrentTimeBefore")
     def noncurrent_time_before(self) -> str:
+        """
+        Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        """
         return pulumi.get(self, "noncurrent_time_before")
 
     @property
     @pulumi.getter(name="numNewerVersions")
     def num_newer_versions(self) -> int:
+        """
+        Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        """
         return pulumi.get(self, "num_newer_versions")
 
     @property
     @pulumi.getter(name="withState")
     def with_state(self) -> str:
+        """
+        Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
+        """
         return pulumi.get(self, "with_state")
 
 
@@ -2744,17 +2856,27 @@ class GetBucketLoggingResult(dict):
     def __init__(__self__, *,
                  log_bucket: str,
                  log_object_prefix: str):
+        """
+        :param str log_bucket: The bucket that will receive log objects.
+        :param str log_object_prefix: The object prefix for log objects. If it's not provided, by default Google Cloud Storage sets this to this bucket's name.
+        """
         pulumi.set(__self__, "log_bucket", log_bucket)
         pulumi.set(__self__, "log_object_prefix", log_object_prefix)
 
     @property
     @pulumi.getter(name="logBucket")
     def log_bucket(self) -> str:
+        """
+        The bucket that will receive log objects.
+        """
         return pulumi.get(self, "log_bucket")
 
     @property
     @pulumi.getter(name="logObjectPrefix")
     def log_object_prefix(self) -> str:
+        """
+        The object prefix for log objects. If it's not provided, by default Google Cloud Storage sets this to this bucket's name.
+        """
         return pulumi.get(self, "log_object_prefix")
 
 
@@ -2763,17 +2885,27 @@ class GetBucketObjectContentCustomerEncryptionResult(dict):
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  encryption_key: str):
+        """
+        :param str encryption_algorithm: The encryption algorithm. Default: AES256
+        :param str encryption_key: Base64 encoded customer supplied encryption key.
+        """
         pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
         pulumi.set(__self__, "encryption_key", encryption_key)
 
     @property
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> str:
+        """
+        The encryption algorithm. Default: AES256
+        """
         return pulumi.get(self, "encryption_algorithm")
 
     @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> str:
+        """
+        Base64 encoded customer supplied encryption key.
+        """
         return pulumi.get(self, "encryption_key")
 
 
@@ -2782,17 +2914,27 @@ class GetBucketObjectContentRetentionResult(dict):
     def __init__(__self__, *,
                  mode: str,
                  retain_until_time: str):
+        """
+        :param str mode: The object retention mode. Supported values include: "Unlocked", "Locked".
+        :param str retain_until_time: Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
+        """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "retain_until_time", retain_until_time)
 
     @property
     @pulumi.getter
     def mode(self) -> str:
+        """
+        The object retention mode. Supported values include: "Unlocked", "Locked".
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter(name="retainUntilTime")
     def retain_until_time(self) -> str:
+        """
+        Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
+        """
         return pulumi.get(self, "retain_until_time")
 
 
@@ -2801,17 +2943,27 @@ class GetBucketObjectCustomerEncryptionResult(dict):
     def __init__(__self__, *,
                  encryption_algorithm: str,
                  encryption_key: str):
+        """
+        :param str encryption_algorithm: The encryption algorithm. Default: AES256
+        :param str encryption_key: Base64 encoded customer supplied encryption key.
+        """
         pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
         pulumi.set(__self__, "encryption_key", encryption_key)
 
     @property
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> str:
+        """
+        The encryption algorithm. Default: AES256
+        """
         return pulumi.get(self, "encryption_algorithm")
 
     @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> str:
+        """
+        Base64 encoded customer supplied encryption key.
+        """
         return pulumi.get(self, "encryption_key")
 
 
@@ -2820,17 +2972,27 @@ class GetBucketObjectRetentionResult(dict):
     def __init__(__self__, *,
                  mode: str,
                  retain_until_time: str):
+        """
+        :param str mode: The object retention mode. Supported values include: "Unlocked", "Locked".
+        :param str retain_until_time: Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
+        """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "retain_until_time", retain_until_time)
 
     @property
     @pulumi.getter
     def mode(self) -> str:
+        """
+        The object retention mode. Supported values include: "Unlocked", "Locked".
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter(name="retainUntilTime")
     def retain_until_time(self) -> str:
+        """
+        Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
+        """
         return pulumi.get(self, "retain_until_time")
 
 
@@ -2839,17 +3001,27 @@ class GetBucketRetentionPolicyResult(dict):
     def __init__(__self__, *,
                  is_locked: bool,
                  retention_period: int):
+        """
+        :param bool is_locked: If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+        :param int retention_period: The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+        """
         pulumi.set(__self__, "is_locked", is_locked)
         pulumi.set(__self__, "retention_period", retention_period)
 
     @property
     @pulumi.getter(name="isLocked")
     def is_locked(self) -> bool:
+        """
+        If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+        """
         return pulumi.get(self, "is_locked")
 
     @property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> int:
+        """
+        The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+        """
         return pulumi.get(self, "retention_period")
 
 
@@ -2857,11 +3029,17 @@ class GetBucketRetentionPolicyResult(dict):
 class GetBucketVersioningResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
+        """
+        :param bool enabled: While set to true, versioning is fully enabled for this bucket.
+        """
         pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        While set to true, versioning is fully enabled for this bucket.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -2870,17 +3048,27 @@ class GetBucketWebsiteResult(dict):
     def __init__(__self__, *,
                  main_page_suffix: str,
                  not_found_page: str):
+        """
+        :param str main_page_suffix: Behaves as the bucket's directory index where missing objects are treated as potential directories.
+        :param str not_found_page: The custom object to return when a requested resource is not found.
+        """
         pulumi.set(__self__, "main_page_suffix", main_page_suffix)
         pulumi.set(__self__, "not_found_page", not_found_page)
 
     @property
     @pulumi.getter(name="mainPageSuffix")
     def main_page_suffix(self) -> str:
+        """
+        Behaves as the bucket's directory index where missing objects are treated as potential directories.
+        """
         return pulumi.get(self, "main_page_suffix")
 
     @property
     @pulumi.getter(name="notFoundPage")
     def not_found_page(self) -> str:
+        """
+        The custom object to return when a requested resource is not found.
+        """
         return pulumi.get(self, "not_found_page")
 
 

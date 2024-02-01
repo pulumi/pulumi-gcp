@@ -13,21 +13,61 @@ import java.util.Objects;
 
 @CustomType
 public final class GetReservationSpecificReservationInstanceProperty {
+    /**
+     * @return Guest accelerator type and count.
+     * 
+     */
     private List<GetReservationSpecificReservationInstancePropertyGuestAccelerator> guestAccelerators;
+    /**
+     * @return The amount of local ssd to reserve with each instance. This
+     * reserves disks of type &#39;local-ssd&#39;.
+     * 
+     */
     private List<GetReservationSpecificReservationInstancePropertyLocalSsd> localSsds;
+    /**
+     * @return The name of the machine type to reserve.
+     * 
+     */
     private String machineType;
+    /**
+     * @return The minimum CPU platform for the reservation. For example,
+     * &#39;&#34;Intel Skylake&#34;&#39;. See
+     * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+     * for information on available CPU platforms.
+     * 
+     */
     private String minCpuPlatform;
 
     private GetReservationSpecificReservationInstanceProperty() {}
+    /**
+     * @return Guest accelerator type and count.
+     * 
+     */
     public List<GetReservationSpecificReservationInstancePropertyGuestAccelerator> guestAccelerators() {
         return this.guestAccelerators;
     }
+    /**
+     * @return The amount of local ssd to reserve with each instance. This
+     * reserves disks of type &#39;local-ssd&#39;.
+     * 
+     */
     public List<GetReservationSpecificReservationInstancePropertyLocalSsd> localSsds() {
         return this.localSsds;
     }
+    /**
+     * @return The name of the machine type to reserve.
+     * 
+     */
     public String machineType() {
         return this.machineType;
     }
+    /**
+     * @return The minimum CPU platform for the reservation. For example,
+     * &#39;&#34;Intel Skylake&#34;&#39;. See
+     * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+     * for information on available CPU platforms.
+     * 
+     */
     public String minCpuPlatform() {
         return this.minCpuPlatform;
     }

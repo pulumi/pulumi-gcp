@@ -18,30 +18,62 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
 
     public static final NodePoolNodeConfigKubeletConfigArgs Empty = new NodePoolNodeConfigKubeletConfigArgs();
 
+    /**
+     * Enable CPU CFS quota enforcement for containers that specify CPU limits.
+     * 
+     */
     @Import(name="cpuCfsQuota")
     private @Nullable Output<Boolean> cpuCfsQuota;
 
+    /**
+     * @return Enable CPU CFS quota enforcement for containers that specify CPU limits.
+     * 
+     */
     public Optional<Output<Boolean>> cpuCfsQuota() {
         return Optional.ofNullable(this.cpuCfsQuota);
     }
 
+    /**
+     * Set the CPU CFS quota period value &#39;cpu.cfs_period_us&#39;.
+     * 
+     */
     @Import(name="cpuCfsQuotaPeriod")
     private @Nullable Output<String> cpuCfsQuotaPeriod;
 
+    /**
+     * @return Set the CPU CFS quota period value &#39;cpu.cfs_period_us&#39;.
+     * 
+     */
     public Optional<Output<String>> cpuCfsQuotaPeriod() {
         return Optional.ofNullable(this.cpuCfsQuotaPeriod);
     }
 
+    /**
+     * Control the CPU management policy on the node.
+     * 
+     */
     @Import(name="cpuManagerPolicy", required=true)
     private Output<String> cpuManagerPolicy;
 
+    /**
+     * @return Control the CPU management policy on the node.
+     * 
+     */
     public Output<String> cpuManagerPolicy() {
         return this.cpuManagerPolicy;
     }
 
+    /**
+     * Controls the maximum number of processes allowed to run in a pod.
+     * 
+     */
     @Import(name="podPidsLimit")
     private @Nullable Output<Integer> podPidsLimit;
 
+    /**
+     * @return Controls the maximum number of processes allowed to run in a pod.
+     * 
+     */
     public Optional<Output<Integer>> podPidsLimit() {
         return Optional.ofNullable(this.podPidsLimit);
     }
@@ -73,38 +105,86 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
             $ = new NodePoolNodeConfigKubeletConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cpuCfsQuota Enable CPU CFS quota enforcement for containers that specify CPU limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuCfsQuota(@Nullable Output<Boolean> cpuCfsQuota) {
             $.cpuCfsQuota = cpuCfsQuota;
             return this;
         }
 
+        /**
+         * @param cpuCfsQuota Enable CPU CFS quota enforcement for containers that specify CPU limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuCfsQuota(Boolean cpuCfsQuota) {
             return cpuCfsQuota(Output.of(cpuCfsQuota));
         }
 
+        /**
+         * @param cpuCfsQuotaPeriod Set the CPU CFS quota period value &#39;cpu.cfs_period_us&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuCfsQuotaPeriod(@Nullable Output<String> cpuCfsQuotaPeriod) {
             $.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             return this;
         }
 
+        /**
+         * @param cpuCfsQuotaPeriod Set the CPU CFS quota period value &#39;cpu.cfs_period_us&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuCfsQuotaPeriod(String cpuCfsQuotaPeriod) {
             return cpuCfsQuotaPeriod(Output.of(cpuCfsQuotaPeriod));
         }
 
+        /**
+         * @param cpuManagerPolicy Control the CPU management policy on the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuManagerPolicy(Output<String> cpuManagerPolicy) {
             $.cpuManagerPolicy = cpuManagerPolicy;
             return this;
         }
 
+        /**
+         * @param cpuManagerPolicy Control the CPU management policy on the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
             return cpuManagerPolicy(Output.of(cpuManagerPolicy));
         }
 
+        /**
+         * @param podPidsLimit Controls the maximum number of processes allowed to run in a pod.
+         * 
+         * @return builder
+         * 
+         */
         public Builder podPidsLimit(@Nullable Output<Integer> podPidsLimit) {
             $.podPidsLimit = podPidsLimit;
             return this;
         }
 
+        /**
+         * @param podPidsLimit Controls the maximum number of processes allowed to run in a pod.
+         * 
+         * @return builder
+         * 
+         */
         public Builder podPidsLimit(Integer podPidsLimit) {
             return podPidsLimit(Output.of(podPidsLimit));
         }

@@ -11,6 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateContainerPort {
+    /**
+     * @return Port number the container listens on. This must be a valid TCP port number, 0 &lt; containerPort &lt; 65536.
+     * 
+     */
     private Integer containerPort;
     /**
      * @return The name of the Cloud Run v2 Service.
@@ -19,6 +23,10 @@ public final class GetServiceTemplateContainerPort {
     private String name;
 
     private GetServiceTemplateContainerPort() {}
+    /**
+     * @return Port number the container listens on. This must be a valid TCP port number, 0 &lt; containerPort &lt; 65536.
+     * 
+     */
     public Integer containerPort() {
         return this.containerPort;
     }

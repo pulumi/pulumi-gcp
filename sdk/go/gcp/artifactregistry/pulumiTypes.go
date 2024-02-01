@@ -3253,9 +3253,13 @@ func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i pulu
 }
 
 type GetRepositoryCleanupPolicy struct {
-	Action             string                                        `pulumi:"action"`
-	Conditions         []GetRepositoryCleanupPolicyCondition         `pulumi:"conditions"`
-	Id                 string                                        `pulumi:"id"`
+	// Policy action. Possible values: ["DELETE", "KEEP"]
+	Action string `pulumi:"action"`
+	// Policy condition for matching versions.
+	Conditions []GetRepositoryCleanupPolicyCondition `pulumi:"conditions"`
+	Id         string                                `pulumi:"id"`
+	// Policy condition for retaining a minimum number of versions. May only be
+	// specified with a Keep action.
 	MostRecentVersions []GetRepositoryCleanupPolicyMostRecentVersion `pulumi:"mostRecentVersions"`
 }
 
@@ -3271,9 +3275,13 @@ type GetRepositoryCleanupPolicyInput interface {
 }
 
 type GetRepositoryCleanupPolicyArgs struct {
-	Action             pulumi.StringInput                                    `pulumi:"action"`
-	Conditions         GetRepositoryCleanupPolicyConditionArrayInput         `pulumi:"conditions"`
-	Id                 pulumi.StringInput                                    `pulumi:"id"`
+	// Policy action. Possible values: ["DELETE", "KEEP"]
+	Action pulumi.StringInput `pulumi:"action"`
+	// Policy condition for matching versions.
+	Conditions GetRepositoryCleanupPolicyConditionArrayInput `pulumi:"conditions"`
+	Id         pulumi.StringInput                            `pulumi:"id"`
+	// Policy condition for retaining a minimum number of versions. May only be
+	// specified with a Keep action.
 	MostRecentVersions GetRepositoryCleanupPolicyMostRecentVersionArrayInput `pulumi:"mostRecentVersions"`
 }
 
@@ -3328,10 +3336,12 @@ func (o GetRepositoryCleanupPolicyOutput) ToGetRepositoryCleanupPolicyOutputWith
 	return o
 }
 
+// Policy action. Possible values: ["DELETE", "KEEP"]
 func (o GetRepositoryCleanupPolicyOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicy) string { return v.Action }).(pulumi.StringOutput)
 }
 
+// Policy condition for matching versions.
 func (o GetRepositoryCleanupPolicyOutput) Conditions() GetRepositoryCleanupPolicyConditionArrayOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicy) []GetRepositoryCleanupPolicyCondition { return v.Conditions }).(GetRepositoryCleanupPolicyConditionArrayOutput)
 }
@@ -3340,6 +3350,8 @@ func (o GetRepositoryCleanupPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Policy condition for retaining a minimum number of versions. May only be
+// specified with a Keep action.
 func (o GetRepositoryCleanupPolicyOutput) MostRecentVersions() GetRepositoryCleanupPolicyMostRecentVersionArrayOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicy) []GetRepositoryCleanupPolicyMostRecentVersion {
 		return v.MostRecentVersions
@@ -3367,11 +3379,17 @@ func (o GetRepositoryCleanupPolicyArrayOutput) Index(i pulumi.IntInput) GetRepos
 }
 
 type GetRepositoryCleanupPolicyCondition struct {
-	NewerThan           string   `pulumi:"newerThan"`
-	OlderThan           string   `pulumi:"olderThan"`
+	// Match versions newer than a duration.
+	NewerThan string `pulumi:"newerThan"`
+	// Match versions older than a duration.
+	OlderThan string `pulumi:"olderThan"`
+	// Match versions by package prefix. Applied on any prefix match.
 	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
-	TagPrefixes         []string `pulumi:"tagPrefixes"`
-	TagState            string   `pulumi:"tagState"`
+	// Match versions by tag prefix. Applied on any prefix match.
+	TagPrefixes []string `pulumi:"tagPrefixes"`
+	// Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
+	TagState string `pulumi:"tagState"`
+	// Match versions by version name prefix. Applied on any prefix match.
 	VersionNamePrefixes []string `pulumi:"versionNamePrefixes"`
 }
 
@@ -3387,11 +3405,17 @@ type GetRepositoryCleanupPolicyConditionInput interface {
 }
 
 type GetRepositoryCleanupPolicyConditionArgs struct {
-	NewerThan           pulumi.StringInput      `pulumi:"newerThan"`
-	OlderThan           pulumi.StringInput      `pulumi:"olderThan"`
+	// Match versions newer than a duration.
+	NewerThan pulumi.StringInput `pulumi:"newerThan"`
+	// Match versions older than a duration.
+	OlderThan pulumi.StringInput `pulumi:"olderThan"`
+	// Match versions by package prefix. Applied on any prefix match.
 	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
-	TagPrefixes         pulumi.StringArrayInput `pulumi:"tagPrefixes"`
-	TagState            pulumi.StringInput      `pulumi:"tagState"`
+	// Match versions by tag prefix. Applied on any prefix match.
+	TagPrefixes pulumi.StringArrayInput `pulumi:"tagPrefixes"`
+	// Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
+	TagState pulumi.StringInput `pulumi:"tagState"`
+	// Match versions by version name prefix. Applied on any prefix match.
 	VersionNamePrefixes pulumi.StringArrayInput `pulumi:"versionNamePrefixes"`
 }
 
@@ -3446,26 +3470,32 @@ func (o GetRepositoryCleanupPolicyConditionOutput) ToGetRepositoryCleanupPolicyC
 	return o
 }
 
+// Match versions newer than a duration.
 func (o GetRepositoryCleanupPolicyConditionOutput) NewerThan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) string { return v.NewerThan }).(pulumi.StringOutput)
 }
 
+// Match versions older than a duration.
 func (o GetRepositoryCleanupPolicyConditionOutput) OlderThan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) string { return v.OlderThan }).(pulumi.StringOutput)
 }
 
+// Match versions by package prefix. Applied on any prefix match.
 func (o GetRepositoryCleanupPolicyConditionOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
 }
 
+// Match versions by tag prefix. Applied on any prefix match.
 func (o GetRepositoryCleanupPolicyConditionOutput) TagPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) []string { return v.TagPrefixes }).(pulumi.StringArrayOutput)
 }
 
+// Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
 func (o GetRepositoryCleanupPolicyConditionOutput) TagState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) string { return v.TagState }).(pulumi.StringOutput)
 }
 
+// Match versions by version name prefix. Applied on any prefix match.
 func (o GetRepositoryCleanupPolicyConditionOutput) VersionNamePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) []string { return v.VersionNamePrefixes }).(pulumi.StringArrayOutput)
 }
@@ -3491,7 +3521,9 @@ func (o GetRepositoryCleanupPolicyConditionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRepositoryCleanupPolicyMostRecentVersion struct {
-	KeepCount           int      `pulumi:"keepCount"`
+	// Minimum number of versions to keep.
+	KeepCount int `pulumi:"keepCount"`
+	// Match versions by package prefix. Applied on any prefix match.
 	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
 }
 
@@ -3507,7 +3539,9 @@ type GetRepositoryCleanupPolicyMostRecentVersionInput interface {
 }
 
 type GetRepositoryCleanupPolicyMostRecentVersionArgs struct {
-	KeepCount           pulumi.IntInput         `pulumi:"keepCount"`
+	// Minimum number of versions to keep.
+	KeepCount pulumi.IntInput `pulumi:"keepCount"`
+	// Match versions by package prefix. Applied on any prefix match.
 	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
 }
 
@@ -3562,10 +3596,12 @@ func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) ToGetRepositoryCleanu
 	return o
 }
 
+// Minimum number of versions to keep.
 func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) KeepCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicyMostRecentVersion) int { return v.KeepCount }).(pulumi.IntOutput)
 }
 
+// Match versions by package prefix. Applied on any prefix match.
 func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRepositoryCleanupPolicyMostRecentVersion) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
 }
@@ -3591,6 +3627,7 @@ func (o GetRepositoryCleanupPolicyMostRecentVersionArrayOutput) Index(i pulumi.I
 }
 
 type GetRepositoryDockerConfig struct {
+	// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
 	ImmutableTags bool `pulumi:"immutableTags"`
 }
 
@@ -3606,6 +3643,7 @@ type GetRepositoryDockerConfigInput interface {
 }
 
 type GetRepositoryDockerConfigArgs struct {
+	// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
 	ImmutableTags pulumi.BoolInput `pulumi:"immutableTags"`
 }
 
@@ -3660,6 +3698,7 @@ func (o GetRepositoryDockerConfigOutput) ToGetRepositoryDockerConfigOutputWithCo
 	return o
 }
 
+// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
 func (o GetRepositoryDockerConfigOutput) ImmutableTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRepositoryDockerConfig) bool { return v.ImmutableTags }).(pulumi.BoolOutput)
 }
@@ -3685,8 +3724,11 @@ func (o GetRepositoryDockerConfigArrayOutput) Index(i pulumi.IntInput) GetReposi
 }
 
 type GetRepositoryMavenConfig struct {
-	AllowSnapshotOverwrites bool   `pulumi:"allowSnapshotOverwrites"`
-	VersionPolicy           string `pulumi:"versionPolicy"`
+	// The repository with this flag will allow publishing the same
+	// snapshot versions.
+	AllowSnapshotOverwrites bool `pulumi:"allowSnapshotOverwrites"`
+	// Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
+	VersionPolicy string `pulumi:"versionPolicy"`
 }
 
 // GetRepositoryMavenConfigInput is an input type that accepts GetRepositoryMavenConfigArgs and GetRepositoryMavenConfigOutput values.
@@ -3701,8 +3743,11 @@ type GetRepositoryMavenConfigInput interface {
 }
 
 type GetRepositoryMavenConfigArgs struct {
-	AllowSnapshotOverwrites pulumi.BoolInput   `pulumi:"allowSnapshotOverwrites"`
-	VersionPolicy           pulumi.StringInput `pulumi:"versionPolicy"`
+	// The repository with this flag will allow publishing the same
+	// snapshot versions.
+	AllowSnapshotOverwrites pulumi.BoolInput `pulumi:"allowSnapshotOverwrites"`
+	// Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
+	VersionPolicy pulumi.StringInput `pulumi:"versionPolicy"`
 }
 
 func (GetRepositoryMavenConfigArgs) ElementType() reflect.Type {
@@ -3756,10 +3801,13 @@ func (o GetRepositoryMavenConfigOutput) ToGetRepositoryMavenConfigOutputWithCont
 	return o
 }
 
+// The repository with this flag will allow publishing the same
+// snapshot versions.
 func (o GetRepositoryMavenConfigOutput) AllowSnapshotOverwrites() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRepositoryMavenConfig) bool { return v.AllowSnapshotOverwrites }).(pulumi.BoolOutput)
 }
 
+// Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
 func (o GetRepositoryMavenConfigOutput) VersionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryMavenConfig) string { return v.VersionPolicy }).(pulumi.StringOutput)
 }
@@ -3785,14 +3833,22 @@ func (o GetRepositoryMavenConfigArrayOutput) Index(i pulumi.IntInput) GetReposit
 }
 
 type GetRepositoryRemoteRepositoryConfig struct {
-	AptRepositories     []GetRepositoryRemoteRepositoryConfigAptRepository      `pulumi:"aptRepositories"`
-	Description         string                                                  `pulumi:"description"`
-	DockerRepositories  []GetRepositoryRemoteRepositoryConfigDockerRepository   `pulumi:"dockerRepositories"`
-	MavenRepositories   []GetRepositoryRemoteRepositoryConfigMavenRepository    `pulumi:"mavenRepositories"`
-	NpmRepositories     []GetRepositoryRemoteRepositoryConfigNpmRepository      `pulumi:"npmRepositories"`
-	PythonRepositories  []GetRepositoryRemoteRepositoryConfigPythonRepository   `pulumi:"pythonRepositories"`
+	// Specific settings for an Apt remote repository.
+	AptRepositories []GetRepositoryRemoteRepositoryConfigAptRepository `pulumi:"aptRepositories"`
+	// The description of the remote source.
+	Description string `pulumi:"description"`
+	// Specific settings for a Docker remote repository.
+	DockerRepositories []GetRepositoryRemoteRepositoryConfigDockerRepository `pulumi:"dockerRepositories"`
+	// Specific settings for a Maven remote repository.
+	MavenRepositories []GetRepositoryRemoteRepositoryConfigMavenRepository `pulumi:"mavenRepositories"`
+	// Specific settings for an Npm remote repository.
+	NpmRepositories []GetRepositoryRemoteRepositoryConfigNpmRepository `pulumi:"npmRepositories"`
+	// Specific settings for a Python remote repository.
+	PythonRepositories []GetRepositoryRemoteRepositoryConfigPythonRepository `pulumi:"pythonRepositories"`
+	// The credentials used to access the remote repository.
 	UpstreamCredentials []GetRepositoryRemoteRepositoryConfigUpstreamCredential `pulumi:"upstreamCredentials"`
-	YumRepositories     []GetRepositoryRemoteRepositoryConfigYumRepository      `pulumi:"yumRepositories"`
+	// Specific settings for an Yum remote repository.
+	YumRepositories []GetRepositoryRemoteRepositoryConfigYumRepository `pulumi:"yumRepositories"`
 }
 
 // GetRepositoryRemoteRepositoryConfigInput is an input type that accepts GetRepositoryRemoteRepositoryConfigArgs and GetRepositoryRemoteRepositoryConfigOutput values.
@@ -3807,14 +3863,22 @@ type GetRepositoryRemoteRepositoryConfigInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigArgs struct {
-	AptRepositories     GetRepositoryRemoteRepositoryConfigAptRepositoryArrayInput      `pulumi:"aptRepositories"`
-	Description         pulumi.StringInput                                              `pulumi:"description"`
-	DockerRepositories  GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput   `pulumi:"dockerRepositories"`
-	MavenRepositories   GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput    `pulumi:"mavenRepositories"`
-	NpmRepositories     GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput      `pulumi:"npmRepositories"`
-	PythonRepositories  GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput   `pulumi:"pythonRepositories"`
+	// Specific settings for an Apt remote repository.
+	AptRepositories GetRepositoryRemoteRepositoryConfigAptRepositoryArrayInput `pulumi:"aptRepositories"`
+	// The description of the remote source.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Specific settings for a Docker remote repository.
+	DockerRepositories GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput `pulumi:"dockerRepositories"`
+	// Specific settings for a Maven remote repository.
+	MavenRepositories GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput `pulumi:"mavenRepositories"`
+	// Specific settings for an Npm remote repository.
+	NpmRepositories GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput `pulumi:"npmRepositories"`
+	// Specific settings for a Python remote repository.
+	PythonRepositories GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput `pulumi:"pythonRepositories"`
+	// The credentials used to access the remote repository.
 	UpstreamCredentials GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayInput `pulumi:"upstreamCredentials"`
-	YumRepositories     GetRepositoryRemoteRepositoryConfigYumRepositoryArrayInput      `pulumi:"yumRepositories"`
+	// Specific settings for an Yum remote repository.
+	YumRepositories GetRepositoryRemoteRepositoryConfigYumRepositoryArrayInput `pulumi:"yumRepositories"`
 }
 
 func (GetRepositoryRemoteRepositoryConfigArgs) ElementType() reflect.Type {
@@ -3868,46 +3932,54 @@ func (o GetRepositoryRemoteRepositoryConfigOutput) ToGetRepositoryRemoteReposito
 	return o
 }
 
+// Specific settings for an Apt remote repository.
 func (o GetRepositoryRemoteRepositoryConfigOutput) AptRepositories() GetRepositoryRemoteRepositoryConfigAptRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigAptRepository {
 		return v.AptRepositories
 	}).(GetRepositoryRemoteRepositoryConfigAptRepositoryArrayOutput)
 }
 
+// The description of the remote source.
 func (o GetRepositoryRemoteRepositoryConfigOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Specific settings for a Docker remote repository.
 func (o GetRepositoryRemoteRepositoryConfigOutput) DockerRepositories() GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigDockerRepository {
 		return v.DockerRepositories
 	}).(GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput)
 }
 
+// Specific settings for a Maven remote repository.
 func (o GetRepositoryRemoteRepositoryConfigOutput) MavenRepositories() GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigMavenRepository {
 		return v.MavenRepositories
 	}).(GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput)
 }
 
+// Specific settings for an Npm remote repository.
 func (o GetRepositoryRemoteRepositoryConfigOutput) NpmRepositories() GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigNpmRepository {
 		return v.NpmRepositories
 	}).(GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput)
 }
 
+// Specific settings for a Python remote repository.
 func (o GetRepositoryRemoteRepositoryConfigOutput) PythonRepositories() GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigPythonRepository {
 		return v.PythonRepositories
 	}).(GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput)
 }
 
+// The credentials used to access the remote repository.
 func (o GetRepositoryRemoteRepositoryConfigOutput) UpstreamCredentials() GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigUpstreamCredential {
 		return v.UpstreamCredentials
 	}).(GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput)
 }
 
+// Specific settings for an Yum remote repository.
 func (o GetRepositoryRemoteRepositoryConfigOutput) YumRepositories() GetRepositoryRemoteRepositoryConfigYumRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigYumRepository {
 		return v.YumRepositories
@@ -3935,6 +4007,7 @@ func (o GetRepositoryRemoteRepositoryConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRepositoryRemoteRepositoryConfigAptRepository struct {
+	// One of the publicly available Apt repositories supported by Artifact Registry.
 	PublicRepositories []GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository `pulumi:"publicRepositories"`
 }
 
@@ -3950,6 +4023,7 @@ type GetRepositoryRemoteRepositoryConfigAptRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigAptRepositoryArgs struct {
+	// One of the publicly available Apt repositories supported by Artifact Registry.
 	PublicRepositories GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayInput `pulumi:"publicRepositories"`
 }
 
@@ -4004,6 +4078,7 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryOutput) ToGetRepositoryR
 	return o
 }
 
+// One of the publicly available Apt repositories supported by Artifact Registry.
 func (o GetRepositoryRemoteRepositoryConfigAptRepositoryOutput) PublicRepositories() GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigAptRepository) []GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
 		return v.PublicRepositories
@@ -4031,7 +4106,9 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryArrayOutput) Index(i pul
 }
 
 type GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository struct {
+	// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
 	RepositoryBase string `pulumi:"repositoryBase"`
+	// Specific repository from the base.
 	RepositoryPath string `pulumi:"repositoryPath"`
 }
 
@@ -4047,7 +4124,9 @@ type GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryInput inter
 }
 
 type GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs struct {
+	// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
 	RepositoryBase pulumi.StringInput `pulumi:"repositoryBase"`
+	// Specific repository from the base.
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
 }
 
@@ -4102,12 +4181,14 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) 
 	return o
 }
 
+// A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
 func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) RepositoryBase() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository) string {
 		return v.RepositoryBase
 	}).(pulumi.StringOutput)
 }
 
+// Specific repository from the base.
 func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository) string {
 		return v.RepositoryPath
@@ -4135,6 +4216,7 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayOut
 }
 
 type GetRepositoryRemoteRepositoryConfigDockerRepository struct {
+	// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
 
@@ -4150,6 +4232,7 @@ type GetRepositoryRemoteRepositoryConfigDockerRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
+	// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
 
@@ -4204,6 +4287,7 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToGetReposito
 	return o
 }
 
+// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
 func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigDockerRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
 }
@@ -4229,6 +4313,7 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput) Index(i 
 }
 
 type GetRepositoryRemoteRepositoryConfigMavenRepository struct {
+	// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
 
@@ -4244,6 +4329,7 @@ type GetRepositoryRemoteRepositoryConfigMavenRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
+	// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
 
@@ -4298,6 +4384,7 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToGetRepositor
 	return o
 }
 
+// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
 func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigMavenRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
 }
@@ -4323,6 +4410,7 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput) Index(i p
 }
 
 type GetRepositoryRemoteRepositoryConfigNpmRepository struct {
+	// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
 
@@ -4338,6 +4426,7 @@ type GetRepositoryRemoteRepositoryConfigNpmRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
+	// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
 
@@ -4392,6 +4481,7 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToGetRepositoryR
 	return o
 }
 
+// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
 func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigNpmRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
 }
@@ -4417,6 +4507,7 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput) Index(i pul
 }
 
 type GetRepositoryRemoteRepositoryConfigPythonRepository struct {
+	// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
 	PublicRepository string `pulumi:"publicRepository"`
 }
 
@@ -4432,6 +4523,7 @@ type GetRepositoryRemoteRepositoryConfigPythonRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
+	// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
 }
 
@@ -4486,6 +4578,7 @@ func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToGetReposito
 	return o
 }
 
+// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
 func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) PublicRepository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigPythonRepository) string { return v.PublicRepository }).(pulumi.StringOutput)
 }
@@ -4511,6 +4604,7 @@ func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) Index(i 
 }
 
 type GetRepositoryRemoteRepositoryConfigUpstreamCredential struct {
+	// Use username and password to access the remote repository.
 	UsernamePasswordCredentials []GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential `pulumi:"usernamePasswordCredentials"`
 }
 
@@ -4526,6 +4620,7 @@ type GetRepositoryRemoteRepositoryConfigUpstreamCredentialInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs struct {
+	// Use username and password to access the remote repository.
 	UsernamePasswordCredentials GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayInput `pulumi:"usernamePasswordCredentials"`
 }
 
@@ -4580,6 +4675,7 @@ func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput) ToGetReposi
 	return o
 }
 
+// Use username and password to access the remote repository.
 func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput) UsernamePasswordCredentials() GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigUpstreamCredential) []GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential {
 		return v.UsernamePasswordCredentials
@@ -4607,8 +4703,12 @@ func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput) Index(
 }
 
 type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential struct {
+	// The Secret Manager key version that holds the password to access the
+	// remote repository. Must be in the format of
+	// 'projects/{project}/secrets/{secret}/versions/{version}'.
 	PasswordSecretVersion string `pulumi:"passwordSecretVersion"`
-	Username              string `pulumi:"username"`
+	// The username to access the remote repository.
+	Username string `pulumi:"username"`
 }
 
 // GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialInput is an input type that accepts GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs and GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput values.
@@ -4623,8 +4723,12 @@ type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCreden
 }
 
 type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs struct {
+	// The Secret Manager key version that holds the password to access the
+	// remote repository. Must be in the format of
+	// 'projects/{project}/secrets/{secret}/versions/{version}'.
 	PasswordSecretVersion pulumi.StringInput `pulumi:"passwordSecretVersion"`
-	Username              pulumi.StringInput `pulumi:"username"`
+	// The username to access the remote repository.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs) ElementType() reflect.Type {
@@ -4678,12 +4782,16 @@ func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCre
 	return o
 }
 
+// The Secret Manager key version that holds the password to access the
+// remote repository. Must be in the format of
+// 'projects/{project}/secrets/{secret}/versions/{version}'.
 func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput) PasswordSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential) string {
 		return v.PasswordSecretVersion
 	}).(pulumi.StringOutput)
 }
 
+// The username to access the remote repository.
 func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential) string {
 		return v.Username
@@ -4711,6 +4819,7 @@ func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCre
 }
 
 type GetRepositoryRemoteRepositoryConfigYumRepository struct {
+	// One of the publicly available Yum repositories supported by Artifact Registry.
 	PublicRepositories []GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository `pulumi:"publicRepositories"`
 }
 
@@ -4726,6 +4835,7 @@ type GetRepositoryRemoteRepositoryConfigYumRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigYumRepositoryArgs struct {
+	// One of the publicly available Yum repositories supported by Artifact Registry.
 	PublicRepositories GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrayInput `pulumi:"publicRepositories"`
 }
 
@@ -4780,6 +4890,7 @@ func (o GetRepositoryRemoteRepositoryConfigYumRepositoryOutput) ToGetRepositoryR
 	return o
 }
 
+// One of the publicly available Yum repositories supported by Artifact Registry.
 func (o GetRepositoryRemoteRepositoryConfigYumRepositoryOutput) PublicRepositories() GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigYumRepository) []GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository {
 		return v.PublicRepositories
@@ -4807,7 +4918,9 @@ func (o GetRepositoryRemoteRepositoryConfigYumRepositoryArrayOutput) Index(i pul
 }
 
 type GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository struct {
+	// A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
 	RepositoryBase string `pulumi:"repositoryBase"`
+	// Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
 	RepositoryPath string `pulumi:"repositoryPath"`
 }
 
@@ -4823,7 +4936,9 @@ type GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryInput inter
 }
 
 type GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs struct {
+	// A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
 	RepositoryBase pulumi.StringInput `pulumi:"repositoryBase"`
+	// Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
 	RepositoryPath pulumi.StringInput `pulumi:"repositoryPath"`
 }
 
@@ -4878,12 +4993,14 @@ func (o GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) 
 	return o
 }
 
+// A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
 func (o GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) RepositoryBase() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository) string {
 		return v.RepositoryBase
 	}).(pulumi.StringOutput)
 }
 
+// Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
 func (o GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryOutput) RepositoryPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository) string {
 		return v.RepositoryPath
@@ -4911,6 +5028,8 @@ func (o GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArrayOut
 }
 
 type GetRepositoryVirtualRepositoryConfig struct {
+	// Policies that configure the upstream artifacts distributed by the Virtual
+	// Repository. Upstream policies cannot be set on a standard repository.
 	UpstreamPolicies []GetRepositoryVirtualRepositoryConfigUpstreamPolicy `pulumi:"upstreamPolicies"`
 }
 
@@ -4926,6 +5045,8 @@ type GetRepositoryVirtualRepositoryConfigInput interface {
 }
 
 type GetRepositoryVirtualRepositoryConfigArgs struct {
+	// Policies that configure the upstream artifacts distributed by the Virtual
+	// Repository. Upstream policies cannot be set on a standard repository.
 	UpstreamPolicies GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput `pulumi:"upstreamPolicies"`
 }
 
@@ -4980,6 +5101,8 @@ func (o GetRepositoryVirtualRepositoryConfigOutput) ToGetRepositoryVirtualReposi
 	return o
 }
 
+// Policies that configure the upstream artifacts distributed by the Virtual
+// Repository. Upstream policies cannot be set on a standard repository.
 func (o GetRepositoryVirtualRepositoryConfigOutput) UpstreamPolicies() GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput {
 	return o.ApplyT(func(v GetRepositoryVirtualRepositoryConfig) []GetRepositoryVirtualRepositoryConfigUpstreamPolicy {
 		return v.UpstreamPolicies
@@ -5007,8 +5130,12 @@ func (o GetRepositoryVirtualRepositoryConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetRepositoryVirtualRepositoryConfigUpstreamPolicy struct {
-	Id         string `pulumi:"id"`
-	Priority   int    `pulumi:"priority"`
+	// The user-provided ID of the upstream policy.
+	Id string `pulumi:"id"`
+	// Entries with a greater priority value take precedence in the pull order.
+	Priority int `pulumi:"priority"`
+	// A reference to the repository resource, for example:
+	// "projects/p1/locations/us-central1/repository/repo1".
 	Repository string `pulumi:"repository"`
 }
 
@@ -5024,8 +5151,12 @@ type GetRepositoryVirtualRepositoryConfigUpstreamPolicyInput interface {
 }
 
 type GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs struct {
-	Id         pulumi.StringInput `pulumi:"id"`
-	Priority   pulumi.IntInput    `pulumi:"priority"`
+	// The user-provided ID of the upstream policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Entries with a greater priority value take precedence in the pull order.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// A reference to the repository resource, for example:
+	// "projects/p1/locations/us-central1/repository/repo1".
 	Repository pulumi.StringInput `pulumi:"repository"`
 }
 
@@ -5080,14 +5211,18 @@ func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) ToGetRepositor
 	return o
 }
 
+// The user-provided ID of the upstream policy.
 func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryVirtualRepositoryConfigUpstreamPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Entries with a greater priority value take precedence in the pull order.
 func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRepositoryVirtualRepositoryConfigUpstreamPolicy) int { return v.Priority }).(pulumi.IntOutput)
 }
 
+// A reference to the repository resource, for example:
+// "projects/p1/locations/us-central1/repository/repo1".
 func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryVirtualRepositoryConfigUpstreamPolicy) string { return v.Repository }).(pulumi.StringOutput)
 }

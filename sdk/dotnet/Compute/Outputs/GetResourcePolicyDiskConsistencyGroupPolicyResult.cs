@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetResourcePolicyDiskConsistencyGroupPolicyResult
     {
+        /// <summary>
+        /// Enable disk consistency on the resource policy.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

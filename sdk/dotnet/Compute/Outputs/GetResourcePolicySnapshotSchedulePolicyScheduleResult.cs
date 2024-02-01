@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetResourcePolicySnapshotSchedulePolicyScheduleResult
     {
+        /// <summary>
+        /// The policy will execute every nth day at the specified time.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleResult> DailySchedules;
+        /// <summary>
+        /// The policy will execute every nth hour starting at the specified time.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleResult> HourlySchedules;
+        /// <summary>
+        /// Allows specifying a snapshot time for each day of the week.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleResult> WeeklySchedules;
 
         [OutputConstructor]

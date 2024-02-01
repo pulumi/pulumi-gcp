@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketVersioning {
+    /**
+     * @return While set to true, versioning is fully enabled for this bucket.
+     * 
+     */
     private Boolean enabled;
 
     private GetBucketVersioning() {}
+    /**
+     * @return While set to true, versioning is fully enabled for this bucket.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

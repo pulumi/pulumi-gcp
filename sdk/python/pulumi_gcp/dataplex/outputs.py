@@ -330,7 +330,11 @@ class AssetDiscoveryStatus(dict):
                  stats: Optional[Sequence['outputs.AssetDiscoveryStatusStat']] = None,
                  update_time: Optional[str] = None):
         """
+        :param str last_run_duration: The duration of the last discovery run.
+        :param str last_run_time: The start time of the last discovery run.
+        :param str message: Additional information about the current state.
         :param str state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
+        :param Sequence['AssetDiscoveryStatusStatArgs'] stats: Data Stats of the asset reported by discovery.
         :param str update_time: Output only. The time when the asset was last updated.
         """
         if last_run_duration is not None:
@@ -349,16 +353,25 @@ class AssetDiscoveryStatus(dict):
     @property
     @pulumi.getter(name="lastRunDuration")
     def last_run_duration(self) -> Optional[str]:
+        """
+        The duration of the last discovery run.
+        """
         return pulumi.get(self, "last_run_duration")
 
     @property
     @pulumi.getter(name="lastRunTime")
     def last_run_time(self) -> Optional[str]:
+        """
+        The start time of the last discovery run.
+        """
         return pulumi.get(self, "last_run_time")
 
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        Additional information about the current state.
+        """
         return pulumi.get(self, "message")
 
     @property
@@ -372,6 +385,9 @@ class AssetDiscoveryStatus(dict):
     @property
     @pulumi.getter
     def stats(self) -> Optional[Sequence['outputs.AssetDiscoveryStatusStat']]:
+        """
+        Data Stats of the asset reported by discovery.
+        """
         return pulumi.get(self, "stats")
 
     @property
@@ -409,6 +425,12 @@ class AssetDiscoveryStatusStat(dict):
                  data_size: Optional[int] = None,
                  filesets: Optional[int] = None,
                  tables: Optional[int] = None):
+        """
+        :param int data_items: The count of data items within the referenced resource.
+        :param int data_size: The number of stored data bytes within the referenced resource.
+        :param int filesets: The count of fileset entities within the referenced resource.
+        :param int tables: The count of table entities within the referenced resource.
+        """
         if data_items is not None:
             pulumi.set(__self__, "data_items", data_items)
         if data_size is not None:
@@ -421,21 +443,33 @@ class AssetDiscoveryStatusStat(dict):
     @property
     @pulumi.getter(name="dataItems")
     def data_items(self) -> Optional[int]:
+        """
+        The count of data items within the referenced resource.
+        """
         return pulumi.get(self, "data_items")
 
     @property
     @pulumi.getter(name="dataSize")
     def data_size(self) -> Optional[int]:
+        """
+        The number of stored data bytes within the referenced resource.
+        """
         return pulumi.get(self, "data_size")
 
     @property
     @pulumi.getter
     def filesets(self) -> Optional[int]:
+        """
+        The count of fileset entities within the referenced resource.
+        """
         return pulumi.get(self, "filesets")
 
     @property
     @pulumi.getter
     def tables(self) -> Optional[int]:
+        """
+        The count of table entities within the referenced resource.
+        """
         return pulumi.get(self, "tables")
 
 
@@ -580,6 +614,7 @@ class AssetResourceStatus(dict):
                  state: Optional[str] = None,
                  update_time: Optional[str] = None):
         """
+        :param str message: Additional information about the current state.
         :param str state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param str update_time: Output only. The time when the asset was last updated.
         """
@@ -593,6 +628,9 @@ class AssetResourceStatus(dict):
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        Additional information about the current state.
+        """
         return pulumi.get(self, "message")
 
     @property
@@ -636,6 +674,7 @@ class AssetSecurityStatus(dict):
                  state: Optional[str] = None,
                  update_time: Optional[str] = None):
         """
+        :param str message: Additional information about the current state.
         :param str state: Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param str update_time: Output only. The time when the asset was last updated.
         """
@@ -649,6 +688,9 @@ class AssetSecurityStatus(dict):
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        Additional information about the current state.
+        """
         return pulumi.get(self, "message")
 
     @property
@@ -1897,6 +1939,8 @@ class LakeAssetStatus(dict):
                  security_policy_applying_assets: Optional[int] = None,
                  update_time: Optional[str] = None):
         """
+        :param int active_assets: Number of active assets.
+        :param int security_policy_applying_assets: Number of assets that are in process of updating the security policy on attached resources.
         :param str update_time: Output only. The time when the lake was last updated.
         """
         if active_assets is not None:
@@ -1909,11 +1953,17 @@ class LakeAssetStatus(dict):
     @property
     @pulumi.getter(name="activeAssets")
     def active_assets(self) -> Optional[int]:
+        """
+        Number of active assets.
+        """
         return pulumi.get(self, "active_assets")
 
     @property
     @pulumi.getter(name="securityPolicyApplyingAssets")
     def security_policy_applying_assets(self) -> Optional[int]:
+        """
+        Number of assets that are in process of updating the security policy on attached resources.
+        """
         return pulumi.get(self, "security_policy_applying_assets")
 
     @property
@@ -2023,6 +2073,8 @@ class LakeMetastoreStatus(dict):
                  state: Optional[str] = None,
                  update_time: Optional[str] = None):
         """
+        :param str endpoint: The URI of the endpoint used to access the Metastore service.
+        :param str message: Additional information about the current status.
         :param str state: Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         :param str update_time: Output only. The time when the lake was last updated.
         """
@@ -2038,11 +2090,17 @@ class LakeMetastoreStatus(dict):
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[str]:
+        """
+        The URI of the endpoint used to access the Metastore service.
+        """
         return pulumi.get(self, "endpoint")
 
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        Additional information about the current status.
+        """
         return pulumi.get(self, "message")
 
     @property
@@ -3255,6 +3313,8 @@ class ZoneAssetStatus(dict):
                  security_policy_applying_assets: Optional[int] = None,
                  update_time: Optional[str] = None):
         """
+        :param int active_assets: Number of active assets.
+        :param int security_policy_applying_assets: Number of assets that are in process of updating the security policy on attached resources.
         :param str update_time: Output only. The time when the zone was last updated.
         """
         if active_assets is not None:
@@ -3267,11 +3327,17 @@ class ZoneAssetStatus(dict):
     @property
     @pulumi.getter(name="activeAssets")
     def active_assets(self) -> Optional[int]:
+        """
+        Number of active assets.
+        """
         return pulumi.get(self, "active_assets")
 
     @property
     @pulumi.getter(name="securityPolicyApplyingAssets")
     def security_policy_applying_assets(self) -> Optional[int]:
+        """
+        Number of assets that are in process of updating the security policy on attached resources.
+        """
         return pulumi.get(self, "security_policy_applying_assets")
 
     @property

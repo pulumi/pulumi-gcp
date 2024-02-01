@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// cidr_block must be specified in CIDR notation.
+        /// </summary>
         [Input("cidrBlock", required: true)]
         public Input<string> CidrBlock { get; set; } = null!;
 
+        /// <summary>
+        /// display_name is a field for users to identify CIDR blocks.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 

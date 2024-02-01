@@ -10,9 +10,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSubscriptionPushConfigNoWrapper {
+    /**
+     * @return When true, writes the Pub/Sub message metadata to
+     * &#39;x-goog-pubsub-&lt;KEY&gt;:&lt;VAL&gt;&#39; headers of the HTTP request. Writes the
+     * Pub/Sub message attributes to &#39;&lt;KEY&gt;:&lt;VAL&gt;&#39; headers of the HTTP request.
+     * 
+     */
     private Boolean writeMetadata;
 
     private GetSubscriptionPushConfigNoWrapper() {}
+    /**
+     * @return When true, writes the Pub/Sub message metadata to
+     * &#39;x-goog-pubsub-&lt;KEY&gt;:&lt;VAL&gt;&#39; headers of the HTTP request. Writes the
+     * Pub/Sub message attributes to &#39;&lt;KEY&gt;:&lt;VAL&gt;&#39; headers of the HTTP request.
+     * 
+     */
     public Boolean writeMetadata() {
         return this.writeMetadata;
     }

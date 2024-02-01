@@ -11,21 +11,57 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppConnectionGateway {
+    /**
+     * @return AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+     * 
+     */
     private String appGateway;
+    /**
+     * @return Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+     * 
+     */
     private Integer ingressPort;
+    /**
+     * @return The type of hosting used by the gateway. Refer to
+     * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+     * for a list of possible values.
+     * 
+     */
     private String type;
+    /**
+     * @return Server-defined URI for this resource.
+     * 
+     */
     private String uri;
 
     private GetAppConnectionGateway() {}
+    /**
+     * @return AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+     * 
+     */
     public String appGateway() {
         return this.appGateway;
     }
+    /**
+     * @return Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+     * 
+     */
     public Integer ingressPort() {
         return this.ingressPort;
     }
+    /**
+     * @return The type of hosting used by the gateway. Refer to
+     * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+     * for a list of possible values.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Server-defined URI for this resource.
+     * 
+     */
     public String uri() {
         return this.uri;
     }

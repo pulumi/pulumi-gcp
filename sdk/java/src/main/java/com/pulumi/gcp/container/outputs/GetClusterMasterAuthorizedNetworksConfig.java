@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMasterAuthorizedNetworksConfig {
+    /**
+     * @return External networks that can access the Kubernetes cluster master through HTTPS.
+     * 
+     */
     private List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    /**
+     * @return Whether master is accessbile via Google Compute Engine Public IP addresses.
+     * 
+     */
     private Boolean gcpPublicCidrsAccessEnabled;
 
     private GetClusterMasterAuthorizedNetworksConfig() {}
+    /**
+     * @return External networks that can access the Kubernetes cluster master through HTTPS.
+     * 
+     */
     public List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks() {
         return this.cidrBlocks;
     }
+    /**
+     * @return Whether master is accessbile via Google Compute Engine Public IP addresses.
+     * 
+     */
     public Boolean gcpPublicCidrsAccessEnabled() {
         return this.gcpPublicCidrsAccessEnabled;
     }

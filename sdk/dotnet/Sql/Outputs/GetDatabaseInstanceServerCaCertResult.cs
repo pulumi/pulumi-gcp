@@ -13,10 +13,25 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceServerCaCertResult
     {
+        /// <summary>
+        /// The CA Certificate used to connect to the SQL Instance via SSL.
+        /// </summary>
         public readonly string Cert;
+        /// <summary>
+        /// The CN valid for the CA Cert.
+        /// </summary>
         public readonly string CommonName;
+        /// <summary>
+        /// Creation time of the CA Cert.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Expiration time of the CA Cert.
+        /// </summary>
         public readonly string ExpirationTime;
+        /// <summary>
+        /// SHA Fingerprint of the CA Cert.
+        /// </summary>
         public readonly string Sha1Fingerprint;
 
         [OutputConstructor]

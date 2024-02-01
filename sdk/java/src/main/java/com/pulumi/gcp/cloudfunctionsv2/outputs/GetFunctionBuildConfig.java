@@ -13,33 +13,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionBuildConfig {
+    /**
+     * @return The Cloud Build name of the latest successful
+     * deployment of the function.
+     * 
+     */
     private String build;
+    /**
+     * @return User managed repository created in Artifact Registry optionally with a customer managed encryption key.
+     * 
+     */
     private String dockerRepository;
+    /**
+     * @return The name of the function (as defined in source code) that will be executed.
+     * Defaults to the resource name suffix, if not specified. For backward
+     * compatibility, if function with given name is not found, then the system
+     * will try to use function named &#34;function&#34;. For Node.js this is name of a
+     * function exported by the module specified in source_location.
+     * 
+     */
     private String entryPoint;
+    /**
+     * @return User-provided build-time environment variables for the function.
+     * 
+     */
     private Map<String,String> environmentVariables;
+    /**
+     * @return The runtime in which to run the function. Required when deploying a new
+     * function, optional when updating an existing function.
+     * 
+     */
     private String runtime;
+    /**
+     * @return The location of the function source code.
+     * 
+     */
     private List<GetFunctionBuildConfigSource> sources;
+    /**
+     * @return Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+     * 
+     */
     private String workerPool;
 
     private GetFunctionBuildConfig() {}
+    /**
+     * @return The Cloud Build name of the latest successful
+     * deployment of the function.
+     * 
+     */
     public String build() {
         return this.build;
     }
+    /**
+     * @return User managed repository created in Artifact Registry optionally with a customer managed encryption key.
+     * 
+     */
     public String dockerRepository() {
         return this.dockerRepository;
     }
+    /**
+     * @return The name of the function (as defined in source code) that will be executed.
+     * Defaults to the resource name suffix, if not specified. For backward
+     * compatibility, if function with given name is not found, then the system
+     * will try to use function named &#34;function&#34;. For Node.js this is name of a
+     * function exported by the module specified in source_location.
+     * 
+     */
     public String entryPoint() {
         return this.entryPoint;
     }
+    /**
+     * @return User-provided build-time environment variables for the function.
+     * 
+     */
     public Map<String,String> environmentVariables() {
         return this.environmentVariables;
     }
+    /**
+     * @return The runtime in which to run the function. Required when deploying a new
+     * function, optional when updating an existing function.
+     * 
+     */
     public String runtime() {
         return this.runtime;
     }
+    /**
+     * @return The location of the function source code.
+     * 
+     */
     public List<GetFunctionBuildConfigSource> sources() {
         return this.sources;
     }
+    /**
+     * @return Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+     * 
+     */
     public String workerPool() {
         return this.workerPool;
     }

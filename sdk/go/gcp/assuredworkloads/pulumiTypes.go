@@ -14,8 +14,10 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type WorkloadComplianceStatus struct {
+	// Number of current orgPolicy violations which are acknowledged.
 	AcknowledgedViolationCounts []int `pulumi:"acknowledgedViolationCounts"`
-	ActiveViolationCounts       []int `pulumi:"activeViolationCounts"`
+	// Number of current orgPolicy violations which are not acknowledged.
+	ActiveViolationCounts []int `pulumi:"activeViolationCounts"`
 }
 
 // WorkloadComplianceStatusInput is an input type that accepts WorkloadComplianceStatusArgs and WorkloadComplianceStatusOutput values.
@@ -30,8 +32,10 @@ type WorkloadComplianceStatusInput interface {
 }
 
 type WorkloadComplianceStatusArgs struct {
+	// Number of current orgPolicy violations which are acknowledged.
 	AcknowledgedViolationCounts pulumi.IntArrayInput `pulumi:"acknowledgedViolationCounts"`
-	ActiveViolationCounts       pulumi.IntArrayInput `pulumi:"activeViolationCounts"`
+	// Number of current orgPolicy violations which are not acknowledged.
+	ActiveViolationCounts pulumi.IntArrayInput `pulumi:"activeViolationCounts"`
 }
 
 func (WorkloadComplianceStatusArgs) ElementType() reflect.Type {
@@ -85,10 +89,12 @@ func (o WorkloadComplianceStatusOutput) ToWorkloadComplianceStatusOutputWithCont
 	return o
 }
 
+// Number of current orgPolicy violations which are acknowledged.
 func (o WorkloadComplianceStatusOutput) AcknowledgedViolationCounts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v WorkloadComplianceStatus) []int { return v.AcknowledgedViolationCounts }).(pulumi.IntArrayOutput)
 }
 
+// Number of current orgPolicy violations which are not acknowledged.
 func (o WorkloadComplianceStatusOutput) ActiveViolationCounts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v WorkloadComplianceStatus) []int { return v.ActiveViolationCounts }).(pulumi.IntArrayOutput)
 }
@@ -114,9 +120,12 @@ func (o WorkloadComplianceStatusArrayOutput) Index(i pulumi.IntInput) WorkloadCo
 }
 
 type WorkloadEkmProvisioningResponse struct {
-	EkmProvisioningErrorDomain  *string `pulumi:"ekmProvisioningErrorDomain"`
+	// Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
+	EkmProvisioningErrorDomain *string `pulumi:"ekmProvisioningErrorDomain"`
+	// Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
 	EkmProvisioningErrorMapping *string `pulumi:"ekmProvisioningErrorMapping"`
-	EkmProvisioningState        *string `pulumi:"ekmProvisioningState"`
+	// Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
+	EkmProvisioningState *string `pulumi:"ekmProvisioningState"`
 }
 
 // WorkloadEkmProvisioningResponseInput is an input type that accepts WorkloadEkmProvisioningResponseArgs and WorkloadEkmProvisioningResponseOutput values.
@@ -131,9 +140,12 @@ type WorkloadEkmProvisioningResponseInput interface {
 }
 
 type WorkloadEkmProvisioningResponseArgs struct {
-	EkmProvisioningErrorDomain  pulumi.StringPtrInput `pulumi:"ekmProvisioningErrorDomain"`
+	// Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
+	EkmProvisioningErrorDomain pulumi.StringPtrInput `pulumi:"ekmProvisioningErrorDomain"`
+	// Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
 	EkmProvisioningErrorMapping pulumi.StringPtrInput `pulumi:"ekmProvisioningErrorMapping"`
-	EkmProvisioningState        pulumi.StringPtrInput `pulumi:"ekmProvisioningState"`
+	// Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
+	EkmProvisioningState pulumi.StringPtrInput `pulumi:"ekmProvisioningState"`
 }
 
 func (WorkloadEkmProvisioningResponseArgs) ElementType() reflect.Type {
@@ -187,14 +199,17 @@ func (o WorkloadEkmProvisioningResponseOutput) ToWorkloadEkmProvisioningResponse
 	return o
 }
 
+// Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
 func (o WorkloadEkmProvisioningResponseOutput) EkmProvisioningErrorDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkloadEkmProvisioningResponse) *string { return v.EkmProvisioningErrorDomain }).(pulumi.StringPtrOutput)
 }
 
+// Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
 func (o WorkloadEkmProvisioningResponseOutput) EkmProvisioningErrorMapping() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkloadEkmProvisioningResponse) *string { return v.EkmProvisioningErrorMapping }).(pulumi.StringPtrOutput)
 }
 
+// Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
 func (o WorkloadEkmProvisioningResponseOutput) EkmProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkloadEkmProvisioningResponse) *string { return v.EkmProvisioningState }).(pulumi.StringPtrOutput)
 }
@@ -772,8 +787,10 @@ func (o WorkloadResourceSettingArrayOutput) Index(i pulumi.IntInput) WorkloadRes
 }
 
 type WorkloadSaaEnrollmentResponse struct {
+	// Indicates SAA enrollment setup error if any.
 	SetupErrors []string `pulumi:"setupErrors"`
-	SetupStatus *string  `pulumi:"setupStatus"`
+	// Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+	SetupStatus *string `pulumi:"setupStatus"`
 }
 
 // WorkloadSaaEnrollmentResponseInput is an input type that accepts WorkloadSaaEnrollmentResponseArgs and WorkloadSaaEnrollmentResponseOutput values.
@@ -788,8 +805,10 @@ type WorkloadSaaEnrollmentResponseInput interface {
 }
 
 type WorkloadSaaEnrollmentResponseArgs struct {
+	// Indicates SAA enrollment setup error if any.
 	SetupErrors pulumi.StringArrayInput `pulumi:"setupErrors"`
-	SetupStatus pulumi.StringPtrInput   `pulumi:"setupStatus"`
+	// Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+	SetupStatus pulumi.StringPtrInput `pulumi:"setupStatus"`
 }
 
 func (WorkloadSaaEnrollmentResponseArgs) ElementType() reflect.Type {
@@ -843,10 +862,12 @@ func (o WorkloadSaaEnrollmentResponseOutput) ToWorkloadSaaEnrollmentResponseOutp
 	return o
 }
 
+// Indicates SAA enrollment setup error if any.
 func (o WorkloadSaaEnrollmentResponseOutput) SetupErrors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v WorkloadSaaEnrollmentResponse) []string { return v.SetupErrors }).(pulumi.StringArrayOutput)
 }
 
+// Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
 func (o WorkloadSaaEnrollmentResponseOutput) SetupStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkloadSaaEnrollmentResponse) *string { return v.SetupStatus }).(pulumi.StringPtrOutput)
 }

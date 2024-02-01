@@ -275,7 +275,7 @@ class IamAuditConfig(pulumi.CustomResource):
                     log_type="ADMIN_READ",
                 ),
                 gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@hashicorp.com"],
+                    exempted_members=["user:joebloggs@example.com"],
                     log_type="DATA_READ",
                 ),
             ],
@@ -435,7 +435,7 @@ class IamAuditConfig(pulumi.CustomResource):
                     log_type="ADMIN_READ",
                 ),
                 gcp.folder.IamAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@hashicorp.com"],
+                    exempted_members=["user:joebloggs@example.com"],
                     log_type="DATA_READ",
                 ),
             ],

@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigWorkloadsConfigDagProcessor
     {
+        /// <summary>
+        /// CPU request and limit for DAG processor.
+        /// </summary>
         public readonly double? Cpu;
+        /// <summary>
+        /// Memory (GB) request and limit for DAG processor.
+        /// </summary>
         public readonly double? MemoryGb;
+        /// <summary>
+        /// Storage (GB) request and limit for DAG processor.
+        /// </summary>
         public readonly double? StorageGb;
 
         [OutputConstructor]

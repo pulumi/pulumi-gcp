@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
+    /**
+     * @return Output only. The name of the Instance Group Manager for this group.
+     * 
+     */
     private @Nullable String instanceGroupManagerName;
+    /**
+     * @return Output only. The name of the Instance Template used for the Managed Instance Group.
+     * 
+     */
     private @Nullable String instanceTemplateName;
 
     private WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig() {}
+    /**
+     * @return Output only. The name of the Instance Group Manager for this group.
+     * 
+     */
     public Optional<String> instanceGroupManagerName() {
         return Optional.ofNullable(this.instanceGroupManagerName);
     }
+    /**
+     * @return Output only. The name of the Instance Template used for the Managed Instance Group.
+     * 
+     */
     public Optional<String> instanceTemplateName() {
         return Optional.ofNullable(this.instanceTemplateName);
     }

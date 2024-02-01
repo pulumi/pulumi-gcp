@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption
     {
+        /// <summary>
+        /// This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+        /// </summary>
         public readonly string? AutoUpgradeStartTime;
         /// <summary>
         /// Description of the cluster.

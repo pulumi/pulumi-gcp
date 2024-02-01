@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
     public sealed class AssetDiscoveryStatusArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The duration of the last discovery run.
+        /// </summary>
         [Input("lastRunDuration")]
         public Input<string>? LastRunDuration { get; set; }
 
+        /// <summary>
+        /// The start time of the last discovery run.
+        /// </summary>
         [Input("lastRunTime")]
         public Input<string>? LastRunTime { get; set; }
 
+        /// <summary>
+        /// Additional information about the current state.
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
@@ -29,6 +38,10 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
         [Input("stats")]
         private InputList<Inputs.AssetDiscoveryStatusStatArgs>? _stats;
+
+        /// <summary>
+        /// Data Stats of the asset reported by discovery.
+        /// </summary>
         public InputList<Inputs.AssetDiscoveryStatusStatArgs> Stats
         {
             get => _stats ?? (_stats = new InputList<Inputs.AssetDiscoveryStatusStatArgs>());

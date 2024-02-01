@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolNodeConfigConfidentialNodeResult
     {
+        /// <summary>
+        /// Whether Confidential Nodes feature is enabled for all nodes in this pool.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

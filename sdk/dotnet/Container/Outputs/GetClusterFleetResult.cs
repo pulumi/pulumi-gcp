@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterFleetResult
     {
+        /// <summary>
+        /// Full resource name of the registered fleet membership of the cluster.
+        /// </summary>
         public readonly string Membership;
+        /// <summary>
+        /// Whether the cluster has been registered via the fleet API.
+        /// </summary>
         public readonly bool PreRegistered;
         /// <summary>
         /// The project in which the resource belongs. If it

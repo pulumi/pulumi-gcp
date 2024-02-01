@@ -10,17 +10,55 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionEventTriggerEventFilter {
+    /**
+     * @return &#39;Required. The name of a CloudEvents attribute.
+     * Currently, only a subset of attributes are supported for filtering. Use the &#39;gcloud eventarc providers describe&#39; command to learn more about events and their attributes.
+     * Do not filter for the &#39;type&#39; attribute here, as this is already achieved by the resource&#39;s &#39;event_type&#39; attribute.
+     * 
+     */
     private String attribute;
+    /**
+     * @return Optional. The operator used for matching the events with the value of
+     * the filter. If not specified, only events that have an exact key-value
+     * pair specified in the filter are matched.
+     * The only allowed value is &#39;match-path-pattern&#39;.
+     * [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)&#39;
+     * 
+     */
     private String operator;
+    /**
+     * @return Required. The value for the attribute.
+     * If the operator field is set as &#39;match-path-pattern&#39;, this value can be a path pattern instead of an exact value.
+     * 
+     */
     private String value;
 
     private GetFunctionEventTriggerEventFilter() {}
+    /**
+     * @return &#39;Required. The name of a CloudEvents attribute.
+     * Currently, only a subset of attributes are supported for filtering. Use the &#39;gcloud eventarc providers describe&#39; command to learn more about events and their attributes.
+     * Do not filter for the &#39;type&#39; attribute here, as this is already achieved by the resource&#39;s &#39;event_type&#39; attribute.
+     * 
+     */
     public String attribute() {
         return this.attribute;
     }
+    /**
+     * @return Optional. The operator used for matching the events with the value of
+     * the filter. If not specified, only events that have an exact key-value
+     * pair specified in the filter are matched.
+     * The only allowed value is &#39;match-path-pattern&#39;.
+     * [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)&#39;
+     * 
+     */
     public String operator() {
         return this.operator;
     }
+    /**
+     * @return Required. The value for the attribute.
+     * If the operator field is set as &#39;match-path-pattern&#39;, this value can be a path pattern instead of an exact value.
+     * 
+     */
     public String value() {
         return this.value;
     }

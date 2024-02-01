@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
+    /**
+     * @return Name of the VPC where the additional interface belongs.
+     * 
+     */
     private String network;
+    /**
+     * @return Name of the subnetwork where the additional interface belongs.
+     * 
+     */
     private String subnetwork;
 
     private GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig() {}
+    /**
+     * @return Name of the VPC where the additional interface belongs.
+     * 
+     */
     public String network() {
         return this.network;
     }
+    /**
+     * @return Name of the subnetwork where the additional interface belongs.
+     * 
+     */
     public String subnetwork() {
         return this.subnetwork;
     }

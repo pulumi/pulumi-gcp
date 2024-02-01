@@ -15,45 +15,125 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
+    /**
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+     * 
+     */
     private String bootDiskKmsKey;
+    /**
+     * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+     * 
+     */
     private Integer diskSize;
+    /**
+     * @return Type of the disk attached to each node.
+     * 
+     */
     private String diskType;
+    /**
+     * @return The default image type used by NAP once a new node pool is being created.
+     * 
+     */
     private String imageType;
+    /**
+     * @return NodeManagement configuration for this NodePool.
+     * 
+     */
     private List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagement> managements;
+    /**
+     * @return Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as Intel Haswell.
+     * 
+     */
     private String minCpuPlatform;
+    /**
+     * @return Scopes that are used by NAP when creating node pools.
+     * 
+     */
     private List<String> oauthScopes;
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the node VMs.
+     * 
+     */
     private String serviceAccount;
+    /**
+     * @return Shielded Instance options.
+     * 
+     */
     private List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs;
+    /**
+     * @return Specifies the upgrade settings for NAP created node pools
+     * 
+     */
     private List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting> upgradeSettings;
 
     private GetClusterClusterAutoscalingAutoProvisioningDefault() {}
+    /**
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+     * 
+     */
     public String bootDiskKmsKey() {
         return this.bootDiskKmsKey;
     }
+    /**
+     * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+     * 
+     */
     public Integer diskSize() {
         return this.diskSize;
     }
+    /**
+     * @return Type of the disk attached to each node.
+     * 
+     */
     public String diskType() {
         return this.diskType;
     }
+    /**
+     * @return The default image type used by NAP once a new node pool is being created.
+     * 
+     */
     public String imageType() {
         return this.imageType;
     }
+    /**
+     * @return NodeManagement configuration for this NodePool.
+     * 
+     */
     public List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagement> managements() {
         return this.managements;
     }
+    /**
+     * @return Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as Intel Haswell.
+     * 
+     */
     public String minCpuPlatform() {
         return this.minCpuPlatform;
     }
+    /**
+     * @return Scopes that are used by NAP when creating node pools.
+     * 
+     */
     public List<String> oauthScopes() {
         return this.oauthScopes;
     }
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the node VMs.
+     * 
+     */
     public String serviceAccount() {
         return this.serviceAccount;
     }
+    /**
+     * @return Shielded Instance options.
+     * 
+     */
     public List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs() {
         return this.shieldedInstanceConfigs;
     }
+    /**
+     * @return Specifies the upgrade settings for NAP created node pools
+     * 
+     */
     public List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting> upgradeSettings() {
         return this.upgradeSettings;
     }

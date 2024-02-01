@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceConfidentialInstanceConfigResult
     {
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled.
+        /// </summary>
         public readonly bool EnableConfidentialCompute;
 
         [OutputConstructor]

@@ -88,6 +88,10 @@ public final class GetRegionInstanceTemplateDisk {
      * 
      */
     private Integer provisionedIops;
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     private Map<String,String> resourceManagerTags;
     /**
      * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -112,8 +116,30 @@ public final class GetRegionInstanceTemplateDisk {
      * 
      */
     private String sourceImage;
+    /**
+     * @return The customer-supplied encryption key of the source
+     * image. Required if the source image is protected by a
+     * customer-supplied encryption key.
+     * 
+     * Instance templates do not store customer-supplied
+     * encryption keys, so you cannot create disks for
+     * instances in a managed instance group if the source
+     * images are encrypted with your own keys.
+     * 
+     */
     private List<GetRegionInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
+    /**
+     * @return The source snapshot to create this disk. When creating
+     * a new instance, one of initializeParams.sourceSnapshot,
+     * initializeParams.sourceImage, or disks.source is
+     * required except for local SSD.
+     * 
+     */
     private String sourceSnapshot;
+    /**
+     * @return The customer-supplied encryption key of the source snapshot.
+     * 
+     */
     private List<GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -215,6 +241,10 @@ public final class GetRegionInstanceTemplateDisk {
     public Integer provisionedIops() {
         return this.provisionedIops;
     }
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     public Map<String,String> resourceManagerTags() {
         return this.resourceManagerTags;
     }
@@ -247,12 +277,34 @@ public final class GetRegionInstanceTemplateDisk {
     public String sourceImage() {
         return this.sourceImage;
     }
+    /**
+     * @return The customer-supplied encryption key of the source
+     * image. Required if the source image is protected by a
+     * customer-supplied encryption key.
+     * 
+     * Instance templates do not store customer-supplied
+     * encryption keys, so you cannot create disks for
+     * instances in a managed instance group if the source
+     * images are encrypted with your own keys.
+     * 
+     */
     public List<GetRegionInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys() {
         return this.sourceImageEncryptionKeys;
     }
+    /**
+     * @return The source snapshot to create this disk. When creating
+     * a new instance, one of initializeParams.sourceSnapshot,
+     * initializeParams.sourceImage, or disks.source is
+     * required except for local SSD.
+     * 
+     */
     public String sourceSnapshot() {
         return this.sourceSnapshot;
     }
+    /**
+     * @return The customer-supplied encryption key of the source snapshot.
+     * 
+     */
     public List<GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys() {
         return this.sourceSnapshotEncryptionKeys;
     }

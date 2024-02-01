@@ -15,9 +15,17 @@ public final class ClusterNodeConfigSoleTenantConfigArgs extends com.pulumi.reso
 
     public static final ClusterNodeConfigSoleTenantConfigArgs Empty = new ClusterNodeConfigSoleTenantConfigArgs();
 
+    /**
+     * .
+     * 
+     */
     @Import(name="nodeAffinities", required=true)
     private Output<List<ClusterNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<List<ClusterNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities() {
         return this.nodeAffinities;
     }
@@ -46,15 +54,33 @@ public final class ClusterNodeConfigSoleTenantConfigArgs extends com.pulumi.reso
             $ = new ClusterNodeConfigSoleTenantConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeAffinities .
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(Output<List<ClusterNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities) {
             $.nodeAffinities = nodeAffinities;
             return this;
         }
 
+        /**
+         * @param nodeAffinities .
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(List<ClusterNodeConfigSoleTenantConfigNodeAffinityArgs> nodeAffinities) {
             return nodeAffinities(Output.of(nodeAffinities));
         }
 
+        /**
+         * @param nodeAffinities .
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(ClusterNodeConfigSoleTenantConfigNodeAffinityArgs... nodeAffinities) {
             return nodeAffinities(List.of(nodeAffinities));
         }

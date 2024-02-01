@@ -57,8 +57,16 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String connectorEnforcement;
+    /**
+     * @return Data cache configurations.
+     * 
+     */
     private @Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig;
     private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
+    /**
+     * @return Configuration to protect against accidental instance deletion.
+     * 
+     */
     private @Nullable Boolean deletionProtectionEnabled;
     private @Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod;
     /**
@@ -86,9 +94,17 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String edition;
+    /**
+     * @return Configuration of Query Insights.
+     * 
+     */
     private @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig;
     private @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
     private @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
+    /**
+     * @return Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+     * 
+     */
     private @Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow;
     private @Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy;
     /**
@@ -114,6 +130,10 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable Map<String,String> userLabels;
+    /**
+     * @return Used to make sure changes to the settings block are atomic.
+     * 
+     */
     private @Nullable Integer version;
 
     private DatabaseInstanceSettings() {}
@@ -160,12 +180,20 @@ public final class DatabaseInstanceSettings {
     public Optional<String> connectorEnforcement() {
         return Optional.ofNullable(this.connectorEnforcement);
     }
+    /**
+     * @return Data cache configurations.
+     * 
+     */
     public Optional<DatabaseInstanceSettingsDataCacheConfig> dataCacheConfig() {
         return Optional.ofNullable(this.dataCacheConfig);
     }
     public List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags() {
         return this.databaseFlags == null ? List.of() : this.databaseFlags;
     }
+    /**
+     * @return Configuration to protect against accidental instance deletion.
+     * 
+     */
     public Optional<Boolean> deletionProtectionEnabled() {
         return Optional.ofNullable(this.deletionProtectionEnabled);
     }
@@ -207,6 +235,10 @@ public final class DatabaseInstanceSettings {
     public Optional<String> edition() {
         return Optional.ofNullable(this.edition);
     }
+    /**
+     * @return Configuration of Query Insights.
+     * 
+     */
     public Optional<DatabaseInstanceSettingsInsightsConfig> insightsConfig() {
         return Optional.ofNullable(this.insightsConfig);
     }
@@ -216,6 +248,10 @@ public final class DatabaseInstanceSettings {
     public Optional<DatabaseInstanceSettingsLocationPreference> locationPreference() {
         return Optional.ofNullable(this.locationPreference);
     }
+    /**
+     * @return Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+     * 
+     */
     public Optional<DatabaseInstanceSettingsMaintenanceWindow> maintenanceWindow() {
         return Optional.ofNullable(this.maintenanceWindow);
     }
@@ -255,6 +291,10 @@ public final class DatabaseInstanceSettings {
     public Map<String,String> userLabels() {
         return this.userLabels == null ? Map.of() : this.userLabels;
     }
+    /**
+     * @return Used to make sure changes to the settings block are atomic.
+     * 
+     */
     public Optional<Integer> version() {
         return Optional.ofNullable(this.version);
     }

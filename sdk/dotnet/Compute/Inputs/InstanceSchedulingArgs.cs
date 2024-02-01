@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("instanceTerminationAction")]
         public Input<string>? InstanceTerminationAction { get; set; }
 
+        /// <summary>
+        /// Specifies the maximum amount of time a Local Ssd Vm should wait while
+        ///   recovery of the Local Ssd state is attempted. Its value should be in
+        ///   between 0 and 168 hours with hour granularity and the default value being 1
+        ///   hour.
+        /// </summary>
         [Input("localSsdRecoveryTimeout")]
         public Input<Inputs.InstanceSchedulingLocalSsdRecoveryTimeoutArgs>? LocalSsdRecoveryTimeout { get; set; }
 

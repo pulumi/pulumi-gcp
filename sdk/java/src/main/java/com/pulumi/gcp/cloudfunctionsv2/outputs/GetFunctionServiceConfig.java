@@ -16,73 +16,221 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionServiceConfig {
+    /**
+     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
+     * 
+     */
     private Boolean allTrafficOnLatestRevision;
+    /**
+     * @return The number of CPUs used in a single container instance. Default value is calculated from available memory.
+     * 
+     */
     private String availableCpu;
+    /**
+     * @return The amount of memory available for a function.
+     * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
+     * supplied the value is interpreted as bytes.
+     * 
+     */
     private String availableMemory;
+    /**
+     * @return Environment variables that shall be available during function execution.
+     * 
+     */
     private Map<String,String> environmentVariables;
+    /**
+     * @return URIs of the Service deployed
+     * 
+     */
     private String gcfUri;
+    /**
+     * @return Available ingress settings. Defaults to &#34;ALLOW_ALL&#34; if unspecified. Default value: &#34;ALLOW_ALL&#34; Possible values: [&#34;ALLOW_ALL&#34;, &#34;ALLOW_INTERNAL_ONLY&#34;, &#34;ALLOW_INTERNAL_AND_GCLB&#34;]
+     * 
+     */
     private String ingressSettings;
+    /**
+     * @return The limit on the maximum number of function instances that may coexist at a
+     * given time.
+     * 
+     */
     private Integer maxInstanceCount;
+    /**
+     * @return Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+     * 
+     */
     private Integer maxInstanceRequestConcurrency;
+    /**
+     * @return The limit on the minimum number of function instances that may coexist at a
+     * given time.
+     * 
+     */
     private Integer minInstanceCount;
+    /**
+     * @return Secret environment variables configuration.
+     * 
+     */
     private List<GetFunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables;
+    /**
+     * @return Secret volumes configuration.
+     * 
+     */
     private List<GetFunctionServiceConfigSecretVolume> secretVolumes;
+    /**
+     * @return Name of the service associated with a Function.
+     * 
+     */
     private String service;
+    /**
+     * @return The email of the service account for this function.
+     * 
+     */
     private String serviceAccountEmail;
+    /**
+     * @return The function execution timeout. Execution is considered failed and
+     * can be terminated if the function is not completed at the end of the
+     * timeout period. Defaults to 60 seconds.
+     * 
+     */
     private Integer timeoutSeconds;
+    /**
+     * @return URI of the Service deployed.
+     * 
+     */
     private String uri;
+    /**
+     * @return The Serverless VPC Access connector that this cloud function can connect to.
+     * 
+     */
     private String vpcConnector;
+    /**
+     * @return Available egress settings. Possible values: [&#34;VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED&#34;, &#34;PRIVATE_RANGES_ONLY&#34;, &#34;ALL_TRAFFIC&#34;]
+     * 
+     */
     private String vpcConnectorEgressSettings;
 
     private GetFunctionServiceConfig() {}
+    /**
+     * @return Whether 100% of traffic is routed to the latest revision. Defaults to true.
+     * 
+     */
     public Boolean allTrafficOnLatestRevision() {
         return this.allTrafficOnLatestRevision;
     }
+    /**
+     * @return The number of CPUs used in a single container instance. Default value is calculated from available memory.
+     * 
+     */
     public String availableCpu() {
         return this.availableCpu;
     }
+    /**
+     * @return The amount of memory available for a function.
+     * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
+     * supplied the value is interpreted as bytes.
+     * 
+     */
     public String availableMemory() {
         return this.availableMemory;
     }
+    /**
+     * @return Environment variables that shall be available during function execution.
+     * 
+     */
     public Map<String,String> environmentVariables() {
         return this.environmentVariables;
     }
+    /**
+     * @return URIs of the Service deployed
+     * 
+     */
     public String gcfUri() {
         return this.gcfUri;
     }
+    /**
+     * @return Available ingress settings. Defaults to &#34;ALLOW_ALL&#34; if unspecified. Default value: &#34;ALLOW_ALL&#34; Possible values: [&#34;ALLOW_ALL&#34;, &#34;ALLOW_INTERNAL_ONLY&#34;, &#34;ALLOW_INTERNAL_AND_GCLB&#34;]
+     * 
+     */
     public String ingressSettings() {
         return this.ingressSettings;
     }
+    /**
+     * @return The limit on the maximum number of function instances that may coexist at a
+     * given time.
+     * 
+     */
     public Integer maxInstanceCount() {
         return this.maxInstanceCount;
     }
+    /**
+     * @return Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+     * 
+     */
     public Integer maxInstanceRequestConcurrency() {
         return this.maxInstanceRequestConcurrency;
     }
+    /**
+     * @return The limit on the minimum number of function instances that may coexist at a
+     * given time.
+     * 
+     */
     public Integer minInstanceCount() {
         return this.minInstanceCount;
     }
+    /**
+     * @return Secret environment variables configuration.
+     * 
+     */
     public List<GetFunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables() {
         return this.secretEnvironmentVariables;
     }
+    /**
+     * @return Secret volumes configuration.
+     * 
+     */
     public List<GetFunctionServiceConfigSecretVolume> secretVolumes() {
         return this.secretVolumes;
     }
+    /**
+     * @return Name of the service associated with a Function.
+     * 
+     */
     public String service() {
         return this.service;
     }
+    /**
+     * @return The email of the service account for this function.
+     * 
+     */
     public String serviceAccountEmail() {
         return this.serviceAccountEmail;
     }
+    /**
+     * @return The function execution timeout. Execution is considered failed and
+     * can be terminated if the function is not completed at the end of the
+     * timeout period. Defaults to 60 seconds.
+     * 
+     */
     public Integer timeoutSeconds() {
         return this.timeoutSeconds;
     }
+    /**
+     * @return URI of the Service deployed.
+     * 
+     */
     public String uri() {
         return this.uri;
     }
+    /**
+     * @return The Serverless VPC Access connector that this cloud function can connect to.
+     * 
+     */
     public String vpcConnector() {
         return this.vpcConnector;
     }
+    /**
+     * @return Available egress settings. Possible values: [&#34;VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED&#34;, &#34;PRIVATE_RANGES_ONLY&#34;, &#34;ALL_TRAFFIC&#34;]
+     * 
+     */
     public String vpcConnectorEgressSettings() {
         return this.vpcConnectorEgressSettings;
     }

@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
 
     public sealed class DeliveryPipelineConditionTargetsTypeConditionArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Human readable error message.
+        /// </summary>
         [Input("errorDetails")]
         public Input<string>? ErrorDetails { get; set; }
 
+        /// <summary>
+        /// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+        /// </summary>
         [Input("status")]
         public Input<bool>? Status { get; set; }
 

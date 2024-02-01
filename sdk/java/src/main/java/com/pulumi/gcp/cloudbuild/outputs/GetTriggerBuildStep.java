@@ -14,61 +14,303 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildStep {
+    /**
+     * @return Allow this build step to fail without failing the entire build if and
+     * only if the exit code is one of the specified codes.
+     * 
+     * If &#39;allowFailure&#39; is also specified, this field will take precedence.
+     * 
+     */
     private List<Integer> allowExitCodes;
+    /**
+     * @return Allow this build step to fail without failing the entire build.
+     * If false, the entire build will fail if this step fails. Otherwise, the
+     * build will succeed, but this step will still have a failure status.
+     * Error information will be reported in the &#39;failureDetail&#39; field.
+     * 
+     * &#39;allowExitCodes&#39; takes precedence over this field.
+     * 
+     */
     private Boolean allowFailure;
+    /**
+     * @return A list of arguments that will be presented to the step when it is started.
+     * 
+     * If the image used to run the step&#39;s container has an entrypoint, the args
+     * are used as arguments to that entrypoint. If the image does not define an
+     * entrypoint, the first element in args is used as the entrypoint, and the
+     * remainder will be used as arguments.
+     * 
+     */
     private List<String> args;
+    /**
+     * @return Working directory to use when running this step&#39;s container.
+     * 
+     * If this value is a relative path, it is relative to the build&#39;s working
+     * directory. If this value is absolute, it may be outside the build&#39;s working
+     * directory, in which case the contents of the path may not be persisted
+     * across build step executions, unless a &#39;volume&#39; for that path is specified.
+     * 
+     * If the build specifies a &#39;RepoSource&#39; with &#39;dir&#39; and a step with a
+     * &#39;dir&#39;,
+     * which specifies an absolute path, the &#39;RepoSource&#39; &#39;dir&#39; is ignored
+     * for the step&#39;s execution.
+     * 
+     */
     private String dir;
+    /**
+     * @return Entrypoint to be used instead of the build step image&#39;s
+     * default entrypoint.
+     * If unset, the image&#39;s default entrypoint is used
+     * 
+     */
     private String entrypoint;
+    /**
+     * @return A list of environment variable definitions to be used when
+     * running a step.
+     * 
+     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable
+     * &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * 
+     */
     private List<String> envs;
+    /**
+     * @return Unique identifier for this build step, used in &#39;wait_for&#39; to
+     * reference this build step as a dependency.
+     * 
+     */
     private String id;
+    /**
+     * @return The name of the container image that will run this particular build step.
+     * 
+     * If the image is available in the host&#39;s Docker daemon&#39;s cache, it will be
+     * run directly. If not, the host will attempt to pull the image first, using
+     * the builder service account&#39;s credentials if necessary.
+     * 
+     * The Docker daemon&#39;s cache will already have the latest versions of all of
+     * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+     * for images and examples).
+     * The Docker daemon will also have cached many of the layers for some popular
+     * images, like &#34;ubuntu&#34;, &#34;debian&#34;, but they will be refreshed at the time
+     * you attempt to use them.
+     * 
+     * If you built an image in a previous build step, it will be stored in the
+     * host&#39;s Docker daemon&#39;s cache and is available to use as the name for a
+     * later build step.
+     * 
+     */
     private String name;
+    /**
+     * @return A shell script to be executed in the step.
+     * When script is provided, the user cannot specify the entrypoint or args.
+     * 
+     */
     private String script;
+    /**
+     * @return A list of environment variables which are encrypted using
+     * a Cloud Key
+     * Management Service crypto key. These values must be specified in
+     * the build&#39;s &#39;Secret&#39;.
+     * 
+     */
     private List<String> secretEnvs;
+    /**
+     * @return Time limit for executing this build step. If not defined,
+     * the step has no
+     * time limit and will be allowed to continue to run until either it
+     * completes or the build itself times out.
+     * 
+     */
     private String timeout;
+    /**
+     * @return Output only. Stores timing information for executing this
+     * build step.
+     * 
+     */
     private String timing;
+    /**
+     * @return List of volumes to mount into the build step.
+     * 
+     * Each volume is created as an empty volume prior to execution of the
+     * build step. Upon completion of the build, volumes and their contents
+     * are discarded.
+     * 
+     * Using a named volume in only one step is not valid as it is
+     * indicative of a build request with an incorrect configuration.
+     * 
+     */
     private List<GetTriggerBuildStepVolume> volumes;
+    /**
+     * @return The ID(s) of the step(s) that this build step depends on.
+     * 
+     * This build step will not start until all the build steps in &#39;wait_for&#39;
+     * have completed successfully. If &#39;wait_for&#39; is empty, this build step
+     * will start when all previous build steps in the &#39;Build.Steps&#39; list
+     * have completed successfully.
+     * 
+     */
     private List<String> waitFors;
 
     private GetTriggerBuildStep() {}
+    /**
+     * @return Allow this build step to fail without failing the entire build if and
+     * only if the exit code is one of the specified codes.
+     * 
+     * If &#39;allowFailure&#39; is also specified, this field will take precedence.
+     * 
+     */
     public List<Integer> allowExitCodes() {
         return this.allowExitCodes;
     }
+    /**
+     * @return Allow this build step to fail without failing the entire build.
+     * If false, the entire build will fail if this step fails. Otherwise, the
+     * build will succeed, but this step will still have a failure status.
+     * Error information will be reported in the &#39;failureDetail&#39; field.
+     * 
+     * &#39;allowExitCodes&#39; takes precedence over this field.
+     * 
+     */
     public Boolean allowFailure() {
         return this.allowFailure;
     }
+    /**
+     * @return A list of arguments that will be presented to the step when it is started.
+     * 
+     * If the image used to run the step&#39;s container has an entrypoint, the args
+     * are used as arguments to that entrypoint. If the image does not define an
+     * entrypoint, the first element in args is used as the entrypoint, and the
+     * remainder will be used as arguments.
+     * 
+     */
     public List<String> args() {
         return this.args;
     }
+    /**
+     * @return Working directory to use when running this step&#39;s container.
+     * 
+     * If this value is a relative path, it is relative to the build&#39;s working
+     * directory. If this value is absolute, it may be outside the build&#39;s working
+     * directory, in which case the contents of the path may not be persisted
+     * across build step executions, unless a &#39;volume&#39; for that path is specified.
+     * 
+     * If the build specifies a &#39;RepoSource&#39; with &#39;dir&#39; and a step with a
+     * &#39;dir&#39;,
+     * which specifies an absolute path, the &#39;RepoSource&#39; &#39;dir&#39; is ignored
+     * for the step&#39;s execution.
+     * 
+     */
     public String dir() {
         return this.dir;
     }
+    /**
+     * @return Entrypoint to be used instead of the build step image&#39;s
+     * default entrypoint.
+     * If unset, the image&#39;s default entrypoint is used
+     * 
+     */
     public String entrypoint() {
         return this.entrypoint;
     }
+    /**
+     * @return A list of environment variable definitions to be used when
+     * running a step.
+     * 
+     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable
+     * &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * 
+     */
     public List<String> envs() {
         return this.envs;
     }
+    /**
+     * @return Unique identifier for this build step, used in &#39;wait_for&#39; to
+     * reference this build step as a dependency.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The name of the container image that will run this particular build step.
+     * 
+     * If the image is available in the host&#39;s Docker daemon&#39;s cache, it will be
+     * run directly. If not, the host will attempt to pull the image first, using
+     * the builder service account&#39;s credentials if necessary.
+     * 
+     * The Docker daemon&#39;s cache will already have the latest versions of all of
+     * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+     * for images and examples).
+     * The Docker daemon will also have cached many of the layers for some popular
+     * images, like &#34;ubuntu&#34;, &#34;debian&#34;, but they will be refreshed at the time
+     * you attempt to use them.
+     * 
+     * If you built an image in a previous build step, it will be stored in the
+     * host&#39;s Docker daemon&#39;s cache and is available to use as the name for a
+     * later build step.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return A shell script to be executed in the step.
+     * When script is provided, the user cannot specify the entrypoint or args.
+     * 
+     */
     public String script() {
         return this.script;
     }
+    /**
+     * @return A list of environment variables which are encrypted using
+     * a Cloud Key
+     * Management Service crypto key. These values must be specified in
+     * the build&#39;s &#39;Secret&#39;.
+     * 
+     */
     public List<String> secretEnvs() {
         return this.secretEnvs;
     }
+    /**
+     * @return Time limit for executing this build step. If not defined,
+     * the step has no
+     * time limit and will be allowed to continue to run until either it
+     * completes or the build itself times out.
+     * 
+     */
     public String timeout() {
         return this.timeout;
     }
+    /**
+     * @return Output only. Stores timing information for executing this
+     * build step.
+     * 
+     */
     public String timing() {
         return this.timing;
     }
+    /**
+     * @return List of volumes to mount into the build step.
+     * 
+     * Each volume is created as an empty volume prior to execution of the
+     * build step. Upon completion of the build, volumes and their contents
+     * are discarded.
+     * 
+     * Using a named volume in only one step is not valid as it is
+     * indicative of a build request with an incorrect configuration.
+     * 
+     */
     public List<GetTriggerBuildStepVolume> volumes() {
         return this.volumes;
     }
+    /**
+     * @return The ID(s) of the step(s) that this build step depends on.
+     * 
+     * This build step will not start until all the build steps in &#39;wait_for&#39;
+     * have completed successfully. If &#39;wait_for&#39; is empty, this build step
+     * will start when all previous build steps in the &#39;Build.Steps&#39; list
+     * have completed successfully.
+     * 
+     */
     public List<String> waitFors() {
         return this.waitFors;
     }

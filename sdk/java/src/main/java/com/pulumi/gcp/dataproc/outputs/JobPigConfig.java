@@ -27,6 +27,10 @@ public final class JobPigConfig {
      * 
      */
     private @Nullable List<String> jarFileUris;
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     private @Nullable JobPigConfigLoggingConfig loggingConfig;
     /**
      * @return A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
@@ -68,6 +72,10 @@ public final class JobPigConfig {
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<JobPigConfigLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }

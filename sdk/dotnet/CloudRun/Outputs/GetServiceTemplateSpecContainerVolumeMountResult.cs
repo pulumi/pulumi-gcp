@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerVolumeMountResult
     {
+        /// <summary>
+        /// Path within the container at which the volume should be mounted.  Must
+        /// not contain ':'.
+        /// </summary>
         public readonly string MountPath;
         /// <summary>
         /// The name of the Cloud Run Service.

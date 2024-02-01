@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerGithubPullRequest {
+    /**
+     * @return Regex of branches to match.
+     * 
+     */
     private String branch;
+    /**
+     * @return Whether to block builds on a &#34;/gcbrun&#34; comment from a repository owner or collaborator. Possible values: [&#34;COMMENTS_DISABLED&#34;, &#34;COMMENTS_ENABLED&#34;, &#34;COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY&#34;]
+     * 
+     */
     private String commentControl;
+    /**
+     * @return If true, branches that do NOT match the git_ref will trigger a build.
+     * 
+     */
     private Boolean invertRegex;
 
     private GetTriggerGithubPullRequest() {}
+    /**
+     * @return Regex of branches to match.
+     * 
+     */
     public String branch() {
         return this.branch;
     }
+    /**
+     * @return Whether to block builds on a &#34;/gcbrun&#34; comment from a repository owner or collaborator. Possible values: [&#34;COMMENTS_DISABLED&#34;, &#34;COMMENTS_ENABLED&#34;, &#34;COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY&#34;]
+     * 
+     */
     public String commentControl() {
         return this.commentControl;
     }
+    /**
+     * @return If true, branches that do NOT match the git_ref will trigger a build.
+     * 
+     */
     public Boolean invertRegex() {
         return this.invertRegex;
     }

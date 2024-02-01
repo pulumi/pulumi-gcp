@@ -17,45 +17,123 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageScheduling {
+    /**
+     * @return Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+     * 
+     */
     private @Nullable Boolean automaticRestart;
+    /**
+     * @return Specifies the action GCE should take when SPOT VM is preempted.
+     * 
+     */
     private @Nullable String instanceTerminationAction;
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     private @Nullable InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout;
+    /**
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * 
+     */
     private @Nullable String maintenanceInterval;
+    /**
+     * @return The timeout for new network connections to hosts.
+     * 
+     */
     private @Nullable InstanceFromMachineImageSchedulingMaxRunDuration maxRunDuration;
     private @Nullable Integer minNodeCpus;
+    /**
+     * @return Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+     * 
+     */
     private @Nullable List<InstanceFromMachineImageSchedulingNodeAffinity> nodeAffinities;
+    /**
+     * @return Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+     * 
+     */
     private @Nullable String onHostMaintenance;
+    /**
+     * @return Whether the instance is preemptible.
+     * 
+     */
     private @Nullable Boolean preemptible;
+    /**
+     * @return Whether the instance is spot. If this is set as SPOT.
+     * 
+     */
     private @Nullable String provisioningModel;
 
     private InstanceFromMachineImageScheduling() {}
+    /**
+     * @return Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+     * 
+     */
     public Optional<Boolean> automaticRestart() {
         return Optional.ofNullable(this.automaticRestart);
     }
+    /**
+     * @return Specifies the action GCE should take when SPOT VM is preempted.
+     * 
+     */
     public Optional<String> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
     }
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     public Optional<InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeout() {
         return Optional.ofNullable(this.localSsdRecoveryTimeout);
     }
+    /**
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * 
+     */
     public Optional<String> maintenanceInterval() {
         return Optional.ofNullable(this.maintenanceInterval);
     }
+    /**
+     * @return The timeout for new network connections to hosts.
+     * 
+     */
     public Optional<InstanceFromMachineImageSchedulingMaxRunDuration> maxRunDuration() {
         return Optional.ofNullable(this.maxRunDuration);
     }
     public Optional<Integer> minNodeCpus() {
         return Optional.ofNullable(this.minNodeCpus);
     }
+    /**
+     * @return Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+     * 
+     */
     public List<InstanceFromMachineImageSchedulingNodeAffinity> nodeAffinities() {
         return this.nodeAffinities == null ? List.of() : this.nodeAffinities;
     }
+    /**
+     * @return Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+     * 
+     */
     public Optional<String> onHostMaintenance() {
         return Optional.ofNullable(this.onHostMaintenance);
     }
+    /**
+     * @return Whether the instance is preemptible.
+     * 
+     */
     public Optional<Boolean> preemptible() {
         return Optional.ofNullable(this.preemptible);
     }
+    /**
+     * @return Whether the instance is spot. If this is set as SPOT.
+     * 
+     */
     public Optional<String> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
     }

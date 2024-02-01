@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     [OutputType]
     public sealed class TableTableReplicationInfo
     {
+        /// <summary>
+        /// The interval at which the source materialized view is polled for updates. The default is 300000.
+        /// </summary>
         public readonly int? ReplicationIntervalMs;
+        /// <summary>
+        /// The ID of the source dataset.
+        /// </summary>
         public readonly string SourceDatasetId;
+        /// <summary>
+        /// The ID of the source project.
+        /// </summary>
         public readonly string SourceProjectId;
+        /// <summary>
+        /// The ID of the source materialized view.
+        /// </summary>
         public readonly string SourceTableId;
 
         [OutputConstructor]

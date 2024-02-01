@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions {
+    /**
+     * @return The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+     * 
+     */
     private List<String> allowedValues;
 
     private GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions() {}
+    /**
+     * @return The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+     * 
+     */
     public List<String> allowedValues() {
         return this.allowedValues;
     }

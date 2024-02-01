@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult
     {
+        /// <summary>
+        /// Name of the VPC where the additional interface belongs.
+        /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// Name of the subnetwork where the additional interface belongs.
+        /// </summary>
         public readonly string Subnetwork;
 
         [OutputConstructor]

@@ -15,6 +15,12 @@ public final class GetInstanceTemplateDiskSourceSnapshotEncryptionKey {
      * 
      */
     private String kmsKeySelfLink;
+    /**
+     * @return The service account being used for the encryption
+     * request for the given KMS key. If absent, the Compute
+     * Engine default service account is used.
+     * 
+     */
     private String kmsKeyServiceAccount;
 
     private GetInstanceTemplateDiskSourceSnapshotEncryptionKey() {}
@@ -25,6 +31,12 @@ public final class GetInstanceTemplateDiskSourceSnapshotEncryptionKey {
     public String kmsKeySelfLink() {
         return this.kmsKeySelfLink;
     }
+    /**
+     * @return The service account being used for the encryption
+     * request for the given KMS key. If absent, the Compute
+     * Engine default service account is used.
+     * 
+     */
     public String kmsKeyServiceAccount() {
         return this.kmsKeyServiceAccount;
     }

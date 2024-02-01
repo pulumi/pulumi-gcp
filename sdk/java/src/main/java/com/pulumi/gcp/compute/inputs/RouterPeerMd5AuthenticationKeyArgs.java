@@ -14,9 +14,17 @@ public final class RouterPeerMd5AuthenticationKeyArgs extends com.pulumi.resourc
 
     public static final RouterPeerMd5AuthenticationKeyArgs Empty = new RouterPeerMd5AuthenticationKeyArgs();
 
+    /**
+     * Value of the key.
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return Value of the key.
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
@@ -71,11 +79,23 @@ public final class RouterPeerMd5AuthenticationKeyArgs extends com.pulumi.resourc
             $ = new RouterPeerMd5AuthenticationKeyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key Value of the key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Value of the key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }

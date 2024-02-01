@@ -13,11 +13,17 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceGroupManagerVersionResult
     {
+        /// <summary>
+        /// The full URL to an instance template from which all new instances of this version will be created.
+        /// </summary>
         public readonly string InstanceTemplate;
         /// <summary>
         /// The name of the instance group. Either `name` or `self_link` must be provided.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The number of instances calculated as a fixed number or a percentage depending on the settings.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerVersionTargetSizeResult> TargetSizes;
 
         [OutputConstructor]

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceNode {
+    /**
+     * @return Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
+     * 
+     */
     private String id;
+    /**
+     * @return Location of the node.
+     * 
+     */
     private String zone;
 
     private GetInstanceNode() {}
+    /**
+     * @return Node identifying string. e.g. &#39;node-0&#39;, &#39;node-1&#39;
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Location of the node.
+     * 
+     */
     public String zone() {
         return this.zone;
     }

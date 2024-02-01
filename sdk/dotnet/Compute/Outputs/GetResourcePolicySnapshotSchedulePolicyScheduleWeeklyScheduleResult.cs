@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleResult
     {
+        /// <summary>
+        /// May contain up to seven (one for each day of the week) snapshot times.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResult> DayOfWeeks;
 
         [OutputConstructor]

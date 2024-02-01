@@ -10,13 +10,37 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceAutoscalingConfigAutoscalingTarget {
+    /**
+     * @return Specifies the target high priority cpu utilization percentage that the autoscaler
+     * should be trying to achieve for the instance.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+     * 
+     */
     private Integer highPriorityCpuUtilizationPercent;
+    /**
+     * @return Specifies the target storage utilization percentage that the autoscaler
+     * should be trying to achieve for the instance.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
     private Integer storageUtilizationPercent;
 
     private GetInstanceAutoscalingConfigAutoscalingTarget() {}
+    /**
+     * @return Specifies the target high priority cpu utilization percentage that the autoscaler
+     * should be trying to achieve for the instance.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+     * 
+     */
     public Integer highPriorityCpuUtilizationPercent() {
         return this.highPriorityCpuUtilizationPercent;
     }
+    /**
+     * @return Specifies the target storage utilization percentage that the autoscaler
+     * should be trying to achieve for the instance.
+     * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+     * 
+     */
     public Integer storageUtilizationPercent() {
         return this.storageUtilizationPercent;
     }

@@ -3748,8 +3748,9 @@ func (o FeatureMembershipConfigmanagementBinauthzPtrOutput) Enabled() pulumi.Boo
 
 type FeatureMembershipConfigmanagementConfigSync struct {
 	// (Optional) Structure is documented below.
-	Git                           *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
-	MetricsGcpServiceAccountEmail *string                                         `pulumi:"metricsGcpServiceAccountEmail"`
+	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
+	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+	MetricsGcpServiceAccountEmail *string `pulumi:"metricsGcpServiceAccountEmail"`
 	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
@@ -3773,8 +3774,9 @@ type FeatureMembershipConfigmanagementConfigSyncInput interface {
 
 type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	// (Optional) Structure is documented below.
-	Git                           FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
-	MetricsGcpServiceAccountEmail pulumi.StringPtrInput                                  `pulumi:"metricsGcpServiceAccountEmail"`
+	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
+	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+	MetricsGcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"metricsGcpServiceAccountEmail"`
 	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
@@ -3869,6 +3871,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembersh
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
+// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *string { return v.MetricsGcpServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
@@ -3926,6 +3929,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Git() FeatureMembe
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
+// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *string {
 		if v == nil {
@@ -5037,6 +5041,8 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Ba
 }
 
 type FeatureMembershipMesh struct {
+	// **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+	//
 	// Deprecated: Deprecated in favor of the `management` field
 	ControlPlane *string `pulumi:"controlPlane"`
 	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
@@ -5055,6 +5061,8 @@ type FeatureMembershipMeshInput interface {
 }
 
 type FeatureMembershipMeshArgs struct {
+	// **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+	//
 	// Deprecated: Deprecated in favor of the `management` field
 	ControlPlane pulumi.StringPtrInput `pulumi:"controlPlane"`
 	// Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
@@ -5138,6 +5146,8 @@ func (o FeatureMembershipMeshOutput) ToFeatureMembershipMeshPtrOutputWithContext
 	}).(FeatureMembershipMeshPtrOutput)
 }
 
+// **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+//
 // Deprecated: Deprecated in favor of the `management` field
 func (o FeatureMembershipMeshOutput) ControlPlane() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipMesh) *string { return v.ControlPlane }).(pulumi.StringPtrOutput)
@@ -5172,6 +5182,8 @@ func (o FeatureMembershipMeshPtrOutput) Elem() FeatureMembershipMeshOutput {
 	}).(FeatureMembershipMeshOutput)
 }
 
+// **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+//
 // Deprecated: Deprecated in favor of the `management` field
 func (o FeatureMembershipMeshPtrOutput) ControlPlane() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipMesh) *string {

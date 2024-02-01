@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterCostManagementConfig {
+    /**
+     * @return Whether to enable GKE cost allocation. When you enable GKE cost allocation, the cluster name and namespace of your GKE workloads appear in the labels field of the billing export to BigQuery. Defaults to false.
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterCostManagementConfig() {}
+    /**
+     * @return Whether to enable GKE cost allocation. When you enable GKE cost allocation, the cluster name and namespace of your GKE workloads appear in the labels field of the billing export to BigQuery. Defaults to false.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

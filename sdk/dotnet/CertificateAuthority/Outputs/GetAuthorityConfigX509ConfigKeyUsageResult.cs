@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class GetAuthorityConfigX509ConfigKeyUsageResult
     {
+        /// <summary>
+        /// Describes high-level ways in which a key may be used.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult> BaseKeyUsages;
+        /// <summary>
+        /// Describes high-level ways in which a key may be used.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult> ExtendedKeyUsages;
+        /// <summary>
+        /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult> UnknownExtendedKeyUsages;
 
         [OutputConstructor]

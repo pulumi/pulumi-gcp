@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult
     {
+        /// <summary>
+        /// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+        /// </summary>
         public readonly string PublicRepository;
 
         [OutputConstructor]

@@ -68,9 +68,17 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.auxiliaryNodeGroups);
     }
 
+    /**
+     * The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+     * 
+     */
     @Import(name="bucket")
     private @Nullable Output<String> bucket;
 
+    /**
+     * @return The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+     * 
+     */
     public Optional<Output<String>> bucket() {
         return Optional.ofNullable(this.bucket);
     }
@@ -432,11 +440,23 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
             return auxiliaryNodeGroups(List.of(auxiliaryNodeGroups));
         }
 
+        /**
+         * @param bucket The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(@Nullable Output<String> bucket) {
             $.bucket = bucket;
             return this;
         }
 
+        /**
+         * @param bucket The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
         }

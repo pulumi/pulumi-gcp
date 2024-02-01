@@ -16,24 +16,56 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateVolume {
+    /**
+     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+     * 
+     */
     private List<GetServiceTemplateVolumeCloudSqlInstance> cloudSqlInstances;
+    /**
+     * @return Ephemeral storage used as a shared volume.
+     * 
+     */
     private List<GetServiceTemplateVolumeEmptyDir> emptyDirs;
+    /**
+     * @return Represents a GCS Bucket mounted as a volume.
+     * 
+     */
     private List<GetServiceTemplateVolumeGc> gcs;
     /**
      * @return The name of the Cloud Run v2 Service.
      * 
      */
     private String name;
+    /**
+     * @return Represents an NFS mount.
+     * 
+     */
     private List<GetServiceTemplateVolumeNf> nfs;
+    /**
+     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * 
+     */
     private List<GetServiceTemplateVolumeSecret> secrets;
 
     private GetServiceTemplateVolume() {}
+    /**
+     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+     * 
+     */
     public List<GetServiceTemplateVolumeCloudSqlInstance> cloudSqlInstances() {
         return this.cloudSqlInstances;
     }
+    /**
+     * @return Ephemeral storage used as a shared volume.
+     * 
+     */
     public List<GetServiceTemplateVolumeEmptyDir> emptyDirs() {
         return this.emptyDirs;
     }
+    /**
+     * @return Represents a GCS Bucket mounted as a volume.
+     * 
+     */
     public List<GetServiceTemplateVolumeGc> gcs() {
         return this.gcs;
     }
@@ -44,9 +76,17 @@ public final class GetServiceTemplateVolume {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Represents an NFS mount.
+     * 
+     */
     public List<GetServiceTemplateVolumeNf> nfs() {
         return this.nfs;
     }
+    /**
+     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * 
+     */
     public List<GetServiceTemplateVolumeSecret> secrets() {
         return this.secrets;
     }

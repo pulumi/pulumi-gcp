@@ -38,6 +38,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("clusterSecondaryRangeName")]
         public Input<string>? ClusterSecondaryRangeName { get; set; }
 
+        /// <summary>
+        /// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+        /// </summary>
         [Input("podCidrOverprovisionConfig")]
         public Input<Inputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs>? PodCidrOverprovisionConfig { get; set; }
 

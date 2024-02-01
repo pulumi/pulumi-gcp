@@ -12,29 +12,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateAttachedDisk {
+    /**
+     * @return Name with which the attached disk is accessible under /dev/disk/by-id/
+     * 
+     */
     private @Nullable String deviceName;
+    /**
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * 
+     */
     private @Nullable String diskEncryptionKeyRaw;
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     private @Nullable String diskEncryptionKeySha256;
+    /**
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * 
+     */
     private @Nullable String kmsKeySelfLink;
+    /**
+     * @return Read/write mode for the disk. One of &#34;READ_ONLY&#34; or &#34;READ_WRITE&#34;.
+     * 
+     */
     private @Nullable String mode;
+    /**
+     * @return The name or self_link of the disk attached to this instance.
+     * 
+     */
     private String source;
 
     private InstanceFromTemplateAttachedDisk() {}
+    /**
+     * @return Name with which the attached disk is accessible under /dev/disk/by-id/
+     * 
+     */
     public Optional<String> deviceName() {
         return Optional.ofNullable(this.deviceName);
     }
+    /**
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * 
+     */
     public Optional<String> diskEncryptionKeyRaw() {
         return Optional.ofNullable(this.diskEncryptionKeyRaw);
     }
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     public Optional<String> diskEncryptionKeySha256() {
         return Optional.ofNullable(this.diskEncryptionKeySha256);
     }
+    /**
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * 
+     */
     public Optional<String> kmsKeySelfLink() {
         return Optional.ofNullable(this.kmsKeySelfLink);
     }
+    /**
+     * @return Read/write mode for the disk. One of &#34;READ_ONLY&#34; or &#34;READ_WRITE&#34;.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    /**
+     * @return The name or self_link of the disk attached to this instance.
+     * 
+     */
     public String source() {
         return this.source;
     }

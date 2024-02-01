@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigSubjectConfigSubjectAltName {
+    /**
+     * @return Contains only valid, fully-qualified host names.
+     * 
+     */
     private List<String> dnsNames;
+    /**
+     * @return Contains only valid RFC 2822 E-mail addresses.
+     * 
+     */
     private List<String> emailAddresses;
+    /**
+     * @return Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+     * 
+     */
     private List<String> ipAddresses;
+    /**
+     * @return Contains only valid RFC 3986 URIs.
+     * 
+     */
     private List<String> uris;
 
     private GetAuthorityConfigSubjectConfigSubjectAltName() {}
+    /**
+     * @return Contains only valid, fully-qualified host names.
+     * 
+     */
     public List<String> dnsNames() {
         return this.dnsNames;
     }
+    /**
+     * @return Contains only valid RFC 2822 E-mail addresses.
+     * 
+     */
     public List<String> emailAddresses() {
         return this.emailAddresses;
     }
+    /**
+     * @return Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+     * 
+     */
     public List<String> ipAddresses() {
         return this.ipAddresses;
     }
+    /**
+     * @return Contains only valid RFC 3986 URIs.
+     * 
+     */
     public List<String> uris() {
         return this.uris;
     }

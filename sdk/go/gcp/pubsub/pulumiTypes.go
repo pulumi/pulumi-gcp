@@ -3857,10 +3857,16 @@ func (o TopicSchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
 }
 
 type GetSubscriptionBigqueryConfig struct {
-	DropUnknownFields bool   `pulumi:"dropUnknownFields"`
-	Table             string `pulumi:"table"`
-	UseTopicSchema    bool   `pulumi:"useTopicSchema"`
-	WriteMetadata     bool   `pulumi:"writeMetadata"`
+	// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+	// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	DropUnknownFields bool `pulumi:"dropUnknownFields"`
+	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	Table string `pulumi:"table"`
+	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	UseTopicSchema bool `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+	// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata bool `pulumi:"writeMetadata"`
 }
 
 // GetSubscriptionBigqueryConfigInput is an input type that accepts GetSubscriptionBigqueryConfigArgs and GetSubscriptionBigqueryConfigOutput values.
@@ -3875,10 +3881,16 @@ type GetSubscriptionBigqueryConfigInput interface {
 }
 
 type GetSubscriptionBigqueryConfigArgs struct {
-	DropUnknownFields pulumi.BoolInput   `pulumi:"dropUnknownFields"`
-	Table             pulumi.StringInput `pulumi:"table"`
-	UseTopicSchema    pulumi.BoolInput   `pulumi:"useTopicSchema"`
-	WriteMetadata     pulumi.BoolInput   `pulumi:"writeMetadata"`
+	// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+	// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	DropUnknownFields pulumi.BoolInput `pulumi:"dropUnknownFields"`
+	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+	Table pulumi.StringInput `pulumi:"table"`
+	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	UseTopicSchema pulumi.BoolInput `pulumi:"useTopicSchema"`
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+	// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+	WriteMetadata pulumi.BoolInput `pulumi:"writeMetadata"`
 }
 
 func (GetSubscriptionBigqueryConfigArgs) ElementType() reflect.Type {
@@ -3932,18 +3944,24 @@ func (o GetSubscriptionBigqueryConfigOutput) ToGetSubscriptionBigqueryConfigOutp
 	return o
 }
 
+// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
 func (o GetSubscriptionBigqueryConfigOutput) DropUnknownFields() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.DropUnknownFields }).(pulumi.BoolOutput)
 }
 
+// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 func (o GetSubscriptionBigqueryConfigOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) string { return v.Table }).(pulumi.StringOutput)
 }
 
+// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
 func (o GetSubscriptionBigqueryConfigOutput) UseTopicSchema() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.UseTopicSchema }).(pulumi.BoolOutput)
 }
 
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
 func (o GetSubscriptionBigqueryConfigOutput) WriteMetadata() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
 }
@@ -3969,13 +3987,23 @@ func (o GetSubscriptionBigqueryConfigArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 type GetSubscriptionCloudStorageConfig struct {
-	AvroConfigs    []GetSubscriptionCloudStorageConfigAvroConfig `pulumi:"avroConfigs"`
-	Bucket         string                                        `pulumi:"bucket"`
-	FilenamePrefix string                                        `pulumi:"filenamePrefix"`
-	FilenameSuffix string                                        `pulumi:"filenameSuffix"`
-	MaxBytes       int                                           `pulumi:"maxBytes"`
-	MaxDuration    string                                        `pulumi:"maxDuration"`
-	State          string                                        `pulumi:"state"`
+	// If set, message data will be written to Cloud Storage in Avro format.
+	AvroConfigs []GetSubscriptionCloudStorageConfigAvroConfig `pulumi:"avroConfigs"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+	Bucket string `pulumi:"bucket"`
+	// User-provided prefix for Cloud Storage filename.
+	FilenamePrefix string `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. Must not end in "/".
+	FilenameSuffix string `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+	// The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+	MaxBytes int `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+	// May not exceed the subscription's acknowledgement deadline.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	MaxDuration string `pulumi:"maxDuration"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State string `pulumi:"state"`
 }
 
 // GetSubscriptionCloudStorageConfigInput is an input type that accepts GetSubscriptionCloudStorageConfigArgs and GetSubscriptionCloudStorageConfigOutput values.
@@ -3990,13 +4018,23 @@ type GetSubscriptionCloudStorageConfigInput interface {
 }
 
 type GetSubscriptionCloudStorageConfigArgs struct {
-	AvroConfigs    GetSubscriptionCloudStorageConfigAvroConfigArrayInput `pulumi:"avroConfigs"`
-	Bucket         pulumi.StringInput                                    `pulumi:"bucket"`
-	FilenamePrefix pulumi.StringInput                                    `pulumi:"filenamePrefix"`
-	FilenameSuffix pulumi.StringInput                                    `pulumi:"filenameSuffix"`
-	MaxBytes       pulumi.IntInput                                       `pulumi:"maxBytes"`
-	MaxDuration    pulumi.StringInput                                    `pulumi:"maxDuration"`
-	State          pulumi.StringInput                                    `pulumi:"state"`
+	// If set, message data will be written to Cloud Storage in Avro format.
+	AvroConfigs GetSubscriptionCloudStorageConfigAvroConfigArrayInput `pulumi:"avroConfigs"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// User-provided prefix for Cloud Storage filename.
+	FilenamePrefix pulumi.StringInput `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. Must not end in "/".
+	FilenameSuffix pulumi.StringInput `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+	// The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+	MaxBytes pulumi.IntInput `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+	// May not exceed the subscription's acknowledgement deadline.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	MaxDuration pulumi.StringInput `pulumi:"maxDuration"`
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetSubscriptionCloudStorageConfigArgs) ElementType() reflect.Type {
@@ -4050,32 +4088,42 @@ func (o GetSubscriptionCloudStorageConfigOutput) ToGetSubscriptionCloudStorageCo
 	return o
 }
 
+// If set, message data will be written to Cloud Storage in Avro format.
 func (o GetSubscriptionCloudStorageConfigOutput) AvroConfigs() GetSubscriptionCloudStorageConfigAvroConfigArrayOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) []GetSubscriptionCloudStorageConfigAvroConfig {
 		return v.AvroConfigs
 	}).(GetSubscriptionCloudStorageConfigAvroConfigArrayOutput)
 }
 
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
 func (o GetSubscriptionCloudStorageConfigOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// User-provided prefix for Cloud Storage filename.
 func (o GetSubscriptionCloudStorageConfigOutput) FilenamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.FilenamePrefix }).(pulumi.StringOutput)
 }
 
+// User-provided suffix for Cloud Storage filename. Must not end in "/".
 func (o GetSubscriptionCloudStorageConfigOutput) FilenameSuffix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.FilenameSuffix }).(pulumi.StringOutput)
 }
 
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+// The maxBytes limit may be exceeded in cases where messages are larger than the limit.
 func (o GetSubscriptionCloudStorageConfigOutput) MaxBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) int { return v.MaxBytes }).(pulumi.IntOutput)
 }
 
+// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+// May not exceed the subscription's acknowledgement deadline.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 func (o GetSubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.MaxDuration }).(pulumi.StringOutput)
 }
 
+// An output-only field that indicates whether or not the subscription can receive messages.
 func (o GetSubscriptionCloudStorageConfigOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.State }).(pulumi.StringOutput)
 }
@@ -4101,6 +4149,7 @@ func (o GetSubscriptionCloudStorageConfigArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetSubscriptionCloudStorageConfigAvroConfig struct {
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
 	WriteMetadata bool `pulumi:"writeMetadata"`
 }
 
@@ -4116,6 +4165,7 @@ type GetSubscriptionCloudStorageConfigAvroConfigInput interface {
 }
 
 type GetSubscriptionCloudStorageConfigAvroConfigArgs struct {
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
 	WriteMetadata pulumi.BoolInput `pulumi:"writeMetadata"`
 }
 
@@ -4170,6 +4220,7 @@ func (o GetSubscriptionCloudStorageConfigAvroConfigOutput) ToGetSubscriptionClou
 	return o
 }
 
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
 func (o GetSubscriptionCloudStorageConfigAvroConfigOutput) WriteMetadata() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfigAvroConfig) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
 }
@@ -4195,8 +4246,31 @@ func (o GetSubscriptionCloudStorageConfigAvroConfigArrayOutput) Index(i pulumi.I
 }
 
 type GetSubscriptionDeadLetterPolicy struct {
-	DeadLetterTopic     string `pulumi:"deadLetterTopic"`
-	MaxDeliveryAttempts int    `pulumi:"maxDeliveryAttempts"`
+	// The name of the topic to which dead letter messages should be published.
+	// Format is 'projects/{project}/topics/{topic}'.
+	//
+	// The Cloud Pub/Sub service account associated with the enclosing subscription's
+	// parent project (i.e.,
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+	// permission to Publish() to this topic.
+	//
+	// The operation will fail if the topic does not exist.
+	// Users should ensure that there is a subscription attached to this topic
+	// since messages published to a topic with no subscriptions are lost.
+	DeadLetterTopic string `pulumi:"deadLetterTopic"`
+	// The maximum number of delivery attempts for any message. The value must be
+	// between 5 and 100.
+	//
+	// The number of delivery attempts is defined as 1 + (the sum of number of
+	// NACKs and number of times the acknowledgement deadline has been exceeded for the message).
+	//
+	// A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+	// client libraries may automatically extend ack_deadlines.
+	//
+	// This field will be honored on a best effort basis.
+	//
+	// If this parameter is 0, a default value of 5 is used.
+	MaxDeliveryAttempts int `pulumi:"maxDeliveryAttempts"`
 }
 
 // GetSubscriptionDeadLetterPolicyInput is an input type that accepts GetSubscriptionDeadLetterPolicyArgs and GetSubscriptionDeadLetterPolicyOutput values.
@@ -4211,8 +4285,31 @@ type GetSubscriptionDeadLetterPolicyInput interface {
 }
 
 type GetSubscriptionDeadLetterPolicyArgs struct {
-	DeadLetterTopic     pulumi.StringInput `pulumi:"deadLetterTopic"`
-	MaxDeliveryAttempts pulumi.IntInput    `pulumi:"maxDeliveryAttempts"`
+	// The name of the topic to which dead letter messages should be published.
+	// Format is 'projects/{project}/topics/{topic}'.
+	//
+	// The Cloud Pub/Sub service account associated with the enclosing subscription's
+	// parent project (i.e.,
+	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+	// permission to Publish() to this topic.
+	//
+	// The operation will fail if the topic does not exist.
+	// Users should ensure that there is a subscription attached to this topic
+	// since messages published to a topic with no subscriptions are lost.
+	DeadLetterTopic pulumi.StringInput `pulumi:"deadLetterTopic"`
+	// The maximum number of delivery attempts for any message. The value must be
+	// between 5 and 100.
+	//
+	// The number of delivery attempts is defined as 1 + (the sum of number of
+	// NACKs and number of times the acknowledgement deadline has been exceeded for the message).
+	//
+	// A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+	// client libraries may automatically extend ack_deadlines.
+	//
+	// This field will be honored on a best effort basis.
+	//
+	// If this parameter is 0, a default value of 5 is used.
+	MaxDeliveryAttempts pulumi.IntInput `pulumi:"maxDeliveryAttempts"`
 }
 
 func (GetSubscriptionDeadLetterPolicyArgs) ElementType() reflect.Type {
@@ -4266,10 +4363,33 @@ func (o GetSubscriptionDeadLetterPolicyOutput) ToGetSubscriptionDeadLetterPolicy
 	return o
 }
 
+// The name of the topic to which dead letter messages should be published.
+// Format is 'projects/{project}/topics/{topic}'.
+//
+// The Cloud Pub/Sub service account associated with the enclosing subscription's
+// parent project (i.e.,
+// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+// permission to Publish() to this topic.
+//
+// The operation will fail if the topic does not exist.
+// Users should ensure that there is a subscription attached to this topic
+// since messages published to a topic with no subscriptions are lost.
 func (o GetSubscriptionDeadLetterPolicyOutput) DeadLetterTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionDeadLetterPolicy) string { return v.DeadLetterTopic }).(pulumi.StringOutput)
 }
 
+// The maximum number of delivery attempts for any message. The value must be
+// between 5 and 100.
+//
+// The number of delivery attempts is defined as 1 + (the sum of number of
+// NACKs and number of times the acknowledgement deadline has been exceeded for the message).
+//
+// A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+// client libraries may automatically extend ack_deadlines.
+//
+// This field will be honored on a best effort basis.
+//
+// If this parameter is 0, a default value of 5 is used.
 func (o GetSubscriptionDeadLetterPolicyOutput) MaxDeliveryAttempts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSubscriptionDeadLetterPolicy) int { return v.MaxDeliveryAttempts }).(pulumi.IntOutput)
 }
@@ -4295,6 +4415,11 @@ func (o GetSubscriptionDeadLetterPolicyArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetSubscriptionExpirationPolicy struct {
+	// Specifies the "time-to-live" duration for an associated resource. The
+	// resource expires if it is not active for a period of ttl.
+	// If ttl is set to "", the associated resource never expires.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'.
+	// Example - "3.5s".
 	Ttl string `pulumi:"ttl"`
 }
 
@@ -4310,6 +4435,11 @@ type GetSubscriptionExpirationPolicyInput interface {
 }
 
 type GetSubscriptionExpirationPolicyArgs struct {
+	// Specifies the "time-to-live" duration for an associated resource. The
+	// resource expires if it is not active for a period of ttl.
+	// If ttl is set to "", the associated resource never expires.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'.
+	// Example - "3.5s".
 	Ttl pulumi.StringInput `pulumi:"ttl"`
 }
 
@@ -4364,6 +4494,11 @@ func (o GetSubscriptionExpirationPolicyOutput) ToGetSubscriptionExpirationPolicy
 	return o
 }
 
+// Specifies the "time-to-live" duration for an associated resource. The
+// resource expires if it is not active for a period of ttl.
+// If ttl is set to "", the associated resource never expires.
+// A duration in seconds with up to nine fractional digits, terminated by 's'.
+// Example - "3.5s".
 func (o GetSubscriptionExpirationPolicyOutput) Ttl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionExpirationPolicy) string { return v.Ttl }).(pulumi.StringOutput)
 }
@@ -4389,10 +4524,40 @@ func (o GetSubscriptionExpirationPolicyArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetSubscriptionPushConfig struct {
-	Attributes   map[string]string                    `pulumi:"attributes"`
-	NoWrappers   []GetSubscriptionPushConfigNoWrapper `pulumi:"noWrappers"`
-	OidcTokens   []GetSubscriptionPushConfigOidcToken `pulumi:"oidcTokens"`
-	PushEndpoint string                               `pulumi:"pushEndpoint"`
+	// Endpoint configuration attributes.
+	//
+	// Every endpoint has a set of API supported attributes that can
+	// be used to control different aspects of the message delivery.
+	//
+	// The currently supported attribute is x-goog-version, which you
+	// can use to change the format of the pushed message. This
+	// attribute indicates the version of the data expected by
+	// the endpoint. This controls the shape of the pushed message
+	// (i.e., its fields and metadata). The endpoint version is
+	// based on the version of the Pub/Sub API.
+	//
+	// If not present during the subscriptions.create call,
+	// it will default to the version of the API used to make
+	// such call. If not present during a subscriptions.modifyPushConfig
+	// call, its value will not be changed. subscriptions.get
+	// calls will always return a valid version, even if the
+	// subscription was created without this attribute.
+	//
+	// The possible values for this attribute are:
+	//
+	// - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
+	// - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
+	Attributes map[string]string `pulumi:"attributes"`
+	// When set, the payload to the push endpoint is not wrapped.Sets the
+	// 'data' field as the HTTP body for delivery.
+	NoWrappers []GetSubscriptionPushConfigNoWrapper `pulumi:"noWrappers"`
+	// If specified, Pub/Sub will generate and attach an OIDC JWT token as
+	// an Authorization header in the HTTP request for every pushed message.
+	OidcTokens []GetSubscriptionPushConfigOidcToken `pulumi:"oidcTokens"`
+	// A URL locating the endpoint to which messages should be pushed.
+	// For example, a Webhook endpoint might use
+	// "https://example.com/push".
+	PushEndpoint string `pulumi:"pushEndpoint"`
 }
 
 // GetSubscriptionPushConfigInput is an input type that accepts GetSubscriptionPushConfigArgs and GetSubscriptionPushConfigOutput values.
@@ -4407,10 +4572,40 @@ type GetSubscriptionPushConfigInput interface {
 }
 
 type GetSubscriptionPushConfigArgs struct {
-	Attributes   pulumi.StringMapInput                        `pulumi:"attributes"`
-	NoWrappers   GetSubscriptionPushConfigNoWrapperArrayInput `pulumi:"noWrappers"`
-	OidcTokens   GetSubscriptionPushConfigOidcTokenArrayInput `pulumi:"oidcTokens"`
-	PushEndpoint pulumi.StringInput                           `pulumi:"pushEndpoint"`
+	// Endpoint configuration attributes.
+	//
+	// Every endpoint has a set of API supported attributes that can
+	// be used to control different aspects of the message delivery.
+	//
+	// The currently supported attribute is x-goog-version, which you
+	// can use to change the format of the pushed message. This
+	// attribute indicates the version of the data expected by
+	// the endpoint. This controls the shape of the pushed message
+	// (i.e., its fields and metadata). The endpoint version is
+	// based on the version of the Pub/Sub API.
+	//
+	// If not present during the subscriptions.create call,
+	// it will default to the version of the API used to make
+	// such call. If not present during a subscriptions.modifyPushConfig
+	// call, its value will not be changed. subscriptions.get
+	// calls will always return a valid version, even if the
+	// subscription was created without this attribute.
+	//
+	// The possible values for this attribute are:
+	//
+	// - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
+	// - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
+	// When set, the payload to the push endpoint is not wrapped.Sets the
+	// 'data' field as the HTTP body for delivery.
+	NoWrappers GetSubscriptionPushConfigNoWrapperArrayInput `pulumi:"noWrappers"`
+	// If specified, Pub/Sub will generate and attach an OIDC JWT token as
+	// an Authorization header in the HTTP request for every pushed message.
+	OidcTokens GetSubscriptionPushConfigOidcTokenArrayInput `pulumi:"oidcTokens"`
+	// A URL locating the endpoint to which messages should be pushed.
+	// For example, a Webhook endpoint might use
+	// "https://example.com/push".
+	PushEndpoint pulumi.StringInput `pulumi:"pushEndpoint"`
 }
 
 func (GetSubscriptionPushConfigArgs) ElementType() reflect.Type {
@@ -4464,18 +4659,48 @@ func (o GetSubscriptionPushConfigOutput) ToGetSubscriptionPushConfigOutputWithCo
 	return o
 }
 
+// Endpoint configuration attributes.
+//
+// Every endpoint has a set of API supported attributes that can
+// be used to control different aspects of the message delivery.
+//
+// The currently supported attribute is x-goog-version, which you
+// can use to change the format of the pushed message. This
+// attribute indicates the version of the data expected by
+// the endpoint. This controls the shape of the pushed message
+// (i.e., its fields and metadata). The endpoint version is
+// based on the version of the Pub/Sub API.
+//
+// If not present during the subscriptions.create call,
+// it will default to the version of the API used to make
+// such call. If not present during a subscriptions.modifyPushConfig
+// call, its value will not be changed. subscriptions.get
+// calls will always return a valid version, even if the
+// subscription was created without this attribute.
+//
+// The possible values for this attribute are:
+//
+// - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
+// - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
 func (o GetSubscriptionPushConfigOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSubscriptionPushConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
+// When set, the payload to the push endpoint is not wrapped.Sets the
+// 'data' field as the HTTP body for delivery.
 func (o GetSubscriptionPushConfigOutput) NoWrappers() GetSubscriptionPushConfigNoWrapperArrayOutput {
 	return o.ApplyT(func(v GetSubscriptionPushConfig) []GetSubscriptionPushConfigNoWrapper { return v.NoWrappers }).(GetSubscriptionPushConfigNoWrapperArrayOutput)
 }
 
+// If specified, Pub/Sub will generate and attach an OIDC JWT token as
+// an Authorization header in the HTTP request for every pushed message.
 func (o GetSubscriptionPushConfigOutput) OidcTokens() GetSubscriptionPushConfigOidcTokenArrayOutput {
 	return o.ApplyT(func(v GetSubscriptionPushConfig) []GetSubscriptionPushConfigOidcToken { return v.OidcTokens }).(GetSubscriptionPushConfigOidcTokenArrayOutput)
 }
 
+// A URL locating the endpoint to which messages should be pushed.
+// For example, a Webhook endpoint might use
+// "https://example.com/push".
 func (o GetSubscriptionPushConfigOutput) PushEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionPushConfig) string { return v.PushEndpoint }).(pulumi.StringOutput)
 }
@@ -4501,6 +4726,9 @@ func (o GetSubscriptionPushConfigArrayOutput) Index(i pulumi.IntInput) GetSubscr
 }
 
 type GetSubscriptionPushConfigNoWrapper struct {
+	// When true, writes the Pub/Sub message metadata to
+	// 'x-goog-pubsub-<KEY>:<VAL>' headers of the HTTP request. Writes the
+	// Pub/Sub message attributes to '<KEY>:<VAL>' headers of the HTTP request.
 	WriteMetadata bool `pulumi:"writeMetadata"`
 }
 
@@ -4516,6 +4744,9 @@ type GetSubscriptionPushConfigNoWrapperInput interface {
 }
 
 type GetSubscriptionPushConfigNoWrapperArgs struct {
+	// When true, writes the Pub/Sub message metadata to
+	// 'x-goog-pubsub-<KEY>:<VAL>' headers of the HTTP request. Writes the
+	// Pub/Sub message attributes to '<KEY>:<VAL>' headers of the HTTP request.
 	WriteMetadata pulumi.BoolInput `pulumi:"writeMetadata"`
 }
 
@@ -4570,6 +4801,9 @@ func (o GetSubscriptionPushConfigNoWrapperOutput) ToGetSubscriptionPushConfigNoW
 	return o
 }
 
+// When true, writes the Pub/Sub message metadata to
+// 'x-goog-pubsub-<KEY>:<VAL>' headers of the HTTP request. Writes the
+// Pub/Sub message attributes to '<KEY>:<VAL>' headers of the HTTP request.
 func (o GetSubscriptionPushConfigNoWrapperOutput) WriteMetadata() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSubscriptionPushConfigNoWrapper) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
 }
@@ -4595,7 +4829,17 @@ func (o GetSubscriptionPushConfigNoWrapperArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetSubscriptionPushConfigOidcToken struct {
-	Audience            string `pulumi:"audience"`
+	// Audience to be used when generating OIDC token. The audience claim
+	// identifies the recipients that the JWT is intended for. The audience
+	// value is a single case-sensitive string. Having multiple values (array)
+	// for the audience field is not supported. More info about the OIDC JWT
+	// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+	// Note: if not specified, the Push endpoint URL will be used.
+	Audience string `pulumi:"audience"`
+	// Service account email to be used for generating the OIDC token.
+	// The caller (for subscriptions.create, subscriptions.patch, and
+	// subscriptions.modifyPushConfig RPCs) must have the
+	// iam.serviceAccounts.actAs permission for the service account.
 	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
 }
 
@@ -4611,7 +4855,17 @@ type GetSubscriptionPushConfigOidcTokenInput interface {
 }
 
 type GetSubscriptionPushConfigOidcTokenArgs struct {
-	Audience            pulumi.StringInput `pulumi:"audience"`
+	// Audience to be used when generating OIDC token. The audience claim
+	// identifies the recipients that the JWT is intended for. The audience
+	// value is a single case-sensitive string. Having multiple values (array)
+	// for the audience field is not supported. More info about the OIDC JWT
+	// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+	// Note: if not specified, the Push endpoint URL will be used.
+	Audience pulumi.StringInput `pulumi:"audience"`
+	// Service account email to be used for generating the OIDC token.
+	// The caller (for subscriptions.create, subscriptions.patch, and
+	// subscriptions.modifyPushConfig RPCs) must have the
+	// iam.serviceAccounts.actAs permission for the service account.
 	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
 }
 
@@ -4666,10 +4920,20 @@ func (o GetSubscriptionPushConfigOidcTokenOutput) ToGetSubscriptionPushConfigOid
 	return o
 }
 
+// Audience to be used when generating OIDC token. The audience claim
+// identifies the recipients that the JWT is intended for. The audience
+// value is a single case-sensitive string. Having multiple values (array)
+// for the audience field is not supported. More info about the OIDC JWT
+// token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+// Note: if not specified, the Push endpoint URL will be used.
 func (o GetSubscriptionPushConfigOidcTokenOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionPushConfigOidcToken) string { return v.Audience }).(pulumi.StringOutput)
 }
 
+// Service account email to be used for generating the OIDC token.
+// The caller (for subscriptions.create, subscriptions.patch, and
+// subscriptions.modifyPushConfig RPCs) must have the
+// iam.serviceAccounts.actAs permission for the service account.
 func (o GetSubscriptionPushConfigOidcTokenOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionPushConfigOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
@@ -4695,7 +4959,11 @@ func (o GetSubscriptionPushConfigOidcTokenArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetSubscriptionRetryPolicy struct {
+	// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MaximumBackoff string `pulumi:"maximumBackoff"`
+	// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MinimumBackoff string `pulumi:"minimumBackoff"`
 }
 
@@ -4711,7 +4979,11 @@ type GetSubscriptionRetryPolicyInput interface {
 }
 
 type GetSubscriptionRetryPolicyArgs struct {
+	// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MaximumBackoff pulumi.StringInput `pulumi:"maximumBackoff"`
+	// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	MinimumBackoff pulumi.StringInput `pulumi:"minimumBackoff"`
 }
 
@@ -4766,10 +5038,14 @@ func (o GetSubscriptionRetryPolicyOutput) ToGetSubscriptionRetryPolicyOutputWith
 	return o
 }
 
+// The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o GetSubscriptionRetryPolicyOutput) MaximumBackoff() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionRetryPolicy) string { return v.MaximumBackoff }).(pulumi.StringOutput)
 }
 
+// The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o GetSubscriptionRetryPolicyOutput) MinimumBackoff() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionRetryPolicy) string { return v.MinimumBackoff }).(pulumi.StringOutput)
 }
@@ -4795,6 +5071,12 @@ func (o GetSubscriptionRetryPolicyArrayOutput) Index(i pulumi.IntInput) GetSubsc
 }
 
 type GetTopicMessageStoragePolicy struct {
+	// A list of IDs of GCP regions where messages that are published to
+	// the topic may be persisted in storage. Messages published by
+	// publishers running in non-allowed GCP regions (or running outside
+	// of GCP altogether) will be routed for storage in one of the
+	// allowed regions. An empty list means that no regions are allowed,
+	// and is not a valid configuration.
 	AllowedPersistenceRegions []string `pulumi:"allowedPersistenceRegions"`
 }
 
@@ -4810,6 +5092,12 @@ type GetTopicMessageStoragePolicyInput interface {
 }
 
 type GetTopicMessageStoragePolicyArgs struct {
+	// A list of IDs of GCP regions where messages that are published to
+	// the topic may be persisted in storage. Messages published by
+	// publishers running in non-allowed GCP regions (or running outside
+	// of GCP altogether) will be routed for storage in one of the
+	// allowed regions. An empty list means that no regions are allowed,
+	// and is not a valid configuration.
 	AllowedPersistenceRegions pulumi.StringArrayInput `pulumi:"allowedPersistenceRegions"`
 }
 
@@ -4864,6 +5152,12 @@ func (o GetTopicMessageStoragePolicyOutput) ToGetTopicMessageStoragePolicyOutput
 	return o
 }
 
+// A list of IDs of GCP regions where messages that are published to
+// the topic may be persisted in storage. Messages published by
+// publishers running in non-allowed GCP regions (or running outside
+// of GCP altogether) will be routed for storage in one of the
+// allowed regions. An empty list means that no regions are allowed,
+// and is not a valid configuration.
 func (o GetTopicMessageStoragePolicyOutput) AllowedPersistenceRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTopicMessageStoragePolicy) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
 }
@@ -4889,8 +5183,13 @@ func (o GetTopicMessageStoragePolicyArrayOutput) Index(i pulumi.IntInput) GetTop
 }
 
 type GetTopicSchemaSetting struct {
+	// The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
 	Encoding string `pulumi:"encoding"`
-	Schema   string `pulumi:"schema"`
+	// The name of the schema that messages published should be
+	// validated against. Format is projects/{project}/schemas/{schema}.
+	// The value of this field will be _deleted-schema_
+	// if the schema has been deleted.
+	Schema string `pulumi:"schema"`
 }
 
 // GetTopicSchemaSettingInput is an input type that accepts GetTopicSchemaSettingArgs and GetTopicSchemaSettingOutput values.
@@ -4905,8 +5204,13 @@ type GetTopicSchemaSettingInput interface {
 }
 
 type GetTopicSchemaSettingArgs struct {
+	// The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
 	Encoding pulumi.StringInput `pulumi:"encoding"`
-	Schema   pulumi.StringInput `pulumi:"schema"`
+	// The name of the schema that messages published should be
+	// validated against. Format is projects/{project}/schemas/{schema}.
+	// The value of this field will be _deleted-schema_
+	// if the schema has been deleted.
+	Schema pulumi.StringInput `pulumi:"schema"`
 }
 
 func (GetTopicSchemaSettingArgs) ElementType() reflect.Type {
@@ -4960,10 +5264,15 @@ func (o GetTopicSchemaSettingOutput) ToGetTopicSchemaSettingOutputWithContext(ct
 	return o
 }
 
+// The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
 func (o GetTopicSchemaSettingOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicSchemaSetting) string { return v.Encoding }).(pulumi.StringOutput)
 }
 
+// The name of the schema that messages published should be
+// validated against. Format is projects/{project}/schemas/{schema}.
+// The value of this field will be _deleted-schema_
+// if the schema has been deleted.
 func (o GetTopicSchemaSettingOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTopicSchemaSetting) string { return v.Schema }).(pulumi.StringOutput)
 }

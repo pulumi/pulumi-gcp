@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceStatusCondition {
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     private String message;
+    /**
+     * @return One-word CamelCase reason for the condition&#39;s current status.
+     * 
+     */
     private String reason;
+    /**
+     * @return Status of the condition, one of True, False, Unknown.
+     * 
+     */
     private String status;
+    /**
+     * @return Type of domain mapping condition.
+     * 
+     */
     private String type;
 
     private GetServiceStatusCondition() {}
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     public String message() {
         return this.message;
     }
+    /**
+     * @return One-word CamelCase reason for the condition&#39;s current status.
+     * 
+     */
     public String reason() {
         return this.reason;
     }
+    /**
+     * @return Status of the condition, one of True, False, Unknown.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return Type of domain mapping condition.
+     * 
+     */
     public String type() {
         return this.type;
     }

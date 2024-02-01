@@ -13,13 +13,37 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromTemplateBootDiskInitializeParams
     {
+        /// <summary>
+        /// A flag to enable confidential compute mode on boot disk
+        /// </summary>
         public readonly bool? EnableConfidentialCompute;
+        /// <summary>
+        /// The image from which this disk was initialised.
+        /// </summary>
         public readonly string? Image;
+        /// <summary>
+        /// A set of key/value label pairs assigned to the disk.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
+        /// <summary>
+        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        /// </summary>
         public readonly int? ProvisionedIops;
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// </summary>
         public readonly int? ProvisionedThroughput;
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
+        /// <summary>
+        /// The size of the image in gigabytes.
+        /// </summary>
         public readonly int? Size;
+        /// <summary>
+        /// The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

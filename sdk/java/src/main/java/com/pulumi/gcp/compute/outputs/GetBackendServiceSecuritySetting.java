@@ -11,13 +11,37 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceSecuritySetting {
+    /**
+     * @return ClientTlsPolicy is a resource that specifies how a client should authenticate
+     * connections to backends of a service. This resource itself does not affect
+     * configuration unless it is attached to a backend service resource.
+     * 
+     */
     private String clientTlsPolicy;
+    /**
+     * @return A list of alternate names to verify the subject identity in the certificate.
+     * If specified, the client will verify that the server certificate&#39;s subject
+     * alt name matches one of the specified values.
+     * 
+     */
     private List<String> subjectAltNames;
 
     private GetBackendServiceSecuritySetting() {}
+    /**
+     * @return ClientTlsPolicy is a resource that specifies how a client should authenticate
+     * connections to backends of a service. This resource itself does not affect
+     * configuration unless it is attached to a backend service resource.
+     * 
+     */
     public String clientTlsPolicy() {
         return this.clientTlsPolicy;
     }
+    /**
+     * @return A list of alternate names to verify the subject identity in the certificate.
+     * If specified, the client will verify that the server certificate&#39;s subject
+     * alt name matches one of the specified values.
+     * 
+     */
     public List<String> subjectAltNames() {
         return this.subjectAltNames;
     }

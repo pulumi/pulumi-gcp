@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult
     {
+        /// <summary>
+        /// Name for pod secondary ipv4 range which has the actual range defined ahead.
+        /// </summary>
         public readonly ImmutableArray<string> PodRangeNames;
 
         [OutputConstructor]

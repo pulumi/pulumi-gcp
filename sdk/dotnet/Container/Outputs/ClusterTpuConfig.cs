@@ -17,7 +17,13 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+        /// </summary>
         public readonly string? Ipv4CidrBlock;
+        /// <summary>
+        /// Whether to use service networking for Cloud TPU or not
+        /// </summary>
         public readonly bool? UseServiceNetworking;
 
         [OutputConstructor]

@@ -13,11 +13,17 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerPortResult
     {
+        /// <summary>
+        /// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
+        /// </summary>
         public readonly int ContainerPort;
         /// <summary>
         /// The name of the Cloud Run Service.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Protocol for port. Must be "TCP". Defaults to "TCP".
+        /// </summary>
         public readonly string Protocol;
 
         [OutputConstructor]

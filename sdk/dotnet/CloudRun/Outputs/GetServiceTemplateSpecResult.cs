@@ -13,11 +13,40 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecResult
     {
+        /// <summary>
+        /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
+        /// requests per container of the Revision. Values are:
+        /// - '0' thread-safe, the system should manage the max concurrency. This is
+        ///     the default value.
+        /// - '1' not-thread-safe. Single concurrency
+        /// - '2-N' thread-safe, max concurrency of N
+        /// </summary>
         public readonly int ContainerConcurrency;
+        /// <summary>
+        /// Containers defines the unit of execution for this Revision.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerResult> Containers;
+        /// <summary>
+        /// Email address of the IAM service account associated with the revision of the
+        /// service. The service account represents the identity of the running revision,
+        /// and determines what permissions the revision has. If not provided, the revision
+        /// will use the project's default service account.
+        /// </summary>
         public readonly string ServiceAccountName;
+        /// <summary>
+        /// ServingState holds a value describing the state the resources
+        /// are in for this Revision.
+        /// It is expected
+        /// that the system will manipulate this based on routability and load.
+        /// </summary>
         public readonly string ServingState;
+        /// <summary>
+        /// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+        /// </summary>
         public readonly int TimeoutSeconds;
+        /// <summary>
+        /// Volume represents a named volume in a container.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecVolumeResult> Volumes;
 
         [OutputConstructor]

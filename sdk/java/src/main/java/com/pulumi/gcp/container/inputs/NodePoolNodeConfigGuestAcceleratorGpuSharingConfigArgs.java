@@ -15,16 +15,32 @@ public final class NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs extend
 
     public static final NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs Empty = new NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs();
 
+    /**
+     * The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+     * 
+     */
     @Import(name="gpuSharingStrategy", required=true)
     private Output<String> gpuSharingStrategy;
 
+    /**
+     * @return The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+     * 
+     */
     public Output<String> gpuSharingStrategy() {
         return this.gpuSharingStrategy;
     }
 
+    /**
+     * The maximum number of containers that can share a GPU.
+     * 
+     */
     @Import(name="maxSharedClientsPerGpu", required=true)
     private Output<Integer> maxSharedClientsPerGpu;
 
+    /**
+     * @return The maximum number of containers that can share a GPU.
+     * 
+     */
     public Output<Integer> maxSharedClientsPerGpu() {
         return this.maxSharedClientsPerGpu;
     }
@@ -54,20 +70,44 @@ public final class NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs extend
             $ = new NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gpuSharingStrategy The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuSharingStrategy(Output<String> gpuSharingStrategy) {
             $.gpuSharingStrategy = gpuSharingStrategy;
             return this;
         }
 
+        /**
+         * @param gpuSharingStrategy The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuSharingStrategy(String gpuSharingStrategy) {
             return gpuSharingStrategy(Output.of(gpuSharingStrategy));
         }
 
+        /**
+         * @param maxSharedClientsPerGpu The maximum number of containers that can share a GPU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxSharedClientsPerGpu(Output<Integer> maxSharedClientsPerGpu) {
             $.maxSharedClientsPerGpu = maxSharedClientsPerGpu;
             return this;
         }
 
+        /**
+         * @param maxSharedClientsPerGpu The maximum number of containers that can share a GPU.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxSharedClientsPerGpu(Integer maxSharedClientsPerGpu) {
             return maxSharedClientsPerGpu(Output.of(maxSharedClientsPerGpu));
         }

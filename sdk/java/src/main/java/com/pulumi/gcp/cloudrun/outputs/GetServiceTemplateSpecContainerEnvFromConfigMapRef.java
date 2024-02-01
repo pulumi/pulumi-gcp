@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvFromConfigMapRef {
+    /**
+     * @return The ConfigMap to select from.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference> localObjectReferences;
+    /**
+     * @return Specify whether the ConfigMap must be defined
+     * 
+     */
     private Boolean optional;
 
     private GetServiceTemplateSpecContainerEnvFromConfigMapRef() {}
+    /**
+     * @return The ConfigMap to select from.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference> localObjectReferences() {
         return this.localObjectReferences;
     }
+    /**
+     * @return Specify whether the ConfigMap must be defined
+     * 
+     */
     public Boolean optional() {
         return this.optional;
     }

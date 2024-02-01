@@ -39,7 +39,15 @@ public final class NodePoolNetworkConfig {
      * 
      */
     private @Nullable Boolean enablePrivateNodes;
+    /**
+     * @return Network bandwidth tier configuration.
+     * 
+     */
     private @Nullable NodePoolNetworkConfigNetworkPerformanceConfig networkPerformanceConfig;
+    /**
+     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * 
+     */
     private @Nullable NodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
     /**
      * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -83,9 +91,17 @@ public final class NodePoolNetworkConfig {
     public Optional<Boolean> enablePrivateNodes() {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
+    /**
+     * @return Network bandwidth tier configuration.
+     * 
+     */
     public Optional<NodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfig() {
         return Optional.ofNullable(this.networkPerformanceConfig);
     }
+    /**
+     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * 
+     */
     public Optional<NodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfig() {
         return Optional.ofNullable(this.podCidrOverprovisionConfig);
     }

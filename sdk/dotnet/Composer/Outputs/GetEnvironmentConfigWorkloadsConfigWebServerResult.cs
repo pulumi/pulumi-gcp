@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigWorkloadsConfigWebServerResult
     {
+        /// <summary>
+        /// CPU request and limit for Airflow web server.
+        /// </summary>
         public readonly double Cpu;
+        /// <summary>
+        /// Memory (GB) request and limit for Airflow web server.
+        /// </summary>
         public readonly double MemoryGb;
+        /// <summary>
+        /// Storage (GB) request and limit for Airflow web server.
+        /// </summary>
         public readonly double StorageGb;
 
         [OutputConstructor]

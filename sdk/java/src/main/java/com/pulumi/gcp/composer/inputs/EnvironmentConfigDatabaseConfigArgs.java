@@ -15,16 +15,32 @@ public final class EnvironmentConfigDatabaseConfigArgs extends com.pulumi.resour
 
     public static final EnvironmentConfigDatabaseConfigArgs Empty = new EnvironmentConfigDatabaseConfigArgs();
 
+    /**
+     * Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+     * 
+     */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
+    /**
+     * @return Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+     * 
+     */
     public Optional<Output<String>> machineType() {
         return Optional.ofNullable(this.machineType);
     }
 
+    /**
+     * Optional. Cloud SQL database preferred zone.
+     * 
+     */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
+    /**
+     * @return Optional. Cloud SQL database preferred zone.
+     * 
+     */
     public Optional<Output<String>> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -54,20 +70,44 @@ public final class EnvironmentConfigDatabaseConfigArgs extends com.pulumi.resour
             $ = new EnvironmentConfigDatabaseConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param machineType Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder machineType(@Nullable Output<String> machineType) {
             $.machineType = machineType;
             return this;
         }
 
+        /**
+         * @param machineType Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder machineType(String machineType) {
             return machineType(Output.of(machineType));
         }
 
+        /**
+         * @param zone Optional. Cloud SQL database preferred zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(@Nullable Output<String> zone) {
             $.zone = zone;
             return this;
         }
 
+        /**
+         * @param zone Optional. Cloud SQL database preferred zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder zone(String zone) {
             return zone(Output.of(zone));
         }

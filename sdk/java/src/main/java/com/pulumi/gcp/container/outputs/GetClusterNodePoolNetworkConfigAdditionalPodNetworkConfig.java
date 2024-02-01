@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+    /**
+     * @return The maximum number of pods per node which use this pod network.
+     * 
+     */
     private Integer maxPodsPerNode;
+    /**
+     * @return The name of the secondary range on the subnet which provides IP address for this pod range.
+     * 
+     */
     private String secondaryPodRange;
+    /**
+     * @return Name of the subnetwork where the additional pod network belongs.
+     * 
+     */
     private String subnetwork;
 
     private GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig() {}
+    /**
+     * @return The maximum number of pods per node which use this pod network.
+     * 
+     */
     public Integer maxPodsPerNode() {
         return this.maxPodsPerNode;
     }
+    /**
+     * @return The name of the secondary range on the subnet which provides IP address for this pod range.
+     * 
+     */
     public String secondaryPodRange() {
         return this.secondaryPodRange;
     }
+    /**
+     * @return Name of the subnetwork where the additional pod network belongs.
+     * 
+     */
     public String subnetwork() {
         return this.subnetwork;
     }

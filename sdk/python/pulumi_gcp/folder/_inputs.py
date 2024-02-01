@@ -280,6 +280,7 @@ class OrganizationPolicyListPolicyArgs:
                  suggested_value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['OrganizationPolicyListPolicyAllowArgs'] allow: or `deny` - (Optional) One or the other must be set.
+        :param pulumi.Input['OrganizationPolicyListPolicyDenyArgs'] deny: One or the other must be set.
         :param pulumi.Input[bool] inherit_from_parent: If set to true, the values from the effective Policy of the parent resource
                are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
                
@@ -310,6 +311,9 @@ class OrganizationPolicyListPolicyArgs:
     @property
     @pulumi.getter
     def deny(self) -> Optional[pulumi.Input['OrganizationPolicyListPolicyDenyArgs']]:
+        """
+        One or the other must be set.
+        """
         return pulumi.get(self, "deny")
 
     @deny.setter

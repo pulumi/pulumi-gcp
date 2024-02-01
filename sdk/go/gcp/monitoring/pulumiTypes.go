@@ -11808,8 +11808,11 @@ func (o GetMeshIstioServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetMes
 }
 
 type GetNotificationChannelSensitiveLabel struct {
-	AuthToken  string `pulumi:"authToken"`
-	Password   string `pulumi:"password"`
+	// An authorization token for a notification channel. Channel types that support this field include: slack
+	AuthToken string `pulumi:"authToken"`
+	// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+	Password string `pulumi:"password"`
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 	ServiceKey string `pulumi:"serviceKey"`
 }
 
@@ -11825,8 +11828,11 @@ type GetNotificationChannelSensitiveLabelInput interface {
 }
 
 type GetNotificationChannelSensitiveLabelArgs struct {
-	AuthToken  pulumi.StringInput `pulumi:"authToken"`
-	Password   pulumi.StringInput `pulumi:"password"`
+	// An authorization token for a notification channel. Channel types that support this field include: slack
+	AuthToken pulumi.StringInput `pulumi:"authToken"`
+	// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+	Password pulumi.StringInput `pulumi:"password"`
+	// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 	ServiceKey pulumi.StringInput `pulumi:"serviceKey"`
 }
 
@@ -11881,14 +11887,17 @@ func (o GetNotificationChannelSensitiveLabelOutput) ToGetNotificationChannelSens
 	return o
 }
 
+// An authorization token for a notification channel. Channel types that support this field include: slack
 func (o GetNotificationChannelSensitiveLabelOutput) AuthToken() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.AuthToken }).(pulumi.StringOutput)
 }
 
+// An password for a notification channel. Channel types that support this field include: webhook_basicauth
 func (o GetNotificationChannelSensitiveLabelOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.Password }).(pulumi.StringOutput)
 }
 
+// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
 func (o GetNotificationChannelSensitiveLabelOutput) ServiceKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNotificationChannelSensitiveLabel) string { return v.ServiceKey }).(pulumi.StringOutput)
 }

@@ -78,9 +78,17 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.clusterSecondaryRangeName);
     }
 
+    /**
+     * Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * 
+     */
     @Import(name="podCidrOverprovisionConfig")
     private @Nullable Output<ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig;
 
+    /**
+     * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * 
+     */
     public Optional<Output<ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs>> podCidrOverprovisionConfig() {
         return Optional.ofNullable(this.podCidrOverprovisionConfig);
     }
@@ -257,11 +265,23 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
             return clusterSecondaryRangeName(Output.of(clusterSecondaryRangeName));
         }
 
+        /**
+         * @param podCidrOverprovisionConfig Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder podCidrOverprovisionConfig(@Nullable Output<ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig) {
             $.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             return this;
         }
 
+        /**
+         * @param podCidrOverprovisionConfig Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder podCidrOverprovisionConfig(ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs podCidrOverprovisionConfig) {
             return podCidrOverprovisionConfig(Output.of(podCidrOverprovisionConfig));
         }

@@ -844,6 +844,13 @@ class GetClusterNodeTypeConfigResult(dict):
                  custom_core_count: int,
                  node_count: int,
                  node_type_id: str):
+        """
+        :param int custom_core_count: Customized number of cores available to each node of the type.
+               This number must always be one of 'nodeType.availableCustomCoreCounts'.
+               If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+               Once the customer is created then corecount cannot be changed.
+        :param int node_count: The number of nodes of this type in the cluster.
+        """
         pulumi.set(__self__, "custom_core_count", custom_core_count)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "node_type_id", node_type_id)
@@ -851,11 +858,20 @@ class GetClusterNodeTypeConfigResult(dict):
     @property
     @pulumi.getter(name="customCoreCount")
     def custom_core_count(self) -> int:
+        """
+        Customized number of cores available to each node of the type.
+        This number must always be one of 'nodeType.availableCustomCoreCounts'.
+        If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+        Once the customer is created then corecount cannot be changed.
+        """
         return pulumi.get(self, "custom_core_count")
 
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> int:
+        """
+        The number of nodes of this type in the cluster.
+        """
         return pulumi.get(self, "node_count")
 
     @property
@@ -869,17 +885,27 @@ class GetExternalAccessRuleDestinationIpRangeResult(dict):
     def __init__(__self__, *,
                  external_address: str,
                  ip_address_range: str):
+        """
+        :param str external_address: The name of an 'ExternalAddress' resource.
+        :param str ip_address_range: An IP address range in the CIDR format.
+        """
         pulumi.set(__self__, "external_address", external_address)
         pulumi.set(__self__, "ip_address_range", ip_address_range)
 
     @property
     @pulumi.getter(name="externalAddress")
     def external_address(self) -> str:
+        """
+        The name of an 'ExternalAddress' resource.
+        """
         return pulumi.get(self, "external_address")
 
     @property
     @pulumi.getter(name="ipAddressRange")
     def ip_address_range(self) -> str:
+        """
+        An IP address range in the CIDR format.
+        """
         return pulumi.get(self, "ip_address_range")
 
 
@@ -888,17 +914,27 @@ class GetExternalAccessRuleSourceIpRangeResult(dict):
     def __init__(__self__, *,
                  ip_address: str,
                  ip_address_range: str):
+        """
+        :param str ip_address: A single IP address.
+        :param str ip_address_range: An IP address range in the CIDR format.
+        """
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ip_address_range", ip_address_range)
 
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
+        """
+        A single IP address.
+        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter(name="ipAddressRange")
     def ip_address_range(self) -> str:
+        """
+        An IP address range in the CIDR format.
+        """
         return pulumi.get(self, "ip_address_range")
 
 
@@ -907,17 +943,27 @@ class GetNetworkPolicyExternalIpResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  state: str):
+        """
+        :param bool enabled: True if the service is enabled; false otherwise.
+        :param str state: State of the service. New values may be added to this enum when appropriate.
+        """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        True if the service is enabled; false otherwise.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the service. New values may be added to this enum when appropriate.
+        """
         return pulumi.get(self, "state")
 
 
@@ -926,17 +972,27 @@ class GetNetworkPolicyInternetAccessResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  state: str):
+        """
+        :param bool enabled: True if the service is enabled; false otherwise.
+        :param str state: State of the service. New values may be added to this enum when appropriate.
+        """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        True if the service is enabled; false otherwise.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the service. New values may be added to this enum when appropriate.
+        """
         return pulumi.get(self, "state")
 
 
@@ -945,17 +1001,29 @@ class GetNetworkVpcNetworkResult(dict):
     def __init__(__self__, *,
                  network: str,
                  type: str):
+        """
+        :param str network: The relative resource name of the service VPC network this VMware Engine network is attached to.
+               For example: projects/123123/global/networks/my-network
+        :param str type: Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
+        """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def network(self) -> str:
+        """
+        The relative resource name of the service VPC network this VMware Engine network is attached to.
+        For example: projects/123123/global/networks/my-network
+        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
+        """
         return pulumi.get(self, "type")
 
 
@@ -966,6 +1034,12 @@ class GetPrivateCloudHcxResult(dict):
                  internal_ip: str,
                  state: str,
                  version: str):
+        """
+        :param str fqdn: Fully qualified domain name of the appliance.
+        :param str internal_ip: Internal IP address of the appliance.
+        :param str state: State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+        :param str version: Version of the appliance.
+        """
         pulumi.set(__self__, "fqdn", fqdn)
         pulumi.set(__self__, "internal_ip", internal_ip)
         pulumi.set(__self__, "state", state)
@@ -974,21 +1048,33 @@ class GetPrivateCloudHcxResult(dict):
     @property
     @pulumi.getter
     def fqdn(self) -> str:
+        """
+        Fully qualified domain name of the appliance.
+        """
         return pulumi.get(self, "fqdn")
 
     @property
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> str:
+        """
+        Internal IP address of the appliance.
+        """
         return pulumi.get(self, "internal_ip")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        Version of the appliance.
+        """
         return pulumi.get(self, "version")
 
 
@@ -997,17 +1083,39 @@ class GetPrivateCloudManagementClusterResult(dict):
     def __init__(__self__, *,
                  cluster_id: str,
                  node_type_configs: Sequence['outputs.GetPrivateCloudManagementClusterNodeTypeConfigResult']):
+        """
+        :param str cluster_id: The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+                 * Only contains 1-63 alphanumeric characters and hyphens
+                 * Begins with an alphabetical character
+                 * Ends with a non-hyphen character
+                 * Not formatted as a UUID
+                 * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        :param Sequence['GetPrivateCloudManagementClusterNodeTypeConfigArgs'] node_type_configs: The map of cluster node types in this cluster,
+               where the key is canonical identifier of the node type (corresponds to the NodeType).
+        """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "node_type_configs", node_type_configs)
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
+        """
+        The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+          * Only contains 1-63 alphanumeric characters and hyphens
+          * Begins with an alphabetical character
+          * Ends with a non-hyphen character
+          * Not formatted as a UUID
+          * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="nodeTypeConfigs")
     def node_type_configs(self) -> Sequence['outputs.GetPrivateCloudManagementClusterNodeTypeConfigResult']:
+        """
+        The map of cluster node types in this cluster,
+        where the key is canonical identifier of the node type (corresponds to the NodeType).
+        """
         return pulumi.get(self, "node_type_configs")
 
 
@@ -1017,6 +1125,13 @@ class GetPrivateCloudManagementClusterNodeTypeConfigResult(dict):
                  custom_core_count: int,
                  node_count: int,
                  node_type_id: str):
+        """
+        :param int custom_core_count: Customized number of cores available to each node of the type.
+               This number must always be one of 'nodeType.availableCustomCoreCounts'.
+               If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+               This cannot be changed once the PrivateCloud is created.
+        :param int node_count: The number of nodes of this type in the cluster.
+        """
         pulumi.set(__self__, "custom_core_count", custom_core_count)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "node_type_id", node_type_id)
@@ -1024,11 +1139,20 @@ class GetPrivateCloudManagementClusterNodeTypeConfigResult(dict):
     @property
     @pulumi.getter(name="customCoreCount")
     def custom_core_count(self) -> int:
+        """
+        Customized number of cores available to each node of the type.
+        This number must always be one of 'nodeType.availableCustomCoreCounts'.
+        If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+        This cannot be changed once the PrivateCloud is created.
+        """
         return pulumi.get(self, "custom_core_count")
 
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> int:
+        """
+        The number of nodes of this type in the cluster.
+        """
         return pulumi.get(self, "node_count")
 
     @property
@@ -1045,6 +1169,21 @@ class GetPrivateCloudNetworkConfigResult(dict):
                  management_ip_address_layout_version: int,
                  vmware_engine_network: str,
                  vmware_engine_network_canonical: str):
+        """
+        :param str dns_server_ip: DNS Server IP of the Private Cloud.
+        :param str management_cidr: Management CIDR used by VMware management appliances.
+        :param int management_ip_address_layout_version: The IP address layout version of the management IP address range.
+               Possible versions include:
+               * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+               as it does not support all features.
+               * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+               used by all newly created private clouds. This version supports all current features.
+        :param str vmware_engine_network: The relative resource name of the VMware Engine network attached to the private cloud.
+               Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+               where {project} can either be a project number or a project ID.
+        :param str vmware_engine_network_canonical: The canonical name of the VMware Engine network in
+               the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+        """
         pulumi.set(__self__, "dns_server_ip", dns_server_ip)
         pulumi.set(__self__, "management_cidr", management_cidr)
         pulumi.set(__self__, "management_ip_address_layout_version", management_ip_address_layout_version)
@@ -1054,26 +1193,49 @@ class GetPrivateCloudNetworkConfigResult(dict):
     @property
     @pulumi.getter(name="dnsServerIp")
     def dns_server_ip(self) -> str:
+        """
+        DNS Server IP of the Private Cloud.
+        """
         return pulumi.get(self, "dns_server_ip")
 
     @property
     @pulumi.getter(name="managementCidr")
     def management_cidr(self) -> str:
+        """
+        Management CIDR used by VMware management appliances.
+        """
         return pulumi.get(self, "management_cidr")
 
     @property
     @pulumi.getter(name="managementIpAddressLayoutVersion")
     def management_ip_address_layout_version(self) -> int:
+        """
+        The IP address layout version of the management IP address range.
+        Possible versions include:
+        * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+        as it does not support all features.
+        * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+        used by all newly created private clouds. This version supports all current features.
+        """
         return pulumi.get(self, "management_ip_address_layout_version")
 
     @property
     @pulumi.getter(name="vmwareEngineNetwork")
     def vmware_engine_network(self) -> str:
+        """
+        The relative resource name of the VMware Engine network attached to the private cloud.
+        Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+        where {project} can either be a project number or a project ID.
+        """
         return pulumi.get(self, "vmware_engine_network")
 
     @property
     @pulumi.getter(name="vmwareEngineNetworkCanonical")
     def vmware_engine_network_canonical(self) -> str:
+        """
+        The canonical name of the VMware Engine network in
+        the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+        """
         return pulumi.get(self, "vmware_engine_network_canonical")
 
 
@@ -1084,6 +1246,12 @@ class GetPrivateCloudNsxResult(dict):
                  internal_ip: str,
                  state: str,
                  version: str):
+        """
+        :param str fqdn: Fully qualified domain name of the appliance.
+        :param str internal_ip: Internal IP address of the appliance.
+        :param str state: State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+        :param str version: Version of the appliance.
+        """
         pulumi.set(__self__, "fqdn", fqdn)
         pulumi.set(__self__, "internal_ip", internal_ip)
         pulumi.set(__self__, "state", state)
@@ -1092,21 +1260,33 @@ class GetPrivateCloudNsxResult(dict):
     @property
     @pulumi.getter
     def fqdn(self) -> str:
+        """
+        Fully qualified domain name of the appliance.
+        """
         return pulumi.get(self, "fqdn")
 
     @property
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> str:
+        """
+        Internal IP address of the appliance.
+        """
         return pulumi.get(self, "internal_ip")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        Version of the appliance.
+        """
         return pulumi.get(self, "version")
 
 
@@ -1117,6 +1297,12 @@ class GetPrivateCloudVcenterResult(dict):
                  internal_ip: str,
                  state: str,
                  version: str):
+        """
+        :param str fqdn: Fully qualified domain name of the appliance.
+        :param str internal_ip: Internal IP address of the appliance.
+        :param str state: State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+        :param str version: Version of the appliance.
+        """
         pulumi.set(__self__, "fqdn", fqdn)
         pulumi.set(__self__, "internal_ip", internal_ip)
         pulumi.set(__self__, "state", state)
@@ -1125,21 +1311,33 @@ class GetPrivateCloudVcenterResult(dict):
     @property
     @pulumi.getter
     def fqdn(self) -> str:
+        """
+        Fully qualified domain name of the appliance.
+        """
         return pulumi.get(self, "fqdn")
 
     @property
     @pulumi.getter(name="internalIp")
     def internal_ip(self) -> str:
+        """
+        Internal IP address of the appliance.
+        """
         return pulumi.get(self, "internal_ip")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        Version of the appliance.
+        """
         return pulumi.get(self, "version")
 
 
@@ -1148,17 +1346,27 @@ class GetSubnetDhcpAddressRangeResult(dict):
     def __init__(__self__, *,
                  first_address: str,
                  last_address: str):
+        """
+        :param str first_address: The first IP address of the range.
+        :param str last_address: The last IP address of the range.
+        """
         pulumi.set(__self__, "first_address", first_address)
         pulumi.set(__self__, "last_address", last_address)
 
     @property
     @pulumi.getter(name="firstAddress")
     def first_address(self) -> str:
+        """
+        The first IP address of the range.
+        """
         return pulumi.get(self, "first_address")
 
     @property
     @pulumi.getter(name="lastAddress")
     def last_address(self) -> str:
+        """
+        The last IP address of the range.
+        """
         return pulumi.get(self, "last_address")
 
 

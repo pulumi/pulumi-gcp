@@ -11,17 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHcVpnGatewayVpnInterface {
+    /**
+     * @return The numeric ID of this VPN gateway interface.
+     * 
+     */
     private Integer id;
+    /**
+     * @return URL of the interconnect attachment resource. When the value
+     * of this field is present, the VPN Gateway will be used for
+     * IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+     * traffic for this VPN Gateway interface will go through the
+     * specified interconnect attachment resource.
+     * 
+     * Not currently available publicly.
+     * 
+     */
     private String interconnectAttachment;
+    /**
+     * @return The external IP address for this VPN gateway interface.
+     * 
+     */
     private String ipAddress;
 
     private GetHcVpnGatewayVpnInterface() {}
+    /**
+     * @return The numeric ID of this VPN gateway interface.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
+    /**
+     * @return URL of the interconnect attachment resource. When the value
+     * of this field is present, the VPN Gateway will be used for
+     * IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+     * traffic for this VPN Gateway interface will go through the
+     * specified interconnect attachment resource.
+     * 
+     * Not currently available publicly.
+     * 
+     */
     public String interconnectAttachment() {
         return this.interconnectAttachment;
     }
+    /**
+     * @return The external IP address for this VPN gateway interface.
+     * 
+     */
     public String ipAddress() {
         return this.ipAddress;
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigYumRepositoryResult
     {
+        /// <summary>
+        /// One of the publicly available Yum repositories supported by Artifact Registry.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult> PublicRepositories;
 
         [OutputConstructor]

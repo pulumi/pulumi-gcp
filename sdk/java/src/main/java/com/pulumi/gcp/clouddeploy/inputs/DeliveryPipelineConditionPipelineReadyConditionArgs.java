@@ -16,9 +16,17 @@ public final class DeliveryPipelineConditionPipelineReadyConditionArgs extends c
 
     public static final DeliveryPipelineConditionPipelineReadyConditionArgs Empty = new DeliveryPipelineConditionPipelineReadyConditionArgs();
 
+    /**
+     * True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<Boolean> status;
 
+    /**
+     * @return True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+     * 
+     */
     public Optional<Output<Boolean>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -63,11 +71,23 @@ public final class DeliveryPipelineConditionPipelineReadyConditionArgs extends c
             $ = new DeliveryPipelineConditionPipelineReadyConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param status True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<Boolean> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(Boolean status) {
             return status(Output.of(status));
         }

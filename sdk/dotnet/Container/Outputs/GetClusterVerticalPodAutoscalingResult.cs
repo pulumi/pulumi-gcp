@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterVerticalPodAutoscalingResult
     {
+        /// <summary>
+        /// Enables vertical pod autoscaling.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

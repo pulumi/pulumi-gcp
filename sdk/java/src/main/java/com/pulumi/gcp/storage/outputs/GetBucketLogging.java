@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketLogging {
+    /**
+     * @return The bucket that will receive log objects.
+     * 
+     */
     private String logBucket;
+    /**
+     * @return The object prefix for log objects. If it&#39;s not provided, by default Google Cloud Storage sets this to this bucket&#39;s name.
+     * 
+     */
     private String logObjectPrefix;
 
     private GetBucketLogging() {}
+    /**
+     * @return The bucket that will receive log objects.
+     * 
+     */
     public String logBucket() {
         return this.logBucket;
     }
+    /**
+     * @return The object prefix for log objects. If it&#39;s not provided, by default Google Cloud Storage sets this to this bucket&#39;s name.
+     * 
+     */
     public String logObjectPrefix() {
         return this.logObjectPrefix;
     }

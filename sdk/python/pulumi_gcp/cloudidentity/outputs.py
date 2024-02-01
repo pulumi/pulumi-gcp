@@ -393,12 +393,14 @@ class GetGroupMembershipsMembershipResult(dict):
                  type: str,
                  update_time: str):
         """
+        :param str create_time: The time when the Membership was created.
         :param str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
         :param Sequence['GetGroupMembershipsMembershipMemberKeyArgs'] member_keys: EntityKey of the member.  Structure is documented below.
         :param str name: The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
         :param Sequence['GetGroupMembershipsMembershipPreferredMemberKeyArgs'] preferred_member_keys: EntityKey of the member.  Structure is documented below.
         :param Sequence['GetGroupMembershipsMembershipRoleArgs'] roles: The MembershipRoles that apply to the Membership. Structure is documented below.
         :param str type: The type of the membership.
+        :param str update_time: The time when the Membership was last updated.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "group", group)
@@ -412,6 +414,9 @@ class GetGroupMembershipsMembershipResult(dict):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        The time when the Membership was created.
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -465,6 +470,9 @@ class GetGroupMembershipsMembershipResult(dict):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        """
+        The time when the Membership was last updated.
+        """
         return pulumi.get(self, "update_time")
 
 
@@ -552,6 +560,8 @@ class GetGroupMembershipsMembershipRoleResult(dict):
                  expiry_details: Sequence['outputs.GetGroupMembershipsMembershipRoleExpiryDetailResult'],
                  name: str):
         """
+        :param Sequence['GetGroupMembershipsMembershipRoleExpiryDetailArgs'] expiry_details: The MembershipRole expiry details, only supported for MEMBER role.
+               Other roles cannot be accompanied with MEMBER role having expiry.
         :param str name: The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
         """
         pulumi.set(__self__, "expiry_details", expiry_details)
@@ -560,6 +570,10 @@ class GetGroupMembershipsMembershipRoleResult(dict):
     @property
     @pulumi.getter(name="expiryDetails")
     def expiry_details(self) -> Sequence['outputs.GetGroupMembershipsMembershipRoleExpiryDetailResult']:
+        """
+        The MembershipRole expiry details, only supported for MEMBER role.
+        Other roles cannot be accompanied with MEMBER role having expiry.
+        """
         return pulumi.get(self, "expiry_details")
 
     @property
@@ -575,11 +589,27 @@ class GetGroupMembershipsMembershipRoleResult(dict):
 class GetGroupMembershipsMembershipRoleExpiryDetailResult(dict):
     def __init__(__self__, *,
                  expire_time: str):
+        """
+        :param str expire_time: The time at which the MembershipRole will expire.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+               
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         pulumi.set(__self__, "expire_time", expire_time)
 
     @property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> str:
+        """
+        The time at which the MembershipRole will expire.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "expire_time")
 
 
@@ -597,14 +627,22 @@ class GetGroupsGroupResult(dict):
                  parent: str,
                  update_time: str):
         """
+        :param Sequence['GetGroupsGroupAdditionalGroupKeyArgs'] additional_group_keys: Additional group keys associated with the Group
+        :param str create_time: The time when the Group was created.
         :param str description: An extended description to help users determine the purpose of a Group.
         :param str display_name: The display name of the Group.
         :param Sequence['GetGroupsGroupGroupKeyArgs'] group_keys: EntityKey of the Group.  Structure is documented below.
+        :param str initial_group_config: The initial configuration options for creating a Group.
+               
+               See the
+               [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+               for possible values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
         :param Mapping[str, str] labels: The labels that apply to the Group.
                Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
                'system/groups/external': '' if the Group is an external-identity-mapped group.
         :param str name: Resource name of the Group in the format: groups/{group_id}, where `group_id` is the unique ID assigned to the Group.
         :param str parent: The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
+        :param str update_time: The time when the Group was last updated.
         """
         pulumi.set(__self__, "additional_group_keys", additional_group_keys)
         pulumi.set(__self__, "create_time", create_time)
@@ -620,11 +658,17 @@ class GetGroupsGroupResult(dict):
     @property
     @pulumi.getter(name="additionalGroupKeys")
     def additional_group_keys(self) -> Sequence['outputs.GetGroupsGroupAdditionalGroupKeyResult']:
+        """
+        Additional group keys associated with the Group
+        """
         return pulumi.get(self, "additional_group_keys")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        The time when the Group was created.
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -654,6 +698,13 @@ class GetGroupsGroupResult(dict):
     @property
     @pulumi.getter(name="initialGroupConfig")
     def initial_group_config(self) -> str:
+        """
+        The initial configuration options for creating a Group.
+
+        See the
+        [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        for possible values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
+        """
         return pulumi.get(self, "initial_group_config")
 
     @property
@@ -685,6 +736,9 @@ class GetGroupsGroupResult(dict):
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        """
+        The time when the Group was last updated.
+        """
         return pulumi.get(self, "update_time")
 
 

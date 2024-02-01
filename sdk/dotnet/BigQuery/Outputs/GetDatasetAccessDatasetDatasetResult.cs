@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// The dataset ID.
         /// </summary>
         public readonly string DatasetId;
+        /// <summary>
+        /// The ID of the project containing this table.
+        /// </summary>
         public readonly string ProjectId;
 
         [OutputConstructor]

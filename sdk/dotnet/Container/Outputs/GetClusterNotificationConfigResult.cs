@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNotificationConfigResult
     {
+        /// <summary>
+        /// Notification config for Cloud Pub/Sub
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNotificationConfigPubsubResult> Pubsubs;
 
         [OutputConstructor]

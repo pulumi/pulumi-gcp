@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// List of instance selection options that the group will use when creating new VMs.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList> InstanceSelectionLists;
+        /// <summary>
+        /// A list of instance selection results in the group.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> InstanceSelectionResults;
 
         [OutputConstructor]

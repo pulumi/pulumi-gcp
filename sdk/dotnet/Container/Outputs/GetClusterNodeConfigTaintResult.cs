@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodeConfigTaintResult
     {
+        /// <summary>
+        /// Effect for taint.
+        /// </summary>
         public readonly string Effect;
+        /// <summary>
+        /// Key for taint.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// Value for taint.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

@@ -15,9 +15,17 @@ public final class HubRoutingVpcArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final HubRoutingVpcArgs Empty = new HubRoutingVpcArgs();
 
+    /**
+     * The URI of the VPC network.
+     * 
+     */
     @Import(name="uri")
     private @Nullable Output<String> uri;
 
+    /**
+     * @return The URI of the VPC network.
+     * 
+     */
     public Optional<Output<String>> uri() {
         return Optional.ofNullable(this.uri);
     }
@@ -46,11 +54,23 @@ public final class HubRoutingVpcArgs extends com.pulumi.resources.ResourceArgs {
             $ = new HubRoutingVpcArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param uri The URI of the VPC network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uri(@Nullable Output<String> uri) {
             $.uri = uri;
             return this;
         }
 
+        /**
+         * @param uri The URI of the VPC network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder uri(String uri) {
             return uri(Output.of(uri));
         }

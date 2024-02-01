@@ -10,9 +10,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatasetDefaultEncryptionConfiguration {
+    /**
+     * @return Describes the Cloud KMS encryption key that will be used to protect destination
+     * BigQuery table. The BigQuery Service Account associated with your project requires
+     * access to this encryption key.
+     * 
+     */
     private String kmsKeyName;
 
     private GetDatasetDefaultEncryptionConfiguration() {}
+    /**
+     * @return Describes the Cloud KMS encryption key that will be used to protect destination
+     * BigQuery table. The BigQuery Service Account associated with your project requires
+     * access to this encryption key.
+     * 
+     */
     public String kmsKeyName() {
         return this.kmsKeyName;
     }

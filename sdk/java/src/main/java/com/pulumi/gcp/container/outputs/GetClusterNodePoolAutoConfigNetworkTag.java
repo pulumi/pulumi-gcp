@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolAutoConfigNetworkTag {
+    /**
+     * @return List of network tags applied to auto-provisioned node pools.
+     * 
+     */
     private List<String> tags;
 
     private GetClusterNodePoolAutoConfigNetworkTag() {}
+    /**
+     * @return List of network tags applied to auto-provisioned node pools.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }

@@ -62,6 +62,10 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable String diskType;
+    /**
+     * @return List of kubernetes taints applied to each node.
+     * 
+     */
     private @Nullable List<ClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints;
     /**
      * @return Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
@@ -199,6 +203,10 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigGvnic gvnic;
+    /**
+     * @return The maintenance policy for the hosts on which the GKE VMs run on.
+     * 
+     */
     private @Nullable ClusterNodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
     /**
      * @return The image type to use for this node. Note that changing the image type
@@ -318,6 +326,10 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable Map<String,String> resourceLabels;
+    /**
+     * @return Sandbox configuration for this node.
+     * 
+     */
     private @Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig;
     /**
      * @return The service account to be used by the Node VMs.
@@ -428,6 +440,10 @@ public final class ClusterNodePoolNodeConfig {
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
+    /**
+     * @return List of kubernetes taints applied to each node.
+     * 
+     */
     public List<ClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints() {
         return this.effectiveTaints == null ? List.of() : this.effectiveTaints;
     }
@@ -581,6 +597,10 @@ public final class ClusterNodePoolNodeConfig {
     public Optional<ClusterNodePoolNodeConfigGvnic> gvnic() {
         return Optional.ofNullable(this.gvnic);
     }
+    /**
+     * @return The maintenance policy for the hosts on which the GKE VMs run on.
+     * 
+     */
     public Optional<ClusterNodePoolNodeConfigHostMaintenancePolicy> hostMaintenancePolicy() {
         return Optional.ofNullable(this.hostMaintenancePolicy);
     }
@@ -732,6 +752,10 @@ public final class ClusterNodePoolNodeConfig {
     public Map<String,String> resourceLabels() {
         return this.resourceLabels == null ? Map.of() : this.resourceLabels;
     }
+    /**
+     * @return Sandbox configuration for this node.
+     * 
+     */
     public Optional<ClusterNodePoolNodeConfigSandboxConfig> sandboxConfig() {
         return Optional.ofNullable(this.sandboxConfig);
     }

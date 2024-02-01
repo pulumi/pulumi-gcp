@@ -10,21 +10,55 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerPubsubConfig {
+    /**
+     * @return Service account that will make the push request.
+     * 
+     */
     private String serviceAccountEmail;
+    /**
+     * @return Potential issues with the underlying Pub/Sub subscription configuration.
+     * Only populated on get requests.
+     * 
+     */
     private String state;
+    /**
+     * @return Output only. Name of the subscription.
+     * 
+     */
     private String subscription;
+    /**
+     * @return The name of the topic from which this subscription is receiving messages.
+     * 
+     */
     private String topic;
 
     private GetTriggerPubsubConfig() {}
+    /**
+     * @return Service account that will make the push request.
+     * 
+     */
     public String serviceAccountEmail() {
         return this.serviceAccountEmail;
     }
+    /**
+     * @return Potential issues with the underlying Pub/Sub subscription configuration.
+     * Only populated on get requests.
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return Output only. Name of the subscription.
+     * 
+     */
     public String subscription() {
         return this.subscription;
     }
+    /**
+     * @return The name of the topic from which this subscription is receiving messages.
+     * 
+     */
     public String topic() {
         return this.topic;
     }

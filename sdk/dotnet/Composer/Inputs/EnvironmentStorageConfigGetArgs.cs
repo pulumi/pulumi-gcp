@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentStorageConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+        /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 

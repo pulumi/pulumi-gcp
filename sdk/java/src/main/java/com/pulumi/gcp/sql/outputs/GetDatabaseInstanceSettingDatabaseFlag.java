@@ -15,6 +15,10 @@ public final class GetDatabaseInstanceSettingDatabaseFlag {
      * 
      */
     private String name;
+    /**
+     * @return Value of the flag.
+     * 
+     */
     private String value;
 
     private GetDatabaseInstanceSettingDatabaseFlag() {}
@@ -25,6 +29,10 @@ public final class GetDatabaseInstanceSettingDatabaseFlag {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Value of the flag.
+     * 
+     */
     public String value() {
         return this.value;
     }

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigGvnic {
+    /**
+     * @return Whether or not gvnic is enabled
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterNodeConfigGvnic() {}
+    /**
+     * @return Whether or not gvnic is enabled
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

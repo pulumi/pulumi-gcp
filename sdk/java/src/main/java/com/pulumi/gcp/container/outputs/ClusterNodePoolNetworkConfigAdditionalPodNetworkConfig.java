@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+    /**
+     * @return The maximum number of pods per node which use this pod network.
+     * 
+     */
     private @Nullable Integer maxPodsPerNode;
+    /**
+     * @return The name of the secondary range on the subnet which provides IP address for this pod range.
+     * 
+     */
     private @Nullable String secondaryPodRange;
     /**
      * @return The name or self_link of the Google Compute Engine
@@ -22,9 +30,17 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
     private @Nullable String subnetwork;
 
     private ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig() {}
+    /**
+     * @return The maximum number of pods per node which use this pod network.
+     * 
+     */
     public Optional<Integer> maxPodsPerNode() {
         return Optional.ofNullable(this.maxPodsPerNode);
     }
+    /**
+     * @return The name of the secondary range on the subnet which provides IP address for this pod range.
+     * 
+     */
     public Optional<String> secondaryPodRange() {
         return Optional.ofNullable(this.secondaryPodRange);
     }

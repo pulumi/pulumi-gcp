@@ -177,7 +177,8 @@ type GetConnectorSubnet struct {
 	// Name of the resource.
 	//
 	// ***
-	Name      string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -196,7 +197,8 @@ type GetConnectorSubnetArgs struct {
 	// Name of the resource.
 	//
 	// ***
-	Name      pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -258,6 +260,7 @@ func (o GetConnectorSubnetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorSubnet) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
 func (o GetConnectorSubnetOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectorSubnet) string { return v.ProjectId }).(pulumi.StringOutput)
 }

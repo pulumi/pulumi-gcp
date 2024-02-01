@@ -15,9 +15,17 @@ public final class RegionInstanceGroupManagerStatusAllInstancesConfigArgs extend
 
     public static final RegionInstanceGroupManagerStatusAllInstancesConfigArgs Empty = new RegionInstanceGroupManagerStatusAllInstancesConfigArgs();
 
+    /**
+     * A bit indicating whether this configuration has been applied to all managed instances in the group.
+     * 
+     */
     @Import(name="effective")
     private @Nullable Output<Boolean> effective;
 
+    /**
+     * @return A bit indicating whether this configuration has been applied to all managed instances in the group.
+     * 
+     */
     public Optional<Output<Boolean>> effective() {
         return Optional.ofNullable(this.effective);
     }
@@ -46,11 +54,23 @@ public final class RegionInstanceGroupManagerStatusAllInstancesConfigArgs extend
             $ = new RegionInstanceGroupManagerStatusAllInstancesConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param effective A bit indicating whether this configuration has been applied to all managed instances in the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effective(@Nullable Output<Boolean> effective) {
             $.effective = effective;
             return this;
         }
 
+        /**
+         * @param effective A bit indicating whether this configuration has been applied to all managed instances in the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effective(Boolean effective) {
             return effective(Output.of(effective));
         }

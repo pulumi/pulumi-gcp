@@ -244,7 +244,9 @@ func (o ManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) ManagementS
 }
 
 type GetManagementServerManagementUri struct {
-	Api   string `pulumi:"api"`
+	// The management console api endpoint.
+	Api string `pulumi:"api"`
+	// The management console webUi.
 	WebUi string `pulumi:"webUi"`
 }
 
@@ -260,7 +262,9 @@ type GetManagementServerManagementUriInput interface {
 }
 
 type GetManagementServerManagementUriArgs struct {
-	Api   pulumi.StringInput `pulumi:"api"`
+	// The management console api endpoint.
+	Api pulumi.StringInput `pulumi:"api"`
+	// The management console webUi.
 	WebUi pulumi.StringInput `pulumi:"webUi"`
 }
 
@@ -315,10 +319,12 @@ func (o GetManagementServerManagementUriOutput) ToGetManagementServerManagementU
 	return o
 }
 
+// The management console api endpoint.
 func (o GetManagementServerManagementUriOutput) Api() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagementServerManagementUri) string { return v.Api }).(pulumi.StringOutput)
 }
 
+// The management console webUi.
 func (o GetManagementServerManagementUriOutput) WebUi() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagementServerManagementUri) string { return v.WebUi }).(pulumi.StringOutput)
 }
@@ -344,7 +350,9 @@ func (o GetManagementServerManagementUriArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetManagementServerNetwork struct {
-	Network     string `pulumi:"network"`
+	// Network with format 'projects/{{project_id}}/global/networks/{{network_id}}'
+	Network string `pulumi:"network"`
+	// Type of Network peeringMode Default value: "PRIVATE_SERVICE_ACCESS" Possible values: ["PRIVATE_SERVICE_ACCESS"]
 	PeeringMode string `pulumi:"peeringMode"`
 }
 
@@ -360,7 +368,9 @@ type GetManagementServerNetworkInput interface {
 }
 
 type GetManagementServerNetworkArgs struct {
-	Network     pulumi.StringInput `pulumi:"network"`
+	// Network with format 'projects/{{project_id}}/global/networks/{{network_id}}'
+	Network pulumi.StringInput `pulumi:"network"`
+	// Type of Network peeringMode Default value: "PRIVATE_SERVICE_ACCESS" Possible values: ["PRIVATE_SERVICE_ACCESS"]
 	PeeringMode pulumi.StringInput `pulumi:"peeringMode"`
 }
 
@@ -415,10 +425,12 @@ func (o GetManagementServerNetworkOutput) ToGetManagementServerNetworkOutputWith
 	return o
 }
 
+// Network with format 'projects/{{project_id}}/global/networks/{{network_id}}'
 func (o GetManagementServerNetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagementServerNetwork) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// Type of Network peeringMode Default value: "PRIVATE_SERVICE_ACCESS" Possible values: ["PRIVATE_SERVICE_ACCESS"]
 func (o GetManagementServerNetworkOutput) PeeringMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagementServerNetwork) string { return v.PeeringMode }).(pulumi.StringOutput)
 }

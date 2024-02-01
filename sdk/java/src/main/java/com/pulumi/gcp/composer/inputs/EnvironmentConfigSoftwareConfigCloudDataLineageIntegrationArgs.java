@@ -14,9 +14,17 @@ public final class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArg
 
     public static final EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs Empty = new EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs();
 
+    /**
+     * Whether or not Cloud Data Lineage integration is enabled.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Whether or not Cloud Data Lineage integration is enabled.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
@@ -45,11 +53,23 @@ public final class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArg
             $ = new EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether or not Cloud Data Lineage integration is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether or not Cloud Data Lineage integration is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

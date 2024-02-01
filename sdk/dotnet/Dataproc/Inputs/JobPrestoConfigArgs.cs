@@ -30,6 +30,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("continueOnFailure")]
         public Input<bool>? ContinueOnFailure { get; set; }
 
+        /// <summary>
+        /// The runtime logging config of the job
+        /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.JobPrestoConfigLoggingConfigArgs>? LoggingConfig { get; set; }
 

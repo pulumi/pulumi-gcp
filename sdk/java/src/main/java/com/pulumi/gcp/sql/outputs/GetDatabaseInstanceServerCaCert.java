@@ -10,25 +10,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceServerCaCert {
+    /**
+     * @return The CA Certificate used to connect to the SQL Instance via SSL.
+     * 
+     */
     private String cert;
+    /**
+     * @return The CN valid for the CA Cert.
+     * 
+     */
     private String commonName;
+    /**
+     * @return Creation time of the CA Cert.
+     * 
+     */
     private String createTime;
+    /**
+     * @return Expiration time of the CA Cert.
+     * 
+     */
     private String expirationTime;
+    /**
+     * @return SHA Fingerprint of the CA Cert.
+     * 
+     */
     private String sha1Fingerprint;
 
     private GetDatabaseInstanceServerCaCert() {}
+    /**
+     * @return The CA Certificate used to connect to the SQL Instance via SSL.
+     * 
+     */
     public String cert() {
         return this.cert;
     }
+    /**
+     * @return The CN valid for the CA Cert.
+     * 
+     */
     public String commonName() {
         return this.commonName;
     }
+    /**
+     * @return Creation time of the CA Cert.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return Expiration time of the CA Cert.
+     * 
+     */
     public String expirationTime() {
         return this.expirationTime;
     }
+    /**
+     * @return SHA Fingerprint of the CA Cert.
+     * 
+     */
     public String sha1Fingerprint() {
         return this.sha1Fingerprint;
     }

@@ -13,7 +13,16 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     [OutputType]
     public sealed class GetPrivateCloudManagementClusterNodeTypeConfigResult
     {
+        /// <summary>
+        /// Customized number of cores available to each node of the type.
+        /// This number must always be one of 'nodeType.availableCustomCoreCounts'.
+        /// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+        /// This cannot be changed once the PrivateCloud is created.
+        /// </summary>
         public readonly int CustomCoreCount;
+        /// <summary>
+        /// The number of nodes of this type in the cluster.
+        /// </summary>
         public readonly int NodeCount;
         public readonly string NodeTypeId;
 

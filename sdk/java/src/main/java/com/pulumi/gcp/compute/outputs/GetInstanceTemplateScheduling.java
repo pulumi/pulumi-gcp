@@ -28,9 +28,28 @@ public final class GetInstanceTemplateScheduling {
      * 
      */
     private String instanceTerminationAction;
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     private List<GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
+    /**
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * 
+     */
     private String maintenanceInterval;
+    /**
+     * @return The timeout for new network connections to hosts.
+     * 
+     */
     private List<GetInstanceTemplateSchedulingMaxRunDuration> maxRunDurations;
+    /**
+     * @return Minimum number of cpus for the instance.
+     * 
+     */
     private Integer minNodeCpus;
     /**
      * @return Specifies node affinities or anti-affinities
@@ -77,15 +96,34 @@ public final class GetInstanceTemplateScheduling {
     public String instanceTerminationAction() {
         return this.instanceTerminationAction;
     }
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     public List<GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts() {
         return this.localSsdRecoveryTimeouts;
     }
+    /**
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * 
+     */
     public String maintenanceInterval() {
         return this.maintenanceInterval;
     }
+    /**
+     * @return The timeout for new network connections to hosts.
+     * 
+     */
     public List<GetInstanceTemplateSchedulingMaxRunDuration> maxRunDurations() {
         return this.maxRunDurations;
     }
+    /**
+     * @return Minimum number of cpus for the instance.
+     * 
+     */
     public Integer minNodeCpus() {
         return this.minNodeCpus;
     }

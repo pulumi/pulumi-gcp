@@ -19,6 +19,10 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
      * 
      */
     private @Nullable String machineType;
+    /**
+     * @return Number of VM provisioned with the machine_type.
+     * 
+     */
     private @Nullable Integer vmCount;
 
     private ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult() {}
@@ -31,6 +35,10 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
     }
+    /**
+     * @return Number of VM provisioned with the machine_type.
+     * 
+     */
     public Optional<Integer> vmCount() {
         return Optional.ofNullable(this.vmCount);
     }

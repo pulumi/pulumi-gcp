@@ -15,32 +15,80 @@ import java.util.Objects;
 @CustomType
 public final class GetDatabaseInstanceSettingBackupConfiguration {
     private List<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting> backupRetentionSettings;
+    /**
+     * @return True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
+     * 
+     */
     private Boolean binaryLogEnabled;
+    /**
+     * @return True if backup configuration is enabled.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Location of the backup configuration.
+     * 
+     */
     private String location;
+    /**
+     * @return True if Point-in-time recovery is enabled.
+     * 
+     */
     private Boolean pointInTimeRecoveryEnabled;
+    /**
+     * @return HH:MM format time indicating when backup configuration starts.
+     * 
+     */
     private String startTime;
+    /**
+     * @return The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
+     * 
+     */
     private Integer transactionLogRetentionDays;
 
     private GetDatabaseInstanceSettingBackupConfiguration() {}
     public List<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting> backupRetentionSettings() {
         return this.backupRetentionSettings;
     }
+    /**
+     * @return True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
+     * 
+     */
     public Boolean binaryLogEnabled() {
         return this.binaryLogEnabled;
     }
+    /**
+     * @return True if backup configuration is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Location of the backup configuration.
+     * 
+     */
     public String location() {
         return this.location;
     }
+    /**
+     * @return True if Point-in-time recovery is enabled.
+     * 
+     */
     public Boolean pointInTimeRecoveryEnabled() {
         return this.pointInTimeRecoveryEnabled;
     }
+    /**
+     * @return HH:MM format time indicating when backup configuration starts.
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }
+    /**
+     * @return The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
+     * 
+     */
     public Integer transactionLogRetentionDays() {
         return this.transactionLogRetentionDays;
     }

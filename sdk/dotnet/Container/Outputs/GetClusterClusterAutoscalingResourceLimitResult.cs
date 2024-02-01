@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterClusterAutoscalingResourceLimitResult
     {
+        /// <summary>
+        /// Maximum amount of the resource in the cluster.
+        /// </summary>
         public readonly int Maximum;
+        /// <summary>
+        /// Minimum amount of the resource in the cluster.
+        /// </summary>
         public readonly int Minimum;
+        /// <summary>
+        /// The type of the resource. For example, cpu and memory. See the guide to using Node Auto-Provisioning for a list of types.
+        /// </summary>
         public readonly string ResourceType;
 
         [OutputConstructor]

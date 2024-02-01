@@ -12,13 +12,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting {
+    /**
+     * @return Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+     * 
+     *                                                                 A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String nodePoolSoakDuration;
+    /**
+     * @return Standard policy for the blue-green upgrade.
+     * 
+     */
     private List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy> standardRolloutPolicies;
 
     private GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting() {}
+    /**
+     * @return Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+     * 
+     *                                                                 A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String nodePoolSoakDuration() {
         return this.nodePoolSoakDuration;
     }
+    /**
+     * @return Standard policy for the blue-green upgrade.
+     * 
+     */
     public List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy> standardRolloutPolicies() {
         return this.standardRolloutPolicies;
     }

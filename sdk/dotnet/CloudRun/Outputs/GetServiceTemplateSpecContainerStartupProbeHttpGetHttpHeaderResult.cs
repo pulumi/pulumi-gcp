@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// The name of the Cloud Run Service.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The header field value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

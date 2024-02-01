@@ -13,21 +13,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
+    /**
+     * @return Settings for blue-green upgrade strategy.
+     * 
+     */
     private List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting> blueGreenSettings;
+    /**
+     * @return The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
+     * 
+     */
     private Integer maxSurge;
+    /**
+     * @return The maximum number of nodes that can be simultaneously unavailable during the upgrade process.
+     * 
+     */
     private Integer maxUnavailable;
+    /**
+     * @return Update strategy of the node pool.
+     * 
+     */
     private String strategy;
 
     private GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting() {}
+    /**
+     * @return Settings for blue-green upgrade strategy.
+     * 
+     */
     public List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting> blueGreenSettings() {
         return this.blueGreenSettings;
     }
+    /**
+     * @return The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
+     * 
+     */
     public Integer maxSurge() {
         return this.maxSurge;
     }
+    /**
+     * @return The maximum number of nodes that can be simultaneously unavailable during the upgrade process.
+     * 
+     */
     public Integer maxUnavailable() {
         return this.maxUnavailable;
     }
+    /**
+     * @return Update strategy of the node pool.
+     * 
+     */
     public String strategy() {
         return this.strategy;
     }

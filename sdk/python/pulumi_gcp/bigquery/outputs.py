@@ -5375,6 +5375,12 @@ class TableTableReplicationInfo(dict):
                  source_project_id: str,
                  source_table_id: str,
                  replication_interval_ms: Optional[int] = None):
+        """
+        :param str source_dataset_id: The ID of the source dataset.
+        :param str source_project_id: The ID of the source project.
+        :param str source_table_id: The ID of the source materialized view.
+        :param int replication_interval_ms: The interval at which the source materialized view is polled for updates. The default is 300000.
+        """
         pulumi.set(__self__, "source_dataset_id", source_dataset_id)
         pulumi.set(__self__, "source_project_id", source_project_id)
         pulumi.set(__self__, "source_table_id", source_table_id)
@@ -5384,21 +5390,33 @@ class TableTableReplicationInfo(dict):
     @property
     @pulumi.getter(name="sourceDatasetId")
     def source_dataset_id(self) -> str:
+        """
+        The ID of the source dataset.
+        """
         return pulumi.get(self, "source_dataset_id")
 
     @property
     @pulumi.getter(name="sourceProjectId")
     def source_project_id(self) -> str:
+        """
+        The ID of the source project.
+        """
         return pulumi.get(self, "source_project_id")
 
     @property
     @pulumi.getter(name="sourceTableId")
     def source_table_id(self) -> str:
+        """
+        The ID of the source materialized view.
+        """
         return pulumi.get(self, "source_table_id")
 
     @property
     @pulumi.getter(name="replicationIntervalMs")
     def replication_interval_ms(self) -> Optional[int]:
+        """
+        The interval at which the source materialized view is polled for updates. The default is 300000.
+        """
         return pulumi.get(self, "replication_interval_ms")
 
 
@@ -5553,6 +5571,44 @@ class GetDatasetAccessResult(dict):
                  special_group: str,
                  user_by_email: str,
                  views: Sequence['outputs.GetDatasetAccessViewResult']):
+        """
+        :param Sequence['GetDatasetAccessDatasetArgs'] datasets: Grants all resources of particular types in a particular dataset read access to the current dataset.
+        :param str domain: A domain to grant access to. Any users signed in with the
+               domain specified will be granted the specified access
+        :param str group_by_email: An email address of a Google Group to grant access to.
+        :param str iam_member: Some other type of member that appears in the IAM Policy but isn't a user,
+               group, domain, or special group. For example: 'allUsers'
+        :param str role: Describes the rights granted to the user specified by the other
+               member of the access object. Basic, predefined, and custom roles
+               are supported. Predefined roles that have equivalent basic roles
+               are swapped by the API to their basic counterparts. See
+               [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        :param Sequence['GetDatasetAccessRoutineArgs'] routines: A routine from a different dataset to grant access to. Queries
+               executed against that routine will have read access to tables in
+               this dataset. The role field is not required when this field is
+               set. If that routine is updated by any user, access to the routine
+               needs to be granted again via an update operation.
+        :param str special_group: A special group to grant access to. Possible values include:
+               
+               
+               * 'projectOwners': Owners of the enclosing project.
+               
+               
+               * 'projectReaders': Readers of the enclosing project.
+               
+               
+               * 'projectWriters': Writers of the enclosing project.
+               
+               
+               * 'allAuthenticatedUsers': All authenticated BigQuery users.
+        :param str user_by_email: An email address of a user to grant access to. For example:
+               fred@example.com
+        :param Sequence['GetDatasetAccessViewArgs'] views: A view from a different dataset to grant access to. Queries
+               executed against that view will have read access to tables in
+               this dataset. The role field is not required when this field is
+               set. If that view is updated by any user, access to the view
+               needs to be granted again via an update operation.
+        """
         pulumi.set(__self__, "datasets", datasets)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "group_by_email", group_by_email)
@@ -5566,46 +5622,100 @@ class GetDatasetAccessResult(dict):
     @property
     @pulumi.getter
     def datasets(self) -> Sequence['outputs.GetDatasetAccessDatasetResult']:
+        """
+        Grants all resources of particular types in a particular dataset read access to the current dataset.
+        """
         return pulumi.get(self, "datasets")
 
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        A domain to grant access to. Any users signed in with the
+        domain specified will be granted the specified access
+        """
         return pulumi.get(self, "domain")
 
     @property
     @pulumi.getter(name="groupByEmail")
     def group_by_email(self) -> str:
+        """
+        An email address of a Google Group to grant access to.
+        """
         return pulumi.get(self, "group_by_email")
 
     @property
     @pulumi.getter(name="iamMember")
     def iam_member(self) -> str:
+        """
+        Some other type of member that appears in the IAM Policy but isn't a user,
+        group, domain, or special group. For example: 'allUsers'
+        """
         return pulumi.get(self, "iam_member")
 
     @property
     @pulumi.getter
     def role(self) -> str:
+        """
+        Describes the rights granted to the user specified by the other
+        member of the access object. Basic, predefined, and custom roles
+        are supported. Predefined roles that have equivalent basic roles
+        are swapped by the API to their basic counterparts. See
+        [official docs](https://cloud.google.com/bigquery/docs/access-control).
+        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
     def routines(self) -> Sequence['outputs.GetDatasetAccessRoutineResult']:
+        """
+        A routine from a different dataset to grant access to. Queries
+        executed against that routine will have read access to tables in
+        this dataset. The role field is not required when this field is
+        set. If that routine is updated by any user, access to the routine
+        needs to be granted again via an update operation.
+        """
         return pulumi.get(self, "routines")
 
     @property
     @pulumi.getter(name="specialGroup")
     def special_group(self) -> str:
+        """
+        A special group to grant access to. Possible values include:
+
+
+        * 'projectOwners': Owners of the enclosing project.
+
+
+        * 'projectReaders': Readers of the enclosing project.
+
+
+        * 'projectWriters': Writers of the enclosing project.
+
+
+        * 'allAuthenticatedUsers': All authenticated BigQuery users.
+        """
         return pulumi.get(self, "special_group")
 
     @property
     @pulumi.getter(name="userByEmail")
     def user_by_email(self) -> str:
+        """
+        An email address of a user to grant access to. For example:
+        fred@example.com
+        """
         return pulumi.get(self, "user_by_email")
 
     @property
     @pulumi.getter
     def views(self) -> Sequence['outputs.GetDatasetAccessViewResult']:
+        """
+        A view from a different dataset to grant access to. Queries
+        executed against that view will have read access to tables in
+        this dataset. The role field is not required when this field is
+        set. If that view is updated by any user, access to the view
+        needs to be granted again via an update operation.
+        """
         return pulumi.get(self, "views")
 
 
@@ -5614,17 +5724,29 @@ class GetDatasetAccessDatasetResult(dict):
     def __init__(__self__, *,
                  datasets: Sequence['outputs.GetDatasetAccessDatasetDatasetResult'],
                  target_types: Sequence[str]):
+        """
+        :param Sequence['GetDatasetAccessDatasetDatasetArgs'] datasets: The dataset this entry applies to
+        :param Sequence[str] target_types: Which resources in the dataset this entry applies to. Currently, only views are supported,
+               but additional target types may be added in the future. Possible values: VIEWS
+        """
         pulumi.set(__self__, "datasets", datasets)
         pulumi.set(__self__, "target_types", target_types)
 
     @property
     @pulumi.getter
     def datasets(self) -> Sequence['outputs.GetDatasetAccessDatasetDatasetResult']:
+        """
+        The dataset this entry applies to
+        """
         return pulumi.get(self, "datasets")
 
     @property
     @pulumi.getter(name="targetTypes")
     def target_types(self) -> Sequence[str]:
+        """
+        Which resources in the dataset this entry applies to. Currently, only views are supported,
+        but additional target types may be added in the future. Possible values: VIEWS
+        """
         return pulumi.get(self, "target_types")
 
 
@@ -5635,6 +5757,7 @@ class GetDatasetAccessDatasetDatasetResult(dict):
                  project_id: str):
         """
         :param str dataset_id: The dataset ID.
+        :param str project_id: The ID of the project containing this table.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -5650,6 +5773,9 @@ class GetDatasetAccessDatasetDatasetResult(dict):
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        The ID of the project containing this table.
+        """
         return pulumi.get(self, "project_id")
 
 
@@ -5661,6 +5787,10 @@ class GetDatasetAccessRoutineResult(dict):
                  routine_id: str):
         """
         :param str dataset_id: The dataset ID.
+        :param str project_id: The ID of the project containing this table.
+        :param str routine_id: The ID of the routine. The ID must contain only letters (a-z,
+               A-Z), numbers (0-9), or underscores (_). The maximum length
+               is 256 characters.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -5677,11 +5807,19 @@ class GetDatasetAccessRoutineResult(dict):
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        The ID of the project containing this table.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="routineId")
     def routine_id(self) -> str:
+        """
+        The ID of the routine. The ID must contain only letters (a-z,
+        A-Z), numbers (0-9), or underscores (_). The maximum length
+        is 256 characters.
+        """
         return pulumi.get(self, "routine_id")
 
 
@@ -5693,6 +5831,10 @@ class GetDatasetAccessViewResult(dict):
                  table_id: str):
         """
         :param str dataset_id: The dataset ID.
+        :param str project_id: The ID of the project containing this table.
+        :param str table_id: The ID of the table. The ID must contain only letters (a-z,
+               A-Z), numbers (0-9), or underscores (_). The maximum length
+               is 1,024 characters.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -5709,11 +5851,19 @@ class GetDatasetAccessViewResult(dict):
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        The ID of the project containing this table.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="tableId")
     def table_id(self) -> str:
+        """
+        The ID of the table. The ID must contain only letters (a-z,
+        A-Z), numbers (0-9), or underscores (_). The maximum length
+        is 1,024 characters.
+        """
         return pulumi.get(self, "table_id")
 
 
@@ -5721,11 +5871,21 @@ class GetDatasetAccessViewResult(dict):
 class GetDatasetDefaultEncryptionConfigurationResult(dict):
     def __init__(__self__, *,
                  kms_key_name: str):
+        """
+        :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination
+               BigQuery table. The BigQuery Service Account associated with your project requires
+               access to this encryption key.
+        """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> str:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination
+        BigQuery table. The BigQuery Service Account associated with your project requires
+        access to this encryption key.
+        """
         return pulumi.get(self, "kms_key_name")
 
 
@@ -5734,17 +5894,29 @@ class GetDatasetExternalDatasetReferenceResult(dict):
     def __init__(__self__, *,
                  connection: str,
                  external_source: str):
+        """
+        :param str connection: The connection id that is used to access the externalSource.
+               Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+        :param str external_source: External source that backs this dataset.
+        """
         pulumi.set(__self__, "connection", connection)
         pulumi.set(__self__, "external_source", external_source)
 
     @property
     @pulumi.getter
     def connection(self) -> str:
+        """
+        The connection id that is used to access the externalSource.
+        Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+        """
         return pulumi.get(self, "connection")
 
     @property
     @pulumi.getter(name="externalSource")
     def external_source(self) -> str:
+        """
+        External source that backs this dataset.
+        """
         return pulumi.get(self, "external_source")
 
 

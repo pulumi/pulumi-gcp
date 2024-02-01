@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicySchedule {
+    /**
+     * @return The policy will execute every nth day at the specified time.
+     * 
+     */
     private List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule> dailySchedules;
+    /**
+     * @return The policy will execute every nth hour starting at the specified time.
+     * 
+     */
     private List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule> hourlySchedules;
+    /**
+     * @return Allows specifying a snapshot time for each day of the week.
+     * 
+     */
     private List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule> weeklySchedules;
 
     private GetResourcePolicySnapshotSchedulePolicySchedule() {}
+    /**
+     * @return The policy will execute every nth day at the specified time.
+     * 
+     */
     public List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule> dailySchedules() {
         return this.dailySchedules;
     }
+    /**
+     * @return The policy will execute every nth hour starting at the specified time.
+     * 
+     */
     public List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule> hourlySchedules() {
         return this.hourlySchedules;
     }
+    /**
+     * @return Allows specifying a snapshot time for each day of the week.
+     * 
+     */
     public List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule> weeklySchedules() {
         return this.weeklySchedules;
     }

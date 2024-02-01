@@ -315,6 +315,11 @@ class DeliveryPipelineCondition(dict):
                  pipeline_ready_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionPipelineReadyCondition']] = None,
                  targets_present_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionTargetsPresentCondition']] = None,
                  targets_type_conditions: Optional[Sequence['outputs.DeliveryPipelineConditionTargetsTypeCondition']] = None):
+        """
+        :param Sequence['DeliveryPipelineConditionPipelineReadyConditionArgs'] pipeline_ready_conditions: Details around the Pipeline's overall status.
+        :param Sequence['DeliveryPipelineConditionTargetsPresentConditionArgs'] targets_present_conditions: Details around targets enumerated in the pipeline.
+        :param Sequence['DeliveryPipelineConditionTargetsTypeConditionArgs'] targets_type_conditions: Details on the whether the targets enumerated in the pipeline are of the same type.
+        """
         if pipeline_ready_conditions is not None:
             pulumi.set(__self__, "pipeline_ready_conditions", pipeline_ready_conditions)
         if targets_present_conditions is not None:
@@ -325,16 +330,25 @@ class DeliveryPipelineCondition(dict):
     @property
     @pulumi.getter(name="pipelineReadyConditions")
     def pipeline_ready_conditions(self) -> Optional[Sequence['outputs.DeliveryPipelineConditionPipelineReadyCondition']]:
+        """
+        Details around the Pipeline's overall status.
+        """
         return pulumi.get(self, "pipeline_ready_conditions")
 
     @property
     @pulumi.getter(name="targetsPresentConditions")
     def targets_present_conditions(self) -> Optional[Sequence['outputs.DeliveryPipelineConditionTargetsPresentCondition']]:
+        """
+        Details around targets enumerated in the pipeline.
+        """
         return pulumi.get(self, "targets_present_conditions")
 
     @property
     @pulumi.getter(name="targetsTypeConditions")
     def targets_type_conditions(self) -> Optional[Sequence['outputs.DeliveryPipelineConditionTargetsTypeCondition']]:
+        """
+        Details on the whether the targets enumerated in the pipeline are of the same type.
+        """
         return pulumi.get(self, "targets_type_conditions")
 
 
@@ -361,6 +375,7 @@ class DeliveryPipelineConditionPipelineReadyCondition(dict):
                  status: Optional[bool] = None,
                  update_time: Optional[str] = None):
         """
+        :param bool status: True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
         :param str update_time: Output only. Most recent time at which the pipeline was updated.
         """
         if status is not None:
@@ -371,6 +386,9 @@ class DeliveryPipelineConditionPipelineReadyCondition(dict):
     @property
     @pulumi.getter
     def status(self) -> Optional[bool]:
+        """
+        True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -408,6 +426,8 @@ class DeliveryPipelineConditionTargetsPresentCondition(dict):
                  status: Optional[bool] = None,
                  update_time: Optional[str] = None):
         """
+        :param Sequence[str] missing_targets: The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        :param bool status: True if there aren't any missing Targets.
         :param str update_time: Output only. Most recent time at which the pipeline was updated.
         """
         if missing_targets is not None:
@@ -420,11 +440,17 @@ class DeliveryPipelineConditionTargetsPresentCondition(dict):
     @property
     @pulumi.getter(name="missingTargets")
     def missing_targets(self) -> Optional[Sequence[str]]:
+        """
+        The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        """
         return pulumi.get(self, "missing_targets")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[bool]:
+        """
+        True if there aren't any missing Targets.
+        """
         return pulumi.get(self, "status")
 
     @property
@@ -458,6 +484,10 @@ class DeliveryPipelineConditionTargetsTypeCondition(dict):
     def __init__(__self__, *,
                  error_details: Optional[str] = None,
                  status: Optional[bool] = None):
+        """
+        :param str error_details: Human readable error message.
+        :param bool status: True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+        """
         if error_details is not None:
             pulumi.set(__self__, "error_details", error_details)
         if status is not None:
@@ -466,11 +496,17 @@ class DeliveryPipelineConditionTargetsTypeCondition(dict):
     @property
     @pulumi.getter(name="errorDetails")
     def error_details(self) -> Optional[str]:
+        """
+        Human readable error message.
+        """
         return pulumi.get(self, "error_details")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[bool]:
+        """
+        True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+        """
         return pulumi.get(self, "status")
 
 

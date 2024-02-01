@@ -13,13 +13,37 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigResult
     {
+        /// <summary>
+        /// Specific settings for an Apt remote repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult> AptRepositories;
+        /// <summary>
+        /// The description of the remote source.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Specific settings for a Docker remote repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult> DockerRepositories;
+        /// <summary>
+        /// Specific settings for a Maven remote repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult> MavenRepositories;
+        /// <summary>
+        /// Specific settings for an Npm remote repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult> NpmRepositories;
+        /// <summary>
+        /// Specific settings for a Python remote repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult> PythonRepositories;
+        /// <summary>
+        /// The credentials used to access the remote repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult> UpstreamCredentials;
+        /// <summary>
+        /// Specific settings for an Yum remote repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult> YumRepositories;
 
         [OutputConstructor]

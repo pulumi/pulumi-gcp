@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolDefault {
+    /**
+     * @return Subset of NodeConfig message that has defaults.
+     * 
+     */
     private List<GetClusterNodePoolDefaultNodeConfigDefault> nodeConfigDefaults;
 
     private GetClusterNodePoolDefault() {}
+    /**
+     * @return Subset of NodeConfig message that has defaults.
+     * 
+     */
     public List<GetClusterNodePoolDefaultNodeConfigDefault> nodeConfigDefaults() {
         return this.nodeConfigDefaults;
     }

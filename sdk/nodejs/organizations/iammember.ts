@@ -147,7 +147,7 @@ import * as utilities from "../utilities";
  *             logType: "ADMIN_READ",
  *         },
  *         {
- *             exemptedMembers: ["user:joebloggs@hashicorp.com"],
+ *             exemptedMembers: ["user:joebloggs@example.com"],
  *             logType: "DATA_READ",
  *         },
  *     ],

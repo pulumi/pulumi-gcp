@@ -23,6 +23,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         /// </summary>
         public readonly string? NetworkTier;
+        /// <summary>
+        /// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+        /// </summary>
         public readonly string? PublicPtrDomainName;
 
         [OutputConstructor]

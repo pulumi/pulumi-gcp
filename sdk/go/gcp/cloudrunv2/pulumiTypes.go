@@ -9383,8 +9383,10 @@ func (o ServiceTrafficStatusArrayOutput) Index(i pulumi.IntInput) ServiceTraffic
 }
 
 type GetJobBinaryAuthorization struct {
+	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification string `pulumi:"breakglassJustification"`
-	UseDefault              bool   `pulumi:"useDefault"`
+	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+	UseDefault bool `pulumi:"useDefault"`
 }
 
 // GetJobBinaryAuthorizationInput is an input type that accepts GetJobBinaryAuthorizationArgs and GetJobBinaryAuthorizationOutput values.
@@ -9399,8 +9401,10 @@ type GetJobBinaryAuthorizationInput interface {
 }
 
 type GetJobBinaryAuthorizationArgs struct {
+	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification pulumi.StringInput `pulumi:"breakglassJustification"`
-	UseDefault              pulumi.BoolInput   `pulumi:"useDefault"`
+	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+	UseDefault pulumi.BoolInput `pulumi:"useDefault"`
 }
 
 func (GetJobBinaryAuthorizationArgs) ElementType() reflect.Type {
@@ -9454,10 +9458,12 @@ func (o GetJobBinaryAuthorizationOutput) ToGetJobBinaryAuthorizationOutputWithCo
 	return o
 }
 
+// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o GetJobBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobBinaryAuthorization) string { return v.BreakglassJustification }).(pulumi.StringOutput)
 }
 
+// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 func (o GetJobBinaryAuthorizationOutput) UseDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetJobBinaryAuthorization) bool { return v.UseDefault }).(pulumi.BoolOutput)
 }
@@ -9483,14 +9489,24 @@ func (o GetJobBinaryAuthorizationArrayOutput) Index(i pulumi.IntInput) GetJobBin
 }
 
 type GetJobCondition struct {
-	ExecutionReason    string `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason string `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime string `pulumi:"lastTransitionTime"`
-	Message            string `pulumi:"message"`
-	Reason             string `pulumi:"reason"`
-	RevisionReason     string `pulumi:"revisionReason"`
-	Severity           string `pulumi:"severity"`
-	State              string `pulumi:"state"`
-	Type               string `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message string `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason string `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason string `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity string `pulumi:"severity"`
+	// State of the condition.
+	State string `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type string `pulumi:"type"`
 }
 
 // GetJobConditionInput is an input type that accepts GetJobConditionArgs and GetJobConditionOutput values.
@@ -9505,14 +9521,24 @@ type GetJobConditionInput interface {
 }
 
 type GetJobConditionArgs struct {
-	ExecutionReason    pulumi.StringInput `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason pulumi.StringInput `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
-	Message            pulumi.StringInput `pulumi:"message"`
-	Reason             pulumi.StringInput `pulumi:"reason"`
-	RevisionReason     pulumi.StringInput `pulumi:"revisionReason"`
-	Severity           pulumi.StringInput `pulumi:"severity"`
-	State              pulumi.StringInput `pulumi:"state"`
-	Type               pulumi.StringInput `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringInput `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason pulumi.StringInput `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason pulumi.StringInput `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// State of the condition.
+	State pulumi.StringInput `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetJobConditionArgs) ElementType() reflect.Type {
@@ -9566,34 +9592,44 @@ func (o GetJobConditionOutput) ToGetJobConditionOutputWithContext(ctx context.Co
 	return o
 }
 
+// A reason for the execution condition.
 func (o GetJobConditionOutput) ExecutionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobCondition) string { return v.ExecutionReason }).(pulumi.StringOutput)
 }
 
+// Last time the condition transitioned from one status to another.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetJobConditionOutput) LastTransitionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobCondition) string { return v.LastTransitionTime }).(pulumi.StringOutput)
 }
 
+// Human readable message indicating details about the current status.
 func (o GetJobConditionOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobCondition) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// A common (service-level) reason for this condition.
 func (o GetJobConditionOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobCondition) string { return v.Reason }).(pulumi.StringOutput)
 }
 
+// A reason for the revision condition.
 func (o GetJobConditionOutput) RevisionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobCondition) string { return v.RevisionReason }).(pulumi.StringOutput)
 }
 
+// How to interpret failures of this condition, one of Error, Warning, Info
 func (o GetJobConditionOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobCondition) string { return v.Severity }).(pulumi.StringOutput)
 }
 
+// State of the condition.
 func (o GetJobConditionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobCondition) string { return v.State }).(pulumi.StringOutput)
 }
 
+// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o GetJobConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -9619,8 +9655,14 @@ func (o GetJobConditionArrayOutput) Index(i pulumi.IntInput) GetJobConditionOutp
 }
 
 type GetJobLatestCreatedExecution struct {
+	// Completion timestamp of the execution.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CompletionTime string `pulumi:"completionTime"`
-	CreateTime     string `pulumi:"createTime"`
+	// Creation timestamp of the execution.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime string `pulumi:"createTime"`
 	// The name of the Cloud Run v2 Job.
 	Name string `pulumi:"name"`
 }
@@ -9637,8 +9679,14 @@ type GetJobLatestCreatedExecutionInput interface {
 }
 
 type GetJobLatestCreatedExecutionArgs struct {
+	// Completion timestamp of the execution.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CompletionTime pulumi.StringInput `pulumi:"completionTime"`
-	CreateTime     pulumi.StringInput `pulumi:"createTime"`
+	// Creation timestamp of the execution.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The name of the Cloud Run v2 Job.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -9694,10 +9742,16 @@ func (o GetJobLatestCreatedExecutionOutput) ToGetJobLatestCreatedExecutionOutput
 	return o
 }
 
+// Completion timestamp of the execution.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetJobLatestCreatedExecutionOutput) CompletionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobLatestCreatedExecution) string { return v.CompletionTime }).(pulumi.StringOutput)
 }
 
+// Creation timestamp of the execution.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetJobLatestCreatedExecutionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobLatestCreatedExecution) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -9728,11 +9782,26 @@ func (o GetJobLatestCreatedExecutionArrayOutput) Index(i pulumi.IntInput) GetJob
 }
 
 type GetJobTemplate struct {
-	Annotations map[string]string        `pulumi:"annotations"`
-	Labels      map[string]string        `pulumi:"labels"`
-	Parallelism int                      `pulumi:"parallelism"`
-	TaskCount   int                      `pulumi:"taskCount"`
-	Templates   []GetJobTemplateTemplate `pulumi:"templates"`
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	//
+	// Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+	// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+	//
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+	// https://cloud.google.com/run/docs/configuring/labels.
+	//
+	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+	Labels map[string]string `pulumi:"labels"`
+	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+	Parallelism int `pulumi:"parallelism"`
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	TaskCount int `pulumi:"taskCount"`
+	// Describes the task(s) that will be created when executing an execution
+	Templates []GetJobTemplateTemplate `pulumi:"templates"`
 }
 
 // GetJobTemplateInput is an input type that accepts GetJobTemplateArgs and GetJobTemplateOutput values.
@@ -9747,11 +9816,26 @@ type GetJobTemplateInput interface {
 }
 
 type GetJobTemplateArgs struct {
-	Annotations pulumi.StringMapInput            `pulumi:"annotations"`
-	Labels      pulumi.StringMapInput            `pulumi:"labels"`
-	Parallelism pulumi.IntInput                  `pulumi:"parallelism"`
-	TaskCount   pulumi.IntInput                  `pulumi:"taskCount"`
-	Templates   GetJobTemplateTemplateArrayInput `pulumi:"templates"`
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	//
+	// Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+	// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+	//
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+	// https://cloud.google.com/run/docs/configuring/labels.
+	//
+	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+	Parallelism pulumi.IntInput `pulumi:"parallelism"`
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	TaskCount pulumi.IntInput `pulumi:"taskCount"`
+	// Describes the task(s) that will be created when executing an execution
+	Templates GetJobTemplateTemplateArrayInput `pulumi:"templates"`
 }
 
 func (GetJobTemplateArgs) ElementType() reflect.Type {
@@ -9805,22 +9889,37 @@ func (o GetJobTemplateOutput) ToGetJobTemplateOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+//
+// Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+//
+// This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o GetJobTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetJobTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+// https://cloud.google.com/run/docs/configuring/labels.
+//
+// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o GetJobTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetJobTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 func (o GetJobTemplateOutput) Parallelism() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobTemplate) int { return v.Parallelism }).(pulumi.IntOutput)
 }
 
+// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
 func (o GetJobTemplateOutput) TaskCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobTemplate) int { return v.TaskCount }).(pulumi.IntOutput)
 }
 
+// Describes the task(s) that will be created when executing an execution
 func (o GetJobTemplateOutput) Templates() GetJobTemplateTemplateArrayOutput {
 	return o.ApplyT(func(v GetJobTemplate) []GetJobTemplateTemplate { return v.Templates }).(GetJobTemplateTemplateArrayOutput)
 }
@@ -9846,14 +9945,24 @@ func (o GetJobTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTemplateOutput
 }
 
 type GetJobTemplateTemplate struct {
-	Containers           []GetJobTemplateTemplateContainer `pulumi:"containers"`
-	EncryptionKey        string                            `pulumi:"encryptionKey"`
-	ExecutionEnvironment string                            `pulumi:"executionEnvironment"`
-	MaxRetries           int                               `pulumi:"maxRetries"`
-	ServiceAccount       string                            `pulumi:"serviceAccount"`
-	Timeout              string                            `pulumi:"timeout"`
-	Volumes              []GetJobTemplateTemplateVolume    `pulumi:"volumes"`
-	VpcAccesses          []GetJobTemplateTemplateVpcAccess `pulumi:"vpcAccesses"`
+	// Holds the single container that defines the unit of execution for this task.
+	Containers []GetJobTemplateTemplateContainer `pulumi:"containers"`
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	EncryptionKey string `pulumi:"encryptionKey"`
+	// The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+	ExecutionEnvironment string `pulumi:"executionEnvironment"`
+	// Number of retries allowed per Task, before marking this Task failed.
+	MaxRetries int `pulumi:"maxRetries"`
+	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	//
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Timeout string `pulumi:"timeout"`
+	// A list of Volumes to make available to containers.
+	Volumes []GetJobTemplateTemplateVolume `pulumi:"volumes"`
+	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	VpcAccesses []GetJobTemplateTemplateVpcAccess `pulumi:"vpcAccesses"`
 }
 
 // GetJobTemplateTemplateInput is an input type that accepts GetJobTemplateTemplateArgs and GetJobTemplateTemplateOutput values.
@@ -9868,14 +9977,24 @@ type GetJobTemplateTemplateInput interface {
 }
 
 type GetJobTemplateTemplateArgs struct {
-	Containers           GetJobTemplateTemplateContainerArrayInput `pulumi:"containers"`
-	EncryptionKey        pulumi.StringInput                        `pulumi:"encryptionKey"`
-	ExecutionEnvironment pulumi.StringInput                        `pulumi:"executionEnvironment"`
-	MaxRetries           pulumi.IntInput                           `pulumi:"maxRetries"`
-	ServiceAccount       pulumi.StringInput                        `pulumi:"serviceAccount"`
-	Timeout              pulumi.StringInput                        `pulumi:"timeout"`
-	Volumes              GetJobTemplateTemplateVolumeArrayInput    `pulumi:"volumes"`
-	VpcAccesses          GetJobTemplateTemplateVpcAccessArrayInput `pulumi:"vpcAccesses"`
+	// Holds the single container that defines the unit of execution for this task.
+	Containers GetJobTemplateTemplateContainerArrayInput `pulumi:"containers"`
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
+	// The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+	ExecutionEnvironment pulumi.StringInput `pulumi:"executionEnvironment"`
+	// Number of retries allowed per Task, before marking this Task failed.
+	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
+	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	//
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// A list of Volumes to make available to containers.
+	Volumes GetJobTemplateTemplateVolumeArrayInput `pulumi:"volumes"`
+	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	VpcAccesses GetJobTemplateTemplateVpcAccessArrayInput `pulumi:"vpcAccesses"`
 }
 
 func (GetJobTemplateTemplateArgs) ElementType() reflect.Type {
@@ -9929,34 +10048,44 @@ func (o GetJobTemplateTemplateOutput) ToGetJobTemplateTemplateOutputWithContext(
 	return o
 }
 
+// Holds the single container that defines the unit of execution for this task.
 func (o GetJobTemplateTemplateOutput) Containers() GetJobTemplateTemplateContainerArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateContainer { return v.Containers }).(GetJobTemplateTemplateContainerArrayOutput)
 }
 
+// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
 func (o GetJobTemplateTemplateOutput) EncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.EncryptionKey }).(pulumi.StringOutput)
 }
 
+// The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
 func (o GetJobTemplateTemplateOutput) ExecutionEnvironment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
 }
 
+// Number of retries allowed per Task, before marking this Task failed.
 func (o GetJobTemplateTemplateOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) int { return v.MaxRetries }).(pulumi.IntOutput)
 }
 
+// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 func (o GetJobTemplateTemplateOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
+// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+//
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 func (o GetJobTemplateTemplateOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
+// A list of Volumes to make available to containers.
 func (o GetJobTemplateTemplateOutput) Volumes() GetJobTemplateTemplateVolumeArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateVolume { return v.Volumes }).(GetJobTemplateTemplateVolumeArrayOutput)
 }
 
+// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 func (o GetJobTemplateTemplateOutput) VpcAccesses() GetJobTemplateTemplateVpcAccessArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplate) []GetJobTemplateTemplateVpcAccess { return v.VpcAccesses }).(GetJobTemplateTemplateVpcAccessArrayOutput)
 }
@@ -9982,16 +10111,26 @@ func (o GetJobTemplateTemplateArrayOutput) Index(i pulumi.IntInput) GetJobTempla
 }
 
 type GetJobTemplateTemplateContainer struct {
-	Args     []string                             `pulumi:"args"`
-	Commands []string                             `pulumi:"commands"`
-	Envs     []GetJobTemplateTemplateContainerEnv `pulumi:"envs"`
-	Image    string                               `pulumi:"image"`
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Commands []string `pulumi:"commands"`
+	// List of environment variables to set in the container.
+	Envs []GetJobTemplateTemplateContainerEnv `pulumi:"envs"`
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	Image string `pulumi:"image"`
 	// The name of the Cloud Run v2 Job.
-	Name         string                                       `pulumi:"name"`
-	Ports        []GetJobTemplateTemplateContainerPort        `pulumi:"ports"`
-	Resources    []GetJobTemplateTemplateContainerResource    `pulumi:"resources"`
+	Name string `pulumi:"name"`
+	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+	//
+	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+	Ports []GetJobTemplateTemplateContainerPort `pulumi:"ports"`
+	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	Resources []GetJobTemplateTemplateContainerResource `pulumi:"resources"`
+	// Volume to mount into the container's filesystem.
 	VolumeMounts []GetJobTemplateTemplateContainerVolumeMount `pulumi:"volumeMounts"`
-	WorkingDir   string                                       `pulumi:"workingDir"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir string `pulumi:"workingDir"`
 }
 
 // GetJobTemplateTemplateContainerInput is an input type that accepts GetJobTemplateTemplateContainerArgs and GetJobTemplateTemplateContainerOutput values.
@@ -10006,16 +10145,26 @@ type GetJobTemplateTemplateContainerInput interface {
 }
 
 type GetJobTemplateTemplateContainerArgs struct {
-	Args     pulumi.StringArrayInput                      `pulumi:"args"`
-	Commands pulumi.StringArrayInput                      `pulumi:"commands"`
-	Envs     GetJobTemplateTemplateContainerEnvArrayInput `pulumi:"envs"`
-	Image    pulumi.StringInput                           `pulumi:"image"`
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of environment variables to set in the container.
+	Envs GetJobTemplateTemplateContainerEnvArrayInput `pulumi:"envs"`
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	Image pulumi.StringInput `pulumi:"image"`
 	// The name of the Cloud Run v2 Job.
-	Name         pulumi.StringInput                                   `pulumi:"name"`
-	Ports        GetJobTemplateTemplateContainerPortArrayInput        `pulumi:"ports"`
-	Resources    GetJobTemplateTemplateContainerResourceArrayInput    `pulumi:"resources"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+	//
+	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+	Ports GetJobTemplateTemplateContainerPortArrayInput `pulumi:"ports"`
+	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	Resources GetJobTemplateTemplateContainerResourceArrayInput `pulumi:"resources"`
+	// Volume to mount into the container's filesystem.
 	VolumeMounts GetJobTemplateTemplateContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
-	WorkingDir   pulumi.StringInput                                   `pulumi:"workingDir"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
 }
 
 func (GetJobTemplateTemplateContainerArgs) ElementType() reflect.Type {
@@ -10069,18 +10218,22 @@ func (o GetJobTemplateTemplateContainerOutput) ToGetJobTemplateTemplateContainer
 	return o
 }
 
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o GetJobTemplateTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o GetJobTemplateTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
+// List of environment variables to set in the container.
 func (o GetJobTemplateTemplateContainerOutput) Envs() GetJobTemplateTemplateContainerEnvArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerEnv { return v.Envs }).(GetJobTemplateTemplateContainerEnvArrayOutput)
 }
 
+// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o GetJobTemplateTemplateContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -10090,20 +10243,26 @@ func (o GetJobTemplateTemplateContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+//
+// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
 func (o GetJobTemplateTemplateContainerOutput) Ports() GetJobTemplateTemplateContainerPortArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerPort { return v.Ports }).(GetJobTemplateTemplateContainerPortArrayOutput)
 }
 
+// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o GetJobTemplateTemplateContainerOutput) Resources() GetJobTemplateTemplateContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerResource { return v.Resources }).(GetJobTemplateTemplateContainerResourceArrayOutput)
 }
 
+// Volume to mount into the container's filesystem.
 func (o GetJobTemplateTemplateContainerOutput) VolumeMounts() GetJobTemplateTemplateContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) []GetJobTemplateTemplateContainerVolumeMount {
 		return v.VolumeMounts
 	}).(GetJobTemplateTemplateContainerVolumeMountArrayOutput)
 }
 
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 func (o GetJobTemplateTemplateContainerOutput) WorkingDir() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainer) string { return v.WorkingDir }).(pulumi.StringOutput)
 }
@@ -10130,8 +10289,10 @@ func (o GetJobTemplateTemplateContainerArrayOutput) Index(i pulumi.IntInput) Get
 
 type GetJobTemplateTemplateContainerEnv struct {
 	// The name of the Cloud Run v2 Job.
-	Name         string                                          `pulumi:"name"`
-	Value        string                                          `pulumi:"value"`
+	Name string `pulumi:"name"`
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	Value string `pulumi:"value"`
+	// Source for the environment variable's value.
 	ValueSources []GetJobTemplateTemplateContainerEnvValueSource `pulumi:"valueSources"`
 }
 
@@ -10148,8 +10309,10 @@ type GetJobTemplateTemplateContainerEnvInput interface {
 
 type GetJobTemplateTemplateContainerEnvArgs struct {
 	// The name of the Cloud Run v2 Job.
-	Name         pulumi.StringInput                                      `pulumi:"name"`
-	Value        pulumi.StringInput                                      `pulumi:"value"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	Value pulumi.StringInput `pulumi:"value"`
+	// Source for the environment variable's value.
 	ValueSources GetJobTemplateTemplateContainerEnvValueSourceArrayInput `pulumi:"valueSources"`
 }
 
@@ -10209,10 +10372,12 @@ func (o GetJobTemplateTemplateContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
 func (o GetJobTemplateTemplateContainerEnvOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnv) string { return v.Value }).(pulumi.StringOutput)
 }
 
+// Source for the environment variable's value.
 func (o GetJobTemplateTemplateContainerEnvOutput) ValueSources() GetJobTemplateTemplateContainerEnvValueSourceArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnv) []GetJobTemplateTemplateContainerEnvValueSource {
 		return v.ValueSources
@@ -10240,6 +10405,7 @@ func (o GetJobTemplateTemplateContainerEnvArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetJobTemplateTemplateContainerEnvValueSource struct {
+	// Selects a secret and a specific version from Cloud Secret Manager.
 	SecretKeyReves []GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef `pulumi:"secretKeyReves"`
 }
 
@@ -10255,6 +10421,7 @@ type GetJobTemplateTemplateContainerEnvValueSourceInput interface {
 }
 
 type GetJobTemplateTemplateContainerEnvValueSourceArgs struct {
+	// Selects a secret and a specific version from Cloud Secret Manager.
 	SecretKeyReves GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayInput `pulumi:"secretKeyReves"`
 }
 
@@ -10309,6 +10476,7 @@ func (o GetJobTemplateTemplateContainerEnvValueSourceOutput) ToGetJobTemplateTem
 	return o
 }
 
+// Selects a secret and a specific version from Cloud Secret Manager.
 func (o GetJobTemplateTemplateContainerEnvValueSourceOutput) SecretKeyReves() GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnvValueSource) []GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef {
 		return v.SecretKeyReves
@@ -10336,7 +10504,9 @@ func (o GetJobTemplateTemplateContainerEnvValueSourceArrayOutput) Index(i pulumi
 }
 
 type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef struct {
-	Secret  string `pulumi:"secret"`
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+	Secret string `pulumi:"secret"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version string `pulumi:"version"`
 }
 
@@ -10352,7 +10522,9 @@ type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefInput interface {
 }
 
 type GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs struct {
-	Secret  pulumi.StringInput `pulumi:"secret"`
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -10407,10 +10579,12 @@ func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) ToGetJo
 	return o
 }
 
+// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
 }
 
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -10436,6 +10610,7 @@ func (o GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) In
 }
 
 type GetJobTemplateTemplateContainerPort struct {
+	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort int `pulumi:"containerPort"`
 	// The name of the Cloud Run v2 Job.
 	Name string `pulumi:"name"`
@@ -10453,6 +10628,7 @@ type GetJobTemplateTemplateContainerPortInput interface {
 }
 
 type GetJobTemplateTemplateContainerPortArgs struct {
+	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
 	// The name of the Cloud Run v2 Job.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -10509,6 +10685,7 @@ func (o GetJobTemplateTemplateContainerPortOutput) ToGetJobTemplateTemplateConta
 	return o
 }
 
+// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 func (o GetJobTemplateTemplateContainerPortOutput) ContainerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerPort) int { return v.ContainerPort }).(pulumi.IntOutput)
 }
@@ -10539,6 +10716,7 @@ func (o GetJobTemplateTemplateContainerPortArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetJobTemplateTemplateContainerResource struct {
+	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 }
 
@@ -10554,6 +10732,7 @@ type GetJobTemplateTemplateContainerResourceInput interface {
 }
 
 type GetJobTemplateTemplateContainerResourceArgs struct {
+	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 }
 
@@ -10608,6 +10787,7 @@ func (o GetJobTemplateTemplateContainerResourceOutput) ToGetJobTemplateTemplateC
 	return o
 }
 
+// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o GetJobTemplateTemplateContainerResourceOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerResource) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -10633,6 +10813,7 @@ func (o GetJobTemplateTemplateContainerResourceArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetJobTemplateTemplateContainerVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 	MountPath string `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Job.
 	Name string `pulumi:"name"`
@@ -10650,6 +10831,7 @@ type GetJobTemplateTemplateContainerVolumeMountInput interface {
 }
 
 type GetJobTemplateTemplateContainerVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Job.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -10706,6 +10888,7 @@ func (o GetJobTemplateTemplateContainerVolumeMountOutput) ToGetJobTemplateTempla
 	return o
 }
 
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 func (o GetJobTemplateTemplateContainerVolumeMountOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
@@ -10736,10 +10919,13 @@ func (o GetJobTemplateTemplateContainerVolumeMountArrayOutput) Index(i pulumi.In
 }
 
 type GetJobTemplateTemplateVolume struct {
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	CloudSqlInstances []GetJobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
-	EmptyDirs         []GetJobTemplateTemplateVolumeEmptyDir         `pulumi:"emptyDirs"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDirs []GetJobTemplateTemplateVolumeEmptyDir `pulumi:"emptyDirs"`
 	// The name of the Cloud Run v2 Job.
-	Name    string                               `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	Secrets []GetJobTemplateTemplateVolumeSecret `pulumi:"secrets"`
 }
 
@@ -10755,10 +10941,13 @@ type GetJobTemplateTemplateVolumeInput interface {
 }
 
 type GetJobTemplateTemplateVolumeArgs struct {
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	CloudSqlInstances GetJobTemplateTemplateVolumeCloudSqlInstanceArrayInput `pulumi:"cloudSqlInstances"`
-	EmptyDirs         GetJobTemplateTemplateVolumeEmptyDirArrayInput         `pulumi:"emptyDirs"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDirs GetJobTemplateTemplateVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
 	// The name of the Cloud Run v2 Job.
-	Name    pulumi.StringInput                           `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	Secrets GetJobTemplateTemplateVolumeSecretArrayInput `pulumi:"secrets"`
 }
 
@@ -10813,12 +11002,14 @@ func (o GetJobTemplateTemplateVolumeOutput) ToGetJobTemplateTemplateVolumeOutput
 	return o
 }
 
+// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 func (o GetJobTemplateTemplateVolumeOutput) CloudSqlInstances() GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeCloudSqlInstance {
 		return v.CloudSqlInstances
 	}).(GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput)
 }
 
+// Ephemeral storage used as a shared volume.
 func (o GetJobTemplateTemplateVolumeOutput) EmptyDirs() GetJobTemplateTemplateVolumeEmptyDirArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeEmptyDir { return v.EmptyDirs }).(GetJobTemplateTemplateVolumeEmptyDirArrayOutput)
 }
@@ -10828,6 +11019,7 @@ func (o GetJobTemplateTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 func (o GetJobTemplateTemplateVolumeOutput) Secrets() GetJobTemplateTemplateVolumeSecretArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeSecret { return v.Secrets }).(GetJobTemplateTemplateVolumeSecretArrayOutput)
 }
@@ -10853,6 +11045,7 @@ func (o GetJobTemplateTemplateVolumeArrayOutput) Index(i pulumi.IntInput) GetJob
 }
 
 type GetJobTemplateTemplateVolumeCloudSqlInstance struct {
+	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances []string `pulumi:"instances"`
 }
 
@@ -10868,6 +11061,7 @@ type GetJobTemplateTemplateVolumeCloudSqlInstanceInput interface {
 }
 
 type GetJobTemplateTemplateVolumeCloudSqlInstanceArgs struct {
+	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances pulumi.StringArrayInput `pulumi:"instances"`
 }
 
@@ -10922,6 +11116,7 @@ func (o GetJobTemplateTemplateVolumeCloudSqlInstanceOutput) ToGetJobTemplateTemp
 	return o
 }
 
+// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o GetJobTemplateTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
 }
@@ -10947,7 +11142,9 @@ func (o GetJobTemplateTemplateVolumeCloudSqlInstanceArrayOutput) Index(i pulumi.
 }
 
 type GetJobTemplateTemplateVolumeEmptyDir struct {
-	Medium    string `pulumi:"medium"`
+	// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+	Medium string `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 	SizeLimit string `pulumi:"sizeLimit"`
 }
 
@@ -10963,7 +11160,9 @@ type GetJobTemplateTemplateVolumeEmptyDirInput interface {
 }
 
 type GetJobTemplateTemplateVolumeEmptyDirArgs struct {
-	Medium    pulumi.StringInput `pulumi:"medium"`
+	// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+	Medium pulumi.StringInput `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 	SizeLimit pulumi.StringInput `pulumi:"sizeLimit"`
 }
 
@@ -11018,10 +11217,12 @@ func (o GetJobTemplateTemplateVolumeEmptyDirOutput) ToGetJobTemplateTemplateVolu
 	return o
 }
 
+// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
 func (o GetJobTemplateTemplateVolumeEmptyDirOutput) Medium() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeEmptyDir) string { return v.Medium }).(pulumi.StringOutput)
 }
 
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 func (o GetJobTemplateTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeEmptyDir) string { return v.SizeLimit }).(pulumi.StringOutput)
 }
@@ -11047,9 +11248,12 @@ func (o GetJobTemplateTemplateVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetJobTemplateTemplateVolumeSecret struct {
-	DefaultMode int                                      `pulumi:"defaultMode"`
-	Items       []GetJobTemplateTemplateVolumeSecretItem `pulumi:"items"`
-	Secret      string                                   `pulumi:"secret"`
+	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+	DefaultMode int `pulumi:"defaultMode"`
+	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+	Items []GetJobTemplateTemplateVolumeSecretItem `pulumi:"items"`
+	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	Secret string `pulumi:"secret"`
 }
 
 // GetJobTemplateTemplateVolumeSecretInput is an input type that accepts GetJobTemplateTemplateVolumeSecretArgs and GetJobTemplateTemplateVolumeSecretOutput values.
@@ -11064,9 +11268,12 @@ type GetJobTemplateTemplateVolumeSecretInput interface {
 }
 
 type GetJobTemplateTemplateVolumeSecretArgs struct {
-	DefaultMode pulumi.IntInput                                  `pulumi:"defaultMode"`
-	Items       GetJobTemplateTemplateVolumeSecretItemArrayInput `pulumi:"items"`
-	Secret      pulumi.StringInput                               `pulumi:"secret"`
+	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
+	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+	Items GetJobTemplateTemplateVolumeSecretItemArrayInput `pulumi:"items"`
+	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
 func (GetJobTemplateTemplateVolumeSecretArgs) ElementType() reflect.Type {
@@ -11120,14 +11327,17 @@ func (o GetJobTemplateTemplateVolumeSecretOutput) ToGetJobTemplateTemplateVolume
 	return o
 }
 
+// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
 func (o GetJobTemplateTemplateVolumeSecretOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecret) int { return v.DefaultMode }).(pulumi.IntOutput)
 }
 
+// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
 func (o GetJobTemplateTemplateVolumeSecretOutput) Items() GetJobTemplateTemplateVolumeSecretItemArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecret) []GetJobTemplateTemplateVolumeSecretItem { return v.Items }).(GetJobTemplateTemplateVolumeSecretItemArrayOutput)
 }
 
+// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
 func (o GetJobTemplateTemplateVolumeSecretOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecret) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -11153,8 +11363,11 @@ func (o GetJobTemplateTemplateVolumeSecretArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetJobTemplateTemplateVolumeSecretItem struct {
-	Mode    int    `pulumi:"mode"`
-	Path    string `pulumi:"path"`
+	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+	Mode int `pulumi:"mode"`
+	// The relative path of the secret in the container.
+	Path string `pulumi:"path"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
 	Version string `pulumi:"version"`
 }
 
@@ -11170,8 +11383,11 @@ type GetJobTemplateTemplateVolumeSecretItemInput interface {
 }
 
 type GetJobTemplateTemplateVolumeSecretItemArgs struct {
-	Mode    pulumi.IntInput    `pulumi:"mode"`
-	Path    pulumi.StringInput `pulumi:"path"`
+	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+	Mode pulumi.IntInput `pulumi:"mode"`
+	// The relative path of the secret in the container.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -11226,14 +11442,17 @@ func (o GetJobTemplateTemplateVolumeSecretItemOutput) ToGetJobTemplateTemplateVo
 	return o
 }
 
+// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
 func (o GetJobTemplateTemplateVolumeSecretItemOutput) Mode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecretItem) int { return v.Mode }).(pulumi.IntOutput)
 }
 
+// The relative path of the secret in the container.
 func (o GetJobTemplateTemplateVolumeSecretItemOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecretItem) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
 func (o GetJobTemplateTemplateVolumeSecretItemOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeSecretItem) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -11259,8 +11478,11 @@ func (o GetJobTemplateTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetJobTemplateTemplateVpcAccess struct {
-	Connector         string                                            `pulumi:"connector"`
-	Egress            string                                            `pulumi:"egress"`
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	Connector string `pulumi:"connector"`
+	// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+	Egress string `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
 	NetworkInterfaces []GetJobTemplateTemplateVpcAccessNetworkInterface `pulumi:"networkInterfaces"`
 }
 
@@ -11276,8 +11498,11 @@ type GetJobTemplateTemplateVpcAccessInput interface {
 }
 
 type GetJobTemplateTemplateVpcAccessArgs struct {
-	Connector         pulumi.StringInput                                        `pulumi:"connector"`
-	Egress            pulumi.StringInput                                        `pulumi:"egress"`
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	Connector pulumi.StringInput `pulumi:"connector"`
+	// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+	Egress pulumi.StringInput `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
 	NetworkInterfaces GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 }
 
@@ -11332,14 +11557,17 @@ func (o GetJobTemplateTemplateVpcAccessOutput) ToGetJobTemplateTemplateVpcAccess
 	return o
 }
 
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 func (o GetJobTemplateTemplateVpcAccessOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccess) string { return v.Connector }).(pulumi.StringOutput)
 }
 
+// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
 func (o GetJobTemplateTemplateVpcAccessOutput) Egress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccess) string { return v.Egress }).(pulumi.StringOutput)
 }
 
+// Direct VPC egress settings. Currently only single network interface is supported.
 func (o GetJobTemplateTemplateVpcAccessOutput) NetworkInterfaces() GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccess) []GetJobTemplateTemplateVpcAccessNetworkInterface {
 		return v.NetworkInterfaces
@@ -11367,9 +11595,16 @@ func (o GetJobTemplateTemplateVpcAccessArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetJobTemplateTemplateVpcAccessNetworkInterface struct {
-	Network    string   `pulumi:"network"`
-	Subnetwork string   `pulumi:"subnetwork"`
-	Tags       []string `pulumi:"tags"`
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+	// looked up from the subnetwork.
+	Network string `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+	// subnetwork with the same name with the network will be used.
+	Subnetwork string `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run job.
+	Tags []string `pulumi:"tags"`
 }
 
 // GetJobTemplateTemplateVpcAccessNetworkInterfaceInput is an input type that accepts GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs and GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput values.
@@ -11384,9 +11619,16 @@ type GetJobTemplateTemplateVpcAccessNetworkInterfaceInput interface {
 }
 
 type GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs struct {
-	Network    pulumi.StringInput      `pulumi:"network"`
-	Subnetwork pulumi.StringInput      `pulumi:"subnetwork"`
-	Tags       pulumi.StringArrayInput `pulumi:"tags"`
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+	// looked up from the subnetwork.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+	// subnetwork with the same name with the network will be used.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run job.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -11440,14 +11682,21 @@ func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) ToGetJobTemplateT
 	return o
 }
 
+// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+// looked up from the subnetwork.
 func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccessNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+// subnetwork with the same name with the network will be used.
 func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccessNetworkInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
+// Network tags applied to this Cloud Run job.
 func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -11473,14 +11722,24 @@ func (o GetJobTemplateTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulu
 }
 
 type GetJobTerminalCondition struct {
-	ExecutionReason    string `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason string `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime string `pulumi:"lastTransitionTime"`
-	Message            string `pulumi:"message"`
-	Reason             string `pulumi:"reason"`
-	RevisionReason     string `pulumi:"revisionReason"`
-	Severity           string `pulumi:"severity"`
-	State              string `pulumi:"state"`
-	Type               string `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message string `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason string `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason string `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity string `pulumi:"severity"`
+	// State of the condition.
+	State string `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type string `pulumi:"type"`
 }
 
 // GetJobTerminalConditionInput is an input type that accepts GetJobTerminalConditionArgs and GetJobTerminalConditionOutput values.
@@ -11495,14 +11754,24 @@ type GetJobTerminalConditionInput interface {
 }
 
 type GetJobTerminalConditionArgs struct {
-	ExecutionReason    pulumi.StringInput `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason pulumi.StringInput `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
-	Message            pulumi.StringInput `pulumi:"message"`
-	Reason             pulumi.StringInput `pulumi:"reason"`
-	RevisionReason     pulumi.StringInput `pulumi:"revisionReason"`
-	Severity           pulumi.StringInput `pulumi:"severity"`
-	State              pulumi.StringInput `pulumi:"state"`
-	Type               pulumi.StringInput `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringInput `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason pulumi.StringInput `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason pulumi.StringInput `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// State of the condition.
+	State pulumi.StringInput `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetJobTerminalConditionArgs) ElementType() reflect.Type {
@@ -11556,34 +11825,44 @@ func (o GetJobTerminalConditionOutput) ToGetJobTerminalConditionOutputWithContex
 	return o
 }
 
+// A reason for the execution condition.
 func (o GetJobTerminalConditionOutput) ExecutionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.ExecutionReason }).(pulumi.StringOutput)
 }
 
+// Last time the condition transitioned from one status to another.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetJobTerminalConditionOutput) LastTransitionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.LastTransitionTime }).(pulumi.StringOutput)
 }
 
+// Human readable message indicating details about the current status.
 func (o GetJobTerminalConditionOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// A common (service-level) reason for this condition.
 func (o GetJobTerminalConditionOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.Reason }).(pulumi.StringOutput)
 }
 
+// A reason for the revision condition.
 func (o GetJobTerminalConditionOutput) RevisionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.RevisionReason }).(pulumi.StringOutput)
 }
 
+// How to interpret failures of this condition, one of Error, Warning, Info
 func (o GetJobTerminalConditionOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.Severity }).(pulumi.StringOutput)
 }
 
+// State of the condition.
 func (o GetJobTerminalConditionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.State }).(pulumi.StringOutput)
 }
 
+// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o GetJobTerminalConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTerminalCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -11609,8 +11888,10 @@ func (o GetJobTerminalConditionArrayOutput) Index(i pulumi.IntInput) GetJobTermi
 }
 
 type GetServiceBinaryAuthorization struct {
+	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification string `pulumi:"breakglassJustification"`
-	UseDefault              bool   `pulumi:"useDefault"`
+	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+	UseDefault bool `pulumi:"useDefault"`
 }
 
 // GetServiceBinaryAuthorizationInput is an input type that accepts GetServiceBinaryAuthorizationArgs and GetServiceBinaryAuthorizationOutput values.
@@ -11625,8 +11906,10 @@ type GetServiceBinaryAuthorizationInput interface {
 }
 
 type GetServiceBinaryAuthorizationArgs struct {
+	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification pulumi.StringInput `pulumi:"breakglassJustification"`
-	UseDefault              pulumi.BoolInput   `pulumi:"useDefault"`
+	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+	UseDefault pulumi.BoolInput `pulumi:"useDefault"`
 }
 
 func (GetServiceBinaryAuthorizationArgs) ElementType() reflect.Type {
@@ -11680,10 +11963,12 @@ func (o GetServiceBinaryAuthorizationOutput) ToGetServiceBinaryAuthorizationOutp
 	return o
 }
 
+// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o GetServiceBinaryAuthorizationOutput) BreakglassJustification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceBinaryAuthorization) string { return v.BreakglassJustification }).(pulumi.StringOutput)
 }
 
+// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 func (o GetServiceBinaryAuthorizationOutput) UseDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceBinaryAuthorization) bool { return v.UseDefault }).(pulumi.BoolOutput)
 }
@@ -11709,14 +11994,24 @@ func (o GetServiceBinaryAuthorizationArrayOutput) Index(i pulumi.IntInput) GetSe
 }
 
 type GetServiceCondition struct {
-	ExecutionReason    string `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason string `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime string `pulumi:"lastTransitionTime"`
-	Message            string `pulumi:"message"`
-	Reason             string `pulumi:"reason"`
-	RevisionReason     string `pulumi:"revisionReason"`
-	Severity           string `pulumi:"severity"`
-	State              string `pulumi:"state"`
-	Type               string `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message string `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason string `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason string `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity string `pulumi:"severity"`
+	// State of the condition.
+	State string `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type string `pulumi:"type"`
 }
 
 // GetServiceConditionInput is an input type that accepts GetServiceConditionArgs and GetServiceConditionOutput values.
@@ -11731,14 +12026,24 @@ type GetServiceConditionInput interface {
 }
 
 type GetServiceConditionArgs struct {
-	ExecutionReason    pulumi.StringInput `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason pulumi.StringInput `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
-	Message            pulumi.StringInput `pulumi:"message"`
-	Reason             pulumi.StringInput `pulumi:"reason"`
-	RevisionReason     pulumi.StringInput `pulumi:"revisionReason"`
-	Severity           pulumi.StringInput `pulumi:"severity"`
-	State              pulumi.StringInput `pulumi:"state"`
-	Type               pulumi.StringInput `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringInput `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason pulumi.StringInput `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason pulumi.StringInput `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// State of the condition.
+	State pulumi.StringInput `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetServiceConditionArgs) ElementType() reflect.Type {
@@ -11792,34 +12097,44 @@ func (o GetServiceConditionOutput) ToGetServiceConditionOutputWithContext(ctx co
 	return o
 }
 
+// A reason for the execution condition.
 func (o GetServiceConditionOutput) ExecutionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCondition) string { return v.ExecutionReason }).(pulumi.StringOutput)
 }
 
+// Last time the condition transitioned from one status to another.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetServiceConditionOutput) LastTransitionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCondition) string { return v.LastTransitionTime }).(pulumi.StringOutput)
 }
 
+// Human readable message indicating details about the current status.
 func (o GetServiceConditionOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCondition) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// A common (service-level) reason for this condition.
 func (o GetServiceConditionOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCondition) string { return v.Reason }).(pulumi.StringOutput)
 }
 
+// A reason for the revision condition.
 func (o GetServiceConditionOutput) RevisionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCondition) string { return v.RevisionReason }).(pulumi.StringOutput)
 }
 
+// How to interpret failures of this condition, one of Error, Warning, Info
 func (o GetServiceConditionOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCondition) string { return v.Severity }).(pulumi.StringOutput)
 }
 
+// State of the condition.
 func (o GetServiceConditionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCondition) string { return v.State }).(pulumi.StringOutput)
 }
 
+// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o GetServiceConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -11845,19 +12160,43 @@ func (o GetServiceConditionArrayOutput) Index(i pulumi.IntInput) GetServiceCondi
 }
 
 type GetServiceTemplate struct {
-	Annotations                   map[string]string             `pulumi:"annotations"`
-	Containers                    []GetServiceTemplateContainer `pulumi:"containers"`
-	EncryptionKey                 string                        `pulumi:"encryptionKey"`
-	ExecutionEnvironment          string                        `pulumi:"executionEnvironment"`
-	Labels                        map[string]string             `pulumi:"labels"`
-	MaxInstanceRequestConcurrency int                           `pulumi:"maxInstanceRequestConcurrency"`
-	Revision                      string                        `pulumi:"revision"`
-	Scalings                      []GetServiceTemplateScaling   `pulumi:"scalings"`
-	ServiceAccount                string                        `pulumi:"serviceAccount"`
-	SessionAffinity               bool                          `pulumi:"sessionAffinity"`
-	Timeout                       string                        `pulumi:"timeout"`
-	Volumes                       []GetServiceTemplateVolume    `pulumi:"volumes"`
-	VpcAccesses                   []GetServiceTemplateVpcAccess `pulumi:"vpcAccesses"`
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	//
+	// Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+	// All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+	//
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Holds the containers that define the unit of execution for this Service.
+	Containers []GetServiceTemplateContainer `pulumi:"containers"`
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	EncryptionKey string `pulumi:"encryptionKey"`
+	// The sandbox environment to host this Revision. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+	ExecutionEnvironment string `pulumi:"executionEnvironment"`
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	//
+	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+	Labels map[string]string `pulumi:"labels"`
+	// Sets the maximum number of requests that each serving instance can receive.
+	MaxInstanceRequestConcurrency int `pulumi:"maxInstanceRequestConcurrency"`
+	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	Revision string `pulumi:"revision"`
+	// Scaling settings for this Revision.
+	Scalings []GetServiceTemplateScaling `pulumi:"scalings"`
+	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+	SessionAffinity bool `pulumi:"sessionAffinity"`
+	// Max allowed time for an instance to respond to a request.
+	//
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Timeout string `pulumi:"timeout"`
+	// A list of Volumes to make available to containers.
+	Volumes []GetServiceTemplateVolume `pulumi:"volumes"`
+	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	VpcAccesses []GetServiceTemplateVpcAccess `pulumi:"vpcAccesses"`
 }
 
 // GetServiceTemplateInput is an input type that accepts GetServiceTemplateArgs and GetServiceTemplateOutput values.
@@ -11872,19 +12211,43 @@ type GetServiceTemplateInput interface {
 }
 
 type GetServiceTemplateArgs struct {
-	Annotations                   pulumi.StringMapInput                 `pulumi:"annotations"`
-	Containers                    GetServiceTemplateContainerArrayInput `pulumi:"containers"`
-	EncryptionKey                 pulumi.StringInput                    `pulumi:"encryptionKey"`
-	ExecutionEnvironment          pulumi.StringInput                    `pulumi:"executionEnvironment"`
-	Labels                        pulumi.StringMapInput                 `pulumi:"labels"`
-	MaxInstanceRequestConcurrency pulumi.IntInput                       `pulumi:"maxInstanceRequestConcurrency"`
-	Revision                      pulumi.StringInput                    `pulumi:"revision"`
-	Scalings                      GetServiceTemplateScalingArrayInput   `pulumi:"scalings"`
-	ServiceAccount                pulumi.StringInput                    `pulumi:"serviceAccount"`
-	SessionAffinity               pulumi.BoolInput                      `pulumi:"sessionAffinity"`
-	Timeout                       pulumi.StringInput                    `pulumi:"timeout"`
-	Volumes                       GetServiceTemplateVolumeArrayInput    `pulumi:"volumes"`
-	VpcAccesses                   GetServiceTemplateVpcAccessArrayInput `pulumi:"vpcAccesses"`
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	//
+	// Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+	// All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+	//
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Holds the containers that define the unit of execution for this Service.
+	Containers GetServiceTemplateContainerArrayInput `pulumi:"containers"`
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
+	// The sandbox environment to host this Revision. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+	ExecutionEnvironment pulumi.StringInput `pulumi:"executionEnvironment"`
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	//
+	// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Sets the maximum number of requests that each serving instance can receive.
+	MaxInstanceRequestConcurrency pulumi.IntInput `pulumi:"maxInstanceRequestConcurrency"`
+	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	Revision pulumi.StringInput `pulumi:"revision"`
+	// Scaling settings for this Revision.
+	Scalings GetServiceTemplateScalingArrayInput `pulumi:"scalings"`
+	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+	SessionAffinity pulumi.BoolInput `pulumi:"sessionAffinity"`
+	// Max allowed time for an instance to respond to a request.
+	//
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// A list of Volumes to make available to containers.
+	Volumes GetServiceTemplateVolumeArrayInput `pulumi:"volumes"`
+	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	VpcAccesses GetServiceTemplateVpcAccessArrayInput `pulumi:"vpcAccesses"`
 }
 
 func (GetServiceTemplateArgs) ElementType() reflect.Type {
@@ -11938,54 +12301,78 @@ func (o GetServiceTemplateOutput) ToGetServiceTemplateOutputWithContext(ctx cont
 	return o
 }
 
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+//
+// Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+// All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+//
+// This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o GetServiceTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
+// Holds the containers that define the unit of execution for this Service.
 func (o GetServiceTemplateOutput) Containers() GetServiceTemplateContainerArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateContainer { return v.Containers }).(GetServiceTemplateContainerArrayOutput)
 }
 
+// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
 func (o GetServiceTemplateOutput) EncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplate) string { return v.EncryptionKey }).(pulumi.StringOutput)
 }
 
+// The sandbox environment to host this Revision. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
 func (o GetServiceTemplateOutput) ExecutionEnvironment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplate) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
 }
 
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+//
+// Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o GetServiceTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Sets the maximum number of requests that each serving instance can receive.
 func (o GetServiceTemplateOutput) MaxInstanceRequestConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplate) int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntOutput)
 }
 
+// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 func (o GetServiceTemplateOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplate) string { return v.Revision }).(pulumi.StringOutput)
 }
 
+// Scaling settings for this Revision.
 func (o GetServiceTemplateOutput) Scalings() GetServiceTemplateScalingArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateScaling { return v.Scalings }).(GetServiceTemplateScalingArrayOutput)
 }
 
+// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 func (o GetServiceTemplateOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplate) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
+// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
 func (o GetServiceTemplateOutput) SessionAffinity() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTemplate) bool { return v.SessionAffinity }).(pulumi.BoolOutput)
 }
 
+// Max allowed time for an instance to respond to a request.
+//
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 func (o GetServiceTemplateOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplate) string { return v.Timeout }).(pulumi.StringOutput)
 }
 
+// A list of Volumes to make available to containers.
 func (o GetServiceTemplateOutput) Volumes() GetServiceTemplateVolumeArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateVolume { return v.Volumes }).(GetServiceTemplateVolumeArrayOutput)
 }
 
+// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 func (o GetServiceTemplateOutput) VpcAccesses() GetServiceTemplateVpcAccessArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateVpcAccess { return v.VpcAccesses }).(GetServiceTemplateVpcAccessArrayOutput)
 }
@@ -12011,19 +12398,32 @@ func (o GetServiceTemplateArrayOutput) Index(i pulumi.IntInput) GetServiceTempla
 }
 
 type GetServiceTemplateContainer struct {
-	Args           []string                                   `pulumi:"args"`
-	Commands       []string                                   `pulumi:"commands"`
-	DependsOns     []string                                   `pulumi:"dependsOns"`
-	Envs           []GetServiceTemplateContainerEnv           `pulumi:"envs"`
-	Image          string                                     `pulumi:"image"`
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Commands []string `pulumi:"commands"`
+	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+	DependsOns []string `pulumi:"dependsOns"`
+	// List of environment variables to set in the container.
+	Envs []GetServiceTemplateContainerEnv `pulumi:"envs"`
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	Image string `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbes []GetServiceTemplateContainerLivenessProbe `pulumi:"livenessProbes"`
 	// The name of the Cloud Run v2 Service.
-	Name          string                                    `pulumi:"name"`
-	Ports         []GetServiceTemplateContainerPort         `pulumi:"ports"`
-	Resources     []GetServiceTemplateContainerResource     `pulumi:"resources"`
+	Name string `pulumi:"name"`
+	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+	//
+	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+	Ports []GetServiceTemplateContainerPort `pulumi:"ports"`
+	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	Resources []GetServiceTemplateContainerResource `pulumi:"resources"`
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	StartupProbes []GetServiceTemplateContainerStartupProbe `pulumi:"startupProbes"`
-	VolumeMounts  []GetServiceTemplateContainerVolumeMount  `pulumi:"volumeMounts"`
-	WorkingDir    string                                    `pulumi:"workingDir"`
+	// Volume to mount into the container's filesystem.
+	VolumeMounts []GetServiceTemplateContainerVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir string `pulumi:"workingDir"`
 }
 
 // GetServiceTemplateContainerInput is an input type that accepts GetServiceTemplateContainerArgs and GetServiceTemplateContainerOutput values.
@@ -12038,19 +12438,32 @@ type GetServiceTemplateContainerInput interface {
 }
 
 type GetServiceTemplateContainerArgs struct {
-	Args           pulumi.StringArrayInput                            `pulumi:"args"`
-	Commands       pulumi.StringArrayInput                            `pulumi:"commands"`
-	DependsOns     pulumi.StringArrayInput                            `pulumi:"dependsOns"`
-	Envs           GetServiceTemplateContainerEnvArrayInput           `pulumi:"envs"`
-	Image          pulumi.StringInput                                 `pulumi:"image"`
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+	DependsOns pulumi.StringArrayInput `pulumi:"dependsOns"`
+	// List of environment variables to set in the container.
+	Envs GetServiceTemplateContainerEnvArrayInput `pulumi:"envs"`
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	Image pulumi.StringInput `pulumi:"image"`
+	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbes GetServiceTemplateContainerLivenessProbeArrayInput `pulumi:"livenessProbes"`
 	// The name of the Cloud Run v2 Service.
-	Name          pulumi.StringInput                                `pulumi:"name"`
-	Ports         GetServiceTemplateContainerPortArrayInput         `pulumi:"ports"`
-	Resources     GetServiceTemplateContainerResourceArrayInput     `pulumi:"resources"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+	//
+	// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+	Ports GetServiceTemplateContainerPortArrayInput `pulumi:"ports"`
+	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+	Resources GetServiceTemplateContainerResourceArrayInput `pulumi:"resources"`
+	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	StartupProbes GetServiceTemplateContainerStartupProbeArrayInput `pulumi:"startupProbes"`
-	VolumeMounts  GetServiceTemplateContainerVolumeMountArrayInput  `pulumi:"volumeMounts"`
-	WorkingDir    pulumi.StringInput                                `pulumi:"workingDir"`
+	// Volume to mount into the container's filesystem.
+	VolumeMounts GetServiceTemplateContainerVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
 }
 
 func (GetServiceTemplateContainerArgs) ElementType() reflect.Type {
@@ -12104,26 +12517,32 @@ func (o GetServiceTemplateContainerOutput) ToGetServiceTemplateContainerOutputWi
 	return o
 }
 
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o GetServiceTemplateContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
 func (o GetServiceTemplateContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
 
+// Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
 func (o GetServiceTemplateContainerOutput) DependsOns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []string { return v.DependsOns }).(pulumi.StringArrayOutput)
 }
 
+// List of environment variables to set in the container.
 func (o GetServiceTemplateContainerOutput) Envs() GetServiceTemplateContainerEnvArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerEnv { return v.Envs }).(GetServiceTemplateContainerEnvArrayOutput)
 }
 
+// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o GetServiceTemplateContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) string { return v.Image }).(pulumi.StringOutput)
 }
 
+// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o GetServiceTemplateContainerOutput) LivenessProbes() GetServiceTemplateContainerLivenessProbeArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerLivenessProbe {
 		return v.LivenessProbes
@@ -12135,22 +12554,29 @@ func (o GetServiceTemplateContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+//
+// If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
 func (o GetServiceTemplateContainerOutput) Ports() GetServiceTemplateContainerPortArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerPort { return v.Ports }).(GetServiceTemplateContainerPortArrayOutput)
 }
 
+// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o GetServiceTemplateContainerOutput) Resources() GetServiceTemplateContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerResource { return v.Resources }).(GetServiceTemplateContainerResourceArrayOutput)
 }
 
+// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o GetServiceTemplateContainerOutput) StartupProbes() GetServiceTemplateContainerStartupProbeArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerStartupProbe { return v.StartupProbes }).(GetServiceTemplateContainerStartupProbeArrayOutput)
 }
 
+// Volume to mount into the container's filesystem.
 func (o GetServiceTemplateContainerOutput) VolumeMounts() GetServiceTemplateContainerVolumeMountArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerVolumeMount { return v.VolumeMounts }).(GetServiceTemplateContainerVolumeMountArrayOutput)
 }
 
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
 func (o GetServiceTemplateContainerOutput) WorkingDir() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) string { return v.WorkingDir }).(pulumi.StringOutput)
 }
@@ -12177,8 +12603,10 @@ func (o GetServiceTemplateContainerArrayOutput) Index(i pulumi.IntInput) GetServ
 
 type GetServiceTemplateContainerEnv struct {
 	// The name of the Cloud Run v2 Service.
-	Name         string                                      `pulumi:"name"`
-	Value        string                                      `pulumi:"value"`
+	Name string `pulumi:"name"`
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	Value string `pulumi:"value"`
+	// Source for the environment variable's value.
 	ValueSources []GetServiceTemplateContainerEnvValueSource `pulumi:"valueSources"`
 }
 
@@ -12195,8 +12623,10 @@ type GetServiceTemplateContainerEnvInput interface {
 
 type GetServiceTemplateContainerEnvArgs struct {
 	// The name of the Cloud Run v2 Service.
-	Name         pulumi.StringInput                                  `pulumi:"name"`
-	Value        pulumi.StringInput                                  `pulumi:"value"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+	Value pulumi.StringInput `pulumi:"value"`
+	// Source for the environment variable's value.
 	ValueSources GetServiceTemplateContainerEnvValueSourceArrayInput `pulumi:"valueSources"`
 }
 
@@ -12256,10 +12686,12 @@ func (o GetServiceTemplateContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
 func (o GetServiceTemplateContainerEnvOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerEnv) string { return v.Value }).(pulumi.StringOutput)
 }
 
+// Source for the environment variable's value.
 func (o GetServiceTemplateContainerEnvOutput) ValueSources() GetServiceTemplateContainerEnvValueSourceArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerEnv) []GetServiceTemplateContainerEnvValueSource {
 		return v.ValueSources
@@ -12287,6 +12719,7 @@ func (o GetServiceTemplateContainerEnvArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetServiceTemplateContainerEnvValueSource struct {
+	// Selects a secret and a specific version from Cloud Secret Manager.
 	SecretKeyReves []GetServiceTemplateContainerEnvValueSourceSecretKeyRef `pulumi:"secretKeyReves"`
 }
 
@@ -12302,6 +12735,7 @@ type GetServiceTemplateContainerEnvValueSourceInput interface {
 }
 
 type GetServiceTemplateContainerEnvValueSourceArgs struct {
+	// Selects a secret and a specific version from Cloud Secret Manager.
 	SecretKeyReves GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayInput `pulumi:"secretKeyReves"`
 }
 
@@ -12356,6 +12790,7 @@ func (o GetServiceTemplateContainerEnvValueSourceOutput) ToGetServiceTemplateCon
 	return o
 }
 
+// Selects a secret and a specific version from Cloud Secret Manager.
 func (o GetServiceTemplateContainerEnvValueSourceOutput) SecretKeyReves() GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerEnvValueSource) []GetServiceTemplateContainerEnvValueSourceSecretKeyRef {
 		return v.SecretKeyReves
@@ -12383,7 +12818,9 @@ func (o GetServiceTemplateContainerEnvValueSourceArrayOutput) Index(i pulumi.Int
 }
 
 type GetServiceTemplateContainerEnvValueSourceSecretKeyRef struct {
-	Secret  string `pulumi:"secret"`
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+	Secret string `pulumi:"secret"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version string `pulumi:"version"`
 }
 
@@ -12399,7 +12836,9 @@ type GetServiceTemplateContainerEnvValueSourceSecretKeyRefInput interface {
 }
 
 type GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs struct {
-	Secret  pulumi.StringInput `pulumi:"secret"`
+	// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -12454,10 +12893,12 @@ func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) ToGetServic
 	return o
 }
 
+// The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
 func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Secret }).(pulumi.StringOutput)
 }
 
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
 func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerEnvValueSourceSecretKeyRef) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -12483,13 +12924,20 @@ func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) Index(
 }
 
 type GetServiceTemplateContainerLivenessProbe struct {
-	FailureThreshold    int                                                 `pulumi:"failureThreshold"`
-	Grpcs               []GetServiceTemplateContainerLivenessProbeGrpc      `pulumi:"grpcs"`
-	HttpGets            []GetServiceTemplateContainerLivenessProbeHttpGet   `pulumi:"httpGets"`
-	InitialDelaySeconds int                                                 `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       int                                                 `pulumi:"periodSeconds"`
-	TcpSockets          []GetServiceTemplateContainerLivenessProbeTcpSocket `pulumi:"tcpSockets"`
-	TimeoutSeconds      int                                                 `pulumi:"timeoutSeconds"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs []GetServiceTemplateContainerLivenessProbeGrpc `pulumi:"grpcs"`
+	// HTTPGet specifies the http request to perform.
+	HttpGets []GetServiceTemplateContainerLivenessProbeHttpGet `pulumi:"httpGets"`
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+	PeriodSeconds int `pulumi:"periodSeconds"`
+	// TCPSocketAction describes an action based on opening a socket
+	TcpSockets []GetServiceTemplateContainerLivenessProbeTcpSocket `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	TimeoutSeconds int `pulumi:"timeoutSeconds"`
 }
 
 // GetServiceTemplateContainerLivenessProbeInput is an input type that accepts GetServiceTemplateContainerLivenessProbeArgs and GetServiceTemplateContainerLivenessProbeOutput values.
@@ -12504,13 +12952,20 @@ type GetServiceTemplateContainerLivenessProbeInput interface {
 }
 
 type GetServiceTemplateContainerLivenessProbeArgs struct {
-	FailureThreshold    pulumi.IntInput                                             `pulumi:"failureThreshold"`
-	Grpcs               GetServiceTemplateContainerLivenessProbeGrpcArrayInput      `pulumi:"grpcs"`
-	HttpGets            GetServiceTemplateContainerLivenessProbeHttpGetArrayInput   `pulumi:"httpGets"`
-	InitialDelaySeconds pulumi.IntInput                                             `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       pulumi.IntInput                                             `pulumi:"periodSeconds"`
-	TcpSockets          GetServiceTemplateContainerLivenessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
-	TimeoutSeconds      pulumi.IntInput                                             `pulumi:"timeoutSeconds"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs GetServiceTemplateContainerLivenessProbeGrpcArrayInput `pulumi:"grpcs"`
+	// HTTPGet specifies the http request to perform.
+	HttpGets GetServiceTemplateContainerLivenessProbeHttpGetArrayInput `pulumi:"httpGets"`
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	InitialDelaySeconds pulumi.IntInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
+	// TCPSocketAction describes an action based on opening a socket
+	TcpSockets GetServiceTemplateContainerLivenessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
 }
 
 func (GetServiceTemplateContainerLivenessProbeArgs) ElementType() reflect.Type {
@@ -12564,36 +13019,43 @@ func (o GetServiceTemplateContainerLivenessProbeOutput) ToGetServiceTemplateCont
 	return o
 }
 
+// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o GetServiceTemplateContainerLivenessProbeOutput) FailureThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) int { return v.FailureThreshold }).(pulumi.IntOutput)
 }
 
+// GRPC specifies an action involving a GRPC port.
 func (o GetServiceTemplateContainerLivenessProbeOutput) Grpcs() GetServiceTemplateContainerLivenessProbeGrpcArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) []GetServiceTemplateContainerLivenessProbeGrpc {
 		return v.Grpcs
 	}).(GetServiceTemplateContainerLivenessProbeGrpcArrayOutput)
 }
 
+// HTTPGet specifies the http request to perform.
 func (o GetServiceTemplateContainerLivenessProbeOutput) HttpGets() GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) []GetServiceTemplateContainerLivenessProbeHttpGet {
 		return v.HttpGets
 	}).(GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput)
 }
 
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o GetServiceTemplateContainerLivenessProbeOutput) InitialDelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
 }
 
+// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 func (o GetServiceTemplateContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
 }
 
+// TCPSocketAction describes an action based on opening a socket
 func (o GetServiceTemplateContainerLivenessProbeOutput) TcpSockets() GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) []GetServiceTemplateContainerLivenessProbeTcpSocket {
 		return v.TcpSockets
 	}).(GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput)
 }
 
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o GetServiceTemplateContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
 }
@@ -12619,7 +13081,12 @@ func (o GetServiceTemplateContainerLivenessProbeArrayOutput) Index(i pulumi.IntI
 }
 
 type GetServiceTemplateContainerLivenessProbeGrpc struct {
-	Port    int    `pulumi:"port"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
 	Service string `pulumi:"service"`
 }
 
@@ -12635,7 +13102,12 @@ type GetServiceTemplateContainerLivenessProbeGrpcInput interface {
 }
 
 type GetServiceTemplateContainerLivenessProbeGrpcArgs struct {
-	Port    pulumi.IntInput    `pulumi:"port"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -12690,10 +13162,15 @@ func (o GetServiceTemplateContainerLivenessProbeGrpcOutput) ToGetServiceTemplate
 	return o
 }
 
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o GetServiceTemplateContainerLivenessProbeGrpcOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
 func (o GetServiceTemplateContainerLivenessProbeGrpcOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeGrpc) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -12719,9 +13196,13 @@ func (o GetServiceTemplateContainerLivenessProbeGrpcArrayOutput) Index(i pulumi.
 }
 
 type GetServiceTemplateContainerLivenessProbeHttpGet struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders []GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	Path        string                                                      `pulumi:"path"`
-	Port        int                                                         `pulumi:"port"`
+	// Path to access on the HTTP server. Defaults to '/'.
+	Path string `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
 }
 
 // GetServiceTemplateContainerLivenessProbeHttpGetInput is an input type that accepts GetServiceTemplateContainerLivenessProbeHttpGetArgs and GetServiceTemplateContainerLivenessProbeHttpGetOutput values.
@@ -12736,9 +13217,13 @@ type GetServiceTemplateContainerLivenessProbeHttpGetInput interface {
 }
 
 type GetServiceTemplateContainerLivenessProbeHttpGetArgs struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	Path        pulumi.StringInput                                                  `pulumi:"path"`
-	Port        pulumi.IntInput                                                     `pulumi:"port"`
+	// Path to access on the HTTP server. Defaults to '/'.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
 func (GetServiceTemplateContainerLivenessProbeHttpGetArgs) ElementType() reflect.Type {
@@ -12792,16 +13277,20 @@ func (o GetServiceTemplateContainerLivenessProbeHttpGetOutput) ToGetServiceTempl
 	return o
 }
 
+// Custom headers to set in the request. HTTP allows repeated headers.
 func (o GetServiceTemplateContainerLivenessProbeHttpGetOutput) HttpHeaders() GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGet) []GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
 		return v.HttpHeaders
 	}).(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput)
 }
 
+// Path to access on the HTTP server. Defaults to '/'.
 func (o GetServiceTemplateContainerLivenessProbeHttpGetOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o GetServiceTemplateContainerLivenessProbeHttpGetOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -12828,7 +13317,8 @@ func (o GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput) Index(i pulu
 
 type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader struct {
 	// The name of the Cloud Run v2 Service.
-	Name  string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The header field value
 	Value string `pulumi:"value"`
 }
 
@@ -12845,7 +13335,8 @@ type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput interface {
 
 type GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs struct {
 	// The name of the Cloud Run v2 Service.
-	Name  pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The header field value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -12905,6 +13396,7 @@ func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Name() 
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The header field value
 func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -12930,6 +13422,9 @@ func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) In
 }
 
 type GetServiceTemplateContainerLivenessProbeTcpSocket struct {
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the exposed port of the container, which
+	// is the value of container.ports[0].containerPort.
 	Port int `pulumi:"port"`
 }
 
@@ -12945,6 +13440,9 @@ type GetServiceTemplateContainerLivenessProbeTcpSocketInput interface {
 }
 
 type GetServiceTemplateContainerLivenessProbeTcpSocketArgs struct {
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the exposed port of the container, which
+	// is the value of container.ports[0].containerPort.
 	Port pulumi.IntInput `pulumi:"port"`
 }
 
@@ -12999,6 +13497,9 @@ func (o GetServiceTemplateContainerLivenessProbeTcpSocketOutput) ToGetServiceTem
 	return o
 }
 
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the exposed port of the container, which
+// is the value of container.ports[0].containerPort.
 func (o GetServiceTemplateContainerLivenessProbeTcpSocketOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeTcpSocket) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -13024,6 +13525,7 @@ func (o GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput) Index(i pu
 }
 
 type GetServiceTemplateContainerPort struct {
+	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort int `pulumi:"containerPort"`
 	// The name of the Cloud Run v2 Service.
 	Name string `pulumi:"name"`
@@ -13041,6 +13543,7 @@ type GetServiceTemplateContainerPortInput interface {
 }
 
 type GetServiceTemplateContainerPortArgs struct {
+	// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
 	// The name of the Cloud Run v2 Service.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -13097,6 +13600,7 @@ func (o GetServiceTemplateContainerPortOutput) ToGetServiceTemplateContainerPort
 	return o
 }
 
+// Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
 func (o GetServiceTemplateContainerPortOutput) ContainerPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerPort) int { return v.ContainerPort }).(pulumi.IntOutput)
 }
@@ -13127,9 +13631,12 @@ func (o GetServiceTemplateContainerPortArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetServiceTemplateContainerResource struct {
-	CpuIdle         bool              `pulumi:"cpuIdle"`
-	Limits          map[string]string `pulumi:"limits"`
-	StartupCpuBoost bool              `pulumi:"startupCpuBoost"`
+	// Determines whether CPU should be throttled or not outside of requests.
+	CpuIdle bool `pulumi:"cpuIdle"`
+	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	Limits map[string]string `pulumi:"limits"`
+	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+	StartupCpuBoost bool `pulumi:"startupCpuBoost"`
 }
 
 // GetServiceTemplateContainerResourceInput is an input type that accepts GetServiceTemplateContainerResourceArgs and GetServiceTemplateContainerResourceOutput values.
@@ -13144,9 +13651,12 @@ type GetServiceTemplateContainerResourceInput interface {
 }
 
 type GetServiceTemplateContainerResourceArgs struct {
-	CpuIdle         pulumi.BoolInput      `pulumi:"cpuIdle"`
-	Limits          pulumi.StringMapInput `pulumi:"limits"`
-	StartupCpuBoost pulumi.BoolInput      `pulumi:"startupCpuBoost"`
+	// Determines whether CPU should be throttled or not outside of requests.
+	CpuIdle pulumi.BoolInput `pulumi:"cpuIdle"`
+	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	Limits pulumi.StringMapInput `pulumi:"limits"`
+	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+	StartupCpuBoost pulumi.BoolInput `pulumi:"startupCpuBoost"`
 }
 
 func (GetServiceTemplateContainerResourceArgs) ElementType() reflect.Type {
@@ -13200,14 +13710,17 @@ func (o GetServiceTemplateContainerResourceOutput) ToGetServiceTemplateContainer
 	return o
 }
 
+// Determines whether CPU should be throttled or not outside of requests.
 func (o GetServiceTemplateContainerResourceOutput) CpuIdle() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerResource) bool { return v.CpuIdle }).(pulumi.BoolOutput)
 }
 
+// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o GetServiceTemplateContainerResourceOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerResource) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
 
+// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 func (o GetServiceTemplateContainerResourceOutput) StartupCpuBoost() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerResource) bool { return v.StartupCpuBoost }).(pulumi.BoolOutput)
 }
@@ -13233,13 +13746,20 @@ func (o GetServiceTemplateContainerResourceArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetServiceTemplateContainerStartupProbe struct {
-	FailureThreshold    int                                                `pulumi:"failureThreshold"`
-	Grpcs               []GetServiceTemplateContainerStartupProbeGrpc      `pulumi:"grpcs"`
-	HttpGets            []GetServiceTemplateContainerStartupProbeHttpGet   `pulumi:"httpGets"`
-	InitialDelaySeconds int                                                `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       int                                                `pulumi:"periodSeconds"`
-	TcpSockets          []GetServiceTemplateContainerStartupProbeTcpSocket `pulumi:"tcpSockets"`
-	TimeoutSeconds      int                                                `pulumi:"timeoutSeconds"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold int `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs []GetServiceTemplateContainerStartupProbeGrpc `pulumi:"grpcs"`
+	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+	HttpGets []GetServiceTemplateContainerStartupProbeHttpGet `pulumi:"httpGets"`
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+	PeriodSeconds int `pulumi:"periodSeconds"`
+	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+	TcpSockets []GetServiceTemplateContainerStartupProbeTcpSocket `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	TimeoutSeconds int `pulumi:"timeoutSeconds"`
 }
 
 // GetServiceTemplateContainerStartupProbeInput is an input type that accepts GetServiceTemplateContainerStartupProbeArgs and GetServiceTemplateContainerStartupProbeOutput values.
@@ -13254,13 +13774,20 @@ type GetServiceTemplateContainerStartupProbeInput interface {
 }
 
 type GetServiceTemplateContainerStartupProbeArgs struct {
-	FailureThreshold    pulumi.IntInput                                            `pulumi:"failureThreshold"`
-	Grpcs               GetServiceTemplateContainerStartupProbeGrpcArrayInput      `pulumi:"grpcs"`
-	HttpGets            GetServiceTemplateContainerStartupProbeHttpGetArrayInput   `pulumi:"httpGets"`
-	InitialDelaySeconds pulumi.IntInput                                            `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       pulumi.IntInput                                            `pulumi:"periodSeconds"`
-	TcpSockets          GetServiceTemplateContainerStartupProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
-	TimeoutSeconds      pulumi.IntInput                                            `pulumi:"timeoutSeconds"`
+	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+	FailureThreshold pulumi.IntInput `pulumi:"failureThreshold"`
+	// GRPC specifies an action involving a GRPC port.
+	Grpcs GetServiceTemplateContainerStartupProbeGrpcArrayInput `pulumi:"grpcs"`
+	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+	HttpGets GetServiceTemplateContainerStartupProbeHttpGetArrayInput `pulumi:"httpGets"`
+	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	InitialDelaySeconds pulumi.IntInput `pulumi:"initialDelaySeconds"`
+	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+	PeriodSeconds pulumi.IntInput `pulumi:"periodSeconds"`
+	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+	TcpSockets GetServiceTemplateContainerStartupProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	TimeoutSeconds pulumi.IntInput `pulumi:"timeoutSeconds"`
 }
 
 func (GetServiceTemplateContainerStartupProbeArgs) ElementType() reflect.Type {
@@ -13314,36 +13841,43 @@ func (o GetServiceTemplateContainerStartupProbeOutput) ToGetServiceTemplateConta
 	return o
 }
 
+// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o GetServiceTemplateContainerStartupProbeOutput) FailureThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) int { return v.FailureThreshold }).(pulumi.IntOutput)
 }
 
+// GRPC specifies an action involving a GRPC port.
 func (o GetServiceTemplateContainerStartupProbeOutput) Grpcs() GetServiceTemplateContainerStartupProbeGrpcArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) []GetServiceTemplateContainerStartupProbeGrpc {
 		return v.Grpcs
 	}).(GetServiceTemplateContainerStartupProbeGrpcArrayOutput)
 }
 
+// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
 func (o GetServiceTemplateContainerStartupProbeOutput) HttpGets() GetServiceTemplateContainerStartupProbeHttpGetArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) []GetServiceTemplateContainerStartupProbeHttpGet {
 		return v.HttpGets
 	}).(GetServiceTemplateContainerStartupProbeHttpGetArrayOutput)
 }
 
+// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o GetServiceTemplateContainerStartupProbeOutput) InitialDelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
 }
 
+// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 func (o GetServiceTemplateContainerStartupProbeOutput) PeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
 }
 
+// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
 func (o GetServiceTemplateContainerStartupProbeOutput) TcpSockets() GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) []GetServiceTemplateContainerStartupProbeTcpSocket {
 		return v.TcpSockets
 	}).(GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput)
 }
 
+// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o GetServiceTemplateContainerStartupProbeOutput) TimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbe) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
 }
@@ -13369,7 +13903,12 @@ func (o GetServiceTemplateContainerStartupProbeArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetServiceTemplateContainerStartupProbeGrpc struct {
-	Port    int    `pulumi:"port"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
 	Service string `pulumi:"service"`
 }
 
@@ -13385,7 +13924,12 @@ type GetServiceTemplateContainerStartupProbeGrpcInput interface {
 }
 
 type GetServiceTemplateContainerStartupProbeGrpcArgs struct {
-	Port    pulumi.IntInput    `pulumi:"port"`
+	// Port number to access on the container. Number must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The name of the service to place in the gRPC HealthCheckRequest
+	// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+	// If this is not specified, the default behavior is defined by gRPC.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -13440,10 +13984,15 @@ func (o GetServiceTemplateContainerStartupProbeGrpcOutput) ToGetServiceTemplateC
 	return o
 }
 
+// Port number to access on the container. Number must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o GetServiceTemplateContainerStartupProbeGrpcOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeGrpc) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// The name of the service to place in the gRPC HealthCheckRequest
+// (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+// If this is not specified, the default behavior is defined by gRPC.
 func (o GetServiceTemplateContainerStartupProbeGrpcOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeGrpc) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -13469,9 +14018,13 @@ func (o GetServiceTemplateContainerStartupProbeGrpcArrayOutput) Index(i pulumi.I
 }
 
 type GetServiceTemplateContainerStartupProbeHttpGet struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders []GetServiceTemplateContainerStartupProbeHttpGetHttpHeader `pulumi:"httpHeaders"`
-	Path        string                                                     `pulumi:"path"`
-	Port        int                                                        `pulumi:"port"`
+	// Path to access on the HTTP server. Defaults to '/'.
+	Path string `pulumi:"path"`
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
 }
 
 // GetServiceTemplateContainerStartupProbeHttpGetInput is an input type that accepts GetServiceTemplateContainerStartupProbeHttpGetArgs and GetServiceTemplateContainerStartupProbeHttpGetOutput values.
@@ -13486,9 +14039,13 @@ type GetServiceTemplateContainerStartupProbeHttpGetInput interface {
 }
 
 type GetServiceTemplateContainerStartupProbeHttpGetArgs struct {
+	// Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayInput `pulumi:"httpHeaders"`
-	Path        pulumi.StringInput                                                 `pulumi:"path"`
-	Port        pulumi.IntInput                                                    `pulumi:"port"`
+	// Path to access on the HTTP server. Defaults to '/'.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
 func (GetServiceTemplateContainerStartupProbeHttpGetArgs) ElementType() reflect.Type {
@@ -13542,16 +14099,20 @@ func (o GetServiceTemplateContainerStartupProbeHttpGetOutput) ToGetServiceTempla
 	return o
 }
 
+// Custom headers to set in the request. HTTP allows repeated headers.
 func (o GetServiceTemplateContainerStartupProbeHttpGetOutput) HttpHeaders() GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGet) []GetServiceTemplateContainerStartupProbeHttpGetHttpHeader {
 		return v.HttpHeaders
 	}).(GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput)
 }
 
+// Path to access on the HTTP server. Defaults to '/'.
 func (o GetServiceTemplateContainerStartupProbeHttpGetOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o GetServiceTemplateContainerStartupProbeHttpGetOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGet) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -13578,7 +14139,8 @@ func (o GetServiceTemplateContainerStartupProbeHttpGetArrayOutput) Index(i pulum
 
 type GetServiceTemplateContainerStartupProbeHttpGetHttpHeader struct {
 	// The name of the Cloud Run v2 Service.
-	Name  string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The header field value
 	Value string `pulumi:"value"`
 }
 
@@ -13595,7 +14157,8 @@ type GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderInput interface {
 
 type GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs struct {
 	// The name of the Cloud Run v2 Service.
-	Name  pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The header field value
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -13655,6 +14218,7 @@ func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Name() p
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The header field value
 func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeHttpGetHttpHeader) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -13680,6 +14244,8 @@ func (o GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArrayOutput) Ind
 }
 
 type GetServiceTemplateContainerStartupProbeTcpSocket struct {
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port int `pulumi:"port"`
 }
 
@@ -13695,6 +14261,8 @@ type GetServiceTemplateContainerStartupProbeTcpSocketInput interface {
 }
 
 type GetServiceTemplateContainerStartupProbeTcpSocketArgs struct {
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
 	Port pulumi.IntInput `pulumi:"port"`
 }
 
@@ -13749,6 +14317,8 @@ func (o GetServiceTemplateContainerStartupProbeTcpSocketOutput) ToGetServiceTemp
 	return o
 }
 
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
 func (o GetServiceTemplateContainerStartupProbeTcpSocketOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerStartupProbeTcpSocket) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -13774,6 +14344,7 @@ func (o GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput) Index(i pul
 }
 
 type GetServiceTemplateContainerVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 	MountPath string `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Service.
 	Name string `pulumi:"name"`
@@ -13791,6 +14362,7 @@ type GetServiceTemplateContainerVolumeMountInput interface {
 }
 
 type GetServiceTemplateContainerVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// The name of the Cloud Run v2 Service.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -13847,6 +14419,7 @@ func (o GetServiceTemplateContainerVolumeMountOutput) ToGetServiceTemplateContai
 	return o
 }
 
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
 func (o GetServiceTemplateContainerVolumeMountOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
@@ -13877,7 +14450,9 @@ func (o GetServiceTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetServiceTemplateScaling struct {
+	// Maximum number of serving instances that this resource should have.
 	MaxInstanceCount int `pulumi:"maxInstanceCount"`
+	// Minimum number of serving instances that this resource should have.
 	MinInstanceCount int `pulumi:"minInstanceCount"`
 }
 
@@ -13893,7 +14468,9 @@ type GetServiceTemplateScalingInput interface {
 }
 
 type GetServiceTemplateScalingArgs struct {
+	// Maximum number of serving instances that this resource should have.
 	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
+	// Minimum number of serving instances that this resource should have.
 	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
 }
 
@@ -13948,10 +14525,12 @@ func (o GetServiceTemplateScalingOutput) ToGetServiceTemplateScalingOutputWithCo
 	return o
 }
 
+// Maximum number of serving instances that this resource should have.
 func (o GetServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateScaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
 }
 
+// Minimum number of serving instances that this resource should have.
 func (o GetServiceTemplateScalingOutput) MinInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateScaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
 }
@@ -13977,12 +14556,17 @@ func (o GetServiceTemplateScalingArrayOutput) Index(i pulumi.IntInput) GetServic
 }
 
 type GetServiceTemplateVolume struct {
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	CloudSqlInstances []GetServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
-	EmptyDirs         []GetServiceTemplateVolumeEmptyDir         `pulumi:"emptyDirs"`
-	Gcs               []GetServiceTemplateVolumeGc               `pulumi:"gcs"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDirs []GetServiceTemplateVolumeEmptyDir `pulumi:"emptyDirs"`
+	// Represents a GCS Bucket mounted as a volume.
+	Gcs []GetServiceTemplateVolumeGc `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Service.
-	Name    string                           `pulumi:"name"`
-	Nfs     []GetServiceTemplateVolumeNf     `pulumi:"nfs"`
+	Name string `pulumi:"name"`
+	// Represents an NFS mount.
+	Nfs []GetServiceTemplateVolumeNf `pulumi:"nfs"`
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	Secrets []GetServiceTemplateVolumeSecret `pulumi:"secrets"`
 }
 
@@ -13998,12 +14582,17 @@ type GetServiceTemplateVolumeInput interface {
 }
 
 type GetServiceTemplateVolumeArgs struct {
+	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	CloudSqlInstances GetServiceTemplateVolumeCloudSqlInstanceArrayInput `pulumi:"cloudSqlInstances"`
-	EmptyDirs         GetServiceTemplateVolumeEmptyDirArrayInput         `pulumi:"emptyDirs"`
-	Gcs               GetServiceTemplateVolumeGcArrayInput               `pulumi:"gcs"`
+	// Ephemeral storage used as a shared volume.
+	EmptyDirs GetServiceTemplateVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
+	// Represents a GCS Bucket mounted as a volume.
+	Gcs GetServiceTemplateVolumeGcArrayInput `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Service.
-	Name    pulumi.StringInput                       `pulumi:"name"`
-	Nfs     GetServiceTemplateVolumeNfArrayInput     `pulumi:"nfs"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Represents an NFS mount.
+	Nfs GetServiceTemplateVolumeNfArrayInput `pulumi:"nfs"`
+	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	Secrets GetServiceTemplateVolumeSecretArrayInput `pulumi:"secrets"`
 }
 
@@ -14058,16 +14647,19 @@ func (o GetServiceTemplateVolumeOutput) ToGetServiceTemplateVolumeOutputWithCont
 	return o
 }
 
+// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 func (o GetServiceTemplateVolumeOutput) CloudSqlInstances() GetServiceTemplateVolumeCloudSqlInstanceArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeCloudSqlInstance {
 		return v.CloudSqlInstances
 	}).(GetServiceTemplateVolumeCloudSqlInstanceArrayOutput)
 }
 
+// Ephemeral storage used as a shared volume.
 func (o GetServiceTemplateVolumeOutput) EmptyDirs() GetServiceTemplateVolumeEmptyDirArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeEmptyDir { return v.EmptyDirs }).(GetServiceTemplateVolumeEmptyDirArrayOutput)
 }
 
+// Represents a GCS Bucket mounted as a volume.
 func (o GetServiceTemplateVolumeOutput) Gcs() GetServiceTemplateVolumeGcArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeGc { return v.Gcs }).(GetServiceTemplateVolumeGcArrayOutput)
 }
@@ -14077,10 +14669,12 @@ func (o GetServiceTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Represents an NFS mount.
 func (o GetServiceTemplateVolumeOutput) Nfs() GetServiceTemplateVolumeNfArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeNf { return v.Nfs }).(GetServiceTemplateVolumeNfArrayOutput)
 }
 
+// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 func (o GetServiceTemplateVolumeOutput) Secrets() GetServiceTemplateVolumeSecretArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeSecret { return v.Secrets }).(GetServiceTemplateVolumeSecretArrayOutput)
 }
@@ -14106,6 +14700,7 @@ func (o GetServiceTemplateVolumeArrayOutput) Index(i pulumi.IntInput) GetService
 }
 
 type GetServiceTemplateVolumeCloudSqlInstance struct {
+	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances []string `pulumi:"instances"`
 }
 
@@ -14121,6 +14716,7 @@ type GetServiceTemplateVolumeCloudSqlInstanceInput interface {
 }
 
 type GetServiceTemplateVolumeCloudSqlInstanceArgs struct {
+	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances pulumi.StringArrayInput `pulumi:"instances"`
 }
 
@@ -14175,6 +14771,7 @@ func (o GetServiceTemplateVolumeCloudSqlInstanceOutput) ToGetServiceTemplateVolu
 	return o
 }
 
+// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 func (o GetServiceTemplateVolumeCloudSqlInstanceOutput) Instances() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeCloudSqlInstance) []string { return v.Instances }).(pulumi.StringArrayOutput)
 }
@@ -14200,7 +14797,9 @@ func (o GetServiceTemplateVolumeCloudSqlInstanceArrayOutput) Index(i pulumi.IntI
 }
 
 type GetServiceTemplateVolumeEmptyDir struct {
-	Medium    string `pulumi:"medium"`
+	// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+	Medium string `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 	SizeLimit string `pulumi:"sizeLimit"`
 }
 
@@ -14216,7 +14815,9 @@ type GetServiceTemplateVolumeEmptyDirInput interface {
 }
 
 type GetServiceTemplateVolumeEmptyDirArgs struct {
-	Medium    pulumi.StringInput `pulumi:"medium"`
+	// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+	Medium pulumi.StringInput `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 	SizeLimit pulumi.StringInput `pulumi:"sizeLimit"`
 }
 
@@ -14271,10 +14872,12 @@ func (o GetServiceTemplateVolumeEmptyDirOutput) ToGetServiceTemplateVolumeEmptyD
 	return o
 }
 
+// The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
 func (o GetServiceTemplateVolumeEmptyDirOutput) Medium() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeEmptyDir) string { return v.Medium }).(pulumi.StringOutput)
 }
 
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
 func (o GetServiceTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeEmptyDir) string { return v.SizeLimit }).(pulumi.StringOutput)
 }
@@ -14300,8 +14903,10 @@ func (o GetServiceTemplateVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetServiceTemplateVolumeGc struct {
-	Bucket   string `pulumi:"bucket"`
-	ReadOnly bool   `pulumi:"readOnly"`
+	// GCS Bucket name
+	Bucket string `pulumi:"bucket"`
+	// If true, mount the GCS bucket as read-only
+	ReadOnly bool `pulumi:"readOnly"`
 }
 
 // GetServiceTemplateVolumeGcInput is an input type that accepts GetServiceTemplateVolumeGcArgs and GetServiceTemplateVolumeGcOutput values.
@@ -14316,8 +14921,10 @@ type GetServiceTemplateVolumeGcInput interface {
 }
 
 type GetServiceTemplateVolumeGcArgs struct {
-	Bucket   pulumi.StringInput `pulumi:"bucket"`
-	ReadOnly pulumi.BoolInput   `pulumi:"readOnly"`
+	// GCS Bucket name
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// If true, mount the GCS bucket as read-only
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
 }
 
 func (GetServiceTemplateVolumeGcArgs) ElementType() reflect.Type {
@@ -14371,10 +14978,12 @@ func (o GetServiceTemplateVolumeGcOutput) ToGetServiceTemplateVolumeGcOutputWith
 	return o
 }
 
+// GCS Bucket name
 func (o GetServiceTemplateVolumeGcOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeGc) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// If true, mount the GCS bucket as read-only
 func (o GetServiceTemplateVolumeGcOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeGc) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
@@ -14400,9 +15009,12 @@ func (o GetServiceTemplateVolumeGcArrayOutput) Index(i pulumi.IntInput) GetServi
 }
 
 type GetServiceTemplateVolumeNf struct {
-	Path     string `pulumi:"path"`
-	ReadOnly bool   `pulumi:"readOnly"`
-	Server   string `pulumi:"server"`
+	// Path that is exported by the NFS server.
+	Path string `pulumi:"path"`
+	// If true, mount the NFS volume as read only
+	ReadOnly bool `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server
+	Server string `pulumi:"server"`
 }
 
 // GetServiceTemplateVolumeNfInput is an input type that accepts GetServiceTemplateVolumeNfArgs and GetServiceTemplateVolumeNfOutput values.
@@ -14417,9 +15029,12 @@ type GetServiceTemplateVolumeNfInput interface {
 }
 
 type GetServiceTemplateVolumeNfArgs struct {
-	Path     pulumi.StringInput `pulumi:"path"`
-	ReadOnly pulumi.BoolInput   `pulumi:"readOnly"`
-	Server   pulumi.StringInput `pulumi:"server"`
+	// Path that is exported by the NFS server.
+	Path pulumi.StringInput `pulumi:"path"`
+	// If true, mount the NFS volume as read only
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server
+	Server pulumi.StringInput `pulumi:"server"`
 }
 
 func (GetServiceTemplateVolumeNfArgs) ElementType() reflect.Type {
@@ -14473,14 +15088,17 @@ func (o GetServiceTemplateVolumeNfOutput) ToGetServiceTemplateVolumeNfOutputWith
 	return o
 }
 
+// Path that is exported by the NFS server.
 func (o GetServiceTemplateVolumeNfOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeNf) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// If true, mount the NFS volume as read only
 func (o GetServiceTemplateVolumeNfOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeNf) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
+// Hostname or IP address of the NFS server
 func (o GetServiceTemplateVolumeNfOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeNf) string { return v.Server }).(pulumi.StringOutput)
 }
@@ -14506,9 +15124,12 @@ func (o GetServiceTemplateVolumeNfArrayOutput) Index(i pulumi.IntInput) GetServi
 }
 
 type GetServiceTemplateVolumeSecret struct {
-	DefaultMode int                                  `pulumi:"defaultMode"`
-	Items       []GetServiceTemplateVolumeSecretItem `pulumi:"items"`
-	Secret      string                               `pulumi:"secret"`
+	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+	DefaultMode int `pulumi:"defaultMode"`
+	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+	Items []GetServiceTemplateVolumeSecretItem `pulumi:"items"`
+	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	Secret string `pulumi:"secret"`
 }
 
 // GetServiceTemplateVolumeSecretInput is an input type that accepts GetServiceTemplateVolumeSecretArgs and GetServiceTemplateVolumeSecretOutput values.
@@ -14523,9 +15144,12 @@ type GetServiceTemplateVolumeSecretInput interface {
 }
 
 type GetServiceTemplateVolumeSecretArgs struct {
-	DefaultMode pulumi.IntInput                              `pulumi:"defaultMode"`
-	Items       GetServiceTemplateVolumeSecretItemArrayInput `pulumi:"items"`
-	Secret      pulumi.StringInput                           `pulumi:"secret"`
+	// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+	DefaultMode pulumi.IntInput `pulumi:"defaultMode"`
+	// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+	Items GetServiceTemplateVolumeSecretItemArrayInput `pulumi:"items"`
+	// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+	Secret pulumi.StringInput `pulumi:"secret"`
 }
 
 func (GetServiceTemplateVolumeSecretArgs) ElementType() reflect.Type {
@@ -14579,14 +15203,17 @@ func (o GetServiceTemplateVolumeSecretOutput) ToGetServiceTemplateVolumeSecretOu
 	return o
 }
 
+// Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
 func (o GetServiceTemplateVolumeSecretOutput) DefaultMode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeSecret) int { return v.DefaultMode }).(pulumi.IntOutput)
 }
 
+// If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
 func (o GetServiceTemplateVolumeSecretOutput) Items() GetServiceTemplateVolumeSecretItemArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeSecret) []GetServiceTemplateVolumeSecretItem { return v.Items }).(GetServiceTemplateVolumeSecretItemArrayOutput)
 }
 
+// The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
 func (o GetServiceTemplateVolumeSecretOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeSecret) string { return v.Secret }).(pulumi.StringOutput)
 }
@@ -14612,8 +15239,11 @@ func (o GetServiceTemplateVolumeSecretArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetServiceTemplateVolumeSecretItem struct {
-	Mode    int    `pulumi:"mode"`
-	Path    string `pulumi:"path"`
+	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+	Mode int `pulumi:"mode"`
+	// The relative path of the secret in the container.
+	Path string `pulumi:"path"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
 	Version string `pulumi:"version"`
 }
 
@@ -14629,8 +15259,11 @@ type GetServiceTemplateVolumeSecretItemInput interface {
 }
 
 type GetServiceTemplateVolumeSecretItemArgs struct {
-	Mode    pulumi.IntInput    `pulumi:"mode"`
-	Path    pulumi.StringInput `pulumi:"path"`
+	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+	Mode pulumi.IntInput `pulumi:"mode"`
+	// The relative path of the secret in the container.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -14685,14 +15318,17 @@ func (o GetServiceTemplateVolumeSecretItemOutput) ToGetServiceTemplateVolumeSecr
 	return o
 }
 
+// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
 func (o GetServiceTemplateVolumeSecretItemOutput) Mode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeSecretItem) int { return v.Mode }).(pulumi.IntOutput)
 }
 
+// The relative path of the secret in the container.
 func (o GetServiceTemplateVolumeSecretItemOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeSecretItem) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
 func (o GetServiceTemplateVolumeSecretItemOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeSecretItem) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -14718,8 +15354,11 @@ func (o GetServiceTemplateVolumeSecretItemArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetServiceTemplateVpcAccess struct {
-	Connector         string                                        `pulumi:"connector"`
-	Egress            string                                        `pulumi:"egress"`
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	Connector string `pulumi:"connector"`
+	// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+	Egress string `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
 	NetworkInterfaces []GetServiceTemplateVpcAccessNetworkInterface `pulumi:"networkInterfaces"`
 }
 
@@ -14735,8 +15374,11 @@ type GetServiceTemplateVpcAccessInput interface {
 }
 
 type GetServiceTemplateVpcAccessArgs struct {
-	Connector         pulumi.StringInput                                    `pulumi:"connector"`
-	Egress            pulumi.StringInput                                    `pulumi:"egress"`
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+	Connector pulumi.StringInput `pulumi:"connector"`
+	// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+	Egress pulumi.StringInput `pulumi:"egress"`
+	// Direct VPC egress settings. Currently only single network interface is supported.
 	NetworkInterfaces GetServiceTemplateVpcAccessNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
 }
 
@@ -14791,14 +15433,17 @@ func (o GetServiceTemplateVpcAccessOutput) ToGetServiceTemplateVpcAccessOutputWi
 	return o
 }
 
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 func (o GetServiceTemplateVpcAccessOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVpcAccess) string { return v.Connector }).(pulumi.StringOutput)
 }
 
+// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
 func (o GetServiceTemplateVpcAccessOutput) Egress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVpcAccess) string { return v.Egress }).(pulumi.StringOutput)
 }
 
+// Direct VPC egress settings. Currently only single network interface is supported.
 func (o GetServiceTemplateVpcAccessOutput) NetworkInterfaces() GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVpcAccess) []GetServiceTemplateVpcAccessNetworkInterface {
 		return v.NetworkInterfaces
@@ -14826,9 +15471,16 @@ func (o GetServiceTemplateVpcAccessArrayOutput) Index(i pulumi.IntInput) GetServ
 }
 
 type GetServiceTemplateVpcAccessNetworkInterface struct {
-	Network    string   `pulumi:"network"`
-	Subnetwork string   `pulumi:"subnetwork"`
-	Tags       []string `pulumi:"tags"`
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+	// looked up from the subnetwork.
+	Network string `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+	// subnetwork with the same name with the network will be used.
+	Subnetwork string `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run service.
+	Tags []string `pulumi:"tags"`
 }
 
 // GetServiceTemplateVpcAccessNetworkInterfaceInput is an input type that accepts GetServiceTemplateVpcAccessNetworkInterfaceArgs and GetServiceTemplateVpcAccessNetworkInterfaceOutput values.
@@ -14843,9 +15495,16 @@ type GetServiceTemplateVpcAccessNetworkInterfaceInput interface {
 }
 
 type GetServiceTemplateVpcAccessNetworkInterfaceArgs struct {
-	Network    pulumi.StringInput      `pulumi:"network"`
-	Subnetwork pulumi.StringInput      `pulumi:"subnetwork"`
-	Tags       pulumi.StringArrayInput `pulumi:"tags"`
+	// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+	// looked up from the subnetwork.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+	// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+	// subnetwork with the same name with the network will be used.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// Network tags applied to this Cloud Run service.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetServiceTemplateVpcAccessNetworkInterfaceArgs) ElementType() reflect.Type {
@@ -14899,14 +15558,21 @@ func (o GetServiceTemplateVpcAccessNetworkInterfaceOutput) ToGetServiceTemplateV
 	return o
 }
 
+// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+// looked up from the subnetwork.
 func (o GetServiceTemplateVpcAccessNetworkInterfaceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVpcAccessNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+// subnetwork with the same name with the network will be used.
 func (o GetServiceTemplateVpcAccessNetworkInterfaceOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVpcAccessNetworkInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
+// Network tags applied to this Cloud Run service.
 func (o GetServiceTemplateVpcAccessNetworkInterfaceOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVpcAccessNetworkInterface) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -14932,14 +15598,22 @@ func (o GetServiceTemplateVpcAccessNetworkInterfaceArrayOutput) Index(i pulumi.I
 }
 
 type GetServiceTerminalCondition struct {
-	ExecutionReason    string `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason string `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
 	LastTransitionTime string `pulumi:"lastTransitionTime"`
-	Message            string `pulumi:"message"`
-	Reason             string `pulumi:"reason"`
-	RevisionReason     string `pulumi:"revisionReason"`
-	Severity           string `pulumi:"severity"`
-	State              string `pulumi:"state"`
-	Type               string `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message string `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason string `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason string `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity string `pulumi:"severity"`
+	// State of the condition.
+	State string `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type string `pulumi:"type"`
 }
 
 // GetServiceTerminalConditionInput is an input type that accepts GetServiceTerminalConditionArgs and GetServiceTerminalConditionOutput values.
@@ -14954,14 +15628,22 @@ type GetServiceTerminalConditionInput interface {
 }
 
 type GetServiceTerminalConditionArgs struct {
-	ExecutionReason    pulumi.StringInput `pulumi:"executionReason"`
+	// A reason for the execution condition.
+	ExecutionReason pulumi.StringInput `pulumi:"executionReason"`
+	// Last time the condition transitioned from one status to another.
 	LastTransitionTime pulumi.StringInput `pulumi:"lastTransitionTime"`
-	Message            pulumi.StringInput `pulumi:"message"`
-	Reason             pulumi.StringInput `pulumi:"reason"`
-	RevisionReason     pulumi.StringInput `pulumi:"revisionReason"`
-	Severity           pulumi.StringInput `pulumi:"severity"`
-	State              pulumi.StringInput `pulumi:"state"`
-	Type               pulumi.StringInput `pulumi:"type"`
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringInput `pulumi:"message"`
+	// A common (service-level) reason for this condition.
+	Reason pulumi.StringInput `pulumi:"reason"`
+	// A reason for the revision condition.
+	RevisionReason pulumi.StringInput `pulumi:"revisionReason"`
+	// How to interpret failures of this condition, one of Error, Warning, Info
+	Severity pulumi.StringInput `pulumi:"severity"`
+	// State of the condition.
+	State pulumi.StringInput `pulumi:"state"`
+	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetServiceTerminalConditionArgs) ElementType() reflect.Type {
@@ -15015,34 +15697,42 @@ func (o GetServiceTerminalConditionOutput) ToGetServiceTerminalConditionOutputWi
 	return o
 }
 
+// A reason for the execution condition.
 func (o GetServiceTerminalConditionOutput) ExecutionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.ExecutionReason }).(pulumi.StringOutput)
 }
 
+// Last time the condition transitioned from one status to another.
 func (o GetServiceTerminalConditionOutput) LastTransitionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.LastTransitionTime }).(pulumi.StringOutput)
 }
 
+// Human readable message indicating details about the current status.
 func (o GetServiceTerminalConditionOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// A common (service-level) reason for this condition.
 func (o GetServiceTerminalConditionOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.Reason }).(pulumi.StringOutput)
 }
 
+// A reason for the revision condition.
 func (o GetServiceTerminalConditionOutput) RevisionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.RevisionReason }).(pulumi.StringOutput)
 }
 
+// How to interpret failures of this condition, one of Error, Warning, Info
 func (o GetServiceTerminalConditionOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.Severity }).(pulumi.StringOutput)
 }
 
+// State of the condition.
 func (o GetServiceTerminalConditionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.State }).(pulumi.StringOutput)
 }
 
+// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 func (o GetServiceTerminalConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTerminalCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -15068,10 +15758,14 @@ func (o GetServiceTerminalConditionArrayOutput) Index(i pulumi.IntInput) GetServ
 }
 
 type GetServiceTraffic struct {
-	Percent  int    `pulumi:"percent"`
+	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+	Percent int `pulumi:"percent"`
+	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision string `pulumi:"revision"`
-	Tag      string `pulumi:"tag"`
-	Type     string `pulumi:"type"`
+	// Indicates a string to be part of the URI to exclusively reference this target.
+	Tag string `pulumi:"tag"`
+	// The allocation type for this traffic target. Possible values: ["TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST", "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"]
+	Type string `pulumi:"type"`
 }
 
 // GetServiceTrafficInput is an input type that accepts GetServiceTrafficArgs and GetServiceTrafficOutput values.
@@ -15086,10 +15780,14 @@ type GetServiceTrafficInput interface {
 }
 
 type GetServiceTrafficArgs struct {
-	Percent  pulumi.IntInput    `pulumi:"percent"`
+	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+	Percent pulumi.IntInput `pulumi:"percent"`
+	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision pulumi.StringInput `pulumi:"revision"`
-	Tag      pulumi.StringInput `pulumi:"tag"`
-	Type     pulumi.StringInput `pulumi:"type"`
+	// Indicates a string to be part of the URI to exclusively reference this target.
+	Tag pulumi.StringInput `pulumi:"tag"`
+	// The allocation type for this traffic target. Possible values: ["TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST", "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"]
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetServiceTrafficArgs) ElementType() reflect.Type {
@@ -15143,18 +15841,22 @@ func (o GetServiceTrafficOutput) ToGetServiceTrafficOutputWithContext(ctx contex
 	return o
 }
 
+// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 func (o GetServiceTrafficOutput) Percent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTraffic) int { return v.Percent }).(pulumi.IntOutput)
 }
 
+// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 func (o GetServiceTrafficOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTraffic) string { return v.Revision }).(pulumi.StringOutput)
 }
 
+// Indicates a string to be part of the URI to exclusively reference this target.
 func (o GetServiceTrafficOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTraffic) string { return v.Tag }).(pulumi.StringOutput)
 }
 
+// The allocation type for this traffic target. Possible values: ["TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST", "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"]
 func (o GetServiceTrafficOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTraffic) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -15180,11 +15882,16 @@ func (o GetServiceTrafficArrayOutput) Index(i pulumi.IntInput) GetServiceTraffic
 }
 
 type GetServiceTrafficStatus struct {
-	Percent  int    `pulumi:"percent"`
+	// Specifies percent of the traffic to this Revision.
+	Percent int `pulumi:"percent"`
+	// Revision to which this traffic is sent.
 	Revision string `pulumi:"revision"`
-	Tag      string `pulumi:"tag"`
-	Type     string `pulumi:"type"`
-	Uri      string `pulumi:"uri"`
+	// Indicates the string used in the URI to exclusively reference this target.
+	Tag string `pulumi:"tag"`
+	// The allocation type for this traffic target.
+	Type string `pulumi:"type"`
+	// Displays the target URI.
+	Uri string `pulumi:"uri"`
 }
 
 // GetServiceTrafficStatusInput is an input type that accepts GetServiceTrafficStatusArgs and GetServiceTrafficStatusOutput values.
@@ -15199,11 +15906,16 @@ type GetServiceTrafficStatusInput interface {
 }
 
 type GetServiceTrafficStatusArgs struct {
-	Percent  pulumi.IntInput    `pulumi:"percent"`
+	// Specifies percent of the traffic to this Revision.
+	Percent pulumi.IntInput `pulumi:"percent"`
+	// Revision to which this traffic is sent.
 	Revision pulumi.StringInput `pulumi:"revision"`
-	Tag      pulumi.StringInput `pulumi:"tag"`
-	Type     pulumi.StringInput `pulumi:"type"`
-	Uri      pulumi.StringInput `pulumi:"uri"`
+	// Indicates the string used in the URI to exclusively reference this target.
+	Tag pulumi.StringInput `pulumi:"tag"`
+	// The allocation type for this traffic target.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Displays the target URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
 func (GetServiceTrafficStatusArgs) ElementType() reflect.Type {
@@ -15257,22 +15969,27 @@ func (o GetServiceTrafficStatusOutput) ToGetServiceTrafficStatusOutputWithContex
 	return o
 }
 
+// Specifies percent of the traffic to this Revision.
 func (o GetServiceTrafficStatusOutput) Percent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTrafficStatus) int { return v.Percent }).(pulumi.IntOutput)
 }
 
+// Revision to which this traffic is sent.
 func (o GetServiceTrafficStatusOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTrafficStatus) string { return v.Revision }).(pulumi.StringOutput)
 }
 
+// Indicates the string used in the URI to exclusively reference this target.
 func (o GetServiceTrafficStatusOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTrafficStatus) string { return v.Tag }).(pulumi.StringOutput)
 }
 
+// The allocation type for this traffic target.
 func (o GetServiceTrafficStatusOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTrafficStatus) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Displays the target URI.
 func (o GetServiceTrafficStatusOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTrafficStatus) string { return v.Uri }).(pulumi.StringOutput)
 }

@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     private @Nullable String externalIpv6;
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     private @Nullable String externalIpv6PrefixLength;
     /**
      * @return A unique name for the resource, required by GCE.
@@ -20,14 +28,34 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+     * 
+     */
     private String networkTier;
+    /**
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     private @Nullable String publicPtrDomainName;
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     private @Nullable String securityPolicy;
 
     private InstanceFromTemplateNetworkInterfaceIpv6AccessConfig() {}
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     public Optional<String> externalIpv6() {
         return Optional.ofNullable(this.externalIpv6);
     }
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     public Optional<String> externalIpv6PrefixLength() {
         return Optional.ofNullable(this.externalIpv6PrefixLength);
     }
@@ -39,12 +67,24 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+     * 
+     */
     public String networkTier() {
         return this.networkTier;
     }
+    /**
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     public Optional<String> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     public Optional<String> securityPolicy() {
         return Optional.ofNullable(this.securityPolicy);
     }

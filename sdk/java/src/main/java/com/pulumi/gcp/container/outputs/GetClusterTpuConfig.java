@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterTpuConfig {
+    /**
+     * @return Whether Cloud TPU integration is enabled or not
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return IPv4 CIDR block reserved for Cloud TPU in the VPC.
+     * 
+     */
     private String ipv4CidrBlock;
+    /**
+     * @return Whether to use service networking for Cloud TPU or not
+     * 
+     */
     private Boolean useServiceNetworking;
 
     private GetClusterTpuConfig() {}
+    /**
+     * @return Whether Cloud TPU integration is enabled or not
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return IPv4 CIDR block reserved for Cloud TPU in the VPC.
+     * 
+     */
     public String ipv4CidrBlock() {
         return this.ipv4CidrBlock;
     }
+    /**
+     * @return Whether to use service networking for Cloud TPU or not
+     * 
+     */
     public Boolean useServiceNetworking() {
         return this.useServiceNetworking;
     }

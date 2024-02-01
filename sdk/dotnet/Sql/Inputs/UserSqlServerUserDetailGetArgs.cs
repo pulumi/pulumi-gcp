@@ -12,11 +12,18 @@ namespace Pulumi.Gcp.Sql.Inputs
 
     public sealed class UserSqlServerUserDetailGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If the user has been disabled.
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         [Input("serverRoles")]
         private InputList<string>? _serverRoles;
+
+        /// <summary>
+        /// The server roles for this user in the database.
+        /// </summary>
         public InputList<string> ServerRoles
         {
             get => _serverRoles ?? (_serverRoles = new InputList<string>());

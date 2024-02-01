@@ -36,9 +36,17 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
         return this.enableHttpPortAccess;
     }
 
+    /**
+     * The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+     * 
+     */
     @Import(name="httpPorts")
     private @Nullable Output<Map<String,Object>> httpPorts;
 
+    /**
+     * @return The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> httpPorts() {
         return Optional.ofNullable(this.httpPorts);
     }
@@ -91,11 +99,23 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
             return enableHttpPortAccess(Output.of(enableHttpPortAccess));
         }
 
+        /**
+         * @param httpPorts The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpPorts(@Nullable Output<Map<String,Object>> httpPorts) {
             $.httpPorts = httpPorts;
             return this;
         }
 
+        /**
+         * @param httpPorts The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+         * 
+         * @return builder
+         * 
+         */
         public Builder httpPorts(Map<String,Object> httpPorts) {
             return httpPorts(Output.of(httpPorts));
         }

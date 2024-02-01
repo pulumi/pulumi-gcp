@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerEnvValueFromResult
     {
+        /// <summary>
+        /// Selects a key (version) of a secret in Secret Manager.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult> SecretKeyReves;
 
         [OutputConstructor]

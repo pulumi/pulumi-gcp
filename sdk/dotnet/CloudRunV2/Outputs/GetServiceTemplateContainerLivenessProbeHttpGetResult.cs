@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetServiceTemplateContainerLivenessProbeHttpGetResult
     {
+        /// <summary>
+        /// Custom headers to set in the request. HTTP allows repeated headers.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderResult> HttpHeaders;
+        /// <summary>
+        /// Path to access on the HTTP server. Defaults to '/'.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// Port number to access on the container. Number must be in the range 1 to 65535.
+        /// If not specified, defaults to the same value as container.ports[0].containerPort.
+        /// </summary>
         public readonly int Port;
 
         [OutputConstructor]

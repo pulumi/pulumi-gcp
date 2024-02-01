@@ -16,37 +16,77 @@ public final class ClusterNodePoolAutoscalingArgs extends com.pulumi.resources.R
 
     public static final ClusterNodePoolAutoscalingArgs Empty = new ClusterNodePoolAutoscalingArgs();
 
+    /**
+     * Location policy specifies the algorithm used when scaling-up the node pool. &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones. &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+     * 
+     */
     @Import(name="locationPolicy")
     private @Nullable Output<String> locationPolicy;
 
+    /**
+     * @return Location policy specifies the algorithm used when scaling-up the node pool. &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones. &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+     * 
+     */
     public Optional<Output<String>> locationPolicy() {
         return Optional.ofNullable(this.locationPolicy);
     }
 
+    /**
+     * Maximum number of nodes per zone in the node pool. Must be &gt;= min_node_count. Cannot be used with total limits.
+     * 
+     */
     @Import(name="maxNodeCount")
     private @Nullable Output<Integer> maxNodeCount;
 
+    /**
+     * @return Maximum number of nodes per zone in the node pool. Must be &gt;= min_node_count. Cannot be used with total limits.
+     * 
+     */
     public Optional<Output<Integer>> maxNodeCount() {
         return Optional.ofNullable(this.maxNodeCount);
     }
 
+    /**
+     * Minimum number of nodes per zone in the node pool. Must be &gt;=0 and &lt;= max_node_count. Cannot be used with total limits.
+     * 
+     */
     @Import(name="minNodeCount")
     private @Nullable Output<Integer> minNodeCount;
 
+    /**
+     * @return Minimum number of nodes per zone in the node pool. Must be &gt;=0 and &lt;= max_node_count. Cannot be used with total limits.
+     * 
+     */
     public Optional<Output<Integer>> minNodeCount() {
         return Optional.ofNullable(this.minNodeCount);
     }
 
+    /**
+     * Maximum number of all nodes in the node pool. Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * 
+     */
     @Import(name="totalMaxNodeCount")
     private @Nullable Output<Integer> totalMaxNodeCount;
 
+    /**
+     * @return Maximum number of all nodes in the node pool. Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * 
+     */
     public Optional<Output<Integer>> totalMaxNodeCount() {
         return Optional.ofNullable(this.totalMaxNodeCount);
     }
 
+    /**
+     * Minimum number of all nodes in the node pool. Must be &gt;=0 and &lt;= total_max_node_count. Cannot be used with per zone limits.
+     * 
+     */
     @Import(name="totalMinNodeCount")
     private @Nullable Output<Integer> totalMinNodeCount;
 
+    /**
+     * @return Minimum number of all nodes in the node pool. Must be &gt;=0 and &lt;= total_max_node_count. Cannot be used with per zone limits.
+     * 
+     */
     public Optional<Output<Integer>> totalMinNodeCount() {
         return Optional.ofNullable(this.totalMinNodeCount);
     }
@@ -79,47 +119,107 @@ public final class ClusterNodePoolAutoscalingArgs extends com.pulumi.resources.R
             $ = new ClusterNodePoolAutoscalingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param locationPolicy Location policy specifies the algorithm used when scaling-up the node pool. &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones. &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder locationPolicy(@Nullable Output<String> locationPolicy) {
             $.locationPolicy = locationPolicy;
             return this;
         }
 
+        /**
+         * @param locationPolicy Location policy specifies the algorithm used when scaling-up the node pool. &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones. &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder locationPolicy(String locationPolicy) {
             return locationPolicy(Output.of(locationPolicy));
         }
 
+        /**
+         * @param maxNodeCount Maximum number of nodes per zone in the node pool. Must be &gt;= min_node_count. Cannot be used with total limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxNodeCount(@Nullable Output<Integer> maxNodeCount) {
             $.maxNodeCount = maxNodeCount;
             return this;
         }
 
+        /**
+         * @param maxNodeCount Maximum number of nodes per zone in the node pool. Must be &gt;= min_node_count. Cannot be used with total limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxNodeCount(Integer maxNodeCount) {
             return maxNodeCount(Output.of(maxNodeCount));
         }
 
+        /**
+         * @param minNodeCount Minimum number of nodes per zone in the node pool. Must be &gt;=0 and &lt;= max_node_count. Cannot be used with total limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minNodeCount(@Nullable Output<Integer> minNodeCount) {
             $.minNodeCount = minNodeCount;
             return this;
         }
 
+        /**
+         * @param minNodeCount Minimum number of nodes per zone in the node pool. Must be &gt;=0 and &lt;= max_node_count. Cannot be used with total limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minNodeCount(Integer minNodeCount) {
             return minNodeCount(Output.of(minNodeCount));
         }
 
+        /**
+         * @param totalMaxNodeCount Maximum number of all nodes in the node pool. Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder totalMaxNodeCount(@Nullable Output<Integer> totalMaxNodeCount) {
             $.totalMaxNodeCount = totalMaxNodeCount;
             return this;
         }
 
+        /**
+         * @param totalMaxNodeCount Maximum number of all nodes in the node pool. Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder totalMaxNodeCount(Integer totalMaxNodeCount) {
             return totalMaxNodeCount(Output.of(totalMaxNodeCount));
         }
 
+        /**
+         * @param totalMinNodeCount Minimum number of all nodes in the node pool. Must be &gt;=0 and &lt;= total_max_node_count. Cannot be used with per zone limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder totalMinNodeCount(@Nullable Output<Integer> totalMinNodeCount) {
             $.totalMinNodeCount = totalMinNodeCount;
             return this;
         }
 
+        /**
+         * @param totalMinNodeCount Minimum number of all nodes in the node pool. Must be &gt;=0 and &lt;= total_max_node_count. Cannot be used with per zone limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder totalMinNodeCount(Integer totalMinNodeCount) {
             return totalMinNodeCount(Output.of(totalMinNodeCount));
         }

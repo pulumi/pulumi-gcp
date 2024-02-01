@@ -16,49 +16,157 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendBucketCdnPolicy {
+    /**
+     * @return Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * 
+     */
     private List<GetBackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders;
+    /**
+     * @return The CacheKeyPolicy for this CdnPolicy.
+     * 
+     */
     private List<GetBackendBucketCdnPolicyCacheKeyPolicy> cacheKeyPolicies;
+    /**
+     * @return Specifies the cache setting for all responses from this backend.
+     * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: [&#34;USE_ORIGIN_HEADERS&#34;, &#34;FORCE_CACHE_ALL&#34;, &#34;CACHE_ALL_STATIC&#34;]
+     * 
+     */
     private String cacheMode;
+    /**
+     * @return Specifies the maximum allowed TTL for cached content served by this origin.
+     * 
+     */
     private Integer clientTtl;
+    /**
+     * @return Specifies the default TTL for cached content served by this origin for responses
+     * that do not have an existing valid TTL (max-age or s-max-age).
+     * 
+     */
     private Integer defaultTtl;
+    /**
+     * @return Specifies the maximum allowed TTL for cached content served by this origin.
+     * 
+     */
     private Integer maxTtl;
+    /**
+     * @return Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+     * 
+     */
     private Boolean negativeCaching;
+    /**
+     * @return Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+     * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN&#39;s default cache TTLs.
+     * 
+     */
     private List<GetBackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies;
+    /**
+     * @return If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+     * 
+     */
     private Boolean requestCoalescing;
+    /**
+     * @return Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+     * 
+     */
     private Integer serveWhileStale;
+    /**
+     * @return Maximum number of seconds the response to a signed URL request will
+     * be considered fresh. After this time period,
+     * the response will be revalidated before being served.
+     * When serving responses to signed URL requests,
+     * Cloud CDN will internally behave as though
+     * all responses from this backend had a &#34;Cache-Control: public,
+     * max-age=[TTL]&#34; header, regardless of any existing Cache-Control
+     * header. The actual headers served in responses will not be altered.
+     * 
+     */
     private Integer signedUrlCacheMaxAgeSec;
 
     private GetBackendBucketCdnPolicy() {}
+    /**
+     * @return Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+     * 
+     */
     public List<GetBackendBucketCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders() {
         return this.bypassCacheOnRequestHeaders;
     }
+    /**
+     * @return The CacheKeyPolicy for this CdnPolicy.
+     * 
+     */
     public List<GetBackendBucketCdnPolicyCacheKeyPolicy> cacheKeyPolicies() {
         return this.cacheKeyPolicies;
     }
+    /**
+     * @return Specifies the cache setting for all responses from this backend.
+     * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: [&#34;USE_ORIGIN_HEADERS&#34;, &#34;FORCE_CACHE_ALL&#34;, &#34;CACHE_ALL_STATIC&#34;]
+     * 
+     */
     public String cacheMode() {
         return this.cacheMode;
     }
+    /**
+     * @return Specifies the maximum allowed TTL for cached content served by this origin.
+     * 
+     */
     public Integer clientTtl() {
         return this.clientTtl;
     }
+    /**
+     * @return Specifies the default TTL for cached content served by this origin for responses
+     * that do not have an existing valid TTL (max-age or s-max-age).
+     * 
+     */
     public Integer defaultTtl() {
         return this.defaultTtl;
     }
+    /**
+     * @return Specifies the maximum allowed TTL for cached content served by this origin.
+     * 
+     */
     public Integer maxTtl() {
         return this.maxTtl;
     }
+    /**
+     * @return Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+     * 
+     */
     public Boolean negativeCaching() {
         return this.negativeCaching;
     }
+    /**
+     * @return Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+     * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN&#39;s default cache TTLs.
+     * 
+     */
     public List<GetBackendBucketCdnPolicyNegativeCachingPolicy> negativeCachingPolicies() {
         return this.negativeCachingPolicies;
     }
+    /**
+     * @return If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+     * 
+     */
     public Boolean requestCoalescing() {
         return this.requestCoalescing;
     }
+    /**
+     * @return Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+     * 
+     */
     public Integer serveWhileStale() {
         return this.serveWhileStale;
     }
+    /**
+     * @return Maximum number of seconds the response to a signed URL request will
+     * be considered fresh. After this time period,
+     * the response will be revalidated before being served.
+     * When serving responses to signed URL requests,
+     * Cloud CDN will internally behave as though
+     * all responses from this backend had a &#34;Cache-Control: public,
+     * max-age=[TTL]&#34; header, regardless of any existing Cache-Control
+     * header. The actual headers served in responses will not be altered.
+     * 
+     */
     public Integer signedUrlCacheMaxAgeSec() {
         return this.signedUrlCacheMaxAgeSec;
     }

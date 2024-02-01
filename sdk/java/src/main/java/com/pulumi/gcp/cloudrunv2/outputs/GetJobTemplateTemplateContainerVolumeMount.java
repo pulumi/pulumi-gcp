@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetJobTemplateTemplateContainerVolumeMount {
+    /**
+     * @return Path within the container at which the volume should be mounted. Must not contain &#39;:&#39;. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+     * 
+     */
     private String mountPath;
     /**
      * @return The name of the Cloud Run v2 Job.
@@ -18,6 +22,10 @@ public final class GetJobTemplateTemplateContainerVolumeMount {
     private String name;
 
     private GetJobTemplateTemplateContainerVolumeMount() {}
+    /**
+     * @return Path within the container at which the volume should be mounted. Must not contain &#39;:&#39;. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+     * 
+     */
     public String mountPath() {
         return this.mountPath;
     }

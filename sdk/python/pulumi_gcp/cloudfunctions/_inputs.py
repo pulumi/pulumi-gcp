@@ -364,6 +364,7 @@ class FunctionSourceRepositoryArgs:
                * To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`
                * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`. To refer to HEAD, use the `master` moveable alias.
                * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`
+        :param pulumi.Input[str] deployed_url: The URL pointing to the hosted repository where the function was defined at the time of deployment.
         """
         pulumi.set(__self__, "url", url)
         if deployed_url is not None:
@@ -388,6 +389,9 @@ class FunctionSourceRepositoryArgs:
     @property
     @pulumi.getter(name="deployedUrl")
     def deployed_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL pointing to the hosted repository where the function was defined at the time of deployment.
+        """
         return pulumi.get(self, "deployed_url")
 
     @deployed_url.setter

@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TableTableReplicationInfo {
+    /**
+     * @return The interval at which the source materialized view is polled for updates. The default is 300000.
+     * 
+     */
     private @Nullable Integer replicationIntervalMs;
+    /**
+     * @return The ID of the source dataset.
+     * 
+     */
     private String sourceDatasetId;
+    /**
+     * @return The ID of the source project.
+     * 
+     */
     private String sourceProjectId;
+    /**
+     * @return The ID of the source materialized view.
+     * 
+     */
     private String sourceTableId;
 
     private TableTableReplicationInfo() {}
+    /**
+     * @return The interval at which the source materialized view is polled for updates. The default is 300000.
+     * 
+     */
     public Optional<Integer> replicationIntervalMs() {
         return Optional.ofNullable(this.replicationIntervalMs);
     }
+    /**
+     * @return The ID of the source dataset.
+     * 
+     */
     public String sourceDatasetId() {
         return this.sourceDatasetId;
     }
+    /**
+     * @return The ID of the source project.
+     * 
+     */
     public String sourceProjectId() {
         return this.sourceProjectId;
     }
+    /**
+     * @return The ID of the source materialized view.
+     * 
+     */
     public String sourceTableId() {
         return this.sourceTableId;
     }

@@ -18,23 +18,47 @@ public final class DeliveryPipelineConditionArgs extends com.pulumi.resources.Re
 
     public static final DeliveryPipelineConditionArgs Empty = new DeliveryPipelineConditionArgs();
 
+    /**
+     * Details around the Pipeline&#39;s overall status.
+     * 
+     */
     @Import(name="pipelineReadyConditions")
     private @Nullable Output<List<DeliveryPipelineConditionPipelineReadyConditionArgs>> pipelineReadyConditions;
 
+    /**
+     * @return Details around the Pipeline&#39;s overall status.
+     * 
+     */
     public Optional<Output<List<DeliveryPipelineConditionPipelineReadyConditionArgs>>> pipelineReadyConditions() {
         return Optional.ofNullable(this.pipelineReadyConditions);
     }
 
+    /**
+     * Details around targets enumerated in the pipeline.
+     * 
+     */
     @Import(name="targetsPresentConditions")
     private @Nullable Output<List<DeliveryPipelineConditionTargetsPresentConditionArgs>> targetsPresentConditions;
 
+    /**
+     * @return Details around targets enumerated in the pipeline.
+     * 
+     */
     public Optional<Output<List<DeliveryPipelineConditionTargetsPresentConditionArgs>>> targetsPresentConditions() {
         return Optional.ofNullable(this.targetsPresentConditions);
     }
 
+    /**
+     * Details on the whether the targets enumerated in the pipeline are of the same type.
+     * 
+     */
     @Import(name="targetsTypeConditions")
     private @Nullable Output<List<DeliveryPipelineConditionTargetsTypeConditionArgs>> targetsTypeConditions;
 
+    /**
+     * @return Details on the whether the targets enumerated in the pipeline are of the same type.
+     * 
+     */
     public Optional<Output<List<DeliveryPipelineConditionTargetsTypeConditionArgs>>> targetsTypeConditions() {
         return Optional.ofNullable(this.targetsTypeConditions);
     }
@@ -65,41 +89,95 @@ public final class DeliveryPipelineConditionArgs extends com.pulumi.resources.Re
             $ = new DeliveryPipelineConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pipelineReadyConditions Details around the Pipeline&#39;s overall status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelineReadyConditions(@Nullable Output<List<DeliveryPipelineConditionPipelineReadyConditionArgs>> pipelineReadyConditions) {
             $.pipelineReadyConditions = pipelineReadyConditions;
             return this;
         }
 
+        /**
+         * @param pipelineReadyConditions Details around the Pipeline&#39;s overall status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelineReadyConditions(List<DeliveryPipelineConditionPipelineReadyConditionArgs> pipelineReadyConditions) {
             return pipelineReadyConditions(Output.of(pipelineReadyConditions));
         }
 
+        /**
+         * @param pipelineReadyConditions Details around the Pipeline&#39;s overall status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pipelineReadyConditions(DeliveryPipelineConditionPipelineReadyConditionArgs... pipelineReadyConditions) {
             return pipelineReadyConditions(List.of(pipelineReadyConditions));
         }
 
+        /**
+         * @param targetsPresentConditions Details around targets enumerated in the pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetsPresentConditions(@Nullable Output<List<DeliveryPipelineConditionTargetsPresentConditionArgs>> targetsPresentConditions) {
             $.targetsPresentConditions = targetsPresentConditions;
             return this;
         }
 
+        /**
+         * @param targetsPresentConditions Details around targets enumerated in the pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetsPresentConditions(List<DeliveryPipelineConditionTargetsPresentConditionArgs> targetsPresentConditions) {
             return targetsPresentConditions(Output.of(targetsPresentConditions));
         }
 
+        /**
+         * @param targetsPresentConditions Details around targets enumerated in the pipeline.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetsPresentConditions(DeliveryPipelineConditionTargetsPresentConditionArgs... targetsPresentConditions) {
             return targetsPresentConditions(List.of(targetsPresentConditions));
         }
 
+        /**
+         * @param targetsTypeConditions Details on the whether the targets enumerated in the pipeline are of the same type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetsTypeConditions(@Nullable Output<List<DeliveryPipelineConditionTargetsTypeConditionArgs>> targetsTypeConditions) {
             $.targetsTypeConditions = targetsTypeConditions;
             return this;
         }
 
+        /**
+         * @param targetsTypeConditions Details on the whether the targets enumerated in the pipeline are of the same type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetsTypeConditions(List<DeliveryPipelineConditionTargetsTypeConditionArgs> targetsTypeConditions) {
             return targetsTypeConditions(Output.of(targetsTypeConditions));
         }
 
+        /**
+         * @param targetsTypeConditions Details on the whether the targets enumerated in the pipeline are of the same type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetsTypeConditions(DeliveryPipelineConditionTargetsTypeConditionArgs... targetsTypeConditions) {
             return targetsTypeConditions(List.of(targetsTypeConditions));
         }

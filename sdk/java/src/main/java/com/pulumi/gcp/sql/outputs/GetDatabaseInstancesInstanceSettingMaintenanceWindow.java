@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingMaintenanceWindow {
+    /**
+     * @return Day of week (1-7), starting on Monday
+     * 
+     */
     private Integer day;
+    /**
+     * @return Hour of day (0-23), ignored if day not set
+     * 
+     */
     private Integer hour;
+    /**
+     * @return Receive updates earlier (canary) or later (stable)
+     * 
+     */
     private String updateTrack;
 
     private GetDatabaseInstancesInstanceSettingMaintenanceWindow() {}
+    /**
+     * @return Day of week (1-7), starting on Monday
+     * 
+     */
     public Integer day() {
         return this.day;
     }
+    /**
+     * @return Hour of day (0-23), ignored if day not set
+     * 
+     */
     public Integer hour() {
         return this.hour;
     }
+    /**
+     * @return Receive updates earlier (canary) or later (stable)
+     * 
+     */
     public String updateTrack() {
         return this.updateTrack;
     }

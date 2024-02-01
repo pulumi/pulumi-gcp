@@ -17,6 +17,10 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
      * 
      */
     private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList> instanceSelectionLists;
+    /**
+     * @return A list of instance selection results in the group.
+     * 
+     */
     private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> instanceSelectionResults;
 
     private ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy() {}
@@ -27,6 +31,10 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     public List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList> instanceSelectionLists() {
         return this.instanceSelectionLists == null ? List.of() : this.instanceSelectionLists;
     }
+    /**
+     * @return A list of instance selection results in the group.
+     * 
+     */
     public List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> instanceSelectionResults() {
         return this.instanceSelectionResults == null ? List.of() : this.instanceSelectionResults;
     }

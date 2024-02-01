@@ -16,30 +16,62 @@ public final class EnvironmentConfigWorkloadsConfigSchedulerArgs extends com.pul
 
     public static final EnvironmentConfigWorkloadsConfigSchedulerArgs Empty = new EnvironmentConfigWorkloadsConfigSchedulerArgs();
 
+    /**
+     * The number of schedulers.
+     * 
+     */
     @Import(name="count")
     private @Nullable Output<Integer> count;
 
+    /**
+     * @return The number of schedulers.
+     * 
+     */
     public Optional<Output<Integer>> count() {
         return Optional.ofNullable(this.count);
     }
 
+    /**
+     * CPU request and limit for a single Airflow scheduler replica
+     * 
+     */
     @Import(name="cpu")
     private @Nullable Output<Double> cpu;
 
+    /**
+     * @return CPU request and limit for a single Airflow scheduler replica
+     * 
+     */
     public Optional<Output<Double>> cpu() {
         return Optional.ofNullable(this.cpu);
     }
 
+    /**
+     * Memory (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     @Import(name="memoryGb")
     private @Nullable Output<Double> memoryGb;
 
+    /**
+     * @return Memory (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     public Optional<Output<Double>> memoryGb() {
         return Optional.ofNullable(this.memoryGb);
     }
 
+    /**
+     * Storage (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     @Import(name="storageGb")
     private @Nullable Output<Double> storageGb;
 
+    /**
+     * @return Storage (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     public Optional<Output<Double>> storageGb() {
         return Optional.ofNullable(this.storageGb);
     }
@@ -71,38 +103,86 @@ public final class EnvironmentConfigWorkloadsConfigSchedulerArgs extends com.pul
             $ = new EnvironmentConfigWorkloadsConfigSchedulerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param count The number of schedulers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(@Nullable Output<Integer> count) {
             $.count = count;
             return this;
         }
 
+        /**
+         * @param count The number of schedulers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Integer count) {
             return count(Output.of(count));
         }
 
+        /**
+         * @param cpu CPU request and limit for a single Airflow scheduler replica
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpu(@Nullable Output<Double> cpu) {
             $.cpu = cpu;
             return this;
         }
 
+        /**
+         * @param cpu CPU request and limit for a single Airflow scheduler replica
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpu(Double cpu) {
             return cpu(Output.of(cpu));
         }
 
+        /**
+         * @param memoryGb Memory (GB) request and limit for a single Airflow scheduler replica.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryGb(@Nullable Output<Double> memoryGb) {
             $.memoryGb = memoryGb;
             return this;
         }
 
+        /**
+         * @param memoryGb Memory (GB) request and limit for a single Airflow scheduler replica.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryGb(Double memoryGb) {
             return memoryGb(Output.of(memoryGb));
         }
 
+        /**
+         * @param storageGb Storage (GB) request and limit for a single Airflow scheduler replica.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageGb(@Nullable Output<Double> storageGb) {
             $.storageGb = storageGb;
             return this;
         }
 
+        /**
+         * @param storageGb Storage (GB) request and limit for a single Airflow scheduler replica.
+         * 
+         * @return builder
+         * 
+         */
         public Builder storageGb(Double storageGb) {
             return storageGb(Output.of(storageGb));
         }

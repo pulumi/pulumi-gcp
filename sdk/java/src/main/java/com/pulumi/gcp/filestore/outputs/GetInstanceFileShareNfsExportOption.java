@@ -12,25 +12,81 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceFileShareNfsExportOption {
+    /**
+     * @return Either READ_ONLY, for allowing only read requests on the exported directory,
+     * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE. Default value: &#34;READ_WRITE&#34; Possible values: [&#34;READ_ONLY&#34;, &#34;READ_WRITE&#34;]
+     * 
+     */
     private String accessMode;
+    /**
+     * @return An integer representing the anonymous group id with a default value of 65534.
+     * Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+     * if this field is specified for other squashMode settings.
+     * 
+     */
     private Integer anonGid;
+    /**
+     * @return An integer representing the anonymous user id with a default value of 65534.
+     * Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+     * if this field is specified for other squashMode settings.
+     * 
+     */
     private Integer anonUid;
+    /**
+     * @return List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+     * Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+     * The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+     * 
+     */
     private List<String> ipRanges;
+    /**
+     * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+     * for not allowing root access. The default is NO_ROOT_SQUASH. Default value: &#34;NO_ROOT_SQUASH&#34; Possible values: [&#34;NO_ROOT_SQUASH&#34;, &#34;ROOT_SQUASH&#34;]
+     * 
+     */
     private String squashMode;
 
     private GetInstanceFileShareNfsExportOption() {}
+    /**
+     * @return Either READ_ONLY, for allowing only read requests on the exported directory,
+     * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE. Default value: &#34;READ_WRITE&#34; Possible values: [&#34;READ_ONLY&#34;, &#34;READ_WRITE&#34;]
+     * 
+     */
     public String accessMode() {
         return this.accessMode;
     }
+    /**
+     * @return An integer representing the anonymous group id with a default value of 65534.
+     * Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+     * if this field is specified for other squashMode settings.
+     * 
+     */
     public Integer anonGid() {
         return this.anonGid;
     }
+    /**
+     * @return An integer representing the anonymous user id with a default value of 65534.
+     * Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+     * if this field is specified for other squashMode settings.
+     * 
+     */
     public Integer anonUid() {
         return this.anonUid;
     }
+    /**
+     * @return List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+     * Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+     * The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+     * 
+     */
     public List<String> ipRanges() {
         return this.ipRanges;
     }
+    /**
+     * @return Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+     * for not allowing root access. The default is NO_ROOT_SQUASH. Default value: &#34;NO_ROOT_SQUASH&#34; Possible values: [&#34;NO_ROOT_SQUASH&#34;, &#34;ROOT_SQUASH&#34;]
+     * 
+     */
     public String squashMode() {
         return this.squashMode;
     }

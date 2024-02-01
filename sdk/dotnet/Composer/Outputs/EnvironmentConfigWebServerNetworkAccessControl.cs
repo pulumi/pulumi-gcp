@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigWebServerNetworkAccessControl
     {
+        /// <summary>
+        /// A collection of allowed IP ranges with descriptions.
+        /// </summary>
         public readonly ImmutableArray<Outputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> AllowedIpRanges;
 
         [OutputConstructor]

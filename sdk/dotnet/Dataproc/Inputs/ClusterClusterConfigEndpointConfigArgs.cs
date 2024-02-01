@@ -21,6 +21,10 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         [Input("httpPorts")]
         private InputMap<object>? _httpPorts;
+
+        /// <summary>
+        /// The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+        /// </summary>
         public InputMap<object> HttpPorts
         {
             get => _httpPorts ?? (_httpPorts = new InputMap<object>());

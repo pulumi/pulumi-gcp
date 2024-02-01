@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Projects.Inputs
         [Input("allow")]
         public Input<Inputs.OrganizationPolicyListPolicyAllowGetArgs>? Allow { get; set; }
 
+        /// <summary>
+        /// One or the other must be set.
+        /// </summary>
         [Input("deny")]
         public Input<Inputs.OrganizationPolicyListPolicyDenyGetArgs>? Deny { get; set; }
 

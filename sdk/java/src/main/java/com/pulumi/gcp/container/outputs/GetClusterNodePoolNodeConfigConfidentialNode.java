@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigConfidentialNode {
+    /**
+     * @return Whether Confidential Nodes feature is enabled for all nodes in this pool.
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterNodePoolNodeConfigConfidentialNode() {}
+    /**
+     * @return Whether Confidential Nodes feature is enabled for all nodes in this pool.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

@@ -2192,6 +2192,16 @@ class GetManagedZonesManagedZoneResult(dict):
                  name_servers: Sequence[str],
                  project: str,
                  visibility: str):
+        """
+        :param str description: A textual description field.
+        :param str dns_name: The fully qualified DNS name of this zone.
+        :param str id: DNS managed zone identifier
+        :param int managed_zone_id: Unique identifier for the resource; defined by the server.
+        :param str name: A unique name for the resource.
+        :param Sequence[str] name_servers: The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+        :param str project: The ID of the project for the Google Cloud.
+        :param str visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "id", id)
@@ -2204,41 +2214,65 @@ class GetManagedZonesManagedZoneResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        A textual description field.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> str:
+        """
+        The fully qualified DNS name of this zone.
+        """
         return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        DNS managed zone identifier
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="managedZoneId")
     def managed_zone_id(self) -> int:
+        """
+        Unique identifier for the resource; defined by the server.
+        """
         return pulumi.get(self, "managed_zone_id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        A unique name for the resource.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Sequence[str]:
+        """
+        The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+        """
         return pulumi.get(self, "name_servers")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        The ID of the project for the Google Cloud.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter
     def visibility(self) -> str:
+        """
+        The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+        """
         return pulumi.get(self, "visibility")
 
 

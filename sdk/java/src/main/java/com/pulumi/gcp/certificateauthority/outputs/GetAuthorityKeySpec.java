@@ -10,13 +10,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityKeySpec {
+    /**
+     * @return The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+     * experience. All managed keys will be have their ProtectionLevel as HSM. Possible values: [&#34;SIGN_HASH_ALGORITHM_UNSPECIFIED&#34;, &#34;RSA_PSS_2048_SHA256&#34;, &#34;RSA_PSS_3072_SHA256&#34;, &#34;RSA_PSS_4096_SHA256&#34;, &#34;RSA_PKCS1_2048_SHA256&#34;, &#34;RSA_PKCS1_3072_SHA256&#34;, &#34;RSA_PKCS1_4096_SHA256&#34;, &#34;EC_P256_SHA256&#34;, &#34;EC_P384_SHA384&#34;]
+     * 
+     */
     private String algorithm;
+    /**
+     * @return The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+     * &#39;projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*&#39;.
+     * 
+     */
     private String cloudKmsKeyVersion;
 
     private GetAuthorityKeySpec() {}
+    /**
+     * @return The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+     * experience. All managed keys will be have their ProtectionLevel as HSM. Possible values: [&#34;SIGN_HASH_ALGORITHM_UNSPECIFIED&#34;, &#34;RSA_PSS_2048_SHA256&#34;, &#34;RSA_PSS_3072_SHA256&#34;, &#34;RSA_PSS_4096_SHA256&#34;, &#34;RSA_PKCS1_2048_SHA256&#34;, &#34;RSA_PKCS1_3072_SHA256&#34;, &#34;RSA_PKCS1_4096_SHA256&#34;, &#34;EC_P256_SHA256&#34;, &#34;EC_P384_SHA384&#34;]
+     * 
+     */
     public String algorithm() {
         return this.algorithm;
     }
+    /**
+     * @return The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+     * &#39;projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*{@literal /}cryptoKeyVersions/*&#39;.
+     * 
+     */
     public String cloudKmsKeyVersion() {
         return this.cloudKmsKeyVersion;
     }

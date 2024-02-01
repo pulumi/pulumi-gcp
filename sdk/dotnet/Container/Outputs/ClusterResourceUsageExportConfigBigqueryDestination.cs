@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterResourceUsageExportConfigBigqueryDestination
     {
+        /// <summary>
+        /// The ID of a BigQuery Dataset.
+        /// </summary>
         public readonly string DatasetId;
 
         [OutputConstructor]

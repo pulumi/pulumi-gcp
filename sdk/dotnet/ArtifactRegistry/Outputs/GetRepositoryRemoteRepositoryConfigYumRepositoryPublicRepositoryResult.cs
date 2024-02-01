@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult
     {
+        /// <summary>
+        /// A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
+        /// </summary>
         public readonly string RepositoryBase;
+        /// <summary>
+        /// Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
+        /// </summary>
         public readonly string RepositoryPath;
 
         [OutputConstructor]

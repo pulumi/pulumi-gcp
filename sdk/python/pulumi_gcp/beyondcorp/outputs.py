@@ -251,17 +251,27 @@ class GetAppConnectionApplicationEndpointResult(dict):
     def __init__(__self__, *,
                  host: str,
                  port: int):
+        """
+        :param str host: Hostname or IP address of the remote application endpoint.
+        :param int port: Port of the remote application endpoint.
+        """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
     def host(self) -> str:
+        """
+        Hostname or IP address of the remote application endpoint.
+        """
         return pulumi.get(self, "host")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port of the remote application endpoint.
+        """
         return pulumi.get(self, "port")
 
 
@@ -272,6 +282,14 @@ class GetAppConnectionGatewayResult(dict):
                  ingress_port: int,
                  type: str,
                  uri: str):
+        """
+        :param str app_gateway: AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+        :param int ingress_port: Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+        :param str type: The type of hosting used by the gateway. Refer to
+               https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+               for a list of possible values.
+        :param str uri: Server-defined URI for this resource.
+        """
         pulumi.set(__self__, "app_gateway", app_gateway)
         pulumi.set(__self__, "ingress_port", ingress_port)
         pulumi.set(__self__, "type", type)
@@ -280,21 +298,35 @@ class GetAppConnectionGatewayResult(dict):
     @property
     @pulumi.getter(name="appGateway")
     def app_gateway(self) -> str:
+        """
+        AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+        """
         return pulumi.get(self, "app_gateway")
 
     @property
     @pulumi.getter(name="ingressPort")
     def ingress_port(self) -> int:
+        """
+        Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+        """
         return pulumi.get(self, "ingress_port")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of hosting used by the gateway. Refer to
+        https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+        for a list of possible values.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uri(self) -> str:
+        """
+        Server-defined URI for this resource.
+        """
         return pulumi.get(self, "uri")
 
 
@@ -302,11 +334,17 @@ class GetAppConnectionGatewayResult(dict):
 class GetAppConnectorPrincipalInfoResult(dict):
     def __init__(__self__, *,
                  service_accounts: Sequence['outputs.GetAppConnectorPrincipalInfoServiceAccountResult']):
+        """
+        :param Sequence['GetAppConnectorPrincipalInfoServiceAccountArgs'] service_accounts: ServiceAccount represents a GCP service account.
+        """
         pulumi.set(__self__, "service_accounts", service_accounts)
 
     @property
     @pulumi.getter(name="serviceAccounts")
     def service_accounts(self) -> Sequence['outputs.GetAppConnectorPrincipalInfoServiceAccountResult']:
+        """
+        ServiceAccount represents a GCP service account.
+        """
         return pulumi.get(self, "service_accounts")
 
 
@@ -314,11 +352,17 @@ class GetAppConnectorPrincipalInfoResult(dict):
 class GetAppConnectorPrincipalInfoServiceAccountResult(dict):
     def __init__(__self__, *,
                  email: str):
+        """
+        :param str email: Email address of the service account.
+        """
         pulumi.set(__self__, "email", email)
 
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        Email address of the service account.
+        """
         return pulumi.get(self, "email")
 
 
@@ -327,17 +371,27 @@ class GetAppGatewayAllocatedConnectionResult(dict):
     def __init__(__self__, *,
                  ingress_port: int,
                  psc_uri: str):
+        """
+        :param int ingress_port: The ingress port of an allocated connection.
+        :param str psc_uri: The PSC uri of an allocated connection.
+        """
         pulumi.set(__self__, "ingress_port", ingress_port)
         pulumi.set(__self__, "psc_uri", psc_uri)
 
     @property
     @pulumi.getter(name="ingressPort")
     def ingress_port(self) -> int:
+        """
+        The ingress port of an allocated connection.
+        """
         return pulumi.get(self, "ingress_port")
 
     @property
     @pulumi.getter(name="pscUri")
     def psc_uri(self) -> str:
+        """
+        The PSC uri of an allocated connection.
+        """
         return pulumi.get(self, "psc_uri")
 
 

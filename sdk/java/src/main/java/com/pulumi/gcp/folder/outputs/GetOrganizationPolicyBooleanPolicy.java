@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationPolicyBooleanPolicy {
+    /**
+     * @return If true, then the Policy is enforced. If false, then any configuration is acceptable.
+     * 
+     */
     private Boolean enforced;
 
     private GetOrganizationPolicyBooleanPolicy() {}
+    /**
+     * @return If true, then the Policy is enforced. If false, then any configuration is acceptable.
+     * 
+     */
     public Boolean enforced() {
         return this.enforced;
     }

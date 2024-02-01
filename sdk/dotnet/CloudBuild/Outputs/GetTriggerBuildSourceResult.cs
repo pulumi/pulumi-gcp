@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerBuildSourceResult
     {
+        /// <summary>
+        /// Location of the source in a Google Cloud Source Repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTriggerBuildSourceRepoSourceResult> RepoSources;
+        /// <summary>
+        /// Location of the source in an archive file in Google Cloud Storage.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTriggerBuildSourceStorageSourceResult> StorageSources;
 
         [OutputConstructor]

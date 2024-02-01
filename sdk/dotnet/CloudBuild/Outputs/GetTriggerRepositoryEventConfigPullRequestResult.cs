@@ -13,8 +13,20 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerRepositoryEventConfigPullRequestResult
     {
+        /// <summary>
+        /// Regex of branches to match.
+        /// 
+        /// The syntax of the regular expressions accepted is the syntax accepted by
+        /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+        /// </summary>
         public readonly string Branch;
+        /// <summary>
+        /// Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+        /// </summary>
         public readonly string CommentControl;
+        /// <summary>
+        /// If true, branches that do NOT match the git_ref will trigger a build.
+        /// </summary>
         public readonly bool InvertRegex;
 
         [OutputConstructor]

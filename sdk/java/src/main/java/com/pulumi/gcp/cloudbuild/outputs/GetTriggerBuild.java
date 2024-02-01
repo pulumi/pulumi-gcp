@@ -18,53 +18,175 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuild {
+    /**
+     * @return Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+     * 
+     */
     private List<GetTriggerBuildArtifact> artifacts;
+    /**
+     * @return Secrets and secret environment variables.
+     * 
+     */
     private List<GetTriggerBuildAvailableSecret> availableSecrets;
+    /**
+     * @return A list of images to be pushed upon the successful completion of all build steps.
+     * The images are pushed using the builder service account&#39;s credentials.
+     * The digests of the pushed images will be stored in the Build resource&#39;s results field.
+     * If any of the images fail to be pushed, the build status is marked FAILURE.
+     * 
+     */
     private List<String> images;
+    /**
+     * @return Google Cloud Storage bucket where logs should be written.
+     * Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+     * 
+     */
     private String logsBucket;
+    /**
+     * @return Special options for this build.
+     * 
+     */
     private List<GetTriggerBuildOption> options;
+    /**
+     * @return TTL in queue for this build. If provided and the build is enqueued longer than this value,
+     * the build will expire and the build status will be EXPIRED.
+     * The TTL starts ticking from createTime.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String queueTtl;
+    /**
+     * @return Secrets to decrypt using Cloud Key Management Service.
+     * 
+     */
     private List<GetTriggerBuildSecret> secrets;
+    /**
+     * @return The location of the source files to build.
+     * 
+     * One of &#39;storageSource&#39; or &#39;repoSource&#39; must be provided.
+     * 
+     */
     private List<GetTriggerBuildSource> sources;
+    /**
+     * @return The operations to be performed on the workspace.
+     * 
+     */
     private List<GetTriggerBuildStep> steps;
+    /**
+     * @return Substitutions data for Build resource.
+     * 
+     */
     private Map<String,String> substitutions;
+    /**
+     * @return Tags for annotation of a Build. These are not docker tags.
+     * 
+     */
     private List<String> tags;
+    /**
+     * @return Amount of time that this build should be allowed to run, to second granularity.
+     * If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+     * This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+     * The expected format is the number of seconds followed by s.
+     * Default time is ten minutes (600s).
+     * 
+     */
     private String timeout;
 
     private GetTriggerBuild() {}
+    /**
+     * @return Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+     * 
+     */
     public List<GetTriggerBuildArtifact> artifacts() {
         return this.artifacts;
     }
+    /**
+     * @return Secrets and secret environment variables.
+     * 
+     */
     public List<GetTriggerBuildAvailableSecret> availableSecrets() {
         return this.availableSecrets;
     }
+    /**
+     * @return A list of images to be pushed upon the successful completion of all build steps.
+     * The images are pushed using the builder service account&#39;s credentials.
+     * The digests of the pushed images will be stored in the Build resource&#39;s results field.
+     * If any of the images fail to be pushed, the build status is marked FAILURE.
+     * 
+     */
     public List<String> images() {
         return this.images;
     }
+    /**
+     * @return Google Cloud Storage bucket where logs should be written.
+     * Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+     * 
+     */
     public String logsBucket() {
         return this.logsBucket;
     }
+    /**
+     * @return Special options for this build.
+     * 
+     */
     public List<GetTriggerBuildOption> options() {
         return this.options;
     }
+    /**
+     * @return TTL in queue for this build. If provided and the build is enqueued longer than this value,
+     * the build will expire and the build status will be EXPIRED.
+     * The TTL starts ticking from createTime.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String queueTtl() {
         return this.queueTtl;
     }
+    /**
+     * @return Secrets to decrypt using Cloud Key Management Service.
+     * 
+     */
     public List<GetTriggerBuildSecret> secrets() {
         return this.secrets;
     }
+    /**
+     * @return The location of the source files to build.
+     * 
+     * One of &#39;storageSource&#39; or &#39;repoSource&#39; must be provided.
+     * 
+     */
     public List<GetTriggerBuildSource> sources() {
         return this.sources;
     }
+    /**
+     * @return The operations to be performed on the workspace.
+     * 
+     */
     public List<GetTriggerBuildStep> steps() {
         return this.steps;
     }
+    /**
+     * @return Substitutions data for Build resource.
+     * 
+     */
     public Map<String,String> substitutions() {
         return this.substitutions;
     }
+    /**
+     * @return Tags for annotation of a Build. These are not docker tags.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return Amount of time that this build should be allowed to run, to second granularity.
+     * If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+     * This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+     * The expected format is the number of seconds followed by s.
+     * Default time is ten minutes (600s).
+     * 
+     */
     public String timeout() {
         return this.timeout;
     }

@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     [OutputType]
     public sealed class DeliveryPipelineCondition
     {
+        /// <summary>
+        /// Details around the Pipeline's overall status.
+        /// </summary>
         public readonly ImmutableArray<Outputs.DeliveryPipelineConditionPipelineReadyCondition> PipelineReadyConditions;
+        /// <summary>
+        /// Details around targets enumerated in the pipeline.
+        /// </summary>
         public readonly ImmutableArray<Outputs.DeliveryPipelineConditionTargetsPresentCondition> TargetsPresentConditions;
+        /// <summary>
+        /// Details on the whether the targets enumerated in the pipeline are of the same type.
+        /// </summary>
         public readonly ImmutableArray<Outputs.DeliveryPipelineConditionTargetsTypeCondition> TargetsTypeConditions;
 
         [OutputConstructor]

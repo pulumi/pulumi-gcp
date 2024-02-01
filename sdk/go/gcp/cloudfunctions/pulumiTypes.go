@@ -1018,6 +1018,7 @@ func (o FunctionSecretVolumeVersionArrayOutput) Index(i pulumi.IntInput) Functio
 }
 
 type FunctionSourceRepository struct {
+	// The URL pointing to the hosted repository where the function was defined at the time of deployment.
 	DeployedUrl *string `pulumi:"deployedUrl"`
 	// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
 	//
@@ -1039,6 +1040,7 @@ type FunctionSourceRepositoryInput interface {
 }
 
 type FunctionSourceRepositoryArgs struct {
+	// The URL pointing to the hosted repository where the function was defined at the time of deployment.
 	DeployedUrl pulumi.StringPtrInput `pulumi:"deployedUrl"`
 	// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
 	//
@@ -1125,6 +1127,7 @@ func (o FunctionSourceRepositoryOutput) ToFunctionSourceRepositoryPtrOutputWithC
 	}).(FunctionSourceRepositoryPtrOutput)
 }
 
+// The URL pointing to the hosted repository where the function was defined at the time of deployment.
 func (o FunctionSourceRepositoryOutput) DeployedUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionSourceRepository) *string { return v.DeployedUrl }).(pulumi.StringPtrOutput)
 }
@@ -1162,6 +1165,7 @@ func (o FunctionSourceRepositoryPtrOutput) Elem() FunctionSourceRepositoryOutput
 	}).(FunctionSourceRepositoryOutput)
 }
 
+// The URL pointing to the hosted repository where the function was defined at the time of deployment.
 func (o FunctionSourceRepositoryPtrOutput) DeployedUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionSourceRepository) *string {
 		if v == nil {
@@ -1404,10 +1408,14 @@ func (o GetFunctionEventTriggerFailurePolicyArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetFunctionSecretEnvironmentVariable struct {
-	Key       string `pulumi:"key"`
+	// Name of the environment variable.
+	Key string `pulumi:"key"`
+	// Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
 	ProjectId string `pulumi:"projectId"`
-	Secret    string `pulumi:"secret"`
-	Version   string `pulumi:"version"`
+	// ID of the secret in secret manager (not the full resource name).
+	Secret string `pulumi:"secret"`
+	// Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	Version string `pulumi:"version"`
 }
 
 // GetFunctionSecretEnvironmentVariableInput is an input type that accepts GetFunctionSecretEnvironmentVariableArgs and GetFunctionSecretEnvironmentVariableOutput values.
@@ -1422,10 +1430,14 @@ type GetFunctionSecretEnvironmentVariableInput interface {
 }
 
 type GetFunctionSecretEnvironmentVariableArgs struct {
-	Key       pulumi.StringInput `pulumi:"key"`
+	// Name of the environment variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	Secret    pulumi.StringInput `pulumi:"secret"`
-	Version   pulumi.StringInput `pulumi:"version"`
+	// ID of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetFunctionSecretEnvironmentVariableArgs) ElementType() reflect.Type {
@@ -1479,18 +1491,22 @@ func (o GetFunctionSecretEnvironmentVariableOutput) ToGetFunctionSecretEnvironme
 	return o
 }
 
+// Name of the environment variable.
 func (o GetFunctionSecretEnvironmentVariableOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSecretEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
 func (o GetFunctionSecretEnvironmentVariableOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSecretEnvironmentVariable) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// ID of the secret in secret manager (not the full resource name).
 func (o GetFunctionSecretEnvironmentVariableOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSecretEnvironmentVariable) string { return v.Secret }).(pulumi.StringOutput)
 }
 
+// Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
 func (o GetFunctionSecretEnvironmentVariableOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSecretEnvironmentVariable) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -1516,10 +1532,14 @@ func (o GetFunctionSecretEnvironmentVariableArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetFunctionSecretVolume struct {
-	MountPath string                           `pulumi:"mountPath"`
-	ProjectId string                           `pulumi:"projectId"`
-	Secret    string                           `pulumi:"secret"`
-	Versions  []GetFunctionSecretVolumeVersion `pulumi:"versions"`
+	// The path within the container to mount the secret volume. For example, setting the mountPath as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+	MountPath string `pulumi:"mountPath"`
+	// Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+	ProjectId string `pulumi:"projectId"`
+	// ID of the secret in secret manager (not the full resource name).
+	Secret string `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point.
+	Versions []GetFunctionSecretVolumeVersion `pulumi:"versions"`
 }
 
 // GetFunctionSecretVolumeInput is an input type that accepts GetFunctionSecretVolumeArgs and GetFunctionSecretVolumeOutput values.
@@ -1534,10 +1554,14 @@ type GetFunctionSecretVolumeInput interface {
 }
 
 type GetFunctionSecretVolumeArgs struct {
-	MountPath pulumi.StringInput                       `pulumi:"mountPath"`
-	ProjectId pulumi.StringInput                       `pulumi:"projectId"`
-	Secret    pulumi.StringInput                       `pulumi:"secret"`
-	Versions  GetFunctionSecretVolumeVersionArrayInput `pulumi:"versions"`
+	// The path within the container to mount the secret volume. For example, setting the mountPath as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// ID of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringInput `pulumi:"secret"`
+	// List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point.
+	Versions GetFunctionSecretVolumeVersionArrayInput `pulumi:"versions"`
 }
 
 func (GetFunctionSecretVolumeArgs) ElementType() reflect.Type {
@@ -1591,18 +1615,22 @@ func (o GetFunctionSecretVolumeOutput) ToGetFunctionSecretVolumeOutputWithContex
 	return o
 }
 
+// The path within the container to mount the secret volume. For example, setting the mountPath as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
 func (o GetFunctionSecretVolumeOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSecretVolume) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
+// Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
 func (o GetFunctionSecretVolumeOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSecretVolume) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// ID of the secret in secret manager (not the full resource name).
 func (o GetFunctionSecretVolumeOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSecretVolume) string { return v.Secret }).(pulumi.StringOutput)
 }
 
+// List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point.
 func (o GetFunctionSecretVolumeOutput) Versions() GetFunctionSecretVolumeVersionArrayOutput {
 	return o.ApplyT(func(v GetFunctionSecretVolume) []GetFunctionSecretVolumeVersion { return v.Versions }).(GetFunctionSecretVolumeVersionArrayOutput)
 }
@@ -1628,7 +1656,9 @@ func (o GetFunctionSecretVolumeArrayOutput) Index(i pulumi.IntInput) GetFunction
 }
 
 type GetFunctionSecretVolumeVersion struct {
-	Path    string `pulumi:"path"`
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+	Path string `pulumi:"path"`
+	// Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
 	Version string `pulumi:"version"`
 }
 
@@ -1644,7 +1674,9 @@ type GetFunctionSecretVolumeVersionInput interface {
 }
 
 type GetFunctionSecretVolumeVersionArgs struct {
-	Path    pulumi.StringInput `pulumi:"path"`
+	// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+	Path pulumi.StringInput `pulumi:"path"`
+	// Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -1699,10 +1731,12 @@ func (o GetFunctionSecretVolumeVersionOutput) ToGetFunctionSecretVolumeVersionOu
 	return o
 }
 
+// Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
 func (o GetFunctionSecretVolumeVersionOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSecretVolumeVersion) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
 func (o GetFunctionSecretVolumeVersionOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSecretVolumeVersion) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -1728,6 +1762,7 @@ func (o GetFunctionSecretVolumeVersionArrayOutput) Index(i pulumi.IntInput) GetF
 }
 
 type GetFunctionSourceRepository struct {
+	// The URL pointing to the hosted repository where the function was defined at the time of deployment.
 	DeployedUrl string `pulumi:"deployedUrl"`
 	// The URL pointing to the hosted repository where the function is defined.
 	Url string `pulumi:"url"`
@@ -1745,6 +1780,7 @@ type GetFunctionSourceRepositoryInput interface {
 }
 
 type GetFunctionSourceRepositoryArgs struct {
+	// The URL pointing to the hosted repository where the function was defined at the time of deployment.
 	DeployedUrl pulumi.StringInput `pulumi:"deployedUrl"`
 	// The URL pointing to the hosted repository where the function is defined.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -1801,6 +1837,7 @@ func (o GetFunctionSourceRepositoryOutput) ToGetFunctionSourceRepositoryOutputWi
 	return o
 }
 
+// The URL pointing to the hosted repository where the function was defined at the time of deployment.
 func (o GetFunctionSourceRepositoryOutput) DeployedUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionSourceRepository) string { return v.DeployedUrl }).(pulumi.StringOutput)
 }

@@ -12,11 +12,18 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromMachineImageAttachedDiskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name with which the attached disk is accessible under /dev/disk/by-id/
+        /// </summary>
         [Input("deviceName")]
         public Input<string>? DeviceName { get; set; }
 
         [Input("diskEncryptionKeyRaw")]
         private Input<string>? _diskEncryptionKeyRaw;
+
+        /// <summary>
+        /// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        /// </summary>
         public Input<string>? DiskEncryptionKeyRaw
         {
             get => _diskEncryptionKeyRaw;
@@ -27,15 +34,27 @@ namespace Pulumi.Gcp.Compute.Inputs
             }
         }
 
+        /// <summary>
+        /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        /// </summary>
         [Input("diskEncryptionKeySha256")]
         public Input<string>? DiskEncryptionKeySha256 { get; set; }
 
+        /// <summary>
+        /// The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        /// </summary>
         [Input("kmsKeySelfLink")]
         public Input<string>? KmsKeySelfLink { get; set; }
 
+        /// <summary>
+        /// Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 
+        /// <summary>
+        /// The name or self_link of the disk attached to this instance.
+        /// </summary>
         [Input("source", required: true)]
         public Input<string> Source { get; set; } = null!;
 

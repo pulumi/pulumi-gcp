@@ -18,9 +18,15 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// IPv4 CIDR block reserved for Cloud TPU in the VPC.
+        /// </summary>
         [Input("ipv4CidrBlock")]
         public Input<string>? Ipv4CidrBlock { get; set; }
 
+        /// <summary>
+        /// Whether to use service networking for Cloud TPU or not
+        /// </summary>
         [Input("useServiceNetworking")]
         public Input<bool>? UseServiceNetworking { get; set; }
 

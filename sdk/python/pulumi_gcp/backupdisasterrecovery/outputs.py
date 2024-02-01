@@ -128,17 +128,27 @@ class GetManagementServerManagementUriResult(dict):
     def __init__(__self__, *,
                  api: str,
                  web_ui: str):
+        """
+        :param str api: The management console api endpoint.
+        :param str web_ui: The management console webUi.
+        """
         pulumi.set(__self__, "api", api)
         pulumi.set(__self__, "web_ui", web_ui)
 
     @property
     @pulumi.getter
     def api(self) -> str:
+        """
+        The management console api endpoint.
+        """
         return pulumi.get(self, "api")
 
     @property
     @pulumi.getter(name="webUi")
     def web_ui(self) -> str:
+        """
+        The management console webUi.
+        """
         return pulumi.get(self, "web_ui")
 
 
@@ -147,17 +157,27 @@ class GetManagementServerNetworkResult(dict):
     def __init__(__self__, *,
                  network: str,
                  peering_mode: str):
+        """
+        :param str network: Network with format 'projects/{{project_id}}/global/networks/{{network_id}}'
+        :param str peering_mode: Type of Network peeringMode Default value: "PRIVATE_SERVICE_ACCESS" Possible values: ["PRIVATE_SERVICE_ACCESS"]
+        """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "peering_mode", peering_mode)
 
     @property
     @pulumi.getter
     def network(self) -> str:
+        """
+        Network with format 'projects/{{project_id}}/global/networks/{{network_id}}'
+        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter(name="peeringMode")
     def peering_mode(self) -> str:
+        """
+        Type of Network peeringMode Default value: "PRIVATE_SERVICE_ACCESS" Possible values: ["PRIVATE_SERVICE_ACCESS"]
+        """
         return pulumi.get(self, "peering_mode")
 
 

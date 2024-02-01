@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     [OutputType]
     public sealed class JobScheduling
     {
+        /// <summary>
+        /// Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        /// </summary>
         public readonly int MaxFailuresPerHour;
+        /// <summary>
+        /// Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        /// </summary>
         public readonly int MaxFailuresTotal;
 
         [OutputConstructor]

@@ -1857,9 +1857,14 @@ func (o SubnetDhcpAddressRangeArrayOutput) Index(i pulumi.IntInput) SubnetDhcpAd
 }
 
 type GetClusterNodeTypeConfig struct {
-	CustomCoreCount int    `pulumi:"customCoreCount"`
-	NodeCount       int    `pulumi:"nodeCount"`
-	NodeTypeId      string `pulumi:"nodeTypeId"`
+	// Customized number of cores available to each node of the type.
+	// This number must always be one of 'nodeType.availableCustomCoreCounts'.
+	// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+	// Once the customer is created then corecount cannot be changed.
+	CustomCoreCount int `pulumi:"customCoreCount"`
+	// The number of nodes of this type in the cluster.
+	NodeCount  int    `pulumi:"nodeCount"`
+	NodeTypeId string `pulumi:"nodeTypeId"`
 }
 
 // GetClusterNodeTypeConfigInput is an input type that accepts GetClusterNodeTypeConfigArgs and GetClusterNodeTypeConfigOutput values.
@@ -1874,9 +1879,14 @@ type GetClusterNodeTypeConfigInput interface {
 }
 
 type GetClusterNodeTypeConfigArgs struct {
-	CustomCoreCount pulumi.IntInput    `pulumi:"customCoreCount"`
-	NodeCount       pulumi.IntInput    `pulumi:"nodeCount"`
-	NodeTypeId      pulumi.StringInput `pulumi:"nodeTypeId"`
+	// Customized number of cores available to each node of the type.
+	// This number must always be one of 'nodeType.availableCustomCoreCounts'.
+	// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+	// Once the customer is created then corecount cannot be changed.
+	CustomCoreCount pulumi.IntInput `pulumi:"customCoreCount"`
+	// The number of nodes of this type in the cluster.
+	NodeCount  pulumi.IntInput    `pulumi:"nodeCount"`
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
 }
 
 func (GetClusterNodeTypeConfigArgs) ElementType() reflect.Type {
@@ -1930,10 +1940,15 @@ func (o GetClusterNodeTypeConfigOutput) ToGetClusterNodeTypeConfigOutputWithCont
 	return o
 }
 
+// Customized number of cores available to each node of the type.
+// This number must always be one of 'nodeType.availableCustomCoreCounts'.
+// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+// Once the customer is created then corecount cannot be changed.
 func (o GetClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodeTypeConfig) int { return v.CustomCoreCount }).(pulumi.IntOutput)
 }
 
+// The number of nodes of this type in the cluster.
 func (o GetClusterNodeTypeConfigOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodeTypeConfig) int { return v.NodeCount }).(pulumi.IntOutput)
 }
@@ -1963,8 +1978,10 @@ func (o GetClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) GetCluster
 }
 
 type GetExternalAccessRuleDestinationIpRange struct {
+	// The name of an 'ExternalAddress' resource.
 	ExternalAddress string `pulumi:"externalAddress"`
-	IpAddressRange  string `pulumi:"ipAddressRange"`
+	// An IP address range in the CIDR format.
+	IpAddressRange string `pulumi:"ipAddressRange"`
 }
 
 // GetExternalAccessRuleDestinationIpRangeInput is an input type that accepts GetExternalAccessRuleDestinationIpRangeArgs and GetExternalAccessRuleDestinationIpRangeOutput values.
@@ -1979,8 +1996,10 @@ type GetExternalAccessRuleDestinationIpRangeInput interface {
 }
 
 type GetExternalAccessRuleDestinationIpRangeArgs struct {
+	// The name of an 'ExternalAddress' resource.
 	ExternalAddress pulumi.StringInput `pulumi:"externalAddress"`
-	IpAddressRange  pulumi.StringInput `pulumi:"ipAddressRange"`
+	// An IP address range in the CIDR format.
+	IpAddressRange pulumi.StringInput `pulumi:"ipAddressRange"`
 }
 
 func (GetExternalAccessRuleDestinationIpRangeArgs) ElementType() reflect.Type {
@@ -2034,10 +2053,12 @@ func (o GetExternalAccessRuleDestinationIpRangeOutput) ToGetExternalAccessRuleDe
 	return o
 }
 
+// The name of an 'ExternalAddress' resource.
 func (o GetExternalAccessRuleDestinationIpRangeOutput) ExternalAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalAccessRuleDestinationIpRange) string { return v.ExternalAddress }).(pulumi.StringOutput)
 }
 
+// An IP address range in the CIDR format.
 func (o GetExternalAccessRuleDestinationIpRangeOutput) IpAddressRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalAccessRuleDestinationIpRange) string { return v.IpAddressRange }).(pulumi.StringOutput)
 }
@@ -2063,7 +2084,9 @@ func (o GetExternalAccessRuleDestinationIpRangeArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetExternalAccessRuleSourceIpRange struct {
-	IpAddress      string `pulumi:"ipAddress"`
+	// A single IP address.
+	IpAddress string `pulumi:"ipAddress"`
+	// An IP address range in the CIDR format.
 	IpAddressRange string `pulumi:"ipAddressRange"`
 }
 
@@ -2079,7 +2102,9 @@ type GetExternalAccessRuleSourceIpRangeInput interface {
 }
 
 type GetExternalAccessRuleSourceIpRangeArgs struct {
-	IpAddress      pulumi.StringInput `pulumi:"ipAddress"`
+	// A single IP address.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// An IP address range in the CIDR format.
 	IpAddressRange pulumi.StringInput `pulumi:"ipAddressRange"`
 }
 
@@ -2134,10 +2159,12 @@ func (o GetExternalAccessRuleSourceIpRangeOutput) ToGetExternalAccessRuleSourceI
 	return o
 }
 
+// A single IP address.
 func (o GetExternalAccessRuleSourceIpRangeOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalAccessRuleSourceIpRange) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// An IP address range in the CIDR format.
 func (o GetExternalAccessRuleSourceIpRangeOutput) IpAddressRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalAccessRuleSourceIpRange) string { return v.IpAddressRange }).(pulumi.StringOutput)
 }
@@ -2163,8 +2190,10 @@ func (o GetExternalAccessRuleSourceIpRangeArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetNetworkPolicyExternalIp struct {
-	Enabled bool   `pulumi:"enabled"`
-	State   string `pulumi:"state"`
+	// True if the service is enabled; false otherwise.
+	Enabled bool `pulumi:"enabled"`
+	// State of the service. New values may be added to this enum when appropriate.
+	State string `pulumi:"state"`
 }
 
 // GetNetworkPolicyExternalIpInput is an input type that accepts GetNetworkPolicyExternalIpArgs and GetNetworkPolicyExternalIpOutput values.
@@ -2179,8 +2208,10 @@ type GetNetworkPolicyExternalIpInput interface {
 }
 
 type GetNetworkPolicyExternalIpArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// True if the service is enabled; false otherwise.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// State of the service. New values may be added to this enum when appropriate.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetNetworkPolicyExternalIpArgs) ElementType() reflect.Type {
@@ -2234,10 +2265,12 @@ func (o GetNetworkPolicyExternalIpOutput) ToGetNetworkPolicyExternalIpOutputWith
 	return o
 }
 
+// True if the service is enabled; false otherwise.
 func (o GetNetworkPolicyExternalIpOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNetworkPolicyExternalIp) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// State of the service. New values may be added to this enum when appropriate.
 func (o GetNetworkPolicyExternalIpOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPolicyExternalIp) string { return v.State }).(pulumi.StringOutput)
 }
@@ -2263,8 +2296,10 @@ func (o GetNetworkPolicyExternalIpArrayOutput) Index(i pulumi.IntInput) GetNetwo
 }
 
 type GetNetworkPolicyInternetAccess struct {
-	Enabled bool   `pulumi:"enabled"`
-	State   string `pulumi:"state"`
+	// True if the service is enabled; false otherwise.
+	Enabled bool `pulumi:"enabled"`
+	// State of the service. New values may be added to this enum when appropriate.
+	State string `pulumi:"state"`
 }
 
 // GetNetworkPolicyInternetAccessInput is an input type that accepts GetNetworkPolicyInternetAccessArgs and GetNetworkPolicyInternetAccessOutput values.
@@ -2279,8 +2314,10 @@ type GetNetworkPolicyInternetAccessInput interface {
 }
 
 type GetNetworkPolicyInternetAccessArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	State   pulumi.StringInput `pulumi:"state"`
+	// True if the service is enabled; false otherwise.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// State of the service. New values may be added to this enum when appropriate.
+	State pulumi.StringInput `pulumi:"state"`
 }
 
 func (GetNetworkPolicyInternetAccessArgs) ElementType() reflect.Type {
@@ -2334,10 +2371,12 @@ func (o GetNetworkPolicyInternetAccessOutput) ToGetNetworkPolicyInternetAccessOu
 	return o
 }
 
+// True if the service is enabled; false otherwise.
 func (o GetNetworkPolicyInternetAccessOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetNetworkPolicyInternetAccess) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// State of the service. New values may be added to this enum when appropriate.
 func (o GetNetworkPolicyInternetAccessOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkPolicyInternetAccess) string { return v.State }).(pulumi.StringOutput)
 }
@@ -2363,8 +2402,11 @@ func (o GetNetworkPolicyInternetAccessArrayOutput) Index(i pulumi.IntInput) GetN
 }
 
 type GetNetworkVpcNetwork struct {
+	// The relative resource name of the service VPC network this VMware Engine network is attached to.
+	// For example: projects/123123/global/networks/my-network
 	Network string `pulumi:"network"`
-	Type    string `pulumi:"type"`
+	// Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
+	Type string `pulumi:"type"`
 }
 
 // GetNetworkVpcNetworkInput is an input type that accepts GetNetworkVpcNetworkArgs and GetNetworkVpcNetworkOutput values.
@@ -2379,8 +2421,11 @@ type GetNetworkVpcNetworkInput interface {
 }
 
 type GetNetworkVpcNetworkArgs struct {
+	// The relative resource name of the service VPC network this VMware Engine network is attached to.
+	// For example: projects/123123/global/networks/my-network
 	Network pulumi.StringInput `pulumi:"network"`
-	Type    pulumi.StringInput `pulumi:"type"`
+	// Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetNetworkVpcNetworkArgs) ElementType() reflect.Type {
@@ -2434,10 +2479,13 @@ func (o GetNetworkVpcNetworkOutput) ToGetNetworkVpcNetworkOutputWithContext(ctx 
 	return o
 }
 
+// The relative resource name of the service VPC network this VMware Engine network is attached to.
+// For example: projects/123123/global/networks/my-network
 func (o GetNetworkVpcNetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkVpcNetwork) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
 func (o GetNetworkVpcNetworkOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkVpcNetwork) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2463,10 +2511,14 @@ func (o GetNetworkVpcNetworkArrayOutput) Index(i pulumi.IntInput) GetNetworkVpcN
 }
 
 type GetPrivateCloudHcx struct {
-	Fqdn       string `pulumi:"fqdn"`
+	// Fully qualified domain name of the appliance.
+	Fqdn string `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
 	InternalIp string `pulumi:"internalIp"`
-	State      string `pulumi:"state"`
-	Version    string `pulumi:"version"`
+	// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+	State string `pulumi:"state"`
+	// Version of the appliance.
+	Version string `pulumi:"version"`
 }
 
 // GetPrivateCloudHcxInput is an input type that accepts GetPrivateCloudHcxArgs and GetPrivateCloudHcxOutput values.
@@ -2481,10 +2533,14 @@ type GetPrivateCloudHcxInput interface {
 }
 
 type GetPrivateCloudHcxArgs struct {
-	Fqdn       pulumi.StringInput `pulumi:"fqdn"`
+	// Fully qualified domain name of the appliance.
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
 	InternalIp pulumi.StringInput `pulumi:"internalIp"`
-	State      pulumi.StringInput `pulumi:"state"`
-	Version    pulumi.StringInput `pulumi:"version"`
+	// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+	State pulumi.StringInput `pulumi:"state"`
+	// Version of the appliance.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetPrivateCloudHcxArgs) ElementType() reflect.Type {
@@ -2538,18 +2594,22 @@ func (o GetPrivateCloudHcxOutput) ToGetPrivateCloudHcxOutputWithContext(ctx cont
 	return o
 }
 
+// Fully qualified domain name of the appliance.
 func (o GetPrivateCloudHcxOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudHcx) string { return v.Fqdn }).(pulumi.StringOutput)
 }
 
+// Internal IP address of the appliance.
 func (o GetPrivateCloudHcxOutput) InternalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudHcx) string { return v.InternalIp }).(pulumi.StringOutput)
 }
 
+// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
 func (o GetPrivateCloudHcxOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudHcx) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Version of the appliance.
 func (o GetPrivateCloudHcxOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudHcx) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -2575,7 +2635,15 @@ func (o GetPrivateCloudHcxArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudH
 }
 
 type GetPrivateCloudManagementCluster struct {
-	ClusterId       string                                           `pulumi:"clusterId"`
+	// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+	//   * Only contains 1-63 alphanumeric characters and hyphens
+	//   * Begins with an alphabetical character
+	//   * Ends with a non-hyphen character
+	//   * Not formatted as a UUID
+	//   * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	ClusterId string `pulumi:"clusterId"`
+	// The map of cluster node types in this cluster,
+	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	NodeTypeConfigs []GetPrivateCloudManagementClusterNodeTypeConfig `pulumi:"nodeTypeConfigs"`
 }
 
@@ -2591,7 +2659,15 @@ type GetPrivateCloudManagementClusterInput interface {
 }
 
 type GetPrivateCloudManagementClusterArgs struct {
-	ClusterId       pulumi.StringInput                                       `pulumi:"clusterId"`
+	// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+	//   * Only contains 1-63 alphanumeric characters and hyphens
+	//   * Begins with an alphabetical character
+	//   * Ends with a non-hyphen character
+	//   * Not formatted as a UUID
+	//   * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The map of cluster node types in this cluster,
+	// where the key is canonical identifier of the node type (corresponds to the NodeType).
 	NodeTypeConfigs GetPrivateCloudManagementClusterNodeTypeConfigArrayInput `pulumi:"nodeTypeConfigs"`
 }
 
@@ -2646,10 +2722,18 @@ func (o GetPrivateCloudManagementClusterOutput) ToGetPrivateCloudManagementClust
 	return o
 }
 
+// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+//   - Only contains 1-63 alphanumeric characters and hyphens
+//   - Begins with an alphabetical character
+//   - Ends with a non-hyphen character
+//   - Not formatted as a UUID
+//   - Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
 func (o GetPrivateCloudManagementClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudManagementCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
+// The map of cluster node types in this cluster,
+// where the key is canonical identifier of the node type (corresponds to the NodeType).
 func (o GetPrivateCloudManagementClusterOutput) NodeTypeConfigs() GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput {
 	return o.ApplyT(func(v GetPrivateCloudManagementCluster) []GetPrivateCloudManagementClusterNodeTypeConfig {
 		return v.NodeTypeConfigs
@@ -2677,9 +2761,14 @@ func (o GetPrivateCloudManagementClusterArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetPrivateCloudManagementClusterNodeTypeConfig struct {
-	CustomCoreCount int    `pulumi:"customCoreCount"`
-	NodeCount       int    `pulumi:"nodeCount"`
-	NodeTypeId      string `pulumi:"nodeTypeId"`
+	// Customized number of cores available to each node of the type.
+	// This number must always be one of 'nodeType.availableCustomCoreCounts'.
+	// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+	// This cannot be changed once the PrivateCloud is created.
+	CustomCoreCount int `pulumi:"customCoreCount"`
+	// The number of nodes of this type in the cluster.
+	NodeCount  int    `pulumi:"nodeCount"`
+	NodeTypeId string `pulumi:"nodeTypeId"`
 }
 
 // GetPrivateCloudManagementClusterNodeTypeConfigInput is an input type that accepts GetPrivateCloudManagementClusterNodeTypeConfigArgs and GetPrivateCloudManagementClusterNodeTypeConfigOutput values.
@@ -2694,9 +2783,14 @@ type GetPrivateCloudManagementClusterNodeTypeConfigInput interface {
 }
 
 type GetPrivateCloudManagementClusterNodeTypeConfigArgs struct {
-	CustomCoreCount pulumi.IntInput    `pulumi:"customCoreCount"`
-	NodeCount       pulumi.IntInput    `pulumi:"nodeCount"`
-	NodeTypeId      pulumi.StringInput `pulumi:"nodeTypeId"`
+	// Customized number of cores available to each node of the type.
+	// This number must always be one of 'nodeType.availableCustomCoreCounts'.
+	// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+	// This cannot be changed once the PrivateCloud is created.
+	CustomCoreCount pulumi.IntInput `pulumi:"customCoreCount"`
+	// The number of nodes of this type in the cluster.
+	NodeCount  pulumi.IntInput    `pulumi:"nodeCount"`
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
 }
 
 func (GetPrivateCloudManagementClusterNodeTypeConfigArgs) ElementType() reflect.Type {
@@ -2750,10 +2844,15 @@ func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) ToGetPrivateCloudM
 	return o
 }
 
+// Customized number of cores available to each node of the type.
+// This number must always be one of 'nodeType.availableCustomCoreCounts'.
+// If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+// This cannot be changed once the PrivateCloud is created.
 func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPrivateCloudManagementClusterNodeTypeConfig) int { return v.CustomCoreCount }).(pulumi.IntOutput)
 }
 
+// The number of nodes of this type in the cluster.
 func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPrivateCloudManagementClusterNodeTypeConfig) int { return v.NodeCount }).(pulumi.IntOutput)
 }
@@ -2783,11 +2882,24 @@ func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulum
 }
 
 type GetPrivateCloudNetworkConfig struct {
-	DnsServerIp                      string `pulumi:"dnsServerIp"`
-	ManagementCidr                   string `pulumi:"managementCidr"`
-	ManagementIpAddressLayoutVersion int    `pulumi:"managementIpAddressLayoutVersion"`
-	VmwareEngineNetwork              string `pulumi:"vmwareEngineNetwork"`
-	VmwareEngineNetworkCanonical     string `pulumi:"vmwareEngineNetworkCanonical"`
+	// DNS Server IP of the Private Cloud.
+	DnsServerIp string `pulumi:"dnsServerIp"`
+	// Management CIDR used by VMware management appliances.
+	ManagementCidr string `pulumi:"managementCidr"`
+	// The IP address layout version of the management IP address range.
+	// Possible versions include:
+	// * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+	//   as it does not support all features.
+	// * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+	//   used by all newly created private clouds. This version supports all current features.
+	ManagementIpAddressLayoutVersion int `pulumi:"managementIpAddressLayoutVersion"`
+	// The relative resource name of the VMware Engine network attached to the private cloud.
+	// Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+	// where {project} can either be a project number or a project ID.
+	VmwareEngineNetwork string `pulumi:"vmwareEngineNetwork"`
+	// The canonical name of the VMware Engine network in
+	// the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+	VmwareEngineNetworkCanonical string `pulumi:"vmwareEngineNetworkCanonical"`
 }
 
 // GetPrivateCloudNetworkConfigInput is an input type that accepts GetPrivateCloudNetworkConfigArgs and GetPrivateCloudNetworkConfigOutput values.
@@ -2802,11 +2914,24 @@ type GetPrivateCloudNetworkConfigInput interface {
 }
 
 type GetPrivateCloudNetworkConfigArgs struct {
-	DnsServerIp                      pulumi.StringInput `pulumi:"dnsServerIp"`
-	ManagementCidr                   pulumi.StringInput `pulumi:"managementCidr"`
-	ManagementIpAddressLayoutVersion pulumi.IntInput    `pulumi:"managementIpAddressLayoutVersion"`
-	VmwareEngineNetwork              pulumi.StringInput `pulumi:"vmwareEngineNetwork"`
-	VmwareEngineNetworkCanonical     pulumi.StringInput `pulumi:"vmwareEngineNetworkCanonical"`
+	// DNS Server IP of the Private Cloud.
+	DnsServerIp pulumi.StringInput `pulumi:"dnsServerIp"`
+	// Management CIDR used by VMware management appliances.
+	ManagementCidr pulumi.StringInput `pulumi:"managementCidr"`
+	// The IP address layout version of the management IP address range.
+	// Possible versions include:
+	// * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+	//   as it does not support all features.
+	// * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+	//   used by all newly created private clouds. This version supports all current features.
+	ManagementIpAddressLayoutVersion pulumi.IntInput `pulumi:"managementIpAddressLayoutVersion"`
+	// The relative resource name of the VMware Engine network attached to the private cloud.
+	// Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+	// where {project} can either be a project number or a project ID.
+	VmwareEngineNetwork pulumi.StringInput `pulumi:"vmwareEngineNetwork"`
+	// The canonical name of the VMware Engine network in
+	// the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+	VmwareEngineNetworkCanonical pulumi.StringInput `pulumi:"vmwareEngineNetworkCanonical"`
 }
 
 func (GetPrivateCloudNetworkConfigArgs) ElementType() reflect.Type {
@@ -2860,22 +2985,35 @@ func (o GetPrivateCloudNetworkConfigOutput) ToGetPrivateCloudNetworkConfigOutput
 	return o
 }
 
+// DNS Server IP of the Private Cloud.
 func (o GetPrivateCloudNetworkConfigOutput) DnsServerIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) string { return v.DnsServerIp }).(pulumi.StringOutput)
 }
 
+// Management CIDR used by VMware management appliances.
 func (o GetPrivateCloudNetworkConfigOutput) ManagementCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) string { return v.ManagementCidr }).(pulumi.StringOutput)
 }
 
+// The IP address layout version of the management IP address range.
+// Possible versions include:
+//   - managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+//     as it does not support all features.
+//   - managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+//     used by all newly created private clouds. This version supports all current features.
 func (o GetPrivateCloudNetworkConfigOutput) ManagementIpAddressLayoutVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) int { return v.ManagementIpAddressLayoutVersion }).(pulumi.IntOutput)
 }
 
+// The relative resource name of the VMware Engine network attached to the private cloud.
+// Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+// where {project} can either be a project number or a project ID.
 func (o GetPrivateCloudNetworkConfigOutput) VmwareEngineNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) string { return v.VmwareEngineNetwork }).(pulumi.StringOutput)
 }
 
+// The canonical name of the VMware Engine network in
+// the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
 func (o GetPrivateCloudNetworkConfigOutput) VmwareEngineNetworkCanonical() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) string { return v.VmwareEngineNetworkCanonical }).(pulumi.StringOutput)
 }
@@ -2901,10 +3039,14 @@ func (o GetPrivateCloudNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetPri
 }
 
 type GetPrivateCloudNsx struct {
-	Fqdn       string `pulumi:"fqdn"`
+	// Fully qualified domain name of the appliance.
+	Fqdn string `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
 	InternalIp string `pulumi:"internalIp"`
-	State      string `pulumi:"state"`
-	Version    string `pulumi:"version"`
+	// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+	State string `pulumi:"state"`
+	// Version of the appliance.
+	Version string `pulumi:"version"`
 }
 
 // GetPrivateCloudNsxInput is an input type that accepts GetPrivateCloudNsxArgs and GetPrivateCloudNsxOutput values.
@@ -2919,10 +3061,14 @@ type GetPrivateCloudNsxInput interface {
 }
 
 type GetPrivateCloudNsxArgs struct {
-	Fqdn       pulumi.StringInput `pulumi:"fqdn"`
+	// Fully qualified domain name of the appliance.
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
 	InternalIp pulumi.StringInput `pulumi:"internalIp"`
-	State      pulumi.StringInput `pulumi:"state"`
-	Version    pulumi.StringInput `pulumi:"version"`
+	// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+	State pulumi.StringInput `pulumi:"state"`
+	// Version of the appliance.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetPrivateCloudNsxArgs) ElementType() reflect.Type {
@@ -2976,18 +3122,22 @@ func (o GetPrivateCloudNsxOutput) ToGetPrivateCloudNsxOutputWithContext(ctx cont
 	return o
 }
 
+// Fully qualified domain name of the appliance.
 func (o GetPrivateCloudNsxOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudNsx) string { return v.Fqdn }).(pulumi.StringOutput)
 }
 
+// Internal IP address of the appliance.
 func (o GetPrivateCloudNsxOutput) InternalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudNsx) string { return v.InternalIp }).(pulumi.StringOutput)
 }
 
+// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
 func (o GetPrivateCloudNsxOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudNsx) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Version of the appliance.
 func (o GetPrivateCloudNsxOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudNsx) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -3013,10 +3163,14 @@ func (o GetPrivateCloudNsxArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudN
 }
 
 type GetPrivateCloudVcenter struct {
-	Fqdn       string `pulumi:"fqdn"`
+	// Fully qualified domain name of the appliance.
+	Fqdn string `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
 	InternalIp string `pulumi:"internalIp"`
-	State      string `pulumi:"state"`
-	Version    string `pulumi:"version"`
+	// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+	State string `pulumi:"state"`
+	// Version of the appliance.
+	Version string `pulumi:"version"`
 }
 
 // GetPrivateCloudVcenterInput is an input type that accepts GetPrivateCloudVcenterArgs and GetPrivateCloudVcenterOutput values.
@@ -3031,10 +3185,14 @@ type GetPrivateCloudVcenterInput interface {
 }
 
 type GetPrivateCloudVcenterArgs struct {
-	Fqdn       pulumi.StringInput `pulumi:"fqdn"`
+	// Fully qualified domain name of the appliance.
+	Fqdn pulumi.StringInput `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
 	InternalIp pulumi.StringInput `pulumi:"internalIp"`
-	State      pulumi.StringInput `pulumi:"state"`
-	Version    pulumi.StringInput `pulumi:"version"`
+	// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+	State pulumi.StringInput `pulumi:"state"`
+	// Version of the appliance.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetPrivateCloudVcenterArgs) ElementType() reflect.Type {
@@ -3088,18 +3246,22 @@ func (o GetPrivateCloudVcenterOutput) ToGetPrivateCloudVcenterOutputWithContext(
 	return o
 }
 
+// Fully qualified domain name of the appliance.
 func (o GetPrivateCloudVcenterOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudVcenter) string { return v.Fqdn }).(pulumi.StringOutput)
 }
 
+// Internal IP address of the appliance.
 func (o GetPrivateCloudVcenterOutput) InternalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudVcenter) string { return v.InternalIp }).(pulumi.StringOutput)
 }
 
+// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
 func (o GetPrivateCloudVcenterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudVcenter) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Version of the appliance.
 func (o GetPrivateCloudVcenterOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrivateCloudVcenter) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -3125,8 +3287,10 @@ func (o GetPrivateCloudVcenterArrayOutput) Index(i pulumi.IntInput) GetPrivateCl
 }
 
 type GetSubnetDhcpAddressRange struct {
+	// The first IP address of the range.
 	FirstAddress string `pulumi:"firstAddress"`
-	LastAddress  string `pulumi:"lastAddress"`
+	// The last IP address of the range.
+	LastAddress string `pulumi:"lastAddress"`
 }
 
 // GetSubnetDhcpAddressRangeInput is an input type that accepts GetSubnetDhcpAddressRangeArgs and GetSubnetDhcpAddressRangeOutput values.
@@ -3141,8 +3305,10 @@ type GetSubnetDhcpAddressRangeInput interface {
 }
 
 type GetSubnetDhcpAddressRangeArgs struct {
+	// The first IP address of the range.
 	FirstAddress pulumi.StringInput `pulumi:"firstAddress"`
-	LastAddress  pulumi.StringInput `pulumi:"lastAddress"`
+	// The last IP address of the range.
+	LastAddress pulumi.StringInput `pulumi:"lastAddress"`
 }
 
 func (GetSubnetDhcpAddressRangeArgs) ElementType() reflect.Type {
@@ -3196,10 +3362,12 @@ func (o GetSubnetDhcpAddressRangeOutput) ToGetSubnetDhcpAddressRangeOutputWithCo
 	return o
 }
 
+// The first IP address of the range.
 func (o GetSubnetDhcpAddressRangeOutput) FirstAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetDhcpAddressRange) string { return v.FirstAddress }).(pulumi.StringOutput)
 }
 
+// The last IP address of the range.
 func (o GetSubnetDhcpAddressRangeOutput) LastAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetDhcpAddressRange) string { return v.LastAddress }).(pulumi.StringOutput)
 }

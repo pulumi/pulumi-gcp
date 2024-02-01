@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterFleet {
+    /**
+     * @return Full resource name of the registered fleet membership of the cluster.
+     * 
+     */
     private @Nullable String membership;
+    /**
+     * @return Whether the cluster has been registered via the fleet API.
+     * 
+     */
     private @Nullable Boolean preRegistered;
     /**
      * @return The name of the Fleet host project where this cluster will be registered.
@@ -21,9 +29,17 @@ public final class ClusterFleet {
     private @Nullable String project;
 
     private ClusterFleet() {}
+    /**
+     * @return Full resource name of the registered fleet membership of the cluster.
+     * 
+     */
     public Optional<String> membership() {
         return Optional.ofNullable(this.membership);
     }
+    /**
+     * @return Whether the cluster has been registered via the fleet API.
+     * 
+     */
     public Optional<Boolean> preRegistered() {
         return Optional.ofNullable(this.preRegistered);
     }

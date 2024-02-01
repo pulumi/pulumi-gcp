@@ -10,17 +10,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildSourceStorageSource {
+    /**
+     * @return Google Cloud Storage bucket containing the source.
+     * 
+     */
     private String bucket;
+    /**
+     * @return Google Cloud Storage generation for the object.
+     * If the generation is omitted, the latest generation will be used
+     * 
+     */
     private String generation;
+    /**
+     * @return Google Cloud Storage object containing the source.
+     * This object must be a gzipped archive file (.tar.gz) containing source to build.
+     * 
+     */
     private String object;
 
     private GetTriggerBuildSourceStorageSource() {}
+    /**
+     * @return Google Cloud Storage bucket containing the source.
+     * 
+     */
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @return Google Cloud Storage generation for the object.
+     * If the generation is omitted, the latest generation will be used
+     * 
+     */
     public String generation() {
         return this.generation;
     }
+    /**
+     * @return Google Cloud Storage object containing the source.
+     * This object must be a gzipped archive file (.tar.gz) containing source to build.
+     * 
+     */
     public String object() {
         return this.object;
     }

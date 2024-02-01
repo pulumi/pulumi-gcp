@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageNetworkInterfaceAccessConfig {
+    /**
+     * @return The IP address that is be 1:1 mapped to the instance&#39;s network ip.
+     * 
+     */
     private @Nullable String natIp;
+    /**
+     * @return The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+     * 
+     */
     private @Nullable String networkTier;
+    /**
+     * @return The DNS domain name for the public PTR record.
+     * 
+     */
     private @Nullable String publicPtrDomainName;
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     private @Nullable String securityPolicy;
 
     private InstanceFromMachineImageNetworkInterfaceAccessConfig() {}
+    /**
+     * @return The IP address that is be 1:1 mapped to the instance&#39;s network ip.
+     * 
+     */
     public Optional<String> natIp() {
         return Optional.ofNullable(this.natIp);
     }
+    /**
+     * @return The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+     * 
+     */
     public Optional<String> networkTier() {
         return Optional.ofNullable(this.networkTier);
     }
+    /**
+     * @return The DNS domain name for the public PTR record.
+     * 
+     */
     public Optional<String> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     public Optional<String> securityPolicy() {
         return Optional.ofNullable(this.securityPolicy);
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult
     {
+        /// <summary>
+        /// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
+        /// </summary>
         public readonly string PublicRepository;
 
         [OutputConstructor]

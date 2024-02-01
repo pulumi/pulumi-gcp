@@ -34,6 +34,9 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _aliasIpRanges = value;
         }
 
+        /// <summary>
+        /// The prefix length of the primary internal IPv6 range.
+        /// </summary>
         [Input("internalIpv6PrefixLength")]
         public Input<int>? InternalIpv6PrefixLength { get; set; }
 
@@ -51,12 +54,21 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _ipv6AccessConfigs = value;
         }
 
+        /// <summary>
+        /// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        /// </summary>
         [Input("ipv6AccessType")]
         public Input<string>? Ipv6AccessType { get; set; }
 
+        /// <summary>
+        /// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }
 
+        /// <summary>
+        /// The name of the network_interface.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

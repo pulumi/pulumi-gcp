@@ -10,9 +10,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerApprovalConfig {
+    /**
+     * @return Whether or not approval is needed. If this is set on a build, it will become pending when run,
+     * and will need to be explicitly approved to start.
+     * 
+     */
     private Boolean approvalRequired;
 
     private GetTriggerApprovalConfig() {}
+    /**
+     * @return Whether or not approval is needed. If this is set on a build, it will become pending when run,
+     * and will need to be explicitly approved to start.
+     * 
+     */
     public Boolean approvalRequired() {
         return this.approvalRequired;
     }

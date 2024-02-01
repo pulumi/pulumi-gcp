@@ -14,53 +14,149 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigNodeConfig {
+    /**
+     * @return IPv4 cidr range that will be used by Composer internal components.
+     * 
+     */
     private String composerInternalIpv4CidrBlock;
+    /**
+     * @return The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private Integer diskSizeGb;
+    /**
+     * @return Deploys &#39;ip-masq-agent&#39; daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+     * 
+     */
     private Boolean enableIpMasqAgent;
+    /**
+     * @return Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+     * 
+     */
     private List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies;
+    /**
+     * @return The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: &#34;projects/{project}/zones/{zone}/machineTypes/{machineType}&#34;. Must belong to the enclosing environment&#39;s project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private String machineType;
+    /**
+     * @return The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private Integer maxPodsPerNode;
+    /**
+     * @return The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: &#34;projects/{project}/zones/{zone}/machineTypes/{machineType}&#34;. Must belong to the enclosing environment&#39;s project and region/zone. The network must belong to the environment&#39;s project. If unspecified, the &#34;default&#34; network ID in the environment&#39;s project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+     * 
+     */
     private String network;
+    /**
+     * @return The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to [&#34;https://www.googleapis.com/auth/cloud-platform&#34;]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private List<String> oauthScopes;
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the &#34;default&#34; Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+     * 
+     */
     private String serviceAccount;
+    /**
+     * @return The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
+     * 
+     */
     private String subnetwork;
+    /**
+     * @return The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+     * 
+     */
     private List<String> tags;
+    /**
+     * @return The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. &#34;projects/{project}/zones/{zone}&#34;). Must belong to the enclosing environment&#39;s project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private String zone;
 
     private GetEnvironmentConfigNodeConfig() {}
+    /**
+     * @return IPv4 cidr range that will be used by Composer internal components.
+     * 
+     */
     public String composerInternalIpv4CidrBlock() {
         return this.composerInternalIpv4CidrBlock;
     }
+    /**
+     * @return The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public Integer diskSizeGb() {
         return this.diskSizeGb;
     }
+    /**
+     * @return Deploys &#39;ip-masq-agent&#39; daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+     * 
+     */
     public Boolean enableIpMasqAgent() {
         return this.enableIpMasqAgent;
     }
+    /**
+     * @return Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+     * 
+     */
     public List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies() {
         return this.ipAllocationPolicies;
     }
+    /**
+     * @return The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: &#34;projects/{project}/zones/{zone}/machineTypes/{machineType}&#34;. Must belong to the enclosing environment&#39;s project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public String machineType() {
         return this.machineType;
     }
+    /**
+     * @return The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public Integer maxPodsPerNode() {
         return this.maxPodsPerNode;
     }
+    /**
+     * @return The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: &#34;projects/{project}/zones/{zone}/machineTypes/{machineType}&#34;. Must belong to the enclosing environment&#39;s project and region/zone. The network must belong to the environment&#39;s project. If unspecified, the &#34;default&#34; network ID in the environment&#39;s project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+     * 
+     */
     public String network() {
         return this.network;
     }
+    /**
+     * @return The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to [&#34;https://www.googleapis.com/auth/cloud-platform&#34;]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public List<String> oauthScopes() {
         return this.oauthScopes;
     }
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the &#34;default&#34; Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+     * 
+     */
     public String serviceAccount() {
         return this.serviceAccount;
     }
+    /**
+     * @return The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. &#34;projects/{project}/regions/{region}/subnetworks/{subnetwork}&#34;), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment&#39;s project and region.
+     * 
+     */
     public String subnetwork() {
         return this.subnetwork;
     }
+    /**
+     * @return The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. &#34;projects/{project}/zones/{zone}&#34;). Must belong to the enclosing environment&#39;s project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public String zone() {
         return this.zone;
     }

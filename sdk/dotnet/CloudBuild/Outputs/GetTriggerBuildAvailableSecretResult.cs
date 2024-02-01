@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerBuildAvailableSecretResult
     {
+        /// <summary>
+        /// Pairs a secret environment variable with a SecretVersion in Secret Manager.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTriggerBuildAvailableSecretSecretManagerResult> SecretManagers;
 
         [OutputConstructor]

@@ -3086,6 +3086,7 @@ func (o GetTestablePermissionsPermissionArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetWorkloadIdentityPoolProviderAw struct {
+	// The AWS account ID.
 	AccountId string `pulumi:"accountId"`
 }
 
@@ -3101,6 +3102,7 @@ type GetWorkloadIdentityPoolProviderAwInput interface {
 }
 
 type GetWorkloadIdentityPoolProviderAwArgs struct {
+	// The AWS account ID.
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 }
 
@@ -3155,6 +3157,7 @@ func (o GetWorkloadIdentityPoolProviderAwOutput) ToGetWorkloadIdentityPoolProvid
 	return o
 }
 
+// The AWS account ID.
 func (o GetWorkloadIdentityPoolProviderAwOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderAw) string { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -3180,9 +3183,45 @@ func (o GetWorkloadIdentityPoolProviderAwArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetWorkloadIdentityPoolProviderOidc struct {
+	// Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
+	// requests are rejected if the token audience does not match one of the configured
+	// values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+	// be configured.
+	//
+	// If this list is empty, the OIDC token audience must be equal to the full canonical
+	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+	// For example:
+	// '''
+	// //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+	// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+	// '''
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
-	IssuerUri        string   `pulumi:"issuerUri"`
-	JwksJson         string   `pulumi:"jwksJson"`
+	// The OIDC issuer URL.
+	IssuerUri string `pulumi:"issuerUri"`
+	// OIDC JWKs in JSON String format. For details on definition of a
+	// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+	// use the 'jwks_uri' from the discovery document fetched from the
+	// .well-known path for the 'issuer_uri'. Currently, RSA and EC asymmetric
+	// keys are supported. The JWK must use following format and include only
+	// the following fields:
+	// '''
+	// {
+	//   "keys": [
+	//     {
+	//           "kty": "RSA/EC",
+	//           "alg": "<algorithm>",
+	//           "use": "sig",
+	//           "kid": "<key-id>",
+	//           "n": "",
+	//           "e": "",
+	//           "x": "",
+	//           "y": "",
+	//           "crv": ""
+	//     }
+	//   ]
+	// }
+	// '''
+	JwksJson string `pulumi:"jwksJson"`
 }
 
 // GetWorkloadIdentityPoolProviderOidcInput is an input type that accepts GetWorkloadIdentityPoolProviderOidcArgs and GetWorkloadIdentityPoolProviderOidcOutput values.
@@ -3197,9 +3236,45 @@ type GetWorkloadIdentityPoolProviderOidcInput interface {
 }
 
 type GetWorkloadIdentityPoolProviderOidcArgs struct {
+	// Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
+	// requests are rejected if the token audience does not match one of the configured
+	// values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+	// be configured.
+	//
+	// If this list is empty, the OIDC token audience must be equal to the full canonical
+	// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+	// For example:
+	// '''
+	// //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+	// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+	// '''
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
-	IssuerUri        pulumi.StringInput      `pulumi:"issuerUri"`
-	JwksJson         pulumi.StringInput      `pulumi:"jwksJson"`
+	// The OIDC issuer URL.
+	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+	// OIDC JWKs in JSON String format. For details on definition of a
+	// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+	// use the 'jwks_uri' from the discovery document fetched from the
+	// .well-known path for the 'issuer_uri'. Currently, RSA and EC asymmetric
+	// keys are supported. The JWK must use following format and include only
+	// the following fields:
+	// '''
+	// {
+	//   "keys": [
+	//     {
+	//           "kty": "RSA/EC",
+	//           "alg": "<algorithm>",
+	//           "use": "sig",
+	//           "kid": "<key-id>",
+	//           "n": "",
+	//           "e": "",
+	//           "x": "",
+	//           "y": "",
+	//           "crv": ""
+	//     }
+	//   ]
+	// }
+	// '''
+	JwksJson pulumi.StringInput `pulumi:"jwksJson"`
 }
 
 func (GetWorkloadIdentityPoolProviderOidcArgs) ElementType() reflect.Type {
@@ -3253,14 +3328,52 @@ func (o GetWorkloadIdentityPoolProviderOidcOutput) ToGetWorkloadIdentityPoolProv
 	return o
 }
 
+// Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
+// requests are rejected if the token audience does not match one of the configured
+// values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+// be configured.
+//
+// If this list is empty, the OIDC token audience must be equal to the full canonical
+// resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+// For example:
+// ”'
+// //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+// ”'
 func (o GetWorkloadIdentityPoolProviderOidcOutput) AllowedAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderOidc) []string { return v.AllowedAudiences }).(pulumi.StringArrayOutput)
 }
 
+// The OIDC issuer URL.
 func (o GetWorkloadIdentityPoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
 }
 
+// OIDC JWKs in JSON String format. For details on definition of a
+// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+// use the 'jwks_uri' from the discovery document fetched from the
+// .well-known path for the 'issuer_uri'. Currently, RSA and EC asymmetric
+// keys are supported. The JWK must use following format and include only
+// the following fields:
+// ”'
+//
+//	{
+//	  "keys": [
+//	    {
+//	          "kty": "RSA/EC",
+//	          "alg": "<algorithm>",
+//	          "use": "sig",
+//	          "kid": "<key-id>",
+//	          "n": "",
+//	          "e": "",
+//	          "x": "",
+//	          "y": "",
+//	          "crv": ""
+//	    }
+//	  ]
+//	}
+//
+// ”'
 func (o GetWorkloadIdentityPoolProviderOidcOutput) JwksJson() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderOidc) string { return v.JwksJson }).(pulumi.StringOutput)
 }
@@ -3286,6 +3399,7 @@ func (o GetWorkloadIdentityPoolProviderOidcArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetWorkloadIdentityPoolProviderSaml struct {
+	// SAML Identity provider configuration metadata xml doc.
 	IdpMetadataXml string `pulumi:"idpMetadataXml"`
 }
 
@@ -3301,6 +3415,7 @@ type GetWorkloadIdentityPoolProviderSamlInput interface {
 }
 
 type GetWorkloadIdentityPoolProviderSamlArgs struct {
+	// SAML Identity provider configuration metadata xml doc.
 	IdpMetadataXml pulumi.StringInput `pulumi:"idpMetadataXml"`
 }
 
@@ -3355,6 +3470,7 @@ func (o GetWorkloadIdentityPoolProviderSamlOutput) ToGetWorkloadIdentityPoolProv
 	return o
 }
 
+// SAML Identity provider configuration metadata xml doc.
 func (o GetWorkloadIdentityPoolProviderSamlOutput) IdpMetadataXml() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderSaml) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
 }

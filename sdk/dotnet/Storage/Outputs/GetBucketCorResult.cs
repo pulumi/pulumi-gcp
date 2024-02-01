@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Storage.Outputs
     [OutputType]
     public sealed class GetBucketCorResult
     {
+        /// <summary>
+        /// The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses.
+        /// </summary>
         public readonly int MaxAgeSeconds;
+        /// <summary>
+        /// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+        /// </summary>
         public readonly ImmutableArray<string> Methods;
+        /// <summary>
+        /// The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+        /// </summary>
         public readonly ImmutableArray<string> Origins;
+        /// <summary>
+        /// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+        /// </summary>
         public readonly ImmutableArray<string> ResponseHeaders;
 
         [OutputConstructor]

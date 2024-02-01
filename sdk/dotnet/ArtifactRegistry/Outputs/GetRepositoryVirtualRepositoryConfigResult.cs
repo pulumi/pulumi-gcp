@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryVirtualRepositoryConfigResult
     {
+        /// <summary>
+        /// Policies that configure the upstream artifacts distributed by the Virtual
+        /// Repository. Upstream policies cannot be set on a standard repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult> UpstreamPolicies;
 
         [OutputConstructor]

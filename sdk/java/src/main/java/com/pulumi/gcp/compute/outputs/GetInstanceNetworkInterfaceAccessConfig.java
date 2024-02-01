@@ -26,6 +26,10 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
      * 
      */
     private String publicPtrDomainName;
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     private String securityPolicy;
 
     private GetInstanceNetworkInterfaceAccessConfig() {}
@@ -51,6 +55,10 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
     public String publicPtrDomainName() {
         return this.publicPtrDomainName;
     }
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     public String securityPolicy() {
         return this.securityPolicy;
     }

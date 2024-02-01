@@ -18,57 +18,183 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplate {
+    /**
+     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+     * 
+     * Cloud Run API v2 does not support annotations with &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected.
+     * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+     * 
+     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
+     * 
+     */
     private Map<String,String> annotations;
+    /**
+     * @return Holds the containers that define the unit of execution for this Service.
+     * 
+     */
     private List<GetServiceTemplateContainer> containers;
+    /**
+     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+     * 
+     */
     private String encryptionKey;
+    /**
+     * @return The sandbox environment to host this Revision. Possible values: [&#34;EXECUTION_ENVIRONMENT_GEN1&#34;, &#34;EXECUTION_ENVIRONMENT_GEN2&#34;]
+     * 
+     */
     private String executionEnvironment;
+    /**
+     * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+     * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+     * 
+     * Cloud Run API v2 does not support labels with &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected.
+     * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+     * 
+     */
     private Map<String,String> labels;
+    /**
+     * @return Sets the maximum number of requests that each serving instance can receive.
+     * 
+     */
     private Integer maxInstanceRequestConcurrency;
+    /**
+     * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * 
+     */
     private String revision;
+    /**
+     * @return Scaling settings for this Revision.
+     * 
+     */
     private List<GetServiceTemplateScaling> scalings;
+    /**
+     * @return Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project&#39;s default service account.
+     * 
+     */
     private String serviceAccount;
+    /**
+     * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+     * 
+     */
     private Boolean sessionAffinity;
+    /**
+     * @return Max allowed time for an instance to respond to a request.
+     * 
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String timeout;
+    /**
+     * @return A list of Volumes to make available to containers.
+     * 
+     */
     private List<GetServiceTemplateVolume> volumes;
+    /**
+     * @return VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+     * 
+     */
     private List<GetServiceTemplateVpcAccess> vpcAccesses;
 
     private GetServiceTemplate() {}
+    /**
+     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+     * 
+     * Cloud Run API v2 does not support annotations with &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected.
+     * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+     * 
+     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
+     * 
+     */
     public Map<String,String> annotations() {
         return this.annotations;
     }
+    /**
+     * @return Holds the containers that define the unit of execution for this Service.
+     * 
+     */
     public List<GetServiceTemplateContainer> containers() {
         return this.containers;
     }
+    /**
+     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+     * 
+     */
     public String encryptionKey() {
         return this.encryptionKey;
     }
+    /**
+     * @return The sandbox environment to host this Revision. Possible values: [&#34;EXECUTION_ENVIRONMENT_GEN1&#34;, &#34;EXECUTION_ENVIRONMENT_GEN2&#34;]
+     * 
+     */
     public String executionEnvironment() {
         return this.executionEnvironment;
     }
+    /**
+     * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+     * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+     * 
+     * Cloud Run API v2 does not support labels with &#39;run.googleapis.com&#39;, &#39;cloud.googleapis.com&#39;, &#39;serving.knative.dev&#39;, or &#39;autoscaling.knative.dev&#39; namespaces, and they will be rejected.
+     * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels;
     }
+    /**
+     * @return Sets the maximum number of requests that each serving instance can receive.
+     * 
+     */
     public Integer maxInstanceRequestConcurrency() {
         return this.maxInstanceRequestConcurrency;
     }
+    /**
+     * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * 
+     */
     public String revision() {
         return this.revision;
     }
+    /**
+     * @return Scaling settings for this Revision.
+     * 
+     */
     public List<GetServiceTemplateScaling> scalings() {
         return this.scalings;
     }
+    /**
+     * @return Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project&#39;s default service account.
+     * 
+     */
     public String serviceAccount() {
         return this.serviceAccount;
     }
+    /**
+     * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+     * 
+     */
     public Boolean sessionAffinity() {
         return this.sessionAffinity;
     }
+    /**
+     * @return Max allowed time for an instance to respond to a request.
+     * 
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String timeout() {
         return this.timeout;
     }
+    /**
+     * @return A list of Volumes to make available to containers.
+     * 
+     */
     public List<GetServiceTemplateVolume> volumes() {
         return this.volumes;
     }
+    /**
+     * @return VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+     * 
+     */
     public List<GetServiceTemplateVpcAccess> vpcAccesses() {
         return this.vpcAccesses;
     }

@@ -13,20 +13,41 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceResult
     {
+        /// <summary>
+        /// Available Maintenance versions.
+        /// </summary>
         public readonly ImmutableArray<string> AvailableMaintenanceVersions;
+        /// <summary>
+        /// Configuration for creating a new instance as a clone of another instance.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceCloneResult> Clones;
+        /// <summary>
+        /// The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
+        /// </summary>
         public readonly string ConnectionName;
         /// <summary>
         /// To filter out the Cloud SQL instances which are of the specified database version.
         /// </summary>
         public readonly string DatabaseVersion;
         public readonly bool DeletionProtection;
+        /// <summary>
+        /// The dns name of the instance.
+        /// </summary>
         public readonly string DnsName;
         public readonly string EncryptionKeyName;
         public readonly string FirstIpAddress;
+        /// <summary>
+        /// The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+        /// </summary>
         public readonly string InstanceType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceIpAddressResult> IpAddresses;
+        /// <summary>
+        /// Maintenance version.
+        /// </summary>
         public readonly string MaintenanceVersion;
+        /// <summary>
+        /// The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
+        /// </summary>
         public readonly string MasterInstanceName;
         public readonly string Name;
         public readonly string PrivateIpAddress;
@@ -34,18 +55,36 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
         /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The link to service attachment of PSC instance.
+        /// </summary>
         public readonly string PscServiceAttachmentLink;
         public readonly string PublicIpAddress;
         /// <summary>
         /// To filter out the Cloud SQL instances which are located in the specified region.
         /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The configuration for replication.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult> ReplicaConfigurations;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult> RestoreBackupContexts;
+        /// <summary>
+        /// Initial root password. Required for MS SQL Server.
+        /// </summary>
         public readonly string RootPassword;
+        /// <summary>
+        /// The URI of the created resource.
+        /// </summary>
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceServerCaCertResult> ServerCaCerts;
+        /// <summary>
+        /// The service account email address assigned to the instance.
+        /// </summary>
         public readonly string ServiceAccountEmailAddress;
+        /// <summary>
+        /// The settings to use for the database. The configuration is detailed below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingResult> Settings;
 
         [OutputConstructor]

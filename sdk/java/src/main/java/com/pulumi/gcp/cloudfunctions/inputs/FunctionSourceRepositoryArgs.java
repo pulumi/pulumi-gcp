@@ -16,9 +16,17 @@ public final class FunctionSourceRepositoryArgs extends com.pulumi.resources.Res
 
     public static final FunctionSourceRepositoryArgs Empty = new FunctionSourceRepositoryArgs();
 
+    /**
+     * The URL pointing to the hosted repository where the function was defined at the time of deployment.
+     * 
+     */
     @Import(name="deployedUrl")
     private @Nullable Output<String> deployedUrl;
 
+    /**
+     * @return The URL pointing to the hosted repository where the function was defined at the time of deployment.
+     * 
+     */
     public Optional<Output<String>> deployedUrl() {
         return Optional.ofNullable(this.deployedUrl);
     }
@@ -71,11 +79,23 @@ public final class FunctionSourceRepositoryArgs extends com.pulumi.resources.Res
             $ = new FunctionSourceRepositoryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deployedUrl The URL pointing to the hosted repository where the function was defined at the time of deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deployedUrl(@Nullable Output<String> deployedUrl) {
             $.deployedUrl = deployedUrl;
             return this;
         }
 
+        /**
+         * @param deployedUrl The URL pointing to the hosted repository where the function was defined at the time of deployment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deployedUrl(String deployedUrl) {
             return deployedUrl(Output.of(deployedUrl));
         }

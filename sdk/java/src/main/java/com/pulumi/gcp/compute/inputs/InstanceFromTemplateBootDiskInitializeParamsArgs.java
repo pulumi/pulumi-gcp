@@ -19,58 +19,122 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
 
     public static final InstanceFromTemplateBootDiskInitializeParamsArgs Empty = new InstanceFromTemplateBootDiskInitializeParamsArgs();
 
+    /**
+     * A flag to enable confidential compute mode on boot disk
+     * 
+     */
     @Import(name="enableConfidentialCompute")
     private @Nullable Output<Boolean> enableConfidentialCompute;
 
+    /**
+     * @return A flag to enable confidential compute mode on boot disk
+     * 
+     */
     public Optional<Output<Boolean>> enableConfidentialCompute() {
         return Optional.ofNullable(this.enableConfidentialCompute);
     }
 
+    /**
+     * The image from which this disk was initialised.
+     * 
+     */
     @Import(name="image")
     private @Nullable Output<String> image;
 
+    /**
+     * @return The image from which this disk was initialised.
+     * 
+     */
     public Optional<Output<String>> image() {
         return Optional.ofNullable(this.image);
     }
 
+    /**
+     * A set of key/value label pairs assigned to the disk.
+     * 
+     */
     @Import(name="labels")
     private @Nullable Output<Map<String,Object>> labels;
 
+    /**
+     * @return A set of key/value label pairs assigned to the disk.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> labels() {
         return Optional.ofNullable(this.labels);
     }
 
+    /**
+     * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * 
+     */
     @Import(name="provisionedIops")
     private @Nullable Output<Integer> provisionedIops;
 
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * 
+     */
     public Optional<Output<Integer>> provisionedIops() {
         return Optional.ofNullable(this.provisionedIops);
     }
 
+    /**
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * 
+     */
     @Import(name="provisionedThroughput")
     private @Nullable Output<Integer> provisionedThroughput;
 
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * 
+     */
     public Optional<Output<Integer>> provisionedThroughput() {
         return Optional.ofNullable(this.provisionedThroughput);
     }
 
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     @Import(name="resourceManagerTags")
     private @Nullable Output<Map<String,Object>> resourceManagerTags;
 
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     public Optional<Output<Map<String,Object>>> resourceManagerTags() {
         return Optional.ofNullable(this.resourceManagerTags);
     }
 
+    /**
+     * The size of the image in gigabytes.
+     * 
+     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
+    /**
+     * @return The size of the image in gigabytes.
+     * 
+     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
 
+    /**
+     * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -106,74 +170,170 @@ public final class InstanceFromTemplateBootDiskInitializeParamsArgs extends com.
             $ = new InstanceFromTemplateBootDiskInitializeParamsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableConfidentialCompute A flag to enable confidential compute mode on boot disk
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableConfidentialCompute(@Nullable Output<Boolean> enableConfidentialCompute) {
             $.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }
 
+        /**
+         * @param enableConfidentialCompute A flag to enable confidential compute mode on boot disk
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
             return enableConfidentialCompute(Output.of(enableConfidentialCompute));
         }
 
+        /**
+         * @param image The image from which this disk was initialised.
+         * 
+         * @return builder
+         * 
+         */
         public Builder image(@Nullable Output<String> image) {
             $.image = image;
             return this;
         }
 
+        /**
+         * @param image The image from which this disk was initialised.
+         * 
+         * @return builder
+         * 
+         */
         public Builder image(String image) {
             return image(Output.of(image));
         }
 
+        /**
+         * @param labels A set of key/value label pairs assigned to the disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(@Nullable Output<Map<String,Object>> labels) {
             $.labels = labels;
             return this;
         }
 
+        /**
+         * @param labels A set of key/value label pairs assigned to the disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder labels(Map<String,Object> labels) {
             return labels(Output.of(labels));
         }
 
+        /**
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
             $.provisionedIops = provisionedIops;
             return this;
         }
 
+        /**
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedIops(Integer provisionedIops) {
             return provisionedIops(Output.of(provisionedIops));
         }
 
+        /**
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedThroughput(@Nullable Output<Integer> provisionedThroughput) {
             $.provisionedThroughput = provisionedThroughput;
             return this;
         }
 
+        /**
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisionedThroughput(Integer provisionedThroughput) {
             return provisionedThroughput(Output.of(provisionedThroughput));
         }
 
+        /**
+         * @param resourceManagerTags A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {
             $.resourceManagerTags = resourceManagerTags;
             return this;
         }
 
+        /**
+         * @param resourceManagerTags A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
             return resourceManagerTags(Output.of(resourceManagerTags));
         }
 
+        /**
+         * @param size The size of the image in gigabytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
+        /**
+         * @param size The size of the image in gigabytes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }
 
+        /**
+         * @param type The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

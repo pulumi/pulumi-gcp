@@ -10,13 +10,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential {
+    /**
+     * @return The Secret Manager key version that holds the password to access the
+     * remote repository. Must be in the format of
+     * &#39;projects/{project}/secrets/{secret}/versions/{version}&#39;.
+     * 
+     */
     private String passwordSecretVersion;
+    /**
+     * @return The username to access the remote repository.
+     * 
+     */
     private String username;
 
     private GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential() {}
+    /**
+     * @return The Secret Manager key version that holds the password to access the
+     * remote repository. Must be in the format of
+     * &#39;projects/{project}/secrets/{secret}/versions/{version}&#39;.
+     * 
+     */
     public String passwordSecretVersion() {
         return this.passwordSecretVersion;
     }
+    /**
+     * @return The username to access the remote repository.
+     * 
+     */
     public String username() {
         return this.username;
     }

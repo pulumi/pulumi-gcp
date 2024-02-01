@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterPodSecurityPolicyConfigResult
     {
+        /// <summary>
+        /// Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

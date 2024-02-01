@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
+    /**
+     * @return Whether the cluster master is accessible globally or not.
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterPrivateClusterConfigMasterGlobalAccessConfig() {}
+    /**
+     * @return Whether the cluster master is accessible globally or not.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

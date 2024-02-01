@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfigDagProcessor {
+    /**
+     * @return CPU request and limit for DAG processor.
+     * 
+     */
     private @Nullable Double cpu;
+    /**
+     * @return Memory (GB) request and limit for DAG processor.
+     * 
+     */
     private @Nullable Double memoryGb;
+    /**
+     * @return Storage (GB) request and limit for DAG processor.
+     * 
+     */
     private @Nullable Double storageGb;
 
     private EnvironmentConfigWorkloadsConfigDagProcessor() {}
+    /**
+     * @return CPU request and limit for DAG processor.
+     * 
+     */
     public Optional<Double> cpu() {
         return Optional.ofNullable(this.cpu);
     }
+    /**
+     * @return Memory (GB) request and limit for DAG processor.
+     * 
+     */
     public Optional<Double> memoryGb() {
         return Optional.ofNullable(this.memoryGb);
     }
+    /**
+     * @return Storage (GB) request and limit for DAG processor.
+     * 
+     */
     public Optional<Double> storageGb() {
         return Optional.ofNullable(this.storageGb);
     }

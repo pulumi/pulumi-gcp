@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterDatabaseEncryptionResult
     {
+        /// <summary>
+        /// The key to use to encrypt/decrypt secrets.
+        /// </summary>
         public readonly string KeyName;
+        /// <summary>
+        /// ENCRYPTED or DECRYPTED.
+        /// </summary>
         public readonly string State;
 
         [OutputConstructor]

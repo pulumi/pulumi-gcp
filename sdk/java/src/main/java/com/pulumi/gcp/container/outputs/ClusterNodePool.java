@@ -20,6 +20,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePool {
+    /**
+     * @return Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+     * 
+     */
     private @Nullable ClusterNodePoolAutoscaling autoscaling;
     /**
      * @return The number of nodes to create in this
@@ -31,13 +35,25 @@ public final class ClusterNodePool {
      * 
      */
     private @Nullable Integer initialNodeCount;
+    /**
+     * @return The resource URLs of the managed instance groups associated with this node pool.
+     * 
+     */
     private @Nullable List<String> instanceGroupUrls;
+    /**
+     * @return List of instance group URLs which have been assigned to this node pool.
+     * 
+     */
     private @Nullable List<String> managedInstanceGroupUrls;
     /**
      * @return NodeManagement configuration for this NodePool. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolManagement management;
+    /**
+     * @return The maximum number of pods per node in this node pool. Note that this does not work on node pools which are &#34;route-based&#34; - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+     * 
+     */
     private @Nullable Integer maxPodsPerNode;
     /**
      * @return The name of the cluster, unique within the project and
@@ -47,6 +63,10 @@ public final class ClusterNodePool {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * 
+     */
     private @Nullable String namePrefix;
     /**
      * @return Configuration for
@@ -63,6 +83,10 @@ public final class ClusterNodePool {
      * 
      */
     private @Nullable ClusterNodePoolNodeConfig nodeConfig;
+    /**
+     * @return The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+     * 
+     */
     private @Nullable Integer nodeCount;
     /**
      * @return The list of zones in which the cluster&#39;s nodes
@@ -79,7 +103,15 @@ public final class ClusterNodePool {
      * 
      */
     private @Nullable List<String> nodeLocations;
+    /**
+     * @return Specifies the node placement policy
+     * 
+     */
     private @Nullable ClusterNodePoolPlacementPolicy placementPolicy;
+    /**
+     * @return Specifies the configuration of queued provisioning
+     * 
+     */
     private @Nullable ClusterNodePoolQueuedProvisioning queuedProvisioning;
     /**
      * @return Specifies the upgrade settings for NAP created node pools. Structure is documented below.
@@ -89,6 +121,10 @@ public final class ClusterNodePool {
     private @Nullable String version;
 
     private ClusterNodePool() {}
+    /**
+     * @return Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+     * 
+     */
     public Optional<ClusterNodePoolAutoscaling> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
     }
@@ -104,9 +140,17 @@ public final class ClusterNodePool {
     public Optional<Integer> initialNodeCount() {
         return Optional.ofNullable(this.initialNodeCount);
     }
+    /**
+     * @return The resource URLs of the managed instance groups associated with this node pool.
+     * 
+     */
     public List<String> instanceGroupUrls() {
         return this.instanceGroupUrls == null ? List.of() : this.instanceGroupUrls;
     }
+    /**
+     * @return List of instance group URLs which have been assigned to this node pool.
+     * 
+     */
     public List<String> managedInstanceGroupUrls() {
         return this.managedInstanceGroupUrls == null ? List.of() : this.managedInstanceGroupUrls;
     }
@@ -117,6 +161,10 @@ public final class ClusterNodePool {
     public Optional<ClusterNodePoolManagement> management() {
         return Optional.ofNullable(this.management);
     }
+    /**
+     * @return The maximum number of pods per node in this node pool. Note that this does not work on node pools which are &#34;route-based&#34; - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+     * 
+     */
     public Optional<Integer> maxPodsPerNode() {
         return Optional.ofNullable(this.maxPodsPerNode);
     }
@@ -130,6 +178,10 @@ public final class ClusterNodePool {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * 
+     */
     public Optional<String> namePrefix() {
         return Optional.ofNullable(this.namePrefix);
     }
@@ -152,6 +204,10 @@ public final class ClusterNodePool {
     public Optional<ClusterNodePoolNodeConfig> nodeConfig() {
         return Optional.ofNullable(this.nodeConfig);
     }
+    /**
+     * @return The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+     * 
+     */
     public Optional<Integer> nodeCount() {
         return Optional.ofNullable(this.nodeCount);
     }
@@ -172,9 +228,17 @@ public final class ClusterNodePool {
     public List<String> nodeLocations() {
         return this.nodeLocations == null ? List.of() : this.nodeLocations;
     }
+    /**
+     * @return Specifies the node placement policy
+     * 
+     */
     public Optional<ClusterNodePoolPlacementPolicy> placementPolicy() {
         return Optional.ofNullable(this.placementPolicy);
     }
+    /**
+     * @return Specifies the configuration of queued provisioning
+     * 
+     */
     public Optional<ClusterNodePoolQueuedProvisioning> queuedProvisioning() {
         return Optional.ofNullable(this.queuedProvisioning);
     }

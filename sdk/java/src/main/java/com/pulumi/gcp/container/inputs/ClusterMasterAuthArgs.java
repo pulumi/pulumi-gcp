@@ -17,9 +17,17 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
 
     public static final ClusterMasterAuthArgs Empty = new ClusterMasterAuthArgs();
 
+    /**
+     * Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     @Import(name="clientCertificate")
     private @Nullable Output<String> clientCertificate;
 
+    /**
+     * @return Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     public Optional<Output<String>> clientCertificate() {
         return Optional.ofNullable(this.clientCertificate);
     }
@@ -87,16 +95,32 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
         return this.clientCertificateConfig;
     }
 
+    /**
+     * Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
+    /**
+     * @return Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     public Optional<Output<String>> clientKey() {
         return Optional.ofNullable(this.clientKey);
     }
 
+    /**
+     * Base64 encoded public certificate that is the root of trust for the cluster.
+     * 
+     */
     @Import(name="clusterCaCertificate")
     private @Nullable Output<String> clusterCaCertificate;
 
+    /**
+     * @return Base64 encoded public certificate that is the root of trust for the cluster.
+     * 
+     */
     public Optional<Output<String>> clusterCaCertificate() {
         return Optional.ofNullable(this.clusterCaCertificate);
     }
@@ -128,11 +152,23 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
             $ = new ClusterMasterAuthArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param clientCertificate Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientCertificate(@Nullable Output<String> clientCertificate) {
             $.clientCertificate = clientCertificate;
             return this;
         }
 
+        /**
+         * @param clientCertificate Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientCertificate(String clientCertificate) {
             return clientCertificate(Output.of(clientCertificate));
         }
@@ -206,20 +242,44 @@ public final class ClusterMasterAuthArgs extends com.pulumi.resources.ResourceAr
             return clientCertificateConfig(Output.of(clientCertificateConfig));
         }
 
+        /**
+         * @param clientKey Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientKey(@Nullable Output<String> clientKey) {
             $.clientKey = clientKey;
             return this;
         }
 
+        /**
+         * @param clientKey Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientKey(String clientKey) {
             return clientKey(Output.of(clientKey));
         }
 
+        /**
+         * @param clusterCaCertificate Base64 encoded public certificate that is the root of trust for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterCaCertificate(@Nullable Output<String> clusterCaCertificate) {
             $.clusterCaCertificate = clusterCaCertificate;
             return this;
         }
 
+        /**
+         * @param clusterCaCertificate Base64 encoded public certificate that is the root of trust for the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterCaCertificate(String clusterCaCertificate) {
             return clusterCaCertificate(Output.of(clusterCaCertificate));
         }

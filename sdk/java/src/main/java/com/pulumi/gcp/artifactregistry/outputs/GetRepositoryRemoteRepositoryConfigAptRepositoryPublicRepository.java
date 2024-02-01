@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
+    /**
+     * @return A common public repository base for Apt, e.g. &#39;&#34;debian/dists/buster&#34;&#39; Possible values: [&#34;DEBIAN&#34;, &#34;UBUNTU&#34;]
+     * 
+     */
     private String repositoryBase;
+    /**
+     * @return Specific repository from the base.
+     * 
+     */
     private String repositoryPath;
 
     private GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository() {}
+    /**
+     * @return A common public repository base for Apt, e.g. &#39;&#34;debian/dists/buster&#34;&#39; Possible values: [&#34;DEBIAN&#34;, &#34;UBUNTU&#34;]
+     * 
+     */
     public String repositoryBase() {
         return this.repositoryBase;
     }
+    /**
+     * @return Specific repository from the base.
+     * 
+     */
     public String repositoryPath() {
         return this.repositoryPath;
     }

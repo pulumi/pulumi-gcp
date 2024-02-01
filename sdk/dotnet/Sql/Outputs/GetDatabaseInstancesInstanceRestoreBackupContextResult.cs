@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceRestoreBackupContextResult
     {
+        /// <summary>
+        /// The ID of the backup run to restore from.
+        /// </summary>
         public readonly int BackupRunId;
+        /// <summary>
+        /// The ID of the instance that the backup was taken from.
+        /// </summary>
         public readonly string InstanceId;
         /// <summary>
         /// The ID of the project in which the resources belong. If it is not provided, the provider project is used.

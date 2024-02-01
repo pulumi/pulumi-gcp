@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class EnvironmentConfigEncryptionConfig {
+    /**
+     * @return Optional. Customer-managed Encryption Key available through Google&#39;s Key Management Service. Cannot be updated.
+     * 
+     */
     private String kmsKeyName;
 
     private EnvironmentConfigEncryptionConfig() {}
+    /**
+     * @return Optional. Customer-managed Encryption Key available through Google&#39;s Key Management Service. Cannot be updated.
+     * 
+     */
     public String kmsKeyName() {
         return this.kmsKeyName;
     }

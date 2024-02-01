@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigShieldedInstanceConfig {
+    /**
+     * @return Defines whether the instance has integrity monitoring enabled.
+     * 
+     */
     private @Nullable Boolean enableIntegrityMonitoring;
+    /**
+     * @return Defines whether the instance has Secure Boot enabled.
+     * 
+     */
     private @Nullable Boolean enableSecureBoot;
 
     private NodePoolNodeConfigShieldedInstanceConfig() {}
+    /**
+     * @return Defines whether the instance has integrity monitoring enabled.
+     * 
+     */
     public Optional<Boolean> enableIntegrityMonitoring() {
         return Optional.ofNullable(this.enableIntegrityMonitoring);
     }
+    /**
+     * @return Defines whether the instance has Secure Boot enabled.
+     * 
+     */
     public Optional<Boolean> enableSecureBoot() {
         return Optional.ofNullable(this.enableSecureBoot);
     }

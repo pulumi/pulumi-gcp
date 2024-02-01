@@ -10,17 +10,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegionDiskDiskEncryptionKey {
+    /**
+     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
     private String kmsKeyName;
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
     private String rawKey;
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * encryption key that protects this resource.
+     * 
+     */
     private String sha256;
 
     private GetRegionDiskDiskEncryptionKey() {}
+    /**
+     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
     public String kmsKeyName() {
         return this.kmsKeyName;
     }
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
     public String rawKey() {
         return this.rawKey;
     }
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * encryption key that protects this resource.
+     * 
+     */
     public String sha256() {
         return this.sha256;
     }

@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfigWebServer {
+    /**
+     * @return CPU request and limit for Airflow web server.
+     * 
+     */
     private @Nullable Double cpu;
+    /**
+     * @return Memory (GB) request and limit for Airflow web server.
+     * 
+     */
     private @Nullable Double memoryGb;
+    /**
+     * @return Storage (GB) request and limit for Airflow web server.
+     * 
+     */
     private @Nullable Double storageGb;
 
     private EnvironmentConfigWorkloadsConfigWebServer() {}
+    /**
+     * @return CPU request and limit for Airflow web server.
+     * 
+     */
     public Optional<Double> cpu() {
         return Optional.ofNullable(this.cpu);
     }
+    /**
+     * @return Memory (GB) request and limit for Airflow web server.
+     * 
+     */
     public Optional<Double> memoryGb() {
         return Optional.ofNullable(this.memoryGb);
     }
+    /**
+     * @return Storage (GB) request and limit for Airflow web server.
+     * 
+     */
     public Optional<Double> storageGb() {
         return Optional.ofNullable(this.storageGb);
     }

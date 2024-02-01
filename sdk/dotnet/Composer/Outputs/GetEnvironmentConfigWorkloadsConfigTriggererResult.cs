@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigWorkloadsConfigTriggererResult
     {
+        /// <summary>
+        /// The number of triggerers.
+        /// </summary>
         public readonly int Count;
+        /// <summary>
+        /// CPU request and limit for a single Airflow triggerer replica.
+        /// </summary>
         public readonly double Cpu;
+        /// <summary>
+        /// Memory (GB) request and limit for a single Airflow triggerer replica.
+        /// </summary>
         public readonly double MemoryGb;
 
         [OutputConstructor]

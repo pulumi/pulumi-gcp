@@ -13,12 +13,21 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetJobTemplateTemplateVolumeResult
     {
+        /// <summary>
+        /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetJobTemplateTemplateVolumeCloudSqlInstanceResult> CloudSqlInstances;
+        /// <summary>
+        /// Ephemeral storage used as a shared volume.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetJobTemplateTemplateVolumeEmptyDirResult> EmptyDirs;
         /// <summary>
         /// The name of the Cloud Run v2 Job.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetJobTemplateTemplateVolumeSecretResult> Secrets;
 
         [OutputConstructor]

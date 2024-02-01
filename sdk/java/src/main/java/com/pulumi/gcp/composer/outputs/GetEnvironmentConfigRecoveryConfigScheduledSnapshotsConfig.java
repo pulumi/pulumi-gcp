@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+    /**
+     * @return When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Snapshot schedule, in the unix-cron format.
+     * 
+     */
     private String snapshotCreationSchedule;
+    /**
+     * @return the URI of a bucket folder where to save the snapshot.
+     * 
+     */
     private String snapshotLocation;
+    /**
+     * @return A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+     * 
+     */
     private String timeZone;
 
     private GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig() {}
+    /**
+     * @return When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Snapshot schedule, in the unix-cron format.
+     * 
+     */
     public String snapshotCreationSchedule() {
         return this.snapshotCreationSchedule;
     }
+    /**
+     * @return the URI of a bucket folder where to save the snapshot.
+     * 
+     */
     public String snapshotLocation() {
         return this.snapshotLocation;
     }
+    /**
+     * @return A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+     * 
+     */
     public String timeZone() {
         return this.timeZone;
     }

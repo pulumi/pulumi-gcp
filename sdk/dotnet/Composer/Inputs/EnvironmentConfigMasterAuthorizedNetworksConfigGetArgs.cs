@@ -14,12 +14,19 @@ namespace Pulumi.Gcp.Composer.Inputs
     {
         [Input("cidrBlocks")]
         private InputList<Inputs.EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockGetArgs>? _cidrBlocks;
+
+        /// <summary>
+        /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+        /// </summary>
         public InputList<Inputs.EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockGetArgs> CidrBlocks
         {
             get => _cidrBlocks ?? (_cidrBlocks = new InputList<Inputs.EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockGetArgs>());
             set => _cidrBlocks = value;
         }
 
+        /// <summary>
+        /// Whether or not master authorized networks is enabled.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 

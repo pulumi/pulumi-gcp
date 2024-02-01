@@ -14,6 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type RulesetMetadata struct {
+	// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
 	Services []string `pulumi:"services"`
 }
 
@@ -29,6 +30,7 @@ type RulesetMetadataInput interface {
 }
 
 type RulesetMetadataArgs struct {
+	// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
 	Services pulumi.StringArrayInput `pulumi:"services"`
 }
 
@@ -83,6 +85,7 @@ func (o RulesetMetadataOutput) ToRulesetMetadataOutputWithContext(ctx context.Co
 	return o
 }
 
+// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
 func (o RulesetMetadataOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetMetadata) []string { return v.Services }).(pulumi.StringArrayOutput)
 }

@@ -13,13 +13,25 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     [OutputType]
     public sealed class AssetDiscoveryStatus
     {
+        /// <summary>
+        /// The duration of the last discovery run.
+        /// </summary>
         public readonly string? LastRunDuration;
+        /// <summary>
+        /// The start time of the last discovery run.
+        /// </summary>
         public readonly string? LastRunTime;
+        /// <summary>
+        /// Additional information about the current state.
+        /// </summary>
         public readonly string? Message;
         /// <summary>
         /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
         /// </summary>
         public readonly string? State;
+        /// <summary>
+        /// Data Stats of the asset reported by discovery.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AssetDiscoveryStatusStat> Stats;
         /// <summary>
         /// Output only. The time when the asset was last updated.

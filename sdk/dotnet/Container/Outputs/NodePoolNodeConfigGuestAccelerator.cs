@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfigGuestAccelerator
     {
+        /// <summary>
+        /// The number of the accelerator cards exposed to an instance.
+        /// </summary>
         public readonly int Count;
+        /// <summary>
+        /// Configuration for auto installation of GPU driver.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig? GpuDriverInstallationConfig;
+        /// <summary>
+        /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+        /// </summary>
         public readonly string? GpuPartitionSize;
+        /// <summary>
+        /// Configuration for GPU sharing.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig? GpuSharingConfig;
         /// <summary>
         /// The type of the policy. Supports a single value: COMPACT.

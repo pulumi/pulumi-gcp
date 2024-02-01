@@ -13,21 +13,47 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryCleanupPolicy {
+    /**
+     * @return Policy action. Possible values: [&#34;DELETE&#34;, &#34;KEEP&#34;]
+     * 
+     */
     private String action;
+    /**
+     * @return Policy condition for matching versions.
+     * 
+     */
     private List<GetRepositoryCleanupPolicyCondition> conditions;
     private String id;
+    /**
+     * @return Policy condition for retaining a minimum number of versions. May only be
+     * specified with a Keep action.
+     * 
+     */
     private List<GetRepositoryCleanupPolicyMostRecentVersion> mostRecentVersions;
 
     private GetRepositoryCleanupPolicy() {}
+    /**
+     * @return Policy action. Possible values: [&#34;DELETE&#34;, &#34;KEEP&#34;]
+     * 
+     */
     public String action() {
         return this.action;
     }
+    /**
+     * @return Policy condition for matching versions.
+     * 
+     */
     public List<GetRepositoryCleanupPolicyCondition> conditions() {
         return this.conditions;
     }
     public String id() {
         return this.id;
     }
+    /**
+     * @return Policy condition for retaining a minimum number of versions. May only be
+     * specified with a Keep action.
+     * 
+     */
     public List<GetRepositoryCleanupPolicyMostRecentVersion> mostRecentVersions() {
         return this.mostRecentVersions;
     }

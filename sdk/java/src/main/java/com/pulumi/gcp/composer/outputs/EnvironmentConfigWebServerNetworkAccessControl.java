@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWebServerNetworkAccessControl {
+    /**
+     * @return A collection of allowed IP ranges with descriptions.
+     * 
+     */
     private @Nullable List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges;
 
     private EnvironmentConfigWebServerNetworkAccessControl() {}
+    /**
+     * @return A collection of allowed IP ranges with descriptions.
+     * 
+     */
     public List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges() {
         return this.allowedIpRanges == null ? List.of() : this.allowedIpRanges;
     }

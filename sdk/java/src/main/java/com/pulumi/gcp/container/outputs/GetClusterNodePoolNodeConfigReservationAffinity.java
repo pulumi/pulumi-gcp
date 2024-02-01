@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigReservationAffinity {
+    /**
+     * @return Corresponds to the type of reservation consumption.
+     * 
+     */
     private String consumeReservationType;
+    /**
+     * @return The label key of a reservation resource.
+     * 
+     */
     private String key;
+    /**
+     * @return The label values of the reservation resource.
+     * 
+     */
     private List<String> values;
 
     private GetClusterNodePoolNodeConfigReservationAffinity() {}
+    /**
+     * @return Corresponds to the type of reservation consumption.
+     * 
+     */
     public String consumeReservationType() {
         return this.consumeReservationType;
     }
+    /**
+     * @return The label key of a reservation resource.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return The label values of the reservation resource.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

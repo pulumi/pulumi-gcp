@@ -915,6 +915,20 @@ class GetInstanceMaintenancePolicyResult(dict):
                  description: str,
                  update_time: str,
                  weekly_maintenance_windows: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult']):
+        """
+        :param str create_time: Output only. The time when the policy was created.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param str description: Optional. Description of what this policy is for.
+               Create/Update methods return INVALID_ARGUMENT if the
+               length is greater than 512.
+        :param str update_time: Output only. The time when the policy was last updated.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param Sequence['GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs'] weekly_maintenance_windows: Optional. Maintenance window that is applied to resources covered by this policy.
+               Minimum 1. For the current version, the maximum number
+               of weekly_window is expected to be one.
+        """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "update_time", update_time)
@@ -923,21 +937,41 @@ class GetInstanceMaintenancePolicyResult(dict):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        Output only. The time when the policy was created.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Optional. Description of what this policy is for.
+        Create/Update methods return INVALID_ARGUMENT if the
+        length is greater than 512.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
+        """
+        Output only. The time when the policy was last updated.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
         return pulumi.get(self, "update_time")
 
     @property
     @pulumi.getter(name="weeklyMaintenanceWindows")
     def weekly_maintenance_windows(self) -> Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult']:
+        """
+        Optional. Maintenance window that is applied to resources covered by this policy.
+        Minimum 1. For the current version, the maximum number
+        of weekly_window is expected to be one.
+        """
         return pulumi.get(self, "weekly_maintenance_windows")
 
 
@@ -947,6 +981,23 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
                  day: str,
                  duration: str,
                  start_times: Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult']):
+        """
+        :param str day: Required. The day of week that maintenance updates occur.
+               
+               - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+               - MONDAY: Monday
+               - TUESDAY: Tuesday
+               - WEDNESDAY: Wednesday
+               - THURSDAY: Thursday
+               - FRIDAY: Friday
+               - SATURDAY: Saturday
+               - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        :param str duration: Output only. Duration of the maintenance window.
+               The current window is fixed at 1 hour.
+               A duration in seconds with up to nine fractional digits,
+               terminated by 's'. Example: "3.5s".
+        :param Sequence['GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_times: Required. Start time of the window in UTC time.
+        """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "duration", duration)
         pulumi.set(__self__, "start_times", start_times)
@@ -954,16 +1005,37 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowResult(dict):
     @property
     @pulumi.getter
     def day(self) -> str:
+        """
+        Required. The day of week that maintenance updates occur.
+
+        - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+        - MONDAY: Monday
+        - TUESDAY: Tuesday
+        - WEDNESDAY: Wednesday
+        - THURSDAY: Thursday
+        - FRIDAY: Friday
+        - SATURDAY: Saturday
+        - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        """
         return pulumi.get(self, "day")
 
     @property
     @pulumi.getter
     def duration(self) -> str:
+        """
+        Output only. Duration of the maintenance window.
+        The current window is fixed at 1 hour.
+        A duration in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s".
+        """
         return pulumi.get(self, "duration")
 
     @property
     @pulumi.getter(name="startTimes")
     def start_times(self) -> Sequence['outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult']:
+        """
+        Required. Start time of the window in UTC time.
+        """
         return pulumi.get(self, "start_times")
 
 
@@ -974,6 +1046,14 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
                  minutes: int,
                  nanos: int,
                  seconds: int):
+        """
+        :param int hours: Hours of day in 24 hour format. Should be from 0 to 23.
+               An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        :param int minutes: Minutes of hour of day. Must be from 0 to 59.
+        :param int nanos: Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        :param int seconds: Seconds of minutes of the time. Must normally be from 0 to 59.
+               An API may allow the value 60 if it allows leap-seconds.
+        """
         pulumi.set(__self__, "hours", hours)
         pulumi.set(__self__, "minutes", minutes)
         pulumi.set(__self__, "nanos", nanos)
@@ -982,21 +1062,35 @@ class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult(dict):
     @property
     @pulumi.getter
     def hours(self) -> int:
+        """
+        Hours of day in 24 hour format. Should be from 0 to 23.
+        An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        """
         return pulumi.get(self, "hours")
 
     @property
     @pulumi.getter
     def minutes(self) -> int:
+        """
+        Minutes of hour of day. Must be from 0 to 59.
+        """
         return pulumi.get(self, "minutes")
 
     @property
     @pulumi.getter
     def nanos(self) -> int:
+        """
+        Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        """
         return pulumi.get(self, "nanos")
 
     @property
     @pulumi.getter
     def seconds(self) -> int:
+        """
+        Seconds of minutes of the time. Must normally be from 0 to 59.
+        An API may allow the value 60 if it allows leap-seconds.
+        """
         return pulumi.get(self, "seconds")
 
 
@@ -1006,6 +1100,18 @@ class GetInstanceMaintenanceScheduleResult(dict):
                  end_time: str,
                  schedule_deadline_time: str,
                  start_time: str):
+        """
+        :param str end_time: Output only. The end time of any upcoming scheduled maintenance for this instance.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param str schedule_deadline_time: Output only. The deadline that the maintenance schedule start time
+               can not go beyond, including reschedule.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        :param str start_time: Output only. The start time of any upcoming scheduled maintenance for this instance.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+        """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "schedule_deadline_time", schedule_deadline_time)
         pulumi.set(__self__, "start_time", start_time)
@@ -1013,16 +1119,32 @@ class GetInstanceMaintenanceScheduleResult(dict):
     @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> str:
+        """
+        Output only. The end time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
         return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter(name="scheduleDeadlineTime")
     def schedule_deadline_time(self) -> str:
+        """
+        Output only. The deadline that the maintenance schedule start time
+        can not go beyond, including reschedule.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
         return pulumi.get(self, "schedule_deadline_time")
 
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
+        """
+        Output only. The start time of any upcoming scheduled maintenance for this instance.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        """
         return pulumi.get(self, "start_time")
 
 
@@ -1031,17 +1153,27 @@ class GetInstanceNodeResult(dict):
     def __init__(__self__, *,
                  id: str,
                  zone: str):
+        """
+        :param str id: Node identifying string. e.g. 'node-0', 'node-1'
+        :param str zone: Location of the node.
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        Node identifying string. e.g. 'node-0', 'node-1'
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        Location of the node.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -1052,6 +1184,28 @@ class GetInstancePersistenceConfigResult(dict):
                  rdb_next_snapshot_time: str,
                  rdb_snapshot_period: str,
                  rdb_snapshot_start_time: str):
+        """
+        :param str persistence_mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+               
+               - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+               - RDB: RDB based Persistence is enabled. Possible values: ["DISABLED", "RDB"]
+        :param str rdb_next_snapshot_time: Output only. The next time that a snapshot attempt is scheduled to occur.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+               to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str rdb_snapshot_period: Optional. Available snapshot periods for scheduling.
+               
+               - ONE_HOUR:	Snapshot every 1 hour.
+               - SIX_HOURS:	Snapshot every 6 hours.
+               - TWELVE_HOURS:	Snapshot every 12 hours.
+               - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
+        :param str rdb_snapshot_start_time: Optional. Date and time that the first snapshot was/will be attempted,
+               and to which future snapshots will be aligned. If not provided,
+               the current time will be used.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+               and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         pulumi.set(__self__, "persistence_mode", persistence_mode)
         pulumi.set(__self__, "rdb_next_snapshot_time", rdb_next_snapshot_time)
         pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
@@ -1060,21 +1214,49 @@ class GetInstancePersistenceConfigResult(dict):
     @property
     @pulumi.getter(name="persistenceMode")
     def persistence_mode(self) -> str:
+        """
+        Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+
+        - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+        - RDB: RDB based Persistence is enabled. Possible values: ["DISABLED", "RDB"]
+        """
         return pulumi.get(self, "persistence_mode")
 
     @property
     @pulumi.getter(name="rdbNextSnapshotTime")
     def rdb_next_snapshot_time(self) -> str:
+        """
+        Output only. The next time that a snapshot attempt is scheduled to occur.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+        to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "rdb_next_snapshot_time")
 
     @property
     @pulumi.getter(name="rdbSnapshotPeriod")
     def rdb_snapshot_period(self) -> str:
+        """
+        Optional. Available snapshot periods for scheduling.
+
+        - ONE_HOUR:	Snapshot every 1 hour.
+        - SIX_HOURS:	Snapshot every 6 hours.
+        - TWELVE_HOURS:	Snapshot every 12 hours.
+        - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
+        """
         return pulumi.get(self, "rdb_snapshot_period")
 
     @property
     @pulumi.getter(name="rdbSnapshotStartTime")
     def rdb_snapshot_start_time(self) -> str:
+        """
+        Optional. Date and time that the first snapshot was/will be attempted,
+        and to which future snapshots will be aligned. If not provided,
+        the current time will be used.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+        and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "rdb_snapshot_start_time")
 
 
@@ -1086,6 +1268,13 @@ class GetInstanceServerCaCertResult(dict):
                  expire_time: str,
                  serial_number: str,
                  sha1_fingerprint: str):
+        """
+        :param str cert: The certificate data in PEM format.
+        :param str create_time: The time when the certificate was created.
+        :param str expire_time: The time when the certificate expires.
+        :param str serial_number: Serial number, as extracted from the certificate.
+        :param str sha1_fingerprint: Sha1 Fingerprint of the certificate.
+        """
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "expire_time", expire_time)
@@ -1095,26 +1284,41 @@ class GetInstanceServerCaCertResult(dict):
     @property
     @pulumi.getter
     def cert(self) -> str:
+        """
+        The certificate data in PEM format.
+        """
         return pulumi.get(self, "cert")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        The time when the certificate was created.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> str:
+        """
+        The time when the certificate expires.
+        """
         return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> str:
+        """
+        Serial number, as extracted from the certificate.
+        """
         return pulumi.get(self, "serial_number")
 
     @property
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> str:
+        """
+        Sha1 Fingerprint of the certificate.
+        """
         return pulumi.get(self, "sha1_fingerprint")
 
 

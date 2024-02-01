@@ -23,6 +23,10 @@ public final class GetInstanceTemplateNetworkInterfaceAccessConfig {
      * 
      */
     private String networkTier;
+    /**
+     * @return The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+     * 
+     */
     private String publicPtrDomainName;
 
     private GetInstanceTemplateNetworkInterfaceAccessConfig() {}
@@ -43,6 +47,10 @@ public final class GetInstanceTemplateNetworkInterfaceAccessConfig {
     public String networkTier() {
         return this.networkTier;
     }
+    /**
+     * @return The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+     * 
+     */
     public String publicPtrDomainName() {
         return this.publicPtrDomainName;
     }

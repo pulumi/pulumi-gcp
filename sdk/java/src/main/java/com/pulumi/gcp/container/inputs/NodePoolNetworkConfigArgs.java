@@ -85,16 +85,32 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.enablePrivateNodes);
     }
 
+    /**
+     * Network bandwidth tier configuration.
+     * 
+     */
     @Import(name="networkPerformanceConfig")
     private @Nullable Output<NodePoolNetworkConfigNetworkPerformanceConfigArgs> networkPerformanceConfig;
 
+    /**
+     * @return Network bandwidth tier configuration.
+     * 
+     */
     public Optional<Output<NodePoolNetworkConfigNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
         return Optional.ofNullable(this.networkPerformanceConfig);
     }
 
+    /**
+     * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * 
+     */
     @Import(name="podCidrOverprovisionConfig")
     private @Nullable Output<NodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig;
 
+    /**
+     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * 
+     */
     public Optional<Output<NodePoolNetworkConfigPodCidrOverprovisionConfigArgs>> podCidrOverprovisionConfig() {
         return Optional.ofNullable(this.podCidrOverprovisionConfig);
     }
@@ -270,20 +286,44 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
             return enablePrivateNodes(Output.of(enablePrivateNodes));
         }
 
+        /**
+         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkPerformanceConfig(@Nullable Output<NodePoolNetworkConfigNetworkPerformanceConfigArgs> networkPerformanceConfig) {
             $.networkPerformanceConfig = networkPerformanceConfig;
             return this;
         }
 
+        /**
+         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkPerformanceConfig(NodePoolNetworkConfigNetworkPerformanceConfigArgs networkPerformanceConfig) {
             return networkPerformanceConfig(Output.of(networkPerformanceConfig));
         }
 
+        /**
+         * @param podCidrOverprovisionConfig Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         * 
+         * @return builder
+         * 
+         */
         public Builder podCidrOverprovisionConfig(@Nullable Output<NodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig) {
             $.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             return this;
         }
 
+        /**
+         * @param podCidrOverprovisionConfig Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         * 
+         * @return builder
+         * 
+         */
         public Builder podCidrOverprovisionConfig(NodePoolNetworkConfigPodCidrOverprovisionConfigArgs podCidrOverprovisionConfig) {
             return podCidrOverprovisionConfig(Output.of(podCidrOverprovisionConfig));
         }

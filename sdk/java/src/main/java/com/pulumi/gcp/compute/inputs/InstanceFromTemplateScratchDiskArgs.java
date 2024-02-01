@@ -17,23 +17,47 @@ public final class InstanceFromTemplateScratchDiskArgs extends com.pulumi.resour
 
     public static final InstanceFromTemplateScratchDiskArgs Empty = new InstanceFromTemplateScratchDiskArgs();
 
+    /**
+     * Name with which the attached disk is accessible under /dev/disk/by-id/
+     * 
+     */
     @Import(name="deviceName")
     private @Nullable Output<String> deviceName;
 
+    /**
+     * @return Name with which the attached disk is accessible under /dev/disk/by-id/
+     * 
+     */
     public Optional<Output<String>> deviceName() {
         return Optional.ofNullable(this.deviceName);
     }
 
+    /**
+     * The disk interface used for attaching this disk. One of SCSI or NVME.
+     * 
+     */
     @Import(name="interface", required=true)
     private Output<String> interface_;
 
+    /**
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME.
+     * 
+     */
     public Output<String> interface_() {
         return this.interface_;
     }
 
+    /**
+     * The size of the disk in gigabytes. One of 375 or 3000.
+     * 
+     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
+    /**
+     * @return The size of the disk in gigabytes. One of 375 or 3000.
+     * 
+     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -64,29 +88,65 @@ public final class InstanceFromTemplateScratchDiskArgs extends com.pulumi.resour
             $ = new InstanceFromTemplateScratchDiskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deviceName Name with which the attached disk is accessible under /dev/disk/by-id/
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceName(@Nullable Output<String> deviceName) {
             $.deviceName = deviceName;
             return this;
         }
 
+        /**
+         * @param deviceName Name with which the attached disk is accessible under /dev/disk/by-id/
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceName(String deviceName) {
             return deviceName(Output.of(deviceName));
         }
 
+        /**
+         * @param interface_ The disk interface used for attaching this disk. One of SCSI or NVME.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(Output<String> interface_) {
             $.interface_ = interface_;
             return this;
         }
 
+        /**
+         * @param interface_ The disk interface used for attaching this disk. One of SCSI or NVME.
+         * 
+         * @return builder
+         * 
+         */
         public Builder interface_(String interface_) {
             return interface_(Output.of(interface_));
         }
 
+        /**
+         * @param size The size of the disk in gigabytes. One of 375 or 3000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
+        /**
+         * @param size The size of the disk in gigabytes. One of 375 or 3000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }

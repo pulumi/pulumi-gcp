@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppConnectorPrincipalInfoServiceAccount {
+    /**
+     * @return Email address of the service account.
+     * 
+     */
     private String email;
 
     private GetAppConnectorPrincipalInfoServiceAccount() {}
+    /**
+     * @return Email address of the service account.
+     * 
+     */
     public String email() {
         return this.email;
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterClusterTelemetryResult
     {
+        /// <summary>
+        /// Type of the integration.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

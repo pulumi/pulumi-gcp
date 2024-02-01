@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     [OutputType]
     public sealed class DeliveryPipelineConditionTargetsTypeCondition
     {
+        /// <summary>
+        /// Human readable error message.
+        /// </summary>
         public readonly string? ErrorDetails;
+        /// <summary>
+        /// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+        /// </summary>
         public readonly bool? Status;
 
         [OutputConstructor]

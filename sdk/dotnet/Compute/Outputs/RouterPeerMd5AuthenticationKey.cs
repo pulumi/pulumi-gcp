@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class RouterPeerMd5AuthenticationKey
     {
+        /// <summary>
+        /// Value of the key.
+        /// </summary>
         public readonly string Key;
         /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long,

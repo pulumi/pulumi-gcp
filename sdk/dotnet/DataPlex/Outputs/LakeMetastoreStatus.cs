@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     [OutputType]
     public sealed class LakeMetastoreStatus
     {
+        /// <summary>
+        /// The URI of the endpoint used to access the Metastore service.
+        /// </summary>
         public readonly string? Endpoint;
+        /// <summary>
+        /// Additional information about the current status.
+        /// </summary>
         public readonly string? Message;
         /// <summary>
         /// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED

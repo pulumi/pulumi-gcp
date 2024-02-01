@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.PubSub.Outputs
     [OutputType]
     public sealed class GetSubscriptionCloudStorageConfigAvroConfigResult
     {
+        /// <summary>
+        /// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+        /// </summary>
         public readonly bool WriteMetadata;
 
         [OutputConstructor]

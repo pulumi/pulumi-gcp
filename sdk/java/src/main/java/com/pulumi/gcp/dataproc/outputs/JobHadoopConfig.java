@@ -34,6 +34,10 @@ public final class JobHadoopConfig {
      * 
      */
     private @Nullable List<String> jarFileUris;
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     private @Nullable JobHadoopConfigLoggingConfig loggingConfig;
     /**
      * @return The name of the driver&#39;s main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
@@ -82,6 +86,10 @@ public final class JobHadoopConfig {
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<JobHadoopConfigLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }

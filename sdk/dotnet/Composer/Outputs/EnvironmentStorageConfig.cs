@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentStorageConfig
     {
+        /// <summary>
+        /// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+        /// </summary>
         public readonly string Bucket;
 
         [OutputConstructor]

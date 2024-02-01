@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNetworkPolicyResult
     {
+        /// <summary>
+        /// Whether network policy is enabled on the cluster.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// The selected network policy provider.
+        /// </summary>
         public readonly string Provider;
 
         [OutputConstructor]

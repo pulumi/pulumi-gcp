@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterMasterAuthResult
     {
+        /// <summary>
+        /// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+        /// </summary>
         public readonly string ClientCertificate;
+        /// <summary>
+        /// Whether client certificate authorization is enabled for this cluster.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthClientCertificateConfigResult> ClientCertificateConfigs;
+        /// <summary>
+        /// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+        /// </summary>
         public readonly string ClientKey;
+        /// <summary>
+        /// Base64 encoded public certificate that is the root of trust for the cluster.
+        /// </summary>
         public readonly string ClusterCaCertificate;
 
         [OutputConstructor]

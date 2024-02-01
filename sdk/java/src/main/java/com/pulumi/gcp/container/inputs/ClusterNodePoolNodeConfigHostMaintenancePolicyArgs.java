@@ -14,9 +14,17 @@ public final class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs extends co
 
     public static final ClusterNodePoolNodeConfigHostMaintenancePolicyArgs Empty = new ClusterNodePoolNodeConfigHostMaintenancePolicyArgs();
 
+    /**
+     * .
+     * 
+     */
     @Import(name="maintenanceInterval", required=true)
     private Output<String> maintenanceInterval;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<String> maintenanceInterval() {
         return this.maintenanceInterval;
     }
@@ -45,11 +53,23 @@ public final class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs extends co
             $ = new ClusterNodePoolNodeConfigHostMaintenancePolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maintenanceInterval .
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(Output<String> maintenanceInterval) {
             $.maintenanceInterval = maintenanceInterval;
             return this;
         }
 
+        /**
+         * @param maintenanceInterval .
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(String maintenanceInterval) {
             return maintenanceInterval(Output.of(maintenanceInterval));
         }

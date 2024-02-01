@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketLifecycleRuleAction {
+    /**
+     * @return The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
+     * 
+     */
     private String storageClass;
+    /**
+     * @return The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
+     * 
+     */
     private String type;
 
     private GetBucketLifecycleRuleAction() {}
+    /**
+     * @return The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
+     * 
+     */
     public String storageClass() {
         return this.storageClass;
     }
+    /**
+     * @return The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
+     * 
+     */
     public String type() {
         return this.type;
     }

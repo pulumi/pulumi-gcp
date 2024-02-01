@@ -13,9 +13,22 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerPubsubConfigResult
     {
+        /// <summary>
+        /// Service account that will make the push request.
+        /// </summary>
         public readonly string ServiceAccountEmail;
+        /// <summary>
+        /// Potential issues with the underlying Pub/Sub subscription configuration.
+        /// Only populated on get requests.
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Output only. Name of the subscription.
+        /// </summary>
         public readonly string Subscription;
+        /// <summary>
+        /// The name of the topic from which this subscription is receiving messages.
+        /// </summary>
         public readonly string Topic;
 
         [OutputConstructor]

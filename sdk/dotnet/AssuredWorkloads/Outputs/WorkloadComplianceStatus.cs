@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.AssuredWorkloads.Outputs
     [OutputType]
     public sealed class WorkloadComplianceStatus
     {
+        /// <summary>
+        /// Number of current orgPolicy violations which are acknowledged.
+        /// </summary>
         public readonly ImmutableArray<int> AcknowledgedViolationCounts;
+        /// <summary>
+        /// Number of current orgPolicy violations which are not acknowledged.
+        /// </summary>
         public readonly ImmutableArray<int> ActiveViolationCounts;
 
         [OutputConstructor]

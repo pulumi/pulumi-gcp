@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplication {
+    /**
+     * @return The Secret will automatically be replicated without any restrictions.
+     * 
+     */
     private List<GetSecretReplicationAuto> autos;
+    /**
+     * @return The Secret will be replicated to the regions specified by the user.
+     * 
+     */
     private List<GetSecretReplicationUserManaged> userManageds;
 
     private GetSecretReplication() {}
+    /**
+     * @return The Secret will automatically be replicated without any restrictions.
+     * 
+     */
     public List<GetSecretReplicationAuto> autos() {
         return this.autos;
     }
+    /**
+     * @return The Secret will be replicated to the regions specified by the user.
+     * 
+     */
     public List<GetSecretReplicationUserManaged> userManageds() {
         return this.userManageds;
     }

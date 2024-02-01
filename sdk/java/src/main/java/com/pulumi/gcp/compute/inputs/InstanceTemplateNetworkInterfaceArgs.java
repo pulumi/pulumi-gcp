@@ -64,9 +64,17 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         return Optional.ofNullable(this.aliasIpRanges);
     }
 
+    /**
+     * The prefix length of the primary internal IPv6 range.
+     * 
+     */
     @Import(name="internalIpv6PrefixLength")
     private @Nullable Output<Integer> internalIpv6PrefixLength;
 
+    /**
+     * @return The prefix length of the primary internal IPv6 range.
+     * 
+     */
     public Optional<Output<Integer>> internalIpv6PrefixLength() {
         return Optional.ofNullable(this.internalIpv6PrefixLength);
     }
@@ -90,16 +98,32 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         return Optional.ofNullable(this.ipv6AccessConfigs);
     }
 
+    /**
+     * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+     * 
+     */
     @Import(name="ipv6AccessType")
     private @Nullable Output<String> ipv6AccessType;
 
+    /**
+     * @return One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+     * 
+     */
     public Optional<Output<String>> ipv6AccessType() {
         return Optional.ofNullable(this.ipv6AccessType);
     }
 
+    /**
+     * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     @Import(name="ipv6Address")
     private @Nullable Output<String> ipv6Address;
 
+    /**
+     * @return An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     public Optional<Output<String>> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
     }
@@ -374,11 +398,23 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
             return aliasIpRanges(List.of(aliasIpRanges));
         }
 
+        /**
+         * @param internalIpv6PrefixLength The prefix length of the primary internal IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder internalIpv6PrefixLength(@Nullable Output<Integer> internalIpv6PrefixLength) {
             $.internalIpv6PrefixLength = internalIpv6PrefixLength;
             return this;
         }
 
+        /**
+         * @param internalIpv6PrefixLength The prefix length of the primary internal IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder internalIpv6PrefixLength(Integer internalIpv6PrefixLength) {
             return internalIpv6PrefixLength(Output.of(internalIpv6PrefixLength));
         }
@@ -420,20 +456,44 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
             return ipv6AccessConfigs(List.of(ipv6AccessConfigs));
         }
 
+        /**
+         * @param ipv6AccessType One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6AccessType(@Nullable Output<String> ipv6AccessType) {
             $.ipv6AccessType = ipv6AccessType;
             return this;
         }
 
+        /**
+         * @param ipv6AccessType One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6AccessType(String ipv6AccessType) {
             return ipv6AccessType(Output.of(ipv6AccessType));
         }
 
+        /**
+         * @param ipv6Address An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
             $.ipv6Address = ipv6Address;
             return this;
         }
 
+        /**
+         * @param ipv6Address An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Address(String ipv6Address) {
             return ipv6Address(Output.of(ipv6Address));
         }

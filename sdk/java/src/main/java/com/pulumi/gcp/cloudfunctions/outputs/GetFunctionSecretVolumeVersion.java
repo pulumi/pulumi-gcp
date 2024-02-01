@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionSecretVolumeVersion {
+    /**
+     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
+     * 
+     */
     private String path;
+    /**
+     * @return Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
+     * 
+     */
     private String version;
 
     private GetFunctionSecretVolumeVersion() {}
+    /**
+     * @return Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as &#34;/etc/secrets&#34; and path as &#34;/secret_foo&#34; would mount the secret value file at &#34;/etc/secrets/secret_foo&#34;.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return Version of the secret (version number or the string &#34;latest&#34;). It is preferable to use &#34;latest&#34; version with secret volumes as secret value changes are reflected immediately.
+     * 
+     */
     public String version() {
         return this.version;
     }

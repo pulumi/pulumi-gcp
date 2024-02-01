@@ -37,9 +37,17 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.jarFileUris);
     }
 
+    /**
+     * The runtime logging config of the job
+     * 
+     */
     @Import(name="loggingConfig")
     private @Nullable Output<JobSparksqlConfigLoggingConfigArgs> loggingConfig;
 
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<Output<JobSparksqlConfigLoggingConfigArgs>> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }
@@ -174,11 +182,23 @@ public final class JobSparksqlConfigArgs extends com.pulumi.resources.ResourceAr
             return jarFileUris(List.of(jarFileUris));
         }
 
+        /**
+         * @param loggingConfig The runtime logging config of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(@Nullable Output<JobSparksqlConfigLoggingConfigArgs> loggingConfig) {
             $.loggingConfig = loggingConfig;
             return this;
         }
 
+        /**
+         * @param loggingConfig The runtime logging config of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(JobSparksqlConfigLoggingConfigArgs loggingConfig) {
             return loggingConfig(Output.of(loggingConfig));
         }

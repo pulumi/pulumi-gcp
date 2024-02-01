@@ -26,6 +26,10 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
      * 
      */
     private @Nullable ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig diskConfig;
+    /**
+     * @return List of auxiliary node group instance names which have been assigned to the cluster.
+     * 
+     */
     private @Nullable List<String> instanceNames;
     /**
      * @return The name of a Google Compute Engine machine type
@@ -65,6 +69,10 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
     public Optional<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig> diskConfig() {
         return Optional.ofNullable(this.diskConfig);
     }
+    /**
+     * @return List of auxiliary node group instance names which have been assigned to the cluster.
+     * 
+     */
     public List<String> instanceNames() {
         return this.instanceNames == null ? List.of() : this.instanceNames;
     }

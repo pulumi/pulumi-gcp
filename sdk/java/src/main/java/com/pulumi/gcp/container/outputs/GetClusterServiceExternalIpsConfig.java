@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterServiceExternalIpsConfig {
+    /**
+     * @return When enabled, services with exterenal ips specified will be allowed.
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterServiceExternalIpsConfig() {}
+    /**
+     * @return When enabled, services with exterenal ips specified will be allowed.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

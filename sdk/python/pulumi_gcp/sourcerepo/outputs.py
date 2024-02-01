@@ -148,6 +148,15 @@ class GetRepositoryPubsubConfigResult(dict):
                  message_format: str,
                  service_account_email: str,
                  topic: str):
+        """
+        :param str message_format: The format of the Cloud Pub/Sub messages.
+               - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+               - JSON: The message payload is a JSON string of SourceRepoEvent. Possible values: ["PROTOBUF", "JSON"]
+        :param str service_account_email: Email address of the service account used for publishing Cloud Pub/Sub messages.
+               This service account needs to be in the same project as the PubsubConfig. When added,
+               the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+               If unspecified, it defaults to the compute engine default service account.
+        """
         pulumi.set(__self__, "message_format", message_format)
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "topic", topic)
@@ -155,11 +164,22 @@ class GetRepositoryPubsubConfigResult(dict):
     @property
     @pulumi.getter(name="messageFormat")
     def message_format(self) -> str:
+        """
+        The format of the Cloud Pub/Sub messages.
+        - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+        - JSON: The message payload is a JSON string of SourceRepoEvent. Possible values: ["PROTOBUF", "JSON"]
+        """
         return pulumi.get(self, "message_format")
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> str:
+        """
+        Email address of the service account used for publishing Cloud Pub/Sub messages.
+        This service account needs to be in the same project as the PubsubConfig. When added,
+        the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+        If unspecified, it defaults to the compute engine default service account.
+        """
         return pulumi.get(self, "service_account_email")
 
     @property

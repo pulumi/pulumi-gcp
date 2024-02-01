@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNotificationConfigPubsubFilter {
+    /**
+     * @return Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT
+     * 
+     */
     private List<String> eventTypes;
 
     private GetClusterNotificationConfigPubsubFilter() {}
+    /**
+     * @return Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT
+     * 
+     */
     public List<String> eventTypes() {
         return this.eventTypes;
     }

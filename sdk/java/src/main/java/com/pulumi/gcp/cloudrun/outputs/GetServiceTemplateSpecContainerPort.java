@@ -11,15 +11,27 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerPort {
+    /**
+     * @return Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to &#34;8080&#34;.
+     * 
+     */
     private Integer containerPort;
     /**
      * @return The name of the Cloud Run Service.
      * 
      */
     private String name;
+    /**
+     * @return Protocol for port. Must be &#34;TCP&#34;. Defaults to &#34;TCP&#34;.
+     * 
+     */
     private String protocol;
 
     private GetServiceTemplateSpecContainerPort() {}
+    /**
+     * @return Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to &#34;8080&#34;.
+     * 
+     */
     public Integer containerPort() {
         return this.containerPort;
     }
@@ -30,6 +42,10 @@ public final class GetServiceTemplateSpecContainerPort {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Protocol for port. Must be &#34;TCP&#34;. Defaults to &#34;TCP&#34;.
+     * 
+     */
     public String protocol() {
         return this.protocol;
     }

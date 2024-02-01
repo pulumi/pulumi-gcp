@@ -15,6 +15,10 @@ public final class GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
      * 
      */
     private String name;
+    /**
+     * @return The header field value
+     * 
+     */
     private String value;
 
     private GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader() {}
@@ -25,6 +29,10 @@ public final class GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The header field value
+     * 
+     */
     public String value() {
         return this.value;
     }

@@ -24,6 +24,10 @@ class WorkloadComplianceStatusArgs:
     def __init__(__self__, *,
                  acknowledged_violation_counts: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  active_violation_counts: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] acknowledged_violation_counts: Number of current orgPolicy violations which are acknowledged.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] active_violation_counts: Number of current orgPolicy violations which are not acknowledged.
+        """
         if acknowledged_violation_counts is not None:
             pulumi.set(__self__, "acknowledged_violation_counts", acknowledged_violation_counts)
         if active_violation_counts is not None:
@@ -32,6 +36,9 @@ class WorkloadComplianceStatusArgs:
     @property
     @pulumi.getter(name="acknowledgedViolationCounts")
     def acknowledged_violation_counts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        Number of current orgPolicy violations which are acknowledged.
+        """
         return pulumi.get(self, "acknowledged_violation_counts")
 
     @acknowledged_violation_counts.setter
@@ -41,6 +48,9 @@ class WorkloadComplianceStatusArgs:
     @property
     @pulumi.getter(name="activeViolationCounts")
     def active_violation_counts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        Number of current orgPolicy violations which are not acknowledged.
+        """
         return pulumi.get(self, "active_violation_counts")
 
     @active_violation_counts.setter
@@ -54,6 +64,11 @@ class WorkloadEkmProvisioningResponseArgs:
                  ekm_provisioning_error_domain: Optional[pulumi.Input[str]] = None,
                  ekm_provisioning_error_mapping: Optional[pulumi.Input[str]] = None,
                  ekm_provisioning_state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ekm_provisioning_error_domain: Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
+        :param pulumi.Input[str] ekm_provisioning_error_mapping: Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
+        :param pulumi.Input[str] ekm_provisioning_state: Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
+        """
         if ekm_provisioning_error_domain is not None:
             pulumi.set(__self__, "ekm_provisioning_error_domain", ekm_provisioning_error_domain)
         if ekm_provisioning_error_mapping is not None:
@@ -64,6 +79,9 @@ class WorkloadEkmProvisioningResponseArgs:
     @property
     @pulumi.getter(name="ekmProvisioningErrorDomain")
     def ekm_provisioning_error_domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
+        """
         return pulumi.get(self, "ekm_provisioning_error_domain")
 
     @ekm_provisioning_error_domain.setter
@@ -73,6 +91,9 @@ class WorkloadEkmProvisioningResponseArgs:
     @property
     @pulumi.getter(name="ekmProvisioningErrorMapping")
     def ekm_provisioning_error_mapping(self) -> Optional[pulumi.Input[str]]:
+        """
+        Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
+        """
         return pulumi.get(self, "ekm_provisioning_error_mapping")
 
     @ekm_provisioning_error_mapping.setter
@@ -82,6 +103,9 @@ class WorkloadEkmProvisioningResponseArgs:
     @property
     @pulumi.getter(name="ekmProvisioningState")
     def ekm_provisioning_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
+        """
         return pulumi.get(self, "ekm_provisioning_state")
 
     @ekm_provisioning_state.setter
@@ -280,6 +304,10 @@ class WorkloadSaaEnrollmentResponseArgs:
     def __init__(__self__, *,
                  setup_errors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  setup_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] setup_errors: Indicates SAA enrollment setup error if any.
+        :param pulumi.Input[str] setup_status: Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+        """
         if setup_errors is not None:
             pulumi.set(__self__, "setup_errors", setup_errors)
         if setup_status is not None:
@@ -288,6 +316,9 @@ class WorkloadSaaEnrollmentResponseArgs:
     @property
     @pulumi.getter(name="setupErrors")
     def setup_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Indicates SAA enrollment setup error if any.
+        """
         return pulumi.get(self, "setup_errors")
 
     @setup_errors.setter
@@ -297,6 +328,9 @@ class WorkloadSaaEnrollmentResponseArgs:
     @property
     @pulumi.getter(name="setupStatus")
     def setup_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+        """
         return pulumi.get(self, "setup_status")
 
     @setup_status.setter

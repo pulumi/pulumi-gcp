@@ -11,29 +11,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryCleanupPolicyCondition {
+    /**
+     * @return Match versions newer than a duration.
+     * 
+     */
     private String newerThan;
+    /**
+     * @return Match versions older than a duration.
+     * 
+     */
     private String olderThan;
+    /**
+     * @return Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     private List<String> packageNamePrefixes;
+    /**
+     * @return Match versions by tag prefix. Applied on any prefix match.
+     * 
+     */
     private List<String> tagPrefixes;
+    /**
+     * @return Match versions by tag status. Default value: &#34;ANY&#34; Possible values: [&#34;TAGGED&#34;, &#34;UNTAGGED&#34;, &#34;ANY&#34;]
+     * 
+     */
     private String tagState;
+    /**
+     * @return Match versions by version name prefix. Applied on any prefix match.
+     * 
+     */
     private List<String> versionNamePrefixes;
 
     private GetRepositoryCleanupPolicyCondition() {}
+    /**
+     * @return Match versions newer than a duration.
+     * 
+     */
     public String newerThan() {
         return this.newerThan;
     }
+    /**
+     * @return Match versions older than a duration.
+     * 
+     */
     public String olderThan() {
         return this.olderThan;
     }
+    /**
+     * @return Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     public List<String> packageNamePrefixes() {
         return this.packageNamePrefixes;
     }
+    /**
+     * @return Match versions by tag prefix. Applied on any prefix match.
+     * 
+     */
     public List<String> tagPrefixes() {
         return this.tagPrefixes;
     }
+    /**
+     * @return Match versions by tag status. Default value: &#34;ANY&#34; Possible values: [&#34;TAGGED&#34;, &#34;UNTAGGED&#34;, &#34;ANY&#34;]
+     * 
+     */
     public String tagState() {
         return this.tagState;
     }
+    /**
+     * @return Match versions by version name prefix. Applied on any prefix match.
+     * 
+     */
     public List<String> versionNamePrefixes() {
         return this.versionNamePrefixes;
     }

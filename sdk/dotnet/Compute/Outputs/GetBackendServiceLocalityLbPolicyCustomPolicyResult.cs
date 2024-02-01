@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetBackendServiceLocalityLbPolicyCustomPolicyResult
     {
+        /// <summary>
+        /// An optional, arbitrary JSON object with configuration data, understood
+        /// by a locally installed custom policy implementation.
+        /// </summary>
         public readonly string Data;
         /// <summary>
         /// The name of the Backend Service.

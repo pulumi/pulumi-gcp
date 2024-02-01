@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNotificationConfigPubsub {
+    /**
+     * @return Whether or not the notification config is enabled
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+     * 
+     */
     private List<GetClusterNotificationConfigPubsubFilter> filters;
+    /**
+     * @return The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: projects/{project}/topics/{topic}.
+     * 
+     */
     private String topic;
 
     private GetClusterNotificationConfigPubsub() {}
+    /**
+     * @return Whether or not the notification config is enabled
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+     * 
+     */
     public List<GetClusterNotificationConfigPubsubFilter> filters() {
         return this.filters;
     }
+    /**
+     * @return The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: projects/{project}/topics/{topic}.
+     * 
+     */
     public String topic() {
         return this.topic;
     }

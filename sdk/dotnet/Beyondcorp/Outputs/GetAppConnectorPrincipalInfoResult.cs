@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
     [OutputType]
     public sealed class GetAppConnectorPrincipalInfoResult
     {
+        /// <summary>
+        /// ServiceAccount represents a GCP service account.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAppConnectorPrincipalInfoServiceAccountResult> ServiceAccounts;
 
         [OutputConstructor]

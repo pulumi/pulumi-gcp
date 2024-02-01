@@ -14,6 +14,10 @@ import java.util.Objects;
 public final class GetClusterMaintenancePolicyMaintenanceExclusion {
     private String endTime;
     private String exclusionName;
+    /**
+     * @return Maintenance exclusion related options.
+     * 
+     */
     private List<GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption> exclusionOptions;
     private String startTime;
 
@@ -24,6 +28,10 @@ public final class GetClusterMaintenancePolicyMaintenanceExclusion {
     public String exclusionName() {
         return this.exclusionName;
     }
+    /**
+     * @return Maintenance exclusion related options.
+     * 
+     */
     public List<GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption> exclusionOptions() {
         return this.exclusionOptions;
     }

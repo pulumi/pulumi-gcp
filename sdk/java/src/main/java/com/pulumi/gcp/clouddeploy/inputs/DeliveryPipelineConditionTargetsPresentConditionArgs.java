@@ -17,16 +17,32 @@ public final class DeliveryPipelineConditionTargetsPresentConditionArgs extends 
 
     public static final DeliveryPipelineConditionTargetsPresentConditionArgs Empty = new DeliveryPipelineConditionTargetsPresentConditionArgs();
 
+    /**
+     * The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+     * 
+     */
     @Import(name="missingTargets")
     private @Nullable Output<List<String>> missingTargets;
 
+    /**
+     * @return The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+     * 
+     */
     public Optional<Output<List<String>>> missingTargets() {
         return Optional.ofNullable(this.missingTargets);
     }
 
+    /**
+     * True if there aren&#39;t any missing Targets.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<Boolean> status;
 
+    /**
+     * @return True if there aren&#39;t any missing Targets.
+     * 
+     */
     public Optional<Output<Boolean>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -72,24 +88,54 @@ public final class DeliveryPipelineConditionTargetsPresentConditionArgs extends 
             $ = new DeliveryPipelineConditionTargetsPresentConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param missingTargets The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+         * 
+         * @return builder
+         * 
+         */
         public Builder missingTargets(@Nullable Output<List<String>> missingTargets) {
             $.missingTargets = missingTargets;
             return this;
         }
 
+        /**
+         * @param missingTargets The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+         * 
+         * @return builder
+         * 
+         */
         public Builder missingTargets(List<String> missingTargets) {
             return missingTargets(Output.of(missingTargets));
         }
 
+        /**
+         * @param missingTargets The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+         * 
+         * @return builder
+         * 
+         */
         public Builder missingTargets(String... missingTargets) {
             return missingTargets(List.of(missingTargets));
         }
 
+        /**
+         * @param status True if there aren&#39;t any missing Targets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<Boolean> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status True if there aren&#39;t any missing Targets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(Boolean status) {
             return status(Output.of(status));
         }

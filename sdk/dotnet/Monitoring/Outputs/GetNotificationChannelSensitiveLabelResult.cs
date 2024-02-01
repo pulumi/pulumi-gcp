@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     [OutputType]
     public sealed class GetNotificationChannelSensitiveLabelResult
     {
+        /// <summary>
+        /// An authorization token for a notification channel. Channel types that support this field include: slack
+        /// </summary>
         public readonly string AuthToken;
+        /// <summary>
+        /// An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        /// </summary>
         public readonly string ServiceKey;
 
         [OutputConstructor]

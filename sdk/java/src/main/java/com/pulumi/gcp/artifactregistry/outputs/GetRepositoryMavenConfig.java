@@ -11,13 +11,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryMavenConfig {
+    /**
+     * @return The repository with this flag will allow publishing the same
+     * snapshot versions.
+     * 
+     */
     private Boolean allowSnapshotOverwrites;
+    /**
+     * @return Version policy defines the versions that the registry will accept. Default value: &#34;VERSION_POLICY_UNSPECIFIED&#34; Possible values: [&#34;VERSION_POLICY_UNSPECIFIED&#34;, &#34;RELEASE&#34;, &#34;SNAPSHOT&#34;]
+     * 
+     */
     private String versionPolicy;
 
     private GetRepositoryMavenConfig() {}
+    /**
+     * @return The repository with this flag will allow publishing the same
+     * snapshot versions.
+     * 
+     */
     public Boolean allowSnapshotOverwrites() {
         return this.allowSnapshotOverwrites;
     }
+    /**
+     * @return Version policy defines the versions that the registry will accept. Default value: &#34;VERSION_POLICY_UNSPECIFIED&#34; Possible values: [&#34;VERSION_POLICY_UNSPECIFIED&#34;, &#34;RELEASE&#34;, &#34;SNAPSHOT&#34;]
+     * 
+     */
     public String versionPolicy() {
         return this.versionPolicy;
     }

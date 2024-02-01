@@ -14,9 +14,17 @@ public final class NodePoolNodeConfigSandboxConfigArgs extends com.pulumi.resour
 
     public static final NodePoolNodeConfigSandboxConfigArgs Empty = new NodePoolNodeConfigSandboxConfigArgs();
 
+    /**
+     * Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * 
+     */
     @Import(name="sandboxType", required=true)
     private Output<String> sandboxType;
 
+    /**
+     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * 
+     */
     public Output<String> sandboxType() {
         return this.sandboxType;
     }
@@ -45,11 +53,23 @@ public final class NodePoolNodeConfigSandboxConfigArgs extends com.pulumi.resour
             $ = new NodePoolNodeConfigSandboxConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param sandboxType Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sandboxType(Output<String> sandboxType) {
             $.sandboxType = sandboxType;
             return this;
         }
 
+        /**
+         * @param sandboxType Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+         * 
+         * @return builder
+         * 
+         */
         public Builder sandboxType(String sandboxType) {
             return sandboxType(Output.of(sandboxType));
         }

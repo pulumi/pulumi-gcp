@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.CloudFunctions.Inputs
 
     public sealed class FunctionSourceRepositoryGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URL pointing to the hosted repository where the function was defined at the time of deployment.
+        /// </summary>
         [Input("deployedUrl")]
         public Input<string>? DeployedUrl { get; set; }
 

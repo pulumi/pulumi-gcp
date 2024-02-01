@@ -19,7 +19,15 @@ public final class GetBackendServiceConsistentHashHttpCooky {
      * 
      */
     private String name;
+    /**
+     * @return Path to set for the cookie.
+     * 
+     */
     private String path;
+    /**
+     * @return Lifetime of the cookie.
+     * 
+     */
     private List<GetBackendServiceConsistentHashHttpCookyTtl> ttls;
 
     private GetBackendServiceConsistentHashHttpCooky() {}
@@ -32,9 +40,17 @@ public final class GetBackendServiceConsistentHashHttpCooky {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Path to set for the cookie.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return Lifetime of the cookie.
+     * 
+     */
     public List<GetBackendServiceConsistentHashHttpCookyTtl> ttls() {
         return this.ttls;
     }

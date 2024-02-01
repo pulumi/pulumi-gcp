@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.Filestore.Outputs
     [OutputType]
     public sealed class GetInstanceFileShareResult
     {
+        /// <summary>
+        /// File share capacity in GiB. This must be at least 1024 GiB
+        /// for the standard tier, or 2560 GiB for the premium tier.
+        /// </summary>
         public readonly int CapacityGb;
         /// <summary>
         /// The name of a Filestore instance.
@@ -20,7 +24,15 @@ namespace Pulumi.Gcp.Filestore.Outputs
         /// - - -
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Nfs Export Options. There is a limit of 10 export options per file share.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceFileShareNfsExportOptionResult> NfsExportOptions;
+        /// <summary>
+        /// The resource name of the backup, in the format
+        /// projects/{projectId}/locations/{locationId}/backups/{backupId},
+        /// that this file share has been restored from.
+        /// </summary>
         public readonly string SourceBackup;
 
         [OutputConstructor]

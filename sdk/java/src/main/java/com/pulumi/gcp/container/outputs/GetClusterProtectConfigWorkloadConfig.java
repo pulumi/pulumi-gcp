@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterProtectConfigWorkloadConfig {
+    /**
+     * @return Sets which mode of auditing should be used for the cluster&#39;s workloads. Accepted values are DISABLED, BASIC.
+     * 
+     */
     private String auditMode;
 
     private GetClusterProtectConfigWorkloadConfig() {}
+    /**
+     * @return Sets which mode of auditing should be used for the cluster&#39;s workloads. Accepted values are DISABLED, BASIC.
+     * 
+     */
     public String auditMode() {
         return this.auditMode;
     }

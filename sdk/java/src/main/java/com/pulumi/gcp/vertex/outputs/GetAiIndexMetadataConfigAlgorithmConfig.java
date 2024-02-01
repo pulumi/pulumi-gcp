@@ -12,13 +12,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiIndexMetadataConfigAlgorithmConfig {
+    /**
+     * @return Configuration options for using brute force search, which simply implements the
+     * standard linear search in the database for each query.
+     * 
+     */
     private List<GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig> bruteForceConfigs;
+    /**
+     * @return Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+     * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+     * 
+     */
     private List<GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig> treeAhConfigs;
 
     private GetAiIndexMetadataConfigAlgorithmConfig() {}
+    /**
+     * @return Configuration options for using brute force search, which simply implements the
+     * standard linear search in the database for each query.
+     * 
+     */
     public List<GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig> bruteForceConfigs() {
         return this.bruteForceConfigs;
     }
+    /**
+     * @return Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+     * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+     * 
+     */
     public List<GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig> treeAhConfigs() {
         return this.treeAhConfigs;
     }

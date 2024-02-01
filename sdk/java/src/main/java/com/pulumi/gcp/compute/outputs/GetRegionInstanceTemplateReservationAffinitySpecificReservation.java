@@ -16,6 +16,10 @@ public final class GetRegionInstanceTemplateReservationAffinitySpecificReservati
      * 
      */
     private String key;
+    /**
+     * @return Corresponds to the label values of a reservation resource.
+     * 
+     */
     private List<String> values;
 
     private GetRegionInstanceTemplateReservationAffinitySpecificReservation() {}
@@ -26,6 +30,10 @@ public final class GetRegionInstanceTemplateReservationAffinitySpecificReservati
     public String key() {
         return this.key;
     }
+    /**
+     * @return Corresponds to the label values of a reservation resource.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

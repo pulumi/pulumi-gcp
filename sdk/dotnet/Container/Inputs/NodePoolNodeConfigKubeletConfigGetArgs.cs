@@ -12,15 +12,27 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigKubeletConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable CPU CFS quota enforcement for containers that specify CPU limits.
+        /// </summary>
         [Input("cpuCfsQuota")]
         public Input<bool>? CpuCfsQuota { get; set; }
 
+        /// <summary>
+        /// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+        /// </summary>
         [Input("cpuCfsQuotaPeriod")]
         public Input<string>? CpuCfsQuotaPeriod { get; set; }
 
+        /// <summary>
+        /// Control the CPU management policy on the node.
+        /// </summary>
         [Input("cpuManagerPolicy", required: true)]
         public Input<string> CpuManagerPolicy { get; set; } = null!;
 
+        /// <summary>
+        /// Controls the maximum number of processes allowed to run in a pod.
+        /// </summary>
         [Input("podPidsLimit")]
         public Input<int>? PodPidsLimit { get; set; }
 

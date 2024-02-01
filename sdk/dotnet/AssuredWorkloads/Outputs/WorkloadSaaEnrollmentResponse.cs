@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.AssuredWorkloads.Outputs
     [OutputType]
     public sealed class WorkloadSaaEnrollmentResponse
     {
+        /// <summary>
+        /// Indicates SAA enrollment setup error if any.
+        /// </summary>
         public readonly ImmutableArray<string> SetupErrors;
+        /// <summary>
+        /// Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+        /// </summary>
         public readonly string? SetupStatus;
 
         [OutputConstructor]

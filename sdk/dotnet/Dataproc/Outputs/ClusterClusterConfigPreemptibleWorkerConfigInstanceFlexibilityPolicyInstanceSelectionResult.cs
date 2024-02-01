@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// computed value (currently `n1-standard-4`).
         /// </summary>
         public readonly string? MachineType;
+        /// <summary>
+        /// Number of VM provisioned with the machine_type.
+        /// </summary>
         public readonly int? VmCount;
 
         [OutputConstructor]

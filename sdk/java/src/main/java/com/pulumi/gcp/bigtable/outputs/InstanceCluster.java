@@ -44,6 +44,10 @@ public final class InstanceCluster {
      * 
      */
     private @Nullable Integer numNodes;
+    /**
+     * @return The state of the cluster
+     * 
+     */
     private @Nullable String state;
     /**
      * @return The storage type to use. One of `&#34;SSD&#34;` or
@@ -98,6 +102,10 @@ public final class InstanceCluster {
     public Optional<Integer> numNodes() {
         return Optional.ofNullable(this.numNodes);
     }
+    /**
+     * @return The state of the cluster
+     * 
+     */
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }

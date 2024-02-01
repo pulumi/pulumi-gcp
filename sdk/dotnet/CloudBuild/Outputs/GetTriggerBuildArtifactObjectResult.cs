@@ -19,7 +19,13 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// - - -
         /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// Path globs used to match files in the build's workspace.
+        /// </summary>
         public readonly ImmutableArray<string> Paths;
+        /// <summary>
+        /// Output only. Stores timing information for pushing all artifact objects.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTriggerBuildArtifactObjectTimingResult> Timings;
 
         [OutputConstructor]

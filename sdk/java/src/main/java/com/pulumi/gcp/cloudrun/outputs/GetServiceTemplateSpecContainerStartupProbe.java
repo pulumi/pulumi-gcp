@@ -14,33 +14,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerStartupProbe {
+    /**
+     * @return Minimum consecutive failures for the probe to be considered failed after
+     * having succeeded. Defaults to 3. Minimum value is 1.
+     * 
+     */
     private Integer failureThreshold;
+    /**
+     * @return GRPC specifies an action involving a GRPC port.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerStartupProbeGrpc> grpcs;
+    /**
+     * @return HttpGet specifies the http request to perform.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerStartupProbeHttpGet> httpGets;
+    /**
+     * @return Number of seconds after the container has started before the probe is
+     * initiated.
+     * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+     * 
+     */
     private Integer initialDelaySeconds;
+    /**
+     * @return How often (in seconds) to perform the probe.
+     * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+     * 
+     */
     private Integer periodSeconds;
+    /**
+     * @return TcpSocket specifies an action involving a TCP port.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerStartupProbeTcpSocket> tcpSockets;
+    /**
+     * @return Number of seconds after which the probe times out.
+     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+     * Must be smaller than periodSeconds.
+     * 
+     */
     private Integer timeoutSeconds;
 
     private GetServiceTemplateSpecContainerStartupProbe() {}
+    /**
+     * @return Minimum consecutive failures for the probe to be considered failed after
+     * having succeeded. Defaults to 3. Minimum value is 1.
+     * 
+     */
     public Integer failureThreshold() {
         return this.failureThreshold;
     }
+    /**
+     * @return GRPC specifies an action involving a GRPC port.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerStartupProbeGrpc> grpcs() {
         return this.grpcs;
     }
+    /**
+     * @return HttpGet specifies the http request to perform.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerStartupProbeHttpGet> httpGets() {
         return this.httpGets;
     }
+    /**
+     * @return Number of seconds after the container has started before the probe is
+     * initiated.
+     * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+     * 
+     */
     public Integer initialDelaySeconds() {
         return this.initialDelaySeconds;
     }
+    /**
+     * @return How often (in seconds) to perform the probe.
+     * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+     * 
+     */
     public Integer periodSeconds() {
         return this.periodSeconds;
     }
+    /**
+     * @return TcpSocket specifies an action involving a TCP port.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerStartupProbeTcpSocket> tcpSockets() {
         return this.tcpSockets;
     }
+    /**
+     * @return Number of seconds after which the probe times out.
+     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+     * Must be smaller than periodSeconds.
+     * 
+     */
     public Integer timeoutSeconds() {
         return this.timeoutSeconds;
     }

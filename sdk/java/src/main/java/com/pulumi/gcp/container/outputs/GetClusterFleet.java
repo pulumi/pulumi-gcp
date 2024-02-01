@@ -11,7 +11,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterFleet {
+    /**
+     * @return Full resource name of the registered fleet membership of the cluster.
+     * 
+     */
     private String membership;
+    /**
+     * @return Whether the cluster has been registered via the fleet API.
+     * 
+     */
     private Boolean preRegistered;
     /**
      * @return The project in which the resource belongs. If it
@@ -21,9 +29,17 @@ public final class GetClusterFleet {
     private String project;
 
     private GetClusterFleet() {}
+    /**
+     * @return Full resource name of the registered fleet membership of the cluster.
+     * 
+     */
     public String membership() {
         return this.membership;
     }
+    /**
+     * @return Whether the cluster has been registered via the fleet API.
+     * 
+     */
     public Boolean preRegistered() {
         return this.preRegistered;
     }

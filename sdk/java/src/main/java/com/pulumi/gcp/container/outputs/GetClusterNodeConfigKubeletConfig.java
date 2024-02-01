@@ -12,21 +12,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigKubeletConfig {
+    /**
+     * @return Enable CPU CFS quota enforcement for containers that specify CPU limits.
+     * 
+     */
     private Boolean cpuCfsQuota;
+    /**
+     * @return Set the CPU CFS quota period value &#39;cpu.cfs_period_us&#39;.
+     * 
+     */
     private String cpuCfsQuotaPeriod;
+    /**
+     * @return Control the CPU management policy on the node.
+     * 
+     */
     private String cpuManagerPolicy;
+    /**
+     * @return Controls the maximum number of processes allowed to run in a pod.
+     * 
+     */
     private Integer podPidsLimit;
 
     private GetClusterNodeConfigKubeletConfig() {}
+    /**
+     * @return Enable CPU CFS quota enforcement for containers that specify CPU limits.
+     * 
+     */
     public Boolean cpuCfsQuota() {
         return this.cpuCfsQuota;
     }
+    /**
+     * @return Set the CPU CFS quota period value &#39;cpu.cfs_period_us&#39;.
+     * 
+     */
     public String cpuCfsQuotaPeriod() {
         return this.cpuCfsQuotaPeriod;
     }
+    /**
+     * @return Control the CPU management policy on the node.
+     * 
+     */
     public String cpuManagerPolicy() {
         return this.cpuManagerPolicy;
     }
+    /**
+     * @return Controls the maximum number of processes allowed to run in a pod.
+     * 
+     */
     public Integer podPidsLimit() {
         return this.podPidsLimit;
     }

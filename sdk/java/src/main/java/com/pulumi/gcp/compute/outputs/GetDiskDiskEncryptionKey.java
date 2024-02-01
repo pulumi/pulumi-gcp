@@ -10,25 +10,83 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDiskDiskEncryptionKey {
+    /**
+     * @return The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+     * in the cloud console. Your project&#39;s Compute Engine System service account
+     * (&#39;service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com&#39;) must have
+     * &#39;roles/cloudkms.cryptoKeyEncrypterDecrypter&#39; to use this feature.
+     * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * 
+     */
     private String kmsKeySelfLink;
+    /**
+     * @return The service account used for the encryption request for the given KMS key.
+     * If absent, the Compute Engine Service Agent service account is used.
+     * 
+     */
     private String kmsKeyServiceAccount;
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
     private String rawKey;
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * 
+     */
     private String rsaEncryptedKey;
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * encryption key that protects this resource.
+     * 
+     */
     private String sha256;
 
     private GetDiskDiskEncryptionKey() {}
+    /**
+     * @return The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+     * in the cloud console. Your project&#39;s Compute Engine System service account
+     * (&#39;service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com&#39;) must have
+     * &#39;roles/cloudkms.cryptoKeyEncrypterDecrypter&#39; to use this feature.
+     * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+     * 
+     */
     public String kmsKeySelfLink() {
         return this.kmsKeySelfLink;
     }
+    /**
+     * @return The service account used for the encryption request for the given KMS key.
+     * If absent, the Compute Engine Service Agent service account is used.
+     * 
+     */
     public String kmsKeyServiceAccount() {
         return this.kmsKeyServiceAccount;
     }
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
     public String rawKey() {
         return this.rawKey;
     }
+    /**
+     * @return Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+     * customer-supplied encryption key to either encrypt or decrypt
+     * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+     * 
+     */
     public String rsaEncryptedKey() {
         return this.rsaEncryptedKey;
     }
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * encryption key that protects this resource.
+     * 
+     */
     public String sha256() {
         return this.sha256;
     }

@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
     public sealed class LakeAssetStatusArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of active assets.
+        /// </summary>
         [Input("activeAssets")]
         public Input<int>? ActiveAssets { get; set; }
 
+        /// <summary>
+        /// Number of assets that are in process of updating the security policy on attached resources.
+        /// </summary>
         [Input("securityPolicyApplyingAssets")]
         public Input<int>? SecurityPolicyApplyingAssets { get; set; }
 

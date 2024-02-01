@@ -15,9 +15,17 @@ public final class NodePoolNodeConfigSoleTenantConfigArgs extends com.pulumi.res
 
     public static final NodePoolNodeConfigSoleTenantConfigArgs Empty = new NodePoolNodeConfigSoleTenantConfigArgs();
 
+    /**
+     * .
+     * 
+     */
     @Import(name="nodeAffinities", required=true)
     private Output<List<NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<List<NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities() {
         return this.nodeAffinities;
     }
@@ -46,15 +54,33 @@ public final class NodePoolNodeConfigSoleTenantConfigArgs extends com.pulumi.res
             $ = new NodePoolNodeConfigSoleTenantConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeAffinities .
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(Output<List<NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities) {
             $.nodeAffinities = nodeAffinities;
             return this;
         }
 
+        /**
+         * @param nodeAffinities .
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(List<NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs> nodeAffinities) {
             return nodeAffinities(Output.of(nodeAffinities));
         }
 
+        /**
+         * @param nodeAffinities .
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs... nodeAffinities) {
             return nodeAffinities(List.of(nodeAffinities));
         }

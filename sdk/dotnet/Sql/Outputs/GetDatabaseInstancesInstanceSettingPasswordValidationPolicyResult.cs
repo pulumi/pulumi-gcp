@@ -13,11 +13,29 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult
     {
+        /// <summary>
+        /// Password complexity.
+        /// </summary>
         public readonly string Complexity;
+        /// <summary>
+        /// Disallow username as a part of the password.
+        /// </summary>
         public readonly bool DisallowUsernameSubstring;
+        /// <summary>
+        /// Whether the password policy is enabled or not.
+        /// </summary>
         public readonly bool EnablePasswordPolicy;
+        /// <summary>
+        /// Minimum number of characters allowed.
+        /// </summary>
         public readonly int MinLength;
+        /// <summary>
+        /// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+        /// </summary>
         public readonly string PasswordChangeInterval;
+        /// <summary>
+        /// Number of previous passwords that cannot be reused.
+        /// </summary>
         public readonly int ReuseInterval;
 
         [OutputConstructor]

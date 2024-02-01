@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The key for the node affinity label.
         /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// Corresponds to the label values of a reservation resource.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

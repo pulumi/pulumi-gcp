@@ -10,21 +10,63 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceAutoscalingConfigAutoscalingLimit {
+    /**
+     * @return Specifies maximum number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to min_nodes.
+     * 
+     */
     private Integer maxNodes;
+    /**
+     * @return Specifies maximum number of processing units allocated to the instance.
+     * If set, this number should be multiples of 1000 and be greater than or equal to
+     * min_processing_units.
+     * 
+     */
     private Integer maxProcessingUnits;
+    /**
+     * @return Specifies number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to 1.
+     * 
+     */
     private Integer minNodes;
+    /**
+     * @return Specifies minimum number of processing units allocated to the instance.
+     * If set, this number should be multiples of 1000.
+     * 
+     */
     private Integer minProcessingUnits;
 
     private GetInstanceAutoscalingConfigAutoscalingLimit() {}
+    /**
+     * @return Specifies maximum number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to min_nodes.
+     * 
+     */
     public Integer maxNodes() {
         return this.maxNodes;
     }
+    /**
+     * @return Specifies maximum number of processing units allocated to the instance.
+     * If set, this number should be multiples of 1000 and be greater than or equal to
+     * min_processing_units.
+     * 
+     */
     public Integer maxProcessingUnits() {
         return this.maxProcessingUnits;
     }
+    /**
+     * @return Specifies number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to 1.
+     * 
+     */
     public Integer minNodes() {
         return this.minNodes;
     }
+    /**
+     * @return Specifies minimum number of processing units allocated to the instance.
+     * If set, this number should be multiples of 1000.
+     * 
+     */
     public Integer minProcessingUnits() {
         return this.minProcessingUnits;
     }

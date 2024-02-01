@@ -13,14 +13,30 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AssetDiscoveryStatus {
+    /**
+     * @return The duration of the last discovery run.
+     * 
+     */
     private @Nullable String lastRunDuration;
+    /**
+     * @return The start time of the last discovery run.
+     * 
+     */
     private @Nullable String lastRunTime;
+    /**
+     * @return Additional information about the current state.
+     * 
+     */
     private @Nullable String message;
     /**
      * @return Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      * 
      */
     private @Nullable String state;
+    /**
+     * @return Data Stats of the asset reported by discovery.
+     * 
+     */
     private @Nullable List<AssetDiscoveryStatusStat> stats;
     /**
      * @return Output only. The time when the asset was last updated.
@@ -29,12 +45,24 @@ public final class AssetDiscoveryStatus {
     private @Nullable String updateTime;
 
     private AssetDiscoveryStatus() {}
+    /**
+     * @return The duration of the last discovery run.
+     * 
+     */
     public Optional<String> lastRunDuration() {
         return Optional.ofNullable(this.lastRunDuration);
     }
+    /**
+     * @return The start time of the last discovery run.
+     * 
+     */
     public Optional<String> lastRunTime() {
         return Optional.ofNullable(this.lastRunTime);
     }
+    /**
+     * @return Additional information about the current state.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
@@ -45,6 +73,10 @@ public final class AssetDiscoveryStatus {
     public Optional<String> state() {
         return Optional.ofNullable(this.state);
     }
+    /**
+     * @return Data Stats of the asset reported by discovery.
+     * 
+     */
     public List<AssetDiscoveryStatusStat> stats() {
         return this.stats == null ? List.of() : this.stats;
     }

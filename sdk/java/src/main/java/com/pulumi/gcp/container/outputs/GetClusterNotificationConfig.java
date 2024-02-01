@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNotificationConfig {
+    /**
+     * @return Notification config for Cloud Pub/Sub
+     * 
+     */
     private List<GetClusterNotificationConfigPubsub> pubsubs;
 
     private GetClusterNotificationConfig() {}
+    /**
+     * @return Notification config for Cloud Pub/Sub
+     * 
+     */
     public List<GetClusterNotificationConfigPubsub> pubsubs() {
         return this.pubsubs;
     }

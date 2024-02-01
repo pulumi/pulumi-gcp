@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+    /**
+     * @return Whether or not Cloud Data Lineage integration is enabled.
+     * 
+     */
     private Boolean enabled;
 
     private EnvironmentConfigSoftwareConfigCloudDataLineageIntegration() {}
+    /**
+     * @return Whether or not Cloud Data Lineage integration is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

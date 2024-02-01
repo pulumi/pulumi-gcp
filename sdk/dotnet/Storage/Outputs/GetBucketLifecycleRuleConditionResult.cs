@@ -13,17 +13,54 @@ namespace Pulumi.Gcp.Storage.Outputs
     [OutputType]
     public sealed class GetBucketLifecycleRuleConditionResult
     {
+        /// <summary>
+        /// Minimum age of an object in days to satisfy this condition.
+        /// </summary>
         public readonly int Age;
+        /// <summary>
+        /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        /// </summary>
         public readonly string CreatedBefore;
+        /// <summary>
+        /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        /// </summary>
         public readonly string CustomTimeBefore;
+        /// <summary>
+        /// Number of days elapsed since the user-specified timestamp set on an object.
+        /// </summary>
         public readonly int DaysSinceCustomTime;
+        /// <summary>
+        /// Number of days elapsed since the noncurrent timestamp of an object. This
+        /// 										condition is relevant only for versioned objects.
+        /// </summary>
         public readonly int DaysSinceNoncurrentTime;
+        /// <summary>
+        /// One or more matching name prefixes to satisfy this condition.
+        /// </summary>
         public readonly ImmutableArray<string> MatchesPrefixes;
+        /// <summary>
+        /// Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
+        /// </summary>
         public readonly ImmutableArray<string> MatchesStorageClasses;
+        /// <summary>
+        /// One or more matching name suffixes to satisfy this condition.
+        /// </summary>
         public readonly ImmutableArray<string> MatchesSuffixes;
+        /// <summary>
+        /// While set true, age value will be omitted.Required to set true when age is unset in the config file.
+        /// </summary>
         public readonly bool NoAge;
+        /// <summary>
+        /// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+        /// </summary>
         public readonly string NoncurrentTimeBefore;
+        /// <summary>
+        /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+        /// </summary>
         public readonly int NumNewerVersions;
+        /// <summary>
+        /// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
+        /// </summary>
         public readonly string WithState;
 
         [OutputConstructor]

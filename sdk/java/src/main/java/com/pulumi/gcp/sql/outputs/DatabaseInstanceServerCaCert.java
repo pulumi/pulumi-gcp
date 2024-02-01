@@ -11,8 +11,20 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatabaseInstanceServerCaCert {
+    /**
+     * @return The CA Certificate used to connect to the SQL Instance via SSL.
+     * 
+     */
     private @Nullable String cert;
+    /**
+     * @return The CN valid for the CA Cert.
+     * 
+     */
     private @Nullable String commonName;
+    /**
+     * @return Creation time of the CA Cert.
+     * 
+     */
     private @Nullable String createTime;
     /**
      * @return The [RFC 3339](https://tools.ietf.org/html/rfc3339)
@@ -20,15 +32,31 @@ public final class DatabaseInstanceServerCaCert {
      * 
      */
     private @Nullable String expirationTime;
+    /**
+     * @return SHA Fingerprint of the CA Cert.
+     * 
+     */
     private @Nullable String sha1Fingerprint;
 
     private DatabaseInstanceServerCaCert() {}
+    /**
+     * @return The CA Certificate used to connect to the SQL Instance via SSL.
+     * 
+     */
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
+    /**
+     * @return The CN valid for the CA Cert.
+     * 
+     */
     public Optional<String> commonName() {
         return Optional.ofNullable(this.commonName);
     }
+    /**
+     * @return Creation time of the CA Cert.
+     * 
+     */
     public Optional<String> createTime() {
         return Optional.ofNullable(this.createTime);
     }
@@ -40,6 +68,10 @@ public final class DatabaseInstanceServerCaCert {
     public Optional<String> expirationTime() {
         return Optional.ofNullable(this.expirationTime);
     }
+    /**
+     * @return SHA Fingerprint of the CA Cert.
+     * 
+     */
     public Optional<String> sha1Fingerprint() {
         return Optional.ofNullable(this.sha1Fingerprint);
     }

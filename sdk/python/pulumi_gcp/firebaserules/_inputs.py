@@ -19,12 +19,18 @@ __all__ = [
 class RulesetMetadataArgs:
     def __init__(__self__, *,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+        """
         if services is not None:
             pulumi.set(__self__, "services", services)
 
     @property
     @pulumi.getter
     def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+        """
         return pulumi.get(self, "services")
 
     @services.setter

@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCertificateMapGclbTargetIpConfig {
+    /**
+     * @return An external IP address
+     * 
+     */
     private String ipAddress;
+    /**
+     * @return A list of ports
+     * 
+     */
     private List<Integer> ports;
 
     private GetCertificateMapGclbTargetIpConfig() {}
+    /**
+     * @return An external IP address
+     * 
+     */
     public String ipAddress() {
         return this.ipAddress;
     }
+    /**
+     * @return A list of ports
+     * 
+     */
     public List<Integer> ports() {
         return this.ports;
     }

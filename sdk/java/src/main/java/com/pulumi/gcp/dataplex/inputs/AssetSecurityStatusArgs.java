@@ -15,9 +15,17 @@ public final class AssetSecurityStatusArgs extends com.pulumi.resources.Resource
 
     public static final AssetSecurityStatusArgs Empty = new AssetSecurityStatusArgs();
 
+    /**
+     * Additional information about the current state.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Additional information about the current state.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
@@ -78,11 +86,23 @@ public final class AssetSecurityStatusArgs extends com.pulumi.resources.Resource
             $ = new AssetSecurityStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param message Additional information about the current state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Additional information about the current state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }

@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Mode for how the GPU driver is installed.
+        /// </summary>
         [Input("gpuDriverVersion", required: true)]
         public Input<string> GpuDriverVersion { get; set; } = null!;
 

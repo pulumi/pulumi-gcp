@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigShieldedInstanceConfig {
+    /**
+     * @return Defines whether the instance has integrity monitoring enabled.
+     * 
+     */
     private Boolean enableIntegrityMonitoring;
+    /**
+     * @return Defines whether the instance has Secure Boot enabled.
+     * 
+     */
     private Boolean enableSecureBoot;
 
     private GetClusterNodePoolNodeConfigShieldedInstanceConfig() {}
+    /**
+     * @return Defines whether the instance has integrity monitoring enabled.
+     * 
+     */
     public Boolean enableIntegrityMonitoring() {
         return this.enableIntegrityMonitoring;
     }
+    /**
+     * @return Defines whether the instance has Secure Boot enabled.
+     * 
+     */
     public Boolean enableSecureBoot() {
         return this.enableSecureBoot;
     }

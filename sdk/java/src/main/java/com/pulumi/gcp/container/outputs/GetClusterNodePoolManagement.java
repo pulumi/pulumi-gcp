@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolManagement {
+    /**
+     * @return Whether the nodes will be automatically repaired. Enabled by default.
+     * 
+     */
     private Boolean autoRepair;
+    /**
+     * @return Whether the nodes will be automatically upgraded. Enabled by default.
+     * 
+     */
     private Boolean autoUpgrade;
 
     private GetClusterNodePoolManagement() {}
+    /**
+     * @return Whether the nodes will be automatically repaired. Enabled by default.
+     * 
+     */
     public Boolean autoRepair() {
         return this.autoRepair;
     }
+    /**
+     * @return Whether the nodes will be automatically upgraded. Enabled by default.
+     * 
+     */
     public Boolean autoUpgrade() {
         return this.autoUpgrade;
     }

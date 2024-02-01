@@ -38,8 +38,14 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Specifies if connections must use Cloud SQL connectors.
         /// </summary>
         public readonly string? ConnectorEnforcement;
+        /// <summary>
+        /// Data cache configurations.
+        /// </summary>
         public readonly Outputs.DatabaseInstanceSettingsDataCacheConfig? DataCacheConfig;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> DatabaseFlags;
+        /// <summary>
+        /// Configuration to protect against accidental instance deletion.
+        /// </summary>
         public readonly bool? DeletionProtectionEnabled;
         public readonly Outputs.DatabaseInstanceSettingsDenyMaintenancePeriod? DenyMaintenancePeriod;
         /// <summary>
@@ -62,9 +68,15 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         /// </summary>
         public readonly string? Edition;
+        /// <summary>
+        /// Configuration of Query Insights.
+        /// </summary>
         public readonly Outputs.DatabaseInstanceSettingsInsightsConfig? InsightsConfig;
         public readonly Outputs.DatabaseInstanceSettingsIpConfiguration? IpConfiguration;
         public readonly Outputs.DatabaseInstanceSettingsLocationPreference? LocationPreference;
+        /// <summary>
+        /// Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        /// </summary>
         public readonly Outputs.DatabaseInstanceSettingsMaintenanceWindow? MaintenanceWindow;
         public readonly Outputs.DatabaseInstanceSettingsPasswordValidationPolicy? PasswordValidationPolicy;
         /// <summary>
@@ -86,6 +98,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// A set of key/value user label pairs to assign to the instance.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? UserLabels;
+        /// <summary>
+        /// Used to make sure changes to the settings block are atomic.
+        /// </summary>
         public readonly int? Version;
 
         [OutputConstructor]

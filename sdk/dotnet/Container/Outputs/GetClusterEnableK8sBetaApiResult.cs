@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterEnableK8sBetaApiResult
     {
+        /// <summary>
+        /// Enabled Kubernetes Beta APIs.
+        /// </summary>
         public readonly ImmutableArray<string> EnabledApis;
 
         [OutputConstructor]

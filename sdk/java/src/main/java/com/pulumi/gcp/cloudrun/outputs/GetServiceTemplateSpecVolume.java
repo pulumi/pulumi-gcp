@@ -13,15 +13,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecVolume {
+    /**
+     * @return Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+     * 
+     */
     private List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs;
     /**
      * @return The name of the Cloud Run Service.
      * 
      */
     private String name;
+    /**
+     * @return The secret&#39;s value will be presented as the content of a file whose
+     * name is defined in the item path. If no items are defined, the name of
+     * the file is the secret_name.
+     * 
+     */
     private List<GetServiceTemplateSpecVolumeSecret> secrets;
 
     private GetServiceTemplateSpecVolume() {}
+    /**
+     * @return Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+     * 
+     */
     public List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs() {
         return this.emptyDirs;
     }
@@ -32,6 +46,12 @@ public final class GetServiceTemplateSpecVolume {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The secret&#39;s value will be presented as the content of a file whose
+     * name is defined in the item path. If no items are defined, the name of
+     * the file is the secret_name.
+     * 
+     */
     public List<GetServiceTemplateSpecVolumeSecret> secrets() {
         return this.secrets;
     }

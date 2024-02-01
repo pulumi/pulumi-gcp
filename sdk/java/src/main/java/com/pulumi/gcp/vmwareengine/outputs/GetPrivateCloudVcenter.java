@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPrivateCloudVcenter {
+    /**
+     * @return Fully qualified domain name of the appliance.
+     * 
+     */
     private String fqdn;
+    /**
+     * @return Internal IP address of the appliance.
+     * 
+     */
     private String internalIp;
+    /**
+     * @return State of the appliance. Possible values: [&#34;ACTIVE&#34;, &#34;CREATING&#34;]
+     * 
+     */
     private String state;
+    /**
+     * @return Version of the appliance.
+     * 
+     */
     private String version;
 
     private GetPrivateCloudVcenter() {}
+    /**
+     * @return Fully qualified domain name of the appliance.
+     * 
+     */
     public String fqdn() {
         return this.fqdn;
     }
+    /**
+     * @return Internal IP address of the appliance.
+     * 
+     */
     public String internalIp() {
         return this.internalIp;
     }
+    /**
+     * @return State of the appliance. Possible values: [&#34;ACTIVE&#34;, &#34;CREATING&#34;]
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return Version of the appliance.
+     * 
+     */
     public String version() {
         return this.version;
     }

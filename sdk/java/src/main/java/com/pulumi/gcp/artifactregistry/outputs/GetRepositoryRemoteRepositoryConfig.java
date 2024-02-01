@@ -18,37 +18,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfig {
+    /**
+     * @return Specific settings for an Apt remote repository.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories;
+    /**
+     * @return The description of the remote source.
+     * 
+     */
     private String description;
+    /**
+     * @return Specific settings for a Docker remote repository.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigDockerRepository> dockerRepositories;
+    /**
+     * @return Specific settings for a Maven remote repository.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories;
+    /**
+     * @return Specific settings for an Npm remote repository.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories;
+    /**
+     * @return Specific settings for a Python remote repository.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories;
+    /**
+     * @return The credentials used to access the remote repository.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigUpstreamCredential> upstreamCredentials;
+    /**
+     * @return Specific settings for an Yum remote repository.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories;
 
     private GetRepositoryRemoteRepositoryConfig() {}
+    /**
+     * @return Specific settings for an Apt remote repository.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories() {
         return this.aptRepositories;
     }
+    /**
+     * @return The description of the remote source.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Specific settings for a Docker remote repository.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigDockerRepository> dockerRepositories() {
         return this.dockerRepositories;
     }
+    /**
+     * @return Specific settings for a Maven remote repository.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories() {
         return this.mavenRepositories;
     }
+    /**
+     * @return Specific settings for an Npm remote repository.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories() {
         return this.npmRepositories;
     }
+    /**
+     * @return Specific settings for a Python remote repository.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories() {
         return this.pythonRepositories;
     }
+    /**
+     * @return The credentials used to access the remote repository.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigUpstreamCredential> upstreamCredentials() {
         return this.upstreamCredentials;
     }
+    /**
+     * @return Specific settings for an Yum remote repository.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories() {
         return this.yumRepositories;
     }

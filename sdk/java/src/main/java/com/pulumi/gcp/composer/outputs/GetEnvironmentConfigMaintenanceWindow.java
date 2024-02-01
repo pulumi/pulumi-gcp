@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigMaintenanceWindow {
+    /**
+     * @return Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to &#39;start_time&#39;.
+     * 
+     */
     private String endTime;
+    /**
+     * @return Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) &#39;RRULE&#39;. The only allowed values for &#39;FREQ&#39; field are &#39;FREQ=DAILY&#39; and &#39;FREQ=WEEKLY;BYDAY=...&#39;. Example values: &#39;FREQ=WEEKLY;BYDAY=TU,WE&#39;, &#39;FREQ=DAILY&#39;.
+     * 
+     */
     private String recurrence;
+    /**
+     * @return Start time of the first recurrence of the maintenance window.
+     * 
+     */
     private String startTime;
 
     private GetEnvironmentConfigMaintenanceWindow() {}
+    /**
+     * @return Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to &#39;start_time&#39;.
+     * 
+     */
     public String endTime() {
         return this.endTime;
     }
+    /**
+     * @return Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) &#39;RRULE&#39;. The only allowed values for &#39;FREQ&#39; field are &#39;FREQ=DAILY&#39; and &#39;FREQ=WEEKLY;BYDAY=...&#39;. Example values: &#39;FREQ=WEEKLY;BYDAY=TU,WE&#39;, &#39;FREQ=DAILY&#39;.
+     * 
+     */
     public String recurrence() {
         return this.recurrence;
     }
+    /**
+     * @return Start time of the first recurrence of the maintenance window.
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }

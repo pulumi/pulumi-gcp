@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetServiceTemplateVolumeGcResult
     {
+        /// <summary>
+        /// GCS Bucket name
+        /// </summary>
         public readonly string Bucket;
+        /// <summary>
+        /// If true, mount the GCS bucket as read-only
+        /// </summary>
         public readonly bool ReadOnly;
 
         [OutputConstructor]

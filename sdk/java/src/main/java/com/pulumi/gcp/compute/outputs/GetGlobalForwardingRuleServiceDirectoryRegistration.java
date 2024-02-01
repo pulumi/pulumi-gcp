@@ -10,13 +10,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGlobalForwardingRuleServiceDirectoryRegistration {
+    /**
+     * @return Service Directory namespace to register the forwarding rule under.
+     * 
+     */
     private String namespace;
+    /**
+     * @return [Optional] Service Directory region to register this global forwarding rule under.
+     * Default to &#34;us-central1&#34;. Only used for PSC for Google APIs. All PSC for
+     * Google APIs Forwarding Rules on the same network should use the same Service
+     * Directory region.
+     * 
+     */
     private String serviceDirectoryRegion;
 
     private GetGlobalForwardingRuleServiceDirectoryRegistration() {}
+    /**
+     * @return Service Directory namespace to register the forwarding rule under.
+     * 
+     */
     public String namespace() {
         return this.namespace;
     }
+    /**
+     * @return [Optional] Service Directory region to register this global forwarding rule under.
+     * Default to &#34;us-central1&#34;. Only used for PSC for Google APIs. All PSC for
+     * Google APIs Forwarding Rules on the same network should use the same Service
+     * Directory region.
+     * 
+     */
     public String serviceDirectoryRegion() {
         return this.serviceDirectoryRegion;
     }
