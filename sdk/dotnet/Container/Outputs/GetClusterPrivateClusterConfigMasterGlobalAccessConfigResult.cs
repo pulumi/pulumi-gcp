@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterPrivateClusterConfigMasterGlobalAccessConfigResult
     {
+        /// <summary>
+        /// Whether the cluster master is accessible globally or not.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

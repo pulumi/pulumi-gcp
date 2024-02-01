@@ -32,9 +32,25 @@ public final class GetInstanceTemplateNetworkInterface {
      * 
      */
     private List<GetInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+    /**
+     * @return The prefix length of the primary internal IPv6 range.
+     * 
+     */
     private Integer internalIpv6PrefixLength;
+    /**
+     * @return An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+     * 
+     */
     private List<GetInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
+    /**
+     * @return One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+     * 
+     */
     private String ipv6AccessType;
+    /**
+     * @return An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     private String ipv6Address;
     /**
      * @return The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
@@ -48,6 +64,10 @@ public final class GetInstanceTemplateNetworkInterface {
      * 
      */
     private String network;
+    /**
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
     private String networkAttachment;
     /**
      * @return The private IP address to assign to the instance. If
@@ -55,8 +75,20 @@ public final class GetInstanceTemplateNetworkInterface {
      * 
      */
     private String networkIp;
+    /**
+     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+     * 
+     */
     private String nicType;
+    /**
+     * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+     * 
+     */
     private Integer queueCount;
+    /**
+     * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+     * 
+     */
     private String stackType;
     /**
      * @return the name of the subnetwork to attach this interface
@@ -94,15 +126,31 @@ public final class GetInstanceTemplateNetworkInterface {
     public List<GetInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges;
     }
+    /**
+     * @return The prefix length of the primary internal IPv6 range.
+     * 
+     */
     public Integer internalIpv6PrefixLength() {
         return this.internalIpv6PrefixLength;
     }
+    /**
+     * @return An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+     * 
+     */
     public List<GetInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs() {
         return this.ipv6AccessConfigs;
     }
+    /**
+     * @return One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+     * 
+     */
     public String ipv6AccessType() {
         return this.ipv6AccessType;
     }
+    /**
+     * @return An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     public String ipv6Address() {
         return this.ipv6Address;
     }
@@ -122,6 +170,10 @@ public final class GetInstanceTemplateNetworkInterface {
     public String network() {
         return this.network;
     }
+    /**
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * 
+     */
     public String networkAttachment() {
         return this.networkAttachment;
     }
@@ -133,12 +185,24 @@ public final class GetInstanceTemplateNetworkInterface {
     public String networkIp() {
         return this.networkIp;
     }
+    /**
+     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+     * 
+     */
     public String nicType() {
         return this.nicType;
     }
+    /**
+     * @return The networking queue count that&#39;s specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+     * 
+     */
     public Integer queueCount() {
         return this.queueCount;
     }
+    /**
+     * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+     * 
+     */
     public String stackType() {
         return this.stackType;
     }

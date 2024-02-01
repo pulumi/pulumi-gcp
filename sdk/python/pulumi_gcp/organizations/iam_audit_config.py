@@ -158,7 +158,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
         config = gcp.organizations.IamAuditConfig("config",
             audit_log_configs=[gcp.organizations.IamAuditConfigAuditLogConfigArgs(
-                exempted_members=["user:joebloggs@hashicorp.com"],
+                exempted_members=["user:joebloggs@example.com"],
                 log_type="DATA_READ",
             )],
             org_id="your-organization-id",
@@ -196,7 +196,7 @@ class IamAuditConfig(pulumi.CustomResource):
 
         config = gcp.organizations.IamAuditConfig("config",
             audit_log_configs=[gcp.organizations.IamAuditConfigAuditLogConfigArgs(
-                exempted_members=["user:joebloggs@hashicorp.com"],
+                exempted_members=["user:joebloggs@example.com"],
                 log_type="DATA_READ",
             )],
             org_id="your-organization-id",

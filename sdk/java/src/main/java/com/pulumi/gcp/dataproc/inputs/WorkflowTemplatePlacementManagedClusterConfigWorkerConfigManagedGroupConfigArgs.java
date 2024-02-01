@@ -15,16 +15,32 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigMana
 
     public static final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs();
 
+    /**
+     * Output only. The name of the Instance Group Manager for this group.
+     * 
+     */
     @Import(name="instanceGroupManagerName")
     private @Nullable Output<String> instanceGroupManagerName;
 
+    /**
+     * @return Output only. The name of the Instance Group Manager for this group.
+     * 
+     */
     public Optional<Output<String>> instanceGroupManagerName() {
         return Optional.ofNullable(this.instanceGroupManagerName);
     }
 
+    /**
+     * Output only. The name of the Instance Template used for the Managed Instance Group.
+     * 
+     */
     @Import(name="instanceTemplateName")
     private @Nullable Output<String> instanceTemplateName;
 
+    /**
+     * @return Output only. The name of the Instance Template used for the Managed Instance Group.
+     * 
+     */
     public Optional<Output<String>> instanceTemplateName() {
         return Optional.ofNullable(this.instanceTemplateName);
     }
@@ -54,20 +70,44 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigMana
             $ = new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param instanceGroupManagerName Output only. The name of the Instance Group Manager for this group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceGroupManagerName(@Nullable Output<String> instanceGroupManagerName) {
             $.instanceGroupManagerName = instanceGroupManagerName;
             return this;
         }
 
+        /**
+         * @param instanceGroupManagerName Output only. The name of the Instance Group Manager for this group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceGroupManagerName(String instanceGroupManagerName) {
             return instanceGroupManagerName(Output.of(instanceGroupManagerName));
         }
 
+        /**
+         * @param instanceTemplateName Output only. The name of the Instance Template used for the Managed Instance Group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceTemplateName(@Nullable Output<String> instanceTemplateName) {
             $.instanceTemplateName = instanceTemplateName;
             return this;
         }
 
+        /**
+         * @param instanceTemplateName Output only. The name of the Instance Template used for the Managed Instance Group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceTemplateName(String instanceTemplateName) {
             return instanceTemplateName(Output.of(instanceTemplateName));
         }

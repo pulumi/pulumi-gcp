@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult
     {
+        /// <summary>
+        /// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
+        /// </summary>
         public readonly string PublicRepository;
 
         [OutputConstructor]

@@ -16,16 +16,32 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
 
     public static final ClusterNodePoolPlacementPolicyArgs Empty = new ClusterNodePoolPlacementPolicyArgs();
 
+    /**
+     * If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+     * 
+     */
     @Import(name="policyName")
     private @Nullable Output<String> policyName;
 
+    /**
+     * @return If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+     * 
+     */
     public Optional<Output<String>> policyName() {
         return Optional.ofNullable(this.policyName);
     }
 
+    /**
+     * TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+     * 
+     */
     @Import(name="tpuTopology")
     private @Nullable Output<String> tpuTopology;
 
+    /**
+     * @return TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+     * 
+     */
     public Optional<Output<String>> tpuTopology() {
         return Optional.ofNullable(this.tpuTopology);
     }
@@ -73,20 +89,44 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
             $ = new ClusterNodePoolPlacementPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param policyName If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policyName(@Nullable Output<String> policyName) {
             $.policyName = policyName;
             return this;
         }
 
+        /**
+         * @param policyName If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+         * 
+         * @return builder
+         * 
+         */
         public Builder policyName(String policyName) {
             return policyName(Output.of(policyName));
         }
 
+        /**
+         * @param tpuTopology TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+         * 
+         * @return builder
+         * 
+         */
         public Builder tpuTopology(@Nullable Output<String> tpuTopology) {
             $.tpuTopology = tpuTopology;
             return this;
         }
 
+        /**
+         * @param tpuTopology TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+         * 
+         * @return builder
+         * 
+         */
         public Builder tpuTopology(String tpuTopology) {
             return tpuTopology(Output.of(tpuTopology));
         }

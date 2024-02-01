@@ -10,13 +10,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworkVpcNetwork {
+    /**
+     * @return The relative resource name of the service VPC network this VMware Engine network is attached to.
+     * For example: projects/123123/global/networks/my-network
+     * 
+     */
     private String network;
+    /**
+     * @return Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
+     * 
+     */
     private String type;
 
     private GetNetworkVpcNetwork() {}
+    /**
+     * @return The relative resource name of the service VPC network this VMware Engine network is attached to.
+     * For example: projects/123123/global/networks/my-network
+     * 
+     */
     public String network() {
         return this.network;
     }
+    /**
+     * @return Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
+     * 
+     */
     public String type() {
         return this.type;
     }

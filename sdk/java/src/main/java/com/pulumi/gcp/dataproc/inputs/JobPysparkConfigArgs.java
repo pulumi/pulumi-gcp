@@ -79,9 +79,17 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.jarFileUris);
     }
 
+    /**
+     * The runtime logging config of the job
+     * 
+     */
     @Import(name="loggingConfig")
     private @Nullable Output<JobPysparkConfigLoggingConfigArgs> loggingConfig;
 
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<Output<JobPysparkConfigLoggingConfigArgs>> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }
@@ -290,11 +298,23 @@ public final class JobPysparkConfigArgs extends com.pulumi.resources.ResourceArg
             return jarFileUris(List.of(jarFileUris));
         }
 
+        /**
+         * @param loggingConfig The runtime logging config of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(@Nullable Output<JobPysparkConfigLoggingConfigArgs> loggingConfig) {
             $.loggingConfig = loggingConfig;
             return this;
         }
 
+        /**
+         * @param loggingConfig The runtime logging config of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(JobPysparkConfigLoggingConfigArgs loggingConfig) {
             return loggingConfig(Output.of(loggingConfig));
         }

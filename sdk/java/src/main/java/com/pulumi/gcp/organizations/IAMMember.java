@@ -295,7 +295,7 @@ import javax.annotation.Nullable;
  *                     .logType(&#34;ADMIN_READ&#34;)
  *                     .build(),
  *                 IamAuditConfigAuditLogConfigArgs.builder()
- *                     .exemptedMembers(&#34;user:joebloggs@hashicorp.com&#34;)
+ *                     .exemptedMembers(&#34;user:joebloggs@example.com&#34;)
  *                     .logType(&#34;DATA_READ&#34;)
  *                     .build())
  *             .orgId(&#34;1234567890&#34;)

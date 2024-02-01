@@ -11,13 +11,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildSecret {
+    /**
+     * @return Cloud KMS key name to use to decrypt these envs.
+     * 
+     */
     private String kmsKeyName;
+    /**
+     * @return Map of environment variable name to its encrypted value.
+     * Secret environment variables must be unique across all of a build&#39;s secrets,
+     * and must be used by at least one build step. Values can be at most 64 KB in size.
+     * There can be at most 100 secret values across all of a build&#39;s secrets.
+     * 
+     */
     private Map<String,String> secretEnv;
 
     private GetTriggerBuildSecret() {}
+    /**
+     * @return Cloud KMS key name to use to decrypt these envs.
+     * 
+     */
     public String kmsKeyName() {
         return this.kmsKeyName;
     }
+    /**
+     * @return Map of environment variable name to its encrypted value.
+     * Secret environment variables must be unique across all of a build&#39;s secrets,
+     * and must be used by at least one build step. Values can be at most 64 KB in size.
+     * There can be at most 100 secret values across all of a build&#39;s secrets.
+     * 
+     */
     public Map<String,String> secretEnv() {
         return this.secretEnv;
     }

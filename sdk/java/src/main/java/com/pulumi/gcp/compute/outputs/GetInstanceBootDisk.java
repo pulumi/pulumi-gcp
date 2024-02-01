@@ -24,7 +24,15 @@ public final class GetInstanceBootDisk {
      * 
      */
     private String deviceName;
+    /**
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * 
+     */
     private String diskEncryptionKeyRaw;
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     private String diskEncryptionKeySha256;
     /**
      * @return Parameters with which a disk was created alongside the instance.
@@ -32,6 +40,10 @@ public final class GetInstanceBootDisk {
      * 
      */
     private List<GetInstanceBootDiskInitializeParam> initializeParams;
+    /**
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * 
+     */
     private String kmsKeySelfLink;
     /**
      * @return Read/write mode for the disk. One of `&#34;READ_ONLY&#34;` or `&#34;READ_WRITE&#34;`.
@@ -60,9 +72,17 @@ public final class GetInstanceBootDisk {
     public String deviceName() {
         return this.deviceName;
     }
+    /**
+     * @return A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * 
+     */
     public String diskEncryptionKeyRaw() {
         return this.diskEncryptionKeyRaw;
     }
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     public String diskEncryptionKeySha256() {
         return this.diskEncryptionKeySha256;
     }
@@ -74,6 +94,10 @@ public final class GetInstanceBootDisk {
     public List<GetInstanceBootDiskInitializeParam> initializeParams() {
         return this.initializeParams;
     }
+    /**
+     * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+     * 
+     */
     public String kmsKeySelfLink() {
         return this.kmsKeySelfLink;
     }

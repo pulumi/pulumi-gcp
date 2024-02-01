@@ -42,6 +42,10 @@ public final class DatabaseInstanceSettingsIpConfiguration {
      * 
      */
     private @Nullable String privateNetwork;
+    /**
+     * @return PSC settings for a Cloud SQL instance.
+     * 
+     */
     private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs;
     /**
      * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
@@ -95,6 +99,10 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     public Optional<String> privateNetwork() {
         return Optional.ofNullable(this.privateNetwork);
     }
+    /**
+     * @return PSC settings for a Cloud SQL instance.
+     * 
+     */
     public List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs() {
         return this.pscConfigs == null ? List.of() : this.pscConfigs;
     }

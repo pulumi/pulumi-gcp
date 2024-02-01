@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolNodeConfigFastSocketResult
     {
+        /// <summary>
+        /// Whether or not NCCL Fast Socket is enabled
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

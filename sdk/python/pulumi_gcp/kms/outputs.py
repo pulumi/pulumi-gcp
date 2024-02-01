@@ -569,6 +569,7 @@ class GetKMSCryptoKeyPrimaryResult(dict):
         """
         :param str name: The CryptoKey's name.
                A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        :param str state: The current state of the CryptoKeyVersion.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "state", state)
@@ -585,6 +586,9 @@ class GetKMSCryptoKeyPrimaryResult(dict):
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The current state of the CryptoKeyVersion.
+        """
         return pulumi.get(self, "state")
 
 
@@ -622,17 +626,29 @@ class GetKMSCryptoKeyVersionTemplateResult(dict):
     def __init__(__self__, *,
                  algorithm: str,
                  protection_level: str):
+        """
+        :param str algorithm: The algorithm to use when creating a version based on this template.
+               See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+        :param str protection_level: The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+        """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "protection_level", protection_level)
 
     @property
     @pulumi.getter
     def algorithm(self) -> str:
+        """
+        The algorithm to use when creating a version based on this template.
+        See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+        """
         return pulumi.get(self, "algorithm")
 
     @property
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> str:
+        """
+        The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+        """
         return pulumi.get(self, "protection_level")
 
 

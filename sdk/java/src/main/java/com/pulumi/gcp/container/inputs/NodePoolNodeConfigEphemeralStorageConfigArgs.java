@@ -14,9 +14,17 @@ public final class NodePoolNodeConfigEphemeralStorageConfigArgs extends com.pulu
 
     public static final NodePoolNodeConfigEphemeralStorageConfigArgs Empty = new NodePoolNodeConfigEphemeralStorageConfigArgs();
 
+    /**
+     * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+     * 
+     */
     @Import(name="localSsdCount", required=true)
     private Output<Integer> localSsdCount;
 
+    /**
+     * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+     * 
+     */
     public Output<Integer> localSsdCount() {
         return this.localSsdCount;
     }
@@ -45,11 +53,23 @@ public final class NodePoolNodeConfigEphemeralStorageConfigArgs extends com.pulu
             $ = new NodePoolNodeConfigEphemeralStorageConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param localSsdCount Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdCount(Output<Integer> localSsdCount) {
             $.localSsdCount = localSsdCount;
             return this;
         }
 
+        /**
+         * @param localSsdCount Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdCount(Integer localSsdCount) {
             return localSsdCount(Output.of(localSsdCount));
         }

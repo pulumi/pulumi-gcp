@@ -3888,17 +3888,27 @@ class GetJobBinaryAuthorizationResult(dict):
     def __init__(__self__, *,
                  breakglass_justification: str,
                  use_default: bool):
+        """
+        :param str breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        :param bool use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+        """
         pulumi.set(__self__, "breakglass_justification", breakglass_justification)
         pulumi.set(__self__, "use_default", use_default)
 
     @property
     @pulumi.getter(name="breakglassJustification")
     def breakglass_justification(self) -> str:
+        """
+        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        """
         return pulumi.get(self, "breakglass_justification")
 
     @property
     @pulumi.getter(name="useDefault")
     def use_default(self) -> bool:
+        """
+        If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+        """
         return pulumi.get(self, "use_default")
 
 
@@ -3913,6 +3923,18 @@ class GetJobConditionResult(dict):
                  severity: str,
                  state: str,
                  type: str):
+        """
+        :param str execution_reason: A reason for the execution condition.
+        :param str last_transition_time: Last time the condition transitioned from one status to another.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str message: Human readable message indicating details about the current status.
+        :param str reason: A common (service-level) reason for this condition.
+        :param str revision_reason: A reason for the revision condition.
+        :param str severity: How to interpret failures of this condition, one of Error, Warning, Info
+        :param str state: State of the condition.
+        :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         pulumi.set(__self__, "execution_reason", execution_reason)
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
@@ -3925,41 +3947,67 @@ class GetJobConditionResult(dict):
     @property
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> str:
+        """
+        A reason for the execution condition.
+        """
         return pulumi.get(self, "execution_reason")
 
     @property
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> str:
+        """
+        Last time the condition transitioned from one status to another.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "last_transition_time")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Human readable message indicating details about the current status.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def reason(self) -> str:
+        """
+        A common (service-level) reason for this condition.
+        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> str:
+        """
+        A reason for the revision condition.
+        """
         return pulumi.get(self, "revision_reason")
 
     @property
     @pulumi.getter
     def severity(self) -> str:
+        """
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the condition.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         return pulumi.get(self, "type")
 
 
@@ -3970,6 +4018,12 @@ class GetJobLatestCreatedExecutionResult(dict):
                  create_time: str,
                  name: str):
         """
+        :param str completion_time: Completion timestamp of the execution.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str create_time: Creation timestamp of the execution.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param str name: The name of the Cloud Run v2 Job.
         """
         pulumi.set(__self__, "completion_time", completion_time)
@@ -3979,11 +4033,21 @@ class GetJobLatestCreatedExecutionResult(dict):
     @property
     @pulumi.getter(name="completionTime")
     def completion_time(self) -> str:
+        """
+        Completion timestamp of the execution.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "completion_time")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        Creation timestamp of the execution.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -4003,6 +4067,23 @@ class GetJobTemplateResult(dict):
                  parallelism: int,
                  task_count: int,
                  templates: Sequence['outputs.GetJobTemplateTemplateResult']):
+        """
+        :param Mapping[str, str] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+               
+               Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+               All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+               
+               This field follows Kubernetes annotations' namespacing, limits, and rules.
+        :param Mapping[str, str] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+               or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+               https://cloud.google.com/run/docs/configuring/labels.
+               
+               Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+               All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+        :param int parallelism: Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+        :param int task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        :param Sequence['GetJobTemplateTemplateArgs'] templates: Describes the task(s) that will be created when executing an execution
+        """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "parallelism", parallelism)
@@ -4012,26 +4093,51 @@ class GetJobTemplateResult(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
+        """
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+
+        Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+        All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+
+        This field follows Kubernetes annotations' namespacing, limits, and rules.
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
+        """
+        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+        or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        https://cloud.google.com/run/docs/configuring/labels.
+
+        Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+        All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
     def parallelism(self) -> int:
+        """
+        Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+        """
         return pulumi.get(self, "parallelism")
 
     @property
     @pulumi.getter(name="taskCount")
     def task_count(self) -> int:
+        """
+        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        """
         return pulumi.get(self, "task_count")
 
     @property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetJobTemplateTemplateResult']:
+        """
+        Describes the task(s) that will be created when executing an execution
+        """
         return pulumi.get(self, "templates")
 
 
@@ -4046,6 +4152,18 @@ class GetJobTemplateTemplateResult(dict):
                  timeout: str,
                  volumes: Sequence['outputs.GetJobTemplateTemplateVolumeResult'],
                  vpc_accesses: Sequence['outputs.GetJobTemplateTemplateVpcAccessResult']):
+        """
+        :param Sequence['GetJobTemplateTemplateContainerArgs'] containers: Holds the single container that defines the unit of execution for this task.
+        :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        :param str execution_environment: The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+        :param int max_retries: Number of retries allowed per Task, before marking this Task failed.
+        :param str service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+        :param str timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+               
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param Sequence['GetJobTemplateTemplateVolumeArgs'] volumes: A list of Volumes to make available to containers.
+        :param Sequence['GetJobTemplateTemplateVpcAccessArgs'] vpc_accesses: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        """
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "encryption_key", encryption_key)
         pulumi.set(__self__, "execution_environment", execution_environment)
@@ -4058,41 +4176,67 @@ class GetJobTemplateTemplateResult(dict):
     @property
     @pulumi.getter
     def containers(self) -> Sequence['outputs.GetJobTemplateTemplateContainerResult']:
+        """
+        Holds the single container that defines the unit of execution for this task.
+        """
         return pulumi.get(self, "containers")
 
     @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> str:
+        """
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        """
         return pulumi.get(self, "encryption_key")
 
     @property
     @pulumi.getter(name="executionEnvironment")
     def execution_environment(self) -> str:
+        """
+        The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+        """
         return pulumi.get(self, "execution_environment")
 
     @property
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> int:
+        """
+        Number of retries allowed per Task, before marking this Task failed.
+        """
         return pulumi.get(self, "max_retries")
 
     @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
+        """
+        Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+        """
         return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter
     def timeout(self) -> str:
+        """
+        Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter
     def volumes(self) -> Sequence['outputs.GetJobTemplateTemplateVolumeResult']:
+        """
+        A list of Volumes to make available to containers.
+        """
         return pulumi.get(self, "volumes")
 
     @property
     @pulumi.getter(name="vpcAccesses")
     def vpc_accesses(self) -> Sequence['outputs.GetJobTemplateTemplateVpcAccessResult']:
+        """
+        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        """
         return pulumi.get(self, "vpc_accesses")
 
 
@@ -4109,7 +4253,17 @@ class GetJobTemplateTemplateContainerResult(dict):
                  volume_mounts: Sequence['outputs.GetJobTemplateTemplateContainerVolumeMountResult'],
                  working_dir: str):
         """
+        :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence['GetJobTemplateTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
+        :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param str name: The name of the Cloud Run v2 Job.
+        :param Sequence['GetJobTemplateTemplateContainerPortArgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+               
+               If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+        :param Sequence['GetJobTemplateTemplateContainerResourceArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param Sequence['GetJobTemplateTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
+        :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "commands", commands)
@@ -4124,21 +4278,33 @@ class GetJobTemplateTemplateContainerResult(dict):
     @property
     @pulumi.getter
     def args(self) -> Sequence[str]:
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
         return pulumi.get(self, "args")
 
     @property
     @pulumi.getter
     def commands(self) -> Sequence[str]:
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
         return pulumi.get(self, "commands")
 
     @property
     @pulumi.getter
     def envs(self) -> Sequence['outputs.GetJobTemplateTemplateContainerEnvResult']:
+        """
+        List of environment variables to set in the container.
+        """
         return pulumi.get(self, "envs")
 
     @property
     @pulumi.getter
     def image(self) -> str:
+        """
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        """
         return pulumi.get(self, "image")
 
     @property
@@ -4152,21 +4318,35 @@ class GetJobTemplateTemplateContainerResult(dict):
     @property
     @pulumi.getter
     def ports(self) -> Sequence['outputs.GetJobTemplateTemplateContainerPortResult']:
+        """
+        List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+
+        If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+        """
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter
     def resources(self) -> Sequence['outputs.GetJobTemplateTemplateContainerResourceResult']:
+        """
+        Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Sequence['outputs.GetJobTemplateTemplateContainerVolumeMountResult']:
+        """
+        Volume to mount into the container's filesystem.
+        """
         return pulumi.get(self, "volume_mounts")
 
     @property
     @pulumi.getter(name="workingDir")
     def working_dir(self) -> str:
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
         return pulumi.get(self, "working_dir")
 
 
@@ -4178,6 +4358,8 @@ class GetJobTemplateTemplateContainerEnvResult(dict):
                  value_sources: Sequence['outputs.GetJobTemplateTemplateContainerEnvValueSourceResult']):
         """
         :param str name: The name of the Cloud Run v2 Job.
+        :param str value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        :param Sequence['GetJobTemplateTemplateContainerEnvValueSourceArgs'] value_sources: Source for the environment variable's value.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -4194,11 +4376,17 @@ class GetJobTemplateTemplateContainerEnvResult(dict):
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="valueSources")
     def value_sources(self) -> Sequence['outputs.GetJobTemplateTemplateContainerEnvValueSourceResult']:
+        """
+        Source for the environment variable's value.
+        """
         return pulumi.get(self, "value_sources")
 
 
@@ -4206,11 +4394,17 @@ class GetJobTemplateTemplateContainerEnvResult(dict):
 class GetJobTemplateTemplateContainerEnvValueSourceResult(dict):
     def __init__(__self__, *,
                  secret_key_reves: Sequence['outputs.GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefResult']):
+        """
+        :param Sequence['GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs'] secret_key_reves: Selects a secret and a specific version from Cloud Secret Manager.
+        """
         pulumi.set(__self__, "secret_key_reves", secret_key_reves)
 
     @property
     @pulumi.getter(name="secretKeyReves")
     def secret_key_reves(self) -> Sequence['outputs.GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefResult']:
+        """
+        Selects a secret and a specific version from Cloud Secret Manager.
+        """
         return pulumi.get(self, "secret_key_reves")
 
 
@@ -4219,17 +4413,27 @@ class GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRefResult(dict):
     def __init__(__self__, *,
                  secret: str,
                  version: str):
+        """
+        :param str secret: The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        """
         pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
     def secret(self) -> str:
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        """
         return pulumi.get(self, "version")
 
 
@@ -4239,6 +4443,7 @@ class GetJobTemplateTemplateContainerPortResult(dict):
                  container_port: int,
                  name: str):
         """
+        :param int container_port: Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
         :param str name: The name of the Cloud Run v2 Job.
         """
         pulumi.set(__self__, "container_port", container_port)
@@ -4247,6 +4452,9 @@ class GetJobTemplateTemplateContainerPortResult(dict):
     @property
     @pulumi.getter(name="containerPort")
     def container_port(self) -> int:
+        """
+        Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+        """
         return pulumi.get(self, "container_port")
 
     @property
@@ -4262,11 +4470,17 @@ class GetJobTemplateTemplateContainerPortResult(dict):
 class GetJobTemplateTemplateContainerResourceResult(dict):
     def __init__(__self__, *,
                  limits: Mapping[str, str]):
+        """
+        :param Mapping[str, str] limits: Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        """
         pulumi.set(__self__, "limits", limits)
 
     @property
     @pulumi.getter
     def limits(self) -> Mapping[str, str]:
+        """
+        Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        """
         return pulumi.get(self, "limits")
 
 
@@ -4276,6 +4490,7 @@ class GetJobTemplateTemplateContainerVolumeMountResult(dict):
                  mount_path: str,
                  name: str):
         """
+        :param str mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param str name: The name of the Cloud Run v2 Job.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -4284,6 +4499,9 @@ class GetJobTemplateTemplateContainerVolumeMountResult(dict):
     @property
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> str:
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        """
         return pulumi.get(self, "mount_path")
 
     @property
@@ -4303,7 +4521,10 @@ class GetJobTemplateTemplateVolumeResult(dict):
                  name: str,
                  secrets: Sequence['outputs.GetJobTemplateTemplateVolumeSecretResult']):
         """
+        :param Sequence['GetJobTemplateTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instances: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param Sequence['GetJobTemplateTemplateVolumeEmptyDirArgs'] empty_dirs: Ephemeral storage used as a shared volume.
         :param str name: The name of the Cloud Run v2 Job.
+        :param Sequence['GetJobTemplateTemplateVolumeSecretArgs'] secrets: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         """
         pulumi.set(__self__, "cloud_sql_instances", cloud_sql_instances)
         pulumi.set(__self__, "empty_dirs", empty_dirs)
@@ -4313,11 +4534,17 @@ class GetJobTemplateTemplateVolumeResult(dict):
     @property
     @pulumi.getter(name="cloudSqlInstances")
     def cloud_sql_instances(self) -> Sequence['outputs.GetJobTemplateTemplateVolumeCloudSqlInstanceResult']:
+        """
+        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        """
         return pulumi.get(self, "cloud_sql_instances")
 
     @property
     @pulumi.getter(name="emptyDirs")
     def empty_dirs(self) -> Sequence['outputs.GetJobTemplateTemplateVolumeEmptyDirResult']:
+        """
+        Ephemeral storage used as a shared volume.
+        """
         return pulumi.get(self, "empty_dirs")
 
     @property
@@ -4331,6 +4558,9 @@ class GetJobTemplateTemplateVolumeResult(dict):
     @property
     @pulumi.getter
     def secrets(self) -> Sequence['outputs.GetJobTemplateTemplateVolumeSecretResult']:
+        """
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        """
         return pulumi.get(self, "secrets")
 
 
@@ -4338,11 +4568,17 @@ class GetJobTemplateTemplateVolumeResult(dict):
 class GetJobTemplateTemplateVolumeCloudSqlInstanceResult(dict):
     def __init__(__self__, *,
                  instances: Sequence[str]):
+        """
+        :param Sequence[str] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        """
         pulumi.set(__self__, "instances", instances)
 
     @property
     @pulumi.getter
     def instances(self) -> Sequence[str]:
+        """
+        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        """
         return pulumi.get(self, "instances")
 
 
@@ -4351,17 +4587,27 @@ class GetJobTemplateTemplateVolumeEmptyDirResult(dict):
     def __init__(__self__, *,
                  medium: str,
                  size_limit: str):
+        """
+        :param str medium: The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+        :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        """
         pulumi.set(__self__, "medium", medium)
         pulumi.set(__self__, "size_limit", size_limit)
 
     @property
     @pulumi.getter
     def medium(self) -> str:
+        """
+        The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+        """
         return pulumi.get(self, "medium")
 
     @property
     @pulumi.getter(name="sizeLimit")
     def size_limit(self) -> str:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        """
         return pulumi.get(self, "size_limit")
 
 
@@ -4371,6 +4617,11 @@ class GetJobTemplateTemplateVolumeSecretResult(dict):
                  default_mode: int,
                  items: Sequence['outputs.GetJobTemplateTemplateVolumeSecretItemResult'],
                  secret: str):
+        """
+        :param int default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+        :param Sequence['GetJobTemplateTemplateVolumeSecretItemArgs'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        :param str secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        """
         pulumi.set(__self__, "default_mode", default_mode)
         pulumi.set(__self__, "items", items)
         pulumi.set(__self__, "secret", secret)
@@ -4378,16 +4629,25 @@ class GetJobTemplateTemplateVolumeSecretResult(dict):
     @property
     @pulumi.getter(name="defaultMode")
     def default_mode(self) -> int:
+        """
+        Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+        """
         return pulumi.get(self, "default_mode")
 
     @property
     @pulumi.getter
     def items(self) -> Sequence['outputs.GetJobTemplateTemplateVolumeSecretItemResult']:
+        """
+        If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        """
         return pulumi.get(self, "items")
 
     @property
     @pulumi.getter
     def secret(self) -> str:
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        """
         return pulumi.get(self, "secret")
 
 
@@ -4397,6 +4657,11 @@ class GetJobTemplateTemplateVolumeSecretItemResult(dict):
                  mode: int,
                  path: str,
                  version: str):
+        """
+        :param int mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        :param str path: The relative path of the secret in the container.
+        :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "version", version)
@@ -4404,16 +4669,25 @@ class GetJobTemplateTemplateVolumeSecretItemResult(dict):
     @property
     @pulumi.getter
     def mode(self) -> int:
+        """
+        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The relative path of the secret in the container.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        """
         return pulumi.get(self, "version")
 
 
@@ -4423,6 +4697,11 @@ class GetJobTemplateTemplateVpcAccessResult(dict):
                  connector: str,
                  egress: str,
                  network_interfaces: Sequence['outputs.GetJobTemplateTemplateVpcAccessNetworkInterfaceResult']):
+        """
+        :param str connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        :param str egress: Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+        :param Sequence['GetJobTemplateTemplateVpcAccessNetworkInterfaceArgs'] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
+        """
         pulumi.set(__self__, "connector", connector)
         pulumi.set(__self__, "egress", egress)
         pulumi.set(__self__, "network_interfaces", network_interfaces)
@@ -4430,16 +4709,25 @@ class GetJobTemplateTemplateVpcAccessResult(dict):
     @property
     @pulumi.getter
     def connector(self) -> str:
+        """
+        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        """
         return pulumi.get(self, "connector")
 
     @property
     @pulumi.getter
     def egress(self) -> str:
+        """
+        Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+        """
         return pulumi.get(self, "egress")
 
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Sequence['outputs.GetJobTemplateTemplateVpcAccessNetworkInterfaceResult']:
+        """
+        Direct VPC egress settings. Currently only single network interface is supported.
+        """
         return pulumi.get(self, "network_interfaces")
 
 
@@ -4449,6 +4737,15 @@ class GetJobTemplateTemplateVpcAccessNetworkInterfaceResult(dict):
                  network: str,
                  subnetwork: str,
                  tags: Sequence[str]):
+        """
+        :param str network: The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+               network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+               looked up from the subnetwork.
+        :param str subnetwork: The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+               network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+               subnetwork with the same name with the network will be used.
+        :param Sequence[str] tags: Network tags applied to this Cloud Run job.
+        """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "tags", tags)
@@ -4456,16 +4753,29 @@ class GetJobTemplateTemplateVpcAccessNetworkInterfaceResult(dict):
     @property
     @pulumi.getter
     def network(self) -> str:
+        """
+        The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+        looked up from the subnetwork.
+        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter
     def subnetwork(self) -> str:
+        """
+        The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+        subnetwork with the same name with the network will be used.
+        """
         return pulumi.get(self, "subnetwork")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        Network tags applied to this Cloud Run job.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -4480,6 +4790,18 @@ class GetJobTerminalConditionResult(dict):
                  severity: str,
                  state: str,
                  type: str):
+        """
+        :param str execution_reason: A reason for the execution condition.
+        :param str last_transition_time: Last time the condition transitioned from one status to another.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str message: Human readable message indicating details about the current status.
+        :param str reason: A common (service-level) reason for this condition.
+        :param str revision_reason: A reason for the revision condition.
+        :param str severity: How to interpret failures of this condition, one of Error, Warning, Info
+        :param str state: State of the condition.
+        :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         pulumi.set(__self__, "execution_reason", execution_reason)
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
@@ -4492,41 +4814,67 @@ class GetJobTerminalConditionResult(dict):
     @property
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> str:
+        """
+        A reason for the execution condition.
+        """
         return pulumi.get(self, "execution_reason")
 
     @property
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> str:
+        """
+        Last time the condition transitioned from one status to another.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "last_transition_time")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Human readable message indicating details about the current status.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def reason(self) -> str:
+        """
+        A common (service-level) reason for this condition.
+        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> str:
+        """
+        A reason for the revision condition.
+        """
         return pulumi.get(self, "revision_reason")
 
     @property
     @pulumi.getter
     def severity(self) -> str:
+        """
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the condition.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         return pulumi.get(self, "type")
 
 
@@ -4535,17 +4883,27 @@ class GetServiceBinaryAuthorizationResult(dict):
     def __init__(__self__, *,
                  breakglass_justification: str,
                  use_default: bool):
+        """
+        :param str breakglass_justification: If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        :param bool use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+        """
         pulumi.set(__self__, "breakglass_justification", breakglass_justification)
         pulumi.set(__self__, "use_default", use_default)
 
     @property
     @pulumi.getter(name="breakglassJustification")
     def breakglass_justification(self) -> str:
+        """
+        If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        """
         return pulumi.get(self, "breakglass_justification")
 
     @property
     @pulumi.getter(name="useDefault")
     def use_default(self) -> bool:
+        """
+        If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+        """
         return pulumi.get(self, "use_default")
 
 
@@ -4560,6 +4918,18 @@ class GetServiceConditionResult(dict):
                  severity: str,
                  state: str,
                  type: str):
+        """
+        :param str execution_reason: A reason for the execution condition.
+        :param str last_transition_time: Last time the condition transitioned from one status to another.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str message: Human readable message indicating details about the current status.
+        :param str reason: A common (service-level) reason for this condition.
+        :param str revision_reason: A reason for the revision condition.
+        :param str severity: How to interpret failures of this condition, one of Error, Warning, Info
+        :param str state: State of the condition.
+        :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         pulumi.set(__self__, "execution_reason", execution_reason)
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
@@ -4572,41 +4942,67 @@ class GetServiceConditionResult(dict):
     @property
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> str:
+        """
+        A reason for the execution condition.
+        """
         return pulumi.get(self, "execution_reason")
 
     @property
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> str:
+        """
+        Last time the condition transitioned from one status to another.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
         return pulumi.get(self, "last_transition_time")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Human readable message indicating details about the current status.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def reason(self) -> str:
+        """
+        A common (service-level) reason for this condition.
+        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> str:
+        """
+        A reason for the revision condition.
+        """
         return pulumi.get(self, "revision_reason")
 
     @property
     @pulumi.getter
     def severity(self) -> str:
+        """
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the condition.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         return pulumi.get(self, "type")
 
 
@@ -4626,6 +5022,32 @@ class GetServiceTemplateResult(dict):
                  timeout: str,
                  volumes: Sequence['outputs.GetServiceTemplateVolumeResult'],
                  vpc_accesses: Sequence['outputs.GetServiceTemplateVpcAccessResult']):
+        """
+        :param Mapping[str, str] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+               
+               Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+               All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+               
+               This field follows Kubernetes annotations' namespacing, limits, and rules.
+        :param Sequence['GetServiceTemplateContainerArgs'] containers: Holds the containers that define the unit of execution for this Service.
+        :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        :param str execution_environment: The sandbox environment to host this Revision. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+        :param Mapping[str, str] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+               For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+               
+               Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+               All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+        :param int max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
+        :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+        :param Sequence['GetServiceTemplateScalingArgs'] scalings: Scaling settings for this Revision.
+        :param str service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+        :param bool session_affinity: Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        :param str timeout: Max allowed time for an instance to respond to a request.
+               
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param Sequence['GetServiceTemplateVolumeArgs'] volumes: A list of Volumes to make available to containers.
+        :param Sequence['GetServiceTemplateVpcAccessArgs'] vpc_accesses: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "encryption_key", encryption_key)
@@ -4643,66 +5065,116 @@ class GetServiceTemplateResult(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
+        """
+        Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+
+        Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+        All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+
+        This field follows Kubernetes annotations' namespacing, limits, and rules.
+        """
         return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
     def containers(self) -> Sequence['outputs.GetServiceTemplateContainerResult']:
+        """
+        Holds the containers that define the unit of execution for this Service.
+        """
         return pulumi.get(self, "containers")
 
     @property
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> str:
+        """
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        """
         return pulumi.get(self, "encryption_key")
 
     @property
     @pulumi.getter(name="executionEnvironment")
     def execution_environment(self) -> str:
+        """
+        The sandbox environment to host this Revision. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+        """
         return pulumi.get(self, "execution_environment")
 
     @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
+        """
+        Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+        For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+
+        Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+        All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+        """
         return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="maxInstanceRequestConcurrency")
     def max_instance_request_concurrency(self) -> int:
+        """
+        Sets the maximum number of requests that each serving instance can receive.
+        """
         return pulumi.get(self, "max_instance_request_concurrency")
 
     @property
     @pulumi.getter
     def revision(self) -> str:
+        """
+        The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+        """
         return pulumi.get(self, "revision")
 
     @property
     @pulumi.getter
     def scalings(self) -> Sequence['outputs.GetServiceTemplateScalingResult']:
+        """
+        Scaling settings for this Revision.
+        """
         return pulumi.get(self, "scalings")
 
     @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
+        """
+        Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+        """
         return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> bool:
+        """
+        Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+        """
         return pulumi.get(self, "session_affinity")
 
     @property
     @pulumi.getter
     def timeout(self) -> str:
+        """
+        Max allowed time for an instance to respond to a request.
+
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
         return pulumi.get(self, "timeout")
 
     @property
     @pulumi.getter
     def volumes(self) -> Sequence['outputs.GetServiceTemplateVolumeResult']:
+        """
+        A list of Volumes to make available to containers.
+        """
         return pulumi.get(self, "volumes")
 
     @property
     @pulumi.getter(name="vpcAccesses")
     def vpc_accesses(self) -> Sequence['outputs.GetServiceTemplateVpcAccessResult']:
+        """
+        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        """
         return pulumi.get(self, "vpc_accesses")
 
 
@@ -4722,7 +5194,20 @@ class GetServiceTemplateContainerResult(dict):
                  volume_mounts: Sequence['outputs.GetServiceTemplateContainerVolumeMountResult'],
                  working_dir: str):
         """
+        :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[str] commands: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[str] depends_ons: Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+        :param Sequence['GetServiceTemplateContainerEnvArgs'] envs: List of environment variables to set in the container.
+        :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        :param Sequence['GetServiceTemplateContainerLivenessProbeArgs'] liveness_probes: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param str name: The name of the Cloud Run v2 Service.
+        :param Sequence['GetServiceTemplateContainerPortArgs'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+               
+               If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+        :param Sequence['GetServiceTemplateContainerResourceArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param Sequence['GetServiceTemplateContainerStartupProbeArgs'] startup_probes: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param Sequence['GetServiceTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
+        :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "commands", commands)
@@ -4740,31 +5225,49 @@ class GetServiceTemplateContainerResult(dict):
     @property
     @pulumi.getter
     def args(self) -> Sequence[str]:
+        """
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
         return pulumi.get(self, "args")
 
     @property
     @pulumi.getter
     def commands(self) -> Sequence[str]:
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
         return pulumi.get(self, "commands")
 
     @property
     @pulumi.getter(name="dependsOns")
     def depends_ons(self) -> Sequence[str]:
+        """
+        Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+        """
         return pulumi.get(self, "depends_ons")
 
     @property
     @pulumi.getter
     def envs(self) -> Sequence['outputs.GetServiceTemplateContainerEnvResult']:
+        """
+        List of environment variables to set in the container.
+        """
         return pulumi.get(self, "envs")
 
     @property
     @pulumi.getter
     def image(self) -> str:
+        """
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        """
         return pulumi.get(self, "image")
 
     @property
     @pulumi.getter(name="livenessProbes")
     def liveness_probes(self) -> Sequence['outputs.GetServiceTemplateContainerLivenessProbeResult']:
+        """
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
         return pulumi.get(self, "liveness_probes")
 
     @property
@@ -4778,26 +5281,43 @@ class GetServiceTemplateContainerResult(dict):
     @property
     @pulumi.getter
     def ports(self) -> Sequence['outputs.GetServiceTemplateContainerPortResult']:
+        """
+        List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+
+        If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+        """
         return pulumi.get(self, "ports")
 
     @property
     @pulumi.getter
     def resources(self) -> Sequence['outputs.GetServiceTemplateContainerResourceResult']:
+        """
+        Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        """
         return pulumi.get(self, "resources")
 
     @property
     @pulumi.getter(name="startupProbes")
     def startup_probes(self) -> Sequence['outputs.GetServiceTemplateContainerStartupProbeResult']:
+        """
+        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
         return pulumi.get(self, "startup_probes")
 
     @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Sequence['outputs.GetServiceTemplateContainerVolumeMountResult']:
+        """
+        Volume to mount into the container's filesystem.
+        """
         return pulumi.get(self, "volume_mounts")
 
     @property
     @pulumi.getter(name="workingDir")
     def working_dir(self) -> str:
+        """
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        """
         return pulumi.get(self, "working_dir")
 
 
@@ -4809,6 +5329,8 @@ class GetServiceTemplateContainerEnvResult(dict):
                  value_sources: Sequence['outputs.GetServiceTemplateContainerEnvValueSourceResult']):
         """
         :param str name: The name of the Cloud Run v2 Service.
+        :param str value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        :param Sequence['GetServiceTemplateContainerEnvValueSourceArgs'] value_sources: Source for the environment variable's value.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -4825,11 +5347,17 @@ class GetServiceTemplateContainerEnvResult(dict):
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="valueSources")
     def value_sources(self) -> Sequence['outputs.GetServiceTemplateContainerEnvValueSourceResult']:
+        """
+        Source for the environment variable's value.
+        """
         return pulumi.get(self, "value_sources")
 
 
@@ -4837,11 +5365,17 @@ class GetServiceTemplateContainerEnvResult(dict):
 class GetServiceTemplateContainerEnvValueSourceResult(dict):
     def __init__(__self__, *,
                  secret_key_reves: Sequence['outputs.GetServiceTemplateContainerEnvValueSourceSecretKeyRefResult']):
+        """
+        :param Sequence['GetServiceTemplateContainerEnvValueSourceSecretKeyRefArgs'] secret_key_reves: Selects a secret and a specific version from Cloud Secret Manager.
+        """
         pulumi.set(__self__, "secret_key_reves", secret_key_reves)
 
     @property
     @pulumi.getter(name="secretKeyReves")
     def secret_key_reves(self) -> Sequence['outputs.GetServiceTemplateContainerEnvValueSourceSecretKeyRefResult']:
+        """
+        Selects a secret and a specific version from Cloud Secret Manager.
+        """
         return pulumi.get(self, "secret_key_reves")
 
 
@@ -4850,17 +5384,27 @@ class GetServiceTemplateContainerEnvValueSourceSecretKeyRefResult(dict):
     def __init__(__self__, *,
                  secret: str,
                  version: str):
+        """
+        :param str secret: The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        """
         pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
     def secret(self) -> str:
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+        """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        """
         return pulumi.get(self, "version")
 
 
@@ -4874,6 +5418,15 @@ class GetServiceTemplateContainerLivenessProbeResult(dict):
                  period_seconds: int,
                  tcp_sockets: Sequence['outputs.GetServiceTemplateContainerLivenessProbeTcpSocketResult'],
                  timeout_seconds: int):
+        """
+        :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param Sequence['GetServiceTemplateContainerLivenessProbeGrpcArgs'] grpcs: GRPC specifies an action involving a GRPC port.
+        :param Sequence['GetServiceTemplateContainerLivenessProbeHttpGetArgs'] http_gets: HTTPGet specifies the http request to perform.
+        :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+        :param Sequence['GetServiceTemplateContainerLivenessProbeTcpSocketArgs'] tcp_sockets: TCPSocketAction describes an action based on opening a socket
+        :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
         pulumi.set(__self__, "failure_threshold", failure_threshold)
         pulumi.set(__self__, "grpcs", grpcs)
         pulumi.set(__self__, "http_gets", http_gets)
@@ -4885,36 +5438,57 @@ class GetServiceTemplateContainerLivenessProbeResult(dict):
     @property
     @pulumi.getter(name="failureThreshold")
     def failure_threshold(self) -> int:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        """
         return pulumi.get(self, "failure_threshold")
 
     @property
     @pulumi.getter
     def grpcs(self) -> Sequence['outputs.GetServiceTemplateContainerLivenessProbeGrpcResult']:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
         return pulumi.get(self, "grpcs")
 
     @property
     @pulumi.getter(name="httpGets")
     def http_gets(self) -> Sequence['outputs.GetServiceTemplateContainerLivenessProbeHttpGetResult']:
+        """
+        HTTPGet specifies the http request to perform.
+        """
         return pulumi.get(self, "http_gets")
 
     @property
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> int:
+        """
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
         return pulumi.get(self, "initial_delay_seconds")
 
     @property
     @pulumi.getter(name="periodSeconds")
     def period_seconds(self) -> int:
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+        """
         return pulumi.get(self, "period_seconds")
 
     @property
     @pulumi.getter(name="tcpSockets")
     def tcp_sockets(self) -> Sequence['outputs.GetServiceTemplateContainerLivenessProbeTcpSocketResult']:
+        """
+        TCPSocketAction describes an action based on opening a socket
+        """
         return pulumi.get(self, "tcp_sockets")
 
     @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> int:
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
         return pulumi.get(self, "timeout_seconds")
 
 
@@ -4923,17 +5497,33 @@ class GetServiceTemplateContainerLivenessProbeGrpcResult(dict):
     def __init__(__self__, *,
                  port: int,
                  service: str):
+        """
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        :param str service: The name of the service to place in the gRPC HealthCheckRequest
+               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               If this is not specified, the default behavior is defined by gRPC.
+        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def service(self) -> str:
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
         return pulumi.get(self, "service")
 
 
@@ -4943,6 +5533,12 @@ class GetServiceTemplateContainerLivenessProbeHttpGetResult(dict):
                  http_headers: Sequence['outputs.GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderResult'],
                  path: str,
                  port: int):
+        """
+        :param Sequence['GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param str path: Path to access on the HTTP server. Defaults to '/'.
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
         pulumi.set(__self__, "http_headers", http_headers)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "port", port)
@@ -4950,16 +5546,26 @@ class GetServiceTemplateContainerLivenessProbeHttpGetResult(dict):
     @property
     @pulumi.getter(name="httpHeaders")
     def http_headers(self) -> Sequence['outputs.GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderResult']:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        """
         return pulumi.get(self, "http_headers")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        Path to access on the HTTP server. Defaults to '/'.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
         return pulumi.get(self, "port")
 
 
@@ -4970,6 +5576,7 @@ class GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderResult(dict):
                  value: str):
         """
         :param str name: The name of the Cloud Run v2 Service.
+        :param str value: The header field value
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -4985,6 +5592,9 @@ class GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderResult(dict):
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The header field value
+        """
         return pulumi.get(self, "value")
 
 
@@ -4992,11 +5602,21 @@ class GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderResult(dict):
 class GetServiceTemplateContainerLivenessProbeTcpSocketResult(dict):
     def __init__(__self__, *,
                  port: int):
+        """
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535.
+               If not specified, defaults to the exposed port of the container, which
+               is the value of container.ports[0].containerPort.
+        """
         pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the exposed port of the container, which
+        is the value of container.ports[0].containerPort.
+        """
         return pulumi.get(self, "port")
 
 
@@ -5006,6 +5626,7 @@ class GetServiceTemplateContainerPortResult(dict):
                  container_port: int,
                  name: str):
         """
+        :param int container_port: Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
         :param str name: The name of the Cloud Run v2 Service.
         """
         pulumi.set(__self__, "container_port", container_port)
@@ -5014,6 +5635,9 @@ class GetServiceTemplateContainerPortResult(dict):
     @property
     @pulumi.getter(name="containerPort")
     def container_port(self) -> int:
+        """
+        Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+        """
         return pulumi.get(self, "container_port")
 
     @property
@@ -5031,6 +5655,11 @@ class GetServiceTemplateContainerResourceResult(dict):
                  cpu_idle: bool,
                  limits: Mapping[str, str],
                  startup_cpu_boost: bool):
+        """
+        :param bool cpu_idle: Determines whether CPU should be throttled or not outside of requests.
+        :param Mapping[str, str] limits: Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param bool startup_cpu_boost: Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+        """
         pulumi.set(__self__, "cpu_idle", cpu_idle)
         pulumi.set(__self__, "limits", limits)
         pulumi.set(__self__, "startup_cpu_boost", startup_cpu_boost)
@@ -5038,16 +5667,25 @@ class GetServiceTemplateContainerResourceResult(dict):
     @property
     @pulumi.getter(name="cpuIdle")
     def cpu_idle(self) -> bool:
+        """
+        Determines whether CPU should be throttled or not outside of requests.
+        """
         return pulumi.get(self, "cpu_idle")
 
     @property
     @pulumi.getter
     def limits(self) -> Mapping[str, str]:
+        """
+        Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        """
         return pulumi.get(self, "limits")
 
     @property
     @pulumi.getter(name="startupCpuBoost")
     def startup_cpu_boost(self) -> bool:
+        """
+        Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+        """
         return pulumi.get(self, "startup_cpu_boost")
 
 
@@ -5061,6 +5699,15 @@ class GetServiceTemplateContainerStartupProbeResult(dict):
                  period_seconds: int,
                  tcp_sockets: Sequence['outputs.GetServiceTemplateContainerStartupProbeTcpSocketResult'],
                  timeout_seconds: int):
+        """
+        :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param Sequence['GetServiceTemplateContainerStartupProbeGrpcArgs'] grpcs: GRPC specifies an action involving a GRPC port.
+        :param Sequence['GetServiceTemplateContainerStartupProbeHttpGetArgs'] http_gets: HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+        :param Sequence['GetServiceTemplateContainerStartupProbeTcpSocketArgs'] tcp_sockets: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
         pulumi.set(__self__, "failure_threshold", failure_threshold)
         pulumi.set(__self__, "grpcs", grpcs)
         pulumi.set(__self__, "http_gets", http_gets)
@@ -5072,36 +5719,57 @@ class GetServiceTemplateContainerStartupProbeResult(dict):
     @property
     @pulumi.getter(name="failureThreshold")
     def failure_threshold(self) -> int:
+        """
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        """
         return pulumi.get(self, "failure_threshold")
 
     @property
     @pulumi.getter
     def grpcs(self) -> Sequence['outputs.GetServiceTemplateContainerStartupProbeGrpcResult']:
+        """
+        GRPC specifies an action involving a GRPC port.
+        """
         return pulumi.get(self, "grpcs")
 
     @property
     @pulumi.getter(name="httpGets")
     def http_gets(self) -> Sequence['outputs.GetServiceTemplateContainerStartupProbeHttpGetResult']:
+        """
+        HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        """
         return pulumi.get(self, "http_gets")
 
     @property
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> int:
+        """
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
         return pulumi.get(self, "initial_delay_seconds")
 
     @property
     @pulumi.getter(name="periodSeconds")
     def period_seconds(self) -> int:
+        """
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+        """
         return pulumi.get(self, "period_seconds")
 
     @property
     @pulumi.getter(name="tcpSockets")
     def tcp_sockets(self) -> Sequence['outputs.GetServiceTemplateContainerStartupProbeTcpSocketResult']:
+        """
+        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        """
         return pulumi.get(self, "tcp_sockets")
 
     @property
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> int:
+        """
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        """
         return pulumi.get(self, "timeout_seconds")
 
 
@@ -5110,17 +5778,33 @@ class GetServiceTemplateContainerStartupProbeGrpcResult(dict):
     def __init__(__self__, *,
                  port: int,
                  service: str):
+        """
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        :param str service: The name of the service to place in the gRPC HealthCheckRequest
+               (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+               If this is not specified, the default behavior is defined by gRPC.
+        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "service", service)
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def service(self) -> str:
+        """
+        The name of the service to place in the gRPC HealthCheckRequest
+        (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+        If this is not specified, the default behavior is defined by gRPC.
+        """
         return pulumi.get(self, "service")
 
 
@@ -5130,6 +5814,12 @@ class GetServiceTemplateContainerStartupProbeHttpGetResult(dict):
                  http_headers: Sequence['outputs.GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderResult'],
                  path: str,
                  port: int):
+        """
+        :param Sequence['GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param str path: Path to access on the HTTP server. Defaults to '/'.
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
         pulumi.set(__self__, "http_headers", http_headers)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "port", port)
@@ -5137,16 +5827,26 @@ class GetServiceTemplateContainerStartupProbeHttpGetResult(dict):
     @property
     @pulumi.getter(name="httpHeaders")
     def http_headers(self) -> Sequence['outputs.GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderResult']:
+        """
+        Custom headers to set in the request. HTTP allows repeated headers.
+        """
         return pulumi.get(self, "http_headers")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        Path to access on the HTTP server. Defaults to '/'.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
         return pulumi.get(self, "port")
 
 
@@ -5157,6 +5857,7 @@ class GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderResult(dict):
                  value: str):
         """
         :param str name: The name of the Cloud Run v2 Service.
+        :param str value: The header field value
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -5172,6 +5873,9 @@ class GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderResult(dict):
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The header field value
+        """
         return pulumi.get(self, "value")
 
 
@@ -5179,11 +5883,19 @@ class GetServiceTemplateContainerStartupProbeHttpGetHttpHeaderResult(dict):
 class GetServiceTemplateContainerStartupProbeTcpSocketResult(dict):
     def __init__(__self__, *,
                  port: int):
+        """
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
         pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
         return pulumi.get(self, "port")
 
 
@@ -5193,6 +5905,7 @@ class GetServiceTemplateContainerVolumeMountResult(dict):
                  mount_path: str,
                  name: str):
         """
+        :param str mount_path: Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
         :param str name: The name of the Cloud Run v2 Service.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -5201,6 +5914,9 @@ class GetServiceTemplateContainerVolumeMountResult(dict):
     @property
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> str:
+        """
+        Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+        """
         return pulumi.get(self, "mount_path")
 
     @property
@@ -5217,17 +5933,27 @@ class GetServiceTemplateScalingResult(dict):
     def __init__(__self__, *,
                  max_instance_count: int,
                  min_instance_count: int):
+        """
+        :param int max_instance_count: Maximum number of serving instances that this resource should have.
+        :param int min_instance_count: Minimum number of serving instances that this resource should have.
+        """
         pulumi.set(__self__, "max_instance_count", max_instance_count)
         pulumi.set(__self__, "min_instance_count", min_instance_count)
 
     @property
     @pulumi.getter(name="maxInstanceCount")
     def max_instance_count(self) -> int:
+        """
+        Maximum number of serving instances that this resource should have.
+        """
         return pulumi.get(self, "max_instance_count")
 
     @property
     @pulumi.getter(name="minInstanceCount")
     def min_instance_count(self) -> int:
+        """
+        Minimum number of serving instances that this resource should have.
+        """
         return pulumi.get(self, "min_instance_count")
 
 
@@ -5241,7 +5967,12 @@ class GetServiceTemplateVolumeResult(dict):
                  nfs: Sequence['outputs.GetServiceTemplateVolumeNfResult'],
                  secrets: Sequence['outputs.GetServiceTemplateVolumeSecretResult']):
         """
+        :param Sequence['GetServiceTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instances: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param Sequence['GetServiceTemplateVolumeEmptyDirArgs'] empty_dirs: Ephemeral storage used as a shared volume.
+        :param Sequence['GetServiceTemplateVolumeGcArgs'] gcs: Represents a GCS Bucket mounted as a volume.
         :param str name: The name of the Cloud Run v2 Service.
+        :param Sequence['GetServiceTemplateVolumeNfArgs'] nfs: Represents an NFS mount.
+        :param Sequence['GetServiceTemplateVolumeSecretArgs'] secrets: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         """
         pulumi.set(__self__, "cloud_sql_instances", cloud_sql_instances)
         pulumi.set(__self__, "empty_dirs", empty_dirs)
@@ -5253,16 +5984,25 @@ class GetServiceTemplateVolumeResult(dict):
     @property
     @pulumi.getter(name="cloudSqlInstances")
     def cloud_sql_instances(self) -> Sequence['outputs.GetServiceTemplateVolumeCloudSqlInstanceResult']:
+        """
+        For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        """
         return pulumi.get(self, "cloud_sql_instances")
 
     @property
     @pulumi.getter(name="emptyDirs")
     def empty_dirs(self) -> Sequence['outputs.GetServiceTemplateVolumeEmptyDirResult']:
+        """
+        Ephemeral storage used as a shared volume.
+        """
         return pulumi.get(self, "empty_dirs")
 
     @property
     @pulumi.getter
     def gcs(self) -> Sequence['outputs.GetServiceTemplateVolumeGcResult']:
+        """
+        Represents a GCS Bucket mounted as a volume.
+        """
         return pulumi.get(self, "gcs")
 
     @property
@@ -5276,11 +6016,17 @@ class GetServiceTemplateVolumeResult(dict):
     @property
     @pulumi.getter
     def nfs(self) -> Sequence['outputs.GetServiceTemplateVolumeNfResult']:
+        """
+        Represents an NFS mount.
+        """
         return pulumi.get(self, "nfs")
 
     @property
     @pulumi.getter
     def secrets(self) -> Sequence['outputs.GetServiceTemplateVolumeSecretResult']:
+        """
+        Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        """
         return pulumi.get(self, "secrets")
 
 
@@ -5288,11 +6034,17 @@ class GetServiceTemplateVolumeResult(dict):
 class GetServiceTemplateVolumeCloudSqlInstanceResult(dict):
     def __init__(__self__, *,
                  instances: Sequence[str]):
+        """
+        :param Sequence[str] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        """
         pulumi.set(__self__, "instances", instances)
 
     @property
     @pulumi.getter
     def instances(self) -> Sequence[str]:
+        """
+        The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        """
         return pulumi.get(self, "instances")
 
 
@@ -5301,17 +6053,27 @@ class GetServiceTemplateVolumeEmptyDirResult(dict):
     def __init__(__self__, *,
                  medium: str,
                  size_limit: str):
+        """
+        :param str medium: The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+        :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        """
         pulumi.set(__self__, "medium", medium)
         pulumi.set(__self__, "size_limit", size_limit)
 
     @property
     @pulumi.getter
     def medium(self) -> str:
+        """
+        The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+        """
         return pulumi.get(self, "medium")
 
     @property
     @pulumi.getter(name="sizeLimit")
     def size_limit(self) -> str:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        """
         return pulumi.get(self, "size_limit")
 
 
@@ -5320,17 +6082,27 @@ class GetServiceTemplateVolumeGcResult(dict):
     def __init__(__self__, *,
                  bucket: str,
                  read_only: bool):
+        """
+        :param str bucket: GCS Bucket name
+        :param bool read_only: If true, mount the GCS bucket as read-only
+        """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "read_only", read_only)
 
     @property
     @pulumi.getter
     def bucket(self) -> str:
+        """
+        GCS Bucket name
+        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> bool:
+        """
+        If true, mount the GCS bucket as read-only
+        """
         return pulumi.get(self, "read_only")
 
 
@@ -5340,6 +6112,11 @@ class GetServiceTemplateVolumeNfResult(dict):
                  path: str,
                  read_only: bool,
                  server: str):
+        """
+        :param str path: Path that is exported by the NFS server.
+        :param bool read_only: If true, mount the NFS volume as read only
+        :param str server: Hostname or IP address of the NFS server
+        """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "read_only", read_only)
         pulumi.set(__self__, "server", server)
@@ -5347,16 +6124,25 @@ class GetServiceTemplateVolumeNfResult(dict):
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        Path that is exported by the NFS server.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> bool:
+        """
+        If true, mount the NFS volume as read only
+        """
         return pulumi.get(self, "read_only")
 
     @property
     @pulumi.getter
     def server(self) -> str:
+        """
+        Hostname or IP address of the NFS server
+        """
         return pulumi.get(self, "server")
 
 
@@ -5366,6 +6152,11 @@ class GetServiceTemplateVolumeSecretResult(dict):
                  default_mode: int,
                  items: Sequence['outputs.GetServiceTemplateVolumeSecretItemResult'],
                  secret: str):
+        """
+        :param int default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+        :param Sequence['GetServiceTemplateVolumeSecretItemArgs'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        :param str secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        """
         pulumi.set(__self__, "default_mode", default_mode)
         pulumi.set(__self__, "items", items)
         pulumi.set(__self__, "secret", secret)
@@ -5373,16 +6164,25 @@ class GetServiceTemplateVolumeSecretResult(dict):
     @property
     @pulumi.getter(name="defaultMode")
     def default_mode(self) -> int:
+        """
+        Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+        """
         return pulumi.get(self, "default_mode")
 
     @property
     @pulumi.getter
     def items(self) -> Sequence['outputs.GetServiceTemplateVolumeSecretItemResult']:
+        """
+        If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        """
         return pulumi.get(self, "items")
 
     @property
     @pulumi.getter
     def secret(self) -> str:
+        """
+        The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+        """
         return pulumi.get(self, "secret")
 
 
@@ -5392,6 +6192,11 @@ class GetServiceTemplateVolumeSecretItemResult(dict):
                  mode: int,
                  path: str,
                  version: str):
+        """
+        :param int mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        :param str path: The relative path of the secret in the container.
+        :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "version", version)
@@ -5399,16 +6204,25 @@ class GetServiceTemplateVolumeSecretItemResult(dict):
     @property
     @pulumi.getter
     def mode(self) -> int:
+        """
+        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        The relative path of the secret in the container.
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        """
         return pulumi.get(self, "version")
 
 
@@ -5418,6 +6232,11 @@ class GetServiceTemplateVpcAccessResult(dict):
                  connector: str,
                  egress: str,
                  network_interfaces: Sequence['outputs.GetServiceTemplateVpcAccessNetworkInterfaceResult']):
+        """
+        :param str connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        :param str egress: Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+        :param Sequence['GetServiceTemplateVpcAccessNetworkInterfaceArgs'] network_interfaces: Direct VPC egress settings. Currently only single network interface is supported.
+        """
         pulumi.set(__self__, "connector", connector)
         pulumi.set(__self__, "egress", egress)
         pulumi.set(__self__, "network_interfaces", network_interfaces)
@@ -5425,16 +6244,25 @@ class GetServiceTemplateVpcAccessResult(dict):
     @property
     @pulumi.getter
     def connector(self) -> str:
+        """
+        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        """
         return pulumi.get(self, "connector")
 
     @property
     @pulumi.getter
     def egress(self) -> str:
+        """
+        Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+        """
         return pulumi.get(self, "egress")
 
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Sequence['outputs.GetServiceTemplateVpcAccessNetworkInterfaceResult']:
+        """
+        Direct VPC egress settings. Currently only single network interface is supported.
+        """
         return pulumi.get(self, "network_interfaces")
 
 
@@ -5444,6 +6272,15 @@ class GetServiceTemplateVpcAccessNetworkInterfaceResult(dict):
                  network: str,
                  subnetwork: str,
                  tags: Sequence[str]):
+        """
+        :param str network: The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+               network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+               looked up from the subnetwork.
+        :param str subnetwork: The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+               network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+               subnetwork with the same name with the network will be used.
+        :param Sequence[str] tags: Network tags applied to this Cloud Run service.
+        """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "tags", tags)
@@ -5451,16 +6288,29 @@ class GetServiceTemplateVpcAccessNetworkInterfaceResult(dict):
     @property
     @pulumi.getter
     def network(self) -> str:
+        """
+        The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+        looked up from the subnetwork.
+        """
         return pulumi.get(self, "network")
 
     @property
     @pulumi.getter
     def subnetwork(self) -> str:
+        """
+        The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+        network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+        subnetwork with the same name with the network will be used.
+        """
         return pulumi.get(self, "subnetwork")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        Network tags applied to this Cloud Run service.
+        """
         return pulumi.get(self, "tags")
 
 
@@ -5475,6 +6325,16 @@ class GetServiceTerminalConditionResult(dict):
                  severity: str,
                  state: str,
                  type: str):
+        """
+        :param str execution_reason: A reason for the execution condition.
+        :param str last_transition_time: Last time the condition transitioned from one status to another.
+        :param str message: Human readable message indicating details about the current status.
+        :param str reason: A common (service-level) reason for this condition.
+        :param str revision_reason: A reason for the revision condition.
+        :param str severity: How to interpret failures of this condition, one of Error, Warning, Info
+        :param str state: State of the condition.
+        :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         pulumi.set(__self__, "execution_reason", execution_reason)
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
@@ -5487,41 +6347,65 @@ class GetServiceTerminalConditionResult(dict):
     @property
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> str:
+        """
+        A reason for the execution condition.
+        """
         return pulumi.get(self, "execution_reason")
 
     @property
     @pulumi.getter(name="lastTransitionTime")
     def last_transition_time(self) -> str:
+        """
+        Last time the condition transitioned from one status to another.
+        """
         return pulumi.get(self, "last_transition_time")
 
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Human readable message indicating details about the current status.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def reason(self) -> str:
+        """
+        A common (service-level) reason for this condition.
+        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter(name="revisionReason")
     def revision_reason(self) -> str:
+        """
+        A reason for the revision condition.
+        """
         return pulumi.get(self, "revision_reason")
 
     @property
     @pulumi.getter
     def severity(self) -> str:
+        """
+        How to interpret failures of this condition, one of Error, Warning, Info
+        """
         return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        State of the condition.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        """
         return pulumi.get(self, "type")
 
 
@@ -5532,6 +6416,12 @@ class GetServiceTrafficResult(dict):
                  revision: str,
                  tag: str,
                  type: str):
+        """
+        :param int percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+        :param str revision: Revision to which to send this portion of traffic, if traffic allocation is by revision.
+        :param str tag: Indicates a string to be part of the URI to exclusively reference this target.
+        :param str type: The allocation type for this traffic target. Possible values: ["TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST", "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"]
+        """
         pulumi.set(__self__, "percent", percent)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "tag", tag)
@@ -5540,21 +6430,33 @@ class GetServiceTrafficResult(dict):
     @property
     @pulumi.getter
     def percent(self) -> int:
+        """
+        Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+        """
         return pulumi.get(self, "percent")
 
     @property
     @pulumi.getter
     def revision(self) -> str:
+        """
+        Revision to which to send this portion of traffic, if traffic allocation is by revision.
+        """
         return pulumi.get(self, "revision")
 
     @property
     @pulumi.getter
     def tag(self) -> str:
+        """
+        Indicates a string to be part of the URI to exclusively reference this target.
+        """
         return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The allocation type for this traffic target. Possible values: ["TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST", "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"]
+        """
         return pulumi.get(self, "type")
 
 
@@ -5566,6 +6468,13 @@ class GetServiceTrafficStatusResult(dict):
                  tag: str,
                  type: str,
                  uri: str):
+        """
+        :param int percent: Specifies percent of the traffic to this Revision.
+        :param str revision: Revision to which this traffic is sent.
+        :param str tag: Indicates the string used in the URI to exclusively reference this target.
+        :param str type: The allocation type for this traffic target.
+        :param str uri: Displays the target URI.
+        """
         pulumi.set(__self__, "percent", percent)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "tag", tag)
@@ -5575,26 +6484,41 @@ class GetServiceTrafficStatusResult(dict):
     @property
     @pulumi.getter
     def percent(self) -> int:
+        """
+        Specifies percent of the traffic to this Revision.
+        """
         return pulumi.get(self, "percent")
 
     @property
     @pulumi.getter
     def revision(self) -> str:
+        """
+        Revision to which this traffic is sent.
+        """
         return pulumi.get(self, "revision")
 
     @property
     @pulumi.getter
     def tag(self) -> str:
+        """
+        Indicates the string used in the URI to exclusively reference this target.
+        """
         return pulumi.get(self, "tag")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The allocation type for this traffic target.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def uri(self) -> str:
+        """
+        Displays the target URI.
+        """
         return pulumi.get(self, "uri")
 
 

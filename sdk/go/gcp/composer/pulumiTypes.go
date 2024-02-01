@@ -14,25 +14,44 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type EnvironmentConfig struct {
-	AirflowUri                     *string                                          `pulumi:"airflowUri"`
-	DagGcsPrefix                   *string                                          `pulumi:"dagGcsPrefix"`
-	DatabaseConfig                 *EnvironmentConfigDatabaseConfig                 `pulumi:"databaseConfig"`
-	EnablePrivateBuildsOnly        *bool                                            `pulumi:"enablePrivateBuildsOnly"`
-	EnablePrivateEnvironment       *bool                                            `pulumi:"enablePrivateEnvironment"`
-	EncryptionConfig               *EnvironmentConfigEncryptionConfig               `pulumi:"encryptionConfig"`
-	EnvironmentSize                *string                                          `pulumi:"environmentSize"`
-	GkeCluster                     *string                                          `pulumi:"gkeCluster"`
-	MaintenanceWindow              *EnvironmentConfigMaintenanceWindow              `pulumi:"maintenanceWindow"`
+	// The URI of the Apache Airflow Web UI hosted within this environment.
+	AirflowUri *string `pulumi:"airflowUri"`
+	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
+	// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	DatabaseConfig *EnvironmentConfigDatabaseConfig `pulumi:"databaseConfig"`
+	// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+	EnablePrivateBuildsOnly *bool `pulumi:"enablePrivateBuildsOnly"`
+	// Optional. If true, a private Composer environment will be created.
+	EnablePrivateEnvironment *bool `pulumi:"enablePrivateEnvironment"`
+	// The encryption options for the Composer environment and its dependencies.
+	EncryptionConfig *EnvironmentConfigEncryptionConfig `pulumi:"encryptionConfig"`
+	// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	EnvironmentSize *string `pulumi:"environmentSize"`
+	// The Kubernetes Engine cluster used to run this environment.
+	GkeCluster *string `pulumi:"gkeCluster"`
+	// The configuration for Cloud Composer maintenance window.
+	MaintenanceWindow *EnvironmentConfigMaintenanceWindow `pulumi:"maintenanceWindow"`
+	// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 	MasterAuthorizedNetworksConfig *EnvironmentConfigMasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfig"`
-	NodeConfig                     *EnvironmentConfigNodeConfig                     `pulumi:"nodeConfig"`
-	NodeCount                      *int                                             `pulumi:"nodeCount"`
-	PrivateEnvironmentConfig       *EnvironmentConfigPrivateEnvironmentConfig       `pulumi:"privateEnvironmentConfig"`
-	RecoveryConfig                 *EnvironmentConfigRecoveryConfig                 `pulumi:"recoveryConfig"`
-	ResilienceMode                 *string                                          `pulumi:"resilienceMode"`
-	SoftwareConfig                 *EnvironmentConfigSoftwareConfig                 `pulumi:"softwareConfig"`
-	WebServerConfig                *EnvironmentConfigWebServerConfig                `pulumi:"webServerConfig"`
-	WebServerNetworkAccessControl  *EnvironmentConfigWebServerNetworkAccessControl  `pulumi:"webServerNetworkAccessControl"`
-	WorkloadsConfig                *EnvironmentConfigWorkloadsConfig                `pulumi:"workloadsConfig"`
+	// The configuration used for the Kubernetes Engine cluster.
+	NodeConfig *EnvironmentConfigNodeConfig `pulumi:"nodeConfig"`
+	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	NodeCount *int `pulumi:"nodeCount"`
+	// The configuration used for the Private IP Cloud Composer environment.
+	PrivateEnvironmentConfig *EnvironmentConfigPrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
+	// The recovery configuration settings for the Cloud Composer environment
+	RecoveryConfig *EnvironmentConfigRecoveryConfig `pulumi:"recoveryConfig"`
+	// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+	ResilienceMode *string `pulumi:"resilienceMode"`
+	// The configuration settings for software inside the environment.
+	SoftwareConfig *EnvironmentConfigSoftwareConfig `pulumi:"softwareConfig"`
+	// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	WebServerConfig *EnvironmentConfigWebServerConfig `pulumi:"webServerConfig"`
+	// Network-level access control policy for the Airflow web server.
+	WebServerNetworkAccessControl *EnvironmentConfigWebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
+	// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	WorkloadsConfig *EnvironmentConfigWorkloadsConfig `pulumi:"workloadsConfig"`
 }
 
 // EnvironmentConfigInput is an input type that accepts EnvironmentConfigArgs and EnvironmentConfigOutput values.
@@ -47,25 +66,44 @@ type EnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigArgs struct {
-	AirflowUri                     pulumi.StringPtrInput                                   `pulumi:"airflowUri"`
-	DagGcsPrefix                   pulumi.StringPtrInput                                   `pulumi:"dagGcsPrefix"`
-	DatabaseConfig                 EnvironmentConfigDatabaseConfigPtrInput                 `pulumi:"databaseConfig"`
-	EnablePrivateBuildsOnly        pulumi.BoolPtrInput                                     `pulumi:"enablePrivateBuildsOnly"`
-	EnablePrivateEnvironment       pulumi.BoolPtrInput                                     `pulumi:"enablePrivateEnvironment"`
-	EncryptionConfig               EnvironmentConfigEncryptionConfigPtrInput               `pulumi:"encryptionConfig"`
-	EnvironmentSize                pulumi.StringPtrInput                                   `pulumi:"environmentSize"`
-	GkeCluster                     pulumi.StringPtrInput                                   `pulumi:"gkeCluster"`
-	MaintenanceWindow              EnvironmentConfigMaintenanceWindowPtrInput              `pulumi:"maintenanceWindow"`
+	// The URI of the Apache Airflow Web UI hosted within this environment.
+	AirflowUri pulumi.StringPtrInput `pulumi:"airflowUri"`
+	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
+	// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	DatabaseConfig EnvironmentConfigDatabaseConfigPtrInput `pulumi:"databaseConfig"`
+	// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+	EnablePrivateBuildsOnly pulumi.BoolPtrInput `pulumi:"enablePrivateBuildsOnly"`
+	// Optional. If true, a private Composer environment will be created.
+	EnablePrivateEnvironment pulumi.BoolPtrInput `pulumi:"enablePrivateEnvironment"`
+	// The encryption options for the Composer environment and its dependencies.
+	EncryptionConfig EnvironmentConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
+	// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	EnvironmentSize pulumi.StringPtrInput `pulumi:"environmentSize"`
+	// The Kubernetes Engine cluster used to run this environment.
+	GkeCluster pulumi.StringPtrInput `pulumi:"gkeCluster"`
+	// The configuration for Cloud Composer maintenance window.
+	MaintenanceWindow EnvironmentConfigMaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
+	// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 	MasterAuthorizedNetworksConfig EnvironmentConfigMasterAuthorizedNetworksConfigPtrInput `pulumi:"masterAuthorizedNetworksConfig"`
-	NodeConfig                     EnvironmentConfigNodeConfigPtrInput                     `pulumi:"nodeConfig"`
-	NodeCount                      pulumi.IntPtrInput                                      `pulumi:"nodeCount"`
-	PrivateEnvironmentConfig       EnvironmentConfigPrivateEnvironmentConfigPtrInput       `pulumi:"privateEnvironmentConfig"`
-	RecoveryConfig                 EnvironmentConfigRecoveryConfigPtrInput                 `pulumi:"recoveryConfig"`
-	ResilienceMode                 pulumi.StringPtrInput                                   `pulumi:"resilienceMode"`
-	SoftwareConfig                 EnvironmentConfigSoftwareConfigPtrInput                 `pulumi:"softwareConfig"`
-	WebServerConfig                EnvironmentConfigWebServerConfigPtrInput                `pulumi:"webServerConfig"`
-	WebServerNetworkAccessControl  EnvironmentConfigWebServerNetworkAccessControlPtrInput  `pulumi:"webServerNetworkAccessControl"`
-	WorkloadsConfig                EnvironmentConfigWorkloadsConfigPtrInput                `pulumi:"workloadsConfig"`
+	// The configuration used for the Kubernetes Engine cluster.
+	NodeConfig EnvironmentConfigNodeConfigPtrInput `pulumi:"nodeConfig"`
+	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
+	// The configuration used for the Private IP Cloud Composer environment.
+	PrivateEnvironmentConfig EnvironmentConfigPrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
+	// The recovery configuration settings for the Cloud Composer environment
+	RecoveryConfig EnvironmentConfigRecoveryConfigPtrInput `pulumi:"recoveryConfig"`
+	// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+	ResilienceMode pulumi.StringPtrInput `pulumi:"resilienceMode"`
+	// The configuration settings for software inside the environment.
+	SoftwareConfig EnvironmentConfigSoftwareConfigPtrInput `pulumi:"softwareConfig"`
+	// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	WebServerConfig EnvironmentConfigWebServerConfigPtrInput `pulumi:"webServerConfig"`
+	// Network-level access control policy for the Airflow web server.
+	WebServerNetworkAccessControl EnvironmentConfigWebServerNetworkAccessControlPtrInput `pulumi:"webServerNetworkAccessControl"`
+	// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	WorkloadsConfig EnvironmentConfigWorkloadsConfigPtrInput `pulumi:"workloadsConfig"`
 }
 
 func (EnvironmentConfigArgs) ElementType() reflect.Type {
@@ -145,84 +183,103 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx con
 	}).(EnvironmentConfigPtrOutput)
 }
 
+// The URI of the Apache Airflow Web UI hosted within this environment.
 func (o EnvironmentConfigOutput) AirflowUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.AirflowUri }).(pulumi.StringPtrOutput)
 }
 
+// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
 }
 
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigOutput) DatabaseConfig() EnvironmentConfigDatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigDatabaseConfig { return v.DatabaseConfig }).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
+// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
 func (o EnvironmentConfigOutput) EnablePrivateBuildsOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *bool { return v.EnablePrivateBuildsOnly }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. If true, a private Composer environment will be created.
 func (o EnvironmentConfigOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *bool { return v.EnablePrivateEnvironment }).(pulumi.BoolPtrOutput)
 }
 
+// The encryption options for the Composer environment and its dependencies.
 func (o EnvironmentConfigOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigEncryptionConfig { return v.EncryptionConfig }).(EnvironmentConfigEncryptionConfigPtrOutput)
 }
 
+// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigOutput) EnvironmentSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.EnvironmentSize }).(pulumi.StringPtrOutput)
 }
 
+// The Kubernetes Engine cluster used to run this environment.
 func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
 }
 
+// The configuration for Cloud Composer maintenance window.
 func (o EnvironmentConfigOutput) MaintenanceWindow() EnvironmentConfigMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigMaintenanceWindow { return v.MaintenanceWindow }).(EnvironmentConfigMaintenanceWindowPtrOutput)
 }
 
+// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 func (o EnvironmentConfigOutput) MasterAuthorizedNetworksConfig() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigMasterAuthorizedNetworksConfig {
 		return v.MasterAuthorizedNetworksConfig
 	}).(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput)
 }
 
+// The configuration used for the Kubernetes Engine cluster.
 func (o EnvironmentConfigOutput) NodeConfig() EnvironmentConfigNodeConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigNodeConfig { return v.NodeConfig }).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
+// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *int { return v.NodeCount }).(pulumi.IntPtrOutput)
 }
 
+// The configuration used for the Private IP Cloud Composer environment.
 func (o EnvironmentConfigOutput) PrivateEnvironmentConfig() EnvironmentConfigPrivateEnvironmentConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
 		return v.PrivateEnvironmentConfig
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
+// The recovery configuration settings for the Cloud Composer environment
 func (o EnvironmentConfigOutput) RecoveryConfig() EnvironmentConfigRecoveryConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigRecoveryConfig { return v.RecoveryConfig }).(EnvironmentConfigRecoveryConfigPtrOutput)
 }
 
+// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
 func (o EnvironmentConfigOutput) ResilienceMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.ResilienceMode }).(pulumi.StringPtrOutput)
 }
 
+// The configuration settings for software inside the environment.
 func (o EnvironmentConfigOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
+// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigOutput) WebServerConfig() EnvironmentConfigWebServerConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigWebServerConfig { return v.WebServerConfig }).(EnvironmentConfigWebServerConfigPtrOutput)
 }
 
+// Network-level access control policy for the Airflow web server.
 func (o EnvironmentConfigOutput) WebServerNetworkAccessControl() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigWebServerNetworkAccessControl {
 		return v.WebServerNetworkAccessControl
 	}).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
 }
 
+// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigOutput) WorkloadsConfig() EnvironmentConfigWorkloadsConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigWorkloadsConfig { return v.WorkloadsConfig }).(EnvironmentConfigWorkloadsConfigPtrOutput)
 }
@@ -251,6 +308,7 @@ func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
 	}).(EnvironmentConfigOutput)
 }
 
+// The URI of the Apache Airflow Web UI hosted within this environment.
 func (o EnvironmentConfigPtrOutput) AirflowUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *string {
 		if v == nil {
@@ -260,6 +318,7 @@ func (o EnvironmentConfigPtrOutput) AirflowUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *string {
 		if v == nil {
@@ -269,6 +328,7 @@ func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPtrOutput) DatabaseConfig() EnvironmentConfigDatabaseConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigDatabaseConfig {
 		if v == nil {
@@ -278,6 +338,7 @@ func (o EnvironmentConfigPtrOutput) DatabaseConfig() EnvironmentConfigDatabaseCo
 	}).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
+// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
 func (o EnvironmentConfigPtrOutput) EnablePrivateBuildsOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *bool {
 		if v == nil {
@@ -287,6 +348,7 @@ func (o EnvironmentConfigPtrOutput) EnablePrivateBuildsOnly() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. If true, a private Composer environment will be created.
 func (o EnvironmentConfigPtrOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *bool {
 		if v == nil {
@@ -296,6 +358,7 @@ func (o EnvironmentConfigPtrOutput) EnablePrivateEnvironment() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The encryption options for the Composer environment and its dependencies.
 func (o EnvironmentConfigPtrOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigEncryptionConfig {
 		if v == nil {
@@ -305,6 +368,7 @@ func (o EnvironmentConfigPtrOutput) EncryptionConfig() EnvironmentConfigEncrypti
 	}).(EnvironmentConfigEncryptionConfigPtrOutput)
 }
 
+// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigPtrOutput) EnvironmentSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *string {
 		if v == nil {
@@ -314,6 +378,7 @@ func (o EnvironmentConfigPtrOutput) EnvironmentSize() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Kubernetes Engine cluster used to run this environment.
 func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *string {
 		if v == nil {
@@ -323,6 +388,7 @@ func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration for Cloud Composer maintenance window.
 func (o EnvironmentConfigPtrOutput) MaintenanceWindow() EnvironmentConfigMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigMaintenanceWindow {
 		if v == nil {
@@ -332,6 +398,7 @@ func (o EnvironmentConfigPtrOutput) MaintenanceWindow() EnvironmentConfigMainten
 	}).(EnvironmentConfigMaintenanceWindowPtrOutput)
 }
 
+// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 func (o EnvironmentConfigPtrOutput) MasterAuthorizedNetworksConfig() EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigMasterAuthorizedNetworksConfig {
 		if v == nil {
@@ -341,6 +408,7 @@ func (o EnvironmentConfigPtrOutput) MasterAuthorizedNetworksConfig() Environment
 	}).(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput)
 }
 
+// The configuration used for the Kubernetes Engine cluster.
 func (o EnvironmentConfigPtrOutput) NodeConfig() EnvironmentConfigNodeConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigNodeConfig {
 		if v == nil {
@@ -350,6 +418,7 @@ func (o EnvironmentConfigPtrOutput) NodeConfig() EnvironmentConfigNodeConfigPtrO
 	}).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
+// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPtrOutput) NodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *int {
 		if v == nil {
@@ -359,6 +428,7 @@ func (o EnvironmentConfigPtrOutput) NodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The configuration used for the Private IP Cloud Composer environment.
 func (o EnvironmentConfigPtrOutput) PrivateEnvironmentConfig() EnvironmentConfigPrivateEnvironmentConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigPrivateEnvironmentConfig {
 		if v == nil {
@@ -368,6 +438,7 @@ func (o EnvironmentConfigPtrOutput) PrivateEnvironmentConfig() EnvironmentConfig
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
+// The recovery configuration settings for the Cloud Composer environment
 func (o EnvironmentConfigPtrOutput) RecoveryConfig() EnvironmentConfigRecoveryConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigRecoveryConfig {
 		if v == nil {
@@ -377,6 +448,7 @@ func (o EnvironmentConfigPtrOutput) RecoveryConfig() EnvironmentConfigRecoveryCo
 	}).(EnvironmentConfigRecoveryConfigPtrOutput)
 }
 
+// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
 func (o EnvironmentConfigPtrOutput) ResilienceMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *string {
 		if v == nil {
@@ -386,6 +458,7 @@ func (o EnvironmentConfigPtrOutput) ResilienceMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration settings for software inside the environment.
 func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigSoftwareConfig {
 		if v == nil {
@@ -395,6 +468,7 @@ func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareCo
 	}).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
+// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPtrOutput) WebServerConfig() EnvironmentConfigWebServerConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigWebServerConfig {
 		if v == nil {
@@ -404,6 +478,7 @@ func (o EnvironmentConfigPtrOutput) WebServerConfig() EnvironmentConfigWebServer
 	}).(EnvironmentConfigWebServerConfigPtrOutput)
 }
 
+// Network-level access control policy for the Airflow web server.
 func (o EnvironmentConfigPtrOutput) WebServerNetworkAccessControl() EnvironmentConfigWebServerNetworkAccessControlPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigWebServerNetworkAccessControl {
 		if v == nil {
@@ -413,6 +488,7 @@ func (o EnvironmentConfigPtrOutput) WebServerNetworkAccessControl() EnvironmentC
 	}).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
 }
 
+// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigPtrOutput) WorkloadsConfig() EnvironmentConfigWorkloadsConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigWorkloadsConfig {
 		if v == nil {
@@ -423,8 +499,10 @@ func (o EnvironmentConfigPtrOutput) WorkloadsConfig() EnvironmentConfigWorkloads
 }
 
 type EnvironmentConfigDatabaseConfig struct {
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 	MachineType *string `pulumi:"machineType"`
-	Zone        *string `pulumi:"zone"`
+	// Optional. Cloud SQL database preferred zone.
+	Zone *string `pulumi:"zone"`
 }
 
 // EnvironmentConfigDatabaseConfigInput is an input type that accepts EnvironmentConfigDatabaseConfigArgs and EnvironmentConfigDatabaseConfigOutput values.
@@ -439,8 +517,10 @@ type EnvironmentConfigDatabaseConfigInput interface {
 }
 
 type EnvironmentConfigDatabaseConfigArgs struct {
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	Zone        pulumi.StringPtrInput `pulumi:"zone"`
+	// Optional. Cloud SQL database preferred zone.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (EnvironmentConfigDatabaseConfigArgs) ElementType() reflect.Type {
@@ -520,10 +600,12 @@ func (o EnvironmentConfigDatabaseConfigOutput) ToEnvironmentConfigDatabaseConfig
 	}).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
+// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 func (o EnvironmentConfigDatabaseConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigDatabaseConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Cloud SQL database preferred zone.
 func (o EnvironmentConfigDatabaseConfigOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigDatabaseConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -552,6 +634,7 @@ func (o EnvironmentConfigDatabaseConfigPtrOutput) Elem() EnvironmentConfigDataba
 	}).(EnvironmentConfigDatabaseConfigOutput)
 }
 
+// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 func (o EnvironmentConfigDatabaseConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigDatabaseConfig) *string {
 		if v == nil {
@@ -561,6 +644,7 @@ func (o EnvironmentConfigDatabaseConfigPtrOutput) MachineType() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Cloud SQL database preferred zone.
 func (o EnvironmentConfigDatabaseConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigDatabaseConfig) *string {
 		if v == nil {
@@ -571,6 +655,7 @@ func (o EnvironmentConfigDatabaseConfigPtrOutput) Zone() pulumi.StringPtrOutput 
 }
 
 type EnvironmentConfigEncryptionConfig struct {
+	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -586,6 +671,7 @@ type EnvironmentConfigEncryptionConfigInput interface {
 }
 
 type EnvironmentConfigEncryptionConfigArgs struct {
+	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
@@ -666,6 +752,7 @@ func (o EnvironmentConfigEncryptionConfigOutput) ToEnvironmentConfigEncryptionCo
 	}).(EnvironmentConfigEncryptionConfigPtrOutput)
 }
 
+// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
 func (o EnvironmentConfigEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -694,6 +781,7 @@ func (o EnvironmentConfigEncryptionConfigPtrOutput) Elem() EnvironmentConfigEncr
 	}).(EnvironmentConfigEncryptionConfigOutput)
 }
 
+// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
 func (o EnvironmentConfigEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigEncryptionConfig) *string {
 		if v == nil {
@@ -704,9 +792,12 @@ func (o EnvironmentConfigEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPt
 }
 
 type EnvironmentConfigMaintenanceWindow struct {
-	EndTime    string `pulumi:"endTime"`
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
+	EndTime string `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
 	Recurrence string `pulumi:"recurrence"`
-	StartTime  string `pulumi:"startTime"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime string `pulumi:"startTime"`
 }
 
 // EnvironmentConfigMaintenanceWindowInput is an input type that accepts EnvironmentConfigMaintenanceWindowArgs and EnvironmentConfigMaintenanceWindowOutput values.
@@ -721,9 +812,12 @@ type EnvironmentConfigMaintenanceWindowInput interface {
 }
 
 type EnvironmentConfigMaintenanceWindowArgs struct {
-	EndTime    pulumi.StringInput `pulumi:"endTime"`
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
 	Recurrence pulumi.StringInput `pulumi:"recurrence"`
-	StartTime  pulumi.StringInput `pulumi:"startTime"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (EnvironmentConfigMaintenanceWindowArgs) ElementType() reflect.Type {
@@ -803,14 +897,17 @@ func (o EnvironmentConfigMaintenanceWindowOutput) ToEnvironmentConfigMaintenance
 	}).(EnvironmentConfigMaintenanceWindowPtrOutput)
 }
 
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
 func (o EnvironmentConfigMaintenanceWindowOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigMaintenanceWindow) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
+// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
 func (o EnvironmentConfigMaintenanceWindowOutput) Recurrence() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigMaintenanceWindow) string { return v.Recurrence }).(pulumi.StringOutput)
 }
 
+// Start time of the first recurrence of the maintenance window.
 func (o EnvironmentConfigMaintenanceWindowOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -839,6 +936,7 @@ func (o EnvironmentConfigMaintenanceWindowPtrOutput) Elem() EnvironmentConfigMai
 	}).(EnvironmentConfigMaintenanceWindowOutput)
 }
 
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
 func (o EnvironmentConfigMaintenanceWindowPtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigMaintenanceWindow) *string {
 		if v == nil {
@@ -848,6 +946,7 @@ func (o EnvironmentConfigMaintenanceWindowPtrOutput) EndTime() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
 func (o EnvironmentConfigMaintenanceWindowPtrOutput) Recurrence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigMaintenanceWindow) *string {
 		if v == nil {
@@ -857,6 +956,7 @@ func (o EnvironmentConfigMaintenanceWindowPtrOutput) Recurrence() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Start time of the first recurrence of the maintenance window.
 func (o EnvironmentConfigMaintenanceWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigMaintenanceWindow) *string {
 		if v == nil {
@@ -867,8 +967,10 @@ func (o EnvironmentConfigMaintenanceWindowPtrOutput) StartTime() pulumi.StringPt
 }
 
 type EnvironmentConfigMasterAuthorizedNetworksConfig struct {
+	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
 	CidrBlocks []EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
-	Enabled    bool                                                       `pulumi:"enabled"`
+	// Whether or not master authorized networks is enabled.
+	Enabled bool `pulumi:"enabled"`
 }
 
 // EnvironmentConfigMasterAuthorizedNetworksConfigInput is an input type that accepts EnvironmentConfigMasterAuthorizedNetworksConfigArgs and EnvironmentConfigMasterAuthorizedNetworksConfigOutput values.
@@ -883,8 +985,10 @@ type EnvironmentConfigMasterAuthorizedNetworksConfigInput interface {
 }
 
 type EnvironmentConfigMasterAuthorizedNetworksConfigArgs struct {
+	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
 	CidrBlocks EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
-	Enabled    pulumi.BoolInput                                                   `pulumi:"enabled"`
+	// Whether or not master authorized networks is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
 func (EnvironmentConfigMasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
@@ -964,12 +1068,14 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToEnvironmentConf
 	}).(EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput)
 }
 
+// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) CidrBlocks() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigMasterAuthorizedNetworksConfig) []EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
 		return v.CidrBlocks
 	}).(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
+// Whether or not master authorized networks is enabled.
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnvironmentConfigMasterAuthorizedNetworksConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -998,6 +1104,7 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) Elem() Environ
 	}).(EnvironmentConfigMasterAuthorizedNetworksConfigOutput)
 }
 
+// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
 	return o.ApplyT(func(v *EnvironmentConfigMasterAuthorizedNetworksConfig) []EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
 		if v == nil {
@@ -1007,6 +1114,7 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) CidrBlocks() E
 	}).(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
+// Whether or not master authorized networks is enabled.
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigMasterAuthorizedNetworksConfig) *bool {
 		if v == nil {
@@ -1017,7 +1125,9 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigPtrOutput) Enabled() pulu
 }
 
 type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock struct {
-	CidrBlock   string  `pulumi:"cidrBlock"`
+	// cidr_block must be specified in CIDR notation.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// display_name is a field for users to identify CIDR blocks.
 	DisplayName *string `pulumi:"displayName"`
 }
 
@@ -1033,7 +1143,9 @@ type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput interface {
 }
 
 type EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs struct {
-	CidrBlock   pulumi.StringInput    `pulumi:"cidrBlock"`
+	// cidr_block must be specified in CIDR notation.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// display_name is a field for users to identify CIDR blocks.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 }
 
@@ -1088,10 +1200,12 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToEnviro
 	return o
 }
 
+// cidr_block must be specified in CIDR notation.
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
+// display_name is a field for users to identify CIDR blocks.
 func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -1117,18 +1231,30 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Ind
 }
 
 type EnvironmentConfigNodeConfig struct {
-	ComposerInternalIpv4CidrBlock *string                                        `pulumi:"composerInternalIpv4CidrBlock"`
-	DiskSizeGb                    *int                                           `pulumi:"diskSizeGb"`
-	EnableIpMasqAgent             *bool                                          `pulumi:"enableIpMasqAgent"`
-	IpAllocationPolicy            *EnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
-	MachineType                   *string                                        `pulumi:"machineType"`
-	MaxPodsPerNode                *int                                           `pulumi:"maxPodsPerNode"`
-	Network                       *string                                        `pulumi:"network"`
-	OauthScopes                   []string                                       `pulumi:"oauthScopes"`
-	ServiceAccount                *string                                        `pulumi:"serviceAccount"`
-	Subnetwork                    *string                                        `pulumi:"subnetwork"`
-	Tags                          []string                                       `pulumi:"tags"`
-	Zone                          *string                                        `pulumi:"zone"`
+	// IPv4 cidr range that will be used by Composer internal components.
+	ComposerInternalIpv4CidrBlock *string `pulumi:"composerInternalIpv4CidrBlock"`
+	// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+	EnableIpMasqAgent *bool `pulumi:"enableIpMasqAgent"`
+	// Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+	IpAllocationPolicy *EnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
+	// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	MachineType *string `pulumi:"machineType"`
+	// The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
+	// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+	Network *string `pulumi:"network"`
+	// The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	OauthScopes []string `pulumi:"oauthScopes"`
+	// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	Subnetwork *string `pulumi:"subnetwork"`
+	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+	Tags []string `pulumi:"tags"`
+	// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	Zone *string `pulumi:"zone"`
 }
 
 // EnvironmentConfigNodeConfigInput is an input type that accepts EnvironmentConfigNodeConfigArgs and EnvironmentConfigNodeConfigOutput values.
@@ -1143,18 +1269,30 @@ type EnvironmentConfigNodeConfigInput interface {
 }
 
 type EnvironmentConfigNodeConfigArgs struct {
-	ComposerInternalIpv4CidrBlock pulumi.StringPtrInput                                 `pulumi:"composerInternalIpv4CidrBlock"`
-	DiskSizeGb                    pulumi.IntPtrInput                                    `pulumi:"diskSizeGb"`
-	EnableIpMasqAgent             pulumi.BoolPtrInput                                   `pulumi:"enableIpMasqAgent"`
-	IpAllocationPolicy            EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
-	MachineType                   pulumi.StringPtrInput                                 `pulumi:"machineType"`
-	MaxPodsPerNode                pulumi.IntPtrInput                                    `pulumi:"maxPodsPerNode"`
-	Network                       pulumi.StringPtrInput                                 `pulumi:"network"`
-	OauthScopes                   pulumi.StringArrayInput                               `pulumi:"oauthScopes"`
-	ServiceAccount                pulumi.StringPtrInput                                 `pulumi:"serviceAccount"`
-	Subnetwork                    pulumi.StringPtrInput                                 `pulumi:"subnetwork"`
-	Tags                          pulumi.StringArrayInput                               `pulumi:"tags"`
-	Zone                          pulumi.StringPtrInput                                 `pulumi:"zone"`
+	// IPv4 cidr range that will be used by Composer internal components.
+	ComposerInternalIpv4CidrBlock pulumi.StringPtrInput `pulumi:"composerInternalIpv4CidrBlock"`
+	// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+	EnableIpMasqAgent pulumi.BoolPtrInput `pulumi:"enableIpMasqAgent"`
+	// Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+	IpAllocationPolicy EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
+	// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	MaxPodsPerNode pulumi.IntPtrInput `pulumi:"maxPodsPerNode"`
+	// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
+	// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (EnvironmentConfigNodeConfigArgs) ElementType() reflect.Type {
@@ -1234,52 +1372,64 @@ func (o EnvironmentConfigNodeConfigOutput) ToEnvironmentConfigNodeConfigPtrOutpu
 	}).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
+// IPv4 cidr range that will be used by Composer internal components.
 func (o EnvironmentConfigNodeConfigOutput) ComposerInternalIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ComposerInternalIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
 
+// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
 func (o EnvironmentConfigNodeConfigOutput) EnableIpMasqAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *bool { return v.EnableIpMasqAgent }).(pulumi.BoolPtrOutput)
 }
 
+// Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
 func (o EnvironmentConfigNodeConfigOutput) IpAllocationPolicy() EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigIpAllocationPolicy {
 		return v.IpAllocationPolicy
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
+// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
+// The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.MaxPodsPerNode }).(pulumi.IntPtrOutput)
 }
 
+// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
 func (o EnvironmentConfigNodeConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
+// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
 func (o EnvironmentConfigNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
+// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 func (o EnvironmentConfigNodeConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
+// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 func (o EnvironmentConfigNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -1308,6 +1458,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) Elem() EnvironmentConfigNodeConfig
 	}).(EnvironmentConfigNodeConfigOutput)
 }
 
+// IPv4 cidr range that will be used by Composer internal components.
 func (o EnvironmentConfigNodeConfigPtrOutput) ComposerInternalIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
 		if v == nil {
@@ -1317,6 +1468,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) ComposerInternalIpv4CidrBlock() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *int {
 		if v == nil {
@@ -1326,6 +1478,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
 func (o EnvironmentConfigNodeConfigPtrOutput) EnableIpMasqAgent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *bool {
 		if v == nil {
@@ -1335,6 +1488,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) EnableIpMasqAgent() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
 func (o EnvironmentConfigNodeConfigPtrOutput) IpAllocationPolicy() EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigIpAllocationPolicy {
 		if v == nil {
@@ -1344,6 +1498,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) IpAllocationPolicy() EnvironmentCo
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
+// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
 		if v == nil {
@@ -1353,6 +1508,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *int {
 		if v == nil {
@@ -1362,6 +1518,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
 func (o EnvironmentConfigNodeConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
 		if v == nil {
@@ -1371,6 +1528,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) []string {
 		if v == nil {
@@ -1380,6 +1538,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
 func (o EnvironmentConfigNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
 		if v == nil {
@@ -1389,6 +1548,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 func (o EnvironmentConfigNodeConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
 		if v == nil {
@@ -1398,6 +1558,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) Subnetwork() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 func (o EnvironmentConfigNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) []string {
 		if v == nil {
@@ -1407,6 +1568,7 @@ func (o EnvironmentConfigNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigNodeConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
 		if v == nil {
@@ -1417,11 +1579,16 @@ func (o EnvironmentConfigNodeConfigPtrOutput) Zone() pulumi.StringPtrOutput {
 }
 
 type EnvironmentConfigNodeConfigIpAllocationPolicy struct {
-	ClusterIpv4CidrBlock       *string `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  *string `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      *string `pulumi:"servicesIpv4CidrBlock"`
+	// The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
+	ClusterIpv4CidrBlock *string `pulumi:"clusterIpv4CidrBlock"`
+	// The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
+	// The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
+	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
+	// The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
-	UseIpAliases               *bool   `pulumi:"useIpAliases"`
+	// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+	UseIpAliases *bool `pulumi:"useIpAliases"`
 }
 
 // EnvironmentConfigNodeConfigIpAllocationPolicyInput is an input type that accepts EnvironmentConfigNodeConfigIpAllocationPolicyArgs and EnvironmentConfigNodeConfigIpAllocationPolicyOutput values.
@@ -1436,11 +1603,16 @@ type EnvironmentConfigNodeConfigIpAllocationPolicyInput interface {
 }
 
 type EnvironmentConfigNodeConfigIpAllocationPolicyArgs struct {
-	ClusterIpv4CidrBlock       pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
+	// The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
+	ClusterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
+	// The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
+	// The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
+	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
+	// The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
-	UseIpAliases               pulumi.BoolPtrInput   `pulumi:"useIpAliases"`
+	// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+	UseIpAliases pulumi.BoolPtrInput `pulumi:"useIpAliases"`
 }
 
 func (EnvironmentConfigNodeConfigIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -1520,22 +1692,27 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToEnvironmentConfig
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput)
 }
 
+// The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
+// The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
 }
 
+// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) UseIpAliases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) *bool { return v.UseIpAliases }).(pulumi.BoolPtrOutput)
 }
@@ -1564,6 +1741,7 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) Elem() Environme
 	}).(EnvironmentConfigNodeConfigIpAllocationPolicyOutput)
 }
 
+// The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *string {
 		if v == nil {
@@ -1573,6 +1751,7 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ClusterIpv4CidrB
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *string {
 		if v == nil {
@@ -1582,6 +1761,7 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ClusterSecondary
 	}).(pulumi.StringPtrOutput)
 }
 
+// The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *string {
 		if v == nil {
@@ -1591,6 +1771,7 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ServicesIpv4Cidr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *string {
 		if v == nil {
@@ -1600,6 +1781,7 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ServicesSecondar
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *bool {
 		if v == nil {
@@ -1610,14 +1792,22 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) UseIpAliases() p
 }
 
 type EnvironmentConfigPrivateEnvironmentConfig struct {
+	// When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerConnectionSubnetwork *string `pulumi:"cloudComposerConnectionSubnetwork"`
+	// The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock *string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
-	CloudSqlIpv4CidrBlock             *string `pulumi:"cloudSqlIpv4CidrBlock"`
-	ConnectionType                    *string `pulumi:"connectionType"`
-	EnablePrivateEndpoint             *bool   `pulumi:"enablePrivateEndpoint"`
-	EnablePrivatelyUsedPublicIps      *bool   `pulumi:"enablePrivatelyUsedPublicIps"`
-	MasterIpv4CidrBlock               *string `pulumi:"masterIpv4CidrBlock"`
-	WebServerIpv4CidrBlock            *string `pulumi:"webServerIpv4CidrBlock"`
+	// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
+	CloudSqlIpv4CidrBlock *string `pulumi:"cloudSqlIpv4CidrBlock"`
+	// Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
+	ConnectionType *string `pulumi:"connectionType"`
+	// If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	EnablePrivateEndpoint *bool `pulumi:"enablePrivateEndpoint"`
+	// When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
+	EnablePrivatelyUsedPublicIps *bool `pulumi:"enablePrivatelyUsedPublicIps"`
+	// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
+	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
+	// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	WebServerIpv4CidrBlock *string `pulumi:"webServerIpv4CidrBlock"`
 }
 
 // EnvironmentConfigPrivateEnvironmentConfigInput is an input type that accepts EnvironmentConfigPrivateEnvironmentConfigArgs and EnvironmentConfigPrivateEnvironmentConfigOutput values.
@@ -1632,14 +1822,22 @@ type EnvironmentConfigPrivateEnvironmentConfigInput interface {
 }
 
 type EnvironmentConfigPrivateEnvironmentConfigArgs struct {
+	// When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerConnectionSubnetwork pulumi.StringPtrInput `pulumi:"cloudComposerConnectionSubnetwork"`
+	// The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
-	CloudSqlIpv4CidrBlock             pulumi.StringPtrInput `pulumi:"cloudSqlIpv4CidrBlock"`
-	ConnectionType                    pulumi.StringPtrInput `pulumi:"connectionType"`
-	EnablePrivateEndpoint             pulumi.BoolPtrInput   `pulumi:"enablePrivateEndpoint"`
-	EnablePrivatelyUsedPublicIps      pulumi.BoolPtrInput   `pulumi:"enablePrivatelyUsedPublicIps"`
-	MasterIpv4CidrBlock               pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
-	WebServerIpv4CidrBlock            pulumi.StringPtrInput `pulumi:"webServerIpv4CidrBlock"`
+	// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
+	CloudSqlIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudSqlIpv4CidrBlock"`
+	// Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	EnablePrivateEndpoint pulumi.BoolPtrInput `pulumi:"enablePrivateEndpoint"`
+	// When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
+	EnablePrivatelyUsedPublicIps pulumi.BoolPtrInput `pulumi:"enablePrivatelyUsedPublicIps"`
+	// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
+	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
+	// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	WebServerIpv4CidrBlock pulumi.StringPtrInput `pulumi:"webServerIpv4CidrBlock"`
 }
 
 func (EnvironmentConfigPrivateEnvironmentConfigArgs) ElementType() reflect.Type {
@@ -1719,34 +1917,42 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ToEnvironmentConfigPriv
 	}).(EnvironmentConfigPrivateEnvironmentConfigPtrOutput)
 }
 
+// When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.CloudComposerConnectionSubnetwork }).(pulumi.StringPtrOutput)
 }
 
+// The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.CloudComposerNetworkIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) CloudSqlIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ConnectionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
 }
 
+// If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
 }
 
+// When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivatelyUsedPublicIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivatelyUsedPublicIps }).(pulumi.BoolPtrOutput)
 }
 
+// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) WebServerIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.WebServerIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
@@ -1775,6 +1981,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) Elem() EnvironmentCo
 	}).(EnvironmentConfigPrivateEnvironmentConfigOutput)
 }
 
+// When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudComposerConnectionSubnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
 		if v == nil {
@@ -1784,6 +1991,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudComposerConnect
 	}).(pulumi.StringPtrOutput)
 }
 
+// The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
 		if v == nil {
@@ -1793,6 +2001,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudComposerNetwork
 	}).(pulumi.StringPtrOutput)
 }
 
+// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudSqlIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
 		if v == nil {
@@ -1802,6 +2011,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudSqlIpv4CidrBloc
 	}).(pulumi.StringPtrOutput)
 }
 
+// Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
 		if v == nil {
@@ -1811,6 +2021,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) ConnectionType() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *bool {
 		if v == nil {
@@ -1820,6 +2031,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) EnablePrivateEndpoin
 	}).(pulumi.BoolPtrOutput)
 }
 
+// When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) EnablePrivatelyUsedPublicIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *bool {
 		if v == nil {
@@ -1829,6 +2041,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) EnablePrivatelyUsedP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
 		if v == nil {
@@ -1838,6 +2051,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) MasterIpv4CidrBlock(
 	}).(pulumi.StringPtrOutput)
 }
 
+// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) WebServerIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
 		if v == nil {
@@ -1848,6 +2062,7 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) WebServerIpv4CidrBlo
 }
 
 type EnvironmentConfigRecoveryConfig struct {
+	// The configuration settings for scheduled snapshots.
 	ScheduledSnapshotsConfig *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig `pulumi:"scheduledSnapshotsConfig"`
 }
 
@@ -1863,6 +2078,7 @@ type EnvironmentConfigRecoveryConfigInput interface {
 }
 
 type EnvironmentConfigRecoveryConfigArgs struct {
+	// The configuration settings for scheduled snapshots.
 	ScheduledSnapshotsConfig EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrInput `pulumi:"scheduledSnapshotsConfig"`
 }
 
@@ -1943,6 +2159,7 @@ func (o EnvironmentConfigRecoveryConfigOutput) ToEnvironmentConfigRecoveryConfig
 	}).(EnvironmentConfigRecoveryConfigPtrOutput)
 }
 
+// The configuration settings for scheduled snapshots.
 func (o EnvironmentConfigRecoveryConfigOutput) ScheduledSnapshotsConfig() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigRecoveryConfig) *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
 		return v.ScheduledSnapshotsConfig
@@ -1973,6 +2190,7 @@ func (o EnvironmentConfigRecoveryConfigPtrOutput) Elem() EnvironmentConfigRecove
 	}).(EnvironmentConfigRecoveryConfigOutput)
 }
 
+// The configuration settings for scheduled snapshots.
 func (o EnvironmentConfigRecoveryConfigPtrOutput) ScheduledSnapshotsConfig() EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfig) *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
 		if v == nil {
@@ -1983,10 +2201,14 @@ func (o EnvironmentConfigRecoveryConfigPtrOutput) ScheduledSnapshotsConfig() Env
 }
 
 type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig struct {
-	Enabled                  bool    `pulumi:"enabled"`
+	// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+	Enabled bool `pulumi:"enabled"`
+	// Snapshot schedule, in the unix-cron format.
 	SnapshotCreationSchedule *string `pulumi:"snapshotCreationSchedule"`
-	SnapshotLocation         *string `pulumi:"snapshotLocation"`
-	TimeZone                 *string `pulumi:"timeZone"`
+	// the URI of a bucket folder where to save the snapshot.
+	SnapshotLocation *string `pulumi:"snapshotLocation"`
+	// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+	TimeZone *string `pulumi:"timeZone"`
 }
 
 // EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput is an input type that accepts EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs and EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput values.
@@ -2001,10 +2223,14 @@ type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput interface {
 }
 
 type EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs struct {
-	Enabled                  pulumi.BoolInput      `pulumi:"enabled"`
+	// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Snapshot schedule, in the unix-cron format.
 	SnapshotCreationSchedule pulumi.StringPtrInput `pulumi:"snapshotCreationSchedule"`
-	SnapshotLocation         pulumi.StringPtrInput `pulumi:"snapshotLocation"`
-	TimeZone                 pulumi.StringPtrInput `pulumi:"timeZone"`
+	// the URI of a bucket folder where to save the snapshot.
+	SnapshotLocation pulumi.StringPtrInput `pulumi:"snapshotLocation"`
+	// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 }
 
 func (EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ElementType() reflect.Type {
@@ -2084,20 +2310,24 @@ func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToEnviron
 	}).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput)
 }
 
+// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Snapshot schedule, in the unix-cron format.
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) SnapshotCreationSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string {
 		return v.SnapshotCreationSchedule
 	}).(pulumi.StringPtrOutput)
 }
 
+// the URI of a bucket folder where to save the snapshot.
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) SnapshotLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string { return v.SnapshotLocation }).(pulumi.StringPtrOutput)
 }
 
+// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -2126,6 +2356,7 @@ func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) Elem()
 	}).(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput)
 }
 
+// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *bool {
 		if v == nil {
@@ -2135,6 +2366,7 @@ func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) Enable
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Snapshot schedule, in the unix-cron format.
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) SnapshotCreationSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string {
 		if v == nil {
@@ -2144,6 +2376,7 @@ func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) Snapsh
 	}).(pulumi.StringPtrOutput)
 }
 
+// the URI of a bucket folder where to save the snapshot.
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) SnapshotLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string {
 		if v == nil {
@@ -2153,6 +2386,7 @@ func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) Snapsh
 	}).(pulumi.StringPtrOutput)
 }
 
+// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
 func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) *string {
 		if v == nil {
@@ -2163,14 +2397,22 @@ func (o EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigPtrOutput) TimeZo
 }
 
 type EnvironmentConfigSoftwareConfig struct {
-	AirflowConfigOverrides      map[string]string                                           `pulumi:"airflowConfigOverrides"`
+	// Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
+	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
+	// The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
 	CloudDataLineageIntegration *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration `pulumi:"cloudDataLineageIntegration"`
-	EnvVariables                map[string]string                                           `pulumi:"envVariables"`
-	ImageVersion                *string                                                     `pulumi:"imageVersion"`
-	PypiPackages                map[string]string                                           `pulumi:"pypiPackages"`
-	PythonVersion               *string                                                     `pulumi:"pythonVersion"`
-	SchedulerCount              *int                                                        `pulumi:"schedulerCount"`
-	WebServerPluginsMode        *string                                                     `pulumi:"webServerPluginsMode"`
+	// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
+	EnvVariables map[string]string `pulumi:"envVariables"`
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
+	ImageVersion *string `pulumi:"imageVersion"`
+	// Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
+	PypiPackages map[string]string `pulumi:"pypiPackages"`
+	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
+	PythonVersion *string `pulumi:"pythonVersion"`
+	// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+	SchedulerCount *int `pulumi:"schedulerCount"`
+	// Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
+	WebServerPluginsMode *string `pulumi:"webServerPluginsMode"`
 }
 
 // EnvironmentConfigSoftwareConfigInput is an input type that accepts EnvironmentConfigSoftwareConfigArgs and EnvironmentConfigSoftwareConfigOutput values.
@@ -2185,14 +2427,22 @@ type EnvironmentConfigSoftwareConfigInput interface {
 }
 
 type EnvironmentConfigSoftwareConfigArgs struct {
-	AirflowConfigOverrides      pulumi.StringMapInput                                              `pulumi:"airflowConfigOverrides"`
+	// Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
+	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
+	// The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
 	CloudDataLineageIntegration EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrInput `pulumi:"cloudDataLineageIntegration"`
-	EnvVariables                pulumi.StringMapInput                                              `pulumi:"envVariables"`
-	ImageVersion                pulumi.StringPtrInput                                              `pulumi:"imageVersion"`
-	PypiPackages                pulumi.StringMapInput                                              `pulumi:"pypiPackages"`
-	PythonVersion               pulumi.StringPtrInput                                              `pulumi:"pythonVersion"`
-	SchedulerCount              pulumi.IntPtrInput                                                 `pulumi:"schedulerCount"`
-	WebServerPluginsMode        pulumi.StringPtrInput                                              `pulumi:"webServerPluginsMode"`
+	// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
+	EnvVariables pulumi.StringMapInput `pulumi:"envVariables"`
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
+	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
+	// Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
+	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
+	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
+	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
+	// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+	SchedulerCount pulumi.IntPtrInput `pulumi:"schedulerCount"`
+	// Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
+	WebServerPluginsMode pulumi.StringPtrInput `pulumi:"webServerPluginsMode"`
 }
 
 func (EnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -2272,36 +2522,44 @@ func (o EnvironmentConfigSoftwareConfigOutput) ToEnvironmentConfigSoftwareConfig
 	}).(EnvironmentConfigSoftwareConfigPtrOutput)
 }
 
+// Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
 func (o EnvironmentConfigSoftwareConfigOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+// The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
 func (o EnvironmentConfigSoftwareConfigOutput) CloudDataLineageIntegration() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
 		return v.CloudDataLineageIntegration
 	}).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput)
 }
 
+// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
 func (o EnvironmentConfigSoftwareConfigOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
 
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
 func (o EnvironmentConfigSoftwareConfigOutput) ImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
 
+// Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
 func (o EnvironmentConfigSoftwareConfigOutput) PypiPackages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
+// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 func (o EnvironmentConfigSoftwareConfigOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
 }
 
+// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
 func (o EnvironmentConfigSoftwareConfigOutput) SchedulerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *int { return v.SchedulerCount }).(pulumi.IntPtrOutput)
 }
 
+// Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
 func (o EnvironmentConfigSoftwareConfigOutput) WebServerPluginsMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.WebServerPluginsMode }).(pulumi.StringPtrOutput)
 }
@@ -2330,6 +2588,7 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) Elem() EnvironmentConfigSoftwa
 	}).(EnvironmentConfigSoftwareConfigOutput)
 }
 
+// Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) map[string]string {
 		if v == nil {
@@ -2339,6 +2598,7 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) AirflowConfigOverrides() pulum
 	}).(pulumi.StringMapOutput)
 }
 
+// The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
 func (o EnvironmentConfigSoftwareConfigPtrOutput) CloudDataLineageIntegration() EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
 		if v == nil {
@@ -2348,6 +2608,7 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) CloudDataLineageIntegration() 
 	}).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput)
 }
 
+// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) map[string]string {
 		if v == nil {
@@ -2357,6 +2618,7 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) EnvVariables() pulumi.StringMa
 	}).(pulumi.StringMapOutput)
 }
 
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *string {
 		if v == nil {
@@ -2366,6 +2628,7 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) ImageVersion() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) PypiPackages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) map[string]string {
 		if v == nil {
@@ -2375,6 +2638,7 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) PypiPackages() pulumi.StringMa
 	}).(pulumi.StringMapOutput)
 }
 
+// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *string {
 		if v == nil {
@@ -2384,6 +2648,7 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) PythonVersion() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) SchedulerCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *int {
 		if v == nil {
@@ -2393,6 +2658,7 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) SchedulerCount() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
+// Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
 func (o EnvironmentConfigSoftwareConfigPtrOutput) WebServerPluginsMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *string {
 		if v == nil {
@@ -2403,6 +2669,7 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) WebServerPluginsMode() pulumi.
 }
 
 type EnvironmentConfigSoftwareConfigCloudDataLineageIntegration struct {
+	// Whether or not Cloud Data Lineage integration is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -2418,6 +2685,7 @@ type EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput interface {
 }
 
 type EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs struct {
+	// Whether or not Cloud Data Lineage integration is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -2498,6 +2766,7 @@ func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToEnvi
 	}).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput)
 }
 
+// Whether or not Cloud Data Lineage integration is enabled.
 func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfigCloudDataLineageIntegration) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -2526,6 +2795,7 @@ func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) Ele
 	}).(EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput)
 }
 
+// Whether or not Cloud Data Lineage integration is enabled.
 func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfigCloudDataLineageIntegration) *bool {
 		if v == nil {
@@ -2536,6 +2806,7 @@ func (o EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationPtrOutput) Ena
 }
 
 type EnvironmentConfigWebServerConfig struct {
+	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 	MachineType string `pulumi:"machineType"`
 }
 
@@ -2551,6 +2822,7 @@ type EnvironmentConfigWebServerConfigInput interface {
 }
 
 type EnvironmentConfigWebServerConfigArgs struct {
+	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 }
 
@@ -2631,6 +2903,7 @@ func (o EnvironmentConfigWebServerConfigOutput) ToEnvironmentConfigWebServerConf
 	}).(EnvironmentConfigWebServerConfigPtrOutput)
 }
 
+// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 func (o EnvironmentConfigWebServerConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigWebServerConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -2659,6 +2932,7 @@ func (o EnvironmentConfigWebServerConfigPtrOutput) Elem() EnvironmentConfigWebSe
 	}).(EnvironmentConfigWebServerConfigOutput)
 }
 
+// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 func (o EnvironmentConfigWebServerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWebServerConfig) *string {
 		if v == nil {
@@ -2669,6 +2943,7 @@ func (o EnvironmentConfigWebServerConfigPtrOutput) MachineType() pulumi.StringPt
 }
 
 type EnvironmentConfigWebServerNetworkAccessControl struct {
+	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges []EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange `pulumi:"allowedIpRanges"`
 }
 
@@ -2684,6 +2959,7 @@ type EnvironmentConfigWebServerNetworkAccessControlInput interface {
 }
 
 type EnvironmentConfigWebServerNetworkAccessControlArgs struct {
+	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput `pulumi:"allowedIpRanges"`
 }
 
@@ -2764,6 +3040,7 @@ func (o EnvironmentConfigWebServerNetworkAccessControlOutput) ToEnvironmentConfi
 	}).(EnvironmentConfigWebServerNetworkAccessControlPtrOutput)
 }
 
+// A collection of allowed IP ranges with descriptions.
 func (o EnvironmentConfigWebServerNetworkAccessControlOutput) AllowedIpRanges() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigWebServerNetworkAccessControl) []EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
 		return v.AllowedIpRanges
@@ -2794,6 +3071,7 @@ func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) Elem() Environm
 	}).(EnvironmentConfigWebServerNetworkAccessControlOutput)
 }
 
+// A collection of allowed IP ranges with descriptions.
 func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) AllowedIpRanges() EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWebServerNetworkAccessControl) []EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
 		if v == nil {
@@ -2804,8 +3082,10 @@ func (o EnvironmentConfigWebServerNetworkAccessControlPtrOutput) AllowedIpRanges
 }
 
 type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange struct {
+	// A description of this ip range.
 	Description *string `pulumi:"description"`
-	Value       string  `pulumi:"value"`
+	// IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
+	Value string `pulumi:"value"`
 }
 
 // EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput is an input type that accepts EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs and EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput values.
@@ -2820,8 +3100,10 @@ type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput interface
 }
 
 type EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs struct {
+	// A description of this ip range.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Value       pulumi.StringInput    `pulumi:"value"`
+	// IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ElementType() reflect.Type {
@@ -2875,10 +3157,12 @@ func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToEn
 	return o
 }
 
+// A description of this ip range.
 func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
 func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2904,11 +3188,16 @@ func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
 }
 
 type EnvironmentConfigWorkloadsConfig struct {
+	// Configuration for resources used by DAG processor.
 	DagProcessor *EnvironmentConfigWorkloadsConfigDagProcessor `pulumi:"dagProcessor"`
-	Scheduler    *EnvironmentConfigWorkloadsConfigScheduler    `pulumi:"scheduler"`
-	Triggerer    *EnvironmentConfigWorkloadsConfigTriggerer    `pulumi:"triggerer"`
-	WebServer    *EnvironmentConfigWorkloadsConfigWebServer    `pulumi:"webServer"`
-	Worker       *EnvironmentConfigWorkloadsConfigWorker       `pulumi:"worker"`
+	// Configuration for resources used by Airflow schedulers.
+	Scheduler *EnvironmentConfigWorkloadsConfigScheduler `pulumi:"scheduler"`
+	// Configuration for resources used by Airflow triggerers.
+	Triggerer *EnvironmentConfigWorkloadsConfigTriggerer `pulumi:"triggerer"`
+	// Configuration for resources used by Airflow web server.
+	WebServer *EnvironmentConfigWorkloadsConfigWebServer `pulumi:"webServer"`
+	// Configuration for resources used by Airflow workers.
+	Worker *EnvironmentConfigWorkloadsConfigWorker `pulumi:"worker"`
 }
 
 // EnvironmentConfigWorkloadsConfigInput is an input type that accepts EnvironmentConfigWorkloadsConfigArgs and EnvironmentConfigWorkloadsConfigOutput values.
@@ -2923,11 +3212,16 @@ type EnvironmentConfigWorkloadsConfigInput interface {
 }
 
 type EnvironmentConfigWorkloadsConfigArgs struct {
+	// Configuration for resources used by DAG processor.
 	DagProcessor EnvironmentConfigWorkloadsConfigDagProcessorPtrInput `pulumi:"dagProcessor"`
-	Scheduler    EnvironmentConfigWorkloadsConfigSchedulerPtrInput    `pulumi:"scheduler"`
-	Triggerer    EnvironmentConfigWorkloadsConfigTriggererPtrInput    `pulumi:"triggerer"`
-	WebServer    EnvironmentConfigWorkloadsConfigWebServerPtrInput    `pulumi:"webServer"`
-	Worker       EnvironmentConfigWorkloadsConfigWorkerPtrInput       `pulumi:"worker"`
+	// Configuration for resources used by Airflow schedulers.
+	Scheduler EnvironmentConfigWorkloadsConfigSchedulerPtrInput `pulumi:"scheduler"`
+	// Configuration for resources used by Airflow triggerers.
+	Triggerer EnvironmentConfigWorkloadsConfigTriggererPtrInput `pulumi:"triggerer"`
+	// Configuration for resources used by Airflow web server.
+	WebServer EnvironmentConfigWorkloadsConfigWebServerPtrInput `pulumi:"webServer"`
+	// Configuration for resources used by Airflow workers.
+	Worker EnvironmentConfigWorkloadsConfigWorkerPtrInput `pulumi:"worker"`
 }
 
 func (EnvironmentConfigWorkloadsConfigArgs) ElementType() reflect.Type {
@@ -3007,30 +3301,35 @@ func (o EnvironmentConfigWorkloadsConfigOutput) ToEnvironmentConfigWorkloadsConf
 	}).(EnvironmentConfigWorkloadsConfigPtrOutput)
 }
 
+// Configuration for resources used by DAG processor.
 func (o EnvironmentConfigWorkloadsConfigOutput) DagProcessor() EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigDagProcessor {
 		return v.DagProcessor
 	}).(EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput)
 }
 
+// Configuration for resources used by Airflow schedulers.
 func (o EnvironmentConfigWorkloadsConfigOutput) Scheduler() EnvironmentConfigWorkloadsConfigSchedulerPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigScheduler {
 		return v.Scheduler
 	}).(EnvironmentConfigWorkloadsConfigSchedulerPtrOutput)
 }
 
+// Configuration for resources used by Airflow triggerers.
 func (o EnvironmentConfigWorkloadsConfigOutput) Triggerer() EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigTriggerer {
 		return v.Triggerer
 	}).(EnvironmentConfigWorkloadsConfigTriggererPtrOutput)
 }
 
+// Configuration for resources used by Airflow web server.
 func (o EnvironmentConfigWorkloadsConfigOutput) WebServer() EnvironmentConfigWorkloadsConfigWebServerPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigWebServer {
 		return v.WebServer
 	}).(EnvironmentConfigWorkloadsConfigWebServerPtrOutput)
 }
 
+// Configuration for resources used by Airflow workers.
 func (o EnvironmentConfigWorkloadsConfigOutput) Worker() EnvironmentConfigWorkloadsConfigWorkerPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigWorker { return v.Worker }).(EnvironmentConfigWorkloadsConfigWorkerPtrOutput)
 }
@@ -3059,6 +3358,7 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) Elem() EnvironmentConfigWorkl
 	}).(EnvironmentConfigWorkloadsConfigOutput)
 }
 
+// Configuration for resources used by DAG processor.
 func (o EnvironmentConfigWorkloadsConfigPtrOutput) DagProcessor() EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigDagProcessor {
 		if v == nil {
@@ -3068,6 +3368,7 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) DagProcessor() EnvironmentCon
 	}).(EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput)
 }
 
+// Configuration for resources used by Airflow schedulers.
 func (o EnvironmentConfigWorkloadsConfigPtrOutput) Scheduler() EnvironmentConfigWorkloadsConfigSchedulerPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigScheduler {
 		if v == nil {
@@ -3077,6 +3378,7 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) Scheduler() EnvironmentConfig
 	}).(EnvironmentConfigWorkloadsConfigSchedulerPtrOutput)
 }
 
+// Configuration for resources used by Airflow triggerers.
 func (o EnvironmentConfigWorkloadsConfigPtrOutput) Triggerer() EnvironmentConfigWorkloadsConfigTriggererPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigTriggerer {
 		if v == nil {
@@ -3086,6 +3388,7 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) Triggerer() EnvironmentConfig
 	}).(EnvironmentConfigWorkloadsConfigTriggererPtrOutput)
 }
 
+// Configuration for resources used by Airflow web server.
 func (o EnvironmentConfigWorkloadsConfigPtrOutput) WebServer() EnvironmentConfigWorkloadsConfigWebServerPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigWebServer {
 		if v == nil {
@@ -3095,6 +3398,7 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) WebServer() EnvironmentConfig
 	}).(EnvironmentConfigWorkloadsConfigWebServerPtrOutput)
 }
 
+// Configuration for resources used by Airflow workers.
 func (o EnvironmentConfigWorkloadsConfigPtrOutput) Worker() EnvironmentConfigWorkloadsConfigWorkerPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigWorker {
 		if v == nil {
@@ -3105,8 +3409,11 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) Worker() EnvironmentConfigWor
 }
 
 type EnvironmentConfigWorkloadsConfigDagProcessor struct {
-	Cpu       *float64 `pulumi:"cpu"`
-	MemoryGb  *float64 `pulumi:"memoryGb"`
+	// CPU request and limit for DAG processor.
+	Cpu *float64 `pulumi:"cpu"`
+	// Memory (GB) request and limit for DAG processor.
+	MemoryGb *float64 `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for DAG processor.
 	StorageGb *float64 `pulumi:"storageGb"`
 }
 
@@ -3122,8 +3429,11 @@ type EnvironmentConfigWorkloadsConfigDagProcessorInput interface {
 }
 
 type EnvironmentConfigWorkloadsConfigDagProcessorArgs struct {
-	Cpu       pulumi.Float64PtrInput `pulumi:"cpu"`
-	MemoryGb  pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	// CPU request and limit for DAG processor.
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// Memory (GB) request and limit for DAG processor.
+	MemoryGb pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for DAG processor.
 	StorageGb pulumi.Float64PtrInput `pulumi:"storageGb"`
 }
 
@@ -3204,14 +3514,17 @@ func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) ToEnvironmentConfigW
 	}).(EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput)
 }
 
+// CPU request and limit for DAG processor.
 func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigDagProcessor) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
+// Memory (GB) request and limit for DAG processor.
 func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigDagProcessor) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
 }
 
+// Storage (GB) request and limit for DAG processor.
 func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) StorageGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigDagProcessor) *float64 { return v.StorageGb }).(pulumi.Float64PtrOutput)
 }
@@ -3240,6 +3553,7 @@ func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) Elem() Environmen
 	}).(EnvironmentConfigWorkloadsConfigDagProcessorOutput)
 }
 
+// CPU request and limit for DAG processor.
 func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigDagProcessor) *float64 {
 		if v == nil {
@@ -3249,6 +3563,7 @@ func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) Cpu() pulumi.Floa
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Memory (GB) request and limit for DAG processor.
 func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigDagProcessor) *float64 {
 		if v == nil {
@@ -3258,6 +3573,7 @@ func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) MemoryGb() pulumi
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Storage (GB) request and limit for DAG processor.
 func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) StorageGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigDagProcessor) *float64 {
 		if v == nil {
@@ -3268,9 +3584,13 @@ func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) StorageGb() pulum
 }
 
 type EnvironmentConfigWorkloadsConfigScheduler struct {
-	Count     *int     `pulumi:"count"`
-	Cpu       *float64 `pulumi:"cpu"`
-	MemoryGb  *float64 `pulumi:"memoryGb"`
+	// The number of schedulers.
+	Count *int `pulumi:"count"`
+	// CPU request and limit for a single Airflow scheduler replica
+	Cpu *float64 `pulumi:"cpu"`
+	// Memory (GB) request and limit for a single Airflow scheduler replica.
+	MemoryGb *float64 `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for a single Airflow scheduler replica.
 	StorageGb *float64 `pulumi:"storageGb"`
 }
 
@@ -3286,9 +3606,13 @@ type EnvironmentConfigWorkloadsConfigSchedulerInput interface {
 }
 
 type EnvironmentConfigWorkloadsConfigSchedulerArgs struct {
-	Count     pulumi.IntPtrInput     `pulumi:"count"`
-	Cpu       pulumi.Float64PtrInput `pulumi:"cpu"`
-	MemoryGb  pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	// The number of schedulers.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// CPU request and limit for a single Airflow scheduler replica
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// Memory (GB) request and limit for a single Airflow scheduler replica.
+	MemoryGb pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for a single Airflow scheduler replica.
 	StorageGb pulumi.Float64PtrInput `pulumi:"storageGb"`
 }
 
@@ -3369,18 +3693,22 @@ func (o EnvironmentConfigWorkloadsConfigSchedulerOutput) ToEnvironmentConfigWork
 	}).(EnvironmentConfigWorkloadsConfigSchedulerPtrOutput)
 }
 
+// The number of schedulers.
 func (o EnvironmentConfigWorkloadsConfigSchedulerOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigScheduler) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
+// CPU request and limit for a single Airflow scheduler replica
 func (o EnvironmentConfigWorkloadsConfigSchedulerOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigScheduler) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
+// Memory (GB) request and limit for a single Airflow scheduler replica.
 func (o EnvironmentConfigWorkloadsConfigSchedulerOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigScheduler) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
 }
 
+// Storage (GB) request and limit for a single Airflow scheduler replica.
 func (o EnvironmentConfigWorkloadsConfigSchedulerOutput) StorageGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigScheduler) *float64 { return v.StorageGb }).(pulumi.Float64PtrOutput)
 }
@@ -3409,6 +3737,7 @@ func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) Elem() EnvironmentCo
 	}).(EnvironmentConfigWorkloadsConfigSchedulerOutput)
 }
 
+// The number of schedulers.
 func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigScheduler) *int {
 		if v == nil {
@@ -3418,6 +3747,7 @@ func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) Count() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// CPU request and limit for a single Airflow scheduler replica
 func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigScheduler) *float64 {
 		if v == nil {
@@ -3427,6 +3757,7 @@ func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) Cpu() pulumi.Float64
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Memory (GB) request and limit for a single Airflow scheduler replica.
 func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigScheduler) *float64 {
 		if v == nil {
@@ -3436,6 +3767,7 @@ func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) MemoryGb() pulumi.Fl
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Storage (GB) request and limit for a single Airflow scheduler replica.
 func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) StorageGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigScheduler) *float64 {
 		if v == nil {
@@ -3446,8 +3778,11 @@ func (o EnvironmentConfigWorkloadsConfigSchedulerPtrOutput) StorageGb() pulumi.F
 }
 
 type EnvironmentConfigWorkloadsConfigTriggerer struct {
-	Count    int     `pulumi:"count"`
-	Cpu      float64 `pulumi:"cpu"`
+	// The number of triggerers.
+	Count int `pulumi:"count"`
+	// CPU request and limit for a single Airflow triggerer replica.
+	Cpu float64 `pulumi:"cpu"`
+	// Memory (GB) request and limit for a single Airflow triggerer replica.
 	MemoryGb float64 `pulumi:"memoryGb"`
 }
 
@@ -3463,8 +3798,11 @@ type EnvironmentConfigWorkloadsConfigTriggererInput interface {
 }
 
 type EnvironmentConfigWorkloadsConfigTriggererArgs struct {
-	Count    pulumi.IntInput     `pulumi:"count"`
-	Cpu      pulumi.Float64Input `pulumi:"cpu"`
+	// The number of triggerers.
+	Count pulumi.IntInput `pulumi:"count"`
+	// CPU request and limit for a single Airflow triggerer replica.
+	Cpu pulumi.Float64Input `pulumi:"cpu"`
+	// Memory (GB) request and limit for a single Airflow triggerer replica.
 	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
 }
 
@@ -3545,14 +3883,17 @@ func (o EnvironmentConfigWorkloadsConfigTriggererOutput) ToEnvironmentConfigWork
 	}).(EnvironmentConfigWorkloadsConfigTriggererPtrOutput)
 }
 
+// The number of triggerers.
 func (o EnvironmentConfigWorkloadsConfigTriggererOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigTriggerer) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// CPU request and limit for a single Airflow triggerer replica.
 func (o EnvironmentConfigWorkloadsConfigTriggererOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigTriggerer) float64 { return v.Cpu }).(pulumi.Float64Output)
 }
 
+// Memory (GB) request and limit for a single Airflow triggerer replica.
 func (o EnvironmentConfigWorkloadsConfigTriggererOutput) MemoryGb() pulumi.Float64Output {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigTriggerer) float64 { return v.MemoryGb }).(pulumi.Float64Output)
 }
@@ -3581,6 +3922,7 @@ func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) Elem() EnvironmentCo
 	}).(EnvironmentConfigWorkloadsConfigTriggererOutput)
 }
 
+// The number of triggerers.
 func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigTriggerer) *int {
 		if v == nil {
@@ -3590,6 +3932,7 @@ func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) Count() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// CPU request and limit for a single Airflow triggerer replica.
 func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigTriggerer) *float64 {
 		if v == nil {
@@ -3599,6 +3942,7 @@ func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) Cpu() pulumi.Float64
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Memory (GB) request and limit for a single Airflow triggerer replica.
 func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigTriggerer) *float64 {
 		if v == nil {
@@ -3609,8 +3953,11 @@ func (o EnvironmentConfigWorkloadsConfigTriggererPtrOutput) MemoryGb() pulumi.Fl
 }
 
 type EnvironmentConfigWorkloadsConfigWebServer struct {
-	Cpu       *float64 `pulumi:"cpu"`
-	MemoryGb  *float64 `pulumi:"memoryGb"`
+	// CPU request and limit for Airflow web server.
+	Cpu *float64 `pulumi:"cpu"`
+	// Memory (GB) request and limit for Airflow web server.
+	MemoryGb *float64 `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for Airflow web server.
 	StorageGb *float64 `pulumi:"storageGb"`
 }
 
@@ -3626,8 +3973,11 @@ type EnvironmentConfigWorkloadsConfigWebServerInput interface {
 }
 
 type EnvironmentConfigWorkloadsConfigWebServerArgs struct {
-	Cpu       pulumi.Float64PtrInput `pulumi:"cpu"`
-	MemoryGb  pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	// CPU request and limit for Airflow web server.
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// Memory (GB) request and limit for Airflow web server.
+	MemoryGb pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for Airflow web server.
 	StorageGb pulumi.Float64PtrInput `pulumi:"storageGb"`
 }
 
@@ -3708,14 +4058,17 @@ func (o EnvironmentConfigWorkloadsConfigWebServerOutput) ToEnvironmentConfigWork
 	}).(EnvironmentConfigWorkloadsConfigWebServerPtrOutput)
 }
 
+// CPU request and limit for Airflow web server.
 func (o EnvironmentConfigWorkloadsConfigWebServerOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigWebServer) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
+// Memory (GB) request and limit for Airflow web server.
 func (o EnvironmentConfigWorkloadsConfigWebServerOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigWebServer) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
 }
 
+// Storage (GB) request and limit for Airflow web server.
 func (o EnvironmentConfigWorkloadsConfigWebServerOutput) StorageGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigWebServer) *float64 { return v.StorageGb }).(pulumi.Float64PtrOutput)
 }
@@ -3744,6 +4097,7 @@ func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) Elem() EnvironmentCo
 	}).(EnvironmentConfigWorkloadsConfigWebServerOutput)
 }
 
+// CPU request and limit for Airflow web server.
 func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigWebServer) *float64 {
 		if v == nil {
@@ -3753,6 +4107,7 @@ func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) Cpu() pulumi.Float64
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Memory (GB) request and limit for Airflow web server.
 func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigWebServer) *float64 {
 		if v == nil {
@@ -3762,6 +4117,7 @@ func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) MemoryGb() pulumi.Fl
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Storage (GB) request and limit for Airflow web server.
 func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) StorageGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigWebServer) *float64 {
 		if v == nil {
@@ -3772,10 +4128,15 @@ func (o EnvironmentConfigWorkloadsConfigWebServerPtrOutput) StorageGb() pulumi.F
 }
 
 type EnvironmentConfigWorkloadsConfigWorker struct {
-	Cpu       *float64 `pulumi:"cpu"`
-	MaxCount  *int     `pulumi:"maxCount"`
-	MemoryGb  *float64 `pulumi:"memoryGb"`
-	MinCount  *int     `pulumi:"minCount"`
+	// CPU request and limit for a single Airflow worker replica.
+	Cpu *float64 `pulumi:"cpu"`
+	// Maximum number of workers for autoscaling.
+	MaxCount *int `pulumi:"maxCount"`
+	// Memory (GB) request and limit for a single Airflow worker replica.
+	MemoryGb *float64 `pulumi:"memoryGb"`
+	// Minimum number of workers for autoscaling.
+	MinCount *int `pulumi:"minCount"`
+	// Storage (GB) request and limit for a single Airflow worker replica.
 	StorageGb *float64 `pulumi:"storageGb"`
 }
 
@@ -3791,10 +4152,15 @@ type EnvironmentConfigWorkloadsConfigWorkerInput interface {
 }
 
 type EnvironmentConfigWorkloadsConfigWorkerArgs struct {
-	Cpu       pulumi.Float64PtrInput `pulumi:"cpu"`
-	MaxCount  pulumi.IntPtrInput     `pulumi:"maxCount"`
-	MemoryGb  pulumi.Float64PtrInput `pulumi:"memoryGb"`
-	MinCount  pulumi.IntPtrInput     `pulumi:"minCount"`
+	// CPU request and limit for a single Airflow worker replica.
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// Maximum number of workers for autoscaling.
+	MaxCount pulumi.IntPtrInput `pulumi:"maxCount"`
+	// Memory (GB) request and limit for a single Airflow worker replica.
+	MemoryGb pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	// Minimum number of workers for autoscaling.
+	MinCount pulumi.IntPtrInput `pulumi:"minCount"`
+	// Storage (GB) request and limit for a single Airflow worker replica.
 	StorageGb pulumi.Float64PtrInput `pulumi:"storageGb"`
 }
 
@@ -3875,22 +4241,27 @@ func (o EnvironmentConfigWorkloadsConfigWorkerOutput) ToEnvironmentConfigWorkloa
 	}).(EnvironmentConfigWorkloadsConfigWorkerPtrOutput)
 }
 
+// CPU request and limit for a single Airflow worker replica.
 func (o EnvironmentConfigWorkloadsConfigWorkerOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigWorker) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
 }
 
+// Maximum number of workers for autoscaling.
 func (o EnvironmentConfigWorkloadsConfigWorkerOutput) MaxCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigWorker) *int { return v.MaxCount }).(pulumi.IntPtrOutput)
 }
 
+// Memory (GB) request and limit for a single Airflow worker replica.
 func (o EnvironmentConfigWorkloadsConfigWorkerOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigWorker) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
 }
 
+// Minimum number of workers for autoscaling.
 func (o EnvironmentConfigWorkloadsConfigWorkerOutput) MinCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigWorker) *int { return v.MinCount }).(pulumi.IntPtrOutput)
 }
 
+// Storage (GB) request and limit for a single Airflow worker replica.
 func (o EnvironmentConfigWorkloadsConfigWorkerOutput) StorageGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigWorker) *float64 { return v.StorageGb }).(pulumi.Float64PtrOutput)
 }
@@ -3919,6 +4290,7 @@ func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) Elem() EnvironmentConfi
 	}).(EnvironmentConfigWorkloadsConfigWorkerOutput)
 }
 
+// CPU request and limit for a single Airflow worker replica.
 func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigWorker) *float64 {
 		if v == nil {
@@ -3928,6 +4300,7 @@ func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) Cpu() pulumi.Float64Ptr
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Maximum number of workers for autoscaling.
 func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) MaxCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigWorker) *int {
 		if v == nil {
@@ -3937,6 +4310,7 @@ func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) MaxCount() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// Memory (GB) request and limit for a single Airflow worker replica.
 func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) MemoryGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigWorker) *float64 {
 		if v == nil {
@@ -3946,6 +4320,7 @@ func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) MemoryGb() pulumi.Float
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Minimum number of workers for autoscaling.
 func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) MinCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigWorker) *int {
 		if v == nil {
@@ -3955,6 +4330,7 @@ func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) MinCount() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// Storage (GB) request and limit for a single Airflow worker replica.
 func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) StorageGb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigWorker) *float64 {
 		if v == nil {
@@ -3965,6 +4341,7 @@ func (o EnvironmentConfigWorkloadsConfigWorkerPtrOutput) StorageGb() pulumi.Floa
 }
 
 type EnvironmentStorageConfig struct {
+	// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
 	Bucket string `pulumi:"bucket"`
 }
 
@@ -3980,6 +4357,7 @@ type EnvironmentStorageConfigInput interface {
 }
 
 type EnvironmentStorageConfigArgs struct {
+	// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 }
 
@@ -4060,6 +4438,7 @@ func (o EnvironmentStorageConfigOutput) ToEnvironmentStorageConfigPtrOutputWithC
 	}).(EnvironmentStorageConfigPtrOutput)
 }
 
+// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
 func (o EnvironmentStorageConfigOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -4088,6 +4467,7 @@ func (o EnvironmentStorageConfigPtrOutput) Elem() EnvironmentStorageConfigOutput
 	}).(EnvironmentStorageConfigOutput)
 }
 
+// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
 func (o EnvironmentStorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentStorageConfig) *string {
 		if v == nil {
@@ -4098,25 +4478,44 @@ func (o EnvironmentStorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 }
 
 type GetEnvironmentConfig struct {
-	AirflowUri                      string                                               `pulumi:"airflowUri"`
-	DagGcsPrefix                    string                                               `pulumi:"dagGcsPrefix"`
-	DatabaseConfigs                 []GetEnvironmentConfigDatabaseConfig                 `pulumi:"databaseConfigs"`
-	EnablePrivateBuildsOnly         bool                                                 `pulumi:"enablePrivateBuildsOnly"`
-	EnablePrivateEnvironment        bool                                                 `pulumi:"enablePrivateEnvironment"`
-	EncryptionConfigs               []GetEnvironmentConfigEncryptionConfig               `pulumi:"encryptionConfigs"`
-	EnvironmentSize                 string                                               `pulumi:"environmentSize"`
-	GkeCluster                      string                                               `pulumi:"gkeCluster"`
-	MaintenanceWindows              []GetEnvironmentConfigMaintenanceWindow              `pulumi:"maintenanceWindows"`
+	// The URI of the Apache Airflow Web UI hosted within this environment.
+	AirflowUri string `pulumi:"airflowUri"`
+	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+	DagGcsPrefix string `pulumi:"dagGcsPrefix"`
+	// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	DatabaseConfigs []GetEnvironmentConfigDatabaseConfig `pulumi:"databaseConfigs"`
+	// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+	EnablePrivateBuildsOnly bool `pulumi:"enablePrivateBuildsOnly"`
+	// Optional. If true, a private Composer environment will be created.
+	EnablePrivateEnvironment bool `pulumi:"enablePrivateEnvironment"`
+	// The encryption options for the Composer environment and its dependencies.
+	EncryptionConfigs []GetEnvironmentConfigEncryptionConfig `pulumi:"encryptionConfigs"`
+	// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	EnvironmentSize string `pulumi:"environmentSize"`
+	// The Kubernetes Engine cluster used to run this environment.
+	GkeCluster string `pulumi:"gkeCluster"`
+	// The configuration for Cloud Composer maintenance window.
+	MaintenanceWindows []GetEnvironmentConfigMaintenanceWindow `pulumi:"maintenanceWindows"`
+	// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 	MasterAuthorizedNetworksConfigs []GetEnvironmentConfigMasterAuthorizedNetworksConfig `pulumi:"masterAuthorizedNetworksConfigs"`
-	NodeConfigs                     []GetEnvironmentConfigNodeConfig                     `pulumi:"nodeConfigs"`
-	NodeCount                       int                                                  `pulumi:"nodeCount"`
-	PrivateEnvironmentConfigs       []GetEnvironmentConfigPrivateEnvironmentConfig       `pulumi:"privateEnvironmentConfigs"`
-	RecoveryConfigs                 []GetEnvironmentConfigRecoveryConfig                 `pulumi:"recoveryConfigs"`
-	ResilienceMode                  string                                               `pulumi:"resilienceMode"`
-	SoftwareConfigs                 []GetEnvironmentConfigSoftwareConfig                 `pulumi:"softwareConfigs"`
-	WebServerConfigs                []GetEnvironmentConfigWebServerConfig                `pulumi:"webServerConfigs"`
-	WebServerNetworkAccessControls  []GetEnvironmentConfigWebServerNetworkAccessControl  `pulumi:"webServerNetworkAccessControls"`
-	WorkloadsConfigs                []GetEnvironmentConfigWorkloadsConfig                `pulumi:"workloadsConfigs"`
+	// The configuration used for the Kubernetes Engine cluster.
+	NodeConfigs []GetEnvironmentConfigNodeConfig `pulumi:"nodeConfigs"`
+	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	NodeCount int `pulumi:"nodeCount"`
+	// The configuration used for the Private IP Cloud Composer environment.
+	PrivateEnvironmentConfigs []GetEnvironmentConfigPrivateEnvironmentConfig `pulumi:"privateEnvironmentConfigs"`
+	// The recovery configuration settings for the Cloud Composer environment
+	RecoveryConfigs []GetEnvironmentConfigRecoveryConfig `pulumi:"recoveryConfigs"`
+	// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+	ResilienceMode string `pulumi:"resilienceMode"`
+	// The configuration settings for software inside the environment.
+	SoftwareConfigs []GetEnvironmentConfigSoftwareConfig `pulumi:"softwareConfigs"`
+	// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	WebServerConfigs []GetEnvironmentConfigWebServerConfig `pulumi:"webServerConfigs"`
+	// Network-level access control policy for the Airflow web server.
+	WebServerNetworkAccessControls []GetEnvironmentConfigWebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControls"`
+	// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	WorkloadsConfigs []GetEnvironmentConfigWorkloadsConfig `pulumi:"workloadsConfigs"`
 }
 
 // GetEnvironmentConfigInput is an input type that accepts GetEnvironmentConfigArgs and GetEnvironmentConfigOutput values.
@@ -4131,25 +4530,44 @@ type GetEnvironmentConfigInput interface {
 }
 
 type GetEnvironmentConfigArgs struct {
-	AirflowUri                      pulumi.StringInput                                           `pulumi:"airflowUri"`
-	DagGcsPrefix                    pulumi.StringInput                                           `pulumi:"dagGcsPrefix"`
-	DatabaseConfigs                 GetEnvironmentConfigDatabaseConfigArrayInput                 `pulumi:"databaseConfigs"`
-	EnablePrivateBuildsOnly         pulumi.BoolInput                                             `pulumi:"enablePrivateBuildsOnly"`
-	EnablePrivateEnvironment        pulumi.BoolInput                                             `pulumi:"enablePrivateEnvironment"`
-	EncryptionConfigs               GetEnvironmentConfigEncryptionConfigArrayInput               `pulumi:"encryptionConfigs"`
-	EnvironmentSize                 pulumi.StringInput                                           `pulumi:"environmentSize"`
-	GkeCluster                      pulumi.StringInput                                           `pulumi:"gkeCluster"`
-	MaintenanceWindows              GetEnvironmentConfigMaintenanceWindowArrayInput              `pulumi:"maintenanceWindows"`
+	// The URI of the Apache Airflow Web UI hosted within this environment.
+	AirflowUri pulumi.StringInput `pulumi:"airflowUri"`
+	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+	DagGcsPrefix pulumi.StringInput `pulumi:"dagGcsPrefix"`
+	// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	DatabaseConfigs GetEnvironmentConfigDatabaseConfigArrayInput `pulumi:"databaseConfigs"`
+	// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+	EnablePrivateBuildsOnly pulumi.BoolInput `pulumi:"enablePrivateBuildsOnly"`
+	// Optional. If true, a private Composer environment will be created.
+	EnablePrivateEnvironment pulumi.BoolInput `pulumi:"enablePrivateEnvironment"`
+	// The encryption options for the Composer environment and its dependencies.
+	EncryptionConfigs GetEnvironmentConfigEncryptionConfigArrayInput `pulumi:"encryptionConfigs"`
+	// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	EnvironmentSize pulumi.StringInput `pulumi:"environmentSize"`
+	// The Kubernetes Engine cluster used to run this environment.
+	GkeCluster pulumi.StringInput `pulumi:"gkeCluster"`
+	// The configuration for Cloud Composer maintenance window.
+	MaintenanceWindows GetEnvironmentConfigMaintenanceWindowArrayInput `pulumi:"maintenanceWindows"`
+	// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 	MasterAuthorizedNetworksConfigs GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayInput `pulumi:"masterAuthorizedNetworksConfigs"`
-	NodeConfigs                     GetEnvironmentConfigNodeConfigArrayInput                     `pulumi:"nodeConfigs"`
-	NodeCount                       pulumi.IntInput                                              `pulumi:"nodeCount"`
-	PrivateEnvironmentConfigs       GetEnvironmentConfigPrivateEnvironmentConfigArrayInput       `pulumi:"privateEnvironmentConfigs"`
-	RecoveryConfigs                 GetEnvironmentConfigRecoveryConfigArrayInput                 `pulumi:"recoveryConfigs"`
-	ResilienceMode                  pulumi.StringInput                                           `pulumi:"resilienceMode"`
-	SoftwareConfigs                 GetEnvironmentConfigSoftwareConfigArrayInput                 `pulumi:"softwareConfigs"`
-	WebServerConfigs                GetEnvironmentConfigWebServerConfigArrayInput                `pulumi:"webServerConfigs"`
-	WebServerNetworkAccessControls  GetEnvironmentConfigWebServerNetworkAccessControlArrayInput  `pulumi:"webServerNetworkAccessControls"`
-	WorkloadsConfigs                GetEnvironmentConfigWorkloadsConfigArrayInput                `pulumi:"workloadsConfigs"`
+	// The configuration used for the Kubernetes Engine cluster.
+	NodeConfigs GetEnvironmentConfigNodeConfigArrayInput `pulumi:"nodeConfigs"`
+	// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// The configuration used for the Private IP Cloud Composer environment.
+	PrivateEnvironmentConfigs GetEnvironmentConfigPrivateEnvironmentConfigArrayInput `pulumi:"privateEnvironmentConfigs"`
+	// The recovery configuration settings for the Cloud Composer environment
+	RecoveryConfigs GetEnvironmentConfigRecoveryConfigArrayInput `pulumi:"recoveryConfigs"`
+	// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+	ResilienceMode pulumi.StringInput `pulumi:"resilienceMode"`
+	// The configuration settings for software inside the environment.
+	SoftwareConfigs GetEnvironmentConfigSoftwareConfigArrayInput `pulumi:"softwareConfigs"`
+	// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	WebServerConfigs GetEnvironmentConfigWebServerConfigArrayInput `pulumi:"webServerConfigs"`
+	// Network-level access control policy for the Airflow web server.
+	WebServerNetworkAccessControls GetEnvironmentConfigWebServerNetworkAccessControlArrayInput `pulumi:"webServerNetworkAccessControls"`
+	// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	WorkloadsConfigs GetEnvironmentConfigWorkloadsConfigArrayInput `pulumi:"workloadsConfigs"`
 }
 
 func (GetEnvironmentConfigArgs) ElementType() reflect.Type {
@@ -4203,84 +4621,103 @@ func (o GetEnvironmentConfigOutput) ToGetEnvironmentConfigOutputWithContext(ctx 
 	return o
 }
 
+// The URI of the Apache Airflow Web UI hosted within this environment.
 func (o GetEnvironmentConfigOutput) AirflowUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.AirflowUri }).(pulumi.StringOutput)
 }
 
+// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 func (o GetEnvironmentConfigOutput) DagGcsPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.DagGcsPrefix }).(pulumi.StringOutput)
 }
 
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigOutput) DatabaseConfigs() GetEnvironmentConfigDatabaseConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigDatabaseConfig { return v.DatabaseConfigs }).(GetEnvironmentConfigDatabaseConfigArrayOutput)
 }
 
+// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
 func (o GetEnvironmentConfigOutput) EnablePrivateBuildsOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) bool { return v.EnablePrivateBuildsOnly }).(pulumi.BoolOutput)
 }
 
+// Optional. If true, a private Composer environment will be created.
 func (o GetEnvironmentConfigOutput) EnablePrivateEnvironment() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) bool { return v.EnablePrivateEnvironment }).(pulumi.BoolOutput)
 }
 
+// The encryption options for the Composer environment and its dependencies.
 func (o GetEnvironmentConfigOutput) EncryptionConfigs() GetEnvironmentConfigEncryptionConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigEncryptionConfig { return v.EncryptionConfigs }).(GetEnvironmentConfigEncryptionConfigArrayOutput)
 }
 
+// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o GetEnvironmentConfigOutput) EnvironmentSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.EnvironmentSize }).(pulumi.StringOutput)
 }
 
+// The Kubernetes Engine cluster used to run this environment.
 func (o GetEnvironmentConfigOutput) GkeCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.GkeCluster }).(pulumi.StringOutput)
 }
 
+// The configuration for Cloud Composer maintenance window.
 func (o GetEnvironmentConfigOutput) MaintenanceWindows() GetEnvironmentConfigMaintenanceWindowArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigMaintenanceWindow { return v.MaintenanceWindows }).(GetEnvironmentConfigMaintenanceWindowArrayOutput)
 }
 
+// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 func (o GetEnvironmentConfigOutput) MasterAuthorizedNetworksConfigs() GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigMasterAuthorizedNetworksConfig {
 		return v.MasterAuthorizedNetworksConfigs
 	}).(GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput)
 }
 
+// The configuration used for the Kubernetes Engine cluster.
 func (o GetEnvironmentConfigOutput) NodeConfigs() GetEnvironmentConfigNodeConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigNodeConfig { return v.NodeConfigs }).(GetEnvironmentConfigNodeConfigArrayOutput)
 }
 
+// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
+// The configuration used for the Private IP Cloud Composer environment.
 func (o GetEnvironmentConfigOutput) PrivateEnvironmentConfigs() GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigPrivateEnvironmentConfig {
 		return v.PrivateEnvironmentConfigs
 	}).(GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput)
 }
 
+// The recovery configuration settings for the Cloud Composer environment
 func (o GetEnvironmentConfigOutput) RecoveryConfigs() GetEnvironmentConfigRecoveryConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigRecoveryConfig { return v.RecoveryConfigs }).(GetEnvironmentConfigRecoveryConfigArrayOutput)
 }
 
+// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
 func (o GetEnvironmentConfigOutput) ResilienceMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.ResilienceMode }).(pulumi.StringOutput)
 }
 
+// The configuration settings for software inside the environment.
 func (o GetEnvironmentConfigOutput) SoftwareConfigs() GetEnvironmentConfigSoftwareConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigSoftwareConfig { return v.SoftwareConfigs }).(GetEnvironmentConfigSoftwareConfigArrayOutput)
 }
 
+// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigOutput) WebServerConfigs() GetEnvironmentConfigWebServerConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigWebServerConfig { return v.WebServerConfigs }).(GetEnvironmentConfigWebServerConfigArrayOutput)
 }
 
+// Network-level access control policy for the Airflow web server.
 func (o GetEnvironmentConfigOutput) WebServerNetworkAccessControls() GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigWebServerNetworkAccessControl {
 		return v.WebServerNetworkAccessControls
 	}).(GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput)
 }
 
+// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o GetEnvironmentConfigOutput) WorkloadsConfigs() GetEnvironmentConfigWorkloadsConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigWorkloadsConfig { return v.WorkloadsConfigs }).(GetEnvironmentConfigWorkloadsConfigArrayOutput)
 }
@@ -4306,8 +4743,10 @@ func (o GetEnvironmentConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironment
 }
 
 type GetEnvironmentConfigDatabaseConfig struct {
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 	MachineType string `pulumi:"machineType"`
-	Zone        string `pulumi:"zone"`
+	// Optional. Cloud SQL database preferred zone.
+	Zone string `pulumi:"zone"`
 }
 
 // GetEnvironmentConfigDatabaseConfigInput is an input type that accepts GetEnvironmentConfigDatabaseConfigArgs and GetEnvironmentConfigDatabaseConfigOutput values.
@@ -4322,8 +4761,10 @@ type GetEnvironmentConfigDatabaseConfigInput interface {
 }
 
 type GetEnvironmentConfigDatabaseConfigArgs struct {
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
-	Zone        pulumi.StringInput `pulumi:"zone"`
+	// Optional. Cloud SQL database preferred zone.
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetEnvironmentConfigDatabaseConfigArgs) ElementType() reflect.Type {
@@ -4377,10 +4818,12 @@ func (o GetEnvironmentConfigDatabaseConfigOutput) ToGetEnvironmentConfigDatabase
 	return o
 }
 
+// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
 func (o GetEnvironmentConfigDatabaseConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigDatabaseConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
+// Optional. Cloud SQL database preferred zone.
 func (o GetEnvironmentConfigDatabaseConfigOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigDatabaseConfig) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -4406,6 +4849,7 @@ func (o GetEnvironmentConfigDatabaseConfigArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetEnvironmentConfigEncryptionConfig struct {
+	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -4421,6 +4865,7 @@ type GetEnvironmentConfigEncryptionConfigInput interface {
 }
 
 type GetEnvironmentConfigEncryptionConfigArgs struct {
+	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
@@ -4475,6 +4920,7 @@ func (o GetEnvironmentConfigEncryptionConfigOutput) ToGetEnvironmentConfigEncryp
 	return o
 }
 
+// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
 func (o GetEnvironmentConfigEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -4500,9 +4946,12 @@ func (o GetEnvironmentConfigEncryptionConfigArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetEnvironmentConfigMaintenanceWindow struct {
-	EndTime    string `pulumi:"endTime"`
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
+	EndTime string `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
 	Recurrence string `pulumi:"recurrence"`
-	StartTime  string `pulumi:"startTime"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime string `pulumi:"startTime"`
 }
 
 // GetEnvironmentConfigMaintenanceWindowInput is an input type that accepts GetEnvironmentConfigMaintenanceWindowArgs and GetEnvironmentConfigMaintenanceWindowOutput values.
@@ -4517,9 +4966,12 @@ type GetEnvironmentConfigMaintenanceWindowInput interface {
 }
 
 type GetEnvironmentConfigMaintenanceWindowArgs struct {
-	EndTime    pulumi.StringInput `pulumi:"endTime"`
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
 	Recurrence pulumi.StringInput `pulumi:"recurrence"`
-	StartTime  pulumi.StringInput `pulumi:"startTime"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (GetEnvironmentConfigMaintenanceWindowArgs) ElementType() reflect.Type {
@@ -4573,14 +5025,17 @@ func (o GetEnvironmentConfigMaintenanceWindowOutput) ToGetEnvironmentConfigMaint
 	return o
 }
 
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
 func (o GetEnvironmentConfigMaintenanceWindowOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigMaintenanceWindow) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
+// Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
 func (o GetEnvironmentConfigMaintenanceWindowOutput) Recurrence() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigMaintenanceWindow) string { return v.Recurrence }).(pulumi.StringOutput)
 }
 
+// Start time of the first recurrence of the maintenance window.
 func (o GetEnvironmentConfigMaintenanceWindowOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigMaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -4606,8 +5061,10 @@ func (o GetEnvironmentConfigMaintenanceWindowArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetEnvironmentConfigMasterAuthorizedNetworksConfig struct {
+	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
 	CidrBlocks []GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
-	Enabled    bool                                                          `pulumi:"enabled"`
+	// Whether or not master authorized networks is enabled.
+	Enabled bool `pulumi:"enabled"`
 }
 
 // GetEnvironmentConfigMasterAuthorizedNetworksConfigInput is an input type that accepts GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs and GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput values.
@@ -4622,8 +5079,10 @@ type GetEnvironmentConfigMasterAuthorizedNetworksConfigInput interface {
 }
 
 type GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs struct {
+	// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
 	CidrBlocks GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
-	Enabled    pulumi.BoolInput                                                      `pulumi:"enabled"`
+	// Whether or not master authorized networks is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
 func (GetEnvironmentConfigMasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
@@ -4677,12 +5136,14 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) ToGetEnvironme
 	return o
 }
 
+// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) CidrBlocks() GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigMasterAuthorizedNetworksConfig) []GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
 		return v.CidrBlocks
 	}).(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput)
 }
 
+// Whether or not master authorized networks is enabled.
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigMasterAuthorizedNetworksConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -4708,7 +5169,9 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigArrayOutput) Index(i p
 }
 
 type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock struct {
-	CidrBlock   string `pulumi:"cidrBlock"`
+	// cidr_block must be specified in CIDR notation.
+	CidrBlock string `pulumi:"cidrBlock"`
+	// display_name is a field for users to identify CIDR blocks.
 	DisplayName string `pulumi:"displayName"`
 }
 
@@ -4724,7 +5187,9 @@ type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockInput interface 
 }
 
 type GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs struct {
-	CidrBlock   pulumi.StringInput `pulumi:"cidrBlock"`
+	// cidr_block must be specified in CIDR notation.
+	CidrBlock pulumi.StringInput `pulumi:"cidrBlock"`
+	// display_name is a field for users to identify CIDR blocks.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 }
 
@@ -4779,10 +5244,12 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) ToGet
 	return o
 }
 
+// cidr_block must be specified in CIDR notation.
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock) string { return v.CidrBlock }).(pulumi.StringOutput)
 }
 
+// display_name is a field for users to identify CIDR blocks.
 func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -4808,18 +5275,30 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) 
 }
 
 type GetEnvironmentConfigNodeConfig struct {
-	ComposerInternalIpv4CidrBlock string                                             `pulumi:"composerInternalIpv4CidrBlock"`
-	DiskSizeGb                    int                                                `pulumi:"diskSizeGb"`
-	EnableIpMasqAgent             bool                                               `pulumi:"enableIpMasqAgent"`
-	IpAllocationPolicies          []GetEnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
-	MachineType                   string                                             `pulumi:"machineType"`
-	MaxPodsPerNode                int                                                `pulumi:"maxPodsPerNode"`
-	Network                       string                                             `pulumi:"network"`
-	OauthScopes                   []string                                           `pulumi:"oauthScopes"`
-	ServiceAccount                string                                             `pulumi:"serviceAccount"`
-	Subnetwork                    string                                             `pulumi:"subnetwork"`
-	Tags                          []string                                           `pulumi:"tags"`
-	Zone                          string                                             `pulumi:"zone"`
+	// IPv4 cidr range that will be used by Composer internal components.
+	ComposerInternalIpv4CidrBlock string `pulumi:"composerInternalIpv4CidrBlock"`
+	// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+	EnableIpMasqAgent bool `pulumi:"enableIpMasqAgent"`
+	// Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+	IpAllocationPolicies []GetEnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
+	// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	MachineType string `pulumi:"machineType"`
+	// The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
+	// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+	Network string `pulumi:"network"`
+	// The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	OauthScopes []string `pulumi:"oauthScopes"`
+	// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+	Tags []string `pulumi:"tags"`
+	// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	Zone string `pulumi:"zone"`
 }
 
 // GetEnvironmentConfigNodeConfigInput is an input type that accepts GetEnvironmentConfigNodeConfigArgs and GetEnvironmentConfigNodeConfigOutput values.
@@ -4834,18 +5313,30 @@ type GetEnvironmentConfigNodeConfigInput interface {
 }
 
 type GetEnvironmentConfigNodeConfigArgs struct {
-	ComposerInternalIpv4CidrBlock pulumi.StringInput                                         `pulumi:"composerInternalIpv4CidrBlock"`
-	DiskSizeGb                    pulumi.IntInput                                            `pulumi:"diskSizeGb"`
-	EnableIpMasqAgent             pulumi.BoolInput                                           `pulumi:"enableIpMasqAgent"`
-	IpAllocationPolicies          GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayInput `pulumi:"ipAllocationPolicies"`
-	MachineType                   pulumi.StringInput                                         `pulumi:"machineType"`
-	MaxPodsPerNode                pulumi.IntInput                                            `pulumi:"maxPodsPerNode"`
-	Network                       pulumi.StringInput                                         `pulumi:"network"`
-	OauthScopes                   pulumi.StringArrayInput                                    `pulumi:"oauthScopes"`
-	ServiceAccount                pulumi.StringInput                                         `pulumi:"serviceAccount"`
-	Subnetwork                    pulumi.StringInput                                         `pulumi:"subnetwork"`
-	Tags                          pulumi.StringArrayInput                                    `pulumi:"tags"`
-	Zone                          pulumi.StringInput                                         `pulumi:"zone"`
+	// IPv4 cidr range that will be used by Composer internal components.
+	ComposerInternalIpv4CidrBlock pulumi.StringInput `pulumi:"composerInternalIpv4CidrBlock"`
+	// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
+	// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+	EnableIpMasqAgent pulumi.BoolInput `pulumi:"enableIpMasqAgent"`
+	// Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+	IpAllocationPolicies GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayInput `pulumi:"ipAllocationPolicies"`
+	// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
+	// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
+	// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
 func (GetEnvironmentConfigNodeConfigArgs) ElementType() reflect.Type {
@@ -4899,52 +5390,64 @@ func (o GetEnvironmentConfigNodeConfigOutput) ToGetEnvironmentConfigNodeConfigOu
 	return o
 }
 
+// IPv4 cidr range that will be used by Composer internal components.
 func (o GetEnvironmentConfigNodeConfigOutput) ComposerInternalIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.ComposerInternalIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
+// The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) int { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
+// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
 func (o GetEnvironmentConfigNodeConfigOutput) EnableIpMasqAgent() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) bool { return v.EnableIpMasqAgent }).(pulumi.BoolOutput)
 }
 
+// Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
 func (o GetEnvironmentConfigNodeConfigOutput) IpAllocationPolicies() GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) []GetEnvironmentConfigNodeConfigIpAllocationPolicy {
 		return v.IpAllocationPolicies
 	}).(GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput)
 }
 
+// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigNodeConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
+// The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigNodeConfigOutput) MaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
 
+// The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
 func (o GetEnvironmentConfigNodeConfigOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
+// The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
 func (o GetEnvironmentConfigNodeConfigOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
+// The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
 func (o GetEnvironmentConfigNodeConfigOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
+// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 func (o GetEnvironmentConfigNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigNodeConfigOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -4970,11 +5473,16 @@ func (o GetEnvironmentConfigNodeConfigArrayOutput) Index(i pulumi.IntInput) GetE
 }
 
 type GetEnvironmentConfigNodeConfigIpAllocationPolicy struct {
-	ClusterIpv4CidrBlock       string `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  string `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      string `pulumi:"servicesIpv4CidrBlock"`
+	// The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
+	ClusterIpv4CidrBlock string `pulumi:"clusterIpv4CidrBlock"`
+	// The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
+	// The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
+	ServicesIpv4CidrBlock string `pulumi:"servicesIpv4CidrBlock"`
+	// The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 	ServicesSecondaryRangeName string `pulumi:"servicesSecondaryRangeName"`
-	UseIpAliases               bool   `pulumi:"useIpAliases"`
+	// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+	UseIpAliases bool `pulumi:"useIpAliases"`
 }
 
 // GetEnvironmentConfigNodeConfigIpAllocationPolicyInput is an input type that accepts GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs and GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput values.
@@ -4989,11 +5497,16 @@ type GetEnvironmentConfigNodeConfigIpAllocationPolicyInput interface {
 }
 
 type GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs struct {
-	ClusterIpv4CidrBlock       pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
-	ClusterSecondaryRangeName  pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
-	ServicesIpv4CidrBlock      pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
+	// The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
+	ClusterIpv4CidrBlock pulumi.StringInput `pulumi:"clusterIpv4CidrBlock"`
+	// The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+	ClusterSecondaryRangeName pulumi.StringInput `pulumi:"clusterSecondaryRangeName"`
+	// The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
+	ServicesIpv4CidrBlock pulumi.StringInput `pulumi:"servicesIpv4CidrBlock"`
+	// The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 	ServicesSecondaryRangeName pulumi.StringInput `pulumi:"servicesSecondaryRangeName"`
-	UseIpAliases               pulumi.BoolInput   `pulumi:"useIpAliases"`
+	// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
 }
 
 func (GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs) ElementType() reflect.Type {
@@ -5047,22 +5560,27 @@ func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToGetEnvironment
 	return o
 }
 
+// The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
 func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) string { return v.ClusterIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
+// The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) string { return v.ClusterSecondaryRangeName }).(pulumi.StringOutput)
 }
 
+// The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
 func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) string { return v.ServicesIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
+// The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
 func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) string { return v.ServicesSecondaryRangeName }).(pulumi.StringOutput)
 }
 
+// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
 func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) UseIpAliases() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
 }
@@ -5088,14 +5606,22 @@ func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput) Index(i pul
 }
 
 type GetEnvironmentConfigPrivateEnvironmentConfig struct {
+	// When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerConnectionSubnetwork string `pulumi:"cloudComposerConnectionSubnetwork"`
+	// The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
-	CloudSqlIpv4CidrBlock             string `pulumi:"cloudSqlIpv4CidrBlock"`
-	ConnectionType                    string `pulumi:"connectionType"`
-	EnablePrivateEndpoint             bool   `pulumi:"enablePrivateEndpoint"`
-	EnablePrivatelyUsedPublicIps      bool   `pulumi:"enablePrivatelyUsedPublicIps"`
-	MasterIpv4CidrBlock               string `pulumi:"masterIpv4CidrBlock"`
-	WebServerIpv4CidrBlock            string `pulumi:"webServerIpv4CidrBlock"`
+	// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
+	CloudSqlIpv4CidrBlock string `pulumi:"cloudSqlIpv4CidrBlock"`
+	// Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
+	ConnectionType string `pulumi:"connectionType"`
+	// If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	EnablePrivateEndpoint bool `pulumi:"enablePrivateEndpoint"`
+	// When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
+	EnablePrivatelyUsedPublicIps bool `pulumi:"enablePrivatelyUsedPublicIps"`
+	// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
+	MasterIpv4CidrBlock string `pulumi:"masterIpv4CidrBlock"`
+	// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	WebServerIpv4CidrBlock string `pulumi:"webServerIpv4CidrBlock"`
 }
 
 // GetEnvironmentConfigPrivateEnvironmentConfigInput is an input type that accepts GetEnvironmentConfigPrivateEnvironmentConfigArgs and GetEnvironmentConfigPrivateEnvironmentConfigOutput values.
@@ -5110,14 +5636,22 @@ type GetEnvironmentConfigPrivateEnvironmentConfigInput interface {
 }
 
 type GetEnvironmentConfigPrivateEnvironmentConfigArgs struct {
+	// When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerConnectionSubnetwork pulumi.StringInput `pulumi:"cloudComposerConnectionSubnetwork"`
+	// The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
-	CloudSqlIpv4CidrBlock             pulumi.StringInput `pulumi:"cloudSqlIpv4CidrBlock"`
-	ConnectionType                    pulumi.StringInput `pulumi:"connectionType"`
-	EnablePrivateEndpoint             pulumi.BoolInput   `pulumi:"enablePrivateEndpoint"`
-	EnablePrivatelyUsedPublicIps      pulumi.BoolInput   `pulumi:"enablePrivatelyUsedPublicIps"`
-	MasterIpv4CidrBlock               pulumi.StringInput `pulumi:"masterIpv4CidrBlock"`
-	WebServerIpv4CidrBlock            pulumi.StringInput `pulumi:"webServerIpv4CidrBlock"`
+	// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
+	CloudSqlIpv4CidrBlock pulumi.StringInput `pulumi:"cloudSqlIpv4CidrBlock"`
+	// Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
+	ConnectionType pulumi.StringInput `pulumi:"connectionType"`
+	// If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	EnablePrivateEndpoint pulumi.BoolInput `pulumi:"enablePrivateEndpoint"`
+	// When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
+	EnablePrivatelyUsedPublicIps pulumi.BoolInput `pulumi:"enablePrivatelyUsedPublicIps"`
+	// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
+	MasterIpv4CidrBlock pulumi.StringInput `pulumi:"masterIpv4CidrBlock"`
+	// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	WebServerIpv4CidrBlock pulumi.StringInput `pulumi:"webServerIpv4CidrBlock"`
 }
 
 func (GetEnvironmentConfigPrivateEnvironmentConfigArgs) ElementType() reflect.Type {
@@ -5171,38 +5705,46 @@ func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ToGetEnvironmentConf
 	return o
 }
 
+// When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerConnectionSubnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string {
 		return v.CloudComposerConnectionSubnetwork
 	}).(pulumi.StringOutput)
 }
 
+// The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerNetworkIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string {
 		return v.CloudComposerNetworkIpv4CidrBlock
 	}).(pulumi.StringOutput)
 }
 
+// The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) CloudSqlIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
+// Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ConnectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string { return v.ConnectionType }).(pulumi.StringOutput)
 }
 
+// If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) bool { return v.EnablePrivateEndpoint }).(pulumi.BoolOutput)
 }
 
+// When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivatelyUsedPublicIps() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) bool { return v.EnablePrivatelyUsedPublicIps }).(pulumi.BoolOutput)
 }
 
+// The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) MasterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string { return v.MasterIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
+// The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) WebServerIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string { return v.WebServerIpv4CidrBlock }).(pulumi.StringOutput)
 }
@@ -5228,6 +5770,7 @@ func (o GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput) Index(i pulumi.
 }
 
 type GetEnvironmentConfigRecoveryConfig struct {
+	// The configuration settings for scheduled snapshots.
 	ScheduledSnapshotsConfigs []GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig `pulumi:"scheduledSnapshotsConfigs"`
 }
 
@@ -5243,6 +5786,7 @@ type GetEnvironmentConfigRecoveryConfigInput interface {
 }
 
 type GetEnvironmentConfigRecoveryConfigArgs struct {
+	// The configuration settings for scheduled snapshots.
 	ScheduledSnapshotsConfigs GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayInput `pulumi:"scheduledSnapshotsConfigs"`
 }
 
@@ -5297,6 +5841,7 @@ func (o GetEnvironmentConfigRecoveryConfigOutput) ToGetEnvironmentConfigRecovery
 	return o
 }
 
+// The configuration settings for scheduled snapshots.
 func (o GetEnvironmentConfigRecoveryConfigOutput) ScheduledSnapshotsConfigs() GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfig) []GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
 		return v.ScheduledSnapshotsConfigs
@@ -5324,10 +5869,14 @@ func (o GetEnvironmentConfigRecoveryConfigArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig struct {
-	Enabled                  bool   `pulumi:"enabled"`
+	// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+	Enabled bool `pulumi:"enabled"`
+	// Snapshot schedule, in the unix-cron format.
 	SnapshotCreationSchedule string `pulumi:"snapshotCreationSchedule"`
-	SnapshotLocation         string `pulumi:"snapshotLocation"`
-	TimeZone                 string `pulumi:"timeZone"`
+	// the URI of a bucket folder where to save the snapshot.
+	SnapshotLocation string `pulumi:"snapshotLocation"`
+	// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+	TimeZone string `pulumi:"timeZone"`
 }
 
 // GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput is an input type that accepts GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs and GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput values.
@@ -5342,10 +5891,14 @@ type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigInput interface {
 }
 
 type GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs struct {
-	Enabled                  pulumi.BoolInput   `pulumi:"enabled"`
+	// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Snapshot schedule, in the unix-cron format.
 	SnapshotCreationSchedule pulumi.StringInput `pulumi:"snapshotCreationSchedule"`
-	SnapshotLocation         pulumi.StringInput `pulumi:"snapshotLocation"`
-	TimeZone                 pulumi.StringInput `pulumi:"timeZone"`
+	// the URI of a bucket folder where to save the snapshot.
+	SnapshotLocation pulumi.StringInput `pulumi:"snapshotLocation"`
+	// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
 }
 
 func (GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs) ElementType() reflect.Type {
@@ -5399,20 +5952,24 @@ func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) ToGetE
 	return o
 }
 
+// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
 func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Snapshot schedule, in the unix-cron format.
 func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) SnapshotCreationSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) string {
 		return v.SnapshotCreationSchedule
 	}).(pulumi.StringOutput)
 }
 
+// the URI of a bucket folder where to save the snapshot.
 func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) SnapshotLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) string { return v.SnapshotLocation }).(pulumi.StringOutput)
 }
 
+// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
 func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig) string { return v.TimeZone }).(pulumi.StringOutput)
 }
@@ -5438,14 +5995,22 @@ func (o GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArrayOutput) I
 }
 
 type GetEnvironmentConfigSoftwareConfig struct {
-	AirflowConfigOverrides       map[string]string                                               `pulumi:"airflowConfigOverrides"`
+	// Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
+	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
+	// The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
 	CloudDataLineageIntegrations []GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration `pulumi:"cloudDataLineageIntegrations"`
-	EnvVariables                 map[string]string                                               `pulumi:"envVariables"`
-	ImageVersion                 string                                                          `pulumi:"imageVersion"`
-	PypiPackages                 map[string]string                                               `pulumi:"pypiPackages"`
-	PythonVersion                string                                                          `pulumi:"pythonVersion"`
-	SchedulerCount               int                                                             `pulumi:"schedulerCount"`
-	WebServerPluginsMode         string                                                          `pulumi:"webServerPluginsMode"`
+	// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
+	EnvVariables map[string]string `pulumi:"envVariables"`
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
+	ImageVersion string `pulumi:"imageVersion"`
+	// Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
+	PypiPackages map[string]string `pulumi:"pypiPackages"`
+	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
+	PythonVersion string `pulumi:"pythonVersion"`
+	// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+	SchedulerCount int `pulumi:"schedulerCount"`
+	// Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
+	WebServerPluginsMode string `pulumi:"webServerPluginsMode"`
 }
 
 // GetEnvironmentConfigSoftwareConfigInput is an input type that accepts GetEnvironmentConfigSoftwareConfigArgs and GetEnvironmentConfigSoftwareConfigOutput values.
@@ -5460,14 +6025,22 @@ type GetEnvironmentConfigSoftwareConfigInput interface {
 }
 
 type GetEnvironmentConfigSoftwareConfigArgs struct {
-	AirflowConfigOverrides       pulumi.StringMapInput                                                   `pulumi:"airflowConfigOverrides"`
+	// Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
+	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
+	// The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
 	CloudDataLineageIntegrations GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayInput `pulumi:"cloudDataLineageIntegrations"`
-	EnvVariables                 pulumi.StringMapInput                                                   `pulumi:"envVariables"`
-	ImageVersion                 pulumi.StringInput                                                      `pulumi:"imageVersion"`
-	PypiPackages                 pulumi.StringMapInput                                                   `pulumi:"pypiPackages"`
-	PythonVersion                pulumi.StringInput                                                      `pulumi:"pythonVersion"`
-	SchedulerCount               pulumi.IntInput                                                         `pulumi:"schedulerCount"`
-	WebServerPluginsMode         pulumi.StringInput                                                      `pulumi:"webServerPluginsMode"`
+	// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
+	EnvVariables pulumi.StringMapInput `pulumi:"envVariables"`
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
+	ImageVersion pulumi.StringInput `pulumi:"imageVersion"`
+	// Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
+	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
+	// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
+	PythonVersion pulumi.StringInput `pulumi:"pythonVersion"`
+	// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+	SchedulerCount pulumi.IntInput `pulumi:"schedulerCount"`
+	// Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
+	WebServerPluginsMode pulumi.StringInput `pulumi:"webServerPluginsMode"`
 }
 
 func (GetEnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -5521,36 +6094,44 @@ func (o GetEnvironmentConfigSoftwareConfigOutput) ToGetEnvironmentConfigSoftware
 	return o
 }
 
+// Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
 func (o GetEnvironmentConfigSoftwareConfigOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+// The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
 func (o GetEnvironmentConfigSoftwareConfigOutput) CloudDataLineageIntegrations() GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) []GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
 		return v.CloudDataLineageIntegrations
 	}).(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput)
 }
 
+// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
 func (o GetEnvironmentConfigSoftwareConfigOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
 
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
 func (o GetEnvironmentConfigSoftwareConfigOutput) ImageVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) string { return v.ImageVersion }).(pulumi.StringOutput)
 }
 
+// Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
 func (o GetEnvironmentConfigSoftwareConfigOutput) PypiPackages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
+// The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
 func (o GetEnvironmentConfigSoftwareConfigOutput) PythonVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) string { return v.PythonVersion }).(pulumi.StringOutput)
 }
 
+// The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
 func (o GetEnvironmentConfigSoftwareConfigOutput) SchedulerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) int { return v.SchedulerCount }).(pulumi.IntOutput)
 }
 
+// Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
 func (o GetEnvironmentConfigSoftwareConfigOutput) WebServerPluginsMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) string { return v.WebServerPluginsMode }).(pulumi.StringOutput)
 }
@@ -5576,6 +6157,7 @@ func (o GetEnvironmentConfigSoftwareConfigArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration struct {
+	// Whether or not Cloud Data Lineage integration is enabled.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -5591,6 +6173,7 @@ type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationInput interfac
 }
 
 type GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs struct {
+	// Whether or not Cloud Data Lineage integration is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -5645,6 +6228,7 @@ func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) ToG
 	return o
 }
 
+// Whether or not Cloud Data Lineage integration is enabled.
 func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -5670,6 +6254,7 @@ func (o GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArrayOutput
 }
 
 type GetEnvironmentConfigWebServerConfig struct {
+	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 	MachineType string `pulumi:"machineType"`
 }
 
@@ -5685,6 +6270,7 @@ type GetEnvironmentConfigWebServerConfigInput interface {
 }
 
 type GetEnvironmentConfigWebServerConfigArgs struct {
+	// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 }
 
@@ -5739,6 +6325,7 @@ func (o GetEnvironmentConfigWebServerConfigOutput) ToGetEnvironmentConfigWebServ
 	return o
 }
 
+// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
 func (o GetEnvironmentConfigWebServerConfigOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWebServerConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -5764,6 +6351,7 @@ func (o GetEnvironmentConfigWebServerConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetEnvironmentConfigWebServerNetworkAccessControl struct {
+	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges []GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange `pulumi:"allowedIpRanges"`
 }
 
@@ -5779,6 +6367,7 @@ type GetEnvironmentConfigWebServerNetworkAccessControlInput interface {
 }
 
 type GetEnvironmentConfigWebServerNetworkAccessControlArgs struct {
+	// A collection of allowed IP ranges with descriptions.
 	AllowedIpRanges GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput `pulumi:"allowedIpRanges"`
 }
 
@@ -5833,6 +6422,7 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlOutput) ToGetEnvironmen
 	return o
 }
 
+// A collection of allowed IP ranges with descriptions.
 func (o GetEnvironmentConfigWebServerNetworkAccessControlOutput) AllowedIpRanges() GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWebServerNetworkAccessControl) []GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
 		return v.AllowedIpRanges
@@ -5860,8 +6450,10 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlArrayOutput) Index(i pu
 }
 
 type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange struct {
+	// A description of this ip range.
 	Description string `pulumi:"description"`
-	Value       string `pulumi:"value"`
+	// IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
+	Value string `pulumi:"value"`
 }
 
 // GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput is an input type that accepts GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs and GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput values.
@@ -5876,8 +6468,10 @@ type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput interf
 }
 
 type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs struct {
+	// A description of this ip range.
 	Description pulumi.StringInput `pulumi:"description"`
-	Value       pulumi.StringInput `pulumi:"value"`
+	// IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ElementType() reflect.Type {
@@ -5931,10 +6525,12 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) T
 	return o
 }
 
+// A description of this ip range.
 func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
 func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5960,11 +6556,16 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutp
 }
 
 type GetEnvironmentConfigWorkloadsConfig struct {
+	// Configuration for resources used by DAG processor.
 	DagProcessors []GetEnvironmentConfigWorkloadsConfigDagProcessor `pulumi:"dagProcessors"`
-	Schedulers    []GetEnvironmentConfigWorkloadsConfigScheduler    `pulumi:"schedulers"`
-	Triggerers    []GetEnvironmentConfigWorkloadsConfigTriggerer    `pulumi:"triggerers"`
-	WebServers    []GetEnvironmentConfigWorkloadsConfigWebServer    `pulumi:"webServers"`
-	Workers       []GetEnvironmentConfigWorkloadsConfigWorker       `pulumi:"workers"`
+	// Configuration for resources used by Airflow schedulers.
+	Schedulers []GetEnvironmentConfigWorkloadsConfigScheduler `pulumi:"schedulers"`
+	// Configuration for resources used by Airflow triggerers.
+	Triggerers []GetEnvironmentConfigWorkloadsConfigTriggerer `pulumi:"triggerers"`
+	// Configuration for resources used by Airflow web server.
+	WebServers []GetEnvironmentConfigWorkloadsConfigWebServer `pulumi:"webServers"`
+	// Configuration for resources used by Airflow workers.
+	Workers []GetEnvironmentConfigWorkloadsConfigWorker `pulumi:"workers"`
 }
 
 // GetEnvironmentConfigWorkloadsConfigInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigArgs and GetEnvironmentConfigWorkloadsConfigOutput values.
@@ -5979,11 +6580,16 @@ type GetEnvironmentConfigWorkloadsConfigInput interface {
 }
 
 type GetEnvironmentConfigWorkloadsConfigArgs struct {
+	// Configuration for resources used by DAG processor.
 	DagProcessors GetEnvironmentConfigWorkloadsConfigDagProcessorArrayInput `pulumi:"dagProcessors"`
-	Schedulers    GetEnvironmentConfigWorkloadsConfigSchedulerArrayInput    `pulumi:"schedulers"`
-	Triggerers    GetEnvironmentConfigWorkloadsConfigTriggererArrayInput    `pulumi:"triggerers"`
-	WebServers    GetEnvironmentConfigWorkloadsConfigWebServerArrayInput    `pulumi:"webServers"`
-	Workers       GetEnvironmentConfigWorkloadsConfigWorkerArrayInput       `pulumi:"workers"`
+	// Configuration for resources used by Airflow schedulers.
+	Schedulers GetEnvironmentConfigWorkloadsConfigSchedulerArrayInput `pulumi:"schedulers"`
+	// Configuration for resources used by Airflow triggerers.
+	Triggerers GetEnvironmentConfigWorkloadsConfigTriggererArrayInput `pulumi:"triggerers"`
+	// Configuration for resources used by Airflow web server.
+	WebServers GetEnvironmentConfigWorkloadsConfigWebServerArrayInput `pulumi:"webServers"`
+	// Configuration for resources used by Airflow workers.
+	Workers GetEnvironmentConfigWorkloadsConfigWorkerArrayInput `pulumi:"workers"`
 }
 
 func (GetEnvironmentConfigWorkloadsConfigArgs) ElementType() reflect.Type {
@@ -6037,30 +6643,35 @@ func (o GetEnvironmentConfigWorkloadsConfigOutput) ToGetEnvironmentConfigWorkloa
 	return o
 }
 
+// Configuration for resources used by DAG processor.
 func (o GetEnvironmentConfigWorkloadsConfigOutput) DagProcessors() GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfig) []GetEnvironmentConfigWorkloadsConfigDagProcessor {
 		return v.DagProcessors
 	}).(GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput)
 }
 
+// Configuration for resources used by Airflow schedulers.
 func (o GetEnvironmentConfigWorkloadsConfigOutput) Schedulers() GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfig) []GetEnvironmentConfigWorkloadsConfigScheduler {
 		return v.Schedulers
 	}).(GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput)
 }
 
+// Configuration for resources used by Airflow triggerers.
 func (o GetEnvironmentConfigWorkloadsConfigOutput) Triggerers() GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfig) []GetEnvironmentConfigWorkloadsConfigTriggerer {
 		return v.Triggerers
 	}).(GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput)
 }
 
+// Configuration for resources used by Airflow web server.
 func (o GetEnvironmentConfigWorkloadsConfigOutput) WebServers() GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfig) []GetEnvironmentConfigWorkloadsConfigWebServer {
 		return v.WebServers
 	}).(GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput)
 }
 
+// Configuration for resources used by Airflow workers.
 func (o GetEnvironmentConfigWorkloadsConfigOutput) Workers() GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfig) []GetEnvironmentConfigWorkloadsConfigWorker {
 		return v.Workers
@@ -6088,8 +6699,11 @@ func (o GetEnvironmentConfigWorkloadsConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetEnvironmentConfigWorkloadsConfigDagProcessor struct {
-	Cpu       float64 `pulumi:"cpu"`
-	MemoryGb  float64 `pulumi:"memoryGb"`
+	// CPU request and limit for DAG processor.
+	Cpu float64 `pulumi:"cpu"`
+	// Memory (GB) request and limit for DAG processor.
+	MemoryGb float64 `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for DAG processor.
 	StorageGb float64 `pulumi:"storageGb"`
 }
 
@@ -6105,8 +6719,11 @@ type GetEnvironmentConfigWorkloadsConfigDagProcessorInput interface {
 }
 
 type GetEnvironmentConfigWorkloadsConfigDagProcessorArgs struct {
-	Cpu       pulumi.Float64Input `pulumi:"cpu"`
-	MemoryGb  pulumi.Float64Input `pulumi:"memoryGb"`
+	// CPU request and limit for DAG processor.
+	Cpu pulumi.Float64Input `pulumi:"cpu"`
+	// Memory (GB) request and limit for DAG processor.
+	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for DAG processor.
 	StorageGb pulumi.Float64Input `pulumi:"storageGb"`
 }
 
@@ -6161,14 +6778,17 @@ func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) ToGetEnvironmentC
 	return o
 }
 
+// CPU request and limit for DAG processor.
 func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigDagProcessor) float64 { return v.Cpu }).(pulumi.Float64Output)
 }
 
+// Memory (GB) request and limit for DAG processor.
 func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) MemoryGb() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigDagProcessor) float64 { return v.MemoryGb }).(pulumi.Float64Output)
 }
 
+// Storage (GB) request and limit for DAG processor.
 func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) StorageGb() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigDagProcessor) float64 { return v.StorageGb }).(pulumi.Float64Output)
 }
@@ -6194,9 +6814,13 @@ func (o GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput) Index(i pulu
 }
 
 type GetEnvironmentConfigWorkloadsConfigScheduler struct {
-	Count     int     `pulumi:"count"`
-	Cpu       float64 `pulumi:"cpu"`
-	MemoryGb  float64 `pulumi:"memoryGb"`
+	// The number of schedulers.
+	Count int `pulumi:"count"`
+	// CPU request and limit for a single Airflow scheduler replica
+	Cpu float64 `pulumi:"cpu"`
+	// Memory (GB) request and limit for a single Airflow scheduler replica.
+	MemoryGb float64 `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for a single Airflow scheduler replica.
 	StorageGb float64 `pulumi:"storageGb"`
 }
 
@@ -6212,9 +6836,13 @@ type GetEnvironmentConfigWorkloadsConfigSchedulerInput interface {
 }
 
 type GetEnvironmentConfigWorkloadsConfigSchedulerArgs struct {
-	Count     pulumi.IntInput     `pulumi:"count"`
-	Cpu       pulumi.Float64Input `pulumi:"cpu"`
-	MemoryGb  pulumi.Float64Input `pulumi:"memoryGb"`
+	// The number of schedulers.
+	Count pulumi.IntInput `pulumi:"count"`
+	// CPU request and limit for a single Airflow scheduler replica
+	Cpu pulumi.Float64Input `pulumi:"cpu"`
+	// Memory (GB) request and limit for a single Airflow scheduler replica.
+	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for a single Airflow scheduler replica.
 	StorageGb pulumi.Float64Input `pulumi:"storageGb"`
 }
 
@@ -6269,18 +6897,22 @@ func (o GetEnvironmentConfigWorkloadsConfigSchedulerOutput) ToGetEnvironmentConf
 	return o
 }
 
+// The number of schedulers.
 func (o GetEnvironmentConfigWorkloadsConfigSchedulerOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigScheduler) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// CPU request and limit for a single Airflow scheduler replica
 func (o GetEnvironmentConfigWorkloadsConfigSchedulerOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigScheduler) float64 { return v.Cpu }).(pulumi.Float64Output)
 }
 
+// Memory (GB) request and limit for a single Airflow scheduler replica.
 func (o GetEnvironmentConfigWorkloadsConfigSchedulerOutput) MemoryGb() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigScheduler) float64 { return v.MemoryGb }).(pulumi.Float64Output)
 }
 
+// Storage (GB) request and limit for a single Airflow scheduler replica.
 func (o GetEnvironmentConfigWorkloadsConfigSchedulerOutput) StorageGb() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigScheduler) float64 { return v.StorageGb }).(pulumi.Float64Output)
 }
@@ -6306,8 +6938,11 @@ func (o GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput) Index(i pulumi.
 }
 
 type GetEnvironmentConfigWorkloadsConfigTriggerer struct {
-	Count    int     `pulumi:"count"`
-	Cpu      float64 `pulumi:"cpu"`
+	// The number of triggerers.
+	Count int `pulumi:"count"`
+	// CPU request and limit for a single Airflow triggerer replica.
+	Cpu float64 `pulumi:"cpu"`
+	// Memory (GB) request and limit for a single Airflow triggerer replica.
 	MemoryGb float64 `pulumi:"memoryGb"`
 }
 
@@ -6323,8 +6958,11 @@ type GetEnvironmentConfigWorkloadsConfigTriggererInput interface {
 }
 
 type GetEnvironmentConfigWorkloadsConfigTriggererArgs struct {
-	Count    pulumi.IntInput     `pulumi:"count"`
-	Cpu      pulumi.Float64Input `pulumi:"cpu"`
+	// The number of triggerers.
+	Count pulumi.IntInput `pulumi:"count"`
+	// CPU request and limit for a single Airflow triggerer replica.
+	Cpu pulumi.Float64Input `pulumi:"cpu"`
+	// Memory (GB) request and limit for a single Airflow triggerer replica.
 	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
 }
 
@@ -6379,14 +7017,17 @@ func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) ToGetEnvironmentConf
 	return o
 }
 
+// The number of triggerers.
 func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigTriggerer) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// CPU request and limit for a single Airflow triggerer replica.
 func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigTriggerer) float64 { return v.Cpu }).(pulumi.Float64Output)
 }
 
+// Memory (GB) request and limit for a single Airflow triggerer replica.
 func (o GetEnvironmentConfigWorkloadsConfigTriggererOutput) MemoryGb() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigTriggerer) float64 { return v.MemoryGb }).(pulumi.Float64Output)
 }
@@ -6412,8 +7053,11 @@ func (o GetEnvironmentConfigWorkloadsConfigTriggererArrayOutput) Index(i pulumi.
 }
 
 type GetEnvironmentConfigWorkloadsConfigWebServer struct {
-	Cpu       float64 `pulumi:"cpu"`
-	MemoryGb  float64 `pulumi:"memoryGb"`
+	// CPU request and limit for Airflow web server.
+	Cpu float64 `pulumi:"cpu"`
+	// Memory (GB) request and limit for Airflow web server.
+	MemoryGb float64 `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for Airflow web server.
 	StorageGb float64 `pulumi:"storageGb"`
 }
 
@@ -6429,8 +7073,11 @@ type GetEnvironmentConfigWorkloadsConfigWebServerInput interface {
 }
 
 type GetEnvironmentConfigWorkloadsConfigWebServerArgs struct {
-	Cpu       pulumi.Float64Input `pulumi:"cpu"`
-	MemoryGb  pulumi.Float64Input `pulumi:"memoryGb"`
+	// CPU request and limit for Airflow web server.
+	Cpu pulumi.Float64Input `pulumi:"cpu"`
+	// Memory (GB) request and limit for Airflow web server.
+	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
+	// Storage (GB) request and limit for Airflow web server.
 	StorageGb pulumi.Float64Input `pulumi:"storageGb"`
 }
 
@@ -6485,14 +7132,17 @@ func (o GetEnvironmentConfigWorkloadsConfigWebServerOutput) ToGetEnvironmentConf
 	return o
 }
 
+// CPU request and limit for Airflow web server.
 func (o GetEnvironmentConfigWorkloadsConfigWebServerOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigWebServer) float64 { return v.Cpu }).(pulumi.Float64Output)
 }
 
+// Memory (GB) request and limit for Airflow web server.
 func (o GetEnvironmentConfigWorkloadsConfigWebServerOutput) MemoryGb() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigWebServer) float64 { return v.MemoryGb }).(pulumi.Float64Output)
 }
 
+// Storage (GB) request and limit for Airflow web server.
 func (o GetEnvironmentConfigWorkloadsConfigWebServerOutput) StorageGb() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigWebServer) float64 { return v.StorageGb }).(pulumi.Float64Output)
 }
@@ -6518,10 +7168,15 @@ func (o GetEnvironmentConfigWorkloadsConfigWebServerArrayOutput) Index(i pulumi.
 }
 
 type GetEnvironmentConfigWorkloadsConfigWorker struct {
-	Cpu       float64 `pulumi:"cpu"`
-	MaxCount  int     `pulumi:"maxCount"`
-	MemoryGb  float64 `pulumi:"memoryGb"`
-	MinCount  int     `pulumi:"minCount"`
+	// CPU request and limit for a single Airflow worker replica.
+	Cpu float64 `pulumi:"cpu"`
+	// Maximum number of workers for autoscaling.
+	MaxCount int `pulumi:"maxCount"`
+	// Memory (GB) request and limit for a single Airflow worker replica.
+	MemoryGb float64 `pulumi:"memoryGb"`
+	// Minimum number of workers for autoscaling.
+	MinCount int `pulumi:"minCount"`
+	// Storage (GB) request and limit for a single Airflow worker replica.
 	StorageGb float64 `pulumi:"storageGb"`
 }
 
@@ -6537,10 +7192,15 @@ type GetEnvironmentConfigWorkloadsConfigWorkerInput interface {
 }
 
 type GetEnvironmentConfigWorkloadsConfigWorkerArgs struct {
-	Cpu       pulumi.Float64Input `pulumi:"cpu"`
-	MaxCount  pulumi.IntInput     `pulumi:"maxCount"`
-	MemoryGb  pulumi.Float64Input `pulumi:"memoryGb"`
-	MinCount  pulumi.IntInput     `pulumi:"minCount"`
+	// CPU request and limit for a single Airflow worker replica.
+	Cpu pulumi.Float64Input `pulumi:"cpu"`
+	// Maximum number of workers for autoscaling.
+	MaxCount pulumi.IntInput `pulumi:"maxCount"`
+	// Memory (GB) request and limit for a single Airflow worker replica.
+	MemoryGb pulumi.Float64Input `pulumi:"memoryGb"`
+	// Minimum number of workers for autoscaling.
+	MinCount pulumi.IntInput `pulumi:"minCount"`
+	// Storage (GB) request and limit for a single Airflow worker replica.
 	StorageGb pulumi.Float64Input `pulumi:"storageGb"`
 }
 
@@ -6595,22 +7255,27 @@ func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) ToGetEnvironmentConfigW
 	return o
 }
 
+// CPU request and limit for a single Airflow worker replica.
 func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigWorker) float64 { return v.Cpu }).(pulumi.Float64Output)
 }
 
+// Maximum number of workers for autoscaling.
 func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) MaxCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigWorker) int { return v.MaxCount }).(pulumi.IntOutput)
 }
 
+// Memory (GB) request and limit for a single Airflow worker replica.
 func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) MemoryGb() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigWorker) float64 { return v.MemoryGb }).(pulumi.Float64Output)
 }
 
+// Minimum number of workers for autoscaling.
 func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) MinCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigWorker) int { return v.MinCount }).(pulumi.IntOutput)
 }
 
+// Storage (GB) request and limit for a single Airflow worker replica.
 func (o GetEnvironmentConfigWorkloadsConfigWorkerOutput) StorageGb() pulumi.Float64Output {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigWorker) float64 { return v.StorageGb }).(pulumi.Float64Output)
 }
@@ -6636,6 +7301,7 @@ func (o GetEnvironmentConfigWorkloadsConfigWorkerArrayOutput) Index(i pulumi.Int
 }
 
 type GetEnvironmentStorageConfig struct {
+	// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
 	Bucket string `pulumi:"bucket"`
 }
 
@@ -6651,6 +7317,7 @@ type GetEnvironmentStorageConfigInput interface {
 }
 
 type GetEnvironmentStorageConfigArgs struct {
+	// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 }
 
@@ -6705,6 +7372,7 @@ func (o GetEnvironmentStorageConfigOutput) ToGetEnvironmentStorageConfigOutputWi
 	return o
 }
 
+// Optional. Name of an existing Cloud Storage bucket to be used by the environment.
 func (o GetEnvironmentStorageConfigOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
 }

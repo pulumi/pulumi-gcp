@@ -98,9 +98,17 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         return Optional.ofNullable(this.privateNetwork);
     }
 
+    /**
+     * PSC settings for a Cloud SQL instance.
+     * 
+     */
     @Import(name="pscConfigs")
     private @Nullable Output<List<DatabaseInstanceSettingsIpConfigurationPscConfigArgs>> pscConfigs;
 
+    /**
+     * @return PSC settings for a Cloud SQL instance.
+     * 
+     */
     public Optional<Output<List<DatabaseInstanceSettingsIpConfigurationPscConfigArgs>>> pscConfigs() {
         return Optional.ofNullable(this.pscConfigs);
     }
@@ -281,15 +289,33 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
             return privateNetwork(Output.of(privateNetwork));
         }
 
+        /**
+         * @param pscConfigs PSC settings for a Cloud SQL instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pscConfigs(@Nullable Output<List<DatabaseInstanceSettingsIpConfigurationPscConfigArgs>> pscConfigs) {
             $.pscConfigs = pscConfigs;
             return this;
         }
 
+        /**
+         * @param pscConfigs PSC settings for a Cloud SQL instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pscConfigs(List<DatabaseInstanceSettingsIpConfigurationPscConfigArgs> pscConfigs) {
             return pscConfigs(Output.of(pscConfigs));
         }
 
+        /**
+         * @param pscConfigs PSC settings for a Cloud SQL instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs... pscConfigs) {
             return pscConfigs(List.of(pscConfigs));
         }

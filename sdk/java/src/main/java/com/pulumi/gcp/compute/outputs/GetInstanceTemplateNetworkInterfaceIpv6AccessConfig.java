@@ -10,7 +10,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+     * 
+     */
     private String externalIpv6;
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     private String externalIpv6PrefixLength;
     /**
      * @return The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
@@ -24,12 +32,24 @@ public final class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
      * 
      */
     private String networkTier;
+    /**
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     private String publicPtrDomainName;
 
     private GetInstanceTemplateNetworkInterfaceIpv6AccessConfig() {}
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+     * 
+     */
     public String externalIpv6() {
         return this.externalIpv6;
     }
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     public String externalIpv6PrefixLength() {
         return this.externalIpv6PrefixLength;
     }
@@ -49,6 +69,10 @@ public final class GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     public String networkTier() {
         return this.networkTier;
     }
+    /**
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     public String publicPtrDomainName() {
         return this.publicPtrDomainName;
     }

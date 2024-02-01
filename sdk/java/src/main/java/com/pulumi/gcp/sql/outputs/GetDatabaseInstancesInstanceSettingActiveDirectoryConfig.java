@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
+    /**
+     * @return Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
+     * 
+     */
     private String domain;
 
     private GetDatabaseInstancesInstanceSettingActiveDirectoryConfig() {}
+    /**
+     * @return Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
+     * 
+     */
     public String domain() {
         return this.domain;
     }

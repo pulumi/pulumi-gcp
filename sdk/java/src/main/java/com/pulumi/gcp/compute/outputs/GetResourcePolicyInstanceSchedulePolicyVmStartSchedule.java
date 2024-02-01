@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+    /**
+     * @return Specifies the frequency for the operation, using the unix-cron format.
+     * 
+     */
     private String schedule;
 
     private GetResourcePolicyInstanceSchedulePolicyVmStartSchedule() {}
+    /**
+     * @return Specifies the frequency for the operation, using the unix-cron format.
+     * 
+     */
     public String schedule() {
         return this.schedule;
     }

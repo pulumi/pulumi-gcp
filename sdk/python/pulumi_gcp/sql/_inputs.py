@@ -437,8 +437,12 @@ class DatabaseInstanceServerCaCertArgs:
                  expiration_time: Optional[pulumi.Input[str]] = None,
                  sha1_fingerprint: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] cert: The CA Certificate used to connect to the SQL Instance via SSL.
+        :param pulumi.Input[str] common_name: The CN valid for the CA Cert.
+        :param pulumi.Input[str] create_time: Creation time of the CA Cert.
         :param pulumi.Input[str] expiration_time: The [RFC 3339](https://tools.ietf.org/html/rfc3339)
                formatted date time string indicating when this whitelist expires.
+        :param pulumi.Input[str] sha1_fingerprint: SHA Fingerprint of the CA Cert.
         """
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
@@ -454,6 +458,9 @@ class DatabaseInstanceServerCaCertArgs:
     @property
     @pulumi.getter
     def cert(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA Certificate used to connect to the SQL Instance via SSL.
+        """
         return pulumi.get(self, "cert")
 
     @cert.setter
@@ -463,6 +470,9 @@ class DatabaseInstanceServerCaCertArgs:
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CN valid for the CA Cert.
+        """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
@@ -472,6 +482,9 @@ class DatabaseInstanceServerCaCertArgs:
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time of the CA Cert.
+        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -494,6 +507,9 @@ class DatabaseInstanceServerCaCertArgs:
     @property
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        SHA Fingerprint of the CA Cert.
+        """
         return pulumi.get(self, "sha1_fingerprint")
 
     @sha1_fingerprint.setter
@@ -545,14 +561,19 @@ class DatabaseInstanceSettingsArgs:
                is set to `true`. Defaults to `ZONAL`.
         :param pulumi.Input[str] collation: The name of server instance collation.
         :param pulumi.Input[str] connector_enforcement: Specifies if connections must use Cloud SQL connectors.
+        :param pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs'] data_cache_config: Data cache configurations.
+        :param pulumi.Input[bool] deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param pulumi.Input[bool] disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`.
         :param pulumi.Input[int] disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param pulumi.Input[str] disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         :param pulumi.Input[str] edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        :param pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs'] insights_config: Configuration of Query Insights.
+        :param pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs'] maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
         :param pulumi.Input[str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param pulumi.Input[str] time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: A set of key/value user label pairs to assign to the instance.
+        :param pulumi.Input[int] version: Used to make sure changes to the settings block are atomic.
         """
         pulumi.set(__self__, "tier", tier)
         if activation_policy is not None:
@@ -706,6 +727,9 @@ class DatabaseInstanceSettingsArgs:
     @property
     @pulumi.getter(name="dataCacheConfig")
     def data_cache_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']]:
+        """
+        Data cache configurations.
+        """
         return pulumi.get(self, "data_cache_config")
 
     @data_cache_config.setter
@@ -724,6 +748,9 @@ class DatabaseInstanceSettingsArgs:
     @property
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Configuration to protect against accidental instance deletion.
+        """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @deletion_protection_enabled.setter
@@ -802,6 +829,9 @@ class DatabaseInstanceSettingsArgs:
     @property
     @pulumi.getter(name="insightsConfig")
     def insights_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']]:
+        """
+        Configuration of Query Insights.
+        """
         return pulumi.get(self, "insights_config")
 
     @insights_config.setter
@@ -829,6 +859,9 @@ class DatabaseInstanceSettingsArgs:
     @property
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']]:
+        """
+        Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        """
         return pulumi.get(self, "maintenance_window")
 
     @maintenance_window.setter
@@ -892,6 +925,9 @@ class DatabaseInstanceSettingsArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[int]]:
+        """
+        Used to make sure changes to the settings block are atomic.
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -1334,6 +1370,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                Specifying a network enables private IP.
                At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
                This setting can be updated, but it cannot be removed after it is set.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]] psc_configs: PSC settings for a Cloud SQL instance.
         :param pulumi.Input[bool] require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
         :param pulumi.Input[str] ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
                * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
@@ -1423,6 +1460,9 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     @property
     @pulumi.getter(name="pscConfigs")
     def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]:
+        """
+        PSC settings for a Cloud SQL instance.
+        """
         return pulumi.get(self, "psc_configs")
 
     @psc_configs.setter
@@ -1974,6 +2014,10 @@ class UserSqlServerUserDetailArgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  server_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] disabled: If the user has been disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] server_roles: The server roles for this user in the database.
+        """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if server_roles is not None:
@@ -1982,6 +2026,9 @@ class UserSqlServerUserDetailArgs:
     @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the user has been disabled.
+        """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
@@ -1991,6 +2038,9 @@ class UserSqlServerUserDetailArgs:
     @property
     @pulumi.getter(name="serverRoles")
     def server_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The server roles for this user in the database.
+        """
         return pulumi.get(self, "server_roles")
 
     @server_roles.setter

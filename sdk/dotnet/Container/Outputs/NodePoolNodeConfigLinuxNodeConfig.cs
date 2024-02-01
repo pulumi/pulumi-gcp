@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfigLinuxNodeConfig
     {
+        /// <summary>
+        /// cgroupMode specifies the cgroup mode to be used on the node.
+        /// </summary>
         public readonly string? CgroupMode;
+        /// <summary>
+        /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Sysctls;
 
         [OutputConstructor]

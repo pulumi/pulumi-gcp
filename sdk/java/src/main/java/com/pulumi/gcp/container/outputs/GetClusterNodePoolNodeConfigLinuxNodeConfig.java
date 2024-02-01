@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
+    /**
+     * @return cgroupMode specifies the cgroup mode to be used on the node.
+     * 
+     */
     private String cgroupMode;
+    /**
+     * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     * 
+     */
     private Map<String,String> sysctls;
 
     private GetClusterNodePoolNodeConfigLinuxNodeConfig() {}
+    /**
+     * @return cgroupMode specifies the cgroup mode to be used on the node.
+     * 
+     */
     public String cgroupMode() {
         return this.cgroupMode;
     }
+    /**
+     * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     * 
+     */
     public Map<String,String> sysctls() {
         return this.sysctls;
     }

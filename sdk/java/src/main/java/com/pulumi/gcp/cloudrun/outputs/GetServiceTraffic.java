@@ -12,25 +12,75 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTraffic {
+    /**
+     * @return LatestRevision may be optionally provided to indicate that the latest ready
+     * Revision of the Configuration should be used for this traffic target. When
+     * provided LatestRevision must be true if RevisionName is empty; it must be
+     * false when RevisionName is non-empty.
+     * 
+     */
     private Boolean latestRevision;
+    /**
+     * @return Percent specifies percent of the traffic to this Revision or Configuration.
+     * 
+     */
     private Integer percent;
+    /**
+     * @return RevisionName of a specific revision to which to send this portion of traffic.
+     * 
+     */
     private String revisionName;
+    /**
+     * @return Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+     * 
+     */
     private String tag;
+    /**
+     * @return URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+     * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+     * but may not contain anything else (e.g. basic auth, url path, etc.)
+     * 
+     */
     private String url;
 
     private GetServiceTraffic() {}
+    /**
+     * @return LatestRevision may be optionally provided to indicate that the latest ready
+     * Revision of the Configuration should be used for this traffic target. When
+     * provided LatestRevision must be true if RevisionName is empty; it must be
+     * false when RevisionName is non-empty.
+     * 
+     */
     public Boolean latestRevision() {
         return this.latestRevision;
     }
+    /**
+     * @return Percent specifies percent of the traffic to this Revision or Configuration.
+     * 
+     */
     public Integer percent() {
         return this.percent;
     }
+    /**
+     * @return RevisionName of a specific revision to which to send this portion of traffic.
+     * 
+     */
     public String revisionName() {
         return this.revisionName;
     }
+    /**
+     * @return Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+     * 
+     */
     public String tag() {
         return this.tag;
     }
+    /**
+     * @return URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+     * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+     * but may not contain anything else (e.g. basic auth, url path, etc.)
+     * 
+     */
     public String url() {
         return this.url;
     }

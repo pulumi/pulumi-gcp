@@ -11,17 +11,43 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionBuildConfigSourceStorageSource {
+    /**
+     * @return Google Cloud Storage bucket containing the source
+     * 
+     */
     private String bucket;
+    /**
+     * @return Google Cloud Storage generation for the object. If the generation
+     * is omitted, the latest generation will be used.
+     * 
+     */
     private Integer generation;
+    /**
+     * @return Google Cloud Storage object containing the source.
+     * 
+     */
     private String object;
 
     private GetFunctionBuildConfigSourceStorageSource() {}
+    /**
+     * @return Google Cloud Storage bucket containing the source
+     * 
+     */
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @return Google Cloud Storage generation for the object. If the generation
+     * is omitted, the latest generation will be used.
+     * 
+     */
     public Integer generation() {
         return this.generation;
     }
+    /**
+     * @return Google Cloud Storage object containing the source.
+     * 
+     */
     public String object() {
         return this.object;
     }

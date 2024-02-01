@@ -26,27 +26,88 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSetting {
+    /**
+     * @return This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+     * 
+     */
     private String activationPolicy;
     private List<GetDatabaseInstancesInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs;
     private List<GetDatabaseInstancesInstanceSettingAdvancedMachineFeature> advancedMachineFeatures;
+    /**
+     * @return The availability type of the Cloud SQL instance, high availability
+     * (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+     * settings.backup_configuration.enabled is set to true.
+     * For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+     * For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+     * is set to true. Defaults to ZONAL.
+     * 
+     */
     private String availabilityType;
     private List<GetDatabaseInstancesInstanceSettingBackupConfiguration> backupConfigurations;
+    /**
+     * @return The name of server instance collation.
+     * 
+     */
     private String collation;
+    /**
+     * @return Specifies if connections must use Cloud SQL connectors.
+     * 
+     */
     private String connectorEnforcement;
+    /**
+     * @return Data cache configurations.
+     * 
+     */
     private List<GetDatabaseInstancesInstanceSettingDataCacheConfig> dataCacheConfigs;
     private List<GetDatabaseInstancesInstanceSettingDatabaseFlag> databaseFlags;
+    /**
+     * @return Configuration to protect against accidental instance deletion.
+     * 
+     */
     private Boolean deletionProtectionEnabled;
     private List<GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods;
+    /**
+     * @return Enables auto-resizing of the storage size. Defaults to true.
+     * 
+     */
     private Boolean diskAutoresize;
+    /**
+     * @return The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * 
+     */
     private Integer diskAutoresizeLimit;
+    /**
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * 
+     */
     private Integer diskSize;
+    /**
+     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+     * 
+     */
     private String diskType;
+    /**
+     * @return The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+     * 
+     */
     private String edition;
+    /**
+     * @return Configuration of Query Insights.
+     * 
+     */
     private List<GetDatabaseInstancesInstanceSettingInsightsConfig> insightsConfigs;
     private List<GetDatabaseInstancesInstanceSettingIpConfiguration> ipConfigurations;
     private List<GetDatabaseInstancesInstanceSettingLocationPreference> locationPreferences;
+    /**
+     * @return Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+     * 
+     */
     private List<GetDatabaseInstancesInstanceSettingMaintenanceWindow> maintenanceWindows;
     private List<GetDatabaseInstancesInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
+    /**
+     * @return Pricing plan for this instance, can only be PER_USE.
+     * 
+     */
     private String pricingPlan;
     private List<GetDatabaseInstancesInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
     /**
@@ -54,11 +115,27 @@ public final class GetDatabaseInstancesInstanceSetting {
      * 
      */
     private String tier;
+    /**
+     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * 
+     */
     private String timeZone;
+    /**
+     * @return A set of key/value user label pairs to assign to the instance.
+     * 
+     */
     private Map<String,String> userLabels;
+    /**
+     * @return Used to make sure changes to the settings block are atomic.
+     * 
+     */
     private Integer version;
 
     private GetDatabaseInstancesInstanceSetting() {}
+    /**
+     * @return This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+     * 
+     */
     public String activationPolicy() {
         return this.activationPolicy;
     }
@@ -68,45 +145,94 @@ public final class GetDatabaseInstancesInstanceSetting {
     public List<GetDatabaseInstancesInstanceSettingAdvancedMachineFeature> advancedMachineFeatures() {
         return this.advancedMachineFeatures;
     }
+    /**
+     * @return The availability type of the Cloud SQL instance, high availability
+     * (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+     * settings.backup_configuration.enabled is set to true.
+     * For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+     * For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+     * is set to true. Defaults to ZONAL.
+     * 
+     */
     public String availabilityType() {
         return this.availabilityType;
     }
     public List<GetDatabaseInstancesInstanceSettingBackupConfiguration> backupConfigurations() {
         return this.backupConfigurations;
     }
+    /**
+     * @return The name of server instance collation.
+     * 
+     */
     public String collation() {
         return this.collation;
     }
+    /**
+     * @return Specifies if connections must use Cloud SQL connectors.
+     * 
+     */
     public String connectorEnforcement() {
         return this.connectorEnforcement;
     }
+    /**
+     * @return Data cache configurations.
+     * 
+     */
     public List<GetDatabaseInstancesInstanceSettingDataCacheConfig> dataCacheConfigs() {
         return this.dataCacheConfigs;
     }
     public List<GetDatabaseInstancesInstanceSettingDatabaseFlag> databaseFlags() {
         return this.databaseFlags;
     }
+    /**
+     * @return Configuration to protect against accidental instance deletion.
+     * 
+     */
     public Boolean deletionProtectionEnabled() {
         return this.deletionProtectionEnabled;
     }
     public List<GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods() {
         return this.denyMaintenancePeriods;
     }
+    /**
+     * @return Enables auto-resizing of the storage size. Defaults to true.
+     * 
+     */
     public Boolean diskAutoresize() {
         return this.diskAutoresize;
     }
+    /**
+     * @return The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * 
+     */
     public Integer diskAutoresizeLimit() {
         return this.diskAutoresizeLimit;
     }
+    /**
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * 
+     */
     public Integer diskSize() {
         return this.diskSize;
     }
+    /**
+     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+     * 
+     */
     public String diskType() {
         return this.diskType;
     }
+    /**
+     * @return The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+     * 
+     */
     public String edition() {
         return this.edition;
     }
+    /**
+     * @return Configuration of Query Insights.
+     * 
+     */
     public List<GetDatabaseInstancesInstanceSettingInsightsConfig> insightsConfigs() {
         return this.insightsConfigs;
     }
@@ -116,12 +242,20 @@ public final class GetDatabaseInstancesInstanceSetting {
     public List<GetDatabaseInstancesInstanceSettingLocationPreference> locationPreferences() {
         return this.locationPreferences;
     }
+    /**
+     * @return Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+     * 
+     */
     public List<GetDatabaseInstancesInstanceSettingMaintenanceWindow> maintenanceWindows() {
         return this.maintenanceWindows;
     }
     public List<GetDatabaseInstancesInstanceSettingPasswordValidationPolicy> passwordValidationPolicies() {
         return this.passwordValidationPolicies;
     }
+    /**
+     * @return Pricing plan for this instance, can only be PER_USE.
+     * 
+     */
     public String pricingPlan() {
         return this.pricingPlan;
     }
@@ -135,12 +269,24 @@ public final class GetDatabaseInstancesInstanceSetting {
     public String tier() {
         return this.tier;
     }
+    /**
+     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * 
+     */
     public String timeZone() {
         return this.timeZone;
     }
+    /**
+     * @return A set of key/value user label pairs to assign to the instance.
+     * 
+     */
     public Map<String,String> userLabels() {
         return this.userLabels;
     }
+    /**
+     * @return Used to make sure changes to the settings block are atomic.
+     * 
+     */
     public Integer version() {
         return this.version;
     }

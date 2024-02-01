@@ -15,25 +15,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfig {
+    /**
+     * @return Configuration for resources used by DAG processor.
+     * 
+     */
     private List<GetEnvironmentConfigWorkloadsConfigDagProcessor> dagProcessors;
+    /**
+     * @return Configuration for resources used by Airflow schedulers.
+     * 
+     */
     private List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers;
+    /**
+     * @return Configuration for resources used by Airflow triggerers.
+     * 
+     */
     private List<GetEnvironmentConfigWorkloadsConfigTriggerer> triggerers;
+    /**
+     * @return Configuration for resources used by Airflow web server.
+     * 
+     */
     private List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers;
+    /**
+     * @return Configuration for resources used by Airflow workers.
+     * 
+     */
     private List<GetEnvironmentConfigWorkloadsConfigWorker> workers;
 
     private GetEnvironmentConfigWorkloadsConfig() {}
+    /**
+     * @return Configuration for resources used by DAG processor.
+     * 
+     */
     public List<GetEnvironmentConfigWorkloadsConfigDagProcessor> dagProcessors() {
         return this.dagProcessors;
     }
+    /**
+     * @return Configuration for resources used by Airflow schedulers.
+     * 
+     */
     public List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers() {
         return this.schedulers;
     }
+    /**
+     * @return Configuration for resources used by Airflow triggerers.
+     * 
+     */
     public List<GetEnvironmentConfigWorkloadsConfigTriggerer> triggerers() {
         return this.triggerers;
     }
+    /**
+     * @return Configuration for resources used by Airflow web server.
+     * 
+     */
     public List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers() {
         return this.webServers;
     }
+    /**
+     * @return Configuration for resources used by Airflow workers.
+     * 
+     */
     public List<GetEnvironmentConfigWorkloadsConfigWorker> workers() {
         return this.workers;
     }

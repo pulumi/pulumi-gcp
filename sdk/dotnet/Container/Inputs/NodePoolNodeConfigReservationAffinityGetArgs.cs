@@ -12,14 +12,24 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigReservationAffinityGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Corresponds to the type of reservation consumption.
+        /// </summary>
         [Input("consumeReservationType", required: true)]
         public Input<string> ConsumeReservationType { get; set; } = null!;
 
+        /// <summary>
+        /// The label key of a reservation resource.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         [Input("values")]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// The label values of the reservation resource.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

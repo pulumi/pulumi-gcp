@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodeConfigHostMaintenancePolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// .
+        /// </summary>
         [Input("maintenanceInterval", required: true)]
         public Input<string> MaintenanceInterval { get; set; } = null!;
 

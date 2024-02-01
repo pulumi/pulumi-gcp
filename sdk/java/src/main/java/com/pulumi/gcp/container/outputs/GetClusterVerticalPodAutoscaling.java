@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterVerticalPodAutoscaling {
+    /**
+     * @return Enables vertical pod autoscaling.
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterVerticalPodAutoscaling() {}
+    /**
+     * @return Enables vertical pod autoscaling.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

@@ -12,7 +12,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRouterStatusBestRoute {
+    /**
+     * @return An optional description of this resource. Provide this property
+     * when you create the resource.
+     * 
+     */
     private String description;
+    /**
+     * @return The destination range of outgoing packets that this route applies to.
+     * Only IPv4 is supported.
+     * 
+     */
     private String destRange;
     /**
      * @return The name of the router.
@@ -25,13 +35,77 @@ public final class GetRouterStatusBestRoute {
      * 
      */
     private String network;
+    /**
+     * @return URL to a gateway that should handle matching packets.
+     * Currently, you can only specify the internet gateway, using a full or
+     * partial valid URL:
+     * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway&#39;
+     * * &#39;projects/project/global/gateways/default-internet-gateway&#39;
+     * * &#39;global/gateways/default-internet-gateway&#39;
+     * * The string &#39;default-internet-gateway&#39;.
+     * 
+     */
     private String nextHopGateway;
+    /**
+     * @return The IP address or URL to a forwarding rule of type
+     * loadBalancingScheme=INTERNAL that should handle matching
+     * packets.
+     * 
+     * With the GA provider you can only specify the forwarding
+     * rule as a partial or full URL. For example, the following
+     * are all valid values:
+     * * 10.128.0.56
+     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * regions/region/forwardingRules/forwardingRule
+     * 
+     * When the beta provider, you can also specify the IP address
+     * of a forwarding rule from the same VPC or any peered VPC.
+     * 
+     * Note that this can only be used when the destinationRange is
+     * a public (non-RFC 1918) IP CIDR range.
+     * 
+     */
     private String nextHopIlb;
+    /**
+     * @return URL to an instance that should handle matching packets.
+     * You can specify this as a full or partial URL. For example:
+     * * &#39;https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance&#39;
+     * * &#39;projects/project/zones/zone/instances/instance&#39;
+     * * &#39;zones/zone/instances/instance&#39;
+     * * Just the instance name, with the zone in &#39;next_hop_instance_zone&#39;.
+     * 
+     */
     private String nextHopInstance;
+    /**
+     * @return The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+     * 
+     */
     private String nextHopInstanceZone;
+    /**
+     * @return Network IP address of an instance that should handle matching packets.
+     * 
+     */
     private String nextHopIp;
+    /**
+     * @return URL to a Network that should handle matching packets.
+     * 
+     */
     private String nextHopNetwork;
+    /**
+     * @return URL to a VpnTunnel that should handle matching packets.
+     * 
+     */
     private String nextHopVpnTunnel;
+    /**
+     * @return The priority of this route. Priority is used to break ties in cases
+     * where there is more than one matching route of equal prefix length.
+     * 
+     * In the case of two routes with equal prefix length, the one with the
+     * lowest-numbered priority value wins.
+     * 
+     * Default value is 1000. Valid range is 0 through 65535.
+     * 
+     */
     private Integer priority;
     /**
      * @return The ID of the project in which the resource
@@ -40,12 +114,26 @@ public final class GetRouterStatusBestRoute {
      */
     private String project;
     private String selfLink;
+    /**
+     * @return A list of instance tags to which this route applies.
+     * 
+     */
     private List<String> tags;
 
     private GetRouterStatusBestRoute() {}
+    /**
+     * @return An optional description of this resource. Provide this property
+     * when you create the resource.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The destination range of outgoing packets that this route applies to.
+     * Only IPv4 is supported.
+     * 
+     */
     public String destRange() {
         return this.destRange;
     }
@@ -64,27 +152,91 @@ public final class GetRouterStatusBestRoute {
     public String network() {
         return this.network;
     }
+    /**
+     * @return URL to a gateway that should handle matching packets.
+     * Currently, you can only specify the internet gateway, using a full or
+     * partial valid URL:
+     * * &#39;https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway&#39;
+     * * &#39;projects/project/global/gateways/default-internet-gateway&#39;
+     * * &#39;global/gateways/default-internet-gateway&#39;
+     * * The string &#39;default-internet-gateway&#39;.
+     * 
+     */
     public String nextHopGateway() {
         return this.nextHopGateway;
     }
+    /**
+     * @return The IP address or URL to a forwarding rule of type
+     * loadBalancingScheme=INTERNAL that should handle matching
+     * packets.
+     * 
+     * With the GA provider you can only specify the forwarding
+     * rule as a partial or full URL. For example, the following
+     * are all valid values:
+     * * 10.128.0.56
+     * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * * regions/region/forwardingRules/forwardingRule
+     * 
+     * When the beta provider, you can also specify the IP address
+     * of a forwarding rule from the same VPC or any peered VPC.
+     * 
+     * Note that this can only be used when the destinationRange is
+     * a public (non-RFC 1918) IP CIDR range.
+     * 
+     */
     public String nextHopIlb() {
         return this.nextHopIlb;
     }
+    /**
+     * @return URL to an instance that should handle matching packets.
+     * You can specify this as a full or partial URL. For example:
+     * * &#39;https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance&#39;
+     * * &#39;projects/project/zones/zone/instances/instance&#39;
+     * * &#39;zones/zone/instances/instance&#39;
+     * * Just the instance name, with the zone in &#39;next_hop_instance_zone&#39;.
+     * 
+     */
     public String nextHopInstance() {
         return this.nextHopInstance;
     }
+    /**
+     * @return The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+     * 
+     */
     public String nextHopInstanceZone() {
         return this.nextHopInstanceZone;
     }
+    /**
+     * @return Network IP address of an instance that should handle matching packets.
+     * 
+     */
     public String nextHopIp() {
         return this.nextHopIp;
     }
+    /**
+     * @return URL to a Network that should handle matching packets.
+     * 
+     */
     public String nextHopNetwork() {
         return this.nextHopNetwork;
     }
+    /**
+     * @return URL to a VpnTunnel that should handle matching packets.
+     * 
+     */
     public String nextHopVpnTunnel() {
         return this.nextHopVpnTunnel;
     }
+    /**
+     * @return The priority of this route. Priority is used to break ties in cases
+     * where there is more than one matching route of equal prefix length.
+     * 
+     * In the case of two routes with equal prefix length, the one with the
+     * lowest-numbered priority value wins.
+     * 
+     * Default value is 1000. Valid range is 0 through 65535.
+     * 
+     */
     public Integer priority() {
         return this.priority;
     }
@@ -99,6 +251,10 @@ public final class GetRouterStatusBestRoute {
     public String selfLink() {
         return this.selfLink;
     }
+    /**
+     * @return A list of instance tags to which this route applies.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }

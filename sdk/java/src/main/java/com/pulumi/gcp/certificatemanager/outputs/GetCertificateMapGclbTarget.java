@@ -12,17 +12,49 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCertificateMapGclbTarget {
+    /**
+     * @return An IP configuration where this Certificate Map is serving
+     * 
+     */
     private List<GetCertificateMapGclbTargetIpConfig> ipConfigs;
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * This field is part of a union field &#39;target_proxy&#39;: Only one of &#39;targetHttpsProxy&#39; or
+     * &#39;targetSslProxy&#39; may be set.
+     * 
+     */
     private String targetHttpsProxy;
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * This field is part of a union field &#39;target_proxy&#39;: Only one of &#39;targetHttpsProxy&#39; or
+     * &#39;targetSslProxy&#39; may be set.
+     * 
+     */
     private String targetSslProxy;
 
     private GetCertificateMapGclbTarget() {}
+    /**
+     * @return An IP configuration where this Certificate Map is serving
+     * 
+     */
     public List<GetCertificateMapGclbTargetIpConfig> ipConfigs() {
         return this.ipConfigs;
     }
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetHttpsProxies/*.
+     * This field is part of a union field &#39;target_proxy&#39;: Only one of &#39;targetHttpsProxy&#39; or
+     * &#39;targetSslProxy&#39; may be set.
+     * 
+     */
     public String targetHttpsProxy() {
         return this.targetHttpsProxy;
     }
+    /**
+     * @return Proxy name must be in the format projects/*{@literal /}locations/*{@literal /}targetSslProxies/*.
+     * This field is part of a union field &#39;target_proxy&#39;: Only one of &#39;targetHttpsProxy&#39; or
+     * &#39;targetSslProxy&#39; may be set.
+     * 
+     */
     public String targetSslProxy() {
         return this.targetSslProxy;
     }

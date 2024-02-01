@@ -46,6 +46,9 @@ namespace Pulumi.Gcp.BigTable.Inputs
         [Input("numNodes")]
         public Input<int>? NumNodes { get; set; }
 
+        /// <summary>
+        /// The state of the cluster
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

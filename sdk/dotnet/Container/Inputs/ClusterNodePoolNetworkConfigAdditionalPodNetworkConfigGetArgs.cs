@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The maximum number of pods per node which use this pod network.
+        /// </summary>
         [Input("maxPodsPerNode")]
         public Input<int>? MaxPodsPerNode { get; set; }
 
+        /// <summary>
+        /// The name of the secondary range on the subnet which provides IP address for this pod range.
+        /// </summary>
         [Input("secondaryPodRange")]
         public Input<string>? SecondaryPodRange { get; set; }
 

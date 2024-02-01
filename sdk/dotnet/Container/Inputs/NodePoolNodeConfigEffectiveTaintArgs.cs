@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigEffectiveTaintArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Effect for taint.
+        /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
+        /// <summary>
+        /// Key for taint.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
+        /// <summary>
+        /// Value for taint.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

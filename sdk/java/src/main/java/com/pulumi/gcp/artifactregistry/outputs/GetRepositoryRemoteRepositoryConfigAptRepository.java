@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigAptRepository {
+    /**
+     * @return One of the publicly available Apt repositories supported by Artifact Registry.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository> publicRepositories;
 
     private GetRepositoryRemoteRepositoryConfigAptRepository() {}
+    /**
+     * @return One of the publicly available Apt repositories supported by Artifact Registry.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository> publicRepositories() {
         return this.publicRepositories;
     }

@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     [OutputType]
     public sealed class GetDatasetAccessDatasetResult
     {
+        /// <summary>
+        /// The dataset this entry applies to
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatasetAccessDatasetDatasetResult> Datasets;
+        /// <summary>
+        /// Which resources in the dataset this entry applies to. Currently, only views are supported,
+        /// but additional target types may be added in the future. Possible values: VIEWS
+        /// </summary>
         public readonly ImmutableArray<string> TargetTypes;
 
         [OutputConstructor]

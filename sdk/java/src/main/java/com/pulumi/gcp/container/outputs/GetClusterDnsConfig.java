@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterDnsConfig {
+    /**
+     * @return Which in-cluster DNS provider should be used.
+     * 
+     */
     private String clusterDns;
+    /**
+     * @return The suffix used for all cluster service records.
+     * 
+     */
     private String clusterDnsDomain;
+    /**
+     * @return The scope of access to cluster DNS records.
+     * 
+     */
     private String clusterDnsScope;
 
     private GetClusterDnsConfig() {}
+    /**
+     * @return Which in-cluster DNS provider should be used.
+     * 
+     */
     public String clusterDns() {
         return this.clusterDns;
     }
+    /**
+     * @return The suffix used for all cluster service records.
+     * 
+     */
     public String clusterDnsDomain() {
         return this.clusterDnsDomain;
     }
+    /**
+     * @return The scope of access to cluster DNS records.
+     * 
+     */
     public String clusterDnsScope() {
         return this.clusterDnsScope;
     }

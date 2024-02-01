@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP CIDR range represented by this alias IP range.
+        /// </summary>
         [Input("ipCidrRange", required: true)]
         public Input<string> IpCidrRange { get; set; } = null!;
 
+        /// <summary>
+        /// The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+        /// </summary>
         [Input("subnetworkRangeName")]
         public Input<string>? SubnetworkRangeName { get; set; }
 

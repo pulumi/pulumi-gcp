@@ -10,6 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceLocalityLbPolicyCustomPolicy {
+    /**
+     * @return An optional, arbitrary JSON object with configuration data, understood
+     * by a locally installed custom policy implementation.
+     * 
+     */
     private String data;
     /**
      * @return The name of the Backend Service.
@@ -20,6 +25,11 @@ public final class GetBackendServiceLocalityLbPolicyCustomPolicy {
     private String name;
 
     private GetBackendServiceLocalityLbPolicyCustomPolicy() {}
+    /**
+     * @return An optional, arbitrary JSON object with configuration data, understood
+     * by a locally installed custom policy implementation.
+     * 
+     */
     public String data() {
         return this.data;
     }

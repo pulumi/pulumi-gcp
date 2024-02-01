@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolQueuedProvisioningResult
     {
+        /// <summary>
+        /// Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

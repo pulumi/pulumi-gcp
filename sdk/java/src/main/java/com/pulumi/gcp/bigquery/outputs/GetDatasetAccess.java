@@ -14,41 +14,159 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatasetAccess {
+    /**
+     * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
+     * 
+     */
     private List<GetDatasetAccessDataset> datasets;
+    /**
+     * @return A domain to grant access to. Any users signed in with the
+     * domain specified will be granted the specified access
+     * 
+     */
     private String domain;
+    /**
+     * @return An email address of a Google Group to grant access to.
+     * 
+     */
     private String groupByEmail;
+    /**
+     * @return Some other type of member that appears in the IAM Policy but isn&#39;t a user,
+     * group, domain, or special group. For example: &#39;allUsers&#39;
+     * 
+     */
     private String iamMember;
+    /**
+     * @return Describes the rights granted to the user specified by the other
+     * member of the access object. Basic, predefined, and custom roles
+     * are supported. Predefined roles that have equivalent basic roles
+     * are swapped by the API to their basic counterparts. See
+     * [official docs](https://cloud.google.com/bigquery/docs/access-control).
+     * 
+     */
     private String role;
+    /**
+     * @return A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * 
+     */
     private List<GetDatasetAccessRoutine> routines;
+    /**
+     * @return A special group to grant access to. Possible values include:
+     * 
+     * * &#39;projectOwners&#39;: Owners of the enclosing project.
+     * 
+     * * &#39;projectReaders&#39;: Readers of the enclosing project.
+     * 
+     * * &#39;projectWriters&#39;: Writers of the enclosing project.
+     * 
+     * * &#39;allAuthenticatedUsers&#39;: All authenticated BigQuery users.
+     * 
+     */
     private String specialGroup;
+    /**
+     * @return An email address of a user to grant access to. For example:
+     * fred@example.com
+     * 
+     */
     private String userByEmail;
+    /**
+     * @return A view from a different dataset to grant access to. Queries
+     * executed against that view will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that view is updated by any user, access to the view
+     * needs to be granted again via an update operation.
+     * 
+     */
     private List<GetDatasetAccessView> views;
 
     private GetDatasetAccess() {}
+    /**
+     * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
+     * 
+     */
     public List<GetDatasetAccessDataset> datasets() {
         return this.datasets;
     }
+    /**
+     * @return A domain to grant access to. Any users signed in with the
+     * domain specified will be granted the specified access
+     * 
+     */
     public String domain() {
         return this.domain;
     }
+    /**
+     * @return An email address of a Google Group to grant access to.
+     * 
+     */
     public String groupByEmail() {
         return this.groupByEmail;
     }
+    /**
+     * @return Some other type of member that appears in the IAM Policy but isn&#39;t a user,
+     * group, domain, or special group. For example: &#39;allUsers&#39;
+     * 
+     */
     public String iamMember() {
         return this.iamMember;
     }
+    /**
+     * @return Describes the rights granted to the user specified by the other
+     * member of the access object. Basic, predefined, and custom roles
+     * are supported. Predefined roles that have equivalent basic roles
+     * are swapped by the API to their basic counterparts. See
+     * [official docs](https://cloud.google.com/bigquery/docs/access-control).
+     * 
+     */
     public String role() {
         return this.role;
     }
+    /**
+     * @return A routine from a different dataset to grant access to. Queries
+     * executed against that routine will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that routine is updated by any user, access to the routine
+     * needs to be granted again via an update operation.
+     * 
+     */
     public List<GetDatasetAccessRoutine> routines() {
         return this.routines;
     }
+    /**
+     * @return A special group to grant access to. Possible values include:
+     * 
+     * * &#39;projectOwners&#39;: Owners of the enclosing project.
+     * 
+     * * &#39;projectReaders&#39;: Readers of the enclosing project.
+     * 
+     * * &#39;projectWriters&#39;: Writers of the enclosing project.
+     * 
+     * * &#39;allAuthenticatedUsers&#39;: All authenticated BigQuery users.
+     * 
+     */
     public String specialGroup() {
         return this.specialGroup;
     }
+    /**
+     * @return An email address of a user to grant access to. For example:
+     * fred@example.com
+     * 
+     */
     public String userByEmail() {
         return this.userByEmail;
     }
+    /**
+     * @return A view from a different dataset to grant access to. Queries
+     * executed against that view will have read access to tables in
+     * this dataset. The role field is not required when this field is
+     * set. If that view is updated by any user, access to the view
+     * needs to be granted again via an update operation.
+     * 
+     */
     public List<GetDatasetAccessView> views() {
         return this.views;
     }

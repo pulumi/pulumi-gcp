@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+        /// </summary>
         [Input("gpuSharingStrategy", required: true)]
         public Input<string> GpuSharingStrategy { get; set; } = null!;
 
+        /// <summary>
+        /// The maximum number of containers that can share a GPU.
+        /// </summary>
         [Input("maxSharedClientsPerGpu", required: true)]
         public Input<int> MaxSharedClientsPerGpu { get; set; } = null!;
 

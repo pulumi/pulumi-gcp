@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBitbucketServerTriggerConfigPush {
+    /**
+     * @return Regex of branches to match.  Specify only one of branch or tag.
+     * 
+     */
     private String branch;
+    /**
+     * @return When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+     * 
+     */
     private Boolean invertRegex;
+    /**
+     * @return Regex of tags to match.  Specify only one of branch or tag.
+     * 
+     */
     private String tag;
 
     private GetTriggerBitbucketServerTriggerConfigPush() {}
+    /**
+     * @return Regex of branches to match.  Specify only one of branch or tag.
+     * 
+     */
     public String branch() {
         return this.branch;
     }
+    /**
+     * @return When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+     * 
+     */
     public Boolean invertRegex() {
         return this.invertRegex;
     }
+    /**
+     * @return Regex of tags to match.  Specify only one of branch or tag.
+     * 
+     */
     public String tag() {
         return this.tag;
     }

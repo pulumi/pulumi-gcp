@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterMasterAuthClientCertificateConfigResult
     {
+        /// <summary>
+        /// Whether client certificate authorization is enabled for this cluster.
+        /// </summary>
         public readonly bool IssueClientCertificate;
 
         [OutputConstructor]

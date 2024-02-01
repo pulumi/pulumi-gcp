@@ -34,6 +34,10 @@ public final class JobSparkConfig {
      * 
      */
     private @Nullable List<String> jarFileUris;
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     private @Nullable JobSparkConfigLoggingConfig loggingConfig;
     /**
      * @return The class containing the main method of the driver. Must be in a
@@ -84,6 +88,10 @@ public final class JobSparkConfig {
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<JobSparkConfigLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }

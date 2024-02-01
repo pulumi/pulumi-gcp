@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceTemplateNetworkInterfaceIpv6AccessConfig {
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+     * 
+     */
     private @Nullable String externalIpv6;
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     private @Nullable String externalIpv6PrefixLength;
     /**
      * @return The name of the instance template. If you leave
@@ -26,12 +34,24 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfig {
      * 
      */
     private String networkTier;
+    /**
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     private @Nullable String publicPtrDomainName;
 
     private InstanceTemplateNetworkInterfaceIpv6AccessConfig() {}
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+     * 
+     */
     public Optional<String> externalIpv6() {
         return Optional.ofNullable(this.externalIpv6);
     }
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     public Optional<String> externalIpv6PrefixLength() {
         return Optional.ofNullable(this.externalIpv6PrefixLength);
     }
@@ -51,6 +71,10 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfig {
     public String networkTier() {
         return this.networkTier;
     }
+    /**
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     public Optional<String> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }

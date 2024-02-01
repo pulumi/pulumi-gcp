@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Inputs
     {
         [Input("nodeAffinities", required: true)]
         private InputList<Inputs.NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>? _nodeAffinities;
+
+        /// <summary>
+        /// .
+        /// </summary>
         public InputList<Inputs.NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs> NodeAffinities
         {
             get => _nodeAffinities ?? (_nodeAffinities = new InputList<Inputs.NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>());

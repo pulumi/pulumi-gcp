@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The name of the instance.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Value of the flag.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

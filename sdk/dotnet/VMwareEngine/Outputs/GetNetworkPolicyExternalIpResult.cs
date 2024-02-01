@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     [OutputType]
     public sealed class GetNetworkPolicyExternalIpResult
     {
+        /// <summary>
+        /// True if the service is enabled; false otherwise.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// State of the service. New values may be added to this enum when appropriate.
+        /// </summary>
         public readonly string State;
 
         [OutputConstructor]

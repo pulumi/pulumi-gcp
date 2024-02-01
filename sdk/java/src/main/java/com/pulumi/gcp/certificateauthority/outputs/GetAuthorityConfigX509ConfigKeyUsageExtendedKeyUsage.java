@@ -10,29 +10,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as &#34;TLS WWW client authentication&#34;, though regularly used for non-WWW TLS.
+     * 
+     */
     private Boolean clientAuth;
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as &#34;Signing of downloadable executable code client authentication&#34;.
+     * 
+     */
     private Boolean codeSigning;
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as &#34;Email protection&#34;.
+     * 
+     */
     private Boolean emailProtection;
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as &#34;Signing OCSP responses&#34;.
+     * 
+     */
     private Boolean ocspSigning;
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as &#34;TLS WWW server authentication&#34;, though regularly used for non-WWW TLS.
+     * 
+     */
     private Boolean serverAuth;
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as &#34;Binding the hash of an object to a time&#34;.
+     * 
+     */
     private Boolean timeStamping;
 
     private GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage() {}
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as &#34;TLS WWW client authentication&#34;, though regularly used for non-WWW TLS.
+     * 
+     */
     public Boolean clientAuth() {
         return this.clientAuth;
     }
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as &#34;Signing of downloadable executable code client authentication&#34;.
+     * 
+     */
     public Boolean codeSigning() {
         return this.codeSigning;
     }
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as &#34;Email protection&#34;.
+     * 
+     */
     public Boolean emailProtection() {
         return this.emailProtection;
     }
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as &#34;Signing OCSP responses&#34;.
+     * 
+     */
     public Boolean ocspSigning() {
         return this.ocspSigning;
     }
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as &#34;TLS WWW server authentication&#34;, though regularly used for non-WWW TLS.
+     * 
+     */
     public Boolean serverAuth() {
         return this.serverAuth;
     }
+    /**
+     * @return Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as &#34;Binding the hash of an object to a time&#34;.
+     * 
+     */
     public Boolean timeStamping() {
         return this.timeStamping;
     }

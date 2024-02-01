@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterIdentityServiceConfigResult
     {
+        /// <summary>
+        /// Whether to enable the Identity Service component.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

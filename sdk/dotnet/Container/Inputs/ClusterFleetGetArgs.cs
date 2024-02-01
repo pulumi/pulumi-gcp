@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterFleetGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Full resource name of the registered fleet membership of the cluster.
+        /// </summary>
         [Input("membership")]
         public Input<string>? Membership { get; set; }
 
+        /// <summary>
+        /// Whether the cluster has been registered via the fleet API.
+        /// </summary>
         [Input("preRegistered")]
         public Input<bool>? PreRegistered { get; set; }
 

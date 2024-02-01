@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodeConfigSoleTenantConfigNodeAffinityResult
     {
+        /// <summary>
+        /// .
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// .
+        /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// .
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

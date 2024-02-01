@@ -31,7 +31,13 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Whether nodes have internal IP addresses only.
         /// </summary>
         public readonly bool? EnablePrivateNodes;
+        /// <summary>
+        /// Network bandwidth tier configuration.
+        /// </summary>
         public readonly Outputs.NodePoolNetworkConfigNetworkPerformanceConfig? NetworkPerformanceConfig;
+        /// <summary>
+        /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+        /// </summary>
         public readonly Outputs.NodePoolNetworkConfigPodCidrOverprovisionConfig? PodCidrOverprovisionConfig;
         /// <summary>
         /// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.

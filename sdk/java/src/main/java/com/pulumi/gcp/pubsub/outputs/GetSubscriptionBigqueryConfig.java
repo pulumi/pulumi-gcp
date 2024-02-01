@@ -11,21 +11,57 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSubscriptionBigqueryConfig {
+    /**
+     * @return When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+     * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
+     * 
+     */
     private Boolean dropUnknownFields;
+    /**
+     * @return The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+     * 
+     */
     private String table;
+    /**
+     * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
+     * 
+     */
     private Boolean useTopicSchema;
+    /**
+     * @return When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+     * The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+     * 
+     */
     private Boolean writeMetadata;
 
     private GetSubscriptionBigqueryConfig() {}
+    /**
+     * @return When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+     * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
+     * 
+     */
     public Boolean dropUnknownFields() {
         return this.dropUnknownFields;
     }
+    /**
+     * @return The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+     * 
+     */
     public String table() {
         return this.table;
     }
+    /**
+     * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
+     * 
+     */
     public Boolean useTopicSchema() {
         return this.useTopicSchema;
     }
+    /**
+     * @return When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+     * The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+     * 
+     */
     public Boolean writeMetadata() {
         return this.writeMetadata;
     }

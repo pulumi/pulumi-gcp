@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfigReservationAffinity
     {
+        /// <summary>
+        /// Corresponds to the type of reservation consumption.
+        /// </summary>
         public readonly string ConsumeReservationType;
+        /// <summary>
+        /// The label key of a reservation resource.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// The label values of the reservation resource.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionServiceConfigSecretEnvironmentVariable {
+    /**
+     * @return Name of the environment variable.
+     * 
+     */
     private String key;
+    /**
+     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * 
+     */
     private String projectId;
+    /**
+     * @return Name of the secret in secret manager (not the full resource name).
+     * 
+     */
     private String secret;
+    /**
+     * @return Version of the secret (version number or the string &#39;latest&#39;). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+     * 
+     */
     private String version;
 
     private GetFunctionServiceConfigSecretEnvironmentVariable() {}
+    /**
+     * @return Name of the environment variable.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return Name of the secret in secret manager (not the full resource name).
+     * 
+     */
     public String secret() {
         return this.secret;
     }
+    /**
+     * @return Version of the secret (version number or the string &#39;latest&#39;). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+     * 
+     */
     public String version() {
         return this.version;
     }

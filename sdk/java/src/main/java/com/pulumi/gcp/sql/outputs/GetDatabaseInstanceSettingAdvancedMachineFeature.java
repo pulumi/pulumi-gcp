@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingAdvancedMachineFeature {
+    /**
+     * @return The number of threads per physical core. Can be 1 or 2.
+     * 
+     */
     private Integer threadsPerCore;
 
     private GetDatabaseInstanceSettingAdvancedMachineFeature() {}
+    /**
+     * @return The number of threads per physical core. Can be 1 or 2.
+     * 
+     */
     public Integer threadsPerCore() {
         return this.threadsPerCore;
     }

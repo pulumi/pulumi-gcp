@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AzureClusterWorkloadIdentityConfig {
+    /**
+     * @return The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+     * 
+     */
     private @Nullable String identityProvider;
+    /**
+     * @return The OIDC issuer URL for this cluster.
+     * 
+     */
     private @Nullable String issuerUri;
+    /**
+     * @return The Workload Identity Pool associated to the cluster.
+     * 
+     */
     private @Nullable String workloadPool;
 
     private AzureClusterWorkloadIdentityConfig() {}
+    /**
+     * @return The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+     * 
+     */
     public Optional<String> identityProvider() {
         return Optional.ofNullable(this.identityProvider);
     }
+    /**
+     * @return The OIDC issuer URL for this cluster.
+     * 
+     */
     public Optional<String> issuerUri() {
         return Optional.ofNullable(this.issuerUri);
     }
+    /**
+     * @return The Workload Identity Pool associated to the cluster.
+     * 
+     */
     public Optional<String> workloadPool() {
         return Optional.ofNullable(this.workloadPool);
     }

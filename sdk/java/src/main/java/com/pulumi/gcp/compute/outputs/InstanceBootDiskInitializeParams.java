@@ -62,6 +62,10 @@ public final class InstanceBootDiskInitializeParams {
      * 
      */
     private @Nullable Integer provisionedThroughput;
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     private @Nullable Map<String,Object> resourceManagerTags;
     /**
      * @return The size of the image in gigabytes. If not specified, it
@@ -133,6 +137,10 @@ public final class InstanceBootDiskInitializeParams {
     public Optional<Integer> provisionedThroughput() {
         return Optional.ofNullable(this.provisionedThroughput);
     }
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     public Map<String,Object> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }

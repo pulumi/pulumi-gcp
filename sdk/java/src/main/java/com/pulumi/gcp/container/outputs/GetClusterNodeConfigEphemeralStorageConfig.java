@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigEphemeralStorageConfig {
+    /**
+     * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+     * 
+     */
     private Integer localSsdCount;
 
     private GetClusterNodeConfigEphemeralStorageConfig() {}
+    /**
+     * @return Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+     * 
+     */
     public Integer localSsdCount() {
         return this.localSsdCount;
     }

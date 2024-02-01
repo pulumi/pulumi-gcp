@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult
     {
+        /// <summary>
+        /// Use username and password to access the remote repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialResult> UsernamePasswordCredentials;
 
         [OutputConstructor]

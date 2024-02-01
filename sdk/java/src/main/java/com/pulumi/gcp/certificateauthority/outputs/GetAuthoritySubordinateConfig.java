@@ -12,13 +12,37 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthoritySubordinateConfig {
+    /**
+     * @return This can refer to a CertificateAuthority that was used to create a
+     * subordinate CertificateAuthority. This field is used for information
+     * and usability purposes only. The resource name is in the format
+     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+     * 
+     */
     private String certificateAuthority;
+    /**
+     * @return Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+     * but not pem certificate for this CA itself.
+     * 
+     */
     private List<GetAuthoritySubordinateConfigPemIssuerChain> pemIssuerChains;
 
     private GetAuthoritySubordinateConfig() {}
+    /**
+     * @return This can refer to a CertificateAuthority that was used to create a
+     * subordinate CertificateAuthority. This field is used for information
+     * and usability purposes only. The resource name is in the format
+     * &#39;projects/*{@literal /}locations/*{@literal /}caPools/*{@literal /}certificateAuthorities/*&#39;.
+     * 
+     */
     public String certificateAuthority() {
         return this.certificateAuthority;
     }
+    /**
+     * @return Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+     * but not pem certificate for this CA itself.
+     * 
+     */
     public List<GetAuthoritySubordinateConfigPemIssuerChain> pemIssuerChains() {
         return this.pemIssuerChains;
     }

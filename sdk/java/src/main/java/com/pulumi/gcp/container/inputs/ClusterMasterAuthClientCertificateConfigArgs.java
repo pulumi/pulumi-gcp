@@ -14,9 +14,17 @@ public final class ClusterMasterAuthClientCertificateConfigArgs extends com.pulu
 
     public static final ClusterMasterAuthClientCertificateConfigArgs Empty = new ClusterMasterAuthClientCertificateConfigArgs();
 
+    /**
+     * Whether client certificate authorization is enabled for this cluster.
+     * 
+     */
     @Import(name="issueClientCertificate", required=true)
     private Output<Boolean> issueClientCertificate;
 
+    /**
+     * @return Whether client certificate authorization is enabled for this cluster.
+     * 
+     */
     public Output<Boolean> issueClientCertificate() {
         return this.issueClientCertificate;
     }
@@ -45,11 +53,23 @@ public final class ClusterMasterAuthClientCertificateConfigArgs extends com.pulu
             $ = new ClusterMasterAuthClientCertificateConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param issueClientCertificate Whether client certificate authorization is enabled for this cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issueClientCertificate(Output<Boolean> issueClientCertificate) {
             $.issueClientCertificate = issueClientCertificate;
             return this;
         }
 
+        /**
+         * @param issueClientCertificate Whether client certificate authorization is enabled for this cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issueClientCertificate(Boolean issueClientCertificate) {
             return issueClientCertificate(Output.of(issueClientCertificate));
         }

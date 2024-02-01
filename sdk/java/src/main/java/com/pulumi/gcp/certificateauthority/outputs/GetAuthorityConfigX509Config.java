@@ -16,29 +16,79 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509Config {
+    /**
+     * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+     * 
+     */
     private List<GetAuthorityConfigX509ConfigAdditionalExtension> additionalExtensions;
+    /**
+     * @return Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+     * &#34;Authority Information Access&#34; extension in the certificate.
+     * 
+     */
     private List<String> aiaOcspServers;
+    /**
+     * @return Describes values that are relevant in a CA certificate.
+     * 
+     */
     private List<GetAuthorityConfigX509ConfigCaOption> caOptions;
+    /**
+     * @return Indicates the intended use for keys that correspond to a certificate.
+     * 
+     */
     private List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages;
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * 
+     */
     private List<GetAuthorityConfigX509ConfigNameConstraint> nameConstraints;
+    /**
+     * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * 
+     */
     private List<GetAuthorityConfigX509ConfigPolicyId> policyIds;
 
     private GetAuthorityConfigX509Config() {}
+    /**
+     * @return Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+     * 
+     */
     public List<GetAuthorityConfigX509ConfigAdditionalExtension> additionalExtensions() {
         return this.additionalExtensions;
     }
+    /**
+     * @return Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+     * &#34;Authority Information Access&#34; extension in the certificate.
+     * 
+     */
     public List<String> aiaOcspServers() {
         return this.aiaOcspServers;
     }
+    /**
+     * @return Describes values that are relevant in a CA certificate.
+     * 
+     */
     public List<GetAuthorityConfigX509ConfigCaOption> caOptions() {
         return this.caOptions;
     }
+    /**
+     * @return Indicates the intended use for keys that correspond to a certificate.
+     * 
+     */
     public List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages() {
         return this.keyUsages;
     }
+    /**
+     * @return Describes the X.509 name constraints extension.
+     * 
+     */
     public List<GetAuthorityConfigX509ConfigNameConstraint> nameConstraints() {
         return this.nameConstraints;
     }
+    /**
+     * @return Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+     * 
+     */
     public List<GetAuthorityConfigX509ConfigPolicyId> policyIds() {
         return this.policyIds;
     }

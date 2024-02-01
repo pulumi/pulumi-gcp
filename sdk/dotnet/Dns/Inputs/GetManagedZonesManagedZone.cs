@@ -12,32 +12,57 @@ namespace Pulumi.Gcp.Dns.Inputs
 
     public sealed class GetManagedZonesManagedZoneArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A textual description field.
+        /// </summary>
         [Input("description", required: true)]
         public string Description { get; set; } = null!;
 
+        /// <summary>
+        /// The fully qualified DNS name of this zone.
+        /// </summary>
         [Input("dnsName", required: true)]
         public string DnsName { get; set; } = null!;
 
+        /// <summary>
+        /// DNS managed zone identifier
+        /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
+        /// <summary>
+        /// Unique identifier for the resource; defined by the server.
+        /// </summary>
         [Input("managedZoneId", required: true)]
         public int ManagedZoneId { get; set; }
 
+        /// <summary>
+        /// A unique name for the resource.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         [Input("nameServers", required: true)]
         private List<string>? _nameServers;
+
+        /// <summary>
+        /// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+        /// </summary>
         public List<string> NameServers
         {
             get => _nameServers ?? (_nameServers = new List<string>());
             set => _nameServers = value;
         }
 
+        /// <summary>
+        /// The ID of the project for the Google Cloud.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+        /// </summary>
         [Input("visibility", required: true)]
         public string Visibility { get; set; } = null!;
 

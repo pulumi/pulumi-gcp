@@ -14,25 +14,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigGuestAccelerator {
+    /**
+     * @return The number of the accelerator cards exposed to an instance.
+     * 
+     */
     private Integer count;
+    /**
+     * @return Configuration for auto installation of GPU driver.
+     * 
+     */
     private List<GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfigs;
+    /**
+     * @return Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+     * 
+     */
     private String gpuPartitionSize;
+    /**
+     * @return Configuration for GPU sharing.
+     * 
+     */
     private List<GetClusterNodeConfigGuestAcceleratorGpuSharingConfig> gpuSharingConfigs;
+    /**
+     * @return The accelerator type resource name.
+     * 
+     */
     private String type;
 
     private GetClusterNodeConfigGuestAccelerator() {}
+    /**
+     * @return The number of the accelerator cards exposed to an instance.
+     * 
+     */
     public Integer count() {
         return this.count;
     }
+    /**
+     * @return Configuration for auto installation of GPU driver.
+     * 
+     */
     public List<GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfigs() {
         return this.gpuDriverInstallationConfigs;
     }
+    /**
+     * @return Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+     * 
+     */
     public String gpuPartitionSize() {
         return this.gpuPartitionSize;
     }
+    /**
+     * @return Configuration for GPU sharing.
+     * 
+     */
     public List<GetClusterNodeConfigGuestAcceleratorGpuSharingConfig> gpuSharingConfigs() {
         return this.gpuSharingConfigs;
     }
+    /**
+     * @return The accelerator type resource name.
+     * 
+     */
     public String type() {
         return this.type;
     }

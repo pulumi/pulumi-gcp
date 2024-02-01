@@ -17,30 +17,62 @@ public final class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs e
 
     public static final EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs Empty = new EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs();
 
+    /**
+     * When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
 
+    /**
+     * Snapshot schedule, in the unix-cron format.
+     * 
+     */
     @Import(name="snapshotCreationSchedule")
     private @Nullable Output<String> snapshotCreationSchedule;
 
+    /**
+     * @return Snapshot schedule, in the unix-cron format.
+     * 
+     */
     public Optional<Output<String>> snapshotCreationSchedule() {
         return Optional.ofNullable(this.snapshotCreationSchedule);
     }
 
+    /**
+     * the URI of a bucket folder where to save the snapshot.
+     * 
+     */
     @Import(name="snapshotLocation")
     private @Nullable Output<String> snapshotLocation;
 
+    /**
+     * @return the URI of a bucket folder where to save the snapshot.
+     * 
+     */
     public Optional<Output<String>> snapshotLocation() {
         return Optional.ofNullable(this.snapshotLocation);
     }
 
+    /**
+     * A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+     * 
+     */
     @Import(name="timeZone")
     private @Nullable Output<String> timeZone;
 
+    /**
+     * @return A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+     * 
+     */
     public Optional<Output<String>> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }
@@ -72,38 +104,86 @@ public final class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs e
             $ = new EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param snapshotCreationSchedule Snapshot schedule, in the unix-cron format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotCreationSchedule(@Nullable Output<String> snapshotCreationSchedule) {
             $.snapshotCreationSchedule = snapshotCreationSchedule;
             return this;
         }
 
+        /**
+         * @param snapshotCreationSchedule Snapshot schedule, in the unix-cron format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotCreationSchedule(String snapshotCreationSchedule) {
             return snapshotCreationSchedule(Output.of(snapshotCreationSchedule));
         }
 
+        /**
+         * @param snapshotLocation the URI of a bucket folder where to save the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotLocation(@Nullable Output<String> snapshotLocation) {
             $.snapshotLocation = snapshotLocation;
             return this;
         }
 
+        /**
+         * @param snapshotLocation the URI of a bucket folder where to save the snapshot.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotLocation(String snapshotLocation) {
             return snapshotLocation(Output.of(snapshotLocation));
         }
 
+        /**
+         * @param timeZone A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(@Nullable Output<String> timeZone) {
             $.timeZone = timeZone;
             return this;
         }
 
+        /**
+         * @param timeZone A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeZone(String timeZone) {
             return timeZone(Output.of(timeZone));
         }

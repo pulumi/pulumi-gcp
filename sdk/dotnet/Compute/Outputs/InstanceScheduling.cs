@@ -23,6 +23,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         /// </summary>
         public readonly string? InstanceTerminationAction;
+        /// <summary>
+        /// Specifies the maximum amount of time a Local Ssd Vm should wait while
+        ///   recovery of the Local Ssd state is attempted. Its value should be in
+        ///   between 0 and 168 hours with hour granularity and the default value being 1
+        ///   hour.
+        /// </summary>
         public readonly Outputs.InstanceSchedulingLocalSsdRecoveryTimeout? LocalSsdRecoveryTimeout;
         /// <summary>
         /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.

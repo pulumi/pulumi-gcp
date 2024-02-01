@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
+    /**
+     * @return List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+     * 
+     */
     private List<String> allowedConsumerProjects;
+    /**
+     * @return Whether PSC connectivity is enabled for this instance.
+     * 
+     */
     private Boolean pscEnabled;
 
     private GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig() {}
+    /**
+     * @return List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+     * 
+     */
     public List<String> allowedConsumerProjects() {
         return this.allowedConsumerProjects;
     }
+    /**
+     * @return Whether PSC connectivity is enabled for this instance.
+     * 
+     */
     public Boolean pscEnabled() {
         return this.pscEnabled;
     }

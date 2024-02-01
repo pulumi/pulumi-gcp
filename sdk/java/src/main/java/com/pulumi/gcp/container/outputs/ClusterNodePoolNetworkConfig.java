@@ -17,7 +17,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolNetworkConfig {
+    /**
+     * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+     * 
+     */
     private @Nullable List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs;
+    /**
+     * @return We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+     * 
+     */
     private @Nullable List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
     /**
      * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
@@ -37,6 +45,10 @@ public final class ClusterNodePoolNetworkConfig {
      * 
      */
     private @Nullable ClusterNodePoolNetworkConfigNetworkPerformanceConfig networkPerformanceConfig;
+    /**
+     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * 
+     */
     private @Nullable ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
     /**
      * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -50,9 +62,17 @@ public final class ClusterNodePoolNetworkConfig {
     private @Nullable String podRange;
 
     private ClusterNodePoolNetworkConfig() {}
+    /**
+     * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+     * 
+     */
     public List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs() {
         return this.additionalNodeNetworkConfigs == null ? List.of() : this.additionalNodeNetworkConfigs;
     }
+    /**
+     * @return We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+     * 
+     */
     public List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs() {
         return this.additionalPodNetworkConfigs == null ? List.of() : this.additionalPodNetworkConfigs;
     }
@@ -80,6 +100,10 @@ public final class ClusterNodePoolNetworkConfig {
     public Optional<ClusterNodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfig() {
         return Optional.ofNullable(this.networkPerformanceConfig);
     }
+    /**
+     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * 
+     */
     public Optional<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfig() {
         return Optional.ofNullable(this.podCidrOverprovisionConfig);
     }

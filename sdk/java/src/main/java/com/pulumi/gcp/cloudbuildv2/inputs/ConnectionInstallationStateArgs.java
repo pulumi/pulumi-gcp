@@ -15,23 +15,47 @@ public final class ConnectionInstallationStateArgs extends com.pulumi.resources.
 
     public static final ConnectionInstallationStateArgs Empty = new ConnectionInstallationStateArgs();
 
+    /**
+     * Output only. Link to follow for next action. Empty string if the installation is already complete.
+     * 
+     */
     @Import(name="actionUri")
     private @Nullable Output<String> actionUri;
 
+    /**
+     * @return Output only. Link to follow for next action. Empty string if the installation is already complete.
+     * 
+     */
     public Optional<Output<String>> actionUri() {
         return Optional.ofNullable(this.actionUri);
     }
 
+    /**
+     * Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
+    /**
+     * Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+     * 
+     */
     @Import(name="stage")
     private @Nullable Output<String> stage;
 
+    /**
+     * @return Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+     * 
+     */
     public Optional<Output<String>> stage() {
         return Optional.ofNullable(this.stage);
     }
@@ -62,29 +86,65 @@ public final class ConnectionInstallationStateArgs extends com.pulumi.resources.
             $ = new ConnectionInstallationStateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param actionUri Output only. Link to follow for next action. Empty string if the installation is already complete.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionUri(@Nullable Output<String> actionUri) {
             $.actionUri = actionUri;
             return this;
         }
 
+        /**
+         * @param actionUri Output only. Link to follow for next action. Empty string if the installation is already complete.
+         * 
+         * @return builder
+         * 
+         */
         public Builder actionUri(String actionUri) {
             return actionUri(Output.of(actionUri));
         }
 
+        /**
+         * @param message Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
+        /**
+         * @param stage Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+         * 
+         * @return builder
+         * 
+         */
         public Builder stage(@Nullable Output<String> stage) {
             $.stage = stage;
             return this;
         }
 
+        /**
+         * @param stage Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+         * 
+         * @return builder
+         * 
+         */
         public Builder stage(String stage) {
             return stage(Output.of(stage));
         }

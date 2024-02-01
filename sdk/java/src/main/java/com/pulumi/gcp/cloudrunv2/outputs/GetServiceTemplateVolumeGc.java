@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateVolumeGc {
+    /**
+     * @return GCS Bucket name
+     * 
+     */
     private String bucket;
+    /**
+     * @return If true, mount the GCS bucket as read-only
+     * 
+     */
     private Boolean readOnly;
 
     private GetServiceTemplateVolumeGc() {}
+    /**
+     * @return GCS Bucket name
+     * 
+     */
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @return If true, mount the GCS bucket as read-only
+     * 
+     */
     public Boolean readOnly() {
         return this.readOnly;
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class GetAuthoritySubordinateConfigPemIssuerChainResult
     {
+        /// <summary>
+        /// Expected to be in leaf-to-root order according to RFC 5246.
+        /// </summary>
         public readonly ImmutableArray<string> PemCertificates;
 
         [OutputConstructor]

@@ -17,6 +17,11 @@ public final class GetGlobalForwardingRuleMetadataFilterFilterLabel {
      * 
      */
     private String name;
+    /**
+     * @return The value that the label must match. The value has a maximum
+     * length of 1024 characters.
+     * 
+     */
     private String value;
 
     private GetGlobalForwardingRuleMetadataFilterFilterLabel() {}
@@ -29,6 +34,11 @@ public final class GetGlobalForwardingRuleMetadataFilterFilterLabel {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The value that the label must match. The value has a maximum
+     * length of 1024 characters.
+     * 
+     */
     public String value() {
         return this.value;
     }

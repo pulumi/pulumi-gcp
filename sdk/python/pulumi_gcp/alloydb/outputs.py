@@ -1565,17 +1565,27 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult(di
     def __init__(__self__, *,
                  max_value: str,
                  min_value: str):
+        """
+        :param str max_value: The maximum value that can be specified, if applicable.
+        :param str min_value: The minimum value that can be specified, if applicable.
+        """
         pulumi.set(__self__, "max_value", max_value)
         pulumi.set(__self__, "min_value", min_value)
 
     @property
     @pulumi.getter(name="maxValue")
     def max_value(self) -> str:
+        """
+        The maximum value that can be specified, if applicable.
+        """
         return pulumi.get(self, "max_value")
 
     @property
     @pulumi.getter(name="minValue")
     def min_value(self) -> str:
+        """
+        The minimum value that can be specified, if applicable.
+        """
         return pulumi.get(self, "min_value")
 
 
@@ -1583,11 +1593,17 @@ class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult(di
 class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult(dict):
     def __init__(__self__, *,
                  allowed_values: Sequence[str]):
+        """
+        :param Sequence[str] allowed_values: The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+        """
         pulumi.set(__self__, "allowed_values", allowed_values)
 
     @property
     @pulumi.getter(name="allowedValues")
     def allowed_values(self) -> Sequence[str]:
+        """
+        The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+        """
         return pulumi.get(self, "allowed_values")
 
 

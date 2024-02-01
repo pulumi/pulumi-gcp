@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterWorkloadIdentityConfig {
+    /**
+     * @return The workload pool to attach all Kubernetes service accounts to.
+     * 
+     */
     private String workloadPool;
 
     private GetClusterWorkloadIdentityConfig() {}
+    /**
+     * @return The workload pool to attach all Kubernetes service accounts to.
+     * 
+     */
     public String workloadPool() {
         return this.workloadPool;
     }

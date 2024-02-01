@@ -14,9 +14,17 @@ public final class EnvironmentConfigWebServerConfigArgs extends com.pulumi.resou
 
     public static final EnvironmentConfigWebServerConfigArgs Empty = new EnvironmentConfigWebServerConfigArgs();
 
+    /**
+     * Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+     * 
+     */
     @Import(name="machineType", required=true)
     private Output<String> machineType;
 
+    /**
+     * @return Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+     * 
+     */
     public Output<String> machineType() {
         return this.machineType;
     }
@@ -45,11 +53,23 @@ public final class EnvironmentConfigWebServerConfigArgs extends com.pulumi.resou
             $ = new EnvironmentConfigWebServerConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param machineType Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder machineType(Output<String> machineType) {
             $.machineType = machineType;
             return this;
         }
 
+        /**
+         * @param machineType Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder machineType(String machineType) {
             return machineType(Output.of(machineType));
         }

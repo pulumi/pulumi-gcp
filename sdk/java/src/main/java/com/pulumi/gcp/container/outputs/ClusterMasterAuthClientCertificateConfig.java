@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterMasterAuthClientCertificateConfig {
+    /**
+     * @return Whether client certificate authorization is enabled for this cluster.
+     * 
+     */
     private Boolean issueClientCertificate;
 
     private ClusterMasterAuthClientCertificateConfig() {}
+    /**
+     * @return Whether client certificate authorization is enabled for this cluster.
+     * 
+     */
     public Boolean issueClientCertificate() {
         return this.issueClientCertificate;
     }

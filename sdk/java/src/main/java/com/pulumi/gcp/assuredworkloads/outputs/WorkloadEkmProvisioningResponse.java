@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkloadEkmProvisioningResponse {
+    /**
+     * @return Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
+     * 
+     */
     private @Nullable String ekmProvisioningErrorDomain;
+    /**
+     * @return Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
+     * 
+     */
     private @Nullable String ekmProvisioningErrorMapping;
+    /**
+     * @return Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
+     * 
+     */
     private @Nullable String ekmProvisioningState;
 
     private WorkloadEkmProvisioningResponse() {}
+    /**
+     * @return Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
+     * 
+     */
     public Optional<String> ekmProvisioningErrorDomain() {
         return Optional.ofNullable(this.ekmProvisioningErrorDomain);
     }
+    /**
+     * @return Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
+     * 
+     */
     public Optional<String> ekmProvisioningErrorMapping() {
         return Optional.ofNullable(this.ekmProvisioningErrorMapping);
     }
+    /**
+     * @return Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
+     * 
+     */
     public Optional<String> ekmProvisioningState() {
         return Optional.ofNullable(this.ekmProvisioningState);
     }

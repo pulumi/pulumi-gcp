@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigLocalNvmeSsdBlockConfig {
+    /**
+     * @return Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+     * 
+     */
     private Integer localSsdCount;
 
     private NodePoolNodeConfigLocalNvmeSsdBlockConfig() {}
+    /**
+     * @return Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+     * 
+     */
     public Integer localSsdCount() {
         return this.localSsdCount;
     }

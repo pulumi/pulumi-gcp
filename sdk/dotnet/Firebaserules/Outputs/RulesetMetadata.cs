@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Firebaserules.Outputs
     [OutputType]
     public sealed class RulesetMetadata
     {
+        /// <summary>
+        /// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+        /// </summary>
         public readonly ImmutableArray<string> Services;
 
         [OutputConstructor]

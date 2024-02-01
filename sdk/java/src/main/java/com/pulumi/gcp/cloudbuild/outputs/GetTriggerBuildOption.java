@@ -14,53 +14,197 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildOption {
+    /**
+     * @return Requested disk size for the VM that runs the build. Note that this is NOT &#34;disk free&#34;;
+     * some of the space will be used by the operating system and build utilities.
+     * Also note that this is the minimum disk size that will be allocated for the build --
+     * the build may run with a larger disk than requested. At present, the maximum disk size
+     * is 1000GB; builds that request more than the maximum are rejected with an error.
+     * 
+     */
     private Integer diskSizeGb;
+    /**
+     * @return Option to specify whether or not to apply bash style string operations to the substitutions.
+     * 
+     * NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+     * 
+     */
     private Boolean dynamicSubstitutions;
+    /**
+     * @return A list of global environment variable definitions that will exist for all build steps
+     * in this build. If a variable is defined in both globally and in a build step,
+     * the variable will use the build step value.
+     * 
+     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * 
+     */
     private List<String> envs;
+    /**
+     * @return Option to define build log streaming behavior to Google Cloud Storage. Possible values: [&#34;STREAM_DEFAULT&#34;, &#34;STREAM_ON&#34;, &#34;STREAM_OFF&#34;]
+     * 
+     */
     private String logStreamingOption;
+    /**
+     * @return Option to specify the logging mode, which determines if and where build logs are stored. Possible values: [&#34;LOGGING_UNSPECIFIED&#34;, &#34;LEGACY&#34;, &#34;GCS_ONLY&#34;, &#34;STACKDRIVER_ONLY&#34;, &#34;CLOUD_LOGGING_ONLY&#34;, &#34;NONE&#34;]
+     * 
+     */
     private String logging;
+    /**
+     * @return Compute Engine machine type on which to run the build.
+     * 
+     */
     private String machineType;
+    /**
+     * @return Requested verifiability options. Possible values: [&#34;NOT_VERIFIED&#34;, &#34;VERIFIED&#34;]
+     * 
+     */
     private String requestedVerifyOption;
+    /**
+     * @return A list of global environment variables, which are encrypted using a Cloud Key Management
+     * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
+     * will be available to all build steps in this build.
+     * 
+     */
     private List<String> secretEnvs;
+    /**
+     * @return Requested hash for SourceProvenance. Possible values: [&#34;NONE&#34;, &#34;SHA256&#34;, &#34;MD5&#34;]
+     * 
+     */
     private List<String> sourceProvenanceHashes;
+    /**
+     * @return Option to specify behavior when there is an error in the substitution checks.
+     * 
+     * NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+     * in the build configuration file. Possible values: [&#34;MUST_MATCH&#34;, &#34;ALLOW_LOOSE&#34;]
+     * 
+     */
     private String substitutionOption;
+    /**
+     * @return Global list of volumes to mount for ALL build steps
+     * 
+     * Each volume is created as an empty volume prior to starting the build process.
+     * Upon completion of the build, volumes and their contents are discarded. Global
+     * volume names and paths cannot conflict with the volumes defined a build step.
+     * 
+     * Using a global volume in a build with only one step is not valid as it is indicative
+     * of a build request with an incorrect configuration.
+     * 
+     */
     private List<GetTriggerBuildOptionVolume> volumes;
+    /**
+     * @return Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+     * 
+     * This field is experimental.
+     * 
+     */
     private String workerPool;
 
     private GetTriggerBuildOption() {}
+    /**
+     * @return Requested disk size for the VM that runs the build. Note that this is NOT &#34;disk free&#34;;
+     * some of the space will be used by the operating system and build utilities.
+     * Also note that this is the minimum disk size that will be allocated for the build --
+     * the build may run with a larger disk than requested. At present, the maximum disk size
+     * is 1000GB; builds that request more than the maximum are rejected with an error.
+     * 
+     */
     public Integer diskSizeGb() {
         return this.diskSizeGb;
     }
+    /**
+     * @return Option to specify whether or not to apply bash style string operations to the substitutions.
+     * 
+     * NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+     * 
+     */
     public Boolean dynamicSubstitutions() {
         return this.dynamicSubstitutions;
     }
+    /**
+     * @return A list of global environment variable definitions that will exist for all build steps
+     * in this build. If a variable is defined in both globally and in a build step,
+     * the variable will use the build step value.
+     * 
+     * The elements are of the form &#34;KEY=VALUE&#34; for the environment variable &#34;KEY&#34; being given the value &#34;VALUE&#34;.
+     * 
+     */
     public List<String> envs() {
         return this.envs;
     }
+    /**
+     * @return Option to define build log streaming behavior to Google Cloud Storage. Possible values: [&#34;STREAM_DEFAULT&#34;, &#34;STREAM_ON&#34;, &#34;STREAM_OFF&#34;]
+     * 
+     */
     public String logStreamingOption() {
         return this.logStreamingOption;
     }
+    /**
+     * @return Option to specify the logging mode, which determines if and where build logs are stored. Possible values: [&#34;LOGGING_UNSPECIFIED&#34;, &#34;LEGACY&#34;, &#34;GCS_ONLY&#34;, &#34;STACKDRIVER_ONLY&#34;, &#34;CLOUD_LOGGING_ONLY&#34;, &#34;NONE&#34;]
+     * 
+     */
     public String logging() {
         return this.logging;
     }
+    /**
+     * @return Compute Engine machine type on which to run the build.
+     * 
+     */
     public String machineType() {
         return this.machineType;
     }
+    /**
+     * @return Requested verifiability options. Possible values: [&#34;NOT_VERIFIED&#34;, &#34;VERIFIED&#34;]
+     * 
+     */
     public String requestedVerifyOption() {
         return this.requestedVerifyOption;
     }
+    /**
+     * @return A list of global environment variables, which are encrypted using a Cloud Key Management
+     * Service crypto key. These values must be specified in the build&#39;s Secret. These variables
+     * will be available to all build steps in this build.
+     * 
+     */
     public List<String> secretEnvs() {
         return this.secretEnvs;
     }
+    /**
+     * @return Requested hash for SourceProvenance. Possible values: [&#34;NONE&#34;, &#34;SHA256&#34;, &#34;MD5&#34;]
+     * 
+     */
     public List<String> sourceProvenanceHashes() {
         return this.sourceProvenanceHashes;
     }
+    /**
+     * @return Option to specify behavior when there is an error in the substitution checks.
+     * 
+     * NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+     * in the build configuration file. Possible values: [&#34;MUST_MATCH&#34;, &#34;ALLOW_LOOSE&#34;]
+     * 
+     */
     public String substitutionOption() {
         return this.substitutionOption;
     }
+    /**
+     * @return Global list of volumes to mount for ALL build steps
+     * 
+     * Each volume is created as an empty volume prior to starting the build process.
+     * Upon completion of the build, volumes and their contents are discarded. Global
+     * volume names and paths cannot conflict with the volumes defined a build step.
+     * 
+     * Using a global volume in a build with only one step is not valid as it is indicative
+     * of a build request with an incorrect configuration.
+     * 
+     */
     public List<GetTriggerBuildOptionVolume> volumes() {
         return this.volumes;
     }
+    /**
+     * @return Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+     * 
+     * This field is experimental.
+     * 
+     */
     public String workerPool() {
         return this.workerPool;
     }

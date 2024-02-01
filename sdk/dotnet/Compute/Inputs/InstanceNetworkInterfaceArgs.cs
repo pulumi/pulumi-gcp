@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("accessConfigs")]
         private InputList<Inputs.InstanceNetworkInterfaceAccessConfigArgs>? _accessConfigs;
+
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        /// </summary>
         public InputList<Inputs.InstanceNetworkInterfaceAccessConfigArgs> AccessConfigs
         {
             get => _accessConfigs ?? (_accessConfigs = new InputList<Inputs.InstanceNetworkInterfaceAccessConfigArgs>());
@@ -34,6 +38,9 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _aliasIpRanges = value;
         }
 
+        /// <summary>
+        /// The prefix length of the primary internal IPv6 range.
+        /// </summary>
         [Input("internalIpv6PrefixLength")]
         public Input<int>? InternalIpv6PrefixLength { get; set; }
 
@@ -58,6 +65,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("ipv6AccessType")]
         public Input<string>? Ipv6AccessType { get; set; }
 
+        /// <summary>
+        /// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }
 

@@ -13,7 +13,16 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetBackendBucketCdnPolicyCacheKeyPolicyResult
     {
+        /// <summary>
+        /// Allows HTTP request headers (by name) to be used in the
+        /// cache key.
+        /// </summary>
         public readonly ImmutableArray<string> IncludeHttpHeaders;
+        /// <summary>
+        /// Names of query string parameters to include in cache keys.
+        /// Default parameters are always included. '&amp;' and '=' will
+        /// be percent encoded and not treated as delimiters.
+        /// </summary>
         public readonly ImmutableArray<string> QueryStringWhitelists;
 
         [OutputConstructor]

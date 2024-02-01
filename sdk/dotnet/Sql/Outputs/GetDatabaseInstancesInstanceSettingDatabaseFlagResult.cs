@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceSettingDatabaseFlagResult
     {
+        /// <summary>
+        /// Name of the flag.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Value of the flag.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

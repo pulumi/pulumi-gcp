@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolNodeConfigGcfsConfigResult
     {
+        /// <summary>
+        /// Whether or not GCFS is enabled
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

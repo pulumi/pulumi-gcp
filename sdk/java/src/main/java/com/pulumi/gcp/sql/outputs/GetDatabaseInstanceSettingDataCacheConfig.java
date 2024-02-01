@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingDataCacheConfig {
+    /**
+     * @return Whether data cache is enabled for the instance.
+     * 
+     */
     private Boolean dataCacheEnabled;
 
     private GetDatabaseInstanceSettingDataCacheConfig() {}
+    /**
+     * @return Whether data cache is enabled for the instance.
+     * 
+     */
     public Boolean dataCacheEnabled() {
         return this.dataCacheEnabled;
     }

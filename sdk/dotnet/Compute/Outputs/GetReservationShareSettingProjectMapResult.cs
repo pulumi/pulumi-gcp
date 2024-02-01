@@ -14,6 +14,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetReservationShareSettingProjectMapResult
     {
         public readonly string Id;
+        /// <summary>
+        /// The project id/number, should be same as the key of this project config in the project map.
+        /// </summary>
         public readonly string ProjectId;
 
         [OutputConstructor]

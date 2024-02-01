@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNotificationConfigPubsubResult
     {
+        /// <summary>
+        /// Whether or not the notification config is enabled
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNotificationConfigPubsubFilterResult> Filters;
+        /// <summary>
+        /// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: projects/{project}/topics/{topic}.
+        /// </summary>
         public readonly string Topic;
 
         [OutputConstructor]

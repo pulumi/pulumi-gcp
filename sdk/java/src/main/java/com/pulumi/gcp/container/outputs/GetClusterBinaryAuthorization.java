@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterBinaryAuthorization {
+    /**
+     * @return Enable Binary Authorization for this cluster.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Mode of operation for Binary Authorization policy evaluation.
+     * 
+     */
     private String evaluationMode;
 
     private GetClusterBinaryAuthorization() {}
+    /**
+     * @return Enable Binary Authorization for this cluster.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Mode of operation for Binary Authorization policy evaluation.
+     * 
+     */
     public String evaluationMode() {
         return this.evaluationMode;
     }

@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMonitoringConfig {
+    /**
+     * @return Configuration of Advanced Datapath Observability features.
+     * 
+     */
     private List<GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs;
+    /**
+     * @return GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET and WORKLOADS.
+     * 
+     */
     private List<String> enableComponents;
+    /**
+     * @return Configuration for Google Cloud Managed Services for Prometheus.
+     * 
+     */
     private List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses;
 
     private GetClusterMonitoringConfig() {}
+    /**
+     * @return Configuration of Advanced Datapath Observability features.
+     * 
+     */
     public List<GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs() {
         return this.advancedDatapathObservabilityConfigs;
     }
+    /**
+     * @return GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET and WORKLOADS.
+     * 
+     */
     public List<String> enableComponents() {
         return this.enableComponents;
     }
+    /**
+     * @return Configuration for Google Cloud Managed Services for Prometheus.
+     * 
+     */
     public List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses() {
         return this.managedPrometheuses;
     }

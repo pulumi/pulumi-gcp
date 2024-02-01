@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterWorkloadIdentityConfigResult
     {
+        /// <summary>
+        /// The workload pool to attach all Kubernetes service accounts to.
+        /// </summary>
         public readonly string WorkloadPool;
 
         [OutputConstructor]

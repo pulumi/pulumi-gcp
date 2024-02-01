@@ -28,6 +28,13 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("localSsdRecoveryTimeouts")]
         private InputList<Inputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeoutGetArgs>? _localSsdRecoveryTimeouts;
+
+        /// <summary>
+        /// Specifies the maximum amount of time a Local Ssd Vm should wait while
+        ///   recovery of the Local Ssd state is attempted. Its value should be in
+        ///   between 0 and 168 hours with hour granularity and the default value being 1
+        ///   hour.
+        /// </summary>
         public InputList<Inputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeoutGetArgs> LocalSsdRecoveryTimeouts
         {
             get => _localSsdRecoveryTimeouts ?? (_localSsdRecoveryTimeouts = new InputList<Inputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeoutGetArgs>());
@@ -48,6 +55,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("maxRunDuration")]
         public Input<Inputs.InstanceTemplateSchedulingMaxRunDurationGetArgs>? MaxRunDuration { get; set; }
 
+        /// <summary>
+        /// Minimum number of cpus for the instance.
+        /// </summary>
         [Input("minNodeCpus")]
         public Input<int>? MinNodeCpus { get; set; }
 

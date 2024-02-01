@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     [OutputType]
     public sealed class GetPrivateCloudNsxResult
     {
+        /// <summary>
+        /// Fully qualified domain name of the appliance.
+        /// </summary>
         public readonly string Fqdn;
+        /// <summary>
+        /// Internal IP address of the appliance.
+        /// </summary>
         public readonly string InternalIp;
+        /// <summary>
+        /// State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+        /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Version of the appliance.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

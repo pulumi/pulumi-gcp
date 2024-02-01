@@ -21,6 +21,10 @@ public final class JobSparksqlConfig {
      * 
      */
     private @Nullable List<String> jarFileUris;
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     private @Nullable JobSparksqlConfigLoggingConfig loggingConfig;
     /**
      * @return A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
@@ -55,6 +59,10 @@ public final class JobSparksqlConfig {
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<JobSparksqlConfigLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }

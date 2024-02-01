@@ -10,29 +10,85 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerSourceToBuild {
+    /**
+     * @return The full resource name of the bitbucket server config.
+     * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+     * 
+     */
     private String bitbucketServerConfig;
+    /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
     private String githubEnterpriseConfig;
+    /**
+     * @return The branch or tag to use. Must start with &#34;refs/&#34; (required).
+     * 
+     */
     private String ref;
+    /**
+     * @return The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+     * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: [&#34;UNKNOWN&#34;, &#34;CLOUD_SOURCE_REPOSITORIES&#34;, &#34;GITHUB&#34;, &#34;BITBUCKET_SERVER&#34;]
+     * 
+     */
     private String repoType;
+    /**
+     * @return The qualified resource name of the Repo API repository.
+     * Either uri or repository can be specified and is required.
+     * 
+     */
     private String repository;
+    /**
+     * @return The URI of the repo.
+     * 
+     */
     private String uri;
 
     private GetTriggerSourceToBuild() {}
+    /**
+     * @return The full resource name of the bitbucket server config.
+     * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+     * 
+     */
     public String bitbucketServerConfig() {
         return this.bitbucketServerConfig;
     }
+    /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
     public String githubEnterpriseConfig() {
         return this.githubEnterpriseConfig;
     }
+    /**
+     * @return The branch or tag to use. Must start with &#34;refs/&#34; (required).
+     * 
+     */
     public String ref() {
         return this.ref;
     }
+    /**
+     * @return The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+     * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: [&#34;UNKNOWN&#34;, &#34;CLOUD_SOURCE_REPOSITORIES&#34;, &#34;GITHUB&#34;, &#34;BITBUCKET_SERVER&#34;]
+     * 
+     */
     public String repoType() {
         return this.repoType;
     }
+    /**
+     * @return The qualified resource name of the Repo API repository.
+     * Either uri or repository can be specified and is required.
+     * 
+     */
     public String repository() {
         return this.repository;
     }
+    /**
+     * @return The URI of the repo.
+     * 
+     */
     public String uri() {
         return this.uri;
     }

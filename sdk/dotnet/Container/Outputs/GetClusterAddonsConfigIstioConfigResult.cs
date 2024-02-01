@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterAddonsConfigIstioConfigResult
     {
+        /// <summary>
+        /// The authentication type between services in Istio. Available options include AUTH_MUTUAL_TLS.
+        /// </summary>
         public readonly string Auth;
+        /// <summary>
+        /// The status of the Istio addon, which makes it easy to set up Istio for services in a cluster. It is disabled by default. Set disabled = false to enable.
+        /// </summary>
         public readonly bool Disabled;
 
         [OutputConstructor]

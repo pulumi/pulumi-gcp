@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterNodeConfigHostMaintenancePolicy
     {
+        /// <summary>
+        /// .
+        /// </summary>
         public readonly string MaintenanceInterval;
 
         [OutputConstructor]

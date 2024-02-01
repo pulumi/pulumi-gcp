@@ -10,13 +10,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRouterBgpAdvertisedIpRange {
+    /**
+     * @return User-specified description for the IP range.
+     * 
+     */
     private String description;
+    /**
+     * @return The IP range to advertise. The value must be a
+     * CIDR-formatted string.
+     * 
+     */
     private String range;
 
     private GetRouterBgpAdvertisedIpRange() {}
+    /**
+     * @return User-specified description for the IP range.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The IP range to advertise. The value must be a
+     * CIDR-formatted string.
+     * 
+     */
     public String range() {
         return this.range;
     }

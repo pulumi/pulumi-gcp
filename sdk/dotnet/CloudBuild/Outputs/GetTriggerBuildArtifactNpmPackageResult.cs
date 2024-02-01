@@ -13,7 +13,15 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerBuildArtifactNpmPackageResult
     {
+        /// <summary>
+        /// Path to the package.json. e.g. workspace/path/to/package
+        /// </summary>
         public readonly string PackagePath;
+        /// <summary>
+        /// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
+        /// 
+        /// Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+        /// </summary>
         public readonly string Repository;
 
         [OutputConstructor]

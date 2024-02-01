@@ -15,23 +15,47 @@ public final class DatabaseInstanceServerCaCertArgs extends com.pulumi.resources
 
     public static final DatabaseInstanceServerCaCertArgs Empty = new DatabaseInstanceServerCaCertArgs();
 
+    /**
+     * The CA Certificate used to connect to the SQL Instance via SSL.
+     * 
+     */
     @Import(name="cert")
     private @Nullable Output<String> cert;
 
+    /**
+     * @return The CA Certificate used to connect to the SQL Instance via SSL.
+     * 
+     */
     public Optional<Output<String>> cert() {
         return Optional.ofNullable(this.cert);
     }
 
+    /**
+     * The CN valid for the CA Cert.
+     * 
+     */
     @Import(name="commonName")
     private @Nullable Output<String> commonName;
 
+    /**
+     * @return The CN valid for the CA Cert.
+     * 
+     */
     public Optional<Output<String>> commonName() {
         return Optional.ofNullable(this.commonName);
     }
 
+    /**
+     * Creation time of the CA Cert.
+     * 
+     */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
+    /**
+     * @return Creation time of the CA Cert.
+     * 
+     */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
     }
@@ -53,9 +77,17 @@ public final class DatabaseInstanceServerCaCertArgs extends com.pulumi.resources
         return Optional.ofNullable(this.expirationTime);
     }
 
+    /**
+     * SHA Fingerprint of the CA Cert.
+     * 
+     */
     @Import(name="sha1Fingerprint")
     private @Nullable Output<String> sha1Fingerprint;
 
+    /**
+     * @return SHA Fingerprint of the CA Cert.
+     * 
+     */
     public Optional<Output<String>> sha1Fingerprint() {
         return Optional.ofNullable(this.sha1Fingerprint);
     }
@@ -88,29 +120,65 @@ public final class DatabaseInstanceServerCaCertArgs extends com.pulumi.resources
             $ = new DatabaseInstanceServerCaCertArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cert The CA Certificate used to connect to the SQL Instance via SSL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(@Nullable Output<String> cert) {
             $.cert = cert;
             return this;
         }
 
+        /**
+         * @param cert The CA Certificate used to connect to the SQL Instance via SSL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
         }
 
+        /**
+         * @param commonName The CN valid for the CA Cert.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commonName(@Nullable Output<String> commonName) {
             $.commonName = commonName;
             return this;
         }
 
+        /**
+         * @param commonName The CN valid for the CA Cert.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commonName(String commonName) {
             return commonName(Output.of(commonName));
         }
 
+        /**
+         * @param createTime Creation time of the CA Cert.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(@Nullable Output<String> createTime) {
             $.createTime = createTime;
             return this;
         }
 
+        /**
+         * @param createTime Creation time of the CA Cert.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
         }
@@ -138,11 +206,23 @@ public final class DatabaseInstanceServerCaCertArgs extends com.pulumi.resources
             return expirationTime(Output.of(expirationTime));
         }
 
+        /**
+         * @param sha1Fingerprint SHA Fingerprint of the CA Cert.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sha1Fingerprint(@Nullable Output<String> sha1Fingerprint) {
             $.sha1Fingerprint = sha1Fingerprint;
             return this;
         }
 
+        /**
+         * @param sha1Fingerprint SHA Fingerprint of the CA Cert.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sha1Fingerprint(String sha1Fingerprint) {
             return sha1Fingerprint(Output.of(sha1Fingerprint));
         }

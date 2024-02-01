@@ -13,10 +13,28 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerGithubResult
     {
+        /// <summary>
+        /// The resource name of the github enterprise config that should be applied to this installation.
+        /// For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+        /// </summary>
         public readonly string EnterpriseConfigResourceName;
+        /// <summary>
+        /// Name of the repository. For example: The name for
+        /// https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Owner of the repository. For example: The owner for
+        /// https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+        /// </summary>
         public readonly string Owner;
+        /// <summary>
+        /// filter to match changes in pull requests. Specify only one of 'pull_request' or 'push'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTriggerGithubPullRequestResult> PullRequests;
+        /// <summary>
+        /// filter to match changes in refs, like branches or tags. Specify only one of 'pull_request' or 'push'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTriggerGithubPushResult> Pushes;
 
         [OutputConstructor]

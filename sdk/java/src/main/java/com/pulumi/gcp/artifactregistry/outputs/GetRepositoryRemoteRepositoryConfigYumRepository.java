@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigYumRepository {
+    /**
+     * @return One of the publicly available Yum repositories supported by Artifact Registry.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository> publicRepositories;
 
     private GetRepositoryRemoteRepositoryConfigYumRepository() {}
+    /**
+     * @return One of the publicly available Yum repositories supported by Artifact Registry.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository> publicRepositories() {
         return this.publicRepositories;
     }

@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         [Input("instanceSelectionResults")]
         private InputList<Inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs>? _instanceSelectionResults;
+
+        /// <summary>
+        /// A list of instance selection results in the group.
+        /// </summary>
         public InputList<Inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs> InstanceSelectionResults
         {
             get => _instanceSelectionResults ?? (_instanceSelectionResults = new InputList<Inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs>());

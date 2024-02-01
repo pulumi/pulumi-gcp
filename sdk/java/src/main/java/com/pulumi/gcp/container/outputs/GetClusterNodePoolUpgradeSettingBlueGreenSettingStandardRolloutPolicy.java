@@ -12,17 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+    /**
+     * @return Number of blue nodes to drain in a batch.
+     * 
+     */
     private Integer batchNodeCount;
+    /**
+     * @return Percentage of the blue pool nodes to drain in a batch.
+     * 
+     */
     private Double batchPercentage;
+    /**
+     * @return Soak time after each batch gets drained.
+     * 
+     */
     private String batchSoakDuration;
 
     private GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy() {}
+    /**
+     * @return Number of blue nodes to drain in a batch.
+     * 
+     */
     public Integer batchNodeCount() {
         return this.batchNodeCount;
     }
+    /**
+     * @return Percentage of the blue pool nodes to drain in a batch.
+     * 
+     */
     public Double batchPercentage() {
         return this.batchPercentage;
     }
+    /**
+     * @return Soak time after each batch gets drained.
+     * 
+     */
     public String batchSoakDuration() {
         return this.batchSoakDuration;
     }

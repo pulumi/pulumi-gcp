@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Firebaserules.Inputs
     {
         [Input("services")]
         private InputList<string>? _services;
+
+        /// <summary>
+        /// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+        /// </summary>
         public InputList<string> Services
         {
             get => _services ?? (_services = new InputList<string>());

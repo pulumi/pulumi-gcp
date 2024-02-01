@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterGatewayApiConfig {
+    /**
+     * @return The Gateway API release channel to use for Gateway API.
+     * 
+     */
     private String channel;
 
     private GetClusterGatewayApiConfig() {}
+    /**
+     * @return The Gateway API release channel to use for Gateway API.
+     * 
+     */
     public String channel() {
         return this.channel;
     }

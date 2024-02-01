@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateScaling {
+    /**
+     * @return Maximum number of serving instances that this resource should have.
+     * 
+     */
     private Integer maxInstanceCount;
+    /**
+     * @return Minimum number of serving instances that this resource should have.
+     * 
+     */
     private Integer minInstanceCount;
 
     private GetServiceTemplateScaling() {}
+    /**
+     * @return Maximum number of serving instances that this resource should have.
+     * 
+     */
     public Integer maxInstanceCount() {
         return this.maxInstanceCount;
     }
+    /**
+     * @return Minimum number of serving instances that this resource should have.
+     * 
+     */
     public Integer minInstanceCount() {
         return this.minInstanceCount;
     }

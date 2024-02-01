@@ -20,12 +20,18 @@ __all__ = [
 class RulesetMetadata(dict):
     def __init__(__self__, *,
                  services: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] services: Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+        """
         if services is not None:
             pulumi.set(__self__, "services", services)
 
     @property
     @pulumi.getter
     def services(self) -> Optional[Sequence[str]]:
+        """
+        Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+        """
         return pulumi.get(self, "services")
 
 

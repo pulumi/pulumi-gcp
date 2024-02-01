@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.Projects
     ///             {
     ///                 ExemptedMembers = new[]
     ///                 {
-    ///                     "user:joebloggs@hashicorp.com",
+    ///                     "user:joebloggs@example.com",
     ///                 },
     ///                 LogType = "DATA_READ",
     ///             },

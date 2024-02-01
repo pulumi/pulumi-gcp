@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetForwardingRuleServiceDirectoryRegistrationResult
     {
+        /// <summary>
+        /// Service Directory namespace to register the forwarding rule under.
+        /// </summary>
         public readonly string Namespace;
+        /// <summary>
+        /// Service Directory service to register the forwarding rule under.
+        /// </summary>
         public readonly string Service;
 
         [OutputConstructor]

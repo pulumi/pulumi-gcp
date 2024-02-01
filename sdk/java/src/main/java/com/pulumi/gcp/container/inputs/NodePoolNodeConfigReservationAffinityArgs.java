@@ -17,23 +17,47 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
 
     public static final NodePoolNodeConfigReservationAffinityArgs Empty = new NodePoolNodeConfigReservationAffinityArgs();
 
+    /**
+     * Corresponds to the type of reservation consumption.
+     * 
+     */
     @Import(name="consumeReservationType", required=true)
     private Output<String> consumeReservationType;
 
+    /**
+     * @return Corresponds to the type of reservation consumption.
+     * 
+     */
     public Output<String> consumeReservationType() {
         return this.consumeReservationType;
     }
 
+    /**
+     * The label key of a reservation resource.
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return The label key of a reservation resource.
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
+    /**
+     * The label values of the reservation resource.
+     * 
+     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
+    /**
+     * @return The label values of the reservation resource.
+     * 
+     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -64,33 +88,75 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
             $ = new NodePoolNodeConfigReservationAffinityArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param consumeReservationType Corresponds to the type of reservation consumption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumeReservationType(Output<String> consumeReservationType) {
             $.consumeReservationType = consumeReservationType;
             return this;
         }
 
+        /**
+         * @param consumeReservationType Corresponds to the type of reservation consumption.
+         * 
+         * @return builder
+         * 
+         */
         public Builder consumeReservationType(String consumeReservationType) {
             return consumeReservationType(Output.of(consumeReservationType));
         }
 
+        /**
+         * @param key The label key of a reservation resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key The label key of a reservation resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param values The label values of the reservation resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values The label values of the reservation resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values The label values of the reservation resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

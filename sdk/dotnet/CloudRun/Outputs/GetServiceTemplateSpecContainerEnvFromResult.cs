@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerEnvFromResult
     {
+        /// <summary>
+        /// The ConfigMap to select from.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefResult> ConfigMapReves;
+        /// <summary>
+        /// An optional identifier to prepend to each key in the ConfigMap.
+        /// </summary>
         public readonly string Prefix;
+        /// <summary>
+        /// The Secret to select from.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvFromSecretRefResult> SecretReves;
 
         [OutputConstructor]

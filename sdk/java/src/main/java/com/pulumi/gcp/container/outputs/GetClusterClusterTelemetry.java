@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterTelemetry {
+    /**
+     * @return Type of the integration.
+     * 
+     */
     private String type;
 
     private GetClusterClusterTelemetry() {}
+    /**
+     * @return Type of the integration.
+     * 
+     */
     public String type() {
         return this.type;
     }

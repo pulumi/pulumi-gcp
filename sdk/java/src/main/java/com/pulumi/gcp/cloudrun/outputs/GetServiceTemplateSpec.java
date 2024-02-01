@@ -14,29 +14,99 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpec {
+    /**
+     * @return ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
+     * requests per container of the Revision. Values are:
+     * - &#39;0&#39; thread-safe, the system should manage the max concurrency. This is
+     *     the default value.
+     * - &#39;1&#39; not-thread-safe. Single concurrency
+     * - &#39;2-N&#39; thread-safe, max concurrency of N
+     * 
+     */
     private Integer containerConcurrency;
+    /**
+     * @return Containers defines the unit of execution for this Revision.
+     * 
+     */
     private List<GetServiceTemplateSpecContainer> containers;
+    /**
+     * @return Email address of the IAM service account associated with the revision of the
+     * service. The service account represents the identity of the running revision,
+     * and determines what permissions the revision has. If not provided, the revision
+     * will use the project&#39;s default service account.
+     * 
+     */
     private String serviceAccountName;
+    /**
+     * @return ServingState holds a value describing the state the resources
+     * are in for this Revision.
+     * It is expected
+     * that the system will manipulate this based on routability and load.
+     * 
+     */
     private String servingState;
+    /**
+     * @return TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+     * 
+     */
     private Integer timeoutSeconds;
+    /**
+     * @return Volume represents a named volume in a container.
+     * 
+     */
     private List<GetServiceTemplateSpecVolume> volumes;
 
     private GetServiceTemplateSpec() {}
+    /**
+     * @return ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
+     * requests per container of the Revision. Values are:
+     * - &#39;0&#39; thread-safe, the system should manage the max concurrency. This is
+     *     the default value.
+     * - &#39;1&#39; not-thread-safe. Single concurrency
+     * - &#39;2-N&#39; thread-safe, max concurrency of N
+     * 
+     */
     public Integer containerConcurrency() {
         return this.containerConcurrency;
     }
+    /**
+     * @return Containers defines the unit of execution for this Revision.
+     * 
+     */
     public List<GetServiceTemplateSpecContainer> containers() {
         return this.containers;
     }
+    /**
+     * @return Email address of the IAM service account associated with the revision of the
+     * service. The service account represents the identity of the running revision,
+     * and determines what permissions the revision has. If not provided, the revision
+     * will use the project&#39;s default service account.
+     * 
+     */
     public String serviceAccountName() {
         return this.serviceAccountName;
     }
+    /**
+     * @return ServingState holds a value describing the state the resources
+     * are in for this Revision.
+     * It is expected
+     * that the system will manipulate this based on routability and load.
+     * 
+     */
     public String servingState() {
         return this.servingState;
     }
+    /**
+     * @return TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+     * 
+     */
     public Integer timeoutSeconds() {
         return this.timeoutSeconds;
     }
+    /**
+     * @return Volume represents a named volume in a container.
+     * 
+     */
     public List<GetServiceTemplateSpecVolume> volumes() {
         return this.volumes;
     }

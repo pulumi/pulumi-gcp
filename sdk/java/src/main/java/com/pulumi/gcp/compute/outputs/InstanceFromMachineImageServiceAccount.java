@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageServiceAccount {
+    /**
+     * @return The service account e-mail address.
+     * 
+     */
     private @Nullable String email;
+    /**
+     * @return A list of service scopes.
+     * 
+     */
     private List<String> scopes;
 
     private InstanceFromMachineImageServiceAccount() {}
+    /**
+     * @return The service account e-mail address.
+     * 
+     */
     public Optional<String> email() {
         return Optional.ofNullable(this.email);
     }
+    /**
+     * @return A list of service scopes.
+     * 
+     */
     public List<String> scopes() {
         return this.scopes;
     }

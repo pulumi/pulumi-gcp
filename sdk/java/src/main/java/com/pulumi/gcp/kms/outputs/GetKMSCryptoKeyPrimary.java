@@ -16,6 +16,10 @@ public final class GetKMSCryptoKeyPrimary {
      * 
      */
     private String name;
+    /**
+     * @return The current state of the CryptoKeyVersion.
+     * 
+     */
     private String state;
 
     private GetKMSCryptoKeyPrimary() {}
@@ -27,6 +31,10 @@ public final class GetKMSCryptoKeyPrimary {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The current state of the CryptoKeyVersion.
+     * 
+     */
     public String state() {
         return this.state;
     }

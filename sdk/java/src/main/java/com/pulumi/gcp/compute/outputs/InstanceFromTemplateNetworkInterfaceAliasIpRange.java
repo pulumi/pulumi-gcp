@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateNetworkInterfaceAliasIpRange {
+    /**
+     * @return The IP CIDR range represented by this alias IP range.
+     * 
+     */
     private String ipCidrRange;
+    /**
+     * @return The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+     * 
+     */
     private @Nullable String subnetworkRangeName;
 
     private InstanceFromTemplateNetworkInterfaceAliasIpRange() {}
+    /**
+     * @return The IP CIDR range represented by this alias IP range.
+     * 
+     */
     public String ipCidrRange() {
         return this.ipCidrRange;
     }
+    /**
+     * @return The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+     * 
+     */
     public Optional<String> subnetworkRangeName() {
         return Optional.ofNullable(this.subnetworkRangeName);
     }

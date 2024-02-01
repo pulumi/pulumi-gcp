@@ -26,6 +26,10 @@ public final class InstanceAttachedDisk {
      * 
      */
     private @Nullable String diskEncryptionKeyRaw;
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     private @Nullable String diskEncryptionKeySha256;
     /**
      * @return The self_link of the encryption key that is
@@ -67,6 +71,10 @@ public final class InstanceAttachedDisk {
     public Optional<String> diskEncryptionKeyRaw() {
         return Optional.ofNullable(this.diskEncryptionKeyRaw);
     }
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     public Optional<String> diskEncryptionKeySha256() {
         return Optional.ofNullable(this.diskEncryptionKeySha256);
     }

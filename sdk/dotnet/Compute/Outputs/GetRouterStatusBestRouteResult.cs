@@ -13,7 +13,15 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetRouterStatusBestRouteResult
     {
+        /// <summary>
+        /// An optional description of this resource. Provide this property
+        /// when you create the resource.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The destination range of outgoing packets that this route applies to.
+        /// Only IPv4 is supported.
+        /// </summary>
         public readonly string DestRange;
         /// <summary>
         /// The name of the router.
@@ -24,13 +32,69 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// network of this subnetwork.
         /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// URL to a gateway that should handle matching packets.
+        /// Currently, you can only specify the internet gateway, using a full or
+        /// partial valid URL:
+        /// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+        /// * 'projects/project/global/gateways/default-internet-gateway'
+        /// * 'global/gateways/default-internet-gateway'
+        /// * The string 'default-internet-gateway'.
+        /// </summary>
         public readonly string NextHopGateway;
+        /// <summary>
+        /// The IP address or URL to a forwarding rule of type
+        /// loadBalancingScheme=INTERNAL that should handle matching
+        /// packets.
+        /// 
+        /// With the GA provider you can only specify the forwarding
+        /// rule as a partial or full URL. For example, the following
+        /// are all valid values:
+        /// * 10.128.0.56
+        /// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        /// * regions/region/forwardingRules/forwardingRule
+        /// 
+        /// When the beta provider, you can also specify the IP address
+        /// of a forwarding rule from the same VPC or any peered VPC.
+        /// 
+        /// Note that this can only be used when the destinationRange is
+        /// a public (non-RFC 1918) IP CIDR range.
+        /// </summary>
         public readonly string NextHopIlb;
+        /// <summary>
+        /// URL to an instance that should handle matching packets.
+        /// You can specify this as a full or partial URL. For example:
+        /// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+        /// * 'projects/project/zones/zone/instances/instance'
+        /// * 'zones/zone/instances/instance'
+        /// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+        /// </summary>
         public readonly string NextHopInstance;
+        /// <summary>
+        /// The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+        /// </summary>
         public readonly string NextHopInstanceZone;
+        /// <summary>
+        /// Network IP address of an instance that should handle matching packets.
+        /// </summary>
         public readonly string NextHopIp;
+        /// <summary>
+        /// URL to a Network that should handle matching packets.
+        /// </summary>
         public readonly string NextHopNetwork;
+        /// <summary>
+        /// URL to a VpnTunnel that should handle matching packets.
+        /// </summary>
         public readonly string NextHopVpnTunnel;
+        /// <summary>
+        /// The priority of this route. Priority is used to break ties in cases
+        /// where there is more than one matching route of equal prefix length.
+        /// 
+        /// In the case of two routes with equal prefix length, the one with the
+        /// lowest-numbered priority value wins.
+        /// 
+        /// Default value is 1000. Valid range is 0 through 65535.
+        /// </summary>
         public readonly int Priority;
         /// <summary>
         /// The ID of the project in which the resource
@@ -38,6 +102,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Project;
         public readonly string SelfLink;
+        /// <summary>
+        /// A list of instance tags to which this route applies.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]

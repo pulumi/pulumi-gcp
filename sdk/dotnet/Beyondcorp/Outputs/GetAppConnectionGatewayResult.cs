@@ -13,9 +13,23 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
     [OutputType]
     public sealed class GetAppConnectionGatewayResult
     {
+        /// <summary>
+        /// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+        /// </summary>
         public readonly string AppGateway;
+        /// <summary>
+        /// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+        /// </summary>
         public readonly int IngressPort;
+        /// <summary>
+        /// The type of hosting used by the gateway. Refer to
+        /// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+        /// for a list of possible values.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Server-defined URI for this resource.
+        /// </summary>
         public readonly string Uri;
 
         [OutputConstructor]

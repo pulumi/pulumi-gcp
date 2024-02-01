@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Kms.Outputs
         /// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The current state of the CryptoKeyVersion.
+        /// </summary>
         public readonly string State;
 
         [OutputConstructor]

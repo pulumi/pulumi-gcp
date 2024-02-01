@@ -10,37 +10,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTerminalCondition {
+    /**
+     * @return A reason for the execution condition.
+     * 
+     */
     private String executionReason;
+    /**
+     * @return Last time the condition transitioned from one status to another.
+     * 
+     */
     private String lastTransitionTime;
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     private String message;
+    /**
+     * @return A common (service-level) reason for this condition.
+     * 
+     */
     private String reason;
+    /**
+     * @return A reason for the revision condition.
+     * 
+     */
     private String revisionReason;
+    /**
+     * @return How to interpret failures of this condition, one of Error, Warning, Info
+     * 
+     */
     private String severity;
+    /**
+     * @return State of the condition.
+     * 
+     */
     private String state;
+    /**
+     * @return type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+     * 
+     */
     private String type;
 
     private GetServiceTerminalCondition() {}
+    /**
+     * @return A reason for the execution condition.
+     * 
+     */
     public String executionReason() {
         return this.executionReason;
     }
+    /**
+     * @return Last time the condition transitioned from one status to another.
+     * 
+     */
     public String lastTransitionTime() {
         return this.lastTransitionTime;
     }
+    /**
+     * @return Human readable message indicating details about the current status.
+     * 
+     */
     public String message() {
         return this.message;
     }
+    /**
+     * @return A common (service-level) reason for this condition.
+     * 
+     */
     public String reason() {
         return this.reason;
     }
+    /**
+     * @return A reason for the revision condition.
+     * 
+     */
     public String revisionReason() {
         return this.revisionReason;
     }
+    /**
+     * @return How to interpret failures of this condition, one of Error, Warning, Info
+     * 
+     */
     public String severity() {
         return this.severity;
     }
+    /**
+     * @return State of the condition.
+     * 
+     */
     public String state() {
         return this.state;
     }
+    /**
+     * @return type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * &#34;Ready&#34;: True when the Resource is ready.
+     * 
+     */
     public String type() {
         return this.type;
     }

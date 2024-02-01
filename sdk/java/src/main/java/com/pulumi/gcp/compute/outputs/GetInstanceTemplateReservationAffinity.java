@@ -12,6 +12,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTemplateReservationAffinity {
+    /**
+     * @return Specifies the label selector for the reservation to use.
+     * 
+     */
     private List<GetInstanceTemplateReservationAffinitySpecificReservation> specificReservations;
     /**
      * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -20,6 +24,10 @@ public final class GetInstanceTemplateReservationAffinity {
     private String type;
 
     private GetInstanceTemplateReservationAffinity() {}
+    /**
+     * @return Specifies the label selector for the reservation to use.
+     * 
+     */
     public List<GetInstanceTemplateReservationAffinitySpecificReservation> specificReservations() {
         return this.specificReservations;
     }

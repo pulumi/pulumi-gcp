@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     [OutputType]
     public sealed class AssetSecurityStatus
     {
+        /// <summary>
+        /// Additional information about the current state.
+        /// </summary>
         public readonly string? Message;
         /// <summary>
         /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetRegionInstanceTemplateReservationAffinityResult
     {
+        /// <summary>
+        /// Specifies the label selector for the reservation to use.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateReservationAffinitySpecificReservationResult> SpecificReservations;
         /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.

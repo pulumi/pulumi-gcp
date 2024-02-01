@@ -17,30 +17,62 @@ public final class TableTableReplicationInfoArgs extends com.pulumi.resources.Re
 
     public static final TableTableReplicationInfoArgs Empty = new TableTableReplicationInfoArgs();
 
+    /**
+     * The interval at which the source materialized view is polled for updates. The default is 300000.
+     * 
+     */
     @Import(name="replicationIntervalMs")
     private @Nullable Output<Integer> replicationIntervalMs;
 
+    /**
+     * @return The interval at which the source materialized view is polled for updates. The default is 300000.
+     * 
+     */
     public Optional<Output<Integer>> replicationIntervalMs() {
         return Optional.ofNullable(this.replicationIntervalMs);
     }
 
+    /**
+     * The ID of the source dataset.
+     * 
+     */
     @Import(name="sourceDatasetId", required=true)
     private Output<String> sourceDatasetId;
 
+    /**
+     * @return The ID of the source dataset.
+     * 
+     */
     public Output<String> sourceDatasetId() {
         return this.sourceDatasetId;
     }
 
+    /**
+     * The ID of the source project.
+     * 
+     */
     @Import(name="sourceProjectId", required=true)
     private Output<String> sourceProjectId;
 
+    /**
+     * @return The ID of the source project.
+     * 
+     */
     public Output<String> sourceProjectId() {
         return this.sourceProjectId;
     }
 
+    /**
+     * The ID of the source materialized view.
+     * 
+     */
     @Import(name="sourceTableId", required=true)
     private Output<String> sourceTableId;
 
+    /**
+     * @return The ID of the source materialized view.
+     * 
+     */
     public Output<String> sourceTableId() {
         return this.sourceTableId;
     }
@@ -72,38 +104,86 @@ public final class TableTableReplicationInfoArgs extends com.pulumi.resources.Re
             $ = new TableTableReplicationInfoArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param replicationIntervalMs The interval at which the source materialized view is polled for updates. The default is 300000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicationIntervalMs(@Nullable Output<Integer> replicationIntervalMs) {
             $.replicationIntervalMs = replicationIntervalMs;
             return this;
         }
 
+        /**
+         * @param replicationIntervalMs The interval at which the source materialized view is polled for updates. The default is 300000.
+         * 
+         * @return builder
+         * 
+         */
         public Builder replicationIntervalMs(Integer replicationIntervalMs) {
             return replicationIntervalMs(Output.of(replicationIntervalMs));
         }
 
+        /**
+         * @param sourceDatasetId The ID of the source dataset.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceDatasetId(Output<String> sourceDatasetId) {
             $.sourceDatasetId = sourceDatasetId;
             return this;
         }
 
+        /**
+         * @param sourceDatasetId The ID of the source dataset.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceDatasetId(String sourceDatasetId) {
             return sourceDatasetId(Output.of(sourceDatasetId));
         }
 
+        /**
+         * @param sourceProjectId The ID of the source project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceProjectId(Output<String> sourceProjectId) {
             $.sourceProjectId = sourceProjectId;
             return this;
         }
 
+        /**
+         * @param sourceProjectId The ID of the source project.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceProjectId(String sourceProjectId) {
             return sourceProjectId(Output.of(sourceProjectId));
         }
 
+        /**
+         * @param sourceTableId The ID of the source materialized view.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceTableId(Output<String> sourceTableId) {
             $.sourceTableId = sourceTableId;
             return this;
         }
 
+        /**
+         * @param sourceTableId The ID of the source materialized view.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceTableId(String sourceTableId) {
             return sourceTableId(Output.of(sourceTableId));
         }

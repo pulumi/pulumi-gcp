@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterDefaultSnatStatusResult
     {
+        /// <summary>
+        /// When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
+        /// </summary>
         public readonly bool Disabled;
 
         [OutputConstructor]

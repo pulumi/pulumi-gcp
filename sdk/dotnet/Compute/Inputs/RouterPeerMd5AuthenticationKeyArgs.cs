@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("key", required: true)]
         private Input<string>? _key;
+
+        /// <summary>
+        /// Value of the key.
+        /// </summary>
         public Input<string>? Key
         {
             get => _key;

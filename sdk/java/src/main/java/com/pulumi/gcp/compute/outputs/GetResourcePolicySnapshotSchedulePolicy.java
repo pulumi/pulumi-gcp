@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicy {
+    /**
+     * @return Retention policy applied to snapshots created by this resource policy.
+     * 
+     */
     private List<GetResourcePolicySnapshotSchedulePolicyRetentionPolicy> retentionPolicies;
+    /**
+     * @return Contains one of an &#39;hourlySchedule&#39;, &#39;dailySchedule&#39;, or &#39;weeklySchedule&#39;.
+     * 
+     */
     private List<GetResourcePolicySnapshotSchedulePolicySchedule> schedules;
+    /**
+     * @return Properties with which the snapshots are created, such as labels.
+     * 
+     */
     private List<GetResourcePolicySnapshotSchedulePolicySnapshotProperty> snapshotProperties;
 
     private GetResourcePolicySnapshotSchedulePolicy() {}
+    /**
+     * @return Retention policy applied to snapshots created by this resource policy.
+     * 
+     */
     public List<GetResourcePolicySnapshotSchedulePolicyRetentionPolicy> retentionPolicies() {
         return this.retentionPolicies;
     }
+    /**
+     * @return Contains one of an &#39;hourlySchedule&#39;, &#39;dailySchedule&#39;, or &#39;weeklySchedule&#39;.
+     * 
+     */
     public List<GetResourcePolicySnapshotSchedulePolicySchedule> schedules() {
         return this.schedules;
     }
+    /**
+     * @return Properties with which the snapshots are created, such as labels.
+     * 
+     */
     public List<GetResourcePolicySnapshotSchedulePolicySnapshotProperty> snapshotProperties() {
         return this.snapshotProperties;
     }

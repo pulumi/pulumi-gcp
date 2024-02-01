@@ -776,7 +776,8 @@ func (o PolicyBooleanPolicyPtrOutput) Enforced() pulumi.BoolPtrOutput {
 type PolicyListPolicy struct {
 	// or `deny` - (Optional) One or the other must be set.
 	Allow *PolicyListPolicyAllow `pulumi:"allow"`
-	Deny  *PolicyListPolicyDeny  `pulumi:"deny"`
+	// One or the other must be set.
+	Deny *PolicyListPolicyDeny `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 	//
@@ -800,7 +801,8 @@ type PolicyListPolicyInput interface {
 type PolicyListPolicyArgs struct {
 	// or `deny` - (Optional) One or the other must be set.
 	Allow PolicyListPolicyAllowPtrInput `pulumi:"allow"`
-	Deny  PolicyListPolicyDenyPtrInput  `pulumi:"deny"`
+	// One or the other must be set.
+	Deny PolicyListPolicyDenyPtrInput `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 	//
@@ -892,6 +894,7 @@ func (o PolicyListPolicyOutput) Allow() PolicyListPolicyAllowPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicyAllow { return v.Allow }).(PolicyListPolicyAllowPtrOutput)
 }
 
+// One or the other must be set.
 func (o PolicyListPolicyOutput) Deny() PolicyListPolicyDenyPtrOutput {
 	return o.ApplyT(func(v PolicyListPolicy) *PolicyListPolicyDeny { return v.Deny }).(PolicyListPolicyDenyPtrOutput)
 }
@@ -943,6 +946,7 @@ func (o PolicyListPolicyPtrOutput) Allow() PolicyListPolicyAllowPtrOutput {
 	}).(PolicyListPolicyAllowPtrOutput)
 }
 
+// One or the other must be set.
 func (o PolicyListPolicyPtrOutput) Deny() PolicyListPolicyDenyPtrOutput {
 	return o.ApplyT(func(v *PolicyListPolicy) *PolicyListPolicyDeny {
 		if v == nil {

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class InstanceFromMachineImageConfidentialInstanceConfig {
+    /**
+     * @return Defines whether the instance should have confidential compute enabled.
+     * 
+     */
     private Boolean enableConfidentialCompute;
 
     private InstanceFromMachineImageConfidentialInstanceConfig() {}
+    /**
+     * @return Defines whether the instance should have confidential compute enabled.
+     * 
+     */
     public Boolean enableConfidentialCompute() {
         return this.enableConfidentialCompute;
     }

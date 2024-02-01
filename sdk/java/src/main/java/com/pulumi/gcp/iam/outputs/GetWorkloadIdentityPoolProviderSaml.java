@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWorkloadIdentityPoolProviderSaml {
+    /**
+     * @return SAML Identity provider configuration metadata xml doc.
+     * 
+     */
     private String idpMetadataXml;
 
     private GetWorkloadIdentityPoolProviderSaml() {}
+    /**
+     * @return SAML Identity provider configuration metadata xml doc.
+     * 
+     */
     public String idpMetadataXml() {
         return this.idpMetadataXml;
     }

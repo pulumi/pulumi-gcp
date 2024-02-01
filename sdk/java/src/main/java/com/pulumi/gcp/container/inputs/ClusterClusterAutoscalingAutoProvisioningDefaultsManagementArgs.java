@@ -51,9 +51,17 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementAr
         return Optional.ofNullable(this.autoUpgrade);
     }
 
+    /**
+     * Specifies the Auto Upgrade knobs for the node pool.
+     * 
+     */
     @Import(name="upgradeOptions")
     private @Nullable Output<List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs>> upgradeOptions;
 
+    /**
+     * @return Specifies the Auto Upgrade knobs for the node pool.
+     * 
+     */
     public Optional<Output<List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs>>> upgradeOptions() {
         return Optional.ofNullable(this.upgradeOptions);
     }
@@ -130,15 +138,33 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementAr
             return autoUpgrade(Output.of(autoUpgrade));
         }
 
+        /**
+         * @param upgradeOptions Specifies the Auto Upgrade knobs for the node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder upgradeOptions(@Nullable Output<List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs>> upgradeOptions) {
             $.upgradeOptions = upgradeOptions;
             return this;
         }
 
+        /**
+         * @param upgradeOptions Specifies the Auto Upgrade knobs for the node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder upgradeOptions(List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs> upgradeOptions) {
             return upgradeOptions(Output.of(upgradeOptions));
         }
 
+        /**
+         * @param upgradeOptions Specifies the Auto Upgrade knobs for the node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder upgradeOptions(ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs... upgradeOptions) {
             return upgradeOptions(List.of(upgradeOptions));
         }

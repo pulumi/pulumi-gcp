@@ -17,6 +17,10 @@ public final class GetConnectorSubnet {
      * 
      */
     private String name;
+    /**
+     * @return Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+     * 
+     */
     private String projectId;
 
     private GetConnectorSubnet() {}
@@ -29,6 +33,10 @@ public final class GetConnectorSubnet {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }

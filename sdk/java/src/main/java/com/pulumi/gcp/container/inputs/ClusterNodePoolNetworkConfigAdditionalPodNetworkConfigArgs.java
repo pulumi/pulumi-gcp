@@ -16,16 +16,32 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs ex
 
     public static final ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs Empty = new ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs();
 
+    /**
+     * The maximum number of pods per node which use this pod network.
+     * 
+     */
     @Import(name="maxPodsPerNode")
     private @Nullable Output<Integer> maxPodsPerNode;
 
+    /**
+     * @return The maximum number of pods per node which use this pod network.
+     * 
+     */
     public Optional<Output<Integer>> maxPodsPerNode() {
         return Optional.ofNullable(this.maxPodsPerNode);
     }
 
+    /**
+     * The name of the secondary range on the subnet which provides IP address for this pod range.
+     * 
+     */
     @Import(name="secondaryPodRange")
     private @Nullable Output<String> secondaryPodRange;
 
+    /**
+     * @return The name of the secondary range on the subnet which provides IP address for this pod range.
+     * 
+     */
     public Optional<Output<String>> secondaryPodRange() {
         return Optional.ofNullable(this.secondaryPodRange);
     }
@@ -73,20 +89,44 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs ex
             $ = new ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maxPodsPerNode The maximum number of pods per node which use this pod network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxPodsPerNode(@Nullable Output<Integer> maxPodsPerNode) {
             $.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
 
+        /**
+         * @param maxPodsPerNode The maximum number of pods per node which use this pod network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxPodsPerNode(Integer maxPodsPerNode) {
             return maxPodsPerNode(Output.of(maxPodsPerNode));
         }
 
+        /**
+         * @param secondaryPodRange The name of the secondary range on the subnet which provides IP address for this pod range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondaryPodRange(@Nullable Output<String> secondaryPodRange) {
             $.secondaryPodRange = secondaryPodRange;
             return this;
         }
 
+        /**
+         * @param secondaryPodRange The name of the secondary range on the subnet which provides IP address for this pod range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secondaryPodRange(String secondaryPodRange) {
             return secondaryPodRange(Output.of(secondaryPodRange));
         }

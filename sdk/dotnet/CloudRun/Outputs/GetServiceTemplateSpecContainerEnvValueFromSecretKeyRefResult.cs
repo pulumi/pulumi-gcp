@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult
     {
+        /// <summary>
+        /// A Cloud Secret Manager secret version. Must be 'latest' for the latest
+        /// version or an integer for a specific version.
+        /// </summary>
         public readonly string Key;
         /// <summary>
         /// The name of the Cloud Run Service.

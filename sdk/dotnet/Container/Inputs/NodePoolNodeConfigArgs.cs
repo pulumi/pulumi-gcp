@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies options for controlling advanced machine features.
+        /// </summary>
         [Input("advancedMachineFeatures")]
         public Input<Inputs.NodePoolNodeConfigAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
 
+        /// <summary>
+        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+        /// </summary>
         [Input("bootDiskKmsKey")]
         public Input<string>? BootDiskKmsKey { get; set; }
 
@@ -24,131 +30,234 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("confidentialNodes")]
         public Input<Inputs.NodePoolNodeConfigConfidentialNodesArgs>? ConfidentialNodes { get; set; }
 
+        /// <summary>
+        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        /// </summary>
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 
+        /// <summary>
+        /// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+        /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
         [Input("effectiveTaints")]
         private InputList<Inputs.NodePoolNodeConfigEffectiveTaintArgs>? _effectiveTaints;
+
+        /// <summary>
+        /// List of kubernetes taints applied to each node.
+        /// </summary>
         public InputList<Inputs.NodePoolNodeConfigEffectiveTaintArgs> EffectiveTaints
         {
             get => _effectiveTaints ?? (_effectiveTaints = new InputList<Inputs.NodePoolNodeConfigEffectiveTaintArgs>());
             set => _effectiveTaints = value;
         }
 
+        /// <summary>
+        /// If enabled boot disks are configured with confidential mode.
+        /// </summary>
         [Input("enableConfidentialStorage")]
         public Input<bool>? EnableConfidentialStorage { get; set; }
 
+        /// <summary>
+        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+        /// </summary>
         [Input("ephemeralStorageConfig")]
         public Input<Inputs.NodePoolNodeConfigEphemeralStorageConfigArgs>? EphemeralStorageConfig { get; set; }
 
+        /// <summary>
+        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+        /// </summary>
         [Input("ephemeralStorageLocalSsdConfig")]
         public Input<Inputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs>? EphemeralStorageLocalSsdConfig { get; set; }
 
+        /// <summary>
+        /// Enable or disable NCCL Fast Socket in the node pool.
+        /// </summary>
         [Input("fastSocket")]
         public Input<Inputs.NodePoolNodeConfigFastSocketArgs>? FastSocket { get; set; }
 
+        /// <summary>
+        /// GCFS configuration for this node.
+        /// </summary>
         [Input("gcfsConfig")]
         public Input<Inputs.NodePoolNodeConfigGcfsConfigArgs>? GcfsConfig { get; set; }
 
         [Input("guestAccelerators")]
         private InputList<Inputs.NodePoolNodeConfigGuestAcceleratorArgs>? _guestAccelerators;
+
+        /// <summary>
+        /// List of the type and count of accelerator cards attached to the instance.
+        /// </summary>
         public InputList<Inputs.NodePoolNodeConfigGuestAcceleratorArgs> GuestAccelerators
         {
             get => _guestAccelerators ?? (_guestAccelerators = new InputList<Inputs.NodePoolNodeConfigGuestAcceleratorArgs>());
             set => _guestAccelerators = value;
         }
 
+        /// <summary>
+        /// Enable or disable gvnic in the node pool.
+        /// </summary>
         [Input("gvnic")]
         public Input<Inputs.NodePoolNodeConfigGvnicArgs>? Gvnic { get; set; }
 
+        /// <summary>
+        /// The maintenance policy for the hosts on which the GKE VMs run on.
+        /// </summary>
         [Input("hostMaintenancePolicy")]
         public Input<Inputs.NodePoolNodeConfigHostMaintenancePolicyArgs>? HostMaintenancePolicy { get; set; }
 
+        /// <summary>
+        /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+        /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 
+        /// <summary>
+        /// Node kubelet configs.
+        /// </summary>
         [Input("kubeletConfig")]
         public Input<Inputs.NodePoolNodeConfigKubeletConfigArgs>? KubeletConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
+
+        /// <summary>
+        /// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+        /// </summary>
         public InputMap<string> Labels
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Parameters that can be configured on Linux nodes.
+        /// </summary>
         [Input("linuxNodeConfig")]
         public Input<Inputs.NodePoolNodeConfigLinuxNodeConfigArgs>? LinuxNodeConfig { get; set; }
 
+        /// <summary>
+        /// Parameters for raw-block local NVMe SSDs.
+        /// </summary>
         [Input("localNvmeSsdBlockConfig")]
         public Input<Inputs.NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs>? LocalNvmeSsdBlockConfig { get; set; }
 
+        /// <summary>
+        /// The number of local SSD disks to be attached to the node.
+        /// </summary>
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }
 
+        /// <summary>
+        /// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+        /// </summary>
         [Input("loggingVariant")]
         public Input<string>? LoggingVariant { get; set; }
 
+        /// <summary>
+        /// The name of a Google Compute Engine machine type.
+        /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
         [Input("metadata")]
         private InputMap<string>? _metadata;
+
+        /// <summary>
+        /// The metadata key/value pairs assigned to instances in the cluster.
+        /// </summary>
         public InputMap<string> Metadata
         {
             get => _metadata ?? (_metadata = new InputMap<string>());
             set => _metadata = value;
         }
 
+        /// <summary>
+        /// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+        /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }
 
+        /// <summary>
+        /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+        /// </summary>
         [Input("nodeGroup")]
         public Input<string>? NodeGroup { get; set; }
 
         [Input("oauthScopes")]
         private InputList<string>? _oauthScopes;
+
+        /// <summary>
+        /// The set of Google API scopes to be made available on all of the node VMs.
+        /// </summary>
         public InputList<string> OauthScopes
         {
             get => _oauthScopes ?? (_oauthScopes = new InputList<string>());
             set => _oauthScopes = value;
         }
 
+        /// <summary>
+        /// Whether the nodes are created as preemptible VM instances.
+        /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }
 
+        /// <summary>
+        /// The reservation affinity configuration for the node pool.
+        /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.NodePoolNodeConfigReservationAffinityArgs>? ReservationAffinity { get; set; }
 
         [Input("resourceLabels")]
         private InputMap<string>? _resourceLabels;
+
+        /// <summary>
+        /// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+        /// </summary>
         public InputMap<string> ResourceLabels
         {
             get => _resourceLabels ?? (_resourceLabels = new InputMap<string>());
             set => _resourceLabels = value;
         }
 
+        /// <summary>
+        /// Sandbox configuration for this node.
+        /// </summary>
         [Input("sandboxConfig")]
         public Input<Inputs.NodePoolNodeConfigSandboxConfigArgs>? SandboxConfig { get; set; }
 
+        /// <summary>
+        /// The Google Cloud Platform Service Account to be used by the node VMs.
+        /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        /// <summary>
+        /// Shielded Instance options.
+        /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.NodePoolNodeConfigShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
 
+        /// <summary>
+        /// Node affinity options for sole tenant node pools.
+        /// </summary>
         [Input("soleTenantConfig")]
         public Input<Inputs.NodePoolNodeConfigSoleTenantConfigArgs>? SoleTenantConfig { get; set; }
 
+        /// <summary>
+        /// Whether the nodes are created as spot VM instances.
+        /// </summary>
         [Input("spot")]
         public Input<bool>? Spot { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
+
+        /// <summary>
+        /// The list of instance tags applied to all nodes.
+        /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
@@ -157,12 +266,19 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("taints")]
         private InputList<Inputs.NodePoolNodeConfigTaintArgs>? _taints;
+
+        /// <summary>
+        /// List of Kubernetes taints to be applied to each node.
+        /// </summary>
         public InputList<Inputs.NodePoolNodeConfigTaintArgs> Taints
         {
             get => _taints ?? (_taints = new InputList<Inputs.NodePoolNodeConfigTaintArgs>());
             set => _taints = value;
         }
 
+        /// <summary>
+        /// The workload metadata configuration for this node.
+        /// </summary>
         [Input("workloadMetadataConfig")]
         public Input<Inputs.NodePoolNodeConfigWorkloadMetadataConfigArgs>? WorkloadMetadataConfig { get; set; }
 

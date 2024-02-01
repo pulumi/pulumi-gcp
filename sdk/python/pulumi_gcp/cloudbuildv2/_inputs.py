@@ -559,6 +559,11 @@ class ConnectionInstallationStateArgs:
                  action_uri: Optional[pulumi.Input[str]] = None,
                  message: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action_uri: Output only. Link to follow for next action. Empty string if the installation is already complete.
+        :param pulumi.Input[str] message: Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+        :param pulumi.Input[str] stage: Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+        """
         if action_uri is not None:
             pulumi.set(__self__, "action_uri", action_uri)
         if message is not None:
@@ -569,6 +574,9 @@ class ConnectionInstallationStateArgs:
     @property
     @pulumi.getter(name="actionUri")
     def action_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Link to follow for next action. Empty string if the installation is already complete.
+        """
         return pulumi.get(self, "action_uri")
 
     @action_uri.setter
@@ -578,6 +586,9 @@ class ConnectionInstallationStateArgs:
     @property
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+        """
         return pulumi.get(self, "message")
 
     @message.setter
@@ -587,6 +598,9 @@ class ConnectionInstallationStateArgs:
     @property
     @pulumi.getter
     def stage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+        """
         return pulumi.get(self, "stage")
 
     @stage.setter

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetManagementServerManagementUri {
+    /**
+     * @return The management console api endpoint.
+     * 
+     */
     private String api;
+    /**
+     * @return The management console webUi.
+     * 
+     */
     private String webUi;
 
     private GetManagementServerManagementUri() {}
+    /**
+     * @return The management console api endpoint.
+     * 
+     */
     public String api() {
         return this.api;
     }
+    /**
+     * @return The management console webUi.
+     * 
+     */
     public String webUi() {
         return this.webUi;
     }

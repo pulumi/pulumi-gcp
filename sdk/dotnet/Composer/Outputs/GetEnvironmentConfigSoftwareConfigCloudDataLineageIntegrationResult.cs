@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegrationResult
     {
+        /// <summary>
+        /// Whether or not Cloud Data Lineage integration is enabled.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

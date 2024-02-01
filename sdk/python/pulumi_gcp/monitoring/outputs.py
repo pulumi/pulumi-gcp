@@ -4450,6 +4450,11 @@ class GetNotificationChannelSensitiveLabelResult(dict):
                  auth_token: str,
                  password: str,
                  service_key: str):
+        """
+        :param str auth_token: An authorization token for a notification channel. Channel types that support this field include: slack
+        :param str password: An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        :param str service_key: An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        """
         pulumi.set(__self__, "auth_token", auth_token)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "service_key", service_key)
@@ -4457,16 +4462,25 @@ class GetNotificationChannelSensitiveLabelResult(dict):
     @property
     @pulumi.getter(name="authToken")
     def auth_token(self) -> str:
+        """
+        An authorization token for a notification channel. Channel types that support this field include: slack
+        """
         return pulumi.get(self, "auth_token")
 
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        An password for a notification channel. Channel types that support this field include: webhook_basicauth
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="serviceKey")
     def service_key(self) -> str:
+        """
+        An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+        """
         return pulumi.get(self, "service_key")
 
 

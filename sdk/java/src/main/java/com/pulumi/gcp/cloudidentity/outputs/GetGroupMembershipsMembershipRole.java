@@ -12,6 +12,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupMembershipsMembershipRole {
+    /**
+     * @return The MembershipRole expiry details, only supported for MEMBER role.
+     * Other roles cannot be accompanied with MEMBER role having expiry.
+     * 
+     */
     private List<GetGroupMembershipsMembershipRoleExpiryDetail> expiryDetails;
     /**
      * @return The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
@@ -20,6 +25,11 @@ public final class GetGroupMembershipsMembershipRole {
     private String name;
 
     private GetGroupMembershipsMembershipRole() {}
+    /**
+     * @return The MembershipRole expiry details, only supported for MEMBER role.
+     * Other roles cannot be accompanied with MEMBER role having expiry.
+     * 
+     */
     public List<GetGroupMembershipsMembershipRoleExpiryDetail> expiryDetails() {
         return this.expiryDetails;
     }

@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolUpgradeSettingBlueGreenSetting {
+    /**
+     * @return Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+     * 
+     */
     private String nodePoolSoakDuration;
+    /**
+     * @return Standard rollout policy is the default policy for blue-green.
+     * 
+     */
     private List<GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy> standardRolloutPolicies;
 
     private GetClusterNodePoolUpgradeSettingBlueGreenSetting() {}
+    /**
+     * @return Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+     * 
+     */
     public String nodePoolSoakDuration() {
         return this.nodePoolSoakDuration;
     }
+    /**
+     * @return Standard rollout policy is the default policy for blue-green.
+     * 
+     */
     public List<GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy> standardRolloutPolicies() {
         return this.standardRolloutPolicies;
     }

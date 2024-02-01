@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineConditionTargetsTypeCondition {
+    /**
+     * @return Human readable error message.
+     * 
+     */
     private @Nullable String errorDetails;
+    /**
+     * @return True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+     * 
+     */
     private @Nullable Boolean status;
 
     private DeliveryPipelineConditionTargetsTypeCondition() {}
+    /**
+     * @return Human readable error message.
+     * 
+     */
     public Optional<String> errorDetails() {
         return Optional.ofNullable(this.errorDetails);
     }
+    /**
+     * @return True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+     * 
+     */
     public Optional<Boolean> status() {
         return Optional.ofNullable(this.status);
     }

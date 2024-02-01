@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+    /**
+     * @return When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Snapshot schedule, in the unix-cron format.
+     * 
+     */
     private @Nullable String snapshotCreationSchedule;
+    /**
+     * @return the URI of a bucket folder where to save the snapshot.
+     * 
+     */
     private @Nullable String snapshotLocation;
+    /**
+     * @return A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+     * 
+     */
     private @Nullable String timeZone;
 
     private EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig() {}
+    /**
+     * @return When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Snapshot schedule, in the unix-cron format.
+     * 
+     */
     public Optional<String> snapshotCreationSchedule() {
         return Optional.ofNullable(this.snapshotCreationSchedule);
     }
+    /**
+     * @return the URI of a bucket folder where to save the snapshot.
+     * 
+     */
     public Optional<String> snapshotLocation() {
         return Optional.ofNullable(this.snapshotLocation);
     }
+    /**
+     * @return A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+     * 
+     */
     public Optional<String> timeZone() {
         return Optional.ofNullable(this.timeZone);
     }

@@ -11,17 +11,43 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryVirtualRepositoryConfigUpstreamPolicy {
+    /**
+     * @return The user-provided ID of the upstream policy.
+     * 
+     */
     private String id;
+    /**
+     * @return Entries with a greater priority value take precedence in the pull order.
+     * 
+     */
     private Integer priority;
+    /**
+     * @return A reference to the repository resource, for example:
+     * &#34;projects/p1/locations/us-central1/repository/repo1&#34;.
+     * 
+     */
     private String repository;
 
     private GetRepositoryVirtualRepositoryConfigUpstreamPolicy() {}
+    /**
+     * @return The user-provided ID of the upstream policy.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Entries with a greater priority value take precedence in the pull order.
+     * 
+     */
     public Integer priority() {
         return this.priority;
     }
+    /**
+     * @return A reference to the repository resource, for example:
+     * &#34;projects/p1/locations/us-central1/repository/repo1&#34;.
+     * 
+     */
     public String repository() {
         return this.repository;
     }

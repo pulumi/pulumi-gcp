@@ -14,9 +14,17 @@ public final class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig
 
     public static final NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs Empty = new NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs();
 
+    /**
+     * Mode for how the GPU driver is installed.
+     * 
+     */
     @Import(name="gpuDriverVersion", required=true)
     private Output<String> gpuDriverVersion;
 
+    /**
+     * @return Mode for how the GPU driver is installed.
+     * 
+     */
     public Output<String> gpuDriverVersion() {
         return this.gpuDriverVersion;
     }
@@ -45,11 +53,23 @@ public final class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig
             $ = new NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param gpuDriverVersion Mode for how the GPU driver is installed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuDriverVersion(Output<String> gpuDriverVersion) {
             $.gpuDriverVersion = gpuDriverVersion;
             return this;
         }
 
+        /**
+         * @param gpuDriverVersion Mode for how the GPU driver is installed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuDriverVersion(String gpuDriverVersion) {
             return gpuDriverVersion(Output.of(gpuDriverVersion));
         }

@@ -23,6 +23,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
         /// </summary>
         public readonly bool? AutoUpgrade;
+        /// <summary>
+        /// Specifies the Auto Upgrade knobs for the node pool.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption> UpgradeOptions;
 
         [OutputConstructor]

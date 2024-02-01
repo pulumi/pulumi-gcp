@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceIap {
+    /**
+     * @return OAuth2 Client ID for IAP
+     * 
+     */
     private String oauth2ClientId;
+    /**
+     * @return OAuth2 Client Secret for IAP
+     * 
+     */
     private String oauth2ClientSecret;
+    /**
+     * @return OAuth2 Client Secret SHA-256 for IAP
+     * 
+     */
     private String oauth2ClientSecretSha256;
 
     private GetBackendServiceIap() {}
+    /**
+     * @return OAuth2 Client ID for IAP
+     * 
+     */
     public String oauth2ClientId() {
         return this.oauth2ClientId;
     }
+    /**
+     * @return OAuth2 Client Secret for IAP
+     * 
+     */
     public String oauth2ClientSecret() {
         return this.oauth2ClientSecret;
     }
+    /**
+     * @return OAuth2 Client Secret SHA-256 for IAP
+     * 
+     */
     public String oauth2ClientSecretSha256() {
         return this.oauth2ClientSecretSha256;
     }

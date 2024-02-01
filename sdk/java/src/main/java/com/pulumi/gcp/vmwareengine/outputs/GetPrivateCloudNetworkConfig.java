@@ -11,25 +11,81 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPrivateCloudNetworkConfig {
+    /**
+     * @return DNS Server IP of the Private Cloud.
+     * 
+     */
     private String dnsServerIp;
+    /**
+     * @return Management CIDR used by VMware management appliances.
+     * 
+     */
     private String managementCidr;
+    /**
+     * @return The IP address layout version of the management IP address range.
+     * Possible versions include:
+     * * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+     *   as it does not support all features.
+     * * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+     *   used by all newly created private clouds. This version supports all current features.
+     * 
+     */
     private Integer managementIpAddressLayoutVersion;
+    /**
+     * @return The relative resource name of the VMware Engine network attached to the private cloud.
+     * Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+     * where {project} can either be a project number or a project ID.
+     * 
+     */
     private String vmwareEngineNetwork;
+    /**
+     * @return The canonical name of the VMware Engine network in
+     * the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+     * 
+     */
     private String vmwareEngineNetworkCanonical;
 
     private GetPrivateCloudNetworkConfig() {}
+    /**
+     * @return DNS Server IP of the Private Cloud.
+     * 
+     */
     public String dnsServerIp() {
         return this.dnsServerIp;
     }
+    /**
+     * @return Management CIDR used by VMware management appliances.
+     * 
+     */
     public String managementCidr() {
         return this.managementCidr;
     }
+    /**
+     * @return The IP address layout version of the management IP address range.
+     * Possible versions include:
+     * * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+     *   as it does not support all features.
+     * * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+     *   used by all newly created private clouds. This version supports all current features.
+     * 
+     */
     public Integer managementIpAddressLayoutVersion() {
         return this.managementIpAddressLayoutVersion;
     }
+    /**
+     * @return The relative resource name of the VMware Engine network attached to the private cloud.
+     * Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+     * where {project} can either be a project number or a project ID.
+     * 
+     */
     public String vmwareEngineNetwork() {
         return this.vmwareEngineNetwork;
     }
+    /**
+     * @return The canonical name of the VMware Engine network in
+     * the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+     * 
+     */
     public String vmwareEngineNetworkCanonical() {
         return this.vmwareEngineNetworkCanonical;
     }

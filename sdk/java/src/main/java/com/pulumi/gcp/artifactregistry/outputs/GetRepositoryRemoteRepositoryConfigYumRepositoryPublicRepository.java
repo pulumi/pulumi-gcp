@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository {
+    /**
+     * @return A common public repository base for Yum. Possible values: [&#34;CENTOS&#34;, &#34;CENTOS_DEBUG&#34;, &#34;CENTOS_VAULT&#34;, &#34;CENTOS_STREAM&#34;, &#34;ROCKY&#34;, &#34;EPEL&#34;]
+     * 
+     */
     private String repositoryBase;
+    /**
+     * @return Specific repository from the base, e.g. &#39;&#34;centos/8-stream/BaseOS/x86_64/os&#34;&#39;
+     * 
+     */
     private String repositoryPath;
 
     private GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository() {}
+    /**
+     * @return A common public repository base for Yum. Possible values: [&#34;CENTOS&#34;, &#34;CENTOS_DEBUG&#34;, &#34;CENTOS_VAULT&#34;, &#34;CENTOS_STREAM&#34;, &#34;ROCKY&#34;, &#34;EPEL&#34;]
+     * 
+     */
     public String repositoryBase() {
         return this.repositoryBase;
     }
+    /**
+     * @return Specific repository from the base, e.g. &#39;&#34;centos/8-stream/BaseOS/x86_64/os&#34;&#39;
+     * 
+     */
     public String repositoryPath() {
         return this.repositoryPath;
     }

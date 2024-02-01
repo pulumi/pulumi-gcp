@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNotificationConfigPubsubFilterResult
     {
+        /// <summary>
+        /// Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT
+        /// </summary>
         public readonly ImmutableArray<string> EventTypes;
 
         [OutputConstructor]

@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption {
+    /**
+     * @return This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+     * 
+     */
     private @Nullable String autoUpgradeStartTime;
     /**
      * @return Description of the cluster.
@@ -19,6 +23,10 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUp
     private @Nullable String description;
 
     private ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption() {}
+    /**
+     * @return This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+     * 
+     */
     public Optional<String> autoUpgradeStartTime() {
         return Optional.ofNullable(this.autoUpgradeStartTime);
     }

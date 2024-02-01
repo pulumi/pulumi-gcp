@@ -14,29 +14,99 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceStatus {
+    /**
+     * @return Array of observed Service Conditions, indicating the current ready state of the service.
+     * 
+     */
     private List<GetServiceStatusCondition> conditions;
+    /**
+     * @return From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+     * from this Service&#39;s Configuration. It might not be ready yet, for that use
+     * LatestReadyRevisionName.
+     * 
+     */
     private String latestCreatedRevisionName;
+    /**
+     * @return From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+     * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
+     * &#34;True&#34;.
+     * 
+     */
     private String latestReadyRevisionName;
+    /**
+     * @return ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+     * controller.
+     * 
+     * Clients polling for completed reconciliation should poll until observedGeneration =
+     * metadata.generation and the Ready condition&#39;s status is True or False.
+     * 
+     */
     private Integer observedGeneration;
+    /**
+     * @return Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * 
+     */
     private List<GetServiceStatusTraffic> traffics;
+    /**
+     * @return From RouteStatus. URL holds the url that will distribute traffic over the provided traffic
+     * targets. It generally has the form
+     * https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+     * 
+     */
     private String url;
 
     private GetServiceStatus() {}
+    /**
+     * @return Array of observed Service Conditions, indicating the current ready state of the service.
+     * 
+     */
     public List<GetServiceStatusCondition> conditions() {
         return this.conditions;
     }
+    /**
+     * @return From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+     * from this Service&#39;s Configuration. It might not be ready yet, for that use
+     * LatestReadyRevisionName.
+     * 
+     */
     public String latestCreatedRevisionName() {
         return this.latestCreatedRevisionName;
     }
+    /**
+     * @return From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+     * stamped out from this Service&#39;s Configuration that has had its &#34;Ready&#34; condition become
+     * &#34;True&#34;.
+     * 
+     */
     public String latestReadyRevisionName() {
         return this.latestReadyRevisionName;
     }
+    /**
+     * @return ObservedGeneration is the &#39;Generation&#39; of the Route that was last processed by the
+     * controller.
+     * 
+     * Clients polling for completed reconciliation should poll until observedGeneration =
+     * metadata.generation and the Ready condition&#39;s status is True or False.
+     * 
+     */
     public Integer observedGeneration() {
         return this.observedGeneration;
     }
+    /**
+     * @return Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * 
+     */
     public List<GetServiceStatusTraffic> traffics() {
         return this.traffics;
     }
+    /**
+     * @return From RouteStatus. URL holds the url that will distribute traffic over the provided traffic
+     * targets. It generally has the form
+     * https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+     * 
+     */
     public String url() {
         return this.url;
     }

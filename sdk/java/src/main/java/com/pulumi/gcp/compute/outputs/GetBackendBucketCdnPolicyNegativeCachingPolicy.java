@@ -10,13 +10,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendBucketCdnPolicyNegativeCachingPolicy {
+    /**
+     * @return The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+     * can be specified as values, and you cannot specify a status code more than once.
+     * 
+     */
     private Integer code;
+    /**
+     * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+     * 
+     */
     private Integer ttl;
 
     private GetBackendBucketCdnPolicyNegativeCachingPolicy() {}
+    /**
+     * @return The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+     * can be specified as values, and you cannot specify a status code more than once.
+     * 
+     */
     public Integer code() {
         return this.code;
     }
+    /**
+     * @return The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+     * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+     * 
+     */
     public Integer ttl() {
         return this.ttl;
     }

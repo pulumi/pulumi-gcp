@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigWorkloadsConfigDagProcessorGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// CPU request and limit for DAG processor.
+        /// </summary>
         [Input("cpu")]
         public Input<double>? Cpu { get; set; }
 
+        /// <summary>
+        /// Memory (GB) request and limit for DAG processor.
+        /// </summary>
         [Input("memoryGb")]
         public Input<double>? MemoryGb { get; set; }
 
+        /// <summary>
+        /// Storage (GB) request and limit for DAG processor.
+        /// </summary>
         [Input("storageGb")]
         public Input<double>? StorageGb { get; set; }
 

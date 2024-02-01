@@ -10,17 +10,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegionNetworkEndpointGroupCloudRun {
+    /**
+     * @return Cloud Run service is the main resource of Cloud Run.
+     * The service must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;run-service&#34;.
+     * 
+     */
     private String service;
+    /**
+     * @return Cloud Run tag represents the &#34;named-revision&#34; to provide
+     * additional fine-grained traffic routing information.
+     * The tag must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;revision-0010&#34;.
+     * 
+     */
     private String tag;
+    /**
+     * @return A template to parse service and tag fields from a request URL.
+     * URL mask allows for routing to multiple Run services without having
+     * to create multiple network endpoint groups and backend services.
+     * 
+     * For example, request URLs &#34;foo1.domain.com/bar1&#34; and &#34;foo1.domain.com/bar2&#34;
+     * an be backed by the same Serverless Network Endpoint Group (NEG) with
+     * URL mask &#34;.domain.com/&#34;. The URL mask will parse them to { service=&#34;bar1&#34;, tag=&#34;foo1&#34; }
+     * and { service=&#34;bar2&#34;, tag=&#34;foo2&#34; } respectively.
+     * 
+     */
     private String urlMask;
 
     private GetRegionNetworkEndpointGroupCloudRun() {}
+    /**
+     * @return Cloud Run service is the main resource of Cloud Run.
+     * The service must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;run-service&#34;.
+     * 
+     */
     public String service() {
         return this.service;
     }
+    /**
+     * @return Cloud Run tag represents the &#34;named-revision&#34; to provide
+     * additional fine-grained traffic routing information.
+     * The tag must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;revision-0010&#34;.
+     * 
+     */
     public String tag() {
         return this.tag;
     }
+    /**
+     * @return A template to parse service and tag fields from a request URL.
+     * URL mask allows for routing to multiple Run services without having
+     * to create multiple network endpoint groups and backend services.
+     * 
+     * For example, request URLs &#34;foo1.domain.com/bar1&#34; and &#34;foo1.domain.com/bar2&#34;
+     * an be backed by the same Serverless Network Endpoint Group (NEG) with
+     * URL mask &#34;.domain.com/&#34;. The URL mask will parse them to { service=&#34;bar1&#34;, tag=&#34;foo1&#34; }
+     * and { service=&#34;bar2&#34;, tag=&#34;foo2&#34; } respectively.
+     * 
+     */
     public String urlMask() {
         return this.urlMask;
     }

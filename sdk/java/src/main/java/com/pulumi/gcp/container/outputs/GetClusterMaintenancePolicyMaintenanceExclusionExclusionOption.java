@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
+    /**
+     * @return The scope of automatic upgrades to restrict in the exclusion window.
+     * 
+     */
     private String scope;
 
     private GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption() {}
+    /**
+     * @return The scope of automatic upgrades to restrict in the exclusion window.
+     * 
+     */
     public String scope() {
         return this.scope;
     }

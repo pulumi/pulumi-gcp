@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceGroupManagerStatusStatefulPerInstanceConfigResult
     {
+        /// <summary>
+        /// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+        /// </summary>
         public readonly bool AllEffective;
 
         [OutputConstructor]

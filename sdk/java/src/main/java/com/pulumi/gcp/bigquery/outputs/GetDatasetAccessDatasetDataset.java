@@ -15,6 +15,10 @@ public final class GetDatasetAccessDatasetDataset {
      * 
      */
     private String datasetId;
+    /**
+     * @return The ID of the project containing this table.
+     * 
+     */
     private String projectId;
 
     private GetDatasetAccessDatasetDataset() {}
@@ -25,6 +29,10 @@ public final class GetDatasetAccessDatasetDataset {
     public String datasetId() {
         return this.datasetId;
     }
+    /**
+     * @return The ID of the project containing this table.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }

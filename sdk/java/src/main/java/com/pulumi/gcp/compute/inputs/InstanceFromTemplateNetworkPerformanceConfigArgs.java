@@ -14,9 +14,17 @@ public final class InstanceFromTemplateNetworkPerformanceConfigArgs extends com.
 
     public static final InstanceFromTemplateNetworkPerformanceConfigArgs Empty = new InstanceFromTemplateNetworkPerformanceConfigArgs();
 
+    /**
+     * The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+     * 
+     */
     @Import(name="totalEgressBandwidthTier", required=true)
     private Output<String> totalEgressBandwidthTier;
 
+    /**
+     * @return The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+     * 
+     */
     public Output<String> totalEgressBandwidthTier() {
         return this.totalEgressBandwidthTier;
     }
@@ -45,11 +53,23 @@ public final class InstanceFromTemplateNetworkPerformanceConfigArgs extends com.
             $ = new InstanceFromTemplateNetworkPerformanceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param totalEgressBandwidthTier The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+         * 
+         * @return builder
+         * 
+         */
         public Builder totalEgressBandwidthTier(Output<String> totalEgressBandwidthTier) {
             $.totalEgressBandwidthTier = totalEgressBandwidthTier;
             return this;
         }
 
+        /**
+         * @param totalEgressBandwidthTier The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+         * 
+         * @return builder
+         * 
+         */
         public Builder totalEgressBandwidthTier(String totalEgressBandwidthTier) {
             return totalEgressBandwidthTier(Output.of(totalEgressBandwidthTier));
         }

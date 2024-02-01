@@ -12,37 +12,63 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromTemplateBootDiskInitializeParamsArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A flag to enable confidential compute mode on boot disk
+        /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
 
+        /// <summary>
+        /// The image from which this disk was initialised.
+        /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
+
+        /// <summary>
+        /// A set of key/value label pairs assigned to the disk.
+        /// </summary>
         public InputMap<object> Labels
         {
             get => _labels ?? (_labels = new InputMap<object>());
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        /// </summary>
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }
 
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// </summary>
         [Input("provisionedThroughput")]
         public Input<int>? ProvisionedThroughput { get; set; }
 
         [Input("resourceManagerTags")]
         private InputMap<object>? _resourceManagerTags;
+
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
         public InputMap<object> ResourceManagerTags
         {
             get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<object>());
             set => _resourceManagerTags = value;
         }
 
+        /// <summary>
+        /// The size of the image in gigabytes.
+        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
+        /// <summary>
+        /// The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

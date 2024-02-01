@@ -11,9 +11,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryVirtualRepositoryConfig {
+    /**
+     * @return Policies that configure the upstream artifacts distributed by the Virtual
+     * Repository. Upstream policies cannot be set on a standard repository.
+     * 
+     */
     private List<GetRepositoryVirtualRepositoryConfigUpstreamPolicy> upstreamPolicies;
 
     private GetRepositoryVirtualRepositoryConfig() {}
+    /**
+     * @return Policies that configure the upstream artifacts distributed by the Virtual
+     * Repository. Upstream policies cannot be set on a standard repository.
+     * 
+     */
     public List<GetRepositoryVirtualRepositoryConfigUpstreamPolicy> upstreamPolicies() {
         return this.upstreamPolicies;
     }

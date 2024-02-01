@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.Sql.Inputs
 
     public sealed class DatabaseInstanceServerCaCertGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The CA Certificate used to connect to the SQL Instance via SSL.
+        /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
+        /// <summary>
+        /// The CN valid for the CA Cert.
+        /// </summary>
         [Input("commonName")]
         public Input<string>? CommonName { get; set; }
 
+        /// <summary>
+        /// Creation time of the CA Cert.
+        /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
@@ -28,6 +37,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("expirationTime")]
         public Input<string>? ExpirationTime { get; set; }
 
+        /// <summary>
+        /// SHA Fingerprint of the CA Cert.
+        /// </summary>
         [Input("sha1Fingerprint")]
         public Input<string>? Sha1Fingerprint { get; set; }
 

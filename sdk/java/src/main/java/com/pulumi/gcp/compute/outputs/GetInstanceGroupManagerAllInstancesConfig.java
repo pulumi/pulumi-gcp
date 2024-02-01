@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceGroupManagerAllInstancesConfig {
+    /**
+     * @return The label key-value pairs that you want to patch onto the instance,
+     * 
+     */
     private Map<String,String> labels;
+    /**
+     * @return The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+     * 
+     */
     private Map<String,String> metadata;
 
     private GetInstanceGroupManagerAllInstancesConfig() {}
+    /**
+     * @return The label key-value pairs that you want to patch onto the instance,
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels;
     }
+    /**
+     * @return The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+     * 
+     */
     public Map<String,String> metadata() {
         return this.metadata;
     }

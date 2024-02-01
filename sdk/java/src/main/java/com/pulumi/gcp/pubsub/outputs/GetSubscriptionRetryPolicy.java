@@ -10,13 +10,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSubscriptionRetryPolicy {
+    /**
+     * @return The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String maximumBackoff;
+    /**
+     * @return The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String minimumBackoff;
 
     private GetSubscriptionRetryPolicy() {}
+    /**
+     * @return The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String maximumBackoff() {
         return this.maximumBackoff;
     }
+    /**
+     * @return The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String minimumBackoff() {
         return this.minimumBackoff;
     }

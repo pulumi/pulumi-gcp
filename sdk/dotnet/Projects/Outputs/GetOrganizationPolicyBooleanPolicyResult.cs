@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Projects.Outputs
     [OutputType]
     public sealed class GetOrganizationPolicyBooleanPolicyResult
     {
+        /// <summary>
+        /// If true, then the Policy is enforced. If false, then any configuration is acceptable.
+        /// </summary>
         public readonly bool Enforced;
 
         [OutputConstructor]

@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
+    /**
+     * @return cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+     * 
+     */
     private List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    /**
+     * @return Whether or not master authorized networks is enabled.
+     * 
+     */
     private Boolean enabled;
 
     private GetEnvironmentConfigMasterAuthorizedNetworksConfig() {}
+    /**
+     * @return cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+     * 
+     */
     public List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks() {
         return this.cidrBlocks;
     }
+    /**
+     * @return Whether or not master authorized networks is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

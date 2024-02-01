@@ -11,7 +11,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceRestoreBackupContext {
+    /**
+     * @return The ID of the backup run to restore from.
+     * 
+     */
     private Integer backupRunId;
+    /**
+     * @return The ID of the instance that the backup was taken from.
+     * 
+     */
     private String instanceId;
     /**
      * @return The ID of the project in which the resources belong. If it is not provided, the provider project is used.
@@ -20,9 +28,17 @@ public final class GetDatabaseInstancesInstanceRestoreBackupContext {
     private String project;
 
     private GetDatabaseInstancesInstanceRestoreBackupContext() {}
+    /**
+     * @return The ID of the backup run to restore from.
+     * 
+     */
     public Integer backupRunId() {
         return this.backupRunId;
     }
+    /**
+     * @return The ID of the instance that the backup was taken from.
+     * 
+     */
     public String instanceId() {
         return this.instanceId;
     }

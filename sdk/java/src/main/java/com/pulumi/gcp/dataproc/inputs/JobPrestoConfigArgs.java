@@ -49,9 +49,17 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.continueOnFailure);
     }
 
+    /**
+     * The runtime logging config of the job
+     * 
+     */
     @Import(name="loggingConfig")
     private @Nullable Output<JobPrestoConfigLoggingConfigArgs> loggingConfig;
 
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<Output<JobPrestoConfigLoggingConfigArgs>> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }
@@ -206,11 +214,23 @@ public final class JobPrestoConfigArgs extends com.pulumi.resources.ResourceArgs
             return continueOnFailure(Output.of(continueOnFailure));
         }
 
+        /**
+         * @param loggingConfig The runtime logging config of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(@Nullable Output<JobPrestoConfigLoggingConfigArgs> loggingConfig) {
             $.loggingConfig = loggingConfig;
             return this;
         }
 
+        /**
+         * @param loggingConfig The runtime logging config of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(JobPrestoConfigLoggingConfigArgs loggingConfig) {
             return loggingConfig(Output.of(loggingConfig));
         }

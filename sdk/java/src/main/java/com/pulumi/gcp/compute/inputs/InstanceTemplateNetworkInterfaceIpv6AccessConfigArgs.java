@@ -16,16 +16,32 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
 
     public static final InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs Empty = new InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs();
 
+    /**
+     * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+     * 
+     */
     @Import(name="externalIpv6")
     private @Nullable Output<String> externalIpv6;
 
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+     * 
+     */
     public Optional<Output<String>> externalIpv6() {
         return Optional.ofNullable(this.externalIpv6);
     }
 
+    /**
+     * The prefix length of the external IPv6 range.
+     * 
+     */
     @Import(name="externalIpv6PrefixLength")
     private @Nullable Output<String> externalIpv6PrefixLength;
 
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     public Optional<Output<String>> externalIpv6PrefixLength() {
         return Optional.ofNullable(this.externalIpv6PrefixLength);
     }
@@ -64,9 +80,17 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
         return this.networkTier;
     }
 
+    /**
+     * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     @Import(name="publicPtrDomainName")
     private @Nullable Output<String> publicPtrDomainName;
 
+    /**
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     public Optional<Output<String>> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }
@@ -99,20 +123,44 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
             $ = new InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6(@Nullable Output<String> externalIpv6) {
             $.externalIpv6 = externalIpv6;
             return this;
         }
 
+        /**
+         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6(String externalIpv6) {
             return externalIpv6(Output.of(externalIpv6));
         }
 
+        /**
+         * @param externalIpv6PrefixLength The prefix length of the external IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6PrefixLength(@Nullable Output<String> externalIpv6PrefixLength) {
             $.externalIpv6PrefixLength = externalIpv6PrefixLength;
             return this;
         }
 
+        /**
+         * @param externalIpv6PrefixLength The prefix length of the external IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6PrefixLength(String externalIpv6PrefixLength) {
             return externalIpv6PrefixLength(Output.of(externalIpv6PrefixLength));
         }
@@ -163,11 +211,23 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
             return networkTier(Output.of(networkTier));
         }
 
+        /**
+         * @param publicPtrDomainName The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPtrDomainName(@Nullable Output<String> publicPtrDomainName) {
             $.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
 
+        /**
+         * @param publicPtrDomainName The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             return publicPtrDomainName(Output.of(publicPtrDomainName));
         }

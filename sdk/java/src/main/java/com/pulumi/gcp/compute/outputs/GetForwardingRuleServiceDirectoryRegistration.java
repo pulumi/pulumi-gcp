@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetForwardingRuleServiceDirectoryRegistration {
+    /**
+     * @return Service Directory namespace to register the forwarding rule under.
+     * 
+     */
     private String namespace;
+    /**
+     * @return Service Directory service to register the forwarding rule under.
+     * 
+     */
     private String service;
 
     private GetForwardingRuleServiceDirectoryRegistration() {}
+    /**
+     * @return Service Directory namespace to register the forwarding rule under.
+     * 
+     */
     public String namespace() {
         return this.namespace;
     }
+    /**
+     * @return Service Directory service to register the forwarding rule under.
+     * 
+     */
     public String service() {
         return this.service;
     }

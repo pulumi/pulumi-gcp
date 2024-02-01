@@ -13,8 +13,23 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerRepositoryEventConfigPushResult
     {
+        /// <summary>
+        /// Regex of branches to match.
+        /// 
+        /// The syntax of the regular expressions accepted is the syntax accepted by
+        /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+        /// </summary>
         public readonly string Branch;
+        /// <summary>
+        /// If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+        /// </summary>
         public readonly bool InvertRegex;
+        /// <summary>
+        /// Regex of tags to match.
+        /// 
+        /// The syntax of the regular expressions accepted is the syntax accepted by
+        /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+        /// </summary>
         public readonly string Tag;
 
         [OutputConstructor]

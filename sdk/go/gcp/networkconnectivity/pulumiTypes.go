@@ -14,6 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type HubRoutingVpc struct {
+	// The URI of the VPC network.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -29,6 +30,7 @@ type HubRoutingVpcInput interface {
 }
 
 type HubRoutingVpcArgs struct {
+	// The URI of the VPC network.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -83,6 +85,7 @@ func (o HubRoutingVpcOutput) ToHubRoutingVpcOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The URI of the VPC network.
 func (o HubRoutingVpcOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HubRoutingVpc) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }

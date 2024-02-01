@@ -15,9 +15,17 @@ public final class EnvironmentConfigRecoveryConfigArgs extends com.pulumi.resour
 
     public static final EnvironmentConfigRecoveryConfigArgs Empty = new EnvironmentConfigRecoveryConfigArgs();
 
+    /**
+     * The configuration settings for scheduled snapshots.
+     * 
+     */
     @Import(name="scheduledSnapshotsConfig")
     private @Nullable Output<EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs> scheduledSnapshotsConfig;
 
+    /**
+     * @return The configuration settings for scheduled snapshots.
+     * 
+     */
     public Optional<Output<EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs>> scheduledSnapshotsConfig() {
         return Optional.ofNullable(this.scheduledSnapshotsConfig);
     }
@@ -46,11 +54,23 @@ public final class EnvironmentConfigRecoveryConfigArgs extends com.pulumi.resour
             $ = new EnvironmentConfigRecoveryConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param scheduledSnapshotsConfig The configuration settings for scheduled snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledSnapshotsConfig(@Nullable Output<EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs> scheduledSnapshotsConfig) {
             $.scheduledSnapshotsConfig = scheduledSnapshotsConfig;
             return this;
         }
 
+        /**
+         * @param scheduledSnapshotsConfig The configuration settings for scheduled snapshots.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scheduledSnapshotsConfig(EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs scheduledSnapshotsConfig) {
             return scheduledSnapshotsConfig(Output.of(scheduledSnapshotsConfig));
         }

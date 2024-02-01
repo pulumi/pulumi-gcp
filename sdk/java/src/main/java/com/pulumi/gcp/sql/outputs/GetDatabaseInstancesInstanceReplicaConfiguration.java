@@ -12,49 +12,137 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceReplicaConfiguration {
+    /**
+     * @return PEM representation of the trusted CA&#39;s x509 certificate.
+     * 
+     */
     private String caCertificate;
+    /**
+     * @return PEM representation of the replica&#39;s x509 certificate.
+     * 
+     */
     private String clientCertificate;
+    /**
+     * @return PEM representation of the replica&#39;s private key. The corresponding public key in encoded in the client_certificate.
+     * 
+     */
     private String clientKey;
+    /**
+     * @return The number of seconds between connect retries. MySQL&#39;s default is 60 seconds.
+     * 
+     */
     private Integer connectRetryInterval;
+    /**
+     * @return Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
+     * 
+     */
     private String dumpFilePath;
+    /**
+     * @return Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
+     * 
+     */
     private Boolean failoverTarget;
+    /**
+     * @return Time in ms between replication heartbeats.
+     * 
+     */
     private Integer masterHeartbeatPeriod;
+    /**
+     * @return Password for the replication connection.
+     * 
+     */
     private String password;
+    /**
+     * @return Permissible ciphers for use in SSL encryption.
+     * 
+     */
     private String sslCipher;
+    /**
+     * @return Username for replication connection.
+     * 
+     */
     private String username;
+    /**
+     * @return True if the master&#39;s common name value is checked during the SSL handshake.
+     * 
+     */
     private Boolean verifyServerCertificate;
 
     private GetDatabaseInstancesInstanceReplicaConfiguration() {}
+    /**
+     * @return PEM representation of the trusted CA&#39;s x509 certificate.
+     * 
+     */
     public String caCertificate() {
         return this.caCertificate;
     }
+    /**
+     * @return PEM representation of the replica&#39;s x509 certificate.
+     * 
+     */
     public String clientCertificate() {
         return this.clientCertificate;
     }
+    /**
+     * @return PEM representation of the replica&#39;s private key. The corresponding public key in encoded in the client_certificate.
+     * 
+     */
     public String clientKey() {
         return this.clientKey;
     }
+    /**
+     * @return The number of seconds between connect retries. MySQL&#39;s default is 60 seconds.
+     * 
+     */
     public Integer connectRetryInterval() {
         return this.connectRetryInterval;
     }
+    /**
+     * @return Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
+     * 
+     */
     public String dumpFilePath() {
         return this.dumpFilePath;
     }
+    /**
+     * @return Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
+     * 
+     */
     public Boolean failoverTarget() {
         return this.failoverTarget;
     }
+    /**
+     * @return Time in ms between replication heartbeats.
+     * 
+     */
     public Integer masterHeartbeatPeriod() {
         return this.masterHeartbeatPeriod;
     }
+    /**
+     * @return Password for the replication connection.
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return Permissible ciphers for use in SSL encryption.
+     * 
+     */
     public String sslCipher() {
         return this.sslCipher;
     }
+    /**
+     * @return Username for replication connection.
+     * 
+     */
     public String username() {
         return this.username;
     }
+    /**
+     * @return True if the master&#39;s common name value is checked during the SSL handshake.
+     * 
+     */
     public Boolean verifyServerCertificate() {
         return this.verifyServerCertificate;
     }

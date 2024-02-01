@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceGroupManagerStatusAllInstancesConfig {
+    /**
+     * @return A bit indicating whether this configuration has been applied to all managed instances in the group.
+     * 
+     */
     private Boolean effective;
 
     private GetInstanceGroupManagerStatusAllInstancesConfig() {}
+    /**
+     * @return A bit indicating whether this configuration has been applied to all managed instances in the group.
+     * 
+     */
     public Boolean effective() {
         return this.effective;
     }

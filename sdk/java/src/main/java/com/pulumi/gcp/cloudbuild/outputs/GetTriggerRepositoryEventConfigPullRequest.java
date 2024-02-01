@@ -11,17 +11,47 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerRepositoryEventConfigPullRequest {
+    /**
+     * @return Regex of branches to match.
+     * 
+     * The syntax of the regular expressions accepted is the syntax accepted by
+     * RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * 
+     */
     private String branch;
+    /**
+     * @return Configure builds to run whether a repository owner or collaborator need to comment &#39;/gcbrun&#39;. Possible values: [&#34;COMMENTS_DISABLED&#34;, &#34;COMMENTS_ENABLED&#34;, &#34;COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY&#34;]
+     * 
+     */
     private String commentControl;
+    /**
+     * @return If true, branches that do NOT match the git_ref will trigger a build.
+     * 
+     */
     private Boolean invertRegex;
 
     private GetTriggerRepositoryEventConfigPullRequest() {}
+    /**
+     * @return Regex of branches to match.
+     * 
+     * The syntax of the regular expressions accepted is the syntax accepted by
+     * RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * 
+     */
     public String branch() {
         return this.branch;
     }
+    /**
+     * @return Configure builds to run whether a repository owner or collaborator need to comment &#39;/gcbrun&#39;. Possible values: [&#34;COMMENTS_DISABLED&#34;, &#34;COMMENTS_ENABLED&#34;, &#34;COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY&#34;]
+     * 
+     */
     public String commentControl() {
         return this.commentControl;
     }
+    /**
+     * @return If true, branches that do NOT match the git_ref will trigger a build.
+     * 
+     */
     public Boolean invertRegex() {
         return this.invertRegex;
     }

@@ -55,9 +55,23 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.instanceTerminationAction);
     }
 
+    /**
+     * Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     @Import(name="localSsdRecoveryTimeout")
     private @Nullable Output<InstanceSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeout;
 
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     public Optional<Output<InstanceSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeout() {
         return Optional.ofNullable(this.localSsdRecoveryTimeout);
     }
@@ -272,11 +286,29 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
             return instanceTerminationAction(Output.of(instanceTerminationAction));
         }
 
+        /**
+         * @param localSsdRecoveryTimeout Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdRecoveryTimeout(@Nullable Output<InstanceSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeout) {
             $.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
             return this;
         }
 
+        /**
+         * @param localSsdRecoveryTimeout Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdRecoveryTimeout(InstanceSchedulingLocalSsdRecoveryTimeoutArgs localSsdRecoveryTimeout) {
             return localSsdRecoveryTimeout(Output.of(localSsdRecoveryTimeout));
         }

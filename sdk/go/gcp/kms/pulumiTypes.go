@@ -1738,7 +1738,8 @@ func (o KeyRingImportJobPublicKeyArrayOutput) Index(i pulumi.IntInput) KeyRingIm
 type GetKMSCryptoKeyPrimary struct {
 	// The CryptoKey's name.
 	// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-	Name  string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The current state of the CryptoKeyVersion.
 	State string `pulumi:"state"`
 }
 
@@ -1756,7 +1757,8 @@ type GetKMSCryptoKeyPrimaryInput interface {
 type GetKMSCryptoKeyPrimaryArgs struct {
 	// The CryptoKey's name.
 	// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-	Name  pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The current state of the CryptoKeyVersion.
 	State pulumi.StringInput `pulumi:"state"`
 }
 
@@ -1817,6 +1819,7 @@ func (o GetKMSCryptoKeyPrimaryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyPrimary) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The current state of the CryptoKeyVersion.
 func (o GetKMSCryptoKeyPrimaryOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyPrimary) string { return v.State }).(pulumi.StringOutput)
 }
@@ -1948,7 +1951,10 @@ func (o GetKMSCryptoKeyVersionPublicKeyArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetKMSCryptoKeyVersionTemplate struct {
-	Algorithm       string `pulumi:"algorithm"`
+	// The algorithm to use when creating a version based on this template.
+	// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+	Algorithm string `pulumi:"algorithm"`
+	// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
 	ProtectionLevel string `pulumi:"protectionLevel"`
 }
 
@@ -1964,7 +1970,10 @@ type GetKMSCryptoKeyVersionTemplateInput interface {
 }
 
 type GetKMSCryptoKeyVersionTemplateArgs struct {
-	Algorithm       pulumi.StringInput `pulumi:"algorithm"`
+	// The algorithm to use when creating a version based on this template.
+	// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
 	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
 }
 
@@ -2019,10 +2028,13 @@ func (o GetKMSCryptoKeyVersionTemplateOutput) ToGetKMSCryptoKeyVersionTemplateOu
 	return o
 }
 
+// The algorithm to use when creating a version based on this template.
+// See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
 func (o GetKMSCryptoKeyVersionTemplateOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+// The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
 func (o GetKMSCryptoKeyVersionTemplateOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKMSCryptoKeyVersionTemplate) string { return v.ProtectionLevel }).(pulumi.StringOutput)
 }

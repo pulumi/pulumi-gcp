@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterDefaultSnatStatus {
+    /**
+     * @return When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
+     * 
+     */
     private Boolean disabled;
 
     private GetClusterDefaultSnatStatus() {}
+    /**
+     * @return When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
+     * 
+     */
     public Boolean disabled() {
         return this.disabled;
     }

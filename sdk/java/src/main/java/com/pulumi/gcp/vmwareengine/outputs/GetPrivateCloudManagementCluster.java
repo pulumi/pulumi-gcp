@@ -12,13 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPrivateCloudManagementCluster {
+    /**
+     * @return The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+     *   * Only contains 1-63 alphanumeric characters and hyphens
+     *   * Begins with an alphabetical character
+     *   * Ends with a non-hyphen character
+     *   * Not formatted as a UUID
+     *   * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+     * 
+     */
     private String clusterId;
+    /**
+     * @return The map of cluster node types in this cluster,
+     * where the key is canonical identifier of the node type (corresponds to the NodeType).
+     * 
+     */
     private List<GetPrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs;
 
     private GetPrivateCloudManagementCluster() {}
+    /**
+     * @return The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+     *   * Only contains 1-63 alphanumeric characters and hyphens
+     *   * Begins with an alphabetical character
+     *   * Ends with a non-hyphen character
+     *   * Not formatted as a UUID
+     *   * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+     * 
+     */
     public String clusterId() {
         return this.clusterId;
     }
+    /**
+     * @return The map of cluster node types in this cluster,
+     * where the key is canonical identifier of the node type (corresponds to the NodeType).
+     * 
+     */
     public List<GetPrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs() {
         return this.nodeTypeConfigs;
     }

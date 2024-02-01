@@ -16,16 +16,32 @@ public final class WorkloadComplianceStatusArgs extends com.pulumi.resources.Res
 
     public static final WorkloadComplianceStatusArgs Empty = new WorkloadComplianceStatusArgs();
 
+    /**
+     * Number of current orgPolicy violations which are acknowledged.
+     * 
+     */
     @Import(name="acknowledgedViolationCounts")
     private @Nullable Output<List<Integer>> acknowledgedViolationCounts;
 
+    /**
+     * @return Number of current orgPolicy violations which are acknowledged.
+     * 
+     */
     public Optional<Output<List<Integer>>> acknowledgedViolationCounts() {
         return Optional.ofNullable(this.acknowledgedViolationCounts);
     }
 
+    /**
+     * Number of current orgPolicy violations which are not acknowledged.
+     * 
+     */
     @Import(name="activeViolationCounts")
     private @Nullable Output<List<Integer>> activeViolationCounts;
 
+    /**
+     * @return Number of current orgPolicy violations which are not acknowledged.
+     * 
+     */
     public Optional<Output<List<Integer>>> activeViolationCounts() {
         return Optional.ofNullable(this.activeViolationCounts);
     }
@@ -55,28 +71,64 @@ public final class WorkloadComplianceStatusArgs extends com.pulumi.resources.Res
             $ = new WorkloadComplianceStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acknowledgedViolationCounts Number of current orgPolicy violations which are acknowledged.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acknowledgedViolationCounts(@Nullable Output<List<Integer>> acknowledgedViolationCounts) {
             $.acknowledgedViolationCounts = acknowledgedViolationCounts;
             return this;
         }
 
+        /**
+         * @param acknowledgedViolationCounts Number of current orgPolicy violations which are acknowledged.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acknowledgedViolationCounts(List<Integer> acknowledgedViolationCounts) {
             return acknowledgedViolationCounts(Output.of(acknowledgedViolationCounts));
         }
 
+        /**
+         * @param acknowledgedViolationCounts Number of current orgPolicy violations which are acknowledged.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acknowledgedViolationCounts(Integer... acknowledgedViolationCounts) {
             return acknowledgedViolationCounts(List.of(acknowledgedViolationCounts));
         }
 
+        /**
+         * @param activeViolationCounts Number of current orgPolicy violations which are not acknowledged.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activeViolationCounts(@Nullable Output<List<Integer>> activeViolationCounts) {
             $.activeViolationCounts = activeViolationCounts;
             return this;
         }
 
+        /**
+         * @param activeViolationCounts Number of current orgPolicy violations which are not acknowledged.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activeViolationCounts(List<Integer> activeViolationCounts) {
             return activeViolationCounts(Output.of(activeViolationCounts));
         }
 
+        /**
+         * @param activeViolationCounts Number of current orgPolicy violations which are not acknowledged.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activeViolationCounts(Integer... activeViolationCounts) {
             return activeViolationCounts(List.of(activeViolationCounts));
         }

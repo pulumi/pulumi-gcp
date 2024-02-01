@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolDefaultNodeConfigDefaultResult
     {
+        /// <summary>
+        /// GCFS configuration for this node.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult> GcfsConfigs;
+        /// <summary>
+        /// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+        /// </summary>
         public readonly string LoggingVariant;
 
         [OutputConstructor]

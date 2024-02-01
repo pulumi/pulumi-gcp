@@ -13,21 +13,59 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
+    /**
+     * @return Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and comply
+     * with RFC1035.
+     * 
+     */
     private String chainName;
+    /**
+     * @return Whether to perform a &#39;guest aware&#39; snapshot.
+     * 
+     */
     private Boolean guestFlush;
+    /**
+     * @return A set of key-value pairs.
+     * 
+     */
     private Map<String,String> labels;
+    /**
+     * @return Cloud Storage bucket location to store the auto snapshot
+     * (regional or multi-regional)
+     * 
+     */
     private List<String> storageLocations;
 
     private GetResourcePolicySnapshotSchedulePolicySnapshotProperty() {}
+    /**
+     * @return Creates the new snapshot in the snapshot chain labeled with the
+     * specified name. The chain name must be 1-63 characters long and comply
+     * with RFC1035.
+     * 
+     */
     public String chainName() {
         return this.chainName;
     }
+    /**
+     * @return Whether to perform a &#39;guest aware&#39; snapshot.
+     * 
+     */
     public Boolean guestFlush() {
         return this.guestFlush;
     }
+    /**
+     * @return A set of key-value pairs.
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels;
     }
+    /**
+     * @return Cloud Storage bucket location to store the auto snapshot
+     * (regional or multi-regional)
+     * 
+     */
     public List<String> storageLocations() {
         return this.storageLocations;
     }

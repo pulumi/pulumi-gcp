@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterGatewayApiConfigResult
     {
+        /// <summary>
+        /// The Gateway API release channel to use for Gateway API.
+        /// </summary>
         public readonly string Channel;
 
         [OutputConstructor]

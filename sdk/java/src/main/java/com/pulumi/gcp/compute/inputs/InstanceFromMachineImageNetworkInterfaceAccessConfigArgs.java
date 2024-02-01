@@ -15,30 +15,62 @@ public final class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs exte
 
     public static final InstanceFromMachineImageNetworkInterfaceAccessConfigArgs Empty = new InstanceFromMachineImageNetworkInterfaceAccessConfigArgs();
 
+    /**
+     * The IP address that is be 1:1 mapped to the instance&#39;s network ip.
+     * 
+     */
     @Import(name="natIp")
     private @Nullable Output<String> natIp;
 
+    /**
+     * @return The IP address that is be 1:1 mapped to the instance&#39;s network ip.
+     * 
+     */
     public Optional<Output<String>> natIp() {
         return Optional.ofNullable(this.natIp);
     }
 
+    /**
+     * The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+     * 
+     */
     @Import(name="networkTier")
     private @Nullable Output<String> networkTier;
 
+    /**
+     * @return The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+     * 
+     */
     public Optional<Output<String>> networkTier() {
         return Optional.ofNullable(this.networkTier);
     }
 
+    /**
+     * The DNS domain name for the public PTR record.
+     * 
+     */
     @Import(name="publicPtrDomainName")
     private @Nullable Output<String> publicPtrDomainName;
 
+    /**
+     * @return The DNS domain name for the public PTR record.
+     * 
+     */
     public Optional<Output<String>> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }
 
+    /**
+     * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     @Import(name="securityPolicy")
     private @Nullable Output<String> securityPolicy;
 
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     public Optional<Output<String>> securityPolicy() {
         return Optional.ofNullable(this.securityPolicy);
     }
@@ -70,38 +102,86 @@ public final class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs exte
             $ = new InstanceFromMachineImageNetworkInterfaceAccessConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param natIp The IP address that is be 1:1 mapped to the instance&#39;s network ip.
+         * 
+         * @return builder
+         * 
+         */
         public Builder natIp(@Nullable Output<String> natIp) {
             $.natIp = natIp;
             return this;
         }
 
+        /**
+         * @param natIp The IP address that is be 1:1 mapped to the instance&#39;s network ip.
+         * 
+         * @return builder
+         * 
+         */
         public Builder natIp(String natIp) {
             return natIp(Output.of(natIp));
         }
 
+        /**
+         * @param networkTier The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkTier(@Nullable Output<String> networkTier) {
             $.networkTier = networkTier;
             return this;
         }
 
+        /**
+         * @param networkTier The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkTier(String networkTier) {
             return networkTier(Output.of(networkTier));
         }
 
+        /**
+         * @param publicPtrDomainName The DNS domain name for the public PTR record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPtrDomainName(@Nullable Output<String> publicPtrDomainName) {
             $.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
 
+        /**
+         * @param publicPtrDomainName The DNS domain name for the public PTR record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             return publicPtrDomainName(Output.of(publicPtrDomainName));
         }
 
+        /**
+         * @param securityPolicy A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
             $.securityPolicy = securityPolicy;
             return this;
         }
 
+        /**
+         * @param securityPolicy A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicy(String securityPolicy) {
             return securityPolicy(Output.of(securityPolicy));
         }

@@ -13621,10 +13621,14 @@ func (o TableTableConstraintsPrimaryKeyPtrOutput) Columns() pulumi.StringArrayOu
 }
 
 type TableTableReplicationInfo struct {
-	ReplicationIntervalMs *int   `pulumi:"replicationIntervalMs"`
-	SourceDatasetId       string `pulumi:"sourceDatasetId"`
-	SourceProjectId       string `pulumi:"sourceProjectId"`
-	SourceTableId         string `pulumi:"sourceTableId"`
+	// The interval at which the source materialized view is polled for updates. The default is 300000.
+	ReplicationIntervalMs *int `pulumi:"replicationIntervalMs"`
+	// The ID of the source dataset.
+	SourceDatasetId string `pulumi:"sourceDatasetId"`
+	// The ID of the source project.
+	SourceProjectId string `pulumi:"sourceProjectId"`
+	// The ID of the source materialized view.
+	SourceTableId string `pulumi:"sourceTableId"`
 }
 
 // TableTableReplicationInfoInput is an input type that accepts TableTableReplicationInfoArgs and TableTableReplicationInfoOutput values.
@@ -13639,10 +13643,14 @@ type TableTableReplicationInfoInput interface {
 }
 
 type TableTableReplicationInfoArgs struct {
+	// The interval at which the source materialized view is polled for updates. The default is 300000.
 	ReplicationIntervalMs pulumi.IntPtrInput `pulumi:"replicationIntervalMs"`
-	SourceDatasetId       pulumi.StringInput `pulumi:"sourceDatasetId"`
-	SourceProjectId       pulumi.StringInput `pulumi:"sourceProjectId"`
-	SourceTableId         pulumi.StringInput `pulumi:"sourceTableId"`
+	// The ID of the source dataset.
+	SourceDatasetId pulumi.StringInput `pulumi:"sourceDatasetId"`
+	// The ID of the source project.
+	SourceProjectId pulumi.StringInput `pulumi:"sourceProjectId"`
+	// The ID of the source materialized view.
+	SourceTableId pulumi.StringInput `pulumi:"sourceTableId"`
 }
 
 func (TableTableReplicationInfoArgs) ElementType() reflect.Type {
@@ -13722,18 +13730,22 @@ func (o TableTableReplicationInfoOutput) ToTableTableReplicationInfoPtrOutputWit
 	}).(TableTableReplicationInfoPtrOutput)
 }
 
+// The interval at which the source materialized view is polled for updates. The default is 300000.
 func (o TableTableReplicationInfoOutput) ReplicationIntervalMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TableTableReplicationInfo) *int { return v.ReplicationIntervalMs }).(pulumi.IntPtrOutput)
 }
 
+// The ID of the source dataset.
 func (o TableTableReplicationInfoOutput) SourceDatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v TableTableReplicationInfo) string { return v.SourceDatasetId }).(pulumi.StringOutput)
 }
 
+// The ID of the source project.
 func (o TableTableReplicationInfoOutput) SourceProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v TableTableReplicationInfo) string { return v.SourceProjectId }).(pulumi.StringOutput)
 }
 
+// The ID of the source materialized view.
 func (o TableTableReplicationInfoOutput) SourceTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v TableTableReplicationInfo) string { return v.SourceTableId }).(pulumi.StringOutput)
 }
@@ -13762,6 +13774,7 @@ func (o TableTableReplicationInfoPtrOutput) Elem() TableTableReplicationInfoOutp
 	}).(TableTableReplicationInfoOutput)
 }
 
+// The interval at which the source materialized view is polled for updates. The default is 300000.
 func (o TableTableReplicationInfoPtrOutput) ReplicationIntervalMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TableTableReplicationInfo) *int {
 		if v == nil {
@@ -13771,6 +13784,7 @@ func (o TableTableReplicationInfoPtrOutput) ReplicationIntervalMs() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// The ID of the source dataset.
 func (o TableTableReplicationInfoPtrOutput) SourceDatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableTableReplicationInfo) *string {
 		if v == nil {
@@ -13780,6 +13794,7 @@ func (o TableTableReplicationInfoPtrOutput) SourceDatasetId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ID of the source project.
 func (o TableTableReplicationInfoPtrOutput) SourceProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableTableReplicationInfo) *string {
 		if v == nil {
@@ -13789,6 +13804,7 @@ func (o TableTableReplicationInfoPtrOutput) SourceProjectId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The ID of the source materialized view.
 func (o TableTableReplicationInfoPtrOutput) SourceTableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableTableReplicationInfo) *string {
 		if v == nil {
@@ -14189,15 +14205,47 @@ func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
 }
 
 type GetDatasetAccessType struct {
-	Datasets     []GetDatasetAccessDataset `pulumi:"datasets"`
-	Domain       string                    `pulumi:"domain"`
-	GroupByEmail string                    `pulumi:"groupByEmail"`
-	IamMember    string                    `pulumi:"iamMember"`
-	Role         string                    `pulumi:"role"`
-	Routines     []GetDatasetAccessRoutine `pulumi:"routines"`
-	SpecialGroup string                    `pulumi:"specialGroup"`
-	UserByEmail  string                    `pulumi:"userByEmail"`
-	Views        []GetDatasetAccessView    `pulumi:"views"`
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
+	Datasets []GetDatasetAccessDataset `pulumi:"datasets"`
+	// A domain to grant access to. Any users signed in with the
+	// domain specified will be granted the specified access
+	Domain string `pulumi:"domain"`
+	// An email address of a Google Group to grant access to.
+	GroupByEmail string `pulumi:"groupByEmail"`
+	// Some other type of member that appears in the IAM Policy but isn't a user,
+	// group, domain, or special group. For example: 'allUsers'
+	IamMember string `pulumi:"iamMember"`
+	// Describes the rights granted to the user specified by the other
+	// member of the access object. Basic, predefined, and custom roles
+	// are supported. Predefined roles that have equivalent basic roles
+	// are swapped by the API to their basic counterparts. See
+	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
+	Role string `pulumi:"role"`
+	// A routine from a different dataset to grant access to. Queries
+	// executed against that routine will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that routine is updated by any user, access to the routine
+	// needs to be granted again via an update operation.
+	Routines []GetDatasetAccessRoutine `pulumi:"routines"`
+	// A special group to grant access to. Possible values include:
+	//
+	// * 'projectOwners': Owners of the enclosing project.
+	//
+	// * 'projectReaders': Readers of the enclosing project.
+	//
+	// * 'projectWriters': Writers of the enclosing project.
+	//
+	// * 'allAuthenticatedUsers': All authenticated BigQuery users.
+	SpecialGroup string `pulumi:"specialGroup"`
+	// An email address of a user to grant access to. For example:
+	// fred@example.com
+	UserByEmail string `pulumi:"userByEmail"`
+	// A view from a different dataset to grant access to. Queries
+	// executed against that view will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that view is updated by any user, access to the view
+	// needs to be granted again via an update operation.
+	Views []GetDatasetAccessView `pulumi:"views"`
 }
 
 // GetDatasetAccessTypeInput is an input type that accepts GetDatasetAccessTypeArgs and GetDatasetAccessTypeOutput values.
@@ -14212,15 +14260,47 @@ type GetDatasetAccessTypeInput interface {
 }
 
 type GetDatasetAccessTypeArgs struct {
-	Datasets     GetDatasetAccessDatasetArrayInput `pulumi:"datasets"`
-	Domain       pulumi.StringInput                `pulumi:"domain"`
-	GroupByEmail pulumi.StringInput                `pulumi:"groupByEmail"`
-	IamMember    pulumi.StringInput                `pulumi:"iamMember"`
-	Role         pulumi.StringInput                `pulumi:"role"`
-	Routines     GetDatasetAccessRoutineArrayInput `pulumi:"routines"`
-	SpecialGroup pulumi.StringInput                `pulumi:"specialGroup"`
-	UserByEmail  pulumi.StringInput                `pulumi:"userByEmail"`
-	Views        GetDatasetAccessViewArrayInput    `pulumi:"views"`
+	// Grants all resources of particular types in a particular dataset read access to the current dataset.
+	Datasets GetDatasetAccessDatasetArrayInput `pulumi:"datasets"`
+	// A domain to grant access to. Any users signed in with the
+	// domain specified will be granted the specified access
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// An email address of a Google Group to grant access to.
+	GroupByEmail pulumi.StringInput `pulumi:"groupByEmail"`
+	// Some other type of member that appears in the IAM Policy but isn't a user,
+	// group, domain, or special group. For example: 'allUsers'
+	IamMember pulumi.StringInput `pulumi:"iamMember"`
+	// Describes the rights granted to the user specified by the other
+	// member of the access object. Basic, predefined, and custom roles
+	// are supported. Predefined roles that have equivalent basic roles
+	// are swapped by the API to their basic counterparts. See
+	// [official docs](https://cloud.google.com/bigquery/docs/access-control).
+	Role pulumi.StringInput `pulumi:"role"`
+	// A routine from a different dataset to grant access to. Queries
+	// executed against that routine will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that routine is updated by any user, access to the routine
+	// needs to be granted again via an update operation.
+	Routines GetDatasetAccessRoutineArrayInput `pulumi:"routines"`
+	// A special group to grant access to. Possible values include:
+	//
+	// * 'projectOwners': Owners of the enclosing project.
+	//
+	// * 'projectReaders': Readers of the enclosing project.
+	//
+	// * 'projectWriters': Writers of the enclosing project.
+	//
+	// * 'allAuthenticatedUsers': All authenticated BigQuery users.
+	SpecialGroup pulumi.StringInput `pulumi:"specialGroup"`
+	// An email address of a user to grant access to. For example:
+	// fred@example.com
+	UserByEmail pulumi.StringInput `pulumi:"userByEmail"`
+	// A view from a different dataset to grant access to. Queries
+	// executed against that view will have read access to tables in
+	// this dataset. The role field is not required when this field is
+	// set. If that view is updated by any user, access to the view
+	// needs to be granted again via an update operation.
+	Views GetDatasetAccessViewArrayInput `pulumi:"views"`
 }
 
 func (GetDatasetAccessTypeArgs) ElementType() reflect.Type {
@@ -14274,38 +14354,70 @@ func (o GetDatasetAccessTypeOutput) ToGetDatasetAccessTypeOutputWithContext(ctx 
 	return o
 }
 
+// Grants all resources of particular types in a particular dataset read access to the current dataset.
 func (o GetDatasetAccessTypeOutput) Datasets() GetDatasetAccessDatasetArrayOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) []GetDatasetAccessDataset { return v.Datasets }).(GetDatasetAccessDatasetArrayOutput)
 }
 
+// A domain to grant access to. Any users signed in with the
+// domain specified will be granted the specified access
 func (o GetDatasetAccessTypeOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// An email address of a Google Group to grant access to.
 func (o GetDatasetAccessTypeOutput) GroupByEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) string { return v.GroupByEmail }).(pulumi.StringOutput)
 }
 
+// Some other type of member that appears in the IAM Policy but isn't a user,
+// group, domain, or special group. For example: 'allUsers'
 func (o GetDatasetAccessTypeOutput) IamMember() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) string { return v.IamMember }).(pulumi.StringOutput)
 }
 
+// Describes the rights granted to the user specified by the other
+// member of the access object. Basic, predefined, and custom roles
+// are supported. Predefined roles that have equivalent basic roles
+// are swapped by the API to their basic counterparts. See
+// [official docs](https://cloud.google.com/bigquery/docs/access-control).
 func (o GetDatasetAccessTypeOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// A routine from a different dataset to grant access to. Queries
+// executed against that routine will have read access to tables in
+// this dataset. The role field is not required when this field is
+// set. If that routine is updated by any user, access to the routine
+// needs to be granted again via an update operation.
 func (o GetDatasetAccessTypeOutput) Routines() GetDatasetAccessRoutineArrayOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) []GetDatasetAccessRoutine { return v.Routines }).(GetDatasetAccessRoutineArrayOutput)
 }
 
+// A special group to grant access to. Possible values include:
+//
+// * 'projectOwners': Owners of the enclosing project.
+//
+// * 'projectReaders': Readers of the enclosing project.
+//
+// * 'projectWriters': Writers of the enclosing project.
+//
+// * 'allAuthenticatedUsers': All authenticated BigQuery users.
 func (o GetDatasetAccessTypeOutput) SpecialGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) string { return v.SpecialGroup }).(pulumi.StringOutput)
 }
 
+// An email address of a user to grant access to. For example:
+// fred@example.com
 func (o GetDatasetAccessTypeOutput) UserByEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) string { return v.UserByEmail }).(pulumi.StringOutput)
 }
 
+// A view from a different dataset to grant access to. Queries
+// executed against that view will have read access to tables in
+// this dataset. The role field is not required when this field is
+// set. If that view is updated by any user, access to the view
+// needs to be granted again via an update operation.
 func (o GetDatasetAccessTypeOutput) Views() GetDatasetAccessViewArrayOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) []GetDatasetAccessView { return v.Views }).(GetDatasetAccessViewArrayOutput)
 }
@@ -14331,8 +14443,11 @@ func (o GetDatasetAccessTypeArrayOutput) Index(i pulumi.IntInput) GetDatasetAcce
 }
 
 type GetDatasetAccessDataset struct {
-	Datasets    []GetDatasetAccessDatasetDataset `pulumi:"datasets"`
-	TargetTypes []string                         `pulumi:"targetTypes"`
+	// The dataset this entry applies to
+	Datasets []GetDatasetAccessDatasetDataset `pulumi:"datasets"`
+	// Which resources in the dataset this entry applies to. Currently, only views are supported,
+	// but additional target types may be added in the future. Possible values: VIEWS
+	TargetTypes []string `pulumi:"targetTypes"`
 }
 
 // GetDatasetAccessDatasetInput is an input type that accepts GetDatasetAccessDatasetArgs and GetDatasetAccessDatasetOutput values.
@@ -14347,8 +14462,11 @@ type GetDatasetAccessDatasetInput interface {
 }
 
 type GetDatasetAccessDatasetArgs struct {
-	Datasets    GetDatasetAccessDatasetDatasetArrayInput `pulumi:"datasets"`
-	TargetTypes pulumi.StringArrayInput                  `pulumi:"targetTypes"`
+	// The dataset this entry applies to
+	Datasets GetDatasetAccessDatasetDatasetArrayInput `pulumi:"datasets"`
+	// Which resources in the dataset this entry applies to. Currently, only views are supported,
+	// but additional target types may be added in the future. Possible values: VIEWS
+	TargetTypes pulumi.StringArrayInput `pulumi:"targetTypes"`
 }
 
 func (GetDatasetAccessDatasetArgs) ElementType() reflect.Type {
@@ -14402,10 +14520,13 @@ func (o GetDatasetAccessDatasetOutput) ToGetDatasetAccessDatasetOutputWithContex
 	return o
 }
 
+// The dataset this entry applies to
 func (o GetDatasetAccessDatasetOutput) Datasets() GetDatasetAccessDatasetDatasetArrayOutput {
 	return o.ApplyT(func(v GetDatasetAccessDataset) []GetDatasetAccessDatasetDataset { return v.Datasets }).(GetDatasetAccessDatasetDatasetArrayOutput)
 }
 
+// Which resources in the dataset this entry applies to. Currently, only views are supported,
+// but additional target types may be added in the future. Possible values: VIEWS
 func (o GetDatasetAccessDatasetOutput) TargetTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatasetAccessDataset) []string { return v.TargetTypes }).(pulumi.StringArrayOutput)
 }
@@ -14433,6 +14554,7 @@ func (o GetDatasetAccessDatasetArrayOutput) Index(i pulumi.IntInput) GetDatasetA
 type GetDatasetAccessDatasetDataset struct {
 	// The dataset ID.
 	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this table.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -14450,6 +14572,7 @@ type GetDatasetAccessDatasetDatasetInput interface {
 type GetDatasetAccessDatasetDatasetArgs struct {
 	// The dataset ID.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -14509,6 +14632,7 @@ func (o GetDatasetAccessDatasetDatasetOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessDatasetDataset) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
+// The ID of the project containing this table.
 func (o GetDatasetAccessDatasetDatasetOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessDatasetDataset) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -14536,7 +14660,11 @@ func (o GetDatasetAccessDatasetDatasetArrayOutput) Index(i pulumi.IntInput) GetD
 type GetDatasetAccessRoutine struct {
 	// The dataset ID.
 	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this table.
 	ProjectId string `pulumi:"projectId"`
+	// The ID of the routine. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 256 characters.
 	RoutineId string `pulumi:"routineId"`
 }
 
@@ -14554,7 +14682,11 @@ type GetDatasetAccessRoutineInput interface {
 type GetDatasetAccessRoutineArgs struct {
 	// The dataset ID.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The ID of the routine. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 256 characters.
 	RoutineId pulumi.StringInput `pulumi:"routineId"`
 }
 
@@ -14614,10 +14746,14 @@ func (o GetDatasetAccessRoutineOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessRoutine) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
+// The ID of the project containing this table.
 func (o GetDatasetAccessRoutineOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessRoutine) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// The ID of the routine. The ID must contain only letters (a-z,
+// A-Z), numbers (0-9), or underscores (_). The maximum length
+// is 256 characters.
 func (o GetDatasetAccessRoutineOutput) RoutineId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessRoutine) string { return v.RoutineId }).(pulumi.StringOutput)
 }
@@ -14645,8 +14781,12 @@ func (o GetDatasetAccessRoutineArrayOutput) Index(i pulumi.IntInput) GetDatasetA
 type GetDatasetAccessView struct {
 	// The dataset ID.
 	DatasetId string `pulumi:"datasetId"`
+	// The ID of the project containing this table.
 	ProjectId string `pulumi:"projectId"`
-	TableId   string `pulumi:"tableId"`
+	// The ID of the table. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 1,024 characters.
+	TableId string `pulumi:"tableId"`
 }
 
 // GetDatasetAccessViewInput is an input type that accepts GetDatasetAccessViewArgs and GetDatasetAccessViewOutput values.
@@ -14663,8 +14803,12 @@ type GetDatasetAccessViewInput interface {
 type GetDatasetAccessViewArgs struct {
 	// The dataset ID.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
+	// The ID of the project containing this table.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	TableId   pulumi.StringInput `pulumi:"tableId"`
+	// The ID of the table. The ID must contain only letters (a-z,
+	// A-Z), numbers (0-9), or underscores (_). The maximum length
+	// is 1,024 characters.
+	TableId pulumi.StringInput `pulumi:"tableId"`
 }
 
 func (GetDatasetAccessViewArgs) ElementType() reflect.Type {
@@ -14723,10 +14867,14 @@ func (o GetDatasetAccessViewOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessView) string { return v.DatasetId }).(pulumi.StringOutput)
 }
 
+// The ID of the project containing this table.
 func (o GetDatasetAccessViewOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessView) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
+// The ID of the table. The ID must contain only letters (a-z,
+// A-Z), numbers (0-9), or underscores (_). The maximum length
+// is 1,024 characters.
 func (o GetDatasetAccessViewOutput) TableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetAccessView) string { return v.TableId }).(pulumi.StringOutput)
 }
@@ -14752,6 +14900,9 @@ func (o GetDatasetAccessViewArrayOutput) Index(i pulumi.IntInput) GetDatasetAcce
 }
 
 type GetDatasetDefaultEncryptionConfiguration struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination
+	// BigQuery table. The BigQuery Service Account associated with your project requires
+	// access to this encryption key.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -14767,6 +14918,9 @@ type GetDatasetDefaultEncryptionConfigurationInput interface {
 }
 
 type GetDatasetDefaultEncryptionConfigurationArgs struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination
+	// BigQuery table. The BigQuery Service Account associated with your project requires
+	// access to this encryption key.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
@@ -14821,6 +14975,9 @@ func (o GetDatasetDefaultEncryptionConfigurationOutput) ToGetDatasetDefaultEncry
 	return o
 }
 
+// Describes the Cloud KMS encryption key that will be used to protect destination
+// BigQuery table. The BigQuery Service Account associated with your project requires
+// access to this encryption key.
 func (o GetDatasetDefaultEncryptionConfigurationOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetDefaultEncryptionConfiguration) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -14846,7 +15003,10 @@ func (o GetDatasetDefaultEncryptionConfigurationArrayOutput) Index(i pulumi.IntI
 }
 
 type GetDatasetExternalDatasetReference struct {
-	Connection     string `pulumi:"connection"`
+	// The connection id that is used to access the externalSource.
+	// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+	Connection string `pulumi:"connection"`
+	// External source that backs this dataset.
 	ExternalSource string `pulumi:"externalSource"`
 }
 
@@ -14862,7 +15022,10 @@ type GetDatasetExternalDatasetReferenceInput interface {
 }
 
 type GetDatasetExternalDatasetReferenceArgs struct {
-	Connection     pulumi.StringInput `pulumi:"connection"`
+	// The connection id that is used to access the externalSource.
+	// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+	Connection pulumi.StringInput `pulumi:"connection"`
+	// External source that backs this dataset.
 	ExternalSource pulumi.StringInput `pulumi:"externalSource"`
 }
 
@@ -14917,10 +15080,13 @@ func (o GetDatasetExternalDatasetReferenceOutput) ToGetDatasetExternalDatasetRef
 	return o
 }
 
+// The connection id that is used to access the externalSource.
+// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
 func (o GetDatasetExternalDatasetReferenceOutput) Connection() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetExternalDatasetReference) string { return v.Connection }).(pulumi.StringOutput)
 }
 
+// External source that backs this dataset.
 func (o GetDatasetExternalDatasetReferenceOutput) ExternalSource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatasetExternalDatasetReference) string { return v.ExternalSource }).(pulumi.StringOutput)
 }

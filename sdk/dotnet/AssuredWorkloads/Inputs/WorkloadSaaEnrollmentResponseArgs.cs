@@ -14,12 +14,19 @@ namespace Pulumi.Gcp.AssuredWorkloads.Inputs
     {
         [Input("setupErrors")]
         private InputList<string>? _setupErrors;
+
+        /// <summary>
+        /// Indicates SAA enrollment setup error if any.
+        /// </summary>
         public InputList<string> SetupErrors
         {
             get => _setupErrors ?? (_setupErrors = new InputList<string>());
             set => _setupErrors = value;
         }
 
+        /// <summary>
+        /// Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+        /// </summary>
         [Input("setupStatus")]
         public Input<string>? SetupStatus { get; set; }
 

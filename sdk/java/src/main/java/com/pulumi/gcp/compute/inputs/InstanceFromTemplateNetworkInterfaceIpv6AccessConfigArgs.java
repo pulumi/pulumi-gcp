@@ -16,16 +16,32 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs exte
 
     public static final InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs Empty = new InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs();
 
+    /**
+     * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     @Import(name="externalIpv6")
     private @Nullable Output<String> externalIpv6;
 
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     public Optional<Output<String>> externalIpv6() {
         return Optional.ofNullable(this.externalIpv6);
     }
 
+    /**
+     * The prefix length of the external IPv6 range.
+     * 
+     */
     @Import(name="externalIpv6PrefixLength")
     private @Nullable Output<String> externalIpv6PrefixLength;
 
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     public Optional<Output<String>> externalIpv6PrefixLength() {
         return Optional.ofNullable(this.externalIpv6PrefixLength);
     }
@@ -47,23 +63,47 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs exte
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+     * 
+     */
     @Import(name="networkTier", required=true)
     private Output<String> networkTier;
 
+    /**
+     * @return The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+     * 
+     */
     public Output<String> networkTier() {
         return this.networkTier;
     }
 
+    /**
+     * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     @Import(name="publicPtrDomainName")
     private @Nullable Output<String> publicPtrDomainName;
 
+    /**
+     * @return The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+     * 
+     */
     public Optional<Output<String>> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }
 
+    /**
+     * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     @Import(name="securityPolicy")
     private @Nullable Output<String> securityPolicy;
 
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     public Optional<Output<String>> securityPolicy() {
         return Optional.ofNullable(this.securityPolicy);
     }
@@ -97,20 +137,44 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs exte
             $ = new InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6(@Nullable Output<String> externalIpv6) {
             $.externalIpv6 = externalIpv6;
             return this;
         }
 
+        /**
+         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6(String externalIpv6) {
             return externalIpv6(Output.of(externalIpv6));
         }
 
+        /**
+         * @param externalIpv6PrefixLength The prefix length of the external IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6PrefixLength(@Nullable Output<String> externalIpv6PrefixLength) {
             $.externalIpv6PrefixLength = externalIpv6PrefixLength;
             return this;
         }
 
+        /**
+         * @param externalIpv6PrefixLength The prefix length of the external IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6PrefixLength(String externalIpv6PrefixLength) {
             return externalIpv6PrefixLength(Output.of(externalIpv6PrefixLength));
         }
@@ -138,29 +202,65 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs exte
             return name(Output.of(name));
         }
 
+        /**
+         * @param networkTier The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkTier(Output<String> networkTier) {
             $.networkTier = networkTier;
             return this;
         }
 
+        /**
+         * @param networkTier The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkTier(String networkTier) {
             return networkTier(Output.of(networkTier));
         }
 
+        /**
+         * @param publicPtrDomainName The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPtrDomainName(@Nullable Output<String> publicPtrDomainName) {
             $.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
 
+        /**
+         * @param publicPtrDomainName The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             return publicPtrDomainName(Output.of(publicPtrDomainName));
         }
 
+        /**
+         * @param securityPolicy A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
             $.securityPolicy = securityPolicy;
             return this;
         }
 
+        /**
+         * @param securityPolicy A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicy(String securityPolicy) {
             return securityPolicy(Output.of(securityPolicy));
         }

@@ -17,16 +17,32 @@ public final class UserSqlServerUserDetailArgs extends com.pulumi.resources.Reso
 
     public static final UserSqlServerUserDetailArgs Empty = new UserSqlServerUserDetailArgs();
 
+    /**
+     * If the user has been disabled.
+     * 
+     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
+    /**
+     * @return If the user has been disabled.
+     * 
+     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
+    /**
+     * The server roles for this user in the database.
+     * 
+     */
     @Import(name="serverRoles")
     private @Nullable Output<List<String>> serverRoles;
 
+    /**
+     * @return The server roles for this user in the database.
+     * 
+     */
     public Optional<Output<List<String>>> serverRoles() {
         return Optional.ofNullable(this.serverRoles);
     }
@@ -56,24 +72,54 @@ public final class UserSqlServerUserDetailArgs extends com.pulumi.resources.Reso
             $ = new UserSqlServerUserDetailArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disabled If the user has been disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
+        /**
+         * @param disabled If the user has been disabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }
 
+        /**
+         * @param serverRoles The server roles for this user in the database.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverRoles(@Nullable Output<List<String>> serverRoles) {
             $.serverRoles = serverRoles;
             return this;
         }
 
+        /**
+         * @param serverRoles The server roles for this user in the database.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverRoles(List<String> serverRoles) {
             return serverRoles(Output.of(serverRoles));
         }
 
+        /**
+         * @param serverRoles The server roles for this user in the database.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serverRoles(String... serverRoles) {
             return serverRoles(List.of(serverRoles));
         }

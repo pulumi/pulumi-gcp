@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Organizations
     ///             {
     ///                 ExemptedMembers = new[]
     ///                 {
-    ///                     "user:joebloggs@hashicorp.com",
+    ///                     "user:joebloggs@example.com",
     ///                 },
     ///                 LogType = "DATA_READ",
     ///             },

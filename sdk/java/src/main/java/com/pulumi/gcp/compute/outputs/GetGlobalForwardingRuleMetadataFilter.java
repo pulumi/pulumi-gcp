@@ -12,13 +12,47 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGlobalForwardingRuleMetadataFilter {
+    /**
+     * @return The list of label value pairs that must match labels in the
+     * provided metadata based on filterMatchCriteria
+     * 
+     * This list must not be empty and can have at the most 64 entries.
+     * 
+     */
     private List<GetGlobalForwardingRuleMetadataFilterFilterLabel> filterLabels;
+    /**
+     * @return Specifies how individual filterLabel matches within the list of
+     * filterLabels contribute towards the overall metadataFilter match.
+     * 
+     * MATCH_ANY - At least one of the filterLabels must have a matching
+     * label in the provided metadata.
+     * MATCH_ALL - All filterLabels must have matching labels in the
+     * provided metadata. Possible values: [&#34;MATCH_ANY&#34;, &#34;MATCH_ALL&#34;]
+     * 
+     */
     private String filterMatchCriteria;
 
     private GetGlobalForwardingRuleMetadataFilter() {}
+    /**
+     * @return The list of label value pairs that must match labels in the
+     * provided metadata based on filterMatchCriteria
+     * 
+     * This list must not be empty and can have at the most 64 entries.
+     * 
+     */
     public List<GetGlobalForwardingRuleMetadataFilterFilterLabel> filterLabels() {
         return this.filterLabels;
     }
+    /**
+     * @return Specifies how individual filterLabel matches within the list of
+     * filterLabels contribute towards the overall metadataFilter match.
+     * 
+     * MATCH_ANY - At least one of the filterLabels must have a matching
+     * label in the provided metadata.
+     * MATCH_ALL - All filterLabels must have matching labels in the
+     * provided metadata. Possible values: [&#34;MATCH_ANY&#34;, &#34;MATCH_ALL&#34;]
+     * 
+     */
     public String filterMatchCriteria() {
         return this.filterMatchCriteria;
     }

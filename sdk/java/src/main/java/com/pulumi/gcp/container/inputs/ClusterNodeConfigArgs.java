@@ -119,9 +119,17 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.diskType);
     }
 
+    /**
+     * List of kubernetes taints applied to each node.
+     * 
+     */
     @Import(name="effectiveTaints")
     private @Nullable Output<List<ClusterNodeConfigEffectiveTaintArgs>> effectiveTaints;
 
+    /**
+     * @return List of kubernetes taints applied to each node.
+     * 
+     */
     public Optional<Output<List<ClusterNodeConfigEffectiveTaintArgs>>> effectiveTaints() {
         return Optional.ofNullable(this.effectiveTaints);
     }
@@ -433,9 +441,17 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.gvnic);
     }
 
+    /**
+     * The maintenance policy for the hosts on which the GKE VMs run on.
+     * 
+     */
     @Import(name="hostMaintenancePolicy")
     private @Nullable Output<ClusterNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy;
 
+    /**
+     * @return The maintenance policy for the hosts on which the GKE VMs run on.
+     * 
+     */
     public Optional<Output<ClusterNodeConfigHostMaintenancePolicyArgs>> hostMaintenancePolicy() {
         return Optional.ofNullable(this.hostMaintenancePolicy);
     }
@@ -751,9 +767,17 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.resourceLabels);
     }
 
+    /**
+     * Sandbox configuration for this node.
+     * 
+     */
     @Import(name="sandboxConfig")
     private @Nullable Output<ClusterNodeConfigSandboxConfigArgs> sandboxConfig;
 
+    /**
+     * @return Sandbox configuration for this node.
+     * 
+     */
     public Optional<Output<ClusterNodeConfigSandboxConfigArgs>> sandboxConfig() {
         return Optional.ofNullable(this.sandboxConfig);
     }
@@ -1102,15 +1126,33 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
             return diskType(Output.of(diskType));
         }
 
+        /**
+         * @param effectiveTaints List of kubernetes taints applied to each node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTaints(@Nullable Output<List<ClusterNodeConfigEffectiveTaintArgs>> effectiveTaints) {
             $.effectiveTaints = effectiveTaints;
             return this;
         }
 
+        /**
+         * @param effectiveTaints List of kubernetes taints applied to each node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTaints(List<ClusterNodeConfigEffectiveTaintArgs> effectiveTaints) {
             return effectiveTaints(Output.of(effectiveTaints));
         }
 
+        /**
+         * @param effectiveTaints List of kubernetes taints applied to each node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTaints(ClusterNodeConfigEffectiveTaintArgs... effectiveTaints) {
             return effectiveTaints(List.of(effectiveTaints));
         }
@@ -1475,11 +1517,23 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
             return gvnic(Output.of(gvnic));
         }
 
+        /**
+         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostMaintenancePolicy(@Nullable Output<ClusterNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy) {
             $.hostMaintenancePolicy = hostMaintenancePolicy;
             return this;
         }
 
+        /**
+         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostMaintenancePolicy(ClusterNodeConfigHostMaintenancePolicyArgs hostMaintenancePolicy) {
             return hostMaintenancePolicy(Output.of(hostMaintenancePolicy));
         }
@@ -1899,11 +1953,23 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
             return resourceLabels(Output.of(resourceLabels));
         }
 
+        /**
+         * @param sandboxConfig Sandbox configuration for this node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sandboxConfig(@Nullable Output<ClusterNodeConfigSandboxConfigArgs> sandboxConfig) {
             $.sandboxConfig = sandboxConfig;
             return this;
         }
 
+        /**
+         * @param sandboxConfig Sandbox configuration for this node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sandboxConfig(ClusterNodeConfigSandboxConfigArgs sandboxConfig) {
             return sandboxConfig(Output.of(sandboxConfig));
         }

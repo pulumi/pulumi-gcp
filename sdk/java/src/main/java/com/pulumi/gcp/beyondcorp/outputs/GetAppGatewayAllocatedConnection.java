@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppGatewayAllocatedConnection {
+    /**
+     * @return The ingress port of an allocated connection.
+     * 
+     */
     private Integer ingressPort;
+    /**
+     * @return The PSC uri of an allocated connection.
+     * 
+     */
     private String pscUri;
 
     private GetAppGatewayAllocatedConnection() {}
+    /**
+     * @return The ingress port of an allocated connection.
+     * 
+     */
     public Integer ingressPort() {
         return this.ingressPort;
     }
+    /**
+     * @return The PSC uri of an allocated connection.
+     * 
+     */
     public String pscUri() {
         return this.pscUri;
     }

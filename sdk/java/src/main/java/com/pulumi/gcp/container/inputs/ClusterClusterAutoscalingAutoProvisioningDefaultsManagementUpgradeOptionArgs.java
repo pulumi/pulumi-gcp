@@ -15,9 +15,17 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUp
 
     public static final ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs Empty = new ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs();
 
+    /**
+     * This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+     * 
+     */
     @Import(name="autoUpgradeStartTime")
     private @Nullable Output<String> autoUpgradeStartTime;
 
+    /**
+     * @return This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+     * 
+     */
     public Optional<Output<String>> autoUpgradeStartTime() {
         return Optional.ofNullable(this.autoUpgradeStartTime);
     }
@@ -62,11 +70,23 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUp
             $ = new ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoUpgradeStartTime This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoUpgradeStartTime(@Nullable Output<String> autoUpgradeStartTime) {
             $.autoUpgradeStartTime = autoUpgradeStartTime;
             return this;
         }
 
+        /**
+         * @param autoUpgradeStartTime This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoUpgradeStartTime(String autoUpgradeStartTime) {
             return autoUpgradeStartTime(Output.of(autoUpgradeStartTime));
         }

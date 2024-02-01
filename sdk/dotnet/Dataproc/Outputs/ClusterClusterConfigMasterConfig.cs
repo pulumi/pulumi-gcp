@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// for more information.
         /// </summary>
         public readonly string? ImageUri;
+        /// <summary>
+        /// List of master instance names which have been assigned to the cluster.
+        /// </summary>
         public readonly ImmutableArray<string> InstanceNames;
         /// <summary>
         /// The name of a Google Compute Engine machine type

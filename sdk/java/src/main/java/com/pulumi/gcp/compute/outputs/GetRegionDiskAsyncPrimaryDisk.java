@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegionDiskAsyncPrimaryDisk {
+    /**
+     * @return Primary disk for asynchronous disk replication.
+     * 
+     */
     private String disk;
 
     private GetRegionDiskAsyncPrimaryDisk() {}
+    /**
+     * @return Primary disk for asynchronous disk replication.
+     * 
+     */
     public String disk() {
         return this.disk;
     }

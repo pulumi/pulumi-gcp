@@ -12,15 +12,27 @@ namespace Pulumi.Gcp.BigQuery.Inputs
 
     public sealed class TableTableReplicationInfoArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The interval at which the source materialized view is polled for updates. The default is 300000.
+        /// </summary>
         [Input("replicationIntervalMs")]
         public Input<int>? ReplicationIntervalMs { get; set; }
 
+        /// <summary>
+        /// The ID of the source dataset.
+        /// </summary>
         [Input("sourceDatasetId", required: true)]
         public Input<string> SourceDatasetId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the source project.
+        /// </summary>
         [Input("sourceProjectId", required: true)]
         public Input<string> SourceProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the source materialized view.
+        /// </summary>
         [Input("sourceTableId", required: true)]
         public Input<string> SourceTableId { get; set; } = null!;
 

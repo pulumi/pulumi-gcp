@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvFrom {
+    /**
+     * @return The ConfigMap to select from.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerEnvFromConfigMapRef> configMapReves;
+    /**
+     * @return An optional identifier to prepend to each key in the ConfigMap.
+     * 
+     */
     private String prefix;
+    /**
+     * @return The Secret to select from.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerEnvFromSecretRef> secretReves;
 
     private GetServiceTemplateSpecContainerEnvFrom() {}
+    /**
+     * @return The ConfigMap to select from.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerEnvFromConfigMapRef> configMapReves() {
         return this.configMapReves;
     }
+    /**
+     * @return An optional identifier to prepend to each key in the ConfigMap.
+     * 
+     */
     public String prefix() {
         return this.prefix;
     }
+    /**
+     * @return The Secret to select from.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerEnvFromSecretRef> secretReves() {
         return this.secretReves;
     }

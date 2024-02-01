@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
     public sealed class JobSchedulingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        /// </summary>
         [Input("maxFailuresPerHour", required: true)]
         public Input<int> MaxFailuresPerHour { get; set; } = null!;
 
+        /// <summary>
+        /// Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        /// </summary>
         [Input("maxFailuresTotal", required: true)]
         public Input<int> MaxFailuresTotal { get; set; } = null!;
 

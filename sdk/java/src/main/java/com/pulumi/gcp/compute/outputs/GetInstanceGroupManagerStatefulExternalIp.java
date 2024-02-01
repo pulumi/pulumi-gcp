@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceGroupManagerStatefulExternalIp {
+    /**
+     * @return A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+     * 
+     */
     private String deleteRule;
+    /**
+     * @return The network interface name
+     * 
+     */
     private String interfaceName;
 
     private GetInstanceGroupManagerStatefulExternalIp() {}
+    /**
+     * @return A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+     * 
+     */
     public String deleteRule() {
         return this.deleteRule;
     }
+    /**
+     * @return The network interface name
+     * 
+     */
     public String interfaceName() {
         return this.interfaceName;
     }

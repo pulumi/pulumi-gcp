@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+    /**
+     * @return Mode for how the GPU driver is installed.
+     * 
+     */
     private String gpuDriverVersion;
 
     private GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig() {}
+    /**
+     * @return Mode for how the GPU driver is installed.
+     * 
+     */
     public String gpuDriverVersion() {
         return this.gpuDriverVersion;
     }

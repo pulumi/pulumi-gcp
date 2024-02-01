@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSubscriptionCloudStorageConfigAvroConfig {
+    /**
+     * @return When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+     * 
+     */
     private Boolean writeMetadata;
 
     private GetSubscriptionCloudStorageConfigAvroConfig() {}
+    /**
+     * @return When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+     * 
+     */
     public Boolean writeMetadata() {
         return this.writeMetadata;
     }

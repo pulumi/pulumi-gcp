@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class FeatureMembershipMeshArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+        /// </summary>
         [Input("controlPlane")]
         public Input<string>? ControlPlane { get; set; }
 

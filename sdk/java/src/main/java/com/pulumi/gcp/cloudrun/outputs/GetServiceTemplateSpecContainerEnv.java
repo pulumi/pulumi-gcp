@@ -17,7 +17,15 @@ public final class GetServiceTemplateSpecContainerEnv {
      * 
      */
     private String name;
+    /**
+     * @return Defaults to &#34;&#34;.
+     * 
+     */
     private String value;
+    /**
+     * @return Source for the environment variable&#39;s value. Only supports secret_key_ref.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerEnvValueFrom> valueFroms;
 
     private GetServiceTemplateSpecContainerEnv() {}
@@ -28,9 +36,17 @@ public final class GetServiceTemplateSpecContainerEnv {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Defaults to &#34;&#34;.
+     * 
+     */
     public String value() {
         return this.value;
     }
+    /**
+     * @return Source for the environment variable&#39;s value. Only supports secret_key_ref.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerEnvValueFrom> valueFroms() {
         return this.valueFroms;
     }

@@ -12,33 +12,103 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionEventTrigger {
+    /**
+     * @return Criteria used to filter events.
+     * 
+     */
     private List<GetFunctionEventTriggerEventFilter> eventFilters;
+    /**
+     * @return Required. The type of event to observe.
+     * 
+     */
     private String eventType;
+    /**
+     * @return The name of a Pub/Sub topic in the same project that will be used
+     * as the transport topic for the event delivery.
+     * 
+     */
     private String pubsubTopic;
+    /**
+     * @return Describes the retry policy in case of function&#39;s execution failure.
+     * Retried execution is charged as any other execution. Possible values: [&#34;RETRY_POLICY_UNSPECIFIED&#34;, &#34;RETRY_POLICY_DO_NOT_RETRY&#34;, &#34;RETRY_POLICY_RETRY&#34;]
+     * 
+     */
     private String retryPolicy;
+    /**
+     * @return Optional. The email of the trigger&#39;s service account. The service account
+     * must have permission to invoke Cloud Run services. If empty, defaults to the
+     * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+     * 
+     */
     private String serviceAccountEmail;
+    /**
+     * @return Output only. The resource name of the Eventarc trigger.
+     * 
+     */
     private String trigger;
+    /**
+     * @return The region that the trigger will be in. The trigger will only receive
+     * events originating in this region. It can be the same
+     * region as the function, a different region or multi-region, or the global
+     * region. If not provided, defaults to the same region as the function.
+     * 
+     */
     private String triggerRegion;
 
     private GetFunctionEventTrigger() {}
+    /**
+     * @return Criteria used to filter events.
+     * 
+     */
     public List<GetFunctionEventTriggerEventFilter> eventFilters() {
         return this.eventFilters;
     }
+    /**
+     * @return Required. The type of event to observe.
+     * 
+     */
     public String eventType() {
         return this.eventType;
     }
+    /**
+     * @return The name of a Pub/Sub topic in the same project that will be used
+     * as the transport topic for the event delivery.
+     * 
+     */
     public String pubsubTopic() {
         return this.pubsubTopic;
     }
+    /**
+     * @return Describes the retry policy in case of function&#39;s execution failure.
+     * Retried execution is charged as any other execution. Possible values: [&#34;RETRY_POLICY_UNSPECIFIED&#34;, &#34;RETRY_POLICY_DO_NOT_RETRY&#34;, &#34;RETRY_POLICY_RETRY&#34;]
+     * 
+     */
     public String retryPolicy() {
         return this.retryPolicy;
     }
+    /**
+     * @return Optional. The email of the trigger&#39;s service account. The service account
+     * must have permission to invoke Cloud Run services. If empty, defaults to the
+     * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+     * 
+     */
     public String serviceAccountEmail() {
         return this.serviceAccountEmail;
     }
+    /**
+     * @return Output only. The resource name of the Eventarc trigger.
+     * 
+     */
     public String trigger() {
         return this.trigger;
     }
+    /**
+     * @return The region that the trigger will be in. The trigger will only receive
+     * events originating in this region. It can be the same
+     * region as the function, a different region or multi-region, or the global
+     * region. If not provided, defaults to the same region as the function.
+     * 
+     */
     public String triggerRegion() {
         return this.triggerRegion;
     }

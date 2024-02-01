@@ -15,23 +15,47 @@ public final class AwsClusterWorkloadIdentityConfigArgs extends com.pulumi.resou
 
     public static final AwsClusterWorkloadIdentityConfigArgs Empty = new AwsClusterWorkloadIdentityConfigArgs();
 
+    /**
+     * The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+     * 
+     */
     @Import(name="identityProvider")
     private @Nullable Output<String> identityProvider;
 
+    /**
+     * @return The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+     * 
+     */
     public Optional<Output<String>> identityProvider() {
         return Optional.ofNullable(this.identityProvider);
     }
 
+    /**
+     * The OIDC issuer URL for this cluster.
+     * 
+     */
     @Import(name="issuerUri")
     private @Nullable Output<String> issuerUri;
 
+    /**
+     * @return The OIDC issuer URL for this cluster.
+     * 
+     */
     public Optional<Output<String>> issuerUri() {
         return Optional.ofNullable(this.issuerUri);
     }
 
+    /**
+     * The Workload Identity Pool associated to the cluster.
+     * 
+     */
     @Import(name="workloadPool")
     private @Nullable Output<String> workloadPool;
 
+    /**
+     * @return The Workload Identity Pool associated to the cluster.
+     * 
+     */
     public Optional<Output<String>> workloadPool() {
         return Optional.ofNullable(this.workloadPool);
     }
@@ -62,29 +86,65 @@ public final class AwsClusterWorkloadIdentityConfigArgs extends com.pulumi.resou
             $ = new AwsClusterWorkloadIdentityConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param identityProvider The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProvider(@Nullable Output<String> identityProvider) {
             $.identityProvider = identityProvider;
             return this;
         }
 
+        /**
+         * @param identityProvider The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProvider(String identityProvider) {
             return identityProvider(Output.of(identityProvider));
         }
 
+        /**
+         * @param issuerUri The OIDC issuer URL for this cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuerUri(@Nullable Output<String> issuerUri) {
             $.issuerUri = issuerUri;
             return this;
         }
 
+        /**
+         * @param issuerUri The OIDC issuer URL for this cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder issuerUri(String issuerUri) {
             return issuerUri(Output.of(issuerUri));
         }
 
+        /**
+         * @param workloadPool The Workload Identity Pool associated to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workloadPool(@Nullable Output<String> workloadPool) {
             $.workloadPool = workloadPool;
             return this;
         }
 
+        /**
+         * @param workloadPool The Workload Identity Pool associated to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder workloadPool(String workloadPool) {
             return workloadPool(Output.of(workloadPool));
         }

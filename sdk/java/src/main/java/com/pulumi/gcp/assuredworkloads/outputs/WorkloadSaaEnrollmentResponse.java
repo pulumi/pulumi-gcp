@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkloadSaaEnrollmentResponse {
+    /**
+     * @return Indicates SAA enrollment setup error if any.
+     * 
+     */
     private @Nullable List<String> setupErrors;
+    /**
+     * @return Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+     * 
+     */
     private @Nullable String setupStatus;
 
     private WorkloadSaaEnrollmentResponse() {}
+    /**
+     * @return Indicates SAA enrollment setup error if any.
+     * 
+     */
     public List<String> setupErrors() {
         return this.setupErrors == null ? List.of() : this.setupErrors;
     }
+    /**
+     * @return Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+     * 
+     */
     public Optional<String> setupStatus() {
         return Optional.ofNullable(this.setupStatus);
     }

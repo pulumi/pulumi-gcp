@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateScratchDisk {
+    /**
+     * @return Name with which the attached disk is accessible under /dev/disk/by-id/
+     * 
+     */
     private @Nullable String deviceName;
+    /**
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME.
+     * 
+     */
     private String interface_;
+    /**
+     * @return The size of the disk in gigabytes. One of 375 or 3000.
+     * 
+     */
     private @Nullable Integer size;
 
     private InstanceFromTemplateScratchDisk() {}
+    /**
+     * @return Name with which the attached disk is accessible under /dev/disk/by-id/
+     * 
+     */
     public Optional<String> deviceName() {
         return Optional.ofNullable(this.deviceName);
     }
+    /**
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME.
+     * 
+     */
     public String interface_() {
         return this.interface_;
     }
+    /**
+     * @return The size of the disk in gigabytes. One of 375 or 3000.
+     * 
+     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }

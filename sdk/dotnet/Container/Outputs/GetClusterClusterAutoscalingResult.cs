@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterClusterAutoscalingResult
     {
+        /// <summary>
+        /// Contains defaults for a node pool created by NAP.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultResult> AutoProvisioningDefaults;
+        /// <summary>
+        /// Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
+        /// </summary>
         public readonly string AutoscalingProfile;
+        /// <summary>
+        /// Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Global constraints for machine resources in the cluster. Configuring the cpu and memory types is required if node auto-provisioning is enabled. These limits will apply to node pool autoscaling in addition to node auto-provisioning.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingResourceLimitResult> ResourceLimits;
 
         [OutputConstructor]

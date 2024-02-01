@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterMonitoringConfigResult
     {
+        /// <summary>
+        /// Configuration of Advanced Datapath Observability features.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult> AdvancedDatapathObservabilityConfigs;
+        /// <summary>
+        /// GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET and WORKLOADS.
+        /// </summary>
         public readonly ImmutableArray<string> EnableComponents;
+        /// <summary>
+        /// Configuration for Google Cloud Managed Services for Prometheus.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMonitoringConfigManagedPrometheusResult> ManagedPrometheuses;
 
         [OutputConstructor]

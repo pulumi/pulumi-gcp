@@ -6704,8 +6704,10 @@ func (o AiTensorboardEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutpu
 }
 
 type GetAiIndexDeployedIndex struct {
+	// The ID of the DeployedIndex in the above IndexEndpoint.
 	DeployedIndexId string `pulumi:"deployedIndexId"`
-	IndexEndpoint   string `pulumi:"indexEndpoint"`
+	// A resource name of the IndexEndpoint.
+	IndexEndpoint string `pulumi:"indexEndpoint"`
 }
 
 // GetAiIndexDeployedIndexInput is an input type that accepts GetAiIndexDeployedIndexArgs and GetAiIndexDeployedIndexOutput values.
@@ -6720,8 +6722,10 @@ type GetAiIndexDeployedIndexInput interface {
 }
 
 type GetAiIndexDeployedIndexArgs struct {
+	// The ID of the DeployedIndex in the above IndexEndpoint.
 	DeployedIndexId pulumi.StringInput `pulumi:"deployedIndexId"`
-	IndexEndpoint   pulumi.StringInput `pulumi:"indexEndpoint"`
+	// A resource name of the IndexEndpoint.
+	IndexEndpoint pulumi.StringInput `pulumi:"indexEndpoint"`
 }
 
 func (GetAiIndexDeployedIndexArgs) ElementType() reflect.Type {
@@ -6775,10 +6779,12 @@ func (o GetAiIndexDeployedIndexOutput) ToGetAiIndexDeployedIndexOutputWithContex
 	return o
 }
 
+// The ID of the DeployedIndex in the above IndexEndpoint.
 func (o GetAiIndexDeployedIndexOutput) DeployedIndexId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiIndexDeployedIndex) string { return v.DeployedIndexId }).(pulumi.StringOutput)
 }
 
+// A resource name of the IndexEndpoint.
 func (o GetAiIndexDeployedIndexOutput) IndexEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiIndexDeployedIndex) string { return v.IndexEndpoint }).(pulumi.StringOutput)
 }
@@ -6804,7 +6810,9 @@ func (o GetAiIndexDeployedIndexArrayOutput) Index(i pulumi.IntInput) GetAiIndexD
 }
 
 type GetAiIndexIndexStat struct {
-	ShardsCount  int    `pulumi:"shardsCount"`
+	// The number of shards in the Index.
+	ShardsCount int `pulumi:"shardsCount"`
+	// The number of vectors in the Index.
 	VectorsCount string `pulumi:"vectorsCount"`
 }
 
@@ -6820,7 +6828,9 @@ type GetAiIndexIndexStatInput interface {
 }
 
 type GetAiIndexIndexStatArgs struct {
-	ShardsCount  pulumi.IntInput    `pulumi:"shardsCount"`
+	// The number of shards in the Index.
+	ShardsCount pulumi.IntInput `pulumi:"shardsCount"`
+	// The number of vectors in the Index.
 	VectorsCount pulumi.StringInput `pulumi:"vectorsCount"`
 }
 
@@ -6875,10 +6885,12 @@ func (o GetAiIndexIndexStatOutput) ToGetAiIndexIndexStatOutputWithContext(ctx co
 	return o
 }
 
+// The number of shards in the Index.
 func (o GetAiIndexIndexStatOutput) ShardsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAiIndexIndexStat) int { return v.ShardsCount }).(pulumi.IntOutput)
 }
 
+// The number of vectors in the Index.
 func (o GetAiIndexIndexStatOutput) VectorsCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiIndexIndexStat) string { return v.VectorsCount }).(pulumi.StringOutput)
 }
@@ -6904,9 +6916,18 @@ func (o GetAiIndexIndexStatArrayOutput) Index(i pulumi.IntInput) GetAiIndexIndex
 }
 
 type GetAiIndexMetadata struct {
-	Configs             []GetAiIndexMetadataConfig `pulumi:"configs"`
-	ContentsDeltaUri    string                     `pulumi:"contentsDeltaUri"`
-	IsCompleteOverwrite bool                       `pulumi:"isCompleteOverwrite"`
+	// The configuration of the Matching Engine Index.
+	Configs []GetAiIndexMetadataConfig `pulumi:"configs"`
+	// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+	// The string must be a valid Cloud Storage directory path. If this
+	// field is set when calling IndexService.UpdateIndex, then no other
+	// Index field can be also updated as part of the same call.
+	// The expected structure and format of the files this URI points to is
+	// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+	ContentsDeltaUri string `pulumi:"contentsDeltaUri"`
+	// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+	// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+	IsCompleteOverwrite bool `pulumi:"isCompleteOverwrite"`
 }
 
 // GetAiIndexMetadataInput is an input type that accepts GetAiIndexMetadataArgs and GetAiIndexMetadataOutput values.
@@ -6921,9 +6942,18 @@ type GetAiIndexMetadataInput interface {
 }
 
 type GetAiIndexMetadataArgs struct {
-	Configs             GetAiIndexMetadataConfigArrayInput `pulumi:"configs"`
-	ContentsDeltaUri    pulumi.StringInput                 `pulumi:"contentsDeltaUri"`
-	IsCompleteOverwrite pulumi.BoolInput                   `pulumi:"isCompleteOverwrite"`
+	// The configuration of the Matching Engine Index.
+	Configs GetAiIndexMetadataConfigArrayInput `pulumi:"configs"`
+	// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+	// The string must be a valid Cloud Storage directory path. If this
+	// field is set when calling IndexService.UpdateIndex, then no other
+	// Index field can be also updated as part of the same call.
+	// The expected structure and format of the files this URI points to is
+	// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+	ContentsDeltaUri pulumi.StringInput `pulumi:"contentsDeltaUri"`
+	// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+	// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+	IsCompleteOverwrite pulumi.BoolInput `pulumi:"isCompleteOverwrite"`
 }
 
 func (GetAiIndexMetadataArgs) ElementType() reflect.Type {
@@ -6977,14 +7007,23 @@ func (o GetAiIndexMetadataOutput) ToGetAiIndexMetadataOutputWithContext(ctx cont
 	return o
 }
 
+// The configuration of the Matching Engine Index.
 func (o GetAiIndexMetadataOutput) Configs() GetAiIndexMetadataConfigArrayOutput {
 	return o.ApplyT(func(v GetAiIndexMetadata) []GetAiIndexMetadataConfig { return v.Configs }).(GetAiIndexMetadataConfigArrayOutput)
 }
 
+// Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+// The string must be a valid Cloud Storage directory path. If this
+// field is set when calling IndexService.UpdateIndex, then no other
+// Index field can be also updated as part of the same call.
+// The expected structure and format of the files this URI points to is
+// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
 func (o GetAiIndexMetadataOutput) ContentsDeltaUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiIndexMetadata) string { return v.ContentsDeltaUri }).(pulumi.StringOutput)
 }
 
+// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
 func (o GetAiIndexMetadataOutput) IsCompleteOverwrite() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAiIndexMetadata) bool { return v.IsCompleteOverwrite }).(pulumi.BoolOutput)
 }
@@ -7010,12 +7049,31 @@ func (o GetAiIndexMetadataArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetada
 }
 
 type GetAiIndexMetadataConfig struct {
-	AlgorithmConfigs          []GetAiIndexMetadataConfigAlgorithmConfig `pulumi:"algorithmConfigs"`
-	ApproximateNeighborsCount int                                       `pulumi:"approximateNeighborsCount"`
-	Dimensions                int                                       `pulumi:"dimensions"`
-	DistanceMeasureType       string                                    `pulumi:"distanceMeasureType"`
-	FeatureNormType           string                                    `pulumi:"featureNormType"`
-	ShardSize                 string                                    `pulumi:"shardSize"`
+	// The configuration with regard to the algorithms used for efficient search.
+	AlgorithmConfigs []GetAiIndexMetadataConfigAlgorithmConfig `pulumi:"algorithmConfigs"`
+	// The default number of neighbors to find via approximate search before exact reordering is
+	// performed. Exact reordering is a procedure where results returned by an
+	// approximate search algorithm are reordered via a more expensive distance computation.
+	// Required if tree-AH algorithm is used.
+	ApproximateNeighborsCount int `pulumi:"approximateNeighborsCount"`
+	// The number of dimensions of the input vectors.
+	Dimensions int `pulumi:"dimensions"`
+	// The distance measure used in nearest neighbor search. The value must be one of the followings:
+	// * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+	// * L1_DISTANCE: Manhattan (L_1) Distance
+	// * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+	// * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+	DistanceMeasureType string `pulumi:"distanceMeasureType"`
+	// Type of normalization to be carried out on each vector. The value must be one of the followings:
+	// * UNIT_L2_NORM: Unit L2 normalization type
+	// * NONE: No normalization type is specified.
+	FeatureNormType string `pulumi:"featureNormType"`
+	// Index data is split into equal parts to be processed. These are called "shards".
+	// The shard size must be specified when creating an index. The value must be one of the followings:
+	// * SHARD_SIZE_SMALL: Small (2GB)
+	// * SHARD_SIZE_MEDIUM: Medium (20GB)
+	// * SHARD_SIZE_LARGE: Large (50GB)
+	ShardSize string `pulumi:"shardSize"`
 }
 
 // GetAiIndexMetadataConfigInput is an input type that accepts GetAiIndexMetadataConfigArgs and GetAiIndexMetadataConfigOutput values.
@@ -7030,12 +7088,31 @@ type GetAiIndexMetadataConfigInput interface {
 }
 
 type GetAiIndexMetadataConfigArgs struct {
-	AlgorithmConfigs          GetAiIndexMetadataConfigAlgorithmConfigArrayInput `pulumi:"algorithmConfigs"`
-	ApproximateNeighborsCount pulumi.IntInput                                   `pulumi:"approximateNeighborsCount"`
-	Dimensions                pulumi.IntInput                                   `pulumi:"dimensions"`
-	DistanceMeasureType       pulumi.StringInput                                `pulumi:"distanceMeasureType"`
-	FeatureNormType           pulumi.StringInput                                `pulumi:"featureNormType"`
-	ShardSize                 pulumi.StringInput                                `pulumi:"shardSize"`
+	// The configuration with regard to the algorithms used for efficient search.
+	AlgorithmConfigs GetAiIndexMetadataConfigAlgorithmConfigArrayInput `pulumi:"algorithmConfigs"`
+	// The default number of neighbors to find via approximate search before exact reordering is
+	// performed. Exact reordering is a procedure where results returned by an
+	// approximate search algorithm are reordered via a more expensive distance computation.
+	// Required if tree-AH algorithm is used.
+	ApproximateNeighborsCount pulumi.IntInput `pulumi:"approximateNeighborsCount"`
+	// The number of dimensions of the input vectors.
+	Dimensions pulumi.IntInput `pulumi:"dimensions"`
+	// The distance measure used in nearest neighbor search. The value must be one of the followings:
+	// * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+	// * L1_DISTANCE: Manhattan (L_1) Distance
+	// * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+	// * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+	DistanceMeasureType pulumi.StringInput `pulumi:"distanceMeasureType"`
+	// Type of normalization to be carried out on each vector. The value must be one of the followings:
+	// * UNIT_L2_NORM: Unit L2 normalization type
+	// * NONE: No normalization type is specified.
+	FeatureNormType pulumi.StringInput `pulumi:"featureNormType"`
+	// Index data is split into equal parts to be processed. These are called "shards".
+	// The shard size must be specified when creating an index. The value must be one of the followings:
+	// * SHARD_SIZE_SMALL: Small (2GB)
+	// * SHARD_SIZE_MEDIUM: Medium (20GB)
+	// * SHARD_SIZE_LARGE: Large (50GB)
+	ShardSize pulumi.StringInput `pulumi:"shardSize"`
 }
 
 func (GetAiIndexMetadataConfigArgs) ElementType() reflect.Type {
@@ -7089,26 +7166,45 @@ func (o GetAiIndexMetadataConfigOutput) ToGetAiIndexMetadataConfigOutputWithCont
 	return o
 }
 
+// The configuration with regard to the algorithms used for efficient search.
 func (o GetAiIndexMetadataConfigOutput) AlgorithmConfigs() GetAiIndexMetadataConfigAlgorithmConfigArrayOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfig) []GetAiIndexMetadataConfigAlgorithmConfig { return v.AlgorithmConfigs }).(GetAiIndexMetadataConfigAlgorithmConfigArrayOutput)
 }
 
+// The default number of neighbors to find via approximate search before exact reordering is
+// performed. Exact reordering is a procedure where results returned by an
+// approximate search algorithm are reordered via a more expensive distance computation.
+// Required if tree-AH algorithm is used.
 func (o GetAiIndexMetadataConfigOutput) ApproximateNeighborsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfig) int { return v.ApproximateNeighborsCount }).(pulumi.IntOutput)
 }
 
+// The number of dimensions of the input vectors.
 func (o GetAiIndexMetadataConfigOutput) Dimensions() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfig) int { return v.Dimensions }).(pulumi.IntOutput)
 }
 
+// The distance measure used in nearest neighbor search. The value must be one of the followings:
+// * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+// * L1_DISTANCE: Manhattan (L_1) Distance
+// * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+// * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
 func (o GetAiIndexMetadataConfigOutput) DistanceMeasureType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfig) string { return v.DistanceMeasureType }).(pulumi.StringOutput)
 }
 
+// Type of normalization to be carried out on each vector. The value must be one of the followings:
+// * UNIT_L2_NORM: Unit L2 normalization type
+// * NONE: No normalization type is specified.
 func (o GetAiIndexMetadataConfigOutput) FeatureNormType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfig) string { return v.FeatureNormType }).(pulumi.StringOutput)
 }
 
+// Index data is split into equal parts to be processed. These are called "shards".
+// The shard size must be specified when creating an index. The value must be one of the followings:
+// * SHARD_SIZE_SMALL: Small (2GB)
+// * SHARD_SIZE_MEDIUM: Medium (20GB)
+// * SHARD_SIZE_LARGE: Large (50GB)
 func (o GetAiIndexMetadataConfigOutput) ShardSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfig) string { return v.ShardSize }).(pulumi.StringOutput)
 }
@@ -7134,8 +7230,12 @@ func (o GetAiIndexMetadataConfigArrayOutput) Index(i pulumi.IntInput) GetAiIndex
 }
 
 type GetAiIndexMetadataConfigAlgorithmConfig struct {
+	// Configuration options for using brute force search, which simply implements the
+	// standard linear search in the database for each query.
 	BruteForceConfigs []GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig `pulumi:"bruteForceConfigs"`
-	TreeAhConfigs     []GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig     `pulumi:"treeAhConfigs"`
+	// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+	// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	TreeAhConfigs []GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig `pulumi:"treeAhConfigs"`
 }
 
 // GetAiIndexMetadataConfigAlgorithmConfigInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigArgs and GetAiIndexMetadataConfigAlgorithmConfigOutput values.
@@ -7150,8 +7250,12 @@ type GetAiIndexMetadataConfigAlgorithmConfigInput interface {
 }
 
 type GetAiIndexMetadataConfigAlgorithmConfigArgs struct {
+	// Configuration options for using brute force search, which simply implements the
+	// standard linear search in the database for each query.
 	BruteForceConfigs GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput `pulumi:"bruteForceConfigs"`
-	TreeAhConfigs     GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput     `pulumi:"treeAhConfigs"`
+	// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+	// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	TreeAhConfigs GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput `pulumi:"treeAhConfigs"`
 }
 
 func (GetAiIndexMetadataConfigAlgorithmConfigArgs) ElementType() reflect.Type {
@@ -7205,12 +7309,16 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) ToGetAiIndexMetadataConfi
 	return o
 }
 
+// Configuration options for using brute force search, which simply implements the
+// standard linear search in the database for each query.
 func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) BruteForceConfigs() GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfig) []GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig {
 		return v.BruteForceConfigs
 	}).(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput)
 }
 
+// Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+// Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
 func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) TreeAhConfigs() GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfig) []GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
 		return v.TreeAhConfigs
@@ -7326,7 +7434,10 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) Inde
 }
 
 type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig struct {
-	LeafNodeEmbeddingCount   int `pulumi:"leafNodeEmbeddingCount"`
+	// Number of embeddings on each leaf node. The default value is 1000 if not set.
+	LeafNodeEmbeddingCount int `pulumi:"leafNodeEmbeddingCount"`
+	// The default percentage of leaf nodes that any query may be searched. Must be in
+	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
 	LeafNodesToSearchPercent int `pulumi:"leafNodesToSearchPercent"`
 }
 
@@ -7342,7 +7453,10 @@ type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput interface {
 }
 
 type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs struct {
-	LeafNodeEmbeddingCount   pulumi.IntInput `pulumi:"leafNodeEmbeddingCount"`
+	// Number of embeddings on each leaf node. The default value is 1000 if not set.
+	LeafNodeEmbeddingCount pulumi.IntInput `pulumi:"leafNodeEmbeddingCount"`
+	// The default percentage of leaf nodes that any query may be searched. Must be in
+	// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
 	LeafNodesToSearchPercent pulumi.IntInput `pulumi:"leafNodesToSearchPercent"`
 }
 
@@ -7397,10 +7511,13 @@ func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToGetAiIndexM
 	return o
 }
 
+// Number of embeddings on each leaf node. The default value is 1000 if not set.
 func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodeEmbeddingCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig) int { return v.LeafNodeEmbeddingCount }).(pulumi.IntOutput)
 }
 
+// The default percentage of leaf nodes that any query may be searched. Must be in
+// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
 func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodesToSearchPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig) int { return v.LeafNodesToSearchPercent }).(pulumi.IntOutput)
 }

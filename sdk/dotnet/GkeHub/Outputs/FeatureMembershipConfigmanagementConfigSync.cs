@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// (Optional) Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncGit? Git;
+        /// <summary>
+        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        /// </summary>
         public readonly string? MetricsGcpServiceAccountEmail;
         /// <summary>
         /// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.

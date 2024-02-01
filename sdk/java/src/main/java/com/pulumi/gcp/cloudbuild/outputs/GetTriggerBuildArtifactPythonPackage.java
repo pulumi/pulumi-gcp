@@ -11,13 +11,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildArtifactPythonPackage {
+    /**
+     * @return Path globs used to match files in the build&#39;s workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+     * 
+     */
     private List<String> paths;
+    /**
+     * @return Artifact Registry repository, in the form &#34;https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY&#34;
+     * 
+     * Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+     * 
+     */
     private String repository;
 
     private GetTriggerBuildArtifactPythonPackage() {}
+    /**
+     * @return Path globs used to match files in the build&#39;s workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+     * 
+     */
     public List<String> paths() {
         return this.paths;
     }
+    /**
+     * @return Artifact Registry repository, in the form &#34;https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY&#34;
+     * 
+     * Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+     * 
+     */
     public String repository() {
         return this.repository;
     }

@@ -13,10 +13,25 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolNodeConfigGuestAcceleratorResult
     {
+        /// <summary>
+        /// The number of the accelerator cards exposed to an instance.
+        /// </summary>
         public readonly int Count;
+        /// <summary>
+        /// Configuration for auto installation of GPU driver.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult> GpuDriverInstallationConfigs;
+        /// <summary>
+        /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+        /// </summary>
         public readonly string GpuPartitionSize;
+        /// <summary>
+        /// Configuration for GPU sharing.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult> GpuSharingConfigs;
+        /// <summary>
+        /// The accelerator type resource name.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

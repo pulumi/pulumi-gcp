@@ -13,11 +13,29 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryCleanupPolicyConditionResult
     {
+        /// <summary>
+        /// Match versions newer than a duration.
+        /// </summary>
         public readonly string NewerThan;
+        /// <summary>
+        /// Match versions older than a duration.
+        /// </summary>
         public readonly string OlderThan;
+        /// <summary>
+        /// Match versions by package prefix. Applied on any prefix match.
+        /// </summary>
         public readonly ImmutableArray<string> PackageNamePrefixes;
+        /// <summary>
+        /// Match versions by tag prefix. Applied on any prefix match.
+        /// </summary>
         public readonly ImmutableArray<string> TagPrefixes;
+        /// <summary>
+        /// Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
+        /// </summary>
         public readonly string TagState;
+        /// <summary>
+        /// Match versions by version name prefix. Applied on any prefix match.
+        /// </summary>
         public readonly ImmutableArray<string> VersionNamePrefixes;
 
         [OutputConstructor]

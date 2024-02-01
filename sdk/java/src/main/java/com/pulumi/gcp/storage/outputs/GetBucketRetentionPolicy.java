@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketRetentionPolicy {
+    /**
+     * @return If set to true, the bucket will be locked and permanently restrict edits to the bucket&#39;s retention policy.  Caution: Locking a bucket is an irreversible action.
+     * 
+     */
     private Boolean isLocked;
+    /**
+     * @return The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+     * 
+     */
     private Integer retentionPeriod;
 
     private GetBucketRetentionPolicy() {}
+    /**
+     * @return If set to true, the bucket will be locked and permanently restrict edits to the bucket&#39;s retention policy.  Caution: Locking a bucket is an irreversible action.
+     * 
+     */
     public Boolean isLocked() {
         return this.isLocked;
     }
+    /**
+     * @return The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+     * 
+     */
     public Integer retentionPeriod() {
         return this.retentionPeriod;
     }

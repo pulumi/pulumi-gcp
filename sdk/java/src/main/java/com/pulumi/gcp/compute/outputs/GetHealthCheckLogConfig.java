@@ -10,9 +10,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHealthCheckLogConfig {
+    /**
+     * @return Indicates whether or not to export logs. This is false by default,
+     * which means no health check logging will be done.
+     * 
+     */
     private Boolean enable;
 
     private GetHealthCheckLogConfig() {}
+    /**
+     * @return Indicates whether or not to export logs. This is false by default,
+     * which means no health check logging will be done.
+     * 
+     */
     public Boolean enable() {
         return this.enable;
     }

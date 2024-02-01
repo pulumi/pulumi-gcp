@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// - - -
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The value that the label must match. The value has a maximum
+        /// length of 1024 characters.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

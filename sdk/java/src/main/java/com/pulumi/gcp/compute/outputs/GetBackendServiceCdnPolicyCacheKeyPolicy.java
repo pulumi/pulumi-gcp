@@ -12,33 +12,123 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
+    /**
+     * @return If true requests to different hosts will be cached separately.
+     * 
+     */
     private Boolean includeHost;
+    /**
+     * @return Allows HTTP request headers (by name) to be used in the
+     * cache key.
+     * 
+     */
     private List<String> includeHttpHeaders;
+    /**
+     * @return Names of cookies to include in cache keys.
+     * 
+     */
     private List<String> includeNamedCookies;
+    /**
+     * @return If true, http and https requests will be cached separately.
+     * 
+     */
     private Boolean includeProtocol;
+    /**
+     * @return If true, include query string parameters in the cache key
+     * according to query_string_whitelist and
+     * query_string_blacklist. If neither is set, the entire query
+     * string will be included.
+     * 
+     * If false, the query string will be excluded from the cache
+     * key entirely.
+     * 
+     */
     private Boolean includeQueryString;
+    /**
+     * @return Names of query string parameters to exclude in cache keys.
+     * 
+     * All other parameters will be included. Either specify
+     * query_string_whitelist or query_string_blacklist, not both.
+     * &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as
+     * delimiters.
+     * 
+     */
     private List<String> queryStringBlacklists;
+    /**
+     * @return Names of query string parameters to include in cache keys.
+     * 
+     * All other parameters will be excluded. Either specify
+     * query_string_whitelist or query_string_blacklist, not both.
+     * &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as
+     * delimiters.
+     * 
+     */
     private List<String> queryStringWhitelists;
 
     private GetBackendServiceCdnPolicyCacheKeyPolicy() {}
+    /**
+     * @return If true requests to different hosts will be cached separately.
+     * 
+     */
     public Boolean includeHost() {
         return this.includeHost;
     }
+    /**
+     * @return Allows HTTP request headers (by name) to be used in the
+     * cache key.
+     * 
+     */
     public List<String> includeHttpHeaders() {
         return this.includeHttpHeaders;
     }
+    /**
+     * @return Names of cookies to include in cache keys.
+     * 
+     */
     public List<String> includeNamedCookies() {
         return this.includeNamedCookies;
     }
+    /**
+     * @return If true, http and https requests will be cached separately.
+     * 
+     */
     public Boolean includeProtocol() {
         return this.includeProtocol;
     }
+    /**
+     * @return If true, include query string parameters in the cache key
+     * according to query_string_whitelist and
+     * query_string_blacklist. If neither is set, the entire query
+     * string will be included.
+     * 
+     * If false, the query string will be excluded from the cache
+     * key entirely.
+     * 
+     */
     public Boolean includeQueryString() {
         return this.includeQueryString;
     }
+    /**
+     * @return Names of query string parameters to exclude in cache keys.
+     * 
+     * All other parameters will be included. Either specify
+     * query_string_whitelist or query_string_blacklist, not both.
+     * &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as
+     * delimiters.
+     * 
+     */
     public List<String> queryStringBlacklists() {
         return this.queryStringBlacklists;
     }
+    /**
+     * @return Names of query string parameters to include in cache keys.
+     * 
+     * All other parameters will be excluded. Either specify
+     * query_string_whitelist or query_string_blacklist, not both.
+     * &#39;&amp;&#39; and &#39;=&#39; will be percent encoded and not treated as
+     * delimiters.
+     * 
+     */
     public List<String> queryStringWhitelists() {
         return this.queryStringWhitelists;
     }

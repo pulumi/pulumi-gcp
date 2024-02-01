@@ -12,29 +12,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
+    /**
+     * @return Password complexity.
+     * 
+     */
     private String complexity;
+    /**
+     * @return Disallow username as a part of the password.
+     * 
+     */
     private Boolean disallowUsernameSubstring;
+    /**
+     * @return Whether the password policy is enabled or not.
+     * 
+     */
     private Boolean enablePasswordPolicy;
+    /**
+     * @return Minimum number of characters allowed.
+     * 
+     */
     private Integer minLength;
+    /**
+     * @return Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+     * 
+     */
     private String passwordChangeInterval;
+    /**
+     * @return Number of previous passwords that cannot be reused.
+     * 
+     */
     private Integer reuseInterval;
 
     private GetDatabaseInstancesInstanceSettingPasswordValidationPolicy() {}
+    /**
+     * @return Password complexity.
+     * 
+     */
     public String complexity() {
         return this.complexity;
     }
+    /**
+     * @return Disallow username as a part of the password.
+     * 
+     */
     public Boolean disallowUsernameSubstring() {
         return this.disallowUsernameSubstring;
     }
+    /**
+     * @return Whether the password policy is enabled or not.
+     * 
+     */
     public Boolean enablePasswordPolicy() {
         return this.enablePasswordPolicy;
     }
+    /**
+     * @return Minimum number of characters allowed.
+     * 
+     */
     public Integer minLength() {
         return this.minLength;
     }
+    /**
+     * @return Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+     * 
+     */
     public String passwordChangeInterval() {
         return this.passwordChangeInterval;
     }
+    /**
+     * @return Number of previous passwords that cannot be reused.
+     * 
+     */
     public Integer reuseInterval() {
         return this.reuseInterval;
     }

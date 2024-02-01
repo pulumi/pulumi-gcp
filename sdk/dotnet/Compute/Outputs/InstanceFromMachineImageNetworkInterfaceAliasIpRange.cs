@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromMachineImageNetworkInterfaceAliasIpRange
     {
+        /// <summary>
+        /// The IP CIDR range represented by this alias IP range.
+        /// </summary>
         public readonly string IpCidrRange;
+        /// <summary>
+        /// The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+        /// </summary>
         public readonly string? SubnetworkRangeName;
 
         [OutputConstructor]

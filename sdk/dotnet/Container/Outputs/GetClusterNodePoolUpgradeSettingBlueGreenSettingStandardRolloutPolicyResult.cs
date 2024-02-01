@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult
     {
+        /// <summary>
+        /// Number of blue nodes to drain in a batch.
+        /// </summary>
         public readonly int BatchNodeCount;
+        /// <summary>
+        /// Percentage of the blue pool nodes to drain in a batch.
+        /// </summary>
         public readonly double BatchPercentage;
+        /// <summary>
+        /// Soak time after each batch gets drained.
+        /// </summary>
         public readonly string BatchSoakDuration;
 
         [OutputConstructor]

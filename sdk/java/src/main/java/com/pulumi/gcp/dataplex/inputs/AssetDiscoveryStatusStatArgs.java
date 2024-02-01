@@ -15,30 +15,62 @@ public final class AssetDiscoveryStatusStatArgs extends com.pulumi.resources.Res
 
     public static final AssetDiscoveryStatusStatArgs Empty = new AssetDiscoveryStatusStatArgs();
 
+    /**
+     * The count of data items within the referenced resource.
+     * 
+     */
     @Import(name="dataItems")
     private @Nullable Output<Integer> dataItems;
 
+    /**
+     * @return The count of data items within the referenced resource.
+     * 
+     */
     public Optional<Output<Integer>> dataItems() {
         return Optional.ofNullable(this.dataItems);
     }
 
+    /**
+     * The number of stored data bytes within the referenced resource.
+     * 
+     */
     @Import(name="dataSize")
     private @Nullable Output<Integer> dataSize;
 
+    /**
+     * @return The number of stored data bytes within the referenced resource.
+     * 
+     */
     public Optional<Output<Integer>> dataSize() {
         return Optional.ofNullable(this.dataSize);
     }
 
+    /**
+     * The count of fileset entities within the referenced resource.
+     * 
+     */
     @Import(name="filesets")
     private @Nullable Output<Integer> filesets;
 
+    /**
+     * @return The count of fileset entities within the referenced resource.
+     * 
+     */
     public Optional<Output<Integer>> filesets() {
         return Optional.ofNullable(this.filesets);
     }
 
+    /**
+     * The count of table entities within the referenced resource.
+     * 
+     */
     @Import(name="tables")
     private @Nullable Output<Integer> tables;
 
+    /**
+     * @return The count of table entities within the referenced resource.
+     * 
+     */
     public Optional<Output<Integer>> tables() {
         return Optional.ofNullable(this.tables);
     }
@@ -70,38 +102,86 @@ public final class AssetDiscoveryStatusStatArgs extends com.pulumi.resources.Res
             $ = new AssetDiscoveryStatusStatArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dataItems The count of data items within the referenced resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataItems(@Nullable Output<Integer> dataItems) {
             $.dataItems = dataItems;
             return this;
         }
 
+        /**
+         * @param dataItems The count of data items within the referenced resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataItems(Integer dataItems) {
             return dataItems(Output.of(dataItems));
         }
 
+        /**
+         * @param dataSize The number of stored data bytes within the referenced resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSize(@Nullable Output<Integer> dataSize) {
             $.dataSize = dataSize;
             return this;
         }
 
+        /**
+         * @param dataSize The number of stored data bytes within the referenced resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSize(Integer dataSize) {
             return dataSize(Output.of(dataSize));
         }
 
+        /**
+         * @param filesets The count of fileset entities within the referenced resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filesets(@Nullable Output<Integer> filesets) {
             $.filesets = filesets;
             return this;
         }
 
+        /**
+         * @param filesets The count of fileset entities within the referenced resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filesets(Integer filesets) {
             return filesets(Output.of(filesets));
         }
 
+        /**
+         * @param tables The count of table entities within the referenced resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tables(@Nullable Output<Integer> tables) {
             $.tables = tables;
             return this;
         }
 
+        /**
+         * @param tables The count of table entities within the referenced resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tables(Integer tables) {
             return tables(Output.of(tables));
         }

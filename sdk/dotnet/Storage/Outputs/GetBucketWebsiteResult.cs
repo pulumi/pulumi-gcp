@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Storage.Outputs
     [OutputType]
     public sealed class GetBucketWebsiteResult
     {
+        /// <summary>
+        /// Behaves as the bucket's directory index where missing objects are treated as potential directories.
+        /// </summary>
         public readonly string MainPageSuffix;
+        /// <summary>
+        /// The custom object to return when a requested resource is not found.
+        /// </summary>
         public readonly string NotFoundPage;
 
         [OutputConstructor]

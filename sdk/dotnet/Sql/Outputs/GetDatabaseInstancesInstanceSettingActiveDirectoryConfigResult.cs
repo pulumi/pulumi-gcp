@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult
     {
+        /// <summary>
+        /// Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
+        /// </summary>
         public readonly string Domain;
 
         [OutputConstructor]

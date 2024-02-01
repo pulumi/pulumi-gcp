@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWorkloadIdentityPoolProviderAw {
+    /**
+     * @return The AWS account ID.
+     * 
+     */
     private String accountId;
 
     private GetWorkloadIdentityPoolProviderAw() {}
+    /**
+     * @return The AWS account ID.
+     * 
+     */
     public String accountId() {
         return this.accountId;
     }

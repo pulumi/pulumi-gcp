@@ -51,9 +51,17 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
         return Optional.ofNullable(this.diskConfig);
     }
 
+    /**
+     * List of auxiliary node group instance names which have been assigned to the cluster.
+     * 
+     */
     @Import(name="instanceNames")
     private @Nullable Output<List<String>> instanceNames;
 
+    /**
+     * @return List of auxiliary node group instance names which have been assigned to the cluster.
+     * 
+     */
     public Optional<Output<List<String>>> instanceNames() {
         return Optional.ofNullable(this.instanceNames);
     }
@@ -199,15 +207,33 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfi
             return diskConfig(Output.of(diskConfig));
         }
 
+        /**
+         * @param instanceNames List of auxiliary node group instance names which have been assigned to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceNames(@Nullable Output<List<String>> instanceNames) {
             $.instanceNames = instanceNames;
             return this;
         }
 
+        /**
+         * @param instanceNames List of auxiliary node group instance names which have been assigned to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceNames(List<String> instanceNames) {
             return instanceNames(Output.of(instanceNames));
         }
 
+        /**
+         * @param instanceNames List of auxiliary node group instance names which have been assigned to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceNames(String... instanceNames) {
             return instanceNames(List.of(instanceNames));
         }

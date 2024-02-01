@@ -36,6 +36,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// This setting can be updated, but it cannot be removed after it is set.
         /// </summary>
         public readonly string? PrivateNetwork;
+        /// <summary>
+        /// PSC settings for a Cloud SQL instance.
+        /// </summary>
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationPscConfig> PscConfigs;
         /// <summary>
         /// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.

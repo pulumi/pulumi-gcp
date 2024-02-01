@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolUpgradeSettingBlueGreenSettingResult
     {
+        /// <summary>
+        /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+        /// </summary>
         public readonly string NodePoolSoakDuration;
+        /// <summary>
+        /// Standard rollout policy is the default policy for blue-green.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicyResult> StandardRolloutPolicies;
 
         [OutputConstructor]

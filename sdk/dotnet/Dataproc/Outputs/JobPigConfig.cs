@@ -23,6 +23,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
+        /// <summary>
+        /// The runtime logging config of the job
+        /// </summary>
         public readonly Outputs.JobPigConfigLoggingConfig? LoggingConfig;
         /// <summary>
         /// A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.

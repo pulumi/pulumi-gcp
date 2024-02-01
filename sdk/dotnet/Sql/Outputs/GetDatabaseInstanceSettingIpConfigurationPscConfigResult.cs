@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceSettingIpConfigurationPscConfigResult
     {
+        /// <summary>
+        /// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        /// </summary>
         public readonly ImmutableArray<string> AllowedConsumerProjects;
+        /// <summary>
+        /// Whether PSC connectivity is enabled for this instance.
+        /// </summary>
         public readonly bool PscEnabled;
 
         [OutputConstructor]

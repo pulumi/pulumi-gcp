@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The name of the instance group. Either `name` or `self_link` must be provided.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The port number.
+        /// </summary>
         public readonly int Port;
 
         [OutputConstructor]

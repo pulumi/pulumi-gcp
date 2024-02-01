@@ -14,9 +14,17 @@ public final class NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs extends com.pul
 
     public static final NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs Empty = new NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs();
 
+    /**
+     * Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+     * 
+     */
     @Import(name="localSsdCount", required=true)
     private Output<Integer> localSsdCount;
 
+    /**
+     * @return Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+     * 
+     */
     public Output<Integer> localSsdCount() {
         return this.localSsdCount;
     }
@@ -45,11 +53,23 @@ public final class NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs extends com.pul
             $ = new NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param localSsdCount Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdCount(Output<Integer> localSsdCount) {
             $.localSsdCount = localSsdCount;
             return this;
         }
 
+        /**
+         * @param localSsdCount Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdCount(Integer localSsdCount) {
             return localSsdCount(Output.of(localSsdCount));
         }

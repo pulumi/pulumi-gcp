@@ -24,6 +24,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
         /// </summary>
         public readonly string NetworkTier;
+        /// <summary>
+        /// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+        /// </summary>
         public readonly string PublicPtrDomainName;
 
         [OutputConstructor]

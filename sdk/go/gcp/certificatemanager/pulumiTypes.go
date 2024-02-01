@@ -1798,9 +1798,16 @@ func (o TrustConfigTrustStoreTrustAnchorArrayOutput) Index(i pulumi.IntInput) Tr
 }
 
 type GetCertificateMapGclbTarget struct {
-	IpConfigs        []GetCertificateMapGclbTargetIpConfig `pulumi:"ipConfigs"`
-	TargetHttpsProxy string                                `pulumi:"targetHttpsProxy"`
-	TargetSslProxy   string                                `pulumi:"targetSslProxy"`
+	// An IP configuration where this Certificate Map is serving
+	IpConfigs []GetCertificateMapGclbTargetIpConfig `pulumi:"ipConfigs"`
+	// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+	// This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+	// 'targetSslProxy' may be set.
+	TargetHttpsProxy string `pulumi:"targetHttpsProxy"`
+	// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+	// This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+	// 'targetSslProxy' may be set.
+	TargetSslProxy string `pulumi:"targetSslProxy"`
 }
 
 // GetCertificateMapGclbTargetInput is an input type that accepts GetCertificateMapGclbTargetArgs and GetCertificateMapGclbTargetOutput values.
@@ -1815,9 +1822,16 @@ type GetCertificateMapGclbTargetInput interface {
 }
 
 type GetCertificateMapGclbTargetArgs struct {
-	IpConfigs        GetCertificateMapGclbTargetIpConfigArrayInput `pulumi:"ipConfigs"`
-	TargetHttpsProxy pulumi.StringInput                            `pulumi:"targetHttpsProxy"`
-	TargetSslProxy   pulumi.StringInput                            `pulumi:"targetSslProxy"`
+	// An IP configuration where this Certificate Map is serving
+	IpConfigs GetCertificateMapGclbTargetIpConfigArrayInput `pulumi:"ipConfigs"`
+	// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+	// This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+	// 'targetSslProxy' may be set.
+	TargetHttpsProxy pulumi.StringInput `pulumi:"targetHttpsProxy"`
+	// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+	// This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+	// 'targetSslProxy' may be set.
+	TargetSslProxy pulumi.StringInput `pulumi:"targetSslProxy"`
 }
 
 func (GetCertificateMapGclbTargetArgs) ElementType() reflect.Type {
@@ -1871,14 +1885,21 @@ func (o GetCertificateMapGclbTargetOutput) ToGetCertificateMapGclbTargetOutputWi
 	return o
 }
 
+// An IP configuration where this Certificate Map is serving
 func (o GetCertificateMapGclbTargetOutput) IpConfigs() GetCertificateMapGclbTargetIpConfigArrayOutput {
 	return o.ApplyT(func(v GetCertificateMapGclbTarget) []GetCertificateMapGclbTargetIpConfig { return v.IpConfigs }).(GetCertificateMapGclbTargetIpConfigArrayOutput)
 }
 
+// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+// This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+// 'targetSslProxy' may be set.
 func (o GetCertificateMapGclbTargetOutput) TargetHttpsProxy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateMapGclbTarget) string { return v.TargetHttpsProxy }).(pulumi.StringOutput)
 }
 
+// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+// This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+// 'targetSslProxy' may be set.
 func (o GetCertificateMapGclbTargetOutput) TargetSslProxy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateMapGclbTarget) string { return v.TargetSslProxy }).(pulumi.StringOutput)
 }
@@ -1904,8 +1925,10 @@ func (o GetCertificateMapGclbTargetArrayOutput) Index(i pulumi.IntInput) GetCert
 }
 
 type GetCertificateMapGclbTargetIpConfig struct {
+	// An external IP address
 	IpAddress string `pulumi:"ipAddress"`
-	Ports     []int  `pulumi:"ports"`
+	// A list of ports
+	Ports []int `pulumi:"ports"`
 }
 
 // GetCertificateMapGclbTargetIpConfigInput is an input type that accepts GetCertificateMapGclbTargetIpConfigArgs and GetCertificateMapGclbTargetIpConfigOutput values.
@@ -1920,8 +1943,10 @@ type GetCertificateMapGclbTargetIpConfigInput interface {
 }
 
 type GetCertificateMapGclbTargetIpConfigArgs struct {
-	IpAddress pulumi.StringInput   `pulumi:"ipAddress"`
-	Ports     pulumi.IntArrayInput `pulumi:"ports"`
+	// An external IP address
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// A list of ports
+	Ports pulumi.IntArrayInput `pulumi:"ports"`
 }
 
 func (GetCertificateMapGclbTargetIpConfigArgs) ElementType() reflect.Type {
@@ -1975,10 +2000,12 @@ func (o GetCertificateMapGclbTargetIpConfigOutput) ToGetCertificateMapGclbTarget
 	return o
 }
 
+// An external IP address
 func (o GetCertificateMapGclbTargetIpConfigOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateMapGclbTargetIpConfig) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// A list of ports
 func (o GetCertificateMapGclbTargetIpConfigOutput) Ports() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetCertificateMapGclbTargetIpConfig) []int { return v.Ports }).(pulumi.IntArrayOutput)
 }

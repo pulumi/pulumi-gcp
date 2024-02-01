@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateShieldedInstanceConfig {
+    /**
+     * @return Whether integrity monitoring is enabled for the instance.
+     * 
+     */
     private @Nullable Boolean enableIntegrityMonitoring;
+    /**
+     * @return Whether secure boot is enabled for the instance.
+     * 
+     */
     private @Nullable Boolean enableSecureBoot;
+    /**
+     * @return Whether the instance uses vTPM.
+     * 
+     */
     private @Nullable Boolean enableVtpm;
 
     private InstanceFromTemplateShieldedInstanceConfig() {}
+    /**
+     * @return Whether integrity monitoring is enabled for the instance.
+     * 
+     */
     public Optional<Boolean> enableIntegrityMonitoring() {
         return Optional.ofNullable(this.enableIntegrityMonitoring);
     }
+    /**
+     * @return Whether secure boot is enabled for the instance.
+     * 
+     */
     public Optional<Boolean> enableSecureBoot() {
         return Optional.ofNullable(this.enableSecureBoot);
     }
+    /**
+     * @return Whether the instance uses vTPM.
+     * 
+     */
     public Optional<Boolean> enableVtpm() {
         return Optional.ofNullable(this.enableVtpm);
     }
