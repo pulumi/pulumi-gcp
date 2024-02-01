@@ -24,81 +24,233 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfig {
+    /**
+     * @return The URI of the Apache Airflow Web UI hosted within this environment.
+     * 
+     */
     private @Nullable String airflowUri;
+    /**
+     * @return The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * 
+     */
     private @Nullable String dagGcsPrefix;
+    /**
+     * @return The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private @Nullable EnvironmentConfigDatabaseConfig databaseConfig;
+    /**
+     * @return Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+     * 
+     */
     private @Nullable Boolean enablePrivateBuildsOnly;
+    /**
+     * @return Optional. If true, a private Composer environment will be created.
+     * 
+     */
     private @Nullable Boolean enablePrivateEnvironment;
+    /**
+     * @return The encryption options for the Composer environment and its dependencies.
+     * 
+     */
     private @Nullable EnvironmentConfigEncryptionConfig encryptionConfig;
+    /**
+     * @return The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+     * 
+     */
     private @Nullable String environmentSize;
+    /**
+     * @return The Kubernetes Engine cluster used to run this environment.
+     * 
+     */
     private @Nullable String gkeCluster;
+    /**
+     * @return The configuration for Cloud Composer maintenance window.
+     * 
+     */
     private @Nullable EnvironmentConfigMaintenanceWindow maintenanceWindow;
+    /**
+     * @return Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+     * 
+     */
     private @Nullable EnvironmentConfigMasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig;
+    /**
+     * @return The configuration used for the Kubernetes Engine cluster.
+     * 
+     */
     private @Nullable EnvironmentConfigNodeConfig nodeConfig;
+    /**
+     * @return The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private @Nullable Integer nodeCount;
+    /**
+     * @return The configuration used for the Private IP Cloud Composer environment.
+     * 
+     */
     private @Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig;
+    /**
+     * @return The recovery configuration settings for the Cloud Composer environment
+     * 
+     */
     private @Nullable EnvironmentConfigRecoveryConfig recoveryConfig;
+    /**
+     * @return Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+     * 
+     */
     private @Nullable String resilienceMode;
+    /**
+     * @return The configuration settings for software inside the environment.
+     * 
+     */
     private @Nullable EnvironmentConfigSoftwareConfig softwareConfig;
+    /**
+     * @return The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private @Nullable EnvironmentConfigWebServerConfig webServerConfig;
+    /**
+     * @return Network-level access control policy for the Airflow web server.
+     * 
+     */
     private @Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl;
+    /**
+     * @return The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+     * 
+     */
     private @Nullable EnvironmentConfigWorkloadsConfig workloadsConfig;
 
     private EnvironmentConfig() {}
+    /**
+     * @return The URI of the Apache Airflow Web UI hosted within this environment.
+     * 
+     */
     public Optional<String> airflowUri() {
         return Optional.ofNullable(this.airflowUri);
     }
+    /**
+     * @return The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * 
+     */
     public Optional<String> dagGcsPrefix() {
         return Optional.ofNullable(this.dagGcsPrefix);
     }
+    /**
+     * @return The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public Optional<EnvironmentConfigDatabaseConfig> databaseConfig() {
         return Optional.ofNullable(this.databaseConfig);
     }
+    /**
+     * @return Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+     * 
+     */
     public Optional<Boolean> enablePrivateBuildsOnly() {
         return Optional.ofNullable(this.enablePrivateBuildsOnly);
     }
+    /**
+     * @return Optional. If true, a private Composer environment will be created.
+     * 
+     */
     public Optional<Boolean> enablePrivateEnvironment() {
         return Optional.ofNullable(this.enablePrivateEnvironment);
     }
+    /**
+     * @return The encryption options for the Composer environment and its dependencies.
+     * 
+     */
     public Optional<EnvironmentConfigEncryptionConfig> encryptionConfig() {
         return Optional.ofNullable(this.encryptionConfig);
     }
+    /**
+     * @return The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+     * 
+     */
     public Optional<String> environmentSize() {
         return Optional.ofNullable(this.environmentSize);
     }
+    /**
+     * @return The Kubernetes Engine cluster used to run this environment.
+     * 
+     */
     public Optional<String> gkeCluster() {
         return Optional.ofNullable(this.gkeCluster);
     }
+    /**
+     * @return The configuration for Cloud Composer maintenance window.
+     * 
+     */
     public Optional<EnvironmentConfigMaintenanceWindow> maintenanceWindow() {
         return Optional.ofNullable(this.maintenanceWindow);
     }
+    /**
+     * @return Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+     * 
+     */
     public Optional<EnvironmentConfigMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfig() {
         return Optional.ofNullable(this.masterAuthorizedNetworksConfig);
     }
+    /**
+     * @return The configuration used for the Kubernetes Engine cluster.
+     * 
+     */
     public Optional<EnvironmentConfigNodeConfig> nodeConfig() {
         return Optional.ofNullable(this.nodeConfig);
     }
+    /**
+     * @return The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public Optional<Integer> nodeCount() {
         return Optional.ofNullable(this.nodeCount);
     }
+    /**
+     * @return The configuration used for the Private IP Cloud Composer environment.
+     * 
+     */
     public Optional<EnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfig() {
         return Optional.ofNullable(this.privateEnvironmentConfig);
     }
+    /**
+     * @return The recovery configuration settings for the Cloud Composer environment
+     * 
+     */
     public Optional<EnvironmentConfigRecoveryConfig> recoveryConfig() {
         return Optional.ofNullable(this.recoveryConfig);
     }
+    /**
+     * @return Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+     * 
+     */
     public Optional<String> resilienceMode() {
         return Optional.ofNullable(this.resilienceMode);
     }
+    /**
+     * @return The configuration settings for software inside the environment.
+     * 
+     */
     public Optional<EnvironmentConfigSoftwareConfig> softwareConfig() {
         return Optional.ofNullable(this.softwareConfig);
     }
+    /**
+     * @return The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public Optional<EnvironmentConfigWebServerConfig> webServerConfig() {
         return Optional.ofNullable(this.webServerConfig);
     }
+    /**
+     * @return Network-level access control policy for the Airflow web server.
+     * 
+     */
     public Optional<EnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControl() {
         return Optional.ofNullable(this.webServerNetworkAccessControl);
     }
+    /**
+     * @return The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+     * 
+     */
     public Optional<EnvironmentConfigWorkloadsConfig> workloadsConfig() {
         return Optional.ofNullable(this.workloadsConfig);
     }

@@ -10,7 +10,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingLocationPreference {
+    /**
+     * @return A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+     * 
+     */
     private String followGaeApplication;
+    /**
+     * @return The preferred Compute Engine zone for the secondary/failover
+     * 
+     */
     private String secondaryZone;
     /**
      * @return To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
@@ -19,9 +27,17 @@ public final class GetDatabaseInstancesInstanceSettingLocationPreference {
     private String zone;
 
     private GetDatabaseInstancesInstanceSettingLocationPreference() {}
+    /**
+     * @return A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+     * 
+     */
     public String followGaeApplication() {
         return this.followGaeApplication;
     }
+    /**
+     * @return The preferred Compute Engine zone for the secondary/failover
+     * 
+     */
     public String secondaryZone() {
         return this.secondaryZone;
     }

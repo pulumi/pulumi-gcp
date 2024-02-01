@@ -13,7 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineConditionTargetsPresentCondition {
+    /**
+     * @return The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+     * 
+     */
     private @Nullable List<String> missingTargets;
+    /**
+     * @return True if there aren&#39;t any missing Targets.
+     * 
+     */
     private @Nullable Boolean status;
     /**
      * @return Output only. Most recent time at which the pipeline was updated.
@@ -22,9 +30,17 @@ public final class DeliveryPipelineConditionTargetsPresentCondition {
     private @Nullable String updateTime;
 
     private DeliveryPipelineConditionTargetsPresentCondition() {}
+    /**
+     * @return The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+     * 
+     */
     public List<String> missingTargets() {
         return this.missingTargets == null ? List.of() : this.missingTargets;
     }
+    /**
+     * @return True if there aren&#39;t any missing Targets.
+     * 
+     */
     public Optional<Boolean> status() {
         return Optional.ofNullable(this.status);
     }

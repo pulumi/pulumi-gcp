@@ -29,6 +29,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
+        /// <summary>
+        /// The runtime logging config of the job
+        /// </summary>
         public readonly Outputs.JobPysparkConfigLoggingConfig? LoggingConfig;
         /// <summary>
         /// The HCFS URI of the main Python file to use as the driver. Must be a .py file.

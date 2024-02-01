@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
     [OutputType]
     public sealed class GetAppConnectionApplicationEndpointResult
     {
+        /// <summary>
+        /// Hostname or IP address of the remote application endpoint.
+        /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// Port of the remote application endpoint.
+        /// </summary>
         public readonly int Port;
 
         [OutputConstructor]

@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class GetAuthorityConfigX509ConfigAdditionalExtensionResult
     {
+        /// <summary>
+        /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+        /// handle this extension, the client should consider this to be an error).
+        /// </summary>
         public readonly bool Critical;
+        /// <summary>
+        /// Describes values that are relevant in a CA certificate.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult> ObjectIds;
+        /// <summary>
+        /// The value of this X.509 extension. A base64-encoded string.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

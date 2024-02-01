@@ -1058,11 +1058,17 @@ class GetTestablePermissionsPermissionResult(dict):
 class GetWorkloadIdentityPoolProviderAwResult(dict):
     def __init__(__self__, *,
                  account_id: str):
+        """
+        :param str account_id: The AWS account ID.
+        """
         pulumi.set(__self__, "account_id", account_id)
 
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
+        """
+        The AWS account ID.
+        """
         return pulumi.get(self, "account_id")
 
 
@@ -1072,6 +1078,44 @@ class GetWorkloadIdentityPoolProviderOidcResult(dict):
                  allowed_audiences: Sequence[str],
                  issuer_uri: str,
                  jwks_json: str):
+        """
+        :param Sequence[str] allowed_audiences: Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
+               requests are rejected if the token audience does not match one of the configured
+               values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+               be configured.
+               
+               If this list is empty, the OIDC token audience must be equal to the full canonical
+               resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+               For example:
+               '''
+               //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+               https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+               '''
+        :param str issuer_uri: The OIDC issuer URL.
+        :param str jwks_json: OIDC JWKs in JSON String format. For details on definition of a
+               JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+               use the 'jwks_uri' from the discovery document fetched from the
+               .well-known path for the 'issuer_uri'. Currently, RSA and EC asymmetric
+               keys are supported. The JWK must use following format and include only
+               the following fields:
+               '''
+               {
+                 "keys": [
+                   {
+                         "kty": "RSA/EC",
+                         "alg": "<algorithm>",
+                         "use": "sig",
+                         "kid": "<key-id>",
+                         "n": "",
+                         "e": "",
+                         "x": "",
+                         "y": "",
+                         "crv": ""
+                   }
+                 ]
+               }
+               '''
+        """
         pulumi.set(__self__, "allowed_audiences", allowed_audiences)
         pulumi.set(__self__, "issuer_uri", issuer_uri)
         pulumi.set(__self__, "jwks_json", jwks_json)
@@ -1079,16 +1123,58 @@ class GetWorkloadIdentityPoolProviderOidcResult(dict):
     @property
     @pulumi.getter(name="allowedAudiences")
     def allowed_audiences(self) -> Sequence[str]:
+        """
+        Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
+        requests are rejected if the token audience does not match one of the configured
+        values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+        be configured.
+
+        If this list is empty, the OIDC token audience must be equal to the full canonical
+        resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+        For example:
+        '''
+        //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+        https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+        '''
+        """
         return pulumi.get(self, "allowed_audiences")
 
     @property
     @pulumi.getter(name="issuerUri")
     def issuer_uri(self) -> str:
+        """
+        The OIDC issuer URL.
+        """
         return pulumi.get(self, "issuer_uri")
 
     @property
     @pulumi.getter(name="jwksJson")
     def jwks_json(self) -> str:
+        """
+        OIDC JWKs in JSON String format. For details on definition of a
+        JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+        use the 'jwks_uri' from the discovery document fetched from the
+        .well-known path for the 'issuer_uri'. Currently, RSA and EC asymmetric
+        keys are supported. The JWK must use following format and include only
+        the following fields:
+        '''
+        {
+          "keys": [
+            {
+                  "kty": "RSA/EC",
+                  "alg": "<algorithm>",
+                  "use": "sig",
+                  "kid": "<key-id>",
+                  "n": "",
+                  "e": "",
+                  "x": "",
+                  "y": "",
+                  "crv": ""
+            }
+          ]
+        }
+        '''
+        """
         return pulumi.get(self, "jwks_json")
 
 
@@ -1096,11 +1182,17 @@ class GetWorkloadIdentityPoolProviderOidcResult(dict):
 class GetWorkloadIdentityPoolProviderSamlResult(dict):
     def __init__(__self__, *,
                  idp_metadata_xml: str):
+        """
+        :param str idp_metadata_xml: SAML Identity provider configuration metadata xml doc.
+        """
         pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
 
     @property
     @pulumi.getter(name="idpMetadataXml")
     def idp_metadata_xml(self) -> str:
+        """
+        SAML Identity provider configuration metadata xml doc.
+        """
         return pulumi.get(self, "idp_metadata_xml")
 
 

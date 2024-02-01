@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceClone {
+    /**
+     * @return The name of the allocated ip range for the private ip CloudSQL instance. For example: &#34;google-managed-services-default&#34;. If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+     * 
+     */
     private String allocatedIpRange;
+    /**
+     * @return (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
+     * 
+     */
     private List<String> databaseNames;
+    /**
+     * @return The timestamp of the point in time that should be restored.
+     * 
+     */
     private String pointInTime;
+    /**
+     * @return (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+     * 
+     */
     private String preferredZone;
+    /**
+     * @return The name of the instance from which the point in time should be restored.
+     * 
+     */
     private String sourceInstanceName;
 
     private GetDatabaseInstanceClone() {}
+    /**
+     * @return The name of the allocated ip range for the private ip CloudSQL instance. For example: &#34;google-managed-services-default&#34;. If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+     * 
+     */
     public String allocatedIpRange() {
         return this.allocatedIpRange;
     }
+    /**
+     * @return (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
+     * 
+     */
     public List<String> databaseNames() {
         return this.databaseNames;
     }
+    /**
+     * @return The timestamp of the point in time that should be restored.
+     * 
+     */
     public String pointInTime() {
         return this.pointInTime;
     }
+    /**
+     * @return (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+     * 
+     */
     public String preferredZone() {
         return this.preferredZone;
     }
+    /**
+     * @return The name of the instance from which the point in time should be restored.
+     * 
+     */
     public String sourceInstanceName() {
         return this.sourceInstanceName;
     }

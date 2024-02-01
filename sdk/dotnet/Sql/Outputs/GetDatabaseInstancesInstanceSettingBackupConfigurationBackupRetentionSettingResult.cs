@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult
     {
+        /// <summary>
+        /// Number of backups to retain.
+        /// </summary>
         public readonly int RetainedBackups;
+        /// <summary>
+        /// The unit that 'retainedBackups' represents. Defaults to COUNT
+        /// </summary>
         public readonly string RetentionUnit;
 
         [OutputConstructor]

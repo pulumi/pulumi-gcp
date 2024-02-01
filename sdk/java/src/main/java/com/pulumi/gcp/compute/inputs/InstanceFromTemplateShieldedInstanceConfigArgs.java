@@ -15,23 +15,47 @@ public final class InstanceFromTemplateShieldedInstanceConfigArgs extends com.pu
 
     public static final InstanceFromTemplateShieldedInstanceConfigArgs Empty = new InstanceFromTemplateShieldedInstanceConfigArgs();
 
+    /**
+     * Whether integrity monitoring is enabled for the instance.
+     * 
+     */
     @Import(name="enableIntegrityMonitoring")
     private @Nullable Output<Boolean> enableIntegrityMonitoring;
 
+    /**
+     * @return Whether integrity monitoring is enabled for the instance.
+     * 
+     */
     public Optional<Output<Boolean>> enableIntegrityMonitoring() {
         return Optional.ofNullable(this.enableIntegrityMonitoring);
     }
 
+    /**
+     * Whether secure boot is enabled for the instance.
+     * 
+     */
     @Import(name="enableSecureBoot")
     private @Nullable Output<Boolean> enableSecureBoot;
 
+    /**
+     * @return Whether secure boot is enabled for the instance.
+     * 
+     */
     public Optional<Output<Boolean>> enableSecureBoot() {
         return Optional.ofNullable(this.enableSecureBoot);
     }
 
+    /**
+     * Whether the instance uses vTPM.
+     * 
+     */
     @Import(name="enableVtpm")
     private @Nullable Output<Boolean> enableVtpm;
 
+    /**
+     * @return Whether the instance uses vTPM.
+     * 
+     */
     public Optional<Output<Boolean>> enableVtpm() {
         return Optional.ofNullable(this.enableVtpm);
     }
@@ -62,29 +86,65 @@ public final class InstanceFromTemplateShieldedInstanceConfigArgs extends com.pu
             $ = new InstanceFromTemplateShieldedInstanceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableIntegrityMonitoring Whether integrity monitoring is enabled for the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableIntegrityMonitoring(@Nullable Output<Boolean> enableIntegrityMonitoring) {
             $.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
 
+        /**
+         * @param enableIntegrityMonitoring Whether integrity monitoring is enabled for the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableIntegrityMonitoring(Boolean enableIntegrityMonitoring) {
             return enableIntegrityMonitoring(Output.of(enableIntegrityMonitoring));
         }
 
+        /**
+         * @param enableSecureBoot Whether secure boot is enabled for the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSecureBoot(@Nullable Output<Boolean> enableSecureBoot) {
             $.enableSecureBoot = enableSecureBoot;
             return this;
         }
 
+        /**
+         * @param enableSecureBoot Whether secure boot is enabled for the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSecureBoot(Boolean enableSecureBoot) {
             return enableSecureBoot(Output.of(enableSecureBoot));
         }
 
+        /**
+         * @param enableVtpm Whether the instance uses vTPM.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableVtpm(@Nullable Output<Boolean> enableVtpm) {
             $.enableVtpm = enableVtpm;
             return this;
         }
 
+        /**
+         * @param enableVtpm Whether the instance uses vTPM.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableVtpm(Boolean enableVtpm) {
             return enableVtpm(Output.of(enableVtpm));
         }

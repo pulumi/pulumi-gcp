@@ -29,6 +29,13 @@ public final class InstanceScheduling {
      * 
      */
     private @Nullable String instanceTerminationAction;
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     private @Nullable InstanceSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout;
     /**
      * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -96,6 +103,13 @@ public final class InstanceScheduling {
     public Optional<String> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
     }
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     public Optional<InstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeout() {
         return Optional.ofNullable(this.localSsdRecoveryTimeout);
     }

@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceGroupManagerStatusResult
     {
+        /// <summary>
+        /// Status of all-instances configuration on the group.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatusAllInstancesConfigResult> AllInstancesConfigs;
+        /// <summary>
+        /// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        /// </summary>
         public readonly bool IsStable;
+        /// <summary>
+        /// Stateful status of the given Instance Group Manager.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatusStatefulResult> Statefuls;
+        /// <summary>
+        /// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerStatusVersionTargetResult> VersionTargets;
 
         [OutputConstructor]

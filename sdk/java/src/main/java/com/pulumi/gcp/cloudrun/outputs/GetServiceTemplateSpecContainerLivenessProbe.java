@@ -13,29 +13,89 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerLivenessProbe {
+    /**
+     * @return Minimum consecutive failures for the probe to be considered failed after
+     * having succeeded. Defaults to 3. Minimum value is 1.
+     * 
+     */
     private Integer failureThreshold;
+    /**
+     * @return GRPC specifies an action involving a GRPC port.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerLivenessProbeGrpc> grpcs;
+    /**
+     * @return HttpGet specifies the http request to perform.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerLivenessProbeHttpGet> httpGets;
+    /**
+     * @return Number of seconds after the container has started before the probe is
+     * initiated.
+     * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+     * 
+     */
     private Integer initialDelaySeconds;
+    /**
+     * @return How often (in seconds) to perform the probe.
+     * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+     * 
+     */
     private Integer periodSeconds;
+    /**
+     * @return Number of seconds after which the probe times out.
+     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+     * Must be smaller than period_seconds.
+     * 
+     */
     private Integer timeoutSeconds;
 
     private GetServiceTemplateSpecContainerLivenessProbe() {}
+    /**
+     * @return Minimum consecutive failures for the probe to be considered failed after
+     * having succeeded. Defaults to 3. Minimum value is 1.
+     * 
+     */
     public Integer failureThreshold() {
         return this.failureThreshold;
     }
+    /**
+     * @return GRPC specifies an action involving a GRPC port.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerLivenessProbeGrpc> grpcs() {
         return this.grpcs;
     }
+    /**
+     * @return HttpGet specifies the http request to perform.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerLivenessProbeHttpGet> httpGets() {
         return this.httpGets;
     }
+    /**
+     * @return Number of seconds after the container has started before the probe is
+     * initiated.
+     * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+     * 
+     */
     public Integer initialDelaySeconds() {
         return this.initialDelaySeconds;
     }
+    /**
+     * @return How often (in seconds) to perform the probe.
+     * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+     * 
+     */
     public Integer periodSeconds() {
         return this.periodSeconds;
     }
+    /**
+     * @return Number of seconds after which the probe times out.
+     * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+     * Must be smaller than period_seconds.
+     * 
+     */
     public Integer timeoutSeconds() {
         return this.timeoutSeconds;
     }

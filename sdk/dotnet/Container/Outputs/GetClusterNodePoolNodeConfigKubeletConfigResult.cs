@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolNodeConfigKubeletConfigResult
     {
+        /// <summary>
+        /// Enable CPU CFS quota enforcement for containers that specify CPU limits.
+        /// </summary>
         public readonly bool CpuCfsQuota;
+        /// <summary>
+        /// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+        /// </summary>
         public readonly string CpuCfsQuotaPeriod;
+        /// <summary>
+        /// Control the CPU management policy on the node.
+        /// </summary>
         public readonly string CpuManagerPolicy;
+        /// <summary>
+        /// Controls the maximum number of processes allowed to run in a pod.
+        /// </summary>
         public readonly int PodPidsLimit;
 
         [OutputConstructor]

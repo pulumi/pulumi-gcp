@@ -14,9 +14,17 @@ public final class ClusterResourceUsageExportConfigBigqueryDestinationArgs exten
 
     public static final ClusterResourceUsageExportConfigBigqueryDestinationArgs Empty = new ClusterResourceUsageExportConfigBigqueryDestinationArgs();
 
+    /**
+     * The ID of a BigQuery Dataset.
+     * 
+     */
     @Import(name="datasetId", required=true)
     private Output<String> datasetId;
 
+    /**
+     * @return The ID of a BigQuery Dataset.
+     * 
+     */
     public Output<String> datasetId() {
         return this.datasetId;
     }
@@ -45,11 +53,23 @@ public final class ClusterResourceUsageExportConfigBigqueryDestinationArgs exten
             $ = new ClusterResourceUsageExportConfigBigqueryDestinationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param datasetId The ID of a BigQuery Dataset.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datasetId(Output<String> datasetId) {
             $.datasetId = datasetId;
             return this;
         }
 
+        /**
+         * @param datasetId The ID of a BigQuery Dataset.
+         * 
+         * @return builder
+         * 
+         */
         public Builder datasetId(String datasetId) {
             return datasetId(Output.of(datasetId));
         }

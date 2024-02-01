@@ -22,6 +22,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Disk Config
         /// </summary>
         public readonly Outputs.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig? DiskConfig;
+        /// <summary>
+        /// List of auxiliary node group instance names which have been assigned to the cluster.
+        /// </summary>
         public readonly ImmutableArray<string> InstanceNames;
         /// <summary>
         /// The name of a Google Compute Engine machine type

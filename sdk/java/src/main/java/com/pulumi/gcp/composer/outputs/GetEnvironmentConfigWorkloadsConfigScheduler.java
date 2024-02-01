@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfigScheduler {
+    /**
+     * @return The number of schedulers.
+     * 
+     */
     private Integer count;
+    /**
+     * @return CPU request and limit for a single Airflow scheduler replica
+     * 
+     */
     private Double cpu;
+    /**
+     * @return Memory (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     private Double memoryGb;
+    /**
+     * @return Storage (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     private Double storageGb;
 
     private GetEnvironmentConfigWorkloadsConfigScheduler() {}
+    /**
+     * @return The number of schedulers.
+     * 
+     */
     public Integer count() {
         return this.count;
     }
+    /**
+     * @return CPU request and limit for a single Airflow scheduler replica
+     * 
+     */
     public Double cpu() {
         return this.cpu;
     }
+    /**
+     * @return Memory (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     public Double memoryGb() {
         return this.memoryGb;
     }
+    /**
+     * @return Storage (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     public Double storageGb() {
         return this.storageGb;
     }

@@ -15,23 +15,47 @@ public final class EnvironmentConfigWorkloadsConfigTriggererArgs extends com.pul
 
     public static final EnvironmentConfigWorkloadsConfigTriggererArgs Empty = new EnvironmentConfigWorkloadsConfigTriggererArgs();
 
+    /**
+     * The number of triggerers.
+     * 
+     */
     @Import(name="count", required=true)
     private Output<Integer> count;
 
+    /**
+     * @return The number of triggerers.
+     * 
+     */
     public Output<Integer> count() {
         return this.count;
     }
 
+    /**
+     * CPU request and limit for a single Airflow triggerer replica.
+     * 
+     */
     @Import(name="cpu", required=true)
     private Output<Double> cpu;
 
+    /**
+     * @return CPU request and limit for a single Airflow triggerer replica.
+     * 
+     */
     public Output<Double> cpu() {
         return this.cpu;
     }
 
+    /**
+     * Memory (GB) request and limit for a single Airflow triggerer replica.
+     * 
+     */
     @Import(name="memoryGb", required=true)
     private Output<Double> memoryGb;
 
+    /**
+     * @return Memory (GB) request and limit for a single Airflow triggerer replica.
+     * 
+     */
     public Output<Double> memoryGb() {
         return this.memoryGb;
     }
@@ -62,29 +86,65 @@ public final class EnvironmentConfigWorkloadsConfigTriggererArgs extends com.pul
             $ = new EnvironmentConfigWorkloadsConfigTriggererArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param count The number of triggerers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Output<Integer> count) {
             $.count = count;
             return this;
         }
 
+        /**
+         * @param count The number of triggerers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Integer count) {
             return count(Output.of(count));
         }
 
+        /**
+         * @param cpu CPU request and limit for a single Airflow triggerer replica.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpu(Output<Double> cpu) {
             $.cpu = cpu;
             return this;
         }
 
+        /**
+         * @param cpu CPU request and limit for a single Airflow triggerer replica.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cpu(Double cpu) {
             return cpu(Output.of(cpu));
         }
 
+        /**
+         * @param memoryGb Memory (GB) request and limit for a single Airflow triggerer replica.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryGb(Output<Double> memoryGb) {
             $.memoryGb = memoryGb;
             return this;
         }
 
+        /**
+         * @param memoryGb Memory (GB) request and limit for a single Airflow triggerer replica.
+         * 
+         * @return builder
+         * 
+         */
         public Builder memoryGb(Double memoryGb) {
             return memoryGb(Output.of(memoryGb));
         }

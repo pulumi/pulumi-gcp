@@ -31,6 +31,10 @@ public final class ClusterClusterConfigWorkerConfig {
      * 
      */
     private @Nullable String imageUri;
+    /**
+     * @return List of master/worker instance names which have been assigned to the cluster.
+     * 
+     */
     private @Nullable List<String> instanceNames;
     /**
      * @return The name of a Google Compute Engine machine type
@@ -87,6 +91,10 @@ public final class ClusterClusterConfigWorkerConfig {
     public Optional<String> imageUri() {
         return Optional.ofNullable(this.imageUri);
     }
+    /**
+     * @return List of master/worker instance names which have been assigned to the cluster.
+     * 
+     */
     public List<String> instanceNames() {
         return this.instanceNames == null ? List.of() : this.instanceNames;
     }

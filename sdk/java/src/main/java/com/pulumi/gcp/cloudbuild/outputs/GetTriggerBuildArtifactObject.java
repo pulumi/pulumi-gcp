@@ -19,7 +19,15 @@ public final class GetTriggerBuildArtifactObject {
      * 
      */
     private String location;
+    /**
+     * @return Path globs used to match files in the build&#39;s workspace.
+     * 
+     */
     private List<String> paths;
+    /**
+     * @return Output only. Stores timing information for pushing all artifact objects.
+     * 
+     */
     private List<GetTriggerBuildArtifactObjectTiming> timings;
 
     private GetTriggerBuildArtifactObject() {}
@@ -32,9 +40,17 @@ public final class GetTriggerBuildArtifactObject {
     public String location() {
         return this.location;
     }
+    /**
+     * @return Path globs used to match files in the build&#39;s workspace.
+     * 
+     */
     public List<String> paths() {
         return this.paths;
     }
+    /**
+     * @return Output only. Stores timing information for pushing all artifact objects.
+     * 
+     */
     public List<GetTriggerBuildArtifactObjectTiming> timings() {
         return this.timings;
     }

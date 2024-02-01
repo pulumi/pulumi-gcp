@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfigWorker {
+    /**
+     * @return CPU request and limit for a single Airflow worker replica.
+     * 
+     */
     private @Nullable Double cpu;
+    /**
+     * @return Maximum number of workers for autoscaling.
+     * 
+     */
     private @Nullable Integer maxCount;
+    /**
+     * @return Memory (GB) request and limit for a single Airflow worker replica.
+     * 
+     */
     private @Nullable Double memoryGb;
+    /**
+     * @return Minimum number of workers for autoscaling.
+     * 
+     */
     private @Nullable Integer minCount;
+    /**
+     * @return Storage (GB) request and limit for a single Airflow worker replica.
+     * 
+     */
     private @Nullable Double storageGb;
 
     private EnvironmentConfigWorkloadsConfigWorker() {}
+    /**
+     * @return CPU request and limit for a single Airflow worker replica.
+     * 
+     */
     public Optional<Double> cpu() {
         return Optional.ofNullable(this.cpu);
     }
+    /**
+     * @return Maximum number of workers for autoscaling.
+     * 
+     */
     public Optional<Integer> maxCount() {
         return Optional.ofNullable(this.maxCount);
     }
+    /**
+     * @return Memory (GB) request and limit for a single Airflow worker replica.
+     * 
+     */
     public Optional<Double> memoryGb() {
         return Optional.ofNullable(this.memoryGb);
     }
+    /**
+     * @return Minimum number of workers for autoscaling.
+     * 
+     */
     public Optional<Integer> minCount() {
         return Optional.ofNullable(this.minCount);
     }
+    /**
+     * @return Storage (GB) request and limit for a single Airflow worker replica.
+     * 
+     */
     public Optional<Double> storageGb() {
         return Optional.ofNullable(this.storageGb);
     }

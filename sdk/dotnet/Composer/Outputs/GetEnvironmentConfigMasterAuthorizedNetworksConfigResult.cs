@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigMasterAuthorizedNetworksConfigResult
     {
+        /// <summary>
+        /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult> CidrBlocks;
+        /// <summary>
+        /// Whether or not master authorized networks is enabled.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

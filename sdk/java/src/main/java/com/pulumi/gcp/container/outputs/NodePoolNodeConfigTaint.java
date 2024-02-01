@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigTaint {
+    /**
+     * @return Effect for taint.
+     * 
+     */
     private String effect;
+    /**
+     * @return Key for taint.
+     * 
+     */
     private String key;
+    /**
+     * @return Value for taint.
+     * 
+     */
     private String value;
 
     private NodePoolNodeConfigTaint() {}
+    /**
+     * @return Effect for taint.
+     * 
+     */
     public String effect() {
         return this.effect;
     }
+    /**
+     * @return Key for taint.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Value for taint.
+     * 
+     */
     public String value() {
         return this.value;
     }

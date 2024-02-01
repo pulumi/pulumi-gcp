@@ -14,6 +14,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterConfigAuxiliaryNodeGroup {
+    /**
+     * @return A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+     * 
+     */
     private @Nullable String nodeGroupId;
     /**
      * @return Node group configuration.
@@ -22,6 +26,10 @@ public final class ClusterClusterConfigAuxiliaryNodeGroup {
     private List<ClusterClusterConfigAuxiliaryNodeGroupNodeGroup> nodeGroups;
 
     private ClusterClusterConfigAuxiliaryNodeGroup() {}
+    /**
+     * @return A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+     * 
+     */
     public Optional<String> nodeGroupId() {
         return Optional.ofNullable(this.nodeGroupId);
     }

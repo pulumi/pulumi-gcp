@@ -20,6 +20,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
+        /// <summary>
+        /// Number of VM provisioned with the machine_type.
+        /// </summary>
         [Input("vmCount")]
         public Input<int>? VmCount { get; set; }
 

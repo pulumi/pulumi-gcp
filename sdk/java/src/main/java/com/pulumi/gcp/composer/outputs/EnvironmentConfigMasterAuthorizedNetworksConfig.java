@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigMasterAuthorizedNetworksConfig {
+    /**
+     * @return cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+     * 
+     */
     private @Nullable List<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
+    /**
+     * @return Whether or not master authorized networks is enabled.
+     * 
+     */
     private Boolean enabled;
 
     private EnvironmentConfigMasterAuthorizedNetworksConfig() {}
+    /**
+     * @return cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+     * 
+     */
     public List<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks() {
         return this.cidrBlocks == null ? List.of() : this.cidrBlocks;
     }
+    /**
+     * @return Whether or not master authorized networks is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

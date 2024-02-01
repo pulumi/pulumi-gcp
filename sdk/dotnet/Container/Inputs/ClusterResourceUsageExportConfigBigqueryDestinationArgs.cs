@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterResourceUsageExportConfigBigqueryDestinationArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of a BigQuery Dataset.
+        /// </summary>
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 

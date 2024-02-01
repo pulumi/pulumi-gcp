@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetServiceTemplateVolumeSecretItemResult
     {
+        /// <summary>
+        /// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        /// </summary>
         public readonly int Mode;
+        /// <summary>
+        /// The relative path of the secret in the container.
+        /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

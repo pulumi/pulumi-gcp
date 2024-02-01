@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("upgradeOptions")]
         private InputList<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionGetArgs>? _upgradeOptions;
+
+        /// <summary>
+        /// Specifies the Auto Upgrade knobs for the node pool.
+        /// </summary>
         public InputList<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionGetArgs> UpgradeOptions
         {
             get => _upgradeOptions ?? (_upgradeOptions = new InputList<Inputs.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionGetArgs>());

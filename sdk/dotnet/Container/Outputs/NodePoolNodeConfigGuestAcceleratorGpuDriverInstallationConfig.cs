@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig
     {
+        /// <summary>
+        /// Mode for how the GPU driver is installed.
+        /// </summary>
         public readonly string GpuDriverVersion;
 
         [OutputConstructor]

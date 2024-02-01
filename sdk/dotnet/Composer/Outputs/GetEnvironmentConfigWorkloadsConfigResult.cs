@@ -13,10 +13,25 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigWorkloadsConfigResult
     {
+        /// <summary>
+        /// Configuration for resources used by DAG processor.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigDagProcessorResult> DagProcessors;
+        /// <summary>
+        /// Configuration for resources used by Airflow schedulers.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigSchedulerResult> Schedulers;
+        /// <summary>
+        /// Configuration for resources used by Airflow triggerers.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigTriggererResult> Triggerers;
+        /// <summary>
+        /// Configuration for resources used by Airflow web server.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigWebServerResult> WebServers;
+        /// <summary>
+        /// Configuration for resources used by Airflow workers.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigWorkerResult> Workers;
 
         [OutputConstructor]

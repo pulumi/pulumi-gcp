@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceGroupManagerAutoHealingPolicyResult
     {
+        /// <summary>
+        /// The health check resource that signals autohealing.
+        /// </summary>
         public readonly string HealthCheck;
+        /// <summary>
+        /// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+        /// </summary>
         public readonly int InitialDelaySec;
 
         [OutputConstructor]

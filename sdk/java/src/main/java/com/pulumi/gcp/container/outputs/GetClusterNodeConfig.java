@@ -33,153 +33,449 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfig {
+    /**
+     * @return Specifies options for controlling advanced machine features.
+     * 
+     */
     private List<GetClusterNodeConfigAdvancedMachineFeature> advancedMachineFeatures;
+    /**
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+     * 
+     */
     private String bootDiskKmsKey;
+    /**
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * 
+     */
     private List<GetClusterNodeConfigConfidentialNode> confidentialNodes;
+    /**
+     * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+     * 
+     */
     private Integer diskSizeGb;
+    /**
+     * @return Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+     * 
+     */
     private String diskType;
+    /**
+     * @return List of kubernetes taints applied to each node.
+     * 
+     */
     private List<GetClusterNodeConfigEffectiveTaint> effectiveTaints;
+    /**
+     * @return If enabled boot disks are configured with confidential mode.
+     * 
+     */
     private Boolean enableConfidentialStorage;
+    /**
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+     * 
+     */
     private List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
+    /**
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+     * 
+     */
     private List<GetClusterNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs;
+    /**
+     * @return Enable or disable NCCL Fast Socket in the node pool.
+     * 
+     */
     private List<GetClusterNodeConfigFastSocket> fastSockets;
+    /**
+     * @return GCFS configuration for this node.
+     * 
+     */
     private List<GetClusterNodeConfigGcfsConfig> gcfsConfigs;
+    /**
+     * @return List of the type and count of accelerator cards attached to the instance.
+     * 
+     */
     private List<GetClusterNodeConfigGuestAccelerator> guestAccelerators;
+    /**
+     * @return Enable or disable gvnic in the node pool.
+     * 
+     */
     private List<GetClusterNodeConfigGvnic> gvnics;
+    /**
+     * @return The maintenance policy for the hosts on which the GKE VMs run on.
+     * 
+     */
     private List<GetClusterNodeConfigHostMaintenancePolicy> hostMaintenancePolicies;
+    /**
+     * @return The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+     * 
+     */
     private String imageType;
+    /**
+     * @return Node kubelet configs.
+     * 
+     */
     private List<GetClusterNodeConfigKubeletConfig> kubeletConfigs;
+    /**
+     * @return The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+     * 
+     */
     private Map<String,String> labels;
+    /**
+     * @return Parameters that can be configured on Linux nodes.
+     * 
+     */
     private List<GetClusterNodeConfigLinuxNodeConfig> linuxNodeConfigs;
+    /**
+     * @return Parameters for raw-block local NVMe SSDs.
+     * 
+     */
     private List<GetClusterNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfigs;
+    /**
+     * @return The number of local SSD disks to be attached to the node.
+     * 
+     */
     private Integer localSsdCount;
+    /**
+     * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+     * 
+     */
     private String loggingVariant;
+    /**
+     * @return The name of a Google Compute Engine machine type.
+     * 
+     */
     private String machineType;
+    /**
+     * @return The metadata key/value pairs assigned to instances in the cluster.
+     * 
+     */
     private Map<String,String> metadata;
+    /**
+     * @return Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+     * 
+     */
     private String minCpuPlatform;
+    /**
+     * @return Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+     * 
+     */
     private String nodeGroup;
+    /**
+     * @return The set of Google API scopes to be made available on all of the node VMs.
+     * 
+     */
     private List<String> oauthScopes;
+    /**
+     * @return Whether the nodes are created as preemptible VM instances.
+     * 
+     */
     private Boolean preemptible;
+    /**
+     * @return The reservation affinity configuration for the node pool.
+     * 
+     */
     private List<GetClusterNodeConfigReservationAffinity> reservationAffinities;
+    /**
+     * @return The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+     * 
+     */
     private Map<String,String> resourceLabels;
+    /**
+     * @return Sandbox configuration for this node.
+     * 
+     */
     private List<GetClusterNodeConfigSandboxConfig> sandboxConfigs;
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the node VMs.
+     * 
+     */
     private String serviceAccount;
+    /**
+     * @return Shielded Instance options.
+     * 
+     */
     private List<GetClusterNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
+    /**
+     * @return Node affinity options for sole tenant node pools.
+     * 
+     */
     private List<GetClusterNodeConfigSoleTenantConfig> soleTenantConfigs;
+    /**
+     * @return Whether the nodes are created as spot VM instances.
+     * 
+     */
     private Boolean spot;
+    /**
+     * @return The list of instance tags applied to all nodes.
+     * 
+     */
     private List<String> tags;
+    /**
+     * @return List of Kubernetes taints to be applied to each node.
+     * 
+     */
     private List<GetClusterNodeConfigTaint> taints;
+    /**
+     * @return The workload metadata configuration for this node.
+     * 
+     */
     private List<GetClusterNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs;
 
     private GetClusterNodeConfig() {}
+    /**
+     * @return Specifies options for controlling advanced machine features.
+     * 
+     */
     public List<GetClusterNodeConfigAdvancedMachineFeature> advancedMachineFeatures() {
         return this.advancedMachineFeatures;
     }
+    /**
+     * @return The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+     * 
+     */
     public String bootDiskKmsKey() {
         return this.bootDiskKmsKey;
     }
+    /**
+     * @return Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can&#39;t be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+     * 
+     */
     public List<GetClusterNodeConfigConfidentialNode> confidentialNodes() {
         return this.confidentialNodes;
     }
+    /**
+     * @return Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+     * 
+     */
     public Integer diskSizeGb() {
         return this.diskSizeGb;
     }
+    /**
+     * @return Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+     * 
+     */
     public String diskType() {
         return this.diskType;
     }
+    /**
+     * @return List of kubernetes taints applied to each node.
+     * 
+     */
     public List<GetClusterNodeConfigEffectiveTaint> effectiveTaints() {
         return this.effectiveTaints;
     }
+    /**
+     * @return If enabled boot disks are configured with confidential mode.
+     * 
+     */
     public Boolean enableConfidentialStorage() {
         return this.enableConfidentialStorage;
     }
+    /**
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+     * 
+     */
     public List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs() {
         return this.ephemeralStorageConfigs;
     }
+    /**
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+     * 
+     */
     public List<GetClusterNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs() {
         return this.ephemeralStorageLocalSsdConfigs;
     }
+    /**
+     * @return Enable or disable NCCL Fast Socket in the node pool.
+     * 
+     */
     public List<GetClusterNodeConfigFastSocket> fastSockets() {
         return this.fastSockets;
     }
+    /**
+     * @return GCFS configuration for this node.
+     * 
+     */
     public List<GetClusterNodeConfigGcfsConfig> gcfsConfigs() {
         return this.gcfsConfigs;
     }
+    /**
+     * @return List of the type and count of accelerator cards attached to the instance.
+     * 
+     */
     public List<GetClusterNodeConfigGuestAccelerator> guestAccelerators() {
         return this.guestAccelerators;
     }
+    /**
+     * @return Enable or disable gvnic in the node pool.
+     * 
+     */
     public List<GetClusterNodeConfigGvnic> gvnics() {
         return this.gvnics;
     }
+    /**
+     * @return The maintenance policy for the hosts on which the GKE VMs run on.
+     * 
+     */
     public List<GetClusterNodeConfigHostMaintenancePolicy> hostMaintenancePolicies() {
         return this.hostMaintenancePolicies;
     }
+    /**
+     * @return The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+     * 
+     */
     public String imageType() {
         return this.imageType;
     }
+    /**
+     * @return Node kubelet configs.
+     * 
+     */
     public List<GetClusterNodeConfigKubeletConfig> kubeletConfigs() {
         return this.kubeletConfigs;
     }
+    /**
+     * @return The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+     * 
+     */
     public Map<String,String> labels() {
         return this.labels;
     }
+    /**
+     * @return Parameters that can be configured on Linux nodes.
+     * 
+     */
     public List<GetClusterNodeConfigLinuxNodeConfig> linuxNodeConfigs() {
         return this.linuxNodeConfigs;
     }
+    /**
+     * @return Parameters for raw-block local NVMe SSDs.
+     * 
+     */
     public List<GetClusterNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfigs() {
         return this.localNvmeSsdBlockConfigs;
     }
+    /**
+     * @return The number of local SSD disks to be attached to the node.
+     * 
+     */
     public Integer localSsdCount() {
         return this.localSsdCount;
     }
+    /**
+     * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+     * 
+     */
     public String loggingVariant() {
         return this.loggingVariant;
     }
+    /**
+     * @return The name of a Google Compute Engine machine type.
+     * 
+     */
     public String machineType() {
         return this.machineType;
     }
+    /**
+     * @return The metadata key/value pairs assigned to instances in the cluster.
+     * 
+     */
     public Map<String,String> metadata() {
         return this.metadata;
     }
+    /**
+     * @return Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+     * 
+     */
     public String minCpuPlatform() {
         return this.minCpuPlatform;
     }
+    /**
+     * @return Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+     * 
+     */
     public String nodeGroup() {
         return this.nodeGroup;
     }
+    /**
+     * @return The set of Google API scopes to be made available on all of the node VMs.
+     * 
+     */
     public List<String> oauthScopes() {
         return this.oauthScopes;
     }
+    /**
+     * @return Whether the nodes are created as preemptible VM instances.
+     * 
+     */
     public Boolean preemptible() {
         return this.preemptible;
     }
+    /**
+     * @return The reservation affinity configuration for the node pool.
+     * 
+     */
     public List<GetClusterNodeConfigReservationAffinity> reservationAffinities() {
         return this.reservationAffinities;
     }
+    /**
+     * @return The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+     * 
+     */
     public Map<String,String> resourceLabels() {
         return this.resourceLabels;
     }
+    /**
+     * @return Sandbox configuration for this node.
+     * 
+     */
     public List<GetClusterNodeConfigSandboxConfig> sandboxConfigs() {
         return this.sandboxConfigs;
     }
+    /**
+     * @return The Google Cloud Platform Service Account to be used by the node VMs.
+     * 
+     */
     public String serviceAccount() {
         return this.serviceAccount;
     }
+    /**
+     * @return Shielded Instance options.
+     * 
+     */
     public List<GetClusterNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs() {
         return this.shieldedInstanceConfigs;
     }
+    /**
+     * @return Node affinity options for sole tenant node pools.
+     * 
+     */
     public List<GetClusterNodeConfigSoleTenantConfig> soleTenantConfigs() {
         return this.soleTenantConfigs;
     }
+    /**
+     * @return Whether the nodes are created as spot VM instances.
+     * 
+     */
     public Boolean spot() {
         return this.spot;
     }
+    /**
+     * @return The list of instance tags applied to all nodes.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }
+    /**
+     * @return List of Kubernetes taints to be applied to each node.
+     * 
+     */
     public List<GetClusterNodeConfigTaint> taints() {
         return this.taints;
     }
+    /**
+     * @return The workload metadata configuration for this node.
+     * 
+     */
     public List<GetClusterNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs() {
         return this.workloadMetadataConfigs;
     }

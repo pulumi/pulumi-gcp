@@ -25,6 +25,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
         /// </summary>
         public readonly string? DiskEncryptionKeyRaw;
+        /// <summary>
+        /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        /// </summary>
         public readonly string? DiskEncryptionKeySha256;
         /// <summary>
         /// The self_link of the encryption key that is

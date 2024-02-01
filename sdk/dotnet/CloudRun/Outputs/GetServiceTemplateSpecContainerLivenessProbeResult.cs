@@ -13,11 +13,35 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerLivenessProbeResult
     {
+        /// <summary>
+        /// Minimum consecutive failures for the probe to be considered failed after
+        /// having succeeded. Defaults to 3. Minimum value is 1.
+        /// </summary>
         public readonly int FailureThreshold;
+        /// <summary>
+        /// GRPC specifies an action involving a GRPC port.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerLivenessProbeGrpcResult> Grpcs;
+        /// <summary>
+        /// HttpGet specifies the http request to perform.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerLivenessProbeHttpGetResult> HttpGets;
+        /// <summary>
+        /// Number of seconds after the container has started before the probe is
+        /// initiated.
+        /// Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+        /// </summary>
         public readonly int InitialDelaySeconds;
+        /// <summary>
+        /// How often (in seconds) to perform the probe.
+        /// Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+        /// </summary>
         public readonly int PeriodSeconds;
+        /// <summary>
+        /// Number of seconds after which the probe times out.
+        /// Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+        /// Must be smaller than period_seconds.
+        /// </summary>
         public readonly int TimeoutSeconds;
 
         [OutputConstructor]

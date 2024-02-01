@@ -13,13 +13,37 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class GetAuthorityConfigSubjectConfigSubjectResult
     {
+        /// <summary>
+        /// The common name of the distinguished name.
+        /// </summary>
         public readonly string CommonName;
+        /// <summary>
+        /// The country code of the subject.
+        /// </summary>
         public readonly string CountryCode;
+        /// <summary>
+        /// The locality or city of the subject.
+        /// </summary>
         public readonly string Locality;
+        /// <summary>
+        /// The organization of the subject.
+        /// </summary>
         public readonly string Organization;
+        /// <summary>
+        /// The organizational unit of the subject.
+        /// </summary>
         public readonly string OrganizationalUnit;
+        /// <summary>
+        /// The postal code of the subject.
+        /// </summary>
         public readonly string PostalCode;
+        /// <summary>
+        /// The province, territory, or regional state of the subject.
+        /// </summary>
         public readonly string Province;
+        /// <summary>
+        /// The street address of the subject.
+        /// </summary>
         public readonly string StreetAddress;
 
         [OutputConstructor]

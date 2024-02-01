@@ -11,25 +11,75 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceNetwork {
+    /**
+     * @return The network connect mode of the Filestore instance.
+     * If not provided, the connect mode defaults to
+     * DIRECT_PEERING. Default value: &#34;DIRECT_PEERING&#34; Possible values: [&#34;DIRECT_PEERING&#34;, &#34;PRIVATE_SERVICE_ACCESS&#34;]
+     * 
+     */
     private String connectMode;
+    /**
+     * @return A list of IPv4 or IPv6 addresses.
+     * 
+     */
     private List<String> ipAddresses;
+    /**
+     * @return IP versions for which the instance has
+     * IP addresses assigned. Possible values: [&#34;ADDRESS_MODE_UNSPECIFIED&#34;, &#34;MODE_IPV4&#34;, &#34;MODE_IPV6&#34;]
+     * 
+     */
     private List<String> modes;
+    /**
+     * @return The name of the GCE VPC network to which the
+     * instance is connected.
+     * 
+     */
     private String network;
+    /**
+     * @return A /29 CIDR block that identifies the range of IP
+     * addresses reserved for this instance.
+     * 
+     */
     private String reservedIpRange;
 
     private GetInstanceNetwork() {}
+    /**
+     * @return The network connect mode of the Filestore instance.
+     * If not provided, the connect mode defaults to
+     * DIRECT_PEERING. Default value: &#34;DIRECT_PEERING&#34; Possible values: [&#34;DIRECT_PEERING&#34;, &#34;PRIVATE_SERVICE_ACCESS&#34;]
+     * 
+     */
     public String connectMode() {
         return this.connectMode;
     }
+    /**
+     * @return A list of IPv4 or IPv6 addresses.
+     * 
+     */
     public List<String> ipAddresses() {
         return this.ipAddresses;
     }
+    /**
+     * @return IP versions for which the instance has
+     * IP addresses assigned. Possible values: [&#34;ADDRESS_MODE_UNSPECIFIED&#34;, &#34;MODE_IPV4&#34;, &#34;MODE_IPV6&#34;]
+     * 
+     */
     public List<String> modes() {
         return this.modes;
     }
+    /**
+     * @return The name of the GCE VPC network to which the
+     * instance is connected.
+     * 
+     */
     public String network() {
         return this.network;
     }
+    /**
+     * @return A /29 CIDR block that identifies the range of IP
+     * addresses reserved for this instance.
+     * 
+     */
     public String reservedIpRange() {
         return this.reservedIpRange;
     }

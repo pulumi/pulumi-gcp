@@ -21,6 +21,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
         /// </summary>
         public readonly bool? ContinueOnFailure;
+        /// <summary>
+        /// The runtime logging config of the job
+        /// </summary>
         public readonly Outputs.JobPrestoConfigLoggingConfig? LoggingConfig;
         /// <summary>
         /// The format in which query output will be displayed. See the Presto documentation for supported output formats.

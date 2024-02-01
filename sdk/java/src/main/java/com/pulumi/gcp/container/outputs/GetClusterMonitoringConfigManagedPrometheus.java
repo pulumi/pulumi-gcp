@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMonitoringConfigManagedPrometheus {
+    /**
+     * @return Whether or not the managed collection is enabled.
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterMonitoringConfigManagedPrometheus() {}
+    /**
+     * @return Whether or not the managed collection is enabled.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

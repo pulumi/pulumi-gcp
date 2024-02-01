@@ -13,10 +13,25 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigWorkloadsConfigWorker
     {
+        /// <summary>
+        /// CPU request and limit for a single Airflow worker replica.
+        /// </summary>
         public readonly double? Cpu;
+        /// <summary>
+        /// Maximum number of workers for autoscaling.
+        /// </summary>
         public readonly int? MaxCount;
+        /// <summary>
+        /// Memory (GB) request and limit for a single Airflow worker replica.
+        /// </summary>
         public readonly double? MemoryGb;
+        /// <summary>
+        /// Minimum number of workers for autoscaling.
+        /// </summary>
         public readonly int? MinCount;
+        /// <summary>
+        /// Storage (GB) request and limit for a single Airflow worker replica.
+        /// </summary>
         public readonly double? StorageGb;
 
         [OutputConstructor]

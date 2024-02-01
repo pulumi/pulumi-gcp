@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     [OutputType]
     public sealed class GetFunctionBuildConfigSourceStorageSourceResult
     {
+        /// <summary>
+        /// Google Cloud Storage bucket containing the source
+        /// </summary>
         public readonly string Bucket;
+        /// <summary>
+        /// Google Cloud Storage generation for the object. If the generation
+        /// is omitted, the latest generation will be used.
+        /// </summary>
         public readonly int Generation;
+        /// <summary>
+        /// Google Cloud Storage object containing the source.
+        /// </summary>
         public readonly string Object;
 
         [OutputConstructor]

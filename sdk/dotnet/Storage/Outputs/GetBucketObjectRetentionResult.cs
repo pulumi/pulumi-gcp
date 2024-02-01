@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Storage.Outputs
     [OutputType]
     public sealed class GetBucketObjectRetentionResult
     {
+        /// <summary>
+        /// The object retention mode. Supported values include: "Unlocked", "Locked".
+        /// </summary>
         public readonly string Mode;
+        /// <summary>
+        /// Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
+        /// </summary>
         public readonly string RetainUntilTime;
 
         [OutputConstructor]

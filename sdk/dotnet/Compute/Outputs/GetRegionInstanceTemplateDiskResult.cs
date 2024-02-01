@@ -73,6 +73,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         /// </summary>
         public readonly int ProvisionedIops;
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> ResourceManagerTags;
         /// <summary>
         /// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -94,8 +97,27 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// &gt; **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         /// </summary>
         public readonly string SourceImage;
+        /// <summary>
+        /// The customer-supplied encryption key of the source
+        /// image. Required if the source image is protected by a
+        /// customer-supplied encryption key.
+        /// 
+        /// Instance templates do not store customer-supplied
+        /// encryption keys, so you cannot create disks for
+        /// instances in a managed instance group if the source
+        /// images are encrypted with your own keys.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateDiskSourceImageEncryptionKeyResult> SourceImageEncryptionKeys;
+        /// <summary>
+        /// The source snapshot to create this disk. When creating
+        /// a new instance, one of initializeParams.sourceSnapshot,
+        /// initializeParams.sourceImage, or disks.source is
+        /// required except for local SSD.
+        /// </summary>
         public readonly string SourceSnapshot;
+        /// <summary>
+        /// The customer-supplied encryption key of the source snapshot.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyResult> SourceSnapshotEncryptionKeys;
         /// <summary>
         /// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.

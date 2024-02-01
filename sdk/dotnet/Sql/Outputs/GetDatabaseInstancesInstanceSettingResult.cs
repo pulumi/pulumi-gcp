@@ -13,35 +13,91 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceSettingResult
     {
+        /// <summary>
+        /// This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+        /// </summary>
         public readonly string ActivationPolicy;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult> ActiveDirectoryConfigs;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult> AdvancedMachineFeatures;
+        /// <summary>
+        /// The availability type of the Cloud SQL instance, high availability
+        /// (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+        /// settings.backup_configuration.enabled is set to true.
+        /// For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+        /// For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+        /// is set to true. Defaults to ZONAL.
+        /// </summary>
         public readonly string AvailabilityType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult> BackupConfigurations;
+        /// <summary>
+        /// The name of server instance collation.
+        /// </summary>
         public readonly string Collation;
+        /// <summary>
+        /// Specifies if connections must use Cloud SQL connectors.
+        /// </summary>
         public readonly string ConnectorEnforcement;
+        /// <summary>
+        /// Data cache configurations.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingDataCacheConfigResult> DataCacheConfigs;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingDatabaseFlagResult> DatabaseFlags;
+        /// <summary>
+        /// Configuration to protect against accidental instance deletion.
+        /// </summary>
         public readonly bool DeletionProtectionEnabled;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult> DenyMaintenancePeriods;
+        /// <summary>
+        /// Enables auto-resizing of the storage size. Defaults to true.
+        /// </summary>
         public readonly bool DiskAutoresize;
+        /// <summary>
+        /// The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        /// </summary>
         public readonly int DiskAutoresizeLimit;
+        /// <summary>
+        /// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        /// </summary>
         public readonly int DiskSize;
+        /// <summary>
+        /// The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+        /// </summary>
         public readonly string DiskType;
+        /// <summary>
+        /// The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+        /// </summary>
         public readonly string Edition;
+        /// <summary>
+        /// Configuration of Query Insights.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult> InsightsConfigs;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationResult> IpConfigurations;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingLocationPreferenceResult> LocationPreferences;
+        /// <summary>
+        /// Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingMaintenanceWindowResult> MaintenanceWindows;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult> PasswordValidationPolicies;
+        /// <summary>
+        /// Pricing plan for this instance, can only be PER_USE.
+        /// </summary>
         public readonly string PricingPlan;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult> SqlServerAuditConfigs;
         /// <summary>
         /// To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
         /// </summary>
         public readonly string Tier;
+        /// <summary>
+        /// The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        /// </summary>
         public readonly string TimeZone;
+        /// <summary>
+        /// A set of key/value user label pairs to assign to the instance.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> UserLabels;
+        /// <summary>
+        /// Used to make sure changes to the settings block are atomic.
+        /// </summary>
         public readonly int Version;
 
         [OutputConstructor]

@@ -1259,7 +1259,8 @@ type ClusterClusterConfig struct {
 	// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
 	// Structure defined below.
 	AuxiliaryNodeGroups []ClusterClusterConfigAuxiliaryNodeGroup `pulumi:"auxiliaryNodeGroups"`
-	Bucket              *string                                  `pulumi:"bucket"`
+	// The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
+	Bucket *string `pulumi:"bucket"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
 	DataprocMetricConfig *ClusterClusterConfigDataprocMetricConfig `pulumi:"dataprocMetricConfig"`
@@ -1333,7 +1334,8 @@ type ClusterClusterConfigArgs struct {
 	// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
 	// Structure defined below.
 	AuxiliaryNodeGroups ClusterClusterConfigAuxiliaryNodeGroupArrayInput `pulumi:"auxiliaryNodeGroups"`
-	Bucket              pulumi.StringPtrInput                            `pulumi:"bucket"`
+	// The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
+	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
 	DataprocMetricConfig ClusterClusterConfigDataprocMetricConfigPtrInput `pulumi:"dataprocMetricConfig"`
@@ -1478,6 +1480,7 @@ func (o ClusterClusterConfigOutput) AuxiliaryNodeGroups() ClusterClusterConfigAu
 	return o.ApplyT(func(v ClusterClusterConfig) []ClusterClusterConfigAuxiliaryNodeGroup { return v.AuxiliaryNodeGroups }).(ClusterClusterConfigAuxiliaryNodeGroupArrayOutput)
 }
 
+// The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
 func (o ClusterClusterConfigOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
@@ -1627,6 +1630,7 @@ func (o ClusterClusterConfigPtrOutput) AuxiliaryNodeGroups() ClusterClusterConfi
 	}).(ClusterClusterConfigAuxiliaryNodeGroupArrayOutput)
 }
 
+// The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
 func (o ClusterClusterConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfig) *string {
 		if v == nil {
@@ -1969,6 +1973,7 @@ func (o ClusterClusterConfigAutoscalingConfigPtrOutput) PolicyUri() pulumi.Strin
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroup struct {
+	// A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
 	NodeGroupId *string `pulumi:"nodeGroupId"`
 	// Node group configuration.
 	NodeGroups []ClusterClusterConfigAuxiliaryNodeGroupNodeGroup `pulumi:"nodeGroups"`
@@ -1986,6 +1991,7 @@ type ClusterClusterConfigAuxiliaryNodeGroupInput interface {
 }
 
 type ClusterClusterConfigAuxiliaryNodeGroupArgs struct {
+	// A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
 	NodeGroupId pulumi.StringPtrInput `pulumi:"nodeGroupId"`
 	// Node group configuration.
 	NodeGroups ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayInput `pulumi:"nodeGroups"`
@@ -2042,6 +2048,7 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupOutput) ToClusterClusterConfigAuxi
 	return o
 }
 
+// A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
 func (o ClusterClusterConfigAuxiliaryNodeGroupOutput) NodeGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroup) *string { return v.NodeGroupId }).(pulumi.StringPtrOutput)
 }
@@ -2207,8 +2214,9 @@ type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig struct {
 	// multiple times.
 	Accelerators []ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator `pulumi:"accelerators"`
 	// Disk Config
-	DiskConfig    *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig `pulumi:"diskConfig"`
-	InstanceNames []string                                                                  `pulumi:"instanceNames"`
+	DiskConfig *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig `pulumi:"diskConfig"`
+	// List of auxiliary node group instance names which have been assigned to the cluster.
+	InstanceNames []string `pulumi:"instanceNames"`
 	// The name of a Google Compute Engine machine type
 	// to create for the node group. If not specified, GCP will default to a predetermined
 	// computed value (currently `n1-standard-4`).
@@ -2239,8 +2247,9 @@ type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs struct {
 	// multiple times.
 	Accelerators ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayInput `pulumi:"accelerators"`
 	// Disk Config
-	DiskConfig    ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrInput `pulumi:"diskConfig"`
-	InstanceNames pulumi.StringArrayInput                                                          `pulumi:"instanceNames"`
+	DiskConfig ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrInput `pulumi:"diskConfig"`
+	// List of auxiliary node group instance names which have been assigned to the cluster.
+	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
 	// The name of a Google Compute Engine machine type
 	// to create for the node group. If not specified, GCP will default to a predetermined
 	// computed value (currently `n1-standard-4`).
@@ -2347,6 +2356,7 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) Di
 	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput)
 }
 
+// List of auxiliary node group instance names which have been assigned to the cluster.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) []string {
 		return v.InstanceNames
@@ -2421,6 +2431,7 @@ func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
 	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput)
 }
 
+// List of auxiliary node group instance names which have been assigned to the cluster.
 func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) []string {
 		if v == nil {
@@ -3190,8 +3201,9 @@ func (o ClusterClusterConfigEncryptionConfigPtrOutput) KmsKeyName() pulumi.Strin
 type ClusterClusterConfigEndpointConfig struct {
 	// The flag to enable http access to specific ports
 	// on the cluster from external sources (aka Component Gateway). Defaults to false.
-	EnableHttpPortAccess bool                   `pulumi:"enableHttpPortAccess"`
-	HttpPorts            map[string]interface{} `pulumi:"httpPorts"`
+	EnableHttpPortAccess bool `pulumi:"enableHttpPortAccess"`
+	// The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
+	HttpPorts map[string]interface{} `pulumi:"httpPorts"`
 }
 
 // ClusterClusterConfigEndpointConfigInput is an input type that accepts ClusterClusterConfigEndpointConfigArgs and ClusterClusterConfigEndpointConfigOutput values.
@@ -3209,7 +3221,8 @@ type ClusterClusterConfigEndpointConfigArgs struct {
 	// The flag to enable http access to specific ports
 	// on the cluster from external sources (aka Component Gateway). Defaults to false.
 	EnableHttpPortAccess pulumi.BoolInput `pulumi:"enableHttpPortAccess"`
-	HttpPorts            pulumi.MapInput  `pulumi:"httpPorts"`
+	// The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
+	HttpPorts pulumi.MapInput `pulumi:"httpPorts"`
 }
 
 func (ClusterClusterConfigEndpointConfigArgs) ElementType() reflect.Type {
@@ -3295,6 +3308,7 @@ func (o ClusterClusterConfigEndpointConfigOutput) EnableHttpPortAccess() pulumi.
 	return o.ApplyT(func(v ClusterClusterConfigEndpointConfig) bool { return v.EnableHttpPortAccess }).(pulumi.BoolOutput)
 }
 
+// The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
 func (o ClusterClusterConfigEndpointConfigOutput) HttpPorts() pulumi.MapOutput {
 	return o.ApplyT(func(v ClusterClusterConfigEndpointConfig) map[string]interface{} { return v.HttpPorts }).(pulumi.MapOutput)
 }
@@ -3334,6 +3348,7 @@ func (o ClusterClusterConfigEndpointConfigPtrOutput) EnableHttpPortAccess() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
 func (o ClusterClusterConfigEndpointConfigPtrOutput) HttpPorts() pulumi.MapOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigEndpointConfig) map[string]interface{} {
 		if v == nil {
@@ -4394,6 +4409,7 @@ type ClusterClusterConfigLifecycleConfig struct {
 	// The duration to keep the cluster alive while idling
 	// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
 	IdleDeleteTtl *string `pulumi:"idleDeleteTtl"`
+	// Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
 	IdleStartTime *string `pulumi:"idleStartTime"`
 }
 
@@ -4418,6 +4434,7 @@ type ClusterClusterConfigLifecycleConfigArgs struct {
 	// The duration to keep the cluster alive while idling
 	// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
 	IdleDeleteTtl pulumi.StringPtrInput `pulumi:"idleDeleteTtl"`
+	// Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
 	IdleStartTime pulumi.StringPtrInput `pulumi:"idleStartTime"`
 }
 
@@ -4513,6 +4530,7 @@ func (o ClusterClusterConfigLifecycleConfigOutput) IdleDeleteTtl() pulumi.String
 	return o.ApplyT(func(v ClusterClusterConfigLifecycleConfig) *string { return v.IdleDeleteTtl }).(pulumi.StringPtrOutput)
 }
 
+// Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
 func (o ClusterClusterConfigLifecycleConfigOutput) IdleStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigLifecycleConfig) *string { return v.IdleStartTime }).(pulumi.StringPtrOutput)
 }
@@ -4566,6 +4584,7 @@ func (o ClusterClusterConfigLifecycleConfigPtrOutput) IdleDeleteTtl() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
 func (o ClusterClusterConfigLifecycleConfigPtrOutput) IdleStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigLifecycleConfig) *string {
 		if v == nil {
@@ -4582,7 +4601,8 @@ type ClusterClusterConfigMasterConfig struct {
 	DiskConfig *ClusterClusterConfigMasterConfigDiskConfig `pulumi:"diskConfig"`
 	// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
 	// for more information.
-	ImageUri      *string  `pulumi:"imageUri"`
+	ImageUri *string `pulumi:"imageUri"`
+	// List of master instance names which have been assigned to the cluster.
 	InstanceNames []string `pulumi:"instanceNames"`
 	// The name of a Google Compute Engine machine type
 	// to create for the master. If not specified, GCP will default to a predetermined
@@ -4616,7 +4636,8 @@ type ClusterClusterConfigMasterConfigArgs struct {
 	DiskConfig ClusterClusterConfigMasterConfigDiskConfigPtrInput `pulumi:"diskConfig"`
 	// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
 	// for more information.
-	ImageUri      pulumi.StringPtrInput   `pulumi:"imageUri"`
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// List of master instance names which have been assigned to the cluster.
 	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
 	// The name of a Google Compute Engine machine type
 	// to create for the master. If not specified, GCP will default to a predetermined
@@ -4729,6 +4750,7 @@ func (o ClusterClusterConfigMasterConfigOutput) ImageUri() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfig) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
 }
 
+// List of master instance names which have been assigned to the cluster.
 func (o ClusterClusterConfigMasterConfigOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfig) []string { return v.InstanceNames }).(pulumi.StringArrayOutput)
 }
@@ -4809,6 +4831,7 @@ func (o ClusterClusterConfigMasterConfigPtrOutput) ImageUri() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of master instance names which have been assigned to the cluster.
 func (o ClusterClusterConfigMasterConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfig) []string {
 		if v == nil {
@@ -5323,7 +5346,8 @@ type ClusterClusterConfigPreemptibleWorkerConfig struct {
 	DiskConfig *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig `pulumi:"diskConfig"`
 	// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
 	InstanceFlexibilityPolicy *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
-	InstanceNames             []string                                                              `pulumi:"instanceNames"`
+	// List of preemptible instance names which have been assigned to the cluster.
+	InstanceNames []string `pulumi:"instanceNames"`
 	// Specifies the number of preemptible nodes to create.
 	// Defaults to 0.
 	NumInstances *int `pulumi:"numInstances"`
@@ -5351,7 +5375,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigArgs struct {
 	DiskConfig ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrInput `pulumi:"diskConfig"`
 	// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
 	InstanceFlexibilityPolicy ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrInput `pulumi:"instanceFlexibilityPolicy"`
-	InstanceNames             pulumi.StringArrayInput                                                      `pulumi:"instanceNames"`
+	// List of preemptible instance names which have been assigned to the cluster.
+	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
 	// Specifies the number of preemptible nodes to create.
 	// Defaults to 0.
 	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
@@ -5454,6 +5479,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) InstanceFlexibilityPo
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrOutput)
 }
 
+// List of preemptible instance names which have been assigned to the cluster.
 func (o ClusterClusterConfigPreemptibleWorkerConfigOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfig) []string { return v.InstanceNames }).(pulumi.StringArrayOutput)
 }
@@ -5517,6 +5543,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) InstanceFlexibilit
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrOutput)
 }
 
+// List of preemptible instance names which have been assigned to the cluster.
 func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfig) []string {
 		if v == nil {
@@ -5752,7 +5779,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) NumLocal
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy struct {
 	// List of instance selection options that the group will use when creating new VMs.
-	InstanceSelectionLists   []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList   `pulumi:"instanceSelectionLists"`
+	InstanceSelectionLists []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList `pulumi:"instanceSelectionLists"`
+	// A list of instance selection results in the group.
 	InstanceSelectionResults []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult `pulumi:"instanceSelectionResults"`
 }
 
@@ -5769,7 +5797,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInput i
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs struct {
 	// List of instance selection options that the group will use when creating new VMs.
-	InstanceSelectionLists   ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput   `pulumi:"instanceSelectionLists"`
+	InstanceSelectionLists ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput `pulumi:"instanceSelectionLists"`
+	// A list of instance selection results in the group.
 	InstanceSelectionResults ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput `pulumi:"instanceSelectionResults"`
 }
 
@@ -5857,6 +5886,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyOutp
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
 }
 
+// A list of instance selection results in the group.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyOutput) InstanceSelectionResults() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy) []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
 		return v.InstanceSelectionResults
@@ -5897,6 +5927,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrO
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput)
 }
 
+// A list of instance selection results in the group.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrOutput) InstanceSelectionResults() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy) []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
 		if v == nil {
@@ -6027,7 +6058,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanc
 	// to create for the node group. If not specified, GCP will default to a predetermined
 	// computed value (currently `n1-standard-4`).
 	MachineType *string `pulumi:"machineType"`
-	VmCount     *int    `pulumi:"vmCount"`
+	// Number of VM provisioned with the machine_type.
+	VmCount *int `pulumi:"vmCount"`
 }
 
 // ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs and ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput values.
@@ -6046,7 +6078,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanc
 	// to create for the node group. If not specified, GCP will default to a predetermined
 	// computed value (currently `n1-standard-4`).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	VmCount     pulumi.IntPtrInput    `pulumi:"vmCount"`
+	// Number of VM provisioned with the machine_type.
+	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
 }
 
 func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs) ElementType() reflect.Type {
@@ -6109,6 +6142,7 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of VM provisioned with the machine_type.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) VmCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult) *int {
 		return v.VmCount
@@ -6992,7 +7026,8 @@ type ClusterClusterConfigWorkerConfig struct {
 	DiskConfig *ClusterClusterConfigWorkerConfigDiskConfig `pulumi:"diskConfig"`
 	// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
 	// for more information.
-	ImageUri      *string  `pulumi:"imageUri"`
+	ImageUri *string `pulumi:"imageUri"`
+	// List of master/worker instance names which have been assigned to the cluster.
 	InstanceNames []string `pulumi:"instanceNames"`
 	// The name of a Google Compute Engine machine type
 	// to create for the worker nodes. If not specified, GCP will default to a predetermined
@@ -7033,7 +7068,8 @@ type ClusterClusterConfigWorkerConfigArgs struct {
 	DiskConfig ClusterClusterConfigWorkerConfigDiskConfigPtrInput `pulumi:"diskConfig"`
 	// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
 	// for more information.
-	ImageUri      pulumi.StringPtrInput   `pulumi:"imageUri"`
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// List of master/worker instance names which have been assigned to the cluster.
 	InstanceNames pulumi.StringArrayInput `pulumi:"instanceNames"`
 	// The name of a Google Compute Engine machine type
 	// to create for the worker nodes. If not specified, GCP will default to a predetermined
@@ -7153,6 +7189,7 @@ func (o ClusterClusterConfigWorkerConfigOutput) ImageUri() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfig) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
 }
 
+// List of master/worker instance names which have been assigned to the cluster.
 func (o ClusterClusterConfigWorkerConfigOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfig) []string { return v.InstanceNames }).(pulumi.StringArrayOutput)
 }
@@ -7243,6 +7280,7 @@ func (o ClusterClusterConfigWorkerConfigPtrOutput) ImageUri() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of master/worker instance names which have been assigned to the cluster.
 func (o ClusterClusterConfigWorkerConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfig) []string {
 		if v == nil {
@@ -9897,7 +9935,8 @@ type JobHadoopConfig struct {
 	// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
 	FileUris []string `pulumi:"fileUris"`
 	// HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-	JarFileUris   []string                      `pulumi:"jarFileUris"`
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig *JobHadoopConfigLoggingConfig `pulumi:"loggingConfig"`
 	// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
 	MainClass *string `pulumi:"mainClass"`
@@ -9928,7 +9967,8 @@ type JobHadoopConfigArgs struct {
 	// HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
 	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
 	// HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-	JarFileUris   pulumi.StringArrayInput              `pulumi:"jarFileUris"`
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig JobHadoopConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
 	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
@@ -10037,6 +10077,7 @@ func (o JobHadoopConfigOutput) JarFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobHadoopConfig) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobHadoopConfigOutput) LoggingConfig() JobHadoopConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v JobHadoopConfig) *JobHadoopConfigLoggingConfig { return v.LoggingConfig }).(JobHadoopConfigLoggingConfigPtrOutput)
 }
@@ -10122,6 +10163,7 @@ func (o JobHadoopConfigPtrOutput) JarFileUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobHadoopConfigPtrOutput) LoggingConfig() JobHadoopConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v *JobHadoopConfig) *JobHadoopConfigLoggingConfig {
 		if v == nil {
@@ -10164,6 +10206,7 @@ func (o JobHadoopConfigPtrOutput) Properties() pulumi.StringMapOutput {
 }
 
 type JobHadoopConfigLoggingConfig struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -10179,6 +10222,7 @@ type JobHadoopConfigLoggingConfigInput interface {
 }
 
 type JobHadoopConfigLoggingConfigArgs struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -10259,6 +10303,7 @@ func (o JobHadoopConfigLoggingConfigOutput) ToJobHadoopConfigLoggingConfigPtrOut
 	}).(JobHadoopConfigLoggingConfigPtrOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobHadoopConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobHadoopConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -10287,6 +10332,7 @@ func (o JobHadoopConfigLoggingConfigPtrOutput) Elem() JobHadoopConfigLoggingConf
 	}).(JobHadoopConfigLoggingConfigOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobHadoopConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobHadoopConfigLoggingConfig) map[string]string {
 		if v == nil {
@@ -10868,7 +10914,8 @@ type JobPigConfig struct {
 	// HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
 	//
 	// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	JarFileUris   []string                   `pulumi:"jarFileUris"`
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig *JobPigConfigLoggingConfig `pulumi:"loggingConfig"`
 	// A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
@@ -10899,7 +10946,8 @@ type JobPigConfigArgs struct {
 	// HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
 	//
 	// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	JarFileUris   pulumi.StringArrayInput           `pulumi:"jarFileUris"`
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig JobPigConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
@@ -11002,6 +11050,7 @@ func (o JobPigConfigOutput) JarFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobPigConfig) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobPigConfigOutput) LoggingConfig() JobPigConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v JobPigConfig) *JobPigConfigLoggingConfig { return v.LoggingConfig }).(JobPigConfigLoggingConfigPtrOutput)
 }
@@ -11074,6 +11123,7 @@ func (o JobPigConfigPtrOutput) JarFileUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobPigConfigPtrOutput) LoggingConfig() JobPigConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v *JobPigConfig) *JobPigConfigLoggingConfig {
 		if v == nil {
@@ -11126,6 +11176,7 @@ func (o JobPigConfigPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 }
 
 type JobPigConfigLoggingConfig struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -11141,6 +11192,7 @@ type JobPigConfigLoggingConfigInput interface {
 }
 
 type JobPigConfigLoggingConfigArgs struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -11221,6 +11273,7 @@ func (o JobPigConfigLoggingConfigOutput) ToJobPigConfigLoggingConfigPtrOutputWit
 	}).(JobPigConfigLoggingConfigPtrOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobPigConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPigConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -11249,6 +11302,7 @@ func (o JobPigConfigLoggingConfigPtrOutput) Elem() JobPigConfigLoggingConfigOutp
 	}).(JobPigConfigLoggingConfigOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobPigConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobPigConfigLoggingConfig) map[string]string {
 		if v == nil {
@@ -11259,7 +11313,9 @@ func (o JobPigConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOu
 }
 
 type JobPlacement struct {
-	ClusterName string  `pulumi:"clusterName"`
+	// The name of the cluster where the job will be submitted
+	ClusterName string `pulumi:"clusterName"`
+	// Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
 	ClusterUuid *string `pulumi:"clusterUuid"`
 }
 
@@ -11275,7 +11331,9 @@ type JobPlacementInput interface {
 }
 
 type JobPlacementArgs struct {
-	ClusterName pulumi.StringInput    `pulumi:"clusterName"`
+	// The name of the cluster where the job will be submitted
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
 	ClusterUuid pulumi.StringPtrInput `pulumi:"clusterUuid"`
 }
 
@@ -11356,10 +11414,12 @@ func (o JobPlacementOutput) ToJobPlacementPtrOutputWithContext(ctx context.Conte
 	}).(JobPlacementPtrOutput)
 }
 
+// The name of the cluster where the job will be submitted
 func (o JobPlacementOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v JobPlacement) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
+// Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
 func (o JobPlacementOutput) ClusterUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobPlacement) *string { return v.ClusterUuid }).(pulumi.StringPtrOutput)
 }
@@ -11388,6 +11448,7 @@ func (o JobPlacementPtrOutput) Elem() JobPlacementOutput {
 	}).(JobPlacementOutput)
 }
 
+// The name of the cluster where the job will be submitted
 func (o JobPlacementPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobPlacement) *string {
 		if v == nil {
@@ -11397,6 +11458,7 @@ func (o JobPlacementPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
 func (o JobPlacementPtrOutput) ClusterUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobPlacement) *string {
 		if v == nil {
@@ -11410,8 +11472,9 @@ type JobPrestoConfig struct {
 	// Presto client tags to attach to this query.
 	ClientTags []string `pulumi:"clientTags"`
 	// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
-	ContinueOnFailure *bool                         `pulumi:"continueOnFailure"`
-	LoggingConfig     *JobPrestoConfigLoggingConfig `pulumi:"loggingConfig"`
+	ContinueOnFailure *bool `pulumi:"continueOnFailure"`
+	// The runtime logging config of the job
+	LoggingConfig *JobPrestoConfigLoggingConfig `pulumi:"loggingConfig"`
 	// The format in which query output will be displayed. See the Presto documentation for supported output formats.
 	//
 	// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -11441,8 +11504,9 @@ type JobPrestoConfigArgs struct {
 	// Presto client tags to attach to this query.
 	ClientTags pulumi.StringArrayInput `pulumi:"clientTags"`
 	// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
-	ContinueOnFailure pulumi.BoolPtrInput                  `pulumi:"continueOnFailure"`
-	LoggingConfig     JobPrestoConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
+	ContinueOnFailure pulumi.BoolPtrInput `pulumi:"continueOnFailure"`
+	// The runtime logging config of the job
+	LoggingConfig JobPrestoConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// The format in which query output will be displayed. See the Presto documentation for supported output formats.
 	//
 	// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -11544,6 +11608,7 @@ func (o JobPrestoConfigOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobPrestoConfig) *bool { return v.ContinueOnFailure }).(pulumi.BoolPtrOutput)
 }
 
+// The runtime logging config of the job
 func (o JobPrestoConfigOutput) LoggingConfig() JobPrestoConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v JobPrestoConfig) *JobPrestoConfigLoggingConfig { return v.LoggingConfig }).(JobPrestoConfigLoggingConfigPtrOutput)
 }
@@ -11616,6 +11681,7 @@ func (o JobPrestoConfigPtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The runtime logging config of the job
 func (o JobPrestoConfigPtrOutput) LoggingConfig() JobPrestoConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v *JobPrestoConfig) *JobPrestoConfigLoggingConfig {
 		if v == nil {
@@ -11670,6 +11736,7 @@ func (o JobPrestoConfigPtrOutput) QueryLists() pulumi.StringArrayOutput {
 }
 
 type JobPrestoConfigLoggingConfig struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -11685,6 +11752,7 @@ type JobPrestoConfigLoggingConfigInput interface {
 }
 
 type JobPrestoConfigLoggingConfigArgs struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -11765,6 +11833,7 @@ func (o JobPrestoConfigLoggingConfigOutput) ToJobPrestoConfigLoggingConfigPtrOut
 	}).(JobPrestoConfigLoggingConfigPtrOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobPrestoConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPrestoConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -11793,6 +11862,7 @@ func (o JobPrestoConfigLoggingConfigPtrOutput) Elem() JobPrestoConfigLoggingConf
 	}).(JobPrestoConfigLoggingConfigOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobPrestoConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobPrestoConfigLoggingConfig) map[string]string {
 		if v == nil {
@@ -11810,7 +11880,8 @@ type JobPysparkConfig struct {
 	// HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
 	FileUris []string `pulumi:"fileUris"`
 	// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
-	JarFileUris   []string                       `pulumi:"jarFileUris"`
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig *JobPysparkConfigLoggingConfig `pulumi:"loggingConfig"`
 	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
@@ -11841,7 +11912,8 @@ type JobPysparkConfigArgs struct {
 	// HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
 	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
 	// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
-	JarFileUris   pulumi.StringArrayInput               `pulumi:"jarFileUris"`
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig JobPysparkConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 	MainPythonFileUri pulumi.StringInput `pulumi:"mainPythonFileUri"`
@@ -11950,6 +12022,7 @@ func (o JobPysparkConfigOutput) JarFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobPysparkConfig) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobPysparkConfigOutput) LoggingConfig() JobPysparkConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v JobPysparkConfig) *JobPysparkConfigLoggingConfig { return v.LoggingConfig }).(JobPysparkConfigLoggingConfigPtrOutput)
 }
@@ -12035,6 +12108,7 @@ func (o JobPysparkConfigPtrOutput) JarFileUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobPysparkConfigPtrOutput) LoggingConfig() JobPysparkConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v *JobPysparkConfig) *JobPysparkConfigLoggingConfig {
 		if v == nil {
@@ -12077,6 +12151,7 @@ func (o JobPysparkConfigPtrOutput) PythonFileUris() pulumi.StringArrayOutput {
 }
 
 type JobPysparkConfigLoggingConfig struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -12092,6 +12167,7 @@ type JobPysparkConfigLoggingConfigInput interface {
 }
 
 type JobPysparkConfigLoggingConfigArgs struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -12172,6 +12248,7 @@ func (o JobPysparkConfigLoggingConfigOutput) ToJobPysparkConfigLoggingConfigPtrO
 	}).(JobPysparkConfigLoggingConfigPtrOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobPysparkConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPysparkConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -12200,6 +12277,7 @@ func (o JobPysparkConfigLoggingConfigPtrOutput) Elem() JobPysparkConfigLoggingCo
 	}).(JobPysparkConfigLoggingConfigOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobPysparkConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobPysparkConfigLoggingConfig) map[string]string {
 		if v == nil {
@@ -12210,6 +12288,7 @@ func (o JobPysparkConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringM
 }
 
 type JobReference struct {
+	// The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
 	JobId *string `pulumi:"jobId"`
 }
 
@@ -12225,6 +12304,7 @@ type JobReferenceInput interface {
 }
 
 type JobReferenceArgs struct {
+	// The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
 	JobId pulumi.StringPtrInput `pulumi:"jobId"`
 }
 
@@ -12305,6 +12385,7 @@ func (o JobReferenceOutput) ToJobReferencePtrOutputWithContext(ctx context.Conte
 	}).(JobReferencePtrOutput)
 }
 
+// The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
 func (o JobReferenceOutput) JobId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobReference) *string { return v.JobId }).(pulumi.StringPtrOutput)
 }
@@ -12333,6 +12414,7 @@ func (o JobReferencePtrOutput) Elem() JobReferenceOutput {
 	}).(JobReferenceOutput)
 }
 
+// The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
 func (o JobReferencePtrOutput) JobId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobReference) *string {
 		if v == nil {
@@ -12343,8 +12425,10 @@ func (o JobReferencePtrOutput) JobId() pulumi.StringPtrOutput {
 }
 
 type JobScheduling struct {
+	// Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	MaxFailuresPerHour int `pulumi:"maxFailuresPerHour"`
-	MaxFailuresTotal   int `pulumi:"maxFailuresTotal"`
+	// Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	MaxFailuresTotal int `pulumi:"maxFailuresTotal"`
 }
 
 // JobSchedulingInput is an input type that accepts JobSchedulingArgs and JobSchedulingOutput values.
@@ -12359,8 +12443,10 @@ type JobSchedulingInput interface {
 }
 
 type JobSchedulingArgs struct {
+	// Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	MaxFailuresPerHour pulumi.IntInput `pulumi:"maxFailuresPerHour"`
-	MaxFailuresTotal   pulumi.IntInput `pulumi:"maxFailuresTotal"`
+	// Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	MaxFailuresTotal pulumi.IntInput `pulumi:"maxFailuresTotal"`
 }
 
 func (JobSchedulingArgs) ElementType() reflect.Type {
@@ -12440,10 +12526,12 @@ func (o JobSchedulingOutput) ToJobSchedulingPtrOutputWithContext(ctx context.Con
 	}).(JobSchedulingPtrOutput)
 }
 
+// Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 func (o JobSchedulingOutput) MaxFailuresPerHour() pulumi.IntOutput {
 	return o.ApplyT(func(v JobScheduling) int { return v.MaxFailuresPerHour }).(pulumi.IntOutput)
 }
 
+// Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 func (o JobSchedulingOutput) MaxFailuresTotal() pulumi.IntOutput {
 	return o.ApplyT(func(v JobScheduling) int { return v.MaxFailuresTotal }).(pulumi.IntOutput)
 }
@@ -12472,6 +12560,7 @@ func (o JobSchedulingPtrOutput) Elem() JobSchedulingOutput {
 	}).(JobSchedulingOutput)
 }
 
+// Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobScheduling) *int {
 		if v == nil {
@@ -12481,6 +12570,7 @@ func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 func (o JobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobScheduling) *int {
 		if v == nil {
@@ -12498,7 +12588,8 @@ type JobSparkConfig struct {
 	// HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
 	FileUris []string `pulumi:"fileUris"`
 	// HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-	JarFileUris   []string                     `pulumi:"jarFileUris"`
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig *JobSparkConfigLoggingConfig `pulumi:"loggingConfig"`
 	// The class containing the main method of the driver. Must be in a
 	// provided jar or jar that is already on the classpath. Conflicts with `mainJarFileUri`
@@ -12531,7 +12622,8 @@ type JobSparkConfigArgs struct {
 	// HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
 	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
 	// HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-	JarFileUris   pulumi.StringArrayInput             `pulumi:"jarFileUris"`
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig JobSparkConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// The class containing the main method of the driver. Must be in a
 	// provided jar or jar that is already on the classpath. Conflicts with `mainJarFileUri`
@@ -12642,6 +12734,7 @@ func (o JobSparkConfigOutput) JarFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobSparkConfig) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobSparkConfigOutput) LoggingConfig() JobSparkConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v JobSparkConfig) *JobSparkConfigLoggingConfig { return v.LoggingConfig }).(JobSparkConfigLoggingConfigPtrOutput)
 }
@@ -12729,6 +12822,7 @@ func (o JobSparkConfigPtrOutput) JarFileUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobSparkConfigPtrOutput) LoggingConfig() JobSparkConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v *JobSparkConfig) *JobSparkConfigLoggingConfig {
 		if v == nil {
@@ -12773,6 +12867,7 @@ func (o JobSparkConfigPtrOutput) Properties() pulumi.StringMapOutput {
 }
 
 type JobSparkConfigLoggingConfig struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -12788,6 +12883,7 @@ type JobSparkConfigLoggingConfigInput interface {
 }
 
 type JobSparkConfigLoggingConfigArgs struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -12868,6 +12964,7 @@ func (o JobSparkConfigLoggingConfigOutput) ToJobSparkConfigLoggingConfigPtrOutpu
 	}).(JobSparkConfigLoggingConfigPtrOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobSparkConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobSparkConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -12896,6 +12993,7 @@ func (o JobSparkConfigLoggingConfigPtrOutput) Elem() JobSparkConfigLoggingConfig
 	}).(JobSparkConfigLoggingConfigOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobSparkConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobSparkConfigLoggingConfig) map[string]string {
 		if v == nil {
@@ -12909,7 +13007,8 @@ type JobSparksqlConfig struct {
 	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	//
 	// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	JarFileUris   []string                        `pulumi:"jarFileUris"`
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig *JobSparksqlConfigLoggingConfig `pulumi:"loggingConfig"`
 	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
 	Properties map[string]string `pulumi:"properties"`
@@ -12938,7 +13037,8 @@ type JobSparksqlConfigArgs struct {
 	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
 	//
 	// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-	JarFileUris   pulumi.StringArrayInput                `pulumi:"jarFileUris"`
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The runtime logging config of the job
 	LoggingConfig JobSparksqlConfigLoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
@@ -13036,6 +13136,7 @@ func (o JobSparksqlConfigOutput) JarFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobSparksqlConfig) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobSparksqlConfigOutput) LoggingConfig() JobSparksqlConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v JobSparksqlConfig) *JobSparksqlConfigLoggingConfig { return v.LoggingConfig }).(JobSparksqlConfigLoggingConfigPtrOutput)
 }
@@ -13098,6 +13199,7 @@ func (o JobSparksqlConfigPtrOutput) JarFileUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// The runtime logging config of the job
 func (o JobSparksqlConfigPtrOutput) LoggingConfig() JobSparksqlConfigLoggingConfigPtrOutput {
 	return o.ApplyT(func(v *JobSparksqlConfig) *JobSparksqlConfigLoggingConfig {
 		if v == nil {
@@ -13150,6 +13252,7 @@ func (o JobSparksqlConfigPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 }
 
 type JobSparksqlConfigLoggingConfig struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels map[string]string `pulumi:"driverLogLevels"`
 }
 
@@ -13165,6 +13268,7 @@ type JobSparksqlConfigLoggingConfigInput interface {
 }
 
 type JobSparksqlConfigLoggingConfigArgs struct {
+	// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 	DriverLogLevels pulumi.StringMapInput `pulumi:"driverLogLevels"`
 }
 
@@ -13245,6 +13349,7 @@ func (o JobSparksqlConfigLoggingConfigOutput) ToJobSparksqlConfigLoggingConfigPt
 	}).(JobSparksqlConfigLoggingConfigPtrOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobSparksqlConfigLoggingConfigOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobSparksqlConfigLoggingConfig) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
 }
@@ -13273,6 +13378,7 @@ func (o JobSparksqlConfigLoggingConfigPtrOutput) Elem() JobSparksqlConfigLogging
 	}).(JobSparksqlConfigLoggingConfigOutput)
 }
 
+// Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
 func (o JobSparksqlConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobSparksqlConfigLoggingConfig) map[string]string {
 		if v == nil {
@@ -13283,10 +13389,14 @@ func (o JobSparksqlConfigLoggingConfigPtrOutput) DriverLogLevels() pulumi.String
 }
 
 type JobStatus struct {
-	Details        *string `pulumi:"details"`
-	State          *string `pulumi:"state"`
+	// Output-only. Optional job state details, such as an error description if the state is ERROR
+	Details *string `pulumi:"details"`
+	// Output-only. A state message specifying the overall job state
+	State *string `pulumi:"state"`
+	// Output-only. The time when this state was entered
 	StateStartTime *string `pulumi:"stateStartTime"`
-	Substate       *string `pulumi:"substate"`
+	// Output-only. Additional state information, which includes status reported by the agent
+	Substate *string `pulumi:"substate"`
 }
 
 // JobStatusInput is an input type that accepts JobStatusArgs and JobStatusOutput values.
@@ -13301,10 +13411,14 @@ type JobStatusInput interface {
 }
 
 type JobStatusArgs struct {
-	Details        pulumi.StringPtrInput `pulumi:"details"`
-	State          pulumi.StringPtrInput `pulumi:"state"`
+	// Output-only. Optional job state details, such as an error description if the state is ERROR
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// Output-only. A state message specifying the overall job state
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Output-only. The time when this state was entered
 	StateStartTime pulumi.StringPtrInput `pulumi:"stateStartTime"`
-	Substate       pulumi.StringPtrInput `pulumi:"substate"`
+	// Output-only. Additional state information, which includes status reported by the agent
+	Substate pulumi.StringPtrInput `pulumi:"substate"`
 }
 
 func (JobStatusArgs) ElementType() reflect.Type {
@@ -13358,18 +13472,22 @@ func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobSt
 	return o
 }
 
+// Output-only. Optional job state details, such as an error description if the state is ERROR
 func (o JobStatusOutput) Details() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
 
+// Output-only. A state message specifying the overall job state
 func (o JobStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Output-only. The time when this state was entered
 func (o JobStatusOutput) StateStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.StateStartTime }).(pulumi.StringPtrOutput)
 }
 
+// Output-only. Additional state information, which includes status reported by the agent
 func (o JobStatusOutput) Substate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobStatus) *string { return v.Substate }).(pulumi.StringPtrOutput)
 }
@@ -23892,8 +24010,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigPtrOu
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig struct {
+	// Output only. The name of the Instance Group Manager for this group.
 	InstanceGroupManagerName *string `pulumi:"instanceGroupManagerName"`
-	InstanceTemplateName     *string `pulumi:"instanceTemplateName"`
+	// Output only. The name of the Instance Template used for the Managed Instance Group.
+	InstanceTemplateName *string `pulumi:"instanceTemplateName"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs and WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput values.
@@ -23908,8 +24028,10 @@ type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs struct {
+	// Output only. The name of the Instance Group Manager for this group.
 	InstanceGroupManagerName pulumi.StringPtrInput `pulumi:"instanceGroupManagerName"`
-	InstanceTemplateName     pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
+	// Output only. The name of the Instance Template used for the Managed Instance Group.
+	InstanceTemplateName pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs) ElementType() reflect.Type {
@@ -23963,12 +24085,14 @@ func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupCon
 	return o
 }
 
+// Output only. The name of the Instance Group Manager for this group.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig) *string {
 		return v.InstanceGroupManagerName
 	}).(pulumi.StringPtrOutput)
 }
 
+// Output only. The name of the Instance Template used for the Managed Instance Group.
 func (o WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigOutput) InstanceTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig) *string {
 		return v.InstanceTemplateName
@@ -24750,8 +24874,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskCo
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig struct {
+	// Output only. The name of the Instance Group Manager for this group.
 	InstanceGroupManagerName *string `pulumi:"instanceGroupManagerName"`
-	InstanceTemplateName     *string `pulumi:"instanceTemplateName"`
+	// Output only. The name of the Instance Template used for the Managed Instance Group.
+	InstanceTemplateName *string `pulumi:"instanceTemplateName"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs and WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput values.
@@ -24766,8 +24892,10 @@ type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGr
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs struct {
+	// Output only. The name of the Instance Group Manager for this group.
 	InstanceGroupManagerName pulumi.StringPtrInput `pulumi:"instanceGroupManagerName"`
-	InstanceTemplateName     pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
+	// Output only. The name of the Instance Template used for the Managed Instance Group.
+	InstanceTemplateName pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs) ElementType() reflect.Type {
@@ -24821,12 +24949,14 @@ func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManage
 	return o
 }
 
+// Output only. The name of the Instance Group Manager for this group.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig) *string {
 		return v.InstanceGroupManagerName
 	}).(pulumi.StringPtrOutput)
 }
 
+// Output only. The name of the Instance Template used for the Managed Instance Group.
 func (o WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigOutput) InstanceTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig) *string {
 		return v.InstanceTemplateName
@@ -26266,8 +26396,10 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOu
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig struct {
+	// Output only. The name of the Instance Group Manager for this group.
 	InstanceGroupManagerName *string `pulumi:"instanceGroupManagerName"`
-	InstanceTemplateName     *string `pulumi:"instanceTemplateName"`
+	// Output only. The name of the Instance Template used for the Managed Instance Group.
+	InstanceTemplateName *string `pulumi:"instanceTemplateName"`
 }
 
 // WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigInput is an input type that accepts WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs and WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput values.
@@ -26282,8 +26414,10 @@ type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig
 }
 
 type WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs struct {
+	// Output only. The name of the Instance Group Manager for this group.
 	InstanceGroupManagerName pulumi.StringPtrInput `pulumi:"instanceGroupManagerName"`
-	InstanceTemplateName     pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
+	// Output only. The name of the Instance Template used for the Managed Instance Group.
+	InstanceTemplateName pulumi.StringPtrInput `pulumi:"instanceTemplateName"`
 }
 
 func (WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs) ElementType() reflect.Type {
@@ -26337,12 +26471,14 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupCon
 	return o
 }
 
+// Output only. The name of the Instance Group Manager for this group.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) InstanceGroupManagerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig) *string {
 		return v.InstanceGroupManagerName
 	}).(pulumi.StringPtrOutput)
 }
 
+// Output only. The name of the Instance Template used for the Managed Instance Group.
 func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput) InstanceTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig) *string {
 		return v.InstanceTemplateName

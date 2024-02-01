@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     [OutputType]
     public sealed class GetNetworkVpcNetworkResult
     {
+        /// <summary>
+        /// The relative resource name of the service VPC network this VMware Engine network is attached to.
+        /// For example: projects/123123/global/networks/my-network
+        /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

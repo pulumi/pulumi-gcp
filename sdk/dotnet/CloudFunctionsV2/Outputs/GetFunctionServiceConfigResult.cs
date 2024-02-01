@@ -13,22 +13,79 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     [OutputType]
     public sealed class GetFunctionServiceConfigResult
     {
+        /// <summary>
+        /// Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        /// </summary>
         public readonly bool AllTrafficOnLatestRevision;
+        /// <summary>
+        /// The number of CPUs used in a single container instance. Default value is calculated from available memory.
+        /// </summary>
         public readonly string AvailableCpu;
+        /// <summary>
+        /// The amount of memory available for a function.
+        /// Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
+        /// supplied the value is interpreted as bytes.
+        /// </summary>
         public readonly string AvailableMemory;
+        /// <summary>
+        /// Environment variables that shall be available during function execution.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> EnvironmentVariables;
+        /// <summary>
+        /// URIs of the Service deployed
+        /// </summary>
         public readonly string GcfUri;
+        /// <summary>
+        /// Available ingress settings. Defaults to "ALLOW_ALL" if unspecified. Default value: "ALLOW_ALL" Possible values: ["ALLOW_ALL", "ALLOW_INTERNAL_ONLY", "ALLOW_INTERNAL_AND_GCLB"]
+        /// </summary>
         public readonly string IngressSettings;
+        /// <summary>
+        /// The limit on the maximum number of function instances that may coexist at a
+        /// given time.
+        /// </summary>
         public readonly int MaxInstanceCount;
+        /// <summary>
+        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// </summary>
         public readonly int MaxInstanceRequestConcurrency;
+        /// <summary>
+        /// The limit on the minimum number of function instances that may coexist at a
+        /// given time.
+        /// </summary>
         public readonly int MinInstanceCount;
+        /// <summary>
+        /// Secret environment variables configuration.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionServiceConfigSecretEnvironmentVariableResult> SecretEnvironmentVariables;
+        /// <summary>
+        /// Secret volumes configuration.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionServiceConfigSecretVolumeResult> SecretVolumes;
+        /// <summary>
+        /// Name of the service associated with a Function.
+        /// </summary>
         public readonly string Service;
+        /// <summary>
+        /// The email of the service account for this function.
+        /// </summary>
         public readonly string ServiceAccountEmail;
+        /// <summary>
+        /// The function execution timeout. Execution is considered failed and
+        /// can be terminated if the function is not completed at the end of the
+        /// timeout period. Defaults to 60 seconds.
+        /// </summary>
         public readonly int TimeoutSeconds;
+        /// <summary>
+        /// URI of the Service deployed.
+        /// </summary>
         public readonly string Uri;
+        /// <summary>
+        /// The Serverless VPC Access connector that this cloud function can connect to.
+        /// </summary>
         public readonly string VpcConnector;
+        /// <summary>
+        /// Available egress settings. Possible values: ["VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED", "PRIVATE_RANGES_ONLY", "ALL_TRAFFIC"]
+        /// </summary>
         public readonly string VpcConnectorEgressSettings;
 
         [OutputConstructor]

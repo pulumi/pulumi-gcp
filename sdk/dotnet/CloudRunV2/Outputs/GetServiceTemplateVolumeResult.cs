@@ -13,14 +13,29 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetServiceTemplateVolumeResult
     {
+        /// <summary>
+        /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeCloudSqlInstanceResult> CloudSqlInstances;
+        /// <summary>
+        /// Ephemeral storage used as a shared volume.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeEmptyDirResult> EmptyDirs;
+        /// <summary>
+        /// Represents a GCS Bucket mounted as a volume.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeGcResult> Gcs;
         /// <summary>
         /// The name of the Cloud Run v2 Service.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Represents an NFS mount.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeNfResult> Nfs;
+        /// <summary>
+        /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeSecretResult> Secrets;
 
         [OutputConstructor]

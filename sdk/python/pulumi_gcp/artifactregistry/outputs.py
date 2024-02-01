@@ -1100,6 +1100,12 @@ class GetRepositoryCleanupPolicyResult(dict):
                  conditions: Sequence['outputs.GetRepositoryCleanupPolicyConditionResult'],
                  id: str,
                  most_recent_versions: Sequence['outputs.GetRepositoryCleanupPolicyMostRecentVersionResult']):
+        """
+        :param str action: Policy action. Possible values: ["DELETE", "KEEP"]
+        :param Sequence['GetRepositoryCleanupPolicyConditionArgs'] conditions: Policy condition for matching versions.
+        :param Sequence['GetRepositoryCleanupPolicyMostRecentVersionArgs'] most_recent_versions: Policy condition for retaining a minimum number of versions. May only be
+               specified with a Keep action.
+        """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "id", id)
@@ -1108,11 +1114,17 @@ class GetRepositoryCleanupPolicyResult(dict):
     @property
     @pulumi.getter
     def action(self) -> str:
+        """
+        Policy action. Possible values: ["DELETE", "KEEP"]
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
     def conditions(self) -> Sequence['outputs.GetRepositoryCleanupPolicyConditionResult']:
+        """
+        Policy condition for matching versions.
+        """
         return pulumi.get(self, "conditions")
 
     @property
@@ -1123,6 +1135,10 @@ class GetRepositoryCleanupPolicyResult(dict):
     @property
     @pulumi.getter(name="mostRecentVersions")
     def most_recent_versions(self) -> Sequence['outputs.GetRepositoryCleanupPolicyMostRecentVersionResult']:
+        """
+        Policy condition for retaining a minimum number of versions. May only be
+        specified with a Keep action.
+        """
         return pulumi.get(self, "most_recent_versions")
 
 
@@ -1135,6 +1151,14 @@ class GetRepositoryCleanupPolicyConditionResult(dict):
                  tag_prefixes: Sequence[str],
                  tag_state: str,
                  version_name_prefixes: Sequence[str]):
+        """
+        :param str newer_than: Match versions newer than a duration.
+        :param str older_than: Match versions older than a duration.
+        :param Sequence[str] package_name_prefixes: Match versions by package prefix. Applied on any prefix match.
+        :param Sequence[str] tag_prefixes: Match versions by tag prefix. Applied on any prefix match.
+        :param str tag_state: Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
+        :param Sequence[str] version_name_prefixes: Match versions by version name prefix. Applied on any prefix match.
+        """
         pulumi.set(__self__, "newer_than", newer_than)
         pulumi.set(__self__, "older_than", older_than)
         pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
@@ -1145,31 +1169,49 @@ class GetRepositoryCleanupPolicyConditionResult(dict):
     @property
     @pulumi.getter(name="newerThan")
     def newer_than(self) -> str:
+        """
+        Match versions newer than a duration.
+        """
         return pulumi.get(self, "newer_than")
 
     @property
     @pulumi.getter(name="olderThan")
     def older_than(self) -> str:
+        """
+        Match versions older than a duration.
+        """
         return pulumi.get(self, "older_than")
 
     @property
     @pulumi.getter(name="packageNamePrefixes")
     def package_name_prefixes(self) -> Sequence[str]:
+        """
+        Match versions by package prefix. Applied on any prefix match.
+        """
         return pulumi.get(self, "package_name_prefixes")
 
     @property
     @pulumi.getter(name="tagPrefixes")
     def tag_prefixes(self) -> Sequence[str]:
+        """
+        Match versions by tag prefix. Applied on any prefix match.
+        """
         return pulumi.get(self, "tag_prefixes")
 
     @property
     @pulumi.getter(name="tagState")
     def tag_state(self) -> str:
+        """
+        Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
+        """
         return pulumi.get(self, "tag_state")
 
     @property
     @pulumi.getter(name="versionNamePrefixes")
     def version_name_prefixes(self) -> Sequence[str]:
+        """
+        Match versions by version name prefix. Applied on any prefix match.
+        """
         return pulumi.get(self, "version_name_prefixes")
 
 
@@ -1178,17 +1220,27 @@ class GetRepositoryCleanupPolicyMostRecentVersionResult(dict):
     def __init__(__self__, *,
                  keep_count: int,
                  package_name_prefixes: Sequence[str]):
+        """
+        :param int keep_count: Minimum number of versions to keep.
+        :param Sequence[str] package_name_prefixes: Match versions by package prefix. Applied on any prefix match.
+        """
         pulumi.set(__self__, "keep_count", keep_count)
         pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
 
     @property
     @pulumi.getter(name="keepCount")
     def keep_count(self) -> int:
+        """
+        Minimum number of versions to keep.
+        """
         return pulumi.get(self, "keep_count")
 
     @property
     @pulumi.getter(name="packageNamePrefixes")
     def package_name_prefixes(self) -> Sequence[str]:
+        """
+        Match versions by package prefix. Applied on any prefix match.
+        """
         return pulumi.get(self, "package_name_prefixes")
 
 
@@ -1196,11 +1248,17 @@ class GetRepositoryCleanupPolicyMostRecentVersionResult(dict):
 class GetRepositoryDockerConfigResult(dict):
     def __init__(__self__, *,
                  immutable_tags: bool):
+        """
+        :param bool immutable_tags: The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
         pulumi.set(__self__, "immutable_tags", immutable_tags)
 
     @property
     @pulumi.getter(name="immutableTags")
     def immutable_tags(self) -> bool:
+        """
+        The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+        """
         return pulumi.get(self, "immutable_tags")
 
 
@@ -1209,17 +1267,29 @@ class GetRepositoryMavenConfigResult(dict):
     def __init__(__self__, *,
                  allow_snapshot_overwrites: bool,
                  version_policy: str):
+        """
+        :param bool allow_snapshot_overwrites: The repository with this flag will allow publishing the same
+               snapshot versions.
+        :param str version_policy: Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
+        """
         pulumi.set(__self__, "allow_snapshot_overwrites", allow_snapshot_overwrites)
         pulumi.set(__self__, "version_policy", version_policy)
 
     @property
     @pulumi.getter(name="allowSnapshotOverwrites")
     def allow_snapshot_overwrites(self) -> bool:
+        """
+        The repository with this flag will allow publishing the same
+        snapshot versions.
+        """
         return pulumi.get(self, "allow_snapshot_overwrites")
 
     @property
     @pulumi.getter(name="versionPolicy")
     def version_policy(self) -> str:
+        """
+        Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
+        """
         return pulumi.get(self, "version_policy")
 
 
@@ -1234,6 +1304,16 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
                  python_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult'],
                  upstream_credentials: Sequence['outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult'],
                  yum_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult']):
+        """
+        :param Sequence['GetRepositoryRemoteRepositoryConfigAptRepositoryArgs'] apt_repositories: Specific settings for an Apt remote repository.
+        :param str description: The description of the remote source.
+        :param Sequence['GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs'] docker_repositories: Specific settings for a Docker remote repository.
+        :param Sequence['GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs'] maven_repositories: Specific settings for a Maven remote repository.
+        :param Sequence['GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs'] npm_repositories: Specific settings for an Npm remote repository.
+        :param Sequence['GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs'] python_repositories: Specific settings for a Python remote repository.
+        :param Sequence['GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs'] upstream_credentials: The credentials used to access the remote repository.
+        :param Sequence['GetRepositoryRemoteRepositoryConfigYumRepositoryArgs'] yum_repositories: Specific settings for an Yum remote repository.
+        """
         pulumi.set(__self__, "apt_repositories", apt_repositories)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "docker_repositories", docker_repositories)
@@ -1246,41 +1326,65 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
     @property
     @pulumi.getter(name="aptRepositories")
     def apt_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult']:
+        """
+        Specific settings for an Apt remote repository.
+        """
         return pulumi.get(self, "apt_repositories")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the remote source.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="dockerRepositories")
     def docker_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult']:
+        """
+        Specific settings for a Docker remote repository.
+        """
         return pulumi.get(self, "docker_repositories")
 
     @property
     @pulumi.getter(name="mavenRepositories")
     def maven_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult']:
+        """
+        Specific settings for a Maven remote repository.
+        """
         return pulumi.get(self, "maven_repositories")
 
     @property
     @pulumi.getter(name="npmRepositories")
     def npm_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult']:
+        """
+        Specific settings for an Npm remote repository.
+        """
         return pulumi.get(self, "npm_repositories")
 
     @property
     @pulumi.getter(name="pythonRepositories")
     def python_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult']:
+        """
+        Specific settings for a Python remote repository.
+        """
         return pulumi.get(self, "python_repositories")
 
     @property
     @pulumi.getter(name="upstreamCredentials")
     def upstream_credentials(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult']:
+        """
+        The credentials used to access the remote repository.
+        """
         return pulumi.get(self, "upstream_credentials")
 
     @property
     @pulumi.getter(name="yumRepositories")
     def yum_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult']:
+        """
+        Specific settings for an Yum remote repository.
+        """
         return pulumi.get(self, "yum_repositories")
 
 
@@ -1288,11 +1392,17 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
 class GetRepositoryRemoteRepositoryConfigAptRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult']):
+        """
+        :param Sequence['GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs'] public_repositories: One of the publicly available Apt repositories supported by Artifact Registry.
+        """
         pulumi.set(__self__, "public_repositories", public_repositories)
 
     @property
     @pulumi.getter(name="publicRepositories")
     def public_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult']:
+        """
+        One of the publicly available Apt repositories supported by Artifact Registry.
+        """
         return pulumi.get(self, "public_repositories")
 
 
@@ -1301,17 +1411,27 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dic
     def __init__(__self__, *,
                  repository_base: str,
                  repository_path: str):
+        """
+        :param str repository_base: A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
+        :param str repository_path: Specific repository from the base.
+        """
         pulumi.set(__self__, "repository_base", repository_base)
         pulumi.set(__self__, "repository_path", repository_path)
 
     @property
     @pulumi.getter(name="repositoryBase")
     def repository_base(self) -> str:
+        """
+        A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
+        """
         return pulumi.get(self, "repository_base")
 
     @property
     @pulumi.getter(name="repositoryPath")
     def repository_path(self) -> str:
+        """
+        Specific repository from the base.
+        """
         return pulumi.get(self, "repository_path")
 
 
@@ -1319,11 +1439,17 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dic
 class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
+        """
+        :param str public_repository: Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
+        """
         pulumi.set(__self__, "public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> str:
+        """
+        Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
+        """
         return pulumi.get(self, "public_repository")
 
 
@@ -1331,11 +1457,17 @@ class GetRepositoryRemoteRepositoryConfigDockerRepositoryResult(dict):
 class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
+        """
+        :param str public_repository: Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
+        """
         pulumi.set(__self__, "public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> str:
+        """
+        Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
+        """
         return pulumi.get(self, "public_repository")
 
 
@@ -1343,11 +1475,17 @@ class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult(dict):
 class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
+        """
+        :param str public_repository: Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
+        """
         pulumi.set(__self__, "public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> str:
+        """
+        Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
+        """
         return pulumi.get(self, "public_repository")
 
 
@@ -1355,11 +1493,17 @@ class GetRepositoryRemoteRepositoryConfigNpmRepositoryResult(dict):
 class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repository: str):
+        """
+        :param str public_repository: Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+        """
         pulumi.set(__self__, "public_repository", public_repository)
 
     @property
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> str:
+        """
+        Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+        """
         return pulumi.get(self, "public_repository")
 
 
@@ -1367,11 +1511,17 @@ class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
 class GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult(dict):
     def __init__(__self__, *,
                  username_password_credentials: Sequence['outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialResult']):
+        """
+        :param Sequence['GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs'] username_password_credentials: Use username and password to access the remote repository.
+        """
         pulumi.set(__self__, "username_password_credentials", username_password_credentials)
 
     @property
     @pulumi.getter(name="usernamePasswordCredentials")
     def username_password_credentials(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialResult']:
+        """
+        Use username and password to access the remote repository.
+        """
         return pulumi.get(self, "username_password_credentials")
 
 
@@ -1380,17 +1530,31 @@ class GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCrede
     def __init__(__self__, *,
                  password_secret_version: str,
                  username: str):
+        """
+        :param str password_secret_version: The Secret Manager key version that holds the password to access the
+               remote repository. Must be in the format of
+               'projects/{project}/secrets/{secret}/versions/{version}'.
+        :param str username: The username to access the remote repository.
+        """
         pulumi.set(__self__, "password_secret_version", password_secret_version)
         pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="passwordSecretVersion")
     def password_secret_version(self) -> str:
+        """
+        The Secret Manager key version that holds the password to access the
+        remote repository. Must be in the format of
+        'projects/{project}/secrets/{secret}/versions/{version}'.
+        """
         return pulumi.get(self, "password_secret_version")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        The username to access the remote repository.
+        """
         return pulumi.get(self, "username")
 
 
@@ -1398,11 +1562,17 @@ class GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCrede
 class GetRepositoryRemoteRepositoryConfigYumRepositoryResult(dict):
     def __init__(__self__, *,
                  public_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult']):
+        """
+        :param Sequence['GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs'] public_repositories: One of the publicly available Yum repositories supported by Artifact Registry.
+        """
         pulumi.set(__self__, "public_repositories", public_repositories)
 
     @property
     @pulumi.getter(name="publicRepositories")
     def public_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult']:
+        """
+        One of the publicly available Yum repositories supported by Artifact Registry.
+        """
         return pulumi.get(self, "public_repositories")
 
 
@@ -1411,17 +1581,27 @@ class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult(dic
     def __init__(__self__, *,
                  repository_base: str,
                  repository_path: str):
+        """
+        :param str repository_base: A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
+        :param str repository_path: Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
+        """
         pulumi.set(__self__, "repository_base", repository_base)
         pulumi.set(__self__, "repository_path", repository_path)
 
     @property
     @pulumi.getter(name="repositoryBase")
     def repository_base(self) -> str:
+        """
+        A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
+        """
         return pulumi.get(self, "repository_base")
 
     @property
     @pulumi.getter(name="repositoryPath")
     def repository_path(self) -> str:
+        """
+        Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
+        """
         return pulumi.get(self, "repository_path")
 
 
@@ -1429,11 +1609,19 @@ class GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult(dic
 class GetRepositoryVirtualRepositoryConfigResult(dict):
     def __init__(__self__, *,
                  upstream_policies: Sequence['outputs.GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult']):
+        """
+        :param Sequence['GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs'] upstream_policies: Policies that configure the upstream artifacts distributed by the Virtual
+               Repository. Upstream policies cannot be set on a standard repository.
+        """
         pulumi.set(__self__, "upstream_policies", upstream_policies)
 
     @property
     @pulumi.getter(name="upstreamPolicies")
     def upstream_policies(self) -> Sequence['outputs.GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult']:
+        """
+        Policies that configure the upstream artifacts distributed by the Virtual
+        Repository. Upstream policies cannot be set on a standard repository.
+        """
         return pulumi.get(self, "upstream_policies")
 
 
@@ -1443,6 +1631,12 @@ class GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult(dict):
                  id: str,
                  priority: int,
                  repository: str):
+        """
+        :param str id: The user-provided ID of the upstream policy.
+        :param int priority: Entries with a greater priority value take precedence in the pull order.
+        :param str repository: A reference to the repository resource, for example:
+               "projects/p1/locations/us-central1/repository/repo1".
+        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "repository", repository)
@@ -1450,16 +1644,26 @@ class GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The user-provided ID of the upstream policy.
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def priority(self) -> int:
+        """
+        Entries with a greater priority value take precedence in the pull order.
+        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
     def repository(self) -> str:
+        """
+        A reference to the repository resource, for example:
+        "projects/p1/locations/us-central1/repository/repo1".
+        """
         return pulumi.get(self, "repository")
 
 

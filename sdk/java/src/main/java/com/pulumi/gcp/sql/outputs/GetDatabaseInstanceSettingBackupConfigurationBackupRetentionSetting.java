@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
+    /**
+     * @return Number of backups to retain.
+     * 
+     */
     private Integer retainedBackups;
+    /**
+     * @return The unit that &#39;retainedBackups&#39; represents. Defaults to COUNT
+     * 
+     */
     private String retentionUnit;
 
     private GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting() {}
+    /**
+     * @return Number of backups to retain.
+     * 
+     */
     public Integer retainedBackups() {
         return this.retainedBackups;
     }
+    /**
+     * @return The unit that &#39;retainedBackups&#39; represents. Defaults to COUNT
+     * 
+     */
     public String retentionUnit() {
         return this.retentionUnit;
     }

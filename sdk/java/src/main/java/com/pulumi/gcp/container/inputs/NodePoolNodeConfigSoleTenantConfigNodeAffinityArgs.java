@@ -15,23 +15,47 @@ public final class NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs extends co
 
     public static final NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs Empty = new NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs();
 
+    /**
+     * .
+     * 
+     */
     @Import(name="key", required=true)
     private Output<String> key;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<String> key() {
         return this.key;
     }
 
+    /**
+     * .
+     * 
+     */
     @Import(name="operator", required=true)
     private Output<String> operator;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<String> operator() {
         return this.operator;
     }
 
+    /**
+     * .
+     * 
+     */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<List<String>> values() {
         return this.values;
     }
@@ -62,33 +86,75 @@ public final class NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs extends co
             $ = new NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key .
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key .
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
+        /**
+         * @param operator .
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
+        /**
+         * @param operator .
+         * 
+         * @return builder
+         * 
+         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
+        /**
+         * @param values .
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values .
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values .
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

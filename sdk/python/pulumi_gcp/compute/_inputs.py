@@ -5675,6 +5675,7 @@ class InstanceAttachedDiskArgs:
                (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption),
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw` may be set.
+        :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is
                stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
                and `disk_encryption_key_raw` may be set.
@@ -5738,6 +5739,9 @@ class InstanceAttachedDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
     def disk_encryption_key_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @disk_encryption_key_sha256.setter
@@ -5795,6 +5799,7 @@ class InstanceBootDiskArgs:
                encoded in [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
                to encrypt this disk. Only one of `kms_key_self_link` and `disk_encryption_key_raw`
                may be set.
+        :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         :param pulumi.Input['InstanceBootDiskInitializeParamsArgs'] initialize_params: Parameters for a new disk that will be created
                alongside the new instance. Either `initialize_params` or `source` must be set.
                Structure is documented below.
@@ -5869,6 +5874,9 @@ class InstanceBootDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
     def disk_encryption_key_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @disk_encryption_key_sha256.setter
@@ -5970,6 +5978,7 @@ class InstanceBootDiskInitializeParamsArgs:
                for hyperdisk skus via disk update api/gcloud without the need to delete and
                recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
                To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param pulumi.Input[str] type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
@@ -6076,6 +6085,9 @@ class InstanceBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
@@ -6136,6 +6148,11 @@ class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
                  visible_core_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not.
+        :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
+        """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
@@ -6146,6 +6163,9 @@ class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
     @property
     @pulumi.getter(name="enableNestedVirtualization")
     def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable nested virtualization or not.
+        """
         return pulumi.get(self, "enable_nested_virtualization")
 
     @enable_nested_virtualization.setter
@@ -6155,6 +6175,9 @@ class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
     @property
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
         return pulumi.get(self, "threads_per_core")
 
     @threads_per_core.setter
@@ -6164,6 +6187,9 @@ class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
     @property
     @pulumi.getter(name="visibleCoreCount")
     def visible_core_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
+        """
         return pulumi.get(self, "visible_core_count")
 
     @visible_core_count.setter
@@ -6180,6 +6206,14 @@ class InstanceFromMachineImageAttachedDiskArgs:
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] source: The name or self_link of the disk attached to this instance.
+        :param pulumi.Input[str] device_name: Name with which the attached disk is accessible under /dev/disk/by-id/
+        :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param pulumi.Input[str] mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
         pulumi.set(__self__, "source", source)
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -6195,6 +6229,9 @@ class InstanceFromMachineImageAttachedDiskArgs:
     @property
     @pulumi.getter
     def source(self) -> pulumi.Input[str]:
+        """
+        The name or self_link of the disk attached to this instance.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -6204,6 +6241,9 @@ class InstanceFromMachineImageAttachedDiskArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name with which the attached disk is accessible under /dev/disk/by-id/
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -6213,6 +6253,9 @@ class InstanceFromMachineImageAttachedDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> Optional[pulumi.Input[str]]:
+        """
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
         return pulumi.get(self, "disk_encryption_key_raw")
 
     @disk_encryption_key_raw.setter
@@ -6222,6 +6265,9 @@ class InstanceFromMachineImageAttachedDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
     def disk_encryption_key_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @disk_encryption_key_sha256.setter
@@ -6231,6 +6277,9 @@ class InstanceFromMachineImageAttachedDiskArgs:
     @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
@@ -6240,6 +6289,9 @@ class InstanceFromMachineImageAttachedDiskArgs:
     @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -6258,6 +6310,16 @@ class InstanceFromMachineImageBootDiskArgs:
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] auto_delete: Whether the disk will be auto-deleted when the instance is deleted.
+        :param pulumi.Input[str] device_name: Name with which attached disk will be accessible under /dev/disk/by-id/
+        :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs'] initialize_params: Parameters with which a disk was created alongside the instance.
+        :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param pulumi.Input[str] mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        :param pulumi.Input[str] source: The name or self_link of the disk attached to this instance.
+        """
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
         if device_name is not None:
@@ -6278,6 +6340,9 @@ class InstanceFromMachineImageBootDiskArgs:
     @property
     @pulumi.getter(name="autoDelete")
     def auto_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the disk will be auto-deleted when the instance is deleted.
+        """
         return pulumi.get(self, "auto_delete")
 
     @auto_delete.setter
@@ -6287,6 +6352,9 @@ class InstanceFromMachineImageBootDiskArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name with which attached disk will be accessible under /dev/disk/by-id/
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -6296,6 +6364,9 @@ class InstanceFromMachineImageBootDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> Optional[pulumi.Input[str]]:
+        """
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
         return pulumi.get(self, "disk_encryption_key_raw")
 
     @disk_encryption_key_raw.setter
@@ -6305,6 +6376,9 @@ class InstanceFromMachineImageBootDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
     def disk_encryption_key_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @disk_encryption_key_sha256.setter
@@ -6314,6 +6388,9 @@ class InstanceFromMachineImageBootDiskArgs:
     @property
     @pulumi.getter(name="initializeParams")
     def initialize_params(self) -> Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs']]:
+        """
+        Parameters with which a disk was created alongside the instance.
+        """
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
@@ -6323,6 +6400,9 @@ class InstanceFromMachineImageBootDiskArgs:
     @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
@@ -6332,6 +6412,9 @@ class InstanceFromMachineImageBootDiskArgs:
     @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -6341,6 +6424,9 @@ class InstanceFromMachineImageBootDiskArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or self_link of the disk attached to this instance.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -6359,6 +6445,16 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enable_confidential_compute: A flag to enable confidential compute mode on boot disk
+        :param pulumi.Input[str] image: The image from which this disk was initialised.
+        :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk.
+        :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        :param pulumi.Input[int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param pulumi.Input[int] size: The size of the image in gigabytes.
+        :param pulumi.Input[str] type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+        """
         if enable_confidential_compute is not None:
             pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if image is not None:
@@ -6379,6 +6475,9 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to enable confidential compute mode on boot disk
+        """
         return pulumi.get(self, "enable_confidential_compute")
 
     @enable_confidential_compute.setter
@@ -6388,6 +6487,9 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image from which this disk was initialised.
+        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -6397,6 +6499,9 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A set of key/value label pairs assigned to the disk.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -6406,6 +6511,9 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
@@ -6415,6 +6523,9 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        """
         return pulumi.get(self, "provisioned_throughput")
 
     @provisioned_throughput.setter
@@ -6424,6 +6535,9 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
@@ -6433,6 +6547,9 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the image in gigabytes.
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -6442,6 +6559,9 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -6453,11 +6573,17 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
 class InstanceFromMachineImageConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
                  enable_confidential_compute: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled.
+        """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> pulumi.Input[bool]:
+        """
+        Defines whether the instance should have confidential compute enabled.
+        """
         return pulumi.get(self, "enable_confidential_compute")
 
     @enable_confidential_compute.setter
@@ -6470,12 +6596,19 @@ class InstanceFromMachineImageGuestAcceleratorArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
+        :param pulumi.Input[str] type: The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+        """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def count(self) -> pulumi.Input[int]:
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
         return pulumi.get(self, "count")
 
     @count.setter
@@ -6485,6 +6618,9 @@ class InstanceFromMachineImageGuestAcceleratorArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -6512,8 +6648,23 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs']]] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface.
+        :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+        :param pulumi.Input[str] ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[str] network: The name or self_link of the network attached to this interface.
+        :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        :param pulumi.Input[str] network_ip: The private IP address assigned to the instance.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        :param pulumi.Input[str] subnetwork: The name or self_link of the subnetwork attached to this interface.
+        :param pulumi.Input[str] subnetwork_project: The project in which the subnetwork belongs.
         """
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -6551,6 +6702,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAccessConfigArgs']]]]:
+        """
+        Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        """
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
@@ -6560,6 +6714,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="aliasIpRanges")
     def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs']]]]:
+        """
+        An array of alias IP ranges for this network interface.
+        """
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
@@ -6569,6 +6726,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="internalIpv6PrefixLength")
     def internal_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
         return pulumi.get(self, "internal_ipv6_prefix_length")
 
     @internal_ipv6_prefix_length.setter
@@ -6578,6 +6738,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs']]]]:
+        """
+        An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+        """
         return pulumi.get(self, "ipv6_access_configs")
 
     @ipv6_access_configs.setter
@@ -6587,6 +6750,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        """
         return pulumi.get(self, "ipv6_access_type")
 
     @ipv6_access_type.setter
@@ -6596,6 +6762,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -6618,6 +6787,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or self_link of the network attached to this interface.
+        """
         return pulumi.get(self, "network")
 
     @network.setter
@@ -6627,6 +6799,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
         return pulumi.get(self, "network_attachment")
 
     @network_attachment.setter
@@ -6636,6 +6811,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP address assigned to the instance.
+        """
         return pulumi.get(self, "network_ip")
 
     @network_ip.setter
@@ -6645,6 +6823,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        """
         return pulumi.get(self, "nic_type")
 
     @nic_type.setter
@@ -6654,6 +6835,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
         return pulumi.get(self, "queue_count")
 
     @queue_count.setter
@@ -6663,6 +6847,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
@@ -6672,6 +6859,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        """
         return pulumi.get(self, "stack_type")
 
     @stack_type.setter
@@ -6681,6 +6871,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or self_link of the subnetwork attached to this interface.
+        """
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
@@ -6690,6 +6883,9 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="subnetworkProject")
     def subnetwork_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the subnetwork belongs.
+        """
         return pulumi.get(self, "subnetwork_project")
 
     @subnetwork_project.setter
@@ -6704,6 +6900,12 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
                  network_tier: Optional[pulumi.Input[str]] = None,
                  public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] nat_ip: The IP address that is be 1:1 mapped to the instance's network ip.
+        :param pulumi.Input[str] network_tier: The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+        :param pulumi.Input[str] public_ptr_domain_name: The DNS domain name for the public PTR record.
+        :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
         if network_tier is not None:
@@ -6716,6 +6918,9 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="natIp")
     def nat_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address that is be 1:1 mapped to the instance's network ip.
+        """
         return pulumi.get(self, "nat_ip")
 
     @nat_ip.setter
@@ -6725,6 +6930,9 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+        """
         return pulumi.get(self, "network_tier")
 
     @network_tier.setter
@@ -6734,6 +6942,9 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS domain name for the public PTR record.
+        """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
@@ -6743,6 +6954,9 @@ class InstanceFromMachineImageNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
@@ -6755,6 +6969,10 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  subnetwork_range_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip_cidr_range: The IP CIDR range represented by this alias IP range.
+        :param pulumi.Input[str] subnetwork_range_name: The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+        """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if subnetwork_range_name is not None:
             pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
@@ -6762,6 +6980,9 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
     @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Input[str]:
+        """
+        The IP CIDR range represented by this alias IP range.
+        """
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
@@ -6771,6 +6992,9 @@ class InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs:
     @property
     @pulumi.getter(name="subnetworkRangeName")
     def subnetwork_range_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+        """
         return pulumi.get(self, "subnetwork_range_name")
 
     @subnetwork_range_name.setter
@@ -6788,8 +7012,13 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
                  public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        :param pulumi.Input[str] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
@@ -6806,6 +7035,9 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> pulumi.Input[str]:
+        """
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        """
         return pulumi.get(self, "network_tier")
 
     @network_tier.setter
@@ -6815,6 +7047,9 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        """
         return pulumi.get(self, "external_ipv6")
 
     @external_ipv6.setter
@@ -6824,6 +7059,9 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix length of the external IPv6 range.
+        """
         return pulumi.get(self, "external_ipv6_prefix_length")
 
     @external_ipv6_prefix_length.setter
@@ -6846,6 +7084,9 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
@@ -6855,6 +7096,9 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
@@ -6866,11 +7110,17 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs:
 class InstanceFromMachineImageNetworkPerformanceConfigArgs:
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] total_egress_bandwidth_tier: The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+        """
         pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
     @property
     @pulumi.getter(name="totalEgressBandwidthTier")
     def total_egress_bandwidth_tier(self) -> pulumi.Input[str]:
+        """
+        The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+        """
         return pulumi.get(self, "total_egress_bandwidth_tier")
 
     @total_egress_bandwidth_tier.setter
@@ -6882,12 +7132,18 @@ class InstanceFromMachineImageNetworkPerformanceConfigArgs:
 class InstanceFromMachineImageParamsArgs:
     def __init__(__self__, *,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
@@ -6900,6 +7156,10 @@ class InstanceFromMachineImageReservationAffinityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  specific_reservation: Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs']] = None):
+        """
+        :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
+        :param pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs'] specific_reservation: Specifies the label selector for the reservation to use.
+        """
         pulumi.set(__self__, "type", type)
         if specific_reservation is not None:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
@@ -6907,6 +7167,9 @@ class InstanceFromMachineImageReservationAffinityArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        The type of reservation from which this instance can consume resources.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -6916,6 +7179,9 @@ class InstanceFromMachineImageReservationAffinityArgs:
     @property
     @pulumi.getter(name="specificReservation")
     def specific_reservation(self) -> Optional[pulumi.Input['InstanceFromMachineImageReservationAffinitySpecificReservationArgs']]:
+        """
+        Specifies the label selector for the reservation to use.
+        """
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
@@ -6928,12 +7194,19 @@ class InstanceFromMachineImageReservationAffinitySpecificReservationArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] key: Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -6943,6 +7216,9 @@ class InstanceFromMachineImageReservationAffinitySpecificReservationArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -6963,6 +7239,20 @@ class InstanceFromMachineImageSchedulingArgs:
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        :param pulumi.Input[str] instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
+        :param pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
+                 recovery of the Local Ssd state is attempted. Its value should be in
+                 between 0 and 168 hours with hour granularity and the default value being 1
+                 hour.
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        :param pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArgs'] max_run_duration: The timeout for new network connections to hosts.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+        :param pulumi.Input[str] on_host_maintenance: Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+        :param pulumi.Input[bool] preemptible: Whether the instance is preemptible.
+        :param pulumi.Input[str] provisioning_model: Whether the instance is spot. If this is set as SPOT.
+        """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
@@ -6987,6 +7277,9 @@ class InstanceFromMachineImageSchedulingArgs:
     @property
     @pulumi.getter(name="automaticRestart")
     def automatic_restart(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        """
         return pulumi.get(self, "automatic_restart")
 
     @automatic_restart.setter
@@ -6996,6 +7289,9 @@ class InstanceFromMachineImageSchedulingArgs:
     @property
     @pulumi.getter(name="instanceTerminationAction")
     def instance_termination_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the action GCE should take when SPOT VM is preempted.
+        """
         return pulumi.get(self, "instance_termination_action")
 
     @instance_termination_action.setter
@@ -7005,6 +7301,12 @@ class InstanceFromMachineImageSchedulingArgs:
     @property
     @pulumi.getter(name="localSsdRecoveryTimeout")
     def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs']]:
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
         return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @local_ssd_recovery_timeout.setter
@@ -7014,6 +7316,9 @@ class InstanceFromMachineImageSchedulingArgs:
     @property
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        """
         return pulumi.get(self, "maintenance_interval")
 
     @maintenance_interval.setter
@@ -7023,6 +7328,9 @@ class InstanceFromMachineImageSchedulingArgs:
     @property
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional[pulumi.Input['InstanceFromMachineImageSchedulingMaxRunDurationArgs']]:
+        """
+        The timeout for new network connections to hosts.
+        """
         return pulumi.get(self, "max_run_duration")
 
     @max_run_duration.setter
@@ -7041,6 +7349,9 @@ class InstanceFromMachineImageSchedulingArgs:
     @property
     @pulumi.getter(name="nodeAffinities")
     def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageSchedulingNodeAffinityArgs']]]]:
+        """
+        Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+        """
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
@@ -7050,6 +7361,9 @@ class InstanceFromMachineImageSchedulingArgs:
     @property
     @pulumi.getter(name="onHostMaintenance")
     def on_host_maintenance(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+        """
         return pulumi.get(self, "on_host_maintenance")
 
     @on_host_maintenance.setter
@@ -7059,6 +7373,9 @@ class InstanceFromMachineImageSchedulingArgs:
     @property
     @pulumi.getter
     def preemptible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the instance is preemptible.
+        """
         return pulumi.get(self, "preemptible")
 
     @preemptible.setter
@@ -7068,6 +7385,9 @@ class InstanceFromMachineImageSchedulingArgs:
     @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the instance is spot. If this is set as SPOT.
+        """
         return pulumi.get(self, "provisioning_model")
 
     @provisioning_model.setter
@@ -7080,6 +7400,14 @@ class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
             pulumi.set(__self__, "nanos", nanos)
@@ -7087,6 +7415,10 @@ class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs:
     @property
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -7096,6 +7428,12 @@ class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs:
     @property
     @pulumi.getter
     def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
@@ -7108,6 +7446,14 @@ class InstanceFromMachineImageSchedulingMaxRunDurationArgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
             pulumi.set(__self__, "nanos", nanos)
@@ -7115,6 +7461,10 @@ class InstanceFromMachineImageSchedulingMaxRunDurationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -7124,6 +7474,12 @@ class InstanceFromMachineImageSchedulingMaxRunDurationArgs:
     @property
     @pulumi.getter
     def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
@@ -7175,6 +7531,11 @@ class InstanceFromMachineImageScratchDiskArgs:
                  interface: pulumi.Input[str],
                  device_name: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] interface: The disk interface used for attaching this disk. One of SCSI or NVME.
+        :param pulumi.Input[str] device_name: Name with which the attached disk is accessible under /dev/disk/by-id/
+        :param pulumi.Input[int] size: The size of the disk in gigabytes. One of 375 or 3000.
+        """
         pulumi.set(__self__, "interface", interface)
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -7184,6 +7545,9 @@ class InstanceFromMachineImageScratchDiskArgs:
     @property
     @pulumi.getter
     def interface(self) -> pulumi.Input[str]:
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME.
+        """
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -7193,6 +7557,9 @@ class InstanceFromMachineImageScratchDiskArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name with which the attached disk is accessible under /dev/disk/by-id/
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -7202,6 +7569,9 @@ class InstanceFromMachineImageScratchDiskArgs:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the disk in gigabytes. One of 375 or 3000.
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -7214,6 +7584,10 @@ class InstanceFromMachineImageServiceAccountArgs:
     def __init__(__self__, *,
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  email: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: A list of service scopes.
+        :param pulumi.Input[str] email: The service account e-mail address.
+        """
         pulumi.set(__self__, "scopes", scopes)
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -7221,6 +7595,9 @@ class InstanceFromMachineImageServiceAccountArgs:
     @property
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of service scopes.
+        """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -7230,6 +7607,9 @@ class InstanceFromMachineImageServiceAccountArgs:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account e-mail address.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -7243,6 +7623,11 @@ class InstanceFromMachineImageShieldedInstanceConfigArgs:
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
                  enable_vtpm: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_integrity_monitoring: Whether integrity monitoring is enabled for the instance.
+        :param pulumi.Input[bool] enable_secure_boot: Whether secure boot is enabled for the instance.
+        :param pulumi.Input[bool] enable_vtpm: Whether the instance uses vTPM.
+        """
         if enable_integrity_monitoring is not None:
             pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -7253,6 +7638,9 @@ class InstanceFromMachineImageShieldedInstanceConfigArgs:
     @property
     @pulumi.getter(name="enableIntegrityMonitoring")
     def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether integrity monitoring is enabled for the instance.
+        """
         return pulumi.get(self, "enable_integrity_monitoring")
 
     @enable_integrity_monitoring.setter
@@ -7262,6 +7650,9 @@ class InstanceFromMachineImageShieldedInstanceConfigArgs:
     @property
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether secure boot is enabled for the instance.
+        """
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
@@ -7271,6 +7662,9 @@ class InstanceFromMachineImageShieldedInstanceConfigArgs:
     @property
     @pulumi.getter(name="enableVtpm")
     def enable_vtpm(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the instance uses vTPM.
+        """
         return pulumi.get(self, "enable_vtpm")
 
     @enable_vtpm.setter
@@ -7284,6 +7678,11 @@ class InstanceFromTemplateAdvancedMachineFeaturesArgs:
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
                  visible_core_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not.
+        :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
+        """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
@@ -7294,6 +7693,9 @@ class InstanceFromTemplateAdvancedMachineFeaturesArgs:
     @property
     @pulumi.getter(name="enableNestedVirtualization")
     def enable_nested_virtualization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable nested virtualization or not.
+        """
         return pulumi.get(self, "enable_nested_virtualization")
 
     @enable_nested_virtualization.setter
@@ -7303,6 +7705,9 @@ class InstanceFromTemplateAdvancedMachineFeaturesArgs:
     @property
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
         return pulumi.get(self, "threads_per_core")
 
     @threads_per_core.setter
@@ -7312,6 +7717,9 @@ class InstanceFromTemplateAdvancedMachineFeaturesArgs:
     @property
     @pulumi.getter(name="visibleCoreCount")
     def visible_core_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
+        """
         return pulumi.get(self, "visible_core_count")
 
     @visible_core_count.setter
@@ -7328,6 +7736,14 @@ class InstanceFromTemplateAttachedDiskArgs:
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] source: The name or self_link of the disk attached to this instance.
+        :param pulumi.Input[str] device_name: Name with which the attached disk is accessible under /dev/disk/by-id/
+        :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param pulumi.Input[str] mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
         pulumi.set(__self__, "source", source)
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -7343,6 +7759,9 @@ class InstanceFromTemplateAttachedDiskArgs:
     @property
     @pulumi.getter
     def source(self) -> pulumi.Input[str]:
+        """
+        The name or self_link of the disk attached to this instance.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -7352,6 +7771,9 @@ class InstanceFromTemplateAttachedDiskArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name with which the attached disk is accessible under /dev/disk/by-id/
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -7361,6 +7783,9 @@ class InstanceFromTemplateAttachedDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> Optional[pulumi.Input[str]]:
+        """
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
         return pulumi.get(self, "disk_encryption_key_raw")
 
     @disk_encryption_key_raw.setter
@@ -7370,6 +7795,9 @@ class InstanceFromTemplateAttachedDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
     def disk_encryption_key_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @disk_encryption_key_sha256.setter
@@ -7379,6 +7807,9 @@ class InstanceFromTemplateAttachedDiskArgs:
     @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
@@ -7388,6 +7819,9 @@ class InstanceFromTemplateAttachedDiskArgs:
     @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -7406,6 +7840,16 @@ class InstanceFromTemplateBootDiskArgs:
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] auto_delete: Whether the disk will be auto-deleted when the instance is deleted.
+        :param pulumi.Input[str] device_name: Name with which attached disk will be accessible under /dev/disk/by-id/
+        :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        :param pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs'] initialize_params: Parameters with which a disk was created alongside the instance.
+        :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        :param pulumi.Input[str] mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        :param pulumi.Input[str] source: The name or self_link of the disk attached to this instance.
+        """
         if auto_delete is not None:
             pulumi.set(__self__, "auto_delete", auto_delete)
         if device_name is not None:
@@ -7426,6 +7870,9 @@ class InstanceFromTemplateBootDiskArgs:
     @property
     @pulumi.getter(name="autoDelete")
     def auto_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the disk will be auto-deleted when the instance is deleted.
+        """
         return pulumi.get(self, "auto_delete")
 
     @auto_delete.setter
@@ -7435,6 +7882,9 @@ class InstanceFromTemplateBootDiskArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name with which attached disk will be accessible under /dev/disk/by-id/
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -7444,6 +7894,9 @@ class InstanceFromTemplateBootDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeyRaw")
     def disk_encryption_key_raw(self) -> Optional[pulumi.Input[str]]:
+        """
+        A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
         return pulumi.get(self, "disk_encryption_key_raw")
 
     @disk_encryption_key_raw.setter
@@ -7453,6 +7906,9 @@ class InstanceFromTemplateBootDiskArgs:
     @property
     @pulumi.getter(name="diskEncryptionKeySha256")
     def disk_encryption_key_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        """
         return pulumi.get(self, "disk_encryption_key_sha256")
 
     @disk_encryption_key_sha256.setter
@@ -7462,6 +7918,9 @@ class InstanceFromTemplateBootDiskArgs:
     @property
     @pulumi.getter(name="initializeParams")
     def initialize_params(self) -> Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs']]:
+        """
+        Parameters with which a disk was created alongside the instance.
+        """
         return pulumi.get(self, "initialize_params")
 
     @initialize_params.setter
@@ -7471,6 +7930,9 @@ class InstanceFromTemplateBootDiskArgs:
     @property
     @pulumi.getter(name="kmsKeySelfLink")
     def kms_key_self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        """
         return pulumi.get(self, "kms_key_self_link")
 
     @kms_key_self_link.setter
@@ -7480,6 +7942,9 @@ class InstanceFromTemplateBootDiskArgs:
     @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -7489,6 +7954,9 @@ class InstanceFromTemplateBootDiskArgs:
     @property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or self_link of the disk attached to this instance.
+        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -7507,6 +7975,16 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] enable_confidential_compute: A flag to enable confidential compute mode on boot disk
+        :param pulumi.Input[str] image: The image from which this disk was initialised.
+        :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk.
+        :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        :param pulumi.Input[int] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        :param pulumi.Input[int] size: The size of the image in gigabytes.
+        :param pulumi.Input[str] type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+        """
         if enable_confidential_compute is not None:
             pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if image is not None:
@@ -7527,6 +8005,9 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A flag to enable confidential compute mode on boot disk
+        """
         return pulumi.get(self, "enable_confidential_compute")
 
     @enable_confidential_compute.setter
@@ -7536,6 +8017,9 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image from which this disk was initialised.
+        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -7545,6 +8029,9 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A set of key/value label pairs assigned to the disk.
+        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -7554,6 +8041,9 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
@@ -7563,6 +8053,9 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        """
         return pulumi.get(self, "provisioned_throughput")
 
     @provisioned_throughput.setter
@@ -7572,6 +8065,9 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
@@ -7581,6 +8077,9 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the image in gigabytes.
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -7590,6 +8089,9 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -7601,11 +8103,17 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
 class InstanceFromTemplateConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
                  enable_confidential_compute: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled.
+        """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> pulumi.Input[bool]:
+        """
+        Defines whether the instance should have confidential compute enabled.
+        """
         return pulumi.get(self, "enable_confidential_compute")
 
     @enable_confidential_compute.setter
@@ -7618,12 +8126,19 @@ class InstanceFromTemplateGuestAcceleratorArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
+        :param pulumi.Input[str] type: The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+        """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def count(self) -> pulumi.Input[int]:
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
         return pulumi.get(self, "count")
 
     @count.setter
@@ -7633,6 +8148,9 @@ class InstanceFromTemplateGuestAcceleratorArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -7660,8 +8178,23 @@ class InstanceFromTemplateNetworkInterfaceArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArgs']]] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface.
+        :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+        :param pulumi.Input[str] ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[str] network: The name or self_link of the network attached to this interface.
+        :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        :param pulumi.Input[str] network_ip: The private IP address assigned to the instance.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        :param pulumi.Input[str] subnetwork: The name or self_link of the subnetwork attached to this interface.
+        :param pulumi.Input[str] subnetwork_project: The project in which the subnetwork belongs.
         """
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -7699,6 +8232,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAccessConfigArgs']]]]:
+        """
+        Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        """
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
@@ -7708,6 +8244,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="aliasIpRanges")
     def alias_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs']]]]:
+        """
+        An array of alias IP ranges for this network interface.
+        """
         return pulumi.get(self, "alias_ip_ranges")
 
     @alias_ip_ranges.setter
@@ -7717,6 +8256,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="internalIpv6PrefixLength")
     def internal_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
         return pulumi.get(self, "internal_ipv6_prefix_length")
 
     @internal_ipv6_prefix_length.setter
@@ -7726,6 +8268,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6AccessConfigs")
     def ipv6_access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs']]]]:
+        """
+        An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+        """
         return pulumi.get(self, "ipv6_access_configs")
 
     @ipv6_access_configs.setter
@@ -7735,6 +8280,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        """
         return pulumi.get(self, "ipv6_access_type")
 
     @ipv6_access_type.setter
@@ -7744,6 +8292,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -7766,6 +8317,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or self_link of the network attached to this interface.
+        """
         return pulumi.get(self, "network")
 
     @network.setter
@@ -7775,6 +8329,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
         return pulumi.get(self, "network_attachment")
 
     @network_attachment.setter
@@ -7784,6 +8341,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private IP address assigned to the instance.
+        """
         return pulumi.get(self, "network_ip")
 
     @network_ip.setter
@@ -7793,6 +8353,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        """
         return pulumi.get(self, "nic_type")
 
     @nic_type.setter
@@ -7802,6 +8365,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="queueCount")
     def queue_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        """
         return pulumi.get(self, "queue_count")
 
     @queue_count.setter
@@ -7811,6 +8377,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
@@ -7820,6 +8389,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        """
         return pulumi.get(self, "stack_type")
 
     @stack_type.setter
@@ -7829,6 +8401,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or self_link of the subnetwork attached to this interface.
+        """
         return pulumi.get(self, "subnetwork")
 
     @subnetwork.setter
@@ -7838,6 +8413,9 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="subnetworkProject")
     def subnetwork_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the subnetwork belongs.
+        """
         return pulumi.get(self, "subnetwork_project")
 
     @subnetwork_project.setter
@@ -7852,6 +8430,12 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
                  network_tier: Optional[pulumi.Input[str]] = None,
                  public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] nat_ip: The IP address that is be 1:1 mapped to the instance's network ip.
+        :param pulumi.Input[str] network_tier: The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+        :param pulumi.Input[str] public_ptr_domain_name: The DNS domain name for the public PTR record.
+        :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
         if network_tier is not None:
@@ -7864,6 +8448,9 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="natIp")
     def nat_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address that is be 1:1 mapped to the instance's network ip.
+        """
         return pulumi.get(self, "nat_ip")
 
     @nat_ip.setter
@@ -7873,6 +8460,9 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+        """
         return pulumi.get(self, "network_tier")
 
     @network_tier.setter
@@ -7882,6 +8472,9 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS domain name for the public PTR record.
+        """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
@@ -7891,6 +8484,9 @@ class InstanceFromTemplateNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
@@ -7903,6 +8499,10 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
     def __init__(__self__, *,
                  ip_cidr_range: pulumi.Input[str],
                  subnetwork_range_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip_cidr_range: The IP CIDR range represented by this alias IP range.
+        :param pulumi.Input[str] subnetwork_range_name: The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+        """
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if subnetwork_range_name is not None:
             pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
@@ -7910,6 +8510,9 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
     @property
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Input[str]:
+        """
+        The IP CIDR range represented by this alias IP range.
+        """
         return pulumi.get(self, "ip_cidr_range")
 
     @ip_cidr_range.setter
@@ -7919,6 +8522,9 @@ class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs:
     @property
     @pulumi.getter(name="subnetworkRangeName")
     def subnetwork_range_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+        """
         return pulumi.get(self, "subnetwork_range_name")
 
     @subnetwork_range_name.setter
@@ -7936,8 +8542,13 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
                  public_ptr_domain_name: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        :param pulumi.Input[str] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
@@ -7954,6 +8565,9 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="networkTier")
     def network_tier(self) -> pulumi.Input[str]:
+        """
+        The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+        """
         return pulumi.get(self, "network_tier")
 
     @network_tier.setter
@@ -7963,6 +8577,9 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        """
         return pulumi.get(self, "external_ipv6")
 
     @external_ipv6.setter
@@ -7972,6 +8589,9 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix length of the external IPv6 range.
+        """
         return pulumi.get(self, "external_ipv6_prefix_length")
 
     @external_ipv6_prefix_length.setter
@@ -7994,6 +8614,9 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
@@ -8003,6 +8626,9 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
@@ -8014,11 +8640,17 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs:
 class InstanceFromTemplateNetworkPerformanceConfigArgs:
     def __init__(__self__, *,
                  total_egress_bandwidth_tier: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] total_egress_bandwidth_tier: The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+        """
         pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
 
     @property
     @pulumi.getter(name="totalEgressBandwidthTier")
     def total_egress_bandwidth_tier(self) -> pulumi.Input[str]:
+        """
+        The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+        """
         return pulumi.get(self, "total_egress_bandwidth_tier")
 
     @total_egress_bandwidth_tier.setter
@@ -8030,12 +8662,18 @@ class InstanceFromTemplateNetworkPerformanceConfigArgs:
 class InstanceFromTemplateParamsArgs:
     def __init__(__self__, *,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
@@ -8048,6 +8686,10 @@ class InstanceFromTemplateReservationAffinityArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  specific_reservation: Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs']] = None):
+        """
+        :param pulumi.Input[str] type: The type of reservation from which this instance can consume resources.
+        :param pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs'] specific_reservation: Specifies the label selector for the reservation to use.
+        """
         pulumi.set(__self__, "type", type)
         if specific_reservation is not None:
             pulumi.set(__self__, "specific_reservation", specific_reservation)
@@ -8055,6 +8697,9 @@ class InstanceFromTemplateReservationAffinityArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        The type of reservation from which this instance can consume resources.
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -8064,6 +8709,9 @@ class InstanceFromTemplateReservationAffinityArgs:
     @property
     @pulumi.getter(name="specificReservation")
     def specific_reservation(self) -> Optional[pulumi.Input['InstanceFromTemplateReservationAffinitySpecificReservationArgs']]:
+        """
+        Specifies the label selector for the reservation to use.
+        """
         return pulumi.get(self, "specific_reservation")
 
     @specific_reservation.setter
@@ -8076,12 +8724,19 @@ class InstanceFromTemplateReservationAffinitySpecificReservationArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] key: Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Corresponds to the label values of a reservation resource.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -8091,6 +8746,9 @@ class InstanceFromTemplateReservationAffinitySpecificReservationArgs:
     @property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Corresponds to the label values of a reservation resource.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -8111,6 +8769,20 @@ class InstanceFromTemplateSchedulingArgs:
                  on_host_maintenance: Optional[pulumi.Input[str]] = None,
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        :param pulumi.Input[str] instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
+        :param pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
+                 recovery of the Local Ssd state is attempted. Its value should be in
+                 between 0 and 168 hours with hour granularity and the default value being 1
+                 hour.
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        :param pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The timeout for new network connections to hosts.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+        :param pulumi.Input[str] on_host_maintenance: Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+        :param pulumi.Input[bool] preemptible: Whether the instance is preemptible.
+        :param pulumi.Input[str] provisioning_model: Whether the instance is spot. If this is set as SPOT.
+        """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
@@ -8135,6 +8807,9 @@ class InstanceFromTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="automaticRestart")
     def automatic_restart(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        """
         return pulumi.get(self, "automatic_restart")
 
     @automatic_restart.setter
@@ -8144,6 +8819,9 @@ class InstanceFromTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="instanceTerminationAction")
     def instance_termination_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the action GCE should take when SPOT VM is preempted.
+        """
         return pulumi.get(self, "instance_termination_action")
 
     @instance_termination_action.setter
@@ -8153,6 +8831,12 @@ class InstanceFromTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="localSsdRecoveryTimeout")
     def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]:
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
         return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @local_ssd_recovery_timeout.setter
@@ -8162,6 +8846,9 @@ class InstanceFromTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        """
         return pulumi.get(self, "maintenance_interval")
 
     @maintenance_interval.setter
@@ -8171,6 +8858,9 @@ class InstanceFromTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional[pulumi.Input['InstanceFromTemplateSchedulingMaxRunDurationArgs']]:
+        """
+        The timeout for new network connections to hosts.
+        """
         return pulumi.get(self, "max_run_duration")
 
     @max_run_duration.setter
@@ -8189,6 +8879,9 @@ class InstanceFromTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="nodeAffinities")
     def node_affinities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateSchedulingNodeAffinityArgs']]]]:
+        """
+        Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+        """
         return pulumi.get(self, "node_affinities")
 
     @node_affinities.setter
@@ -8198,6 +8891,9 @@ class InstanceFromTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="onHostMaintenance")
     def on_host_maintenance(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+        """
         return pulumi.get(self, "on_host_maintenance")
 
     @on_host_maintenance.setter
@@ -8207,6 +8903,9 @@ class InstanceFromTemplateSchedulingArgs:
     @property
     @pulumi.getter
     def preemptible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the instance is preemptible.
+        """
         return pulumi.get(self, "preemptible")
 
     @preemptible.setter
@@ -8216,6 +8915,9 @@ class InstanceFromTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the instance is spot. If this is set as SPOT.
+        """
         return pulumi.get(self, "provisioning_model")
 
     @provisioning_model.setter
@@ -8228,6 +8930,14 @@ class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
             pulumi.set(__self__, "nanos", nanos)
@@ -8235,6 +8945,10 @@ class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     @property
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -8244,6 +8958,12 @@ class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs:
     @property
     @pulumi.getter
     def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
@@ -8256,6 +8976,14 @@ class InstanceFromTemplateSchedulingMaxRunDurationArgs:
     def __init__(__self__, *,
                  seconds: pulumi.Input[int],
                  nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        """
         pulumi.set(__self__, "seconds", seconds)
         if nanos is not None:
             pulumi.set(__self__, "nanos", nanos)
@@ -8263,6 +8991,10 @@ class InstanceFromTemplateSchedulingMaxRunDurationArgs:
     @property
     @pulumi.getter
     def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
         return pulumi.get(self, "seconds")
 
     @seconds.setter
@@ -8272,6 +9004,12 @@ class InstanceFromTemplateSchedulingMaxRunDurationArgs:
     @property
     @pulumi.getter
     def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
         return pulumi.get(self, "nanos")
 
     @nanos.setter
@@ -8323,6 +9061,11 @@ class InstanceFromTemplateScratchDiskArgs:
                  interface: pulumi.Input[str],
                  device_name: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] interface: The disk interface used for attaching this disk. One of SCSI or NVME.
+        :param pulumi.Input[str] device_name: Name with which the attached disk is accessible under /dev/disk/by-id/
+        :param pulumi.Input[int] size: The size of the disk in gigabytes. One of 375 or 3000.
+        """
         pulumi.set(__self__, "interface", interface)
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
@@ -8332,6 +9075,9 @@ class InstanceFromTemplateScratchDiskArgs:
     @property
     @pulumi.getter
     def interface(self) -> pulumi.Input[str]:
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME.
+        """
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -8341,6 +9087,9 @@ class InstanceFromTemplateScratchDiskArgs:
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name with which the attached disk is accessible under /dev/disk/by-id/
+        """
         return pulumi.get(self, "device_name")
 
     @device_name.setter
@@ -8350,6 +9099,9 @@ class InstanceFromTemplateScratchDiskArgs:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the disk in gigabytes. One of 375 or 3000.
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -8362,6 +9114,10 @@ class InstanceFromTemplateServiceAccountArgs:
     def __init__(__self__, *,
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  email: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: A list of service scopes.
+        :param pulumi.Input[str] email: The service account e-mail address.
+        """
         pulumi.set(__self__, "scopes", scopes)
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -8369,6 +9125,9 @@ class InstanceFromTemplateServiceAccountArgs:
     @property
     @pulumi.getter
     def scopes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of service scopes.
+        """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -8378,6 +9137,9 @@ class InstanceFromTemplateServiceAccountArgs:
     @property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account e-mail address.
+        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -8391,6 +9153,11 @@ class InstanceFromTemplateShieldedInstanceConfigArgs:
                  enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
                  enable_secure_boot: Optional[pulumi.Input[bool]] = None,
                  enable_vtpm: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_integrity_monitoring: Whether integrity monitoring is enabled for the instance.
+        :param pulumi.Input[bool] enable_secure_boot: Whether secure boot is enabled for the instance.
+        :param pulumi.Input[bool] enable_vtpm: Whether the instance uses vTPM.
+        """
         if enable_integrity_monitoring is not None:
             pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
         if enable_secure_boot is not None:
@@ -8401,6 +9168,9 @@ class InstanceFromTemplateShieldedInstanceConfigArgs:
     @property
     @pulumi.getter(name="enableIntegrityMonitoring")
     def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether integrity monitoring is enabled for the instance.
+        """
         return pulumi.get(self, "enable_integrity_monitoring")
 
     @enable_integrity_monitoring.setter
@@ -8410,6 +9180,9 @@ class InstanceFromTemplateShieldedInstanceConfigArgs:
     @property
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether secure boot is enabled for the instance.
+        """
         return pulumi.get(self, "enable_secure_boot")
 
     @enable_secure_boot.setter
@@ -8419,6 +9192,9 @@ class InstanceFromTemplateShieldedInstanceConfigArgs:
     @property
     @pulumi.getter(name="enableVtpm")
     def enable_vtpm(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the instance uses vTPM.
+        """
         return pulumi.get(self, "enable_vtpm")
 
     @enable_vtpm.setter
@@ -8769,12 +9545,18 @@ class InstanceGroupManagerStatusArgs:
 class InstanceGroupManagerStatusAllInstancesConfigArgs:
     def __init__(__self__, *,
                  effective: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
         if effective is not None:
             pulumi.set(__self__, "effective", effective)
 
     @property
     @pulumi.getter
     def effective(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
         return pulumi.get(self, "effective")
 
     @effective.setter
@@ -8848,12 +9630,18 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
 class InstanceGroupManagerStatusVersionTargetArgs:
     def __init__(__self__, *,
                  is_reached: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] is_reached: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
         if is_reached is not None:
             pulumi.set(__self__, "is_reached", is_reached)
 
     @property
     @pulumi.getter(name="isReached")
     def is_reached(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
         return pulumi.get(self, "is_reached")
 
     @is_reached.setter
@@ -9331,14 +10119,17 @@ class InstanceNetworkInterfaceArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  subnetwork_project: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArgs']]] access_configs: Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
         :param pulumi.Input[str] ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet.
                This field is always inherited from its subnetwork.
+        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this interface to.
@@ -9399,6 +10190,9 @@ class InstanceNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceAccessConfigArgs']]]]:
+        """
+        Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        """
         return pulumi.get(self, "access_configs")
 
     @access_configs.setter
@@ -9422,6 +10216,9 @@ class InstanceNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="internalIpv6PrefixLength")
     def internal_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
         return pulumi.get(self, "internal_ipv6_prefix_length")
 
     @internal_ipv6_prefix_length.setter
@@ -9458,6 +10255,9 @@ class InstanceNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -9865,12 +10665,18 @@ class InstanceNetworkPerformanceConfigArgs:
 class InstanceParamsArgs:
     def __init__(__self__, *,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+        """
         return pulumi.get(self, "resource_manager_tags")
 
     @resource_manager_tags.setter
@@ -9973,6 +10779,10 @@ class InstanceSchedulingArgs:
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        :param pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
+                 recovery of the Local Ssd state is attempted. Its value should be in
+                 between 0 and 168 hours with hour granularity and the default value being 1
+                 hour.
         :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
                <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         :param pulumi.Input['InstanceSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
@@ -10044,6 +10854,12 @@ class InstanceSchedulingArgs:
     @property
     @pulumi.getter(name="localSsdRecoveryTimeout")
     def local_ssd_recovery_timeout(self) -> Optional[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs']]:
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
         return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @local_ssd_recovery_timeout.setter
@@ -11137,9 +11953,12 @@ class InstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        :param pulumi.Input[str] ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         :param pulumi.Input[str] name: The name of the instance template. If you leave
                this blank, the provider will auto-generate a unique name.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this interface to.
@@ -11222,6 +12041,9 @@ class InstanceTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="internalIpv6PrefixLength")
     def internal_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
         return pulumi.get(self, "internal_ipv6_prefix_length")
 
     @internal_ipv6_prefix_length.setter
@@ -11245,6 +12067,9 @@ class InstanceTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        """
         return pulumi.get(self, "ipv6_access_type")
 
     @ipv6_access_type.setter
@@ -11254,6 +12079,9 @@ class InstanceTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -11387,6 +12215,7 @@ class InstanceTemplateNetworkInterfaceAccessConfigArgs:
                network ip. If not given, one will be generated.
         :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
                subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        :param pulumi.Input[str] public_ptr_domain_name: The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -11424,6 +12253,9 @@ class InstanceTemplateNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+        """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
@@ -11492,8 +12324,11 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
         """
         :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
                subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        :param pulumi.Input[str] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
         :param pulumi.Input[str] name: The name of the instance template. If you leave
                this blank, the provider will auto-generate a unique name.
+        :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
         """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
@@ -11521,6 +12356,9 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        """
         return pulumi.get(self, "external_ipv6")
 
     @external_ipv6.setter
@@ -11530,6 +12368,9 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix length of the external IPv6 range.
+        """
         return pulumi.get(self, "external_ipv6_prefix_length")
 
     @external_ipv6_prefix_length.setter
@@ -11552,6 +12393,9 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
@@ -11676,10 +12520,15 @@ class InstanceTemplateSchedulingArgs:
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
+                 recovery of the Local Ssd state is attempted. Its value should be in
+                 between 0 and 168 hours with hour granularity and the default value being 1
+                 hour.
         :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
                <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
+        :param pulumi.Input[int] min_node_cpus: Minimum number of cpus for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -11745,6 +12594,12 @@ class InstanceTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="localSsdRecoveryTimeouts")
     def local_ssd_recovery_timeouts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]]:
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
         return pulumi.get(self, "local_ssd_recovery_timeouts")
 
     @local_ssd_recovery_timeouts.setter
@@ -11780,6 +12635,9 @@ class InstanceTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="minNodeCpus")
     def min_node_cpus(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of cpus for the instance.
+        """
         return pulumi.get(self, "min_node_cpus")
 
     @min_node_cpus.setter
@@ -17892,12 +18750,18 @@ class RegionInstanceGroupManagerStatusArgs:
 class RegionInstanceGroupManagerStatusAllInstancesConfigArgs:
     def __init__(__self__, *,
                  effective: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
         if effective is not None:
             pulumi.set(__self__, "effective", effective)
 
     @property
     @pulumi.getter
     def effective(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
         return pulumi.get(self, "effective")
 
     @effective.setter
@@ -17971,12 +18835,18 @@ class RegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs:
 class RegionInstanceGroupManagerStatusVersionTargetArgs:
     def __init__(__self__, *,
                  is_reached: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] is_reached: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
         if is_reached is not None:
             pulumi.set(__self__, "is_reached", is_reached)
 
     @property
     @pulumi.getter(name="isReached")
     def is_reached(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
         return pulumi.get(self, "is_reached")
 
     @is_reached.setter
@@ -18898,9 +19768,13 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
+        :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface.
                Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
                specified, then this instance will have no external IPv6 Internet access. Structure documented below.
+        :param pulumi.Input[str] ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        :param pulumi.Input[str] name: The name of the network_interface.
         :param pulumi.Input[str] network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
@@ -18970,6 +19844,9 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="internalIpv6PrefixLength")
     def internal_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
         return pulumi.get(self, "internal_ipv6_prefix_length")
 
     @internal_ipv6_prefix_length.setter
@@ -18993,6 +19870,9 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        """
         return pulumi.get(self, "ipv6_access_type")
 
     @ipv6_access_type.setter
@@ -19002,6 +19882,9 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -19011,6 +19894,9 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the network_interface.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -19119,6 +20005,7 @@ class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs:
                network ip. If not given, one will be generated.
         :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
                subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        :param pulumi.Input[str] public_ptr_domain_name: The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -19156,6 +20043,9 @@ class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+        """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
@@ -19224,6 +20114,10 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
         """
         :param pulumi.Input[str] network_tier: The service-level to be provided for IPv6 traffic when the
                subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        :param pulumi.Input[str] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
+        :param pulumi.Input[str] name: The name of this access configuration.
+        :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
         """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
@@ -19251,6 +20145,9 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        """
         return pulumi.get(self, "external_ipv6")
 
     @external_ipv6.setter
@@ -19260,6 +20157,9 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix length of the external IPv6 range.
+        """
         return pulumi.get(self, "external_ipv6_prefix_length")
 
     @external_ipv6_prefix_length.setter
@@ -19269,6 +20169,9 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this access configuration.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -19278,6 +20181,9 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="publicPtrDomainName")
     def public_ptr_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        """
         return pulumi.get(self, "public_ptr_domain_name")
 
     @public_ptr_domain_name.setter
@@ -19402,9 +20308,14 @@ class RegionInstanceTemplateSchedulingArgs:
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
+                 recovery of the Local Ssd state is attempted. Its value should be in
+                 between 0 and 168 hours with hour granularity and the default value being 1
+                 hour.
         :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
                <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         :param pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param pulumi.Input[int] min_node_cpus: Minimum number of cpus for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
                groups will use as host systems. Read more on sole-tenant node creation
@@ -19470,6 +20381,12 @@ class RegionInstanceTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="localSsdRecoveryTimeouts")
     def local_ssd_recovery_timeouts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]]:
+        """
+        Specifies the maximum amount of time a Local Ssd Vm should wait while
+          recovery of the Local Ssd state is attempted. Its value should be in
+          between 0 and 168 hours with hour granularity and the default value being 1
+          hour.
+        """
         return pulumi.get(self, "local_ssd_recovery_timeouts")
 
     @local_ssd_recovery_timeouts.setter
@@ -19504,6 +20421,9 @@ class RegionInstanceTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="minNodeCpus")
     def min_node_cpus(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of cpus for the instance.
+        """
         return pulumi.get(self, "min_node_cpus")
 
     @min_node_cpus.setter
@@ -27486,6 +28406,7 @@ class RouterPeerMd5AuthenticationKeyArgs:
                  key: pulumi.Input[str],
                  name: pulumi.Input[str]):
         """
+        :param pulumi.Input[str] key: Value of the key.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -27499,6 +28420,9 @@ class RouterPeerMd5AuthenticationKeyArgs:
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
+        """
+        Value of the key.
+        """
         return pulumi.get(self, "key")
 
     @key.setter

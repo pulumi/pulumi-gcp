@@ -10,37 +10,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigSubjectConfigSubject {
+    /**
+     * @return The common name of the distinguished name.
+     * 
+     */
     private String commonName;
+    /**
+     * @return The country code of the subject.
+     * 
+     */
     private String countryCode;
+    /**
+     * @return The locality or city of the subject.
+     * 
+     */
     private String locality;
+    /**
+     * @return The organization of the subject.
+     * 
+     */
     private String organization;
+    /**
+     * @return The organizational unit of the subject.
+     * 
+     */
     private String organizationalUnit;
+    /**
+     * @return The postal code of the subject.
+     * 
+     */
     private String postalCode;
+    /**
+     * @return The province, territory, or regional state of the subject.
+     * 
+     */
     private String province;
+    /**
+     * @return The street address of the subject.
+     * 
+     */
     private String streetAddress;
 
     private GetAuthorityConfigSubjectConfigSubject() {}
+    /**
+     * @return The common name of the distinguished name.
+     * 
+     */
     public String commonName() {
         return this.commonName;
     }
+    /**
+     * @return The country code of the subject.
+     * 
+     */
     public String countryCode() {
         return this.countryCode;
     }
+    /**
+     * @return The locality or city of the subject.
+     * 
+     */
     public String locality() {
         return this.locality;
     }
+    /**
+     * @return The organization of the subject.
+     * 
+     */
     public String organization() {
         return this.organization;
     }
+    /**
+     * @return The organizational unit of the subject.
+     * 
+     */
     public String organizationalUnit() {
         return this.organizationalUnit;
     }
+    /**
+     * @return The postal code of the subject.
+     * 
+     */
     public String postalCode() {
         return this.postalCode;
     }
+    /**
+     * @return The province, territory, or regional state of the subject.
+     * 
+     */
     public String province() {
         return this.province;
     }
+    /**
+     * @return The street address of the subject.
+     * 
+     */
     public String streetAddress() {
         return this.streetAddress;
     }

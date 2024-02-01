@@ -18,8 +18,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstance {
+    /**
+     * @return Available Maintenance versions.
+     * 
+     */
     private List<String> availableMaintenanceVersions;
+    /**
+     * @return Configuration for creating a new instance as a clone of another instance.
+     * 
+     */
     private List<GetDatabaseInstancesInstanceClone> clones;
+    /**
+     * @return The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
+     * 
+     */
     private String connectionName;
     /**
      * @return To filter out the Cloud SQL instances which are of the specified database version.
@@ -27,12 +39,28 @@ public final class GetDatabaseInstancesInstance {
      */
     private String databaseVersion;
     private Boolean deletionProtection;
+    /**
+     * @return The dns name of the instance.
+     * 
+     */
     private String dnsName;
     private String encryptionKeyName;
     private String firstIpAddress;
+    /**
+     * @return The type of the instance. The valid values are:- &#39;SQL_INSTANCE_TYPE_UNSPECIFIED&#39;, &#39;CLOUD_SQL_INSTANCE&#39;, &#39;ON_PREMISES_INSTANCE&#39; and &#39;READ_REPLICA_INSTANCE&#39;.
+     * 
+     */
     private String instanceType;
     private List<GetDatabaseInstancesInstanceIpAddress> ipAddresses;
+    /**
+     * @return Maintenance version.
+     * 
+     */
     private String maintenanceVersion;
+    /**
+     * @return The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
+     * 
+     */
     private String masterInstanceName;
     private String name;
     private String privateIpAddress;
@@ -41,6 +69,10 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private String project;
+    /**
+     * @return The link to service attachment of PSC instance.
+     * 
+     */
     private String pscServiceAttachmentLink;
     private String publicIpAddress;
     /**
@@ -48,21 +80,53 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private String region;
+    /**
+     * @return The configuration for replication.
+     * 
+     */
     private List<GetDatabaseInstancesInstanceReplicaConfiguration> replicaConfigurations;
     private List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts;
+    /**
+     * @return Initial root password. Required for MS SQL Server.
+     * 
+     */
     private String rootPassword;
+    /**
+     * @return The URI of the created resource.
+     * 
+     */
     private String selfLink;
     private List<GetDatabaseInstancesInstanceServerCaCert> serverCaCerts;
+    /**
+     * @return The service account email address assigned to the instance.
+     * 
+     */
     private String serviceAccountEmailAddress;
+    /**
+     * @return The settings to use for the database. The configuration is detailed below.
+     * 
+     */
     private List<GetDatabaseInstancesInstanceSetting> settings;
 
     private GetDatabaseInstancesInstance() {}
+    /**
+     * @return Available Maintenance versions.
+     * 
+     */
     public List<String> availableMaintenanceVersions() {
         return this.availableMaintenanceVersions;
     }
+    /**
+     * @return Configuration for creating a new instance as a clone of another instance.
+     * 
+     */
     public List<GetDatabaseInstancesInstanceClone> clones() {
         return this.clones;
     }
+    /**
+     * @return The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
+     * 
+     */
     public String connectionName() {
         return this.connectionName;
     }
@@ -76,6 +140,10 @@ public final class GetDatabaseInstancesInstance {
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
+    /**
+     * @return The dns name of the instance.
+     * 
+     */
     public String dnsName() {
         return this.dnsName;
     }
@@ -85,15 +153,27 @@ public final class GetDatabaseInstancesInstance {
     public String firstIpAddress() {
         return this.firstIpAddress;
     }
+    /**
+     * @return The type of the instance. The valid values are:- &#39;SQL_INSTANCE_TYPE_UNSPECIFIED&#39;, &#39;CLOUD_SQL_INSTANCE&#39;, &#39;ON_PREMISES_INSTANCE&#39; and &#39;READ_REPLICA_INSTANCE&#39;.
+     * 
+     */
     public String instanceType() {
         return this.instanceType;
     }
     public List<GetDatabaseInstancesInstanceIpAddress> ipAddresses() {
         return this.ipAddresses;
     }
+    /**
+     * @return Maintenance version.
+     * 
+     */
     public String maintenanceVersion() {
         return this.maintenanceVersion;
     }
+    /**
+     * @return The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
+     * 
+     */
     public String masterInstanceName() {
         return this.masterInstanceName;
     }
@@ -110,6 +190,10 @@ public final class GetDatabaseInstancesInstance {
     public String project() {
         return this.project;
     }
+    /**
+     * @return The link to service attachment of PSC instance.
+     * 
+     */
     public String pscServiceAttachmentLink() {
         return this.pscServiceAttachmentLink;
     }
@@ -123,24 +207,44 @@ public final class GetDatabaseInstancesInstance {
     public String region() {
         return this.region;
     }
+    /**
+     * @return The configuration for replication.
+     * 
+     */
     public List<GetDatabaseInstancesInstanceReplicaConfiguration> replicaConfigurations() {
         return this.replicaConfigurations;
     }
     public List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts() {
         return this.restoreBackupContexts;
     }
+    /**
+     * @return Initial root password. Required for MS SQL Server.
+     * 
+     */
     public String rootPassword() {
         return this.rootPassword;
     }
+    /**
+     * @return The URI of the created resource.
+     * 
+     */
     public String selfLink() {
         return this.selfLink;
     }
     public List<GetDatabaseInstancesInstanceServerCaCert> serverCaCerts() {
         return this.serverCaCerts;
     }
+    /**
+     * @return The service account email address assigned to the instance.
+     * 
+     */
     public String serviceAccountEmailAddress() {
         return this.serviceAccountEmailAddress;
     }
+    /**
+     * @return The settings to use for the database. The configuration is detailed below.
+     * 
+     */
     public List<GetDatabaseInstancesInstanceSetting> settings() {
         return this.settings;
     }

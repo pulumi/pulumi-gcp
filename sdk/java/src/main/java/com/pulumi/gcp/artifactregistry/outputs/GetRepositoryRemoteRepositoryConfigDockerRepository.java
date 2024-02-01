@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigDockerRepository {
+    /**
+     * @return Address of the remote repository. Default value: &#34;DOCKER_HUB&#34; Possible values: [&#34;DOCKER_HUB&#34;]
+     * 
+     */
     private String publicRepository;
 
     private GetRepositoryRemoteRepositoryConfigDockerRepository() {}
+    /**
+     * @return Address of the remote repository. Default value: &#34;DOCKER_HUB&#34; Possible values: [&#34;DOCKER_HUB&#34;]
+     * 
+     */
     public String publicRepository() {
         return this.publicRepository;
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterServiceExternalIpsConfigResult
     {
+        /// <summary>
+        /// When enabled, services with exterenal ips specified will be allowed.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

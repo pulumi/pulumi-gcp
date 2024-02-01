@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
+        /// <summary>
+        /// The runtime logging config of the job
+        /// </summary>
         public readonly Outputs.JobSparksqlConfigLoggingConfig? LoggingConfig;
         /// <summary>
         /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.

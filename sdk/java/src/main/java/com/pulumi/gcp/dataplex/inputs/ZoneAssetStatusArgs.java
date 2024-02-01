@@ -16,16 +16,32 @@ public final class ZoneAssetStatusArgs extends com.pulumi.resources.ResourceArgs
 
     public static final ZoneAssetStatusArgs Empty = new ZoneAssetStatusArgs();
 
+    /**
+     * Number of active assets.
+     * 
+     */
     @Import(name="activeAssets")
     private @Nullable Output<Integer> activeAssets;
 
+    /**
+     * @return Number of active assets.
+     * 
+     */
     public Optional<Output<Integer>> activeAssets() {
         return Optional.ofNullable(this.activeAssets);
     }
 
+    /**
+     * Number of assets that are in process of updating the security policy on attached resources.
+     * 
+     */
     @Import(name="securityPolicyApplyingAssets")
     private @Nullable Output<Integer> securityPolicyApplyingAssets;
 
+    /**
+     * @return Number of assets that are in process of updating the security policy on attached resources.
+     * 
+     */
     public Optional<Output<Integer>> securityPolicyApplyingAssets() {
         return Optional.ofNullable(this.securityPolicyApplyingAssets);
     }
@@ -71,20 +87,44 @@ public final class ZoneAssetStatusArgs extends com.pulumi.resources.ResourceArgs
             $ = new ZoneAssetStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param activeAssets Number of active assets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activeAssets(@Nullable Output<Integer> activeAssets) {
             $.activeAssets = activeAssets;
             return this;
         }
 
+        /**
+         * @param activeAssets Number of active assets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder activeAssets(Integer activeAssets) {
             return activeAssets(Output.of(activeAssets));
         }
 
+        /**
+         * @param securityPolicyApplyingAssets Number of assets that are in process of updating the security policy on attached resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicyApplyingAssets(@Nullable Output<Integer> securityPolicyApplyingAssets) {
             $.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
             return this;
         }
 
+        /**
+         * @param securityPolicyApplyingAssets Number of assets that are in process of updating the security policy on attached resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicyApplyingAssets(Integer securityPolicyApplyingAssets) {
             return securityPolicyApplyingAssets(Output.of(securityPolicyApplyingAssets));
         }

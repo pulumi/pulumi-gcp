@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationPolicyListPolicyDeny {
+    /**
+     * @return The policy allows or denies all values.
+     * 
+     */
     private Boolean all;
+    /**
+     * @return The policy can define specific values that are allowed or denied.
+     * 
+     */
     private List<String> values;
 
     private GetOrganizationPolicyListPolicyDeny() {}
+    /**
+     * @return The policy allows or denies all values.
+     * 
+     */
     public Boolean all() {
         return this.all;
     }
+    /**
+     * @return The policy can define specific values that are allowed or denied.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

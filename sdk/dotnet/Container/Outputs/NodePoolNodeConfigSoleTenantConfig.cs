@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfigSoleTenantConfig
     {
+        /// <summary>
+        /// .
+        /// </summary>
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigSoleTenantConfigNodeAffinity> NodeAffinities;
 
         [OutputConstructor]

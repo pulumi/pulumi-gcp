@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfigScheduler {
+    /**
+     * @return The number of schedulers.
+     * 
+     */
     private @Nullable Integer count;
+    /**
+     * @return CPU request and limit for a single Airflow scheduler replica
+     * 
+     */
     private @Nullable Double cpu;
+    /**
+     * @return Memory (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     private @Nullable Double memoryGb;
+    /**
+     * @return Storage (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     private @Nullable Double storageGb;
 
     private EnvironmentConfigWorkloadsConfigScheduler() {}
+    /**
+     * @return The number of schedulers.
+     * 
+     */
     public Optional<Integer> count() {
         return Optional.ofNullable(this.count);
     }
+    /**
+     * @return CPU request and limit for a single Airflow scheduler replica
+     * 
+     */
     public Optional<Double> cpu() {
         return Optional.ofNullable(this.cpu);
     }
+    /**
+     * @return Memory (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     public Optional<Double> memoryGb() {
         return Optional.ofNullable(this.memoryGb);
     }
+    /**
+     * @return Storage (GB) request and limit for a single Airflow scheduler replica.
+     * 
+     */
     public Optional<Double> storageGb() {
         return Optional.ofNullable(this.storageGb);
     }

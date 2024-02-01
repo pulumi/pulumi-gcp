@@ -51,6 +51,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("connectorEnforcement")]
         public Input<string>? ConnectorEnforcement { get; set; }
 
+        /// <summary>
+        /// Data cache configurations.
+        /// </summary>
         [Input("dataCacheConfig")]
         public Input<Inputs.DatabaseInstanceSettingsDataCacheConfigArgs>? DataCacheConfig { get; set; }
 
@@ -62,6 +65,9 @@ namespace Pulumi.Gcp.Sql.Inputs
             set => _databaseFlags = value;
         }
 
+        /// <summary>
+        /// Configuration to protect against accidental instance deletion.
+        /// </summary>
         [Input("deletionProtectionEnabled")]
         public Input<bool>? DeletionProtectionEnabled { get; set; }
 
@@ -98,6 +104,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
+        /// <summary>
+        /// Configuration of Query Insights.
+        /// </summary>
         [Input("insightsConfig")]
         public Input<Inputs.DatabaseInstanceSettingsInsightsConfigArgs>? InsightsConfig { get; set; }
 
@@ -107,6 +116,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("locationPreference")]
         public Input<Inputs.DatabaseInstanceSettingsLocationPreferenceArgs>? LocationPreference { get; set; }
 
+        /// <summary>
+        /// Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.DatabaseInstanceSettingsMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
@@ -148,6 +160,9 @@ namespace Pulumi.Gcp.Sql.Inputs
             set => _userLabels = value;
         }
 
+        /// <summary>
+        /// Used to make sure changes to the settings block are atomic.
+        /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
 

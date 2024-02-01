@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateVolumeNf {
+    /**
+     * @return Path that is exported by the NFS server.
+     * 
+     */
     private String path;
+    /**
+     * @return If true, mount the NFS volume as read only
+     * 
+     */
     private Boolean readOnly;
+    /**
+     * @return Hostname or IP address of the NFS server
+     * 
+     */
     private String server;
 
     private GetServiceTemplateVolumeNf() {}
+    /**
+     * @return Path that is exported by the NFS server.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return If true, mount the NFS volume as read only
+     * 
+     */
     public Boolean readOnly() {
         return this.readOnly;
     }
+    /**
+     * @return Hostname or IP address of the NFS server
+     * 
+     */
     public String server() {
         return this.server;
     }

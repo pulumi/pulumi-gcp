@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderResult
     {
+        /// <summary>
+        /// The header field name to match on when bypassing cache. Values are case-insensitive.
+        /// </summary>
         public readonly string HeaderName;
 
         [OutputConstructor]

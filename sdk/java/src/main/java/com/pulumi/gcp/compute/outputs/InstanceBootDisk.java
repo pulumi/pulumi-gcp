@@ -34,6 +34,10 @@ public final class InstanceBootDisk {
      * 
      */
     private @Nullable String diskEncryptionKeyRaw;
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     private @Nullable String diskEncryptionKeySha256;
     /**
      * @return Parameters for a new disk that will be created
@@ -91,6 +95,10 @@ public final class InstanceBootDisk {
     public Optional<String> diskEncryptionKeyRaw() {
         return Optional.ofNullable(this.diskEncryptionKeyRaw);
     }
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     public Optional<String> diskEncryptionKeySha256() {
         return Optional.ofNullable(this.diskEncryptionKeySha256);
     }

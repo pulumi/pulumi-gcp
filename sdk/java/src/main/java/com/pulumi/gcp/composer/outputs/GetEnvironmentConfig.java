@@ -24,81 +24,233 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfig {
+    /**
+     * @return The URI of the Apache Airflow Web UI hosted within this environment.
+     * 
+     */
     private String airflowUri;
+    /**
+     * @return The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * 
+     */
     private String dagGcsPrefix;
+    /**
+     * @return The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private List<GetEnvironmentConfigDatabaseConfig> databaseConfigs;
+    /**
+     * @return Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+     * 
+     */
     private Boolean enablePrivateBuildsOnly;
+    /**
+     * @return Optional. If true, a private Composer environment will be created.
+     * 
+     */
     private Boolean enablePrivateEnvironment;
+    /**
+     * @return The encryption options for the Composer environment and its dependencies.
+     * 
+     */
     private List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs;
+    /**
+     * @return The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+     * 
+     */
     private String environmentSize;
+    /**
+     * @return The Kubernetes Engine cluster used to run this environment.
+     * 
+     */
     private String gkeCluster;
+    /**
+     * @return The configuration for Cloud Composer maintenance window.
+     * 
+     */
     private List<GetEnvironmentConfigMaintenanceWindow> maintenanceWindows;
+    /**
+     * @return Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+     * 
+     */
     private List<GetEnvironmentConfigMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
+    /**
+     * @return The configuration used for the Kubernetes Engine cluster.
+     * 
+     */
     private List<GetEnvironmentConfigNodeConfig> nodeConfigs;
+    /**
+     * @return The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private Integer nodeCount;
+    /**
+     * @return The configuration used for the Private IP Cloud Composer environment.
+     * 
+     */
     private List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs;
+    /**
+     * @return The recovery configuration settings for the Cloud Composer environment
+     * 
+     */
     private List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs;
+    /**
+     * @return Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+     * 
+     */
     private String resilienceMode;
+    /**
+     * @return The configuration settings for software inside the environment.
+     * 
+     */
     private List<GetEnvironmentConfigSoftwareConfig> softwareConfigs;
+    /**
+     * @return The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     private List<GetEnvironmentConfigWebServerConfig> webServerConfigs;
+    /**
+     * @return Network-level access control policy for the Airflow web server.
+     * 
+     */
     private List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls;
+    /**
+     * @return The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+     * 
+     */
     private List<GetEnvironmentConfigWorkloadsConfig> workloadsConfigs;
 
     private GetEnvironmentConfig() {}
+    /**
+     * @return The URI of the Apache Airflow Web UI hosted within this environment.
+     * 
+     */
     public String airflowUri() {
         return this.airflowUri;
     }
+    /**
+     * @return The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using &#39;/&#39;-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+     * 
+     */
     public String dagGcsPrefix() {
         return this.dagGcsPrefix;
     }
+    /**
+     * @return The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public List<GetEnvironmentConfigDatabaseConfig> databaseConfigs() {
         return this.databaseConfigs;
     }
+    /**
+     * @return Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+     * 
+     */
     public Boolean enablePrivateBuildsOnly() {
         return this.enablePrivateBuildsOnly;
     }
+    /**
+     * @return Optional. If true, a private Composer environment will be created.
+     * 
+     */
     public Boolean enablePrivateEnvironment() {
         return this.enablePrivateEnvironment;
     }
+    /**
+     * @return The encryption options for the Composer environment and its dependencies.
+     * 
+     */
     public List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs() {
         return this.encryptionConfigs;
     }
+    /**
+     * @return The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+     * 
+     */
     public String environmentSize() {
         return this.environmentSize;
     }
+    /**
+     * @return The Kubernetes Engine cluster used to run this environment.
+     * 
+     */
     public String gkeCluster() {
         return this.gkeCluster;
     }
+    /**
+     * @return The configuration for Cloud Composer maintenance window.
+     * 
+     */
     public List<GetEnvironmentConfigMaintenanceWindow> maintenanceWindows() {
         return this.maintenanceWindows;
     }
+    /**
+     * @return Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+     * 
+     */
     public List<GetEnvironmentConfigMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs() {
         return this.masterAuthorizedNetworksConfigs;
     }
+    /**
+     * @return The configuration used for the Kubernetes Engine cluster.
+     * 
+     */
     public List<GetEnvironmentConfigNodeConfig> nodeConfigs() {
         return this.nodeConfigs;
     }
+    /**
+     * @return The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public Integer nodeCount() {
         return this.nodeCount;
     }
+    /**
+     * @return The configuration used for the Private IP Cloud Composer environment.
+     * 
+     */
     public List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs() {
         return this.privateEnvironmentConfigs;
     }
+    /**
+     * @return The recovery configuration settings for the Cloud Composer environment
+     * 
+     */
     public List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs() {
         return this.recoveryConfigs;
     }
+    /**
+     * @return Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+     * 
+     */
     public String resilienceMode() {
         return this.resilienceMode;
     }
+    /**
+     * @return The configuration settings for software inside the environment.
+     * 
+     */
     public List<GetEnvironmentConfigSoftwareConfig> softwareConfigs() {
         return this.softwareConfigs;
     }
+    /**
+     * @return The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+     * 
+     */
     public List<GetEnvironmentConfigWebServerConfig> webServerConfigs() {
         return this.webServerConfigs;
     }
+    /**
+     * @return Network-level access control policy for the Airflow web server.
+     * 
+     */
     public List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls() {
         return this.webServerNetworkAccessControls;
     }
+    /**
+     * @return The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+     * 
+     */
     public List<GetEnvironmentConfigWorkloadsConfig> workloadsConfigs() {
         return this.workloadsConfigs;
     }

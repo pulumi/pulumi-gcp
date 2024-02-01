@@ -1777,9 +1777,12 @@ func (o ConnectionIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type ConnectionInstallationState struct {
+	// Output only. Link to follow for next action. Empty string if the installation is already complete.
 	ActionUri *string `pulumi:"actionUri"`
-	Message   *string `pulumi:"message"`
-	Stage     *string `pulumi:"stage"`
+	// Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+	Message *string `pulumi:"message"`
+	// Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+	Stage *string `pulumi:"stage"`
 }
 
 // ConnectionInstallationStateInput is an input type that accepts ConnectionInstallationStateArgs and ConnectionInstallationStateOutput values.
@@ -1794,9 +1797,12 @@ type ConnectionInstallationStateInput interface {
 }
 
 type ConnectionInstallationStateArgs struct {
+	// Output only. Link to follow for next action. Empty string if the installation is already complete.
 	ActionUri pulumi.StringPtrInput `pulumi:"actionUri"`
-	Message   pulumi.StringPtrInput `pulumi:"message"`
-	Stage     pulumi.StringPtrInput `pulumi:"stage"`
+	// Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+	Stage pulumi.StringPtrInput `pulumi:"stage"`
 }
 
 func (ConnectionInstallationStateArgs) ElementType() reflect.Type {
@@ -1850,14 +1856,17 @@ func (o ConnectionInstallationStateOutput) ToConnectionInstallationStateOutputWi
 	return o
 }
 
+// Output only. Link to follow for next action. Empty string if the installation is already complete.
 func (o ConnectionInstallationStateOutput) ActionUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionInstallationState) *string { return v.ActionUri }).(pulumi.StringPtrOutput)
 }
 
+// Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
 func (o ConnectionInstallationStateOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionInstallationState) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
 func (o ConnectionInstallationStateOutput) Stage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionInstallationState) *string { return v.Stage }).(pulumi.StringPtrOutput)
 }

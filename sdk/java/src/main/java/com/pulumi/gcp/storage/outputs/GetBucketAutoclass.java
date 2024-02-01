@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketAutoclass {
+    /**
+     * @return While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object&#39;s access pattern.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
+     * 
+     */
     private String terminalStorageClass;
 
     private GetBucketAutoclass() {}
+    /**
+     * @return While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object&#39;s access pattern.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
+     * 
+     */
     public String terminalStorageClass() {
         return this.terminalStorageClass;
     }

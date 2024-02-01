@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetExternalAccessRuleDestinationIpRange {
+    /**
+     * @return The name of an &#39;ExternalAddress&#39; resource.
+     * 
+     */
     private String externalAddress;
+    /**
+     * @return An IP address range in the CIDR format.
+     * 
+     */
     private String ipAddressRange;
 
     private GetExternalAccessRuleDestinationIpRange() {}
+    /**
+     * @return The name of an &#39;ExternalAddress&#39; resource.
+     * 
+     */
     public String externalAddress() {
         return this.externalAddress;
     }
+    /**
+     * @return An IP address range in the CIDR format.
+     * 
+     */
     public String ipAddressRange() {
         return this.ipAddressRange;
     }

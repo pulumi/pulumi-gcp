@@ -14,9 +14,17 @@ public final class EnvironmentStorageConfigArgs extends com.pulumi.resources.Res
 
     public static final EnvironmentStorageConfigArgs Empty = new EnvironmentStorageConfigArgs();
 
+    /**
+     * Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+     * 
+     */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
+    /**
+     * @return Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+     * 
+     */
     public Output<String> bucket() {
         return this.bucket;
     }
@@ -45,11 +53,23 @@ public final class EnvironmentStorageConfigArgs extends com.pulumi.resources.Res
             $ = new EnvironmentStorageConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bucket Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(Output<String> bucket) {
             $.bucket = bucket;
             return this;
         }
 
+        /**
+         * @param bucket Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
         }

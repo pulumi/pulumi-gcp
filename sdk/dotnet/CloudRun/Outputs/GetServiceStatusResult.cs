@@ -13,11 +13,40 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceStatusResult
     {
+        /// <summary>
+        /// Array of observed Service Conditions, indicating the current ready state of the service.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceStatusConditionResult> Conditions;
+        /// <summary>
+        /// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+        /// from this Service's Configuration. It might not be ready yet, for that use
+        /// LatestReadyRevisionName.
+        /// </summary>
         public readonly string LatestCreatedRevisionName;
+        /// <summary>
+        /// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+        /// stamped out from this Service's Configuration that has had its "Ready" condition become
+        /// "True".
+        /// </summary>
         public readonly string LatestReadyRevisionName;
+        /// <summary>
+        /// ObservedGeneration is the 'Generation' of the Route that was last processed by the
+        /// controller.
+        /// 
+        /// Clients polling for completed reconciliation should poll until observedGeneration =
+        /// metadata.generation and the Ready condition's status is True or False.
+        /// </summary>
         public readonly int ObservedGeneration;
+        /// <summary>
+        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        /// and Configurations
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceStatusTrafficResult> Traffics;
+        /// <summary>
+        /// From RouteStatus. URL holds the url that will distribute traffic over the provided traffic
+        /// targets. It generally has the form
+        /// https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

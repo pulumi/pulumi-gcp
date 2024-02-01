@@ -2133,11 +2133,20 @@ export namespace alloydb {
     }
 
     export interface GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions {
+        /**
+         * The maximum value that can be specified, if applicable.
+         */
         maxValue: string;
+        /**
+         * The minimum value that can be specified, if applicable.
+         */
         minValue: string;
     }
 
     export interface GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions {
+        /**
+         * The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+         */
         allowedValues: string[];
     }
 
@@ -3586,96 +3595,219 @@ export namespace appengine {
 
 export namespace artifactregistry {
     export interface GetRepositoryCleanupPolicy {
+        /**
+         * Policy action. Possible values: ["DELETE", "KEEP"]
+         */
         action: string;
+        /**
+         * Policy condition for matching versions.
+         */
         conditions: outputs.artifactregistry.GetRepositoryCleanupPolicyCondition[];
         id: string;
+        /**
+         * Policy condition for retaining a minimum number of versions. May only be
+         * specified with a Keep action.
+         */
         mostRecentVersions: outputs.artifactregistry.GetRepositoryCleanupPolicyMostRecentVersion[];
     }
 
     export interface GetRepositoryCleanupPolicyCondition {
+        /**
+         * Match versions newer than a duration.
+         */
         newerThan: string;
+        /**
+         * Match versions older than a duration.
+         */
         olderThan: string;
+        /**
+         * Match versions by package prefix. Applied on any prefix match.
+         */
         packageNamePrefixes: string[];
+        /**
+         * Match versions by tag prefix. Applied on any prefix match.
+         */
         tagPrefixes: string[];
+        /**
+         * Match versions by tag status. Default value: "ANY" Possible values: ["TAGGED", "UNTAGGED", "ANY"]
+         */
         tagState: string;
+        /**
+         * Match versions by version name prefix. Applied on any prefix match.
+         */
         versionNamePrefixes: string[];
     }
 
     export interface GetRepositoryCleanupPolicyMostRecentVersion {
+        /**
+         * Minimum number of versions to keep.
+         */
         keepCount: number;
+        /**
+         * Match versions by package prefix. Applied on any prefix match.
+         */
         packageNamePrefixes: string[];
     }
 
     export interface GetRepositoryDockerConfig {
+        /**
+         * The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+         */
         immutableTags: boolean;
     }
 
     export interface GetRepositoryMavenConfig {
+        /**
+         * The repository with this flag will allow publishing the same
+         * snapshot versions.
+         */
         allowSnapshotOverwrites: boolean;
+        /**
+         * Version policy defines the versions that the registry will accept. Default value: "VERSION_POLICY_UNSPECIFIED" Possible values: ["VERSION_POLICY_UNSPECIFIED", "RELEASE", "SNAPSHOT"]
+         */
         versionPolicy: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfig {
+        /**
+         * Specific settings for an Apt remote repository.
+         */
         aptRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigAptRepository[];
+        /**
+         * The description of the remote source.
+         */
         description: string;
+        /**
+         * Specific settings for a Docker remote repository.
+         */
         dockerRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigDockerRepository[];
+        /**
+         * Specific settings for a Maven remote repository.
+         */
         mavenRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigMavenRepository[];
+        /**
+         * Specific settings for an Npm remote repository.
+         */
         npmRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigNpmRepository[];
+        /**
+         * Specific settings for a Python remote repository.
+         */
         pythonRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigPythonRepository[];
+        /**
+         * The credentials used to access the remote repository.
+         */
         upstreamCredentials: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigUpstreamCredential[];
+        /**
+         * Specific settings for an Yum remote repository.
+         */
         yumRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigYumRepository[];
     }
 
     export interface GetRepositoryRemoteRepositoryConfigAptRepository {
+        /**
+         * One of the publicly available Apt repositories supported by Artifact Registry.
+         */
         publicRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository[];
     }
 
     export interface GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
+        /**
+         * A common public repository base for Apt, e.g. '"debian/dists/buster"' Possible values: ["DEBIAN", "UBUNTU"]
+         */
         repositoryBase: string;
+        /**
+         * Specific repository from the base.
+         */
         repositoryPath: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfigDockerRepository {
+        /**
+         * Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
+         */
         publicRepository: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfigMavenRepository {
+        /**
+         * Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
+         */
         publicRepository: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfigNpmRepository {
+        /**
+         * Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
+         */
         publicRepository: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfigPythonRepository {
+        /**
+         * Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
+         */
         publicRepository: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfigUpstreamCredential {
+        /**
+         * Use username and password to access the remote repository.
+         */
         usernamePasswordCredentials: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential[];
     }
 
     export interface GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential {
+        /**
+         * The Secret Manager key version that holds the password to access the
+         * remote repository. Must be in the format of
+         * 'projects/{project}/secrets/{secret}/versions/{version}'.
+         */
         passwordSecretVersion: string;
+        /**
+         * The username to access the remote repository.
+         */
         username: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfigYumRepository {
+        /**
+         * One of the publicly available Yum repositories supported by Artifact Registry.
+         */
         publicRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository[];
     }
 
     export interface GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository {
+        /**
+         * A common public repository base for Yum. Possible values: ["CENTOS", "CENTOS_DEBUG", "CENTOS_VAULT", "CENTOS_STREAM", "ROCKY", "EPEL"]
+         */
         repositoryBase: string;
+        /**
+         * Specific repository from the base, e.g. '"centos/8-stream/BaseOS/x86_64/os"'
+         */
         repositoryPath: string;
     }
 
     export interface GetRepositoryVirtualRepositoryConfig {
+        /**
+         * Policies that configure the upstream artifacts distributed by the Virtual
+         * Repository. Upstream policies cannot be set on a standard repository.
+         */
         upstreamPolicies: outputs.artifactregistry.GetRepositoryVirtualRepositoryConfigUpstreamPolicy[];
     }
 
     export interface GetRepositoryVirtualRepositoryConfigUpstreamPolicy {
+        /**
+         * The user-provided ID of the upstream policy.
+         */
         id: string;
+        /**
+         * Entries with a greater priority value take precedence in the pull order.
+         */
         priority: number;
+        /**
+         * A reference to the repository resource, for example:
+         * "projects/p1/locations/us-central1/repository/repo1".
+         */
         repository: string;
     }
 
@@ -3943,13 +4075,28 @@ export namespace artifactregistry {
 
 export namespace assuredworkloads {
     export interface WorkloadComplianceStatus {
+        /**
+         * Number of current orgPolicy violations which are acknowledged.
+         */
         acknowledgedViolationCounts: number[];
+        /**
+         * Number of current orgPolicy violations which are not acknowledged.
+         */
         activeViolationCounts: number[];
     }
 
     export interface WorkloadEkmProvisioningResponse {
+        /**
+         * Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
+         */
         ekmProvisioningErrorDomain: string;
+        /**
+         * Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
+         */
         ekmProvisioningErrorMapping: string;
+        /**
+         * Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
+         */
         ekmProvisioningState: string;
     }
 
@@ -4006,7 +4153,13 @@ export namespace assuredworkloads {
     }
 
     export interface WorkloadSaaEnrollmentResponse {
+        /**
+         * Indicates SAA enrollment setup error if any.
+         */
         setupErrors: string[];
+        /**
+         * Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+         */
         setupStatus: string;
     }
 
@@ -4014,12 +4167,24 @@ export namespace assuredworkloads {
 
 export namespace backupdisasterrecovery {
     export interface GetManagementServerManagementUri {
+        /**
+         * The management console api endpoint.
+         */
         api: string;
+        /**
+         * The management console webUi.
+         */
         webUi: string;
     }
 
     export interface GetManagementServerNetwork {
+        /**
+         * Network with format 'projects/{{project_id}}/global/networks/{{network_id}}'
+         */
         network: string;
+        /**
+         * Type of Network peeringMode Default value: "PRIVATE_SERVICE_ACCESS" Possible values: ["PRIVATE_SERVICE_ACCESS"]
+         */
         peeringMode: string;
     }
 
@@ -4119,27 +4284,59 @@ export namespace beyondcorp {
     }
 
     export interface GetAppConnectionApplicationEndpoint {
+        /**
+         * Hostname or IP address of the remote application endpoint.
+         */
         host: string;
+        /**
+         * Port of the remote application endpoint.
+         */
         port: number;
     }
 
     export interface GetAppConnectionGateway {
+        /**
+         * AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+         */
         appGateway: string;
+        /**
+         * Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+         */
         ingressPort: number;
+        /**
+         * The type of hosting used by the gateway. Refer to
+         * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+         * for a list of possible values.
+         */
         type: string;
+        /**
+         * Server-defined URI for this resource.
+         */
         uri: string;
     }
 
     export interface GetAppConnectorPrincipalInfo {
+        /**
+         * ServiceAccount represents a GCP service account.
+         */
         serviceAccounts: outputs.beyondcorp.GetAppConnectorPrincipalInfoServiceAccount[];
     }
 
     export interface GetAppConnectorPrincipalInfoServiceAccount {
+        /**
+         * Email address of the service account.
+         */
         email: string;
     }
 
     export interface GetAppGatewayAllocatedConnection {
+        /**
+         * The ingress port of an allocated connection.
+         */
         ingressPort: number;
+        /**
+         * The PSC uri of an allocated connection.
+         */
         pscUri: string;
     }
 
@@ -4624,19 +4821,80 @@ export namespace bigquery {
     }
 
     export interface GetDatasetAccess {
+        /**
+         * Grants all resources of particular types in a particular dataset read access to the current dataset.
+         */
         datasets: outputs.bigquery.GetDatasetAccessDataset[];
+        /**
+         * A domain to grant access to. Any users signed in with the
+         * domain specified will be granted the specified access
+         */
         domain: string;
+        /**
+         * An email address of a Google Group to grant access to.
+         */
         groupByEmail: string;
+        /**
+         * Some other type of member that appears in the IAM Policy but isn't a user,
+         * group, domain, or special group. For example: 'allUsers'
+         */
         iamMember: string;
+        /**
+         * Describes the rights granted to the user specified by the other
+         * member of the access object. Basic, predefined, and custom roles
+         * are supported. Predefined roles that have equivalent basic roles
+         * are swapped by the API to their basic counterparts. See
+         * [official docs](https://cloud.google.com/bigquery/docs/access-control).
+         */
         role: string;
+        /**
+         * A routine from a different dataset to grant access to. Queries
+         * executed against that routine will have read access to tables in
+         * this dataset. The role field is not required when this field is
+         * set. If that routine is updated by any user, access to the routine
+         * needs to be granted again via an update operation.
+         */
         routines: outputs.bigquery.GetDatasetAccessRoutine[];
+        /**
+         * A special group to grant access to. Possible values include:
+         *
+         *
+         * * 'projectOwners': Owners of the enclosing project.
+         *
+         *
+         * * 'projectReaders': Readers of the enclosing project.
+         *
+         *
+         * * 'projectWriters': Writers of the enclosing project.
+         *
+         *
+         * * 'allAuthenticatedUsers': All authenticated BigQuery users.
+         */
         specialGroup: string;
+        /**
+         * An email address of a user to grant access to. For example:
+         * fred@example.com
+         */
         userByEmail: string;
+        /**
+         * A view from a different dataset to grant access to. Queries
+         * executed against that view will have read access to tables in
+         * this dataset. The role field is not required when this field is
+         * set. If that view is updated by any user, access to the view
+         * needs to be granted again via an update operation.
+         */
         views: outputs.bigquery.GetDatasetAccessView[];
     }
 
     export interface GetDatasetAccessDataset {
+        /**
+         * The dataset this entry applies to
+         */
         datasets: outputs.bigquery.GetDatasetAccessDatasetDataset[];
+        /**
+         * Which resources in the dataset this entry applies to. Currently, only views are supported,
+         * but additional target types may be added in the future. Possible values: VIEWS
+         */
         targetTypes: string[];
     }
 
@@ -4645,6 +4903,9 @@ export namespace bigquery {
          * The dataset ID.
          */
         datasetId: string;
+        /**
+         * The ID of the project containing this table.
+         */
         projectId: string;
     }
 
@@ -4653,7 +4914,15 @@ export namespace bigquery {
          * The dataset ID.
          */
         datasetId: string;
+        /**
+         * The ID of the project containing this table.
+         */
         projectId: string;
+        /**
+         * The ID of the routine. The ID must contain only letters (a-z,
+         * A-Z), numbers (0-9), or underscores (_). The maximum length
+         * is 256 characters.
+         */
         routineId: string;
     }
 
@@ -4662,16 +4931,36 @@ export namespace bigquery {
          * The dataset ID.
          */
         datasetId: string;
+        /**
+         * The ID of the project containing this table.
+         */
         projectId: string;
+        /**
+         * The ID of the table. The ID must contain only letters (a-z,
+         * A-Z), numbers (0-9), or underscores (_). The maximum length
+         * is 1,024 characters.
+         */
         tableId: string;
     }
 
     export interface GetDatasetDefaultEncryptionConfiguration {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination
+         * BigQuery table. The BigQuery Service Account associated with your project requires
+         * access to this encryption key.
+         */
         kmsKeyName: string;
     }
 
     export interface GetDatasetExternalDatasetReference {
+        /**
+         * The connection id that is used to access the externalSource.
+         * Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+         */
         connection: string;
+        /**
+         * External source that backs this dataset.
+         */
         externalSource: string;
     }
 
@@ -5764,9 +6053,21 @@ export namespace bigquery {
     }
 
     export interface TableTableReplicationInfo {
+        /**
+         * The interval at which the source materialized view is polled for updates. The default is 300000.
+         */
         replicationIntervalMs?: number;
+        /**
+         * The ID of the source dataset.
+         */
         sourceDatasetId: string;
+        /**
+         * The ID of the source project.
+         */
         sourceProjectId: string;
+        /**
+         * The ID of the source materialized view.
+         */
         sourceTableId: string;
     }
 
@@ -5957,6 +6258,9 @@ export namespace bigtable {
          * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          */
         numNodes: number;
+        /**
+         * The state of the cluster
+         */
         state: string;
         /**
          * The storage type to use. One of `"SSD"` or
@@ -8217,122 +8521,359 @@ export namespace certificateauthority {
     }
 
     export interface GetAuthorityAccessUrl {
+        /**
+         * The URL where this CertificateAuthority's CA certificate is published. This will only be
+         * set for CAs that have been activated.
+         */
         caCertificateAccessUrl: string;
+        /**
+         * The URL where this CertificateAuthority's CRLs are published. This will only be set for
+         * CAs that have been activated.
+         */
         crlAccessUrls: string[];
     }
 
     export interface GetAuthorityConfig {
+        /**
+         * Specifies some of the values in a certificate that are related to the subject.
+         */
         subjectConfigs: outputs.certificateauthority.GetAuthorityConfigSubjectConfig[];
+        /**
+         * Describes how some of the technical X.509 fields in a certificate should be populated.
+         */
         x509Configs: outputs.certificateauthority.GetAuthorityConfigX509Config[];
     }
 
     export interface GetAuthorityConfigSubjectConfig {
+        /**
+         * The subject alternative name fields.
+         */
         subjectAltNames: outputs.certificateauthority.GetAuthorityConfigSubjectConfigSubjectAltName[];
+        /**
+         * Contains distinguished name fields such as the location and organization.
+         */
         subjects: outputs.certificateauthority.GetAuthorityConfigSubjectConfigSubject[];
     }
 
     export interface GetAuthorityConfigSubjectConfigSubject {
+        /**
+         * The common name of the distinguished name.
+         */
         commonName: string;
+        /**
+         * The country code of the subject.
+         */
         countryCode: string;
+        /**
+         * The locality or city of the subject.
+         */
         locality: string;
+        /**
+         * The organization of the subject.
+         */
         organization: string;
+        /**
+         * The organizational unit of the subject.
+         */
         organizationalUnit: string;
+        /**
+         * The postal code of the subject.
+         */
         postalCode: string;
+        /**
+         * The province, territory, or regional state of the subject.
+         */
         province: string;
+        /**
+         * The street address of the subject.
+         */
         streetAddress: string;
     }
 
     export interface GetAuthorityConfigSubjectConfigSubjectAltName {
+        /**
+         * Contains only valid, fully-qualified host names.
+         */
         dnsNames: string[];
+        /**
+         * Contains only valid RFC 2822 E-mail addresses.
+         */
         emailAddresses: string[];
+        /**
+         * Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+         */
         ipAddresses: string[];
+        /**
+         * Contains only valid RFC 3986 URIs.
+         */
         uris: string[];
     }
 
     export interface GetAuthorityConfigX509Config {
+        /**
+         * Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+         */
         additionalExtensions: outputs.certificateauthority.GetAuthorityConfigX509ConfigAdditionalExtension[];
+        /**
+         * Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+         * "Authority Information Access" extension in the certificate.
+         */
         aiaOcspServers: string[];
+        /**
+         * Describes values that are relevant in a CA certificate.
+         */
         caOptions: outputs.certificateauthority.GetAuthorityConfigX509ConfigCaOption[];
+        /**
+         * Indicates the intended use for keys that correspond to a certificate.
+         */
         keyUsages: outputs.certificateauthority.GetAuthorityConfigX509ConfigKeyUsage[];
+        /**
+         * Describes the X.509 name constraints extension.
+         */
         nameConstraints: outputs.certificateauthority.GetAuthorityConfigX509ConfigNameConstraint[];
+        /**
+         * Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+         */
         policyIds: outputs.certificateauthority.GetAuthorityConfigX509ConfigPolicyId[];
     }
 
     export interface GetAuthorityConfigX509ConfigAdditionalExtension {
+        /**
+         * Indicates whether or not this extension is critical (i.e., if the client does not know how to
+         * handle this extension, the client should consider this to be an error).
+         */
         critical: boolean;
+        /**
+         * Describes values that are relevant in a CA certificate.
+         */
         objectIds: outputs.certificateauthority.GetAuthorityConfigX509ConfigAdditionalExtensionObjectId[];
+        /**
+         * The value of this X.509 extension. A base64-encoded string.
+         */
         value: string;
     }
 
     export interface GetAuthorityConfigX509ConfigAdditionalExtensionObjectId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
         objectIdPaths: number[];
     }
 
     export interface GetAuthorityConfigX509ConfigCaOption {
+        /**
+         * When true, the "CA" in Basic Constraints extension will be set to true.
+         */
         isCa: boolean;
+        /**
+         * Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+         * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+         * requires setting 'zero_max_issuer_path_length = true'.
+         */
         maxIssuerPathLength: number;
+        /**
+         * When true, the "CA" in Basic Constraints extension will be set to false.
+         * If both 'is_ca' and 'non_ca' are unset, the extension will be omitted from the CA certificate.
+         */
         nonCa: boolean;
+        /**
+         * When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+         * If both 'max_issuer_path_length' and 'zero_max_issuer_path_length' are unset,
+         * the max path length will be omitted from the CA certificate.
+         */
         zeroMaxIssuerPathLength: boolean;
     }
 
     export interface GetAuthorityConfigX509ConfigKeyUsage {
+        /**
+         * Describes high-level ways in which a key may be used.
+         */
         baseKeyUsages: outputs.certificateauthority.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage[];
+        /**
+         * Describes high-level ways in which a key may be used.
+         */
         extendedKeyUsages: outputs.certificateauthority.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage[];
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
         unknownExtendedKeyUsages: outputs.certificateauthority.GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage[];
     }
 
     export interface GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
+        /**
+         * The key may be used to sign certificates.
+         */
         certSign: boolean;
+        /**
+         * The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+         */
         contentCommitment: boolean;
+        /**
+         * The key may be used sign certificate revocation lists.
+         */
         crlSign: boolean;
+        /**
+         * The key may be used to encipher data.
+         */
         dataEncipherment: boolean;
+        /**
+         * The key may be used to decipher only.
+         */
         decipherOnly: boolean;
+        /**
+         * The key may be used for digital signatures.
+         */
         digitalSignature: boolean;
+        /**
+         * The key may be used to encipher only.
+         */
         encipherOnly: boolean;
+        /**
+         * The key may be used in a key agreement protocol.
+         */
         keyAgreement: boolean;
+        /**
+         * The key may be used to encipher other keys.
+         */
         keyEncipherment: boolean;
     }
 
     export interface GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+         */
         clientAuth: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+         */
         codeSigning: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+         */
         emailProtection: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+         */
         ocspSigning: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+         */
         serverAuth: boolean;
+        /**
+         * Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+         */
         timeStamping: boolean;
     }
 
     export interface GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
         objectIdPaths: number[];
     }
 
     export interface GetAuthorityConfigX509ConfigNameConstraint {
+        /**
+         * Indicates whether or not the name constraints are marked critical.
+         */
         critical: boolean;
+        /**
+         * Contains excluded DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+         * would satisfy 'example.com' while 'example1.com' does not.
+         */
         excludedDnsNames: string[];
+        /**
+         * Contains the excluded email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. '.example.com') to indicate
+         * all email addresses in that domain.
+         */
         excludedEmailAddresses: string[];
+        /**
+         * Contains the excluded IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
         excludedIpRanges: string[];
+        /**
+         * Contains the excluded URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like '.example.com')
+         */
         excludedUris: string[];
+        /**
+         * Contains permitted DNS names. Any DNS name that can be
+         * constructed by simply adding zero or more labels to
+         * the left-hand side of the name satisfies the name constraint.
+         * For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+         * would satisfy 'example.com' while 'example1.com' does not.
+         */
         permittedDnsNames: string[];
+        /**
+         * Contains the permitted email addresses. The value can be a particular
+         * email address, a hostname to indicate all email addresses on that host or
+         * a domain with a leading period (e.g. '.example.com') to indicate
+         * all email addresses in that domain.
+         */
         permittedEmailAddresses: string[];
+        /**
+         * Contains the permitted IP ranges. For IPv4 addresses, the ranges
+         * are expressed using CIDR notation as specified in RFC 4632.
+         * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+         * addresses.
+         */
         permittedIpRanges: string[];
+        /**
+         * Contains the permitted URIs that apply to the host part of the name.
+         * The value can be a hostname or a domain with a
+         * leading period (like '.example.com')
+         */
         permittedUris: string[];
     }
 
     export interface GetAuthorityConfigX509ConfigPolicyId {
+        /**
+         * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         */
         objectIdPaths: number[];
     }
 
     export interface GetAuthorityKeySpec {
+        /**
+         * The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+         * experience. All managed keys will be have their ProtectionLevel as HSM. Possible values: ["SIGN_HASH_ALGORITHM_UNSPECIFIED", "RSA_PSS_2048_SHA256", "RSA_PSS_3072_SHA256", "RSA_PSS_4096_SHA256", "RSA_PKCS1_2048_SHA256", "RSA_PKCS1_3072_SHA256", "RSA_PKCS1_4096_SHA256", "EC_P256_SHA256", "EC_P384_SHA384"]
+         */
         algorithm: string;
+        /**
+         * The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+         * 'projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*'.
+         */
         cloudKmsKeyVersion: string;
     }
 
     export interface GetAuthoritySubordinateConfig {
+        /**
+         * This can refer to a CertificateAuthority that was used to create a
+         * subordinate CertificateAuthority. This field is used for information
+         * and usability purposes only. The resource name is in the format
+         * 'projects/*&#47;locations/*&#47;caPools/*&#47;certificateAuthorities/*'.
+         */
         certificateAuthority: string;
+        /**
+         * Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+         * but not pem certificate for this CA itself.
+         */
         pemIssuerChains: outputs.certificateauthority.GetAuthoritySubordinateConfigPemIssuerChain[];
     }
 
     export interface GetAuthoritySubordinateConfigPemIssuerChain {
+        /**
+         * Expected to be in leaf-to-root order according to RFC 5246.
+         */
         pemCertificates: string[];
     }
 
@@ -8526,13 +9067,32 @@ export namespace certificatemanager {
     }
 
     export interface GetCertificateMapGclbTarget {
+        /**
+         * An IP configuration where this Certificate Map is serving
+         */
         ipConfigs: outputs.certificatemanager.GetCertificateMapGclbTargetIpConfig[];
+        /**
+         * Proxy name must be in the format projects/*&#47;locations/*&#47;targetHttpsProxies/*.
+         * This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+         * 'targetSslProxy' may be set.
+         */
         targetHttpsProxy: string;
+        /**
+         * Proxy name must be in the format projects/*&#47;locations/*&#47;targetSslProxies/*.
+         * This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+         * 'targetSslProxy' may be set.
+         */
         targetSslProxy: string;
     }
 
     export interface GetCertificateMapGclbTargetIpConfig {
+        /**
+         * An external IP address
+         */
         ipAddress: string;
+        /**
+         * A list of ports
+         */
         ports: number[];
     }
 
@@ -8760,62 +9320,215 @@ export namespace cloudbuild {
     }
 
     export interface GetTriggerApprovalConfig {
+        /**
+         * Whether or not approval is needed. If this is set on a build, it will become pending when run,
+         * and will need to be explicitly approved to start.
+         */
         approvalRequired: boolean;
     }
 
     export interface GetTriggerBitbucketServerTriggerConfig {
+        /**
+         * The Bitbucket server config resource that this trigger config maps to.
+         */
         bitbucketServerConfigResource: string;
+        /**
+         * Key of the project that the repo is in. For example: The key for https://mybitbucket.server/projects/TEST/repos/test-repo is "TEST".
+         */
         projectKey: string;
+        /**
+         * Filter to match changes in pull requests.
+         */
         pullRequests: outputs.cloudbuild.GetTriggerBitbucketServerTriggerConfigPullRequest[];
+        /**
+         * Filter to match changes in refs like branches, tags.
+         */
         pushes: outputs.cloudbuild.GetTriggerBitbucketServerTriggerConfigPush[];
+        /**
+         * Slug of the repository. A repository slug is a URL-friendly version of a repository name, automatically generated by Bitbucket for use in the URL.
+         * For example, if the repository name is 'test repo', in the URL it would become 'test-repo' as in https://mybitbucket.server/projects/TEST/repos/test-repo.
+         */
         repoSlug: string;
     }
 
     export interface GetTriggerBitbucketServerTriggerConfigPullRequest {
+        /**
+         * Regex of branches to match.
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
+         */
         branch: string;
+        /**
+         * Configure builds to run whether a repository owner or collaborator need to comment /gcbrun. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+         */
         commentControl: string;
+        /**
+         * If true, branches that do NOT match the gitRef will trigger a build.
+         */
         invertRegex: boolean;
     }
 
     export interface GetTriggerBitbucketServerTriggerConfigPush {
+        /**
+         * Regex of branches to match.  Specify only one of branch or tag.
+         */
         branch: string;
+        /**
+         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         */
         invertRegex: boolean;
+        /**
+         * Regex of tags to match.  Specify only one of branch or tag.
+         */
         tag: string;
     }
 
     export interface GetTriggerBuild {
+        /**
+         * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+         */
         artifacts: outputs.cloudbuild.GetTriggerBuildArtifact[];
+        /**
+         * Secrets and secret environment variables.
+         */
         availableSecrets: outputs.cloudbuild.GetTriggerBuildAvailableSecret[];
+        /**
+         * A list of images to be pushed upon the successful completion of all build steps.
+         * The images are pushed using the builder service account's credentials.
+         * The digests of the pushed images will be stored in the Build resource's results field.
+         * If any of the images fail to be pushed, the build status is marked FAILURE.
+         */
         images: string[];
+        /**
+         * Google Cloud Storage bucket where logs should be written.
+         * Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
+         */
         logsBucket: string;
+        /**
+         * Special options for this build.
+         */
         options: outputs.cloudbuild.GetTriggerBuildOption[];
+        /**
+         * TTL in queue for this build. If provided and the build is enqueued longer than this value,
+         * the build will expire and the build status will be EXPIRED.
+         * The TTL starts ticking from createTime.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
         queueTtl: string;
+        /**
+         * Secrets to decrypt using Cloud Key Management Service.
+         */
         secrets: outputs.cloudbuild.GetTriggerBuildSecret[];
+        /**
+         * The location of the source files to build.
+         *
+         * One of 'storageSource' or 'repoSource' must be provided.
+         */
         sources: outputs.cloudbuild.GetTriggerBuildSource[];
+        /**
+         * The operations to be performed on the workspace.
+         */
         steps: outputs.cloudbuild.GetTriggerBuildStep[];
+        /**
+         * Substitutions data for Build resource.
+         */
         substitutions: {[key: string]: string};
+        /**
+         * Tags for annotation of a Build. These are not docker tags.
+         */
         tags: string[];
+        /**
+         * Amount of time that this build should be allowed to run, to second granularity.
+         * If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
+         * This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
+         * The expected format is the number of seconds followed by s.
+         * Default time is ten minutes (600s).
+         */
         timeout: string;
     }
 
     export interface GetTriggerBuildArtifact {
+        /**
+         * A list of images to be pushed upon the successful completion of all build steps.
+         *
+         * The images will be pushed using the builder service account's credentials.
+         *
+         * The digests of the pushed images will be stored in the Build resource's results field.
+         *
+         * If any of the images fail to be pushed, the build is marked FAILURE.
+         */
         images: string[];
+        /**
+         * A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+         *
+         * The location and generation of the uploaded objects will be stored in the Build resource's results field.
+         *
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         */
         mavenArtifacts: outputs.cloudbuild.GetTriggerBuildArtifactMavenArtifact[];
+        /**
+         * Npm package to upload to Artifact Registry upon successful completion of all build steps.
+         *
+         * The location and generation of the uploaded objects will be stored in the Build resource's results field.
+         *
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         */
         npmPackages: outputs.cloudbuild.GetTriggerBuildArtifactNpmPackage[];
+        /**
+         * A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+         *
+         * Files in the workspace matching specified paths globs will be uploaded to the
+         * Cloud Storage location using the builder service account's credentials.
+         *
+         * The location and generation of the uploaded objects will be stored in the Build resource's results field.
+         *
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         */
         objects: outputs.cloudbuild.GetTriggerBuildArtifactObject[];
+        /**
+         * Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+         *
+         * The location and generation of the uploaded objects will be stored in the Build resource's results field.
+         *
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         */
         pythonPackages: outputs.cloudbuild.GetTriggerBuildArtifactPythonPackage[];
     }
 
     export interface GetTriggerBuildArtifactMavenArtifact {
+        /**
+         * Maven artifactId value used when uploading the artifact to Artifact Registry.
+         */
         artifactId: string;
+        /**
+         * Maven groupId value used when uploading the artifact to Artifact Registry.
+         */
         groupId: string;
+        /**
+         * Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+         */
         path: string;
+        /**
+         * Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY"
+         *
+         * Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+         */
         repository: string;
+        /**
+         * Maven version value used when uploading the artifact to Artifact Registry.
+         */
         version: string;
     }
 
     export interface GetTriggerBuildArtifactNpmPackage {
+        /**
+         * Path to the package.json. e.g. workspace/path/to/package
+         */
         packagePath: string;
+        /**
+         * Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
+         *
+         * Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+         */
         repository: string;
     }
 
@@ -8826,174 +9539,629 @@ export namespace cloudbuild {
          * - - -
          */
         location: string;
+        /**
+         * Path globs used to match files in the build's workspace.
+         */
         paths: string[];
+        /**
+         * Output only. Stores timing information for pushing all artifact objects.
+         */
         timings: outputs.cloudbuild.GetTriggerBuildArtifactObjectTiming[];
     }
 
     export interface GetTriggerBuildArtifactObjectTiming {
+        /**
+         * End of time span.
+         *
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+         * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         endTime: string;
+        /**
+         * Start of time span.
+         *
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+         * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         startTime: string;
     }
 
     export interface GetTriggerBuildArtifactPythonPackage {
+        /**
+         * Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+         */
         paths: string[];
+        /**
+         * Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
+         *
+         * Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+         */
         repository: string;
     }
 
     export interface GetTriggerBuildAvailableSecret {
+        /**
+         * Pairs a secret environment variable with a SecretVersion in Secret Manager.
+         */
         secretManagers: outputs.cloudbuild.GetTriggerBuildAvailableSecretSecretManager[];
     }
 
     export interface GetTriggerBuildAvailableSecretSecretManager {
+        /**
+         * Environment variable name to associate with the secret. Secret environment
+         * variables must be unique across all of a build's secrets, and must be used
+         * by at least one build step.
+         */
         env: string;
+        /**
+         * Resource name of the SecretVersion. In format: projects/*&#47;secrets/*&#47;versions/*
+         */
         versionName: string;
     }
 
     export interface GetTriggerBuildOption {
+        /**
+         * Requested disk size for the VM that runs the build. Note that this is NOT "disk free";
+         * some of the space will be used by the operating system and build utilities.
+         * Also note that this is the minimum disk size that will be allocated for the build --
+         * the build may run with a larger disk than requested. At present, the maximum disk size
+         * is 1000GB; builds that request more than the maximum are rejected with an error.
+         */
         diskSizeGb: number;
+        /**
+         * Option to specify whether or not to apply bash style string operations to the substitutions.
+         *
+         * NOTE this is always enabled for triggered builds and cannot be overridden in the build configuration file.
+         */
         dynamicSubstitutions: boolean;
+        /**
+         * A list of global environment variable definitions that will exist for all build steps
+         * in this build. If a variable is defined in both globally and in a build step,
+         * the variable will use the build step value.
+         *
+         * The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+         */
         envs: string[];
+        /**
+         * Option to define build log streaming behavior to Google Cloud Storage. Possible values: ["STREAM_DEFAULT", "STREAM_ON", "STREAM_OFF"]
+         */
         logStreamingOption: string;
+        /**
+         * Option to specify the logging mode, which determines if and where build logs are stored. Possible values: ["LOGGING_UNSPECIFIED", "LEGACY", "GCS_ONLY", "STACKDRIVER_ONLY", "CLOUD_LOGGING_ONLY", "NONE"]
+         */
         logging: string;
+        /**
+         * Compute Engine machine type on which to run the build.
+         */
         machineType: string;
+        /**
+         * Requested verifiability options. Possible values: ["NOT_VERIFIED", "VERIFIED"]
+         */
         requestedVerifyOption: string;
+        /**
+         * A list of global environment variables, which are encrypted using a Cloud Key Management
+         * Service crypto key. These values must be specified in the build's Secret. These variables
+         * will be available to all build steps in this build.
+         */
         secretEnvs: string[];
+        /**
+         * Requested hash for SourceProvenance. Possible values: ["NONE", "SHA256", "MD5"]
+         */
         sourceProvenanceHashes: string[];
+        /**
+         * Option to specify behavior when there is an error in the substitution checks.
+         *
+         * NOTE this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden
+         * in the build configuration file. Possible values: ["MUST_MATCH", "ALLOW_LOOSE"]
+         */
         substitutionOption: string;
+        /**
+         * Global list of volumes to mount for ALL build steps
+         *
+         * Each volume is created as an empty volume prior to starting the build process.
+         * Upon completion of the build, volumes and their contents are discarded. Global
+         * volume names and paths cannot conflict with the volumes defined a build step.
+         *
+         * Using a global volume in a build with only one step is not valid as it is indicative
+         * of a build request with an incorrect configuration.
+         */
         volumes: outputs.cloudbuild.GetTriggerBuildOptionVolume[];
+        /**
+         * Option to specify a WorkerPool for the build. Format projects/{project}/workerPools/{workerPool}
+         *
+         * This field is experimental.
+         */
         workerPool: string;
     }
 
     export interface GetTriggerBuildOptionVolume {
+        /**
+         * Name of the volume to mount.
+         *
+         * Volume names must be unique per build step and must be valid names for Docker volumes.
+         * Each named volume must be used by at least two build steps.
+         */
         name: string;
+        /**
+         * Path at which to mount the volume.
+         *
+         * Paths must be absolute and cannot conflict with other volume paths on the same
+         * build step or with certain reserved volume paths.
+         */
         path: string;
     }
 
     export interface GetTriggerBuildSecret {
+        /**
+         * Cloud KMS key name to use to decrypt these envs.
+         */
         kmsKeyName: string;
+        /**
+         * Map of environment variable name to its encrypted value.
+         * Secret environment variables must be unique across all of a build's secrets,
+         * and must be used by at least one build step. Values can be at most 64 KB in size.
+         * There can be at most 100 secret values across all of a build's secrets.
+         */
         secretEnv: {[key: string]: string};
     }
 
     export interface GetTriggerBuildSource {
+        /**
+         * Location of the source in a Google Cloud Source Repository.
+         */
         repoSources: outputs.cloudbuild.GetTriggerBuildSourceRepoSource[];
+        /**
+         * Location of the source in an archive file in Google Cloud Storage.
+         */
         storageSources: outputs.cloudbuild.GetTriggerBuildSourceStorageSource[];
     }
 
     export interface GetTriggerBuildSourceRepoSource {
+        /**
+         * Regex matching branches to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+         * described at https://github.com/google/re2/wiki/Syntax
+         */
         branchName: string;
+        /**
+         * Explicit commit SHA to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         */
         commitSha: string;
+        /**
+         * Directory, relative to the source root, in which to run the build.
+         * This must be a relative path. If a step's dir is specified and is an absolute path,
+         * this value is ignored for that step's execution.
+         */
         dir: string;
+        /**
+         * Only trigger a build if the revision regex does NOT match the revision regex.
+         */
         invertRegex: boolean;
+        /**
+         * ID of the project that owns the Cloud Source Repository.
+         * If omitted, the project ID requesting the build is assumed.
+         */
         projectId: string;
+        /**
+         * Name of the Cloud Source Repository.
+         */
         repoName: string;
+        /**
+         * Substitutions to use in a triggered build. Should only be used with triggers.run
+         */
         substitutions: {[key: string]: string};
+        /**
+         * Regex matching tags to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * The syntax of the regular expressions accepted is the syntax accepted by RE2 and
+         * described at https://github.com/google/re2/wiki/Syntax
+         */
         tagName: string;
     }
 
     export interface GetTriggerBuildSourceStorageSource {
+        /**
+         * Google Cloud Storage bucket containing the source.
+         */
         bucket: string;
+        /**
+         * Google Cloud Storage generation for the object.
+         * If the generation is omitted, the latest generation will be used
+         */
         generation: string;
+        /**
+         * Google Cloud Storage object containing the source.
+         * This object must be a gzipped archive file (.tar.gz) containing source to build.
+         */
         object: string;
     }
 
     export interface GetTriggerBuildStep {
+        /**
+         * Allow this build step to fail without failing the entire build if and
+         * only if the exit code is one of the specified codes.
+         *
+         * If 'allowFailure' is also specified, this field will take precedence.
+         */
         allowExitCodes: number[];
+        /**
+         * Allow this build step to fail without failing the entire build.
+         * If false, the entire build will fail if this step fails. Otherwise, the
+         * build will succeed, but this step will still have a failure status.
+         * Error information will be reported in the 'failureDetail' field.
+         *
+         * 'allowExitCodes' takes precedence over this field.
+         */
         allowFailure: boolean;
+        /**
+         * A list of arguments that will be presented to the step when it is started.
+         *
+         * If the image used to run the step's container has an entrypoint, the args
+         * are used as arguments to that entrypoint. If the image does not define an
+         * entrypoint, the first element in args is used as the entrypoint, and the
+         * remainder will be used as arguments.
+         */
         args: string[];
+        /**
+         * Working directory to use when running this step's container.
+         *
+         * If this value is a relative path, it is relative to the build's working
+         * directory. If this value is absolute, it may be outside the build's working
+         * directory, in which case the contents of the path may not be persisted
+         * across build step executions, unless a 'volume' for that path is specified.
+         *
+         * If the build specifies a 'RepoSource' with 'dir' and a step with a
+         * 'dir',
+         * which specifies an absolute path, the 'RepoSource' 'dir' is ignored
+         * for the step's execution.
+         */
         dir: string;
+        /**
+         * Entrypoint to be used instead of the build step image's
+         * default entrypoint.
+         * If unset, the image's default entrypoint is used
+         */
         entrypoint: string;
+        /**
+         * A list of environment variable definitions to be used when
+         * running a step.
+         *
+         * The elements are of the form "KEY=VALUE" for the environment variable
+         * "KEY" being given the value "VALUE".
+         */
         envs: string[];
+        /**
+         * Unique identifier for this build step, used in 'wait_for' to
+         * reference this build step as a dependency.
+         */
         id: string;
+        /**
+         * The name of the container image that will run this particular build step.
+         *
+         * If the image is available in the host's Docker daemon's cache, it will be
+         * run directly. If not, the host will attempt to pull the image first, using
+         * the builder service account's credentials if necessary.
+         *
+         * The Docker daemon's cache will already have the latest versions of all of
+         * the officially supported build steps (see https://github.com/GoogleCloudPlatform/cloud-builders
+         * for images and examples).
+         * The Docker daemon will also have cached many of the layers for some popular
+         * images, like "ubuntu", "debian", but they will be refreshed at the time
+         * you attempt to use them.
+         *
+         * If you built an image in a previous build step, it will be stored in the
+         * host's Docker daemon's cache and is available to use as the name for a
+         * later build step.
+         */
         name: string;
+        /**
+         * A shell script to be executed in the step.
+         * When script is provided, the user cannot specify the entrypoint or args.
+         */
         script: string;
+        /**
+         * A list of environment variables which are encrypted using
+         * a Cloud Key
+         * Management Service crypto key. These values must be specified in
+         * the build's 'Secret'.
+         */
         secretEnvs: string[];
+        /**
+         * Time limit for executing this build step. If not defined,
+         * the step has no
+         * time limit and will be allowed to continue to run until either it
+         * completes or the build itself times out.
+         */
         timeout: string;
+        /**
+         * Output only. Stores timing information for executing this
+         * build step.
+         */
         timing: string;
+        /**
+         * List of volumes to mount into the build step.
+         *
+         * Each volume is created as an empty volume prior to execution of the
+         * build step. Upon completion of the build, volumes and their contents
+         * are discarded.
+         *
+         * Using a named volume in only one step is not valid as it is
+         * indicative of a build request with an incorrect configuration.
+         */
         volumes: outputs.cloudbuild.GetTriggerBuildStepVolume[];
+        /**
+         * The ID(s) of the step(s) that this build step depends on.
+         *
+         * This build step will not start until all the build steps in 'wait_for'
+         * have completed successfully. If 'wait_for' is empty, this build step
+         * will start when all previous build steps in the 'Build.Steps' list
+         * have completed successfully.
+         */
         waitFors: string[];
     }
 
     export interface GetTriggerBuildStepVolume {
+        /**
+         * Name of the volume to mount.
+         *
+         * Volume names must be unique per build step and must be valid names for
+         * Docker volumes. Each named volume must be used by at least two build steps.
+         */
         name: string;
+        /**
+         * Path at which to mount the volume.
+         *
+         * Paths must be absolute and cannot conflict with other volume paths on
+         * the same build step or with certain reserved volume paths.
+         */
         path: string;
     }
 
     export interface GetTriggerGitFileSource {
+        /**
+         * The full resource name of the bitbucket server config.
+         * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+         */
         bitbucketServerConfig: string;
+        /**
+         * The full resource name of the github enterprise config.
+         * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+         */
         githubEnterpriseConfig: string;
+        /**
+         * The path of the file, with the repo root as the root of the path.
+         */
         path: string;
+        /**
+         * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: ["UNKNOWN", "CLOUD_SOURCE_REPOSITORIES", "GITHUB", "BITBUCKET_SERVER"]
+         */
         repoType: string;
+        /**
+         * The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+         * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+         */
         repository: string;
+        /**
+         * The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+         * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+         * If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+         */
         revision: string;
+        /**
+         * The URI of the repo (optional). If unspecified, the repo from which the trigger
+         * invocation originated is assumed to be the repo from which to read the specified path.
+         */
         uri: string;
     }
 
     export interface GetTriggerGithub {
+        /**
+         * The resource name of the github enterprise config that should be applied to this installation.
+         * For example: "projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}"
+         */
         enterpriseConfigResourceName: string;
+        /**
+         * Name of the repository. For example: The name for
+         * https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
+         */
         name: string;
+        /**
+         * Owner of the repository. For example: The owner for
+         * https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
+         */
         owner: string;
+        /**
+         * filter to match changes in pull requests. Specify only one of 'pull_request' or 'push'.
+         */
         pullRequests: outputs.cloudbuild.GetTriggerGithubPullRequest[];
+        /**
+         * filter to match changes in refs, like branches or tags. Specify only one of 'pull_request' or 'push'.
+         */
         pushes: outputs.cloudbuild.GetTriggerGithubPush[];
     }
 
     export interface GetTriggerGithubPullRequest {
+        /**
+         * Regex of branches to match.
+         */
         branch: string;
+        /**
+         * Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+         */
         commentControl: string;
+        /**
+         * If true, branches that do NOT match the gitRef will trigger a build.
+         */
         invertRegex: boolean;
     }
 
     export interface GetTriggerGithubPush {
+        /**
+         * Regex of branches to match.  Specify only one of branch or tag.
+         */
         branch: string;
+        /**
+         * When true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         */
         invertRegex: boolean;
+        /**
+         * Regex of tags to match.  Specify only one of branch or tag.
+         */
         tag: string;
     }
 
     export interface GetTriggerPubsubConfig {
+        /**
+         * Service account that will make the push request.
+         */
         serviceAccountEmail: string;
+        /**
+         * Potential issues with the underlying Pub/Sub subscription configuration.
+         * Only populated on get requests.
+         */
         state: string;
+        /**
+         * Output only. Name of the subscription.
+         */
         subscription: string;
+        /**
+         * The name of the topic from which this subscription is receiving messages.
+         */
         topic: string;
     }
 
     export interface GetTriggerRepositoryEventConfig {
+        /**
+         * Contains filter properties for matching Pull Requests.
+         */
         pullRequests: outputs.cloudbuild.GetTriggerRepositoryEventConfigPullRequest[];
+        /**
+         * Contains filter properties for matching git pushes.
+         */
         pushes: outputs.cloudbuild.GetTriggerRepositoryEventConfigPush[];
+        /**
+         * The resource name of the Repo API resource.
+         */
         repository: string;
     }
 
     export interface GetTriggerRepositoryEventConfigPullRequest {
+        /**
+         * Regex of branches to match.
+         *
+         * The syntax of the regular expressions accepted is the syntax accepted by
+         * RE2 and described at https://github.com/google/re2/wiki/Syntax
+         */
         branch: string;
+        /**
+         * Configure builds to run whether a repository owner or collaborator need to comment '/gcbrun'. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+         */
         commentControl: string;
+        /**
+         * If true, branches that do NOT match the gitRef will trigger a build.
+         */
         invertRegex: boolean;
     }
 
     export interface GetTriggerRepositoryEventConfigPush {
+        /**
+         * Regex of branches to match.
+         *
+         * The syntax of the regular expressions accepted is the syntax accepted by
+         * RE2 and described at https://github.com/google/re2/wiki/Syntax
+         */
         branch: string;
+        /**
+         * If true, only trigger a build if the revision regex does NOT match the gitRef regex.
+         */
         invertRegex: boolean;
+        /**
+         * Regex of tags to match.
+         *
+         * The syntax of the regular expressions accepted is the syntax accepted by
+         * RE2 and described at https://github.com/google/re2/wiki/Syntax
+         */
         tag: string;
     }
 
     export interface GetTriggerSourceToBuild {
+        /**
+         * The full resource name of the bitbucket server config.
+         * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+         */
         bitbucketServerConfig: string;
+        /**
+         * The full resource name of the github enterprise config.
+         * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+         */
         githubEnterpriseConfig: string;
+        /**
+         * The branch or tag to use. Must start with "refs/" (required).
+         */
         ref: string;
+        /**
+         * The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+         * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: ["UNKNOWN", "CLOUD_SOURCE_REPOSITORIES", "GITHUB", "BITBUCKET_SERVER"]
+         */
         repoType: string;
+        /**
+         * The qualified resource name of the Repo API repository.
+         * Either uri or repository can be specified and is required.
+         */
         repository: string;
+        /**
+         * The URI of the repo.
+         */
         uri: string;
     }
 
     export interface GetTriggerTriggerTemplate {
+        /**
+         * Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+         * This field is a regular expression.
+         */
         branchName: string;
+        /**
+         * Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+         */
         commitSha: string;
+        /**
+         * Directory, relative to the source root, in which to run the build.
+         *
+         * This must be a relative path. If a step's dir is specified and
+         * is an absolute path, this value is ignored for that step's
+         * execution.
+         */
         dir: string;
+        /**
+         * Only trigger a build if the revision regex does NOT match the revision regex.
+         */
         invertRegex: boolean;
+        /**
+         * ID of the project that owns the Cloud Source Repository. If
+         * omitted, the project ID requesting the build is assumed.
+         */
         projectId: string;
+        /**
+         * Name of the Cloud Source Repository. If omitted, the name "default" is assumed.
+         */
         repoName: string;
+        /**
+         * Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+         * This field is a regular expression.
+         */
         tagName: string;
     }
 
     export interface GetTriggerWebhookConfig {
+        /**
+         * Resource name for the secret required as a URL parameter.
+         */
         secret: string;
+        /**
+         * Potential issues with the underlying Pub/Sub subscription configuration.
+         * Only populated on get requests.
+         */
         state: string;
     }
 
@@ -10002,8 +11170,17 @@ export namespace cloudbuildv2 {
     }
 
     export interface ConnectionInstallationState {
+        /**
+         * Output only. Link to follow for next action. Empty string if the installation is already complete.
+         */
         actionUri: string;
+        /**
+         * Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+         */
         message: string;
+        /**
+         * Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+         */
         stage: string;
     }
 
@@ -10079,12 +11256,24 @@ export namespace clouddeploy {
     }
 
     export interface DeliveryPipelineCondition {
+        /**
+         * Details around the Pipeline's overall status.
+         */
         pipelineReadyConditions: outputs.clouddeploy.DeliveryPipelineConditionPipelineReadyCondition[];
+        /**
+         * Details around targets enumerated in the pipeline.
+         */
         targetsPresentConditions: outputs.clouddeploy.DeliveryPipelineConditionTargetsPresentCondition[];
+        /**
+         * Details on the whether the targets enumerated in the pipeline are of the same type.
+         */
         targetsTypeConditions: outputs.clouddeploy.DeliveryPipelineConditionTargetsTypeCondition[];
     }
 
     export interface DeliveryPipelineConditionPipelineReadyCondition {
+        /**
+         * True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+         */
         status: boolean;
         /**
          * Output only. Most recent time at which the pipeline was updated.
@@ -10093,7 +11282,13 @@ export namespace clouddeploy {
     }
 
     export interface DeliveryPipelineConditionTargetsPresentCondition {
+        /**
+         * The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+         */
         missingTargets: string[];
+        /**
+         * True if there aren't any missing Targets.
+         */
         status: boolean;
         /**
          * Output only. Most recent time at which the pipeline was updated.
@@ -10102,7 +11297,13 @@ export namespace clouddeploy {
     }
 
     export interface DeliveryPipelineConditionTargetsTypeCondition {
+        /**
+         * Human readable error message.
+         */
         errorDetails: string;
+        /**
+         * True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+         */
         status: boolean;
     }
 
@@ -10818,6 +12019,9 @@ export namespace cloudfunctions {
     }
 
     export interface FunctionSourceRepository {
+        /**
+         * The URL pointing to the hosted repository where the function was defined at the time of deployment.
+         */
         deployedUrl: string;
         /**
          * The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
@@ -10854,25 +12058,58 @@ export namespace cloudfunctions {
     }
 
     export interface GetFunctionSecretEnvironmentVariable {
+        /**
+         * Name of the environment variable.
+         */
         key: string;
+        /**
+         * Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+         */
         projectId: string;
+        /**
+         * ID of the secret in secret manager (not the full resource name).
+         */
         secret: string;
+        /**
+         * Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+         */
         version: string;
     }
 
     export interface GetFunctionSecretVolume {
+        /**
+         * The path within the container to mount the secret volume. For example, setting the mountPath as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+         */
         mountPath: string;
+        /**
+         * Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+         */
         projectId: string;
+        /**
+         * ID of the secret in secret manager (not the full resource name).
+         */
         secret: string;
+        /**
+         * List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point.
+         */
         versions: outputs.cloudfunctions.GetFunctionSecretVolumeVersion[];
     }
 
     export interface GetFunctionSecretVolumeVersion {
+        /**
+         * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+         */
         path: string;
+        /**
+         * Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+         */
         version: string;
     }
 
     export interface GetFunctionSourceRepository {
+        /**
+         * The URL pointing to the hosted repository where the function was defined at the time of deployment.
+         */
         deployedUrl: string;
         /**
          * The URL pointing to the hosted repository where the function is defined.
@@ -11194,88 +12431,285 @@ export namespace cloudfunctionsv2 {
     }
 
     export interface GetFunctionBuildConfig {
+        /**
+         * The Cloud Build name of the latest successful
+         * deployment of the function.
+         */
         build: string;
+        /**
+         * User managed repository created in Artifact Registry optionally with a customer managed encryption key.
+         */
         dockerRepository: string;
+        /**
+         * The name of the function (as defined in source code) that will be executed.
+         * Defaults to the resource name suffix, if not specified. For backward
+         * compatibility, if function with given name is not found, then the system
+         * will try to use function named "function". For Node.js this is name of a
+         * function exported by the module specified in source_location.
+         */
         entryPoint: string;
+        /**
+         * User-provided build-time environment variables for the function.
+         */
         environmentVariables: {[key: string]: string};
+        /**
+         * The runtime in which to run the function. Required when deploying a new
+         * function, optional when updating an existing function.
+         */
         runtime: string;
+        /**
+         * The location of the function source code.
+         */
         sources: outputs.cloudfunctionsv2.GetFunctionBuildConfigSource[];
+        /**
+         * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+         */
         workerPool: string;
     }
 
     export interface GetFunctionBuildConfigSource {
+        /**
+         * If provided, get the source from this location in a Cloud Source Repository.
+         */
         repoSources: outputs.cloudfunctionsv2.GetFunctionBuildConfigSourceRepoSource[];
+        /**
+         * If provided, get the source from this location in Google Cloud Storage.
+         */
         storageSources: outputs.cloudfunctionsv2.GetFunctionBuildConfigSourceStorageSource[];
     }
 
     export interface GetFunctionBuildConfigSourceRepoSource {
+        /**
+         * Regex matching branches to build.
+         */
         branchName: string;
+        /**
+         * Regex matching tags to build.
+         */
         commitSha: string;
+        /**
+         * Directory, relative to the source root, in which to run the build.
+         */
         dir: string;
+        /**
+         * Only trigger a build if the revision regex does
+         * NOT match the revision regex.
+         */
         invertRegex: boolean;
+        /**
+         * ID of the project that owns the Cloud Source Repository. If omitted, the
+         * project ID requesting the build is assumed.
+         */
         projectId: string;
+        /**
+         * Name of the Cloud Source Repository.
+         */
         repoName: string;
+        /**
+         * Regex matching tags to build.
+         */
         tagName: string;
     }
 
     export interface GetFunctionBuildConfigSourceStorageSource {
+        /**
+         * Google Cloud Storage bucket containing the source
+         */
         bucket: string;
+        /**
+         * Google Cloud Storage generation for the object. If the generation
+         * is omitted, the latest generation will be used.
+         */
         generation: number;
+        /**
+         * Google Cloud Storage object containing the source.
+         */
         object: string;
     }
 
     export interface GetFunctionEventTrigger {
+        /**
+         * Criteria used to filter events.
+         */
         eventFilters: outputs.cloudfunctionsv2.GetFunctionEventTriggerEventFilter[];
+        /**
+         * Required. The type of event to observe.
+         */
         eventType: string;
+        /**
+         * The name of a Pub/Sub topic in the same project that will be used
+         * as the transport topic for the event delivery.
+         */
         pubsubTopic: string;
+        /**
+         * Describes the retry policy in case of function's execution failure.
+         * Retried execution is charged as any other execution. Possible values: ["RETRY_POLICY_UNSPECIFIED", "RETRY_POLICY_DO_NOT_RETRY", "RETRY_POLICY_RETRY"]
+         */
         retryPolicy: string;
+        /**
+         * Optional. The email of the trigger's service account. The service account
+         * must have permission to invoke Cloud Run services. If empty, defaults to the
+         * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
+         */
         serviceAccountEmail: string;
+        /**
+         * Output only. The resource name of the Eventarc trigger.
+         */
         trigger: string;
+        /**
+         * The region that the trigger will be in. The trigger will only receive
+         * events originating in this region. It can be the same
+         * region as the function, a different region or multi-region, or the global
+         * region. If not provided, defaults to the same region as the function.
+         */
         triggerRegion: string;
     }
 
     export interface GetFunctionEventTriggerEventFilter {
+        /**
+         * 'Required. The name of a CloudEvents attribute.
+         * Currently, only a subset of attributes are supported for filtering. Use the 'gcloud eventarc providers describe' command to learn more about events and their attributes.
+         * Do not filter for the 'type' attribute here, as this is already achieved by the resource's 'event_type' attribute.
+         */
         attribute: string;
+        /**
+         * Optional. The operator used for matching the events with the value of
+         * the filter. If not specified, only events that have an exact key-value
+         * pair specified in the filter are matched.
+         * The only allowed value is 'match-path-pattern'.
+         * [See documentation on path patterns here](https://cloud.google.com/eventarc/docs/path-patterns)'
+         */
         operator: string;
+        /**
+         * Required. The value for the attribute.
+         * If the operator field is set as 'match-path-pattern', this value can be a path pattern instead of an exact value.
+         */
         value: string;
     }
 
     export interface GetFunctionServiceConfig {
+        /**
+         * Whether 100% of traffic is routed to the latest revision. Defaults to true.
+         */
         allTrafficOnLatestRevision: boolean;
+        /**
+         * The number of CPUs used in a single container instance. Default value is calculated from available memory.
+         */
         availableCpu: string;
+        /**
+         * The amount of memory available for a function.
+         * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
+         * supplied the value is interpreted as bytes.
+         */
         availableMemory: string;
+        /**
+         * Environment variables that shall be available during function execution.
+         */
         environmentVariables: {[key: string]: string};
+        /**
+         * URIs of the Service deployed
+         */
         gcfUri: string;
+        /**
+         * Available ingress settings. Defaults to "ALLOW_ALL" if unspecified. Default value: "ALLOW_ALL" Possible values: ["ALLOW_ALL", "ALLOW_INTERNAL_ONLY", "ALLOW_INTERNAL_AND_GCLB"]
+         */
         ingressSettings: string;
+        /**
+         * The limit on the maximum number of function instances that may coexist at a
+         * given time.
+         */
         maxInstanceCount: number;
+        /**
+         * Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+         */
         maxInstanceRequestConcurrency: number;
+        /**
+         * The limit on the minimum number of function instances that may coexist at a
+         * given time.
+         */
         minInstanceCount: number;
+        /**
+         * Secret environment variables configuration.
+         */
         secretEnvironmentVariables: outputs.cloudfunctionsv2.GetFunctionServiceConfigSecretEnvironmentVariable[];
+        /**
+         * Secret volumes configuration.
+         */
         secretVolumes: outputs.cloudfunctionsv2.GetFunctionServiceConfigSecretVolume[];
+        /**
+         * Name of the service associated with a Function.
+         */
         service: string;
+        /**
+         * The email of the service account for this function.
+         */
         serviceAccountEmail: string;
+        /**
+         * The function execution timeout. Execution is considered failed and
+         * can be terminated if the function is not completed at the end of the
+         * timeout period. Defaults to 60 seconds.
+         */
         timeoutSeconds: number;
+        /**
+         * URI of the Service deployed.
+         */
         uri: string;
+        /**
+         * The Serverless VPC Access connector that this cloud function can connect to.
+         */
         vpcConnector: string;
+        /**
+         * Available egress settings. Possible values: ["VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED", "PRIVATE_RANGES_ONLY", "ALL_TRAFFIC"]
+         */
         vpcConnectorEgressSettings: string;
     }
 
     export interface GetFunctionServiceConfigSecretEnvironmentVariable {
+        /**
+         * Name of the environment variable.
+         */
         key: string;
+        /**
+         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         */
         projectId: string;
+        /**
+         * Name of the secret in secret manager (not the full resource name).
+         */
         secret: string;
+        /**
+         * Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+         */
         version: string;
     }
 
     export interface GetFunctionServiceConfigSecretVolume {
+        /**
+         * The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+         */
         mountPath: string;
+        /**
+         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         */
         projectId: string;
+        /**
+         * Name of the secret in secret manager (not the full resource name).
+         */
         secret: string;
+        /**
+         * List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
+         */
         versions: outputs.cloudfunctionsv2.GetFunctionServiceConfigSecretVolumeVersion[];
     }
 
     export interface GetFunctionServiceConfigSecretVolumeVersion {
+        /**
+         * Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mountPath as '/etc/secrets' and path as secretFoo would mount the secret value file at /etc/secrets/secret_foo.
+         */
         path: string;
+        /**
+         * Version of the secret (version number or the string 'latest'). It is preferable to use latest version with secret volumes as secret value changes are reflected immediately.
+         */
         version: string;
     }
 
@@ -11302,6 +12736,9 @@ export namespace cloudidentity {
     }
 
     export interface GetGroupMembershipsMembership {
+        /**
+         * The time when the Membership was created.
+         */
         createTime: string;
         /**
          * The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -11327,6 +12764,9 @@ export namespace cloudidentity {
          * The type of the membership.
          */
         type: string;
+        /**
+         * The time when the Membership was last updated.
+         */
         updateTime: string;
     }
 
@@ -11363,6 +12803,10 @@ export namespace cloudidentity {
     }
 
     export interface GetGroupMembershipsMembershipRole {
+        /**
+         * The MembershipRole expiry details, only supported for MEMBER role.
+         * Other roles cannot be accompanied with MEMBER role having expiry.
+         */
         expiryDetails: outputs.cloudidentity.GetGroupMembershipsMembershipRoleExpiryDetail[];
         /**
          * The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
@@ -11371,11 +12815,25 @@ export namespace cloudidentity {
     }
 
     export interface GetGroupMembershipsMembershipRoleExpiryDetail {
+        /**
+         * The time at which the MembershipRole will expire.
+         *
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         *
+         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         expireTime: string;
     }
 
     export interface GetGroupsGroup {
+        /**
+         * Additional group keys associated with the Group
+         */
         additionalGroupKeys: outputs.cloudidentity.GetGroupsGroupAdditionalGroupKey[];
+        /**
+         * The time when the Group was created.
+         */
         createTime: string;
         /**
          * An extended description to help users determine the purpose of a Group.
@@ -11389,6 +12847,13 @@ export namespace cloudidentity {
          * EntityKey of the Group.  Structure is documented below.
          */
         groupKeys: outputs.cloudidentity.GetGroupsGroupGroupKey[];
+        /**
+         * The initial configuration options for creating a Group.
+         *
+         * See the
+         * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+         * for possible values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
+         */
         initialGroupConfig: string;
         /**
          * The labels that apply to the Group.
@@ -11404,6 +12869,9 @@ export namespace cloudidentity {
          * The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
          */
         parent: string;
+        /**
+         * The time when the Group was last updated.
+         */
         updateTime: string;
     }
 
@@ -11726,82 +13194,287 @@ export namespace cloudrun {
         annotations: {[key: string]: string};
         effectiveAnnotations: {[key: string]: string};
         effectiveLabels: {[key: string]: string};
+        /**
+         * A sequence number representing a specific generation of the desired state.
+         */
         generation: number;
+        /**
+         * Map of string keys and values that can be used to organize and categorize
+         * (scope and select) objects. May match selectors of replication controllers
+         * and routes.
+         *
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field 'effective_labels' for all of the labels present on the resource.
+         */
         labels: {[key: string]: string};
+        /**
+         * In Cloud Run the namespace must be equal to either the
+         * project ID or project number.
+         */
         namespace: string;
+        /**
+         * The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         */
         pulumiLabels: {[key: string]: string};
+        /**
+         * An opaque value that represents the internal version of this object that
+         * can be used by clients to determine when objects have changed. May be used
+         * for optimistic concurrency, change detection, and the watch operation on a
+         * resource or set of resources. They may only be valid for a
+         * particular resource or set of resources.
+         */
         resourceVersion: string;
+        /**
+         * SelfLink is a URL representing this object.
+         */
         selfLink: string;
+        /**
+         * UID is a unique id generated by the server on successful creation of a resource and is not
+         * allowed to change on PUT operations.
+         */
         uid: string;
     }
 
     export interface GetServiceStatus {
+        /**
+         * Array of observed Service Conditions, indicating the current ready state of the service.
+         */
         conditions: outputs.cloudrun.GetServiceStatusCondition[];
+        /**
+         * From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created
+         * from this Service's Configuration. It might not be ready yet, for that use
+         * LatestReadyRevisionName.
+         */
         latestCreatedRevisionName: string;
+        /**
+         * From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision
+         * stamped out from this Service's Configuration that has had its "Ready" condition become
+         * "True".
+         */
         latestReadyRevisionName: string;
+        /**
+         * ObservedGeneration is the 'Generation' of the Route that was last processed by the
+         * controller.
+         *
+         * Clients polling for completed reconciliation should poll until observedGeneration =
+         * metadata.generation and the Ready condition's status is True or False.
+         */
         observedGeneration: number;
+        /**
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * and Configurations
+         */
         traffics: outputs.cloudrun.GetServiceStatusTraffic[];
+        /**
+         * From RouteStatus. URL holds the url that will distribute traffic over the provided traffic
+         * targets. It generally has the form
+         * https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+         */
         url: string;
     }
 
     export interface GetServiceStatusCondition {
+        /**
+         * Human readable message indicating details about the current status.
+         */
         message: string;
+        /**
+         * One-word CamelCase reason for the condition's current status.
+         */
         reason: string;
+        /**
+         * Status of the condition, one of True, False, Unknown.
+         */
         status: string;
+        /**
+         * Type of domain mapping condition.
+         */
         type: string;
     }
 
     export interface GetServiceStatusTraffic {
+        /**
+         * LatestRevision may be optionally provided to indicate that the latest ready
+         * Revision of the Configuration should be used for this traffic target. When
+         * provided LatestRevision must be true if RevisionName is empty; it must be
+         * false when RevisionName is non-empty.
+         */
         latestRevision: boolean;
+        /**
+         * Percent specifies percent of the traffic to this Revision or Configuration.
+         */
         percent: number;
+        /**
+         * RevisionName of a specific revision to which to send this portion of traffic.
+         */
         revisionName: string;
+        /**
+         * Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+         */
         tag: string;
+        /**
+         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+         * but may not contain anything else (e.g. basic auth, url path, etc.)
+         */
         url: string;
     }
 
     export interface GetServiceTemplate {
+        /**
+         * Optional metadata for this Revision, including labels and annotations.
+         * Name will be generated by the Configuration. To set minimum instances
+         * for this revision, use the "autoscaling.knative.dev/minScale" annotation
+         * key. To set maximum instances for this revision, use the
+         * "autoscaling.knative.dev/maxScale" annotation key. To set Cloud SQL
+         * connections for the revision, use the "run.googleapis.com/cloudsql-instances"
+         * annotation key.
+         */
         metadatas: outputs.cloudrun.GetServiceTemplateMetadata[];
+        /**
+         * RevisionSpec holds the desired state of the Revision (from the client).
+         */
         specs: outputs.cloudrun.GetServiceTemplateSpec[];
     }
 
     export interface GetServiceTemplateMetadata {
         annotations: {[key: string]: string};
+        /**
+         * A sequence number representing a specific generation of the desired state.
+         */
         generation: number;
+        /**
+         * Map of string keys and values that can be used to organize and categorize
+         * (scope and select) objects.
+         */
         labels: {[key: string]: string};
         /**
          * The name of the Cloud Run Service.
          */
         name: string;
+        /**
+         * In Cloud Run the namespace must be equal to either the
+         * project ID or project number. It will default to the resource's project.
+         */
         namespace: string;
+        /**
+         * An opaque value that represents the internal version of this object that
+         * can be used by clients to determine when objects have changed. May be used
+         * for optimistic concurrency, change detection, and the watch operation on a
+         * resource or set of resources. They may only be valid for a
+         * particular resource or set of resources.
+         */
         resourceVersion: string;
+        /**
+         * SelfLink is a URL representing this object.
+         */
         selfLink: string;
+        /**
+         * UID is a unique id generated by the server on successful creation of a resource and is not
+         * allowed to change on PUT operations.
+         */
         uid: string;
     }
 
     export interface GetServiceTemplateSpec {
+        /**
+         * ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
+         * requests per container of the Revision. Values are:
+         * - '0' thread-safe, the system should manage the max concurrency. This is
+         *     the default value.
+         * - '1' not-thread-safe. Single concurrency
+         * - '2-N' thread-safe, max concurrency of N
+         */
         containerConcurrency: number;
+        /**
+         * Containers defines the unit of execution for this Revision.
+         */
         containers: outputs.cloudrun.GetServiceTemplateSpecContainer[];
+        /**
+         * Email address of the IAM service account associated with the revision of the
+         * service. The service account represents the identity of the running revision,
+         * and determines what permissions the revision has. If not provided, the revision
+         * will use the project's default service account.
+         */
         serviceAccountName: string;
+        /**
+         * ServingState holds a value describing the state the resources
+         * are in for this Revision.
+         * It is expected
+         * that the system will manipulate this based on routability and load.
+         */
         servingState: string;
+        /**
+         * TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
+         */
         timeoutSeconds: number;
+        /**
+         * Volume represents a named volume in a container.
+         */
         volumes: outputs.cloudrun.GetServiceTemplateSpecVolume[];
     }
 
     export interface GetServiceTemplateSpecContainer {
+        /**
+         * Arguments to the entrypoint.
+         * The docker image's CMD is used if this is not provided.
+         */
         args: string[];
+        /**
+         * Entrypoint array. Not executed within a shell.
+         * The docker image's ENTRYPOINT is used if this is not provided.
+         */
         commands: string[];
+        /**
+         * List of sources to populate environment variables in the container.
+         * All invalid keys will be reported as an event when the container is starting.
+         * When a key exists in multiple sources, the value associated with the last source will
+         * take precedence. Values defined by an Env with a duplicate key will take
+         * precedence.
+         */
         envFroms: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFrom[];
+        /**
+         * List of environment variables to set in the container.
+         */
         envs: outputs.cloudrun.GetServiceTemplateSpecContainerEnv[];
+        /**
+         * Docker image name. This is most often a reference to a container located
+         * in the container registry, such as gcr.io/cloudrun/hello
+         */
         image: string;
+        /**
+         * Periodic probe of container liveness. Container will be restarted if the probe fails.
+         */
         livenessProbes: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbe[];
         /**
          * The name of the Cloud Run Service.
          */
         name: string;
+        /**
+         * List of open ports in the container.
+         */
         ports: outputs.cloudrun.GetServiceTemplateSpecContainerPort[];
+        /**
+         * Compute Resources required by this container. Used to set values such as max memory
+         */
         resources: outputs.cloudrun.GetServiceTemplateSpecContainerResource[];
+        /**
+         * Startup probe of application within the container.
+         * All other probes are disabled if a startup probe is provided, until it
+         * succeeds. Container will not be added to service endpoints if the probe fails.
+         */
         startupProbes: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbe[];
+        /**
+         * Volume to mount into the container's filesystem.
+         * Only supports SecretVolumeSources.
+         */
         volumeMounts: outputs.cloudrun.GetServiceTemplateSpecContainerVolumeMount[];
+        /**
+         * Container's working directory.
+         * If not specified, the container runtime's default will be used, which
+         * might be configured in the container image.
+         */
         workingDir: string;
     }
 
@@ -11810,18 +13483,39 @@ export namespace cloudrun {
          * The name of the Cloud Run Service.
          */
         name: string;
+        /**
+         * Defaults to "".
+         */
         value: string;
+        /**
+         * Source for the environment variable's value. Only supports secret_key_ref.
+         */
         valueFroms: outputs.cloudrun.GetServiceTemplateSpecContainerEnvValueFrom[];
     }
 
     export interface GetServiceTemplateSpecContainerEnvFrom {
+        /**
+         * The ConfigMap to select from.
+         */
         configMapReves: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFromConfigMapRef[];
+        /**
+         * An optional identifier to prepend to each key in the ConfigMap.
+         */
         prefix: string;
+        /**
+         * The Secret to select from.
+         */
         secretReves: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFromSecretRef[];
     }
 
     export interface GetServiceTemplateSpecContainerEnvFromConfigMapRef {
+        /**
+         * The ConfigMap to select from.
+         */
         localObjectReferences: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference[];
+        /**
+         * Specify whether the ConfigMap must be defined
+         */
         optional: boolean;
     }
 
@@ -11833,7 +13527,13 @@ export namespace cloudrun {
     }
 
     export interface GetServiceTemplateSpecContainerEnvFromSecretRef {
+        /**
+         * The Secret to select from.
+         */
         localObjectReferences: outputs.cloudrun.GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference[];
+        /**
+         * Specify whether the Secret must be defined
+         */
         optional: boolean;
     }
 
@@ -11845,10 +13545,17 @@ export namespace cloudrun {
     }
 
     export interface GetServiceTemplateSpecContainerEnvValueFrom {
+        /**
+         * Selects a key (version) of a secret in Secret Manager.
+         */
         secretKeyReves: outputs.cloudrun.GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef[];
     }
 
     export interface GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
+        /**
+         * A Cloud Secret Manager secret version. Must be 'latest' for the latest
+         * version or an integer for a specific version.
+         */
         key: string;
         /**
          * The name of the Cloud Run Service.
@@ -11857,22 +13564,65 @@ export namespace cloudrun {
     }
 
     export interface GetServiceTemplateSpecContainerLivenessProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after
+         * having succeeded. Defaults to 3. Minimum value is 1.
+         */
         failureThreshold: number;
+        /**
+         * GRPC specifies an action involving a GRPC port.
+         */
         grpcs: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbeGrpc[];
+        /**
+         * HttpGet specifies the http request to perform.
+         */
         httpGets: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbeHttpGet[];
+        /**
+         * Number of seconds after the container has started before the probe is
+         * initiated.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 3600.
+         */
         initialDelaySeconds: number;
+        /**
+         * How often (in seconds) to perform the probe.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 3600.
+         */
         periodSeconds: number;
+        /**
+         * Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than period_seconds.
+         */
         timeoutSeconds: number;
     }
 
     export interface GetServiceTemplateSpecContainerLivenessProbeGrpc {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
+        /**
+         * The name of the service to place in the gRPC HealthCheckRequest
+         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * If this is not specified, the default behavior is defined by gRPC.
+         */
         service: string;
     }
 
     export interface GetServiceTemplateSpecContainerLivenessProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         */
         httpHeaders: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader[];
+        /**
+         * Path to access on the HTTP server. If set, it should not be empty string.
+         */
         path: string;
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
     }
 
@@ -11881,41 +13631,108 @@ export namespace cloudrun {
          * The name of the Cloud Run Service.
          */
         name: string;
+        /**
+         * The header field value.
+         */
         value: string;
     }
 
     export interface GetServiceTemplateSpecContainerPort {
+        /**
+         * Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
+         */
         containerPort: number;
         /**
          * The name of the Cloud Run Service.
          */
         name: string;
+        /**
+         * Protocol for port. Must be "TCP". Defaults to "TCP".
+         */
         protocol: string;
     }
 
     export interface GetServiceTemplateSpecContainerResource {
+        /**
+         * Limits describes the maximum amount of compute resources allowed.
+         * The values of the map is string form of the 'quantity' k8s type:
+         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
         limits: {[key: string]: string};
+        /**
+         * Requests describes the minimum amount of compute resources required.
+         * If Requests is omitted for a container, it defaults to Limits if that is
+         * explicitly specified, otherwise to an implementation-defined value.
+         * The values of the map is string form of the 'quantity' k8s type:
+         * https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
         requests: {[key: string]: string};
     }
 
     export interface GetServiceTemplateSpecContainerStartupProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after
+         * having succeeded. Defaults to 3. Minimum value is 1.
+         */
         failureThreshold: number;
+        /**
+         * GRPC specifies an action involving a GRPC port.
+         */
         grpcs: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeGrpc[];
+        /**
+         * HttpGet specifies the http request to perform.
+         */
         httpGets: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeHttpGet[];
+        /**
+         * Number of seconds after the container has started before the probe is
+         * initiated.
+         * Defaults to 0 seconds. Minimum value is 0. Maximum value is 240.
+         */
         initialDelaySeconds: number;
+        /**
+         * How often (in seconds) to perform the probe.
+         * Default to 10 seconds. Minimum value is 1. Maximum value is 240.
+         */
         periodSeconds: number;
+        /**
+         * TcpSocket specifies an action involving a TCP port.
+         */
         tcpSockets: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeTcpSocket[];
+        /**
+         * Number of seconds after which the probe times out.
+         * Defaults to 1 second. Minimum value is 1. Maximum value is 3600.
+         * Must be smaller than periodSeconds.
+         */
         timeoutSeconds: number;
     }
 
     export interface GetServiceTemplateSpecContainerStartupProbeGrpc {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
+        /**
+         * The name of the service to place in the gRPC HealthCheckRequest
+         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * If this is not specified, the default behavior is defined by gRPC.
+         */
         service: string;
     }
 
     export interface GetServiceTemplateSpecContainerStartupProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         */
         httpHeaders: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader[];
+        /**
+         * Path to access on the HTTP server. If set, it should not be empty string.
+         */
         path: string;
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
     }
 
@@ -11924,14 +13741,25 @@ export namespace cloudrun {
          * The name of the Cloud Run Service.
          */
         name: string;
+        /**
+         * The header field value.
+         */
         value: string;
     }
 
     export interface GetServiceTemplateSpecContainerStartupProbeTcpSocket {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
     }
 
     export interface GetServiceTemplateSpecContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted.  Must
+         * not contain ':'.
+         */
         mountPath: string;
         /**
          * The name of the Cloud Run Service.
@@ -11940,36 +13768,110 @@ export namespace cloudrun {
     }
 
     export interface GetServiceTemplateSpecVolume {
+        /**
+         * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+         */
         emptyDirs: outputs.cloudrun.GetServiceTemplateSpecVolumeEmptyDir[];
         /**
          * The name of the Cloud Run Service.
          */
         name: string;
+        /**
+         * The secret's value will be presented as the content of a file whose
+         * name is defined in the item path. If no items are defined, the name of
+         * the file is the secret_name.
+         */
         secrets: outputs.cloudrun.GetServiceTemplateSpecVolumeSecret[];
     }
 
     export interface GetServiceTemplateSpecVolumeEmptyDir {
+        /**
+         * The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
+         */
         medium: string;
+        /**
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         */
         sizeLimit: string;
     }
 
     export interface GetServiceTemplateSpecVolumeSecret {
+        /**
+         * Mode bits to use on created files by default. Must be a value between 0000
+         * and 0777. Defaults to 0644. Directories within the path are not affected by
+         * this setting. This might be in conflict with other options that affect the
+         * file mode, like fsGroup, and the result can be other mode bits set.
+         */
         defaultMode: number;
+        /**
+         * If unspecified, the volume will expose a file whose name is the
+         * secret_name.
+         * If specified, the key will be used as the version to fetch from Cloud
+         * Secret Manager and the path will be the name of the file exposed in the
+         * volume. When items are defined, they must specify a key and a path.
+         */
         items: outputs.cloudrun.GetServiceTemplateSpecVolumeSecretItem[];
+        /**
+         * The name of the secret in Cloud Secret Manager. By default, the secret
+         * is assumed to be in the same project.
+         * If the secret is in another project, you must define an alias.
+         * An alias definition has the form:
+         * {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
+         * If multiple alias definitions are needed, they must be separated by
+         * commas.
+         * The alias definitions must be set on the run.googleapis.com/secrets
+         * annotation.
+         */
         secretName: string;
     }
 
     export interface GetServiceTemplateSpecVolumeSecretItem {
+        /**
+         * The Cloud Secret Manager secret version.
+         * Can be 'latest' for the latest value or an integer for a specific version.
+         */
         key: string;
+        /**
+         * Mode bits to use on this file, must be a value between 0000 and 0777. If
+         * not specified, the volume defaultMode will be used. This might be in
+         * conflict with other options that affect the file mode, like fsGroup, and
+         * the result can be other mode bits set.
+         */
         mode: number;
+        /**
+         * The relative path of the file to map the key to.
+         * May not be an absolute path.
+         * May not contain the path element '..'.
+         * May not start with the string '..'.
+         */
         path: string;
     }
 
     export interface GetServiceTraffic {
+        /**
+         * LatestRevision may be optionally provided to indicate that the latest ready
+         * Revision of the Configuration should be used for this traffic target. When
+         * provided LatestRevision must be true if RevisionName is empty; it must be
+         * false when RevisionName is non-empty.
+         */
         latestRevision: boolean;
+        /**
+         * Percent specifies percent of the traffic to this Revision or Configuration.
+         */
         percent: number;
+        /**
+         * RevisionName of a specific revision to which to send this portion of traffic.
+         */
         revisionName: string;
+        /**
+         * Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+         */
         tag: string;
+        /**
+         * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+         * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+         * but may not contain anything else (e.g. basic auth, url path, etc.)
+         */
         url: string;
     }
 
@@ -12792,23 +14694,65 @@ export namespace cloudrun {
 
 export namespace cloudrunv2 {
     export interface GetJobBinaryAuthorization {
+        /**
+         * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+         */
         breakglassJustification: string;
+        /**
+         * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+         */
         useDefault: boolean;
     }
 
     export interface GetJobCondition {
+        /**
+         * A reason for the execution condition.
+         */
         executionReason: string;
+        /**
+         * Last time the condition transitioned from one status to another.
+         *
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         lastTransitionTime: string;
+        /**
+         * Human readable message indicating details about the current status.
+         */
         message: string;
+        /**
+         * A common (service-level) reason for this condition.
+         */
         reason: string;
+        /**
+         * A reason for the revision condition.
+         */
         revisionReason: string;
+        /**
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
         severity: string;
+        /**
+         * State of the condition.
+         */
         state: string;
+        /**
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         */
         type: string;
     }
 
     export interface GetJobLatestCreatedExecution {
+        /**
+         * Completion timestamp of the execution.
+         *
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         completionTime: string;
+        /**
+         * Creation timestamp of the execution.
+         *
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         createTime: string;
         /**
          * The name of the Cloud Run v2 Job.
@@ -12817,36 +14761,113 @@ export namespace cloudrunv2 {
     }
 
     export interface GetJobTemplate {
+        /**
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+         *
+         * Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+         * All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+         *
+         * This field follows Kubernetes annotations' namespacing, limits, and rules.
+         */
         annotations: {[key: string]: string};
+        /**
+         * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+         * or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+         * https://cloud.google.com/run/docs/configuring/labels.
+         *
+         * Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+         * All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
+         */
         labels: {[key: string]: string};
+        /**
+         * Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+         */
         parallelism: number;
+        /**
+         * Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+         */
         taskCount: number;
+        /**
+         * Describes the task(s) that will be created when executing an execution
+         */
         templates: outputs.cloudrunv2.GetJobTemplateTemplate[];
     }
 
     export interface GetJobTemplateTemplate {
+        /**
+         * Holds the single container that defines the unit of execution for this task.
+         */
         containers: outputs.cloudrunv2.GetJobTemplateTemplateContainer[];
+        /**
+         * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+         */
         encryptionKey: string;
+        /**
+         * The execution environment being used to host this Task. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+         */
         executionEnvironment: string;
+        /**
+         * Number of retries allowed per Task, before marking this Task failed.
+         */
         maxRetries: number;
+        /**
+         * Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+         */
         serviceAccount: string;
+        /**
+         * Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+         *
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
         timeout: string;
+        /**
+         * A list of Volumes to make available to containers.
+         */
         volumes: outputs.cloudrunv2.GetJobTemplateTemplateVolume[];
+        /**
+         * VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+         */
         vpcAccesses: outputs.cloudrunv2.GetJobTemplateTemplateVpcAccess[];
     }
 
     export interface GetJobTemplateTemplateContainer {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
         args: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
         commands: string[];
+        /**
+         * List of environment variables to set in the container.
+         */
         envs: outputs.cloudrunv2.GetJobTemplateTemplateContainerEnv[];
+        /**
+         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         */
         image: string;
         /**
          * The name of the Cloud Run v2 Job.
          */
         name: string;
+        /**
+         * List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+         *
+         * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+         */
         ports: outputs.cloudrunv2.GetJobTemplateTemplateContainerPort[];
+        /**
+         * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         */
         resources: outputs.cloudrunv2.GetJobTemplateTemplateContainerResource[];
+        /**
+         * Volume to mount into the container's filesystem.
+         */
         volumeMounts: outputs.cloudrunv2.GetJobTemplateTemplateContainerVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
         workingDir: string;
     }
 
@@ -12855,20 +14876,38 @@ export namespace cloudrunv2 {
          * The name of the Cloud Run v2 Job.
          */
         name: string;
+        /**
+         * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+         */
         value: string;
+        /**
+         * Source for the environment variable's value.
+         */
         valueSources: outputs.cloudrunv2.GetJobTemplateTemplateContainerEnvValueSource[];
     }
 
     export interface GetJobTemplateTemplateContainerEnvValueSource {
+        /**
+         * Selects a secret and a specific version from Cloud Secret Manager.
+         */
         secretKeyReves: outputs.cloudrunv2.GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef[];
     }
 
     export interface GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef {
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+         */
         secret: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+         */
         version: string;
     }
 
     export interface GetJobTemplateTemplateContainerPort {
+        /**
+         * Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+         */
         containerPort: number;
         /**
          * The name of the Cloud Run v2 Job.
@@ -12877,10 +14916,16 @@ export namespace cloudrunv2 {
     }
 
     export interface GetJobTemplateTemplateContainerResource {
+        /**
+         * Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
         limits: {[key: string]: string};
     }
 
     export interface GetJobTemplateTemplateContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
         mountPath: string;
         /**
          * The name of the Cloud Run v2 Job.
@@ -12889,106 +14934,307 @@ export namespace cloudrunv2 {
     }
 
     export interface GetJobTemplateTemplateVolume {
+        /**
+         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         */
         cloudSqlInstances: outputs.cloudrunv2.GetJobTemplateTemplateVolumeCloudSqlInstance[];
+        /**
+         * Ephemeral storage used as a shared volume.
+         */
         emptyDirs: outputs.cloudrunv2.GetJobTemplateTemplateVolumeEmptyDir[];
         /**
          * The name of the Cloud Run v2 Job.
          */
         name: string;
+        /**
+         * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         */
         secrets: outputs.cloudrunv2.GetJobTemplateTemplateVolumeSecret[];
     }
 
     export interface GetJobTemplateTemplateVolumeCloudSqlInstance {
+        /**
+         * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         */
         instances: string[];
     }
 
     export interface GetJobTemplateTemplateVolumeEmptyDir {
+        /**
+         * The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+         */
         medium: string;
+        /**
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         */
         sizeLimit: string;
     }
 
     export interface GetJobTemplateTemplateVolumeSecret {
+        /**
+         * Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+         */
         defaultMode: number;
+        /**
+         * If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+         */
         items: outputs.cloudrunv2.GetJobTemplateTemplateVolumeSecretItem[];
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
         secret: string;
     }
 
     export interface GetJobTemplateTemplateVolumeSecretItem {
+        /**
+         * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+         */
         mode: number;
+        /**
+         * The relative path of the secret in the container.
+         */
         path: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+         */
         version: string;
     }
 
     export interface GetJobTemplateTemplateVpcAccess {
+        /**
+         * VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+         */
         connector: string;
+        /**
+         * Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+         */
         egress: string;
+        /**
+         * Direct VPC egress settings. Currently only single network interface is supported.
+         */
         networkInterfaces: outputs.cloudrunv2.GetJobTemplateTemplateVpcAccessNetworkInterface[];
     }
 
     export interface GetJobTemplateTemplateVpcAccessNetworkInterface {
+        /**
+         * The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+         * looked up from the subnetwork.
+         */
         network: string;
+        /**
+         * The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+         * subnetwork with the same name with the network will be used.
+         */
         subnetwork: string;
+        /**
+         * Network tags applied to this Cloud Run job.
+         */
         tags: string[];
     }
 
     export interface GetJobTerminalCondition {
+        /**
+         * A reason for the execution condition.
+         */
         executionReason: string;
+        /**
+         * Last time the condition transitioned from one status to another.
+         *
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         lastTransitionTime: string;
+        /**
+         * Human readable message indicating details about the current status.
+         */
         message: string;
+        /**
+         * A common (service-level) reason for this condition.
+         */
         reason: string;
+        /**
+         * A reason for the revision condition.
+         */
         revisionReason: string;
+        /**
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
         severity: string;
+        /**
+         * State of the condition.
+         */
         state: string;
+        /**
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         */
         type: string;
     }
 
     export interface GetServiceBinaryAuthorization {
+        /**
+         * If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+         */
         breakglassJustification: string;
+        /**
+         * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
+         */
         useDefault: boolean;
     }
 
     export interface GetServiceCondition {
+        /**
+         * A reason for the execution condition.
+         */
         executionReason: string;
+        /**
+         * Last time the condition transitioned from one status to another.
+         *
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         lastTransitionTime: string;
+        /**
+         * Human readable message indicating details about the current status.
+         */
         message: string;
+        /**
+         * A common (service-level) reason for this condition.
+         */
         reason: string;
+        /**
+         * A reason for the revision condition.
+         */
         revisionReason: string;
+        /**
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
         severity: string;
+        /**
+         * State of the condition.
+         */
         state: string;
+        /**
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         */
         type: string;
     }
 
     export interface GetServiceTemplate {
+        /**
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+         *
+         * Cloud Run API v2 does not support annotations with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+         * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+         *
+         * This field follows Kubernetes annotations' namespacing, limits, and rules.
+         */
         annotations: {[key: string]: string};
+        /**
+         * Holds the containers that define the unit of execution for this Service.
+         */
         containers: outputs.cloudrunv2.GetServiceTemplateContainer[];
+        /**
+         * A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+         */
         encryptionKey: string;
+        /**
+         * The sandbox environment to host this Revision. Possible values: ["EXECUTION_ENVIRONMENT_GEN1", "EXECUTION_ENVIRONMENT_GEN2"]
+         */
         executionEnvironment: string;
+        /**
+         * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+         * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+         *
+         * Cloud Run API v2 does not support labels with 'run.googleapis.com', 'cloud.googleapis.com', 'serving.knative.dev', or 'autoscaling.knative.dev' namespaces, and they will be rejected.
+         * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
+         */
         labels: {[key: string]: string};
+        /**
+         * Sets the maximum number of requests that each serving instance can receive.
+         */
         maxInstanceRequestConcurrency: number;
+        /**
+         * The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+         */
         revision: string;
+        /**
+         * Scaling settings for this Revision.
+         */
         scalings: outputs.cloudrunv2.GetServiceTemplateScaling[];
+        /**
+         * Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+         */
         serviceAccount: string;
+        /**
+         * Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
+         */
         sessionAffinity: boolean;
+        /**
+         * Max allowed time for an instance to respond to a request.
+         *
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
         timeout: string;
+        /**
+         * A list of Volumes to make available to containers.
+         */
         volumes: outputs.cloudrunv2.GetServiceTemplateVolume[];
+        /**
+         * VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+         */
         vpcAccesses: outputs.cloudrunv2.GetServiceTemplateVpcAccess[];
     }
 
     export interface GetServiceTemplateContainer {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
         args: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+         */
         commands: string[];
+        /**
+         * Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+         */
         dependsOns: string[];
+        /**
+         * List of environment variables to set in the container.
+         */
         envs: outputs.cloudrunv2.GetServiceTemplateContainerEnv[];
+        /**
+         * URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+         */
         image: string;
+        /**
+         * Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
         livenessProbes: outputs.cloudrunv2.GetServiceTemplateContainerLivenessProbe[];
         /**
          * The name of the Cloud Run v2 Service.
          */
         name: string;
+        /**
+         * List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+         *
+         * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+         */
         ports: outputs.cloudrunv2.GetServiceTemplateContainerPort[];
+        /**
+         * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+         */
         resources: outputs.cloudrunv2.GetServiceTemplateContainerResource[];
+        /**
+         * Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
         startupProbes: outputs.cloudrunv2.GetServiceTemplateContainerStartupProbe[];
+        /**
+         * Volume to mount into the container's filesystem.
+         */
         volumeMounts: outputs.cloudrunv2.GetServiceTemplateContainerVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
         workingDir: string;
     }
 
@@ -12997,37 +15243,92 @@ export namespace cloudrunv2 {
          * The name of the Cloud Run v2 Service.
          */
         name: string;
+        /**
+         * Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes
+         */
         value: string;
+        /**
+         * Source for the environment variable's value.
+         */
         valueSources: outputs.cloudrunv2.GetServiceTemplateContainerEnvValueSource[];
     }
 
     export interface GetServiceTemplateContainerEnvValueSource {
+        /**
+         * Selects a secret and a specific version from Cloud Secret Manager.
+         */
         secretKeyReves: outputs.cloudrunv2.GetServiceTemplateContainerEnvValueSourceSecretKeyRef[];
     }
 
     export interface GetServiceTemplateContainerEnvValueSourceSecretKeyRef {
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secretName} if the secret is in the same project. projects/{project}/secrets/{secretName} if the secret is in a different project.
+         */
         secret: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+         */
         version: string;
     }
 
     export interface GetServiceTemplateContainerLivenessProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
         failureThreshold: number;
+        /**
+         * GRPC specifies an action involving a GRPC port.
+         */
         grpcs: outputs.cloudrunv2.GetServiceTemplateContainerLivenessProbeGrpc[];
+        /**
+         * HTTPGet specifies the http request to perform.
+         */
         httpGets: outputs.cloudrunv2.GetServiceTemplateContainerLivenessProbeHttpGet[];
+        /**
+         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
         initialDelaySeconds: number;
+        /**
+         * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+         */
         periodSeconds: number;
+        /**
+         * TCPSocketAction describes an action based on opening a socket
+         */
         tcpSockets: outputs.cloudrunv2.GetServiceTemplateContainerLivenessProbeTcpSocket[];
+        /**
+         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
         timeoutSeconds: number;
     }
 
     export interface GetServiceTemplateContainerLivenessProbeGrpc {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
+        /**
+         * The name of the service to place in the gRPC HealthCheckRequest
+         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * If this is not specified, the default behavior is defined by gRPC.
+         */
         service: string;
     }
 
     export interface GetServiceTemplateContainerLivenessProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         */
         httpHeaders: outputs.cloudrunv2.GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader[];
+        /**
+         * Path to access on the HTTP server. Defaults to '/'.
+         */
         path: string;
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
     }
 
@@ -13036,14 +15337,25 @@ export namespace cloudrunv2 {
          * The name of the Cloud Run v2 Service.
          */
         name: string;
+        /**
+         * The header field value
+         */
         value: string;
     }
 
     export interface GetServiceTemplateContainerLivenessProbeTcpSocket {
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the exposed port of the container, which
+         * is the value of container.ports[0].containerPort.
+         */
         port: number;
     }
 
     export interface GetServiceTemplateContainerPort {
+        /**
+         * Port number the container listens on. This must be a valid TCP port number, 0 < containerPort < 65536.
+         */
         containerPort: number;
         /**
          * The name of the Cloud Run v2 Service.
@@ -13052,29 +15364,78 @@ export namespace cloudrunv2 {
     }
 
     export interface GetServiceTemplateContainerResource {
+        /**
+         * Determines whether CPU should be throttled or not outside of requests.
+         */
         cpuIdle: boolean;
+        /**
+         * Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         */
         limits: {[key: string]: string};
+        /**
+         * Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+         */
         startupCpuBoost: boolean;
     }
 
     export interface GetServiceTemplateContainerStartupProbe {
+        /**
+         * Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+         */
         failureThreshold: number;
+        /**
+         * GRPC specifies an action involving a GRPC port.
+         */
         grpcs: outputs.cloudrunv2.GetServiceTemplateContainerStartupProbeGrpc[];
+        /**
+         * HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+         */
         httpGets: outputs.cloudrunv2.GetServiceTemplateContainerStartupProbeHttpGet[];
+        /**
+         * Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
         initialDelaySeconds: number;
+        /**
+         * How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+         */
         periodSeconds: number;
+        /**
+         * TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+         */
         tcpSockets: outputs.cloudrunv2.GetServiceTemplateContainerStartupProbeTcpSocket[];
+        /**
+         * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+         */
         timeoutSeconds: number;
     }
 
     export interface GetServiceTemplateContainerStartupProbeGrpc {
+        /**
+         * Port number to access on the container. Number must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
+        /**
+         * The name of the service to place in the gRPC HealthCheckRequest
+         * (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
+         * If this is not specified, the default behavior is defined by gRPC.
+         */
         service: string;
     }
 
     export interface GetServiceTemplateContainerStartupProbeHttpGet {
+        /**
+         * Custom headers to set in the request. HTTP allows repeated headers.
+         */
         httpHeaders: outputs.cloudrunv2.GetServiceTemplateContainerStartupProbeHttpGetHttpHeader[];
+        /**
+         * Path to access on the HTTP server. Defaults to '/'.
+         */
         path: string;
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
     }
 
@@ -13083,14 +15444,24 @@ export namespace cloudrunv2 {
          * The name of the Cloud Run v2 Service.
          */
         name: string;
+        /**
+         * The header field value
+         */
         value: string;
     }
 
     export interface GetServiceTemplateContainerStartupProbeTcpSocket {
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
         port: number;
     }
 
     export interface GetServiceTemplateContainerVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
         mountPath: string;
         /**
          * The name of the Cloud Run v2 Service.
@@ -13099,89 +15470,225 @@ export namespace cloudrunv2 {
     }
 
     export interface GetServiceTemplateScaling {
+        /**
+         * Maximum number of serving instances that this resource should have.
+         */
         maxInstanceCount: number;
+        /**
+         * Minimum number of serving instances that this resource should have.
+         */
         minInstanceCount: number;
     }
 
     export interface GetServiceTemplateVolume {
+        /**
+         * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+         */
         cloudSqlInstances: outputs.cloudrunv2.GetServiceTemplateVolumeCloudSqlInstance[];
+        /**
+         * Ephemeral storage used as a shared volume.
+         */
         emptyDirs: outputs.cloudrunv2.GetServiceTemplateVolumeEmptyDir[];
+        /**
+         * Represents a GCS Bucket mounted as a volume.
+         */
         gcs: outputs.cloudrunv2.GetServiceTemplateVolumeGc[];
         /**
          * The name of the Cloud Run v2 Service.
          */
         name: string;
+        /**
+         * Represents an NFS mount.
+         */
         nfs: outputs.cloudrunv2.GetServiceTemplateVolumeNf[];
+        /**
+         * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+         */
         secrets: outputs.cloudrunv2.GetServiceTemplateVolumeSecret[];
     }
 
     export interface GetServiceTemplateVolumeCloudSqlInstance {
+        /**
+         * The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+         */
         instances: string[];
     }
 
     export interface GetServiceTemplateVolumeEmptyDir {
+        /**
+         * The different types of medium supported for EmptyDir. Default value: "MEMORY" Possible values: ["MEMORY"]
+         */
         medium: string;
+        /**
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         */
         sizeLimit: string;
     }
 
     export interface GetServiceTemplateVolumeGc {
+        /**
+         * GCS Bucket name
+         */
         bucket: string;
+        /**
+         * If true, mount the GCS bucket as read-only
+         */
         readOnly: boolean;
     }
 
     export interface GetServiceTemplateVolumeNf {
+        /**
+         * Path that is exported by the NFS server.
+         */
         path: string;
+        /**
+         * If true, mount the NFS volume as read only
+         */
         readOnly: boolean;
+        /**
+         * Hostname or IP address of the NFS server
+         */
         server: string;
     }
 
     export interface GetServiceTemplateVolumeSecret {
+        /**
+         * Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
+         */
         defaultMode: number;
+        /**
+         * If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+         */
         items: outputs.cloudrunv2.GetServiceTemplateVolumeSecretItem[];
+        /**
+         * The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
+         */
         secret: string;
     }
 
     export interface GetServiceTemplateVolumeSecretItem {
+        /**
+         * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+         */
         mode: number;
+        /**
+         * The relative path of the secret in the container.
+         */
         path: string;
+        /**
+         * The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+         */
         version: string;
     }
 
     export interface GetServiceTemplateVpcAccess {
+        /**
+         * VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+         */
         connector: string;
+        /**
+         * Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+         */
         egress: string;
+        /**
+         * Direct VPC egress settings. Currently only single network interface is supported.
+         */
         networkInterfaces: outputs.cloudrunv2.GetServiceTemplateVpcAccessNetworkInterface[];
     }
 
     export interface GetServiceTemplateVpcAccessNetworkInterface {
+        /**
+         * The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+         * looked up from the subnetwork.
+         */
         network: string;
+        /**
+         * The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+         * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+         * subnetwork with the same name with the network will be used.
+         */
         subnetwork: string;
+        /**
+         * Network tags applied to this Cloud Run service.
+         */
         tags: string[];
     }
 
     export interface GetServiceTerminalCondition {
+        /**
+         * A reason for the execution condition.
+         */
         executionReason: string;
+        /**
+         * Last time the condition transitioned from one status to another.
+         */
         lastTransitionTime: string;
+        /**
+         * Human readable message indicating details about the current status.
+         */
         message: string;
+        /**
+         * A common (service-level) reason for this condition.
+         */
         reason: string;
+        /**
+         * A reason for the revision condition.
+         */
         revisionReason: string;
+        /**
+         * How to interpret failures of this condition, one of Error, Warning, Info
+         */
         severity: string;
+        /**
+         * State of the condition.
+         */
         state: string;
+        /**
+         * type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+         */
         type: string;
     }
 
     export interface GetServiceTraffic {
+        /**
+         * Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+         */
         percent: number;
+        /**
+         * Revision to which to send this portion of traffic, if traffic allocation is by revision.
+         */
         revision: string;
+        /**
+         * Indicates a string to be part of the URI to exclusively reference this target.
+         */
         tag: string;
+        /**
+         * The allocation type for this traffic target. Possible values: ["TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST", "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"]
+         */
         type: string;
     }
 
     export interface GetServiceTrafficStatus {
+        /**
+         * Specifies percent of the traffic to this Revision.
+         */
         percent: number;
+        /**
+         * Revision to which this traffic is sent.
+         */
         revision: string;
+        /**
+         * Indicates the string used in the URI to exclusively reference this target.
+         */
         tag: string;
+        /**
+         * The allocation type for this traffic target.
+         */
         type: string;
+        /**
+         * Displays the target URI.
+         */
         uri: string;
     }
 
@@ -14568,332 +17075,908 @@ export namespace cloudtasks {
 
 export namespace composer {
     export interface EnvironmentConfig {
+        /**
+         * The URI of the Apache Airflow Web UI hosted within this environment.
+         */
         airflowUri: string;
+        /**
+         * The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+         */
         dagGcsPrefix: string;
+        /**
+         * The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         databaseConfig: outputs.composer.EnvironmentConfigDatabaseConfig;
+        /**
+         * Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+         */
         enablePrivateBuildsOnly: boolean;
+        /**
+         * Optional. If true, a private Composer environment will be created.
+         */
         enablePrivateEnvironment: boolean;
+        /**
+         * The encryption options for the Composer environment and its dependencies.
+         */
         encryptionConfig: outputs.composer.EnvironmentConfigEncryptionConfig;
+        /**
+         * The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         environmentSize: string;
+        /**
+         * The Kubernetes Engine cluster used to run this environment.
+         */
         gkeCluster: string;
+        /**
+         * The configuration for Cloud Composer maintenance window.
+         */
         maintenanceWindow: outputs.composer.EnvironmentConfigMaintenanceWindow;
+        /**
+         * Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+         */
         masterAuthorizedNetworksConfig?: outputs.composer.EnvironmentConfigMasterAuthorizedNetworksConfig;
+        /**
+         * The configuration used for the Kubernetes Engine cluster.
+         */
         nodeConfig: outputs.composer.EnvironmentConfigNodeConfig;
+        /**
+         * The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         nodeCount: number;
+        /**
+         * The configuration used for the Private IP Cloud Composer environment.
+         */
         privateEnvironmentConfig: outputs.composer.EnvironmentConfigPrivateEnvironmentConfig;
+        /**
+         * The recovery configuration settings for the Cloud Composer environment
+         */
         recoveryConfig?: outputs.composer.EnvironmentConfigRecoveryConfig;
+        /**
+         * Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+         */
         resilienceMode: string;
+        /**
+         * The configuration settings for software inside the environment.
+         */
         softwareConfig: outputs.composer.EnvironmentConfigSoftwareConfig;
+        /**
+         * The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         webServerConfig: outputs.composer.EnvironmentConfigWebServerConfig;
+        /**
+         * Network-level access control policy for the Airflow web server.
+         */
         webServerNetworkAccessControl: outputs.composer.EnvironmentConfigWebServerNetworkAccessControl;
+        /**
+         * The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         workloadsConfig: outputs.composer.EnvironmentConfigWorkloadsConfig;
     }
 
     export interface EnvironmentConfigDatabaseConfig {
+        /**
+         * Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+         */
         machineType?: string;
+        /**
+         * Optional. Cloud SQL database preferred zone.
+         */
         zone?: string;
     }
 
     export interface EnvironmentConfigEncryptionConfig {
+        /**
+         * Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
+         */
         kmsKeyName: string;
     }
 
     export interface EnvironmentConfigMaintenanceWindow {
+        /**
+         * Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
+         */
         endTime: string;
+        /**
+         * Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+         */
         recurrence: string;
+        /**
+         * Start time of the first recurrence of the maintenance window.
+         */
         startTime: string;
     }
 
     export interface EnvironmentConfigMasterAuthorizedNetworksConfig {
+        /**
+         * cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+         */
         cidrBlocks?: outputs.composer.EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock[];
+        /**
+         * Whether or not master authorized networks is enabled.
+         */
         enabled: boolean;
     }
 
     export interface EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+        /**
+         * cidr_block must be specified in CIDR notation.
+         */
         cidrBlock: string;
+        /**
+         * display_name is a field for users to identify CIDR blocks.
+         */
         displayName?: string;
     }
 
     export interface EnvironmentConfigNodeConfig {
+        /**
+         * IPv4 cidr range that will be used by Composer internal components.
+         */
         composerInternalIpv4CidrBlock: string;
+        /**
+         * The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         diskSizeGb: number;
+        /**
+         * Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+         */
         enableIpMasqAgent: boolean;
+        /**
+         * Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+         */
         ipAllocationPolicy: outputs.composer.EnvironmentConfigNodeConfigIpAllocationPolicy;
+        /**
+         * The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         machineType: string;
+        /**
+         * The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         maxPodsPerNode: number;
+        /**
+         * The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+         */
         network: string;
+        /**
+         * The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         oauthScopes: string[];
+        /**
+         * The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+         */
         serviceAccount: string;
+        /**
+         * The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+         */
         subnetwork?: string;
+        /**
+         * The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+         */
         tags?: string[];
+        /**
+         * The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         zone: string;
     }
 
     export interface EnvironmentConfigNodeConfigIpAllocationPolicy {
+        /**
+         * The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
+         */
         clusterIpv4CidrBlock?: string;
+        /**
+         * The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+         */
         clusterSecondaryRangeName?: string;
+        /**
+         * The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
+         */
         servicesIpv4CidrBlock?: string;
+        /**
+         * The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+         */
         servicesSecondaryRangeName?: string;
+        /**
+         * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+         */
         useIpAliases?: boolean;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
+        /**
+         * When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         cloudComposerConnectionSubnetwork: string;
+        /**
+         * The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         cloudComposerNetworkIpv4CidrBlock: string;
+        /**
+         * The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
+         */
         cloudSqlIpv4CidrBlock: string;
+        /**
+         * Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
+         */
         connectionType: string;
+        /**
+         * If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         enablePrivateEndpoint?: boolean;
+        /**
+         * When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
+         */
         enablePrivatelyUsedPublicIps: boolean;
+        /**
+         * The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
+         */
         masterIpv4CidrBlock: string;
+        /**
+         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         webServerIpv4CidrBlock: string;
     }
 
     export interface EnvironmentConfigRecoveryConfig {
+        /**
+         * The configuration settings for scheduled snapshots.
+         */
         scheduledSnapshotsConfig?: outputs.composer.EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig;
     }
 
     export interface EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+        /**
+         * When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+         */
         enabled: boolean;
+        /**
+         * Snapshot schedule, in the unix-cron format.
+         */
         snapshotCreationSchedule?: string;
+        /**
+         * the URI of a bucket folder where to save the snapshot.
+         */
         snapshotLocation?: string;
+        /**
+         * A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+         */
         timeZone?: string;
     }
 
     export interface EnvironmentConfigSoftwareConfig {
+        /**
+         * Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
+         */
         airflowConfigOverrides?: {[key: string]: string};
+        /**
+         * The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
+         */
         cloudDataLineageIntegration: outputs.composer.EnvironmentConfigSoftwareConfigCloudDataLineageIntegration;
+        /**
+         * Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
+         */
         envVariables?: {[key: string]: string};
+        /**
+         * The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
+         */
         imageVersion: string;
+        /**
+         * Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
+         */
         pypiPackages?: {[key: string]: string};
+        /**
+         * The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
+         */
         pythonVersion: string;
+        /**
+         * The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+         */
         schedulerCount: number;
+        /**
+         * Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
+         */
         webServerPluginsMode: string;
     }
 
     export interface EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+        /**
+         * Whether or not Cloud Data Lineage integration is enabled.
+         */
         enabled: boolean;
     }
 
     export interface EnvironmentConfigWebServerConfig {
+        /**
+         * Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+         */
         machineType: string;
     }
 
     export interface EnvironmentConfigWebServerNetworkAccessControl {
+        /**
+         * A collection of allowed IP ranges with descriptions.
+         */
         allowedIpRanges: outputs.composer.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange[];
     }
 
     export interface EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+        /**
+         * A description of this ip range.
+         */
         description?: string;
+        /**
+         * IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
+         */
         value: string;
     }
 
     export interface EnvironmentConfigWorkloadsConfig {
+        /**
+         * Configuration for resources used by DAG processor.
+         */
         dagProcessor: outputs.composer.EnvironmentConfigWorkloadsConfigDagProcessor;
+        /**
+         * Configuration for resources used by Airflow schedulers.
+         */
         scheduler: outputs.composer.EnvironmentConfigWorkloadsConfigScheduler;
+        /**
+         * Configuration for resources used by Airflow triggerers.
+         */
         triggerer: outputs.composer.EnvironmentConfigWorkloadsConfigTriggerer;
+        /**
+         * Configuration for resources used by Airflow web server.
+         */
         webServer: outputs.composer.EnvironmentConfigWorkloadsConfigWebServer;
+        /**
+         * Configuration for resources used by Airflow workers.
+         */
         worker: outputs.composer.EnvironmentConfigWorkloadsConfigWorker;
     }
 
     export interface EnvironmentConfigWorkloadsConfigDagProcessor {
+        /**
+         * CPU request and limit for DAG processor.
+         */
         cpu: number;
+        /**
+         * Memory (GB) request and limit for DAG processor.
+         */
         memoryGb: number;
+        /**
+         * Storage (GB) request and limit for DAG processor.
+         */
         storageGb: number;
     }
 
     export interface EnvironmentConfigWorkloadsConfigScheduler {
+        /**
+         * The number of schedulers.
+         */
         count: number;
+        /**
+         * CPU request and limit for a single Airflow scheduler replica
+         */
         cpu: number;
+        /**
+         * Memory (GB) request and limit for a single Airflow scheduler replica.
+         */
         memoryGb: number;
+        /**
+         * Storage (GB) request and limit for a single Airflow scheduler replica.
+         */
         storageGb: number;
     }
 
     export interface EnvironmentConfigWorkloadsConfigTriggerer {
+        /**
+         * The number of triggerers.
+         */
         count: number;
+        /**
+         * CPU request and limit for a single Airflow triggerer replica.
+         */
         cpu: number;
+        /**
+         * Memory (GB) request and limit for a single Airflow triggerer replica.
+         */
         memoryGb: number;
     }
 
     export interface EnvironmentConfigWorkloadsConfigWebServer {
+        /**
+         * CPU request and limit for Airflow web server.
+         */
         cpu: number;
+        /**
+         * Memory (GB) request and limit for Airflow web server.
+         */
         memoryGb: number;
+        /**
+         * Storage (GB) request and limit for Airflow web server.
+         */
         storageGb: number;
     }
 
     export interface EnvironmentConfigWorkloadsConfigWorker {
+        /**
+         * CPU request and limit for a single Airflow worker replica.
+         */
         cpu: number;
+        /**
+         * Maximum number of workers for autoscaling.
+         */
         maxCount: number;
+        /**
+         * Memory (GB) request and limit for a single Airflow worker replica.
+         */
         memoryGb: number;
+        /**
+         * Minimum number of workers for autoscaling.
+         */
         minCount: number;
+        /**
+         * Storage (GB) request and limit for a single Airflow worker replica.
+         */
         storageGb: number;
     }
 
     export interface EnvironmentStorageConfig {
+        /**
+         * Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+         */
         bucket: string;
     }
 
     export interface GetEnvironmentConfig {
+        /**
+         * The URI of the Apache Airflow Web UI hosted within this environment.
+         */
         airflowUri: string;
+        /**
+         * The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+         */
         dagGcsPrefix: string;
+        /**
+         * The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         databaseConfigs: outputs.composer.GetEnvironmentConfigDatabaseConfig[];
+        /**
+         * Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+         */
         enablePrivateBuildsOnly: boolean;
+        /**
+         * Optional. If true, a private Composer environment will be created.
+         */
         enablePrivateEnvironment: boolean;
+        /**
+         * The encryption options for the Composer environment and its dependencies.
+         */
         encryptionConfigs: outputs.composer.GetEnvironmentConfigEncryptionConfig[];
+        /**
+         * The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         environmentSize: string;
+        /**
+         * The Kubernetes Engine cluster used to run this environment.
+         */
         gkeCluster: string;
+        /**
+         * The configuration for Cloud Composer maintenance window.
+         */
         maintenanceWindows: outputs.composer.GetEnvironmentConfigMaintenanceWindow[];
+        /**
+         * Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+         */
         masterAuthorizedNetworksConfigs: outputs.composer.GetEnvironmentConfigMasterAuthorizedNetworksConfig[];
+        /**
+         * The configuration used for the Kubernetes Engine cluster.
+         */
         nodeConfigs: outputs.composer.GetEnvironmentConfigNodeConfig[];
+        /**
+         * The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         nodeCount: number;
+        /**
+         * The configuration used for the Private IP Cloud Composer environment.
+         */
         privateEnvironmentConfigs: outputs.composer.GetEnvironmentConfigPrivateEnvironmentConfig[];
+        /**
+         * The recovery configuration settings for the Cloud Composer environment
+         */
         recoveryConfigs: outputs.composer.GetEnvironmentConfigRecoveryConfig[];
+        /**
+         * Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+         */
         resilienceMode: string;
+        /**
+         * The configuration settings for software inside the environment.
+         */
         softwareConfigs: outputs.composer.GetEnvironmentConfigSoftwareConfig[];
+        /**
+         * The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         webServerConfigs: outputs.composer.GetEnvironmentConfigWebServerConfig[];
+        /**
+         * Network-level access control policy for the Airflow web server.
+         */
         webServerNetworkAccessControls: outputs.composer.GetEnvironmentConfigWebServerNetworkAccessControl[];
+        /**
+         * The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         workloadsConfigs: outputs.composer.GetEnvironmentConfigWorkloadsConfig[];
     }
 
     export interface GetEnvironmentConfigDatabaseConfig {
+        /**
+         * Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+         */
         machineType: string;
+        /**
+         * Optional. Cloud SQL database preferred zone.
+         */
         zone: string;
     }
 
     export interface GetEnvironmentConfigEncryptionConfig {
+        /**
+         * Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
+         */
         kmsKeyName: string;
     }
 
     export interface GetEnvironmentConfigMaintenanceWindow {
+        /**
+         * Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
+         */
         endTime: string;
+        /**
+         * Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+         */
         recurrence: string;
+        /**
+         * Start time of the first recurrence of the maintenance window.
+         */
         startTime: string;
     }
 
     export interface GetEnvironmentConfigMasterAuthorizedNetworksConfig {
+        /**
+         * cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+         */
         cidrBlocks: outputs.composer.GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock[];
+        /**
+         * Whether or not master authorized networks is enabled.
+         */
         enabled: boolean;
     }
 
     export interface GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+        /**
+         * cidr_block must be specified in CIDR notation.
+         */
         cidrBlock: string;
+        /**
+         * display_name is a field for users to identify CIDR blocks.
+         */
         displayName: string;
     }
 
     export interface GetEnvironmentConfigNodeConfig {
+        /**
+         * IPv4 cidr range that will be used by Composer internal components.
+         */
         composerInternalIpv4CidrBlock: string;
+        /**
+         * The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         diskSizeGb: number;
+        /**
+         * Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+         */
         enableIpMasqAgent: boolean;
+        /**
+         * Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+         */
         ipAllocationPolicies: outputs.composer.GetEnvironmentConfigNodeConfigIpAllocationPolicy[];
+        /**
+         * The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         machineType: string;
+        /**
+         * The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         maxPodsPerNode: number;
+        /**
+         * The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+         */
         network: string;
+        /**
+         * The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         oauthScopes: string[];
+        /**
+         * The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+         */
         serviceAccount: string;
+        /**
+         * The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+         */
         subnetwork: string;
+        /**
+         * The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+         */
         tags: string[];
+        /**
+         * The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         zone: string;
     }
 
     export interface GetEnvironmentConfigNodeConfigIpAllocationPolicy {
+        /**
+         * The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
+         */
         clusterIpv4CidrBlock: string;
+        /**
+         * The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+         */
         clusterSecondaryRangeName: string;
+        /**
+         * The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
+         */
         servicesIpv4CidrBlock: string;
+        /**
+         * The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+         */
         servicesSecondaryRangeName: string;
+        /**
+         * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+         */
         useIpAliases: boolean;
     }
 
     export interface GetEnvironmentConfigPrivateEnvironmentConfig {
+        /**
+         * When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         cloudComposerConnectionSubnetwork: string;
+        /**
+         * The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         cloudComposerNetworkIpv4CidrBlock: string;
+        /**
+         * The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
+         */
         cloudSqlIpv4CidrBlock: string;
+        /**
+         * Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
+         */
         connectionType: string;
+        /**
+         * If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         enablePrivateEndpoint: boolean;
+        /**
+         * When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
+         */
         enablePrivatelyUsedPublicIps: boolean;
+        /**
+         * The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
+         */
         masterIpv4CidrBlock: string;
+        /**
+         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         webServerIpv4CidrBlock: string;
     }
 
     export interface GetEnvironmentConfigRecoveryConfig {
+        /**
+         * The configuration settings for scheduled snapshots.
+         */
         scheduledSnapshotsConfigs: outputs.composer.GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig[];
     }
 
     export interface GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+        /**
+         * When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+         */
         enabled: boolean;
+        /**
+         * Snapshot schedule, in the unix-cron format.
+         */
         snapshotCreationSchedule: string;
+        /**
+         * the URI of a bucket folder where to save the snapshot.
+         */
         snapshotLocation: string;
+        /**
+         * A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+         */
         timeZone: string;
     }
 
     export interface GetEnvironmentConfigSoftwareConfig {
+        /**
+         * Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
+         */
         airflowConfigOverrides: {[key: string]: string};
+        /**
+         * The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
+         */
         cloudDataLineageIntegrations: outputs.composer.GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration[];
+        /**
+         * Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
+         */
         envVariables: {[key: string]: string};
+        /**
+         * The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
+         */
         imageVersion: string;
+        /**
+         * Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
+         */
         pypiPackages: {[key: string]: string};
+        /**
+         * The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
+         */
         pythonVersion: string;
+        /**
+         * The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+         */
         schedulerCount: number;
+        /**
+         * Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
+         */
         webServerPluginsMode: string;
     }
 
     export interface GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+        /**
+         * Whether or not Cloud Data Lineage integration is enabled.
+         */
         enabled: boolean;
     }
 
     export interface GetEnvironmentConfigWebServerConfig {
+        /**
+         * Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+         */
         machineType: string;
     }
 
     export interface GetEnvironmentConfigWebServerNetworkAccessControl {
+        /**
+         * A collection of allowed IP ranges with descriptions.
+         */
         allowedIpRanges: outputs.composer.GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange[];
     }
 
     export interface GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+        /**
+         * A description of this ip range.
+         */
         description: string;
+        /**
+         * IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
+         */
         value: string;
     }
 
     export interface GetEnvironmentConfigWorkloadsConfig {
+        /**
+         * Configuration for resources used by DAG processor.
+         */
         dagProcessors: outputs.composer.GetEnvironmentConfigWorkloadsConfigDagProcessor[];
+        /**
+         * Configuration for resources used by Airflow schedulers.
+         */
         schedulers: outputs.composer.GetEnvironmentConfigWorkloadsConfigScheduler[];
+        /**
+         * Configuration for resources used by Airflow triggerers.
+         */
         triggerers: outputs.composer.GetEnvironmentConfigWorkloadsConfigTriggerer[];
+        /**
+         * Configuration for resources used by Airflow web server.
+         */
         webServers: outputs.composer.GetEnvironmentConfigWorkloadsConfigWebServer[];
+        /**
+         * Configuration for resources used by Airflow workers.
+         */
         workers: outputs.composer.GetEnvironmentConfigWorkloadsConfigWorker[];
     }
 
     export interface GetEnvironmentConfigWorkloadsConfigDagProcessor {
+        /**
+         * CPU request and limit for DAG processor.
+         */
         cpu: number;
+        /**
+         * Memory (GB) request and limit for DAG processor.
+         */
         memoryGb: number;
+        /**
+         * Storage (GB) request and limit for DAG processor.
+         */
         storageGb: number;
     }
 
     export interface GetEnvironmentConfigWorkloadsConfigScheduler {
+        /**
+         * The number of schedulers.
+         */
         count: number;
+        /**
+         * CPU request and limit for a single Airflow scheduler replica
+         */
         cpu: number;
+        /**
+         * Memory (GB) request and limit for a single Airflow scheduler replica.
+         */
         memoryGb: number;
+        /**
+         * Storage (GB) request and limit for a single Airflow scheduler replica.
+         */
         storageGb: number;
     }
 
     export interface GetEnvironmentConfigWorkloadsConfigTriggerer {
+        /**
+         * The number of triggerers.
+         */
         count: number;
+        /**
+         * CPU request and limit for a single Airflow triggerer replica.
+         */
         cpu: number;
+        /**
+         * Memory (GB) request and limit for a single Airflow triggerer replica.
+         */
         memoryGb: number;
     }
 
     export interface GetEnvironmentConfigWorkloadsConfigWebServer {
+        /**
+         * CPU request and limit for Airflow web server.
+         */
         cpu: number;
+        /**
+         * Memory (GB) request and limit for Airflow web server.
+         */
         memoryGb: number;
+        /**
+         * Storage (GB) request and limit for Airflow web server.
+         */
         storageGb: number;
     }
 
     export interface GetEnvironmentConfigWorkloadsConfigWorker {
+        /**
+         * CPU request and limit for a single Airflow worker replica.
+         */
         cpu: number;
+        /**
+         * Maximum number of workers for autoscaling.
+         */
         maxCount: number;
+        /**
+         * Memory (GB) request and limit for a single Airflow worker replica.
+         */
         memoryGb: number;
+        /**
+         * Minimum number of workers for autoscaling.
+         */
         minCount: number;
+        /**
+         * Storage (GB) request and limit for a single Airflow worker replica.
+         */
         storageGb: number;
     }
 
     export interface GetEnvironmentStorageConfig {
+        /**
+         * Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+         */
         bucket: string;
     }
 
@@ -16124,99 +19207,395 @@ export namespace compute {
     }
 
     export interface GetBackendBucketCdnPolicy {
+        /**
+         * Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
+         */
         bypassCacheOnRequestHeaders: outputs.compute.GetBackendBucketCdnPolicyBypassCacheOnRequestHeader[];
+        /**
+         * The CacheKeyPolicy for this CdnPolicy.
+         */
         cacheKeyPolicies: outputs.compute.GetBackendBucketCdnPolicyCacheKeyPolicy[];
+        /**
+         * Specifies the cache setting for all responses from this backend.
+         * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+         */
         cacheMode: string;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         clientTtl: number;
+        /**
+         * Specifies the default TTL for cached content served by this origin for responses
+         * that do not have an existing valid TTL (max-age or s-max-age).
+         */
         defaultTtl: number;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         maxTtl: number;
+        /**
+         * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+         */
         negativeCaching: boolean;
+        /**
+         * Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+         * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+         */
         negativeCachingPolicies: outputs.compute.GetBackendBucketCdnPolicyNegativeCachingPolicy[];
+        /**
+         * If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+         */
         requestCoalescing: boolean;
+        /**
+         * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+         */
         serveWhileStale: number;
+        /**
+         * Maximum number of seconds the response to a signed URL request will
+         * be considered fresh. After this time period,
+         * the response will be revalidated before being served.
+         * When serving responses to signed URL requests,
+         * Cloud CDN will internally behave as though
+         * all responses from this backend had a "Cache-Control: public,
+         * max-age=[TTL]" header, regardless of any existing Cache-Control
+         * header. The actual headers served in responses will not be altered.
+         */
         signedUrlCacheMaxAgeSec: number;
     }
 
     export interface GetBackendBucketCdnPolicyBypassCacheOnRequestHeader {
+        /**
+         * The header field name to match on when bypassing cache. Values are case-insensitive.
+         */
         headerName: string;
     }
 
     export interface GetBackendBucketCdnPolicyCacheKeyPolicy {
+        /**
+         * Allows HTTP request headers (by name) to be used in the
+         * cache key.
+         */
         includeHttpHeaders: string[];
+        /**
+         * Names of query string parameters to include in cache keys.
+         * Default parameters are always included. '&' and '=' will
+         * be percent encoded and not treated as delimiters.
+         */
         queryStringWhitelists: string[];
     }
 
     export interface GetBackendBucketCdnPolicyNegativeCachingPolicy {
+        /**
+         * The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+         * can be specified as values, and you cannot specify a status code more than once.
+         */
         code: number;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl: number;
     }
 
     export interface GetBackendServiceBackend {
+        /**
+         * Specifies the balancing mode for this backend.
+         *
+         * For global HTTP(S) or TCP/SSL load balancing, the default is
+         * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+         * and CONNECTION (for TCP/SSL).
+         *
+         * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+         * for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+         */
         balancingMode: string;
+        /**
+         * A multiplier applied to the group's maximum servicing capacity
+         * (based on UTILIZATION, RATE or CONNECTION).
+         *
+         * Default value is 1, which means the group will serve up to 100%
+         * of its configured capacity (depending on balancingMode). A
+         * setting of 0 means the group is completely drained, offering
+         * 0% of its available Capacity. Valid range is [0.0,1.0].
+         */
         capacityScaler: number;
         /**
          * Textual description for the Backend Service.
          */
         description: string;
+        /**
+         * The fully-qualified URL of an Instance Group or Network Endpoint
+         * Group resource. In case of instance group this defines the list
+         * of instances that serve traffic. Member virtual machine
+         * instances from each instance group must live in the same zone as
+         * the instance group itself. No two backends in a backend service
+         * are allowed to use same Instance Group resource.
+         *
+         * For Network Endpoint Groups this defines list of endpoints. All
+         * endpoints of Network Endpoint Group must be hosted on instances
+         * located in the same zone as the Network Endpoint Group.
+         *
+         * Backend services cannot mix Instance Group and
+         * Network Endpoint Group backends.
+         *
+         * Note that you must specify an Instance Group or Network Endpoint
+         * Group resource using the fully-qualified URL, rather than a
+         * partial URL.
+         */
         group: string;
+        /**
+         * The max number of simultaneous connections for the group. Can
+         * be used with either CONNECTION or UTILIZATION balancing modes.
+         *
+         * For CONNECTION mode, either maxConnections or one
+         * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+         * as appropriate for group type, must be set.
+         */
         maxConnections: number;
+        /**
+         * The max number of simultaneous connections that a single backend
+         * network endpoint can handle. This is used to calculate the
+         * capacity of the group. Can be used in either CONNECTION or
+         * UTILIZATION balancing modes.
+         *
+         * For CONNECTION mode, either
+         * maxConnections or maxConnectionsPerEndpoint must be set.
+         */
         maxConnectionsPerEndpoint: number;
+        /**
+         * The max number of simultaneous connections that a single
+         * backend instance can handle. This is used to calculate the
+         * capacity of the group. Can be used in either CONNECTION or
+         * UTILIZATION balancing modes.
+         *
+         * For CONNECTION mode, either maxConnections or
+         * maxConnectionsPerInstance must be set.
+         */
         maxConnectionsPerInstance: number;
+        /**
+         * The max requests per second (RPS) of the group.
+         *
+         * Can be used with either RATE or UTILIZATION balancing modes,
+         * but required if RATE mode. For RATE mode, either maxRate or one
+         * of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+         * group type, must be set.
+         */
         maxRate: number;
+        /**
+         * The max requests per second (RPS) that a single backend network
+         * endpoint can handle. This is used to calculate the capacity of
+         * the group. Can be used in either balancing mode. For RATE mode,
+         * either maxRate or maxRatePerEndpoint must be set.
+         */
         maxRatePerEndpoint: number;
+        /**
+         * The max requests per second (RPS) that a single backend
+         * instance can handle. This is used to calculate the capacity of
+         * the group. Can be used in either balancing mode. For RATE mode,
+         * either maxRate or maxRatePerInstance must be set.
+         */
         maxRatePerInstance: number;
+        /**
+         * Used when balancingMode is UTILIZATION. This ratio defines the
+         * CPU utilization target for the group. Valid range is [0.0, 1.0].
+         */
         maxUtilization: number;
     }
 
     export interface GetBackendServiceCdnPolicy {
+        /**
+         * Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+         * The cache is bypassed for all cdnPolicy.cacheMode settings.
+         */
         bypassCacheOnRequestHeaders: outputs.compute.GetBackendServiceCdnPolicyBypassCacheOnRequestHeader[];
+        /**
+         * The CacheKeyPolicy for this CdnPolicy.
+         */
         cacheKeyPolicies: outputs.compute.GetBackendServiceCdnPolicyCacheKeyPolicy[];
+        /**
+         * Specifies the cache setting for all responses from this backend.
+         * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+         */
         cacheMode: string;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         clientTtl: number;
+        /**
+         * Specifies the default TTL for cached content served by this origin for responses
+         * that do not have an existing valid TTL (max-age or s-max-age).
+         */
         defaultTtl: number;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         maxTtl: number;
+        /**
+         * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+         */
         negativeCaching: boolean;
+        /**
+         * Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+         * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+         */
         negativeCachingPolicies: outputs.compute.GetBackendServiceCdnPolicyNegativeCachingPolicy[];
+        /**
+         * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+         */
         serveWhileStale: number;
+        /**
+         * Maximum number of seconds the response to a signed URL request
+         * will be considered fresh, defaults to 1hr (3600s). After this
+         * time period, the response will be revalidated before
+         * being served.
+         *
+         * When serving responses to signed URL requests, Cloud CDN will
+         * internally behave as though all responses from this backend had a
+         * "Cache-Control: public, max-age=[TTL]" header, regardless of any
+         * existing Cache-Control header. The actual headers served in
+         * responses will not be altered.
+         */
         signedUrlCacheMaxAgeSec: number;
     }
 
     export interface GetBackendServiceCdnPolicyBypassCacheOnRequestHeader {
+        /**
+         * The header field name to match on when bypassing cache. Values are case-insensitive.
+         */
         headerName: string;
     }
 
     export interface GetBackendServiceCdnPolicyCacheKeyPolicy {
+        /**
+         * If true requests to different hosts will be cached separately.
+         */
         includeHost: boolean;
+        /**
+         * Allows HTTP request headers (by name) to be used in the
+         * cache key.
+         */
         includeHttpHeaders: string[];
+        /**
+         * Names of cookies to include in cache keys.
+         */
         includeNamedCookies: string[];
+        /**
+         * If true, http and https requests will be cached separately.
+         */
         includeProtocol: boolean;
+        /**
+         * If true, include query string parameters in the cache key
+         * according to queryStringWhitelist and
+         * query_string_blacklist. If neither is set, the entire query
+         * string will be included.
+         *
+         * If false, the query string will be excluded from the cache
+         * key entirely.
+         */
         includeQueryString: boolean;
+        /**
+         * Names of query string parameters to exclude in cache keys.
+         *
+         * All other parameters will be included. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
         queryStringBlacklists: string[];
+        /**
+         * Names of query string parameters to include in cache keys.
+         *
+         * All other parameters will be excluded. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
         queryStringWhitelists: string[];
     }
 
     export interface GetBackendServiceCdnPolicyNegativeCachingPolicy {
+        /**
+         * The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+         * can be specified as values, and you cannot specify a status code more than once.
+         */
         code: number;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl: number;
     }
 
     export interface GetBackendServiceCircuitBreaker {
+        /**
+         * The timeout for new network connections to hosts.
+         */
         connectTimeouts: outputs.compute.GetBackendServiceCircuitBreakerConnectTimeout[];
+        /**
+         * The maximum number of connections to the backend cluster.
+         * Defaults to 1024.
+         */
         maxConnections: number;
+        /**
+         * The maximum number of pending requests to the backend cluster.
+         * Defaults to 1024.
+         */
         maxPendingRequests: number;
+        /**
+         * The maximum number of parallel requests to the backend cluster.
+         * Defaults to 1024.
+         */
         maxRequests: number;
+        /**
+         * Maximum requests for a single backend connection. This parameter
+         * is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+         * not specified, there is no limit. Setting this parameter to 1
+         * will effectively disable keep alive.
+         */
         maxRequestsPerConnection: number;
+        /**
+         * The maximum number of parallel retries to the backend cluster.
+         * Defaults to 3.
+         */
         maxRetries: number;
     }
 
     export interface GetBackendServiceCircuitBreakerConnectTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
     export interface GetBackendServiceConsistentHash {
+        /**
+         * Hash is based on HTTP Cookie. This field describes a HTTP cookie
+         * that will be used as the hash key for the consistent hash load
+         * balancer. If the cookie is not present, it will be generated.
+         * This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+         */
         httpCookies: outputs.compute.GetBackendServiceConsistentHashHttpCooky[];
+        /**
+         * The hash based on the value of the specified header field.
+         * This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+         */
         httpHeaderName: string;
+        /**
+         * The minimum number of virtual nodes to use for the hash ring.
+         * Larger ring sizes result in more granular load
+         * distributions. If the number of hosts in the load balancing pool
+         * is larger than the ring size, each host will be assigned a single
+         * virtual node.
+         * Defaults to 1024.
+         */
         minimumRingSize: number;
     }
 
@@ -16227,27 +19606,63 @@ export namespace compute {
          * - - -
          */
         name: string;
+        /**
+         * Path to set for the cookie.
+         */
         path: string;
+        /**
+         * Lifetime of the cookie.
+         */
         ttls: outputs.compute.GetBackendServiceConsistentHashHttpCookyTtl[];
     }
 
     export interface GetBackendServiceConsistentHashHttpCookyTtl {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
     export interface GetBackendServiceIap {
+        /**
+         * OAuth2 Client ID for IAP
+         */
         oauth2ClientId: string;
+        /**
+         * OAuth2 Client Secret for IAP
+         */
         oauth2ClientSecret: string;
+        /**
+         * OAuth2 Client Secret SHA-256 for IAP
+         */
         oauth2ClientSecretSha256: string;
     }
 
     export interface GetBackendServiceLocalityLbPolicy {
+        /**
+         * The configuration for a custom policy implemented by the user and
+         * deployed with the client.
+         */
         customPolicies: outputs.compute.GetBackendServiceLocalityLbPolicyCustomPolicy[];
+        /**
+         * The configuration for a built-in load balancing policy.
+         */
         policies: outputs.compute.GetBackendServiceLocalityLbPolicyPolicy[];
     }
 
     export interface GetBackendServiceLocalityLbPolicyCustomPolicy {
+        /**
+         * An optional, arbitrary JSON object with configuration data, understood
+         * by a locally installed custom policy implementation.
+         */
         data: string;
         /**
          * The name of the Backend Service.
@@ -16267,48 +19682,171 @@ export namespace compute {
     }
 
     export interface GetBackendServiceLogConfig {
+        /**
+         * Whether to enable logging for the load balancer traffic served by this backend service.
+         */
         enable: boolean;
+        /**
+         * This field can only be specified if logging is enabled for this backend service. The value of
+         * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+         * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+         * The default value is 1.0.
+         */
         sampleRate: number;
     }
 
     export interface GetBackendServiceOutlierDetection {
+        /**
+         * The base time that a host is ejected for. The real time is equal to the base
+         * time multiplied by the number of times the host has been ejected. Defaults to
+         * 30000ms or 30s.
+         */
         baseEjectionTimes: outputs.compute.GetBackendServiceOutlierDetectionBaseEjectionTime[];
+        /**
+         * Number of errors before a host is ejected from the connection pool. When the
+         * backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+         * Defaults to 5.
+         */
         consecutiveErrors: number;
+        /**
+         * The number of consecutive gateway failures (502, 503, 504 status or connection
+         * errors that are mapped to one of those status codes) before a consecutive
+         * gateway failure ejection occurs. Defaults to 5.
+         */
         consecutiveGatewayFailure: number;
+        /**
+         * The percentage chance that a host will be actually ejected when an outlier
+         * status is detected through consecutive 5xx. This setting can be used to disable
+         * ejection or to ramp it up slowly. Defaults to 100.
+         */
         enforcingConsecutiveErrors: number;
+        /**
+         * The percentage chance that a host will be actually ejected when an outlier
+         * status is detected through consecutive gateway failures. This setting can be
+         * used to disable ejection or to ramp it up slowly. Defaults to 0.
+         */
         enforcingConsecutiveGatewayFailure: number;
+        /**
+         * The percentage chance that a host will be actually ejected when an outlier
+         * status is detected through success rate statistics. This setting can be used to
+         * disable ejection or to ramp it up slowly. Defaults to 100.
+         */
         enforcingSuccessRate: number;
+        /**
+         * Time interval between ejection sweep analysis. This can result in both new
+         * ejections as well as hosts being returned to service. Defaults to 10 seconds.
+         */
         intervals: outputs.compute.GetBackendServiceOutlierDetectionInterval[];
+        /**
+         * Maximum percentage of hosts in the load balancing pool for the backend service
+         * that can be ejected. Defaults to 10%.
+         */
         maxEjectionPercent: number;
+        /**
+         * The number of hosts in a cluster that must have enough request volume to detect
+         * success rate outliers. If the number of hosts is less than this setting, outlier
+         * detection via success rate statistics is not performed for any host in the
+         * cluster. Defaults to 5.
+         */
         successRateMinimumHosts: number;
+        /**
+         * The minimum number of total requests that must be collected in one interval (as
+         * defined by the interval duration above) to include this host in success rate
+         * based outlier detection. If the volume is lower than this setting, outlier
+         * detection via success rate statistics is not performed for that host. Defaults
+         * to 100.
+         */
         successRateRequestVolume: number;
+        /**
+         * This factor is used to determine the ejection threshold for success rate outlier
+         * ejection. The ejection threshold is the difference between the mean success
+         * rate, and the product of this factor and the standard deviation of the mean
+         * success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+         * by a thousand to get a double. That is, if the desired factor is 1.9, the
+         * runtime value should be 1900. Defaults to 1900.
+         */
         successRateStdevFactor: number;
     }
 
     export interface GetBackendServiceOutlierDetectionBaseEjectionTime {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 'seconds' field and a positive
+         * 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface GetBackendServiceOutlierDetectionInterval {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations
+         * less than one second are represented with a 0 'seconds' field and a positive
+         * 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+         * inclusive.
+         */
         seconds: number;
     }
 
     export interface GetBackendServiceSecuritySetting {
+        /**
+         * ClientTlsPolicy is a resource that specifies how a client should authenticate
+         * connections to backends of a service. This resource itself does not affect
+         * configuration unless it is attached to a backend service resource.
+         */
         clientTlsPolicy: string;
+        /**
+         * A list of alternate names to verify the subject identity in the certificate.
+         * If specified, the client will verify that the server certificate's subject
+         * alt name matches one of the specified values.
+         */
         subjectAltNames: string[];
     }
 
     export interface GetDiskAsyncPrimaryDisk {
+        /**
+         * Primary disk for asynchronous disk replication.
+         */
         disk: string;
     }
 
     export interface GetDiskDiskEncryptionKey {
+        /**
+         * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+         * in the cloud console. Your project's Compute Engine System service account
+         * ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+         * 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         */
         kmsKeySelfLink: string;
+        /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
         kmsKeyServiceAccount: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey: string;
+        /**
+         * Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+         * customer-supplied encryption key to either encrypt or decrypt
+         * this resource. You can provide either the rawKey or the rsaEncryptedKey.
+         */
         rsaEncryptedKey: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
@@ -16321,26 +19859,85 @@ export namespace compute {
     }
 
     export interface GetDiskSourceImageEncryptionKey {
+        /**
+         * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+         * in the cloud console. Your project's Compute Engine System service account
+         * ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+         * 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         */
         kmsKeySelfLink: string;
+        /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
         kmsKeyServiceAccount: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface GetDiskSourceSnapshotEncryptionKey {
+        /**
+         * The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+         * in the cloud console. Your project's Compute Engine System service account
+         * ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+         * 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+         * See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+         */
         kmsKeySelfLink: string;
+        /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
         kmsKeyServiceAccount: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface GetForwardingRuleServiceDirectoryRegistration {
+        /**
+         * Service Directory namespace to register the forwarding rule under.
+         */
         namespace: string;
+        /**
+         * Service Directory service to register the forwarding rule under.
+         */
         service: string;
     }
 
     export interface GetGlobalForwardingRuleMetadataFilter {
+        /**
+         * The list of label value pairs that must match labels in the
+         * provided metadata based on filterMatchCriteria
+         *
+         * This list must not be empty and can have at the most 64 entries.
+         */
         filterLabels: outputs.compute.GetGlobalForwardingRuleMetadataFilterFilterLabel[];
+        /**
+         * Specifies how individual filterLabel matches within the list of
+         * filterLabels contribute towards the overall metadataFilter match.
+         *
+         * MATCH_ANY - At least one of the filterLabels must have a matching
+         * label in the provided metadata.
+         * MATCH_ALL - All filterLabels must have matching labels in the
+         * provided metadata. Possible values: ["MATCH_ANY", "MATCH_ALL"]
+         */
         filterMatchCriteria: string;
     }
 
@@ -16351,82 +19948,359 @@ export namespace compute {
          * - - -
          */
         name: string;
+        /**
+         * The value that the label must match. The value has a maximum
+         * length of 1024 characters.
+         */
         value: string;
     }
 
     export interface GetGlobalForwardingRuleServiceDirectoryRegistration {
+        /**
+         * Service Directory namespace to register the forwarding rule under.
+         */
         namespace: string;
+        /**
+         * [Optional] Service Directory region to register this global forwarding rule under.
+         * Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+         * Google APIs Forwarding Rules on the same network should use the same Service
+         * Directory region.
+         */
         serviceDirectoryRegion: string;
     }
 
     export interface GetHcVpnGatewayVpnInterface {
+        /**
+         * The numeric ID of this VPN gateway interface.
+         */
         id: number;
+        /**
+         * URL of the interconnect attachment resource. When the value
+         * of this field is present, the VPN Gateway will be used for
+         * IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+         * traffic for this VPN Gateway interface will go through the
+         * specified interconnect attachment resource.
+         *
+         * Not currently available publicly.
+         */
         interconnectAttachment: string;
+        /**
+         * The external IP address for this VPN gateway interface.
+         */
         ipAddress: string;
     }
 
     export interface GetHealthCheckGrpcHealthCheck {
+        /**
+         * The gRPC service name for the health check.
+         * The value of grpcServiceName has the following meanings by convention:
+         *   - Empty serviceName means the overall status of all services at the backend.
+         *   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+         * The grpcServiceName can only be ASCII.
+         */
         grpcServiceName: string;
+        /**
+         * The port number for the health check request.
+         * Must be specified if portName and portSpecification are not set
+         * or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+         */
         port: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         *
+         *   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+         *
+         *   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+         *
+         *   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+         *   network endpoint is used for health checking. For other backends, the
+         *   port or named port specified in the Backend Service is used for health
+         *   checking.
+         *
+         * If not specified, gRPC health check follows behavior specified in 'port' and
+         * 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+         */
         portSpecification: string;
     }
 
     export interface GetHealthCheckHttp2HealthCheck {
+        /**
+         * The value of the host header in the HTTP2 health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
         host: string;
+        /**
+         * The TCP port number for the HTTP2 health check request.
+         * The default value is 443.
+         */
         port: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         *
+         *   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+         *
+         *   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+         *
+         *   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+         *   network endpoint is used for health checking. For other backends, the
+         *   port or named port specified in the Backend Service is used for health
+         *   checking.
+         *
+         * If not specified, HTTP2 health check follows behavior specified in 'port' and
+         * 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+         */
         portSpecification: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+         */
         proxyHeader: string;
+        /**
+         * The request path of the HTTP2 health check request.
+         * The default value is /.
+         */
         requestPath: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response: string;
     }
 
     export interface GetHealthCheckHttpHealthCheck {
+        /**
+         * The value of the host header in the HTTP health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
         host: string;
+        /**
+         * The TCP port number for the HTTP health check request.
+         * The default value is 80.
+         */
         port: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         *
+         *   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+         *
+         *   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+         *
+         *   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+         *   network endpoint is used for health checking. For other backends, the
+         *   port or named port specified in the Backend Service is used for health
+         *   checking.
+         *
+         * If not specified, HTTP health check follows behavior specified in 'port' and
+         * 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+         */
         portSpecification: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+         */
         proxyHeader: string;
+        /**
+         * The request path of the HTTP health check request.
+         * The default value is /.
+         */
         requestPath: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response: string;
     }
 
     export interface GetHealthCheckHttpsHealthCheck {
+        /**
+         * The value of the host header in the HTTPS health check request.
+         * If left empty (default value), the public IP on behalf of which this health
+         * check is performed will be used.
+         */
         host: string;
+        /**
+         * The TCP port number for the HTTPS health check request.
+         * The default value is 443.
+         */
         port: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         *
+         *   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+         *
+         *   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+         *
+         *   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+         *   network endpoint is used for health checking. For other backends, the
+         *   port or named port specified in the Backend Service is used for health
+         *   checking.
+         *
+         * If not specified, HTTPS health check follows behavior specified in 'port' and
+         * 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+         */
         portSpecification: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+         */
         proxyHeader: string;
+        /**
+         * The request path of the HTTPS health check request.
+         * The default value is /.
+         */
         requestPath: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response: string;
     }
 
     export interface GetHealthCheckLogConfig {
+        /**
+         * Indicates whether or not to export logs. This is false by default,
+         * which means no health check logging will be done.
+         */
         enable: boolean;
     }
 
     export interface GetHealthCheckSslHealthCheck {
+        /**
+         * The TCP port number for the SSL health check request.
+         * The default value is 443.
+         */
         port: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         *
+         *   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+         *
+         *   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+         *
+         *   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+         *   network endpoint is used for health checking. For other backends, the
+         *   port or named port specified in the Backend Service is used for health
+         *   checking.
+         *
+         * If not specified, SSL health check follows behavior specified in 'port' and
+         * 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+         */
         portSpecification: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+         */
         proxyHeader: string;
+        /**
+         * The application data to send once the SSL connection has been
+         * established (default value is empty). If both request and response are
+         * empty, the connection establishment alone will indicate health. The request
+         * data can only be ASCII.
+         */
         request: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response: string;
     }
 
     export interface GetHealthCheckTcpHealthCheck {
+        /**
+         * The TCP port number for the TCP health check request.
+         * The default value is 443.
+         */
         port: number;
+        /**
+         * Port name as defined in InstanceGroup#NamedPort#name. If both port and
+         * portName are defined, port takes precedence.
+         */
         portName: string;
+        /**
+         * Specifies how port is selected for health checking, can be one of the
+         * following values:
+         *
+         *   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+         *
+         *   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+         *
+         *   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+         *   network endpoint is used for health checking. For other backends, the
+         *   port or named port specified in the Backend Service is used for health
+         *   checking.
+         *
+         * If not specified, TCP health check follows behavior specified in 'port' and
+         * 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+         */
         portSpecification: string;
+        /**
+         * Specifies the type of proxy header to append before sending data to the
+         * backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+         */
         proxyHeader: string;
+        /**
+         * The application data to send once the TCP connection has been
+         * established (default value is empty). If both request and response are
+         * empty, the connection establishment alone will indicate health. The request
+         * data can only be ASCII.
+         */
         request: string;
+        /**
+         * The bytes to match against the beginning of the response data. If left empty
+         * (the default value), any response will indicate health. The response data
+         * can only be ASCII.
+         */
         response: string;
     }
 
     export interface GetInstanceAdvancedMachineFeature {
+        /**
+         * Whether to enable nested virtualization or not.
+         */
         enableNestedVirtualization: boolean;
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore: number;
+        /**
+         * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+         */
         visibleCoreCount: number;
     }
 
@@ -16436,8 +20310,17 @@ export namespace compute {
          * under `/dev/disk/by-id/`
          */
         deviceName: string;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256: string;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink: string;
         /**
          * Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
@@ -16459,13 +20342,22 @@ export namespace compute {
          * under `/dev/disk/by-id/`
          */
         deviceName: string;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256: string;
         /**
          * Parameters with which a disk was created alongside the instance.
          * Structure is documented below.
          */
         initializeParams: outputs.compute.GetInstanceBootDiskInitializeParam[];
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink: string;
         /**
          * Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
@@ -16478,6 +20370,9 @@ export namespace compute {
     }
 
     export interface GetInstanceBootDiskInitializeParam {
+        /**
+         * A flag to enable confidential compute mode on boot disk
+         */
         enableConfidentialCompute: boolean;
         /**
          * The image from which this disk was initialised.
@@ -16487,8 +20382,17 @@ export namespace compute {
          * A set of key/value label pairs assigned to the disk.
          */
         labels: {[key: string]: any};
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         */
         provisionedIops: number;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         */
         provisionedThroughput: number;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags: {[key: string]: any};
         /**
          * The size of the image in gigabytes.
@@ -16501,20 +20405,38 @@ export namespace compute {
     }
 
     export interface GetInstanceConfidentialInstanceConfig {
+        /**
+         * Defines whether the instance should have confidential compute enabled.
+         */
         enableConfidentialCompute: boolean;
     }
 
     export interface GetInstanceGroupManagerAllInstancesConfig {
+        /**
+         * The label key-value pairs that you want to patch onto the instance,
+         */
         labels: {[key: string]: string};
+        /**
+         * The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+         */
         metadata: {[key: string]: string};
     }
 
     export interface GetInstanceGroupManagerAutoHealingPolicy {
+        /**
+         * The health check resource that signals autohealing.
+         */
         healthCheck: string;
+        /**
+         * The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+         */
         initialDelaySec: number;
     }
 
     export interface GetInstanceGroupManagerInstanceLifecyclePolicy {
+        /**
+         * Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+         */
         forceUpdateOnRepair: string;
     }
 
@@ -16523,71 +20445,158 @@ export namespace compute {
          * The name of the instance group. Either `name` or `selfLink` must be provided.
          */
         name: string;
+        /**
+         * The port number.
+         */
         port: number;
     }
 
     export interface GetInstanceGroupManagerStatefulDisk {
+        /**
+         * A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+         */
         deleteRule: string;
+        /**
+         * The device name of the disk to be attached.
+         */
         deviceName: string;
     }
 
     export interface GetInstanceGroupManagerStatefulExternalIp {
+        /**
+         * A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+         */
         deleteRule: string;
+        /**
+         * The network interface name
+         */
         interfaceName: string;
     }
 
     export interface GetInstanceGroupManagerStatefulInternalIp {
+        /**
+         * A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+         */
         deleteRule: string;
+        /**
+         * The network interface name
+         */
         interfaceName: string;
     }
 
     export interface GetInstanceGroupManagerStatus {
+        /**
+         * Status of all-instances configuration on the group.
+         */
         allInstancesConfigs: outputs.compute.GetInstanceGroupManagerStatusAllInstancesConfig[];
+        /**
+         * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+         */
         isStable: boolean;
+        /**
+         * Stateful status of the given Instance Group Manager.
+         */
         statefuls: outputs.compute.GetInstanceGroupManagerStatusStateful[];
+        /**
+         * A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+         */
         versionTargets: outputs.compute.GetInstanceGroupManagerStatusVersionTarget[];
     }
 
     export interface GetInstanceGroupManagerStatusAllInstancesConfig {
+        /**
+         * A bit indicating whether this configuration has been applied to all managed instances in the group.
+         */
         effective: boolean;
     }
 
     export interface GetInstanceGroupManagerStatusStateful {
+        /**
+         * A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+         */
         hasStatefulConfig: boolean;
+        /**
+         * Status of per-instance configs on the instance.
+         */
         perInstanceConfigs: outputs.compute.GetInstanceGroupManagerStatusStatefulPerInstanceConfig[];
     }
 
     export interface GetInstanceGroupManagerStatusStatefulPerInstanceConfig {
+        /**
+         * A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+         */
         allEffective: boolean;
     }
 
     export interface GetInstanceGroupManagerStatusVersionTarget {
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
         isReached: boolean;
     }
 
     export interface GetInstanceGroupManagerUpdatePolicy {
+        /**
+         * The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+         */
         maxSurgeFixed: number;
+        /**
+         * The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+         */
         maxSurgePercent: number;
+        /**
+         * The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+         */
         maxUnavailableFixed: number;
+        /**
+         * The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+         */
         maxUnavailablePercent: number;
+        /**
+         * Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+         */
         minReadySec: number;
+        /**
+         * Minimal action to be taken on an instance. You can specify either REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         */
         minimalAction: string;
+        /**
+         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         */
         mostDisruptiveAllowedAction: string;
+        /**
+         * The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+         */
         replacementMethod: string;
+        /**
+         * The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+         */
         type: string;
     }
 
     export interface GetInstanceGroupManagerVersion {
+        /**
+         * The full URL to an instance template from which all new instances of this version will be created.
+         */
         instanceTemplate: string;
         /**
          * The name of the instance group. Either `name` or `selfLink` must be provided.
          */
         name: string;
+        /**
+         * The number of instances calculated as a fixed number or a percentage depending on the settings.
+         */
         targetSizes: outputs.compute.GetInstanceGroupManagerVersionTargetSize[];
     }
 
     export interface GetInstanceGroupManagerVersionTargetSize {
+        /**
+         * The number of instances which are managed for this version. Conflicts with percent.
+         */
         fixed: number;
+        /**
+         * The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+         */
         percent: number;
     }
 
@@ -16620,9 +20629,21 @@ export namespace compute {
          * An array of alias IP ranges for this network interface. Structure documented below.
          */
         aliasIpRanges: outputs.compute.GetInstanceNetworkInterfaceAliasIpRange[];
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength: number;
+        /**
+         * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+         */
         ipv6AccessConfigs: outputs.compute.GetInstanceNetworkInterfaceIpv6AccessConfig[];
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType: string;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address: string;
         /**
          * The name of the instance. One of `name` or `selfLink` must be provided.
@@ -16632,14 +20653,29 @@ export namespace compute {
          * The name or selfLink of the network attached to this interface.
          */
         network: string;
+        /**
+         * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         */
         networkAttachment: string;
         /**
          * The private IP address assigned to the instance.
          */
         networkIp: string;
+        /**
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         */
         nicType: string;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
         queueCount: number;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
+        /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+         */
         stackType: string;
         /**
          * The name or selfLink of the subnetwork attached to this interface.
@@ -16665,6 +20701,9 @@ export namespace compute {
          * The DNS domain name for the public PTR record.
          */
         publicPtrDomainName: string;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
     }
 
@@ -16682,7 +20721,13 @@ export namespace compute {
     }
 
     export interface GetInstanceNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+         */
         externalIpv6: string;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength: string;
         /**
          * The name of the instance. One of `name` or `selfLink` must be provided.
@@ -16696,6 +20741,9 @@ export namespace compute {
          * The DNS domain name for the public PTR record.
          */
         publicPtrDomainName: string;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
     }
 
@@ -16707,10 +20755,16 @@ export namespace compute {
     }
 
     export interface GetInstanceParam {
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags: {[key: string]: any};
     }
 
     export interface GetInstanceReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use.
+         */
         specificReservations: outputs.compute.GetInstanceReservationAffinitySpecificReservation[];
         /**
          * The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -16719,7 +20773,13 @@ export namespace compute {
     }
 
     export interface GetInstanceReservationAffinitySpecificReservation {
+        /**
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         */
         key: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: string[];
     }
 
@@ -16733,10 +20793,25 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeouts: outputs.compute.GetInstanceSchedulingLocalSsdRecoveryTimeout[];
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         */
         maintenanceInterval: string;
+        /**
+         * The timeout for new network connections to hosts.
+         */
         maxRunDurations: outputs.compute.GetInstanceSchedulingMaxRunDuration[];
         minNodeCpus: number;
+        /**
+         * Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+         */
         nodeAffinities: outputs.compute.GetInstanceSchedulingNodeAffinity[];
         /**
          * Describes maintenance behavior for the
@@ -16755,12 +20830,32 @@ export namespace compute {
     }
 
     export interface GetInstanceSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
     export interface GetInstanceSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
@@ -16813,8 +20908,17 @@ export namespace compute {
     }
 
     export interface GetInstanceTemplateAdvancedMachineFeature {
+        /**
+         * Whether to enable nested virtualization or not.
+         */
         enableNestedVirtualization: boolean;
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore: number;
+        /**
+         * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+         */
         visibleCoreCount: number;
     }
 
@@ -16886,6 +20990,9 @@ export namespace compute {
          * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
          */
         provisionedIops: number;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags: {[key: string]: string};
         /**
          * (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -16907,8 +21014,27 @@ export namespace compute {
          * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         sourceImage: string;
+        /**
+         * The customer-supplied encryption key of the source
+         * image. Required if the source image is protected by a
+         * customer-supplied encryption key.
+         *
+         * Instance templates do not store customer-supplied
+         * encryption keys, so you cannot create disks for
+         * instances in a managed instance group if the source
+         * images are encrypted with your own keys.
+         */
         sourceImageEncryptionKeys: outputs.compute.GetInstanceTemplateDiskSourceImageEncryptionKey[];
+        /**
+         * The source snapshot to create this disk. When creating
+         * a new instance, one of initializeParams.sourceSnapshot,
+         * initializeParams.sourceImage, or disks.source is
+         * required except for local SSD.
+         */
         sourceSnapshot: string;
+        /**
+         * The customer-supplied encryption key of the source snapshot.
+         */
         sourceSnapshotEncryptionKeys: outputs.compute.GetInstanceTemplateDiskSourceSnapshotEncryptionKey[];
         /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -16928,6 +21054,11 @@ export namespace compute {
          * The self link of the encryption key that is stored in Google Cloud KMS
          */
         kmsKeySelfLink: string;
+        /**
+         * The service account being used for the encryption
+         * request for the given KMS key. If absent, the Compute
+         * Engine default service account is used.
+         */
         kmsKeyServiceAccount: string;
     }
 
@@ -16936,6 +21067,11 @@ export namespace compute {
          * The self link of the encryption key that is stored in Google Cloud KMS
          */
         kmsKeySelfLink: string;
+        /**
+         * The service account being used for the encryption
+         * request for the given KMS key. If absent, the Compute
+         * Engine default service account is used.
+         */
         kmsKeyServiceAccount: string;
     }
 
@@ -16966,9 +21102,21 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges: outputs.compute.GetInstanceTemplateNetworkInterfaceAliasIpRange[];
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength: number;
+        /**
+         * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+         */
         ipv6AccessConfigs: outputs.compute.GetInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType: string;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address: string;
         /**
          * The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
@@ -16980,14 +21128,26 @@ export namespace compute {
          * `subnetwork` for custom subnetted networks.
          */
         network: string;
+        /**
+         * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         */
         networkAttachment: string;
         /**
          * The private IP address to assign to the instance. If
          * empty, the address will be automatically assigned.
          */
         networkIp: string;
+        /**
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         */
         nicType: string;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
         queueCount: number;
+        /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+         */
         stackType: string;
         /**
          * the name of the subnetwork to attach this interface
@@ -17014,6 +21174,9 @@ export namespace compute {
          * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
          */
         networkTier: string;
+        /**
+         * The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName: string;
     }
 
@@ -17035,7 +21198,13 @@ export namespace compute {
     }
 
     export interface GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+         */
         externalIpv6: string;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength: string;
         /**
          * The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
@@ -17047,6 +21216,9 @@ export namespace compute {
          * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
          */
         networkTier: string;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName: string;
     }
 
@@ -17058,6 +21230,9 @@ export namespace compute {
     }
 
     export interface GetInstanceTemplateReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use.
+         */
         specificReservations: outputs.compute.GetInstanceTemplateReservationAffinitySpecificReservation[];
         /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -17070,6 +21245,9 @@ export namespace compute {
          * The key for the node affinity label.
          */
         key: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: string[];
     }
 
@@ -17084,9 +21262,24 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeouts: outputs.compute.GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         */
         maintenanceInterval: string;
+        /**
+         * The timeout for new network connections to hosts.
+         */
         maxRunDurations: outputs.compute.GetInstanceTemplateSchedulingMaxRunDuration[];
+        /**
+         * Minimum number of cpus for the instance.
+         */
         minNodeCpus: number;
         /**
          * Specifies node affinities or anti-affinities
@@ -17114,12 +21307,32 @@ export namespace compute {
     }
 
     export interface GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
     export interface GetInstanceTemplateSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
@@ -17166,22 +21379,50 @@ export namespace compute {
     }
 
     export interface GetRegionDiskAsyncPrimaryDisk {
+        /**
+         * Primary disk for asynchronous disk replication.
+         */
         disk: string;
     }
 
     export interface GetRegionDiskDiskEncryptionKey {
+        /**
+         * The name of the encryption key that is stored in Google Cloud KMS.
+         */
         kmsKeyName: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface GetRegionDiskGuestOsFeature {
+        /**
+         * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE"]
+         */
         type: string;
     }
 
     export interface GetRegionDiskSourceSnapshotEncryptionKey {
+        /**
+         * The name of the encryption key that is stored in Google Cloud KMS.
+         */
         kmsKeyName: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
@@ -17212,8 +21453,17 @@ export namespace compute {
     }
 
     export interface GetRegionInstanceTemplateAdvancedMachineFeature {
+        /**
+         * Whether to enable nested virtualization or not.
+         */
         enableNestedVirtualization: boolean;
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore: number;
+        /**
+         * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+         */
         visibleCoreCount: number;
     }
 
@@ -17285,6 +21535,9 @@ export namespace compute {
          * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
          */
         provisionedIops: number;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags: {[key: string]: string};
         /**
          * (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -17306,8 +21559,27 @@ export namespace compute {
          * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
          */
         sourceImage: string;
+        /**
+         * The customer-supplied encryption key of the source
+         * image. Required if the source image is protected by a
+         * customer-supplied encryption key.
+         *
+         * Instance templates do not store customer-supplied
+         * encryption keys, so you cannot create disks for
+         * instances in a managed instance group if the source
+         * images are encrypted with your own keys.
+         */
         sourceImageEncryptionKeys: outputs.compute.GetRegionInstanceTemplateDiskSourceImageEncryptionKey[];
+        /**
+         * The source snapshot to create this disk. When creating
+         * a new instance, one of initializeParams.sourceSnapshot,
+         * initializeParams.sourceImage, or disks.source is
+         * required except for local SSD.
+         */
         sourceSnapshot: string;
+        /**
+         * The customer-supplied encryption key of the source snapshot.
+         */
         sourceSnapshotEncryptionKeys: outputs.compute.GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey[];
         /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -17327,6 +21599,11 @@ export namespace compute {
          * The self link of the encryption key that is stored in Google Cloud KMS
          */
         kmsKeySelfLink: string;
+        /**
+         * The service account being used for the encryption
+         * request for the given KMS key. If absent, the Compute
+         * Engine default service account is used.
+         */
         kmsKeyServiceAccount: string;
     }
 
@@ -17335,6 +21612,11 @@ export namespace compute {
          * The self link of the encryption key that is stored in Google Cloud KMS
          */
         kmsKeySelfLink: string;
+        /**
+         * The service account being used for the encryption
+         * request for the given KMS key. If absent, the Compute
+         * Engine default service account is used.
+         */
         kmsKeyServiceAccount: string;
     }
 
@@ -17357,9 +21639,21 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges: outputs.compute.GetRegionInstanceTemplateNetworkInterfaceAliasIpRange[];
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength: number;
+        /**
+         * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+         */
         ipv6AccessConfigs: outputs.compute.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType: string;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address: string;
         /**
          * The name of the instance template. One of `name` or `filter` must be provided.
@@ -17376,8 +21670,17 @@ export namespace compute {
          * empty, the address will be automatically assigned.
          */
         networkIp: string;
+        /**
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         */
         nicType: string;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
         queueCount: number;
+        /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+         */
         stackType: string;
         /**
          * the name of the subnetwork to attach this interface
@@ -17404,6 +21707,9 @@ export namespace compute {
          * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
          */
         networkTier: string;
+        /**
+         * The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName: string;
     }
 
@@ -17425,7 +21731,13 @@ export namespace compute {
     }
 
     export interface GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+         */
         externalIpv6: string;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength: string;
         /**
          * The name of the instance template. One of `name` or `filter` must be provided.
@@ -17437,6 +21749,9 @@ export namespace compute {
          * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
          */
         networkTier: string;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName: string;
     }
 
@@ -17448,6 +21763,9 @@ export namespace compute {
     }
 
     export interface GetRegionInstanceTemplateReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use.
+         */
         specificReservations: outputs.compute.GetRegionInstanceTemplateReservationAffinitySpecificReservation[];
         /**
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
@@ -17460,6 +21778,9 @@ export namespace compute {
          * The key for the node affinity label.
          */
         key: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: string[];
     }
 
@@ -17474,9 +21795,24 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeouts: outputs.compute.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         */
         maintenanceInterval: string;
+        /**
+         * The timeout for new network connections to hosts.
+         */
         maxRunDurations: outputs.compute.GetRegionInstanceTemplateSchedulingMaxRunDuration[];
+        /**
+         * Minimum number of cpus for the instance.
+         */
         minNodeCpus: number;
         /**
          * Specifies node affinities or anti-affinities
@@ -17504,12 +21840,32 @@ export namespace compute {
     }
 
     export interface GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
     export interface GetRegionInstanceTemplateSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
@@ -17556,161 +21912,491 @@ export namespace compute {
     }
 
     export interface GetRegionNetworkEndpointGroupAppEngine {
+        /**
+         * Optional serving service.
+         * The service name must be 1-63 characters long, and comply with RFC1035.
+         * Example value: "default", "my-service".
+         */
         service: string;
+        /**
+         * A template to parse service and version fields from a request URL.
+         * URL mask allows for routing to multiple App Engine services without
+         * having to create multiple Network Endpoint Groups and backend services.
+         *
+         * For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+         * "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
+         * URL mask "-dot-appname.appspot.com/". The URL mask will parse
+         * them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
+         */
         urlMask: string;
+        /**
+         * Optional serving version.
+         * The version must be 1-63 characters long, and comply with RFC1035.
+         * Example value: "v1", "v2".
+         */
         version: string;
     }
 
     export interface GetRegionNetworkEndpointGroupCloudFunction {
+        /**
+         * A user-defined name of the Cloud Function.
+         * The function name is case-sensitive and must be 1-63 characters long.
+         * Example value: "func1".
+         */
         function: string;
+        /**
+         * A template to parse function field from a request URL. URL mask allows
+         * for routing to multiple Cloud Functions without having to create
+         * multiple Network Endpoint Groups and backend services.
+         *
+         * For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+         * can be backed by the same Serverless NEG with URL mask "/". The URL mask
+         * will parse them to { function = "function1" } and { function = "function2" } respectively.
+         */
         urlMask: string;
     }
 
     export interface GetRegionNetworkEndpointGroupCloudRun {
+        /**
+         * Cloud Run service is the main resource of Cloud Run.
+         * The service must be 1-63 characters long, and comply with RFC1035.
+         * Example value: "run-service".
+         */
         service: string;
+        /**
+         * Cloud Run tag represents the "named-revision" to provide
+         * additional fine-grained traffic routing information.
+         * The tag must be 1-63 characters long, and comply with RFC1035.
+         * Example value: "revision-0010".
+         */
         tag: string;
+        /**
+         * A template to parse service and tag fields from a request URL.
+         * URL mask allows for routing to multiple Run services without having
+         * to create multiple network endpoint groups and backend services.
+         *
+         * For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+         * an be backed by the same Serverless Network Endpoint Group (NEG) with
+         * URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" }
+         * and { service="bar2", tag="foo2" } respectively.
+         */
         urlMask: string;
     }
 
     export interface GetRegionNetworkEndpointGroupServerlessDeployment {
+        /**
+         * The platform of the NEG backend target(s). Possible values:
+         * API Gateway: apigateway.googleapis.com
+         */
         platform: string;
+        /**
+         * The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+         * The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+         * Cloud Functions: The function name, Cloud Run: The service name
+         */
         resource: string;
+        /**
+         * A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+         * on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+         * The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+         * App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+         */
         urlMask: string;
+        /**
+         * The optional resource version. The version identified by this value is platform-specific and is follows:
+         * API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+         */
         version: string;
     }
 
     export interface GetReservationShareSetting {
+        /**
+         * A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+         */
         projectMaps: outputs.compute.GetReservationShareSettingProjectMap[];
+        /**
+         * Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
+         */
         shareType: string;
     }
 
     export interface GetReservationShareSettingProjectMap {
         id: string;
+        /**
+         * The project id/number, should be same as the key of this project config in the project map.
+         */
         projectId: string;
     }
 
     export interface GetReservationSpecificReservation {
+        /**
+         * The number of resources that are allocated.
+         */
         count: number;
+        /**
+         * How many instances are in use.
+         */
         inUseCount: number;
+        /**
+         * The instance properties for the reservation.
+         */
         instanceProperties: outputs.compute.GetReservationSpecificReservationInstanceProperty[];
     }
 
     export interface GetReservationSpecificReservationInstanceProperty {
+        /**
+         * Guest accelerator type and count.
+         */
         guestAccelerators: outputs.compute.GetReservationSpecificReservationInstancePropertyGuestAccelerator[];
+        /**
+         * The amount of local ssd to reserve with each instance. This
+         * reserves disks of type 'local-ssd'.
+         */
         localSsds: outputs.compute.GetReservationSpecificReservationInstancePropertyLocalSsd[];
+        /**
+         * The name of the machine type to reserve.
+         */
         machineType: string;
+        /**
+         * The minimum CPU platform for the reservation. For example,
+         * '"Intel Skylake"'. See
+         * the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+         * for information on available CPU platforms.
+         */
         minCpuPlatform: string;
     }
 
     export interface GetReservationSpecificReservationInstancePropertyGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to
+         * this instance.
+         */
         acceleratorCount: number;
+        /**
+         * The full or partial URL of the accelerator type to
+         * attach to this instance. For example:
+         * 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
+         *
+         * If you are creating an instance template, specify only the accelerator name.
+         */
         acceleratorType: string;
     }
 
     export interface GetReservationSpecificReservationInstancePropertyLocalSsd {
+        /**
+         * The size of the disk in base-2 GB.
+         */
         diskSizeGb: number;
+        /**
+         * The disk interface to use for attaching this disk. Default value: "SCSI" Possible values: ["SCSI", "NVME"]
+         */
         interface: string;
     }
 
     export interface GetResourcePolicyDiskConsistencyGroupPolicy {
+        /**
+         * Enable disk consistency on the resource policy.
+         */
         enabled: boolean;
     }
 
     export interface GetResourcePolicyGroupPlacementPolicy {
+        /**
+         * The number of availability domains instances will be spread across. If two instances are in different
+         * availability domain, they will not be put in the same low latency network
+         */
         availabilityDomainCount: number;
+        /**
+         * Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+         * Specify 'COLLOCATED' to enable collocation. Can only be specified with 'vm_count'. If compute instances are created
+         * with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
+         * attached. Possible values: ["COLLOCATED"]
+         */
         collocation: string;
+        /**
+         * Specifies the number of max logical switches.
+         */
         maxDistance: number;
+        /**
+         * Number of VMs in this placement group. Google does not recommend that you use this field
+         * unless you use a compact policy and you want your policy to work only if it contains this
+         * exact number of VMs.
+         */
         vmCount: number;
     }
 
     export interface GetResourcePolicyInstanceSchedulePolicy {
+        /**
+         * The expiration time of the schedule. The timestamp is an RFC3339 string.
+         */
         expirationTime: string;
+        /**
+         * The start time of the schedule. The timestamp is an RFC3339 string.
+         */
         startTime: string;
+        /**
+         * Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+         * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         */
         timeZone: string;
+        /**
+         * Specifies the schedule for starting instances.
+         */
         vmStartSchedules: outputs.compute.GetResourcePolicyInstanceSchedulePolicyVmStartSchedule[];
+        /**
+         * Specifies the schedule for stopping instances.
+         */
         vmStopSchedules: outputs.compute.GetResourcePolicyInstanceSchedulePolicyVmStopSchedule[];
     }
 
     export interface GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
+        /**
+         * Specifies the frequency for the operation, using the unix-cron format.
+         */
         schedule: string;
     }
 
     export interface GetResourcePolicyInstanceSchedulePolicyVmStopSchedule {
+        /**
+         * Specifies the frequency for the operation, using the unix-cron format.
+         */
         schedule: string;
     }
 
     export interface GetResourcePolicySnapshotSchedulePolicy {
+        /**
+         * Retention policy applied to snapshots created by this resource policy.
+         */
         retentionPolicies: outputs.compute.GetResourcePolicySnapshotSchedulePolicyRetentionPolicy[];
+        /**
+         * Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
+         */
         schedules: outputs.compute.GetResourcePolicySnapshotSchedulePolicySchedule[];
+        /**
+         * Properties with which the snapshots are created, such as labels.
+         */
         snapshotProperties: outputs.compute.GetResourcePolicySnapshotSchedulePolicySnapshotProperty[];
     }
 
     export interface GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+        /**
+         * Maximum age of the snapshot that is allowed to be kept.
+         */
         maxRetentionDays: number;
+        /**
+         * Specifies the behavior to apply to scheduled snapshots when
+         * the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"]
+         */
         onSourceDiskDelete: string;
     }
 
     export interface GetResourcePolicySnapshotSchedulePolicySchedule {
+        /**
+         * The policy will execute every nth day at the specified time.
+         */
         dailySchedules: outputs.compute.GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule[];
+        /**
+         * The policy will execute every nth hour starting at the specified time.
+         */
         hourlySchedules: outputs.compute.GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule[];
+        /**
+         * Allows specifying a snapshot time for each day of the week.
+         */
         weeklySchedules: outputs.compute.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule[];
     }
 
     export interface GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+        /**
+         * Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+         */
         daysInCycle: number;
+        /**
+         * This must be in UTC format that resolves to one of
+         * 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+         * both 13:00-5 and 08:00 are valid.
+         */
         startTime: string;
     }
 
     export interface GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+        /**
+         * The number of hours between snapshots.
+         */
         hoursInCycle: number;
+        /**
+         * Time within the window to start the operations.
+         * It must be in an hourly format "HH:MM",
+         * where HH : [00-23] and MM : [00] GMT.
+         * eg: 21:00
+         */
         startTime: string;
     }
 
     export interface GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+        /**
+         * May contain up to seven (one for each day of the week) snapshot times.
+         */
         dayOfWeeks: outputs.compute.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek[];
     }
 
     export interface GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
+        /**
+         * The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+         */
         day: string;
+        /**
+         * Time within the window to start the operations.
+         * It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
+         */
         startTime: string;
     }
 
     export interface GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
+        /**
+         * Creates the new snapshot in the snapshot chain labeled with the
+         * specified name. The chain name must be 1-63 characters long and comply
+         * with RFC1035.
+         */
         chainName: string;
+        /**
+         * Whether to perform a 'guest aware' snapshot.
+         */
         guestFlush: boolean;
+        /**
+         * A set of key-value pairs.
+         */
         labels: {[key: string]: string};
+        /**
+         * Cloud Storage bucket location to store the auto snapshot
+         * (regional or multi-regional)
+         */
         storageLocations: string[];
     }
 
     export interface GetRouterBgp {
+        /**
+         * User-specified flag to indicate which mode to use for advertisement. Default value: "DEFAULT" Possible values: ["DEFAULT", "CUSTOM"]
+         */
         advertiseMode: string;
+        /**
+         * User-specified list of prefix groups to advertise in custom mode.
+         * This field can only be populated if advertiseMode is CUSTOM and
+         * is advertised to all peers of the router. These groups will be
+         * advertised in addition to any specified prefixes. Leave this field
+         * blank to advertise no custom groups.
+         *
+         * This enum field has the one valid value: ALL_SUBNETS
+         */
         advertisedGroups: string[];
+        /**
+         * User-specified list of individual IP ranges to advertise in
+         * custom mode. This field can only be populated if advertiseMode
+         * is CUSTOM and is advertised to all peers of the router. These IP
+         * ranges will be advertised in addition to any specified groups.
+         * Leave this field blank to advertise no custom IP ranges.
+         */
         advertisedIpRanges: outputs.compute.GetRouterBgpAdvertisedIpRange[];
+        /**
+         * Local BGP Autonomous System Number (ASN). Must be an RFC6996
+         * private ASN, either 16-bit or 32-bit. The value will be fixed for
+         * this router resource. All VPN tunnels that link to this router
+         * will have the same local ASN.
+         */
         asn: number;
+        /**
+         * The interval in seconds between BGP keepalive messages that are sent
+         * to the peer. Hold time is three times the interval at which keepalive
+         * messages are sent, and the hold time is the maximum number of seconds
+         * allowed to elapse between successive keepalive messages that BGP
+         * receives from a peer.
+         *
+         * BGP will use the smaller of either the local hold time value or the
+         * peer's hold time value as the hold time for the BGP connection
+         * between the two peers. If set, this value must be between 20 and 60.
+         * The default is 20.
+         */
         keepaliveInterval: number;
     }
 
     export interface GetRouterBgpAdvertisedIpRange {
+        /**
+         * User-specified description for the IP range.
+         */
         description: string;
+        /**
+         * The IP range to advertise. The value must be a
+         * CIDR-formatted string.
+         */
         range: string;
     }
 
     export interface GetRouterNatLogConfig {
+        /**
+         * Indicates whether or not to export logs.
+         */
         enable: boolean;
+        /**
+         * Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
+         */
         filter: string;
     }
 
     export interface GetRouterNatRule {
+        /**
+         * The action to be enforced for traffic that matches this rule.
+         */
         actions: outputs.compute.GetRouterNatRuleAction[];
+        /**
+         * An optional description of this rule.
+         */
         description: string;
+        /**
+         * CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+         * If it evaluates to true, the corresponding action is enforced.
+         *
+         * The following examples are valid match expressions for public NAT:
+         *
+         * "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+         *
+         * "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+         *
+         * The following example is a valid match expression for private NAT:
+         *
+         * "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+         */
         match: string;
+        /**
+         * An integer uniquely identifying a rule in the list.
+         * The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+         */
         ruleNumber: number;
     }
 
     export interface GetRouterNatRuleAction {
+        /**
+         * A list of URLs of the IP resources used for this NAT rule.
+         * These IP addresses must be valid static external IP addresses assigned to the project.
+         * This field is used for public NAT.
+         */
         sourceNatActiveIps: string[];
+        /**
+         * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+         * These subnetworks must have purpose set to PRIVATE_NAT.
+         * This field is used for private NAT.
+         */
         sourceNatActiveRanges: string[];
+        /**
+         * A list of URLs of the IP resources to be drained.
+         * These IPs must be valid static external IPs that have been assigned to the NAT.
+         * These IPs should be used for updating/patching a NAT rule only.
+         * This field is used for public NAT.
+         */
         sourceNatDrainIps: string[];
+        /**
+         * A list of URLs of subnetworks representing source ranges to be drained.
+         * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+         * This field is used for private NAT.
+         */
         sourceNatDrainRanges: string[];
     }
 
@@ -17720,12 +22406,32 @@ export namespace compute {
          * comply with RFC1035.
          */
         name: string;
+        /**
+         * List of the secondary ranges of the subnetwork that are allowed
+         * to use NAT. This can be populated only if
+         * 'LIST_OF_SECONDARY_IP_RANGES' is one of the values in
+         * sourceIpRangesToNat
+         */
         secondaryIpRangeNames: string[];
+        /**
+         * List of options for which source IPs in the subnetwork
+         * should have NAT enabled. Supported values include:
+         * 'ALL_IP_RANGES', 'LIST_OF_SECONDARY_IP_RANGES',
+         * 'PRIMARY_IP_RANGE'.
+         */
         sourceIpRangesToNats: string[];
     }
 
     export interface GetRouterStatusBestRoute {
+        /**
+         * An optional description of this resource. Provide this property
+         * when you create the resource.
+         */
         description: string;
+        /**
+         * The destination range of outgoing packets that this route applies to.
+         * Only IPv4 is supported.
+         */
         destRange: string;
         /**
          * The name of the router.
@@ -17736,13 +22442,69 @@ export namespace compute {
          * network of this subnetwork.
          */
         network: string;
+        /**
+         * URL to a gateway that should handle matching packets.
+         * Currently, you can only specify the internet gateway, using a full or
+         * partial valid URL:
+         * * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+         * * 'projects/project/global/gateways/default-internet-gateway'
+         * * 'global/gateways/default-internet-gateway'
+         * * The string 'default-internet-gateway'.
+         */
         nextHopGateway: string;
+        /**
+         * The IP address or URL to a forwarding rule of type
+         * loadBalancingScheme=INTERNAL that should handle matching
+         * packets.
+         *
+         * With the GA provider you can only specify the forwarding
+         * rule as a partial or full URL. For example, the following
+         * are all valid values:
+         * * 10.128.0.56
+         * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * * regions/region/forwardingRules/forwardingRule
+         *
+         * When the beta provider, you can also specify the IP address
+         * of a forwarding rule from the same VPC or any peered VPC.
+         *
+         * Note that this can only be used when the destinationRange is
+         * a public (non-RFC 1918) IP CIDR range.
+         */
         nextHopIlb: string;
+        /**
+         * URL to an instance that should handle matching packets.
+         * You can specify this as a full or partial URL. For example:
+         * * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+         * * 'projects/project/zones/zone/instances/instance'
+         * * 'zones/zone/instances/instance'
+         * * Just the instance name, with the zone in 'next_hop_instance_zone'.
+         */
         nextHopInstance: string;
+        /**
+         * The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+         */
         nextHopInstanceZone: string;
+        /**
+         * Network IP address of an instance that should handle matching packets.
+         */
         nextHopIp: string;
+        /**
+         * URL to a Network that should handle matching packets.
+         */
         nextHopNetwork: string;
+        /**
+         * URL to a VpnTunnel that should handle matching packets.
+         */
         nextHopVpnTunnel: string;
+        /**
+         * The priority of this route. Priority is used to break ties in cases
+         * where there is more than one matching route of equal prefix length.
+         *
+         * In the case of two routes with equal prefix length, the one with the
+         * lowest-numbered priority value wins.
+         *
+         * Default value is 1000. Valid range is 0 through 65535.
+         */
         priority: number;
         /**
          * The ID of the project in which the resource
@@ -17750,11 +22512,22 @@ export namespace compute {
          */
         project: string;
         selfLink: string;
+        /**
+         * A list of instance tags to which this route applies.
+         */
         tags: string[];
     }
 
     export interface GetRouterStatusBestRoutesForRouter {
+        /**
+         * An optional description of this resource. Provide this property
+         * when you create the resource.
+         */
         description: string;
+        /**
+         * The destination range of outgoing packets that this route applies to.
+         * Only IPv4 is supported.
+         */
         destRange: string;
         /**
          * The name of the router.
@@ -17765,13 +22538,69 @@ export namespace compute {
          * network of this subnetwork.
          */
         network: string;
+        /**
+         * URL to a gateway that should handle matching packets.
+         * Currently, you can only specify the internet gateway, using a full or
+         * partial valid URL:
+         * * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+         * * 'projects/project/global/gateways/default-internet-gateway'
+         * * 'global/gateways/default-internet-gateway'
+         * * The string 'default-internet-gateway'.
+         */
         nextHopGateway: string;
+        /**
+         * The IP address or URL to a forwarding rule of type
+         * loadBalancingScheme=INTERNAL that should handle matching
+         * packets.
+         *
+         * With the GA provider you can only specify the forwarding
+         * rule as a partial or full URL. For example, the following
+         * are all valid values:
+         * * 10.128.0.56
+         * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * * regions/region/forwardingRules/forwardingRule
+         *
+         * When the beta provider, you can also specify the IP address
+         * of a forwarding rule from the same VPC or any peered VPC.
+         *
+         * Note that this can only be used when the destinationRange is
+         * a public (non-RFC 1918) IP CIDR range.
+         */
         nextHopIlb: string;
+        /**
+         * URL to an instance that should handle matching packets.
+         * You can specify this as a full or partial URL. For example:
+         * * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+         * * 'projects/project/zones/zone/instances/instance'
+         * * 'zones/zone/instances/instance'
+         * * Just the instance name, with the zone in 'next_hop_instance_zone'.
+         */
         nextHopInstance: string;
+        /**
+         * The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+         */
         nextHopInstanceZone: string;
+        /**
+         * Network IP address of an instance that should handle matching packets.
+         */
         nextHopIp: string;
+        /**
+         * URL to a Network that should handle matching packets.
+         */
         nextHopNetwork: string;
+        /**
+         * URL to a VpnTunnel that should handle matching packets.
+         */
         nextHopVpnTunnel: string;
+        /**
+         * The priority of this route. Priority is used to break ties in cases
+         * where there is more than one matching route of equal prefix length.
+         *
+         * In the case of two routes with equal prefix length, the one with the
+         * lowest-numbered priority value wins.
+         *
+         * Default value is 1000. Valid range is 0 through 65535.
+         */
         priority: number;
         /**
          * The ID of the project in which the resource
@@ -17779,18 +22608,44 @@ export namespace compute {
          */
         project: string;
         selfLink: string;
+        /**
+         * A list of instance tags to which this route applies.
+         */
         tags: string[];
     }
 
     export interface GetSnapshotSnapshotEncryptionKey {
+        /**
+         * The name of the encryption key that is stored in Google Cloud KMS.
+         */
         kmsKeySelfLink: string;
+        /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
         kmsKeyServiceAccount: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+         * encryption key that protects this resource.
+         */
         sha256: string;
     }
 
     export interface GetSnapshotSourceDiskEncryptionKey {
+        /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
         kmsKeyServiceAccount: string;
+        /**
+         * Specifies a 256-bit customer-supplied encryption key, encoded in
+         * RFC 4648 base64 to either encrypt or decrypt this resource.
+         */
         rawKey: string;
     }
 
@@ -18224,6 +23079,9 @@ export namespace compute {
          * to encrypt this disk. Only one of `kmsKeySelfLink` and `diskEncryptionKeyRaw` may be set.
          */
         diskEncryptionKeyRaw?: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256: string;
         /**
          * The selfLink of the encryption key that is
@@ -18263,6 +23121,9 @@ export namespace compute {
          * may be set.
          */
         diskEncryptionKeyRaw?: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256: string;
         /**
          * Parameters for a new disk that will be created
@@ -18332,6 +23193,9 @@ export namespace compute {
          * To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
          */
         provisionedThroughput: number;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags?: {[key: string]: any};
         /**
          * The size of the image in gigabytes. If not specified, it
@@ -18352,137 +23216,367 @@ export namespace compute {
     }
 
     export interface InstanceFromMachineImageAdvancedMachineFeatures {
+        /**
+         * Whether to enable nested virtualization or not.
+         */
         enableNestedVirtualization: boolean;
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore: number;
+        /**
+         * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+         */
         visibleCoreCount: number;
     }
 
     export interface InstanceFromMachineImageAttachedDisk {
+        /**
+         * Name with which the attached disk is accessible under /dev/disk/by-id/
+         */
         deviceName: string;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256: string;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink: string;
+        /**
+         * Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+         */
         mode: string;
+        /**
+         * The name or selfLink of the disk attached to this instance.
+         */
         source: string;
     }
 
     export interface InstanceFromMachineImageBootDisk {
+        /**
+         * Whether the disk will be auto-deleted when the instance is deleted.
+         */
         autoDelete: boolean;
+        /**
+         * Name with which attached disk will be accessible under /dev/disk/by-id/
+         */
         deviceName: string;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256: string;
+        /**
+         * Parameters with which a disk was created alongside the instance.
+         */
         initializeParams: outputs.compute.InstanceFromMachineImageBootDiskInitializeParams;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink: string;
+        /**
+         * Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+         */
         mode: string;
+        /**
+         * The name or selfLink of the disk attached to this instance.
+         */
         source: string;
     }
 
     export interface InstanceFromMachineImageBootDiskInitializeParams {
+        /**
+         * A flag to enable confidential compute mode on boot disk
+         */
         enableConfidentialCompute: boolean;
+        /**
+         * The image from which this disk was initialised.
+         */
         image: string;
+        /**
+         * A set of key/value label pairs assigned to the disk.
+         */
         labels: {[key: string]: any};
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         */
         provisionedIops: number;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         */
         provisionedThroughput: number;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags: {[key: string]: any};
+        /**
+         * The size of the image in gigabytes.
+         */
         size: number;
+        /**
+         * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+         */
         type: string;
     }
 
     export interface InstanceFromMachineImageConfidentialInstanceConfig {
+        /**
+         * Defines whether the instance should have confidential compute enabled.
+         */
         enableConfidentialCompute: boolean;
     }
 
     export interface InstanceFromMachineImageGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this instance.
+         */
         count: number;
+        /**
+         * The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+         */
         type: string;
     }
 
     export interface InstanceFromMachineImageNetworkInterface {
+        /**
+         * Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         */
         accessConfigs: outputs.compute.InstanceFromMachineImageNetworkInterfaceAccessConfig[];
+        /**
+         * An array of alias IP ranges for this network interface.
+         */
         aliasIpRanges: outputs.compute.InstanceFromMachineImageNetworkInterfaceAliasIpRange[];
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength: number;
+        /**
+         * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+         */
         ipv6AccessConfigs: outputs.compute.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig[];
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType: string;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address: string;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name: string;
+        /**
+         * The name or selfLink of the network attached to this interface.
+         */
         network: string;
+        /**
+         * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         */
         networkAttachment: string;
+        /**
+         * The private IP address assigned to the instance.
+         */
         networkIp: string;
+        /**
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         */
         nicType: string;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
         queueCount: number;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
+        /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+         */
         stackType: string;
+        /**
+         * The name or selfLink of the subnetwork attached to this interface.
+         */
         subnetwork: string;
+        /**
+         * The project in which the subnetwork belongs.
+         */
         subnetworkProject: string;
     }
 
     export interface InstanceFromMachineImageNetworkInterfaceAccessConfig {
+        /**
+         * The IP address that is be 1:1 mapped to the instance's network ip.
+         */
         natIp: string;
+        /**
+         * The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+         */
         networkTier: string;
+        /**
+         * The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName: string;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
     }
 
     export interface InstanceFromMachineImageNetworkInterfaceAliasIpRange {
+        /**
+         * The IP CIDR range represented by this alias IP range.
+         */
         ipCidrRange: string;
+        /**
+         * The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+         */
         subnetworkRangeName: string;
     }
 
     export interface InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+         */
         externalIpv6: string;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength: string;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name: string;
+        /**
+         * The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+         */
         networkTier: string;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName: string;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
     }
 
     export interface InstanceFromMachineImageNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+         */
         totalEgressBandwidthTier: string;
     }
 
     export interface InstanceFromMachineImageParams {
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags: {[key: string]: any};
     }
 
     export interface InstanceFromMachineImageReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use.
+         */
         specificReservation: outputs.compute.InstanceFromMachineImageReservationAffinitySpecificReservation;
+        /**
+         * The type of reservation from which this instance can consume resources.
+         */
         type: string;
     }
 
     export interface InstanceFromMachineImageReservationAffinitySpecificReservation {
+        /**
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         */
         key: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: string[];
     }
 
     export interface InstanceFromMachineImageScheduling {
+        /**
+         * Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+         */
         automaticRestart: boolean;
+        /**
+         * Specifies the action GCE should take when SPOT VM is preempted.
+         */
         instanceTerminationAction: string;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeout: outputs.compute.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout;
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         */
         maintenanceInterval: string;
+        /**
+         * The timeout for new network connections to hosts.
+         */
         maxRunDuration: outputs.compute.InstanceFromMachineImageSchedulingMaxRunDuration;
         minNodeCpus: number;
+        /**
+         * Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+         */
         nodeAffinities: outputs.compute.InstanceFromMachineImageSchedulingNodeAffinity[];
+        /**
+         * Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+         */
         onHostMaintenance: string;
+        /**
+         * Whether the instance is preemptible.
+         */
         preemptible: boolean;
+        /**
+         * Whether the instance is spot. If this is set as SPOT.
+         */
         provisioningModel: string;
     }
 
     export interface InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
     export interface InstanceFromMachineImageSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
@@ -18493,154 +23587,408 @@ export namespace compute {
     }
 
     export interface InstanceFromMachineImageScratchDisk {
+        /**
+         * Name with which the attached disk is accessible under /dev/disk/by-id/
+         */
         deviceName: string;
+        /**
+         * The disk interface used for attaching this disk. One of SCSI or NVME.
+         */
         interface: string;
+        /**
+         * The size of the disk in gigabytes. One of 375 or 3000.
+         */
         size: number;
     }
 
     export interface InstanceFromMachineImageServiceAccount {
+        /**
+         * The service account e-mail address.
+         */
         email: string;
+        /**
+         * A list of service scopes.
+         */
         scopes: string[];
     }
 
     export interface InstanceFromMachineImageShieldedInstanceConfig {
+        /**
+         * Whether integrity monitoring is enabled for the instance.
+         */
         enableIntegrityMonitoring: boolean;
+        /**
+         * Whether secure boot is enabled for the instance.
+         */
         enableSecureBoot: boolean;
+        /**
+         * Whether the instance uses vTPM.
+         */
         enableVtpm: boolean;
     }
 
     export interface InstanceFromTemplateAdvancedMachineFeatures {
+        /**
+         * Whether to enable nested virtualization or not.
+         */
         enableNestedVirtualization: boolean;
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore: number;
+        /**
+         * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+         */
         visibleCoreCount: number;
     }
 
     export interface InstanceFromTemplateAttachedDisk {
+        /**
+         * Name with which the attached disk is accessible under /dev/disk/by-id/
+         */
         deviceName: string;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256: string;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink: string;
+        /**
+         * Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+         */
         mode: string;
+        /**
+         * The name or selfLink of the disk attached to this instance.
+         */
         source: string;
     }
 
     export interface InstanceFromTemplateBootDisk {
+        /**
+         * Whether the disk will be auto-deleted when the instance is deleted.
+         */
         autoDelete: boolean;
+        /**
+         * Name with which attached disk will be accessible under /dev/disk/by-id/
+         */
         deviceName: string;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw: string;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256: string;
+        /**
+         * Parameters with which a disk was created alongside the instance.
+         */
         initializeParams: outputs.compute.InstanceFromTemplateBootDiskInitializeParams;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink: string;
+        /**
+         * Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+         */
         mode: string;
+        /**
+         * The name or selfLink of the disk attached to this instance.
+         */
         source: string;
     }
 
     export interface InstanceFromTemplateBootDiskInitializeParams {
+        /**
+         * A flag to enable confidential compute mode on boot disk
+         */
         enableConfidentialCompute: boolean;
+        /**
+         * The image from which this disk was initialised.
+         */
         image: string;
+        /**
+         * A set of key/value label pairs assigned to the disk.
+         */
         labels: {[key: string]: any};
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         */
         provisionedIops: number;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         */
         provisionedThroughput: number;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags: {[key: string]: any};
+        /**
+         * The size of the image in gigabytes.
+         */
         size: number;
+        /**
+         * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+         */
         type: string;
     }
 
     export interface InstanceFromTemplateConfidentialInstanceConfig {
+        /**
+         * Defines whether the instance should have confidential compute enabled.
+         */
         enableConfidentialCompute: boolean;
     }
 
     export interface InstanceFromTemplateGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this instance.
+         */
         count: number;
+        /**
+         * The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+         */
         type: string;
     }
 
     export interface InstanceFromTemplateNetworkInterface {
+        /**
+         * Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         */
         accessConfigs: outputs.compute.InstanceFromTemplateNetworkInterfaceAccessConfig[];
+        /**
+         * An array of alias IP ranges for this network interface.
+         */
         aliasIpRanges: outputs.compute.InstanceFromTemplateNetworkInterfaceAliasIpRange[];
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength: number;
+        /**
+         * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+         */
         ipv6AccessConfigs: outputs.compute.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig[];
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType: string;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address: string;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name: string;
+        /**
+         * The name or selfLink of the network attached to this interface.
+         */
         network: string;
+        /**
+         * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         */
         networkAttachment: string;
+        /**
+         * The private IP address assigned to the instance.
+         */
         networkIp: string;
+        /**
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         */
         nicType: string;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
         queueCount: number;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
+        /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+         */
         stackType: string;
+        /**
+         * The name or selfLink of the subnetwork attached to this interface.
+         */
         subnetwork: string;
+        /**
+         * The project in which the subnetwork belongs.
+         */
         subnetworkProject: string;
     }
 
     export interface InstanceFromTemplateNetworkInterfaceAccessConfig {
+        /**
+         * The IP address that is be 1:1 mapped to the instance's network ip.
+         */
         natIp: string;
+        /**
+         * The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+         */
         networkTier: string;
+        /**
+         * The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName: string;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
     }
 
     export interface InstanceFromTemplateNetworkInterfaceAliasIpRange {
+        /**
+         * The IP CIDR range represented by this alias IP range.
+         */
         ipCidrRange: string;
+        /**
+         * The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+         */
         subnetworkRangeName: string;
     }
 
     export interface InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+         */
         externalIpv6: string;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength: string;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name: string;
+        /**
+         * The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+         */
         networkTier: string;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName: string;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
     }
 
     export interface InstanceFromTemplateNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+         */
         totalEgressBandwidthTier: string;
     }
 
     export interface InstanceFromTemplateParams {
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags: {[key: string]: any};
     }
 
     export interface InstanceFromTemplateReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use.
+         */
         specificReservation: outputs.compute.InstanceFromTemplateReservationAffinitySpecificReservation;
+        /**
+         * The type of reservation from which this instance can consume resources.
+         */
         type: string;
     }
 
     export interface InstanceFromTemplateReservationAffinitySpecificReservation {
+        /**
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         */
         key: string;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: string[];
     }
 
     export interface InstanceFromTemplateScheduling {
+        /**
+         * Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+         */
         automaticRestart: boolean;
+        /**
+         * Specifies the action GCE should take when SPOT VM is preempted.
+         */
         instanceTerminationAction: string;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeout: outputs.compute.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout;
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         */
         maintenanceInterval: string;
+        /**
+         * The timeout for new network connections to hosts.
+         */
         maxRunDuration: outputs.compute.InstanceFromTemplateSchedulingMaxRunDuration;
         minNodeCpus: number;
+        /**
+         * Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+         */
         nodeAffinities: outputs.compute.InstanceFromTemplateSchedulingNodeAffinity[];
+        /**
+         * Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+         */
         onHostMaintenance: string;
+        /**
+         * Whether the instance is preemptible.
+         */
         preemptible: boolean;
+        /**
+         * Whether the instance is spot. If this is set as SPOT.
+         */
         provisioningModel: string;
     }
 
     export interface InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
     export interface InstanceFromTemplateSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos: number;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: number;
     }
 
@@ -18651,19 +23999,43 @@ export namespace compute {
     }
 
     export interface InstanceFromTemplateScratchDisk {
+        /**
+         * Name with which the attached disk is accessible under /dev/disk/by-id/
+         */
         deviceName: string;
+        /**
+         * The disk interface used for attaching this disk. One of SCSI or NVME.
+         */
         interface: string;
+        /**
+         * The size of the disk in gigabytes. One of 375 or 3000.
+         */
         size: number;
     }
 
     export interface InstanceFromTemplateServiceAccount {
+        /**
+         * The service account e-mail address.
+         */
         email: string;
+        /**
+         * A list of service scopes.
+         */
         scopes: string[];
     }
 
     export interface InstanceFromTemplateShieldedInstanceConfig {
+        /**
+         * Whether integrity monitoring is enabled for the instance.
+         */
         enableIntegrityMonitoring: boolean;
+        /**
+         * Whether secure boot is enabled for the instance.
+         */
         enableSecureBoot: boolean;
+        /**
+         * Whether the instance uses vTPM.
+         */
         enableVtpm: boolean;
     }
 
@@ -18768,6 +24140,9 @@ export namespace compute {
     }
 
     export interface InstanceGroupManagerStatusAllInstancesConfig {
+        /**
+         * A bit indicating whether this configuration has been applied to all managed instances in the group.
+         */
         effective: boolean;
     }
 
@@ -18790,6 +24165,9 @@ export namespace compute {
     }
 
     export interface InstanceGroupManagerStatusVersionTarget {
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
         isReached: boolean;
     }
 
@@ -18925,6 +24303,9 @@ export namespace compute {
     }
 
     export interface InstanceNetworkInterface {
+        /**
+         * Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         */
         accessConfigs?: outputs.compute.InstanceNetworkInterfaceAccessConfig[];
         /**
          * An
@@ -18932,6 +24313,9 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges?: outputs.compute.InstanceNetworkInterfaceAliasIpRange[];
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength: number;
         /**
          * An array of IPv6 access configurations for this interface.
@@ -18944,6 +24328,9 @@ export namespace compute {
          * This field is always inherited from its subnetwork.
          */
         ipv6AccessType: string;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address: string;
         /**
          * A unique name for the resource, required by GCE.
@@ -19080,6 +24467,9 @@ export namespace compute {
     }
 
     export interface InstanceParams {
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags?: {[key: string]: any};
     }
 
@@ -19117,6 +24507,12 @@ export namespace compute {
          * Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeout?: outputs.compute.InstanceSchedulingLocalSsdRecoveryTimeout;
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -19473,6 +24869,9 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges?: outputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange[];
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength: number;
         /**
          * An array of IPv6 access configurations for this interface.
@@ -19480,7 +24879,13 @@ export namespace compute {
          * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
          */
         ipv6AccessConfigs?: outputs.compute.InstanceTemplateNetworkInterfaceIpv6AccessConfig[];
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType: string;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address: string;
         /**
          * The name of the instance template. If you leave
@@ -19538,6 +24943,9 @@ export namespace compute {
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier: string;
+        /**
+         * The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName: string;
     }
 
@@ -19559,7 +24967,13 @@ export namespace compute {
     }
 
     export interface InstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+         */
         externalIpv6: string;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength: string;
         /**
          * The name of the instance template. If you leave
@@ -19571,6 +24985,9 @@ export namespace compute {
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier: string;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName: string;
     }
 
@@ -19615,6 +25032,12 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeouts?: outputs.compute.InstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -19626,6 +25049,9 @@ export namespace compute {
          * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
          */
         maxRunDuration?: outputs.compute.InstanceTemplateSchedulingMaxRunDuration;
+        /**
+         * Minimum number of cpus for the instance.
+         */
         minNodeCpus?: number;
         /**
          * Specifies node affinities or anti-affinities
@@ -21524,6 +26950,9 @@ export namespace compute {
     }
 
     export interface RegionInstanceGroupManagerStatusAllInstancesConfig {
+        /**
+         * A bit indicating whether this configuration has been applied to all managed instances in the group.
+         */
         effective: boolean;
     }
 
@@ -21546,6 +26975,9 @@ export namespace compute {
     }
 
     export interface RegionInstanceGroupManagerStatusVersionTarget {
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
         isReached: boolean;
     }
 
@@ -21823,6 +27255,9 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges?: outputs.compute.RegionInstanceTemplateNetworkInterfaceAliasIpRange[];
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength: number;
         /**
          * An array of IPv6 access configurations for this interface.
@@ -21830,8 +27265,17 @@ export namespace compute {
          * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
          */
         ipv6AccessConfigs?: outputs.compute.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType: string;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address: string;
+        /**
+         * The name of the network_interface.
+         */
         name: string;
         /**
          * The name or selfLink of the network to attach this interface to.
@@ -21880,6 +27324,9 @@ export namespace compute {
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier: string;
+        /**
+         * The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName: string;
     }
 
@@ -21901,14 +27348,26 @@ export namespace compute {
     }
 
     export interface RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+         */
         externalIpv6: string;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength: string;
+        /**
+         * The name of this access configuration.
+         */
         name: string;
         /**
          * The service-level to be provided for IPv6 traffic when the
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier: string;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName: string;
     }
 
@@ -21953,6 +27412,12 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeouts?: outputs.compute.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
@@ -21963,6 +27428,9 @@ export namespace compute {
          * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
          */
         maxRunDuration?: outputs.compute.RegionInstanceTemplateSchedulingMaxRunDuration;
+        /**
+         * Minimum number of cpus for the instance.
+         */
         minNodeCpus?: number;
         /**
          * Specifies node affinities or anti-affinities
@@ -24466,6 +29934,9 @@ export namespace compute {
     }
 
     export interface RouterPeerMd5AuthenticationKey {
+        /**
+         * Value of the key.
+         */
         key: string;
         /**
          * Name of this BGP peer. The name must be 1-63 characters long,
@@ -24479,7 +29950,15 @@ export namespace compute {
     }
 
     export interface RouterStatusBestRoute {
+        /**
+         * An optional description of this resource. Provide this property
+         * when you create the resource.
+         */
         description: string;
+        /**
+         * The destination range of outgoing packets that this route applies to.
+         * Only IPv4 is supported.
+         */
         destRange: string;
         /**
          * The name of the router.
@@ -24490,13 +29969,69 @@ export namespace compute {
          * network of this subnetwork.
          */
         network: string;
+        /**
+         * URL to a gateway that should handle matching packets.
+         * Currently, you can only specify the internet gateway, using a full or
+         * partial valid URL:
+         * * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+         * * 'projects/project/global/gateways/default-internet-gateway'
+         * * 'global/gateways/default-internet-gateway'
+         * * The string 'default-internet-gateway'.
+         */
         nextHopGateway: string;
+        /**
+         * The IP address or URL to a forwarding rule of type
+         * loadBalancingScheme=INTERNAL that should handle matching
+         * packets.
+         *
+         * With the GA provider you can only specify the forwarding
+         * rule as a partial or full URL. For example, the following
+         * are all valid values:
+         * * 10.128.0.56
+         * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * * regions/region/forwardingRules/forwardingRule
+         *
+         * When the beta provider, you can also specify the IP address
+         * of a forwarding rule from the same VPC or any peered VPC.
+         *
+         * Note that this can only be used when the destinationRange is
+         * a public (non-RFC 1918) IP CIDR range.
+         */
         nextHopIlb: string;
+        /**
+         * URL to an instance that should handle matching packets.
+         * You can specify this as a full or partial URL. For example:
+         * * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+         * * 'projects/project/zones/zone/instances/instance'
+         * * 'zones/zone/instances/instance'
+         * * Just the instance name, with the zone in 'next_hop_instance_zone'.
+         */
         nextHopInstance: string;
+        /**
+         * The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+         */
         nextHopInstanceZone: string;
+        /**
+         * Network IP address of an instance that should handle matching packets.
+         */
         nextHopIp: string;
+        /**
+         * URL to a Network that should handle matching packets.
+         */
         nextHopNetwork: string;
+        /**
+         * URL to a VpnTunnel that should handle matching packets.
+         */
         nextHopVpnTunnel: string;
+        /**
+         * The priority of this route. Priority is used to break ties in cases
+         * where there is more than one matching route of equal prefix length.
+         *
+         * In the case of two routes with equal prefix length, the one with the
+         * lowest-numbered priority value wins.
+         *
+         * Default value is 1000. Valid range is 0 through 65535.
+         */
         priority: number;
         /**
          * The ID of the project in which the resource
@@ -24504,11 +30039,22 @@ export namespace compute {
          */
         project: string;
         selfLink: string;
+        /**
+         * A list of instance tags to which this route applies.
+         */
         tags: string[];
     }
 
     export interface RouterStatusBestRoutesForRouter {
+        /**
+         * An optional description of this resource. Provide this property
+         * when you create the resource.
+         */
         description: string;
+        /**
+         * The destination range of outgoing packets that this route applies to.
+         * Only IPv4 is supported.
+         */
         destRange: string;
         /**
          * The name of the router.
@@ -24519,13 +30065,69 @@ export namespace compute {
          * network of this subnetwork.
          */
         network: string;
+        /**
+         * URL to a gateway that should handle matching packets.
+         * Currently, you can only specify the internet gateway, using a full or
+         * partial valid URL:
+         * * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+         * * 'projects/project/global/gateways/default-internet-gateway'
+         * * 'global/gateways/default-internet-gateway'
+         * * The string 'default-internet-gateway'.
+         */
         nextHopGateway: string;
+        /**
+         * The IP address or URL to a forwarding rule of type
+         * loadBalancingScheme=INTERNAL that should handle matching
+         * packets.
+         *
+         * With the GA provider you can only specify the forwarding
+         * rule as a partial or full URL. For example, the following
+         * are all valid values:
+         * * 10.128.0.56
+         * * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * * regions/region/forwardingRules/forwardingRule
+         *
+         * When the beta provider, you can also specify the IP address
+         * of a forwarding rule from the same VPC or any peered VPC.
+         *
+         * Note that this can only be used when the destinationRange is
+         * a public (non-RFC 1918) IP CIDR range.
+         */
         nextHopIlb: string;
+        /**
+         * URL to an instance that should handle matching packets.
+         * You can specify this as a full or partial URL. For example:
+         * * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+         * * 'projects/project/zones/zone/instances/instance'
+         * * 'zones/zone/instances/instance'
+         * * Just the instance name, with the zone in 'next_hop_instance_zone'.
+         */
         nextHopInstance: string;
+        /**
+         * The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
+         */
         nextHopInstanceZone: string;
+        /**
+         * Network IP address of an instance that should handle matching packets.
+         */
         nextHopIp: string;
+        /**
+         * URL to a Network that should handle matching packets.
+         */
         nextHopNetwork: string;
+        /**
+         * URL to a VpnTunnel that should handle matching packets.
+         */
         nextHopVpnTunnel: string;
+        /**
+         * The priority of this route. Priority is used to break ties in cases
+         * where there is more than one matching route of equal prefix length.
+         *
+         * In the case of two routes with equal prefix length, the one with the
+         * lowest-numbered priority value wins.
+         *
+         * Default value is 1000. Valid range is 0 through 65535.
+         */
         priority: number;
         /**
          * The ID of the project in which the resource
@@ -24533,6 +30135,9 @@ export namespace compute {
          */
         project: string;
         selfLink: string;
+        /**
+         * A list of instance tags to which this route applies.
+         */
         tags: string[];
     }
 
@@ -27476,8 +33081,17 @@ export namespace container {
     }
 
     export interface AwsClusterWorkloadIdentityConfig {
+        /**
+         * The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+         */
         identityProvider: string;
+        /**
+         * The OIDC issuer URL for this cluster.
+         */
         issuerUri: string;
+        /**
+         * The Workload Identity Pool associated to the cluster.
+         */
         workloadPool: string;
     }
 
@@ -27845,8 +33459,17 @@ export namespace container {
     }
 
     export interface AzureClusterWorkloadIdentityConfig {
+        /**
+         * The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+         */
         identityProvider: string;
+        /**
+         * The OIDC issuer URL for this cluster.
+         */
         issuerUri: string;
+        /**
+         * The Workload Identity Pool associated to the cluster.
+         */
         workloadPool: string;
     }
 
@@ -28228,10 +33851,16 @@ export namespace container {
          * Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
          */
         autoUpgrade: boolean;
+        /**
+         * Specifies the Auto Upgrade knobs for the node pool.
+         */
         upgradeOptions: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption[];
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption {
+        /**
+         * This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+         */
         autoUpgradeStartTime: string;
         /**
          * Description of the cluster.
@@ -28384,7 +34013,13 @@ export namespace container {
     }
 
     export interface ClusterFleet {
+        /**
+         * Full resource name of the registered fleet membership of the cluster.
+         */
         membership: string;
+        /**
+         * Whether the cluster has been registered via the fleet API.
+         */
         preRegistered: boolean;
         /**
          * The name of the Fleet host project where this cluster will be registered.
@@ -28427,6 +34062,9 @@ export namespace container {
          * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
          */
         clusterSecondaryRangeName: string;
+        /**
+         * Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+         */
         podCidrOverprovisionConfig: outputs.container.ClusterIpAllocationPolicyPodCidrOverprovisionConfig;
         /**
          * The IP address range of the services IPs in this cluster.
@@ -28551,6 +34189,9 @@ export namespace container {
     }
 
     export interface ClusterMasterAuth {
+        /**
+         * Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+         */
         clientCertificate: string;
         /**
          * Whether client certificate authorization is enabled for this cluster.  For example:
@@ -28562,11 +34203,20 @@ export namespace container {
          * This block also contains several computed attributes, documented below.
          */
         clientCertificateConfig: outputs.container.ClusterMasterAuthClientCertificateConfig;
+        /**
+         * Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+         */
         clientKey: string;
+        /**
+         * Base64 encoded public certificate that is the root of trust for the cluster.
+         */
         clusterCaCertificate: string;
     }
 
     export interface ClusterMasterAuthClientCertificateConfig {
+        /**
+         * Whether client certificate authorization is enabled for this cluster.
+         */
         issueClientCertificate: boolean;
     }
 
@@ -28670,6 +34320,9 @@ export namespace container {
          * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
          */
         diskType: string;
+        /**
+         * List of kubernetes taints applied to each node.
+         */
         effectiveTaints: outputs.container.ClusterNodeConfigEffectiveTaint[];
         /**
          * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
@@ -28729,6 +34382,9 @@ export namespace container {
          * ```
          */
         gvnic?: outputs.container.ClusterNodeConfigGvnic;
+        /**
+         * The maintenance policy for the hosts on which the GKE VMs run on.
+         */
         hostMaintenancePolicy?: outputs.container.ClusterNodeConfigHostMaintenancePolicy;
         /**
          * The image type to use for this node. Note that changing the image type
@@ -28815,6 +34471,9 @@ export namespace container {
          * for how these labels are applied to clusters, node pools and nodes.
          */
         resourceLabels?: {[key: string]: string};
+        /**
+         * Sandbox configuration for this node.
+         */
         sandboxConfig?: outputs.container.ClusterNodeConfigSandboxConfig;
         /**
          * The service account to be used by the Node VMs.
@@ -28976,6 +34635,9 @@ export namespace container {
     }
 
     export interface ClusterNodeConfigHostMaintenancePolicy {
+        /**
+         * .
+         */
         maintenanceInterval: string;
     }
 
@@ -29083,6 +34745,9 @@ export namespace container {
     }
 
     export interface ClusterNodeConfigSoleTenantConfig {
+        /**
+         * .
+         */
         nodeAffinities: outputs.container.ClusterNodeConfigSoleTenantConfigNodeAffinity[];
     }
 
@@ -29128,6 +34793,9 @@ export namespace container {
     }
 
     export interface ClusterNodePool {
+        /**
+         * Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+         */
         autoscaling?: outputs.container.ClusterNodePoolAutoscaling;
         /**
          * The number of nodes to create in this
@@ -29138,12 +34806,21 @@ export namespace container {
          * `removeDefaultNodePool` to `true`.
          */
         initialNodeCount: number;
+        /**
+         * The resource URLs of the managed instance groups associated with this node pool.
+         */
         instanceGroupUrls: string[];
+        /**
+         * List of instance group URLs which have been assigned to this node pool.
+         */
         managedInstanceGroupUrls: string[];
         /**
          * NodeManagement configuration for this NodePool. Structure is documented below.
          */
         management: outputs.container.ClusterNodePoolManagement;
+        /**
+         * The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+         */
         maxPodsPerNode: number;
         /**
          * The name of the cluster, unique within the project and
@@ -29152,6 +34829,9 @@ export namespace container {
          * - - -
          */
         name: string;
+        /**
+         * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         */
         namePrefix: string;
         /**
          * Configuration for
@@ -29166,6 +34846,9 @@ export namespace container {
          * Structure is documented below.
          */
         nodeConfig: outputs.container.ClusterNodePoolNodeConfig;
+        /**
+         * The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+         */
         nodeCount: number;
         /**
          * The list of zones in which the cluster's nodes
@@ -29181,7 +34864,13 @@ export namespace container {
          * preferred.
          */
         nodeLocations: string[];
+        /**
+         * Specifies the node placement policy
+         */
         placementPolicy?: outputs.container.ClusterNodePoolPlacementPolicy;
+        /**
+         * Specifies the configuration of queued provisioning
+         */
         queuedProvisioning?: outputs.container.ClusterNodePoolQueuedProvisioning;
         /**
          * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
@@ -29209,10 +34898,25 @@ export namespace container {
     }
 
     export interface ClusterNodePoolAutoscaling {
+        /**
+         * Location policy specifies the algorithm used when scaling-up the node pool. "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+         */
         locationPolicy: string;
+        /**
+         * Maximum number of nodes per zone in the node pool. Must be >= min_node_count. Cannot be used with total limits.
+         */
         maxNodeCount?: number;
+        /**
+         * Minimum number of nodes per zone in the node pool. Must be >=0 and <= max_node_count. Cannot be used with total limits.
+         */
         minNodeCount?: number;
+        /**
+         * Maximum number of all nodes in the node pool. Must be >= total_min_node_count. Cannot be used with per zone limits.
+         */
         totalMaxNodeCount?: number;
+        /**
+         * Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
+         */
         totalMinNodeCount?: number;
     }
 
@@ -29255,7 +34959,13 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNetworkConfig {
+        /**
+         * We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+         */
         additionalNodeNetworkConfigs?: outputs.container.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig[];
+        /**
+         * We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+         */
         additionalPodNetworkConfigs?: outputs.container.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig[];
         /**
          * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
@@ -29272,6 +34982,9 @@ export namespace container {
          * Network bandwidth tier configuration.
          */
         networkPerformanceConfig?: outputs.container.ClusterNodePoolNetworkConfigNetworkPerformanceConfig;
+        /**
+         * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         */
         podCidrOverprovisionConfig: outputs.container.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig;
         /**
          * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -29298,7 +35011,13 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+        /**
+         * The maximum number of pods per node which use this pod network.
+         */
         maxPodsPerNode: number;
+        /**
+         * The name of the secondary range on the subnet which provides IP address for this pod range.
+         */
         secondaryPodRange?: string;
         /**
          * The name or selfLink of the Google Compute Engine
@@ -29347,6 +35066,9 @@ export namespace container {
          * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
          */
         diskType: string;
+        /**
+         * List of kubernetes taints applied to each node.
+         */
         effectiveTaints: outputs.container.ClusterNodePoolNodeConfigEffectiveTaint[];
         /**
          * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
@@ -29406,6 +35128,9 @@ export namespace container {
          * ```
          */
         gvnic?: outputs.container.ClusterNodePoolNodeConfigGvnic;
+        /**
+         * The maintenance policy for the hosts on which the GKE VMs run on.
+         */
         hostMaintenancePolicy?: outputs.container.ClusterNodePoolNodeConfigHostMaintenancePolicy;
         /**
          * The image type to use for this node. Note that changing the image type
@@ -29492,6 +35217,9 @@ export namespace container {
          * for how these labels are applied to clusters, node pools and nodes.
          */
         resourceLabels?: {[key: string]: string};
+        /**
+         * Sandbox configuration for this node.
+         */
         sandboxConfig?: outputs.container.ClusterNodePoolNodeConfigSandboxConfig;
         /**
          * The service account to be used by the Node VMs.
@@ -29653,6 +35381,9 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNodeConfigHostMaintenancePolicy {
+        /**
+         * .
+         */
         maintenanceInterval: string;
     }
 
@@ -29760,6 +35491,9 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNodeConfigSoleTenantConfig {
+        /**
+         * .
+         */
         nodeAffinities: outputs.container.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity[];
     }
 
@@ -29805,7 +35539,13 @@ export namespace container {
     }
 
     export interface ClusterNodePoolPlacementPolicy {
+        /**
+         * If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+         */
         policyName?: string;
+        /**
+         * TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+         */
         tpuTopology?: string;
         /**
          * Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -30025,6 +35765,9 @@ export namespace container {
     }
 
     export interface ClusterResourceUsageExportConfigBigqueryDestination {
+        /**
+         * The ID of a BigQuery Dataset.
+         */
         datasetId: string;
     }
 
@@ -30051,7 +35794,13 @@ export namespace container {
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
          */
         enabled: boolean;
+        /**
+         * IPv4 CIDR block reserved for Cloud TPU in the VPC.
+         */
         ipv4CidrBlock: string;
+        /**
+         * Whether to use service networking for Cloud TPU or not
+         */
         useServiceNetworking?: boolean;
     }
 
@@ -30081,17 +35830,53 @@ export namespace container {
     }
 
     export interface GetClusterAddonsConfig {
+        /**
+         * The status of the CloudRun addon. It is disabled by default. Set disabled = false to enable.
+         */
         cloudrunConfigs: outputs.container.GetClusterAddonsConfigCloudrunConfig[];
+        /**
+         * The of the Config Connector addon.
+         */
         configConnectorConfigs: outputs.container.GetClusterAddonsConfigConfigConnectorConfig[];
+        /**
+         * The status of the NodeLocal DNSCache addon. It is disabled by default. Set enabled = true to enable.
+         */
         dnsCacheConfigs: outputs.container.GetClusterAddonsConfigDnsCacheConfig[];
+        /**
+         * Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set enabled = true to enable. The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
+         */
         gcePersistentDiskCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig[];
+        /**
+         * The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
+         */
         gcpFilestoreCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcpFilestoreCsiDriverConfig[];
+        /**
+         * The status of the GCS Fuse CSI driver addon, which allows the usage of gcs bucket as volumes. Defaults to disabled; set enabled = true to enable.
+         */
         gcsFuseCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcsFuseCsiDriverConfig[];
+        /**
+         * The status of the Backup for GKE Agent addon. It is disabled by default. Set enabled = true to enable.
+         */
         gkeBackupAgentConfigs: outputs.container.GetClusterAddonsConfigGkeBackupAgentConfig[];
+        /**
+         * The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
+         */
         horizontalPodAutoscalings: outputs.container.GetClusterAddonsConfigHorizontalPodAutoscaling[];
+        /**
+         * The status of the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. It is enabled by default; set disabled = true to disable.
+         */
         httpLoadBalancings: outputs.container.GetClusterAddonsConfigHttpLoadBalancing[];
+        /**
+         * The status of the Istio addon.
+         */
         istioConfigs: outputs.container.GetClusterAddonsConfigIstioConfig[];
+        /**
+         * Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
+         */
         kalmConfigs: outputs.container.GetClusterAddonsConfigKalmConfig[];
+        /**
+         * Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
+         */
         networkPolicyConfigs: outputs.container.GetClusterAddonsConfigNetworkPolicyConfig[];
     }
 
@@ -30133,7 +35918,13 @@ export namespace container {
     }
 
     export interface GetClusterAddonsConfigIstioConfig {
+        /**
+         * The authentication type between services in Istio. Available options include AUTH_MUTUAL_TLS.
+         */
         auth: string;
+        /**
+         * The status of the Istio addon, which makes it easy to set up Istio for services in a cluster. It is disabled by default. Set disabled = false to enable.
+         */
         disabled: boolean;
     }
 
@@ -30146,107 +35937,255 @@ export namespace container {
     }
 
     export interface GetClusterAuthenticatorGroupsConfig {
+        /**
+         * The name of the RBAC security group for use with Google security groups in Kubernetes RBAC. Group name must be in format gke-security-groups@yourdomain.com.
+         */
         securityGroup: string;
     }
 
     export interface GetClusterBinaryAuthorization {
+        /**
+         * Enable Binary Authorization for this cluster.
+         */
         enabled: boolean;
+        /**
+         * Mode of operation for Binary Authorization policy evaluation.
+         */
         evaluationMode: string;
     }
 
     export interface GetClusterClusterAutoscaling {
+        /**
+         * Contains defaults for a node pool created by NAP.
+         */
         autoProvisioningDefaults: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefault[];
+        /**
+         * Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
+         */
         autoscalingProfile: string;
+        /**
+         * Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
+         */
         enabled: boolean;
+        /**
+         * Global constraints for machine resources in the cluster. Configuring the cpu and memory types is required if node auto-provisioning is enabled. These limits will apply to node pool autoscaling in addition to node auto-provisioning.
+         */
         resourceLimits: outputs.container.GetClusterClusterAutoscalingResourceLimit[];
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefault {
+        /**
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+         */
         bootDiskKmsKey: string;
+        /**
+         * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+         */
         diskSize: number;
+        /**
+         * Type of the disk attached to each node.
+         */
         diskType: string;
+        /**
+         * The default image type used by NAP once a new node pool is being created.
+         */
         imageType: string;
+        /**
+         * NodeManagement configuration for this NodePool.
+         */
         managements: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultManagement[];
+        /**
+         * Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as Intel Haswell.
+         */
         minCpuPlatform: string;
+        /**
+         * Scopes that are used by NAP when creating node pools.
+         */
         oauthScopes: string[];
+        /**
+         * The Google Cloud Platform Service Account to be used by the node VMs.
+         */
         serviceAccount: string;
+        /**
+         * Shielded Instance options.
+         */
         shieldedInstanceConfigs: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig[];
+        /**
+         * Specifies the upgrade settings for NAP created node pools
+         */
         upgradeSettings: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting[];
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefaultManagement {
+        /**
+         * Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+         */
         autoRepair: boolean;
+        /**
+         * Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
+         */
         autoUpgrade: boolean;
+        /**
+         * Specifies the Auto Upgrade knobs for the node pool.
+         */
         upgradeOptions: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption[];
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption {
+        /**
+         * This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+         */
         autoUpgradeStartTime: string;
+        /**
+         * This field is set when upgrades are about to commence with the description of the upgrade.
+         */
         description: string;
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has integrity monitoring enabled.
+         */
         enableIntegrityMonitoring: boolean;
+        /**
+         * Defines whether the instance has Secure Boot enabled.
+         */
         enableSecureBoot: boolean;
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
+        /**
+         * Settings for blue-green upgrade strategy.
+         */
         blueGreenSettings: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting[];
+        /**
+         * The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
+         */
         maxSurge: number;
+        /**
+         * The maximum number of nodes that can be simultaneously unavailable during the upgrade process.
+         */
         maxUnavailable: number;
+        /**
+         * Update strategy of the node pool.
+         */
         strategy: string;
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting {
+        /**
+         * Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+         *
+         * 																A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
         nodePoolSoakDuration: string;
+        /**
+         * Standard policy for the blue-green upgrade.
+         */
         standardRolloutPolicies: outputs.container.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy[];
     }
 
     export interface GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+        /**
+         * Number of blue nodes to drain in a batch.
+         */
         batchNodeCount: number;
+        /**
+         * Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+         */
         batchPercentage: number;
+        /**
+         * Soak time after each batch gets drained.
+         *
+         * 																			A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
         batchSoakDuration: string;
     }
 
     export interface GetClusterClusterAutoscalingResourceLimit {
+        /**
+         * Maximum amount of the resource in the cluster.
+         */
         maximum: number;
+        /**
+         * Minimum amount of the resource in the cluster.
+         */
         minimum: number;
+        /**
+         * The type of the resource. For example, cpu and memory. See the guide to using Node Auto-Provisioning for a list of types.
+         */
         resourceType: string;
     }
 
     export interface GetClusterClusterTelemetry {
+        /**
+         * Type of the integration.
+         */
         type: string;
     }
 
     export interface GetClusterConfidentialNode {
+        /**
+         * Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterCostManagementConfig {
+        /**
+         * Whether to enable GKE cost allocation. When you enable GKE cost allocation, the cluster name and namespace of your GKE workloads appear in the labels field of the billing export to BigQuery. Defaults to false.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterDatabaseEncryption {
+        /**
+         * The key to use to encrypt/decrypt secrets.
+         */
         keyName: string;
+        /**
+         * ENCRYPTED or DECRYPTED.
+         */
         state: string;
     }
 
     export interface GetClusterDefaultSnatStatus {
+        /**
+         * When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
+         */
         disabled: boolean;
     }
 
     export interface GetClusterDnsConfig {
+        /**
+         * Which in-cluster DNS provider should be used.
+         */
         clusterDns: string;
+        /**
+         * The suffix used for all cluster service records.
+         */
         clusterDnsDomain: string;
+        /**
+         * The scope of access to cluster DNS records.
+         */
         clusterDnsScope: string;
     }
 
     export interface GetClusterEnableK8sBetaApi {
+        /**
+         * Enabled Kubernetes Beta APIs.
+         */
         enabledApis: string[];
     }
 
     export interface GetClusterFleet {
+        /**
+         * Full resource name of the registered fleet membership of the cluster.
+         */
         membership: string;
+        /**
+         * Whether the cluster has been registered via the fleet API.
+         */
         preRegistered: boolean;
         /**
          * The project in which the resource belongs. If it
@@ -30256,24 +36195,54 @@ export namespace container {
     }
 
     export interface GetClusterGatewayApiConfig {
+        /**
+         * The Gateway API release channel to use for Gateway API.
+         */
         channel: string;
     }
 
     export interface GetClusterIdentityServiceConfig {
+        /**
+         * Whether to enable the Identity Service component.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterIpAllocationPolicy {
+        /**
+         * AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+         */
         additionalPodRangesConfigs: outputs.container.GetClusterIpAllocationPolicyAdditionalPodRangesConfig[];
+        /**
+         * The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+         */
         clusterIpv4CidrBlock: string;
+        /**
+         * The name of the existing secondary range in the cluster's subnetwork to use for pod IP addresses. Alternatively, clusterIpv4CidrBlock can be used to automatically create a GKE-managed one.
+         */
         clusterSecondaryRangeName: string;
+        /**
+         * Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+         */
         podCidrOverprovisionConfigs: outputs.container.GetClusterIpAllocationPolicyPodCidrOverprovisionConfig[];
+        /**
+         * The IP address range of the services IPs in this cluster. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+         */
         servicesIpv4CidrBlock: string;
+        /**
+         * The name of the existing secondary range in the cluster's subnetwork to use for service ClusterIPs. Alternatively, servicesIpv4CidrBlock can be used to automatically create a GKE-managed one.
+         */
         servicesSecondaryRangeName: string;
+        /**
+         * The IP Stack type of the cluster. Choose between IPV4 and IPV4_IPV6. Default type is IPV4 Only if not set
+         */
         stackType: string;
     }
 
     export interface GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
+        /**
+         * Name for pod secondary ipv4 range which has the actual range defined ahead.
+         */
         podRangeNames: string[];
     }
 
@@ -30282,12 +36251,24 @@ export namespace container {
     }
 
     export interface GetClusterLoggingConfig {
+        /**
+         * GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+         */
         enableComponents: string[];
     }
 
     export interface GetClusterMaintenancePolicy {
+        /**
+         * Time window specified for daily maintenance operations. Specify startTime in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+         */
         dailyMaintenanceWindows: outputs.container.GetClusterMaintenancePolicyDailyMaintenanceWindow[];
+        /**
+         * Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
+         */
         maintenanceExclusions: outputs.container.GetClusterMaintenancePolicyMaintenanceExclusion[];
+        /**
+         * Time window for recurring maintenance operations.
+         */
         recurringWindows: outputs.container.GetClusterMaintenancePolicyRecurringWindow[];
     }
 
@@ -30299,11 +36280,17 @@ export namespace container {
     export interface GetClusterMaintenancePolicyMaintenanceExclusion {
         endTime: string;
         exclusionName: string;
+        /**
+         * Maintenance exclusion related options.
+         */
         exclusionOptions: outputs.container.GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption[];
         startTime: string;
     }
 
     export interface GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption {
+        /**
+         * The scope of automatic upgrades to restrict in the exclusion window.
+         */
         scope: string;
     }
 
@@ -30314,275 +36301,683 @@ export namespace container {
     }
 
     export interface GetClusterMasterAuth {
+        /**
+         * Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+         */
         clientCertificate: string;
+        /**
+         * Whether client certificate authorization is enabled for this cluster.
+         */
         clientCertificateConfigs: outputs.container.GetClusterMasterAuthClientCertificateConfig[];
+        /**
+         * Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+         */
         clientKey: string;
+        /**
+         * Base64 encoded public certificate that is the root of trust for the cluster.
+         */
         clusterCaCertificate: string;
     }
 
     export interface GetClusterMasterAuthClientCertificateConfig {
+        /**
+         * Whether client certificate authorization is enabled for this cluster.
+         */
         issueClientCertificate: boolean;
     }
 
     export interface GetClusterMasterAuthorizedNetworksConfig {
+        /**
+         * External networks that can access the Kubernetes cluster master through HTTPS.
+         */
         cidrBlocks: outputs.container.GetClusterMasterAuthorizedNetworksConfigCidrBlock[];
+        /**
+         * Whether master is accessbile via Google Compute Engine Public IP addresses.
+         */
         gcpPublicCidrsAccessEnabled: boolean;
     }
 
     export interface GetClusterMasterAuthorizedNetworksConfigCidrBlock {
+        /**
+         * External network that can access Kubernetes master through HTTPS. Must be specified in CIDR notation.
+         */
         cidrBlock: string;
+        /**
+         * Field for users to identify CIDR blocks.
+         */
         displayName: string;
     }
 
     export interface GetClusterMeshCertificate {
+        /**
+         * When enabled the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster.
+         */
         enableCertificates: boolean;
     }
 
     export interface GetClusterMonitoringConfig {
+        /**
+         * Configuration of Advanced Datapath Observability features.
+         */
         advancedDatapathObservabilityConfigs: outputs.container.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig[];
+        /**
+         * GKE components exposing metrics. Valid values include SYSTEM_COMPONENTS, APISERVER, SCHEDULER, CONTROLLER_MANAGER, STORAGE, HPA, POD, DAEMONSET, DEPLOYMENT, STATEFULSET and WORKLOADS.
+         */
         enableComponents: string[];
+        /**
+         * Configuration for Google Cloud Managed Services for Prometheus.
+         */
         managedPrometheuses: outputs.container.GetClusterMonitoringConfigManagedPrometheus[];
     }
 
     export interface GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+        /**
+         * Whether or not the advanced datapath metrics are enabled.
+         */
         enableMetrics: boolean;
+        /**
+         * Mode used to make Relay available.
+         */
         relayMode: string;
     }
 
     export interface GetClusterMonitoringConfigManagedPrometheus {
+        /**
+         * Whether or not the managed collection is enabled.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNetworkPolicy {
+        /**
+         * Whether network policy is enabled on the cluster.
+         */
         enabled: boolean;
+        /**
+         * The selected network policy provider.
+         */
         provider: string;
     }
 
     export interface GetClusterNodeConfig {
+        /**
+         * Specifies options for controlling advanced machine features.
+         */
         advancedMachineFeatures: outputs.container.GetClusterNodeConfigAdvancedMachineFeature[];
+        /**
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+         */
         bootDiskKmsKey: string;
+        /**
+         * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+         */
         confidentialNodes: outputs.container.GetClusterNodeConfigConfidentialNode[];
+        /**
+         * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+         */
         diskSizeGb: number;
+        /**
+         * Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+         */
         diskType: string;
+        /**
+         * List of kubernetes taints applied to each node.
+         */
         effectiveTaints: outputs.container.GetClusterNodeConfigEffectiveTaint[];
+        /**
+         * If enabled boot disks are configured with confidential mode.
+         */
         enableConfidentialStorage: boolean;
+        /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+         */
         ephemeralStorageConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageConfig[];
+        /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+         */
         ephemeralStorageLocalSsdConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageLocalSsdConfig[];
+        /**
+         * Enable or disable NCCL Fast Socket in the node pool.
+         */
         fastSockets: outputs.container.GetClusterNodeConfigFastSocket[];
+        /**
+         * GCFS configuration for this node.
+         */
         gcfsConfigs: outputs.container.GetClusterNodeConfigGcfsConfig[];
+        /**
+         * List of the type and count of accelerator cards attached to the instance.
+         */
         guestAccelerators: outputs.container.GetClusterNodeConfigGuestAccelerator[];
+        /**
+         * Enable or disable gvnic in the node pool.
+         */
         gvnics: outputs.container.GetClusterNodeConfigGvnic[];
+        /**
+         * The maintenance policy for the hosts on which the GKE VMs run on.
+         */
         hostMaintenancePolicies: outputs.container.GetClusterNodeConfigHostMaintenancePolicy[];
+        /**
+         * The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+         */
         imageType: string;
+        /**
+         * Node kubelet configs.
+         */
         kubeletConfigs: outputs.container.GetClusterNodeConfigKubeletConfig[];
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+         */
         labels: {[key: string]: string};
+        /**
+         * Parameters that can be configured on Linux nodes.
+         */
         linuxNodeConfigs: outputs.container.GetClusterNodeConfigLinuxNodeConfig[];
+        /**
+         * Parameters for raw-block local NVMe SSDs.
+         */
         localNvmeSsdBlockConfigs: outputs.container.GetClusterNodeConfigLocalNvmeSsdBlockConfig[];
+        /**
+         * The number of local SSD disks to be attached to the node.
+         */
         localSsdCount: number;
+        /**
+         * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+         */
         loggingVariant: string;
+        /**
+         * The name of a Google Compute Engine machine type.
+         */
         machineType: string;
+        /**
+         * The metadata key/value pairs assigned to instances in the cluster.
+         */
         metadata: {[key: string]: string};
+        /**
+         * Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+         */
         minCpuPlatform: string;
+        /**
+         * Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+         */
         nodeGroup: string;
+        /**
+         * The set of Google API scopes to be made available on all of the node VMs.
+         */
         oauthScopes: string[];
+        /**
+         * Whether the nodes are created as preemptible VM instances.
+         */
         preemptible: boolean;
+        /**
+         * The reservation affinity configuration for the node pool.
+         */
         reservationAffinities: outputs.container.GetClusterNodeConfigReservationAffinity[];
+        /**
+         * The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+         */
         resourceLabels: {[key: string]: string};
+        /**
+         * Sandbox configuration for this node.
+         */
         sandboxConfigs: outputs.container.GetClusterNodeConfigSandboxConfig[];
+        /**
+         * The Google Cloud Platform Service Account to be used by the node VMs.
+         */
         serviceAccount: string;
+        /**
+         * Shielded Instance options.
+         */
         shieldedInstanceConfigs: outputs.container.GetClusterNodeConfigShieldedInstanceConfig[];
+        /**
+         * Node affinity options for sole tenant node pools.
+         */
         soleTenantConfigs: outputs.container.GetClusterNodeConfigSoleTenantConfig[];
+        /**
+         * Whether the nodes are created as spot VM instances.
+         */
         spot: boolean;
+        /**
+         * The list of instance tags applied to all nodes.
+         */
         tags: string[];
+        /**
+         * List of Kubernetes taints to be applied to each node.
+         */
         taints: outputs.container.GetClusterNodeConfigTaint[];
+        /**
+         * The workload metadata configuration for this node.
+         */
         workloadMetadataConfigs: outputs.container.GetClusterNodeConfigWorkloadMetadataConfig[];
     }
 
     export interface GetClusterNodeConfigAdvancedMachineFeature {
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore: number;
     }
 
     export interface GetClusterNodeConfigConfidentialNode {
+        /**
+         * Whether Confidential Nodes feature is enabled for all nodes in this pool.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodeConfigEffectiveTaint {
+        /**
+         * Effect for taint.
+         */
         effect: string;
+        /**
+         * Key for taint.
+         */
         key: string;
+        /**
+         * Value for taint.
+         */
         value: string;
     }
 
     export interface GetClusterNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         */
         localSsdCount: number;
     }
 
     export interface GetClusterNodeConfigEphemeralStorageLocalSsdConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         */
         localSsdCount: number;
     }
 
     export interface GetClusterNodeConfigFastSocket {
+        /**
+         * Whether or not NCCL Fast Socket is enabled
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodeConfigGcfsConfig {
+        /**
+         * Whether or not GCFS is enabled
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodeConfigGuestAccelerator {
+        /**
+         * The number of the accelerator cards exposed to an instance.
+         */
         count: number;
+        /**
+         * Configuration for auto installation of GPU driver.
+         */
         gpuDriverInstallationConfigs: outputs.container.GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig[];
+        /**
+         * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+         */
         gpuPartitionSize: string;
+        /**
+         * Configuration for GPU sharing.
+         */
         gpuSharingConfigs: outputs.container.GetClusterNodeConfigGuestAcceleratorGpuSharingConfig[];
+        /**
+         * The accelerator type resource name.
+         */
         type: string;
     }
 
     export interface GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        /**
+         * Mode for how the GPU driver is installed.
+         */
         gpuDriverVersion: string;
     }
 
     export interface GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+        /**
+         * The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+         */
         gpuSharingStrategy: string;
+        /**
+         * The maximum number of containers that can share a GPU.
+         */
         maxSharedClientsPerGpu: number;
     }
 
     export interface GetClusterNodeConfigGvnic {
+        /**
+         * Whether or not gvnic is enabled
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodeConfigHostMaintenancePolicy {
+        /**
+         * .
+         */
         maintenanceInterval: string;
     }
 
     export interface GetClusterNodeConfigKubeletConfig {
+        /**
+         * Enable CPU CFS quota enforcement for containers that specify CPU limits.
+         */
         cpuCfsQuota: boolean;
+        /**
+         * Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+         */
         cpuCfsQuotaPeriod: string;
+        /**
+         * Control the CPU management policy on the node.
+         */
         cpuManagerPolicy: string;
+        /**
+         * Controls the maximum number of processes allowed to run in a pod.
+         */
         podPidsLimit: number;
     }
 
     export interface GetClusterNodeConfigLinuxNodeConfig {
+        /**
+         * cgroupMode specifies the cgroup mode to be used on the node.
+         */
         cgroupMode: string;
+        /**
+         * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+         */
         sysctls: {[key: string]: string};
     }
 
     export interface GetClusterNodeConfigLocalNvmeSsdBlockConfig {
+        /**
+         * Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+         */
         localSsdCount: number;
     }
 
     export interface GetClusterNodeConfigReservationAffinity {
+        /**
+         * Corresponds to the type of reservation consumption.
+         */
         consumeReservationType: string;
+        /**
+         * The label key of a reservation resource.
+         */
         key: string;
+        /**
+         * The label values of the reservation resource.
+         */
         values: string[];
     }
 
     export interface GetClusterNodeConfigSandboxConfig {
+        /**
+         * Type of the sandbox to use for the node (e.g. 'gvisor')
+         */
         sandboxType: string;
     }
 
     export interface GetClusterNodeConfigShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has integrity monitoring enabled.
+         */
         enableIntegrityMonitoring: boolean;
+        /**
+         * Defines whether the instance has Secure Boot enabled.
+         */
         enableSecureBoot: boolean;
     }
 
     export interface GetClusterNodeConfigSoleTenantConfig {
+        /**
+         * .
+         */
         nodeAffinities: outputs.container.GetClusterNodeConfigSoleTenantConfigNodeAffinity[];
     }
 
     export interface GetClusterNodeConfigSoleTenantConfigNodeAffinity {
+        /**
+         * .
+         */
         key: string;
+        /**
+         * .
+         */
         operator: string;
+        /**
+         * .
+         */
         values: string[];
     }
 
     export interface GetClusterNodeConfigTaint {
+        /**
+         * Effect for taint.
+         */
         effect: string;
+        /**
+         * Key for taint.
+         */
         key: string;
+        /**
+         * Value for taint.
+         */
         value: string;
     }
 
     export interface GetClusterNodeConfigWorkloadMetadataConfig {
+        /**
+         * Mode is the configuration for how to expose metadata to workloads running on the node.
+         */
         mode: string;
     }
 
     export interface GetClusterNodePool {
+        /**
+         * Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+         */
         autoscalings: outputs.container.GetClusterNodePoolAutoscaling[];
+        /**
+         * The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
+         */
         initialNodeCount: number;
+        /**
+         * The resource URLs of the managed instance groups associated with this node pool.
+         */
         instanceGroupUrls: string[];
+        /**
+         * List of instance group URLs which have been assigned to this node pool.
+         */
         managedInstanceGroupUrls: string[];
+        /**
+         * Node management configuration, wherein auto-repair and auto-upgrade is configured.
+         */
         managements: outputs.container.GetClusterNodePoolManagement[];
+        /**
+         * The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+         */
         maxPodsPerNode: number;
         /**
          * The name of the cluster.
          */
         name: string;
+        /**
+         * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         */
         namePrefix: string;
+        /**
+         * Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+         */
         networkConfigs: outputs.container.GetClusterNodePoolNetworkConfig[];
+        /**
+         * The configuration of the nodepool
+         */
         nodeConfigs: outputs.container.GetClusterNodePoolNodeConfig[];
+        /**
+         * The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+         */
         nodeCount: number;
+        /**
+         * The list of zones in which the node pool's nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster's zone for zonal clusters. If unspecified, the cluster-level nodeLocations will be used.
+         */
         nodeLocations: string[];
+        /**
+         * Specifies the node placement policy
+         */
         placementPolicies: outputs.container.GetClusterNodePoolPlacementPolicy[];
+        /**
+         * Specifies the configuration of queued provisioning
+         */
         queuedProvisionings: outputs.container.GetClusterNodePoolQueuedProvisioning[];
+        /**
+         * Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+         */
         upgradeSettings: outputs.container.GetClusterNodePoolUpgradeSetting[];
         version: string;
     }
 
     export interface GetClusterNodePoolAutoConfig {
+        /**
+         * Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+         */
         networkTags: outputs.container.GetClusterNodePoolAutoConfigNetworkTag[];
     }
 
     export interface GetClusterNodePoolAutoConfigNetworkTag {
+        /**
+         * List of network tags applied to auto-provisioned node pools.
+         */
         tags: string[];
     }
 
     export interface GetClusterNodePoolAutoscaling {
+        /**
+         * Location policy specifies the algorithm used when scaling-up the node pool. "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+         */
         locationPolicy: string;
+        /**
+         * Maximum number of nodes per zone in the node pool. Must be >= min_node_count. Cannot be used with total limits.
+         */
         maxNodeCount: number;
+        /**
+         * Minimum number of nodes per zone in the node pool. Must be >=0 and <= max_node_count. Cannot be used with total limits.
+         */
         minNodeCount: number;
+        /**
+         * Maximum number of all nodes in the node pool. Must be >= total_min_node_count. Cannot be used with per zone limits.
+         */
         totalMaxNodeCount: number;
+        /**
+         * Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
+         */
         totalMinNodeCount: number;
     }
 
     export interface GetClusterNodePoolDefault {
+        /**
+         * Subset of NodeConfig message that has defaults.
+         */
         nodeConfigDefaults: outputs.container.GetClusterNodePoolDefaultNodeConfigDefault[];
     }
 
     export interface GetClusterNodePoolDefaultNodeConfigDefault {
+        /**
+         * GCFS configuration for this node.
+         */
         gcfsConfigs: outputs.container.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig[];
+        /**
+         * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+         */
         loggingVariant: string;
     }
 
     export interface GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
+        /**
+         * Whether or not GCFS is enabled
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodePoolManagement {
+        /**
+         * Whether the nodes will be automatically repaired. Enabled by default.
+         */
         autoRepair: boolean;
+        /**
+         * Whether the nodes will be automatically upgraded. Enabled by default.
+         */
         autoUpgrade: boolean;
     }
 
     export interface GetClusterNodePoolNetworkConfig {
+        /**
+         * We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+         */
         additionalNodeNetworkConfigs: outputs.container.GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig[];
+        /**
+         * We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+         */
         additionalPodNetworkConfigs: outputs.container.GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig[];
+        /**
+         * Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
+         */
         createPodRange: boolean;
+        /**
+         * Whether nodes have internal IP addresses only.
+         */
         enablePrivateNodes: boolean;
+        /**
+         * Network bandwidth tier configuration.
+         */
         networkPerformanceConfigs: outputs.container.GetClusterNodePoolNetworkConfigNetworkPerformanceConfig[];
+        /**
+         * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         */
         podCidrOverprovisionConfigs: outputs.container.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig[];
+        /**
+         * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
+         */
         podIpv4CidrBlock: string;
+        /**
+         * The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
+         */
         podRange: string;
     }
 
     export interface GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
+        /**
+         * Name of the VPC where the additional interface belongs.
+         */
         network: string;
+        /**
+         * Name of the subnetwork where the additional interface belongs.
+         */
         subnetwork: string;
     }
 
     export interface GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+        /**
+         * The maximum number of pods per node which use this pod network.
+         */
         maxPodsPerNode: number;
+        /**
+         * The name of the secondary range on the subnet which provides IP address for this pod range.
+         */
         secondaryPodRange: string;
+        /**
+         * Name of the subnetwork where the additional pod network belongs.
+         */
         subnetwork: string;
     }
 
     export interface GetClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+        /**
+         * Specifies the total network bandwidth tier for the NodePool.
+         */
         totalEgressBandwidthTier: string;
     }
 
@@ -30591,259 +36986,629 @@ export namespace container {
     }
 
     export interface GetClusterNodePoolNodeConfig {
+        /**
+         * Specifies options for controlling advanced machine features.
+         */
         advancedMachineFeatures: outputs.container.GetClusterNodePoolNodeConfigAdvancedMachineFeature[];
+        /**
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+         */
         bootDiskKmsKey: string;
+        /**
+         * Configuration for the confidential nodes feature, which makes nodes run on confidential VMs. Warning: This configuration can't be changed (or added/removed) after pool creation without deleting and recreating the entire pool.
+         */
         confidentialNodes: outputs.container.GetClusterNodePoolNodeConfigConfidentialNode[];
+        /**
+         * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+         */
         diskSizeGb: number;
+        /**
+         * Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+         */
         diskType: string;
+        /**
+         * List of kubernetes taints applied to each node.
+         */
         effectiveTaints: outputs.container.GetClusterNodePoolNodeConfigEffectiveTaint[];
+        /**
+         * If enabled boot disks are configured with confidential mode.
+         */
         enableConfidentialStorage: boolean;
+        /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+         */
         ephemeralStorageConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageConfig[];
+        /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+         */
         ephemeralStorageLocalSsdConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig[];
+        /**
+         * Enable or disable NCCL Fast Socket in the node pool.
+         */
         fastSockets: outputs.container.GetClusterNodePoolNodeConfigFastSocket[];
+        /**
+         * GCFS configuration for this node.
+         */
         gcfsConfigs: outputs.container.GetClusterNodePoolNodeConfigGcfsConfig[];
+        /**
+         * List of the type and count of accelerator cards attached to the instance.
+         */
         guestAccelerators: outputs.container.GetClusterNodePoolNodeConfigGuestAccelerator[];
+        /**
+         * Enable or disable gvnic in the node pool.
+         */
         gvnics: outputs.container.GetClusterNodePoolNodeConfigGvnic[];
+        /**
+         * The maintenance policy for the hosts on which the GKE VMs run on.
+         */
         hostMaintenancePolicies: outputs.container.GetClusterNodePoolNodeConfigHostMaintenancePolicy[];
+        /**
+         * The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+         */
         imageType: string;
+        /**
+         * Node kubelet configs.
+         */
         kubeletConfigs: outputs.container.GetClusterNodePoolNodeConfigKubeletConfig[];
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+         */
         labels: {[key: string]: string};
+        /**
+         * Parameters that can be configured on Linux nodes.
+         */
         linuxNodeConfigs: outputs.container.GetClusterNodePoolNodeConfigLinuxNodeConfig[];
+        /**
+         * Parameters for raw-block local NVMe SSDs.
+         */
         localNvmeSsdBlockConfigs: outputs.container.GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig[];
+        /**
+         * The number of local SSD disks to be attached to the node.
+         */
         localSsdCount: number;
+        /**
+         * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+         */
         loggingVariant: string;
+        /**
+         * The name of a Google Compute Engine machine type.
+         */
         machineType: string;
+        /**
+         * The metadata key/value pairs assigned to instances in the cluster.
+         */
         metadata: {[key: string]: string};
+        /**
+         * Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+         */
         minCpuPlatform: string;
+        /**
+         * Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+         */
         nodeGroup: string;
+        /**
+         * The set of Google API scopes to be made available on all of the node VMs.
+         */
         oauthScopes: string[];
+        /**
+         * Whether the nodes are created as preemptible VM instances.
+         */
         preemptible: boolean;
+        /**
+         * The reservation affinity configuration for the node pool.
+         */
         reservationAffinities: outputs.container.GetClusterNodePoolNodeConfigReservationAffinity[];
+        /**
+         * The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+         */
         resourceLabels: {[key: string]: string};
+        /**
+         * Sandbox configuration for this node.
+         */
         sandboxConfigs: outputs.container.GetClusterNodePoolNodeConfigSandboxConfig[];
+        /**
+         * The Google Cloud Platform Service Account to be used by the node VMs.
+         */
         serviceAccount: string;
+        /**
+         * Shielded Instance options.
+         */
         shieldedInstanceConfigs: outputs.container.GetClusterNodePoolNodeConfigShieldedInstanceConfig[];
+        /**
+         * Node affinity options for sole tenant node pools.
+         */
         soleTenantConfigs: outputs.container.GetClusterNodePoolNodeConfigSoleTenantConfig[];
+        /**
+         * Whether the nodes are created as spot VM instances.
+         */
         spot: boolean;
+        /**
+         * The list of instance tags applied to all nodes.
+         */
         tags: string[];
+        /**
+         * List of Kubernetes taints to be applied to each node.
+         */
         taints: outputs.container.GetClusterNodePoolNodeConfigTaint[];
+        /**
+         * The workload metadata configuration for this node.
+         */
         workloadMetadataConfigs: outputs.container.GetClusterNodePoolNodeConfigWorkloadMetadataConfig[];
     }
 
     export interface GetClusterNodePoolNodeConfigAdvancedMachineFeature {
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore: number;
     }
 
     export interface GetClusterNodePoolNodeConfigConfidentialNode {
+        /**
+         * Whether Confidential Nodes feature is enabled for all nodes in this pool.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfigEffectiveTaint {
+        /**
+         * Effect for taint.
+         */
         effect: string;
+        /**
+         * Key for taint.
+         */
         key: string;
+        /**
+         * Value for taint.
+         */
         value: string;
     }
 
     export interface GetClusterNodePoolNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         */
         localSsdCount: number;
     }
 
     export interface GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         */
         localSsdCount: number;
     }
 
     export interface GetClusterNodePoolNodeConfigFastSocket {
+        /**
+         * Whether or not NCCL Fast Socket is enabled
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfigGcfsConfig {
+        /**
+         * Whether or not GCFS is enabled
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfigGuestAccelerator {
+        /**
+         * The number of the accelerator cards exposed to an instance.
+         */
         count: number;
+        /**
+         * Configuration for auto installation of GPU driver.
+         */
         gpuDriverInstallationConfigs: outputs.container.GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig[];
+        /**
+         * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+         */
         gpuPartitionSize: string;
+        /**
+         * Configuration for GPU sharing.
+         */
         gpuSharingConfigs: outputs.container.GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig[];
+        /**
+         * The accelerator type resource name.
+         */
         type: string;
     }
 
     export interface GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        /**
+         * Mode for how the GPU driver is installed.
+         */
         gpuDriverVersion: string;
     }
 
     export interface GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+        /**
+         * The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+         */
         gpuSharingStrategy: string;
+        /**
+         * The maximum number of containers that can share a GPU.
+         */
         maxSharedClientsPerGpu: number;
     }
 
     export interface GetClusterNodePoolNodeConfigGvnic {
+        /**
+         * Whether or not gvnic is enabled
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfigHostMaintenancePolicy {
+        /**
+         * .
+         */
         maintenanceInterval: string;
     }
 
     export interface GetClusterNodePoolNodeConfigKubeletConfig {
+        /**
+         * Enable CPU CFS quota enforcement for containers that specify CPU limits.
+         */
         cpuCfsQuota: boolean;
+        /**
+         * Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+         */
         cpuCfsQuotaPeriod: string;
+        /**
+         * Control the CPU management policy on the node.
+         */
         cpuManagerPolicy: string;
+        /**
+         * Controls the maximum number of processes allowed to run in a pod.
+         */
         podPidsLimit: number;
     }
 
     export interface GetClusterNodePoolNodeConfigLinuxNodeConfig {
+        /**
+         * cgroupMode specifies the cgroup mode to be used on the node.
+         */
         cgroupMode: string;
+        /**
+         * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+         */
         sysctls: {[key: string]: string};
     }
 
     export interface GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
+        /**
+         * Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+         */
         localSsdCount: number;
     }
 
     export interface GetClusterNodePoolNodeConfigReservationAffinity {
+        /**
+         * Corresponds to the type of reservation consumption.
+         */
         consumeReservationType: string;
+        /**
+         * The label key of a reservation resource.
+         */
         key: string;
+        /**
+         * The label values of the reservation resource.
+         */
         values: string[];
     }
 
     export interface GetClusterNodePoolNodeConfigSandboxConfig {
+        /**
+         * Type of the sandbox to use for the node (e.g. 'gvisor')
+         */
         sandboxType: string;
     }
 
     export interface GetClusterNodePoolNodeConfigShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has integrity monitoring enabled.
+         */
         enableIntegrityMonitoring: boolean;
+        /**
+         * Defines whether the instance has Secure Boot enabled.
+         */
         enableSecureBoot: boolean;
     }
 
     export interface GetClusterNodePoolNodeConfigSoleTenantConfig {
+        /**
+         * .
+         */
         nodeAffinities: outputs.container.GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity[];
     }
 
     export interface GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
+        /**
+         * .
+         */
         key: string;
+        /**
+         * .
+         */
         operator: string;
+        /**
+         * .
+         */
         values: string[];
     }
 
     export interface GetClusterNodePoolNodeConfigTaint {
+        /**
+         * Effect for taint.
+         */
         effect: string;
+        /**
+         * Key for taint.
+         */
         key: string;
+        /**
+         * Value for taint.
+         */
         value: string;
     }
 
     export interface GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
+        /**
+         * Mode is the configuration for how to expose metadata to workloads running on the node.
+         */
         mode: string;
     }
 
     export interface GetClusterNodePoolPlacementPolicy {
+        /**
+         * If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+         */
         policyName: string;
+        /**
+         * TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+         */
         tpuTopology: string;
+        /**
+         * Type defines the type of placement policy
+         */
         type: string;
     }
 
     export interface GetClusterNodePoolQueuedProvisioning {
+        /**
+         * Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
+         */
         enabled: boolean;
     }
 
     export interface GetClusterNodePoolUpgradeSetting {
+        /**
+         * Settings for BlueGreen node pool upgrade.
+         */
         blueGreenSettings: outputs.container.GetClusterNodePoolUpgradeSettingBlueGreenSetting[];
+        /**
+         * The number of additional nodes that can be added to the node pool during an upgrade. Increasing maxSurge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
+         */
         maxSurge: number;
+        /**
+         * The number of nodes that can be simultaneously unavailable during an upgrade. Increasing maxUnavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
+         */
         maxUnavailable: number;
+        /**
+         * Update strategy for the given nodepool.
+         */
         strategy: string;
     }
 
     export interface GetClusterNodePoolUpgradeSettingBlueGreenSetting {
+        /**
+         * Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
+         */
         nodePoolSoakDuration: string;
+        /**
+         * Standard rollout policy is the default policy for blue-green.
+         */
         standardRolloutPolicies: outputs.container.GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy[];
     }
 
     export interface GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+        /**
+         * Number of blue nodes to drain in a batch.
+         */
         batchNodeCount: number;
+        /**
+         * Percentage of the blue pool nodes to drain in a batch.
+         */
         batchPercentage: number;
+        /**
+         * Soak time after each batch gets drained.
+         */
         batchSoakDuration: string;
     }
 
     export interface GetClusterNotificationConfig {
+        /**
+         * Notification config for Cloud Pub/Sub
+         */
         pubsubs: outputs.container.GetClusterNotificationConfigPubsub[];
     }
 
     export interface GetClusterNotificationConfigPubsub {
+        /**
+         * Whether or not the notification config is enabled
+         */
         enabled: boolean;
+        /**
+         * Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
+         */
         filters: outputs.container.GetClusterNotificationConfigPubsubFilter[];
+        /**
+         * The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: projects/{project}/topics/{topic}.
+         */
         topic: string;
     }
 
     export interface GetClusterNotificationConfigPubsubFilter {
+        /**
+         * Can be used to filter what notifications are sent. Valid values include include UPGRADE_AVAILABLE_EVENT, UPGRADE_EVENT and SECURITY_BULLETIN_EVENT
+         */
         eventTypes: string[];
     }
 
     export interface GetClusterPodSecurityPolicyConfig {
+        /**
+         * Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterPrivateClusterConfig {
+        /**
+         * When true, the cluster's private endpoint is used as the cluster endpoint and access through the public endpoint is disabled. When false, either endpoint can be used.
+         */
         enablePrivateEndpoint: boolean;
+        /**
+         * Enables the private cluster feature, creating a private endpoint on the cluster. In a private cluster, nodes only have RFC 1918 private addresses and communicate with the master's private endpoint via private networking.
+         */
         enablePrivateNodes: boolean;
+        /**
+         * Controls cluster master global access settings.
+         */
         masterGlobalAccessConfigs: outputs.container.GetClusterPrivateClusterConfigMasterGlobalAccessConfig[];
+        /**
+         * The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enablePrivateNodes is true.
+         */
         masterIpv4CidrBlock: string;
+        /**
+         * The name of the peering between this cluster and the Google owned VPC.
+         */
         peeringName: string;
+        /**
+         * The internal IP address of this cluster's master endpoint.
+         */
         privateEndpoint: string;
+        /**
+         * Subnetwork in cluster's network where master's endpoint will be provisioned.
+         */
         privateEndpointSubnetwork: string;
+        /**
+         * The external IP address of this cluster's master endpoint.
+         */
         publicEndpoint: string;
     }
 
     export interface GetClusterPrivateClusterConfigMasterGlobalAccessConfig {
+        /**
+         * Whether the cluster master is accessible globally or not.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterProtectConfig {
+        /**
+         * WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+         */
         workloadConfigs: outputs.container.GetClusterProtectConfigWorkloadConfig[];
+        /**
+         * Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+         */
         workloadVulnerabilityMode: string;
     }
 
     export interface GetClusterProtectConfigWorkloadConfig {
+        /**
+         * Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+         */
         auditMode: string;
     }
 
     export interface GetClusterReleaseChannel {
+        /**
+         * The selected release channel. Accepted values are:
+         * * UNSPECIFIED: Not set.
+         * * RAPID: Weekly upgrade cadence; Early testers and developers who requires new features.
+         * * REGULAR: Multiple per month upgrade cadence; Production users who need features not yet offered in the Stable channel.
+         * * STABLE: Every few months upgrade cadence; Production users who need stability above all else, and for whom frequent upgrades are too risky.
+         */
         channel: string;
     }
 
     export interface GetClusterResourceUsageExportConfig {
+        /**
+         * Parameters for using BigQuery as the destination of resource usage export.
+         */
         bigqueryDestinations: outputs.container.GetClusterResourceUsageExportConfigBigqueryDestination[];
+        /**
+         * Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created in the cluster to meter network egress traffic.
+         */
         enableNetworkEgressMetering: boolean;
+        /**
+         * Whether to enable resource consumption metering on this cluster. When enabled, a table will be created in the resource export BigQuery dataset to store resource consumption data. The resulting table can be joined with the resource usage table or with BigQuery billing export. Defaults to true.
+         */
         enableResourceConsumptionMetering: boolean;
     }
 
     export interface GetClusterResourceUsageExportConfigBigqueryDestination {
+        /**
+         * The ID of a BigQuery Dataset.
+         */
         datasetId: string;
     }
 
     export interface GetClusterSecurityPostureConfig {
+        /**
+         * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include DISABLED and BASIC.
+         */
         mode: string;
+        /**
+         * Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
+         */
         vulnerabilityMode: string;
     }
 
     export interface GetClusterServiceExternalIpsConfig {
+        /**
+         * When enabled, services with exterenal ips specified will be allowed.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterTpuConfig {
+        /**
+         * Whether Cloud TPU integration is enabled or not
+         */
         enabled: boolean;
+        /**
+         * IPv4 CIDR block reserved for Cloud TPU in the VPC.
+         */
         ipv4CidrBlock: string;
+        /**
+         * Whether to use service networking for Cloud TPU or not
+         */
         useServiceNetworking: boolean;
     }
 
     export interface GetClusterVerticalPodAutoscaling {
+        /**
+         * Enables vertical pod autoscaling.
+         */
         enabled: boolean;
     }
 
     export interface GetClusterWorkloadAltsConfig {
+        /**
+         * Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool must be non-empty).
+         */
         enableAlts: boolean;
     }
 
     export interface GetClusterWorkloadIdentityConfig {
+        /**
+         * The workload pool to attach all Kubernetes service accounts to.
+         */
         workloadPool: string;
     }
 
@@ -30910,7 +37675,13 @@ export namespace container {
          * Whether nodes have internal IP addresses only.
          */
         enablePrivateNodes: boolean;
+        /**
+         * Network bandwidth tier configuration.
+         */
         networkPerformanceConfig?: outputs.container.NodePoolNetworkConfigNetworkPerformanceConfig;
+        /**
+         * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         */
         podCidrOverprovisionConfig: outputs.container.NodePoolNetworkConfigPodCidrOverprovisionConfig;
         /**
          * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -30949,6 +37720,9 @@ export namespace container {
     }
 
     export interface NodePoolNetworkConfigNetworkPerformanceConfig {
+        /**
+         * Specifies the total network bandwidth tier for the NodePool.
+         */
         totalEgressBandwidthTier: string;
     }
 
@@ -30957,49 +37731,160 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfig {
+        /**
+         * Specifies options for controlling advanced machine features.
+         */
         advancedMachineFeatures?: outputs.container.NodePoolNodeConfigAdvancedMachineFeatures;
+        /**
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+         */
         bootDiskKmsKey?: string;
         /**
          * Configuration for Confidential Nodes feature. Structure is documented below.
          */
         confidentialNodes: outputs.container.NodePoolNodeConfigConfidentialNodes;
+        /**
+         * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+         */
         diskSizeGb: number;
+        /**
+         * Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+         */
         diskType: string;
+        /**
+         * List of kubernetes taints applied to each node.
+         */
         effectiveTaints: outputs.container.NodePoolNodeConfigEffectiveTaint[];
+        /**
+         * If enabled boot disks are configured with confidential mode.
+         */
         enableConfidentialStorage?: boolean;
+        /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+         */
         ephemeralStorageConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageConfig;
+        /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+         */
         ephemeralStorageLocalSsdConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageLocalSsdConfig;
+        /**
+         * Enable or disable NCCL Fast Socket in the node pool.
+         */
         fastSocket?: outputs.container.NodePoolNodeConfigFastSocket;
+        /**
+         * GCFS configuration for this node.
+         */
         gcfsConfig?: outputs.container.NodePoolNodeConfigGcfsConfig;
+        /**
+         * List of the type and count of accelerator cards attached to the instance.
+         */
         guestAccelerators: outputs.container.NodePoolNodeConfigGuestAccelerator[];
+        /**
+         * Enable or disable gvnic in the node pool.
+         */
         gvnic?: outputs.container.NodePoolNodeConfigGvnic;
+        /**
+         * The maintenance policy for the hosts on which the GKE VMs run on.
+         */
         hostMaintenancePolicy?: outputs.container.NodePoolNodeConfigHostMaintenancePolicy;
+        /**
+         * The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+         */
         imageType: string;
+        /**
+         * Node kubelet configs.
+         */
         kubeletConfig?: outputs.container.NodePoolNodeConfigKubeletConfig;
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+         */
         labels: {[key: string]: string};
+        /**
+         * Parameters that can be configured on Linux nodes.
+         */
         linuxNodeConfig?: outputs.container.NodePoolNodeConfigLinuxNodeConfig;
+        /**
+         * Parameters for raw-block local NVMe SSDs.
+         */
         localNvmeSsdBlockConfig?: outputs.container.NodePoolNodeConfigLocalNvmeSsdBlockConfig;
+        /**
+         * The number of local SSD disks to be attached to the node.
+         */
         localSsdCount: number;
+        /**
+         * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+         */
         loggingVariant: string;
+        /**
+         * The name of a Google Compute Engine machine type.
+         */
         machineType: string;
+        /**
+         * The metadata key/value pairs assigned to instances in the cluster.
+         */
         metadata: {[key: string]: string};
+        /**
+         * Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+         */
         minCpuPlatform: string;
+        /**
+         * Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+         */
         nodeGroup?: string;
+        /**
+         * The set of Google API scopes to be made available on all of the node VMs.
+         */
         oauthScopes: string[];
+        /**
+         * Whether the nodes are created as preemptible VM instances.
+         */
         preemptible?: boolean;
+        /**
+         * The reservation affinity configuration for the node pool.
+         */
         reservationAffinity?: outputs.container.NodePoolNodeConfigReservationAffinity;
+        /**
+         * The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+         */
         resourceLabels?: {[key: string]: string};
+        /**
+         * Sandbox configuration for this node.
+         */
         sandboxConfig?: outputs.container.NodePoolNodeConfigSandboxConfig;
+        /**
+         * The Google Cloud Platform Service Account to be used by the node VMs.
+         */
         serviceAccount: string;
+        /**
+         * Shielded Instance options.
+         */
         shieldedInstanceConfig: outputs.container.NodePoolNodeConfigShieldedInstanceConfig;
+        /**
+         * Node affinity options for sole tenant node pools.
+         */
         soleTenantConfig?: outputs.container.NodePoolNodeConfigSoleTenantConfig;
+        /**
+         * Whether the nodes are created as spot VM instances.
+         */
         spot?: boolean;
+        /**
+         * The list of instance tags applied to all nodes.
+         */
         tags?: string[];
+        /**
+         * List of Kubernetes taints to be applied to each node.
+         */
         taints?: outputs.container.NodePoolNodeConfigTaint[];
+        /**
+         * The workload metadata configuration for this node.
+         */
         workloadMetadataConfig: outputs.container.NodePoolNodeConfigWorkloadMetadataConfig;
     }
 
     export interface NodePoolNodeConfigAdvancedMachineFeatures {
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore: number;
     }
 
@@ -31012,16 +37897,31 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigEffectiveTaint {
+        /**
+         * Effect for taint.
+         */
         effect: string;
+        /**
+         * Key for taint.
+         */
         key: string;
+        /**
+         * Value for taint.
+         */
         value: string;
     }
 
     export interface NodePoolNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         */
         localSsdCount: number;
     }
 
     export interface NodePoolNodeConfigEphemeralStorageLocalSsdConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         */
         localSsdCount: number;
     }
 
@@ -31042,9 +37942,21 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigGuestAccelerator {
+        /**
+         * The number of the accelerator cards exposed to an instance.
+         */
         count: number;
+        /**
+         * Configuration for auto installation of GPU driver.
+         */
         gpuDriverInstallationConfig?: outputs.container.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
+        /**
+         * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+         */
         gpuPartitionSize?: string;
+        /**
+         * Configuration for GPU sharing.
+         */
         gpuSharingConfig?: outputs.container.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig;
         /**
          * The type of the policy. Supports a single value: COMPACT.
@@ -31055,11 +37967,20 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        /**
+         * Mode for how the GPU driver is installed.
+         */
         gpuDriverVersion: string;
     }
 
     export interface NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+        /**
+         * The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+         */
         gpuSharingStrategy: string;
+        /**
+         * The maximum number of containers that can share a GPU.
+         */
         maxSharedClientsPerGpu: number;
     }
 
@@ -31072,57 +37993,123 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigHostMaintenancePolicy {
+        /**
+         * .
+         */
         maintenanceInterval: string;
     }
 
     export interface NodePoolNodeConfigKubeletConfig {
+        /**
+         * Enable CPU CFS quota enforcement for containers that specify CPU limits.
+         */
         cpuCfsQuota?: boolean;
+        /**
+         * Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+         */
         cpuCfsQuotaPeriod?: string;
+        /**
+         * Control the CPU management policy on the node.
+         */
         cpuManagerPolicy: string;
+        /**
+         * Controls the maximum number of processes allowed to run in a pod.
+         */
         podPidsLimit?: number;
     }
 
     export interface NodePoolNodeConfigLinuxNodeConfig {
+        /**
+         * cgroupMode specifies the cgroup mode to be used on the node.
+         */
         cgroupMode: string;
+        /**
+         * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+         */
         sysctls?: {[key: string]: string};
     }
 
     export interface NodePoolNodeConfigLocalNvmeSsdBlockConfig {
+        /**
+         * Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+         */
         localSsdCount: number;
     }
 
     export interface NodePoolNodeConfigReservationAffinity {
+        /**
+         * Corresponds to the type of reservation consumption.
+         */
         consumeReservationType: string;
+        /**
+         * The label key of a reservation resource.
+         */
         key?: string;
+        /**
+         * The label values of the reservation resource.
+         */
         values?: string[];
     }
 
     export interface NodePoolNodeConfigSandboxConfig {
+        /**
+         * Type of the sandbox to use for the node (e.g. 'gvisor')
+         */
         sandboxType: string;
     }
 
     export interface NodePoolNodeConfigShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has integrity monitoring enabled.
+         */
         enableIntegrityMonitoring?: boolean;
+        /**
+         * Defines whether the instance has Secure Boot enabled.
+         */
         enableSecureBoot?: boolean;
     }
 
     export interface NodePoolNodeConfigSoleTenantConfig {
+        /**
+         * .
+         */
         nodeAffinities: outputs.container.NodePoolNodeConfigSoleTenantConfigNodeAffinity[];
     }
 
     export interface NodePoolNodeConfigSoleTenantConfigNodeAffinity {
+        /**
+         * .
+         */
         key: string;
+        /**
+         * .
+         */
         operator: string;
+        /**
+         * .
+         */
         values: string[];
     }
 
     export interface NodePoolNodeConfigTaint {
+        /**
+         * Effect for taint.
+         */
         effect: string;
+        /**
+         * Key for taint.
+         */
         key: string;
+        /**
+         * Value for taint.
+         */
         value: string;
     }
 
     export interface NodePoolNodeConfigWorkloadMetadataConfig {
+        /**
+         * Mode is the configuration for how to expose metadata to workloads running on the node.
+         */
         mode: string;
     }
 
@@ -37577,13 +44564,25 @@ export namespace dataplex {
     }
 
     export interface AssetDiscoveryStatus {
+        /**
+         * The duration of the last discovery run.
+         */
         lastRunDuration: string;
+        /**
+         * The start time of the last discovery run.
+         */
         lastRunTime: string;
+        /**
+         * Additional information about the current state.
+         */
         message: string;
         /**
          * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
          */
         state: string;
+        /**
+         * Data Stats of the asset reported by discovery.
+         */
         stats: outputs.dataplex.AssetDiscoveryStatusStat[];
         /**
          * Output only. The time when the asset was last updated.
@@ -37592,9 +44591,21 @@ export namespace dataplex {
     }
 
     export interface AssetDiscoveryStatusStat {
+        /**
+         * The count of data items within the referenced resource.
+         */
         dataItems: number;
+        /**
+         * The number of stored data bytes within the referenced resource.
+         */
         dataSize: number;
+        /**
+         * The count of fileset entities within the referenced resource.
+         */
         filesets: number;
+        /**
+         * The count of table entities within the referenced resource.
+         */
         tables: number;
     }
 
@@ -37628,6 +44639,9 @@ export namespace dataplex {
     }
 
     export interface AssetResourceStatus {
+        /**
+         * Additional information about the current state.
+         */
         message: string;
         /**
          * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -37640,6 +44654,9 @@ export namespace dataplex {
     }
 
     export interface AssetSecurityStatus {
+        /**
+         * Additional information about the current state.
+         */
         message: string;
         /**
          * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -37981,7 +44998,13 @@ export namespace dataplex {
     }
 
     export interface LakeAssetStatus {
+        /**
+         * Number of active assets.
+         */
         activeAssets: number;
+        /**
+         * Number of assets that are in process of updating the security policy on attached resources.
+         */
         securityPolicyApplyingAssets: number;
         /**
          * Output only. The time when the lake was last updated.
@@ -38009,7 +45032,13 @@ export namespace dataplex {
     }
 
     export interface LakeMetastoreStatus {
+        /**
+         * The URI of the endpoint used to access the Metastore service.
+         */
         endpoint: string;
+        /**
+         * Additional information about the current status.
+         */
         message: string;
         /**
          * Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -38327,7 +45356,13 @@ export namespace dataplex {
     }
 
     export interface ZoneAssetStatus {
+        /**
+         * Number of active assets.
+         */
         activeAssets: number;
+        /**
+         * Number of assets that are in process of updating the security policy on attached resources.
+         */
         securityPolicyApplyingAssets: number;
         /**
          * Output only. The time when the zone was last updated.
@@ -38553,6 +45588,9 @@ export namespace dataproc {
          * Structure defined below.
          */
         auxiliaryNodeGroups: outputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroup[];
+        /**
+         * The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
+         */
         bucket: string;
         /**
          * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -38651,6 +45689,9 @@ export namespace dataproc {
     }
 
     export interface ClusterClusterConfigAuxiliaryNodeGroup {
+        /**
+         * A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+         */
         nodeGroupId: string;
         /**
          * Node group configuration.
@@ -38687,6 +45728,9 @@ export namespace dataproc {
          * Disk Config
          */
         diskConfig: outputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig;
+        /**
+         * List of auxiliary node group instance names which have been assigned to the cluster.
+         */
         instanceNames: string[];
         /**
          * The name of a Google Compute Engine machine type
@@ -38779,6 +45823,9 @@ export namespace dataproc {
          * on the cluster from external sources (aka Component Gateway). Defaults to false.
          */
         enableHttpPortAccess: boolean;
+        /**
+         * The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
+         */
         httpPorts: {[key: string]: any};
     }
 
@@ -38920,6 +45967,9 @@ export namespace dataproc {
          * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
          */
         idleDeleteTtl?: string;
+        /**
+         * Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+         */
         idleStartTime: string;
     }
 
@@ -38937,6 +45987,9 @@ export namespace dataproc {
          * for more information.
          */
         imageUri: string;
+        /**
+         * List of master instance names which have been assigned to the cluster.
+         */
         instanceNames: string[];
         /**
          * The name of a Google Compute Engine machine type
@@ -39013,6 +46066,9 @@ export namespace dataproc {
          * Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
          */
         instanceFlexibilityPolicy: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy;
+        /**
+         * List of preemptible instance names which have been assigned to the cluster.
+         */
         instanceNames: string[];
         /**
          * Specifies the number of preemptible nodes to create.
@@ -39055,6 +46111,9 @@ export namespace dataproc {
          * List of instance selection options that the group will use when creating new VMs.
          */
         instanceSelectionLists: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList[];
+        /**
+         * A list of instance selection results in the group.
+         */
         instanceSelectionResults: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult[];
     }
 
@@ -39078,6 +46137,9 @@ export namespace dataproc {
          * computed value (currently `n1-standard-4`).
          */
         machineType: string;
+        /**
+         * Number of VM provisioned with the machine_type.
+         */
         vmCount: number;
     }
 
@@ -39212,6 +46274,9 @@ export namespace dataproc {
          * for more information.
          */
         imageUri: string;
+        /**
+         * List of master/worker instance names which have been assigned to the cluster.
+         */
         instanceNames: string[];
         /**
          * The name of a Google Compute Engine machine type
@@ -39485,6 +46550,9 @@ export namespace dataproc {
          * HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          */
         jarFileUris?: string[];
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig: outputs.dataproc.JobHadoopConfigLoggingConfig;
         /**
          * The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
@@ -39503,6 +46571,9 @@ export namespace dataproc {
     }
 
     export interface JobHadoopConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: {[key: string]: string};
     }
 
@@ -39558,6 +46629,9 @@ export namespace dataproc {
          * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         jarFileUris?: string[];
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig: outputs.dataproc.JobPigConfigLoggingConfig;
         /**
          * A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
@@ -39580,11 +46654,20 @@ export namespace dataproc {
     }
 
     export interface JobPigConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: {[key: string]: string};
     }
 
     export interface JobPlacement {
+        /**
+         * The name of the cluster where the job will be submitted
+         */
         clusterName: string;
+        /**
+         * Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
+         */
         clusterUuid: string;
     }
 
@@ -39597,6 +46680,9 @@ export namespace dataproc {
          * Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
          */
         continueOnFailure?: boolean;
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig: outputs.dataproc.JobPrestoConfigLoggingConfig;
         /**
          * The format in which query output will be displayed. See the Presto documentation for supported output formats.
@@ -39621,6 +46707,9 @@ export namespace dataproc {
     }
 
     export interface JobPrestoConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: {[key: string]: string};
     }
 
@@ -39641,6 +46730,9 @@ export namespace dataproc {
          * HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
          */
         jarFileUris?: string[];
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig: outputs.dataproc.JobPysparkConfigLoggingConfig;
         /**
          * The HCFS URI of the main Python file to use as the driver. Must be a .py file.
@@ -39659,15 +46751,27 @@ export namespace dataproc {
     }
 
     export interface JobPysparkConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: {[key: string]: string};
     }
 
     export interface JobReference {
+        /**
+         * The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
+         */
         jobId: string;
     }
 
     export interface JobScheduling {
+        /**
+         * Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         */
         maxFailuresPerHour: number;
+        /**
+         * Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         */
         maxFailuresTotal: number;
     }
 
@@ -39688,6 +46792,9 @@ export namespace dataproc {
          * HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          */
         jarFileUris?: string[];
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig: outputs.dataproc.JobSparkConfigLoggingConfig;
         /**
          * The class containing the main method of the driver. Must be in a
@@ -39708,6 +46815,9 @@ export namespace dataproc {
     }
 
     export interface JobSparkConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: {[key: string]: string};
     }
 
@@ -39718,6 +46828,9 @@ export namespace dataproc {
          * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         jarFileUris?: string[];
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig: outputs.dataproc.JobSparksqlConfigLoggingConfig;
         /**
          * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
@@ -39740,13 +46853,28 @@ export namespace dataproc {
     }
 
     export interface JobSparksqlConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: {[key: string]: string};
     }
 
     export interface JobStatus {
+        /**
+         * Output-only. Optional job state details, such as an error description if the state is ERROR
+         */
         details: string;
+        /**
+         * Output-only. A state message specifying the overall job state
+         */
         state: string;
+        /**
+         * Output-only. The time when this state was entered
+         */
         stateStartTime: string;
+        /**
+         * Output-only. Additional state information, which includes status reported by the agent
+         */
         substate: string;
     }
 
@@ -40711,7 +47839,13 @@ export namespace dataproc {
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
+        /**
+         * Output only. The name of the Instance Group Manager for this group.
+         */
         instanceGroupManagerName: string;
+        /**
+         * Output only. The name of the Instance Template used for the Managed Instance Group.
+         */
         instanceTemplateName: string;
     }
 
@@ -40792,7 +47926,13 @@ export namespace dataproc {
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
+        /**
+         * Output only. The name of the Instance Group Manager for this group.
+         */
         instanceGroupManagerName: string;
+        /**
+         * Output only. The name of the Instance Template used for the Managed Instance Group.
+         */
         instanceTemplateName: string;
     }
 
@@ -40966,7 +48106,13 @@ export namespace dataproc {
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
+        /**
+         * Output only. The name of the Instance Group Manager for this group.
+         */
         instanceGroupManagerName: string;
+        /**
+         * Output only. The name of the Instance Template used for the Managed Instance Group.
+         */
         instanceTemplateName: string;
     }
 
@@ -44383,13 +51529,37 @@ export namespace dns {
     }
 
     export interface GetManagedZonesManagedZone {
+        /**
+         * A textual description field.
+         */
         description: string;
+        /**
+         * The fully qualified DNS name of this zone.
+         */
         dnsName: string;
+        /**
+         * DNS managed zone identifier
+         */
         id: string;
+        /**
+         * Unique identifier for the resource; defined by the server.
+         */
         managedZoneId: number;
+        /**
+         * A unique name for the resource.
+         */
         name: string;
+        /**
+         * The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+         */
         nameServers: string[];
+        /**
+         * The ID of the project for the Google Cloud.
+         */
         project: string;
+        /**
+         * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+         */
         visibility: string;
     }
 
@@ -45633,6 +52803,10 @@ export namespace eventarc {
 
 export namespace filestore {
     export interface GetInstanceFileShare {
+        /**
+         * File share capacity in GiB. This must be at least 1024 GiB
+         * for the standard tier, or 2560 GiB for the premium tier.
+         */
         capacityGb: number;
         /**
          * The name of a Filestore instance.
@@ -45640,23 +52814,74 @@ export namespace filestore {
          * - - -
          */
         name: string;
+        /**
+         * Nfs Export Options. There is a limit of 10 export options per file share.
+         */
         nfsExportOptions: outputs.filestore.GetInstanceFileShareNfsExportOption[];
+        /**
+         * The resource name of the backup, in the format
+         * projects/{projectId}/locations/{locationId}/backups/{backupId},
+         * that this file share has been restored from.
+         */
         sourceBackup: string;
     }
 
     export interface GetInstanceFileShareNfsExportOption {
+        /**
+         * Either READ_ONLY, for allowing only read requests on the exported directory,
+         * or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE. Default value: "READ_WRITE" Possible values: ["READ_ONLY", "READ_WRITE"]
+         */
         accessMode: string;
+        /**
+         * An integer representing the anonymous group id with a default value of 65534.
+         * Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+         * if this field is specified for other squashMode settings.
+         */
         anonGid: number;
+        /**
+         * An integer representing the anonymous user id with a default value of 65534.
+         * Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+         * if this field is specified for other squashMode settings.
+         */
         anonUid: number;
+        /**
+         * List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+         * Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+         * The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+         */
         ipRanges: string[];
+        /**
+         * Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+         * for not allowing root access. The default is NO_ROOT_SQUASH. Default value: "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
+         */
         squashMode: string;
     }
 
     export interface GetInstanceNetwork {
+        /**
+         * The network connect mode of the Filestore instance.
+         * If not provided, the connect mode defaults to
+         * DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
+         */
         connectMode: string;
+        /**
+         * A list of IPv4 or IPv6 addresses.
+         */
         ipAddresses: string[];
+        /**
+         * IP versions for which the instance has
+         * IP addresses assigned. Possible values: ["ADDRESS_MODE_UNSPECIFIED", "MODE_IPV4", "MODE_IPV6"]
+         */
         modes: string[];
+        /**
+         * The name of the GCE VPC network to which the
+         * instance is connected.
+         */
         network: string;
+        /**
+         * A /29 CIDR block that identifies the range of IP
+         * addresses reserved for this instance.
+         */
         reservedIpRange: string;
     }
 
@@ -46193,6 +53418,9 @@ export namespace firebase {
 
 export namespace firebaserules {
     export interface RulesetMetadata {
+        /**
+         * Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+         */
         services: string[];
     }
 
@@ -46339,27 +53567,57 @@ export namespace folder {
     }
 
     export interface GetOrganizationPolicyBooleanPolicy {
+        /**
+         * If true, then the Policy is enforced. If false, then any configuration is acceptable.
+         */
         enforced: boolean;
     }
 
     export interface GetOrganizationPolicyListPolicy {
+        /**
+         * One or the other must be set.
+         */
         allows: outputs.folder.GetOrganizationPolicyListPolicyAllow[];
+        /**
+         * One or the other must be set.
+         */
         denies: outputs.folder.GetOrganizationPolicyListPolicyDeny[];
+        /**
+         * If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+         */
         inheritFromParent: boolean;
+        /**
+         * The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+         */
         suggestedValue: string;
     }
 
     export interface GetOrganizationPolicyListPolicyAllow {
+        /**
+         * The policy allows or denies all values.
+         */
         all: boolean;
+        /**
+         * The policy can define specific values that are allowed or denied.
+         */
         values: string[];
     }
 
     export interface GetOrganizationPolicyListPolicyDeny {
+        /**
+         * The policy allows or denies all values.
+         */
         all: boolean;
+        /**
+         * The policy can define specific values that are allowed or denied.
+         */
         values: string[];
     }
 
     export interface GetOrganizationPolicyRestorePolicy {
+        /**
+         * May only be set to true. If set, then the default Policy is restored.
+         */
         default: boolean;
     }
 
@@ -46411,6 +53669,9 @@ export namespace folder {
          * or `deny` - (Optional) One or the other must be set.
          */
         allow?: outputs.folder.OrganizationPolicyListPolicyAllow;
+        /**
+         * One or the other must be set.
+         */
         deny?: outputs.folder.OrganizationPolicyListPolicyDeny;
         /**
          * If set to true, the values from the effective Policy of the parent resource
@@ -47205,6 +54466,9 @@ export namespace gkehub {
          * (Optional) Structure is documented below.
          */
         git?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit;
+        /**
+         * The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+         */
         metricsGcpServiceAccountEmail?: string;
         /**
          * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
@@ -47339,6 +54603,8 @@ export namespace gkehub {
 
     export interface FeatureMembershipMesh {
         /**
+         * **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+         *
          * @deprecated Deprecated in favor of the `management` field
          */
         controlPlane?: string;
@@ -50053,16 +57319,64 @@ export namespace iam {
     }
 
     export interface GetWorkloadIdentityPoolProviderAw {
+        /**
+         * The AWS account ID.
+         */
         accountId: string;
     }
 
     export interface GetWorkloadIdentityPoolProviderOidc {
+        /**
+         * Acceptable values for the 'aud' field (audience) in the OIDC token. Token exchange
+         * requests are rejected if the token audience does not match one of the configured
+         * values. Each audience may be at most 256 characters. A maximum of 10 audiences may
+         * be configured.
+         *
+         * If this list is empty, the OIDC token audience must be equal to the full canonical
+         * resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix.
+         * For example:
+         * '''
+         * //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+         * https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
+         * '''
+         */
         allowedAudiences: string[];
+        /**
+         * The OIDC issuer URL.
+         */
         issuerUri: string;
+        /**
+         * OIDC JWKs in JSON String format. For details on definition of a
+         * JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+         * use the 'jwks_uri' from the discovery document fetched from the
+         * .well-known path for the 'issuer_uri'. Currently, RSA and EC asymmetric
+         * keys are supported. The JWK must use following format and include only
+         * the following fields:
+         * '''
+         * {
+         *   "keys": [
+         *     {
+         *           "kty": "RSA/EC",
+         *           "alg": "<algorithm>",
+         *           "use": "sig",
+         *           "kid": "<key-id>",
+         *           "n": "",
+         *           "e": "",
+         *           "x": "",
+         *           "y": "",
+         *           "crv": ""
+         *     }
+         *   ]
+         * }
+         * '''
+         */
         jwksJson: string;
     }
 
     export interface GetWorkloadIdentityPoolProviderSaml {
+        /**
+         * SAML Identity provider configuration metadata xml doc.
+         */
         idpMetadataXml: string;
     }
 
@@ -51780,6 +59094,9 @@ export namespace kms {
          * A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
          */
         name: string;
+        /**
+         * The current state of the CryptoKeyVersion.
+         */
         state: string;
     }
 
@@ -51795,7 +59112,14 @@ export namespace kms {
     }
 
     export interface GetKMSCryptoKeyVersionTemplate {
+        /**
+         * The algorithm to use when creating a version based on this template.
+         * See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+         */
         algorithm: string;
+        /**
+         * The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
+         */
         protectionLevel: string;
     }
 
@@ -51864,12 +59188,33 @@ export namespace kms {
 
 export namespace logging {
     export interface BillingAccountBucketConfigCmekSettings {
+        /**
+         * The resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+         * To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+         * The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         kmsKeyName: string;
+        /**
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+         * For example:
+         * "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+         */
         kmsKeyVersionName: string;
         /**
          * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
          */
         name: string;
+        /**
+         * The service account associated with a project for which CMEK will apply.
+         * Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         serviceAccountId: string;
     }
 
@@ -51916,12 +59261,33 @@ export namespace logging {
     }
 
     export interface FolderBucketConfigCmekSettings {
+        /**
+         * The resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+         * To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+         * The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         kmsKeyName: string;
+        /**
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+         * For example:
+         * "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+         */
         kmsKeyVersionName: string;
         /**
          * The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
          */
         name: string;
+        /**
+         * The service account associated with a project for which CMEK will apply.
+         * Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         serviceAccountId: string;
     }
 
@@ -52116,12 +59482,33 @@ export namespace logging {
     }
 
     export interface OrganizationBucketConfigCmekSettings {
+        /**
+         * The resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+         * To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+         * The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         kmsKeyName: string;
+        /**
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+         * For example:
+         * "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+         */
         kmsKeyVersionName: string;
         /**
          * The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
          */
         name: string;
+        /**
+         * The service account associated with a project for which CMEK will apply.
+         * Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         serviceAccountId: string;
     }
 
@@ -53398,8 +60785,17 @@ export namespace monitoring {
     }
 
     export interface GetNotificationChannelSensitiveLabel {
+        /**
+         * An authorization token for a notification channel. Channel types that support this field include: slack
+         */
         authToken: string;
+        /**
+         * An password for a notification channel. Channel types that support this field include: webhook_basicauth
+         */
         password: string;
+        /**
+         * An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+         */
         serviceKey: string;
     }
 
@@ -54260,6 +61656,9 @@ export namespace netapp {
 
 export namespace networkconnectivity {
     export interface HubRoutingVpc {
+        /**
+         * The URI of the VPC network.
+         */
         uri: string;
     }
 
@@ -56854,6 +64253,9 @@ export namespace organizations {
          * or `deny` - (Optional) One or the other must be set.
          */
         allow?: outputs.organizations.PolicyListPolicyAllow;
+        /**
+         * One or the other must be set.
+         */
         deny?: outputs.organizations.PolicyListPolicyDeny;
         /**
          * If set to true, the values from the effective Policy of the parent resource
@@ -59054,27 +66456,57 @@ export namespace projects {
     }
 
     export interface GetOrganizationPolicyBooleanPolicy {
+        /**
+         * If true, then the Policy is enforced. If false, then any configuration is acceptable.
+         */
         enforced: boolean;
     }
 
     export interface GetOrganizationPolicyListPolicy {
+        /**
+         * One or the other must be set.
+         */
         allows: outputs.projects.GetOrganizationPolicyListPolicyAllow[];
+        /**
+         * One or the other must be set.
+         */
         denies: outputs.projects.GetOrganizationPolicyListPolicyDeny[];
+        /**
+         * If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+         */
         inheritFromParent: boolean;
+        /**
+         * The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+         */
         suggestedValue: string;
     }
 
     export interface GetOrganizationPolicyListPolicyAllow {
+        /**
+         * The policy allows or denies all values.
+         */
         all: boolean;
+        /**
+         * The policy can define specific values that are allowed or denied.
+         */
         values: string[];
     }
 
     export interface GetOrganizationPolicyListPolicyDeny {
+        /**
+         * The policy allows or denies all values.
+         */
         all: boolean;
+        /**
+         * The policy can define specific values that are allowed or denied.
+         */
         values: string[];
     }
 
     export interface GetOrganizationPolicyRestorePolicy {
+        /**
+         * May only be set to true. If set, then the default Policy is restored.
+         */
         default: boolean;
     }
 
@@ -59170,6 +66602,9 @@ export namespace projects {
          * or `deny` - (Optional) One or the other must be set.
          */
         allow?: outputs.projects.OrganizationPolicyListPolicyAllow;
+        /**
+         * One or the other must be set.
+         */
         deny?: outputs.projects.OrganizationPolicyListPolicyDeny;
         /**
          * If set to true, the values from the effective Policy of the parent resource
@@ -59217,62 +66652,219 @@ export namespace projects {
 
 export namespace pubsub {
     export interface GetSubscriptionBigqueryConfig {
+        /**
+         * When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+         * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+         */
         dropUnknownFields: boolean;
+        /**
+         * The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+         */
         table: string;
+        /**
+         * When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+         */
         useTopicSchema: boolean;
+        /**
+         * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+         * The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+         */
         writeMetadata: boolean;
     }
 
     export interface GetSubscriptionCloudStorageConfig {
+        /**
+         * If set, message data will be written to Cloud Storage in Avro format.
+         */
         avroConfigs: outputs.pubsub.GetSubscriptionCloudStorageConfigAvroConfig[];
+        /**
+         * User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+         */
         bucket: string;
+        /**
+         * User-provided prefix for Cloud Storage filename.
+         */
         filenamePrefix: string;
+        /**
+         * User-provided suffix for Cloud Storage filename. Must not end in "/".
+         */
         filenameSuffix: string;
+        /**
+         * The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+         * The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+         */
         maxBytes: number;
+        /**
+         * The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+         * May not exceed the subscription's acknowledgement deadline.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
         maxDuration: string;
+        /**
+         * An output-only field that indicates whether or not the subscription can receive messages.
+         */
         state: string;
     }
 
     export interface GetSubscriptionCloudStorageConfigAvroConfig {
+        /**
+         * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+         */
         writeMetadata: boolean;
     }
 
     export interface GetSubscriptionDeadLetterPolicy {
+        /**
+         * The name of the topic to which dead letter messages should be published.
+         * Format is 'projects/{project}/topics/{topic}'.
+         *
+         * The Cloud Pub/Sub service account associated with the enclosing subscription's
+         * parent project (i.e.,
+         * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+         * permission to Publish() to this topic.
+         *
+         * The operation will fail if the topic does not exist.
+         * Users should ensure that there is a subscription attached to this topic
+         * since messages published to a topic with no subscriptions are lost.
+         */
         deadLetterTopic: string;
+        /**
+         * The maximum number of delivery attempts for any message. The value must be
+         * between 5 and 100.
+         *
+         * The number of delivery attempts is defined as 1 + (the sum of number of
+         * NACKs and number of times the acknowledgement deadline has been exceeded for the message).
+         *
+         * A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+         * client libraries may automatically extend ack_deadlines.
+         *
+         * This field will be honored on a best effort basis.
+         *
+         * If this parameter is 0, a default value of 5 is used.
+         */
         maxDeliveryAttempts: number;
     }
 
     export interface GetSubscriptionExpirationPolicy {
+        /**
+         * Specifies the "time-to-live" duration for an associated resource. The
+         * resource expires if it is not active for a period of ttl.
+         * If ttl is set to "", the associated resource never expires.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'.
+         * Example - "3.5s".
+         */
         ttl: string;
     }
 
     export interface GetSubscriptionPushConfig {
+        /**
+         * Endpoint configuration attributes.
+         *
+         * Every endpoint has a set of API supported attributes that can
+         * be used to control different aspects of the message delivery.
+         *
+         * The currently supported attribute is x-goog-version, which you
+         * can use to change the format of the pushed message. This
+         * attribute indicates the version of the data expected by
+         * the endpoint. This controls the shape of the pushed message
+         * (i.e., its fields and metadata). The endpoint version is
+         * based on the version of the Pub/Sub API.
+         *
+         * If not present during the subscriptions.create call,
+         * it will default to the version of the API used to make
+         * such call. If not present during a subscriptions.modifyPushConfig
+         * call, its value will not be changed. subscriptions.get
+         * calls will always return a valid version, even if the
+         * subscription was created without this attribute.
+         *
+         * The possible values for this attribute are:
+         *
+         * - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
+         * - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
+         */
         attributes: {[key: string]: string};
+        /**
+         * When set, the payload to the push endpoint is not wrapped.Sets the
+         * 'data' field as the HTTP body for delivery.
+         */
         noWrappers: outputs.pubsub.GetSubscriptionPushConfigNoWrapper[];
+        /**
+         * If specified, Pub/Sub will generate and attach an OIDC JWT token as
+         * an Authorization header in the HTTP request for every pushed message.
+         */
         oidcTokens: outputs.pubsub.GetSubscriptionPushConfigOidcToken[];
+        /**
+         * A URL locating the endpoint to which messages should be pushed.
+         * For example, a Webhook endpoint might use
+         * "https://example.com/push".
+         */
         pushEndpoint: string;
     }
 
     export interface GetSubscriptionPushConfigNoWrapper {
+        /**
+         * When true, writes the Pub/Sub message metadata to
+         * 'x-goog-pubsub-<KEY>:<VAL>' headers of the HTTP request. Writes the
+         * Pub/Sub message attributes to '<KEY>:<VAL>' headers of the HTTP request.
+         */
         writeMetadata: boolean;
     }
 
     export interface GetSubscriptionPushConfigOidcToken {
+        /**
+         * Audience to be used when generating OIDC token. The audience claim
+         * identifies the recipients that the JWT is intended for. The audience
+         * value is a single case-sensitive string. Having multiple values (array)
+         * for the audience field is not supported. More info about the OIDC JWT
+         * token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+         * Note: if not specified, the Push endpoint URL will be used.
+         */
         audience: string;
+        /**
+         * Service account email to be used for generating the OIDC token.
+         * The caller (for subscriptions.create, subscriptions.patch, and
+         * subscriptions.modifyPushConfig RPCs) must have the
+         * iam.serviceAccounts.actAs permission for the service account.
+         */
         serviceAccountEmail: string;
     }
 
     export interface GetSubscriptionRetryPolicy {
+        /**
+         * The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
         maximumBackoff: string;
+        /**
+         * The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
         minimumBackoff: string;
     }
 
     export interface GetTopicMessageStoragePolicy {
+        /**
+         * A list of IDs of GCP regions where messages that are published to
+         * the topic may be persisted in storage. Messages published by
+         * publishers running in non-allowed GCP regions (or running outside
+         * of GCP altogether) will be routed for storage in one of the
+         * allowed regions. An empty list means that no regions are allowed,
+         * and is not a valid configuration.
+         */
         allowedPersistenceRegions: string[];
     }
 
     export interface GetTopicSchemaSetting {
+        /**
+         * The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
+         */
         encoding: string;
+        /**
+         * The name of the schema that messages published should be
+         * validated against. Format is projects/{project}/schemas/{schema}.
+         * The value of this field will be _deleted-schema_
+         * if the schema has been deleted.
+         */
         schema: string;
     }
 
@@ -59737,48 +67329,168 @@ export namespace redis {
     }
 
     export interface GetInstanceMaintenancePolicy {
+        /**
+         * Output only. The time when the policy was created.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
         createTime: string;
+        /**
+         * Optional. Description of what this policy is for.
+         * Create/Update methods return INVALID_ARGUMENT if the
+         * length is greater than 512.
+         */
         description: string;
+        /**
+         * Output only. The time when the policy was last updated.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
         updateTime: string;
+        /**
+         * Optional. Maintenance window that is applied to resources covered by this policy.
+         * Minimum 1. For the current version, the maximum number
+         * of weeklyWindow is expected to be one.
+         */
         weeklyMaintenanceWindows: outputs.redis.GetInstanceMaintenancePolicyWeeklyMaintenanceWindow[];
     }
 
     export interface GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
+        /**
+         * Required. The day of week that maintenance updates occur.
+         *
+         * - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+         * - MONDAY: Monday
+         * - TUESDAY: Tuesday
+         * - WEDNESDAY: Wednesday
+         * - THURSDAY: Thursday
+         * - FRIDAY: Friday
+         * - SATURDAY: Saturday
+         * - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+         */
         day: string;
+        /**
+         * Output only. Duration of the maintenance window.
+         * The current window is fixed at 1 hour.
+         * A duration in seconds with up to nine fractional digits,
+         * terminated by 's'. Example: "3.5s".
+         */
         duration: string;
+        /**
+         * Required. Start time of the window in UTC time.
+         */
         startTimes: outputs.redis.GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime[];
     }
 
     export interface GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         * An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
         hours: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
         minutes: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
         nanos: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         * An API may allow the value 60 if it allows leap-seconds.
+         */
         seconds: number;
     }
 
     export interface GetInstanceMaintenanceSchedule {
+        /**
+         * Output only. The end time of any upcoming scheduled maintenance for this instance.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
         endTime: string;
+        /**
+         * Output only. The deadline that the maintenance schedule start time
+         * can not go beyond, including reschedule.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
         scheduleDeadlineTime: string;
+        /**
+         * Output only. The start time of any upcoming scheduled maintenance for this instance.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
         startTime: string;
     }
 
     export interface GetInstanceNode {
+        /**
+         * Node identifying string. e.g. 'node-0', 'node-1'
+         */
         id: string;
+        /**
+         * Location of the node.
+         */
         zone: string;
     }
 
     export interface GetInstancePersistenceConfig {
+        /**
+         * Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+         *
+         * - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+         * - RDB: RDB based Persistence is enabled. Possible values: ["DISABLED", "RDB"]
+         */
         persistenceMode: string;
+        /**
+         * Output only. The next time that a snapshot attempt is scheduled to occur.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+         * to nine fractional digits.
+         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         rdbNextSnapshotTime: string;
+        /**
+         * Optional. Available snapshot periods for scheduling.
+         *
+         * - ONE_HOUR:	Snapshot every 1 hour.
+         * - SIX_HOURS:	Snapshot every 6 hours.
+         * - TWELVE_HOURS:	Snapshot every 12 hours.
+         * - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
+         */
         rdbSnapshotPeriod: string;
+        /**
+         * Optional. Date and time that the first snapshot was/will be attempted,
+         * and to which future snapshots will be aligned. If not provided,
+         * the current time will be used.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+         * and up to nine fractional digits.
+         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         rdbSnapshotStartTime: string;
     }
 
     export interface GetInstanceServerCaCert {
+        /**
+         * The certificate data in PEM format.
+         */
         cert: string;
+        /**
+         * The time when the certificate was created.
+         */
         createTime: string;
+        /**
+         * The time when the certificate expires.
+         */
         expireTime: string;
+        /**
+         * Serial number, as extracted from the certificate.
+         */
         serialNumber: string;
+        /**
+         * Sha1 Fingerprint of the certificate.
+         */
         sha1Fingerprint: string;
     }
 
@@ -59983,37 +67695,75 @@ export namespace runtimeconfig {
 
 export namespace secretmanager {
     export interface GetSecretReplication {
+        /**
+         * The Secret will automatically be replicated without any restrictions.
+         */
         autos: outputs.secretmanager.GetSecretReplicationAuto[];
+        /**
+         * The Secret will be replicated to the regions specified by the user.
+         */
         userManageds: outputs.secretmanager.GetSecretReplicationUserManaged[];
     }
 
     export interface GetSecretReplicationAuto {
+        /**
+         * The customer-managed encryption configuration of the Secret.
+         * If no configuration is provided, Google-managed default
+         * encryption is used.
+         */
         customerManagedEncryptions: outputs.secretmanager.GetSecretReplicationAutoCustomerManagedEncryption[];
     }
 
     export interface GetSecretReplicationAutoCustomerManagedEncryption {
+        /**
+         * The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+         */
         kmsKeyName: string;
     }
 
     export interface GetSecretReplicationUserManaged {
+        /**
+         * The list of Replicas for this Secret. Cannot be empty.
+         */
         replicas: outputs.secretmanager.GetSecretReplicationUserManagedReplica[];
     }
 
     export interface GetSecretReplicationUserManagedReplica {
+        /**
+         * Customer Managed Encryption for the secret.
+         */
         customerManagedEncryptions: outputs.secretmanager.GetSecretReplicationUserManagedReplicaCustomerManagedEncryption[];
+        /**
+         * The canonical IDs of the location to replicate data. For example: "us-east1".
+         */
         location: string;
     }
 
     export interface GetSecretReplicationUserManagedReplicaCustomerManagedEncryption {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination secret.
+         */
         kmsKeyName: string;
     }
 
     export interface GetSecretRotation {
+        /**
+         * Timestamp in UTC at which the Secret is scheduled to rotate.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
         nextRotationTime: string;
+        /**
+         * The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+         * If rotationPeriod is set, 'next_rotation_time' must be set. 'next_rotation_time' will be advanced by this period when the service automatically sends rotation notifications.
+         */
         rotationPeriod: string;
     }
 
     export interface GetSecretTopic {
+        /**
+         * The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*&#47;topics/*.
+         * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+         */
         name: string;
     }
 
@@ -60044,6 +67794,10 @@ export namespace secretmanager {
          * The ID of the project.
          */
         project: string;
+        /**
+         * The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         */
         pulumiLabels: {[key: string]: string};
         /**
          * The replication policy of the secret data attached to the Secret.
@@ -60055,12 +67809,20 @@ export namespace secretmanager {
          * Structure is documented below.
          */
         rotations: outputs.secretmanager.GetSecretsSecretRotation[];
+        /**
+         * This must be unique within the project.
+         */
         secretId: string;
         /**
          * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
          * Structure is documented below.
          */
         topics: outputs.secretmanager.GetSecretsSecretTopic[];
+        /**
+         * The TTL for the Secret.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         * Only one of 'ttl' or 'expire_time' can be provided.
+         */
         ttl: string;
         /**
          * Mapping from version alias to version name.
@@ -60765,7 +68527,18 @@ export namespace servicedirectory {
 
 export namespace sourcerepo {
     export interface GetRepositoryPubsubConfig {
+        /**
+         * The format of the Cloud Pub/Sub messages.
+         * - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
+         * - JSON: The message payload is a JSON string of SourceRepoEvent. Possible values: ["PROTOBUF", "JSON"]
+         */
         messageFormat: string;
+        /**
+         * Email address of the service account used for publishing Cloud Pub/Sub messages.
+         * This service account needs to be in the same project as the PubsubConfig. When added,
+         * the caller needs to have iam.serviceAccounts.actAs permission on this service account.
+         * If unspecified, it defaults to the compute engine default service account.
+         */
         serviceAccountEmail: string;
         topic: string;
     }
@@ -60827,19 +68600,58 @@ export namespace spanner {
     }
 
     export interface GetInstanceAutoscalingConfig {
+        /**
+         * Defines scale in controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events. Users can define the minimum and
+         * maximum compute capacity allocated to the instance, and the autoscaler will
+         * only scale within that range. Users can either use nodes or processing
+         * units to specify the limits, but should use the same unit to set both the
+         * minLimit and max_limit.
+         */
         autoscalingLimits: outputs.spanner.GetInstanceAutoscalingConfigAutoscalingLimit[];
+        /**
+         * Defines scale in controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         */
         autoscalingTargets: outputs.spanner.GetInstanceAutoscalingConfigAutoscalingTarget[];
     }
 
     export interface GetInstanceAutoscalingConfigAutoscalingLimit {
+        /**
+         * Specifies maximum number of nodes allocated to the instance. If set, this number
+         * should be greater than or equal to min_nodes.
+         */
         maxNodes: number;
+        /**
+         * Specifies maximum number of processing units allocated to the instance.
+         * If set, this number should be multiples of 1000 and be greater than or equal to
+         * min_processing_units.
+         */
         maxProcessingUnits: number;
+        /**
+         * Specifies number of nodes allocated to the instance. If set, this number
+         * should be greater than or equal to 1.
+         */
         minNodes: number;
+        /**
+         * Specifies minimum number of processing units allocated to the instance.
+         * If set, this number should be multiples of 1000.
+         */
         minProcessingUnits: number;
     }
 
     export interface GetInstanceAutoscalingConfigAutoscalingTarget {
+        /**
+         * Specifies the target high priority cpu utilization percentage that the autoscaler
+         * should be trying to achieve for the instance.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization)..
+         */
         highPriorityCpuUtilizationPercent: number;
+        /**
+         * Specifies the target storage utilization percentage that the autoscaler
+         * should be trying to achieve for the instance.
+         * This number is on a scale from 0 (no utilization) to 100 (full utilization).
+         */
         storageUtilizationPercent: number;
     }
 
@@ -61022,14 +68834,26 @@ export namespace sql {
     }
 
     export interface DatabaseInstanceServerCaCert {
+        /**
+         * The CA Certificate used to connect to the SQL Instance via SSL.
+         */
         cert: string;
+        /**
+         * The CN valid for the CA Cert.
+         */
         commonName: string;
+        /**
+         * Creation time of the CA Cert.
+         */
         createTime: string;
         /**
          * The [RFC 3339](https://tools.ietf.org/html/rfc3339)
          * formatted date time string indicating when this whitelist expires.
          */
         expirationTime: string;
+        /**
+         * SHA Fingerprint of the CA Cert.
+         */
         sha1Fingerprint: string;
     }
 
@@ -61059,8 +68883,14 @@ export namespace sql {
          * Specifies if connections must use Cloud SQL connectors.
          */
         connectorEnforcement: string;
+        /**
+         * Data cache configurations.
+         */
         dataCacheConfig?: outputs.sql.DatabaseInstanceSettingsDataCacheConfig;
         databaseFlags?: outputs.sql.DatabaseInstanceSettingsDatabaseFlag[];
+        /**
+         * Configuration to protect against accidental instance deletion.
+         */
         deletionProtectionEnabled?: boolean;
         denyMaintenancePeriod?: outputs.sql.DatabaseInstanceSettingsDenyMaintenancePeriod;
         /**
@@ -61083,9 +68913,15 @@ export namespace sql {
          * The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
          */
         edition?: string;
+        /**
+         * Configuration of Query Insights.
+         */
         insightsConfig?: outputs.sql.DatabaseInstanceSettingsInsightsConfig;
         ipConfiguration: outputs.sql.DatabaseInstanceSettingsIpConfiguration;
         locationPreference: outputs.sql.DatabaseInstanceSettingsLocationPreference;
+        /**
+         * Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+         */
         maintenanceWindow?: outputs.sql.DatabaseInstanceSettingsMaintenanceWindow;
         passwordValidationPolicy?: outputs.sql.DatabaseInstanceSettingsPasswordValidationPolicy;
         /**
@@ -61107,6 +68943,9 @@ export namespace sql {
          * A set of key/value user label pairs to assign to the instance.
          */
         userLabels: {[key: string]: string};
+        /**
+         * Used to make sure changes to the settings block are atomic.
+         */
         version: number;
     }
 
@@ -61252,6 +69091,9 @@ export namespace sql {
          * This setting can be updated, but it cannot be removed after it is set.
          */
         privateNetwork?: string;
+        /**
+         * PSC settings for a Cloud SQL instance.
+         */
         pscConfigs?: outputs.sql.DatabaseInstanceSettingsIpConfigurationPscConfig[];
         /**
          * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
@@ -61403,10 +69245,25 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstanceClone {
+        /**
+         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         */
         allocatedIpRange: string;
+        /**
+         * (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
+         */
         databaseNames: string[];
+        /**
+         * The timestamp of the point in time that should be restored.
+         */
         pointInTime: string;
+        /**
+         * (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+         */
         preferredZone: string;
+        /**
+         * The name of the instance from which the point in time should be restored.
+         */
         sourceInstanceName: string;
     }
 
@@ -61417,21 +69274,60 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstanceReplicaConfiguration {
+        /**
+         * PEM representation of the trusted CA's x509 certificate.
+         */
         caCertificate: string;
+        /**
+         * PEM representation of the replica's x509 certificate.
+         */
         clientCertificate: string;
+        /**
+         * PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
+         */
         clientKey: string;
+        /**
+         * The number of seconds between connect retries. MySQL's default is 60 seconds.
+         */
         connectRetryInterval: number;
+        /**
+         * Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
+         */
         dumpFilePath: string;
+        /**
+         * Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
+         */
         failoverTarget: boolean;
+        /**
+         * Time in ms between replication heartbeats.
+         */
         masterHeartbeatPeriod: number;
+        /**
+         * Password for the replication connection.
+         */
         password: string;
+        /**
+         * Permissible ciphers for use in SSL encryption.
+         */
         sslCipher: string;
+        /**
+         * Username for replication connection.
+         */
         username: string;
+        /**
+         * True if the master's common name value is checked during the SSL handshake.
+         */
         verifyServerCertificate: boolean;
     }
 
     export interface GetDatabaseInstanceRestoreBackupContext {
+        /**
+         * The ID of the backup run to restore from.
+         */
         backupRunId: number;
+        /**
+         * The ID of the instance that the backup was taken from.
+         */
         instanceId: string;
         /**
          * The ID of the project in which the resource belongs.
@@ -61440,67 +69336,174 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstanceServerCaCert {
+        /**
+         * The CA Certificate used to connect to the SQL Instance via SSL.
+         */
         cert: string;
+        /**
+         * The CN valid for the CA Cert.
+         */
         commonName: string;
+        /**
+         * Creation time of the CA Cert.
+         */
         createTime: string;
+        /**
+         * Expiration time of the CA Cert.
+         */
         expirationTime: string;
+        /**
+         * SHA Fingerprint of the CA Cert.
+         */
         sha1Fingerprint: string;
     }
 
     export interface GetDatabaseInstanceSetting {
+        /**
+         * This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+         */
         activationPolicy: string;
         activeDirectoryConfigs: outputs.sql.GetDatabaseInstanceSettingActiveDirectoryConfig[];
         advancedMachineFeatures: outputs.sql.GetDatabaseInstanceSettingAdvancedMachineFeature[];
+        /**
+         * The availability type of the Cloud SQL instance, high availability
+         * (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+         * settings.backup_configuration.enabled is set to true.
+         * For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+         * For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+         * is set to true. Defaults to ZONAL.
+         */
         availabilityType: string;
         backupConfigurations: outputs.sql.GetDatabaseInstanceSettingBackupConfiguration[];
+        /**
+         * The name of server instance collation.
+         */
         collation: string;
+        /**
+         * Specifies if connections must use Cloud SQL connectors.
+         */
         connectorEnforcement: string;
+        /**
+         * Data cache configurations.
+         */
         dataCacheConfigs: outputs.sql.GetDatabaseInstanceSettingDataCacheConfig[];
         databaseFlags: outputs.sql.GetDatabaseInstanceSettingDatabaseFlag[];
+        /**
+         * Configuration to protect against accidental instance deletion.
+         */
         deletionProtectionEnabled: boolean;
         denyMaintenancePeriods: outputs.sql.GetDatabaseInstanceSettingDenyMaintenancePeriod[];
+        /**
+         * Enables auto-resizing of the storage size. Defaults to true.
+         */
         diskAutoresize: boolean;
+        /**
+         * The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         */
         diskAutoresizeLimit: number;
+        /**
+         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+         */
         diskSize: number;
+        /**
+         * The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+         */
         diskType: string;
+        /**
+         * The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+         */
         edition: string;
+        /**
+         * Configuration of Query Insights.
+         */
         insightsConfigs: outputs.sql.GetDatabaseInstanceSettingInsightsConfig[];
         ipConfigurations: outputs.sql.GetDatabaseInstanceSettingIpConfiguration[];
         locationPreferences: outputs.sql.GetDatabaseInstanceSettingLocationPreference[];
+        /**
+         * Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+         */
         maintenanceWindows: outputs.sql.GetDatabaseInstanceSettingMaintenanceWindow[];
         passwordValidationPolicies: outputs.sql.GetDatabaseInstanceSettingPasswordValidationPolicy[];
+        /**
+         * Pricing plan for this instance, can only be PER_USE.
+         */
         pricingPlan: string;
         sqlServerAuditConfigs: outputs.sql.GetDatabaseInstanceSettingSqlServerAuditConfig[];
+        /**
+         * The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
+         */
         tier: string;
+        /**
+         * The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+         */
         timeZone: string;
+        /**
+         * A set of key/value user label pairs to assign to the instance.
+         */
         userLabels: {[key: string]: string};
+        /**
+         * Used to make sure changes to the settings block are atomic.
+         */
         version: number;
     }
 
     export interface GetDatabaseInstanceSettingActiveDirectoryConfig {
+        /**
+         * Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
+         */
         domain: string;
     }
 
     export interface GetDatabaseInstanceSettingAdvancedMachineFeature {
+        /**
+         * The number of threads per physical core. Can be 1 or 2.
+         */
         threadsPerCore: number;
     }
 
     export interface GetDatabaseInstanceSettingBackupConfiguration {
         backupRetentionSettings: outputs.sql.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting[];
+        /**
+         * True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
+         */
         binaryLogEnabled: boolean;
+        /**
+         * True if backup configuration is enabled.
+         */
         enabled: boolean;
+        /**
+         * Location of the backup configuration.
+         */
         location: string;
+        /**
+         * True if Point-in-time recovery is enabled.
+         */
         pointInTimeRecoveryEnabled: boolean;
+        /**
+         * HH:MM format time indicating when backup configuration starts.
+         */
         startTime: string;
+        /**
+         * The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
+         */
         transactionLogRetentionDays: number;
     }
 
     export interface GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
+        /**
+         * Number of backups to retain.
+         */
         retainedBackups: number;
+        /**
+         * The unit that 'retainedBackups' represents. Defaults to COUNT
+         */
         retentionUnit: string;
     }
 
     export interface GetDatabaseInstanceSettingDataCacheConfig {
+        /**
+         * Whether data cache is enabled for the instance.
+         */
         dataCacheEnabled: boolean;
     }
 
@@ -61509,31 +69512,79 @@ export namespace sql {
          * The name of the instance.
          */
         name: string;
+        /**
+         * Value of the flag.
+         */
         value: string;
     }
 
     export interface GetDatabaseInstanceSettingDenyMaintenancePeriod {
+        /**
+         * End date before which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         */
         endDate: string;
+        /**
+         * Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         */
         startDate: string;
+        /**
+         * Time in UTC when the "deny maintenance period" starts on startDate and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+         */
         time: string;
     }
 
     export interface GetDatabaseInstanceSettingInsightsConfig {
+        /**
+         * True if Query Insights feature is enabled.
+         */
         queryInsightsEnabled: boolean;
+        /**
+         * Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+         */
         queryPlansPerMinute: number;
+        /**
+         * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+         */
         queryStringLength: number;
+        /**
+         * True if Query Insights will record application tags from query when enabled.
+         */
         recordApplicationTags: boolean;
+        /**
+         * True if Query Insights will record client address when enabled.
+         */
         recordClientAddress: boolean;
     }
 
     export interface GetDatabaseInstanceSettingIpConfiguration {
+        /**
+         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         */
         allocatedIpRange: string;
         authorizedNetworks: outputs.sql.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork[];
+        /**
+         * Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+         */
         enablePrivatePathForGoogleCloudServices: boolean;
+        /**
+         * Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4Enabled must be enabled or a privateNetwork must be configured.
+         */
         ipv4Enabled: boolean;
+        /**
+         * The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4Enabled must be enabled or a privateNetwork must be configured. This setting can be updated, but it cannot be removed after it is set.
+         */
         privateNetwork: string;
+        /**
+         * PSC settings for a Cloud SQL instance.
+         */
         pscConfigs: outputs.sql.GetDatabaseInstanceSettingIpConfigurationPscConfig[];
+        /**
+         * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
+         */
         requireSsl: boolean;
+        /**
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+         */
         sslMode: string;
     }
 
@@ -61547,52 +69598,124 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstanceSettingIpConfigurationPscConfig {
+        /**
+         * List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+         */
         allowedConsumerProjects: string[];
+        /**
+         * Whether PSC connectivity is enabled for this instance.
+         */
         pscEnabled: boolean;
     }
 
     export interface GetDatabaseInstanceSettingLocationPreference {
+        /**
+         * A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+         */
         followGaeApplication: string;
+        /**
+         * The preferred Compute Engine zone for the secondary/failover
+         */
         secondaryZone: string;
+        /**
+         * The preferred compute engine zone.
+         */
         zone: string;
     }
 
     export interface GetDatabaseInstanceSettingMaintenanceWindow {
+        /**
+         * Day of week (1-7), starting on Monday
+         */
         day: number;
+        /**
+         * Hour of day (0-23), ignored if day not set
+         */
         hour: number;
+        /**
+         * Receive updates earlier (canary) or later (stable)
+         */
         updateTrack: string;
     }
 
     export interface GetDatabaseInstanceSettingPasswordValidationPolicy {
+        /**
+         * Password complexity.
+         */
         complexity: string;
+        /**
+         * Disallow username as a part of the password.
+         */
         disallowUsernameSubstring: boolean;
+        /**
+         * Whether the password policy is enabled or not.
+         */
         enablePasswordPolicy: boolean;
+        /**
+         * Minimum number of characters allowed.
+         */
         minLength: number;
+        /**
+         * Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+         */
         passwordChangeInterval: string;
+        /**
+         * Number of previous passwords that cannot be reused.
+         */
         reuseInterval: number;
     }
 
     export interface GetDatabaseInstanceSettingSqlServerAuditConfig {
+        /**
+         * The name of the destination bucket (e.g., gs://mybucket).
+         */
         bucket: string;
+        /**
+         * How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"..
+         */
         retentionInterval: string;
+        /**
+         * How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
         uploadInterval: string;
     }
 
     export interface GetDatabaseInstancesInstance {
+        /**
+         * Available Maintenance versions.
+         */
         availableMaintenanceVersions: string[];
+        /**
+         * Configuration for creating a new instance as a clone of another instance.
+         */
         clones: outputs.sql.GetDatabaseInstancesInstanceClone[];
+        /**
+         * The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
+         */
         connectionName: string;
         /**
          * To filter out the Cloud SQL instances which are of the specified database version.
          */
         databaseVersion: string;
         deletionProtection: boolean;
+        /**
+         * The dns name of the instance.
+         */
         dnsName: string;
         encryptionKeyName: string;
         firstIpAddress: string;
+        /**
+         * The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+         */
         instanceType: string;
         ipAddresses: outputs.sql.GetDatabaseInstancesInstanceIpAddress[];
+        /**
+         * Maintenance version.
+         */
         maintenanceVersion: string;
+        /**
+         * The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binaryLogEnabled set, as well as existing backups.
+         */
         masterInstanceName: string;
         name: string;
         privateIpAddress: string;
@@ -61600,26 +69723,59 @@ export namespace sql {
          * The ID of the project in which the resources belong. If it is not provided, the provider project is used.
          */
         project: string;
+        /**
+         * The link to service attachment of PSC instance.
+         */
         pscServiceAttachmentLink: string;
         publicIpAddress: string;
         /**
          * To filter out the Cloud SQL instances which are located in the specified region.
          */
         region: string;
+        /**
+         * The configuration for replication.
+         */
         replicaConfigurations: outputs.sql.GetDatabaseInstancesInstanceReplicaConfiguration[];
         restoreBackupContexts: outputs.sql.GetDatabaseInstancesInstanceRestoreBackupContext[];
+        /**
+         * Initial root password. Required for MS SQL Server.
+         */
         rootPassword: string;
+        /**
+         * The URI of the created resource.
+         */
         selfLink: string;
         serverCaCerts: outputs.sql.GetDatabaseInstancesInstanceServerCaCert[];
+        /**
+         * The service account email address assigned to the instance.
+         */
         serviceAccountEmailAddress: string;
+        /**
+         * The settings to use for the database. The configuration is detailed below.
+         */
         settings: outputs.sql.GetDatabaseInstancesInstanceSetting[];
     }
 
     export interface GetDatabaseInstancesInstanceClone {
+        /**
+         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         */
         allocatedIpRange: string;
+        /**
+         * (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
+         */
         databaseNames: string[];
+        /**
+         * The timestamp of the point in time that should be restored.
+         */
         pointInTime: string;
+        /**
+         * (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+         */
         preferredZone: string;
+        /**
+         * The name of the instance from which the point in time should be restored.
+         */
         sourceInstanceName: string;
     }
 
@@ -61630,21 +69786,60 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstancesInstanceReplicaConfiguration {
+        /**
+         * PEM representation of the trusted CA's x509 certificate.
+         */
         caCertificate: string;
+        /**
+         * PEM representation of the replica's x509 certificate.
+         */
         clientCertificate: string;
+        /**
+         * PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
+         */
         clientKey: string;
+        /**
+         * The number of seconds between connect retries. MySQL's default is 60 seconds.
+         */
         connectRetryInterval: number;
+        /**
+         * Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
+         */
         dumpFilePath: string;
+        /**
+         * Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
+         */
         failoverTarget: boolean;
+        /**
+         * Time in ms between replication heartbeats.
+         */
         masterHeartbeatPeriod: number;
+        /**
+         * Password for the replication connection.
+         */
         password: string;
+        /**
+         * Permissible ciphers for use in SSL encryption.
+         */
         sslCipher: string;
+        /**
+         * Username for replication connection.
+         */
         username: string;
+        /**
+         * True if the master's common name value is checked during the SSL handshake.
+         */
         verifyServerCertificate: boolean;
     }
 
     export interface GetDatabaseInstancesInstanceRestoreBackupContext {
+        /**
+         * The ID of the backup run to restore from.
+         */
         backupRunId: number;
+        /**
+         * The ID of the instance that the backup was taken from.
+         */
         instanceId: string;
         /**
          * The ID of the project in which the resources belong. If it is not provided, the provider project is used.
@@ -61653,100 +69848,255 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstancesInstanceServerCaCert {
+        /**
+         * The CA Certificate used to connect to the SQL Instance via SSL.
+         */
         cert: string;
+        /**
+         * The CN valid for the CA Cert.
+         */
         commonName: string;
+        /**
+         * Creation time of the CA Cert.
+         */
         createTime: string;
+        /**
+         * Expiration time of the CA Cert.
+         */
         expirationTime: string;
+        /**
+         * SHA Fingerprint of the CA Cert.
+         */
         sha1Fingerprint: string;
     }
 
     export interface GetDatabaseInstancesInstanceSetting {
+        /**
+         * This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+         */
         activationPolicy: string;
         activeDirectoryConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingActiveDirectoryConfig[];
         advancedMachineFeatures: outputs.sql.GetDatabaseInstancesInstanceSettingAdvancedMachineFeature[];
+        /**
+         * The availability type of the Cloud SQL instance, high availability
+         * (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+         * settings.backup_configuration.enabled is set to true.
+         * For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+         * For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+         * is set to true. Defaults to ZONAL.
+         */
         availabilityType: string;
         backupConfigurations: outputs.sql.GetDatabaseInstancesInstanceSettingBackupConfiguration[];
+        /**
+         * The name of server instance collation.
+         */
         collation: string;
+        /**
+         * Specifies if connections must use Cloud SQL connectors.
+         */
         connectorEnforcement: string;
+        /**
+         * Data cache configurations.
+         */
         dataCacheConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingDataCacheConfig[];
         databaseFlags: outputs.sql.GetDatabaseInstancesInstanceSettingDatabaseFlag[];
+        /**
+         * Configuration to protect against accidental instance deletion.
+         */
         deletionProtectionEnabled: boolean;
         denyMaintenancePeriods: outputs.sql.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod[];
+        /**
+         * Enables auto-resizing of the storage size. Defaults to true.
+         */
         diskAutoresize: boolean;
+        /**
+         * The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+         */
         diskAutoresizeLimit: number;
+        /**
+         * The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+         */
         diskSize: number;
+        /**
+         * The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+         */
         diskType: string;
+        /**
+         * The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+         */
         edition: string;
+        /**
+         * Configuration of Query Insights.
+         */
         insightsConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingInsightsConfig[];
         ipConfigurations: outputs.sql.GetDatabaseInstancesInstanceSettingIpConfiguration[];
         locationPreferences: outputs.sql.GetDatabaseInstancesInstanceSettingLocationPreference[];
+        /**
+         * Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+         */
         maintenanceWindows: outputs.sql.GetDatabaseInstancesInstanceSettingMaintenanceWindow[];
         passwordValidationPolicies: outputs.sql.GetDatabaseInstancesInstanceSettingPasswordValidationPolicy[];
+        /**
+         * Pricing plan for this instance, can only be PER_USE.
+         */
         pricingPlan: string;
         sqlServerAuditConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingSqlServerAuditConfig[];
         /**
          * To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
          */
         tier: string;
+        /**
+         * The timeZone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+         */
         timeZone: string;
+        /**
+         * A set of key/value user label pairs to assign to the instance.
+         */
         userLabels: {[key: string]: string};
+        /**
+         * Used to make sure changes to the settings block are atomic.
+         */
         version: number;
     }
 
     export interface GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
+        /**
+         * Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
+         */
         domain: string;
     }
 
     export interface GetDatabaseInstancesInstanceSettingAdvancedMachineFeature {
+        /**
+         * The number of threads per physical core. Can be 1 or 2.
+         */
         threadsPerCore: number;
     }
 
     export interface GetDatabaseInstancesInstanceSettingBackupConfiguration {
         backupRetentionSettings: outputs.sql.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting[];
+        /**
+         * True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
+         */
         binaryLogEnabled: boolean;
+        /**
+         * True if backup configuration is enabled.
+         */
         enabled: boolean;
+        /**
+         * Location of the backup configuration.
+         */
         location: string;
+        /**
+         * True if Point-in-time recovery is enabled.
+         */
         pointInTimeRecoveryEnabled: boolean;
+        /**
+         * HH:MM format time indicating when backup configuration starts.
+         */
         startTime: string;
+        /**
+         * The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
+         */
         transactionLogRetentionDays: number;
     }
 
     export interface GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting {
+        /**
+         * Number of backups to retain.
+         */
         retainedBackups: number;
+        /**
+         * The unit that 'retainedBackups' represents. Defaults to COUNT
+         */
         retentionUnit: string;
     }
 
     export interface GetDatabaseInstancesInstanceSettingDataCacheConfig {
+        /**
+         * Whether data cache is enabled for the instance.
+         */
         dataCacheEnabled: boolean;
     }
 
     export interface GetDatabaseInstancesInstanceSettingDatabaseFlag {
+        /**
+         * Name of the flag.
+         */
         name: string;
+        /**
+         * Value of the flag.
+         */
         value: string;
     }
 
     export interface GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod {
+        /**
+         * End date before which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         */
         endDate: string;
+        /**
+         * Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+         */
         startDate: string;
+        /**
+         * Time in UTC when the "deny maintenance period" starts on startDate and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+         */
         time: string;
     }
 
     export interface GetDatabaseInstancesInstanceSettingInsightsConfig {
+        /**
+         * True if Query Insights feature is enabled.
+         */
         queryInsightsEnabled: boolean;
+        /**
+         * Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+         */
         queryPlansPerMinute: number;
+        /**
+         * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+         */
         queryStringLength: number;
+        /**
+         * True if Query Insights will record application tags from query when enabled.
+         */
         recordApplicationTags: boolean;
+        /**
+         * True if Query Insights will record client address when enabled.
+         */
         recordClientAddress: boolean;
     }
 
     export interface GetDatabaseInstancesInstanceSettingIpConfiguration {
+        /**
+         * The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+         */
         allocatedIpRange: string;
         authorizedNetworks: outputs.sql.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork[];
+        /**
+         * Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+         */
         enablePrivatePathForGoogleCloudServices: boolean;
+        /**
+         * Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4Enabled must be enabled or a privateNetwork must be configured.
+         */
         ipv4Enabled: boolean;
+        /**
+         * The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4Enabled must be enabled or a privateNetwork must be configured. This setting can be updated, but it cannot be removed after it is set.
+         */
         privateNetwork: string;
+        /**
+         * PSC settings for a Cloud SQL instance.
+         */
         pscConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig[];
+        /**
+         * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in sslMode if it has been set too.
+         */
         requireSsl: boolean;
+        /**
+         * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+         */
         sslMode: string;
     }
 
@@ -61757,12 +70107,24 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
+        /**
+         * List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+         */
         allowedConsumerProjects: string[];
+        /**
+         * Whether PSC connectivity is enabled for this instance.
+         */
         pscEnabled: boolean;
     }
 
     export interface GetDatabaseInstancesInstanceSettingLocationPreference {
+        /**
+         * A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+         */
         followGaeApplication: string;
+        /**
+         * The preferred Compute Engine zone for the secondary/failover
+         */
         secondaryZone: string;
         /**
          * To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
@@ -61771,34 +70133,94 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstancesInstanceSettingMaintenanceWindow {
+        /**
+         * Day of week (1-7), starting on Monday
+         */
         day: number;
+        /**
+         * Hour of day (0-23), ignored if day not set
+         */
         hour: number;
+        /**
+         * Receive updates earlier (canary) or later (stable)
+         */
         updateTrack: string;
     }
 
     export interface GetDatabaseInstancesInstanceSettingPasswordValidationPolicy {
+        /**
+         * Password complexity.
+         */
         complexity: string;
+        /**
+         * Disallow username as a part of the password.
+         */
         disallowUsernameSubstring: boolean;
+        /**
+         * Whether the password policy is enabled or not.
+         */
         enablePasswordPolicy: boolean;
+        /**
+         * Minimum number of characters allowed.
+         */
         minLength: number;
+        /**
+         * Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+         */
         passwordChangeInterval: string;
+        /**
+         * Number of previous passwords that cannot be reused.
+         */
         reuseInterval: number;
     }
 
     export interface GetDatabaseInstancesInstanceSettingSqlServerAuditConfig {
+        /**
+         * The name of the destination bucket (e.g., gs://mybucket).
+         */
         bucket: string;
+        /**
+         * How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"..
+         */
         retentionInterval: string;
+        /**
+         * How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
         uploadInterval: string;
     }
 
     export interface GetDatabasesDatabase {
+        /**
+         * The charset value. See MySQL's
+         * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+         * and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+         * for more details and supported values. Postgres databases only support
+         * a value of 'UTF8' at creation time.
+         */
         charset: string;
+        /**
+         * The collation value. See MySQL's
+         * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+         * and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+         * for more details and supported values. Postgres databases only support
+         * a value of 'en_US.UTF8' at creation time.
+         */
         collation: string;
+        /**
+         * The deletion policy for the database. Setting ABANDON allows the resource
+         * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+         * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+         * values are: "ABANDON", "DELETE". Defaults to "DELETE".
+         */
         deletionPolicy: string;
         /**
          * The name of the Cloud SQL database instance in which the database belongs.
          */
         instance: string;
+        /**
+         * The name of the database in the Cloud SQL instance.
+         * This does not include the project ID or instance name.
+         */
         name: string;
         /**
          * The ID of the project in which the instance belongs.
@@ -61860,7 +70282,13 @@ export namespace sql {
     }
 
     export interface UserSqlServerUserDetail {
+        /**
+         * If the user has been disabled.
+         */
         disabled: boolean;
+        /**
+         * The server roles for this user in the database.
+         */
         serverRoles: string[];
     }
 
@@ -62115,86 +70543,204 @@ export namespace storage {
     }
 
     export interface GetBucketAutoclass {
+        /**
+         * While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+         */
         enabled: boolean;
+        /**
+         * The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
+         */
         terminalStorageClass: string;
     }
 
     export interface GetBucketCor {
+        /**
+         * The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses.
+         */
         maxAgeSeconds: number;
+        /**
+         * The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+         */
         methods: string[];
+        /**
+         * The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+         */
         origins: string[];
+        /**
+         * The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+         */
         responseHeaders: string[];
     }
 
     export interface GetBucketCustomPlacementConfig {
+        /**
+         * The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the dataLocations changes, it will recreate the bucket.
+         */
         dataLocations: string[];
     }
 
     export interface GetBucketEncryption {
+        /**
+         * A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
+         */
         defaultKmsKeyName: string;
     }
 
     export interface GetBucketLifecycleRule {
+        /**
+         * The Lifecycle Rule's action configuration. A single block of this type is supported.
+         */
         actions: outputs.storage.GetBucketLifecycleRuleAction[];
+        /**
+         * The Lifecycle Rule's condition configuration.
+         */
         conditions: outputs.storage.GetBucketLifecycleRuleCondition[];
     }
 
     export interface GetBucketLifecycleRuleAction {
+        /**
+         * The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
+         */
         storageClass: string;
+        /**
+         * The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
+         */
         type: string;
     }
 
     export interface GetBucketLifecycleRuleCondition {
+        /**
+         * Minimum age of an object in days to satisfy this condition.
+         */
         age: number;
+        /**
+         * Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+         */
         createdBefore: string;
+        /**
+         * Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+         */
         customTimeBefore: string;
+        /**
+         * Number of days elapsed since the user-specified timestamp set on an object.
+         */
         daysSinceCustomTime: number;
+        /**
+         * Number of days elapsed since the noncurrent timestamp of an object. This
+         * 										condition is relevant only for versioned objects.
+         */
         daysSinceNoncurrentTime: number;
+        /**
+         * One or more matching name prefixes to satisfy this condition.
+         */
         matchesPrefixes: string[];
+        /**
+         * Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
+         */
         matchesStorageClasses: string[];
+        /**
+         * One or more matching name suffixes to satisfy this condition.
+         */
         matchesSuffixes: string[];
+        /**
+         * While set true, age value will be omitted.Required to set true when age is unset in the config file.
+         */
         noAge: boolean;
+        /**
+         * Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+         */
         noncurrentTimeBefore: string;
+        /**
+         * Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+         */
         numNewerVersions: number;
+        /**
+         * Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
+         */
         withState: string;
     }
 
     export interface GetBucketLogging {
+        /**
+         * The bucket that will receive log objects.
+         */
         logBucket: string;
+        /**
+         * The object prefix for log objects. If it's not provided, by default Google Cloud Storage sets this to this bucket's name.
+         */
         logObjectPrefix: string;
     }
 
     export interface GetBucketObjectContentCustomerEncryption {
+        /**
+         * The encryption algorithm. Default: AES256
+         */
         encryptionAlgorithm: string;
+        /**
+         * Base64 encoded customer supplied encryption key.
+         */
         encryptionKey: string;
     }
 
     export interface GetBucketObjectContentRetention {
+        /**
+         * The object retention mode. Supported values include: "Unlocked", "Locked".
+         */
         mode: string;
+        /**
+         * Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
+         */
         retainUntilTime: string;
     }
 
     export interface GetBucketObjectCustomerEncryption {
+        /**
+         * The encryption algorithm. Default: AES256
+         */
         encryptionAlgorithm: string;
+        /**
+         * Base64 encoded customer supplied encryption key.
+         */
         encryptionKey: string;
     }
 
     export interface GetBucketObjectRetention {
+        /**
+         * The object retention mode. Supported values include: "Unlocked", "Locked".
+         */
         mode: string;
+        /**
+         * Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
+         */
         retainUntilTime: string;
     }
 
     export interface GetBucketRetentionPolicy {
+        /**
+         * If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+         */
         isLocked: boolean;
+        /**
+         * The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+         */
         retentionPeriod: number;
     }
 
     export interface GetBucketVersioning {
+        /**
+         * While set to true, versioning is fully enabled for this bucket.
+         */
         enabled: boolean;
     }
 
     export interface GetBucketWebsite {
+        /**
+         * Behaves as the bucket's directory index where missing objects are treated as potential directories.
+         */
         mainPageSuffix: string;
+        /**
+         * The custom object to return when a requested resource is not found.
+         */
         notFoundPage: string;
     }
 
@@ -63374,32 +71920,98 @@ export namespace vertex {
     }
 
     export interface GetAiIndexDeployedIndex {
+        /**
+         * The ID of the DeployedIndex in the above IndexEndpoint.
+         */
         deployedIndexId: string;
+        /**
+         * A resource name of the IndexEndpoint.
+         */
         indexEndpoint: string;
     }
 
     export interface GetAiIndexIndexStat {
+        /**
+         * The number of shards in the Index.
+         */
         shardsCount: number;
+        /**
+         * The number of vectors in the Index.
+         */
         vectorsCount: string;
     }
 
     export interface GetAiIndexMetadata {
+        /**
+         * The configuration of the Matching Engine Index.
+         */
         configs: outputs.vertex.GetAiIndexMetadataConfig[];
+        /**
+         * Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+         * The string must be a valid Cloud Storage directory path. If this
+         * field is set when calling IndexService.UpdateIndex, then no other
+         * Index field can be also updated as part of the same call.
+         * The expected structure and format of the files this URI points to is
+         * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+         */
         contentsDeltaUri: string;
+        /**
+         * If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
+         * then existing content of the Index will be replaced by the data from the contentsDeltaUri.
+         */
         isCompleteOverwrite: boolean;
     }
 
     export interface GetAiIndexMetadataConfig {
+        /**
+         * The configuration with regard to the algorithms used for efficient search.
+         */
         algorithmConfigs: outputs.vertex.GetAiIndexMetadataConfigAlgorithmConfig[];
+        /**
+         * The default number of neighbors to find via approximate search before exact reordering is
+         * performed. Exact reordering is a procedure where results returned by an
+         * approximate search algorithm are reordered via a more expensive distance computation.
+         * Required if tree-AH algorithm is used.
+         */
         approximateNeighborsCount: number;
+        /**
+         * The number of dimensions of the input vectors.
+         */
         dimensions: number;
+        /**
+         * The distance measure used in nearest neighbor search. The value must be one of the followings:
+         * * SQUARED_L2_DISTANCE: Euclidean (L_2) Distance
+         * * L1_DISTANCE: Manhattan (L_1) Distance
+         * * COSINE_DISTANCE: Cosine Distance. Defined as 1 - cosine similarity.
+         * * DOT_PRODUCT_DISTANCE: Dot Product Distance. Defined as a negative of the dot product
+         */
         distanceMeasureType: string;
+        /**
+         * Type of normalization to be carried out on each vector. The value must be one of the followings:
+         * * UNIT_L2_NORM: Unit L2 normalization type
+         * * NONE: No normalization type is specified.
+         */
         featureNormType: string;
+        /**
+         * Index data is split into equal parts to be processed. These are called "shards".
+         * The shard size must be specified when creating an index. The value must be one of the followings:
+         * * SHARD_SIZE_SMALL: Small (2GB)
+         * * SHARD_SIZE_MEDIUM: Medium (20GB)
+         * * SHARD_SIZE_LARGE: Large (50GB)
+         */
         shardSize: string;
     }
 
     export interface GetAiIndexMetadataConfigAlgorithmConfig {
+        /**
+         * Configuration options for using brute force search, which simply implements the
+         * standard linear search in the database for each query.
+         */
         bruteForceConfigs: outputs.vertex.GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig[];
+        /**
+         * Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
+         * Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+         */
         treeAhConfigs: outputs.vertex.GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig[];
     }
 
@@ -63407,7 +72019,14 @@ export namespace vertex {
     }
 
     export interface GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+        /**
+         * Number of embeddings on each leaf node. The default value is 1000 if not set.
+         */
         leafNodeEmbeddingCount: number;
+        /**
+         * The default percentage of leaf nodes that any query may be searched. Must be in
+         * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+         */
         leafNodesToSearchPercent: number;
     }
 
@@ -63457,78 +72076,204 @@ export namespace vmwareengine {
     }
 
     export interface GetClusterNodeTypeConfig {
+        /**
+         * Customized number of cores available to each node of the type.
+         * This number must always be one of 'nodeType.availableCustomCoreCounts'.
+         * If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+         * Once the customer is created then corecount cannot be changed.
+         */
         customCoreCount: number;
+        /**
+         * The number of nodes of this type in the cluster.
+         */
         nodeCount: number;
         nodeTypeId: string;
     }
 
     export interface GetExternalAccessRuleDestinationIpRange {
+        /**
+         * The name of an 'ExternalAddress' resource.
+         */
         externalAddress: string;
+        /**
+         * An IP address range in the CIDR format.
+         */
         ipAddressRange: string;
     }
 
     export interface GetExternalAccessRuleSourceIpRange {
+        /**
+         * A single IP address.
+         */
         ipAddress: string;
+        /**
+         * An IP address range in the CIDR format.
+         */
         ipAddressRange: string;
     }
 
     export interface GetNetworkPolicyExternalIp {
+        /**
+         * True if the service is enabled; false otherwise.
+         */
         enabled: boolean;
+        /**
+         * State of the service. New values may be added to this enum when appropriate.
+         */
         state: string;
     }
 
     export interface GetNetworkPolicyInternetAccess {
+        /**
+         * True if the service is enabled; false otherwise.
+         */
         enabled: boolean;
+        /**
+         * State of the service. New values may be added to this enum when appropriate.
+         */
         state: string;
     }
 
     export interface GetNetworkVpcNetwork {
+        /**
+         * The relative resource name of the service VPC network this VMware Engine network is attached to.
+         * For example: projects/123123/global/networks/my-network
+         */
         network: string;
+        /**
+         * Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
+         */
         type: string;
     }
 
     export interface GetPrivateCloudHcx {
+        /**
+         * Fully qualified domain name of the appliance.
+         */
         fqdn: string;
+        /**
+         * Internal IP address of the appliance.
+         */
         internalIp: string;
+        /**
+         * State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+         */
         state: string;
+        /**
+         * Version of the appliance.
+         */
         version: string;
     }
 
     export interface GetPrivateCloudManagementCluster {
+        /**
+         * The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+         *   * Only contains 1-63 alphanumeric characters and hyphens
+         *   * Begins with an alphabetical character
+         *   * Ends with a non-hyphen character
+         *   * Not formatted as a UUID
+         *   * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+         */
         clusterId: string;
+        /**
+         * The map of cluster node types in this cluster,
+         * where the key is canonical identifier of the node type (corresponds to the NodeType).
+         */
         nodeTypeConfigs: outputs.vmwareengine.GetPrivateCloudManagementClusterNodeTypeConfig[];
     }
 
     export interface GetPrivateCloudManagementClusterNodeTypeConfig {
+        /**
+         * Customized number of cores available to each node of the type.
+         * This number must always be one of 'nodeType.availableCustomCoreCounts'.
+         * If zero is provided max value from 'nodeType.availableCustomCoreCounts' will be used.
+         * This cannot be changed once the PrivateCloud is created.
+         */
         customCoreCount: number;
+        /**
+         * The number of nodes of this type in the cluster.
+         */
         nodeCount: number;
         nodeTypeId: string;
     }
 
     export interface GetPrivateCloudNetworkConfig {
+        /**
+         * DNS Server IP of the Private Cloud.
+         */
         dnsServerIp: string;
+        /**
+         * Management CIDR used by VMware management appliances.
+         */
         managementCidr: string;
+        /**
+         * The IP address layout version of the management IP address range.
+         * Possible versions include:
+         * * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+         * as it does not support all features.
+         * * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+         * used by all newly created private clouds. This version supports all current features.
+         */
         managementIpAddressLayoutVersion: number;
+        /**
+         * The relative resource name of the VMware Engine network attached to the private cloud.
+         * Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+         * where {project} can either be a project number or a project ID.
+         */
         vmwareEngineNetwork: string;
+        /**
+         * The canonical name of the VMware Engine network in
+         * the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+         */
         vmwareEngineNetworkCanonical: string;
     }
 
     export interface GetPrivateCloudNsx {
+        /**
+         * Fully qualified domain name of the appliance.
+         */
         fqdn: string;
+        /**
+         * Internal IP address of the appliance.
+         */
         internalIp: string;
+        /**
+         * State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+         */
         state: string;
+        /**
+         * Version of the appliance.
+         */
         version: string;
     }
 
     export interface GetPrivateCloudVcenter {
+        /**
+         * Fully qualified domain name of the appliance.
+         */
         fqdn: string;
+        /**
+         * Internal IP address of the appliance.
+         */
         internalIp: string;
+        /**
+         * State of the appliance. Possible values: ["ACTIVE", "CREATING"]
+         */
         state: string;
+        /**
+         * Version of the appliance.
+         */
         version: string;
     }
 
     export interface GetSubnetDhcpAddressRange {
+        /**
+         * The first IP address of the range.
+         */
         firstAddress: string;
+        /**
+         * The last IP address of the range.
+         */
         lastAddress: string;
     }
 
@@ -63737,6 +72482,9 @@ export namespace vpcaccess {
          * - - -
          */
         name: string;
+        /**
+         * Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+         */
         projectId: string;
     }
 

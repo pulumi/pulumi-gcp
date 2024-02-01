@@ -13,14 +13,41 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult
     {
+        /// <summary>
+        /// The key may be used to sign certificates.
+        /// </summary>
         public readonly bool CertSign;
+        /// <summary>
+        /// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        /// </summary>
         public readonly bool ContentCommitment;
+        /// <summary>
+        /// The key may be used sign certificate revocation lists.
+        /// </summary>
         public readonly bool CrlSign;
+        /// <summary>
+        /// The key may be used to encipher data.
+        /// </summary>
         public readonly bool DataEncipherment;
+        /// <summary>
+        /// The key may be used to decipher only.
+        /// </summary>
         public readonly bool DecipherOnly;
+        /// <summary>
+        /// The key may be used for digital signatures.
+        /// </summary>
         public readonly bool DigitalSignature;
+        /// <summary>
+        /// The key may be used to encipher only.
+        /// </summary>
         public readonly bool EncipherOnly;
+        /// <summary>
+        /// The key may be used in a key agreement protocol.
+        /// </summary>
         public readonly bool KeyAgreement;
+        /// <summary>
+        /// The key may be used to encipher other keys.
+        /// </summary>
         public readonly bool KeyEncipherment;
 
         [OutputConstructor]

@@ -12,13 +12,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceLocalityLbPolicy {
+    /**
+     * @return The configuration for a custom policy implemented by the user and
+     * deployed with the client.
+     * 
+     */
     private List<GetBackendServiceLocalityLbPolicyCustomPolicy> customPolicies;
+    /**
+     * @return The configuration for a built-in load balancing policy.
+     * 
+     */
     private List<GetBackendServiceLocalityLbPolicyPolicy> policies;
 
     private GetBackendServiceLocalityLbPolicy() {}
+    /**
+     * @return The configuration for a custom policy implemented by the user and
+     * deployed with the client.
+     * 
+     */
     public List<GetBackendServiceLocalityLbPolicyCustomPolicy> customPolicies() {
         return this.customPolicies;
     }
+    /**
+     * @return The configuration for a built-in load balancing policy.
+     * 
+     */
     public List<GetBackendServiceLocalityLbPolicyPolicy> policies() {
         return this.policies;
     }

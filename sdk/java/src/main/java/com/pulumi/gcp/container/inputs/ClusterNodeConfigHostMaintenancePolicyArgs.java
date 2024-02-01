@@ -14,9 +14,17 @@ public final class ClusterNodeConfigHostMaintenancePolicyArgs extends com.pulumi
 
     public static final ClusterNodeConfigHostMaintenancePolicyArgs Empty = new ClusterNodeConfigHostMaintenancePolicyArgs();
 
+    /**
+     * .
+     * 
+     */
     @Import(name="maintenanceInterval", required=true)
     private Output<String> maintenanceInterval;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<String> maintenanceInterval() {
         return this.maintenanceInterval;
     }
@@ -45,11 +53,23 @@ public final class ClusterNodeConfigHostMaintenancePolicyArgs extends com.pulumi
             $ = new ClusterNodeConfigHostMaintenancePolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maintenanceInterval .
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(Output<String> maintenanceInterval) {
             $.maintenanceInterval = maintenanceInterval;
             return this;
         }
 
+        /**
+         * @param maintenanceInterval .
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(String maintenanceInterval) {
             return maintenanceInterval(Output.of(maintenanceInterval));
         }

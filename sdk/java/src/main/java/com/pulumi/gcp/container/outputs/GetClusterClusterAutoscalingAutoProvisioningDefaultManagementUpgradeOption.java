@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption {
+    /**
+     * @return This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+     * 
+     */
     private String autoUpgradeStartTime;
+    /**
+     * @return This field is set when upgrades are about to commence with the description of the upgrade.
+     * 
+     */
     private String description;
 
     private GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption() {}
+    /**
+     * @return This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+     * 
+     */
     public String autoUpgradeStartTime() {
         return this.autoUpgradeStartTime;
     }
+    /**
+     * @return This field is set when upgrades are about to commence with the description of the upgrade.
+     * 
+     */
     public String description() {
         return this.description;
     }

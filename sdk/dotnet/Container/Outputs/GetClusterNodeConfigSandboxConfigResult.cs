@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodeConfigSandboxConfigResult
     {
+        /// <summary>
+        /// Type of the sandbox to use for the node (e.g. 'gvisor')
+        /// </summary>
         public readonly string SandboxType;
 
         [OutputConstructor]

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigRecoveryConfig {
+    /**
+     * @return The configuration settings for scheduled snapshots.
+     * 
+     */
     private @Nullable EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig scheduledSnapshotsConfig;
 
     private EnvironmentConfigRecoveryConfig() {}
+    /**
+     * @return The configuration settings for scheduled snapshots.
+     * 
+     */
     public Optional<EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig> scheduledSnapshotsConfig() {
         return Optional.ofNullable(this.scheduledSnapshotsConfig);
     }

@@ -134,6 +134,7 @@ class InstanceCluster(dict):
                `cluster_id`.
         :param int num_nodes: The number of nodes in the cluster.
                If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
+        :param str state: The state of the cluster
         :param str storage_type: The storage type to use. One of `"SSD"` or
                `"HDD"`. Defaults to `"SSD"`.
         :param str zone: The zone to create the Cloud Bigtable cluster in. If it not
@@ -199,6 +200,9 @@ class InstanceCluster(dict):
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        The state of the cluster
+        """
         return pulumi.get(self, "state")
 
     @property

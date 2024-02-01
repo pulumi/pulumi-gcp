@@ -11,13 +11,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityAccessUrl {
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+     * set for CAs that have been activated.
+     * 
+     */
     private String caCertificateAccessUrl;
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+     * CAs that have been activated.
+     * 
+     */
     private List<String> crlAccessUrls;
 
     private GetAuthorityAccessUrl() {}
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CA certificate is published. This will only be
+     * set for CAs that have been activated.
+     * 
+     */
     public String caCertificateAccessUrl() {
         return this.caCertificateAccessUrl;
     }
+    /**
+     * @return The URL where this CertificateAuthority&#39;s CRLs are published. This will only be set for
+     * CAs that have been activated.
+     * 
+     */
     public List<String> crlAccessUrls() {
         return this.crlAccessUrls;
     }

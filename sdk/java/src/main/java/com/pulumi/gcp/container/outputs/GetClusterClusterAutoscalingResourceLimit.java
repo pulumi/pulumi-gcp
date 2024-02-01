@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingResourceLimit {
+    /**
+     * @return Maximum amount of the resource in the cluster.
+     * 
+     */
     private Integer maximum;
+    /**
+     * @return Minimum amount of the resource in the cluster.
+     * 
+     */
     private Integer minimum;
+    /**
+     * @return The type of the resource. For example, cpu and memory. See the guide to using Node Auto-Provisioning for a list of types.
+     * 
+     */
     private String resourceType;
 
     private GetClusterClusterAutoscalingResourceLimit() {}
+    /**
+     * @return Maximum amount of the resource in the cluster.
+     * 
+     */
     public Integer maximum() {
         return this.maximum;
     }
+    /**
+     * @return Minimum amount of the resource in the cluster.
+     * 
+     */
     public Integer minimum() {
         return this.minimum;
     }
+    /**
+     * @return The type of the resource. For example, cpu and memory. See the guide to using Node Auto-Provisioning for a list of types.
+     * 
+     */
     public String resourceType() {
         return this.resourceType;
     }

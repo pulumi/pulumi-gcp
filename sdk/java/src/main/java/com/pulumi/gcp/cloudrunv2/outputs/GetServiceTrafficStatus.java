@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTrafficStatus {
+    /**
+     * @return Specifies percent of the traffic to this Revision.
+     * 
+     */
     private Integer percent;
+    /**
+     * @return Revision to which this traffic is sent.
+     * 
+     */
     private String revision;
+    /**
+     * @return Indicates the string used in the URI to exclusively reference this target.
+     * 
+     */
     private String tag;
+    /**
+     * @return The allocation type for this traffic target.
+     * 
+     */
     private String type;
+    /**
+     * @return Displays the target URI.
+     * 
+     */
     private String uri;
 
     private GetServiceTrafficStatus() {}
+    /**
+     * @return Specifies percent of the traffic to this Revision.
+     * 
+     */
     public Integer percent() {
         return this.percent;
     }
+    /**
+     * @return Revision to which this traffic is sent.
+     * 
+     */
     public String revision() {
         return this.revision;
     }
+    /**
+     * @return Indicates the string used in the URI to exclusively reference this target.
+     * 
+     */
     public String tag() {
         return this.tag;
     }
+    /**
+     * @return The allocation type for this traffic target.
+     * 
+     */
     public String type() {
         return this.type;
     }
+    /**
+     * @return Displays the target URI.
+     * 
+     */
     public String uri() {
         return this.uri;
     }

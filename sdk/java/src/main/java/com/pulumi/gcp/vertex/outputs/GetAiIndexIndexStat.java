@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiIndexIndexStat {
+    /**
+     * @return The number of shards in the Index.
+     * 
+     */
     private Integer shardsCount;
+    /**
+     * @return The number of vectors in the Index.
+     * 
+     */
     private String vectorsCount;
 
     private GetAiIndexIndexStat() {}
+    /**
+     * @return The number of shards in the Index.
+     * 
+     */
     public Integer shardsCount() {
         return this.shardsCount;
     }
+    /**
+     * @return The number of vectors in the Index.
+     * 
+     */
     public String vectorsCount() {
         return this.vectorsCount;
     }

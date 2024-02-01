@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigAdvancedMachineFeaturesGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        /// </summary>
         [Input("threadsPerCore", required: true)]
         public Input<int> ThreadsPerCore { get; set; } = null!;
 

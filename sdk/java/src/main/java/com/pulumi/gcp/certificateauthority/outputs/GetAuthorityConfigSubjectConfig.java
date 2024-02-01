@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigSubjectConfig {
+    /**
+     * @return The subject alternative name fields.
+     * 
+     */
     private List<GetAuthorityConfigSubjectConfigSubjectAltName> subjectAltNames;
+    /**
+     * @return Contains distinguished name fields such as the location and organization.
+     * 
+     */
     private List<GetAuthorityConfigSubjectConfigSubject> subjects;
 
     private GetAuthorityConfigSubjectConfig() {}
+    /**
+     * @return The subject alternative name fields.
+     * 
+     */
     public List<GetAuthorityConfigSubjectConfigSubjectAltName> subjectAltNames() {
         return this.subjectAltNames;
     }
+    /**
+     * @return Contains distinguished name fields such as the location and organization.
+     * 
+     */
     public List<GetAuthorityConfigSubjectConfigSubject> subjects() {
         return this.subjects;
     }

@@ -13,7 +13,18 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetReservationSpecificReservationInstancePropertyGuestAcceleratorResult
     {
+        /// <summary>
+        /// The number of the guest accelerator cards exposed to
+        /// this instance.
+        /// </summary>
         public readonly int AcceleratorCount;
+        /// <summary>
+        /// The full or partial URL of the accelerator type to
+        /// attach to this instance. For example:
+        /// 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
+        /// 
+        /// If you are creating an instance template, specify only the accelerator name.
+        /// </summary>
         public readonly string AcceleratorType;
 
         [OutputConstructor]

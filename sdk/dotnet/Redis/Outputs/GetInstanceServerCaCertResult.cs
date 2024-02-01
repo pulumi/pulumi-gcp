@@ -13,10 +13,25 @@ namespace Pulumi.Gcp.Redis.Outputs
     [OutputType]
     public sealed class GetInstanceServerCaCertResult
     {
+        /// <summary>
+        /// The certificate data in PEM format.
+        /// </summary>
         public readonly string Cert;
+        /// <summary>
+        /// The time when the certificate was created.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// The time when the certificate expires.
+        /// </summary>
         public readonly string ExpireTime;
+        /// <summary>
+        /// Serial number, as extracted from the certificate.
+        /// </summary>
         public readonly string SerialNumber;
+        /// <summary>
+        /// Sha1 Fingerprint of the certificate.
+        /// </summary>
         public readonly string Sha1Fingerprint;
 
         [OutputConstructor]

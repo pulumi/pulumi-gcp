@@ -14,7 +14,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupsGroup {
+    /**
+     * @return Additional group keys associated with the Group
+     * 
+     */
     private List<GetGroupsGroupAdditionalGroupKey> additionalGroupKeys;
+    /**
+     * @return The time when the Group was created.
+     * 
+     */
     private String createTime;
     /**
      * @return An extended description to help users determine the purpose of a Group.
@@ -31,6 +39,14 @@ public final class GetGroupsGroup {
      * 
      */
     private List<GetGroupsGroupGroupKey> groupKeys;
+    /**
+     * @return The initial configuration options for creating a Group.
+     * 
+     * See the
+     * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+     * for possible values. Default value: &#34;EMPTY&#34; Possible values: [&#34;INITIAL_GROUP_CONFIG_UNSPECIFIED&#34;, &#34;WITH_INITIAL_OWNER&#34;, &#34;EMPTY&#34;]
+     * 
+     */
     private String initialGroupConfig;
     /**
      * @return The labels that apply to the Group.
@@ -49,12 +65,24 @@ public final class GetGroupsGroup {
      * 
      */
     private String parent;
+    /**
+     * @return The time when the Group was last updated.
+     * 
+     */
     private String updateTime;
 
     private GetGroupsGroup() {}
+    /**
+     * @return Additional group keys associated with the Group
+     * 
+     */
     public List<GetGroupsGroupAdditionalGroupKey> additionalGroupKeys() {
         return this.additionalGroupKeys;
     }
+    /**
+     * @return The time when the Group was created.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -79,6 +107,14 @@ public final class GetGroupsGroup {
     public List<GetGroupsGroupGroupKey> groupKeys() {
         return this.groupKeys;
     }
+    /**
+     * @return The initial configuration options for creating a Group.
+     * 
+     * See the
+     * [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+     * for possible values. Default value: &#34;EMPTY&#34; Possible values: [&#34;INITIAL_GROUP_CONFIG_UNSPECIFIED&#34;, &#34;WITH_INITIAL_OWNER&#34;, &#34;EMPTY&#34;]
+     * 
+     */
     public String initialGroupConfig() {
         return this.initialGroupConfig;
     }
@@ -105,6 +141,10 @@ public final class GetGroupsGroup {
     public String parent() {
         return this.parent;
     }
+    /**
+     * @return The time when the Group was last updated.
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }

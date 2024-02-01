@@ -10,7 +10,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     private String externalIpv6;
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     private String externalIpv6PrefixLength;
     /**
      * @return The name of the instance. One of `name` or `self_link` must be provided.
@@ -27,12 +35,24 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
      * 
      */
     private String publicPtrDomainName;
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     private String securityPolicy;
 
     private GetInstanceNetworkInterfaceIpv6AccessConfig() {}
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     public String externalIpv6() {
         return this.externalIpv6;
     }
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     public String externalIpv6PrefixLength() {
         return this.externalIpv6PrefixLength;
     }
@@ -57,6 +77,10 @@ public final class GetInstanceNetworkInterfaceIpv6AccessConfig {
     public String publicPtrDomainName() {
         return this.publicPtrDomainName;
     }
+    /**
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     public String securityPolicy() {
         return this.securityPolicy;
     }

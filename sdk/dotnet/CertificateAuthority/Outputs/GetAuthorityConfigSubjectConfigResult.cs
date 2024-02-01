@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class GetAuthorityConfigSubjectConfigResult
     {
+        /// <summary>
+        /// The subject alternative name fields.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthorityConfigSubjectConfigSubjectAltNameResult> SubjectAltNames;
+        /// <summary>
+        /// Contains distinguished name fields such as the location and organization.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthorityConfigSubjectConfigSubjectResult> Subjects;
 
         [OutputConstructor]

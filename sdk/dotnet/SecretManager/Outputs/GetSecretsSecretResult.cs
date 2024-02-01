@@ -39,6 +39,10 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         /// The ID of the project.
         /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        ///  and default labels configured on the provider.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         /// <summary>
         /// The replication policy of the secret data attached to the Secret.
@@ -50,12 +54,20 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecretsSecretRotationResult> Rotations;
+        /// <summary>
+        /// This must be unique within the project.
+        /// </summary>
         public readonly string SecretId;
         /// <summary>
         /// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecretsSecretTopicResult> Topics;
+        /// <summary>
+        /// The TTL for the Secret.
+        /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// Only one of 'ttl' or 'expire_time' can be provided.
+        /// </summary>
         public readonly string Ttl;
         /// <summary>
         /// Mapping from version alias to version name.

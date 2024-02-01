@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetResourcePolicyInstanceSchedulePolicyVmStartScheduleResult
     {
+        /// <summary>
+        /// Specifies the frequency for the operation, using the unix-cron format.
+        /// </summary>
         public readonly string Schedule;
 
         [OutputConstructor]

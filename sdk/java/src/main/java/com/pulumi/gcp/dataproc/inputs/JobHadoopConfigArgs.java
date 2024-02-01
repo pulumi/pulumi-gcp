@@ -78,9 +78,17 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.jarFileUris);
     }
 
+    /**
+     * The runtime logging config of the job
+     * 
+     */
     @Import(name="loggingConfig")
     private @Nullable Output<JobHadoopConfigLoggingConfigArgs> loggingConfig;
 
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<Output<JobHadoopConfigLoggingConfigArgs>> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }
@@ -289,11 +297,23 @@ public final class JobHadoopConfigArgs extends com.pulumi.resources.ResourceArgs
             return jarFileUris(List.of(jarFileUris));
         }
 
+        /**
+         * @param loggingConfig The runtime logging config of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(@Nullable Output<JobHadoopConfigLoggingConfigArgs> loggingConfig) {
             $.loggingConfig = loggingConfig;
             return this;
         }
 
+        /**
+         * @param loggingConfig The runtime logging config of the job
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(JobHadoopConfigLoggingConfigArgs loggingConfig) {
             return loggingConfig(Output.of(loggingConfig));
         }

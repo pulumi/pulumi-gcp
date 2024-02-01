@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.CloudFunctions.Outputs
     [OutputType]
     public sealed class GetFunctionSourceRepositoryResult
     {
+        /// <summary>
+        /// The URL pointing to the hosted repository where the function was defined at the time of deployment.
+        /// </summary>
         public readonly string DeployedUrl;
         /// <summary>
         /// The URL pointing to the hosted repository where the function is defined.

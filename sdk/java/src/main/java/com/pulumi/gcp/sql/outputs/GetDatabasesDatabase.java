@@ -10,14 +10,42 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabasesDatabase {
+    /**
+     * @return The charset value. See MySQL&#39;s
+     * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+     * and Postgres&#39; [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+     * for more details and supported values. Postgres databases only support
+     * a value of &#39;UTF8&#39; at creation time.
+     * 
+     */
     private String charset;
+    /**
+     * @return The collation value. See MySQL&#39;s
+     * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+     * and Postgres&#39; [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+     * for more details and supported values. Postgres databases only support
+     * a value of &#39;en_US.UTF8&#39; at creation time.
+     * 
+     */
     private String collation;
+    /**
+     * @return The deletion policy for the database. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
+     * 
+     */
     private String deletionPolicy;
     /**
      * @return The name of the Cloud SQL database instance in which the database belongs.
      * 
      */
     private String instance;
+    /**
+     * @return The name of the database in the Cloud SQL instance.
+     * This does not include the project ID or instance name.
+     * 
+     */
     private String name;
     /**
      * @return The ID of the project in which the instance belongs.
@@ -29,12 +57,35 @@ public final class GetDatabasesDatabase {
     private String selfLink;
 
     private GetDatabasesDatabase() {}
+    /**
+     * @return The charset value. See MySQL&#39;s
+     * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+     * and Postgres&#39; [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+     * for more details and supported values. Postgres databases only support
+     * a value of &#39;UTF8&#39; at creation time.
+     * 
+     */
     public String charset() {
         return this.charset;
     }
+    /**
+     * @return The collation value. See MySQL&#39;s
+     * [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+     * and Postgres&#39; [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+     * for more details and supported values. Postgres databases only support
+     * a value of &#39;en_US.UTF8&#39; at creation time.
+     * 
+     */
     public String collation() {
         return this.collation;
     }
+    /**
+     * @return The deletion policy for the database. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+     * deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+     * values are: &#34;ABANDON&#34;, &#34;DELETE&#34;. Defaults to &#34;DELETE&#34;.
+     * 
+     */
     public String deletionPolicy() {
         return this.deletionPolicy;
     }
@@ -45,6 +96,11 @@ public final class GetDatabasesDatabase {
     public String instance() {
         return this.instance;
     }
+    /**
+     * @return The name of the database in the Cloud SQL instance.
+     * This does not include the project ID or instance name.
+     * 
+     */
     public String name() {
         return this.name;
     }

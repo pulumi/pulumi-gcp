@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceSettingDataCacheConfigResult
     {
+        /// <summary>
+        /// Whether data cache is enabled for the instance.
+        /// </summary>
         public readonly bool DataCacheEnabled;
 
         [OutputConstructor]

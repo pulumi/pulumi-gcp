@@ -15,37 +15,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromTemplateBootDiskInitializeParams {
+    /**
+     * @return A flag to enable confidential compute mode on boot disk
+     * 
+     */
     private @Nullable Boolean enableConfidentialCompute;
+    /**
+     * @return The image from which this disk was initialised.
+     * 
+     */
     private @Nullable String image;
+    /**
+     * @return A set of key/value label pairs assigned to the disk.
+     * 
+     */
     private @Nullable Map<String,Object> labels;
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * 
+     */
     private @Nullable Integer provisionedIops;
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * 
+     */
     private @Nullable Integer provisionedThroughput;
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     private @Nullable Map<String,Object> resourceManagerTags;
+    /**
+     * @return The size of the image in gigabytes.
+     * 
+     */
     private @Nullable Integer size;
+    /**
+     * @return The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+     * 
+     */
     private @Nullable String type;
 
     private InstanceFromTemplateBootDiskInitializeParams() {}
+    /**
+     * @return A flag to enable confidential compute mode on boot disk
+     * 
+     */
     public Optional<Boolean> enableConfidentialCompute() {
         return Optional.ofNullable(this.enableConfidentialCompute);
     }
+    /**
+     * @return The image from which this disk was initialised.
+     * 
+     */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
+    /**
+     * @return A set of key/value label pairs assigned to the disk.
+     * 
+     */
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * 
+     */
     public Optional<Integer> provisionedIops() {
         return Optional.ofNullable(this.provisionedIops);
     }
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * 
+     */
     public Optional<Integer> provisionedThroughput() {
         return Optional.ofNullable(this.provisionedThroughput);
     }
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     public Map<String,Object> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
+    /**
+     * @return The size of the image in gigabytes.
+     * 
+     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }
+    /**
+     * @return The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

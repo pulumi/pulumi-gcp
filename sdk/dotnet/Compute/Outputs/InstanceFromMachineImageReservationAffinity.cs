@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromMachineImageReservationAffinity
     {
+        /// <summary>
+        /// Specifies the label selector for the reservation to use.
+        /// </summary>
         public readonly Outputs.InstanceFromMachineImageReservationAffinitySpecificReservation? SpecificReservation;
+        /// <summary>
+        /// The type of reservation from which this instance can consume resources.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

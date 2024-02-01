@@ -5138,6 +5138,12 @@ class TableTableReplicationInfoArgs:
                  source_project_id: pulumi.Input[str],
                  source_table_id: pulumi.Input[str],
                  replication_interval_ms: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] source_dataset_id: The ID of the source dataset.
+        :param pulumi.Input[str] source_project_id: The ID of the source project.
+        :param pulumi.Input[str] source_table_id: The ID of the source materialized view.
+        :param pulumi.Input[int] replication_interval_ms: The interval at which the source materialized view is polled for updates. The default is 300000.
+        """
         pulumi.set(__self__, "source_dataset_id", source_dataset_id)
         pulumi.set(__self__, "source_project_id", source_project_id)
         pulumi.set(__self__, "source_table_id", source_table_id)
@@ -5147,6 +5153,9 @@ class TableTableReplicationInfoArgs:
     @property
     @pulumi.getter(name="sourceDatasetId")
     def source_dataset_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the source dataset.
+        """
         return pulumi.get(self, "source_dataset_id")
 
     @source_dataset_id.setter
@@ -5156,6 +5165,9 @@ class TableTableReplicationInfoArgs:
     @property
     @pulumi.getter(name="sourceProjectId")
     def source_project_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the source project.
+        """
         return pulumi.get(self, "source_project_id")
 
     @source_project_id.setter
@@ -5165,6 +5177,9 @@ class TableTableReplicationInfoArgs:
     @property
     @pulumi.getter(name="sourceTableId")
     def source_table_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the source materialized view.
+        """
         return pulumi.get(self, "source_table_id")
 
     @source_table_id.setter
@@ -5174,6 +5189,9 @@ class TableTableReplicationInfoArgs:
     @property
     @pulumi.getter(name="replicationIntervalMs")
     def replication_interval_ms(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interval at which the source materialized view is polled for updates. The default is 300000.
+        """
         return pulumi.get(self, "replication_interval_ms")
 
     @replication_interval_ms.setter

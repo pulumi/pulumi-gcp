@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterWorkloadAltsConfig {
+    /**
+     * @return Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool must be non-empty).
+     * 
+     */
     private Boolean enableAlts;
 
     private GetClusterWorkloadAltsConfig() {}
+    /**
+     * @return Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool must be non-empty).
+     * 
+     */
     public Boolean enableAlts() {
         return this.enableAlts;
     }

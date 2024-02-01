@@ -19,43 +19,123 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePool {
+    /**
+     * @return Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+     * 
+     */
     private List<GetClusterNodePoolAutoscaling> autoscalings;
+    /**
+     * @return The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
+     * 
+     */
     private Integer initialNodeCount;
+    /**
+     * @return The resource URLs of the managed instance groups associated with this node pool.
+     * 
+     */
     private List<String> instanceGroupUrls;
+    /**
+     * @return List of instance group URLs which have been assigned to this node pool.
+     * 
+     */
     private List<String> managedInstanceGroupUrls;
+    /**
+     * @return Node management configuration, wherein auto-repair and auto-upgrade is configured.
+     * 
+     */
     private List<GetClusterNodePoolManagement> managements;
+    /**
+     * @return The maximum number of pods per node in this node pool. Note that this does not work on node pools which are &#34;route-based&#34; - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+     * 
+     */
     private Integer maxPodsPerNode;
     /**
      * @return The name of the cluster.
      * 
      */
     private String name;
+    /**
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * 
+     */
     private String namePrefix;
+    /**
+     * @return Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+     * 
+     */
     private List<GetClusterNodePoolNetworkConfig> networkConfigs;
+    /**
+     * @return The configuration of the nodepool
+     * 
+     */
     private List<GetClusterNodePoolNodeConfig> nodeConfigs;
+    /**
+     * @return The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+     * 
+     */
     private Integer nodeCount;
+    /**
+     * @return The list of zones in which the node pool&#39;s nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level node_locations will be used.
+     * 
+     */
     private List<String> nodeLocations;
+    /**
+     * @return Specifies the node placement policy
+     * 
+     */
     private List<GetClusterNodePoolPlacementPolicy> placementPolicies;
+    /**
+     * @return Specifies the configuration of queued provisioning
+     * 
+     */
     private List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings;
+    /**
+     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+     * 
+     */
     private List<GetClusterNodePoolUpgradeSetting> upgradeSettings;
     private String version;
 
     private GetClusterNodePool() {}
+    /**
+     * @return Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+     * 
+     */
     public List<GetClusterNodePoolAutoscaling> autoscalings() {
         return this.autoscalings;
     }
+    /**
+     * @return The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
+     * 
+     */
     public Integer initialNodeCount() {
         return this.initialNodeCount;
     }
+    /**
+     * @return The resource URLs of the managed instance groups associated with this node pool.
+     * 
+     */
     public List<String> instanceGroupUrls() {
         return this.instanceGroupUrls;
     }
+    /**
+     * @return List of instance group URLs which have been assigned to this node pool.
+     * 
+     */
     public List<String> managedInstanceGroupUrls() {
         return this.managedInstanceGroupUrls;
     }
+    /**
+     * @return Node management configuration, wherein auto-repair and auto-upgrade is configured.
+     * 
+     */
     public List<GetClusterNodePoolManagement> managements() {
         return this.managements;
     }
+    /**
+     * @return The maximum number of pods per node in this node pool. Note that this does not work on node pools which are &#34;route-based&#34; - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+     * 
+     */
     public Integer maxPodsPerNode() {
         return this.maxPodsPerNode;
     }
@@ -66,27 +146,59 @@ public final class GetClusterNodePool {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * 
+     */
     public String namePrefix() {
         return this.namePrefix;
     }
+    /**
+     * @return Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+     * 
+     */
     public List<GetClusterNodePoolNetworkConfig> networkConfigs() {
         return this.networkConfigs;
     }
+    /**
+     * @return The configuration of the nodepool
+     * 
+     */
     public List<GetClusterNodePoolNodeConfig> nodeConfigs() {
         return this.nodeConfigs;
     }
+    /**
+     * @return The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+     * 
+     */
     public Integer nodeCount() {
         return this.nodeCount;
     }
+    /**
+     * @return The list of zones in which the node pool&#39;s nodes should be located. Nodes must be in the region of their regional cluster or in the same region as their cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level node_locations will be used.
+     * 
+     */
     public List<String> nodeLocations() {
         return this.nodeLocations;
     }
+    /**
+     * @return Specifies the node placement policy
+     * 
+     */
     public List<GetClusterNodePoolPlacementPolicy> placementPolicies() {
         return this.placementPolicies;
     }
+    /**
+     * @return Specifies the configuration of queued provisioning
+     * 
+     */
     public List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings() {
         return this.queuedProvisionings;
     }
+    /**
+     * @return Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
+     * 
+     */
     public List<GetClusterNodePoolUpgradeSetting> upgradeSettings() {
         return this.upgradeSettings;
     }

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RegionInstanceGroupManagerStatusAllInstancesConfig {
+    /**
+     * @return A bit indicating whether this configuration has been applied to all managed instances in the group.
+     * 
+     */
     private @Nullable Boolean effective;
 
     private RegionInstanceGroupManagerStatusAllInstancesConfig() {}
+    /**
+     * @return A bit indicating whether this configuration has been applied to all managed instances in the group.
+     * 
+     */
     public Optional<Boolean> effective() {
         return Optional.ofNullable(this.effective);
     }

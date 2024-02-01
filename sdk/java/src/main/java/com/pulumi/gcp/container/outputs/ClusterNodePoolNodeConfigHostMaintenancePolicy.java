@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterNodePoolNodeConfigHostMaintenancePolicy {
+    /**
+     * @return .
+     * 
+     */
     private String maintenanceInterval;
 
     private ClusterNodePoolNodeConfigHostMaintenancePolicy() {}
+    /**
+     * @return .
+     * 
+     */
     public String maintenanceInterval() {
         return this.maintenanceInterval;
     }

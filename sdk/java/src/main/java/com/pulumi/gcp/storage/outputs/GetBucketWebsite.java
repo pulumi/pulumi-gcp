@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketWebsite {
+    /**
+     * @return Behaves as the bucket&#39;s directory index where missing objects are treated as potential directories.
+     * 
+     */
     private String mainPageSuffix;
+    /**
+     * @return The custom object to return when a requested resource is not found.
+     * 
+     */
     private String notFoundPage;
 
     private GetBucketWebsite() {}
+    /**
+     * @return Behaves as the bucket&#39;s directory index where missing objects are treated as potential directories.
+     * 
+     */
     public String mainPageSuffix() {
         return this.mainPageSuffix;
     }
+    /**
+     * @return The custom object to return when a requested resource is not found.
+     * 
+     */
     public String notFoundPage() {
         return this.notFoundPage;
     }

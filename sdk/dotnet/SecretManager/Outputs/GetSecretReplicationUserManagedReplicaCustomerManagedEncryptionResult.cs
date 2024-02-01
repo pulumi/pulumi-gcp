@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.SecretManager.Outputs
     [OutputType]
     public sealed class GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionResult
     {
+        /// <summary>
+        /// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        /// </summary>
         public readonly string KmsKeyName;
 
         [OutputConstructor]

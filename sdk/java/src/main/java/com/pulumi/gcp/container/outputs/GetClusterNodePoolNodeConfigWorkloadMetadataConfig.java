@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
+    /**
+     * @return Mode is the configuration for how to expose metadata to workloads running on the node.
+     * 
+     */
     private String mode;
 
     private GetClusterNodePoolNodeConfigWorkloadMetadataConfig() {}
+    /**
+     * @return Mode is the configuration for how to expose metadata to workloads running on the node.
+     * 
+     */
     public String mode() {
         return this.mode;
     }

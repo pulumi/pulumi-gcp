@@ -19,6 +19,10 @@ public final class PolicyListPolicy {
      * 
      */
     private @Nullable PolicyListPolicyAllow allow;
+    /**
+     * @return One or the other must be set.
+     * 
+     */
     private @Nullable PolicyListPolicyDeny deny;
     /**
      * @return If set to true, the values from the effective Policy of the parent resource
@@ -42,6 +46,10 @@ public final class PolicyListPolicy {
     public Optional<PolicyListPolicyAllow> allow() {
         return Optional.ofNullable(this.allow);
     }
+    /**
+     * @return One or the other must be set.
+     * 
+     */
     public Optional<PolicyListPolicyDeny> deny() {
         return Optional.ofNullable(this.deny);
     }

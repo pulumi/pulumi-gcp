@@ -36,6 +36,10 @@ public final class ClusterIpAllocationPolicy {
      * 
      */
     private @Nullable String clusterSecondaryRangeName;
+    /**
+     * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * 
+     */
     private @Nullable ClusterIpAllocationPolicyPodCidrOverprovisionConfig podCidrOverprovisionConfig;
     /**
      * @return The IP address range of the services IPs in this cluster.
@@ -92,6 +96,10 @@ public final class ClusterIpAllocationPolicy {
     public Optional<String> clusterSecondaryRangeName() {
         return Optional.ofNullable(this.clusterSecondaryRangeName);
     }
+    /**
+     * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * 
+     */
     public Optional<ClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfig() {
         return Optional.ofNullable(this.podCidrOverprovisionConfig);
     }

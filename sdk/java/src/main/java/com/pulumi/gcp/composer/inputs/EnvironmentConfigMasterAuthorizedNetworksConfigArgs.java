@@ -18,16 +18,32 @@ public final class EnvironmentConfigMasterAuthorizedNetworksConfigArgs extends c
 
     public static final EnvironmentConfigMasterAuthorizedNetworksConfigArgs Empty = new EnvironmentConfigMasterAuthorizedNetworksConfigArgs();
 
+    /**
+     * cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+     * 
+     */
     @Import(name="cidrBlocks")
     private @Nullable Output<List<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs>> cidrBlocks;
 
+    /**
+     * @return cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+     * 
+     */
     public Optional<Output<List<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs>>> cidrBlocks() {
         return Optional.ofNullable(this.cidrBlocks);
     }
 
+    /**
+     * Whether or not master authorized networks is enabled.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Whether or not master authorized networks is enabled.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
@@ -57,24 +73,54 @@ public final class EnvironmentConfigMasterAuthorizedNetworksConfigArgs extends c
             $ = new EnvironmentConfigMasterAuthorizedNetworksConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cidrBlocks cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(@Nullable Output<List<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs>> cidrBlocks) {
             $.cidrBlocks = cidrBlocks;
             return this;
         }
 
+        /**
+         * @param cidrBlocks cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(List<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs> cidrBlocks) {
             return cidrBlocks(Output.of(cidrBlocks));
         }
 
+        /**
+         * @param cidrBlocks cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cidrBlocks(EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs... cidrBlocks) {
             return cidrBlocks(List.of(cidrBlocks));
         }
 
+        /**
+         * @param enabled Whether or not master authorized networks is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether or not master authorized networks is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

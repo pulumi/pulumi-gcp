@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigShieldedInstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines whether the instance has integrity monitoring enabled.
+        /// </summary>
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }
 
+        /// <summary>
+        /// Defines whether the instance has Secure Boot enabled.
+        /// </summary>
         [Input("enableSecureBoot")]
         public Input<bool>? EnableSecureBoot { get; set; }
 

@@ -15,9 +15,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigGuestAccelerator {
+    /**
+     * @return The number of the accelerator cards exposed to an instance.
+     * 
+     */
     private Integer count;
+    /**
+     * @return Configuration for auto installation of GPU driver.
+     * 
+     */
     private @Nullable NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig gpuDriverInstallationConfig;
+    /**
+     * @return Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+     * 
+     */
     private @Nullable String gpuPartitionSize;
+    /**
+     * @return Configuration for GPU sharing.
+     * 
+     */
     private @Nullable NodePoolNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig;
     /**
      * @return The type of the policy. Supports a single value: COMPACT.
@@ -28,15 +44,31 @@ public final class NodePoolNodeConfigGuestAccelerator {
     private String type;
 
     private NodePoolNodeConfigGuestAccelerator() {}
+    /**
+     * @return The number of the accelerator cards exposed to an instance.
+     * 
+     */
     public Integer count() {
         return this.count;
     }
+    /**
+     * @return Configuration for auto installation of GPU driver.
+     * 
+     */
     public Optional<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfig() {
         return Optional.ofNullable(this.gpuDriverInstallationConfig);
     }
+    /**
+     * @return Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+     * 
+     */
     public Optional<String> gpuPartitionSize() {
         return Optional.ofNullable(this.gpuPartitionSize);
     }
+    /**
+     * @return Configuration for GPU sharing.
+     * 
+     */
     public Optional<NodePoolNodeConfigGuestAcceleratorGpuSharingConfig> gpuSharingConfig() {
         return Optional.ofNullable(this.gpuSharingConfig);
     }

@@ -10,13 +10,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+    /**
+     * @return Number of embeddings on each leaf node. The default value is 1000 if not set.
+     * 
+     */
     private Integer leafNodeEmbeddingCount;
+    /**
+     * @return The default percentage of leaf nodes that any query may be searched. Must be in
+     * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+     * 
+     */
     private Integer leafNodesToSearchPercent;
 
     private GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig() {}
+    /**
+     * @return Number of embeddings on each leaf node. The default value is 1000 if not set.
+     * 
+     */
     public Integer leafNodeEmbeddingCount() {
         return this.leafNodeEmbeddingCount;
     }
+    /**
+     * @return The default percentage of leaf nodes that any query may be searched. Must be in
+     * range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+     * 
+     */
     public Integer leafNodesToSearchPercent() {
         return this.leafNodesToSearchPercent;
     }

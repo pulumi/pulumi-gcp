@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// on the cluster from external sources (aka Component Gateway). Defaults to false.
         /// </summary>
         public readonly bool EnableHttpPortAccess;
+        /// <summary>
+        /// The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? HttpPorts;
 
         [OutputConstructor]

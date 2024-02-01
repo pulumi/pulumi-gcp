@@ -299,6 +299,7 @@ class OrganizationPolicyListPolicy(dict):
                  suggested_value: Optional[str] = None):
         """
         :param 'OrganizationPolicyListPolicyAllowArgs' allow: or `deny` - (Optional) One or the other must be set.
+        :param 'OrganizationPolicyListPolicyDenyArgs' deny: One or the other must be set.
         :param bool inherit_from_parent: If set to true, the values from the effective Policy of the parent resource
                are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
                
@@ -325,6 +326,9 @@ class OrganizationPolicyListPolicy(dict):
     @property
     @pulumi.getter
     def deny(self) -> Optional['outputs.OrganizationPolicyListPolicyDeny']:
+        """
+        One or the other must be set.
+        """
         return pulumi.get(self, "deny")
 
     @property
@@ -431,11 +435,17 @@ class OrganizationPolicyRestorePolicy(dict):
 class GetOrganizationPolicyBooleanPolicyResult(dict):
     def __init__(__self__, *,
                  enforced: bool):
+        """
+        :param bool enforced: If true, then the Policy is enforced. If false, then any configuration is acceptable.
+        """
         pulumi.set(__self__, "enforced", enforced)
 
     @property
     @pulumi.getter
     def enforced(self) -> bool:
+        """
+        If true, then the Policy is enforced. If false, then any configuration is acceptable.
+        """
         return pulumi.get(self, "enforced")
 
 
@@ -446,6 +456,12 @@ class GetOrganizationPolicyListPolicyResult(dict):
                  denies: Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult'],
                  inherit_from_parent: bool,
                  suggested_value: str):
+        """
+        :param Sequence['GetOrganizationPolicyListPolicyAllowArgs'] allows: One or the other must be set.
+        :param Sequence['GetOrganizationPolicyListPolicyDenyArgs'] denies: One or the other must be set.
+        :param bool inherit_from_parent: If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+        :param str suggested_value: The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+        """
         pulumi.set(__self__, "allows", allows)
         pulumi.set(__self__, "denies", denies)
         pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
@@ -454,21 +470,33 @@ class GetOrganizationPolicyListPolicyResult(dict):
     @property
     @pulumi.getter
     def allows(self) -> Sequence['outputs.GetOrganizationPolicyListPolicyAllowResult']:
+        """
+        One or the other must be set.
+        """
         return pulumi.get(self, "allows")
 
     @property
     @pulumi.getter
     def denies(self) -> Sequence['outputs.GetOrganizationPolicyListPolicyDenyResult']:
+        """
+        One or the other must be set.
+        """
         return pulumi.get(self, "denies")
 
     @property
     @pulumi.getter(name="inheritFromParent")
     def inherit_from_parent(self) -> bool:
+        """
+        If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+        """
         return pulumi.get(self, "inherit_from_parent")
 
     @property
     @pulumi.getter(name="suggestedValue")
     def suggested_value(self) -> str:
+        """
+        The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+        """
         return pulumi.get(self, "suggested_value")
 
 
@@ -477,17 +505,27 @@ class GetOrganizationPolicyListPolicyAllowResult(dict):
     def __init__(__self__, *,
                  all: bool,
                  values: Sequence[str]):
+        """
+        :param bool all: The policy allows or denies all values.
+        :param Sequence[str] values: The policy can define specific values that are allowed or denied.
+        """
         pulumi.set(__self__, "all", all)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def all(self) -> bool:
+        """
+        The policy allows or denies all values.
+        """
         return pulumi.get(self, "all")
 
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        The policy can define specific values that are allowed or denied.
+        """
         return pulumi.get(self, "values")
 
 
@@ -496,17 +534,27 @@ class GetOrganizationPolicyListPolicyDenyResult(dict):
     def __init__(__self__, *,
                  all: bool,
                  values: Sequence[str]):
+        """
+        :param bool all: The policy allows or denies all values.
+        :param Sequence[str] values: The policy can define specific values that are allowed or denied.
+        """
         pulumi.set(__self__, "all", all)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def all(self) -> bool:
+        """
+        The policy allows or denies all values.
+        """
         return pulumi.get(self, "all")
 
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        The policy can define specific values that are allowed or denied.
+        """
         return pulumi.get(self, "values")
 
 
@@ -514,11 +562,17 @@ class GetOrganizationPolicyListPolicyDenyResult(dict):
 class GetOrganizationPolicyRestorePolicyResult(dict):
     def __init__(__self__, *,
                  default: bool):
+        """
+        :param bool default: May only be set to true. If set, then the default Policy is restored.
+        """
         pulumi.set(__self__, "default", default)
 
     @property
     @pulumi.getter
     def default(self) -> bool:
+        """
+        May only be set to true. If set, then the default Policy is restored.
+        """
         return pulumi.get(self, "default")
 
 

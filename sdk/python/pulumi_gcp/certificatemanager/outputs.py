@@ -786,6 +786,15 @@ class GetCertificateMapGclbTargetResult(dict):
                  ip_configs: Sequence['outputs.GetCertificateMapGclbTargetIpConfigResult'],
                  target_https_proxy: str,
                  target_ssl_proxy: str):
+        """
+        :param Sequence['GetCertificateMapGclbTargetIpConfigArgs'] ip_configs: An IP configuration where this Certificate Map is serving
+        :param str target_https_proxy: Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+               This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+               'targetSslProxy' may be set.
+        :param str target_ssl_proxy: Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+               This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+               'targetSslProxy' may be set.
+        """
         pulumi.set(__self__, "ip_configs", ip_configs)
         pulumi.set(__self__, "target_https_proxy", target_https_proxy)
         pulumi.set(__self__, "target_ssl_proxy", target_ssl_proxy)
@@ -793,16 +802,29 @@ class GetCertificateMapGclbTargetResult(dict):
     @property
     @pulumi.getter(name="ipConfigs")
     def ip_configs(self) -> Sequence['outputs.GetCertificateMapGclbTargetIpConfigResult']:
+        """
+        An IP configuration where this Certificate Map is serving
+        """
         return pulumi.get(self, "ip_configs")
 
     @property
     @pulumi.getter(name="targetHttpsProxy")
     def target_https_proxy(self) -> str:
+        """
+        Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
+        This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+        'targetSslProxy' may be set.
+        """
         return pulumi.get(self, "target_https_proxy")
 
     @property
     @pulumi.getter(name="targetSslProxy")
     def target_ssl_proxy(self) -> str:
+        """
+        Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
+        This field is part of a union field 'target_proxy': Only one of 'targetHttpsProxy' or
+        'targetSslProxy' may be set.
+        """
         return pulumi.get(self, "target_ssl_proxy")
 
 
@@ -811,17 +833,27 @@ class GetCertificateMapGclbTargetIpConfigResult(dict):
     def __init__(__self__, *,
                  ip_address: str,
                  ports: Sequence[int]):
+        """
+        :param str ip_address: An external IP address
+        :param Sequence[int] ports: A list of ports
+        """
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ports", ports)
 
     @property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> str:
+        """
+        An external IP address
+        """
         return pulumi.get(self, "ip_address")
 
     @property
     @pulumi.getter
     def ports(self) -> Sequence[int]:
+        """
+        A list of ports
+        """
         return pulumi.get(self, "ports")
 
 

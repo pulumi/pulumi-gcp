@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetReservationShareSetting {
+    /**
+     * @return A map of project number and project config. This is only valid when shareType&#39;s value is SPECIFIC_PROJECTS.
+     * 
+     */
     private List<GetReservationShareSettingProjectMap> projectMaps;
+    /**
+     * @return Type of sharing for this shared-reservation Possible values: [&#34;LOCAL&#34;, &#34;SPECIFIC_PROJECTS&#34;]
+     * 
+     */
     private String shareType;
 
     private GetReservationShareSetting() {}
+    /**
+     * @return A map of project number and project config. This is only valid when shareType&#39;s value is SPECIFIC_PROJECTS.
+     * 
+     */
     public List<GetReservationShareSettingProjectMap> projectMaps() {
         return this.projectMaps;
     }
+    /**
+     * @return Type of sharing for this shared-reservation Possible values: [&#34;LOCAL&#34;, &#34;SPECIFIC_PROJECTS&#34;]
+     * 
+     */
     public String shareType() {
         return this.shareType;
     }

@@ -13,37 +13,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterPrivateClusterConfig {
+    /**
+     * @return When true, the cluster&#39;s private endpoint is used as the cluster endpoint and access through the public endpoint is disabled. When false, either endpoint can be used.
+     * 
+     */
     private Boolean enablePrivateEndpoint;
+    /**
+     * @return Enables the private cluster feature, creating a private endpoint on the cluster. In a private cluster, nodes only have RFC 1918 private addresses and communicate with the master&#39;s private endpoint via private networking.
+     * 
+     */
     private Boolean enablePrivateNodes;
+    /**
+     * @return Controls cluster master global access settings.
+     * 
+     */
     private List<GetClusterPrivateClusterConfigMasterGlobalAccessConfig> masterGlobalAccessConfigs;
+    /**
+     * @return The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster&#39;s network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true.
+     * 
+     */
     private String masterIpv4CidrBlock;
+    /**
+     * @return The name of the peering between this cluster and the Google owned VPC.
+     * 
+     */
     private String peeringName;
+    /**
+     * @return The internal IP address of this cluster&#39;s master endpoint.
+     * 
+     */
     private String privateEndpoint;
+    /**
+     * @return Subnetwork in cluster&#39;s network where master&#39;s endpoint will be provisioned.
+     * 
+     */
     private String privateEndpointSubnetwork;
+    /**
+     * @return The external IP address of this cluster&#39;s master endpoint.
+     * 
+     */
     private String publicEndpoint;
 
     private GetClusterPrivateClusterConfig() {}
+    /**
+     * @return When true, the cluster&#39;s private endpoint is used as the cluster endpoint and access through the public endpoint is disabled. When false, either endpoint can be used.
+     * 
+     */
     public Boolean enablePrivateEndpoint() {
         return this.enablePrivateEndpoint;
     }
+    /**
+     * @return Enables the private cluster feature, creating a private endpoint on the cluster. In a private cluster, nodes only have RFC 1918 private addresses and communicate with the master&#39;s private endpoint via private networking.
+     * 
+     */
     public Boolean enablePrivateNodes() {
         return this.enablePrivateNodes;
     }
+    /**
+     * @return Controls cluster master global access settings.
+     * 
+     */
     public List<GetClusterPrivateClusterConfigMasterGlobalAccessConfig> masterGlobalAccessConfigs() {
         return this.masterGlobalAccessConfigs;
     }
+    /**
+     * @return The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning private IP addresses to the cluster master(s) and the ILB VIP. This range must not overlap with any other ranges in use within the cluster&#39;s network, and it must be a /28 subnet. See Private Cluster Limitations for more details. This field only applies to private clusters, when enable_private_nodes is true.
+     * 
+     */
     public String masterIpv4CidrBlock() {
         return this.masterIpv4CidrBlock;
     }
+    /**
+     * @return The name of the peering between this cluster and the Google owned VPC.
+     * 
+     */
     public String peeringName() {
         return this.peeringName;
     }
+    /**
+     * @return The internal IP address of this cluster&#39;s master endpoint.
+     * 
+     */
     public String privateEndpoint() {
         return this.privateEndpoint;
     }
+    /**
+     * @return Subnetwork in cluster&#39;s network where master&#39;s endpoint will be provisioned.
+     * 
+     */
     public String privateEndpointSubnetwork() {
         return this.privateEndpointSubnetwork;
     }
+    /**
+     * @return The external IP address of this cluster&#39;s master endpoint.
+     * 
+     */
     public String publicEndpoint() {
         return this.publicEndpoint;
     }

@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildSource {
+    /**
+     * @return Location of the source in a Google Cloud Source Repository.
+     * 
+     */
     private List<GetTriggerBuildSourceRepoSource> repoSources;
+    /**
+     * @return Location of the source in an archive file in Google Cloud Storage.
+     * 
+     */
     private List<GetTriggerBuildSourceStorageSource> storageSources;
 
     private GetTriggerBuildSource() {}
+    /**
+     * @return Location of the source in a Google Cloud Source Repository.
+     * 
+     */
     public List<GetTriggerBuildSourceRepoSource> repoSources() {
         return this.repoSources;
     }
+    /**
+     * @return Location of the source in an archive file in Google Cloud Storage.
+     * 
+     */
     public List<GetTriggerBuildSourceStorageSource> storageSources() {
         return this.storageSources;
     }

@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromMachineImageServiceAccount
     {
+        /// <summary>
+        /// The service account e-mail address.
+        /// </summary>
         public readonly string? Email;
+        /// <summary>
+        /// A list of service scopes.
+        /// </summary>
         public readonly ImmutableArray<string> Scopes;
 
         [OutputConstructor]

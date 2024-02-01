@@ -14,9 +14,17 @@ public final class NodePoolNodeConfigWorkloadMetadataConfigArgs extends com.pulu
 
     public static final NodePoolNodeConfigWorkloadMetadataConfigArgs Empty = new NodePoolNodeConfigWorkloadMetadataConfigArgs();
 
+    /**
+     * Mode is the configuration for how to expose metadata to workloads running on the node.
+     * 
+     */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
+    /**
+     * @return Mode is the configuration for how to expose metadata to workloads running on the node.
+     * 
+     */
     public Output<String> mode() {
         return this.mode;
     }
@@ -45,11 +53,23 @@ public final class NodePoolNodeConfigWorkloadMetadataConfigArgs extends com.pulu
             $ = new NodePoolNodeConfigWorkloadMetadataConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mode Mode is the configuration for how to expose metadata to workloads running on the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode Mode is the configuration for how to expose metadata to workloads running on the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }

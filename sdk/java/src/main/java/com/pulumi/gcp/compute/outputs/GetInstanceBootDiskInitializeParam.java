@@ -14,6 +14,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceBootDiskInitializeParam {
+    /**
+     * @return A flag to enable confidential compute mode on boot disk
+     * 
+     */
     private Boolean enableConfidentialCompute;
     /**
      * @return The image from which this disk was initialised.
@@ -25,8 +29,20 @@ public final class GetInstanceBootDiskInitializeParam {
      * 
      */
     private Map<String,Object> labels;
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * 
+     */
     private Integer provisionedIops;
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * 
+     */
     private Integer provisionedThroughput;
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     private Map<String,Object> resourceManagerTags;
     /**
      * @return The size of the image in gigabytes.
@@ -40,6 +56,10 @@ public final class GetInstanceBootDiskInitializeParam {
     private String type;
 
     private GetInstanceBootDiskInitializeParam() {}
+    /**
+     * @return A flag to enable confidential compute mode on boot disk
+     * 
+     */
     public Boolean enableConfidentialCompute() {
         return this.enableConfidentialCompute;
     }
@@ -57,12 +77,24 @@ public final class GetInstanceBootDiskInitializeParam {
     public Map<String,Object> labels() {
         return this.labels;
     }
+    /**
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * 
+     */
     public Integer provisionedIops() {
         return this.provisionedIops;
     }
+    /**
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * 
+     */
     public Integer provisionedThroughput() {
         return this.provisionedThroughput;
     }
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
+     * 
+     */
     public Map<String,Object> resourceManagerTags() {
         return this.resourceManagerTags;
     }

@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigDatabaseConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+        /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
+        /// <summary>
+        /// Optional. Cloud SQL database preferred zone.
+        /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

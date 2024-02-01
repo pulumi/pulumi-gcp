@@ -14,9 +14,17 @@ public final class NodePoolNetworkConfigNetworkPerformanceConfigArgs extends com
 
     public static final NodePoolNetworkConfigNetworkPerformanceConfigArgs Empty = new NodePoolNetworkConfigNetworkPerformanceConfigArgs();
 
+    /**
+     * Specifies the total network bandwidth tier for the NodePool.
+     * 
+     */
     @Import(name="totalEgressBandwidthTier", required=true)
     private Output<String> totalEgressBandwidthTier;
 
+    /**
+     * @return Specifies the total network bandwidth tier for the NodePool.
+     * 
+     */
     public Output<String> totalEgressBandwidthTier() {
         return this.totalEgressBandwidthTier;
     }
@@ -45,11 +53,23 @@ public final class NodePoolNetworkConfigNetworkPerformanceConfigArgs extends com
             $ = new NodePoolNetworkConfigNetworkPerformanceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for the NodePool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder totalEgressBandwidthTier(Output<String> totalEgressBandwidthTier) {
             $.totalEgressBandwidthTier = totalEgressBandwidthTier;
             return this;
         }
 
+        /**
+         * @param totalEgressBandwidthTier Specifies the total network bandwidth tier for the NodePool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder totalEgressBandwidthTier(String totalEgressBandwidthTier) {
             return totalEgressBandwidthTier(Output.of(totalEgressBandwidthTier));
         }

@@ -641,6 +641,7 @@ class ClusterClusterConfig(dict):
                Structure defined below.
         :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupArgs'] auxiliary_node_groups: A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
                Structure defined below.
+        :param str bucket: The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
         :param 'ClusterClusterConfigDataprocMetricConfigArgs' dataproc_metric_config: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
                Structure defined below.
         :param 'ClusterClusterConfigEncryptionConfigArgs' encryption_config: The Customer managed encryption keys settings for the cluster.
@@ -737,6 +738,9 @@ class ClusterClusterConfig(dict):
     @property
     @pulumi.getter
     def bucket(self) -> Optional[str]:
+        """
+        The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+        """
         return pulumi.get(self, "bucket")
 
     @property
@@ -952,6 +956,7 @@ class ClusterClusterConfigAuxiliaryNodeGroup(dict):
                  node_group_id: Optional[str] = None):
         """
         :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs'] node_groups: Node group configuration.
+        :param str node_group_id: A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
         """
         pulumi.set(__self__, "node_groups", node_groups)
         if node_group_id is not None:
@@ -968,6 +973,9 @@ class ClusterClusterConfigAuxiliaryNodeGroup(dict):
     @property
     @pulumi.getter(name="nodeGroupId")
     def node_group_id(self) -> Optional[str]:
+        """
+        A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+        """
         return pulumi.get(self, "node_group_id")
 
 
@@ -1076,6 +1084,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(dict):
         :param Sequence['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
                multiple times.
         :param 'ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs' disk_config: Disk Config
+        :param Sequence[str] instance_names: List of auxiliary node group instance names which have been assigned to the cluster.
         :param str machine_type: The name of a Google Compute Engine machine type
                to create for the node group. If not specified, GCP will default to a predetermined
                computed value (currently `n1-standard-4`).
@@ -1119,6 +1128,9 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig(dict):
     @property
     @pulumi.getter(name="instanceNames")
     def instance_names(self) -> Optional[Sequence[str]]:
+        """
+        List of auxiliary node group instance names which have been assigned to the cluster.
+        """
         return pulumi.get(self, "instance_names")
 
     @property
@@ -1421,6 +1433,7 @@ class ClusterClusterConfigEndpointConfig(dict):
         """
         :param bool enable_http_port_access: The flag to enable http access to specific ports
                on the cluster from external sources (aka Component Gateway). Defaults to false.
+        :param Mapping[str, Any] http_ports: The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
         """
         pulumi.set(__self__, "enable_http_port_access", enable_http_port_access)
         if http_ports is not None:
@@ -1438,6 +1451,9 @@ class ClusterClusterConfigEndpointConfig(dict):
     @property
     @pulumi.getter(name="httpPorts")
     def http_ports(self) -> Optional[Mapping[str, Any]]:
+        """
+        The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
+        """
         return pulumi.get(self, "http_ports")
 
 
@@ -1906,6 +1922,7 @@ class ClusterClusterConfigLifecycleConfig(dict):
                - - -
         :param str idle_delete_ttl: The duration to keep the cluster alive while idling
                (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
+        :param str idle_start_time: Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
         """
         if auto_delete_time is not None:
             pulumi.set(__self__, "auto_delete_time", auto_delete_time)
@@ -1938,6 +1955,9 @@ class ClusterClusterConfigLifecycleConfig(dict):
     @property
     @pulumi.getter(name="idleStartTime")
     def idle_start_time(self) -> Optional[str]:
+        """
+        Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+        """
         return pulumi.get(self, "idle_start_time")
 
 
@@ -1983,6 +2003,7 @@ class ClusterClusterConfigMasterConfig(dict):
         :param 'ClusterClusterConfigMasterConfigDiskConfigArgs' disk_config: Disk Config
         :param str image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
+        :param Sequence[str] instance_names: List of master instance names which have been assigned to the cluster.
         :param str machine_type: The name of a Google Compute Engine machine type
                to create for the master. If not specified, GCP will default to a predetermined
                computed value (currently `n1-standard-4`).
@@ -2036,6 +2057,9 @@ class ClusterClusterConfigMasterConfig(dict):
     @property
     @pulumi.getter(name="instanceNames")
     def instance_names(self) -> Optional[Sequence[str]]:
+        """
+        List of master instance names which have been assigned to the cluster.
+        """
         return pulumi.get(self, "instance_names")
 
     @property
@@ -2276,6 +2300,7 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
         """
         :param 'ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs' disk_config: Disk Config
         :param 'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs' instance_flexibility_policy: Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+        :param Sequence[str] instance_names: List of preemptible instance names which have been assigned to the cluster.
         :param int num_instances: Specifies the number of preemptible nodes to create.
                Defaults to 0.
         :param str preemptibility: Specifies the preemptibility of the secondary workers. The default value is `PREEMPTIBLE`
@@ -2314,6 +2339,9 @@ class ClusterClusterConfigPreemptibleWorkerConfig(dict):
     @property
     @pulumi.getter(name="instanceNames")
     def instance_names(self) -> Optional[Sequence[str]]:
+        """
+        List of preemptible instance names which have been assigned to the cluster.
+        """
         return pulumi.get(self, "instance_names")
 
     @property
@@ -2440,6 +2468,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(dict)
                  instance_selection_results: Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']] = None):
         """
         :param Sequence['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs'] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
+        :param Sequence['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs'] instance_selection_results: A list of instance selection results in the group.
         """
         if instance_selection_lists is not None:
             pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
@@ -2457,6 +2486,9 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(dict)
     @property
     @pulumi.getter(name="instanceSelectionResults")
     def instance_selection_results(self) -> Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']]:
+        """
+        A list of instance selection results in the group.
+        """
         return pulumi.get(self, "instance_selection_results")
 
 
@@ -2540,6 +2572,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
         :param str machine_type: The name of a Google Compute Engine machine type
                to create for the node group. If not specified, GCP will default to a predetermined
                computed value (currently `n1-standard-4`).
+        :param int vm_count: Number of VM provisioned with the machine_type.
         """
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
@@ -2559,6 +2592,9 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     @property
     @pulumi.getter(name="vmCount")
     def vm_count(self) -> Optional[int]:
+        """
+        Number of VM provisioned with the machine_type.
+        """
         return pulumi.get(self, "vm_count")
 
 
@@ -3002,6 +3038,7 @@ class ClusterClusterConfigWorkerConfig(dict):
         :param 'ClusterClusterConfigWorkerConfigDiskConfigArgs' disk_config: Disk Config
         :param str image_uri: The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
                for more information.
+        :param Sequence[str] instance_names: List of master/worker instance names which have been assigned to the cluster.
         :param str machine_type: The name of a Google Compute Engine machine type
                to create for the worker nodes. If not specified, GCP will default to a predetermined
                computed value (currently `n1-standard-4`).
@@ -3063,6 +3100,9 @@ class ClusterClusterConfigWorkerConfig(dict):
     @property
     @pulumi.getter(name="instanceNames")
     def instance_names(self) -> Optional[Sequence[str]]:
+        """
+        List of master/worker instance names which have been assigned to the cluster.
+        """
         return pulumi.get(self, "instance_names")
 
     @property
@@ -3997,6 +4037,7 @@ class JobHadoopConfig(dict):
         :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param Sequence[str] file_uris: HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+        :param 'JobHadoopConfigLoggingConfigArgs' logging_config: The runtime logging config of the job
         :param str main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`. Conflicts with `main_jar_file_uri`
         :param str main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'. Conflicts with `main_class`
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
@@ -4055,6 +4096,9 @@ class JobHadoopConfig(dict):
     @property
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.JobHadoopConfigLoggingConfig']:
+        """
+        The runtime logging config of the job
+        """
         return pulumi.get(self, "logging_config")
 
     @property
@@ -4105,11 +4149,17 @@ class JobHadoopConfigLoggingConfig(dict):
 
     def __init__(__self__, *,
                  driver_log_levels: Mapping[str, str]):
+        """
+        :param Mapping[str, str] driver_log_levels: Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
 
     @property
     @pulumi.getter(name="driverLogLevels")
     def driver_log_levels(self) -> Mapping[str, str]:
+        """
+        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         return pulumi.get(self, "driver_log_levels")
 
 
@@ -4317,6 +4367,7 @@ class JobPigConfig(dict):
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
                
                * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+        :param 'JobPigConfigLoggingConfigArgs' logging_config: The runtime logging config of the job
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
         :param str query_file_uri: HCFS URI of file containing Hive script to execute as the job.
                Conflicts with `query_list`
@@ -4360,6 +4411,9 @@ class JobPigConfig(dict):
     @property
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.JobPigConfigLoggingConfig']:
+        """
+        The runtime logging config of the job
+        """
         return pulumi.get(self, "logging_config")
 
     @property
@@ -4418,11 +4472,17 @@ class JobPigConfigLoggingConfig(dict):
 
     def __init__(__self__, *,
                  driver_log_levels: Mapping[str, str]):
+        """
+        :param Mapping[str, str] driver_log_levels: Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
 
     @property
     @pulumi.getter(name="driverLogLevels")
     def driver_log_levels(self) -> Mapping[str, str]:
+        """
+        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         return pulumi.get(self, "driver_log_levels")
 
 
@@ -4450,6 +4510,10 @@ class JobPlacement(dict):
     def __init__(__self__, *,
                  cluster_name: str,
                  cluster_uuid: Optional[str] = None):
+        """
+        :param str cluster_name: The name of the cluster where the job will be submitted
+        :param str cluster_uuid: Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
+        """
         pulumi.set(__self__, "cluster_name", cluster_name)
         if cluster_uuid is not None:
             pulumi.set(__self__, "cluster_uuid", cluster_uuid)
@@ -4457,11 +4521,17 @@ class JobPlacement(dict):
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
+        """
+        The name of the cluster where the job will be submitted
+        """
         return pulumi.get(self, "cluster_name")
 
     @property
     @pulumi.getter(name="clusterUuid")
     def cluster_uuid(self) -> Optional[str]:
+        """
+        Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
+        """
         return pulumi.get(self, "cluster_uuid")
 
 
@@ -4505,6 +4575,7 @@ class JobPrestoConfig(dict):
         """
         :param Sequence[str] client_tags: Presto client tags to attach to this query.
         :param bool continue_on_failure: Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
+        :param 'JobPrestoConfigLoggingConfigArgs' logging_config: The runtime logging config of the job
         :param str output_format: The format in which query output will be displayed. See the Presto documentation for supported output formats.
                
                * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -4548,6 +4619,9 @@ class JobPrestoConfig(dict):
     @property
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.JobPrestoConfigLoggingConfig']:
+        """
+        The runtime logging config of the job
+        """
         return pulumi.get(self, "logging_config")
 
     @property
@@ -4608,11 +4682,17 @@ class JobPrestoConfigLoggingConfig(dict):
 
     def __init__(__self__, *,
                  driver_log_levels: Mapping[str, str]):
+        """
+        :param Mapping[str, str] driver_log_levels: Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
 
     @property
     @pulumi.getter(name="driverLogLevels")
     def driver_log_levels(self) -> Mapping[str, str]:
+        """
+        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         return pulumi.get(self, "driver_log_levels")
 
 
@@ -4660,6 +4740,7 @@ class JobPysparkConfig(dict):
         :param Sequence[str] args: The arguments to pass to the driver.
         :param Sequence[str] file_uris: HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+        :param 'JobPysparkConfigLoggingConfigArgs' logging_config: The runtime logging config of the job
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
                
                * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
@@ -4724,6 +4805,9 @@ class JobPysparkConfig(dict):
     @property
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.JobPysparkConfigLoggingConfig']:
+        """
+        The runtime logging config of the job
+        """
         return pulumi.get(self, "logging_config")
 
     @property
@@ -4766,11 +4850,17 @@ class JobPysparkConfigLoggingConfig(dict):
 
     def __init__(__self__, *,
                  driver_log_levels: Mapping[str, str]):
+        """
+        :param Mapping[str, str] driver_log_levels: Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
 
     @property
     @pulumi.getter(name="driverLogLevels")
     def driver_log_levels(self) -> Mapping[str, str]:
+        """
+        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         return pulumi.get(self, "driver_log_levels")
 
 
@@ -4795,12 +4885,18 @@ class JobReference(dict):
 
     def __init__(__self__, *,
                  job_id: Optional[str] = None):
+        """
+        :param str job_id: The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
+        """
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
 
     @property
     @pulumi.getter(name="jobId")
     def job_id(self) -> Optional[str]:
+        """
+        The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
+        """
         return pulumi.get(self, "job_id")
 
 
@@ -4828,17 +4924,27 @@ class JobScheduling(dict):
     def __init__(__self__, *,
                  max_failures_per_hour: int,
                  max_failures_total: int):
+        """
+        :param int max_failures_per_hour: Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        :param int max_failures_total: Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        """
         pulumi.set(__self__, "max_failures_per_hour", max_failures_per_hour)
         pulumi.set(__self__, "max_failures_total", max_failures_total)
 
     @property
     @pulumi.getter(name="maxFailuresPerHour")
     def max_failures_per_hour(self) -> int:
+        """
+        Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        """
         return pulumi.get(self, "max_failures_per_hour")
 
     @property
     @pulumi.getter(name="maxFailuresTotal")
     def max_failures_total(self) -> int:
+        """
+        Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        """
         return pulumi.get(self, "max_failures_total")
 
 
@@ -4885,6 +4991,7 @@ class JobSparkConfig(dict):
         :param Sequence[str] args: The arguments to pass to the driver.
         :param Sequence[str] file_uris: HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+        :param 'JobSparkConfigLoggingConfigArgs' logging_config: The runtime logging config of the job
         :param str main_class: The class containing the main method of the driver. Must be in a
                provided jar or jar that is already on the classpath. Conflicts with `main_jar_file_uri`
         :param str main_jar_file_uri: The HCFS URI of jar file containing
@@ -4945,6 +5052,9 @@ class JobSparkConfig(dict):
     @property
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.JobSparkConfigLoggingConfig']:
+        """
+        The runtime logging config of the job
+        """
         return pulumi.get(self, "logging_config")
 
     @property
@@ -4997,11 +5107,17 @@ class JobSparkConfigLoggingConfig(dict):
 
     def __init__(__self__, *,
                  driver_log_levels: Mapping[str, str]):
+        """
+        :param Mapping[str, str] driver_log_levels: Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
 
     @property
     @pulumi.getter(name="driverLogLevels")
     def driver_log_levels(self) -> Mapping[str, str]:
+        """
+        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         return pulumi.get(self, "driver_log_levels")
 
 
@@ -5043,6 +5159,7 @@ class JobSparksqlConfig(dict):
         :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
                
                * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+        :param 'JobSparksqlConfigLoggingConfigArgs' logging_config: The runtime logging config of the job
         :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
                Conflicts with `query_list`
@@ -5076,6 +5193,9 @@ class JobSparksqlConfig(dict):
     @property
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.JobSparksqlConfigLoggingConfig']:
+        """
+        The runtime logging config of the job
+        """
         return pulumi.get(self, "logging_config")
 
     @property
@@ -5134,11 +5254,17 @@ class JobSparksqlConfigLoggingConfig(dict):
 
     def __init__(__self__, *,
                  driver_log_levels: Mapping[str, str]):
+        """
+        :param Mapping[str, str] driver_log_levels: Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         pulumi.set(__self__, "driver_log_levels", driver_log_levels)
 
     @property
     @pulumi.getter(name="driverLogLevels")
     def driver_log_levels(self) -> Mapping[str, str]:
+        """
+        Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+        """
         return pulumi.get(self, "driver_log_levels")
 
 
@@ -5166,6 +5292,12 @@ class JobStatus(dict):
                  state: Optional[str] = None,
                  state_start_time: Optional[str] = None,
                  substate: Optional[str] = None):
+        """
+        :param str details: Output-only. Optional job state details, such as an error description if the state is ERROR
+        :param str state: Output-only. A state message specifying the overall job state
+        :param str state_start_time: Output-only. The time when this state was entered
+        :param str substate: Output-only. Additional state information, which includes status reported by the agent
+        """
         if details is not None:
             pulumi.set(__self__, "details", details)
         if state is not None:
@@ -5178,21 +5310,33 @@ class JobStatus(dict):
     @property
     @pulumi.getter
     def details(self) -> Optional[str]:
+        """
+        Output-only. Optional job state details, such as an error description if the state is ERROR
+        """
         return pulumi.get(self, "details")
 
     @property
     @pulumi.getter
     def state(self) -> Optional[str]:
+        """
+        Output-only. A state message specifying the overall job state
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="stateStartTime")
     def state_start_time(self) -> Optional[str]:
+        """
+        Output-only. The time when this state was entered
+        """
         return pulumi.get(self, "state_start_time")
 
     @property
     @pulumi.getter
     def substate(self) -> Optional[str]:
+        """
+        Output-only. Additional state information, which includes status reported by the agent
+        """
         return pulumi.get(self, "substate")
 
 
@@ -8924,6 +9068,10 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfi
     def __init__(__self__, *,
                  instance_group_manager_name: Optional[str] = None,
                  instance_template_name: Optional[str] = None):
+        """
+        :param str instance_group_manager_name: Output only. The name of the Instance Group Manager for this group.
+        :param str instance_template_name: Output only. The name of the Instance Template used for the Managed Instance Group.
+        """
         if instance_group_manager_name is not None:
             pulumi.set(__self__, "instance_group_manager_name", instance_group_manager_name)
         if instance_template_name is not None:
@@ -8932,11 +9080,17 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfi
     @property
     @pulumi.getter(name="instanceGroupManagerName")
     def instance_group_manager_name(self) -> Optional[str]:
+        """
+        Output only. The name of the Instance Group Manager for this group.
+        """
         return pulumi.get(self, "instance_group_manager_name")
 
     @property
     @pulumi.getter(name="instanceTemplateName")
     def instance_template_name(self) -> Optional[str]:
+        """
+        Output only. The name of the Instance Template used for the Managed Instance Group.
+        """
         return pulumi.get(self, "instance_template_name")
 
 
@@ -9269,6 +9423,10 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
     def __init__(__self__, *,
                  instance_group_manager_name: Optional[str] = None,
                  instance_template_name: Optional[str] = None):
+        """
+        :param str instance_group_manager_name: Output only. The name of the Instance Group Manager for this group.
+        :param str instance_template_name: Output only. The name of the Instance Template used for the Managed Instance Group.
+        """
         if instance_group_manager_name is not None:
             pulumi.set(__self__, "instance_group_manager_name", instance_group_manager_name)
         if instance_template_name is not None:
@@ -9277,11 +9435,17 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
     @property
     @pulumi.getter(name="instanceGroupManagerName")
     def instance_group_manager_name(self) -> Optional[str]:
+        """
+        Output only. The name of the Instance Group Manager for this group.
+        """
         return pulumi.get(self, "instance_group_manager_name")
 
     @property
     @pulumi.getter(name="instanceTemplateName")
     def instance_template_name(self) -> Optional[str]:
+        """
+        Output only. The name of the Instance Template used for the Managed Instance Group.
+        """
         return pulumi.get(self, "instance_template_name")
 
 
@@ -9933,6 +10097,10 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfi
     def __init__(__self__, *,
                  instance_group_manager_name: Optional[str] = None,
                  instance_template_name: Optional[str] = None):
+        """
+        :param str instance_group_manager_name: Output only. The name of the Instance Group Manager for this group.
+        :param str instance_template_name: Output only. The name of the Instance Template used for the Managed Instance Group.
+        """
         if instance_group_manager_name is not None:
             pulumi.set(__self__, "instance_group_manager_name", instance_group_manager_name)
         if instance_template_name is not None:
@@ -9941,11 +10109,17 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfi
     @property
     @pulumi.getter(name="instanceGroupManagerName")
     def instance_group_manager_name(self) -> Optional[str]:
+        """
+        Output only. The name of the Instance Group Manager for this group.
+        """
         return pulumi.get(self, "instance_group_manager_name")
 
     @property
     @pulumi.getter(name="instanceTemplateName")
     def instance_template_name(self) -> Optional[str]:
+        """
+        Output only. The name of the Instance Template used for the Managed Instance Group.
+        """
         return pulumi.get(self, "instance_template_name")
 
 

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingDatabaseFlag {
+    /**
+     * @return Name of the flag.
+     * 
+     */
     private String name;
+    /**
+     * @return Value of the flag.
+     * 
+     */
     private String value;
 
     private GetDatabaseInstancesInstanceSettingDatabaseFlag() {}
+    /**
+     * @return Name of the flag.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Value of the flag.
+     * 
+     */
     public String value() {
         return this.value;
     }

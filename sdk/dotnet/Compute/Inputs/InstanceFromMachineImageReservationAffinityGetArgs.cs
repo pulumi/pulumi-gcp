@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromMachineImageReservationAffinityGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the label selector for the reservation to use.
+        /// </summary>
         [Input("specificReservation")]
         public Input<Inputs.InstanceFromMachineImageReservationAffinitySpecificReservationGetArgs>? SpecificReservation { get; set; }
 
+        /// <summary>
+        /// The type of reservation from which this instance can consume resources.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

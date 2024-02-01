@@ -1338,6 +1338,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
                  source_format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: (Optional) Structure is documented below.
+        :param pulumi.Input[str] metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs'] oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
                
                Use either `git` or `oci` config option.
@@ -1370,6 +1371,9 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     @property
     @pulumi.getter(name="metricsGcpServiceAccountEmail")
     def metrics_gcp_service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        """
         return pulumi.get(self, "metrics_gcp_service_account_email")
 
     @metrics_gcp_service_account_email.setter
@@ -1856,6 +1860,7 @@ class FeatureMembershipMeshArgs:
                  control_plane: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] control_plane: **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
         :param pulumi.Input[str] management: Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         """
         if control_plane is not None:
@@ -1869,6 +1874,9 @@ class FeatureMembershipMeshArgs:
     @property
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> Optional[pulumi.Input[str]]:
+        """
+        **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+        """
         warnings.warn("""Deprecated in favor of the `management` field""", DeprecationWarning)
         pulumi.log.warn("""control_plane is deprecated: Deprecated in favor of the `management` field""")
 

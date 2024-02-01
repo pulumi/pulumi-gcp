@@ -5428,14 +5428,22 @@ func (o GetKeysZoneSigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeys
 }
 
 type GetManagedZonesManagedZone struct {
-	Description   string   `pulumi:"description"`
-	DnsName       string   `pulumi:"dnsName"`
-	Id            string   `pulumi:"id"`
-	ManagedZoneId int      `pulumi:"managedZoneId"`
-	Name          string   `pulumi:"name"`
-	NameServers   []string `pulumi:"nameServers"`
-	Project       string   `pulumi:"project"`
-	Visibility    string   `pulumi:"visibility"`
+	// A textual description field.
+	Description string `pulumi:"description"`
+	// The fully qualified DNS name of this zone.
+	DnsName string `pulumi:"dnsName"`
+	// DNS managed zone identifier
+	Id string `pulumi:"id"`
+	// Unique identifier for the resource; defined by the server.
+	ManagedZoneId int `pulumi:"managedZoneId"`
+	// A unique name for the resource.
+	Name string `pulumi:"name"`
+	// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+	NameServers []string `pulumi:"nameServers"`
+	// The ID of the project for the Google Cloud.
+	Project string `pulumi:"project"`
+	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+	Visibility string `pulumi:"visibility"`
 }
 
 // GetManagedZonesManagedZoneInput is an input type that accepts GetManagedZonesManagedZoneArgs and GetManagedZonesManagedZoneOutput values.
@@ -5450,14 +5458,22 @@ type GetManagedZonesManagedZoneInput interface {
 }
 
 type GetManagedZonesManagedZoneArgs struct {
-	Description   pulumi.StringInput      `pulumi:"description"`
-	DnsName       pulumi.StringInput      `pulumi:"dnsName"`
-	Id            pulumi.StringInput      `pulumi:"id"`
-	ManagedZoneId pulumi.IntInput         `pulumi:"managedZoneId"`
-	Name          pulumi.StringInput      `pulumi:"name"`
-	NameServers   pulumi.StringArrayInput `pulumi:"nameServers"`
-	Project       pulumi.StringInput      `pulumi:"project"`
-	Visibility    pulumi.StringInput      `pulumi:"visibility"`
+	// A textual description field.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The fully qualified DNS name of this zone.
+	DnsName pulumi.StringInput `pulumi:"dnsName"`
+	// DNS managed zone identifier
+	Id pulumi.StringInput `pulumi:"id"`
+	// Unique identifier for the resource; defined by the server.
+	ManagedZoneId pulumi.IntInput `pulumi:"managedZoneId"`
+	// A unique name for the resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
+	// The ID of the project for the Google Cloud.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+	Visibility pulumi.StringInput `pulumi:"visibility"`
 }
 
 func (GetManagedZonesManagedZoneArgs) ElementType() reflect.Type {
@@ -5511,34 +5527,42 @@ func (o GetManagedZonesManagedZoneOutput) ToGetManagedZonesManagedZoneOutputWith
 	return o
 }
 
+// A textual description field.
 func (o GetManagedZonesManagedZoneOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The fully qualified DNS name of this zone.
 func (o GetManagedZonesManagedZoneOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.DnsName }).(pulumi.StringOutput)
 }
 
+// DNS managed zone identifier
 func (o GetManagedZonesManagedZoneOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Unique identifier for the resource; defined by the server.
 func (o GetManagedZonesManagedZoneOutput) ManagedZoneId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) int { return v.ManagedZoneId }).(pulumi.IntOutput)
 }
 
+// A unique name for the resource.
 func (o GetManagedZonesManagedZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
 func (o GetManagedZonesManagedZoneOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) []string { return v.NameServers }).(pulumi.StringArrayOutput)
 }
 
+// The ID of the project for the Google Cloud.
 func (o GetManagedZonesManagedZoneOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
 func (o GetManagedZonesManagedZoneOutput) Visibility() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Visibility }).(pulumi.StringOutput)
 }

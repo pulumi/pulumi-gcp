@@ -11,33 +11,103 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerTriggerTemplate {
+    /**
+     * @return Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
+     * 
+     */
     private String branchName;
+    /**
+     * @return Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+     * 
+     */
     private String commitSha;
+    /**
+     * @return Directory, relative to the source root, in which to run the build.
+     * 
+     * This must be a relative path. If a step&#39;s dir is specified and
+     * is an absolute path, this value is ignored for that step&#39;s
+     * execution.
+     * 
+     */
     private String dir;
+    /**
+     * @return Only trigger a build if the revision regex does NOT match the revision regex.
+     * 
+     */
     private Boolean invertRegex;
+    /**
+     * @return ID of the project that owns the Cloud Source Repository. If
+     * omitted, the project ID requesting the build is assumed.
+     * 
+     */
     private String projectId;
+    /**
+     * @return Name of the Cloud Source Repository. If omitted, the name &#34;default&#34; is assumed.
+     * 
+     */
     private String repoName;
+    /**
+     * @return Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
+     * 
+     */
     private String tagName;
 
     private GetTriggerTriggerTemplate() {}
+    /**
+     * @return Name of the branch to build. Exactly one a of branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
+     * 
+     */
     public String branchName() {
         return this.branchName;
     }
+    /**
+     * @return Explicit commit SHA to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+     * 
+     */
     public String commitSha() {
         return this.commitSha;
     }
+    /**
+     * @return Directory, relative to the source root, in which to run the build.
+     * 
+     * This must be a relative path. If a step&#39;s dir is specified and
+     * is an absolute path, this value is ignored for that step&#39;s
+     * execution.
+     * 
+     */
     public String dir() {
         return this.dir;
     }
+    /**
+     * @return Only trigger a build if the revision regex does NOT match the revision regex.
+     * 
+     */
     public Boolean invertRegex() {
         return this.invertRegex;
     }
+    /**
+     * @return ID of the project that owns the Cloud Source Repository. If
+     * omitted, the project ID requesting the build is assumed.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return Name of the Cloud Source Repository. If omitted, the name &#34;default&#34; is assumed.
+     * 
+     */
     public String repoName() {
         return this.repoName;
     }
+    /**
+     * @return Name of the tag to build. Exactly one of a branch name, tag, or commit SHA must be provided.
+     * This field is a regular expression.
+     * 
+     */
     public String tagName() {
         return this.tagName;
     }

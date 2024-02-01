@@ -14,19 +14,39 @@ import java.util.Objects;
 
 @CustomType
 public final class GetJobTemplateTemplateVolume {
+    /**
+     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+     * 
+     */
     private List<GetJobTemplateTemplateVolumeCloudSqlInstance> cloudSqlInstances;
+    /**
+     * @return Ephemeral storage used as a shared volume.
+     * 
+     */
     private List<GetJobTemplateTemplateVolumeEmptyDir> emptyDirs;
     /**
      * @return The name of the Cloud Run v2 Job.
      * 
      */
     private String name;
+    /**
+     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * 
+     */
     private List<GetJobTemplateTemplateVolumeSecret> secrets;
 
     private GetJobTemplateTemplateVolume() {}
+    /**
+     * @return For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+     * 
+     */
     public List<GetJobTemplateTemplateVolumeCloudSqlInstance> cloudSqlInstances() {
         return this.cloudSqlInstances;
     }
+    /**
+     * @return Ephemeral storage used as a shared volume.
+     * 
+     */
     public List<GetJobTemplateTemplateVolumeEmptyDir> emptyDirs() {
         return this.emptyDirs;
     }
@@ -37,6 +57,10 @@ public final class GetJobTemplateTemplateVolume {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+     * 
+     */
     public List<GetJobTemplateTemplateVolumeSecret> secrets() {
         return this.secrets;
     }

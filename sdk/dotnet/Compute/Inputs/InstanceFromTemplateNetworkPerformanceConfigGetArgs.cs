@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromTemplateNetworkPerformanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+        /// </summary>
         [Input("totalEgressBandwidthTier", required: true)]
         public Input<string> TotalEgressBandwidthTier { get; set; } = null!;
 

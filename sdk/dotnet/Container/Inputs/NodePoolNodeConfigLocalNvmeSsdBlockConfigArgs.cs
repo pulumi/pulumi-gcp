@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+        /// </summary>
         [Input("localSsdCount", required: true)]
         public Input<int> LocalSsdCount { get; set; } = null!;
 

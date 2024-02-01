@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 
     public sealed class HubRoutingVpcGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URI of the VPC network.
+        /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }
 

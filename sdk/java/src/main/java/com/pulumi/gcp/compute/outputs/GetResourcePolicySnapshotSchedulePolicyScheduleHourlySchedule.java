@@ -11,13 +11,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+    /**
+     * @return The number of hours between snapshots.
+     * 
+     */
     private Integer hoursInCycle;
+    /**
+     * @return Time within the window to start the operations.
+     * It must be in an hourly format &#34;HH:MM&#34;,
+     * where HH : [00-23] and MM : [00] GMT.
+     * eg: 21:00
+     * 
+     */
     private String startTime;
 
     private GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule() {}
+    /**
+     * @return The number of hours between snapshots.
+     * 
+     */
     public Integer hoursInCycle() {
         return this.hoursInCycle;
     }
+    /**
+     * @return Time within the window to start the operations.
+     * It must be in an hourly format &#34;HH:MM&#34;,
+     * where HH : [00-23] and MM : [00] GMT.
+     * eg: 21:00
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }

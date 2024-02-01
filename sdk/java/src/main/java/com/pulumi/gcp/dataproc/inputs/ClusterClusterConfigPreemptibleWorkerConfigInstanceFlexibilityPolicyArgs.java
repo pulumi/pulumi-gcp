@@ -32,9 +32,17 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         return Optional.ofNullable(this.instanceSelectionLists);
     }
 
+    /**
+     * A list of instance selection results in the group.
+     * 
+     */
     @Import(name="instanceSelectionResults")
     private @Nullable Output<List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs>> instanceSelectionResults;
 
+    /**
+     * @return A list of instance selection results in the group.
+     * 
+     */
     public Optional<Output<List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs>>> instanceSelectionResults() {
         return Optional.ofNullable(this.instanceSelectionResults);
     }
@@ -95,15 +103,33 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
             return instanceSelectionLists(List.of(instanceSelectionLists));
         }
 
+        /**
+         * @param instanceSelectionResults A list of instance selection results in the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceSelectionResults(@Nullable Output<List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs>> instanceSelectionResults) {
             $.instanceSelectionResults = instanceSelectionResults;
             return this;
         }
 
+        /**
+         * @param instanceSelectionResults A list of instance selection results in the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceSelectionResults(List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs> instanceSelectionResults) {
             return instanceSelectionResults(Output.of(instanceSelectionResults));
         }
 
+        /**
+         * @param instanceSelectionResults A list of instance selection results in the group.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceSelectionResults(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs... instanceSelectionResults) {
             return instanceSelectionResults(List.of(instanceSelectionResults));
         }

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterMeshCertificateResult
     {
+        /// <summary>
+        /// When enabled the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster.
+        /// </summary>
         public readonly bool EnableCertificates;
 
         [OutputConstructor]

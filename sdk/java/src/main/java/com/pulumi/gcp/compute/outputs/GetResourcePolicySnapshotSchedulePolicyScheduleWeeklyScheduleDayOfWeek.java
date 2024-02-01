@@ -10,13 +10,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
+    /**
+     * @return The day of the week to create the snapshot. e.g. MONDAY Possible values: [&#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;, &#34;SUNDAY&#34;]
+     * 
+     */
     private String day;
+    /**
+     * @return Time within the window to start the operations.
+     * It must be in format &#34;HH:MM&#34;, where HH : [00-23] and MM : [00-00] GMT.
+     * 
+     */
     private String startTime;
 
     private GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek() {}
+    /**
+     * @return The day of the week to create the snapshot. e.g. MONDAY Possible values: [&#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;, &#34;SUNDAY&#34;]
+     * 
+     */
     public String day() {
         return this.day;
     }
+    /**
+     * @return Time within the window to start the operations.
+     * It must be in format &#34;HH:MM&#34;, where HH : [00-23] and MM : [00-00] GMT.
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }

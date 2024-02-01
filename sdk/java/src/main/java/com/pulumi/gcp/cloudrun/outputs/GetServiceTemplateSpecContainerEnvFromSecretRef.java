@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvFromSecretRef {
+    /**
+     * @return The Secret to select from.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference> localObjectReferences;
+    /**
+     * @return Specify whether the Secret must be defined
+     * 
+     */
     private Boolean optional;
 
     private GetServiceTemplateSpecContainerEnvFromSecretRef() {}
+    /**
+     * @return The Secret to select from.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference> localObjectReferences() {
         return this.localObjectReferences;
     }
+    /**
+     * @return Specify whether the Secret must be defined
+     * 
+     */
     public Boolean optional() {
         return this.optional;
     }

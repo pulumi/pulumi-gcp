@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfigDagProcessor {
+    /**
+     * @return CPU request and limit for DAG processor.
+     * 
+     */
     private Double cpu;
+    /**
+     * @return Memory (GB) request and limit for DAG processor.
+     * 
+     */
     private Double memoryGb;
+    /**
+     * @return Storage (GB) request and limit for DAG processor.
+     * 
+     */
     private Double storageGb;
 
     private GetEnvironmentConfigWorkloadsConfigDagProcessor() {}
+    /**
+     * @return CPU request and limit for DAG processor.
+     * 
+     */
     public Double cpu() {
         return this.cpu;
     }
+    /**
+     * @return Memory (GB) request and limit for DAG processor.
+     * 
+     */
     public Double memoryGb() {
         return this.memoryGb;
     }
+    /**
+     * @return Storage (GB) request and limit for DAG processor.
+     * 
+     */
     public Double storageGb() {
         return this.storageGb;
     }

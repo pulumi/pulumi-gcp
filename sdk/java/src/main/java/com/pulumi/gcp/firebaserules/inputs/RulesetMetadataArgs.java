@@ -16,9 +16,17 @@ public final class RulesetMetadataArgs extends com.pulumi.resources.ResourceArgs
 
     public static final RulesetMetadataArgs Empty = new RulesetMetadataArgs();
 
+    /**
+     * Services that this ruleset has declarations for (e.g., &#34;cloud.firestore&#34;). There may be 0+ of these.
+     * 
+     */
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
+    /**
+     * @return Services that this ruleset has declarations for (e.g., &#34;cloud.firestore&#34;). There may be 0+ of these.
+     * 
+     */
     public Optional<Output<List<String>>> services() {
         return Optional.ofNullable(this.services);
     }
@@ -47,15 +55,33 @@ public final class RulesetMetadataArgs extends com.pulumi.resources.ResourceArgs
             $ = new RulesetMetadataArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param services Services that this ruleset has declarations for (e.g., &#34;cloud.firestore&#34;). There may be 0+ of these.
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(@Nullable Output<List<String>> services) {
             $.services = services;
             return this;
         }
 
+        /**
+         * @param services Services that this ruleset has declarations for (e.g., &#34;cloud.firestore&#34;). There may be 0+ of these.
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(List<String> services) {
             return services(Output.of(services));
         }
 
+        /**
+         * @param services Services that this ruleset has declarations for (e.g., &#34;cloud.firestore&#34;). There may be 0+ of these.
+         * 
+         * @return builder
+         * 
+         */
         public Builder services(String... services) {
             return services(List.of(services));
         }

@@ -17,7 +17,13 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// The name of the Cloud Run Service.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Defaults to "".
+        /// </summary>
         public readonly string Value;
+        /// <summary>
+        /// Source for the environment variable's value. Only supports secret_key_ref.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvValueFromResult> ValueFroms;
 
         [OutputConstructor]

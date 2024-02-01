@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryCleanupPolicyMostRecentVersion {
+    /**
+     * @return Minimum number of versions to keep.
+     * 
+     */
     private Integer keepCount;
+    /**
+     * @return Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     private List<String> packageNamePrefixes;
 
     private GetRepositoryCleanupPolicyMostRecentVersion() {}
+    /**
+     * @return Minimum number of versions to keep.
+     * 
+     */
     public Integer keepCount() {
         return this.keepCount;
     }
+    /**
+     * @return Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     public List<String> packageNamePrefixes() {
         return this.packageNamePrefixes;
     }

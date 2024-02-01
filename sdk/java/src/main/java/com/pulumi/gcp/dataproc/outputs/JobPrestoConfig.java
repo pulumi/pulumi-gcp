@@ -25,6 +25,10 @@ public final class JobPrestoConfig {
      * 
      */
     private @Nullable Boolean continueOnFailure;
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     private @Nullable JobPrestoConfigLoggingConfig loggingConfig;
     /**
      * @return The format in which query output will be displayed. See the Presto documentation for supported output formats.
@@ -66,6 +70,10 @@ public final class JobPrestoConfig {
     public Optional<Boolean> continueOnFailure() {
         return Optional.ofNullable(this.continueOnFailure);
     }
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<JobPrestoConfigLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }

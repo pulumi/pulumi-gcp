@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketEncryption {
+    /**
+     * @return A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
+     * 
+     */
     private String defaultKmsKeyName;
 
     private GetBucketEncryption() {}
+    /**
+     * @return A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
+     * 
+     */
     public String defaultKmsKeyName() {
         return this.defaultKmsKeyName;
     }

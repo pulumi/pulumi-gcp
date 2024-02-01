@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Iam.Outputs
     [OutputType]
     public sealed class GetWorkloadIdentityPoolProviderAwResult
     {
+        /// <summary>
+        /// The AWS account ID.
+        /// </summary>
         public readonly string AccountId;
 
         [OutputConstructor]

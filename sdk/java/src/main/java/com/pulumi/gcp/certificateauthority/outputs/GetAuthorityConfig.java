@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfig {
+    /**
+     * @return Specifies some of the values in a certificate that are related to the subject.
+     * 
+     */
     private List<GetAuthorityConfigSubjectConfig> subjectConfigs;
+    /**
+     * @return Describes how some of the technical X.509 fields in a certificate should be populated.
+     * 
+     */
     private List<GetAuthorityConfigX509Config> x509Configs;
 
     private GetAuthorityConfig() {}
+    /**
+     * @return Specifies some of the values in a certificate that are related to the subject.
+     * 
+     */
     public List<GetAuthorityConfigSubjectConfig> subjectConfigs() {
         return this.subjectConfigs;
     }
+    /**
+     * @return Describes how some of the technical X.509 fields in a certificate should be populated.
+     * 
+     */
     public List<GetAuthorityConfigX509Config> x509Configs() {
         return this.x509Configs;
     }

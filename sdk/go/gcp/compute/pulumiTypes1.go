@@ -2810,17 +2810,38 @@ func (o GetAddressesAddressArrayOutput) Index(i pulumi.IntInput) GetAddressesAdd
 }
 
 type GetBackendBucketCdnPolicy struct {
+	// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
 	BypassCacheOnRequestHeaders []GetBackendBucketCdnPolicyBypassCacheOnRequestHeader `pulumi:"bypassCacheOnRequestHeaders"`
-	CacheKeyPolicies            []GetBackendBucketCdnPolicyCacheKeyPolicy             `pulumi:"cacheKeyPolicies"`
-	CacheMode                   string                                                `pulumi:"cacheMode"`
-	ClientTtl                   int                                                   `pulumi:"clientTtl"`
-	DefaultTtl                  int                                                   `pulumi:"defaultTtl"`
-	MaxTtl                      int                                                   `pulumi:"maxTtl"`
-	NegativeCaching             bool                                                  `pulumi:"negativeCaching"`
-	NegativeCachingPolicies     []GetBackendBucketCdnPolicyNegativeCachingPolicy      `pulumi:"negativeCachingPolicies"`
-	RequestCoalescing           bool                                                  `pulumi:"requestCoalescing"`
-	ServeWhileStale             int                                                   `pulumi:"serveWhileStale"`
-	SignedUrlCacheMaxAgeSec     int                                                   `pulumi:"signedUrlCacheMaxAgeSec"`
+	// The CacheKeyPolicy for this CdnPolicy.
+	CacheKeyPolicies []GetBackendBucketCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicies"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+	CacheMode string `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl int `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl int `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl int `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching bool `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	NegativeCachingPolicies []GetBackendBucketCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
+	// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+	RequestCoalescing bool `pulumi:"requestCoalescing"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale int `pulumi:"serveWhileStale"`
+	// Maximum number of seconds the response to a signed URL request will
+	// be considered fresh. After this time period,
+	// the response will be revalidated before being served.
+	// When serving responses to signed URL requests,
+	// Cloud CDN will internally behave as though
+	// all responses from this backend had a "Cache-Control: public,
+	// max-age=[TTL]" header, regardless of any existing Cache-Control
+	// header. The actual headers served in responses will not be altered.
+	SignedUrlCacheMaxAgeSec int `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 // GetBackendBucketCdnPolicyInput is an input type that accepts GetBackendBucketCdnPolicyArgs and GetBackendBucketCdnPolicyOutput values.
@@ -2835,17 +2856,38 @@ type GetBackendBucketCdnPolicyInput interface {
 }
 
 type GetBackendBucketCdnPolicyArgs struct {
+	// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
 	BypassCacheOnRequestHeaders GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayInput `pulumi:"bypassCacheOnRequestHeaders"`
-	CacheKeyPolicies            GetBackendBucketCdnPolicyCacheKeyPolicyArrayInput             `pulumi:"cacheKeyPolicies"`
-	CacheMode                   pulumi.StringInput                                            `pulumi:"cacheMode"`
-	ClientTtl                   pulumi.IntInput                                               `pulumi:"clientTtl"`
-	DefaultTtl                  pulumi.IntInput                                               `pulumi:"defaultTtl"`
-	MaxTtl                      pulumi.IntInput                                               `pulumi:"maxTtl"`
-	NegativeCaching             pulumi.BoolInput                                              `pulumi:"negativeCaching"`
-	NegativeCachingPolicies     GetBackendBucketCdnPolicyNegativeCachingPolicyArrayInput      `pulumi:"negativeCachingPolicies"`
-	RequestCoalescing           pulumi.BoolInput                                              `pulumi:"requestCoalescing"`
-	ServeWhileStale             pulumi.IntInput                                               `pulumi:"serveWhileStale"`
-	SignedUrlCacheMaxAgeSec     pulumi.IntInput                                               `pulumi:"signedUrlCacheMaxAgeSec"`
+	// The CacheKeyPolicy for this CdnPolicy.
+	CacheKeyPolicies GetBackendBucketCdnPolicyCacheKeyPolicyArrayInput `pulumi:"cacheKeyPolicies"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+	CacheMode pulumi.StringInput `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl pulumi.IntInput `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl pulumi.IntInput `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl pulumi.IntInput `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching pulumi.BoolInput `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	NegativeCachingPolicies GetBackendBucketCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
+	// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
+	RequestCoalescing pulumi.BoolInput `pulumi:"requestCoalescing"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale pulumi.IntInput `pulumi:"serveWhileStale"`
+	// Maximum number of seconds the response to a signed URL request will
+	// be considered fresh. After this time period,
+	// the response will be revalidated before being served.
+	// When serving responses to signed URL requests,
+	// Cloud CDN will internally behave as though
+	// all responses from this backend had a "Cache-Control: public,
+	// max-age=[TTL]" header, regardless of any existing Cache-Control
+	// header. The actual headers served in responses will not be altered.
+	SignedUrlCacheMaxAgeSec pulumi.IntInput `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 func (GetBackendBucketCdnPolicyArgs) ElementType() reflect.Type {
@@ -2899,50 +2941,71 @@ func (o GetBackendBucketCdnPolicyOutput) ToGetBackendBucketCdnPolicyOutputWithCo
 	return o
 }
 
+// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
 func (o GetBackendBucketCdnPolicyOutput) BypassCacheOnRequestHeaders() GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) []GetBackendBucketCdnPolicyBypassCacheOnRequestHeader {
 		return v.BypassCacheOnRequestHeaders
 	}).(GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
 }
 
+// The CacheKeyPolicy for this CdnPolicy.
 func (o GetBackendBucketCdnPolicyOutput) CacheKeyPolicies() GetBackendBucketCdnPolicyCacheKeyPolicyArrayOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) []GetBackendBucketCdnPolicyCacheKeyPolicy { return v.CacheKeyPolicies }).(GetBackendBucketCdnPolicyCacheKeyPolicyArrayOutput)
 }
 
+// Specifies the cache setting for all responses from this backend.
+// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
 func (o GetBackendBucketCdnPolicyOutput) CacheMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) string { return v.CacheMode }).(pulumi.StringOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o GetBackendBucketCdnPolicyOutput) ClientTtl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.ClientTtl }).(pulumi.IntOutput)
 }
 
+// Specifies the default TTL for cached content served by this origin for responses
+// that do not have an existing valid TTL (max-age or s-max-age).
 func (o GetBackendBucketCdnPolicyOutput) DefaultTtl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.DefaultTtl }).(pulumi.IntOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o GetBackendBucketCdnPolicyOutput) MaxTtl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.MaxTtl }).(pulumi.IntOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
 func (o GetBackendBucketCdnPolicyOutput) NegativeCaching() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) bool { return v.NegativeCaching }).(pulumi.BoolOutput)
 }
 
+// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
 func (o GetBackendBucketCdnPolicyOutput) NegativeCachingPolicies() GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) []GetBackendBucketCdnPolicyNegativeCachingPolicy {
 		return v.NegativeCachingPolicies
 	}).(GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
 func (o GetBackendBucketCdnPolicyOutput) RequestCoalescing() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) bool { return v.RequestCoalescing }).(pulumi.BoolOutput)
 }
 
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
 func (o GetBackendBucketCdnPolicyOutput) ServeWhileStale() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.ServeWhileStale }).(pulumi.IntOutput)
 }
 
+// Maximum number of seconds the response to a signed URL request will
+// be considered fresh. After this time period,
+// the response will be revalidated before being served.
+// When serving responses to signed URL requests,
+// Cloud CDN will internally behave as though
+// all responses from this backend had a "Cache-Control: public,
+// max-age=[TTL]" header, regardless of any existing Cache-Control
+// header. The actual headers served in responses will not be altered.
 func (o GetBackendBucketCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntOutput)
 }
@@ -2968,6 +3031,7 @@ func (o GetBackendBucketCdnPolicyArrayOutput) Index(i pulumi.IntInput) GetBacken
 }
 
 type GetBackendBucketCdnPolicyBypassCacheOnRequestHeader struct {
+	// The header field name to match on when bypassing cache. Values are case-insensitive.
 	HeaderName string `pulumi:"headerName"`
 }
 
@@ -2983,6 +3047,7 @@ type GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderInput interface {
 }
 
 type GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs struct {
+	// The header field name to match on when bypassing cache. Values are case-insensitive.
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
 }
 
@@ -3037,6 +3102,7 @@ func (o GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput) ToGetBackendB
 	return o
 }
 
+// The header field name to match on when bypassing cache. Values are case-insensitive.
 func (o GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicyBypassCacheOnRequestHeader) string { return v.HeaderName }).(pulumi.StringOutput)
 }
@@ -3062,7 +3128,12 @@ func (o GetBackendBucketCdnPolicyBypassCacheOnRequestHeaderArrayOutput) Index(i 
 }
 
 type GetBackendBucketCdnPolicyCacheKeyPolicy struct {
-	IncludeHttpHeaders    []string `pulumi:"includeHttpHeaders"`
+	// Allows HTTP request headers (by name) to be used in the
+	// cache key.
+	IncludeHttpHeaders []string `pulumi:"includeHttpHeaders"`
+	// Names of query string parameters to include in cache keys.
+	// Default parameters are always included. '&' and '=' will
+	// be percent encoded and not treated as delimiters.
 	QueryStringWhitelists []string `pulumi:"queryStringWhitelists"`
 }
 
@@ -3078,7 +3149,12 @@ type GetBackendBucketCdnPolicyCacheKeyPolicyInput interface {
 }
 
 type GetBackendBucketCdnPolicyCacheKeyPolicyArgs struct {
-	IncludeHttpHeaders    pulumi.StringArrayInput `pulumi:"includeHttpHeaders"`
+	// Allows HTTP request headers (by name) to be used in the
+	// cache key.
+	IncludeHttpHeaders pulumi.StringArrayInput `pulumi:"includeHttpHeaders"`
+	// Names of query string parameters to include in cache keys.
+	// Default parameters are always included. '&' and '=' will
+	// be percent encoded and not treated as delimiters.
 	QueryStringWhitelists pulumi.StringArrayInput `pulumi:"queryStringWhitelists"`
 }
 
@@ -3133,10 +3209,15 @@ func (o GetBackendBucketCdnPolicyCacheKeyPolicyOutput) ToGetBackendBucketCdnPoli
 	return o
 }
 
+// Allows HTTP request headers (by name) to be used in the
+// cache key.
 func (o GetBackendBucketCdnPolicyCacheKeyPolicyOutput) IncludeHttpHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicyCacheKeyPolicy) []string { return v.IncludeHttpHeaders }).(pulumi.StringArrayOutput)
 }
 
+// Names of query string parameters to include in cache keys.
+// Default parameters are always included. '&' and '=' will
+// be percent encoded and not treated as delimiters.
 func (o GetBackendBucketCdnPolicyCacheKeyPolicyOutput) QueryStringWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicyCacheKeyPolicy) []string { return v.QueryStringWhitelists }).(pulumi.StringArrayOutput)
 }
@@ -3162,8 +3243,12 @@ func (o GetBackendBucketCdnPolicyCacheKeyPolicyArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetBackendBucketCdnPolicyNegativeCachingPolicy struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code int `pulumi:"code"`
-	Ttl  int `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl int `pulumi:"ttl"`
 }
 
 // GetBackendBucketCdnPolicyNegativeCachingPolicyInput is an input type that accepts GetBackendBucketCdnPolicyNegativeCachingPolicyArgs and GetBackendBucketCdnPolicyNegativeCachingPolicyOutput values.
@@ -3178,8 +3263,12 @@ type GetBackendBucketCdnPolicyNegativeCachingPolicyInput interface {
 }
 
 type GetBackendBucketCdnPolicyNegativeCachingPolicyArgs struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code pulumi.IntInput `pulumi:"code"`
-	Ttl  pulumi.IntInput `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
 }
 
 func (GetBackendBucketCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
@@ -3233,10 +3322,14 @@ func (o GetBackendBucketCdnPolicyNegativeCachingPolicyOutput) ToGetBackendBucket
 	return o
 }
 
+// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+// can be specified as values, and you cannot specify a status code more than once.
 func (o GetBackendBucketCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicyNegativeCachingPolicy) int { return v.Code }).(pulumi.IntOutput)
 }
 
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o GetBackendBucketCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicyNegativeCachingPolicy) int { return v.Ttl }).(pulumi.IntOutput)
 }
@@ -3262,18 +3355,86 @@ func (o GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulum
 }
 
 type GetBackendServiceBackend struct {
-	BalancingMode  string  `pulumi:"balancingMode"`
+	// Specifies the balancing mode for this backend.
+	//
+	// For global HTTP(S) or TCP/SSL load balancing, the default is
+	// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+	// and CONNECTION (for TCP/SSL).
+	//
+	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+	BalancingMode string `pulumi:"balancingMode"`
+	// A multiplier applied to the group's maximum servicing capacity
+	// (based on UTILIZATION, RATE or CONNECTION).
+	//
+	// Default value is 1, which means the group will serve up to 100%
+	// of its configured capacity (depending on balancingMode). A
+	// setting of 0 means the group is completely drained, offering
+	// 0% of its available Capacity. Valid range is [0.0,1.0].
 	CapacityScaler float64 `pulumi:"capacityScaler"`
 	// Textual description for the Backend Service.
-	Description               string  `pulumi:"description"`
-	Group                     string  `pulumi:"group"`
-	MaxConnections            int     `pulumi:"maxConnections"`
-	MaxConnectionsPerEndpoint int     `pulumi:"maxConnectionsPerEndpoint"`
-	MaxConnectionsPerInstance int     `pulumi:"maxConnectionsPerInstance"`
-	MaxRate                   int     `pulumi:"maxRate"`
-	MaxRatePerEndpoint        float64 `pulumi:"maxRatePerEndpoint"`
-	MaxRatePerInstance        float64 `pulumi:"maxRatePerInstance"`
-	MaxUtilization            float64 `pulumi:"maxUtilization"`
+	Description string `pulumi:"description"`
+	// The fully-qualified URL of an Instance Group or Network Endpoint
+	// Group resource. In case of instance group this defines the list
+	// of instances that serve traffic. Member virtual machine
+	// instances from each instance group must live in the same zone as
+	// the instance group itself. No two backends in a backend service
+	// are allowed to use same Instance Group resource.
+	//
+	// For Network Endpoint Groups this defines list of endpoints. All
+	// endpoints of Network Endpoint Group must be hosted on instances
+	// located in the same zone as the Network Endpoint Group.
+	//
+	// Backend services cannot mix Instance Group and
+	// Network Endpoint Group backends.
+	//
+	// Note that you must specify an Instance Group or Network Endpoint
+	// Group resource using the fully-qualified URL, rather than a
+	// partial URL.
+	Group string `pulumi:"group"`
+	// The max number of simultaneous connections for the group. Can
+	// be used with either CONNECTION or UTILIZATION balancing modes.
+	//
+	// For CONNECTION mode, either maxConnections or one
+	// of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+	// as appropriate for group type, must be set.
+	MaxConnections int `pulumi:"maxConnections"`
+	// The max number of simultaneous connections that a single backend
+	// network endpoint can handle. This is used to calculate the
+	// capacity of the group. Can be used in either CONNECTION or
+	// UTILIZATION balancing modes.
+	//
+	// For CONNECTION mode, either
+	// maxConnections or maxConnectionsPerEndpoint must be set.
+	MaxConnectionsPerEndpoint int `pulumi:"maxConnectionsPerEndpoint"`
+	// The max number of simultaneous connections that a single
+	// backend instance can handle. This is used to calculate the
+	// capacity of the group. Can be used in either CONNECTION or
+	// UTILIZATION balancing modes.
+	//
+	// For CONNECTION mode, either maxConnections or
+	// maxConnectionsPerInstance must be set.
+	MaxConnectionsPerInstance int `pulumi:"maxConnectionsPerInstance"`
+	// The max requests per second (RPS) of the group.
+	//
+	// Can be used with either RATE or UTILIZATION balancing modes,
+	// but required if RATE mode. For RATE mode, either maxRate or one
+	// of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+	// group type, must be set.
+	MaxRate int `pulumi:"maxRate"`
+	// The max requests per second (RPS) that a single backend network
+	// endpoint can handle. This is used to calculate the capacity of
+	// the group. Can be used in either balancing mode. For RATE mode,
+	// either maxRate or maxRatePerEndpoint must be set.
+	MaxRatePerEndpoint float64 `pulumi:"maxRatePerEndpoint"`
+	// The max requests per second (RPS) that a single backend
+	// instance can handle. This is used to calculate the capacity of
+	// the group. Can be used in either balancing mode. For RATE mode,
+	// either maxRate or maxRatePerInstance must be set.
+	MaxRatePerInstance float64 `pulumi:"maxRatePerInstance"`
+	// Used when balancingMode is UTILIZATION. This ratio defines the
+	// CPU utilization target for the group. Valid range is [0.0, 1.0].
+	MaxUtilization float64 `pulumi:"maxUtilization"`
 }
 
 // GetBackendServiceBackendInput is an input type that accepts GetBackendServiceBackendArgs and GetBackendServiceBackendOutput values.
@@ -3288,18 +3449,86 @@ type GetBackendServiceBackendInput interface {
 }
 
 type GetBackendServiceBackendArgs struct {
-	BalancingMode  pulumi.StringInput  `pulumi:"balancingMode"`
+	// Specifies the balancing mode for this backend.
+	//
+	// For global HTTP(S) or TCP/SSL load balancing, the default is
+	// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+	// and CONNECTION (for TCP/SSL).
+	//
+	// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+	// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
+	BalancingMode pulumi.StringInput `pulumi:"balancingMode"`
+	// A multiplier applied to the group's maximum servicing capacity
+	// (based on UTILIZATION, RATE or CONNECTION).
+	//
+	// Default value is 1, which means the group will serve up to 100%
+	// of its configured capacity (depending on balancingMode). A
+	// setting of 0 means the group is completely drained, offering
+	// 0% of its available Capacity. Valid range is [0.0,1.0].
 	CapacityScaler pulumi.Float64Input `pulumi:"capacityScaler"`
 	// Textual description for the Backend Service.
-	Description               pulumi.StringInput  `pulumi:"description"`
-	Group                     pulumi.StringInput  `pulumi:"group"`
-	MaxConnections            pulumi.IntInput     `pulumi:"maxConnections"`
-	MaxConnectionsPerEndpoint pulumi.IntInput     `pulumi:"maxConnectionsPerEndpoint"`
-	MaxConnectionsPerInstance pulumi.IntInput     `pulumi:"maxConnectionsPerInstance"`
-	MaxRate                   pulumi.IntInput     `pulumi:"maxRate"`
-	MaxRatePerEndpoint        pulumi.Float64Input `pulumi:"maxRatePerEndpoint"`
-	MaxRatePerInstance        pulumi.Float64Input `pulumi:"maxRatePerInstance"`
-	MaxUtilization            pulumi.Float64Input `pulumi:"maxUtilization"`
+	Description pulumi.StringInput `pulumi:"description"`
+	// The fully-qualified URL of an Instance Group or Network Endpoint
+	// Group resource. In case of instance group this defines the list
+	// of instances that serve traffic. Member virtual machine
+	// instances from each instance group must live in the same zone as
+	// the instance group itself. No two backends in a backend service
+	// are allowed to use same Instance Group resource.
+	//
+	// For Network Endpoint Groups this defines list of endpoints. All
+	// endpoints of Network Endpoint Group must be hosted on instances
+	// located in the same zone as the Network Endpoint Group.
+	//
+	// Backend services cannot mix Instance Group and
+	// Network Endpoint Group backends.
+	//
+	// Note that you must specify an Instance Group or Network Endpoint
+	// Group resource using the fully-qualified URL, rather than a
+	// partial URL.
+	Group pulumi.StringInput `pulumi:"group"`
+	// The max number of simultaneous connections for the group. Can
+	// be used with either CONNECTION or UTILIZATION balancing modes.
+	//
+	// For CONNECTION mode, either maxConnections or one
+	// of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+	// as appropriate for group type, must be set.
+	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
+	// The max number of simultaneous connections that a single backend
+	// network endpoint can handle. This is used to calculate the
+	// capacity of the group. Can be used in either CONNECTION or
+	// UTILIZATION balancing modes.
+	//
+	// For CONNECTION mode, either
+	// maxConnections or maxConnectionsPerEndpoint must be set.
+	MaxConnectionsPerEndpoint pulumi.IntInput `pulumi:"maxConnectionsPerEndpoint"`
+	// The max number of simultaneous connections that a single
+	// backend instance can handle. This is used to calculate the
+	// capacity of the group. Can be used in either CONNECTION or
+	// UTILIZATION balancing modes.
+	//
+	// For CONNECTION mode, either maxConnections or
+	// maxConnectionsPerInstance must be set.
+	MaxConnectionsPerInstance pulumi.IntInput `pulumi:"maxConnectionsPerInstance"`
+	// The max requests per second (RPS) of the group.
+	//
+	// Can be used with either RATE or UTILIZATION balancing modes,
+	// but required if RATE mode. For RATE mode, either maxRate or one
+	// of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+	// group type, must be set.
+	MaxRate pulumi.IntInput `pulumi:"maxRate"`
+	// The max requests per second (RPS) that a single backend network
+	// endpoint can handle. This is used to calculate the capacity of
+	// the group. Can be used in either balancing mode. For RATE mode,
+	// either maxRate or maxRatePerEndpoint must be set.
+	MaxRatePerEndpoint pulumi.Float64Input `pulumi:"maxRatePerEndpoint"`
+	// The max requests per second (RPS) that a single backend
+	// instance can handle. This is used to calculate the capacity of
+	// the group. Can be used in either balancing mode. For RATE mode,
+	// either maxRate or maxRatePerInstance must be set.
+	MaxRatePerInstance pulumi.Float64Input `pulumi:"maxRatePerInstance"`
+	// Used when balancingMode is UTILIZATION. This ratio defines the
+	// CPU utilization target for the group. Valid range is [0.0, 1.0].
+	MaxUtilization pulumi.Float64Input `pulumi:"maxUtilization"`
 }
 
 func (GetBackendServiceBackendArgs) ElementType() reflect.Type {
@@ -3353,10 +3582,25 @@ func (o GetBackendServiceBackendOutput) ToGetBackendServiceBackendOutputWithCont
 	return o
 }
 
+// Specifies the balancing mode for this backend.
+//
+// For global HTTP(S) or TCP/SSL load balancing, the default is
+// UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+// and CONNECTION (for TCP/SSL).
+//
+// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION"]
 func (o GetBackendServiceBackendOutput) BalancingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceBackend) string { return v.BalancingMode }).(pulumi.StringOutput)
 }
 
+// A multiplier applied to the group's maximum servicing capacity
+// (based on UTILIZATION, RATE or CONNECTION).
+//
+// Default value is 1, which means the group will serve up to 100%
+// of its configured capacity (depending on balancingMode). A
+// setting of 0 means the group is completely drained, offering
+// 0% of its available Capacity. Valid range is [0.0,1.0].
 func (o GetBackendServiceBackendOutput) CapacityScaler() pulumi.Float64Output {
 	return o.ApplyT(func(v GetBackendServiceBackend) float64 { return v.CapacityScaler }).(pulumi.Float64Output)
 }
@@ -3366,34 +3610,87 @@ func (o GetBackendServiceBackendOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceBackend) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The fully-qualified URL of an Instance Group or Network Endpoint
+// Group resource. In case of instance group this defines the list
+// of instances that serve traffic. Member virtual machine
+// instances from each instance group must live in the same zone as
+// the instance group itself. No two backends in a backend service
+// are allowed to use same Instance Group resource.
+//
+// For Network Endpoint Groups this defines list of endpoints. All
+// endpoints of Network Endpoint Group must be hosted on instances
+// located in the same zone as the Network Endpoint Group.
+//
+// Backend services cannot mix Instance Group and
+// Network Endpoint Group backends.
+//
+// Note that you must specify an Instance Group or Network Endpoint
+// Group resource using the fully-qualified URL, rather than a
+// partial URL.
 func (o GetBackendServiceBackendOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceBackend) string { return v.Group }).(pulumi.StringOutput)
 }
 
+// The max number of simultaneous connections for the group. Can
+// be used with either CONNECTION or UTILIZATION balancing modes.
+//
+// For CONNECTION mode, either maxConnections or one
+// of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+// as appropriate for group type, must be set.
 func (o GetBackendServiceBackendOutput) MaxConnections() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceBackend) int { return v.MaxConnections }).(pulumi.IntOutput)
 }
 
+// The max number of simultaneous connections that a single backend
+// network endpoint can handle. This is used to calculate the
+// capacity of the group. Can be used in either CONNECTION or
+// UTILIZATION balancing modes.
+//
+// For CONNECTION mode, either
+// maxConnections or maxConnectionsPerEndpoint must be set.
 func (o GetBackendServiceBackendOutput) MaxConnectionsPerEndpoint() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceBackend) int { return v.MaxConnectionsPerEndpoint }).(pulumi.IntOutput)
 }
 
+// The max number of simultaneous connections that a single
+// backend instance can handle. This is used to calculate the
+// capacity of the group. Can be used in either CONNECTION or
+// UTILIZATION balancing modes.
+//
+// For CONNECTION mode, either maxConnections or
+// maxConnectionsPerInstance must be set.
 func (o GetBackendServiceBackendOutput) MaxConnectionsPerInstance() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceBackend) int { return v.MaxConnectionsPerInstance }).(pulumi.IntOutput)
 }
 
+// The max requests per second (RPS) of the group.
+//
+// Can be used with either RATE or UTILIZATION balancing modes,
+// but required if RATE mode. For RATE mode, either maxRate or one
+// of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+// group type, must be set.
 func (o GetBackendServiceBackendOutput) MaxRate() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceBackend) int { return v.MaxRate }).(pulumi.IntOutput)
 }
 
+// The max requests per second (RPS) that a single backend network
+// endpoint can handle. This is used to calculate the capacity of
+// the group. Can be used in either balancing mode. For RATE mode,
+// either maxRate or maxRatePerEndpoint must be set.
 func (o GetBackendServiceBackendOutput) MaxRatePerEndpoint() pulumi.Float64Output {
 	return o.ApplyT(func(v GetBackendServiceBackend) float64 { return v.MaxRatePerEndpoint }).(pulumi.Float64Output)
 }
 
+// The max requests per second (RPS) that a single backend
+// instance can handle. This is used to calculate the capacity of
+// the group. Can be used in either balancing mode. For RATE mode,
+// either maxRate or maxRatePerInstance must be set.
 func (o GetBackendServiceBackendOutput) MaxRatePerInstance() pulumi.Float64Output {
 	return o.ApplyT(func(v GetBackendServiceBackend) float64 { return v.MaxRatePerInstance }).(pulumi.Float64Output)
 }
 
+// Used when balancingMode is UTILIZATION. This ratio defines the
+// CPU utilization target for the group. Valid range is [0.0, 1.0].
 func (o GetBackendServiceBackendOutput) MaxUtilization() pulumi.Float64Output {
 	return o.ApplyT(func(v GetBackendServiceBackend) float64 { return v.MaxUtilization }).(pulumi.Float64Output)
 }
@@ -3419,16 +3716,39 @@ func (o GetBackendServiceBackendArrayOutput) Index(i pulumi.IntInput) GetBackend
 }
 
 type GetBackendServiceCdnPolicy struct {
+	// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+	// The cache is bypassed for all cdnPolicy.cacheMode settings.
 	BypassCacheOnRequestHeaders []GetBackendServiceCdnPolicyBypassCacheOnRequestHeader `pulumi:"bypassCacheOnRequestHeaders"`
-	CacheKeyPolicies            []GetBackendServiceCdnPolicyCacheKeyPolicy             `pulumi:"cacheKeyPolicies"`
-	CacheMode                   string                                                 `pulumi:"cacheMode"`
-	ClientTtl                   int                                                    `pulumi:"clientTtl"`
-	DefaultTtl                  int                                                    `pulumi:"defaultTtl"`
-	MaxTtl                      int                                                    `pulumi:"maxTtl"`
-	NegativeCaching             bool                                                   `pulumi:"negativeCaching"`
-	NegativeCachingPolicies     []GetBackendServiceCdnPolicyNegativeCachingPolicy      `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale             int                                                    `pulumi:"serveWhileStale"`
-	SignedUrlCacheMaxAgeSec     int                                                    `pulumi:"signedUrlCacheMaxAgeSec"`
+	// The CacheKeyPolicy for this CdnPolicy.
+	CacheKeyPolicies []GetBackendServiceCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicies"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+	CacheMode string `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl int `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl int `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl int `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching bool `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	NegativeCachingPolicies []GetBackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale int `pulumi:"serveWhileStale"`
+	// Maximum number of seconds the response to a signed URL request
+	// will be considered fresh, defaults to 1hr (3600s). After this
+	// time period, the response will be revalidated before
+	// being served.
+	//
+	// When serving responses to signed URL requests, Cloud CDN will
+	// internally behave as though all responses from this backend had a
+	// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+	// existing Cache-Control header. The actual headers served in
+	// responses will not be altered.
+	SignedUrlCacheMaxAgeSec int `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 // GetBackendServiceCdnPolicyInput is an input type that accepts GetBackendServiceCdnPolicyArgs and GetBackendServiceCdnPolicyOutput values.
@@ -3443,16 +3763,39 @@ type GetBackendServiceCdnPolicyInput interface {
 }
 
 type GetBackendServiceCdnPolicyArgs struct {
+	// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+	// The cache is bypassed for all cdnPolicy.cacheMode settings.
 	BypassCacheOnRequestHeaders GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayInput `pulumi:"bypassCacheOnRequestHeaders"`
-	CacheKeyPolicies            GetBackendServiceCdnPolicyCacheKeyPolicyArrayInput             `pulumi:"cacheKeyPolicies"`
-	CacheMode                   pulumi.StringInput                                             `pulumi:"cacheMode"`
-	ClientTtl                   pulumi.IntInput                                                `pulumi:"clientTtl"`
-	DefaultTtl                  pulumi.IntInput                                                `pulumi:"defaultTtl"`
-	MaxTtl                      pulumi.IntInput                                                `pulumi:"maxTtl"`
-	NegativeCaching             pulumi.BoolInput                                               `pulumi:"negativeCaching"`
-	NegativeCachingPolicies     GetBackendServiceCdnPolicyNegativeCachingPolicyArrayInput      `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale             pulumi.IntInput                                                `pulumi:"serveWhileStale"`
-	SignedUrlCacheMaxAgeSec     pulumi.IntInput                                                `pulumi:"signedUrlCacheMaxAgeSec"`
+	// The CacheKeyPolicy for this CdnPolicy.
+	CacheKeyPolicies GetBackendServiceCdnPolicyCacheKeyPolicyArrayInput `pulumi:"cacheKeyPolicies"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
+	CacheMode pulumi.StringInput `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl pulumi.IntInput `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl pulumi.IntInput `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl pulumi.IntInput `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching pulumi.BoolInput `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	NegativeCachingPolicies GetBackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale pulumi.IntInput `pulumi:"serveWhileStale"`
+	// Maximum number of seconds the response to a signed URL request
+	// will be considered fresh, defaults to 1hr (3600s). After this
+	// time period, the response will be revalidated before
+	// being served.
+	//
+	// When serving responses to signed URL requests, Cloud CDN will
+	// internally behave as though all responses from this backend had a
+	// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+	// existing Cache-Control header. The actual headers served in
+	// responses will not be altered.
+	SignedUrlCacheMaxAgeSec pulumi.IntInput `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 func (GetBackendServiceCdnPolicyArgs) ElementType() reflect.Type {
@@ -3506,48 +3849,71 @@ func (o GetBackendServiceCdnPolicyOutput) ToGetBackendServiceCdnPolicyOutputWith
 	return o
 }
 
+// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified.
+// The cache is bypassed for all cdnPolicy.cacheMode settings.
 func (o GetBackendServiceCdnPolicyOutput) BypassCacheOnRequestHeaders() GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) []GetBackendServiceCdnPolicyBypassCacheOnRequestHeader {
 		return v.BypassCacheOnRequestHeaders
 	}).(GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput)
 }
 
+// The CacheKeyPolicy for this CdnPolicy.
 func (o GetBackendServiceCdnPolicyOutput) CacheKeyPolicies() GetBackendServiceCdnPolicyCacheKeyPolicyArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) []GetBackendServiceCdnPolicyCacheKeyPolicy {
 		return v.CacheKeyPolicies
 	}).(GetBackendServiceCdnPolicyCacheKeyPolicyArrayOutput)
 }
 
+// Specifies the cache setting for all responses from this backend.
+// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC Possible values: ["USE_ORIGIN_HEADERS", "FORCE_CACHE_ALL", "CACHE_ALL_STATIC"]
 func (o GetBackendServiceCdnPolicyOutput) CacheMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) string { return v.CacheMode }).(pulumi.StringOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o GetBackendServiceCdnPolicyOutput) ClientTtl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) int { return v.ClientTtl }).(pulumi.IntOutput)
 }
 
+// Specifies the default TTL for cached content served by this origin for responses
+// that do not have an existing valid TTL (max-age or s-max-age).
 func (o GetBackendServiceCdnPolicyOutput) DefaultTtl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) int { return v.DefaultTtl }).(pulumi.IntOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o GetBackendServiceCdnPolicyOutput) MaxTtl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) int { return v.MaxTtl }).(pulumi.IntOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
 func (o GetBackendServiceCdnPolicyOutput) NegativeCaching() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) bool { return v.NegativeCaching }).(pulumi.BoolOutput)
 }
 
+// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
 func (o GetBackendServiceCdnPolicyOutput) NegativeCachingPolicies() GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) []GetBackendServiceCdnPolicyNegativeCachingPolicy {
 		return v.NegativeCachingPolicies
 	}).(GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
 func (o GetBackendServiceCdnPolicyOutput) ServeWhileStale() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) int { return v.ServeWhileStale }).(pulumi.IntOutput)
 }
 
+// Maximum number of seconds the response to a signed URL request
+// will be considered fresh, defaults to 1hr (3600s). After this
+// time period, the response will be revalidated before
+// being served.
+//
+// When serving responses to signed URL requests, Cloud CDN will
+// internally behave as though all responses from this backend had a
+// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+// existing Cache-Control header. The actual headers served in
+// responses will not be altered.
 func (o GetBackendServiceCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntOutput)
 }
@@ -3573,6 +3939,7 @@ func (o GetBackendServiceCdnPolicyArrayOutput) Index(i pulumi.IntInput) GetBacke
 }
 
 type GetBackendServiceCdnPolicyBypassCacheOnRequestHeader struct {
+	// The header field name to match on when bypassing cache. Values are case-insensitive.
 	HeaderName string `pulumi:"headerName"`
 }
 
@@ -3588,6 +3955,7 @@ type GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderInput interface {
 }
 
 type GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs struct {
+	// The header field name to match on when bypassing cache. Values are case-insensitive.
 	HeaderName pulumi.StringInput `pulumi:"headerName"`
 }
 
@@ -3642,6 +4010,7 @@ func (o GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) ToGetBackend
 	return o
 }
 
+// The header field name to match on when bypassing cache. Values are case-insensitive.
 func (o GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderOutput) HeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyBypassCacheOnRequestHeader) string { return v.HeaderName }).(pulumi.StringOutput)
 }
@@ -3667,12 +4036,36 @@ func (o GetBackendServiceCdnPolicyBypassCacheOnRequestHeaderArrayOutput) Index(i
 }
 
 type GetBackendServiceCdnPolicyCacheKeyPolicy struct {
-	IncludeHost           bool     `pulumi:"includeHost"`
-	IncludeHttpHeaders    []string `pulumi:"includeHttpHeaders"`
-	IncludeNamedCookies   []string `pulumi:"includeNamedCookies"`
-	IncludeProtocol       bool     `pulumi:"includeProtocol"`
-	IncludeQueryString    bool     `pulumi:"includeQueryString"`
+	// If true requests to different hosts will be cached separately.
+	IncludeHost bool `pulumi:"includeHost"`
+	// Allows HTTP request headers (by name) to be used in the
+	// cache key.
+	IncludeHttpHeaders []string `pulumi:"includeHttpHeaders"`
+	// Names of cookies to include in cache keys.
+	IncludeNamedCookies []string `pulumi:"includeNamedCookies"`
+	// If true, http and https requests will be cached separately.
+	IncludeProtocol bool `pulumi:"includeProtocol"`
+	// If true, include query string parameters in the cache key
+	// according to queryStringWhitelist and
+	// query_string_blacklist. If neither is set, the entire query
+	// string will be included.
+	//
+	// If false, the query string will be excluded from the cache
+	// key entirely.
+	IncludeQueryString bool `pulumi:"includeQueryString"`
+	// Names of query string parameters to exclude in cache keys.
+	//
+	// All other parameters will be included. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
 	QueryStringBlacklists []string `pulumi:"queryStringBlacklists"`
+	// Names of query string parameters to include in cache keys.
+	//
+	// All other parameters will be excluded. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
 	QueryStringWhitelists []string `pulumi:"queryStringWhitelists"`
 }
 
@@ -3688,12 +4081,36 @@ type GetBackendServiceCdnPolicyCacheKeyPolicyInput interface {
 }
 
 type GetBackendServiceCdnPolicyCacheKeyPolicyArgs struct {
-	IncludeHost           pulumi.BoolInput        `pulumi:"includeHost"`
-	IncludeHttpHeaders    pulumi.StringArrayInput `pulumi:"includeHttpHeaders"`
-	IncludeNamedCookies   pulumi.StringArrayInput `pulumi:"includeNamedCookies"`
-	IncludeProtocol       pulumi.BoolInput        `pulumi:"includeProtocol"`
-	IncludeQueryString    pulumi.BoolInput        `pulumi:"includeQueryString"`
+	// If true requests to different hosts will be cached separately.
+	IncludeHost pulumi.BoolInput `pulumi:"includeHost"`
+	// Allows HTTP request headers (by name) to be used in the
+	// cache key.
+	IncludeHttpHeaders pulumi.StringArrayInput `pulumi:"includeHttpHeaders"`
+	// Names of cookies to include in cache keys.
+	IncludeNamedCookies pulumi.StringArrayInput `pulumi:"includeNamedCookies"`
+	// If true, http and https requests will be cached separately.
+	IncludeProtocol pulumi.BoolInput `pulumi:"includeProtocol"`
+	// If true, include query string parameters in the cache key
+	// according to queryStringWhitelist and
+	// query_string_blacklist. If neither is set, the entire query
+	// string will be included.
+	//
+	// If false, the query string will be excluded from the cache
+	// key entirely.
+	IncludeQueryString pulumi.BoolInput `pulumi:"includeQueryString"`
+	// Names of query string parameters to exclude in cache keys.
+	//
+	// All other parameters will be included. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
 	QueryStringBlacklists pulumi.StringArrayInput `pulumi:"queryStringBlacklists"`
+	// Names of query string parameters to include in cache keys.
+	//
+	// All other parameters will be excluded. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
 	QueryStringWhitelists pulumi.StringArrayInput `pulumi:"queryStringWhitelists"`
 }
 
@@ -3748,30 +4165,54 @@ func (o GetBackendServiceCdnPolicyCacheKeyPolicyOutput) ToGetBackendServiceCdnPo
 	return o
 }
 
+// If true requests to different hosts will be cached separately.
 func (o GetBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeHost() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyCacheKeyPolicy) bool { return v.IncludeHost }).(pulumi.BoolOutput)
 }
 
+// Allows HTTP request headers (by name) to be used in the
+// cache key.
 func (o GetBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeHttpHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyCacheKeyPolicy) []string { return v.IncludeHttpHeaders }).(pulumi.StringArrayOutput)
 }
 
+// Names of cookies to include in cache keys.
 func (o GetBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeNamedCookies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyCacheKeyPolicy) []string { return v.IncludeNamedCookies }).(pulumi.StringArrayOutput)
 }
 
+// If true, http and https requests will be cached separately.
 func (o GetBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeProtocol() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyCacheKeyPolicy) bool { return v.IncludeProtocol }).(pulumi.BoolOutput)
 }
 
+// If true, include query string parameters in the cache key
+// according to queryStringWhitelist and
+// query_string_blacklist. If neither is set, the entire query
+// string will be included.
+//
+// If false, the query string will be excluded from the cache
+// key entirely.
 func (o GetBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeQueryString() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyCacheKeyPolicy) bool { return v.IncludeQueryString }).(pulumi.BoolOutput)
 }
 
+// Names of query string parameters to exclude in cache keys.
+//
+// All other parameters will be included. Either specify
+// queryStringWhitelist or query_string_blacklist, not both.
+// '&' and '=' will be percent encoded and not treated as
+// delimiters.
 func (o GetBackendServiceCdnPolicyCacheKeyPolicyOutput) QueryStringBlacklists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyCacheKeyPolicy) []string { return v.QueryStringBlacklists }).(pulumi.StringArrayOutput)
 }
 
+// Names of query string parameters to include in cache keys.
+//
+// All other parameters will be excluded. Either specify
+// queryStringWhitelist or query_string_blacklist, not both.
+// '&' and '=' will be percent encoded and not treated as
+// delimiters.
 func (o GetBackendServiceCdnPolicyCacheKeyPolicyOutput) QueryStringWhitelists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyCacheKeyPolicy) []string { return v.QueryStringWhitelists }).(pulumi.StringArrayOutput)
 }
@@ -3797,8 +4238,12 @@ func (o GetBackendServiceCdnPolicyCacheKeyPolicyArrayOutput) Index(i pulumi.IntI
 }
 
 type GetBackendServiceCdnPolicyNegativeCachingPolicy struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code int `pulumi:"code"`
-	Ttl  int `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl int `pulumi:"ttl"`
 }
 
 // GetBackendServiceCdnPolicyNegativeCachingPolicyInput is an input type that accepts GetBackendServiceCdnPolicyNegativeCachingPolicyArgs and GetBackendServiceCdnPolicyNegativeCachingPolicyOutput values.
@@ -3813,8 +4258,12 @@ type GetBackendServiceCdnPolicyNegativeCachingPolicyInput interface {
 }
 
 type GetBackendServiceCdnPolicyNegativeCachingPolicyArgs struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code pulumi.IntInput `pulumi:"code"`
-	Ttl  pulumi.IntInput `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
 }
 
 func (GetBackendServiceCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
@@ -3868,10 +4317,14 @@ func (o GetBackendServiceCdnPolicyNegativeCachingPolicyOutput) ToGetBackendServi
 	return o
 }
 
+// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+// can be specified as values, and you cannot specify a status code more than once.
 func (o GetBackendServiceCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyNegativeCachingPolicy) int { return v.Code }).(pulumi.IntOutput)
 }
 
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o GetBackendServiceCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCdnPolicyNegativeCachingPolicy) int { return v.Ttl }).(pulumi.IntOutput)
 }
@@ -3897,12 +4350,25 @@ func (o GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulu
 }
 
 type GetBackendServiceCircuitBreaker struct {
-	ConnectTimeouts          []GetBackendServiceCircuitBreakerConnectTimeout `pulumi:"connectTimeouts"`
-	MaxConnections           int                                             `pulumi:"maxConnections"`
-	MaxPendingRequests       int                                             `pulumi:"maxPendingRequests"`
-	MaxRequests              int                                             `pulumi:"maxRequests"`
-	MaxRequestsPerConnection int                                             `pulumi:"maxRequestsPerConnection"`
-	MaxRetries               int                                             `pulumi:"maxRetries"`
+	// The timeout for new network connections to hosts.
+	ConnectTimeouts []GetBackendServiceCircuitBreakerConnectTimeout `pulumi:"connectTimeouts"`
+	// The maximum number of connections to the backend cluster.
+	// Defaults to 1024.
+	MaxConnections int `pulumi:"maxConnections"`
+	// The maximum number of pending requests to the backend cluster.
+	// Defaults to 1024.
+	MaxPendingRequests int `pulumi:"maxPendingRequests"`
+	// The maximum number of parallel requests to the backend cluster.
+	// Defaults to 1024.
+	MaxRequests int `pulumi:"maxRequests"`
+	// Maximum requests for a single backend connection. This parameter
+	// is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+	// not specified, there is no limit. Setting this parameter to 1
+	// will effectively disable keep alive.
+	MaxRequestsPerConnection int `pulumi:"maxRequestsPerConnection"`
+	// The maximum number of parallel retries to the backend cluster.
+	// Defaults to 3.
+	MaxRetries int `pulumi:"maxRetries"`
 }
 
 // GetBackendServiceCircuitBreakerInput is an input type that accepts GetBackendServiceCircuitBreakerArgs and GetBackendServiceCircuitBreakerOutput values.
@@ -3917,12 +4383,25 @@ type GetBackendServiceCircuitBreakerInput interface {
 }
 
 type GetBackendServiceCircuitBreakerArgs struct {
-	ConnectTimeouts          GetBackendServiceCircuitBreakerConnectTimeoutArrayInput `pulumi:"connectTimeouts"`
-	MaxConnections           pulumi.IntInput                                         `pulumi:"maxConnections"`
-	MaxPendingRequests       pulumi.IntInput                                         `pulumi:"maxPendingRequests"`
-	MaxRequests              pulumi.IntInput                                         `pulumi:"maxRequests"`
-	MaxRequestsPerConnection pulumi.IntInput                                         `pulumi:"maxRequestsPerConnection"`
-	MaxRetries               pulumi.IntInput                                         `pulumi:"maxRetries"`
+	// The timeout for new network connections to hosts.
+	ConnectTimeouts GetBackendServiceCircuitBreakerConnectTimeoutArrayInput `pulumi:"connectTimeouts"`
+	// The maximum number of connections to the backend cluster.
+	// Defaults to 1024.
+	MaxConnections pulumi.IntInput `pulumi:"maxConnections"`
+	// The maximum number of pending requests to the backend cluster.
+	// Defaults to 1024.
+	MaxPendingRequests pulumi.IntInput `pulumi:"maxPendingRequests"`
+	// The maximum number of parallel requests to the backend cluster.
+	// Defaults to 1024.
+	MaxRequests pulumi.IntInput `pulumi:"maxRequests"`
+	// Maximum requests for a single backend connection. This parameter
+	// is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+	// not specified, there is no limit. Setting this parameter to 1
+	// will effectively disable keep alive.
+	MaxRequestsPerConnection pulumi.IntInput `pulumi:"maxRequestsPerConnection"`
+	// The maximum number of parallel retries to the backend cluster.
+	// Defaults to 3.
+	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
 }
 
 func (GetBackendServiceCircuitBreakerArgs) ElementType() reflect.Type {
@@ -3976,28 +4455,41 @@ func (o GetBackendServiceCircuitBreakerOutput) ToGetBackendServiceCircuitBreaker
 	return o
 }
 
+// The timeout for new network connections to hosts.
 func (o GetBackendServiceCircuitBreakerOutput) ConnectTimeouts() GetBackendServiceCircuitBreakerConnectTimeoutArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceCircuitBreaker) []GetBackendServiceCircuitBreakerConnectTimeout {
 		return v.ConnectTimeouts
 	}).(GetBackendServiceCircuitBreakerConnectTimeoutArrayOutput)
 }
 
+// The maximum number of connections to the backend cluster.
+// Defaults to 1024.
 func (o GetBackendServiceCircuitBreakerOutput) MaxConnections() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCircuitBreaker) int { return v.MaxConnections }).(pulumi.IntOutput)
 }
 
+// The maximum number of pending requests to the backend cluster.
+// Defaults to 1024.
 func (o GetBackendServiceCircuitBreakerOutput) MaxPendingRequests() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCircuitBreaker) int { return v.MaxPendingRequests }).(pulumi.IntOutput)
 }
 
+// The maximum number of parallel requests to the backend cluster.
+// Defaults to 1024.
 func (o GetBackendServiceCircuitBreakerOutput) MaxRequests() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCircuitBreaker) int { return v.MaxRequests }).(pulumi.IntOutput)
 }
 
+// Maximum requests for a single backend connection. This parameter
+// is respected by both the HTTP/1.1 and HTTP/2 implementations. If
+// not specified, there is no limit. Setting this parameter to 1
+// will effectively disable keep alive.
 func (o GetBackendServiceCircuitBreakerOutput) MaxRequestsPerConnection() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCircuitBreaker) int { return v.MaxRequestsPerConnection }).(pulumi.IntOutput)
 }
 
+// The maximum number of parallel retries to the backend cluster.
+// Defaults to 3.
 func (o GetBackendServiceCircuitBreakerOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCircuitBreaker) int { return v.MaxRetries }).(pulumi.IntOutput)
 }
@@ -4023,7 +4515,13 @@ func (o GetBackendServiceCircuitBreakerArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetBackendServiceCircuitBreakerConnectTimeout struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -4039,7 +4537,13 @@ type GetBackendServiceCircuitBreakerConnectTimeoutInput interface {
 }
 
 type GetBackendServiceCircuitBreakerConnectTimeoutArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -4094,10 +4598,16 @@ func (o GetBackendServiceCircuitBreakerConnectTimeoutOutput) ToGetBackendService
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
 func (o GetBackendServiceCircuitBreakerConnectTimeoutOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCircuitBreakerConnectTimeout) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
 func (o GetBackendServiceCircuitBreakerConnectTimeoutOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceCircuitBreakerConnectTimeout) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -4123,9 +4633,21 @@ func (o GetBackendServiceCircuitBreakerConnectTimeoutArrayOutput) Index(i pulumi
 }
 
 type GetBackendServiceConsistentHash struct {
-	HttpCookies     []GetBackendServiceConsistentHashHttpCooky `pulumi:"httpCookies"`
-	HttpHeaderName  string                                     `pulumi:"httpHeaderName"`
-	MinimumRingSize int                                        `pulumi:"minimumRingSize"`
+	// Hash is based on HTTP Cookie. This field describes a HTTP cookie
+	// that will be used as the hash key for the consistent hash load
+	// balancer. If the cookie is not present, it will be generated.
+	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	HttpCookies []GetBackendServiceConsistentHashHttpCooky `pulumi:"httpCookies"`
+	// The hash based on the value of the specified header field.
+	// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+	HttpHeaderName string `pulumi:"httpHeaderName"`
+	// The minimum number of virtual nodes to use for the hash ring.
+	// Larger ring sizes result in more granular load
+	// distributions. If the number of hosts in the load balancing pool
+	// is larger than the ring size, each host will be assigned a single
+	// virtual node.
+	// Defaults to 1024.
+	MinimumRingSize int `pulumi:"minimumRingSize"`
 }
 
 // GetBackendServiceConsistentHashInput is an input type that accepts GetBackendServiceConsistentHashArgs and GetBackendServiceConsistentHashOutput values.
@@ -4140,9 +4662,21 @@ type GetBackendServiceConsistentHashInput interface {
 }
 
 type GetBackendServiceConsistentHashArgs struct {
-	HttpCookies     GetBackendServiceConsistentHashHttpCookyArrayInput `pulumi:"httpCookies"`
-	HttpHeaderName  pulumi.StringInput                                 `pulumi:"httpHeaderName"`
-	MinimumRingSize pulumi.IntInput                                    `pulumi:"minimumRingSize"`
+	// Hash is based on HTTP Cookie. This field describes a HTTP cookie
+	// that will be used as the hash key for the consistent hash load
+	// balancer. If the cookie is not present, it will be generated.
+	// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
+	HttpCookies GetBackendServiceConsistentHashHttpCookyArrayInput `pulumi:"httpCookies"`
+	// The hash based on the value of the specified header field.
+	// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
+	HttpHeaderName pulumi.StringInput `pulumi:"httpHeaderName"`
+	// The minimum number of virtual nodes to use for the hash ring.
+	// Larger ring sizes result in more granular load
+	// distributions. If the number of hosts in the load balancing pool
+	// is larger than the ring size, each host will be assigned a single
+	// virtual node.
+	// Defaults to 1024.
+	MinimumRingSize pulumi.IntInput `pulumi:"minimumRingSize"`
 }
 
 func (GetBackendServiceConsistentHashArgs) ElementType() reflect.Type {
@@ -4196,16 +4730,28 @@ func (o GetBackendServiceConsistentHashOutput) ToGetBackendServiceConsistentHash
 	return o
 }
 
+// Hash is based on HTTP Cookie. This field describes a HTTP cookie
+// that will be used as the hash key for the consistent hash load
+// balancer. If the cookie is not present, it will be generated.
+// This field is applicable if the sessionAffinity is set to HTTP_COOKIE.
 func (o GetBackendServiceConsistentHashOutput) HttpCookies() GetBackendServiceConsistentHashHttpCookyArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHash) []GetBackendServiceConsistentHashHttpCooky {
 		return v.HttpCookies
 	}).(GetBackendServiceConsistentHashHttpCookyArrayOutput)
 }
 
+// The hash based on the value of the specified header field.
+// This field is applicable if the sessionAffinity is set to HEADER_FIELD.
 func (o GetBackendServiceConsistentHashOutput) HttpHeaderName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHash) string { return v.HttpHeaderName }).(pulumi.StringOutput)
 }
 
+// The minimum number of virtual nodes to use for the hash ring.
+// Larger ring sizes result in more granular load
+// distributions. If the number of hosts in the load balancing pool
+// is larger than the ring size, each host will be assigned a single
+// virtual node.
+// Defaults to 1024.
 func (o GetBackendServiceConsistentHashOutput) MinimumRingSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHash) int { return v.MinimumRingSize }).(pulumi.IntOutput)
 }
@@ -4234,8 +4780,10 @@ type GetBackendServiceConsistentHashHttpCooky struct {
 	// The name of the Backend Service.
 	//
 	// ***
-	Name string                                        `pulumi:"name"`
-	Path string                                        `pulumi:"path"`
+	Name string `pulumi:"name"`
+	// Path to set for the cookie.
+	Path string `pulumi:"path"`
+	// Lifetime of the cookie.
 	Ttls []GetBackendServiceConsistentHashHttpCookyTtl `pulumi:"ttls"`
 }
 
@@ -4254,8 +4802,10 @@ type GetBackendServiceConsistentHashHttpCookyArgs struct {
 	// The name of the Backend Service.
 	//
 	// ***
-	Name pulumi.StringInput                                    `pulumi:"name"`
-	Path pulumi.StringInput                                    `pulumi:"path"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path to set for the cookie.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Lifetime of the cookie.
 	Ttls GetBackendServiceConsistentHashHttpCookyTtlArrayInput `pulumi:"ttls"`
 }
 
@@ -4317,10 +4867,12 @@ func (o GetBackendServiceConsistentHashHttpCookyOutput) Name() pulumi.StringOutp
 	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCooky) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Path to set for the cookie.
 func (o GetBackendServiceConsistentHashHttpCookyOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCooky) string { return v.Path }).(pulumi.StringOutput)
 }
 
+// Lifetime of the cookie.
 func (o GetBackendServiceConsistentHashHttpCookyOutput) Ttls() GetBackendServiceConsistentHashHttpCookyTtlArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCooky) []GetBackendServiceConsistentHashHttpCookyTtl {
 		return v.Ttls
@@ -4348,7 +4900,13 @@ func (o GetBackendServiceConsistentHashHttpCookyArrayOutput) Index(i pulumi.IntI
 }
 
 type GetBackendServiceConsistentHashHttpCookyTtl struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -4364,7 +4922,13 @@ type GetBackendServiceConsistentHashHttpCookyTtlInput interface {
 }
 
 type GetBackendServiceConsistentHashHttpCookyTtlArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -4419,10 +4983,16 @@ func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) ToGetBackendServiceCo
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
 func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCookyTtl) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
 func (o GetBackendServiceConsistentHashHttpCookyTtlOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCookyTtl) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -4448,8 +5018,11 @@ func (o GetBackendServiceConsistentHashHttpCookyTtlArrayOutput) Index(i pulumi.I
 }
 
 type GetBackendServiceIap struct {
-	Oauth2ClientId           string `pulumi:"oauth2ClientId"`
-	Oauth2ClientSecret       string `pulumi:"oauth2ClientSecret"`
+	// OAuth2 Client ID for IAP
+	Oauth2ClientId string `pulumi:"oauth2ClientId"`
+	// OAuth2 Client Secret for IAP
+	Oauth2ClientSecret string `pulumi:"oauth2ClientSecret"`
+	// OAuth2 Client Secret SHA-256 for IAP
 	Oauth2ClientSecretSha256 string `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -4465,8 +5038,11 @@ type GetBackendServiceIapInput interface {
 }
 
 type GetBackendServiceIapArgs struct {
-	Oauth2ClientId           pulumi.StringInput `pulumi:"oauth2ClientId"`
-	Oauth2ClientSecret       pulumi.StringInput `pulumi:"oauth2ClientSecret"`
+	// OAuth2 Client ID for IAP
+	Oauth2ClientId pulumi.StringInput `pulumi:"oauth2ClientId"`
+	// OAuth2 Client Secret for IAP
+	Oauth2ClientSecret pulumi.StringInput `pulumi:"oauth2ClientSecret"`
+	// OAuth2 Client Secret SHA-256 for IAP
 	Oauth2ClientSecretSha256 pulumi.StringInput `pulumi:"oauth2ClientSecretSha256"`
 }
 
@@ -4521,14 +5097,17 @@ func (o GetBackendServiceIapOutput) ToGetBackendServiceIapOutputWithContext(ctx 
 	return o
 }
 
+// OAuth2 Client ID for IAP
 func (o GetBackendServiceIapOutput) Oauth2ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientId }).(pulumi.StringOutput)
 }
 
+// OAuth2 Client Secret for IAP
 func (o GetBackendServiceIapOutput) Oauth2ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecret }).(pulumi.StringOutput)
 }
 
+// OAuth2 Client Secret SHA-256 for IAP
 func (o GetBackendServiceIapOutput) Oauth2ClientSecretSha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceIap) string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringOutput)
 }
@@ -4554,8 +5133,11 @@ func (o GetBackendServiceIapArrayOutput) Index(i pulumi.IntInput) GetBackendServ
 }
 
 type GetBackendServiceLocalityLbPolicy struct {
+	// The configuration for a custom policy implemented by the user and
+	// deployed with the client.
 	CustomPolicies []GetBackendServiceLocalityLbPolicyCustomPolicy `pulumi:"customPolicies"`
-	Policies       []GetBackendServiceLocalityLbPolicyPolicy       `pulumi:"policies"`
+	// The configuration for a built-in load balancing policy.
+	Policies []GetBackendServiceLocalityLbPolicyPolicy `pulumi:"policies"`
 }
 
 // GetBackendServiceLocalityLbPolicyInput is an input type that accepts GetBackendServiceLocalityLbPolicyArgs and GetBackendServiceLocalityLbPolicyOutput values.
@@ -4570,8 +5152,11 @@ type GetBackendServiceLocalityLbPolicyInput interface {
 }
 
 type GetBackendServiceLocalityLbPolicyArgs struct {
+	// The configuration for a custom policy implemented by the user and
+	// deployed with the client.
 	CustomPolicies GetBackendServiceLocalityLbPolicyCustomPolicyArrayInput `pulumi:"customPolicies"`
-	Policies       GetBackendServiceLocalityLbPolicyPolicyArrayInput       `pulumi:"policies"`
+	// The configuration for a built-in load balancing policy.
+	Policies GetBackendServiceLocalityLbPolicyPolicyArrayInput `pulumi:"policies"`
 }
 
 func (GetBackendServiceLocalityLbPolicyArgs) ElementType() reflect.Type {
@@ -4625,12 +5210,15 @@ func (o GetBackendServiceLocalityLbPolicyOutput) ToGetBackendServiceLocalityLbPo
 	return o
 }
 
+// The configuration for a custom policy implemented by the user and
+// deployed with the client.
 func (o GetBackendServiceLocalityLbPolicyOutput) CustomPolicies() GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicy) []GetBackendServiceLocalityLbPolicyCustomPolicy {
 		return v.CustomPolicies
 	}).(GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput)
 }
 
+// The configuration for a built-in load balancing policy.
 func (o GetBackendServiceLocalityLbPolicyOutput) Policies() GetBackendServiceLocalityLbPolicyPolicyArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicy) []GetBackendServiceLocalityLbPolicyPolicy { return v.Policies }).(GetBackendServiceLocalityLbPolicyPolicyArrayOutput)
 }
@@ -4656,6 +5244,8 @@ func (o GetBackendServiceLocalityLbPolicyArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetBackendServiceLocalityLbPolicyCustomPolicy struct {
+	// An optional, arbitrary JSON object with configuration data, understood
+	// by a locally installed custom policy implementation.
 	Data string `pulumi:"data"`
 	// The name of the Backend Service.
 	//
@@ -4675,6 +5265,8 @@ type GetBackendServiceLocalityLbPolicyCustomPolicyInput interface {
 }
 
 type GetBackendServiceLocalityLbPolicyCustomPolicyArgs struct {
+	// An optional, arbitrary JSON object with configuration data, understood
+	// by a locally installed custom policy implementation.
 	Data pulumi.StringInput `pulumi:"data"`
 	// The name of the Backend Service.
 	//
@@ -4733,6 +5325,8 @@ func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) ToGetBackendService
 	return o
 }
 
+// An optional, arbitrary JSON object with configuration data, understood
+// by a locally installed custom policy implementation.
 func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyCustomPolicy) string { return v.Data }).(pulumi.StringOutput)
 }
@@ -4868,7 +5462,12 @@ func (o GetBackendServiceLocalityLbPolicyPolicyArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetBackendServiceLogConfig struct {
-	Enable     bool    `pulumi:"enable"`
+	// Whether to enable logging for the load balancer traffic served by this backend service.
+	Enable bool `pulumi:"enable"`
+	// This field can only be specified if logging is enabled for this backend service. The value of
+	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+	// The default value is 1.0.
 	SampleRate float64 `pulumi:"sampleRate"`
 }
 
@@ -4884,7 +5483,12 @@ type GetBackendServiceLogConfigInput interface {
 }
 
 type GetBackendServiceLogConfigArgs struct {
-	Enable     pulumi.BoolInput    `pulumi:"enable"`
+	// Whether to enable logging for the load balancer traffic served by this backend service.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// This field can only be specified if logging is enabled for this backend service. The value of
+	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+	// The default value is 1.0.
 	SampleRate pulumi.Float64Input `pulumi:"sampleRate"`
 }
 
@@ -4939,10 +5543,15 @@ func (o GetBackendServiceLogConfigOutput) ToGetBackendServiceLogConfigOutputWith
 	return o
 }
 
+// Whether to enable logging for the load balancer traffic served by this backend service.
 func (o GetBackendServiceLogConfigOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBackendServiceLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
+// This field can only be specified if logging is enabled for this backend service. The value of
+// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
+// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
+// The default value is 1.0.
 func (o GetBackendServiceLogConfigOutput) SampleRate() pulumi.Float64Output {
 	return o.ApplyT(func(v GetBackendServiceLogConfig) float64 { return v.SampleRate }).(pulumi.Float64Output)
 }
@@ -4968,17 +5577,54 @@ func (o GetBackendServiceLogConfigArrayOutput) Index(i pulumi.IntInput) GetBacke
 }
 
 type GetBackendServiceOutlierDetection struct {
-	BaseEjectionTimes                  []GetBackendServiceOutlierDetectionBaseEjectionTime `pulumi:"baseEjectionTimes"`
-	ConsecutiveErrors                  int                                                 `pulumi:"consecutiveErrors"`
-	ConsecutiveGatewayFailure          int                                                 `pulumi:"consecutiveGatewayFailure"`
-	EnforcingConsecutiveErrors         int                                                 `pulumi:"enforcingConsecutiveErrors"`
-	EnforcingConsecutiveGatewayFailure int                                                 `pulumi:"enforcingConsecutiveGatewayFailure"`
-	EnforcingSuccessRate               int                                                 `pulumi:"enforcingSuccessRate"`
-	Intervals                          []GetBackendServiceOutlierDetectionInterval         `pulumi:"intervals"`
-	MaxEjectionPercent                 int                                                 `pulumi:"maxEjectionPercent"`
-	SuccessRateMinimumHosts            int                                                 `pulumi:"successRateMinimumHosts"`
-	SuccessRateRequestVolume           int                                                 `pulumi:"successRateRequestVolume"`
-	SuccessRateStdevFactor             int                                                 `pulumi:"successRateStdevFactor"`
+	// The base time that a host is ejected for. The real time is equal to the base
+	// time multiplied by the number of times the host has been ejected. Defaults to
+	// 30000ms or 30s.
+	BaseEjectionTimes []GetBackendServiceOutlierDetectionBaseEjectionTime `pulumi:"baseEjectionTimes"`
+	// Number of errors before a host is ejected from the connection pool. When the
+	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+	// Defaults to 5.
+	ConsecutiveErrors int `pulumi:"consecutiveErrors"`
+	// The number of consecutive gateway failures (502, 503, 504 status or connection
+	// errors that are mapped to one of those status codes) before a consecutive
+	// gateway failure ejection occurs. Defaults to 5.
+	ConsecutiveGatewayFailure int `pulumi:"consecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive 5xx. This setting can be used to disable
+	// ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingConsecutiveErrors int `pulumi:"enforcingConsecutiveErrors"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive gateway failures. This setting can be
+	// used to disable ejection or to ramp it up slowly. Defaults to 0.
+	EnforcingConsecutiveGatewayFailure int `pulumi:"enforcingConsecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through success rate statistics. This setting can be used to
+	// disable ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingSuccessRate int `pulumi:"enforcingSuccessRate"`
+	// Time interval between ejection sweep analysis. This can result in both new
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	Intervals []GetBackendServiceOutlierDetectionInterval `pulumi:"intervals"`
+	// Maximum percentage of hosts in the load balancing pool for the backend service
+	// that can be ejected. Defaults to 10%.
+	MaxEjectionPercent int `pulumi:"maxEjectionPercent"`
+	// The number of hosts in a cluster that must have enough request volume to detect
+	// success rate outliers. If the number of hosts is less than this setting, outlier
+	// detection via success rate statistics is not performed for any host in the
+	// cluster. Defaults to 5.
+	SuccessRateMinimumHosts int `pulumi:"successRateMinimumHosts"`
+	// The minimum number of total requests that must be collected in one interval (as
+	// defined by the interval duration above) to include this host in success rate
+	// based outlier detection. If the volume is lower than this setting, outlier
+	// detection via success rate statistics is not performed for that host. Defaults
+	// to 100.
+	SuccessRateRequestVolume int `pulumi:"successRateRequestVolume"`
+	// This factor is used to determine the ejection threshold for success rate outlier
+	// ejection. The ejection threshold is the difference between the mean success
+	// rate, and the product of this factor and the standard deviation of the mean
+	// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+	// by a thousand to get a double. That is, if the desired factor is 1.9, the
+	// runtime value should be 1900. Defaults to 1900.
+	SuccessRateStdevFactor int `pulumi:"successRateStdevFactor"`
 }
 
 // GetBackendServiceOutlierDetectionInput is an input type that accepts GetBackendServiceOutlierDetectionArgs and GetBackendServiceOutlierDetectionOutput values.
@@ -4993,17 +5639,54 @@ type GetBackendServiceOutlierDetectionInput interface {
 }
 
 type GetBackendServiceOutlierDetectionArgs struct {
-	BaseEjectionTimes                  GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput `pulumi:"baseEjectionTimes"`
-	ConsecutiveErrors                  pulumi.IntInput                                             `pulumi:"consecutiveErrors"`
-	ConsecutiveGatewayFailure          pulumi.IntInput                                             `pulumi:"consecutiveGatewayFailure"`
-	EnforcingConsecutiveErrors         pulumi.IntInput                                             `pulumi:"enforcingConsecutiveErrors"`
-	EnforcingConsecutiveGatewayFailure pulumi.IntInput                                             `pulumi:"enforcingConsecutiveGatewayFailure"`
-	EnforcingSuccessRate               pulumi.IntInput                                             `pulumi:"enforcingSuccessRate"`
-	Intervals                          GetBackendServiceOutlierDetectionIntervalArrayInput         `pulumi:"intervals"`
-	MaxEjectionPercent                 pulumi.IntInput                                             `pulumi:"maxEjectionPercent"`
-	SuccessRateMinimumHosts            pulumi.IntInput                                             `pulumi:"successRateMinimumHosts"`
-	SuccessRateRequestVolume           pulumi.IntInput                                             `pulumi:"successRateRequestVolume"`
-	SuccessRateStdevFactor             pulumi.IntInput                                             `pulumi:"successRateStdevFactor"`
+	// The base time that a host is ejected for. The real time is equal to the base
+	// time multiplied by the number of times the host has been ejected. Defaults to
+	// 30000ms or 30s.
+	BaseEjectionTimes GetBackendServiceOutlierDetectionBaseEjectionTimeArrayInput `pulumi:"baseEjectionTimes"`
+	// Number of errors before a host is ejected from the connection pool. When the
+	// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+	// Defaults to 5.
+	ConsecutiveErrors pulumi.IntInput `pulumi:"consecutiveErrors"`
+	// The number of consecutive gateway failures (502, 503, 504 status or connection
+	// errors that are mapped to one of those status codes) before a consecutive
+	// gateway failure ejection occurs. Defaults to 5.
+	ConsecutiveGatewayFailure pulumi.IntInput `pulumi:"consecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive 5xx. This setting can be used to disable
+	// ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingConsecutiveErrors pulumi.IntInput `pulumi:"enforcingConsecutiveErrors"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through consecutive gateway failures. This setting can be
+	// used to disable ejection or to ramp it up slowly. Defaults to 0.
+	EnforcingConsecutiveGatewayFailure pulumi.IntInput `pulumi:"enforcingConsecutiveGatewayFailure"`
+	// The percentage chance that a host will be actually ejected when an outlier
+	// status is detected through success rate statistics. This setting can be used to
+	// disable ejection or to ramp it up slowly. Defaults to 100.
+	EnforcingSuccessRate pulumi.IntInput `pulumi:"enforcingSuccessRate"`
+	// Time interval between ejection sweep analysis. This can result in both new
+	// ejections as well as hosts being returned to service. Defaults to 10 seconds.
+	Intervals GetBackendServiceOutlierDetectionIntervalArrayInput `pulumi:"intervals"`
+	// Maximum percentage of hosts in the load balancing pool for the backend service
+	// that can be ejected. Defaults to 10%.
+	MaxEjectionPercent pulumi.IntInput `pulumi:"maxEjectionPercent"`
+	// The number of hosts in a cluster that must have enough request volume to detect
+	// success rate outliers. If the number of hosts is less than this setting, outlier
+	// detection via success rate statistics is not performed for any host in the
+	// cluster. Defaults to 5.
+	SuccessRateMinimumHosts pulumi.IntInput `pulumi:"successRateMinimumHosts"`
+	// The minimum number of total requests that must be collected in one interval (as
+	// defined by the interval duration above) to include this host in success rate
+	// based outlier detection. If the volume is lower than this setting, outlier
+	// detection via success rate statistics is not performed for that host. Defaults
+	// to 100.
+	SuccessRateRequestVolume pulumi.IntInput `pulumi:"successRateRequestVolume"`
+	// This factor is used to determine the ejection threshold for success rate outlier
+	// ejection. The ejection threshold is the difference between the mean success
+	// rate, and the product of this factor and the standard deviation of the mean
+	// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+	// by a thousand to get a double. That is, if the desired factor is 1.9, the
+	// runtime value should be 1900. Defaults to 1900.
+	SuccessRateStdevFactor pulumi.IntInput `pulumi:"successRateStdevFactor"`
 }
 
 func (GetBackendServiceOutlierDetectionArgs) ElementType() reflect.Type {
@@ -5057,50 +5740,87 @@ func (o GetBackendServiceOutlierDetectionOutput) ToGetBackendServiceOutlierDetec
 	return o
 }
 
+// The base time that a host is ejected for. The real time is equal to the base
+// time multiplied by the number of times the host has been ejected. Defaults to
+// 30000ms or 30s.
 func (o GetBackendServiceOutlierDetectionOutput) BaseEjectionTimes() GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) []GetBackendServiceOutlierDetectionBaseEjectionTime {
 		return v.BaseEjectionTimes
 	}).(GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput)
 }
 
+// Number of errors before a host is ejected from the connection pool. When the
+// backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+// Defaults to 5.
 func (o GetBackendServiceOutlierDetectionOutput) ConsecutiveErrors() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.ConsecutiveErrors }).(pulumi.IntOutput)
 }
 
+// The number of consecutive gateway failures (502, 503, 504 status or connection
+// errors that are mapped to one of those status codes) before a consecutive
+// gateway failure ejection occurs. Defaults to 5.
 func (o GetBackendServiceOutlierDetectionOutput) ConsecutiveGatewayFailure() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.ConsecutiveGatewayFailure }).(pulumi.IntOutput)
 }
 
+// The percentage chance that a host will be actually ejected when an outlier
+// status is detected through consecutive 5xx. This setting can be used to disable
+// ejection or to ramp it up slowly. Defaults to 100.
 func (o GetBackendServiceOutlierDetectionOutput) EnforcingConsecutiveErrors() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.EnforcingConsecutiveErrors }).(pulumi.IntOutput)
 }
 
+// The percentage chance that a host will be actually ejected when an outlier
+// status is detected through consecutive gateway failures. This setting can be
+// used to disable ejection or to ramp it up slowly. Defaults to 0.
 func (o GetBackendServiceOutlierDetectionOutput) EnforcingConsecutiveGatewayFailure() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.EnforcingConsecutiveGatewayFailure }).(pulumi.IntOutput)
 }
 
+// The percentage chance that a host will be actually ejected when an outlier
+// status is detected through success rate statistics. This setting can be used to
+// disable ejection or to ramp it up slowly. Defaults to 100.
 func (o GetBackendServiceOutlierDetectionOutput) EnforcingSuccessRate() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.EnforcingSuccessRate }).(pulumi.IntOutput)
 }
 
+// Time interval between ejection sweep analysis. This can result in both new
+// ejections as well as hosts being returned to service. Defaults to 10 seconds.
 func (o GetBackendServiceOutlierDetectionOutput) Intervals() GetBackendServiceOutlierDetectionIntervalArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) []GetBackendServiceOutlierDetectionInterval {
 		return v.Intervals
 	}).(GetBackendServiceOutlierDetectionIntervalArrayOutput)
 }
 
+// Maximum percentage of hosts in the load balancing pool for the backend service
+// that can be ejected. Defaults to 10%.
 func (o GetBackendServiceOutlierDetectionOutput) MaxEjectionPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.MaxEjectionPercent }).(pulumi.IntOutput)
 }
 
+// The number of hosts in a cluster that must have enough request volume to detect
+// success rate outliers. If the number of hosts is less than this setting, outlier
+// detection via success rate statistics is not performed for any host in the
+// cluster. Defaults to 5.
 func (o GetBackendServiceOutlierDetectionOutput) SuccessRateMinimumHosts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.SuccessRateMinimumHosts }).(pulumi.IntOutput)
 }
 
+// The minimum number of total requests that must be collected in one interval (as
+// defined by the interval duration above) to include this host in success rate
+// based outlier detection. If the volume is lower than this setting, outlier
+// detection via success rate statistics is not performed for that host. Defaults
+// to 100.
 func (o GetBackendServiceOutlierDetectionOutput) SuccessRateRequestVolume() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.SuccessRateRequestVolume }).(pulumi.IntOutput)
 }
 
+// This factor is used to determine the ejection threshold for success rate outlier
+// ejection. The ejection threshold is the difference between the mean success
+// rate, and the product of this factor and the standard deviation of the mean
+// success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+// by a thousand to get a double. That is, if the desired factor is 1.9, the
+// runtime value should be 1900. Defaults to 1900.
 func (o GetBackendServiceOutlierDetectionOutput) SuccessRateStdevFactor() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetection) int { return v.SuccessRateStdevFactor }).(pulumi.IntOutput)
 }
@@ -5126,7 +5846,12 @@ func (o GetBackendServiceOutlierDetectionArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetBackendServiceOutlierDetectionBaseEjectionTime struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -5142,7 +5867,12 @@ type GetBackendServiceOutlierDetectionBaseEjectionTimeInput interface {
 }
 
 type GetBackendServiceOutlierDetectionBaseEjectionTimeArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -5197,10 +5927,15 @@ func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) ToGetBackendSer
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond resolution. Durations
+// less than one second are represented with a 0 'seconds' field and a positive
+// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
 func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetectionBaseEjectionTime) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+// inclusive.
 func (o GetBackendServiceOutlierDetectionBaseEjectionTimeOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetectionBaseEjectionTime) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -5226,7 +5961,12 @@ func (o GetBackendServiceOutlierDetectionBaseEjectionTimeArrayOutput) Index(i pu
 }
 
 type GetBackendServiceOutlierDetectionInterval struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -5242,7 +5982,12 @@ type GetBackendServiceOutlierDetectionIntervalInput interface {
 }
 
 type GetBackendServiceOutlierDetectionIntervalArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations
+	// less than one second are represented with a 0 'seconds' field and a positive
+	// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+	// inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -5297,10 +6042,15 @@ func (o GetBackendServiceOutlierDetectionIntervalOutput) ToGetBackendServiceOutl
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond resolution. Durations
+// less than one second are represented with a 0 'seconds' field and a positive
+// 'nanos' field. Must be from 0 to 999,999,999 inclusive.
 func (o GetBackendServiceOutlierDetectionIntervalOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetectionInterval) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+// inclusive.
 func (o GetBackendServiceOutlierDetectionIntervalOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendServiceOutlierDetectionInterval) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -5326,7 +6076,13 @@ func (o GetBackendServiceOutlierDetectionIntervalArrayOutput) Index(i pulumi.Int
 }
 
 type GetBackendServiceSecuritySetting struct {
-	ClientTlsPolicy string   `pulumi:"clientTlsPolicy"`
+	// ClientTlsPolicy is a resource that specifies how a client should authenticate
+	// connections to backends of a service. This resource itself does not affect
+	// configuration unless it is attached to a backend service resource.
+	ClientTlsPolicy string `pulumi:"clientTlsPolicy"`
+	// A list of alternate names to verify the subject identity in the certificate.
+	// If specified, the client will verify that the server certificate's subject
+	// alt name matches one of the specified values.
 	SubjectAltNames []string `pulumi:"subjectAltNames"`
 }
 
@@ -5342,7 +6098,13 @@ type GetBackendServiceSecuritySettingInput interface {
 }
 
 type GetBackendServiceSecuritySettingArgs struct {
-	ClientTlsPolicy pulumi.StringInput      `pulumi:"clientTlsPolicy"`
+	// ClientTlsPolicy is a resource that specifies how a client should authenticate
+	// connections to backends of a service. This resource itself does not affect
+	// configuration unless it is attached to a backend service resource.
+	ClientTlsPolicy pulumi.StringInput `pulumi:"clientTlsPolicy"`
+	// A list of alternate names to verify the subject identity in the certificate.
+	// If specified, the client will verify that the server certificate's subject
+	// alt name matches one of the specified values.
 	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
 }
 
@@ -5397,10 +6159,16 @@ func (o GetBackendServiceSecuritySettingOutput) ToGetBackendServiceSecuritySetti
 	return o
 }
 
+// ClientTlsPolicy is a resource that specifies how a client should authenticate
+// connections to backends of a service. This resource itself does not affect
+// configuration unless it is attached to a backend service resource.
 func (o GetBackendServiceSecuritySettingOutput) ClientTlsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceSecuritySetting) string { return v.ClientTlsPolicy }).(pulumi.StringOutput)
 }
 
+// A list of alternate names to verify the subject identity in the certificate.
+// If specified, the client will verify that the server certificate's subject
+// alt name matches one of the specified values.
 func (o GetBackendServiceSecuritySettingOutput) SubjectAltNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBackendServiceSecuritySetting) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
 }
@@ -5426,6 +6194,7 @@ func (o GetBackendServiceSecuritySettingArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetDiskAsyncPrimaryDisk struct {
+	// Primary disk for asynchronous disk replication.
 	Disk string `pulumi:"disk"`
 }
 
@@ -5441,6 +6210,7 @@ type GetDiskAsyncPrimaryDiskInput interface {
 }
 
 type GetDiskAsyncPrimaryDiskArgs struct {
+	// Primary disk for asynchronous disk replication.
 	Disk pulumi.StringInput `pulumi:"disk"`
 }
 
@@ -5495,6 +6265,7 @@ func (o GetDiskAsyncPrimaryDiskOutput) ToGetDiskAsyncPrimaryDiskOutputWithContex
 	return o
 }
 
+// Primary disk for asynchronous disk replication.
 func (o GetDiskAsyncPrimaryDiskOutput) Disk() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskAsyncPrimaryDisk) string { return v.Disk }).(pulumi.StringOutput)
 }
@@ -5520,11 +6291,25 @@ func (o GetDiskAsyncPrimaryDiskArrayOutput) Index(i pulumi.IntInput) GetDiskAsyn
 }
 
 type GetDiskDiskEncryptionKey struct {
-	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+	// in the cloud console. Your project's Compute Engine System service account
+	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
-	RawKey               string `pulumi:"rawKey"`
-	RsaEncryptedKey      string `pulumi:"rsaEncryptedKey"`
-	Sha256               string `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 string `pulumi:"sha256"`
 }
 
 // GetDiskDiskEncryptionKeyInput is an input type that accepts GetDiskDiskEncryptionKeyArgs and GetDiskDiskEncryptionKeyOutput values.
@@ -5539,11 +6324,25 @@ type GetDiskDiskEncryptionKeyInput interface {
 }
 
 type GetDiskDiskEncryptionKeyArgs struct {
-	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+	// in the cloud console. Your project's Compute Engine System service account
+	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
-	RawKey               pulumi.StringInput `pulumi:"rawKey"`
-	RsaEncryptedKey      pulumi.StringInput `pulumi:"rsaEncryptedKey"`
-	Sha256               pulumi.StringInput `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+	// customer-supplied encryption key to either encrypt or decrypt
+	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
+	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
 }
 
 func (GetDiskDiskEncryptionKeyArgs) ElementType() reflect.Type {
@@ -5597,22 +6396,36 @@ func (o GetDiskDiskEncryptionKeyOutput) ToGetDiskDiskEncryptionKeyOutputWithCont
 	return o
 }
 
+// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+// in the cloud console. Your project's Compute Engine System service account
+// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 func (o GetDiskDiskEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
 
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
 func (o GetDiskDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
 
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
 func (o GetDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
 }
 
+// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
+// customer-supplied encryption key to either encrypt or decrypt
+// this resource. You can provide either the rawKey or the rsaEncryptedKey.
 func (o GetDiskDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
 }
 
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
 func (o GetDiskDiskEncryptionKeyOutput) Sha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
 }
@@ -5738,10 +6551,21 @@ func (o GetDiskGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GetDiskGuestO
 }
 
 type GetDiskSourceImageEncryptionKey struct {
-	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+	// in the cloud console. Your project's Compute Engine System service account
+	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
-	RawKey               string `pulumi:"rawKey"`
-	Sha256               string `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 string `pulumi:"sha256"`
 }
 
 // GetDiskSourceImageEncryptionKeyInput is an input type that accepts GetDiskSourceImageEncryptionKeyArgs and GetDiskSourceImageEncryptionKeyOutput values.
@@ -5756,10 +6580,21 @@ type GetDiskSourceImageEncryptionKeyInput interface {
 }
 
 type GetDiskSourceImageEncryptionKeyArgs struct {
-	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+	// in the cloud console. Your project's Compute Engine System service account
+	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
-	RawKey               pulumi.StringInput `pulumi:"rawKey"`
-	Sha256               pulumi.StringInput `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
 }
 
 func (GetDiskSourceImageEncryptionKeyArgs) ElementType() reflect.Type {
@@ -5813,18 +6648,29 @@ func (o GetDiskSourceImageEncryptionKeyOutput) ToGetDiskSourceImageEncryptionKey
 	return o
 }
 
+// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+// in the cloud console. Your project's Compute Engine System service account
+// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 func (o GetDiskSourceImageEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
 
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
 func (o GetDiskSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
 
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
 func (o GetDiskSourceImageEncryptionKeyOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
 }
 
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
 func (o GetDiskSourceImageEncryptionKeyOutput) Sha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
 }
@@ -5850,10 +6696,21 @@ func (o GetDiskSourceImageEncryptionKeyArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetDiskSourceSnapshotEncryptionKey struct {
-	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+	// in the cloud console. Your project's Compute Engine System service account
+	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
-	RawKey               string `pulumi:"rawKey"`
-	Sha256               string `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 string `pulumi:"sha256"`
 }
 
 // GetDiskSourceSnapshotEncryptionKeyInput is an input type that accepts GetDiskSourceSnapshotEncryptionKeyArgs and GetDiskSourceSnapshotEncryptionKeyOutput values.
@@ -5868,10 +6725,21 @@ type GetDiskSourceSnapshotEncryptionKeyInput interface {
 }
 
 type GetDiskSourceSnapshotEncryptionKeyArgs struct {
-	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+	// in the cloud console. Your project's Compute Engine System service account
+	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
-	RawKey               pulumi.StringInput `pulumi:"rawKey"`
-	Sha256               pulumi.StringInput `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
 }
 
 func (GetDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
@@ -5925,18 +6793,29 @@ func (o GetDiskSourceSnapshotEncryptionKeyOutput) ToGetDiskSourceSnapshotEncrypt
 	return o
 }
 
+// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
+// in the cloud console. Your project's Compute Engine System service account
+// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
+// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
+// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
 func (o GetDiskSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
 
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
 func (o GetDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
 
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
 func (o GetDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
 }
 
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
 func (o GetDiskSourceSnapshotEncryptionKeyOutput) Sha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
 }
@@ -5962,8 +6841,10 @@ func (o GetDiskSourceSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetForwardingRuleServiceDirectoryRegistration struct {
+	// Service Directory namespace to register the forwarding rule under.
 	Namespace string `pulumi:"namespace"`
-	Service   string `pulumi:"service"`
+	// Service Directory service to register the forwarding rule under.
+	Service string `pulumi:"service"`
 }
 
 // GetForwardingRuleServiceDirectoryRegistrationInput is an input type that accepts GetForwardingRuleServiceDirectoryRegistrationArgs and GetForwardingRuleServiceDirectoryRegistrationOutput values.
@@ -5978,8 +6859,10 @@ type GetForwardingRuleServiceDirectoryRegistrationInput interface {
 }
 
 type GetForwardingRuleServiceDirectoryRegistrationArgs struct {
+	// Service Directory namespace to register the forwarding rule under.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
-	Service   pulumi.StringInput `pulumi:"service"`
+	// Service Directory service to register the forwarding rule under.
+	Service pulumi.StringInput `pulumi:"service"`
 }
 
 func (GetForwardingRuleServiceDirectoryRegistrationArgs) ElementType() reflect.Type {
@@ -6033,10 +6916,12 @@ func (o GetForwardingRuleServiceDirectoryRegistrationOutput) ToGetForwardingRule
 	return o
 }
 
+// Service Directory namespace to register the forwarding rule under.
 func (o GetForwardingRuleServiceDirectoryRegistrationOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRuleServiceDirectoryRegistration) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// Service Directory service to register the forwarding rule under.
 func (o GetForwardingRuleServiceDirectoryRegistrationOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRuleServiceDirectoryRegistration) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -6062,8 +6947,19 @@ func (o GetForwardingRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi
 }
 
 type GetGlobalForwardingRuleMetadataFilter struct {
-	FilterLabels        []GetGlobalForwardingRuleMetadataFilterFilterLabel `pulumi:"filterLabels"`
-	FilterMatchCriteria string                                             `pulumi:"filterMatchCriteria"`
+	// The list of label value pairs that must match labels in the
+	// provided metadata based on filterMatchCriteria
+	//
+	// This list must not be empty and can have at the most 64 entries.
+	FilterLabels []GetGlobalForwardingRuleMetadataFilterFilterLabel `pulumi:"filterLabels"`
+	// Specifies how individual filterLabel matches within the list of
+	// filterLabels contribute towards the overall metadataFilter match.
+	//
+	// MATCH_ANY - At least one of the filterLabels must have a matching
+	// label in the provided metadata.
+	// MATCH_ALL - All filterLabels must have matching labels in the
+	// provided metadata. Possible values: ["MATCH_ANY", "MATCH_ALL"]
+	FilterMatchCriteria string `pulumi:"filterMatchCriteria"`
 }
 
 // GetGlobalForwardingRuleMetadataFilterInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterArgs and GetGlobalForwardingRuleMetadataFilterOutput values.
@@ -6078,8 +6974,19 @@ type GetGlobalForwardingRuleMetadataFilterInput interface {
 }
 
 type GetGlobalForwardingRuleMetadataFilterArgs struct {
-	FilterLabels        GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput `pulumi:"filterLabels"`
-	FilterMatchCriteria pulumi.StringInput                                         `pulumi:"filterMatchCriteria"`
+	// The list of label value pairs that must match labels in the
+	// provided metadata based on filterMatchCriteria
+	//
+	// This list must not be empty and can have at the most 64 entries.
+	FilterLabels GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput `pulumi:"filterLabels"`
+	// Specifies how individual filterLabel matches within the list of
+	// filterLabels contribute towards the overall metadataFilter match.
+	//
+	// MATCH_ANY - At least one of the filterLabels must have a matching
+	// label in the provided metadata.
+	// MATCH_ALL - All filterLabels must have matching labels in the
+	// provided metadata. Possible values: ["MATCH_ANY", "MATCH_ALL"]
+	FilterMatchCriteria pulumi.StringInput `pulumi:"filterMatchCriteria"`
 }
 
 func (GetGlobalForwardingRuleMetadataFilterArgs) ElementType() reflect.Type {
@@ -6133,12 +7040,23 @@ func (o GetGlobalForwardingRuleMetadataFilterOutput) ToGetGlobalForwardingRuleMe
 	return o
 }
 
+// The list of label value pairs that must match labels in the
+// provided metadata based on filterMatchCriteria
+//
+// This list must not be empty and can have at the most 64 entries.
 func (o GetGlobalForwardingRuleMetadataFilterOutput) FilterLabels() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
 	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilter) []GetGlobalForwardingRuleMetadataFilterFilterLabel {
 		return v.FilterLabels
 	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput)
 }
 
+// Specifies how individual filterLabel matches within the list of
+// filterLabels contribute towards the overall metadataFilter match.
+//
+// MATCH_ANY - At least one of the filterLabels must have a matching
+// label in the provided metadata.
+// MATCH_ALL - All filterLabels must have matching labels in the
+// provided metadata. Possible values: ["MATCH_ANY", "MATCH_ALL"]
 func (o GetGlobalForwardingRuleMetadataFilterOutput) FilterMatchCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilter) string { return v.FilterMatchCriteria }).(pulumi.StringOutput)
 }
@@ -6167,7 +7085,9 @@ type GetGlobalForwardingRuleMetadataFilterFilterLabel struct {
 	// The name of the global forwarding rule.
 	//
 	// ***
-	Name  string `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The value that the label must match. The value has a maximum
+	// length of 1024 characters.
 	Value string `pulumi:"value"`
 }
 
@@ -6186,7 +7106,9 @@ type GetGlobalForwardingRuleMetadataFilterFilterLabelArgs struct {
 	// The name of the global forwarding rule.
 	//
 	// ***
-	Name  pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value that the label must match. The value has a maximum
+	// length of 1024 characters.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -6248,6 +7170,8 @@ func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Name() pulumi.St
 	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The value that the label must match. The value has a maximum
+// length of 1024 characters.
 func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -6273,7 +7197,12 @@ func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pul
 }
 
 type GetGlobalForwardingRuleServiceDirectoryRegistration struct {
-	Namespace              string `pulumi:"namespace"`
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace string `pulumi:"namespace"`
+	// [Optional] Service Directory region to register this global forwarding rule under.
+	// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+	// Google APIs Forwarding Rules on the same network should use the same Service
+	// Directory region.
 	ServiceDirectoryRegion string `pulumi:"serviceDirectoryRegion"`
 }
 
@@ -6289,7 +7218,12 @@ type GetGlobalForwardingRuleServiceDirectoryRegistrationInput interface {
 }
 
 type GetGlobalForwardingRuleServiceDirectoryRegistrationArgs struct {
-	Namespace              pulumi.StringInput `pulumi:"namespace"`
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// [Optional] Service Directory region to register this global forwarding rule under.
+	// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+	// Google APIs Forwarding Rules on the same network should use the same Service
+	// Directory region.
 	ServiceDirectoryRegion pulumi.StringInput `pulumi:"serviceDirectoryRegion"`
 }
 
@@ -6344,10 +7278,15 @@ func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ToGetGlobalFo
 	return o
 }
 
+// Service Directory namespace to register the forwarding rule under.
 func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalForwardingRuleServiceDirectoryRegistration) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// [Optional] Service Directory region to register this global forwarding rule under.
+// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+// Google APIs Forwarding Rules on the same network should use the same Service
+// Directory region.
 func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ServiceDirectoryRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalForwardingRuleServiceDirectoryRegistration) string { return v.ServiceDirectoryRegion }).(pulumi.StringOutput)
 }
@@ -6373,9 +7312,18 @@ func (o GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput) Index(i 
 }
 
 type GetHcVpnGatewayVpnInterface struct {
-	Id                     int    `pulumi:"id"`
+	// The numeric ID of this VPN gateway interface.
+	Id int `pulumi:"id"`
+	// URL of the interconnect attachment resource. When the value
+	// of this field is present, the VPN Gateway will be used for
+	// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+	// traffic for this VPN Gateway interface will go through the
+	// specified interconnect attachment resource.
+	//
+	// Not currently available publicly.
 	InterconnectAttachment string `pulumi:"interconnectAttachment"`
-	IpAddress              string `pulumi:"ipAddress"`
+	// The external IP address for this VPN gateway interface.
+	IpAddress string `pulumi:"ipAddress"`
 }
 
 // GetHcVpnGatewayVpnInterfaceInput is an input type that accepts GetHcVpnGatewayVpnInterfaceArgs and GetHcVpnGatewayVpnInterfaceOutput values.
@@ -6390,9 +7338,18 @@ type GetHcVpnGatewayVpnInterfaceInput interface {
 }
 
 type GetHcVpnGatewayVpnInterfaceArgs struct {
-	Id                     pulumi.IntInput    `pulumi:"id"`
+	// The numeric ID of this VPN gateway interface.
+	Id pulumi.IntInput `pulumi:"id"`
+	// URL of the interconnect attachment resource. When the value
+	// of this field is present, the VPN Gateway will be used for
+	// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+	// traffic for this VPN Gateway interface will go through the
+	// specified interconnect attachment resource.
+	//
+	// Not currently available publicly.
 	InterconnectAttachment pulumi.StringInput `pulumi:"interconnectAttachment"`
-	IpAddress              pulumi.StringInput `pulumi:"ipAddress"`
+	// The external IP address for this VPN gateway interface.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 }
 
 func (GetHcVpnGatewayVpnInterfaceArgs) ElementType() reflect.Type {
@@ -6446,14 +7403,23 @@ func (o GetHcVpnGatewayVpnInterfaceOutput) ToGetHcVpnGatewayVpnInterfaceOutputWi
 	return o
 }
 
+// The numeric ID of this VPN gateway interface.
 func (o GetHcVpnGatewayVpnInterfaceOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) int { return v.Id }).(pulumi.IntOutput)
 }
 
+// URL of the interconnect attachment resource. When the value
+// of this field is present, the VPN Gateway will be used for
+// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+// traffic for this VPN Gateway interface will go through the
+// specified interconnect attachment resource.
+//
+// Not currently available publicly.
 func (o GetHcVpnGatewayVpnInterfaceOutput) InterconnectAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) string { return v.InterconnectAttachment }).(pulumi.StringOutput)
 }
 
+// The external IP address for this VPN gateway interface.
 func (o GetHcVpnGatewayVpnInterfaceOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) string { return v.IpAddress }).(pulumi.StringOutput)
 }
@@ -6479,9 +7445,33 @@ func (o GetHcVpnGatewayVpnInterfaceArrayOutput) Index(i pulumi.IntInput) GetHcVp
 }
 
 type GetHealthCheckGrpcHealthCheck struct {
-	GrpcServiceName   string `pulumi:"grpcServiceName"`
-	Port              int    `pulumi:"port"`
-	PortName          string `pulumi:"portName"`
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	//   - Empty serviceName means the overall status of all services at the backend.
+	//   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//     The grpcServiceName can only be ASCII.
+	GrpcServiceName string `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, gRPC health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification string `pulumi:"portSpecification"`
 }
 
@@ -6497,9 +7487,33 @@ type GetHealthCheckGrpcHealthCheckInput interface {
 }
 
 type GetHealthCheckGrpcHealthCheckArgs struct {
-	GrpcServiceName   pulumi.StringInput `pulumi:"grpcServiceName"`
-	Port              pulumi.IntInput    `pulumi:"port"`
-	PortName          pulumi.StringInput `pulumi:"portName"`
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	//   - Empty serviceName means the overall status of all services at the backend.
+	//   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//     The grpcServiceName can only be ASCII.
+	GrpcServiceName pulumi.StringInput `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, gRPC health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
 }
 
@@ -6554,18 +7568,42 @@ func (o GetHealthCheckGrpcHealthCheckOutput) ToGetHealthCheckGrpcHealthCheckOutp
 	return o
 }
 
+// The gRPC service name for the health check.
+// The value of grpcServiceName has the following meanings by convention:
+//   - Empty serviceName means the overall status of all services at the backend.
+//   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+//     The grpcServiceName can only be ASCII.
 func (o GetHealthCheckGrpcHealthCheckOutput) GrpcServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.GrpcServiceName }).(pulumi.StringOutput)
 }
 
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
 func (o GetHealthCheckGrpcHealthCheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
 func (o GetHealthCheckGrpcHealthCheckOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
 }
 
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, gRPC health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 func (o GetHealthCheckGrpcHealthCheckOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
@@ -6591,13 +7629,41 @@ func (o GetHealthCheckGrpcHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHe
 }
 
 type GetHealthCheckHttp2HealthCheck struct {
-	Host              string `pulumi:"host"`
-	Port              int    `pulumi:"port"`
-	PortName          string `pulumi:"portName"`
+	// The value of the host header in the HTTP2 health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host string `pulumi:"host"`
+	// The TCP port number for the HTTP2 health check request.
+	// The default value is 443.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTP2 health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification string `pulumi:"portSpecification"`
-	ProxyHeader       string `pulumi:"proxyHeader"`
-	RequestPath       string `pulumi:"requestPath"`
-	Response          string `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The request path of the HTTP2 health check request.
+	// The default value is /.
+	RequestPath string `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
 }
 
 // GetHealthCheckHttp2HealthCheckInput is an input type that accepts GetHealthCheckHttp2HealthCheckArgs and GetHealthCheckHttp2HealthCheckOutput values.
@@ -6612,13 +7678,41 @@ type GetHealthCheckHttp2HealthCheckInput interface {
 }
 
 type GetHealthCheckHttp2HealthCheckArgs struct {
-	Host              pulumi.StringInput `pulumi:"host"`
-	Port              pulumi.IntInput    `pulumi:"port"`
-	PortName          pulumi.StringInput `pulumi:"portName"`
+	// The value of the host header in the HTTP2 health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The TCP port number for the HTTP2 health check request.
+	// The default value is 443.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTP2 health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
-	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
-	RequestPath       pulumi.StringInput `pulumi:"requestPath"`
-	Response          pulumi.StringInput `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The request path of the HTTP2 health check request.
+	// The default value is /.
+	RequestPath pulumi.StringInput `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
 }
 
 func (GetHealthCheckHttp2HealthCheckArgs) ElementType() reflect.Type {
@@ -6672,30 +7766,58 @@ func (o GetHealthCheckHttp2HealthCheckOutput) ToGetHealthCheckHttp2HealthCheckOu
 	return o
 }
 
+// The value of the host header in the HTTP2 health check request.
+// If left empty (default value), the public IP on behalf of which this health
+// check is performed will be used.
 func (o GetHealthCheckHttp2HealthCheckOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// The TCP port number for the HTTP2 health check request.
+// The default value is 443.
 func (o GetHealthCheckHttp2HealthCheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
 func (o GetHealthCheckHttp2HealthCheckOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.PortName }).(pulumi.StringOutput)
 }
 
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, HTTP2 health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 func (o GetHealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
 
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
 func (o GetHealthCheckHttp2HealthCheckOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
 }
 
+// The request path of the HTTP2 health check request.
+// The default value is /.
 func (o GetHealthCheckHttp2HealthCheckOutput) RequestPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
 }
 
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
 func (o GetHealthCheckHttp2HealthCheckOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.Response }).(pulumi.StringOutput)
 }
@@ -6721,13 +7843,41 @@ func (o GetHealthCheckHttp2HealthCheckArrayOutput) Index(i pulumi.IntInput) GetH
 }
 
 type GetHealthCheckHttpHealthCheck struct {
-	Host              string `pulumi:"host"`
-	Port              int    `pulumi:"port"`
-	PortName          string `pulumi:"portName"`
+	// The value of the host header in the HTTP health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host string `pulumi:"host"`
+	// The TCP port number for the HTTP health check request.
+	// The default value is 80.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTP health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification string `pulumi:"portSpecification"`
-	ProxyHeader       string `pulumi:"proxyHeader"`
-	RequestPath       string `pulumi:"requestPath"`
-	Response          string `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The request path of the HTTP health check request.
+	// The default value is /.
+	RequestPath string `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
 }
 
 // GetHealthCheckHttpHealthCheckInput is an input type that accepts GetHealthCheckHttpHealthCheckArgs and GetHealthCheckHttpHealthCheckOutput values.
@@ -6742,13 +7892,41 @@ type GetHealthCheckHttpHealthCheckInput interface {
 }
 
 type GetHealthCheckHttpHealthCheckArgs struct {
-	Host              pulumi.StringInput `pulumi:"host"`
-	Port              pulumi.IntInput    `pulumi:"port"`
-	PortName          pulumi.StringInput `pulumi:"portName"`
+	// The value of the host header in the HTTP health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The TCP port number for the HTTP health check request.
+	// The default value is 80.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTP health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
-	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
-	RequestPath       pulumi.StringInput `pulumi:"requestPath"`
-	Response          pulumi.StringInput `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The request path of the HTTP health check request.
+	// The default value is /.
+	RequestPath pulumi.StringInput `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
 }
 
 func (GetHealthCheckHttpHealthCheckArgs) ElementType() reflect.Type {
@@ -6802,30 +7980,58 @@ func (o GetHealthCheckHttpHealthCheckOutput) ToGetHealthCheckHttpHealthCheckOutp
 	return o
 }
 
+// The value of the host header in the HTTP health check request.
+// If left empty (default value), the public IP on behalf of which this health
+// check is performed will be used.
 func (o GetHealthCheckHttpHealthCheckOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// The TCP port number for the HTTP health check request.
+// The default value is 80.
 func (o GetHealthCheckHttpHealthCheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
 func (o GetHealthCheckHttpHealthCheckOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
 }
 
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, HTTP health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 func (o GetHealthCheckHttpHealthCheckOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
 
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
 func (o GetHealthCheckHttpHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
 }
 
+// The request path of the HTTP health check request.
+// The default value is /.
 func (o GetHealthCheckHttpHealthCheckOutput) RequestPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
 }
 
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
 func (o GetHealthCheckHttpHealthCheckOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.Response }).(pulumi.StringOutput)
 }
@@ -6851,13 +8057,41 @@ func (o GetHealthCheckHttpHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHe
 }
 
 type GetHealthCheckHttpsHealthCheck struct {
-	Host              string `pulumi:"host"`
-	Port              int    `pulumi:"port"`
-	PortName          string `pulumi:"portName"`
+	// The value of the host header in the HTTPS health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host string `pulumi:"host"`
+	// The TCP port number for the HTTPS health check request.
+	// The default value is 443.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTPS health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification string `pulumi:"portSpecification"`
-	ProxyHeader       string `pulumi:"proxyHeader"`
-	RequestPath       string `pulumi:"requestPath"`
-	Response          string `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The request path of the HTTPS health check request.
+	// The default value is /.
+	RequestPath string `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
 }
 
 // GetHealthCheckHttpsHealthCheckInput is an input type that accepts GetHealthCheckHttpsHealthCheckArgs and GetHealthCheckHttpsHealthCheckOutput values.
@@ -6872,13 +8106,41 @@ type GetHealthCheckHttpsHealthCheckInput interface {
 }
 
 type GetHealthCheckHttpsHealthCheckArgs struct {
-	Host              pulumi.StringInput `pulumi:"host"`
-	Port              pulumi.IntInput    `pulumi:"port"`
-	PortName          pulumi.StringInput `pulumi:"portName"`
+	// The value of the host header in the HTTPS health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The TCP port number for the HTTPS health check request.
+	// The default value is 443.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTPS health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
-	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
-	RequestPath       pulumi.StringInput `pulumi:"requestPath"`
-	Response          pulumi.StringInput `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The request path of the HTTPS health check request.
+	// The default value is /.
+	RequestPath pulumi.StringInput `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
 }
 
 func (GetHealthCheckHttpsHealthCheckArgs) ElementType() reflect.Type {
@@ -6932,30 +8194,58 @@ func (o GetHealthCheckHttpsHealthCheckOutput) ToGetHealthCheckHttpsHealthCheckOu
 	return o
 }
 
+// The value of the host header in the HTTPS health check request.
+// If left empty (default value), the public IP on behalf of which this health
+// check is performed will be used.
 func (o GetHealthCheckHttpsHealthCheckOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// The TCP port number for the HTTPS health check request.
+// The default value is 443.
 func (o GetHealthCheckHttpsHealthCheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
 func (o GetHealthCheckHttpsHealthCheckOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
 }
 
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, HTTPS health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 func (o GetHealthCheckHttpsHealthCheckOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
 
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
 func (o GetHealthCheckHttpsHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
 }
 
+// The request path of the HTTPS health check request.
+// The default value is /.
 func (o GetHealthCheckHttpsHealthCheckOutput) RequestPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
 }
 
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
 func (o GetHealthCheckHttpsHealthCheckOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.Response }).(pulumi.StringOutput)
 }
@@ -6981,6 +8271,8 @@ func (o GetHealthCheckHttpsHealthCheckArrayOutput) Index(i pulumi.IntInput) GetH
 }
 
 type GetHealthCheckLogConfig struct {
+	// Indicates whether or not to export logs. This is false by default,
+	// which means no health check logging will be done.
 	Enable bool `pulumi:"enable"`
 }
 
@@ -6996,6 +8288,8 @@ type GetHealthCheckLogConfigInput interface {
 }
 
 type GetHealthCheckLogConfigArgs struct {
+	// Indicates whether or not to export logs. This is false by default,
+	// which means no health check logging will be done.
 	Enable pulumi.BoolInput `pulumi:"enable"`
 }
 
@@ -7050,6 +8344,8 @@ func (o GetHealthCheckLogConfigOutput) ToGetHealthCheckLogConfigOutputWithContex
 	return o
 }
 
+// Indicates whether or not to export logs. This is false by default,
+// which means no health check logging will be done.
 func (o GetHealthCheckLogConfigOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHealthCheckLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
 }
@@ -7075,12 +8371,39 @@ func (o GetHealthCheckLogConfigArrayOutput) Index(i pulumi.IntInput) GetHealthCh
 }
 
 type GetHealthCheckSslHealthCheck struct {
-	Port              int    `pulumi:"port"`
-	PortName          string `pulumi:"portName"`
+	// The TCP port number for the SSL health check request.
+	// The default value is 443.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, SSL health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification string `pulumi:"portSpecification"`
-	ProxyHeader       string `pulumi:"proxyHeader"`
-	Request           string `pulumi:"request"`
-	Response          string `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The application data to send once the SSL connection has been
+	// established (default value is empty). If both request and response are
+	// empty, the connection establishment alone will indicate health. The request
+	// data can only be ASCII.
+	Request string `pulumi:"request"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
 }
 
 // GetHealthCheckSslHealthCheckInput is an input type that accepts GetHealthCheckSslHealthCheckArgs and GetHealthCheckSslHealthCheckOutput values.
@@ -7095,12 +8418,39 @@ type GetHealthCheckSslHealthCheckInput interface {
 }
 
 type GetHealthCheckSslHealthCheckArgs struct {
-	Port              pulumi.IntInput    `pulumi:"port"`
-	PortName          pulumi.StringInput `pulumi:"portName"`
+	// The TCP port number for the SSL health check request.
+	// The default value is 443.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, SSL health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
-	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
-	Request           pulumi.StringInput `pulumi:"request"`
-	Response          pulumi.StringInput `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The application data to send once the SSL connection has been
+	// established (default value is empty). If both request and response are
+	// empty, the connection establishment alone will indicate health. The request
+	// data can only be ASCII.
+	Request pulumi.StringInput `pulumi:"request"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
 }
 
 func (GetHealthCheckSslHealthCheckArgs) ElementType() reflect.Type {
@@ -7154,26 +8504,53 @@ func (o GetHealthCheckSslHealthCheckOutput) ToGetHealthCheckSslHealthCheckOutput
 	return o
 }
 
+// The TCP port number for the SSL health check request.
+// The default value is 443.
 func (o GetHealthCheckSslHealthCheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
 func (o GetHealthCheckSslHealthCheckOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
 }
 
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, SSL health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 func (o GetHealthCheckSslHealthCheckOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
 
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
 func (o GetHealthCheckSslHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
 }
 
+// The application data to send once the SSL connection has been
+// established (default value is empty). If both request and response are
+// empty, the connection establishment alone will indicate health. The request
+// data can only be ASCII.
 func (o GetHealthCheckSslHealthCheckOutput) Request() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.Request }).(pulumi.StringOutput)
 }
 
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
 func (o GetHealthCheckSslHealthCheckOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.Response }).(pulumi.StringOutput)
 }
@@ -7199,12 +8576,39 @@ func (o GetHealthCheckSslHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHea
 }
 
 type GetHealthCheckTcpHealthCheck struct {
-	Port              int    `pulumi:"port"`
-	PortName          string `pulumi:"portName"`
+	// The TCP port number for the TCP health check request.
+	// The default value is 443.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, TCP health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification string `pulumi:"portSpecification"`
-	ProxyHeader       string `pulumi:"proxyHeader"`
-	Request           string `pulumi:"request"`
-	Response          string `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The application data to send once the TCP connection has been
+	// established (default value is empty). If both request and response are
+	// empty, the connection establishment alone will indicate health. The request
+	// data can only be ASCII.
+	Request string `pulumi:"request"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
 }
 
 // GetHealthCheckTcpHealthCheckInput is an input type that accepts GetHealthCheckTcpHealthCheckArgs and GetHealthCheckTcpHealthCheckOutput values.
@@ -7219,12 +8623,39 @@ type GetHealthCheckTcpHealthCheckInput interface {
 }
 
 type GetHealthCheckTcpHealthCheckArgs struct {
-	Port              pulumi.IntInput    `pulumi:"port"`
-	PortName          pulumi.StringInput `pulumi:"portName"`
+	// The TCP port number for the TCP health check request.
+	// The default value is 443.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, TCP health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
-	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
-	Request           pulumi.StringInput `pulumi:"request"`
-	Response          pulumi.StringInput `pulumi:"response"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The application data to send once the TCP connection has been
+	// established (default value is empty). If both request and response are
+	// empty, the connection establishment alone will indicate health. The request
+	// data can only be ASCII.
+	Request pulumi.StringInput `pulumi:"request"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
 }
 
 func (GetHealthCheckTcpHealthCheckArgs) ElementType() reflect.Type {
@@ -7278,26 +8709,53 @@ func (o GetHealthCheckTcpHealthCheckOutput) ToGetHealthCheckTcpHealthCheckOutput
 	return o
 }
 
+// The TCP port number for the TCP health check request.
+// The default value is 443.
 func (o GetHealthCheckTcpHealthCheckOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
 func (o GetHealthCheckTcpHealthCheckOutput) PortName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
 }
 
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, TCP health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
 func (o GetHealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
 }
 
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
 func (o GetHealthCheckTcpHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
 }
 
+// The application data to send once the TCP connection has been
+// established (default value is empty). If both request and response are
+// empty, the connection establishment alone will indicate health. The request
+// data can only be ASCII.
 func (o GetHealthCheckTcpHealthCheckOutput) Request() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.Request }).(pulumi.StringOutput)
 }
 
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
 func (o GetHealthCheckTcpHealthCheckOutput) Response() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.Response }).(pulumi.StringOutput)
 }
@@ -7323,9 +8781,12 @@ func (o GetHealthCheckTcpHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHea
 }
 
 type GetInstanceAdvancedMachineFeature struct {
+	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
-	ThreadsPerCore             int  `pulumi:"threadsPerCore"`
-	VisibleCoreCount           int  `pulumi:"visibleCoreCount"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+	VisibleCoreCount int `pulumi:"visibleCoreCount"`
 }
 
 // GetInstanceAdvancedMachineFeatureInput is an input type that accepts GetInstanceAdvancedMachineFeatureArgs and GetInstanceAdvancedMachineFeatureOutput values.
@@ -7340,9 +8801,12 @@ type GetInstanceAdvancedMachineFeatureInput interface {
 }
 
 type GetInstanceAdvancedMachineFeatureArgs struct {
+	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
-	ThreadsPerCore             pulumi.IntInput  `pulumi:"threadsPerCore"`
-	VisibleCoreCount           pulumi.IntInput  `pulumi:"visibleCoreCount"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+	VisibleCoreCount pulumi.IntInput `pulumi:"visibleCoreCount"`
 }
 
 func (GetInstanceAdvancedMachineFeatureArgs) ElementType() reflect.Type {
@@ -7396,14 +8860,17 @@ func (o GetInstanceAdvancedMachineFeatureOutput) ToGetInstanceAdvancedMachineFea
 	return o
 }
 
+// Whether to enable nested virtualization or not.
 func (o GetInstanceAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o GetInstanceAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
 }
 
+// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
 func (o GetInstanceAdvancedMachineFeatureOutput) VisibleCoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) int { return v.VisibleCoreCount }).(pulumi.IntOutput)
 }
@@ -7431,10 +8898,13 @@ func (o GetInstanceAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) G
 type GetInstanceAttachedDisk struct {
 	// Name with which the attached disk is accessible
 	// under `/dev/disk/by-id/`
-	DeviceName              string `pulumi:"deviceName"`
-	DiskEncryptionKeyRaw    string `pulumi:"diskEncryptionKeyRaw"`
+	DeviceName string `pulumi:"deviceName"`
+	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+	DiskEncryptionKeyRaw string `pulumi:"diskEncryptionKeyRaw"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 	DiskEncryptionKeySha256 string `pulumi:"diskEncryptionKeySha256"`
-	KmsKeySelfLink          string `pulumi:"kmsKeySelfLink"`
+	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
 	Mode string `pulumi:"mode"`
 	// The name or selfLink of the disk attached to this instance.
@@ -7455,10 +8925,13 @@ type GetInstanceAttachedDiskInput interface {
 type GetInstanceAttachedDiskArgs struct {
 	// Name with which the attached disk is accessible
 	// under `/dev/disk/by-id/`
-	DeviceName              pulumi.StringInput `pulumi:"deviceName"`
-	DiskEncryptionKeyRaw    pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+	DiskEncryptionKeyRaw pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 	DiskEncryptionKeySha256 pulumi.StringInput `pulumi:"diskEncryptionKeySha256"`
-	KmsKeySelfLink          pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// The name or selfLink of the disk attached to this instance.
@@ -7522,14 +8995,17 @@ func (o GetInstanceAttachedDiskOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
+// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 func (o GetInstanceAttachedDiskOutput) DiskEncryptionKeyRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionKeyRaw }).(pulumi.StringOutput)
 }
 
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 func (o GetInstanceAttachedDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.DiskEncryptionKeySha256 }).(pulumi.StringOutput)
 }
 
+// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 func (o GetInstanceAttachedDiskOutput) KmsKeySelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
@@ -7569,13 +9045,16 @@ type GetInstanceBootDisk struct {
 	AutoDelete bool `pulumi:"autoDelete"`
 	// Name with which the attached disk is accessible
 	// under `/dev/disk/by-id/`
-	DeviceName              string `pulumi:"deviceName"`
-	DiskEncryptionKeyRaw    string `pulumi:"diskEncryptionKeyRaw"`
+	DeviceName string `pulumi:"deviceName"`
+	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+	DiskEncryptionKeyRaw string `pulumi:"diskEncryptionKeyRaw"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 	DiskEncryptionKeySha256 string `pulumi:"diskEncryptionKeySha256"`
 	// Parameters with which a disk was created alongside the instance.
 	// Structure is documented below.
 	InitializeParams []GetInstanceBootDiskInitializeParam `pulumi:"initializeParams"`
-	KmsKeySelfLink   string                               `pulumi:"kmsKeySelfLink"`
+	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
 	Mode string `pulumi:"mode"`
 	// The name or selfLink of the disk attached to this instance.
@@ -7598,13 +9077,16 @@ type GetInstanceBootDiskArgs struct {
 	AutoDelete pulumi.BoolInput `pulumi:"autoDelete"`
 	// Name with which the attached disk is accessible
 	// under `/dev/disk/by-id/`
-	DeviceName              pulumi.StringInput `pulumi:"deviceName"`
-	DiskEncryptionKeyRaw    pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+	DiskEncryptionKeyRaw pulumi.StringInput `pulumi:"diskEncryptionKeyRaw"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 	DiskEncryptionKeySha256 pulumi.StringInput `pulumi:"diskEncryptionKeySha256"`
 	// Parameters with which a disk was created alongside the instance.
 	// Structure is documented below.
 	InitializeParams GetInstanceBootDiskInitializeParamArrayInput `pulumi:"initializeParams"`
-	KmsKeySelfLink   pulumi.StringInput                           `pulumi:"kmsKeySelfLink"`
+	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// The name or selfLink of the disk attached to this instance.
@@ -7673,10 +9155,12 @@ func (o GetInstanceBootDiskOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DeviceName }).(pulumi.StringOutput)
 }
 
+// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 func (o GetInstanceBootDiskOutput) DiskEncryptionKeyRaw() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeyRaw }).(pulumi.StringOutput)
 }
 
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
 func (o GetInstanceBootDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.DiskEncryptionKeySha256 }).(pulumi.StringOutput)
 }
@@ -7687,6 +9171,7 @@ func (o GetInstanceBootDiskOutput) InitializeParams() GetInstanceBootDiskInitial
 	return o.ApplyT(func(v GetInstanceBootDisk) []GetInstanceBootDiskInitializeParam { return v.InitializeParams }).(GetInstanceBootDiskInitializeParamArrayOutput)
 }
 
+// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 func (o GetInstanceBootDiskOutput) KmsKeySelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
@@ -7722,14 +9207,18 @@ func (o GetInstanceBootDiskArrayOutput) Index(i pulumi.IntInput) GetInstanceBoot
 }
 
 type GetInstanceBootDiskInitializeParam struct {
+	// A flag to enable confidential compute mode on boot disk
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// The image from which this disk was initialised.
 	Image string `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
-	Labels                map[string]interface{} `pulumi:"labels"`
-	ProvisionedIops       int                    `pulumi:"provisionedIops"`
-	ProvisionedThroughput int                    `pulumi:"provisionedThroughput"`
-	ResourceManagerTags   map[string]interface{} `pulumi:"resourceManagerTags"`
+	Labels map[string]interface{} `pulumi:"labels"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+	ProvisionedIops int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// The size of the image in gigabytes.
 	Size int `pulumi:"size"`
 	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -7748,14 +9237,18 @@ type GetInstanceBootDiskInitializeParamInput interface {
 }
 
 type GetInstanceBootDiskInitializeParamArgs struct {
+	// A flag to enable confidential compute mode on boot disk
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
 	// The image from which this disk was initialised.
 	Image pulumi.StringInput `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
-	Labels                pulumi.MapInput `pulumi:"labels"`
-	ProvisionedIops       pulumi.IntInput `pulumi:"provisionedIops"`
+	Labels pulumi.MapInput `pulumi:"labels"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
-	ResourceManagerTags   pulumi.MapInput `pulumi:"resourceManagerTags"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// The size of the image in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
 	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -7813,6 +9306,7 @@ func (o GetInstanceBootDiskInitializeParamOutput) ToGetInstanceBootDiskInitializ
 	return o
 }
 
+// A flag to enable confidential compute mode on boot disk
 func (o GetInstanceBootDiskInitializeParamOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -7827,14 +9321,17 @@ func (o GetInstanceBootDiskInitializeParamOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
 }
 
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
 func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.ProvisionedIops }).(pulumi.IntOutput)
 }
 
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
 func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 func (o GetInstanceBootDiskInitializeParamOutput) ResourceManagerTags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
 }
@@ -7870,6 +9367,7 @@ func (o GetInstanceBootDiskInitializeParamArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetInstanceConfidentialInstanceConfig struct {
+	// Defines whether the instance should have confidential compute enabled.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 }
 
@@ -7885,6 +9383,7 @@ type GetInstanceConfidentialInstanceConfigInput interface {
 }
 
 type GetInstanceConfidentialInstanceConfigArgs struct {
+	// Defines whether the instance should have confidential compute enabled.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
 }
 
@@ -7939,6 +9438,7 @@ func (o GetInstanceConfidentialInstanceConfigOutput) ToGetInstanceConfidentialIn
 	return o
 }
 
+// Defines whether the instance should have confidential compute enabled.
 func (o GetInstanceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -7964,7 +9464,9 @@ func (o GetInstanceConfidentialInstanceConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetInstanceGroupManagerAllInstancesConfig struct {
-	Labels   map[string]string `pulumi:"labels"`
+	// The label key-value pairs that you want to patch onto the instance,
+	Labels map[string]string `pulumi:"labels"`
+	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
 	Metadata map[string]string `pulumi:"metadata"`
 }
 
@@ -7980,7 +9482,9 @@ type GetInstanceGroupManagerAllInstancesConfigInput interface {
 }
 
 type GetInstanceGroupManagerAllInstancesConfigArgs struct {
-	Labels   pulumi.StringMapInput `pulumi:"labels"`
+	// The label key-value pairs that you want to patch onto the instance,
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 }
 
@@ -8035,10 +9539,12 @@ func (o GetInstanceGroupManagerAllInstancesConfigOutput) ToGetInstanceGroupManag
 	return o
 }
 
+// The label key-value pairs that you want to patch onto the instance,
 func (o GetInstanceGroupManagerAllInstancesConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
 func (o GetInstanceGroupManagerAllInstancesConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -8064,8 +9570,10 @@ func (o GetInstanceGroupManagerAllInstancesConfigArrayOutput) Index(i pulumi.Int
 }
 
 type GetInstanceGroupManagerAutoHealingPolicy struct {
-	HealthCheck     string `pulumi:"healthCheck"`
-	InitialDelaySec int    `pulumi:"initialDelaySec"`
+	// The health check resource that signals autohealing.
+	HealthCheck string `pulumi:"healthCheck"`
+	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+	InitialDelaySec int `pulumi:"initialDelaySec"`
 }
 
 // GetInstanceGroupManagerAutoHealingPolicyInput is an input type that accepts GetInstanceGroupManagerAutoHealingPolicyArgs and GetInstanceGroupManagerAutoHealingPolicyOutput values.
@@ -8080,8 +9588,10 @@ type GetInstanceGroupManagerAutoHealingPolicyInput interface {
 }
 
 type GetInstanceGroupManagerAutoHealingPolicyArgs struct {
-	HealthCheck     pulumi.StringInput `pulumi:"healthCheck"`
-	InitialDelaySec pulumi.IntInput    `pulumi:"initialDelaySec"`
+	// The health check resource that signals autohealing.
+	HealthCheck pulumi.StringInput `pulumi:"healthCheck"`
+	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+	InitialDelaySec pulumi.IntInput `pulumi:"initialDelaySec"`
 }
 
 func (GetInstanceGroupManagerAutoHealingPolicyArgs) ElementType() reflect.Type {
@@ -8135,10 +9645,12 @@ func (o GetInstanceGroupManagerAutoHealingPolicyOutput) ToGetInstanceGroupManage
 	return o
 }
 
+// The health check resource that signals autohealing.
 func (o GetInstanceGroupManagerAutoHealingPolicyOutput) HealthCheck() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerAutoHealingPolicy) string { return v.HealthCheck }).(pulumi.StringOutput)
 }
 
+// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
 func (o GetInstanceGroupManagerAutoHealingPolicyOutput) InitialDelaySec() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerAutoHealingPolicy) int { return v.InitialDelaySec }).(pulumi.IntOutput)
 }
@@ -8164,6 +9676,7 @@ func (o GetInstanceGroupManagerAutoHealingPolicyArrayOutput) Index(i pulumi.IntI
 }
 
 type GetInstanceGroupManagerInstanceLifecyclePolicy struct {
+	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 	ForceUpdateOnRepair string `pulumi:"forceUpdateOnRepair"`
 }
 
@@ -8179,6 +9692,7 @@ type GetInstanceGroupManagerInstanceLifecyclePolicyInput interface {
 }
 
 type GetInstanceGroupManagerInstanceLifecyclePolicyArgs struct {
+	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 	ForceUpdateOnRepair pulumi.StringInput `pulumi:"forceUpdateOnRepair"`
 }
 
@@ -8233,6 +9747,7 @@ func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetInstanceGroup
 	return o
 }
 
+// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
 func (o GetInstanceGroupManagerInstanceLifecyclePolicyOutput) ForceUpdateOnRepair() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerInstanceLifecyclePolicy) string { return v.ForceUpdateOnRepair }).(pulumi.StringOutput)
 }
@@ -8260,7 +9775,8 @@ func (o GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) Index(i pulum
 type GetInstanceGroupManagerNamedPort struct {
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
-	Port int    `pulumi:"port"`
+	// The port number.
+	Port int `pulumi:"port"`
 }
 
 // GetInstanceGroupManagerNamedPortInput is an input type that accepts GetInstanceGroupManagerNamedPortArgs and GetInstanceGroupManagerNamedPortOutput values.
@@ -8277,7 +9793,8 @@ type GetInstanceGroupManagerNamedPortInput interface {
 type GetInstanceGroupManagerNamedPortArgs struct {
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
-	Port pulumi.IntInput    `pulumi:"port"`
+	// The port number.
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
 func (GetInstanceGroupManagerNamedPortArgs) ElementType() reflect.Type {
@@ -8336,6 +9853,7 @@ func (o GetInstanceGroupManagerNamedPortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerNamedPort) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The port number.
 func (o GetInstanceGroupManagerNamedPortOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerNamedPort) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -8361,7 +9879,9 @@ func (o GetInstanceGroupManagerNamedPortArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetInstanceGroupManagerStatefulDisk struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
 	DeleteRule string `pulumi:"deleteRule"`
+	// The device name of the disk to be attached.
 	DeviceName string `pulumi:"deviceName"`
 }
 
@@ -8377,7 +9897,9 @@ type GetInstanceGroupManagerStatefulDiskInput interface {
 }
 
 type GetInstanceGroupManagerStatefulDiskArgs struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
 	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The device name of the disk to be attached.
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 }
 
@@ -8432,10 +9954,12 @@ func (o GetInstanceGroupManagerStatefulDiskOutput) ToGetInstanceGroupManagerStat
 	return o
 }
 
+// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
 func (o GetInstanceGroupManagerStatefulDiskOutput) DeleteRule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatefulDisk) string { return v.DeleteRule }).(pulumi.StringOutput)
 }
 
+// The device name of the disk to be attached.
 func (o GetInstanceGroupManagerStatefulDiskOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatefulDisk) string { return v.DeviceName }).(pulumi.StringOutput)
 }
@@ -8461,7 +9985,9 @@ func (o GetInstanceGroupManagerStatefulDiskArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstanceGroupManagerStatefulExternalIp struct {
-	DeleteRule    string `pulumi:"deleteRule"`
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The network interface name
 	InterfaceName string `pulumi:"interfaceName"`
 }
 
@@ -8477,7 +10003,9 @@ type GetInstanceGroupManagerStatefulExternalIpInput interface {
 }
 
 type GetInstanceGroupManagerStatefulExternalIpArgs struct {
-	DeleteRule    pulumi.StringInput `pulumi:"deleteRule"`
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The network interface name
 	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
 }
 
@@ -8532,10 +10060,12 @@ func (o GetInstanceGroupManagerStatefulExternalIpOutput) ToGetInstanceGroupManag
 	return o
 }
 
+// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
 func (o GetInstanceGroupManagerStatefulExternalIpOutput) DeleteRule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatefulExternalIp) string { return v.DeleteRule }).(pulumi.StringOutput)
 }
 
+// The network interface name
 func (o GetInstanceGroupManagerStatefulExternalIpOutput) InterfaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatefulExternalIp) string { return v.InterfaceName }).(pulumi.StringOutput)
 }
@@ -8561,7 +10091,9 @@ func (o GetInstanceGroupManagerStatefulExternalIpArrayOutput) Index(i pulumi.Int
 }
 
 type GetInstanceGroupManagerStatefulInternalIp struct {
-	DeleteRule    string `pulumi:"deleteRule"`
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The network interface name
 	InterfaceName string `pulumi:"interfaceName"`
 }
 
@@ -8577,7 +10109,9 @@ type GetInstanceGroupManagerStatefulInternalIpInput interface {
 }
 
 type GetInstanceGroupManagerStatefulInternalIpArgs struct {
-	DeleteRule    pulumi.StringInput `pulumi:"deleteRule"`
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The network interface name
 	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
 }
 
@@ -8632,10 +10166,12 @@ func (o GetInstanceGroupManagerStatefulInternalIpOutput) ToGetInstanceGroupManag
 	return o
 }
 
+// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
 func (o GetInstanceGroupManagerStatefulInternalIpOutput) DeleteRule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatefulInternalIp) string { return v.DeleteRule }).(pulumi.StringOutput)
 }
 
+// The network interface name
 func (o GetInstanceGroupManagerStatefulInternalIpOutput) InterfaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatefulInternalIp) string { return v.InterfaceName }).(pulumi.StringOutput)
 }
@@ -8661,10 +10197,14 @@ func (o GetInstanceGroupManagerStatefulInternalIpArrayOutput) Index(i pulumi.Int
 }
 
 type GetInstanceGroupManagerStatus struct {
+	// Status of all-instances configuration on the group.
 	AllInstancesConfigs []GetInstanceGroupManagerStatusAllInstancesConfig `pulumi:"allInstancesConfigs"`
-	IsStable            bool                                              `pulumi:"isStable"`
-	Statefuls           []GetInstanceGroupManagerStatusStateful           `pulumi:"statefuls"`
-	VersionTargets      []GetInstanceGroupManagerStatusVersionTarget      `pulumi:"versionTargets"`
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable bool `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls []GetInstanceGroupManagerStatusStateful `pulumi:"statefuls"`
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	VersionTargets []GetInstanceGroupManagerStatusVersionTarget `pulumi:"versionTargets"`
 }
 
 // GetInstanceGroupManagerStatusInput is an input type that accepts GetInstanceGroupManagerStatusArgs and GetInstanceGroupManagerStatusOutput values.
@@ -8679,10 +10219,14 @@ type GetInstanceGroupManagerStatusInput interface {
 }
 
 type GetInstanceGroupManagerStatusArgs struct {
+	// Status of all-instances configuration on the group.
 	AllInstancesConfigs GetInstanceGroupManagerStatusAllInstancesConfigArrayInput `pulumi:"allInstancesConfigs"`
-	IsStable            pulumi.BoolInput                                          `pulumi:"isStable"`
-	Statefuls           GetInstanceGroupManagerStatusStatefulArrayInput           `pulumi:"statefuls"`
-	VersionTargets      GetInstanceGroupManagerStatusVersionTargetArrayInput      `pulumi:"versionTargets"`
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable pulumi.BoolInput `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls GetInstanceGroupManagerStatusStatefulArrayInput `pulumi:"statefuls"`
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	VersionTargets GetInstanceGroupManagerStatusVersionTargetArrayInput `pulumi:"versionTargets"`
 }
 
 func (GetInstanceGroupManagerStatusArgs) ElementType() reflect.Type {
@@ -8736,20 +10280,24 @@ func (o GetInstanceGroupManagerStatusOutput) ToGetInstanceGroupManagerStatusOutp
 	return o
 }
 
+// Status of all-instances configuration on the group.
 func (o GetInstanceGroupManagerStatusOutput) AllInstancesConfigs() GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatus) []GetInstanceGroupManagerStatusAllInstancesConfig {
 		return v.AllInstancesConfigs
 	}).(GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput)
 }
 
+// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
 func (o GetInstanceGroupManagerStatusOutput) IsStable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatus) bool { return v.IsStable }).(pulumi.BoolOutput)
 }
 
+// Stateful status of the given Instance Group Manager.
 func (o GetInstanceGroupManagerStatusOutput) Statefuls() GetInstanceGroupManagerStatusStatefulArrayOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatus) []GetInstanceGroupManagerStatusStateful { return v.Statefuls }).(GetInstanceGroupManagerStatusStatefulArrayOutput)
 }
 
+// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
 func (o GetInstanceGroupManagerStatusOutput) VersionTargets() GetInstanceGroupManagerStatusVersionTargetArrayOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatus) []GetInstanceGroupManagerStatusVersionTarget {
 		return v.VersionTargets
@@ -8777,6 +10325,7 @@ func (o GetInstanceGroupManagerStatusArrayOutput) Index(i pulumi.IntInput) GetIn
 }
 
 type GetInstanceGroupManagerStatusAllInstancesConfig struct {
+	// A bit indicating whether this configuration has been applied to all managed instances in the group.
 	Effective bool `pulumi:"effective"`
 }
 
@@ -8792,6 +10341,7 @@ type GetInstanceGroupManagerStatusAllInstancesConfigInput interface {
 }
 
 type GetInstanceGroupManagerStatusAllInstancesConfigArgs struct {
+	// A bit indicating whether this configuration has been applied to all managed instances in the group.
 	Effective pulumi.BoolInput `pulumi:"effective"`
 }
 
@@ -8846,6 +10396,7 @@ func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetInstanceGrou
 	return o
 }
 
+// A bit indicating whether this configuration has been applied to all managed instances in the group.
 func (o GetInstanceGroupManagerStatusAllInstancesConfigOutput) Effective() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatusAllInstancesConfig) bool { return v.Effective }).(pulumi.BoolOutput)
 }
@@ -8871,7 +10422,9 @@ func (o GetInstanceGroupManagerStatusAllInstancesConfigArrayOutput) Index(i pulu
 }
 
 type GetInstanceGroupManagerStatusStateful struct {
-	HasStatefulConfig  bool                                                     `pulumi:"hasStatefulConfig"`
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instance.
 	PerInstanceConfigs []GetInstanceGroupManagerStatusStatefulPerInstanceConfig `pulumi:"perInstanceConfigs"`
 }
 
@@ -8887,7 +10440,9 @@ type GetInstanceGroupManagerStatusStatefulInput interface {
 }
 
 type GetInstanceGroupManagerStatusStatefulArgs struct {
-	HasStatefulConfig  pulumi.BoolInput                                                 `pulumi:"hasStatefulConfig"`
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig pulumi.BoolInput `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instance.
 	PerInstanceConfigs GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput `pulumi:"perInstanceConfigs"`
 }
 
@@ -8942,10 +10497,12 @@ func (o GetInstanceGroupManagerStatusStatefulOutput) ToGetInstanceGroupManagerSt
 	return o
 }
 
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 func (o GetInstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatusStateful) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
 }
 
+// Status of per-instance configs on the instance.
 func (o GetInstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatusStateful) []GetInstanceGroupManagerStatusStatefulPerInstanceConfig {
 		return v.PerInstanceConfigs
@@ -8973,6 +10530,7 @@ func (o GetInstanceGroupManagerStatusStatefulArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetInstanceGroupManagerStatusStatefulPerInstanceConfig struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
 	AllEffective bool `pulumi:"allEffective"`
 }
 
@@ -8988,6 +10546,7 @@ type GetInstanceGroupManagerStatusStatefulPerInstanceConfigInput interface {
 }
 
 type GetInstanceGroupManagerStatusStatefulPerInstanceConfigArgs struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
 	AllEffective pulumi.BoolInput `pulumi:"allEffective"`
 }
 
@@ -9042,6 +10601,7 @@ func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToGetInsta
 	return o
 }
 
+// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
 func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) AllEffective() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatusStatefulPerInstanceConfig) bool { return v.AllEffective }).(pulumi.BoolOutput)
 }
@@ -9067,6 +10627,7 @@ func (o GetInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) Index
 }
 
 type GetInstanceGroupManagerStatusVersionTarget struct {
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
 	IsReached bool `pulumi:"isReached"`
 }
 
@@ -9082,6 +10643,7 @@ type GetInstanceGroupManagerStatusVersionTargetInput interface {
 }
 
 type GetInstanceGroupManagerStatusVersionTargetArgs struct {
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
 	IsReached pulumi.BoolInput `pulumi:"isReached"`
 }
 
@@ -9136,6 +10698,7 @@ func (o GetInstanceGroupManagerStatusVersionTargetOutput) ToGetInstanceGroupMana
 	return o
 }
 
+// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
 func (o GetInstanceGroupManagerStatusVersionTargetOutput) IsReached() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerStatusVersionTarget) bool { return v.IsReached }).(pulumi.BoolOutput)
 }
@@ -9161,15 +10724,24 @@ func (o GetInstanceGroupManagerStatusVersionTargetArrayOutput) Index(i pulumi.In
 }
 
 type GetInstanceGroupManagerUpdatePolicy struct {
-	MaxSurgeFixed               int    `pulumi:"maxSurgeFixed"`
-	MaxSurgePercent             int    `pulumi:"maxSurgePercent"`
-	MaxUnavailableFixed         int    `pulumi:"maxUnavailableFixed"`
-	MaxUnavailablePercent       int    `pulumi:"maxUnavailablePercent"`
-	MinReadySec                 int    `pulumi:"minReadySec"`
-	MinimalAction               string `pulumi:"minimalAction"`
+	// The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+	MaxSurgeFixed int `pulumi:"maxSurgeFixed"`
+	// The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+	MaxSurgePercent int `pulumi:"maxSurgePercent"`
+	// The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+	MaxUnavailableFixed int `pulumi:"maxUnavailableFixed"`
+	// The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+	MaxUnavailablePercent int `pulumi:"maxUnavailablePercent"`
+	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+	MinReadySec int `pulumi:"minReadySec"`
+	// Minimal action to be taken on an instance. You can specify either REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+	MinimalAction string `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 	MostDisruptiveAllowedAction string `pulumi:"mostDisruptiveAllowedAction"`
-	ReplacementMethod           string `pulumi:"replacementMethod"`
-	Type                        string `pulumi:"type"`
+	// The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	ReplacementMethod string `pulumi:"replacementMethod"`
+	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+	Type string `pulumi:"type"`
 }
 
 // GetInstanceGroupManagerUpdatePolicyInput is an input type that accepts GetInstanceGroupManagerUpdatePolicyArgs and GetInstanceGroupManagerUpdatePolicyOutput values.
@@ -9184,15 +10756,24 @@ type GetInstanceGroupManagerUpdatePolicyInput interface {
 }
 
 type GetInstanceGroupManagerUpdatePolicyArgs struct {
-	MaxSurgeFixed               pulumi.IntInput    `pulumi:"maxSurgeFixed"`
-	MaxSurgePercent             pulumi.IntInput    `pulumi:"maxSurgePercent"`
-	MaxUnavailableFixed         pulumi.IntInput    `pulumi:"maxUnavailableFixed"`
-	MaxUnavailablePercent       pulumi.IntInput    `pulumi:"maxUnavailablePercent"`
-	MinReadySec                 pulumi.IntInput    `pulumi:"minReadySec"`
-	MinimalAction               pulumi.StringInput `pulumi:"minimalAction"`
+	// The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+	MaxSurgeFixed pulumi.IntInput `pulumi:"maxSurgeFixed"`
+	// The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+	MaxSurgePercent pulumi.IntInput `pulumi:"maxSurgePercent"`
+	// The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+	MaxUnavailableFixed pulumi.IntInput `pulumi:"maxUnavailableFixed"`
+	// The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+	MaxUnavailablePercent pulumi.IntInput `pulumi:"maxUnavailablePercent"`
+	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+	MinReadySec pulumi.IntInput `pulumi:"minReadySec"`
+	// Minimal action to be taken on an instance. You can specify either REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+	MinimalAction pulumi.StringInput `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 	MostDisruptiveAllowedAction pulumi.StringInput `pulumi:"mostDisruptiveAllowedAction"`
-	ReplacementMethod           pulumi.StringInput `pulumi:"replacementMethod"`
-	Type                        pulumi.StringInput `pulumi:"type"`
+	// The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	ReplacementMethod pulumi.StringInput `pulumi:"replacementMethod"`
+	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetInstanceGroupManagerUpdatePolicyArgs) ElementType() reflect.Type {
@@ -9246,38 +10827,47 @@ func (o GetInstanceGroupManagerUpdatePolicyOutput) ToGetInstanceGroupManagerUpda
 	return o
 }
 
+// The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxSurgeFixed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgeFixed }).(pulumi.IntOutput)
 }
 
+// The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxSurgePercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgePercent }).(pulumi.IntOutput)
 }
 
+// The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxUnavailableFixed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailableFixed }).(pulumi.IntOutput)
 }
 
+// The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MaxUnavailablePercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailablePercent }).(pulumi.IntOutput)
 }
 
+// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MinReadySec() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) int { return v.MinReadySec }).(pulumi.IntOutput)
 }
 
+// Minimal action to be taken on an instance. You can specify either REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MinimalAction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.MinimalAction }).(pulumi.StringOutput)
 }
 
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
 func (o GetInstanceGroupManagerUpdatePolicyOutput) MostDisruptiveAllowedAction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.MostDisruptiveAllowedAction }).(pulumi.StringOutput)
 }
 
+// The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
 func (o GetInstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.ReplacementMethod }).(pulumi.StringOutput)
 }
 
+// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 func (o GetInstanceGroupManagerUpdatePolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerUpdatePolicy) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -9303,9 +10893,11 @@ func (o GetInstanceGroupManagerUpdatePolicyArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstanceGroupManagerVersion struct {
+	// The full URL to an instance template from which all new instances of this version will be created.
 	InstanceTemplate string `pulumi:"instanceTemplate"`
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
-	Name        string                                     `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// The number of instances calculated as a fixed number or a percentage depending on the settings.
 	TargetSizes []GetInstanceGroupManagerVersionTargetSize `pulumi:"targetSizes"`
 }
 
@@ -9321,9 +10913,11 @@ type GetInstanceGroupManagerVersionInput interface {
 }
 
 type GetInstanceGroupManagerVersionArgs struct {
+	// The full URL to an instance template from which all new instances of this version will be created.
 	InstanceTemplate pulumi.StringInput `pulumi:"instanceTemplate"`
 	// The name of the instance group. Either `name` or `selfLink` must be provided.
-	Name        pulumi.StringInput                                 `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number of instances calculated as a fixed number or a percentage depending on the settings.
 	TargetSizes GetInstanceGroupManagerVersionTargetSizeArrayInput `pulumi:"targetSizes"`
 }
 
@@ -9378,6 +10972,7 @@ func (o GetInstanceGroupManagerVersionOutput) ToGetInstanceGroupManagerVersionOu
 	return o
 }
 
+// The full URL to an instance template from which all new instances of this version will be created.
 func (o GetInstanceGroupManagerVersionOutput) InstanceTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerVersion) string { return v.InstanceTemplate }).(pulumi.StringOutput)
 }
@@ -9387,6 +10982,7 @@ func (o GetInstanceGroupManagerVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerVersion) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The number of instances calculated as a fixed number or a percentage depending on the settings.
 func (o GetInstanceGroupManagerVersionOutput) TargetSizes() GetInstanceGroupManagerVersionTargetSizeArrayOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerVersion) []GetInstanceGroupManagerVersionTargetSize {
 		return v.TargetSizes
@@ -9414,7 +11010,9 @@ func (o GetInstanceGroupManagerVersionArrayOutput) Index(i pulumi.IntInput) GetI
 }
 
 type GetInstanceGroupManagerVersionTargetSize struct {
-	Fixed   int `pulumi:"fixed"`
+	// The number of instances which are managed for this version. Conflicts with percent.
+	Fixed int `pulumi:"fixed"`
+	// The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
 	Percent int `pulumi:"percent"`
 }
 
@@ -9430,7 +11028,9 @@ type GetInstanceGroupManagerVersionTargetSizeInput interface {
 }
 
 type GetInstanceGroupManagerVersionTargetSizeArgs struct {
-	Fixed   pulumi.IntInput `pulumi:"fixed"`
+	// The number of instances which are managed for this version. Conflicts with percent.
+	Fixed pulumi.IntInput `pulumi:"fixed"`
+	// The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
 	Percent pulumi.IntInput `pulumi:"percent"`
 }
 
@@ -9485,10 +11085,12 @@ func (o GetInstanceGroupManagerVersionTargetSizeOutput) ToGetInstanceGroupManage
 	return o
 }
 
+// The number of instances which are managed for this version. Conflicts with percent.
 func (o GetInstanceGroupManagerVersionTargetSizeOutput) Fixed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerVersionTargetSize) int { return v.Fixed }).(pulumi.IntOutput)
 }
 
+// The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
 func (o GetInstanceGroupManagerVersionTargetSizeOutput) Percent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceGroupManagerVersionTargetSize) int { return v.Percent }).(pulumi.IntOutput)
 }
@@ -9727,22 +11329,31 @@ type GetInstanceNetworkInterface struct {
 	// instance can be accessed via the Internet. Structure documented below.
 	AccessConfigs []GetInstanceNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. Structure documented below.
-	AliasIpRanges            []GetInstanceNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
-	InternalIpv6PrefixLength int                                           `pulumi:"internalIpv6PrefixLength"`
-	Ipv6AccessConfigs        []GetInstanceNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType           string                                        `pulumi:"ipv6AccessType"`
-	Ipv6Address              string                                        `pulumi:"ipv6Address"`
+	AliasIpRanges []GetInstanceNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength int `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs []GetInstanceNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType string `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address string `pulumi:"ipv6Address"`
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
-	Network           string `pulumi:"network"`
+	Network string `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
 	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The private IP address assigned to the instance.
-	NetworkIp      string `pulumi:"networkIp"`
-	NicType        string `pulumi:"nicType"`
-	QueueCount     int    `pulumi:"queueCount"`
+	NetworkIp string `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	NicType string `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount int `pulumi:"queueCount"`
+	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy string `pulumi:"securityPolicy"`
-	StackType      string `pulumi:"stackType"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType string `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
 	Subnetwork string `pulumi:"subnetwork"`
 	// The project in which the subnetwork belongs.
@@ -9765,22 +11376,31 @@ type GetInstanceNetworkInterfaceArgs struct {
 	// instance can be accessed via the Internet. Structure documented below.
 	AccessConfigs GetInstanceNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An array of alias IP ranges for this network interface. Structure documented below.
-	AliasIpRanges            GetInstanceNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
-	InternalIpv6PrefixLength pulumi.IntInput                                       `pulumi:"internalIpv6PrefixLength"`
-	Ipv6AccessConfigs        GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType           pulumi.StringInput                                    `pulumi:"ipv6AccessType"`
-	Ipv6Address              pulumi.StringInput                                    `pulumi:"ipv6Address"`
+	AliasIpRanges GetInstanceNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength pulumi.IntInput `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType pulumi.StringInput `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
-	Network           pulumi.StringInput `pulumi:"network"`
+	Network pulumi.StringInput `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The private IP address assigned to the instance.
-	NetworkIp      pulumi.StringInput `pulumi:"networkIp"`
-	NicType        pulumi.StringInput `pulumi:"nicType"`
-	QueueCount     pulumi.IntInput    `pulumi:"queueCount"`
+	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	NicType pulumi.StringInput `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount pulumi.IntInput `pulumi:"queueCount"`
+	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 	SecurityPolicy pulumi.StringInput `pulumi:"securityPolicy"`
-	StackType      pulumi.StringInput `pulumi:"stackType"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType pulumi.StringInput `pulumi:"stackType"`
 	// The name or selfLink of the subnetwork attached to this interface.
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 	// The project in which the subnetwork belongs.
@@ -9849,20 +11469,24 @@ func (o GetInstanceNetworkInterfaceOutput) AliasIpRanges() GetInstanceNetworkInt
 	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceAliasIpRange { return v.AliasIpRanges }).(GetInstanceNetworkInterfaceAliasIpRangeArrayOutput)
 }
 
+// The prefix length of the primary internal IPv6 range.
 func (o GetInstanceNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) int { return v.InternalIpv6PrefixLength }).(pulumi.IntOutput)
 }
 
+// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 func (o GetInstanceNetworkInterfaceOutput) Ipv6AccessConfigs() GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) []GetInstanceNetworkInterfaceIpv6AccessConfig {
 		return v.Ipv6AccessConfigs
 	}).(GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput)
 }
 
+// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
 func (o GetInstanceNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
+// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 func (o GetInstanceNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
@@ -9877,6 +11501,7 @@ func (o GetInstanceNetworkInterfaceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
 func (o GetInstanceNetworkInterfaceOutput) NetworkAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkAttachment }).(pulumi.StringOutput)
 }
@@ -9886,18 +11511,22 @@ func (o GetInstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
 func (o GetInstanceNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
 
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 func (o GetInstanceNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) int { return v.QueueCount }).(pulumi.IntOutput)
 }
 
+// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 func (o GetInstanceNetworkInterfaceOutput) SecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
 
+// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 func (o GetInstanceNetworkInterfaceOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.StackType }).(pulumi.StringOutput)
 }
@@ -9940,7 +11569,8 @@ type GetInstanceNetworkInterfaceAccessConfig struct {
 	NetworkTier string `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
-	SecurityPolicy      string `pulumi:"securityPolicy"`
+	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+	SecurityPolicy string `pulumi:"securityPolicy"`
 }
 
 // GetInstanceNetworkInterfaceAccessConfigInput is an input type that accepts GetInstanceNetworkInterfaceAccessConfigArgs and GetInstanceNetworkInterfaceAccessConfigOutput values.
@@ -9962,7 +11592,8 @@ type GetInstanceNetworkInterfaceAccessConfigArgs struct {
 	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
-	SecurityPolicy      pulumi.StringInput `pulumi:"securityPolicy"`
+	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+	SecurityPolicy pulumi.StringInput `pulumi:"securityPolicy"`
 }
 
 func (GetInstanceNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
@@ -10032,6 +11663,7 @@ func (o GetInstanceNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pul
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
 }
 
+// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 func (o GetInstanceNetworkInterfaceAccessConfigOutput) SecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceAccessConfig) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
@@ -10169,7 +11801,9 @@ func (o GetInstanceNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetInstanceNetworkInterfaceIpv6AccessConfig struct {
-	ExternalIpv6             string `pulumi:"externalIpv6"`
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+	ExternalIpv6 string `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength string `pulumi:"externalIpv6PrefixLength"`
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name string `pulumi:"name"`
@@ -10177,7 +11811,8 @@ type GetInstanceNetworkInterfaceIpv6AccessConfig struct {
 	NetworkTier string `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
-	SecurityPolicy      string `pulumi:"securityPolicy"`
+	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+	SecurityPolicy string `pulumi:"securityPolicy"`
 }
 
 // GetInstanceNetworkInterfaceIpv6AccessConfigInput is an input type that accepts GetInstanceNetworkInterfaceIpv6AccessConfigArgs and GetInstanceNetworkInterfaceIpv6AccessConfigOutput values.
@@ -10192,7 +11827,9 @@ type GetInstanceNetworkInterfaceIpv6AccessConfigInput interface {
 }
 
 type GetInstanceNetworkInterfaceIpv6AccessConfigArgs struct {
-	ExternalIpv6             pulumi.StringInput `pulumi:"externalIpv6"`
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+	ExternalIpv6 pulumi.StringInput `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength pulumi.StringInput `pulumi:"externalIpv6PrefixLength"`
 	// The name of the instance. One of `name` or `selfLink` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -10200,7 +11837,8 @@ type GetInstanceNetworkInterfaceIpv6AccessConfigArgs struct {
 	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
 	// The DNS domain name for the public PTR record.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
-	SecurityPolicy      pulumi.StringInput `pulumi:"securityPolicy"`
+	// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+	SecurityPolicy pulumi.StringInput `pulumi:"securityPolicy"`
 }
 
 func (GetInstanceNetworkInterfaceIpv6AccessConfigArgs) ElementType() reflect.Type {
@@ -10254,10 +11892,12 @@ func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) ToGetInstanceNetworkI
 	return o
 }
 
+// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.ExternalIpv6 }).(pulumi.StringOutput)
 }
 
+// The prefix length of the external IPv6 range.
 func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.ExternalIpv6PrefixLength }).(pulumi.StringOutput)
 }
@@ -10277,6 +11917,7 @@ func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) PublicPtrDomainName()
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
 }
 
+// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
 func (o GetInstanceNetworkInterfaceIpv6AccessConfigOutput) SecurityPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterfaceIpv6AccessConfig) string { return v.SecurityPolicy }).(pulumi.StringOutput)
 }
@@ -10399,6 +12040,7 @@ func (o GetInstanceNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstanceParam struct {
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 }
 
@@ -10414,6 +12056,7 @@ type GetInstanceParamInput interface {
 }
 
 type GetInstanceParamArgs struct {
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 }
 
@@ -10468,6 +12111,7 @@ func (o GetInstanceParamOutput) ToGetInstanceParamOutputWithContext(ctx context.
 	return o
 }
 
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 func (o GetInstanceParamOutput) ResourceManagerTags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstanceParam) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
 }
@@ -10493,6 +12137,7 @@ func (o GetInstanceParamArrayOutput) Index(i pulumi.IntInput) GetInstanceParamOu
 }
 
 type GetInstanceReservationAffinity struct {
+	// Specifies the label selector for the reservation to use.
 	SpecificReservations []GetInstanceReservationAffinitySpecificReservation `pulumi:"specificReservations"`
 	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
@@ -10510,6 +12155,7 @@ type GetInstanceReservationAffinityInput interface {
 }
 
 type GetInstanceReservationAffinityArgs struct {
+	// Specifies the label selector for the reservation to use.
 	SpecificReservations GetInstanceReservationAffinitySpecificReservationArrayInput `pulumi:"specificReservations"`
 	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -10566,6 +12212,7 @@ func (o GetInstanceReservationAffinityOutput) ToGetInstanceReservationAffinityOu
 	return o
 }
 
+// Specifies the label selector for the reservation to use.
 func (o GetInstanceReservationAffinityOutput) SpecificReservations() GetInstanceReservationAffinitySpecificReservationArrayOutput {
 	return o.ApplyT(func(v GetInstanceReservationAffinity) []GetInstanceReservationAffinitySpecificReservation {
 		return v.SpecificReservations
@@ -10598,7 +12245,9 @@ func (o GetInstanceReservationAffinityArrayOutput) Index(i pulumi.IntInput) GetI
 }
 
 type GetInstanceReservationAffinitySpecificReservation struct {
-	Key    string   `pulumi:"key"`
+	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+	Key string `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
 	Values []string `pulumi:"values"`
 }
 
@@ -10614,7 +12263,9 @@ type GetInstanceReservationAffinitySpecificReservationInput interface {
 }
 
 type GetInstanceReservationAffinitySpecificReservationArgs struct {
-	Key    pulumi.StringInput      `pulumi:"key"`
+	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -10669,10 +12320,12 @@ func (o GetInstanceReservationAffinitySpecificReservationOutput) ToGetInstanceRe
 	return o
 }
 
+// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
 func (o GetInstanceReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Corresponds to the label values of a reservation resource.
 func (o GetInstanceReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -10702,12 +12355,19 @@ type GetInstanceScheduling struct {
 	// restarted if it was terminated by Compute Engine (not a user).
 	AutomaticRestart bool `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-	InstanceTerminationAction string                                         `pulumi:"instanceTerminationAction"`
-	LocalSsdRecoveryTimeouts  []GetInstanceSchedulingLocalSsdRecoveryTimeout `pulumi:"localSsdRecoveryTimeouts"`
-	MaintenanceInterval       string                                         `pulumi:"maintenanceInterval"`
-	MaxRunDurations           []GetInstanceSchedulingMaxRunDuration          `pulumi:"maxRunDurations"`
-	MinNodeCpus               int                                            `pulumi:"minNodeCpus"`
-	NodeAffinities            []GetInstanceSchedulingNodeAffinity            `pulumi:"nodeAffinities"`
+	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while
+	//   recovery of the Local Ssd state is attempted. Its value should be in
+	//   between 0 and 168 hours with hour granularity and the default value being 1
+	//   hour.
+	LocalSsdRecoveryTimeouts []GetInstanceSchedulingLocalSsdRecoveryTimeout `pulumi:"localSsdRecoveryTimeouts"`
+	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+	// The timeout for new network connections to hosts.
+	MaxRunDurations []GetInstanceSchedulingMaxRunDuration `pulumi:"maxRunDurations"`
+	MinNodeCpus     int                                   `pulumi:"minNodeCpus"`
+	// Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+	NodeAffinities []GetInstanceSchedulingNodeAffinity `pulumi:"nodeAffinities"`
 	// Describes maintenance behavior for the
 	// instance. One of `MIGRATE` or `TERMINATE`, for more info, read
 	// [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options)
@@ -10734,12 +12394,19 @@ type GetInstanceSchedulingArgs struct {
 	// restarted if it was terminated by Compute Engine (not a user).
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-	InstanceTerminationAction pulumi.StringInput                                     `pulumi:"instanceTerminationAction"`
-	LocalSsdRecoveryTimeouts  GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayInput `pulumi:"localSsdRecoveryTimeouts"`
-	MaintenanceInterval       pulumi.StringInput                                     `pulumi:"maintenanceInterval"`
-	MaxRunDurations           GetInstanceSchedulingMaxRunDurationArrayInput          `pulumi:"maxRunDurations"`
-	MinNodeCpus               pulumi.IntInput                                        `pulumi:"minNodeCpus"`
-	NodeAffinities            GetInstanceSchedulingNodeAffinityArrayInput            `pulumi:"nodeAffinities"`
+	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while
+	//   recovery of the Local Ssd state is attempted. Its value should be in
+	//   between 0 and 168 hours with hour granularity and the default value being 1
+	//   hour.
+	LocalSsdRecoveryTimeouts GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayInput `pulumi:"localSsdRecoveryTimeouts"`
+	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+	// The timeout for new network connections to hosts.
+	MaxRunDurations GetInstanceSchedulingMaxRunDurationArrayInput `pulumi:"maxRunDurations"`
+	MinNodeCpus     pulumi.IntInput                               `pulumi:"minNodeCpus"`
+	// Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+	NodeAffinities GetInstanceSchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
 	// Describes maintenance behavior for the
 	// instance. One of `MIGRATE` or `TERMINATE`, for more info, read
 	// [here](https://cloud.google.com/compute/docs/instances/setting-instance-scheduling-options)
@@ -10812,16 +12479,23 @@ func (o GetInstanceSchedulingOutput) InstanceTerminationAction() pulumi.StringOu
 	return o.ApplyT(func(v GetInstanceScheduling) string { return v.InstanceTerminationAction }).(pulumi.StringOutput)
 }
 
+// Specifies the maximum amount of time a Local Ssd Vm should wait while
+//
+//	recovery of the Local Ssd state is attempted. Its value should be in
+//	between 0 and 168 hours with hour granularity and the default value being 1
+//	hour.
 func (o GetInstanceSchedulingOutput) LocalSsdRecoveryTimeouts() GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) []GetInstanceSchedulingLocalSsdRecoveryTimeout {
 		return v.LocalSsdRecoveryTimeouts
 	}).(GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput)
 }
 
+// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
 func (o GetInstanceSchedulingOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
 
+// The timeout for new network connections to hosts.
 func (o GetInstanceSchedulingOutput) MaxRunDurations() GetInstanceSchedulingMaxRunDurationArrayOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) []GetInstanceSchedulingMaxRunDuration { return v.MaxRunDurations }).(GetInstanceSchedulingMaxRunDurationArrayOutput)
 }
@@ -10830,6 +12504,7 @@ func (o GetInstanceSchedulingOutput) MinNodeCpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) int { return v.MinNodeCpus }).(pulumi.IntOutput)
 }
 
+// Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
 func (o GetInstanceSchedulingOutput) NodeAffinities() GetInstanceSchedulingNodeAffinityArrayOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) []GetInstanceSchedulingNodeAffinity { return v.NodeAffinities }).(GetInstanceSchedulingNodeAffinityArrayOutput)
 }
@@ -10872,7 +12547,13 @@ func (o GetInstanceSchedulingArrayOutput) Index(i pulumi.IntInput) GetInstanceSc
 }
 
 type GetInstanceSchedulingLocalSsdRecoveryTimeout struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -10888,7 +12569,13 @@ type GetInstanceSchedulingLocalSsdRecoveryTimeoutInput interface {
 }
 
 type GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -10943,10 +12630,16 @@ func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput) ToGetInstanceSchedul
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
 func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceSchedulingLocalSsdRecoveryTimeout) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
 func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceSchedulingLocalSsdRecoveryTimeout) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -10972,7 +12665,13 @@ func (o GetInstanceSchedulingLocalSsdRecoveryTimeoutArrayOutput) Index(i pulumi.
 }
 
 type GetInstanceSchedulingMaxRunDuration struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -10988,7 +12687,13 @@ type GetInstanceSchedulingMaxRunDurationInput interface {
 }
 
 type GetInstanceSchedulingMaxRunDurationArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -11043,10 +12748,16 @@ func (o GetInstanceSchedulingMaxRunDurationOutput) ToGetInstanceSchedulingMaxRun
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
 func (o GetInstanceSchedulingMaxRunDurationOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceSchedulingMaxRunDuration) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
 func (o GetInstanceSchedulingMaxRunDurationOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceSchedulingMaxRunDuration) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -11517,9 +13228,12 @@ func (o GetInstanceShieldedInstanceConfigArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetInstanceTemplateAdvancedMachineFeature struct {
+	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
-	ThreadsPerCore             int  `pulumi:"threadsPerCore"`
-	VisibleCoreCount           int  `pulumi:"visibleCoreCount"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+	VisibleCoreCount int `pulumi:"visibleCoreCount"`
 }
 
 // GetInstanceTemplateAdvancedMachineFeatureInput is an input type that accepts GetInstanceTemplateAdvancedMachineFeatureArgs and GetInstanceTemplateAdvancedMachineFeatureOutput values.
@@ -11534,9 +13248,12 @@ type GetInstanceTemplateAdvancedMachineFeatureInput interface {
 }
 
 type GetInstanceTemplateAdvancedMachineFeatureArgs struct {
+	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
-	ThreadsPerCore             pulumi.IntInput  `pulumi:"threadsPerCore"`
-	VisibleCoreCount           pulumi.IntInput  `pulumi:"visibleCoreCount"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+	VisibleCoreCount pulumi.IntInput `pulumi:"visibleCoreCount"`
 }
 
 func (GetInstanceTemplateAdvancedMachineFeatureArgs) ElementType() reflect.Type {
@@ -11590,14 +13307,17 @@ func (o GetInstanceTemplateAdvancedMachineFeatureOutput) ToGetInstanceTemplateAd
 	return o
 }
 
+// Whether to enable nested virtualization or not.
 func (o GetInstanceTemplateAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o GetInstanceTemplateAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
 }
 
+// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
 func (o GetInstanceTemplateAdvancedMachineFeatureOutput) VisibleCoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) int { return v.VisibleCoreCount }).(pulumi.IntOutput)
 }
@@ -11757,7 +13477,8 @@ type GetInstanceTemplateDisk struct {
 	// sets the number of I/O operations per second that the disk can handle.
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-	ProvisionedIops     int               `pulumi:"provisionedIops"`
+	ProvisionedIops int `pulumi:"provisionedIops"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
@@ -11772,9 +13493,22 @@ type GetInstanceTemplateDisk struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-	SourceImage                  string                                               `pulumi:"sourceImage"`
-	SourceImageEncryptionKeys    []GetInstanceTemplateDiskSourceImageEncryptionKey    `pulumi:"sourceImageEncryptionKeys"`
-	SourceSnapshot               string                                               `pulumi:"sourceSnapshot"`
+	SourceImage string `pulumi:"sourceImage"`
+	// The customer-supplied encryption key of the source
+	// image. Required if the source image is protected by a
+	// customer-supplied encryption key.
+	//
+	// Instance templates do not store customer-supplied
+	// encryption keys, so you cannot create disks for
+	// instances in a managed instance group if the source
+	// images are encrypted with your own keys.
+	SourceImageEncryptionKeys []GetInstanceTemplateDiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKeys"`
+	// The source snapshot to create this disk. When creating
+	// a new instance, one of initializeParams.sourceSnapshot,
+	// initializeParams.sourceImage, or disks.source is
+	// required except for local SSD.
+	SourceSnapshot string `pulumi:"sourceSnapshot"`
+	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKeys []GetInstanceTemplateDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
@@ -11829,7 +13563,8 @@ type GetInstanceTemplateDiskArgs struct {
 	// sets the number of I/O operations per second that the disk can handle.
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-	ProvisionedIops     pulumi.IntInput       `pulumi:"provisionedIops"`
+	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
@@ -11844,9 +13579,22 @@ type GetInstanceTemplateDiskArgs struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-	SourceImage                  pulumi.StringInput                                           `pulumi:"sourceImage"`
-	SourceImageEncryptionKeys    GetInstanceTemplateDiskSourceImageEncryptionKeyArrayInput    `pulumi:"sourceImageEncryptionKeys"`
-	SourceSnapshot               pulumi.StringInput                                           `pulumi:"sourceSnapshot"`
+	SourceImage pulumi.StringInput `pulumi:"sourceImage"`
+	// The customer-supplied encryption key of the source
+	// image. Required if the source image is protected by a
+	// customer-supplied encryption key.
+	//
+	// Instance templates do not store customer-supplied
+	// encryption keys, so you cannot create disks for
+	// instances in a managed instance group if the source
+	// images are encrypted with your own keys.
+	SourceImageEncryptionKeys GetInstanceTemplateDiskSourceImageEncryptionKeyArrayInput `pulumi:"sourceImageEncryptionKeys"`
+	// The source snapshot to create this disk. When creating
+	// a new instance, one of initializeParams.sourceSnapshot,
+	// initializeParams.sourceImage, or disks.source is
+	// required except for local SSD.
+	SourceSnapshot pulumi.StringInput `pulumi:"sourceSnapshot"`
+	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKeys GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput `pulumi:"sourceSnapshotEncryptionKeys"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -11976,6 +13724,7 @@ func (o GetInstanceTemplateDiskOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
 }
 
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 func (o GetInstanceTemplateDiskOutput) ResourceManagerTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
@@ -12003,16 +13752,29 @@ func (o GetInstanceTemplateDiskOutput) SourceImage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.SourceImage }).(pulumi.StringOutput)
 }
 
+// The customer-supplied encryption key of the source
+// image. Required if the source image is protected by a
+// customer-supplied encryption key.
+//
+// Instance templates do not store customer-supplied
+// encryption keys, so you cannot create disks for
+// instances in a managed instance group if the source
+// images are encrypted with your own keys.
 func (o GetInstanceTemplateDiskOutput) SourceImageEncryptionKeys() GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) []GetInstanceTemplateDiskSourceImageEncryptionKey {
 		return v.SourceImageEncryptionKeys
 	}).(GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput)
 }
 
+// The source snapshot to create this disk. When creating
+// a new instance, one of initializeParams.sourceSnapshot,
+// initializeParams.sourceImage, or disks.source is
+// required except for local SSD.
 func (o GetInstanceTemplateDiskOutput) SourceSnapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.SourceSnapshot }).(pulumi.StringOutput)
 }
 
+// The customer-supplied encryption key of the source snapshot.
 func (o GetInstanceTemplateDiskOutput) SourceSnapshotEncryptionKeys() GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) []GetInstanceTemplateDiskSourceSnapshotEncryptionKey {
 		return v.SourceSnapshotEncryptionKeys
@@ -12143,7 +13905,10 @@ func (o GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntI
 
 type GetInstanceTemplateDiskSourceImageEncryptionKey struct {
 	// The self link of the encryption key that is stored in Google Cloud KMS
-	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -12160,7 +13925,10 @@ type GetInstanceTemplateDiskSourceImageEncryptionKeyInput interface {
 
 type GetInstanceTemplateDiskSourceImageEncryptionKeyArgs struct {
 	// The self link of the encryption key that is stored in Google Cloud KMS
-	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -12220,6 +13988,9 @@ func (o GetInstanceTemplateDiskSourceImageEncryptionKeyOutput) KmsKeySelfLink() 
 	return o.ApplyT(func(v GetInstanceTemplateDiskSourceImageEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
 
+// The service account being used for the encryption
+// request for the given KMS key. If absent, the Compute
+// Engine default service account is used.
 func (o GetInstanceTemplateDiskSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDiskSourceImageEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
@@ -12246,7 +14017,10 @@ func (o GetInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput) Index(i pulu
 
 type GetInstanceTemplateDiskSourceSnapshotEncryptionKey struct {
 	// The self link of the encryption key that is stored in Google Cloud KMS
-	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -12263,7 +14037,10 @@ type GetInstanceTemplateDiskSourceSnapshotEncryptionKeyInput interface {
 
 type GetInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs struct {
 	// The self link of the encryption key that is stored in Google Cloud KMS
-	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -12323,6 +14100,9 @@ func (o GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink
 	return o.ApplyT(func(v GetInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
 
+// The service account being used for the encryption
+// request for the given KMS key. If absent, the Compute
+// Engine default service account is used.
 func (o GetInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
@@ -12464,24 +14244,32 @@ type GetInstanceTemplateNetworkInterface struct {
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges            []GetInstanceTemplateNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
-	InternalIpv6PrefixLength int                                                   `pulumi:"internalIpv6PrefixLength"`
-	Ipv6AccessConfigs        []GetInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType           string                                                `pulumi:"ipv6AccessType"`
-	Ipv6Address              string                                                `pulumi:"ipv6Address"`
+	AliasIpRanges []GetInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength int `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs []GetInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType string `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address string `pulumi:"ipv6Address"`
 	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
 	// Use `network` attribute for Legacy or Auto subnetted networks and
 	// `subnetwork` for custom subnetted networks.
-	Network           string `pulumi:"network"`
+	Network string `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
 	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
-	NetworkIp  string `pulumi:"networkIp"`
-	NicType    string `pulumi:"nicType"`
-	QueueCount int    `pulumi:"queueCount"`
-	StackType  string `pulumi:"stackType"`
+	NetworkIp string `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	NicType string `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount int `pulumi:"queueCount"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType string `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -12513,24 +14301,32 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges            GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
-	InternalIpv6PrefixLength pulumi.IntInput                                               `pulumi:"internalIpv6PrefixLength"`
-	Ipv6AccessConfigs        GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType           pulumi.StringInput                                            `pulumi:"ipv6AccessType"`
-	Ipv6Address              pulumi.StringInput                                            `pulumi:"ipv6Address"`
+	AliasIpRanges GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength pulumi.IntInput `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType pulumi.StringInput `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
 	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
 	// Use `network` attribute for Legacy or Auto subnetted networks and
 	// `subnetwork` for custom subnetted networks.
-	Network           pulumi.StringInput `pulumi:"network"`
+	Network pulumi.StringInput `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
-	NetworkIp  pulumi.StringInput `pulumi:"networkIp"`
-	NicType    pulumi.StringInput `pulumi:"nicType"`
-	QueueCount pulumi.IntInput    `pulumi:"queueCount"`
-	StackType  pulumi.StringInput `pulumi:"stackType"`
+	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	NicType pulumi.StringInput `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount pulumi.IntInput `pulumi:"queueCount"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType pulumi.StringInput `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -12612,20 +14408,24 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() GetInstanceTe
 	}).(GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
 }
 
+// The prefix length of the primary internal IPv6 range.
 func (o GetInstanceTemplateNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) int { return v.InternalIpv6PrefixLength }).(pulumi.IntOutput)
 }
 
+// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 func (o GetInstanceTemplateNetworkInterfaceOutput) Ipv6AccessConfigs() GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceIpv6AccessConfig {
 		return v.Ipv6AccessConfigs
 	}).(GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput)
 }
 
+// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
 func (o GetInstanceTemplateNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
+// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 func (o GetInstanceTemplateNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
@@ -12642,6 +14442,7 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringOutput
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
 func (o GetInstanceTemplateNetworkInterfaceOutput) NetworkAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NetworkAttachment }).(pulumi.StringOutput)
 }
@@ -12652,14 +14453,17 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringOutp
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
 func (o GetInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
 
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 func (o GetInstanceTemplateNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) int { return v.QueueCount }).(pulumi.IntOutput)
 }
 
+// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 func (o GetInstanceTemplateNetworkInterfaceOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.StackType }).(pulumi.StringOutput)
 }
@@ -12704,7 +14508,8 @@ type GetInstanceTemplateNetworkInterfaceAccessConfig struct {
 	// The [networking tier][network-tier] used for configuring
 	// this instance template. This field can take the following values: PREMIUM or
 	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
-	NetworkTier         string `pulumi:"networkTier"`
+	NetworkTier string `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
 }
 
@@ -12726,7 +14531,8 @@ type GetInstanceTemplateNetworkInterfaceAccessConfigArgs struct {
 	// The [networking tier][network-tier] used for configuring
 	// this instance template. This field can take the following values: PREMIUM or
 	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
-	NetworkTier         pulumi.StringInput `pulumi:"networkTier"`
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
 }
 
@@ -12794,6 +14600,7 @@ func (o GetInstanceTemplateNetworkInterfaceAccessConfigOutput) NetworkTier() pul
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceAccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
 }
 
+// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
 func (o GetInstanceTemplateNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceAccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
 }
@@ -12943,14 +14750,17 @@ func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulu
 }
 
 type GetInstanceTemplateNetworkInterfaceIpv6AccessConfig struct {
-	ExternalIpv6             string `pulumi:"externalIpv6"`
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 string `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength string `pulumi:"externalIpv6PrefixLength"`
 	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name string `pulumi:"name"`
 	// The [networking tier][network-tier] used for configuring
 	// this instance template. This field can take the following values: PREMIUM or
 	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
-	NetworkTier         string `pulumi:"networkTier"`
+	NetworkTier string `pulumi:"networkTier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
 }
 
@@ -12966,14 +14776,17 @@ type GetInstanceTemplateNetworkInterfaceIpv6AccessConfigInput interface {
 }
 
 type GetInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs struct {
-	ExternalIpv6             pulumi.StringInput `pulumi:"externalIpv6"`
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 pulumi.StringInput `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength pulumi.StringInput `pulumi:"externalIpv6PrefixLength"`
 	// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The [networking tier][network-tier] used for configuring
 	// this instance template. This field can take the following values: PREMIUM or
 	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
-	NetworkTier         pulumi.StringInput `pulumi:"networkTier"`
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
 }
 
@@ -13028,10 +14841,12 @@ func (o GetInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ToGetInstance
 	return o
 }
 
+// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
 func (o GetInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.ExternalIpv6 }).(pulumi.StringOutput)
 }
 
+// The prefix length of the external IPv6 range.
 func (o GetInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.ExternalIpv6PrefixLength }).(pulumi.StringOutput)
 }
@@ -13048,6 +14863,7 @@ func (o GetInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) NetworkTier()
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
 }
 
+// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
 func (o GetInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
 }
@@ -13170,6 +14986,7 @@ func (o GetInstanceTemplateNetworkPerformanceConfigArrayOutput) Index(i pulumi.I
 }
 
 type GetInstanceTemplateReservationAffinity struct {
+	// Specifies the label selector for the reservation to use.
 	SpecificReservations []GetInstanceTemplateReservationAffinitySpecificReservation `pulumi:"specificReservations"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
@@ -13187,6 +15004,7 @@ type GetInstanceTemplateReservationAffinityInput interface {
 }
 
 type GetInstanceTemplateReservationAffinityArgs struct {
+	// Specifies the label selector for the reservation to use.
 	SpecificReservations GetInstanceTemplateReservationAffinitySpecificReservationArrayInput `pulumi:"specificReservations"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -13243,6 +15061,7 @@ func (o GetInstanceTemplateReservationAffinityOutput) ToGetInstanceTemplateReser
 	return o
 }
 
+// Specifies the label selector for the reservation to use.
 func (o GetInstanceTemplateReservationAffinityOutput) SpecificReservations() GetInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateReservationAffinity) []GetInstanceTemplateReservationAffinitySpecificReservation {
 		return v.SpecificReservations
@@ -13276,7 +15095,8 @@ func (o GetInstanceTemplateReservationAffinityArrayOutput) Index(i pulumi.IntInp
 
 type GetInstanceTemplateReservationAffinitySpecificReservation struct {
 	// The key for the node affinity label.
-	Key    string   `pulumi:"key"`
+	Key string `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
 	Values []string `pulumi:"values"`
 }
 
@@ -13293,7 +15113,8 @@ type GetInstanceTemplateReservationAffinitySpecificReservationInput interface {
 
 type GetInstanceTemplateReservationAffinitySpecificReservationArgs struct {
 	// The key for the node affinity label.
-	Key    pulumi.StringInput      `pulumi:"key"`
+	Key pulumi.StringInput `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -13353,6 +15174,7 @@ func (o GetInstanceTemplateReservationAffinitySpecificReservationOutput) Key() p
 	return o.ApplyT(func(v GetInstanceTemplateReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Corresponds to the label values of a reservation resource.
 func (o GetInstanceTemplateReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -13383,11 +15205,18 @@ type GetInstanceTemplateScheduling struct {
 	// terminated by a user). This defaults to true.
 	AutomaticRestart bool `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-	InstanceTerminationAction string                                                 `pulumi:"instanceTerminationAction"`
-	LocalSsdRecoveryTimeouts  []GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout `pulumi:"localSsdRecoveryTimeouts"`
-	MaintenanceInterval       string                                                 `pulumi:"maintenanceInterval"`
-	MaxRunDurations           []GetInstanceTemplateSchedulingMaxRunDuration          `pulumi:"maxRunDurations"`
-	MinNodeCpus               int                                                    `pulumi:"minNodeCpus"`
+	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while
+	//   recovery of the Local Ssd state is attempted. Its value should be in
+	//   between 0 and 168 hours with hour granularity and the default value being 1
+	//   hour.
+	LocalSsdRecoveryTimeouts []GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout `pulumi:"localSsdRecoveryTimeouts"`
+	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+	// The timeout for new network connections to hosts.
+	MaxRunDurations []GetInstanceTemplateSchedulingMaxRunDuration `pulumi:"maxRunDurations"`
+	// Minimum number of cpus for the instance.
+	MinNodeCpus int `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -13422,11 +15251,18 @@ type GetInstanceTemplateSchedulingArgs struct {
 	// terminated by a user). This defaults to true.
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-	InstanceTerminationAction pulumi.StringInput                                             `pulumi:"instanceTerminationAction"`
-	LocalSsdRecoveryTimeouts  GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput `pulumi:"localSsdRecoveryTimeouts"`
-	MaintenanceInterval       pulumi.StringInput                                             `pulumi:"maintenanceInterval"`
-	MaxRunDurations           GetInstanceTemplateSchedulingMaxRunDurationArrayInput          `pulumi:"maxRunDurations"`
-	MinNodeCpus               pulumi.IntInput                                                `pulumi:"minNodeCpus"`
+	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while
+	//   recovery of the Local Ssd state is attempted. Its value should be in
+	//   between 0 and 168 hours with hour granularity and the default value being 1
+	//   hour.
+	LocalSsdRecoveryTimeouts GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput `pulumi:"localSsdRecoveryTimeouts"`
+	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+	// The timeout for new network connections to hosts.
+	MaxRunDurations GetInstanceTemplateSchedulingMaxRunDurationArrayInput `pulumi:"maxRunDurations"`
+	// Minimum number of cpus for the instance.
+	MinNodeCpus pulumi.IntInput `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -13507,22 +15343,30 @@ func (o GetInstanceTemplateSchedulingOutput) InstanceTerminationAction() pulumi.
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) string { return v.InstanceTerminationAction }).(pulumi.StringOutput)
 }
 
+// Specifies the maximum amount of time a Local Ssd Vm should wait while
+//
+//	recovery of the Local Ssd state is attempted. Its value should be in
+//	between 0 and 168 hours with hour granularity and the default value being 1
+//	hour.
 func (o GetInstanceTemplateSchedulingOutput) LocalSsdRecoveryTimeouts() GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) []GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
 		return v.LocalSsdRecoveryTimeouts
 	}).(GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput)
 }
 
+// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
 func (o GetInstanceTemplateSchedulingOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
 
+// The timeout for new network connections to hosts.
 func (o GetInstanceTemplateSchedulingOutput) MaxRunDurations() GetInstanceTemplateSchedulingMaxRunDurationArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) []GetInstanceTemplateSchedulingMaxRunDuration {
 		return v.MaxRunDurations
 	}).(GetInstanceTemplateSchedulingMaxRunDurationArrayOutput)
 }
 
+// Minimum number of cpus for the instance.
 func (o GetInstanceTemplateSchedulingOutput) MinNodeCpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) int { return v.MinNodeCpus }).(pulumi.IntOutput)
 }
@@ -13577,7 +15421,13 @@ func (o GetInstanceTemplateSchedulingArrayOutput) Index(i pulumi.IntInput) GetIn
 }
 
 type GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -13593,7 +15443,13 @@ type GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput interface {
 }
 
 type GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -13648,10 +15504,16 @@ func (o GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) ToGetInstanc
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
 func (o GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
 func (o GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -13677,7 +15539,13 @@ func (o GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput) Index(i
 }
 
 type GetInstanceTemplateSchedulingMaxRunDuration struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -13693,7 +15561,13 @@ type GetInstanceTemplateSchedulingMaxRunDurationInput interface {
 }
 
 type GetInstanceTemplateSchedulingMaxRunDurationArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -13748,10 +15622,16 @@ func (o GetInstanceTemplateSchedulingMaxRunDurationOutput) ToGetInstanceTemplate
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
 func (o GetInstanceTemplateSchedulingMaxRunDurationOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateSchedulingMaxRunDuration) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
 func (o GetInstanceTemplateSchedulingMaxRunDurationOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateSchedulingMaxRunDuration) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -14122,6 +16002,7 @@ func (o GetInstanceTemplateShieldedInstanceConfigArrayOutput) Index(i pulumi.Int
 }
 
 type GetRegionDiskAsyncPrimaryDisk struct {
+	// Primary disk for asynchronous disk replication.
 	Disk string `pulumi:"disk"`
 }
 
@@ -14137,6 +16018,7 @@ type GetRegionDiskAsyncPrimaryDiskInput interface {
 }
 
 type GetRegionDiskAsyncPrimaryDiskArgs struct {
+	// Primary disk for asynchronous disk replication.
 	Disk pulumi.StringInput `pulumi:"disk"`
 }
 
@@ -14191,6 +16073,7 @@ func (o GetRegionDiskAsyncPrimaryDiskOutput) ToGetRegionDiskAsyncPrimaryDiskOutp
 	return o
 }
 
+// Primary disk for asynchronous disk replication.
 func (o GetRegionDiskAsyncPrimaryDiskOutput) Disk() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskAsyncPrimaryDisk) string { return v.Disk }).(pulumi.StringOutput)
 }
@@ -14216,9 +16099,14 @@ func (o GetRegionDiskAsyncPrimaryDiskArrayOutput) Index(i pulumi.IntInput) GetRe
 }
 
 type GetRegionDiskDiskEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	RawKey     string `pulumi:"rawKey"`
-	Sha256     string `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 string `pulumi:"sha256"`
 }
 
 // GetRegionDiskDiskEncryptionKeyInput is an input type that accepts GetRegionDiskDiskEncryptionKeyArgs and GetRegionDiskDiskEncryptionKeyOutput values.
@@ -14233,9 +16121,14 @@ type GetRegionDiskDiskEncryptionKeyInput interface {
 }
 
 type GetRegionDiskDiskEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	RawKey     pulumi.StringInput `pulumi:"rawKey"`
-	Sha256     pulumi.StringInput `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
 }
 
 func (GetRegionDiskDiskEncryptionKeyArgs) ElementType() reflect.Type {
@@ -14289,14 +16182,19 @@ func (o GetRegionDiskDiskEncryptionKeyOutput) ToGetRegionDiskDiskEncryptionKeyOu
 	return o
 }
 
+// The name of the encryption key that is stored in Google Cloud KMS.
 func (o GetRegionDiskDiskEncryptionKeyOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
 func (o GetRegionDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
 }
 
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
 func (o GetRegionDiskDiskEncryptionKeyOutput) Sha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
 }
@@ -14322,6 +16220,7 @@ func (o GetRegionDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetR
 }
 
 type GetRegionDiskGuestOsFeature struct {
+	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE"]
 	Type string `pulumi:"type"`
 }
 
@@ -14337,6 +16236,7 @@ type GetRegionDiskGuestOsFeatureInput interface {
 }
 
 type GetRegionDiskGuestOsFeatureArgs struct {
+	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE"]
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -14391,6 +16291,7 @@ func (o GetRegionDiskGuestOsFeatureOutput) ToGetRegionDiskGuestOsFeatureOutputWi
 	return o
 }
 
+// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Possible values: ["MULTI_IP_SUBNET", "SECURE_BOOT", "SEV_CAPABLE", "UEFI_COMPATIBLE", "VIRTIO_SCSI_MULTIQUEUE", "WINDOWS", "GVNIC", "SEV_LIVE_MIGRATABLE", "SEV_SNP_CAPABLE", "SUSPEND_RESUME_COMPATIBLE", "TDX_CAPABLE"]
 func (o GetRegionDiskGuestOsFeatureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -14416,9 +16317,14 @@ func (o GetRegionDiskGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GetRegi
 }
 
 type GetRegionDiskSourceSnapshotEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName string `pulumi:"kmsKeyName"`
-	RawKey     string `pulumi:"rawKey"`
-	Sha256     string `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 string `pulumi:"sha256"`
 }
 
 // GetRegionDiskSourceSnapshotEncryptionKeyInput is an input type that accepts GetRegionDiskSourceSnapshotEncryptionKeyArgs and GetRegionDiskSourceSnapshotEncryptionKeyOutput values.
@@ -14433,9 +16339,14 @@ type GetRegionDiskSourceSnapshotEncryptionKeyInput interface {
 }
 
 type GetRegionDiskSourceSnapshotEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
-	RawKey     pulumi.StringInput `pulumi:"rawKey"`
-	Sha256     pulumi.StringInput `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
 }
 
 func (GetRegionDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
@@ -14489,14 +16400,19 @@ func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) ToGetRegionDiskSourceSna
 	return o
 }
 
+// The name of the encryption key that is stored in Google Cloud KMS.
 func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
 func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskSourceSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
 }
 
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
 func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) Sha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionDiskSourceSnapshotEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
 }
@@ -14743,9 +16659,12 @@ func (o GetRegionInstanceGroupInstanceNamedPortArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetRegionInstanceTemplateAdvancedMachineFeature struct {
+	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
-	ThreadsPerCore             int  `pulumi:"threadsPerCore"`
-	VisibleCoreCount           int  `pulumi:"visibleCoreCount"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+	VisibleCoreCount int `pulumi:"visibleCoreCount"`
 }
 
 // GetRegionInstanceTemplateAdvancedMachineFeatureInput is an input type that accepts GetRegionInstanceTemplateAdvancedMachineFeatureArgs and GetRegionInstanceTemplateAdvancedMachineFeatureOutput values.
@@ -14760,9 +16679,12 @@ type GetRegionInstanceTemplateAdvancedMachineFeatureInput interface {
 }
 
 type GetRegionInstanceTemplateAdvancedMachineFeatureArgs struct {
+	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
-	ThreadsPerCore             pulumi.IntInput  `pulumi:"threadsPerCore"`
-	VisibleCoreCount           pulumi.IntInput  `pulumi:"visibleCoreCount"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+	VisibleCoreCount pulumi.IntInput `pulumi:"visibleCoreCount"`
 }
 
 func (GetRegionInstanceTemplateAdvancedMachineFeatureArgs) ElementType() reflect.Type {
@@ -14816,14 +16738,17 @@ func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) ToGetRegionInstan
 	return o
 }
 
+// Whether to enable nested virtualization or not.
 func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
 }
 
+// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
 func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) VisibleCoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateAdvancedMachineFeature) int { return v.VisibleCoreCount }).(pulumi.IntOutput)
 }
@@ -14983,7 +16908,8 @@ type GetRegionInstanceTemplateDisk struct {
 	// sets the number of I/O operations per second that the disk can handle.
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-	ProvisionedIops     int               `pulumi:"provisionedIops"`
+	ProvisionedIops int `pulumi:"provisionedIops"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
@@ -14998,9 +16924,22 @@ type GetRegionInstanceTemplateDisk struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-	SourceImage                  string                                                     `pulumi:"sourceImage"`
-	SourceImageEncryptionKeys    []GetRegionInstanceTemplateDiskSourceImageEncryptionKey    `pulumi:"sourceImageEncryptionKeys"`
-	SourceSnapshot               string                                                     `pulumi:"sourceSnapshot"`
+	SourceImage string `pulumi:"sourceImage"`
+	// The customer-supplied encryption key of the source
+	// image. Required if the source image is protected by a
+	// customer-supplied encryption key.
+	//
+	// Instance templates do not store customer-supplied
+	// encryption keys, so you cannot create disks for
+	// instances in a managed instance group if the source
+	// images are encrypted with your own keys.
+	SourceImageEncryptionKeys []GetRegionInstanceTemplateDiskSourceImageEncryptionKey `pulumi:"sourceImageEncryptionKeys"`
+	// The source snapshot to create this disk. When creating
+	// a new instance, one of initializeParams.sourceSnapshot,
+	// initializeParams.sourceImage, or disks.source is
+	// required except for local SSD.
+	SourceSnapshot string `pulumi:"sourceSnapshot"`
+	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKeys []GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
@@ -15055,7 +16994,8 @@ type GetRegionInstanceTemplateDiskArgs struct {
 	// sets the number of I/O operations per second that the disk can handle.
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-	ProvisionedIops     pulumi.IntInput       `pulumi:"provisionedIops"`
+	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
@@ -15070,9 +17010,22 @@ type GetRegionInstanceTemplateDiskArgs struct {
 	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
 	// `{project}/{image}`, `{family}`, or `{image}`.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
-	SourceImage                  pulumi.StringInput                                                 `pulumi:"sourceImage"`
-	SourceImageEncryptionKeys    GetRegionInstanceTemplateDiskSourceImageEncryptionKeyArrayInput    `pulumi:"sourceImageEncryptionKeys"`
-	SourceSnapshot               pulumi.StringInput                                                 `pulumi:"sourceSnapshot"`
+	SourceImage pulumi.StringInput `pulumi:"sourceImage"`
+	// The customer-supplied encryption key of the source
+	// image. Required if the source image is protected by a
+	// customer-supplied encryption key.
+	//
+	// Instance templates do not store customer-supplied
+	// encryption keys, so you cannot create disks for
+	// instances in a managed instance group if the source
+	// images are encrypted with your own keys.
+	SourceImageEncryptionKeys GetRegionInstanceTemplateDiskSourceImageEncryptionKeyArrayInput `pulumi:"sourceImageEncryptionKeys"`
+	// The source snapshot to create this disk. When creating
+	// a new instance, one of initializeParams.sourceSnapshot,
+	// initializeParams.sourceImage, or disks.source is
+	// required except for local SSD.
+	SourceSnapshot pulumi.StringInput `pulumi:"sourceSnapshot"`
+	// The customer-supplied encryption key of the source snapshot.
 	SourceSnapshotEncryptionKeys GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayInput `pulumi:"sourceSnapshotEncryptionKeys"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -15202,6 +17155,7 @@ func (o GetRegionInstanceTemplateDiskOutput) ProvisionedIops() pulumi.IntOutput 
 	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
 }
 
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 func (o GetRegionInstanceTemplateDiskOutput) ResourceManagerTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
@@ -15229,16 +17183,29 @@ func (o GetRegionInstanceTemplateDiskOutput) SourceImage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) string { return v.SourceImage }).(pulumi.StringOutput)
 }
 
+// The customer-supplied encryption key of the source
+// image. Required if the source image is protected by a
+// customer-supplied encryption key.
+//
+// Instance templates do not store customer-supplied
+// encryption keys, so you cannot create disks for
+// instances in a managed instance group if the source
+// images are encrypted with your own keys.
 func (o GetRegionInstanceTemplateDiskOutput) SourceImageEncryptionKeys() GetRegionInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) []GetRegionInstanceTemplateDiskSourceImageEncryptionKey {
 		return v.SourceImageEncryptionKeys
 	}).(GetRegionInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput)
 }
 
+// The source snapshot to create this disk. When creating
+// a new instance, one of initializeParams.sourceSnapshot,
+// initializeParams.sourceImage, or disks.source is
+// required except for local SSD.
 func (o GetRegionInstanceTemplateDiskOutput) SourceSnapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) string { return v.SourceSnapshot }).(pulumi.StringOutput)
 }
 
+// The customer-supplied encryption key of the source snapshot.
 func (o GetRegionInstanceTemplateDiskOutput) SourceSnapshotEncryptionKeys() GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) []GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey {
 		return v.SourceSnapshotEncryptionKeys
@@ -15369,7 +17336,10 @@ func (o GetRegionInstanceTemplateDiskDiskEncryptionKeyArrayOutput) Index(i pulum
 
 type GetRegionInstanceTemplateDiskSourceImageEncryptionKey struct {
 	// The self link of the encryption key that is stored in Google Cloud KMS
-	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -15386,7 +17356,10 @@ type GetRegionInstanceTemplateDiskSourceImageEncryptionKeyInput interface {
 
 type GetRegionInstanceTemplateDiskSourceImageEncryptionKeyArgs struct {
 	// The self link of the encryption key that is stored in Google Cloud KMS
-	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -15446,6 +17419,9 @@ func (o GetRegionInstanceTemplateDiskSourceImageEncryptionKeyOutput) KmsKeySelfL
 	return o.ApplyT(func(v GetRegionInstanceTemplateDiskSourceImageEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
 
+// The service account being used for the encryption
+// request for the given KMS key. If absent, the Compute
+// Engine default service account is used.
 func (o GetRegionInstanceTemplateDiskSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateDiskSourceImageEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
@@ -15472,7 +17448,10 @@ func (o GetRegionInstanceTemplateDiskSourceImageEncryptionKeyArrayOutput) Index(
 
 type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey struct {
 	// The self link of the encryption key that is stored in Google Cloud KMS
-	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -15489,7 +17468,10 @@ type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyInput interface {
 
 type GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs struct {
 	// The self link of the encryption key that is stored in Google Cloud KMS
-	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account being used for the encryption
+	// request for the given KMS key. If absent, the Compute
+	// Engine default service account is used.
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -15549,6 +17531,9 @@ func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeySe
 	return o.ApplyT(func(v GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
 
+// The service account being used for the encryption
+// request for the given KMS key. If absent, the Compute
+// Engine default service account is used.
 func (o GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
@@ -15684,11 +17669,15 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges            []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange     `pulumi:"aliasIpRanges"`
-	InternalIpv6PrefixLength int                                                         `pulumi:"internalIpv6PrefixLength"`
-	Ipv6AccessConfigs        []GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType           string                                                      `pulumi:"ipv6AccessType"`
-	Ipv6Address              string                                                      `pulumi:"ipv6Address"`
+	AliasIpRanges []GetRegionInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength int `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs []GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType string `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address string `pulumi:"ipv6Address"`
 	// The name of the instance template. One of `name` or `filter` must be provided.
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
@@ -15697,10 +17686,13 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	Network string `pulumi:"network"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
-	NetworkIp  string `pulumi:"networkIp"`
-	NicType    string `pulumi:"nicType"`
-	QueueCount int    `pulumi:"queueCount"`
-	StackType  string `pulumi:"stackType"`
+	NetworkIp string `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	NicType string `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount int `pulumi:"queueCount"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType string `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -15726,11 +17718,15 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
 	// interfaces on subnet-mode networks. Structure documented below.
-	AliasIpRanges            GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput     `pulumi:"aliasIpRanges"`
-	InternalIpv6PrefixLength pulumi.IntInput                                                     `pulumi:"internalIpv6PrefixLength"`
-	Ipv6AccessConfigs        GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	Ipv6AccessType           pulumi.StringInput                                                  `pulumi:"ipv6AccessType"`
-	Ipv6Address              pulumi.StringInput                                                  `pulumi:"ipv6Address"`
+	AliasIpRanges GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// The prefix length of the primary internal IPv6 range.
+	InternalIpv6PrefixLength pulumi.IntInput `pulumi:"internalIpv6PrefixLength"`
+	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+	Ipv6AccessConfigs GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
+	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+	Ipv6AccessType pulumi.StringInput `pulumi:"ipv6AccessType"`
+	// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+	Ipv6Address pulumi.StringInput `pulumi:"ipv6Address"`
 	// The name of the instance template. One of `name` or `filter` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network to attach this interface to.
@@ -15739,10 +17735,13 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	Network pulumi.StringInput `pulumi:"network"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
-	NetworkIp  pulumi.StringInput `pulumi:"networkIp"`
-	NicType    pulumi.StringInput `pulumi:"nicType"`
-	QueueCount pulumi.IntInput    `pulumi:"queueCount"`
-	StackType  pulumi.StringInput `pulumi:"stackType"`
+	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	NicType pulumi.StringInput `pulumi:"nicType"`
+	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+	QueueCount pulumi.IntInput `pulumi:"queueCount"`
+	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	StackType pulumi.StringInput `pulumi:"stackType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -15818,20 +17817,24 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() GetRegi
 	}).(GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
 }
 
+// The prefix length of the primary internal IPv6 range.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) InternalIpv6PrefixLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) int { return v.InternalIpv6PrefixLength }).(pulumi.IntOutput)
 }
 
+// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessConfigs() GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) []GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
 		return v.Ipv6AccessConfigs
 	}).(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput)
 }
 
+// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
+// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
@@ -15854,14 +17857,17 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.Stri
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
 
+// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) QueueCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) int { return v.QueueCount }).(pulumi.IntOutput)
 }
 
+// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.StackType }).(pulumi.StringOutput)
 }
@@ -15906,7 +17912,8 @@ type GetRegionInstanceTemplateNetworkInterfaceAccessConfig struct {
 	// The [networking tier][network-tier] used for configuring
 	// this instance template. This field can take the following values: PREMIUM or
 	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
-	NetworkTier         string `pulumi:"networkTier"`
+	NetworkTier string `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
 }
 
@@ -15928,7 +17935,8 @@ type GetRegionInstanceTemplateNetworkInterfaceAccessConfigArgs struct {
 	// The [networking tier][network-tier] used for configuring
 	// this instance template. This field can take the following values: PREMIUM or
 	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
-	NetworkTier         pulumi.StringInput `pulumi:"networkTier"`
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
 }
 
@@ -15996,6 +18004,7 @@ func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput) NetworkTier
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceAccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
 }
 
+// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
 func (o GetRegionInstanceTemplateNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceAccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
 }
@@ -16145,14 +18154,17 @@ func (o GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(
 }
 
 type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig struct {
-	ExternalIpv6             string `pulumi:"externalIpv6"`
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 string `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength string `pulumi:"externalIpv6PrefixLength"`
 	// The name of the instance template. One of `name` or `filter` must be provided.
 	Name string `pulumi:"name"`
 	// The [networking tier][network-tier] used for configuring
 	// this instance template. This field can take the following values: PREMIUM or
 	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
-	NetworkTier         string `pulumi:"networkTier"`
+	NetworkTier string `pulumi:"networkTier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
 }
 
@@ -16168,14 +18180,17 @@ type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput interface {
 }
 
 type GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs struct {
-	ExternalIpv6             pulumi.StringInput `pulumi:"externalIpv6"`
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 pulumi.StringInput `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength pulumi.StringInput `pulumi:"externalIpv6PrefixLength"`
 	// The name of the instance template. One of `name` or `filter` must be provided.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The [networking tier][network-tier] used for configuring
 	// this instance template. This field can take the following values: PREMIUM or
 	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
-	NetworkTier         pulumi.StringInput `pulumi:"networkTier"`
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
 	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
 }
 
@@ -16230,10 +18245,12 @@ func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ToGetRe
 	return o
 }
 
+// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
 func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.ExternalIpv6 }).(pulumi.StringOutput)
 }
 
+// The prefix length of the external IPv6 range.
 func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string {
 		return v.ExternalIpv6PrefixLength
@@ -16252,6 +18269,7 @@ func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) Network
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
 }
 
+// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
 func (o GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
 }
@@ -16374,6 +18392,7 @@ func (o GetRegionInstanceTemplateNetworkPerformanceConfigArrayOutput) Index(i pu
 }
 
 type GetRegionInstanceTemplateReservationAffinity struct {
+	// Specifies the label selector for the reservation to use.
 	SpecificReservations []GetRegionInstanceTemplateReservationAffinitySpecificReservation `pulumi:"specificReservations"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type string `pulumi:"type"`
@@ -16391,6 +18410,7 @@ type GetRegionInstanceTemplateReservationAffinityInput interface {
 }
 
 type GetRegionInstanceTemplateReservationAffinityArgs struct {
+	// Specifies the label selector for the reservation to use.
 	SpecificReservations GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayInput `pulumi:"specificReservations"`
 	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -16447,6 +18467,7 @@ func (o GetRegionInstanceTemplateReservationAffinityOutput) ToGetRegionInstanceT
 	return o
 }
 
+// Specifies the label selector for the reservation to use.
 func (o GetRegionInstanceTemplateReservationAffinityOutput) SpecificReservations() GetRegionInstanceTemplateReservationAffinitySpecificReservationArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateReservationAffinity) []GetRegionInstanceTemplateReservationAffinitySpecificReservation {
 		return v.SpecificReservations
@@ -16480,7 +18501,8 @@ func (o GetRegionInstanceTemplateReservationAffinityArrayOutput) Index(i pulumi.
 
 type GetRegionInstanceTemplateReservationAffinitySpecificReservation struct {
 	// The key for the node affinity label.
-	Key    string   `pulumi:"key"`
+	Key string `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
 	Values []string `pulumi:"values"`
 }
 
@@ -16497,7 +18519,8 @@ type GetRegionInstanceTemplateReservationAffinitySpecificReservationInput interf
 
 type GetRegionInstanceTemplateReservationAffinitySpecificReservationArgs struct {
 	// The key for the node affinity label.
-	Key    pulumi.StringInput      `pulumi:"key"`
+	Key pulumi.StringInput `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -16557,6 +18580,7 @@ func (o GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput) K
 	return o.ApplyT(func(v GetRegionInstanceTemplateReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Corresponds to the label values of a reservation resource.
 func (o GetRegionInstanceTemplateReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -16587,11 +18611,18 @@ type GetRegionInstanceTemplateScheduling struct {
 	// terminated by a user). This defaults to true.
 	AutomaticRestart bool `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-	InstanceTerminationAction string                                                       `pulumi:"instanceTerminationAction"`
-	LocalSsdRecoveryTimeouts  []GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout `pulumi:"localSsdRecoveryTimeouts"`
-	MaintenanceInterval       string                                                       `pulumi:"maintenanceInterval"`
-	MaxRunDurations           []GetRegionInstanceTemplateSchedulingMaxRunDuration          `pulumi:"maxRunDurations"`
-	MinNodeCpus               int                                                          `pulumi:"minNodeCpus"`
+	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while
+	//   recovery of the Local Ssd state is attempted. Its value should be in
+	//   between 0 and 168 hours with hour granularity and the default value being 1
+	//   hour.
+	LocalSsdRecoveryTimeouts []GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout `pulumi:"localSsdRecoveryTimeouts"`
+	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+	// The timeout for new network connections to hosts.
+	MaxRunDurations []GetRegionInstanceTemplateSchedulingMaxRunDuration `pulumi:"maxRunDurations"`
+	// Minimum number of cpus for the instance.
+	MinNodeCpus int `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -16626,11 +18657,18 @@ type GetRegionInstanceTemplateSchedulingArgs struct {
 	// terminated by a user). This defaults to true.
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-	InstanceTerminationAction pulumi.StringInput                                                   `pulumi:"instanceTerminationAction"`
-	LocalSsdRecoveryTimeouts  GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput `pulumi:"localSsdRecoveryTimeouts"`
-	MaintenanceInterval       pulumi.StringInput                                                   `pulumi:"maintenanceInterval"`
-	MaxRunDurations           GetRegionInstanceTemplateSchedulingMaxRunDurationArrayInput          `pulumi:"maxRunDurations"`
-	MinNodeCpus               pulumi.IntInput                                                      `pulumi:"minNodeCpus"`
+	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while
+	//   recovery of the Local Ssd state is attempted. Its value should be in
+	//   between 0 and 168 hours with hour granularity and the default value being 1
+	//   hour.
+	LocalSsdRecoveryTimeouts GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayInput `pulumi:"localSsdRecoveryTimeouts"`
+	// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+	// The timeout for new network connections to hosts.
+	MaxRunDurations GetRegionInstanceTemplateSchedulingMaxRunDurationArrayInput `pulumi:"maxRunDurations"`
+	// Minimum number of cpus for the instance.
+	MinNodeCpus pulumi.IntInput `pulumi:"minNodeCpus"`
 	// Specifies node affinities or anti-affinities
 	// to determine which sole-tenant nodes your instances and managed instance
 	// groups will use as host systems. Read more on sole-tenant node creation
@@ -16711,22 +18749,30 @@ func (o GetRegionInstanceTemplateSchedulingOutput) InstanceTerminationAction() p
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.InstanceTerminationAction }).(pulumi.StringOutput)
 }
 
+// Specifies the maximum amount of time a Local Ssd Vm should wait while
+//
+//	recovery of the Local Ssd state is attempted. Its value should be in
+//	between 0 and 168 hours with hour granularity and the default value being 1
+//	hour.
 func (o GetRegionInstanceTemplateSchedulingOutput) LocalSsdRecoveryTimeouts() GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
 		return v.LocalSsdRecoveryTimeouts
 	}).(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput)
 }
 
+// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
 func (o GetRegionInstanceTemplateSchedulingOutput) MaintenanceInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
 }
 
+// The timeout for new network connections to hosts.
 func (o GetRegionInstanceTemplateSchedulingOutput) MaxRunDurations() GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) []GetRegionInstanceTemplateSchedulingMaxRunDuration {
 		return v.MaxRunDurations
 	}).(GetRegionInstanceTemplateSchedulingMaxRunDurationArrayOutput)
 }
 
+// Minimum number of cpus for the instance.
 func (o GetRegionInstanceTemplateSchedulingOutput) MinNodeCpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) int { return v.MinNodeCpus }).(pulumi.IntOutput)
 }
@@ -16781,7 +18827,13 @@ func (o GetRegionInstanceTemplateSchedulingArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -16797,7 +18849,13 @@ type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutInput interface {
 }
 
 type GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -16852,10 +18910,16 @@ func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) ToGetR
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
 func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
 func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -16881,7 +18945,13 @@ func (o GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArrayOutput) I
 }
 
 type GetRegionInstanceTemplateSchedulingMaxRunDuration struct {
-	Nanos   int `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -16897,7 +18967,13 @@ type GetRegionInstanceTemplateSchedulingMaxRunDurationInput interface {
 }
 
 type GetRegionInstanceTemplateSchedulingMaxRunDurationArgs struct {
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -16952,10 +19028,16 @@ func (o GetRegionInstanceTemplateSchedulingMaxRunDurationOutput) ToGetRegionInst
 	return o
 }
 
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
 func (o GetRegionInstanceTemplateSchedulingMaxRunDurationOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingMaxRunDuration) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
 func (o GetRegionInstanceTemplateSchedulingMaxRunDurationOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateSchedulingMaxRunDuration) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -17326,8 +19408,22 @@ func (o GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput) Index(i pulu
 }
 
 type GetRegionNetworkEndpointGroupAppEngine struct {
+	// Optional serving service.
+	// The service name must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "default", "my-service".
 	Service string `pulumi:"service"`
+	// A template to parse service and version fields from a request URL.
+	// URL mask allows for routing to multiple App Engine services without
+	// having to create multiple Network Endpoint Groups and backend services.
+	//
+	// For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+	// "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
+	// URL mask "-dot-appname.appspot.com/". The URL mask will parse
+	// them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 	UrlMask string `pulumi:"urlMask"`
+	// Optional serving version.
+	// The version must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "v1", "v2".
 	Version string `pulumi:"version"`
 }
 
@@ -17343,8 +19439,22 @@ type GetRegionNetworkEndpointGroupAppEngineInput interface {
 }
 
 type GetRegionNetworkEndpointGroupAppEngineArgs struct {
+	// Optional serving service.
+	// The service name must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "default", "my-service".
 	Service pulumi.StringInput `pulumi:"service"`
+	// A template to parse service and version fields from a request URL.
+	// URL mask allows for routing to multiple App Engine services without
+	// having to create multiple Network Endpoint Groups and backend services.
+	//
+	// For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+	// "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
+	// URL mask "-dot-appname.appspot.com/". The URL mask will parse
+	// them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 	UrlMask pulumi.StringInput `pulumi:"urlMask"`
+	// Optional serving version.
+	// The version must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "v1", "v2".
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -17399,14 +19509,28 @@ func (o GetRegionNetworkEndpointGroupAppEngineOutput) ToGetRegionNetworkEndpoint
 	return o
 }
 
+// Optional serving service.
+// The service name must be 1-63 characters long, and comply with RFC1035.
+// Example value: "default", "my-service".
 func (o GetRegionNetworkEndpointGroupAppEngineOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupAppEngine) string { return v.Service }).(pulumi.StringOutput)
 }
 
+// A template to parse service and version fields from a request URL.
+// URL mask allows for routing to multiple App Engine services without
+// having to create multiple Network Endpoint Groups and backend services.
+//
+// For example, the request URLs "foo1-dot-appname.appspot.com/v1" and
+// "foo1-dot-appname.appspot.com/v2" can be backed by the same Serverless NEG with
+// URL mask "-dot-appname.appspot.com/". The URL mask will parse
+// them to { service = "foo1", version = "v1" } and { service = "foo1", version = "v2" } respectively.
 func (o GetRegionNetworkEndpointGroupAppEngineOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupAppEngine) string { return v.UrlMask }).(pulumi.StringOutput)
 }
 
+// Optional serving version.
+// The version must be 1-63 characters long, and comply with RFC1035.
+// Example value: "v1", "v2".
 func (o GetRegionNetworkEndpointGroupAppEngineOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupAppEngine) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -17432,8 +19556,18 @@ func (o GetRegionNetworkEndpointGroupAppEngineArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetRegionNetworkEndpointGroupCloudFunction struct {
+	// A user-defined name of the Cloud Function.
+	// The function name is case-sensitive and must be 1-63 characters long.
+	// Example value: "func1".
 	Function string `pulumi:"function"`
-	UrlMask  string `pulumi:"urlMask"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	//
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask string `pulumi:"urlMask"`
 }
 
 // GetRegionNetworkEndpointGroupCloudFunctionInput is an input type that accepts GetRegionNetworkEndpointGroupCloudFunctionArgs and GetRegionNetworkEndpointGroupCloudFunctionOutput values.
@@ -17448,8 +19582,18 @@ type GetRegionNetworkEndpointGroupCloudFunctionInput interface {
 }
 
 type GetRegionNetworkEndpointGroupCloudFunctionArgs struct {
+	// A user-defined name of the Cloud Function.
+	// The function name is case-sensitive and must be 1-63 characters long.
+	// Example value: "func1".
 	Function pulumi.StringInput `pulumi:"function"`
-	UrlMask  pulumi.StringInput `pulumi:"urlMask"`
+	// A template to parse function field from a request URL. URL mask allows
+	// for routing to multiple Cloud Functions without having to create
+	// multiple Network Endpoint Groups and backend services.
+	//
+	// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+	// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+	// will parse them to { function = "function1" } and { function = "function2" } respectively.
+	UrlMask pulumi.StringInput `pulumi:"urlMask"`
 }
 
 func (GetRegionNetworkEndpointGroupCloudFunctionArgs) ElementType() reflect.Type {
@@ -17503,10 +19647,20 @@ func (o GetRegionNetworkEndpointGroupCloudFunctionOutput) ToGetRegionNetworkEndp
 	return o
 }
 
+// A user-defined name of the Cloud Function.
+// The function name is case-sensitive and must be 1-63 characters long.
+// Example value: "func1".
 func (o GetRegionNetworkEndpointGroupCloudFunctionOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudFunction) string { return v.Function }).(pulumi.StringOutput)
 }
 
+// A template to parse function field from a request URL. URL mask allows
+// for routing to multiple Cloud Functions without having to create
+// multiple Network Endpoint Groups and backend services.
+//
+// For example, request URLs "mydomain.com/function1" and "mydomain.com/function2"
+// can be backed by the same Serverless NEG with URL mask "/". The URL mask
+// will parse them to { function = "function1" } and { function = "function2" } respectively.
 func (o GetRegionNetworkEndpointGroupCloudFunctionOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudFunction) string { return v.UrlMask }).(pulumi.StringOutput)
 }
@@ -17532,8 +19686,23 @@ func (o GetRegionNetworkEndpointGroupCloudFunctionArrayOutput) Index(i pulumi.In
 }
 
 type GetRegionNetworkEndpointGroupCloudRun struct {
+	// Cloud Run service is the main resource of Cloud Run.
+	// The service must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "run-service".
 	Service string `pulumi:"service"`
-	Tag     string `pulumi:"tag"`
+	// Cloud Run tag represents the "named-revision" to provide
+	// additional fine-grained traffic routing information.
+	// The tag must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "revision-0010".
+	Tag string `pulumi:"tag"`
+	// A template to parse service and tag fields from a request URL.
+	// URL mask allows for routing to multiple Run services without having
+	// to create multiple network endpoint groups and backend services.
+	//
+	// For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+	// an be backed by the same Serverless Network Endpoint Group (NEG) with
+	// URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" }
+	// and { service="bar2", tag="foo2" } respectively.
 	UrlMask string `pulumi:"urlMask"`
 }
 
@@ -17549,8 +19718,23 @@ type GetRegionNetworkEndpointGroupCloudRunInput interface {
 }
 
 type GetRegionNetworkEndpointGroupCloudRunArgs struct {
+	// Cloud Run service is the main resource of Cloud Run.
+	// The service must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "run-service".
 	Service pulumi.StringInput `pulumi:"service"`
-	Tag     pulumi.StringInput `pulumi:"tag"`
+	// Cloud Run tag represents the "named-revision" to provide
+	// additional fine-grained traffic routing information.
+	// The tag must be 1-63 characters long, and comply with RFC1035.
+	// Example value: "revision-0010".
+	Tag pulumi.StringInput `pulumi:"tag"`
+	// A template to parse service and tag fields from a request URL.
+	// URL mask allows for routing to multiple Run services without having
+	// to create multiple network endpoint groups and backend services.
+	//
+	// For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+	// an be backed by the same Serverless Network Endpoint Group (NEG) with
+	// URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" }
+	// and { service="bar2", tag="foo2" } respectively.
 	UrlMask pulumi.StringInput `pulumi:"urlMask"`
 }
 
@@ -17605,14 +19789,29 @@ func (o GetRegionNetworkEndpointGroupCloudRunOutput) ToGetRegionNetworkEndpointG
 	return o
 }
 
+// Cloud Run service is the main resource of Cloud Run.
+// The service must be 1-63 characters long, and comply with RFC1035.
+// Example value: "run-service".
 func (o GetRegionNetworkEndpointGroupCloudRunOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudRun) string { return v.Service }).(pulumi.StringOutput)
 }
 
+// Cloud Run tag represents the "named-revision" to provide
+// additional fine-grained traffic routing information.
+// The tag must be 1-63 characters long, and comply with RFC1035.
+// Example value: "revision-0010".
 func (o GetRegionNetworkEndpointGroupCloudRunOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudRun) string { return v.Tag }).(pulumi.StringOutput)
 }
 
+// A template to parse service and tag fields from a request URL.
+// URL mask allows for routing to multiple Run services without having
+// to create multiple network endpoint groups and backend services.
+//
+// For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2"
+// an be backed by the same Serverless Network Endpoint Group (NEG) with
+// URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" }
+// and { service="bar2", tag="foo2" } respectively.
 func (o GetRegionNetworkEndpointGroupCloudRunOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupCloudRun) string { return v.UrlMask }).(pulumi.StringOutput)
 }
@@ -17638,10 +19837,21 @@ func (o GetRegionNetworkEndpointGroupCloudRunArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetRegionNetworkEndpointGroupServerlessDeployment struct {
+	// The platform of the NEG backend target(s). Possible values:
+	// API Gateway: apigateway.googleapis.com
 	Platform string `pulumi:"platform"`
+	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+	// The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+	// Cloud Functions: The function name, Cloud Run: The service name
 	Resource string `pulumi:"resource"`
-	UrlMask  string `pulumi:"urlMask"`
-	Version  string `pulumi:"version"`
+	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+	// on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+	// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+	// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+	UrlMask string `pulumi:"urlMask"`
+	// The optional resource version. The version identified by this value is platform-specific and is follows:
+	// API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+	Version string `pulumi:"version"`
 }
 
 // GetRegionNetworkEndpointGroupServerlessDeploymentInput is an input type that accepts GetRegionNetworkEndpointGroupServerlessDeploymentArgs and GetRegionNetworkEndpointGroupServerlessDeploymentOutput values.
@@ -17656,10 +19866,21 @@ type GetRegionNetworkEndpointGroupServerlessDeploymentInput interface {
 }
 
 type GetRegionNetworkEndpointGroupServerlessDeploymentArgs struct {
+	// The platform of the NEG backend target(s). Possible values:
+	// API Gateway: apigateway.googleapis.com
 	Platform pulumi.StringInput `pulumi:"platform"`
+	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+	// The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+	// Cloud Functions: The function name, Cloud Run: The service name
 	Resource pulumi.StringInput `pulumi:"resource"`
-	UrlMask  pulumi.StringInput `pulumi:"urlMask"`
-	Version  pulumi.StringInput `pulumi:"version"`
+	// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+	// on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+	// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+	// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
+	UrlMask pulumi.StringInput `pulumi:"urlMask"`
+	// The optional resource version. The version identified by this value is platform-specific and is follows:
+	// API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetRegionNetworkEndpointGroupServerlessDeploymentArgs) ElementType() reflect.Type {
@@ -17713,18 +19934,29 @@ func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) ToGetRegionNetw
 	return o
 }
 
+// The platform of the NEG backend target(s). Possible values:
+// API Gateway: apigateway.googleapis.com
 func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupServerlessDeployment) string { return v.Platform }).(pulumi.StringOutput)
 }
 
+// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask.
+// The resource identified by this value is platform-specific and is as follows: API Gateway: The gateway ID, App Engine: The service name,
+// Cloud Functions: The function name, Cloud Run: The service name
 func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupServerlessDeployment) string { return v.Resource }).(pulumi.StringOutput)
 }
 
+// A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources
+// on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources.
+// The fields parsed by this template are platform-specific and are as follows: API Gateway: The gateway ID,
+// App Engine: The service and version, Cloud Functions: The function name, Cloud Run: The service and tag
 func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupServerlessDeployment) string { return v.UrlMask }).(pulumi.StringOutput)
 }
 
+// The optional resource version. The version identified by this value is platform-specific and is follows:
+// API Gateway: Unused, App Engine: The service version, Cloud Functions: Unused, Cloud Run: The service tag
 func (o GetRegionNetworkEndpointGroupServerlessDeploymentOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionNetworkEndpointGroupServerlessDeployment) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -17750,8 +19982,10 @@ func (o GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) Index(i pu
 }
 
 type GetReservationShareSetting struct {
+	// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
 	ProjectMaps []GetReservationShareSettingProjectMap `pulumi:"projectMaps"`
-	ShareType   string                                 `pulumi:"shareType"`
+	// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
+	ShareType string `pulumi:"shareType"`
 }
 
 // GetReservationShareSettingInput is an input type that accepts GetReservationShareSettingArgs and GetReservationShareSettingOutput values.
@@ -17766,8 +20000,10 @@ type GetReservationShareSettingInput interface {
 }
 
 type GetReservationShareSettingArgs struct {
+	// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
 	ProjectMaps GetReservationShareSettingProjectMapArrayInput `pulumi:"projectMaps"`
-	ShareType   pulumi.StringInput                             `pulumi:"shareType"`
+	// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
+	ShareType pulumi.StringInput `pulumi:"shareType"`
 }
 
 func (GetReservationShareSettingArgs) ElementType() reflect.Type {
@@ -17821,10 +20057,12 @@ func (o GetReservationShareSettingOutput) ToGetReservationShareSettingOutputWith
 	return o
 }
 
+// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
 func (o GetReservationShareSettingOutput) ProjectMaps() GetReservationShareSettingProjectMapArrayOutput {
 	return o.ApplyT(func(v GetReservationShareSetting) []GetReservationShareSettingProjectMap { return v.ProjectMaps }).(GetReservationShareSettingProjectMapArrayOutput)
 }
 
+// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
 func (o GetReservationShareSettingOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReservationShareSetting) string { return v.ShareType }).(pulumi.StringOutput)
 }
@@ -17850,7 +20088,8 @@ func (o GetReservationShareSettingArrayOutput) Index(i pulumi.IntInput) GetReser
 }
 
 type GetReservationShareSettingProjectMap struct {
-	Id        string `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The project id/number, should be same as the key of this project config in the project map.
 	ProjectId string `pulumi:"projectId"`
 }
 
@@ -17866,7 +20105,8 @@ type GetReservationShareSettingProjectMapInput interface {
 }
 
 type GetReservationShareSettingProjectMapArgs struct {
-	Id        pulumi.StringInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
+	// The project id/number, should be same as the key of this project config in the project map.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 }
 
@@ -17925,6 +20165,7 @@ func (o GetReservationShareSettingProjectMapOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReservationShareSettingProjectMap) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The project id/number, should be same as the key of this project config in the project map.
 func (o GetReservationShareSettingProjectMapOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReservationShareSettingProjectMap) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -17950,8 +20191,11 @@ func (o GetReservationShareSettingProjectMapArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetReservationSpecificReservation struct {
-	Count              int                                                 `pulumi:"count"`
-	InUseCount         int                                                 `pulumi:"inUseCount"`
+	// The number of resources that are allocated.
+	Count int `pulumi:"count"`
+	// How many instances are in use.
+	InUseCount int `pulumi:"inUseCount"`
+	// The instance properties for the reservation.
 	InstanceProperties []GetReservationSpecificReservationInstanceProperty `pulumi:"instanceProperties"`
 }
 
@@ -17967,8 +20211,11 @@ type GetReservationSpecificReservationInput interface {
 }
 
 type GetReservationSpecificReservationArgs struct {
-	Count              pulumi.IntInput                                             `pulumi:"count"`
-	InUseCount         pulumi.IntInput                                             `pulumi:"inUseCount"`
+	// The number of resources that are allocated.
+	Count pulumi.IntInput `pulumi:"count"`
+	// How many instances are in use.
+	InUseCount pulumi.IntInput `pulumi:"inUseCount"`
+	// The instance properties for the reservation.
 	InstanceProperties GetReservationSpecificReservationInstancePropertyArrayInput `pulumi:"instanceProperties"`
 }
 
@@ -18023,14 +20270,17 @@ func (o GetReservationSpecificReservationOutput) ToGetReservationSpecificReserva
 	return o
 }
 
+// The number of resources that are allocated.
 func (o GetReservationSpecificReservationOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservation) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// How many instances are in use.
 func (o GetReservationSpecificReservationOutput) InUseCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservation) int { return v.InUseCount }).(pulumi.IntOutput)
 }
 
+// The instance properties for the reservation.
 func (o GetReservationSpecificReservationOutput) InstanceProperties() GetReservationSpecificReservationInstancePropertyArrayOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservation) []GetReservationSpecificReservationInstanceProperty {
 		return v.InstanceProperties
@@ -18058,10 +20308,18 @@ func (o GetReservationSpecificReservationArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetReservationSpecificReservationInstanceProperty struct {
+	// Guest accelerator type and count.
 	GuestAccelerators []GetReservationSpecificReservationInstancePropertyGuestAccelerator `pulumi:"guestAccelerators"`
-	LocalSsds         []GetReservationSpecificReservationInstancePropertyLocalSsd         `pulumi:"localSsds"`
-	MachineType       string                                                              `pulumi:"machineType"`
-	MinCpuPlatform    string                                                              `pulumi:"minCpuPlatform"`
+	// The amount of local ssd to reserve with each instance. This
+	// reserves disks of type 'local-ssd'.
+	LocalSsds []GetReservationSpecificReservationInstancePropertyLocalSsd `pulumi:"localSsds"`
+	// The name of the machine type to reserve.
+	MachineType string `pulumi:"machineType"`
+	// The minimum CPU platform for the reservation. For example,
+	// '"Intel Skylake"'. See
+	// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+	// for information on available CPU platforms.
+	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 }
 
 // GetReservationSpecificReservationInstancePropertyInput is an input type that accepts GetReservationSpecificReservationInstancePropertyArgs and GetReservationSpecificReservationInstancePropertyOutput values.
@@ -18076,10 +20334,18 @@ type GetReservationSpecificReservationInstancePropertyInput interface {
 }
 
 type GetReservationSpecificReservationInstancePropertyArgs struct {
+	// Guest accelerator type and count.
 	GuestAccelerators GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
-	LocalSsds         GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput         `pulumi:"localSsds"`
-	MachineType       pulumi.StringInput                                                          `pulumi:"machineType"`
-	MinCpuPlatform    pulumi.StringInput                                                          `pulumi:"minCpuPlatform"`
+	// The amount of local ssd to reserve with each instance. This
+	// reserves disks of type 'local-ssd'.
+	LocalSsds GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput `pulumi:"localSsds"`
+	// The name of the machine type to reserve.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// The minimum CPU platform for the reservation. For example,
+	// '"Intel Skylake"'. See
+	// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+	// for information on available CPU platforms.
+	MinCpuPlatform pulumi.StringInput `pulumi:"minCpuPlatform"`
 }
 
 func (GetReservationSpecificReservationInstancePropertyArgs) ElementType() reflect.Type {
@@ -18133,22 +20399,30 @@ func (o GetReservationSpecificReservationInstancePropertyOutput) ToGetReservatio
 	return o
 }
 
+// Guest accelerator type and count.
 func (o GetReservationSpecificReservationInstancePropertyOutput) GuestAccelerators() GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) []GetReservationSpecificReservationInstancePropertyGuestAccelerator {
 		return v.GuestAccelerators
 	}).(GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput)
 }
 
+// The amount of local ssd to reserve with each instance. This
+// reserves disks of type 'local-ssd'.
 func (o GetReservationSpecificReservationInstancePropertyOutput) LocalSsds() GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) []GetReservationSpecificReservationInstancePropertyLocalSsd {
 		return v.LocalSsds
 	}).(GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput)
 }
 
+// The name of the machine type to reserve.
 func (o GetReservationSpecificReservationInstancePropertyOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
+// The minimum CPU platform for the reservation. For example,
+// '"Intel Skylake"'. See
+// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
+// for information on available CPU platforms.
 func (o GetReservationSpecificReservationInstancePropertyOutput) MinCpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
@@ -18174,8 +20448,15 @@ func (o GetReservationSpecificReservationInstancePropertyArrayOutput) Index(i pu
 }
 
 type GetReservationSpecificReservationInstancePropertyGuestAccelerator struct {
-	AcceleratorCount int    `pulumi:"acceleratorCount"`
-	AcceleratorType  string `pulumi:"acceleratorType"`
+	// The number of the guest accelerator cards exposed to
+	// this instance.
+	AcceleratorCount int `pulumi:"acceleratorCount"`
+	// The full or partial URL of the accelerator type to
+	// attach to this instance. For example:
+	// 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
+	//
+	// If you are creating an instance template, specify only the accelerator name.
+	AcceleratorType string `pulumi:"acceleratorType"`
 }
 
 // GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput is an input type that accepts GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs and GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput values.
@@ -18190,8 +20471,15 @@ type GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput inte
 }
 
 type GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs struct {
-	AcceleratorCount pulumi.IntInput    `pulumi:"acceleratorCount"`
-	AcceleratorType  pulumi.StringInput `pulumi:"acceleratorType"`
+	// The number of the guest accelerator cards exposed to
+	// this instance.
+	AcceleratorCount pulumi.IntInput `pulumi:"acceleratorCount"`
+	// The full or partial URL of the accelerator type to
+	// attach to this instance. For example:
+	// 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
+	//
+	// If you are creating an instance template, specify only the accelerator name.
+	AcceleratorType pulumi.StringInput `pulumi:"acceleratorType"`
 }
 
 func (GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -18245,12 +20533,19 @@ func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput)
 	return o
 }
 
+// The number of the guest accelerator cards exposed to
+// this instance.
 func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) AcceleratorCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyGuestAccelerator) int {
 		return v.AcceleratorCount
 	}).(pulumi.IntOutput)
 }
 
+// The full or partial URL of the accelerator type to
+// attach to this instance. For example:
+// 'projects/my-project/zones/us-central1-c/acceleratorTypes/nvidia-tesla-p100'
+//
+// If you are creating an instance template, specify only the accelerator name.
 func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyGuestAccelerator) string {
 		return v.AcceleratorType
@@ -18278,8 +20573,10 @@ func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOu
 }
 
 type GetReservationSpecificReservationInstancePropertyLocalSsd struct {
-	DiskSizeGb int    `pulumi:"diskSizeGb"`
-	Interface  string `pulumi:"interface"`
+	// The size of the disk in base-2 GB.
+	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// The disk interface to use for attaching this disk. Default value: "SCSI" Possible values: ["SCSI", "NVME"]
+	Interface string `pulumi:"interface"`
 }
 
 // GetReservationSpecificReservationInstancePropertyLocalSsdInput is an input type that accepts GetReservationSpecificReservationInstancePropertyLocalSsdArgs and GetReservationSpecificReservationInstancePropertyLocalSsdOutput values.
@@ -18294,8 +20591,10 @@ type GetReservationSpecificReservationInstancePropertyLocalSsdInput interface {
 }
 
 type GetReservationSpecificReservationInstancePropertyLocalSsdArgs struct {
-	DiskSizeGb pulumi.IntInput    `pulumi:"diskSizeGb"`
-	Interface  pulumi.StringInput `pulumi:"interface"`
+	// The size of the disk in base-2 GB.
+	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
+	// The disk interface to use for attaching this disk. Default value: "SCSI" Possible values: ["SCSI", "NVME"]
+	Interface pulumi.StringInput `pulumi:"interface"`
 }
 
 func (GetReservationSpecificReservationInstancePropertyLocalSsdArgs) ElementType() reflect.Type {
@@ -18349,10 +20648,12 @@ func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) ToGetRe
 	return o
 }
 
+// The size of the disk in base-2 GB.
 func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyLocalSsd) int { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
 
+// The disk interface to use for attaching this disk. Default value: "SCSI" Possible values: ["SCSI", "NVME"]
 func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) Interface() pulumi.StringOutput {
 	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyLocalSsd) string { return v.Interface }).(pulumi.StringOutput)
 }
@@ -18378,6 +20679,7 @@ func (o GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) In
 }
 
 type GetResourcePolicyDiskConsistencyGroupPolicy struct {
+	// Enable disk consistency on the resource policy.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -18393,6 +20695,7 @@ type GetResourcePolicyDiskConsistencyGroupPolicyInput interface {
 }
 
 type GetResourcePolicyDiskConsistencyGroupPolicyArgs struct {
+	// Enable disk consistency on the resource policy.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -18447,6 +20750,7 @@ func (o GetResourcePolicyDiskConsistencyGroupPolicyOutput) ToGetResourcePolicyDi
 	return o
 }
 
+// Enable disk consistency on the resource policy.
 func (o GetResourcePolicyDiskConsistencyGroupPolicyOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetResourcePolicyDiskConsistencyGroupPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -18472,10 +20776,20 @@ func (o GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput) Index(i pulumi.I
 }
 
 type GetResourcePolicyGroupPlacementPolicy struct {
-	AvailabilityDomainCount int    `pulumi:"availabilityDomainCount"`
-	Collocation             string `pulumi:"collocation"`
-	MaxDistance             int    `pulumi:"maxDistance"`
-	VmCount                 int    `pulumi:"vmCount"`
+	// The number of availability domains instances will be spread across. If two instances are in different
+	// availability domain, they will not be put in the same low latency network
+	AvailabilityDomainCount int `pulumi:"availabilityDomainCount"`
+	// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+	// Specify 'COLLOCATED' to enable collocation. Can only be specified with 'vm_count'. If compute instances are created
+	// with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
+	// attached. Possible values: ["COLLOCATED"]
+	Collocation string `pulumi:"collocation"`
+	// Specifies the number of max logical switches.
+	MaxDistance int `pulumi:"maxDistance"`
+	// Number of VMs in this placement group. Google does not recommend that you use this field
+	// unless you use a compact policy and you want your policy to work only if it contains this
+	// exact number of VMs.
+	VmCount int `pulumi:"vmCount"`
 }
 
 // GetResourcePolicyGroupPlacementPolicyInput is an input type that accepts GetResourcePolicyGroupPlacementPolicyArgs and GetResourcePolicyGroupPlacementPolicyOutput values.
@@ -18490,10 +20804,20 @@ type GetResourcePolicyGroupPlacementPolicyInput interface {
 }
 
 type GetResourcePolicyGroupPlacementPolicyArgs struct {
-	AvailabilityDomainCount pulumi.IntInput    `pulumi:"availabilityDomainCount"`
-	Collocation             pulumi.StringInput `pulumi:"collocation"`
-	MaxDistance             pulumi.IntInput    `pulumi:"maxDistance"`
-	VmCount                 pulumi.IntInput    `pulumi:"vmCount"`
+	// The number of availability domains instances will be spread across. If two instances are in different
+	// availability domain, they will not be put in the same low latency network
+	AvailabilityDomainCount pulumi.IntInput `pulumi:"availabilityDomainCount"`
+	// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+	// Specify 'COLLOCATED' to enable collocation. Can only be specified with 'vm_count'. If compute instances are created
+	// with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
+	// attached. Possible values: ["COLLOCATED"]
+	Collocation pulumi.StringInput `pulumi:"collocation"`
+	// Specifies the number of max logical switches.
+	MaxDistance pulumi.IntInput `pulumi:"maxDistance"`
+	// Number of VMs in this placement group. Google does not recommend that you use this field
+	// unless you use a compact policy and you want your policy to work only if it contains this
+	// exact number of VMs.
+	VmCount pulumi.IntInput `pulumi:"vmCount"`
 }
 
 func (GetResourcePolicyGroupPlacementPolicyArgs) ElementType() reflect.Type {
@@ -18547,18 +20871,28 @@ func (o GetResourcePolicyGroupPlacementPolicyOutput) ToGetResourcePolicyGroupPla
 	return o
 }
 
+// The number of availability domains instances will be spread across. If two instances are in different
+// availability domain, they will not be put in the same low latency network
 func (o GetResourcePolicyGroupPlacementPolicyOutput) AvailabilityDomainCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) int { return v.AvailabilityDomainCount }).(pulumi.IntOutput)
 }
 
+// Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+// Specify 'COLLOCATED' to enable collocation. Can only be specified with 'vm_count'. If compute instances are created
+// with a COLLOCATED policy, then exactly 'vm_count' instances must be created at the same time with the resource policy
+// attached. Possible values: ["COLLOCATED"]
 func (o GetResourcePolicyGroupPlacementPolicyOutput) Collocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) string { return v.Collocation }).(pulumi.StringOutput)
 }
 
+// Specifies the number of max logical switches.
 func (o GetResourcePolicyGroupPlacementPolicyOutput) MaxDistance() pulumi.IntOutput {
 	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) int { return v.MaxDistance }).(pulumi.IntOutput)
 }
 
+// Number of VMs in this placement group. Google does not recommend that you use this field
+// unless you use a compact policy and you want your policy to work only if it contains this
+// exact number of VMs.
 func (o GetResourcePolicyGroupPlacementPolicyOutput) VmCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) int { return v.VmCount }).(pulumi.IntOutput)
 }
@@ -18584,11 +20918,17 @@ func (o GetResourcePolicyGroupPlacementPolicyArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetResourcePolicyInstanceSchedulePolicy struct {
-	ExpirationTime   string                                                   `pulumi:"expirationTime"`
-	StartTime        string                                                   `pulumi:"startTime"`
-	TimeZone         string                                                   `pulumi:"timeZone"`
+	// The expiration time of the schedule. The timestamp is an RFC3339 string.
+	ExpirationTime string `pulumi:"expirationTime"`
+	// The start time of the schedule. The timestamp is an RFC3339 string.
+	StartTime string `pulumi:"startTime"`
+	// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+	// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone string `pulumi:"timeZone"`
+	// Specifies the schedule for starting instances.
 	VmStartSchedules []GetResourcePolicyInstanceSchedulePolicyVmStartSchedule `pulumi:"vmStartSchedules"`
-	VmStopSchedules  []GetResourcePolicyInstanceSchedulePolicyVmStopSchedule  `pulumi:"vmStopSchedules"`
+	// Specifies the schedule for stopping instances.
+	VmStopSchedules []GetResourcePolicyInstanceSchedulePolicyVmStopSchedule `pulumi:"vmStopSchedules"`
 }
 
 // GetResourcePolicyInstanceSchedulePolicyInput is an input type that accepts GetResourcePolicyInstanceSchedulePolicyArgs and GetResourcePolicyInstanceSchedulePolicyOutput values.
@@ -18603,11 +20943,17 @@ type GetResourcePolicyInstanceSchedulePolicyInput interface {
 }
 
 type GetResourcePolicyInstanceSchedulePolicyArgs struct {
-	ExpirationTime   pulumi.StringInput                                               `pulumi:"expirationTime"`
-	StartTime        pulumi.StringInput                                               `pulumi:"startTime"`
-	TimeZone         pulumi.StringInput                                               `pulumi:"timeZone"`
+	// The expiration time of the schedule. The timestamp is an RFC3339 string.
+	ExpirationTime pulumi.StringInput `pulumi:"expirationTime"`
+	// The start time of the schedule. The timestamp is an RFC3339 string.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+	// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+	// Specifies the schedule for starting instances.
 	VmStartSchedules GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayInput `pulumi:"vmStartSchedules"`
-	VmStopSchedules  GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput  `pulumi:"vmStopSchedules"`
+	// Specifies the schedule for stopping instances.
+	VmStopSchedules GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayInput `pulumi:"vmStopSchedules"`
 }
 
 func (GetResourcePolicyInstanceSchedulePolicyArgs) ElementType() reflect.Type {
@@ -18661,24 +21007,30 @@ func (o GetResourcePolicyInstanceSchedulePolicyOutput) ToGetResourcePolicyInstan
 	return o
 }
 
+// The expiration time of the schedule. The timestamp is an RFC3339 string.
 func (o GetResourcePolicyInstanceSchedulePolicyOutput) ExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) string { return v.ExpirationTime }).(pulumi.StringOutput)
 }
 
+// The start time of the schedule. The timestamp is an RFC3339 string.
 func (o GetResourcePolicyInstanceSchedulePolicyOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
 func (o GetResourcePolicyInstanceSchedulePolicyOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
+// Specifies the schedule for starting instances.
 func (o GetResourcePolicyInstanceSchedulePolicyOutput) VmStartSchedules() GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) []GetResourcePolicyInstanceSchedulePolicyVmStartSchedule {
 		return v.VmStartSchedules
 	}).(GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput)
 }
 
+// Specifies the schedule for stopping instances.
 func (o GetResourcePolicyInstanceSchedulePolicyOutput) VmStopSchedules() GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicy) []GetResourcePolicyInstanceSchedulePolicyVmStopSchedule {
 		return v.VmStopSchedules
@@ -18706,6 +21058,7 @@ func (o GetResourcePolicyInstanceSchedulePolicyArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetResourcePolicyInstanceSchedulePolicyVmStartSchedule struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
 	Schedule string `pulumi:"schedule"`
 }
 
@@ -18721,6 +21074,7 @@ type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleInput interface {
 }
 
 type GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 }
 
@@ -18775,6 +21129,7 @@ func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) ToGetResou
 	return o
 }
 
+// Specifies the frequency for the operation, using the unix-cron format.
 func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicyVmStartSchedule) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -18800,6 +21155,7 @@ func (o GetResourcePolicyInstanceSchedulePolicyVmStartScheduleArrayOutput) Index
 }
 
 type GetResourcePolicyInstanceSchedulePolicyVmStopSchedule struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
 	Schedule string `pulumi:"schedule"`
 }
 
@@ -18815,6 +21171,7 @@ type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleInput interface {
 }
 
 type GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs struct {
+	// Specifies the frequency for the operation, using the unix-cron format.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 }
 
@@ -18869,6 +21226,7 @@ func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) ToGetResour
 	return o
 }
 
+// Specifies the frequency for the operation, using the unix-cron format.
 func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicyInstanceSchedulePolicyVmStopSchedule) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -18894,8 +21252,11 @@ func (o GetResourcePolicyInstanceSchedulePolicyVmStopScheduleArrayOutput) Index(
 }
 
 type GetResourcePolicySnapshotSchedulePolicy struct {
-	RetentionPolicies  []GetResourcePolicySnapshotSchedulePolicyRetentionPolicy  `pulumi:"retentionPolicies"`
-	Schedules          []GetResourcePolicySnapshotSchedulePolicySchedule         `pulumi:"schedules"`
+	// Retention policy applied to snapshots created by this resource policy.
+	RetentionPolicies []GetResourcePolicySnapshotSchedulePolicyRetentionPolicy `pulumi:"retentionPolicies"`
+	// Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
+	Schedules []GetResourcePolicySnapshotSchedulePolicySchedule `pulumi:"schedules"`
+	// Properties with which the snapshots are created, such as labels.
 	SnapshotProperties []GetResourcePolicySnapshotSchedulePolicySnapshotProperty `pulumi:"snapshotProperties"`
 }
 
@@ -18911,8 +21272,11 @@ type GetResourcePolicySnapshotSchedulePolicyInput interface {
 }
 
 type GetResourcePolicySnapshotSchedulePolicyArgs struct {
-	RetentionPolicies  GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput  `pulumi:"retentionPolicies"`
-	Schedules          GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput         `pulumi:"schedules"`
+	// Retention policy applied to snapshots created by this resource policy.
+	RetentionPolicies GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput `pulumi:"retentionPolicies"`
+	// Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
+	Schedules GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput `pulumi:"schedules"`
+	// Properties with which the snapshots are created, such as labels.
 	SnapshotProperties GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput `pulumi:"snapshotProperties"`
 }
 
@@ -18967,18 +21331,21 @@ func (o GetResourcePolicySnapshotSchedulePolicyOutput) ToGetResourcePolicySnapsh
 	return o
 }
 
+// Retention policy applied to snapshots created by this resource policy.
 func (o GetResourcePolicySnapshotSchedulePolicyOutput) RetentionPolicies() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicy) []GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
 		return v.RetentionPolicies
 	}).(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput)
 }
 
+// Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
 func (o GetResourcePolicySnapshotSchedulePolicyOutput) Schedules() GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicy) []GetResourcePolicySnapshotSchedulePolicySchedule {
 		return v.Schedules
 	}).(GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput)
 }
 
+// Properties with which the snapshots are created, such as labels.
 func (o GetResourcePolicySnapshotSchedulePolicyOutput) SnapshotProperties() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicy) []GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
 		return v.SnapshotProperties
@@ -19006,7 +21373,10 @@ func (o GetResourcePolicySnapshotSchedulePolicyArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetResourcePolicySnapshotSchedulePolicyRetentionPolicy struct {
-	MaxRetentionDays   int    `pulumi:"maxRetentionDays"`
+	// Maximum age of the snapshot that is allowed to be kept.
+	MaxRetentionDays int `pulumi:"maxRetentionDays"`
+	// Specifies the behavior to apply to scheduled snapshots when
+	// the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"]
 	OnSourceDiskDelete string `pulumi:"onSourceDiskDelete"`
 }
 
@@ -19022,7 +21392,10 @@ type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput interface {
 }
 
 type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs struct {
-	MaxRetentionDays   pulumi.IntInput    `pulumi:"maxRetentionDays"`
+	// Maximum age of the snapshot that is allowed to be kept.
+	MaxRetentionDays pulumi.IntInput `pulumi:"maxRetentionDays"`
+	// Specifies the behavior to apply to scheduled snapshots when
+	// the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"]
 	OnSourceDiskDelete pulumi.StringInput `pulumi:"onSourceDiskDelete"`
 }
 
@@ -19077,10 +21450,13 @@ func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ToGetResou
 	return o
 }
 
+// Maximum age of the snapshot that is allowed to be kept.
 func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) MaxRetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyRetentionPolicy) int { return v.MaxRetentionDays }).(pulumi.IntOutput)
 }
 
+// Specifies the behavior to apply to scheduled snapshots when
+// the source disk is deleted. Default value: "KEEP_AUTO_SNAPSHOTS" Possible values: ["KEEP_AUTO_SNAPSHOTS", "APPLY_RETENTION_POLICY"]
 func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) OnSourceDiskDelete() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyRetentionPolicy) string { return v.OnSourceDiskDelete }).(pulumi.StringOutput)
 }
@@ -19106,8 +21482,11 @@ func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput) Index
 }
 
 type GetResourcePolicySnapshotSchedulePolicySchedule struct {
-	DailySchedules  []GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule  `pulumi:"dailySchedules"`
+	// The policy will execute every nth day at the specified time.
+	DailySchedules []GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule `pulumi:"dailySchedules"`
+	// The policy will execute every nth hour starting at the specified time.
 	HourlySchedules []GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule `pulumi:"hourlySchedules"`
+	// Allows specifying a snapshot time for each day of the week.
 	WeeklySchedules []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule `pulumi:"weeklySchedules"`
 }
 
@@ -19123,8 +21502,11 @@ type GetResourcePolicySnapshotSchedulePolicyScheduleInput interface {
 }
 
 type GetResourcePolicySnapshotSchedulePolicyScheduleArgs struct {
-	DailySchedules  GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput  `pulumi:"dailySchedules"`
+	// The policy will execute every nth day at the specified time.
+	DailySchedules GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput `pulumi:"dailySchedules"`
+	// The policy will execute every nth hour starting at the specified time.
 	HourlySchedules GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput `pulumi:"hourlySchedules"`
+	// Allows specifying a snapshot time for each day of the week.
 	WeeklySchedules GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput `pulumi:"weeklySchedules"`
 }
 
@@ -19179,18 +21561,21 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) ToGetResourcePoli
 	return o
 }
 
+// The policy will execute every nth day at the specified time.
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) DailySchedules() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
 		return v.DailySchedules
 	}).(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput)
 }
 
+// The policy will execute every nth hour starting at the specified time.
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) HourlySchedules() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
 		return v.HourlySchedules
 	}).(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput)
 }
 
+// Allows specifying a snapshot time for each day of the week.
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) WeeklySchedules() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
 		return v.WeeklySchedules
@@ -19218,8 +21603,12 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput) Index(i pulu
 }
 
 type GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule struct {
-	DaysInCycle int    `pulumi:"daysInCycle"`
-	StartTime   string `pulumi:"startTime"`
+	// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+	DaysInCycle int `pulumi:"daysInCycle"`
+	// This must be in UTC format that resolves to one of
+	// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+	// both 13:00-5 and 08:00 are valid.
+	StartTime string `pulumi:"startTime"`
 }
 
 // GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput values.
@@ -19234,8 +21623,12 @@ type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput interface
 }
 
 type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs struct {
-	DaysInCycle pulumi.IntInput    `pulumi:"daysInCycle"`
-	StartTime   pulumi.StringInput `pulumi:"startTime"`
+	// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
+	DaysInCycle pulumi.IntInput `pulumi:"daysInCycle"`
+	// This must be in UTC format that resolves to one of
+	// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+	// both 13:00-5 and 08:00 are valid.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ElementType() reflect.Type {
@@ -19289,10 +21682,14 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ToGe
 	return o
 }
 
+// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) DaysInCycle() pulumi.IntOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) int { return v.DaysInCycle }).(pulumi.IntOutput)
 }
 
+// This must be in UTC format that resolves to one of
+// 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
+// both 13:00-5 and 08:00 are valid.
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -19318,8 +21715,13 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput)
 }
 
 type GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule struct {
-	HoursInCycle int    `pulumi:"hoursInCycle"`
-	StartTime    string `pulumi:"startTime"`
+	// The number of hours between snapshots.
+	HoursInCycle int `pulumi:"hoursInCycle"`
+	// Time within the window to start the operations.
+	// It must be in an hourly format "HH:MM",
+	// where HH : [00-23] and MM : [00] GMT.
+	// eg: 21:00
+	StartTime string `pulumi:"startTime"`
 }
 
 // GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput values.
@@ -19334,8 +21736,13 @@ type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput interfac
 }
 
 type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs struct {
-	HoursInCycle pulumi.IntInput    `pulumi:"hoursInCycle"`
-	StartTime    pulumi.StringInput `pulumi:"startTime"`
+	// The number of hours between snapshots.
+	HoursInCycle pulumi.IntInput `pulumi:"hoursInCycle"`
+	// Time within the window to start the operations.
+	// It must be in an hourly format "HH:MM",
+	// where HH : [00-23] and MM : [00] GMT.
+	// eg: 21:00
+	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ElementType() reflect.Type {
@@ -19389,10 +21796,15 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ToG
 	return o
 }
 
+// The number of hours between snapshots.
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) HoursInCycle() pulumi.IntOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) int { return v.HoursInCycle }).(pulumi.IntOutput)
 }
 
+// Time within the window to start the operations.
+// It must be in an hourly format "HH:MM",
+// where HH : [00-23] and MM : [00] GMT.
+// eg: 21:00
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -19418,6 +21830,7 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput
 }
 
 type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule struct {
+	// May contain up to seven (one for each day of the week) snapshot times.
 	DayOfWeeks []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek `pulumi:"dayOfWeeks"`
 }
 
@@ -19433,6 +21846,7 @@ type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput interfac
 }
 
 type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs struct {
+	// May contain up to seven (one for each day of the week) snapshot times.
 	DayOfWeeks GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput `pulumi:"dayOfWeeks"`
 }
 
@@ -19487,6 +21901,7 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) ToG
 	return o
 }
 
+// May contain up to seven (one for each day of the week) snapshot times.
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) DayOfWeeks() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
 		return v.DayOfWeeks
@@ -19514,7 +21929,10 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput
 }
 
 type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek struct {
-	Day       string `pulumi:"day"`
+	// The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	Day string `pulumi:"day"`
+	// Time within the window to start the operations.
+	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -19530,7 +21948,10 @@ type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput
 }
 
 type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs struct {
-	Day       pulumi.StringInput `pulumi:"day"`
+	// The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	Day pulumi.StringInput `pulumi:"day"`
+	// Time within the window to start the operations.
+	// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -19585,10 +22006,13 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOu
 	return o
 }
 
+// The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string { return v.Day }).(pulumi.StringOutput)
 }
 
+// Time within the window to start the operations.
+// It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
 func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string {
 		return v.StartTime
@@ -19616,10 +22040,17 @@ func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekAr
 }
 
 type GetResourcePolicySnapshotSchedulePolicySnapshotProperty struct {
-	ChainName        string            `pulumi:"chainName"`
-	GuestFlush       bool              `pulumi:"guestFlush"`
-	Labels           map[string]string `pulumi:"labels"`
-	StorageLocations []string          `pulumi:"storageLocations"`
+	// Creates the new snapshot in the snapshot chain labeled with the
+	// specified name. The chain name must be 1-63 characters long and comply
+	// with RFC1035.
+	ChainName string `pulumi:"chainName"`
+	// Whether to perform a 'guest aware' snapshot.
+	GuestFlush bool `pulumi:"guestFlush"`
+	// A set of key-value pairs.
+	Labels map[string]string `pulumi:"labels"`
+	// Cloud Storage bucket location to store the auto snapshot
+	// (regional or multi-regional)
+	StorageLocations []string `pulumi:"storageLocations"`
 }
 
 // GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs and GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput values.
@@ -19634,9 +22065,16 @@ type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput interface {
 }
 
 type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs struct {
-	ChainName        pulumi.StringInput      `pulumi:"chainName"`
-	GuestFlush       pulumi.BoolInput        `pulumi:"guestFlush"`
-	Labels           pulumi.StringMapInput   `pulumi:"labels"`
+	// Creates the new snapshot in the snapshot chain labeled with the
+	// specified name. The chain name must be 1-63 characters long and comply
+	// with RFC1035.
+	ChainName pulumi.StringInput `pulumi:"chainName"`
+	// Whether to perform a 'guest aware' snapshot.
+	GuestFlush pulumi.BoolInput `pulumi:"guestFlush"`
+	// A set of key-value pairs.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Cloud Storage bucket location to store the auto snapshot
+	// (regional or multi-regional)
 	StorageLocations pulumi.StringArrayInput `pulumi:"storageLocations"`
 }
 
@@ -19691,18 +22129,25 @@ func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) ToGetReso
 	return o
 }
 
+// Creates the new snapshot in the snapshot chain labeled with the
+// specified name. The chain name must be 1-63 characters long and comply
+// with RFC1035.
 func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) ChainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) string { return v.ChainName }).(pulumi.StringOutput)
 }
 
+// Whether to perform a 'guest aware' snapshot.
 func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) GuestFlush() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) bool { return v.GuestFlush }).(pulumi.BoolOutput)
 }
 
+// A set of key-value pairs.
 func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Cloud Storage bucket location to store the auto snapshot
+// (regional or multi-regional)
 func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) StorageLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) []string { return v.StorageLocations }).(pulumi.StringArrayOutput)
 }
@@ -19728,11 +22173,38 @@ func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) Inde
 }
 
 type GetRouterBgp struct {
-	AdvertiseMode      string                          `pulumi:"advertiseMode"`
-	AdvertisedGroups   []string                        `pulumi:"advertisedGroups"`
+	// User-specified flag to indicate which mode to use for advertisement. Default value: "DEFAULT" Possible values: ["DEFAULT", "CUSTOM"]
+	AdvertiseMode string `pulumi:"advertiseMode"`
+	// User-specified list of prefix groups to advertise in custom mode.
+	// This field can only be populated if advertiseMode is CUSTOM and
+	// is advertised to all peers of the router. These groups will be
+	// advertised in addition to any specified prefixes. Leave this field
+	// blank to advertise no custom groups.
+	//
+	// This enum field has the one valid value: ALL_SUBNETS
+	AdvertisedGroups []string `pulumi:"advertisedGroups"`
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is CUSTOM and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges []GetRouterBgpAdvertisedIpRange `pulumi:"advertisedIpRanges"`
-	Asn                int                             `pulumi:"asn"`
-	KeepaliveInterval  int                             `pulumi:"keepaliveInterval"`
+	// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+	// private ASN, either 16-bit or 32-bit. The value will be fixed for
+	// this router resource. All VPN tunnels that link to this router
+	// will have the same local ASN.
+	Asn int `pulumi:"asn"`
+	// The interval in seconds between BGP keepalive messages that are sent
+	// to the peer. Hold time is three times the interval at which keepalive
+	// messages are sent, and the hold time is the maximum number of seconds
+	// allowed to elapse between successive keepalive messages that BGP
+	// receives from a peer.
+	//
+	// BGP will use the smaller of either the local hold time value or the
+	// peer's hold time value as the hold time for the BGP connection
+	// between the two peers. If set, this value must be between 20 and 60.
+	// The default is 20.
+	KeepaliveInterval int `pulumi:"keepaliveInterval"`
 }
 
 // GetRouterBgpInput is an input type that accepts GetRouterBgpArgs and GetRouterBgpOutput values.
@@ -19747,11 +22219,38 @@ type GetRouterBgpInput interface {
 }
 
 type GetRouterBgpArgs struct {
-	AdvertiseMode      pulumi.StringInput                      `pulumi:"advertiseMode"`
-	AdvertisedGroups   pulumi.StringArrayInput                 `pulumi:"advertisedGroups"`
+	// User-specified flag to indicate which mode to use for advertisement. Default value: "DEFAULT" Possible values: ["DEFAULT", "CUSTOM"]
+	AdvertiseMode pulumi.StringInput `pulumi:"advertiseMode"`
+	// User-specified list of prefix groups to advertise in custom mode.
+	// This field can only be populated if advertiseMode is CUSTOM and
+	// is advertised to all peers of the router. These groups will be
+	// advertised in addition to any specified prefixes. Leave this field
+	// blank to advertise no custom groups.
+	//
+	// This enum field has the one valid value: ALL_SUBNETS
+	AdvertisedGroups pulumi.StringArrayInput `pulumi:"advertisedGroups"`
+	// User-specified list of individual IP ranges to advertise in
+	// custom mode. This field can only be populated if advertiseMode
+	// is CUSTOM and is advertised to all peers of the router. These IP
+	// ranges will be advertised in addition to any specified groups.
+	// Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges GetRouterBgpAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
-	Asn                pulumi.IntInput                         `pulumi:"asn"`
-	KeepaliveInterval  pulumi.IntInput                         `pulumi:"keepaliveInterval"`
+	// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+	// private ASN, either 16-bit or 32-bit. The value will be fixed for
+	// this router resource. All VPN tunnels that link to this router
+	// will have the same local ASN.
+	Asn pulumi.IntInput `pulumi:"asn"`
+	// The interval in seconds between BGP keepalive messages that are sent
+	// to the peer. Hold time is three times the interval at which keepalive
+	// messages are sent, and the hold time is the maximum number of seconds
+	// allowed to elapse between successive keepalive messages that BGP
+	// receives from a peer.
+	//
+	// BGP will use the smaller of either the local hold time value or the
+	// peer's hold time value as the hold time for the BGP connection
+	// between the two peers. If set, this value must be between 20 and 60.
+	// The default is 20.
+	KeepaliveInterval pulumi.IntInput `pulumi:"keepaliveInterval"`
 }
 
 func (GetRouterBgpArgs) ElementType() reflect.Type {
@@ -19805,22 +22304,49 @@ func (o GetRouterBgpOutput) ToGetRouterBgpOutputWithContext(ctx context.Context)
 	return o
 }
 
+// User-specified flag to indicate which mode to use for advertisement. Default value: "DEFAULT" Possible values: ["DEFAULT", "CUSTOM"]
 func (o GetRouterBgpOutput) AdvertiseMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterBgp) string { return v.AdvertiseMode }).(pulumi.StringOutput)
 }
 
+// User-specified list of prefix groups to advertise in custom mode.
+// This field can only be populated if advertiseMode is CUSTOM and
+// is advertised to all peers of the router. These groups will be
+// advertised in addition to any specified prefixes. Leave this field
+// blank to advertise no custom groups.
+//
+// This enum field has the one valid value: ALL_SUBNETS
 func (o GetRouterBgpOutput) AdvertisedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterBgp) []string { return v.AdvertisedGroups }).(pulumi.StringArrayOutput)
 }
 
+// User-specified list of individual IP ranges to advertise in
+// custom mode. This field can only be populated if advertiseMode
+// is CUSTOM and is advertised to all peers of the router. These IP
+// ranges will be advertised in addition to any specified groups.
+// Leave this field blank to advertise no custom IP ranges.
 func (o GetRouterBgpOutput) AdvertisedIpRanges() GetRouterBgpAdvertisedIpRangeArrayOutput {
 	return o.ApplyT(func(v GetRouterBgp) []GetRouterBgpAdvertisedIpRange { return v.AdvertisedIpRanges }).(GetRouterBgpAdvertisedIpRangeArrayOutput)
 }
 
+// Local BGP Autonomous System Number (ASN). Must be an RFC6996
+// private ASN, either 16-bit or 32-bit. The value will be fixed for
+// this router resource. All VPN tunnels that link to this router
+// will have the same local ASN.
 func (o GetRouterBgpOutput) Asn() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRouterBgp) int { return v.Asn }).(pulumi.IntOutput)
 }
 
+// The interval in seconds between BGP keepalive messages that are sent
+// to the peer. Hold time is three times the interval at which keepalive
+// messages are sent, and the hold time is the maximum number of seconds
+// allowed to elapse between successive keepalive messages that BGP
+// receives from a peer.
+//
+// BGP will use the smaller of either the local hold time value or the
+// peer's hold time value as the hold time for the BGP connection
+// between the two peers. If set, this value must be between 20 and 60.
+// The default is 20.
 func (o GetRouterBgpOutput) KeepaliveInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRouterBgp) int { return v.KeepaliveInterval }).(pulumi.IntOutput)
 }
@@ -19846,8 +22372,11 @@ func (o GetRouterBgpArrayOutput) Index(i pulumi.IntInput) GetRouterBgpOutput {
 }
 
 type GetRouterBgpAdvertisedIpRange struct {
+	// User-specified description for the IP range.
 	Description string `pulumi:"description"`
-	Range       string `pulumi:"range"`
+	// The IP range to advertise. The value must be a
+	// CIDR-formatted string.
+	Range string `pulumi:"range"`
 }
 
 // GetRouterBgpAdvertisedIpRangeInput is an input type that accepts GetRouterBgpAdvertisedIpRangeArgs and GetRouterBgpAdvertisedIpRangeOutput values.
@@ -19862,8 +22391,11 @@ type GetRouterBgpAdvertisedIpRangeInput interface {
 }
 
 type GetRouterBgpAdvertisedIpRangeArgs struct {
+	// User-specified description for the IP range.
 	Description pulumi.StringInput `pulumi:"description"`
-	Range       pulumi.StringInput `pulumi:"range"`
+	// The IP range to advertise. The value must be a
+	// CIDR-formatted string.
+	Range pulumi.StringInput `pulumi:"range"`
 }
 
 func (GetRouterBgpAdvertisedIpRangeArgs) ElementType() reflect.Type {
@@ -19917,10 +22449,13 @@ func (o GetRouterBgpAdvertisedIpRangeOutput) ToGetRouterBgpAdvertisedIpRangeOutp
 	return o
 }
 
+// User-specified description for the IP range.
 func (o GetRouterBgpAdvertisedIpRangeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterBgpAdvertisedIpRange) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The IP range to advertise. The value must be a
+// CIDR-formatted string.
 func (o GetRouterBgpAdvertisedIpRangeOutput) Range() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterBgpAdvertisedIpRange) string { return v.Range }).(pulumi.StringOutput)
 }
@@ -19946,7 +22481,9 @@ func (o GetRouterBgpAdvertisedIpRangeArrayOutput) Index(i pulumi.IntInput) GetRo
 }
 
 type GetRouterNatLogConfig struct {
-	Enable bool   `pulumi:"enable"`
+	// Indicates whether or not to export logs.
+	Enable bool `pulumi:"enable"`
+	// Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
 	Filter string `pulumi:"filter"`
 }
 
@@ -19962,7 +22499,9 @@ type GetRouterNatLogConfigInput interface {
 }
 
 type GetRouterNatLogConfigArgs struct {
-	Enable pulumi.BoolInput   `pulumi:"enable"`
+	// Indicates whether or not to export logs.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+	// Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -20017,10 +22556,12 @@ func (o GetRouterNatLogConfigOutput) ToGetRouterNatLogConfigOutputWithContext(ct
 	return o
 }
 
+// Indicates whether or not to export logs.
 func (o GetRouterNatLogConfigOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRouterNatLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
 }
 
+// Specifies the desired filtering of logs on this NAT. Possible values: ["ERRORS_ONLY", "TRANSLATIONS_ONLY", "ALL"]
 func (o GetRouterNatLogConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterNatLogConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -20046,10 +22587,26 @@ func (o GetRouterNatLogConfigArrayOutput) Index(i pulumi.IntInput) GetRouterNatL
 }
 
 type GetRouterNatRule struct {
-	Actions     []GetRouterNatRuleAction `pulumi:"actions"`
-	Description string                   `pulumi:"description"`
-	Match       string                   `pulumi:"match"`
-	RuleNumber  int                      `pulumi:"ruleNumber"`
+	// The action to be enforced for traffic that matches this rule.
+	Actions []GetRouterNatRuleAction `pulumi:"actions"`
+	// An optional description of this rule.
+	Description string `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+	// If it evaluates to true, the corresponding action is enforced.
+	//
+	// The following examples are valid match expressions for public NAT:
+	//
+	// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+	//
+	// "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+	//
+	// The following example is a valid match expression for private NAT:
+	//
+	// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+	Match string `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list.
+	// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber int `pulumi:"ruleNumber"`
 }
 
 // GetRouterNatRuleInput is an input type that accepts GetRouterNatRuleArgs and GetRouterNatRuleOutput values.
@@ -20064,10 +22621,26 @@ type GetRouterNatRuleInput interface {
 }
 
 type GetRouterNatRuleArgs struct {
-	Actions     GetRouterNatRuleActionArrayInput `pulumi:"actions"`
-	Description pulumi.StringInput               `pulumi:"description"`
-	Match       pulumi.StringInput               `pulumi:"match"`
-	RuleNumber  pulumi.IntInput                  `pulumi:"ruleNumber"`
+	// The action to be enforced for traffic that matches this rule.
+	Actions GetRouterNatRuleActionArrayInput `pulumi:"actions"`
+	// An optional description of this rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+	// If it evaluates to true, the corresponding action is enforced.
+	//
+	// The following examples are valid match expressions for public NAT:
+	//
+	// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+	//
+	// "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+	//
+	// The following example is a valid match expression for private NAT:
+	//
+	// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
+	Match pulumi.StringInput `pulumi:"match"`
+	// An integer uniquely identifying a rule in the list.
+	// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+	RuleNumber pulumi.IntInput `pulumi:"ruleNumber"`
 }
 
 func (GetRouterNatRuleArgs) ElementType() reflect.Type {
@@ -20121,18 +22694,34 @@ func (o GetRouterNatRuleOutput) ToGetRouterNatRuleOutputWithContext(ctx context.
 	return o
 }
 
+// The action to be enforced for traffic that matches this rule.
 func (o GetRouterNatRuleOutput) Actions() GetRouterNatRuleActionArrayOutput {
 	return o.ApplyT(func(v GetRouterNatRule) []GetRouterNatRuleAction { return v.Actions }).(GetRouterNatRuleActionArrayOutput)
 }
 
+// An optional description of this rule.
 func (o GetRouterNatRuleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterNatRule) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+// If it evaluates to true, the corresponding action is enforced.
+//
+// The following examples are valid match expressions for public NAT:
+//
+// "inIpRange(destination.ip, '1.1.0.0/16') || inIpRange(destination.ip, '2.2.0.0/16')"
+//
+// "destination.ip == '1.1.0.1' || destination.ip == '8.8.8.8'"
+//
+// The following example is a valid match expression for private NAT:
+//
+// "nexthop.hub == 'https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1'"
 func (o GetRouterNatRuleOutput) Match() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterNatRule) string { return v.Match }).(pulumi.StringOutput)
 }
 
+// An integer uniquely identifying a rule in the list.
+// The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
 func (o GetRouterNatRuleOutput) RuleNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRouterNatRule) int { return v.RuleNumber }).(pulumi.IntOutput)
 }
@@ -20158,10 +22747,23 @@ func (o GetRouterNatRuleArrayOutput) Index(i pulumi.IntInput) GetRouterNatRuleOu
 }
 
 type GetRouterNatRuleAction struct {
-	SourceNatActiveIps    []string `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the IP resources used for this NAT rule.
+	// These IP addresses must be valid static external IP addresses assigned to the project.
+	// This field is used for public NAT.
+	SourceNatActiveIps []string `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+	// These subnetworks must have purpose set to PRIVATE_NAT.
+	// This field is used for private NAT.
 	SourceNatActiveRanges []string `pulumi:"sourceNatActiveRanges"`
-	SourceNatDrainIps     []string `pulumi:"sourceNatDrainIps"`
-	SourceNatDrainRanges  []string `pulumi:"sourceNatDrainRanges"`
+	// A list of URLs of the IP resources to be drained.
+	// These IPs must be valid static external IPs that have been assigned to the NAT.
+	// These IPs should be used for updating/patching a NAT rule only.
+	// This field is used for public NAT.
+	SourceNatDrainIps []string `pulumi:"sourceNatDrainIps"`
+	// A list of URLs of subnetworks representing source ranges to be drained.
+	// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+	// This field is used for private NAT.
+	SourceNatDrainRanges []string `pulumi:"sourceNatDrainRanges"`
 }
 
 // GetRouterNatRuleActionInput is an input type that accepts GetRouterNatRuleActionArgs and GetRouterNatRuleActionOutput values.
@@ -20176,10 +22778,23 @@ type GetRouterNatRuleActionInput interface {
 }
 
 type GetRouterNatRuleActionArgs struct {
-	SourceNatActiveIps    pulumi.StringArrayInput `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the IP resources used for this NAT rule.
+	// These IP addresses must be valid static external IP addresses assigned to the project.
+	// This field is used for public NAT.
+	SourceNatActiveIps pulumi.StringArrayInput `pulumi:"sourceNatActiveIps"`
+	// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+	// These subnetworks must have purpose set to PRIVATE_NAT.
+	// This field is used for private NAT.
 	SourceNatActiveRanges pulumi.StringArrayInput `pulumi:"sourceNatActiveRanges"`
-	SourceNatDrainIps     pulumi.StringArrayInput `pulumi:"sourceNatDrainIps"`
-	SourceNatDrainRanges  pulumi.StringArrayInput `pulumi:"sourceNatDrainRanges"`
+	// A list of URLs of the IP resources to be drained.
+	// These IPs must be valid static external IPs that have been assigned to the NAT.
+	// These IPs should be used for updating/patching a NAT rule only.
+	// This field is used for public NAT.
+	SourceNatDrainIps pulumi.StringArrayInput `pulumi:"sourceNatDrainIps"`
+	// A list of URLs of subnetworks representing source ranges to be drained.
+	// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+	// This field is used for private NAT.
+	SourceNatDrainRanges pulumi.StringArrayInput `pulumi:"sourceNatDrainRanges"`
 }
 
 func (GetRouterNatRuleActionArgs) ElementType() reflect.Type {
@@ -20233,18 +22848,31 @@ func (o GetRouterNatRuleActionOutput) ToGetRouterNatRuleActionOutputWithContext(
 	return o
 }
 
+// A list of URLs of the IP resources used for this NAT rule.
+// These IP addresses must be valid static external IP addresses assigned to the project.
+// This field is used for public NAT.
 func (o GetRouterNatRuleActionOutput) SourceNatActiveIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatActiveIps }).(pulumi.StringArrayOutput)
 }
 
+// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+// These subnetworks must have purpose set to PRIVATE_NAT.
+// This field is used for private NAT.
 func (o GetRouterNatRuleActionOutput) SourceNatActiveRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatActiveRanges }).(pulumi.StringArrayOutput)
 }
 
+// A list of URLs of the IP resources to be drained.
+// These IPs must be valid static external IPs that have been assigned to the NAT.
+// These IPs should be used for updating/patching a NAT rule only.
+// This field is used for public NAT.
 func (o GetRouterNatRuleActionOutput) SourceNatDrainIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatDrainIps }).(pulumi.StringArrayOutput)
 }
 
+// A list of URLs of subnetworks representing source ranges to be drained.
+// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+// This field is used for private NAT.
 func (o GetRouterNatRuleActionOutput) SourceNatDrainRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterNatRuleAction) []string { return v.SourceNatDrainRanges }).(pulumi.StringArrayOutput)
 }
@@ -20272,9 +22900,17 @@ func (o GetRouterNatRuleActionArrayOutput) Index(i pulumi.IntInput) GetRouterNat
 type GetRouterNatSubnetwork struct {
 	// Name of the NAT service. The name must be 1-63 characters long and
 	// comply with RFC1035.
-	Name                  string   `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// List of the secondary ranges of the subnetwork that are allowed
+	// to use NAT. This can be populated only if
+	// 'LIST_OF_SECONDARY_IP_RANGES' is one of the values in
+	// sourceIpRangesToNat
 	SecondaryIpRangeNames []string `pulumi:"secondaryIpRangeNames"`
-	SourceIpRangesToNats  []string `pulumi:"sourceIpRangesToNats"`
+	// List of options for which source IPs in the subnetwork
+	// should have NAT enabled. Supported values include:
+	// 'ALL_IP_RANGES', 'LIST_OF_SECONDARY_IP_RANGES',
+	// 'PRIMARY_IP_RANGE'.
+	SourceIpRangesToNats []string `pulumi:"sourceIpRangesToNats"`
 }
 
 // GetRouterNatSubnetworkInput is an input type that accepts GetRouterNatSubnetworkArgs and GetRouterNatSubnetworkOutput values.
@@ -20291,9 +22927,17 @@ type GetRouterNatSubnetworkInput interface {
 type GetRouterNatSubnetworkArgs struct {
 	// Name of the NAT service. The name must be 1-63 characters long and
 	// comply with RFC1035.
-	Name                  pulumi.StringInput      `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// List of the secondary ranges of the subnetwork that are allowed
+	// to use NAT. This can be populated only if
+	// 'LIST_OF_SECONDARY_IP_RANGES' is one of the values in
+	// sourceIpRangesToNat
 	SecondaryIpRangeNames pulumi.StringArrayInput `pulumi:"secondaryIpRangeNames"`
-	SourceIpRangesToNats  pulumi.StringArrayInput `pulumi:"sourceIpRangesToNats"`
+	// List of options for which source IPs in the subnetwork
+	// should have NAT enabled. Supported values include:
+	// 'ALL_IP_RANGES', 'LIST_OF_SECONDARY_IP_RANGES',
+	// 'PRIMARY_IP_RANGE'.
+	SourceIpRangesToNats pulumi.StringArrayInput `pulumi:"sourceIpRangesToNats"`
 }
 
 func (GetRouterNatSubnetworkArgs) ElementType() reflect.Type {
@@ -20353,10 +22997,18 @@ func (o GetRouterNatSubnetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterNatSubnetwork) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of the secondary ranges of the subnetwork that are allowed
+// to use NAT. This can be populated only if
+// 'LIST_OF_SECONDARY_IP_RANGES' is one of the values in
+// sourceIpRangesToNat
 func (o GetRouterNatSubnetworkOutput) SecondaryIpRangeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterNatSubnetwork) []string { return v.SecondaryIpRangeNames }).(pulumi.StringArrayOutput)
 }
 
+// List of options for which source IPs in the subnetwork
+// should have NAT enabled. Supported values include:
+// 'ALL_IP_RANGES', 'LIST_OF_SECONDARY_IP_RANGES',
+// 'PRIMARY_IP_RANGE'.
 func (o GetRouterNatSubnetworkOutput) SourceIpRangesToNats() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterNatSubnetwork) []string { return v.SourceIpRangesToNats }).(pulumi.StringArrayOutput)
 }
@@ -20382,26 +23034,71 @@ func (o GetRouterNatSubnetworkArrayOutput) Index(i pulumi.IntInput) GetRouterNat
 }
 
 type GetRouterStatusBestRoute struct {
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
 	Description string `pulumi:"description"`
-	DestRange   string `pulumi:"destRange"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange string `pulumi:"destRange"`
 	// The name of the router.
 	Name string `pulumi:"name"`
 	// The network name or resource link to the parent
 	// network of this subnetwork.
-	Network             string `pulumi:"network"`
-	NextHopGateway      string `pulumi:"nextHopGateway"`
-	NextHopIlb          string `pulumi:"nextHopIlb"`
-	NextHopInstance     string `pulumi:"nextHopInstance"`
+	Network string `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb string `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance string `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 	NextHopInstanceZone string `pulumi:"nextHopInstanceZone"`
-	NextHopIp           string `pulumi:"nextHopIp"`
-	NextHopNetwork      string `pulumi:"nextHopNetwork"`
-	NextHopVpnTunnel    string `pulumi:"nextHopVpnTunnel"`
-	Priority            int    `pulumi:"priority"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp string `pulumi:"nextHopIp"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork string `pulumi:"nextHopNetwork"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority int `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  string   `pulumi:"project"`
-	SelfLink string   `pulumi:"selfLink"`
-	Tags     []string `pulumi:"tags"`
+	Project  string `pulumi:"project"`
+	SelfLink string `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags []string `pulumi:"tags"`
 }
 
 // GetRouterStatusBestRouteInput is an input type that accepts GetRouterStatusBestRouteArgs and GetRouterStatusBestRouteOutput values.
@@ -20416,26 +23113,71 @@ type GetRouterStatusBestRouteInput interface {
 }
 
 type GetRouterStatusBestRouteArgs struct {
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
-	DestRange   pulumi.StringInput `pulumi:"destRange"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange pulumi.StringInput `pulumi:"destRange"`
 	// The name of the router.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The network name or resource link to the parent
 	// network of this subnetwork.
-	Network             pulumi.StringInput `pulumi:"network"`
-	NextHopGateway      pulumi.StringInput `pulumi:"nextHopGateway"`
-	NextHopIlb          pulumi.StringInput `pulumi:"nextHopIlb"`
-	NextHopInstance     pulumi.StringInput `pulumi:"nextHopInstance"`
+	Network pulumi.StringInput `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb pulumi.StringInput `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance pulumi.StringInput `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 	NextHopInstanceZone pulumi.StringInput `pulumi:"nextHopInstanceZone"`
-	NextHopIp           pulumi.StringInput `pulumi:"nextHopIp"`
-	NextHopNetwork      pulumi.StringInput `pulumi:"nextHopNetwork"`
-	NextHopVpnTunnel    pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
-	Priority            pulumi.IntInput    `pulumi:"priority"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp pulumi.StringInput `pulumi:"nextHopIp"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority pulumi.IntInput `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  pulumi.StringInput      `pulumi:"project"`
-	SelfLink pulumi.StringInput      `pulumi:"selfLink"`
-	Tags     pulumi.StringArrayInput `pulumi:"tags"`
+	Project  pulumi.StringInput `pulumi:"project"`
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetRouterStatusBestRouteArgs) ElementType() reflect.Type {
@@ -20489,10 +23231,14 @@ func (o GetRouterStatusBestRouteOutput) ToGetRouterStatusBestRouteOutputWithCont
 	return o
 }
 
+// An optional description of this resource. Provide this property
+// when you create the resource.
 func (o GetRouterStatusBestRouteOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The destination range of outgoing packets that this route applies to.
+// Only IPv4 is supported.
 func (o GetRouterStatusBestRouteOutput) DestRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.DestRange }).(pulumi.StringOutput)
 }
@@ -20508,34 +23254,74 @@ func (o GetRouterStatusBestRouteOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// URL to a gateway that should handle matching packets.
+// Currently, you can only specify the internet gateway, using a full or
+// partial valid URL:
+// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+// * 'projects/project/global/gateways/default-internet-gateway'
+// * 'global/gateways/default-internet-gateway'
+// * The string 'default-internet-gateway'.
 func (o GetRouterStatusBestRouteOutput) NextHopGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopGateway }).(pulumi.StringOutput)
 }
 
+// The IP address or URL to a forwarding rule of type
+// loadBalancingScheme=INTERNAL that should handle matching
+// packets.
+//
+// With the GA provider you can only specify the forwarding
+// rule as a partial or full URL. For example, the following
+// are all valid values:
+// * 10.128.0.56
+// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+// * regions/region/forwardingRules/forwardingRule
+//
+// When the beta provider, you can also specify the IP address
+// of a forwarding rule from the same VPC or any peered VPC.
+//
+// Note that this can only be used when the destinationRange is
+// a public (non-RFC 1918) IP CIDR range.
 func (o GetRouterStatusBestRouteOutput) NextHopIlb() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopIlb }).(pulumi.StringOutput)
 }
 
+// URL to an instance that should handle matching packets.
+// You can specify this as a full or partial URL. For example:
+// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+// * 'projects/project/zones/zone/instances/instance'
+// * 'zones/zone/instances/instance'
+// * Just the instance name, with the zone in 'next_hop_instance_zone'.
 func (o GetRouterStatusBestRouteOutput) NextHopInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopInstance }).(pulumi.StringOutput)
 }
 
+// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 func (o GetRouterStatusBestRouteOutput) NextHopInstanceZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopInstanceZone }).(pulumi.StringOutput)
 }
 
+// Network IP address of an instance that should handle matching packets.
 func (o GetRouterStatusBestRouteOutput) NextHopIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopIp }).(pulumi.StringOutput)
 }
 
+// URL to a Network that should handle matching packets.
 func (o GetRouterStatusBestRouteOutput) NextHopNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopNetwork }).(pulumi.StringOutput)
 }
 
+// URL to a VpnTunnel that should handle matching packets.
 func (o GetRouterStatusBestRouteOutput) NextHopVpnTunnel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
 }
 
+// The priority of this route. Priority is used to break ties in cases
+// where there is more than one matching route of equal prefix length.
+//
+// In the case of two routes with equal prefix length, the one with the
+// lowest-numbered priority value wins.
+//
+// Default value is 1000. Valid range is 0 through 65535.
 func (o GetRouterStatusBestRouteOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) int { return v.Priority }).(pulumi.IntOutput)
 }
@@ -20550,6 +23336,7 @@ func (o GetRouterStatusBestRouteOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
+// A list of instance tags to which this route applies.
 func (o GetRouterStatusBestRouteOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -20575,26 +23362,71 @@ func (o GetRouterStatusBestRouteArrayOutput) Index(i pulumi.IntInput) GetRouterS
 }
 
 type GetRouterStatusBestRoutesForRouter struct {
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
 	Description string `pulumi:"description"`
-	DestRange   string `pulumi:"destRange"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange string `pulumi:"destRange"`
 	// The name of the router.
 	Name string `pulumi:"name"`
 	// The network name or resource link to the parent
 	// network of this subnetwork.
-	Network             string `pulumi:"network"`
-	NextHopGateway      string `pulumi:"nextHopGateway"`
-	NextHopIlb          string `pulumi:"nextHopIlb"`
-	NextHopInstance     string `pulumi:"nextHopInstance"`
+	Network string `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway string `pulumi:"nextHopGateway"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb string `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance string `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 	NextHopInstanceZone string `pulumi:"nextHopInstanceZone"`
-	NextHopIp           string `pulumi:"nextHopIp"`
-	NextHopNetwork      string `pulumi:"nextHopNetwork"`
-	NextHopVpnTunnel    string `pulumi:"nextHopVpnTunnel"`
-	Priority            int    `pulumi:"priority"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp string `pulumi:"nextHopIp"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork string `pulumi:"nextHopNetwork"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority int `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  string   `pulumi:"project"`
-	SelfLink string   `pulumi:"selfLink"`
-	Tags     []string `pulumi:"tags"`
+	Project  string `pulumi:"project"`
+	SelfLink string `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags []string `pulumi:"tags"`
 }
 
 // GetRouterStatusBestRoutesForRouterInput is an input type that accepts GetRouterStatusBestRoutesForRouterArgs and GetRouterStatusBestRoutesForRouterOutput values.
@@ -20609,26 +23441,71 @@ type GetRouterStatusBestRoutesForRouterInput interface {
 }
 
 type GetRouterStatusBestRoutesForRouterArgs struct {
+	// An optional description of this resource. Provide this property
+	// when you create the resource.
 	Description pulumi.StringInput `pulumi:"description"`
-	DestRange   pulumi.StringInput `pulumi:"destRange"`
+	// The destination range of outgoing packets that this route applies to.
+	// Only IPv4 is supported.
+	DestRange pulumi.StringInput `pulumi:"destRange"`
 	// The name of the router.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The network name or resource link to the parent
 	// network of this subnetwork.
-	Network             pulumi.StringInput `pulumi:"network"`
-	NextHopGateway      pulumi.StringInput `pulumi:"nextHopGateway"`
-	NextHopIlb          pulumi.StringInput `pulumi:"nextHopIlb"`
-	NextHopInstance     pulumi.StringInput `pulumi:"nextHopInstance"`
+	Network pulumi.StringInput `pulumi:"network"`
+	// URL to a gateway that should handle matching packets.
+	// Currently, you can only specify the internet gateway, using a full or
+	// partial valid URL:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+	// * 'projects/project/global/gateways/default-internet-gateway'
+	// * 'global/gateways/default-internet-gateway'
+	// * The string 'default-internet-gateway'.
+	NextHopGateway pulumi.StringInput `pulumi:"nextHopGateway"`
+	// The IP address or URL to a forwarding rule of type
+	// loadBalancingScheme=INTERNAL that should handle matching
+	// packets.
+	//
+	// With the GA provider you can only specify the forwarding
+	// rule as a partial or full URL. For example, the following
+	// are all valid values:
+	// * 10.128.0.56
+	// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+	// * regions/region/forwardingRules/forwardingRule
+	//
+	// When the beta provider, you can also specify the IP address
+	// of a forwarding rule from the same VPC or any peered VPC.
+	//
+	// Note that this can only be used when the destinationRange is
+	// a public (non-RFC 1918) IP CIDR range.
+	NextHopIlb pulumi.StringInput `pulumi:"nextHopIlb"`
+	// URL to an instance that should handle matching packets.
+	// You can specify this as a full or partial URL. For example:
+	// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+	// * 'projects/project/zones/zone/instances/instance'
+	// * 'zones/zone/instances/instance'
+	// * Just the instance name, with the zone in 'next_hop_instance_zone'.
+	NextHopInstance pulumi.StringInput `pulumi:"nextHopInstance"`
+	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 	NextHopInstanceZone pulumi.StringInput `pulumi:"nextHopInstanceZone"`
-	NextHopIp           pulumi.StringInput `pulumi:"nextHopIp"`
-	NextHopNetwork      pulumi.StringInput `pulumi:"nextHopNetwork"`
-	NextHopVpnTunnel    pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
-	Priority            pulumi.IntInput    `pulumi:"priority"`
+	// Network IP address of an instance that should handle matching packets.
+	NextHopIp pulumi.StringInput `pulumi:"nextHopIp"`
+	// URL to a Network that should handle matching packets.
+	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
+	// URL to a VpnTunnel that should handle matching packets.
+	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
+	// The priority of this route. Priority is used to break ties in cases
+	// where there is more than one matching route of equal prefix length.
+	//
+	// In the case of two routes with equal prefix length, the one with the
+	// lowest-numbered priority value wins.
+	//
+	// Default value is 1000. Valid range is 0 through 65535.
+	Priority pulumi.IntInput `pulumi:"priority"`
 	// The ID of the project in which the resource
 	// belongs. If it is not provided, the provider project is used.
-	Project  pulumi.StringInput      `pulumi:"project"`
-	SelfLink pulumi.StringInput      `pulumi:"selfLink"`
-	Tags     pulumi.StringArrayInput `pulumi:"tags"`
+	Project  pulumi.StringInput `pulumi:"project"`
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// A list of instance tags to which this route applies.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
 func (GetRouterStatusBestRoutesForRouterArgs) ElementType() reflect.Type {
@@ -20682,10 +23559,14 @@ func (o GetRouterStatusBestRoutesForRouterOutput) ToGetRouterStatusBestRoutesFor
 	return o
 }
 
+// An optional description of this resource. Provide this property
+// when you create the resource.
 func (o GetRouterStatusBestRoutesForRouterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The destination range of outgoing packets that this route applies to.
+// Only IPv4 is supported.
 func (o GetRouterStatusBestRoutesForRouterOutput) DestRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.DestRange }).(pulumi.StringOutput)
 }
@@ -20701,34 +23582,74 @@ func (o GetRouterStatusBestRoutesForRouterOutput) Network() pulumi.StringOutput 
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// URL to a gateway that should handle matching packets.
+// Currently, you can only specify the internet gateway, using a full or
+// partial valid URL:
+// * 'https://www.googleapis.com/compute/v1/projects/project/global/gateways/default-internet-gateway'
+// * 'projects/project/global/gateways/default-internet-gateway'
+// * 'global/gateways/default-internet-gateway'
+// * The string 'default-internet-gateway'.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopGateway }).(pulumi.StringOutput)
 }
 
+// The IP address or URL to a forwarding rule of type
+// loadBalancingScheme=INTERNAL that should handle matching
+// packets.
+//
+// With the GA provider you can only specify the forwarding
+// rule as a partial or full URL. For example, the following
+// are all valid values:
+// * 10.128.0.56
+// * https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+// * regions/region/forwardingRules/forwardingRule
+//
+// When the beta provider, you can also specify the IP address
+// of a forwarding rule from the same VPC or any peered VPC.
+//
+// Note that this can only be used when the destinationRange is
+// a public (non-RFC 1918) IP CIDR range.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopIlb() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopIlb }).(pulumi.StringOutput)
 }
 
+// URL to an instance that should handle matching packets.
+// You can specify this as a full or partial URL. For example:
+// * 'https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance'
+// * 'projects/project/zones/zone/instances/instance'
+// * 'zones/zone/instances/instance'
+// * Just the instance name, with the zone in 'next_hop_instance_zone'.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopInstance }).(pulumi.StringOutput)
 }
 
+// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopInstanceZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopInstanceZone }).(pulumi.StringOutput)
 }
 
+// Network IP address of an instance that should handle matching packets.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopIp }).(pulumi.StringOutput)
 }
 
+// URL to a Network that should handle matching packets.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopNetwork }).(pulumi.StringOutput)
 }
 
+// URL to a VpnTunnel that should handle matching packets.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopVpnTunnel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopVpnTunnel }).(pulumi.StringOutput)
 }
 
+// The priority of this route. Priority is used to break ties in cases
+// where there is more than one matching route of equal prefix length.
+//
+// In the case of two routes with equal prefix length, the one with the
+// lowest-numbered priority value wins.
+//
+// Default value is 1000. Valid range is 0 through 65535.
 func (o GetRouterStatusBestRoutesForRouterOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) int { return v.Priority }).(pulumi.IntOutput)
 }
@@ -20743,6 +23664,7 @@ func (o GetRouterStatusBestRoutesForRouterOutput) SelfLink() pulumi.StringOutput
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
+// A list of instance tags to which this route applies.
 func (o GetRouterStatusBestRoutesForRouterOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -20768,10 +23690,17 @@ func (o GetRouterStatusBestRoutesForRouterArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetSnapshotSnapshotEncryptionKey struct {
-	KmsKeySelfLink       string `pulumi:"kmsKeySelfLink"`
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
-	RawKey               string `pulumi:"rawKey"`
-	Sha256               string `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 string `pulumi:"sha256"`
 }
 
 // GetSnapshotSnapshotEncryptionKeyInput is an input type that accepts GetSnapshotSnapshotEncryptionKeyArgs and GetSnapshotSnapshotEncryptionKeyOutput values.
@@ -20786,10 +23715,17 @@ type GetSnapshotSnapshotEncryptionKeyInput interface {
 }
 
 type GetSnapshotSnapshotEncryptionKeyArgs struct {
-	KmsKeySelfLink       pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
-	RawKey               pulumi.StringInput `pulumi:"rawKey"`
-	Sha256               pulumi.StringInput `pulumi:"sha256"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringInput `pulumi:"sha256"`
 }
 
 func (GetSnapshotSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
@@ -20843,18 +23779,25 @@ func (o GetSnapshotSnapshotEncryptionKeyOutput) ToGetSnapshotSnapshotEncryptionK
 	return o
 }
 
+// The name of the encryption key that is stored in Google Cloud KMS.
 func (o GetSnapshotSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
 }
 
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
 func (o GetSnapshotSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotSnapshotEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
 
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
 func (o GetSnapshotSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
 }
 
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
 func (o GetSnapshotSnapshotEncryptionKeyOutput) Sha256() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotSnapshotEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
 }
@@ -20880,8 +23823,12 @@ func (o GetSnapshotSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetSnapshotSourceDiskEncryptionKey struct {
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
-	RawKey               string `pulumi:"rawKey"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey string `pulumi:"rawKey"`
 }
 
 // GetSnapshotSourceDiskEncryptionKeyInput is an input type that accepts GetSnapshotSourceDiskEncryptionKeyArgs and GetSnapshotSourceDiskEncryptionKeyOutput values.
@@ -20896,8 +23843,12 @@ type GetSnapshotSourceDiskEncryptionKeyInput interface {
 }
 
 type GetSnapshotSourceDiskEncryptionKeyArgs struct {
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
 	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
-	RawKey               pulumi.StringInput `pulumi:"rawKey"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	RawKey pulumi.StringInput `pulumi:"rawKey"`
 }
 
 func (GetSnapshotSourceDiskEncryptionKeyArgs) ElementType() reflect.Type {
@@ -20951,10 +23902,14 @@ func (o GetSnapshotSourceDiskEncryptionKeyOutput) ToGetSnapshotSourceDiskEncrypt
 	return o
 }
 
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
 func (o GetSnapshotSourceDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotSourceDiskEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
 
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
 func (o GetSnapshotSourceDiskEncryptionKeyOutput) RawKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotSourceDiskEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
 }

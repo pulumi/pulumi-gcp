@@ -10,9 +10,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretTopic {
+    /**
+     * @return The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
+     * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+     * 
+     */
     private String name;
 
     private GetSecretTopic() {}
+    /**
+     * @return The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*{@literal /}topics/*.
+     * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
+     * 
+     */
     public String name() {
         return this.name;
     }

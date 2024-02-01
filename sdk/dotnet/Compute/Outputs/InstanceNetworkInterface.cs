@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceNetworkInterface
     {
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+        /// </summary>
         public readonly ImmutableArray<Outputs.InstanceNetworkInterfaceAccessConfig> AccessConfigs;
         /// <summary>
         /// An
@@ -20,6 +23,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// interfaces on subnet-mode networks. Structure documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceNetworkInterfaceAliasIpRange> AliasIpRanges;
+        /// <summary>
+        /// The prefix length of the primary internal IPv6 range.
+        /// </summary>
         public readonly int? InternalIpv6PrefixLength;
         /// <summary>
         /// An array of IPv6 access configurations for this interface.
@@ -32,6 +38,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// This field is always inherited from its subnetwork.
         /// </summary>
         public readonly string? Ipv6AccessType;
+        /// <summary>
+        /// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        /// </summary>
         public readonly string? Ipv6Address;
         /// <summary>
         /// A unique name for the resource, required by GCE.

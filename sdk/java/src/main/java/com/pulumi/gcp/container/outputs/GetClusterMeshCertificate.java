@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMeshCertificate {
+    /**
+     * @return When enabled the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster.
+     * 
+     */
     private Boolean enableCertificates;
 
     private GetClusterMeshCertificate() {}
+    /**
+     * @return When enabled the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster.
+     * 
+     */
     public Boolean enableCertificates() {
         return this.enableCertificates;
     }

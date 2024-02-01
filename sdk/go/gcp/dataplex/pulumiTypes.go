@@ -596,11 +596,15 @@ func (o AssetDiscoverySpecJsonOptionsPtrOutput) Encoding() pulumi.StringPtrOutpu
 }
 
 type AssetDiscoveryStatus struct {
+	// The duration of the last discovery run.
 	LastRunDuration *string `pulumi:"lastRunDuration"`
-	LastRunTime     *string `pulumi:"lastRunTime"`
-	Message         *string `pulumi:"message"`
+	// The start time of the last discovery run.
+	LastRunTime *string `pulumi:"lastRunTime"`
+	// Additional information about the current state.
+	Message *string `pulumi:"message"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-	State *string                    `pulumi:"state"`
+	State *string `pulumi:"state"`
+	// Data Stats of the asset reported by discovery.
 	Stats []AssetDiscoveryStatusStat `pulumi:"stats"`
 	// Output only. The time when the asset was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -618,11 +622,15 @@ type AssetDiscoveryStatusInput interface {
 }
 
 type AssetDiscoveryStatusArgs struct {
+	// The duration of the last discovery run.
 	LastRunDuration pulumi.StringPtrInput `pulumi:"lastRunDuration"`
-	LastRunTime     pulumi.StringPtrInput `pulumi:"lastRunTime"`
-	Message         pulumi.StringPtrInput `pulumi:"message"`
+	// The start time of the last discovery run.
+	LastRunTime pulumi.StringPtrInput `pulumi:"lastRunTime"`
+	// Additional information about the current state.
+	Message pulumi.StringPtrInput `pulumi:"message"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-	State pulumi.StringPtrInput              `pulumi:"state"`
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Data Stats of the asset reported by discovery.
 	Stats AssetDiscoveryStatusStatArrayInput `pulumi:"stats"`
 	// Output only. The time when the asset was last updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
@@ -679,14 +687,17 @@ func (o AssetDiscoveryStatusOutput) ToAssetDiscoveryStatusOutputWithContext(ctx 
 	return o
 }
 
+// The duration of the last discovery run.
 func (o AssetDiscoveryStatusOutput) LastRunDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.LastRunDuration }).(pulumi.StringPtrOutput)
 }
 
+// The start time of the last discovery run.
 func (o AssetDiscoveryStatusOutput) LastRunTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.LastRunTime }).(pulumi.StringPtrOutput)
 }
 
+// Additional information about the current state.
 func (o AssetDiscoveryStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
@@ -696,6 +707,7 @@ func (o AssetDiscoveryStatusOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatus) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Data Stats of the asset reported by discovery.
 func (o AssetDiscoveryStatusOutput) Stats() AssetDiscoveryStatusStatArrayOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatus) []AssetDiscoveryStatusStat { return v.Stats }).(AssetDiscoveryStatusStatArrayOutput)
 }
@@ -726,10 +738,14 @@ func (o AssetDiscoveryStatusArrayOutput) Index(i pulumi.IntInput) AssetDiscovery
 }
 
 type AssetDiscoveryStatusStat struct {
+	// The count of data items within the referenced resource.
 	DataItems *int `pulumi:"dataItems"`
-	DataSize  *int `pulumi:"dataSize"`
-	Filesets  *int `pulumi:"filesets"`
-	Tables    *int `pulumi:"tables"`
+	// The number of stored data bytes within the referenced resource.
+	DataSize *int `pulumi:"dataSize"`
+	// The count of fileset entities within the referenced resource.
+	Filesets *int `pulumi:"filesets"`
+	// The count of table entities within the referenced resource.
+	Tables *int `pulumi:"tables"`
 }
 
 // AssetDiscoveryStatusStatInput is an input type that accepts AssetDiscoveryStatusStatArgs and AssetDiscoveryStatusStatOutput values.
@@ -744,10 +760,14 @@ type AssetDiscoveryStatusStatInput interface {
 }
 
 type AssetDiscoveryStatusStatArgs struct {
+	// The count of data items within the referenced resource.
 	DataItems pulumi.IntPtrInput `pulumi:"dataItems"`
-	DataSize  pulumi.IntPtrInput `pulumi:"dataSize"`
-	Filesets  pulumi.IntPtrInput `pulumi:"filesets"`
-	Tables    pulumi.IntPtrInput `pulumi:"tables"`
+	// The number of stored data bytes within the referenced resource.
+	DataSize pulumi.IntPtrInput `pulumi:"dataSize"`
+	// The count of fileset entities within the referenced resource.
+	Filesets pulumi.IntPtrInput `pulumi:"filesets"`
+	// The count of table entities within the referenced resource.
+	Tables pulumi.IntPtrInput `pulumi:"tables"`
 }
 
 func (AssetDiscoveryStatusStatArgs) ElementType() reflect.Type {
@@ -801,18 +821,22 @@ func (o AssetDiscoveryStatusStatOutput) ToAssetDiscoveryStatusStatOutputWithCont
 	return o
 }
 
+// The count of data items within the referenced resource.
 func (o AssetDiscoveryStatusStatOutput) DataItems() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatusStat) *int { return v.DataItems }).(pulumi.IntPtrOutput)
 }
 
+// The number of stored data bytes within the referenced resource.
 func (o AssetDiscoveryStatusStatOutput) DataSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatusStat) *int { return v.DataSize }).(pulumi.IntPtrOutput)
 }
 
+// The count of fileset entities within the referenced resource.
 func (o AssetDiscoveryStatusStatOutput) Filesets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatusStat) *int { return v.Filesets }).(pulumi.IntPtrOutput)
 }
 
+// The count of table entities within the referenced resource.
 func (o AssetDiscoveryStatusStatOutput) Tables() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AssetDiscoveryStatusStat) *int { return v.Tables }).(pulumi.IntPtrOutput)
 }
@@ -1347,6 +1371,7 @@ func (o AssetResourceSpecPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type AssetResourceStatus struct {
+	// Additional information about the current state.
 	Message *string `pulumi:"message"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
@@ -1366,6 +1391,7 @@ type AssetResourceStatusInput interface {
 }
 
 type AssetResourceStatusArgs struct {
+	// Additional information about the current state.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -1424,6 +1450,7 @@ func (o AssetResourceStatusOutput) ToAssetResourceStatusOutputWithContext(ctx co
 	return o
 }
 
+// Additional information about the current state.
 func (o AssetResourceStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetResourceStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
@@ -1459,6 +1486,7 @@ func (o AssetResourceStatusArrayOutput) Index(i pulumi.IntInput) AssetResourceSt
 }
 
 type AssetSecurityStatus struct {
+	// Additional information about the current state.
 	Message *string `pulumi:"message"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
@@ -1478,6 +1506,7 @@ type AssetSecurityStatusInput interface {
 }
 
 type AssetSecurityStatusArgs struct {
+	// Additional information about the current state.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 	// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput `pulumi:"state"`
@@ -1536,6 +1565,7 @@ func (o AssetSecurityStatusOutput) ToAssetSecurityStatusOutputWithContext(ctx co
 	return o
 }
 
+// Additional information about the current state.
 func (o AssetSecurityStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetSecurityStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
@@ -5543,7 +5573,9 @@ func (o DatascanIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type LakeAssetStatus struct {
-	ActiveAssets                 *int `pulumi:"activeAssets"`
+	// Number of active assets.
+	ActiveAssets *int `pulumi:"activeAssets"`
+	// Number of assets that are in process of updating the security policy on attached resources.
 	SecurityPolicyApplyingAssets *int `pulumi:"securityPolicyApplyingAssets"`
 	// Output only. The time when the lake was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -5561,7 +5593,9 @@ type LakeAssetStatusInput interface {
 }
 
 type LakeAssetStatusArgs struct {
-	ActiveAssets                 pulumi.IntPtrInput `pulumi:"activeAssets"`
+	// Number of active assets.
+	ActiveAssets pulumi.IntPtrInput `pulumi:"activeAssets"`
+	// Number of assets that are in process of updating the security policy on attached resources.
 	SecurityPolicyApplyingAssets pulumi.IntPtrInput `pulumi:"securityPolicyApplyingAssets"`
 	// Output only. The time when the lake was last updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
@@ -5618,10 +5652,12 @@ func (o LakeAssetStatusOutput) ToLakeAssetStatusOutputWithContext(ctx context.Co
 	return o
 }
 
+// Number of active assets.
 func (o LakeAssetStatusOutput) ActiveAssets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LakeAssetStatus) *int { return v.ActiveAssets }).(pulumi.IntPtrOutput)
 }
 
+// Number of assets that are in process of updating the security policy on attached resources.
 func (o LakeAssetStatusOutput) SecurityPolicyApplyingAssets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LakeAssetStatus) *int { return v.SecurityPolicyApplyingAssets }).(pulumi.IntPtrOutput)
 }
@@ -6115,8 +6151,10 @@ func (o LakeMetastorePtrOutput) Service() pulumi.StringPtrOutput {
 }
 
 type LakeMetastoreStatus struct {
+	// The URI of the endpoint used to access the Metastore service.
 	Endpoint *string `pulumi:"endpoint"`
-	Message  *string `pulumi:"message"`
+	// Additional information about the current status.
+	Message *string `pulumi:"message"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State *string `pulumi:"state"`
 	// Output only. The time when the lake was last updated.
@@ -6135,8 +6173,10 @@ type LakeMetastoreStatusInput interface {
 }
 
 type LakeMetastoreStatusArgs struct {
+	// The URI of the endpoint used to access the Metastore service.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	Message  pulumi.StringPtrInput `pulumi:"message"`
+	// Additional information about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
 	// Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// Output only. The time when the lake was last updated.
@@ -6194,10 +6234,12 @@ func (o LakeMetastoreStatusOutput) ToLakeMetastoreStatusOutputWithContext(ctx co
 	return o
 }
 
+// The URI of the endpoint used to access the Metastore service.
 func (o LakeMetastoreStatusOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeMetastoreStatus) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
+// Additional information about the current status.
 func (o LakeMetastoreStatusOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LakeMetastoreStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
@@ -9209,7 +9251,9 @@ func (o TaskTriggerSpecPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ZoneAssetStatus struct {
-	ActiveAssets                 *int `pulumi:"activeAssets"`
+	// Number of active assets.
+	ActiveAssets *int `pulumi:"activeAssets"`
+	// Number of assets that are in process of updating the security policy on attached resources.
 	SecurityPolicyApplyingAssets *int `pulumi:"securityPolicyApplyingAssets"`
 	// Output only. The time when the zone was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -9227,7 +9271,9 @@ type ZoneAssetStatusInput interface {
 }
 
 type ZoneAssetStatusArgs struct {
-	ActiveAssets                 pulumi.IntPtrInput `pulumi:"activeAssets"`
+	// Number of active assets.
+	ActiveAssets pulumi.IntPtrInput `pulumi:"activeAssets"`
+	// Number of assets that are in process of updating the security policy on attached resources.
 	SecurityPolicyApplyingAssets pulumi.IntPtrInput `pulumi:"securityPolicyApplyingAssets"`
 	// Output only. The time when the zone was last updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
@@ -9284,10 +9330,12 @@ func (o ZoneAssetStatusOutput) ToZoneAssetStatusOutputWithContext(ctx context.Co
 	return o
 }
 
+// Number of active assets.
 func (o ZoneAssetStatusOutput) ActiveAssets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ZoneAssetStatus) *int { return v.ActiveAssets }).(pulumi.IntPtrOutput)
 }
 
+// Number of assets that are in process of updating the security policy on attached resources.
 func (o ZoneAssetStatusOutput) SecurityPolicyApplyingAssets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ZoneAssetStatus) *int { return v.SecurityPolicyApplyingAssets }).(pulumi.IntPtrOutput)
 }

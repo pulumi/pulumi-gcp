@@ -15,25 +15,115 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildArtifact {
+    /**
+     * @return A list of images to be pushed upon the successful completion of all build steps.
+     * 
+     * The images will be pushed using the builder service account&#39;s credentials.
+     * 
+     * The digests of the pushed images will be stored in the Build resource&#39;s results field.
+     * 
+     * If any of the images fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     private List<String> images;
+    /**
+     * @return A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+     * 
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * 
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     private List<GetTriggerBuildArtifactMavenArtifact> mavenArtifacts;
+    /**
+     * @return Npm package to upload to Artifact Registry upon successful completion of all build steps.
+     * 
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * 
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     private List<GetTriggerBuildArtifactNpmPackage> npmPackages;
+    /**
+     * @return A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+     * 
+     * Files in the workspace matching specified paths globs will be uploaded to the
+     * Cloud Storage location using the builder service account&#39;s credentials.
+     * 
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * 
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     private List<GetTriggerBuildArtifactObject> objects;
+    /**
+     * @return Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+     * 
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * 
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     private List<GetTriggerBuildArtifactPythonPackage> pythonPackages;
 
     private GetTriggerBuildArtifact() {}
+    /**
+     * @return A list of images to be pushed upon the successful completion of all build steps.
+     * 
+     * The images will be pushed using the builder service account&#39;s credentials.
+     * 
+     * The digests of the pushed images will be stored in the Build resource&#39;s results field.
+     * 
+     * If any of the images fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     public List<String> images() {
         return this.images;
     }
+    /**
+     * @return A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+     * 
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * 
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     public List<GetTriggerBuildArtifactMavenArtifact> mavenArtifacts() {
         return this.mavenArtifacts;
     }
+    /**
+     * @return Npm package to upload to Artifact Registry upon successful completion of all build steps.
+     * 
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * 
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     public List<GetTriggerBuildArtifactNpmPackage> npmPackages() {
         return this.npmPackages;
     }
+    /**
+     * @return A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+     * 
+     * Files in the workspace matching specified paths globs will be uploaded to the
+     * Cloud Storage location using the builder service account&#39;s credentials.
+     * 
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * 
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     public List<GetTriggerBuildArtifactObject> objects() {
         return this.objects;
     }
+    /**
+     * @return Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+     * 
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * 
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * 
+     */
     public List<GetTriggerBuildArtifactPythonPackage> pythonPackages() {
         return this.pythonPackages;
     }

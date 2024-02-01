@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+        /// </summary>
         [Input("autoscaling")]
         public Input<Inputs.ClusterNodePoolAutoscalingGetArgs>? Autoscaling { get; set; }
 
@@ -28,6 +31,10 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("instanceGroupUrls")]
         private InputList<string>? _instanceGroupUrls;
+
+        /// <summary>
+        /// The resource URLs of the managed instance groups associated with this node pool.
+        /// </summary>
         public InputList<string> InstanceGroupUrls
         {
             get => _instanceGroupUrls ?? (_instanceGroupUrls = new InputList<string>());
@@ -36,6 +43,10 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("managedInstanceGroupUrls")]
         private InputList<string>? _managedInstanceGroupUrls;
+
+        /// <summary>
+        /// List of instance group URLs which have been assigned to this node pool.
+        /// </summary>
         public InputList<string> ManagedInstanceGroupUrls
         {
             get => _managedInstanceGroupUrls ?? (_managedInstanceGroupUrls = new InputList<string>());
@@ -48,6 +59,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("management")]
         public Input<Inputs.ClusterNodePoolManagementGetArgs>? Management { get; set; }
 
+        /// <summary>
+        /// The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+        /// </summary>
         [Input("maxPodsPerNode")]
         public Input<int>? MaxPodsPerNode { get; set; }
 
@@ -60,6 +74,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
@@ -80,6 +97,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("nodeConfig")]
         public Input<Inputs.ClusterNodePoolNodeConfigGetArgs>? NodeConfig { get; set; }
 
+        /// <summary>
+        /// The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+        /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
 
@@ -105,9 +125,15 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _nodeLocations = value;
         }
 
+        /// <summary>
+        /// Specifies the node placement policy
+        /// </summary>
         [Input("placementPolicy")]
         public Input<Inputs.ClusterNodePoolPlacementPolicyGetArgs>? PlacementPolicy { get; set; }
 
+        /// <summary>
+        /// Specifies the configuration of queued provisioning
+        /// </summary>
         [Input("queuedProvisioning")]
         public Input<Inputs.ClusterNodePoolQueuedProvisioningGetArgs>? QueuedProvisioning { get; set; }
 

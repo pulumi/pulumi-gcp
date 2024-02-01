@@ -16,16 +16,32 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
 
     public static final NodePoolNodeConfigLinuxNodeConfigArgs Empty = new NodePoolNodeConfigLinuxNodeConfigArgs();
 
+    /**
+     * cgroupMode specifies the cgroup mode to be used on the node.
+     * 
+     */
     @Import(name="cgroupMode")
     private @Nullable Output<String> cgroupMode;
 
+    /**
+     * @return cgroupMode specifies the cgroup mode to be used on the node.
+     * 
+     */
     public Optional<Output<String>> cgroupMode() {
         return Optional.ofNullable(this.cgroupMode);
     }
 
+    /**
+     * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     * 
+     */
     @Import(name="sysctls")
     private @Nullable Output<Map<String,String>> sysctls;
 
+    /**
+     * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     * 
+     */
     public Optional<Output<Map<String,String>>> sysctls() {
         return Optional.ofNullable(this.sysctls);
     }
@@ -55,20 +71,44 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
             $ = new NodePoolNodeConfigLinuxNodeConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cgroupMode cgroupMode specifies the cgroup mode to be used on the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cgroupMode(@Nullable Output<String> cgroupMode) {
             $.cgroupMode = cgroupMode;
             return this;
         }
 
+        /**
+         * @param cgroupMode cgroupMode specifies the cgroup mode to be used on the node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cgroupMode(String cgroupMode) {
             return cgroupMode(Output.of(cgroupMode));
         }
 
+        /**
+         * @param sysctls The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sysctls(@Nullable Output<Map<String,String>> sysctls) {
             $.sysctls = sysctls;
             return this;
         }
 
+        /**
+         * @param sysctls The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sysctls(Map<String,String> sysctls) {
             return sysctls(Output.of(sysctls));
         }

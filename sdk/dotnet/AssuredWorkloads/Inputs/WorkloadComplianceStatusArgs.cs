@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.AssuredWorkloads.Inputs
     {
         [Input("acknowledgedViolationCounts")]
         private InputList<int>? _acknowledgedViolationCounts;
+
+        /// <summary>
+        /// Number of current orgPolicy violations which are acknowledged.
+        /// </summary>
         public InputList<int> AcknowledgedViolationCounts
         {
             get => _acknowledgedViolationCounts ?? (_acknowledgedViolationCounts = new InputList<int>());
@@ -22,6 +26,10 @@ namespace Pulumi.Gcp.AssuredWorkloads.Inputs
 
         [Input("activeViolationCounts")]
         private InputList<int>? _activeViolationCounts;
+
+        /// <summary>
+        /// Number of current orgPolicy violations which are not acknowledged.
+        /// </summary>
         public InputList<int> ActiveViolationCounts
         {
             get => _activeViolationCounts ?? (_activeViolationCounts = new InputList<int>());

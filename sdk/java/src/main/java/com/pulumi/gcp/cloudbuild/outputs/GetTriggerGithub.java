@@ -13,25 +13,71 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerGithub {
+    /**
+     * @return The resource name of the github enterprise config that should be applied to this installation.
+     * For example: &#34;projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}&#34;
+     * 
+     */
     private String enterpriseConfigResourceName;
+    /**
+     * @return Name of the repository. For example: The name for
+     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
+     * 
+     */
     private String name;
+    /**
+     * @return Owner of the repository. For example: The owner for
+     * https://github.com/googlecloudplatform/cloud-builders is &#34;googlecloudplatform&#34;.
+     * 
+     */
     private String owner;
+    /**
+     * @return filter to match changes in pull requests. Specify only one of &#39;pull_request&#39; or &#39;push&#39;.
+     * 
+     */
     private List<GetTriggerGithubPullRequest> pullRequests;
+    /**
+     * @return filter to match changes in refs, like branches or tags. Specify only one of &#39;pull_request&#39; or &#39;push&#39;.
+     * 
+     */
     private List<GetTriggerGithubPush> pushes;
 
     private GetTriggerGithub() {}
+    /**
+     * @return The resource name of the github enterprise config that should be applied to this installation.
+     * For example: &#34;projects/{$projectId}/locations/{$locationId}/githubEnterpriseConfigs/{$configId}&#34;
+     * 
+     */
     public String enterpriseConfigResourceName() {
         return this.enterpriseConfigResourceName;
     }
+    /**
+     * @return Name of the repository. For example: The name for
+     * https://github.com/googlecloudplatform/cloud-builders is &#34;cloud-builders&#34;.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Owner of the repository. For example: The owner for
+     * https://github.com/googlecloudplatform/cloud-builders is &#34;googlecloudplatform&#34;.
+     * 
+     */
     public String owner() {
         return this.owner;
     }
+    /**
+     * @return filter to match changes in pull requests. Specify only one of &#39;pull_request&#39; or &#39;push&#39;.
+     * 
+     */
     public List<GetTriggerGithubPullRequest> pullRequests() {
         return this.pullRequests;
     }
+    /**
+     * @return filter to match changes in refs, like branches or tags. Specify only one of &#39;pull_request&#39; or &#39;push&#39;.
+     * 
+     */
     public List<GetTriggerGithubPush> pushes() {
         return this.pushes;
     }

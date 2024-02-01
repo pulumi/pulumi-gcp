@@ -11,17 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerRepositoryEventConfigPush {
+    /**
+     * @return Regex of branches to match.
+     * 
+     * The syntax of the regular expressions accepted is the syntax accepted by
+     * RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * 
+     */
     private String branch;
+    /**
+     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * 
+     */
     private Boolean invertRegex;
+    /**
+     * @return Regex of tags to match.
+     * 
+     * The syntax of the regular expressions accepted is the syntax accepted by
+     * RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * 
+     */
     private String tag;
 
     private GetTriggerRepositoryEventConfigPush() {}
+    /**
+     * @return Regex of branches to match.
+     * 
+     * The syntax of the regular expressions accepted is the syntax accepted by
+     * RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * 
+     */
     public String branch() {
         return this.branch;
     }
+    /**
+     * @return If true, only trigger a build if the revision regex does NOT match the git_ref regex.
+     * 
+     */
     public Boolean invertRegex() {
         return this.invertRegex;
     }
+    /**
+     * @return Regex of tags to match.
+     * 
+     * The syntax of the regular expressions accepted is the syntax accepted by
+     * RE2 and described at https://github.com/google/re2/wiki/Syntax
+     * 
+     */
     public String tag() {
         return this.tag;
     }

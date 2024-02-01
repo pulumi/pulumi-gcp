@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterLoggingConfig {
+    /**
+     * @return GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+     * 
+     */
     private List<String> enableComponents;
 
     private GetClusterLoggingConfig() {}
+    /**
+     * @return GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+     * 
+     */
     public List<String> enableComponents() {
         return this.enableComponents;
     }

@@ -18,9 +18,17 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupArgs extends com.pulumi
 
     public static final ClusterClusterConfigAuxiliaryNodeGroupArgs Empty = new ClusterClusterConfigAuxiliaryNodeGroupArgs();
 
+    /**
+     * A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+     * 
+     */
     @Import(name="nodeGroupId")
     private @Nullable Output<String> nodeGroupId;
 
+    /**
+     * @return A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+     * 
+     */
     public Optional<Output<String>> nodeGroupId() {
         return Optional.ofNullable(this.nodeGroupId);
     }
@@ -65,11 +73,23 @@ public final class ClusterClusterConfigAuxiliaryNodeGroupArgs extends com.pulumi
             $ = new ClusterClusterConfigAuxiliaryNodeGroupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeGroupId A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeGroupId(@Nullable Output<String> nodeGroupId) {
             $.nodeGroupId = nodeGroupId;
             return this;
         }
 
+        /**
+         * @param nodeGroupId A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeGroupId(String nodeGroupId) {
             return nodeGroupId(Output.of(nodeGroupId));
         }

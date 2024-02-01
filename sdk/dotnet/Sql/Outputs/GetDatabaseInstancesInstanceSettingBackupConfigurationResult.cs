@@ -14,11 +14,29 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstancesInstanceSettingBackupConfigurationResult
     {
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult> BackupRetentionSettings;
+        /// <summary>
+        /// True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
+        /// </summary>
         public readonly bool BinaryLogEnabled;
+        /// <summary>
+        /// True if backup configuration is enabled.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Location of the backup configuration.
+        /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// True if Point-in-time recovery is enabled.
+        /// </summary>
         public readonly bool PointInTimeRecoveryEnabled;
+        /// <summary>
+        /// HH:MM format time indicating when backup configuration starts.
+        /// </summary>
         public readonly string StartTime;
+        /// <summary>
+        /// The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
+        /// </summary>
         public readonly int TransactionLogRetentionDays;
 
         [OutputConstructor]

@@ -14,12 +14,19 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
     {
         [Input("missingTargets")]
         private InputList<string>? _missingTargets;
+
+        /// <summary>
+        /// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        /// </summary>
         public InputList<string> MissingTargets
         {
             get => _missingTargets ?? (_missingTargets = new InputList<string>());
             set => _missingTargets = value;
         }
 
+        /// <summary>
+        /// True if there aren't any missing Targets.
+        /// </summary>
         [Input("status")]
         public Input<bool>? Status { get; set; }
 

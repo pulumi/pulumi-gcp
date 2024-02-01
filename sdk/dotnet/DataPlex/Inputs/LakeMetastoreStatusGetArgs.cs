@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
     public sealed class LakeMetastoreStatusGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URI of the endpoint used to access the Metastore service.
+        /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        /// <summary>
+        /// Additional information about the current status.
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 

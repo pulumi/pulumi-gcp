@@ -55,9 +55,23 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         return Optional.ofNullable(this.instanceTerminationAction);
     }
 
+    /**
+     * Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     @Import(name="localSsdRecoveryTimeouts")
     private @Nullable Output<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeouts;
 
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     public Optional<Output<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs>>> localSsdRecoveryTimeouts() {
         return Optional.ofNullable(this.localSsdRecoveryTimeouts);
     }
@@ -94,9 +108,17 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         return Optional.ofNullable(this.maxRunDuration);
     }
 
+    /**
+     * Minimum number of cpus for the instance.
+     * 
+     */
     @Import(name="minNodeCpus")
     private @Nullable Output<Integer> minNodeCpus;
 
+    /**
+     * @return Minimum number of cpus for the instance.
+     * 
+     */
     public Optional<Output<Integer>> minNodeCpus() {
         return Optional.ofNullable(this.minNodeCpus);
     }
@@ -260,15 +282,42 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
             return instanceTerminationAction(Output.of(instanceTerminationAction));
         }
 
+        /**
+         * @param localSsdRecoveryTimeouts Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdRecoveryTimeouts(@Nullable Output<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeouts) {
             $.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
             return this;
         }
 
+        /**
+         * @param localSsdRecoveryTimeouts Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdRecoveryTimeouts(List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeouts) {
             return localSsdRecoveryTimeouts(Output.of(localSsdRecoveryTimeouts));
         }
 
+        /**
+         * @param localSsdRecoveryTimeouts Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdRecoveryTimeouts(RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs... localSsdRecoveryTimeouts) {
             return localSsdRecoveryTimeouts(List.of(localSsdRecoveryTimeouts));
         }
@@ -317,11 +366,23 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
             return maxRunDuration(Output.of(maxRunDuration));
         }
 
+        /**
+         * @param minNodeCpus Minimum number of cpus for the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minNodeCpus(@Nullable Output<Integer> minNodeCpus) {
             $.minNodeCpus = minNodeCpus;
             return this;
         }
 
+        /**
+         * @param minNodeCpus Minimum number of cpus for the instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder minNodeCpus(Integer minNodeCpus) {
             return minNodeCpus(Output.of(minNodeCpus));
         }

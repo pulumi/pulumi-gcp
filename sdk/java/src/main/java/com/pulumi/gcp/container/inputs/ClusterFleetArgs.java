@@ -16,16 +16,32 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterFleetArgs Empty = new ClusterFleetArgs();
 
+    /**
+     * Full resource name of the registered fleet membership of the cluster.
+     * 
+     */
     @Import(name="membership")
     private @Nullable Output<String> membership;
 
+    /**
+     * @return Full resource name of the registered fleet membership of the cluster.
+     * 
+     */
     public Optional<Output<String>> membership() {
         return Optional.ofNullable(this.membership);
     }
 
+    /**
+     * Whether the cluster has been registered via the fleet API.
+     * 
+     */
     @Import(name="preRegistered")
     private @Nullable Output<Boolean> preRegistered;
 
+    /**
+     * @return Whether the cluster has been registered via the fleet API.
+     * 
+     */
     public Optional<Output<Boolean>> preRegistered() {
         return Optional.ofNullable(this.preRegistered);
     }
@@ -71,20 +87,44 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ClusterFleetArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param membership Full resource name of the registered fleet membership of the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder membership(@Nullable Output<String> membership) {
             $.membership = membership;
             return this;
         }
 
+        /**
+         * @param membership Full resource name of the registered fleet membership of the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder membership(String membership) {
             return membership(Output.of(membership));
         }
 
+        /**
+         * @param preRegistered Whether the cluster has been registered via the fleet API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preRegistered(@Nullable Output<Boolean> preRegistered) {
             $.preRegistered = preRegistered;
             return this;
         }
 
+        /**
+         * @param preRegistered Whether the cluster has been registered via the fleet API.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preRegistered(Boolean preRegistered) {
             return preRegistered(Output.of(preRegistered));
         }

@@ -11,7 +11,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LakeMetastoreStatus {
+    /**
+     * @return The URI of the endpoint used to access the Metastore service.
+     * 
+     */
     private @Nullable String endpoint;
+    /**
+     * @return Additional information about the current status.
+     * 
+     */
     private @Nullable String message;
     /**
      * @return Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -25,9 +33,17 @@ public final class LakeMetastoreStatus {
     private @Nullable String updateTime;
 
     private LakeMetastoreStatus() {}
+    /**
+     * @return The URI of the endpoint used to access the Metastore service.
+     * 
+     */
     public Optional<String> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
+    /**
+     * @return Additional information about the current status.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }

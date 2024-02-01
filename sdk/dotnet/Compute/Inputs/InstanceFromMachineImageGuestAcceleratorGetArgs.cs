@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromMachineImageGuestAcceleratorGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of the guest accelerator cards exposed to this instance.
+        /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
+        /// <summary>
+        /// The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

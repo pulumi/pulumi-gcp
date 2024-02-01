@@ -13,17 +13,43 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigAdditionalExtension {
+    /**
+     * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
+     * handle this extension, the client should consider this to be an error).
+     * 
+     */
     private Boolean critical;
+    /**
+     * @return Describes values that are relevant in a CA certificate.
+     * 
+     */
     private List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId> objectIds;
+    /**
+     * @return The value of this X.509 extension. A base64-encoded string.
+     * 
+     */
     private String value;
 
     private GetAuthorityConfigX509ConfigAdditionalExtension() {}
+    /**
+     * @return Indicates whether or not this extension is critical (i.e., if the client does not know how to
+     * handle this extension, the client should consider this to be an error).
+     * 
+     */
     public Boolean critical() {
         return this.critical;
     }
+    /**
+     * @return Describes values that are relevant in a CA certificate.
+     * 
+     */
     public List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId> objectIds() {
         return this.objectIds;
     }
+    /**
+     * @return The value of this X.509 extension. A base64-encoded string.
+     * 
+     */
     public String value() {
         return this.value;
     }

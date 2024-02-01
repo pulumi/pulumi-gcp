@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketLifecycleRule {
+    /**
+     * @return The Lifecycle Rule&#39;s action configuration. A single block of this type is supported.
+     * 
+     */
     private List<GetBucketLifecycleRuleAction> actions;
+    /**
+     * @return The Lifecycle Rule&#39;s condition configuration.
+     * 
+     */
     private List<GetBucketLifecycleRuleCondition> conditions;
 
     private GetBucketLifecycleRule() {}
+    /**
+     * @return The Lifecycle Rule&#39;s action configuration. A single block of this type is supported.
+     * 
+     */
     public List<GetBucketLifecycleRuleAction> actions() {
         return this.actions;
     }
+    /**
+     * @return The Lifecycle Rule&#39;s condition configuration.
+     * 
+     */
     public List<GetBucketLifecycleRuleCondition> conditions() {
         return this.conditions;
     }

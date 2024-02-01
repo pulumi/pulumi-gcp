@@ -316,7 +316,7 @@ class IAMBinding(pulumi.CustomResource):
                     log_type="ADMIN_READ",
                 ),
                 gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@hashicorp.com"],
+                    exempted_members=["user:joebloggs@example.com"],
                     log_type="DATA_READ",
                 ),
             ],
@@ -480,7 +480,7 @@ class IAMBinding(pulumi.CustomResource):
                     log_type="ADMIN_READ",
                 ),
                 gcp.projects.IAMAuditConfigAuditLogConfigArgs(
-                    exempted_members=["user:joebloggs@hashicorp.com"],
+                    exempted_members=["user:joebloggs@example.com"],
                     log_type="DATA_READ",
                 ),
             ],

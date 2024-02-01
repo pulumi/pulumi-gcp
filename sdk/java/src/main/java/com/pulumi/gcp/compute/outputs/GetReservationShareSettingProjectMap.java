@@ -11,12 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetReservationShareSettingProjectMap {
     private String id;
+    /**
+     * @return The project id/number, should be same as the key of this project config in the project map.
+     * 
+     */
     private String projectId;
 
     private GetReservationShareSettingProjectMap() {}
     public String id() {
         return this.id;
     }
+    /**
+     * @return The project id/number, should be same as the key of this project config in the project map.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }

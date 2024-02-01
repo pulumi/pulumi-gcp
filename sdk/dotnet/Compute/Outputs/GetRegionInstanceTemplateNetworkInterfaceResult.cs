@@ -20,9 +20,21 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// interfaces on subnet-mode networks. Structure documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRangeResult> AliasIpRanges;
+        /// <summary>
+        /// The prefix length of the primary internal IPv6 range.
+        /// </summary>
         public readonly int InternalIpv6PrefixLength;
+        /// <summary>
+        /// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult> Ipv6AccessConfigs;
+        /// <summary>
+        /// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+        /// </summary>
         public readonly string Ipv6AccessType;
+        /// <summary>
+        /// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+        /// </summary>
         public readonly string Ipv6Address;
         /// <summary>
         /// The name of the instance template. One of `name` or `filter` must be provided.
@@ -39,8 +51,17 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// empty, the address will be automatically assigned.
         /// </summary>
         public readonly string NetworkIp;
+        /// <summary>
+        /// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        /// </summary>
         public readonly string NicType;
+        /// <summary>
+        /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        /// </summary>
         public readonly int QueueCount;
+        /// <summary>
+        /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        /// </summary>
         public readonly string StackType;
         /// <summary>
         /// the name of the subnetwork to attach this interface

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigMavenRepository {
+    /**
+     * @return Address of the remote repository. Default value: &#34;MAVEN_CENTRAL&#34; Possible values: [&#34;MAVEN_CENTRAL&#34;]
+     * 
+     */
     private String publicRepository;
 
     private GetRepositoryRemoteRepositoryConfigMavenRepository() {}
+    /**
+     * @return Address of the remote repository. Default value: &#34;MAVEN_CENTRAL&#34; Possible values: [&#34;MAVEN_CENTRAL&#34;]
+     * 
+     */
     public String publicRepository() {
         return this.publicRepository;
     }

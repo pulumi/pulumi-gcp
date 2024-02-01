@@ -14,37 +14,93 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
+    /**
+     * @return The name of the allocated ip range for the private ip CloudSQL instance. For example: &#34;google-managed-services-default&#34;. If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+     * 
+     */
     private String allocatedIpRange;
     private List<GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks;
+    /**
+     * @return Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+     * 
+     */
     private Boolean enablePrivatePathForGoogleCloudServices;
+    /**
+     * @return Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
+     * 
+     */
     private Boolean ipv4Enabled;
+    /**
+     * @return The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
+     * 
+     */
     private String privateNetwork;
+    /**
+     * @return PSC settings for a Cloud SQL instance.
+     * 
+     */
     private List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig> pscConfigs;
+    /**
+     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
+     * 
+     */
     private Boolean requireSsl;
+    /**
+     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+     * 
+     */
     private String sslMode;
 
     private GetDatabaseInstancesInstanceSettingIpConfiguration() {}
+    /**
+     * @return The name of the allocated ip range for the private ip CloudSQL instance. For example: &#34;google-managed-services-default&#34;. If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+     * 
+     */
     public String allocatedIpRange() {
         return this.allocatedIpRange;
     }
     public List<GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks() {
         return this.authorizedNetworks;
     }
+    /**
+     * @return Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+     * 
+     */
     public Boolean enablePrivatePathForGoogleCloudServices() {
         return this.enablePrivatePathForGoogleCloudServices;
     }
+    /**
+     * @return Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
+     * 
+     */
     public Boolean ipv4Enabled() {
         return this.ipv4Enabled;
     }
+    /**
+     * @return The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
+     * 
+     */
     public String privateNetwork() {
         return this.privateNetwork;
     }
+    /**
+     * @return PSC settings for a Cloud SQL instance.
+     * 
+     */
     public List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig> pscConfigs() {
         return this.pscConfigs;
     }
+    /**
+     * @return Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
+     * 
+     */
     public Boolean requireSsl() {
         return this.requireSsl;
     }
+    /**
+     * @return Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+     * 
+     */
     public String sslMode() {
         return this.sslMode;
     }

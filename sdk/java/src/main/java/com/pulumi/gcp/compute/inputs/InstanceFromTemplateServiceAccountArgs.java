@@ -17,16 +17,32 @@ public final class InstanceFromTemplateServiceAccountArgs extends com.pulumi.res
 
     public static final InstanceFromTemplateServiceAccountArgs Empty = new InstanceFromTemplateServiceAccountArgs();
 
+    /**
+     * The service account e-mail address.
+     * 
+     */
     @Import(name="email")
     private @Nullable Output<String> email;
 
+    /**
+     * @return The service account e-mail address.
+     * 
+     */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
     }
 
+    /**
+     * A list of service scopes.
+     * 
+     */
     @Import(name="scopes", required=true)
     private Output<List<String>> scopes;
 
+    /**
+     * @return A list of service scopes.
+     * 
+     */
     public Output<List<String>> scopes() {
         return this.scopes;
     }
@@ -56,24 +72,54 @@ public final class InstanceFromTemplateServiceAccountArgs extends com.pulumi.res
             $ = new InstanceFromTemplateServiceAccountArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param email The service account e-mail address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(@Nullable Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email The service account e-mail address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }
 
+        /**
+         * @param scopes A list of service scopes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(Output<List<String>> scopes) {
             $.scopes = scopes;
             return this;
         }
 
+        /**
+         * @param scopes A list of service scopes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(List<String> scopes) {
             return scopes(Output.of(scopes));
         }
 
+        /**
+         * @param scopes A list of service scopes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
         }

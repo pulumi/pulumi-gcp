@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class InstanceFromMachineImageReservationAffinitySpecificReservation {
+    /**
+     * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+     * 
+     */
     private String key;
+    /**
+     * @return Corresponds to the label values of a reservation resource.
+     * 
+     */
     private List<String> values;
 
     private InstanceFromMachineImageReservationAffinitySpecificReservation() {}
+    /**
+     * @return Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Corresponds to the label values of a reservation resource.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

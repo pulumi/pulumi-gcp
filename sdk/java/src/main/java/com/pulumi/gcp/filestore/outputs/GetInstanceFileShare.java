@@ -13,6 +13,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceFileShare {
+    /**
+     * @return File share capacity in GiB. This must be at least 1024 GiB
+     * for the standard tier, or 2560 GiB for the premium tier.
+     * 
+     */
     private Integer capacityGb;
     /**
      * @return The name of a Filestore instance.
@@ -21,10 +26,25 @@ public final class GetInstanceFileShare {
      * 
      */
     private String name;
+    /**
+     * @return Nfs Export Options. There is a limit of 10 export options per file share.
+     * 
+     */
     private List<GetInstanceFileShareNfsExportOption> nfsExportOptions;
+    /**
+     * @return The resource name of the backup, in the format
+     * projects/{projectId}/locations/{locationId}/backups/{backupId},
+     * that this file share has been restored from.
+     * 
+     */
     private String sourceBackup;
 
     private GetInstanceFileShare() {}
+    /**
+     * @return File share capacity in GiB. This must be at least 1024 GiB
+     * for the standard tier, or 2560 GiB for the premium tier.
+     * 
+     */
     public Integer capacityGb() {
         return this.capacityGb;
     }
@@ -37,9 +57,19 @@ public final class GetInstanceFileShare {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Nfs Export Options. There is a limit of 10 export options per file share.
+     * 
+     */
     public List<GetInstanceFileShareNfsExportOption> nfsExportOptions() {
         return this.nfsExportOptions;
     }
+    /**
+     * @return The resource name of the backup, in the format
+     * projects/{projectId}/locations/{locationId}/backups/{backupId},
+     * that this file share has been restored from.
+     * 
+     */
     public String sourceBackup() {
         return this.sourceBackup;
     }

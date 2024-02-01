@@ -13,9 +13,23 @@ namespace Pulumi.Gcp.Redis.Outputs
     [OutputType]
     public sealed class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeResult
     {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23.
+        /// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+        /// </summary>
         public readonly int Hours;
+        /// <summary>
+        /// Minutes of hour of day. Must be from 0 to 59.
+        /// </summary>
         public readonly int Minutes;
+        /// <summary>
+        /// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+        /// </summary>
         public readonly int Nanos;
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59.
+        /// An API may allow the value 60 if it allows leap-seconds.
+        /// </summary>
         public readonly int Seconds;
 
         [OutputConstructor]

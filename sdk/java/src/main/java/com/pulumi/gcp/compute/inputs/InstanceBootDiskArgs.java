@@ -74,9 +74,17 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.diskEncryptionKeyRaw);
     }
 
+    /**
+     * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     @Import(name="diskEncryptionKeySha256")
     private @Nullable Output<String> diskEncryptionKeySha256;
 
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+     * 
+     */
     public Optional<Output<String>> diskEncryptionKeySha256() {
         return Optional.ofNullable(this.diskEncryptionKeySha256);
     }
@@ -261,11 +269,23 @@ public final class InstanceBootDiskArgs extends com.pulumi.resources.ResourceArg
             return diskEncryptionKeyRaw(Output.of(diskEncryptionKeyRaw));
         }
 
+        /**
+         * @param diskEncryptionKeySha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskEncryptionKeySha256(@Nullable Output<String> diskEncryptionKeySha256) {
             $.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             return this;
         }
 
+        /**
+         * @param diskEncryptionKeySha256 The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder diskEncryptionKeySha256(String diskEncryptionKeySha256) {
             return diskEncryptionKeySha256(Output.of(diskEncryptionKeySha256));
         }

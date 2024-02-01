@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Storage.Outputs
     [OutputType]
     public sealed class GetBucketObjectContentCustomerEncryptionResult
     {
+        /// <summary>
+        /// The encryption algorithm. Default: AES256
+        /// </summary>
         public readonly string EncryptionAlgorithm;
+        /// <summary>
+        /// Base64 encoded customer supplied encryption key.
+        /// </summary>
         public readonly string EncryptionKey;
 
         [OutputConstructor]

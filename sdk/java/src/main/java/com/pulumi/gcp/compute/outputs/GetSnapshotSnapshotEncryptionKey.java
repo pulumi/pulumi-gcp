@@ -10,21 +10,59 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSnapshotSnapshotEncryptionKey {
+    /**
+     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
     private String kmsKeySelfLink;
+    /**
+     * @return The service account used for the encryption request for the given KMS key.
+     * If absent, the Compute Engine Service Agent service account is used.
+     * 
+     */
     private String kmsKeyServiceAccount;
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
     private String rawKey;
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * encryption key that protects this resource.
+     * 
+     */
     private String sha256;
 
     private GetSnapshotSnapshotEncryptionKey() {}
+    /**
+     * @return The name of the encryption key that is stored in Google Cloud KMS.
+     * 
+     */
     public String kmsKeySelfLink() {
         return this.kmsKeySelfLink;
     }
+    /**
+     * @return The service account used for the encryption request for the given KMS key.
+     * If absent, the Compute Engine Service Agent service account is used.
+     * 
+     */
     public String kmsKeyServiceAccount() {
         return this.kmsKeyServiceAccount;
     }
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
     public String rawKey() {
         return this.rawKey;
     }
+    /**
+     * @return The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+     * encryption key that protects this resource.
+     * 
+     */
     public String sha256() {
         return this.sha256;
     }

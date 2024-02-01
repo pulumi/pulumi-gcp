@@ -40,6 +40,10 @@ public final class ClusterClusterConfig {
      * 
      */
     private @Nullable List<ClusterClusterConfigAuxiliaryNodeGroup> auxiliaryNodeGroups;
+    /**
+     * @return The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+     * 
+     */
     private @Nullable String bucket;
     /**
      * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -154,6 +158,10 @@ public final class ClusterClusterConfig {
     public List<ClusterClusterConfigAuxiliaryNodeGroup> auxiliaryNodeGroups() {
         return this.auxiliaryNodeGroups == null ? List.of() : this.auxiliaryNodeGroups;
     }
+    /**
+     * @return The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If staging_bucket is specified, it will contain this value, otherwise it will be the auto generated name.
+     * 
+     */
     public Optional<String> bucket() {
         return Optional.ofNullable(this.bucket);
     }

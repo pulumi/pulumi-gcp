@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult
     {
+        /// <summary>
+        /// The name of the destination bucket (e.g., gs://mybucket).
+        /// </summary>
         public readonly string Bucket;
+        /// <summary>
+        /// How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"..
+        /// </summary>
         public readonly string RetentionInterval;
+        /// <summary>
+        /// How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        /// </summary>
         public readonly string UploadInterval;
 
         [OutputConstructor]

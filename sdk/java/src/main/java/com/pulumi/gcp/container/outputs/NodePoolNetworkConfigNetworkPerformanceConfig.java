@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNetworkConfigNetworkPerformanceConfig {
+    /**
+     * @return Specifies the total network bandwidth tier for the NodePool.
+     * 
+     */
     private String totalEgressBandwidthTier;
 
     private NodePoolNetworkConfigNetworkPerformanceConfig() {}
+    /**
+     * @return Specifies the total network bandwidth tier for the NodePool.
+     * 
+     */
     public String totalEgressBandwidthTier() {
         return this.totalEgressBandwidthTier;
     }

@@ -10,13 +10,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSnapshotSourceDiskEncryptionKey {
+    /**
+     * @return The service account used for the encryption request for the given KMS key.
+     * If absent, the Compute Engine Service Agent service account is used.
+     * 
+     */
     private String kmsKeyServiceAccount;
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
     private String rawKey;
 
     private GetSnapshotSourceDiskEncryptionKey() {}
+    /**
+     * @return The service account used for the encryption request for the given KMS key.
+     * If absent, the Compute Engine Service Agent service account is used.
+     * 
+     */
     public String kmsKeyServiceAccount() {
         return this.kmsKeyServiceAccount;
     }
+    /**
+     * @return Specifies a 256-bit customer-supplied encryption key, encoded in
+     * RFC 4648 base64 to either encrypt or decrypt this resource.
+     * 
+     */
     public String rawKey() {
         return this.rawKey;
     }

@@ -11,29 +11,119 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHealthCheckSslHealthCheck {
+    /**
+     * @return The TCP port number for the SSL health check request.
+     * The default value is 443.
+     * 
+     */
     private Integer port;
+    /**
+     * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
+     * port_name are defined, port takes precedence.
+     * 
+     */
     private String portName;
+    /**
+     * @return Specifies how port is selected for health checking, can be one of the
+     * following values:
+     * 
+     *   * &#39;USE_FIXED_PORT&#39;: The port number in &#39;port&#39; is used for health checking.
+     * 
+     *   * &#39;USE_NAMED_PORT&#39;: The &#39;portName&#39; is used for health checking.
+     * 
+     *   * &#39;USE_SERVING_PORT&#39;: For NetworkEndpointGroup, the port specified for each
+     *   network endpoint is used for health checking. For other backends, the
+     *   port or named port specified in the Backend Service is used for health
+     *   checking.
+     * 
+     * If not specified, SSL health check follows behavior specified in &#39;port&#39; and
+     * &#39;portName&#39; fields. Possible values: [&#34;USE_FIXED_PORT&#34;, &#34;USE_NAMED_PORT&#34;, &#34;USE_SERVING_PORT&#34;]
+     * 
+     */
     private String portSpecification;
+    /**
+     * @return Specifies the type of proxy header to append before sending data to the
+     * backend. Default value: &#34;NONE&#34; Possible values: [&#34;NONE&#34;, &#34;PROXY_V1&#34;]
+     * 
+     */
     private String proxyHeader;
+    /**
+     * @return The application data to send once the SSL connection has been
+     * established (default value is empty). If both request and response are
+     * empty, the connection establishment alone will indicate health. The request
+     * data can only be ASCII.
+     * 
+     */
     private String request;
+    /**
+     * @return The bytes to match against the beginning of the response data. If left empty
+     * (the default value), any response will indicate health. The response data
+     * can only be ASCII.
+     * 
+     */
     private String response;
 
     private GetHealthCheckSslHealthCheck() {}
+    /**
+     * @return The TCP port number for the SSL health check request.
+     * The default value is 443.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return Port name as defined in InstanceGroup#NamedPort#name. If both port and
+     * port_name are defined, port takes precedence.
+     * 
+     */
     public String portName() {
         return this.portName;
     }
+    /**
+     * @return Specifies how port is selected for health checking, can be one of the
+     * following values:
+     * 
+     *   * &#39;USE_FIXED_PORT&#39;: The port number in &#39;port&#39; is used for health checking.
+     * 
+     *   * &#39;USE_NAMED_PORT&#39;: The &#39;portName&#39; is used for health checking.
+     * 
+     *   * &#39;USE_SERVING_PORT&#39;: For NetworkEndpointGroup, the port specified for each
+     *   network endpoint is used for health checking. For other backends, the
+     *   port or named port specified in the Backend Service is used for health
+     *   checking.
+     * 
+     * If not specified, SSL health check follows behavior specified in &#39;port&#39; and
+     * &#39;portName&#39; fields. Possible values: [&#34;USE_FIXED_PORT&#34;, &#34;USE_NAMED_PORT&#34;, &#34;USE_SERVING_PORT&#34;]
+     * 
+     */
     public String portSpecification() {
         return this.portSpecification;
     }
+    /**
+     * @return Specifies the type of proxy header to append before sending data to the
+     * backend. Default value: &#34;NONE&#34; Possible values: [&#34;NONE&#34;, &#34;PROXY_V1&#34;]
+     * 
+     */
     public String proxyHeader() {
         return this.proxyHeader;
     }
+    /**
+     * @return The application data to send once the SSL connection has been
+     * established (default value is empty). If both request and response are
+     * empty, the connection establishment alone will indicate health. The request
+     * data can only be ASCII.
+     * 
+     */
     public String request() {
         return this.request;
     }
+    /**
+     * @return The bytes to match against the beginning of the response data. If left empty
+     * (the default value), any response will indicate health. The response data
+     * can only be ASCII.
+     * 
+     */
     public String response() {
         return this.response;
     }

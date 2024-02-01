@@ -13,12 +13,50 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetBackendServiceCdnPolicyCacheKeyPolicyResult
     {
+        /// <summary>
+        /// If true requests to different hosts will be cached separately.
+        /// </summary>
         public readonly bool IncludeHost;
+        /// <summary>
+        /// Allows HTTP request headers (by name) to be used in the
+        /// cache key.
+        /// </summary>
         public readonly ImmutableArray<string> IncludeHttpHeaders;
+        /// <summary>
+        /// Names of cookies to include in cache keys.
+        /// </summary>
         public readonly ImmutableArray<string> IncludeNamedCookies;
+        /// <summary>
+        /// If true, http and https requests will be cached separately.
+        /// </summary>
         public readonly bool IncludeProtocol;
+        /// <summary>
+        /// If true, include query string parameters in the cache key
+        /// according to query_string_whitelist and
+        /// query_string_blacklist. If neither is set, the entire query
+        /// string will be included.
+        /// 
+        /// If false, the query string will be excluded from the cache
+        /// key entirely.
+        /// </summary>
         public readonly bool IncludeQueryString;
+        /// <summary>
+        /// Names of query string parameters to exclude in cache keys.
+        /// 
+        /// All other parameters will be included. Either specify
+        /// query_string_whitelist or query_string_blacklist, not both.
+        /// '&amp;' and '=' will be percent encoded and not treated as
+        /// delimiters.
+        /// </summary>
         public readonly ImmutableArray<string> QueryStringBlacklists;
+        /// <summary>
+        /// Names of query string parameters to include in cache keys.
+        /// 
+        /// All other parameters will be excluded. Either specify
+        /// query_string_whitelist or query_string_blacklist, not both.
+        /// '&amp;' and '=' will be percent encoded and not treated as
+        /// delimiters.
+        /// </summary>
         public readonly ImmutableArray<string> QueryStringWhitelists;
 
         [OutputConstructor]

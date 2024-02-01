@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.Organizations.Outputs
         /// or `deny` - (Optional) One or the other must be set.
         /// </summary>
         public readonly Outputs.PolicyListPolicyAllow? Allow;
+        /// <summary>
+        /// One or the other must be set.
+        /// </summary>
         public readonly Outputs.PolicyListPolicyDeny? Deny;
         /// <summary>
         /// If set to true, the values from the effective Policy of the parent resource

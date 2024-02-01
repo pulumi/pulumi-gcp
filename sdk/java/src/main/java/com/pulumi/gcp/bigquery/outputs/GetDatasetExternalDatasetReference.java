@@ -10,13 +10,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatasetExternalDatasetReference {
+    /**
+     * @return The connection id that is used to access the externalSource.
+     * Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+     * 
+     */
     private String connection;
+    /**
+     * @return External source that backs this dataset.
+     * 
+     */
     private String externalSource;
 
     private GetDatasetExternalDatasetReference() {}
+    /**
+     * @return The connection id that is used to access the externalSource.
+     * Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+     * 
+     */
     public String connection() {
         return this.connection;
     }
+    /**
+     * @return External source that backs this dataset.
+     * 
+     */
     public String externalSource() {
         return this.externalSource;
     }

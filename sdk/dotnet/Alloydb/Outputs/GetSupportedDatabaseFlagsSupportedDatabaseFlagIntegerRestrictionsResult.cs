@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Alloydb.Outputs
     [OutputType]
     public sealed class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsResult
     {
+        /// <summary>
+        /// The maximum value that can be specified, if applicable.
+        /// </summary>
         public readonly string MaxValue;
+        /// <summary>
+        /// The minimum value that can be specified, if applicable.
+        /// </summary>
         public readonly string MinValue;
 
         [OutputConstructor]

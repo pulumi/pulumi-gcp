@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterDatabaseEncryption {
+    /**
+     * @return The key to use to encrypt/decrypt secrets.
+     * 
+     */
     private String keyName;
+    /**
+     * @return ENCRYPTED or DECRYPTED.
+     * 
+     */
     private String state;
 
     private GetClusterDatabaseEncryption() {}
+    /**
+     * @return The key to use to encrypt/decrypt secrets.
+     * 
+     */
     public String keyName() {
         return this.keyName;
     }
+    /**
+     * @return ENCRYPTED or DECRYPTED.
+     * 
+     */
     public String state() {
         return this.state;
     }

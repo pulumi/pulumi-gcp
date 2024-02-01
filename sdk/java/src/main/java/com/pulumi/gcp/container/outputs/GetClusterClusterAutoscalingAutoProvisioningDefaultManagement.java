@@ -12,17 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingAutoProvisioningDefaultManagement {
+    /**
+     * @return Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+     * 
+     */
     private Boolean autoRepair;
+    /**
+     * @return Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
+     * 
+     */
     private Boolean autoUpgrade;
+    /**
+     * @return Specifies the Auto Upgrade knobs for the node pool.
+     * 
+     */
     private List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption> upgradeOptions;
 
     private GetClusterClusterAutoscalingAutoProvisioningDefaultManagement() {}
+    /**
+     * @return Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+     * 
+     */
     public Boolean autoRepair() {
         return this.autoRepair;
     }
+    /**
+     * @return Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
+     * 
+     */
     public Boolean autoUpgrade() {
         return this.autoUpgrade;
     }
+    /**
+     * @return Specifies the Auto Upgrade knobs for the node pool.
+     * 
+     */
     public List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption> upgradeOptions() {
         return this.upgradeOptions;
     }

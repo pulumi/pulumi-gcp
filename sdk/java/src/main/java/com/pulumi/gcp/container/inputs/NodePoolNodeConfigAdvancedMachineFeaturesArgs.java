@@ -14,9 +14,17 @@ public final class NodePoolNodeConfigAdvancedMachineFeaturesArgs extends com.pul
 
     public static final NodePoolNodeConfigAdvancedMachineFeaturesArgs Empty = new NodePoolNodeConfigAdvancedMachineFeaturesArgs();
 
+    /**
+     * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+     * 
+     */
     @Import(name="threadsPerCore", required=true)
     private Output<Integer> threadsPerCore;
 
+    /**
+     * @return The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+     * 
+     */
     public Output<Integer> threadsPerCore() {
         return this.threadsPerCore;
     }
@@ -45,11 +53,23 @@ public final class NodePoolNodeConfigAdvancedMachineFeaturesArgs extends com.pul
             $ = new NodePoolNodeConfigAdvancedMachineFeaturesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param threadsPerCore The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadsPerCore(Output<Integer> threadsPerCore) {
             $.threadsPerCore = threadsPerCore;
             return this;
         }
 
+        /**
+         * @param threadsPerCore The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder threadsPerCore(Integer threadsPerCore) {
             return threadsPerCore(Output.of(threadsPerCore));
         }

@@ -12,18 +12,33 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigWorkloadsConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for resources used by DAG processor.
+        /// </summary>
         [Input("dagProcessor")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigDagProcessorArgs>? DagProcessor { get; set; }
 
+        /// <summary>
+        /// Configuration for resources used by Airflow schedulers.
+        /// </summary>
         [Input("scheduler")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigSchedulerArgs>? Scheduler { get; set; }
 
+        /// <summary>
+        /// Configuration for resources used by Airflow triggerers.
+        /// </summary>
         [Input("triggerer")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigTriggererArgs>? Triggerer { get; set; }
 
+        /// <summary>
+        /// Configuration for resources used by Airflow web server.
+        /// </summary>
         [Input("webServer")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigWebServerArgs>? WebServer { get; set; }
 
+        /// <summary>
+        /// Configuration for resources used by Airflow workers.
+        /// </summary>
         [Input("worker")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigWorkerArgs>? Worker { get; set; }
 

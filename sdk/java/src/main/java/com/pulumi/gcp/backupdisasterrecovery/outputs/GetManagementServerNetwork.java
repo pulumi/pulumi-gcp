@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetManagementServerNetwork {
+    /**
+     * @return Network with format &#39;projects/{{project_id}}/global/networks/{{network_id}}&#39;
+     * 
+     */
     private String network;
+    /**
+     * @return Type of Network peeringMode Default value: &#34;PRIVATE_SERVICE_ACCESS&#34; Possible values: [&#34;PRIVATE_SERVICE_ACCESS&#34;]
+     * 
+     */
     private String peeringMode;
 
     private GetManagementServerNetwork() {}
+    /**
+     * @return Network with format &#39;projects/{{project_id}}/global/networks/{{network_id}}&#39;
+     * 
+     */
     public String network() {
         return this.network;
     }
+    /**
+     * @return Type of Network peeringMode Default value: &#34;PRIVATE_SERVICE_ACCESS&#34; Possible values: [&#34;PRIVATE_SERVICE_ACCESS&#34;]
+     * 
+     */
     public String peeringMode() {
         return this.peeringMode;
     }

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNodeConfigFastSocket {
+    /**
+     * @return Whether or not NCCL Fast Socket is enabled
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterNodePoolNodeConfigFastSocket() {}
+    /**
+     * @return Whether or not NCCL Fast Socket is enabled
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

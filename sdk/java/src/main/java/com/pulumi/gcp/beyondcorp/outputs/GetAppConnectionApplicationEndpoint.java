@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppConnectionApplicationEndpoint {
+    /**
+     * @return Hostname or IP address of the remote application endpoint.
+     * 
+     */
     private String host;
+    /**
+     * @return Port of the remote application endpoint.
+     * 
+     */
     private Integer port;
 
     private GetAppConnectionApplicationEndpoint() {}
+    /**
+     * @return Hostname or IP address of the remote application endpoint.
+     * 
+     */
     public String host() {
         return this.host;
     }
+    /**
+     * @return Port of the remote application endpoint.
+     * 
+     */
     public Integer port() {
         return this.port;
     }

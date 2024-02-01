@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterNodeConfigSoleTenantConfig {
+    /**
+     * @return .
+     * 
+     */
     private List<ClusterNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities;
 
     private ClusterNodeConfigSoleTenantConfig() {}
+    /**
+     * @return .
+     * 
+     */
     public List<ClusterNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities() {
         return this.nodeAffinities;
     }

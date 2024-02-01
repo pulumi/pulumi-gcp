@@ -13,53 +13,151 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketLifecycleRuleCondition {
+    /**
+     * @return Minimum age of an object in days to satisfy this condition.
+     * 
+     */
     private Integer age;
+    /**
+     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * 
+     */
     private String createdBefore;
+    /**
+     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * 
+     */
     private String customTimeBefore;
+    /**
+     * @return Number of days elapsed since the user-specified timestamp set on an object.
+     * 
+     */
     private Integer daysSinceCustomTime;
+    /**
+     * @return Number of days elapsed since the noncurrent timestamp of an object. This
+     * 										condition is relevant only for versioned objects.
+     * 
+     */
     private Integer daysSinceNoncurrentTime;
+    /**
+     * @return One or more matching name prefixes to satisfy this condition.
+     * 
+     */
     private List<String> matchesPrefixes;
+    /**
+     * @return Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
+     * 
+     */
     private List<String> matchesStorageClasses;
+    /**
+     * @return One or more matching name suffixes to satisfy this condition.
+     * 
+     */
     private List<String> matchesSuffixes;
+    /**
+     * @return While set true, age value will be omitted.Required to set true when age is unset in the config file.
+     * 
+     */
     private Boolean noAge;
+    /**
+     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * 
+     */
     private String noncurrentTimeBefore;
+    /**
+     * @return Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+     * 
+     */
     private Integer numNewerVersions;
+    /**
+     * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: &#34;LIVE&#34;, &#34;ARCHIVED&#34;, &#34;ANY&#34;.
+     * 
+     */
     private String withState;
 
     private GetBucketLifecycleRuleCondition() {}
+    /**
+     * @return Minimum age of an object in days to satisfy this condition.
+     * 
+     */
     public Integer age() {
         return this.age;
     }
+    /**
+     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * 
+     */
     public String createdBefore() {
         return this.createdBefore;
     }
+    /**
+     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * 
+     */
     public String customTimeBefore() {
         return this.customTimeBefore;
     }
+    /**
+     * @return Number of days elapsed since the user-specified timestamp set on an object.
+     * 
+     */
     public Integer daysSinceCustomTime() {
         return this.daysSinceCustomTime;
     }
+    /**
+     * @return Number of days elapsed since the noncurrent timestamp of an object. This
+     * 										condition is relevant only for versioned objects.
+     * 
+     */
     public Integer daysSinceNoncurrentTime() {
         return this.daysSinceNoncurrentTime;
     }
+    /**
+     * @return One or more matching name prefixes to satisfy this condition.
+     * 
+     */
     public List<String> matchesPrefixes() {
         return this.matchesPrefixes;
     }
+    /**
+     * @return Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
+     * 
+     */
     public List<String> matchesStorageClasses() {
         return this.matchesStorageClasses;
     }
+    /**
+     * @return One or more matching name suffixes to satisfy this condition.
+     * 
+     */
     public List<String> matchesSuffixes() {
         return this.matchesSuffixes;
     }
+    /**
+     * @return While set true, age value will be omitted.Required to set true when age is unset in the config file.
+     * 
+     */
     public Boolean noAge() {
         return this.noAge;
     }
+    /**
+     * @return Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+     * 
+     */
     public String noncurrentTimeBefore() {
         return this.noncurrentTimeBefore;
     }
+    /**
+     * @return Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+     * 
+     */
     public Integer numNewerVersions() {
         return this.numNewerVersions;
     }
+    /**
+     * @return Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: &#34;LIVE&#34;, &#34;ARCHIVED&#34;, &#34;ANY&#34;.
+     * 
+     */
     public String withState() {
         return this.withState;
     }

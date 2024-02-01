@@ -14,10 +14,25 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type BillingAccountBucketConfigCmekSettings struct {
-	KmsKeyName        string  `pulumi:"kmsKeyName"`
+	// The resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+	// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+	// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+	// For example:
+	// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+	// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 	KmsKeyVersionName *string `pulumi:"kmsKeyVersionName"`
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
-	Name             *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The service account associated with a project for which CMEK will apply.
+	// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
 
@@ -33,10 +48,25 @@ type BillingAccountBucketConfigCmekSettingsInput interface {
 }
 
 type BillingAccountBucketConfigCmekSettingsArgs struct {
-	KmsKeyName        pulumi.StringInput    `pulumi:"kmsKeyName"`
+	// The resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+	// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+	// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+	// For example:
+	// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+	// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 	KmsKeyVersionName pulumi.StringPtrInput `pulumi:"kmsKeyVersionName"`
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
-	Name             pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The service account associated with a project for which CMEK will apply.
+	// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
 }
 
@@ -117,10 +147,22 @@ func (o BillingAccountBucketConfigCmekSettingsOutput) ToBillingAccountBucketConf
 	}).(BillingAccountBucketConfigCmekSettingsPtrOutput)
 }
 
+// The resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o BillingAccountBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v BillingAccountBucketConfigCmekSettings) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+// For example:
+// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 func (o BillingAccountBucketConfigCmekSettingsOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BillingAccountBucketConfigCmekSettings) *string { return v.KmsKeyVersionName }).(pulumi.StringPtrOutput)
 }
@@ -130,6 +172,9 @@ func (o BillingAccountBucketConfigCmekSettingsOutput) Name() pulumi.StringPtrOut
 	return o.ApplyT(func(v BillingAccountBucketConfigCmekSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The service account associated with a project for which CMEK will apply.
+// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o BillingAccountBucketConfigCmekSettingsOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BillingAccountBucketConfigCmekSettings) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
 }
@@ -158,6 +203,12 @@ func (o BillingAccountBucketConfigCmekSettingsPtrOutput) Elem() BillingAccountBu
 	}).(BillingAccountBucketConfigCmekSettingsOutput)
 }
 
+// The resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o BillingAccountBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingAccountBucketConfigCmekSettings) *string {
 		if v == nil {
@@ -167,6 +218,12 @@ func (o BillingAccountBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+// For example:
+// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 func (o BillingAccountBucketConfigCmekSettingsPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingAccountBucketConfigCmekSettings) *string {
 		if v == nil {
@@ -186,6 +243,9 @@ func (o BillingAccountBucketConfigCmekSettingsPtrOutput) Name() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The service account associated with a project for which CMEK will apply.
+// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o BillingAccountBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingAccountBucketConfigCmekSettings) *string {
 		if v == nil {
@@ -581,10 +641,25 @@ func (o BillingAccountSinkExclusionArrayOutput) Index(i pulumi.IntInput) Billing
 }
 
 type FolderBucketConfigCmekSettings struct {
-	KmsKeyName        string  `pulumi:"kmsKeyName"`
+	// The resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+	// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+	// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+	// For example:
+	// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+	// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 	KmsKeyVersionName *string `pulumi:"kmsKeyVersionName"`
 	// The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
-	Name             *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The service account associated with a project for which CMEK will apply.
+	// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
 
@@ -600,10 +675,25 @@ type FolderBucketConfigCmekSettingsInput interface {
 }
 
 type FolderBucketConfigCmekSettingsArgs struct {
-	KmsKeyName        pulumi.StringInput    `pulumi:"kmsKeyName"`
+	// The resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+	// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+	// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+	// For example:
+	// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+	// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 	KmsKeyVersionName pulumi.StringPtrInput `pulumi:"kmsKeyVersionName"`
 	// The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
-	Name             pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The service account associated with a project for which CMEK will apply.
+	// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
 }
 
@@ -684,10 +774,22 @@ func (o FolderBucketConfigCmekSettingsOutput) ToFolderBucketConfigCmekSettingsPt
 	}).(FolderBucketConfigCmekSettingsPtrOutput)
 }
 
+// The resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o FolderBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v FolderBucketConfigCmekSettings) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+// For example:
+// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 func (o FolderBucketConfigCmekSettingsOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FolderBucketConfigCmekSettings) *string { return v.KmsKeyVersionName }).(pulumi.StringPtrOutput)
 }
@@ -697,6 +799,9 @@ func (o FolderBucketConfigCmekSettingsOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FolderBucketConfigCmekSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The service account associated with a project for which CMEK will apply.
+// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o FolderBucketConfigCmekSettingsOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FolderBucketConfigCmekSettings) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
 }
@@ -725,6 +830,12 @@ func (o FolderBucketConfigCmekSettingsPtrOutput) Elem() FolderBucketConfigCmekSe
 	}).(FolderBucketConfigCmekSettingsOutput)
 }
 
+// The resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o FolderBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderBucketConfigCmekSettings) *string {
 		if v == nil {
@@ -734,6 +845,12 @@ func (o FolderBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+// For example:
+// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 func (o FolderBucketConfigCmekSettingsPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderBucketConfigCmekSettings) *string {
 		if v == nil {
@@ -753,6 +870,9 @@ func (o FolderBucketConfigCmekSettingsPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The service account associated with a project for which CMEK will apply.
+// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o FolderBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderBucketConfigCmekSettings) *string {
 		if v == nil {
@@ -2329,10 +2449,25 @@ func (o MetricMetricDescriptorLabelArrayOutput) Index(i pulumi.IntInput) MetricM
 }
 
 type OrganizationBucketConfigCmekSettings struct {
-	KmsKeyName        string  `pulumi:"kmsKeyName"`
+	// The resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+	// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+	// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+	// For example:
+	// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+	// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 	KmsKeyVersionName *string `pulumi:"kmsKeyVersionName"`
 	// The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
-	Name             *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The service account associated with a project for which CMEK will apply.
+	// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
 
@@ -2348,10 +2483,25 @@ type OrganizationBucketConfigCmekSettingsInput interface {
 }
 
 type OrganizationBucketConfigCmekSettingsArgs struct {
-	KmsKeyName        pulumi.StringInput    `pulumi:"kmsKeyName"`
+	// The resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+	// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+	// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+	// KMS key name format:
+	// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+	// For example:
+	// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+	// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 	KmsKeyVersionName pulumi.StringPtrInput `pulumi:"kmsKeyVersionName"`
 	// The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
-	Name             pulumi.StringPtrInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The service account associated with a project for which CMEK will apply.
+	// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+	// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 	ServiceAccountId pulumi.StringPtrInput `pulumi:"serviceAccountId"`
 }
 
@@ -2432,10 +2582,22 @@ func (o OrganizationBucketConfigCmekSettingsOutput) ToOrganizationBucketConfigCm
 	}).(OrganizationBucketConfigCmekSettingsPtrOutput)
 }
 
+// The resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o OrganizationBucketConfigCmekSettingsOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v OrganizationBucketConfigCmekSettings) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
+// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+// For example:
+// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 func (o OrganizationBucketConfigCmekSettingsOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrganizationBucketConfigCmekSettings) *string { return v.KmsKeyVersionName }).(pulumi.StringPtrOutput)
 }
@@ -2445,6 +2607,9 @@ func (o OrganizationBucketConfigCmekSettingsOutput) Name() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v OrganizationBucketConfigCmekSettings) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The service account associated with a project for which CMEK will apply.
+// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o OrganizationBucketConfigCmekSettingsOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrganizationBucketConfigCmekSettings) *string { return v.ServiceAccountId }).(pulumi.StringPtrOutput)
 }
@@ -2473,6 +2638,12 @@ func (o OrganizationBucketConfigCmekSettingsPtrOutput) Elem() OrganizationBucket
 	}).(OrganizationBucketConfigCmekSettingsOutput)
 }
 
+// The resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+// To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+// The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o OrganizationBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationBucketConfigCmekSettings) *string {
 		if v == nil {
@@ -2482,6 +2653,12 @@ func (o OrganizationBucketConfigCmekSettingsPtrOutput) KmsKeyName() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The CryptoKeyVersion resource name for the configured Cloud KMS key.
+// KMS key name format:
+// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+// For example:
+// "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+// This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
 func (o OrganizationBucketConfigCmekSettingsPtrOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationBucketConfigCmekSettings) *string {
 		if v == nil {
@@ -2501,6 +2678,9 @@ func (o OrganizationBucketConfigCmekSettingsPtrOutput) Name() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The service account associated with a project for which CMEK will apply.
+// Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+// See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
 func (o OrganizationBucketConfigCmekSettingsPtrOutput) ServiceAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationBucketConfigCmekSettings) *string {
 		if v == nil {

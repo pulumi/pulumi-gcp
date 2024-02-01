@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Alloydb.Outputs
     [OutputType]
     public sealed class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsResult
     {
+        /// <summary>
+        /// The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedValues;
 
         [OutputConstructor]

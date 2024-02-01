@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether or not Cloud Data Lineage integration is enabled.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 

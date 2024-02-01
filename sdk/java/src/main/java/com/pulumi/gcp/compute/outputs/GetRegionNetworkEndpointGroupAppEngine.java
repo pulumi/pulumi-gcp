@@ -10,17 +10,63 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegionNetworkEndpointGroupAppEngine {
+    /**
+     * @return Optional serving service.
+     * The service name must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;default&#34;, &#34;my-service&#34;.
+     * 
+     */
     private String service;
+    /**
+     * @return A template to parse service and version fields from a request URL.
+     * URL mask allows for routing to multiple App Engine services without
+     * having to create multiple Network Endpoint Groups and backend services.
+     * 
+     * For example, the request URLs &#34;foo1-dot-appname.appspot.com/v1&#34; and
+     * &#34;foo1-dot-appname.appspot.com/v2&#34; can be backed by the same Serverless NEG with
+     * URL mask &#34;-dot-appname.appspot.com/&#34;. The URL mask will parse
+     * them to { service = &#34;foo1&#34;, version = &#34;v1&#34; } and { service = &#34;foo1&#34;, version = &#34;v2&#34; } respectively.
+     * 
+     */
     private String urlMask;
+    /**
+     * @return Optional serving version.
+     * The version must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;v1&#34;, &#34;v2&#34;.
+     * 
+     */
     private String version;
 
     private GetRegionNetworkEndpointGroupAppEngine() {}
+    /**
+     * @return Optional serving service.
+     * The service name must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;default&#34;, &#34;my-service&#34;.
+     * 
+     */
     public String service() {
         return this.service;
     }
+    /**
+     * @return A template to parse service and version fields from a request URL.
+     * URL mask allows for routing to multiple App Engine services without
+     * having to create multiple Network Endpoint Groups and backend services.
+     * 
+     * For example, the request URLs &#34;foo1-dot-appname.appspot.com/v1&#34; and
+     * &#34;foo1-dot-appname.appspot.com/v2&#34; can be backed by the same Serverless NEG with
+     * URL mask &#34;-dot-appname.appspot.com/&#34;. The URL mask will parse
+     * them to { service = &#34;foo1&#34;, version = &#34;v1&#34; } and { service = &#34;foo1&#34;, version = &#34;v2&#34; } respectively.
+     * 
+     */
     public String urlMask() {
         return this.urlMask;
     }
+    /**
+     * @return Optional serving version.
+     * The version must be 1-63 characters long, and comply with RFC1035.
+     * Example value: &#34;v1&#34;, &#34;v2&#34;.
+     * 
+     */
     public String version() {
         return this.version;
     }

@@ -13,10 +13,25 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetServiceTrafficStatusResult
     {
+        /// <summary>
+        /// Specifies percent of the traffic to this Revision.
+        /// </summary>
         public readonly int Percent;
+        /// <summary>
+        /// Revision to which this traffic is sent.
+        /// </summary>
         public readonly string Revision;
+        /// <summary>
+        /// Indicates the string used in the URI to exclusively reference this target.
+        /// </summary>
         public readonly string Tag;
+        /// <summary>
+        /// The allocation type for this traffic target.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Displays the target URI.
+        /// </summary>
         public readonly string Uri;
 
         [OutputConstructor]

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterPodSecurityPolicyConfig {
+    /**
+     * @return Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterPodSecurityPolicyConfig() {}
+    /**
+     * @return Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

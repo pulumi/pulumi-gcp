@@ -33,9 +33,17 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
         return Optional.ofNullable(this.allow);
     }
 
+    /**
+     * One or the other must be set.
+     * 
+     */
     @Import(name="deny")
     private @Nullable Output<OrganizationPolicyListPolicyDenyArgs> deny;
 
+    /**
+     * @return One or the other must be set.
+     * 
+     */
     public Optional<Output<OrganizationPolicyListPolicyDenyArgs>> deny() {
         return Optional.ofNullable(this.deny);
     }
@@ -124,11 +132,23 @@ public final class OrganizationPolicyListPolicyArgs extends com.pulumi.resources
             return allow(Output.of(allow));
         }
 
+        /**
+         * @param deny One or the other must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deny(@Nullable Output<OrganizationPolicyListPolicyDenyArgs> deny) {
             $.deny = deny;
             return this;
         }
 
+        /**
+         * @param deny One or the other must be set.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deny(OrganizationPolicyListPolicyDenyArgs deny) {
             return deny(Output.of(deny));
         }

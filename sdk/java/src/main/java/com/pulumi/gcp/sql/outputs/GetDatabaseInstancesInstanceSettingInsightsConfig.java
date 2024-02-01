@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
+    /**
+     * @return True if Query Insights feature is enabled.
+     * 
+     */
     private Boolean queryInsightsEnabled;
+    /**
+     * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+     * 
+     */
     private Integer queryPlansPerMinute;
+    /**
+     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+     * 
+     */
     private Integer queryStringLength;
+    /**
+     * @return True if Query Insights will record application tags from query when enabled.
+     * 
+     */
     private Boolean recordApplicationTags;
+    /**
+     * @return True if Query Insights will record client address when enabled.
+     * 
+     */
     private Boolean recordClientAddress;
 
     private GetDatabaseInstancesInstanceSettingInsightsConfig() {}
+    /**
+     * @return True if Query Insights feature is enabled.
+     * 
+     */
     public Boolean queryInsightsEnabled() {
         return this.queryInsightsEnabled;
     }
+    /**
+     * @return Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+     * 
+     */
     public Integer queryPlansPerMinute() {
         return this.queryPlansPerMinute;
     }
+    /**
+     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+     * 
+     */
     public Integer queryStringLength() {
         return this.queryStringLength;
     }
+    /**
+     * @return True if Query Insights will record application tags from query when enabled.
+     * 
+     */
     public Boolean recordApplicationTags() {
         return this.recordApplicationTags;
     }
+    /**
+     * @return True if Query Insights will record client address when enabled.
+     * 
+     */
     public Boolean recordClientAddress() {
         return this.recordClientAddress;
     }

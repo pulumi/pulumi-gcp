@@ -15,25 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfig {
+    /**
+     * @return Configuration for resources used by DAG processor.
+     * 
+     */
     private @Nullable EnvironmentConfigWorkloadsConfigDagProcessor dagProcessor;
+    /**
+     * @return Configuration for resources used by Airflow schedulers.
+     * 
+     */
     private @Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler;
+    /**
+     * @return Configuration for resources used by Airflow triggerers.
+     * 
+     */
     private @Nullable EnvironmentConfigWorkloadsConfigTriggerer triggerer;
+    /**
+     * @return Configuration for resources used by Airflow web server.
+     * 
+     */
     private @Nullable EnvironmentConfigWorkloadsConfigWebServer webServer;
+    /**
+     * @return Configuration for resources used by Airflow workers.
+     * 
+     */
     private @Nullable EnvironmentConfigWorkloadsConfigWorker worker;
 
     private EnvironmentConfigWorkloadsConfig() {}
+    /**
+     * @return Configuration for resources used by DAG processor.
+     * 
+     */
     public Optional<EnvironmentConfigWorkloadsConfigDagProcessor> dagProcessor() {
         return Optional.ofNullable(this.dagProcessor);
     }
+    /**
+     * @return Configuration for resources used by Airflow schedulers.
+     * 
+     */
     public Optional<EnvironmentConfigWorkloadsConfigScheduler> scheduler() {
         return Optional.ofNullable(this.scheduler);
     }
+    /**
+     * @return Configuration for resources used by Airflow triggerers.
+     * 
+     */
     public Optional<EnvironmentConfigWorkloadsConfigTriggerer> triggerer() {
         return Optional.ofNullable(this.triggerer);
     }
+    /**
+     * @return Configuration for resources used by Airflow web server.
+     * 
+     */
     public Optional<EnvironmentConfigWorkloadsConfigWebServer> webServer() {
         return Optional.ofNullable(this.webServer);
     }
+    /**
+     * @return Configuration for resources used by Airflow workers.
+     * 
+     */
     public Optional<EnvironmentConfigWorkloadsConfigWorker> worker() {
         return Optional.ofNullable(this.worker);
     }

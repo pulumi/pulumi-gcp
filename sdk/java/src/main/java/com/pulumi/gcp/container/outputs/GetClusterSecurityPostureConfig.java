@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterSecurityPostureConfig {
+    /**
+     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include DISABLED and BASIC.
+     * 
+     */
     private String mode;
+    /**
+     * @return Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
+     * 
+     */
     private String vulnerabilityMode;
 
     private GetClusterSecurityPostureConfig() {}
+    /**
+     * @return Sets the mode of the Kubernetes security posture API&#39;s off-cluster features. Available options include DISABLED and BASIC.
+     * 
+     */
     public String mode() {
         return this.mode;
     }
+    /**
+     * @return Sets the mode of the Kubernetes security posture API&#39;s workload vulnerability scanning. Available options include VULNERABILITY_DISABLED, VULNERABILITY_BASIC and VULNERABILITY_ENTERPRISE.
+     * 
+     */
     public String vulnerabilityMode() {
         return this.vulnerabilityMode;
     }

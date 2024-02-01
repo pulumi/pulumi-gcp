@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigKeyUsage {
+    /**
+     * @return Describes high-level ways in which a key may be used.
+     * 
+     */
     private List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages;
+    /**
+     * @return Describes high-level ways in which a key may be used.
+     * 
+     */
     private List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsages;
+    /**
+     * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * 
+     */
     private List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages;
 
     private GetAuthorityConfigX509ConfigKeyUsage() {}
+    /**
+     * @return Describes high-level ways in which a key may be used.
+     * 
+     */
     public List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages() {
         return this.baseKeyUsages;
     }
+    /**
+     * @return Describes high-level ways in which a key may be used.
+     * 
+     */
     public List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsages() {
         return this.extendedKeyUsages;
     }
+    /**
+     * @return An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+     * 
+     */
     public List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages() {
         return this.unknownExtendedKeyUsages;
     }

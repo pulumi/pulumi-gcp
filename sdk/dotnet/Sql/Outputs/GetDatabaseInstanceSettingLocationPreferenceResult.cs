@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceSettingLocationPreferenceResult
     {
+        /// <summary>
+        /// A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+        /// </summary>
         public readonly string FollowGaeApplication;
+        /// <summary>
+        /// The preferred Compute Engine zone for the secondary/failover
+        /// </summary>
         public readonly string SecondaryZone;
+        /// <summary>
+        /// The preferred compute engine zone.
+        /// </summary>
         public readonly string Zone;
 
         [OutputConstructor]

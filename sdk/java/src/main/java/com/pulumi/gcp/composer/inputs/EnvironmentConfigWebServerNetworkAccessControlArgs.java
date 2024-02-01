@@ -16,9 +16,17 @@ public final class EnvironmentConfigWebServerNetworkAccessControlArgs extends co
 
     public static final EnvironmentConfigWebServerNetworkAccessControlArgs Empty = new EnvironmentConfigWebServerNetworkAccessControlArgs();
 
+    /**
+     * A collection of allowed IP ranges with descriptions.
+     * 
+     */
     @Import(name="allowedIpRanges")
     private @Nullable Output<List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs>> allowedIpRanges;
 
+    /**
+     * @return A collection of allowed IP ranges with descriptions.
+     * 
+     */
     public Optional<Output<List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs>>> allowedIpRanges() {
         return Optional.ofNullable(this.allowedIpRanges);
     }
@@ -47,15 +55,33 @@ public final class EnvironmentConfigWebServerNetworkAccessControlArgs extends co
             $ = new EnvironmentConfigWebServerNetworkAccessControlArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowedIpRanges A collection of allowed IP ranges with descriptions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedIpRanges(@Nullable Output<List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs>> allowedIpRanges) {
             $.allowedIpRanges = allowedIpRanges;
             return this;
         }
 
+        /**
+         * @param allowedIpRanges A collection of allowed IP ranges with descriptions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedIpRanges(List<EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs> allowedIpRanges) {
             return allowedIpRanges(Output.of(allowedIpRanges));
         }
 
+        /**
+         * @param allowedIpRanges A collection of allowed IP ranges with descriptions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedIpRanges(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs... allowedIpRanges) {
             return allowedIpRanges(List.of(allowedIpRanges));
         }

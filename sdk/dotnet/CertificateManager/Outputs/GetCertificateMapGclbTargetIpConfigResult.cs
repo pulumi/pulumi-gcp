@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
     [OutputType]
     public sealed class GetCertificateMapGclbTargetIpConfigResult
     {
+        /// <summary>
+        /// An external IP address
+        /// </summary>
         public readonly string IpAddress;
+        /// <summary>
+        /// A list of ports
+        /// </summary>
         public readonly ImmutableArray<int> Ports;
 
         [OutputConstructor]

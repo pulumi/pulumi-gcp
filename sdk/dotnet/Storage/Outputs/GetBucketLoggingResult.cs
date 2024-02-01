@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Storage.Outputs
     [OutputType]
     public sealed class GetBucketLoggingResult
     {
+        /// <summary>
+        /// The bucket that will receive log objects.
+        /// </summary>
         public readonly string LogBucket;
+        /// <summary>
+        /// The object prefix for log objects. If it's not provided, by default Google Cloud Storage sets this to this bucket's name.
+        /// </summary>
         public readonly string LogObjectPrefix;
 
         [OutputConstructor]

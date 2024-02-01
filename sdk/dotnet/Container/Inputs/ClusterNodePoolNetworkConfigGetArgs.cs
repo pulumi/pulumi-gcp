@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Inputs
     {
         [Input("additionalNodeNetworkConfigs")]
         private InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigGetArgs>? _additionalNodeNetworkConfigs;
+
+        /// <summary>
+        /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+        /// </summary>
         public InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigGetArgs> AdditionalNodeNetworkConfigs
         {
             get => _additionalNodeNetworkConfigs ?? (_additionalNodeNetworkConfigs = new InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigGetArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("additionalPodNetworkConfigs")]
         private InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigGetArgs>? _additionalPodNetworkConfigs;
+
+        /// <summary>
+        /// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+        /// </summary>
         public InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigGetArgs> AdditionalPodNetworkConfigs
         {
             get => _additionalPodNetworkConfigs ?? (_additionalPodNetworkConfigs = new InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigGetArgs>());
@@ -49,6 +57,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("networkPerformanceConfig")]
         public Input<Inputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
 
+        /// <summary>
+        /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+        /// </summary>
         [Input("podCidrOverprovisionConfig")]
         public Input<Inputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigGetArgs>? PodCidrOverprovisionConfig { get; set; }
 

@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerEnvFromConfigMapRefResult
     {
+        /// <summary>
+        /// The ConfigMap to select from.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResult> LocalObjectReferences;
+        /// <summary>
+        /// Specify whether the ConfigMap must be defined
+        /// </summary>
         public readonly bool Optional;
 
         [OutputConstructor]

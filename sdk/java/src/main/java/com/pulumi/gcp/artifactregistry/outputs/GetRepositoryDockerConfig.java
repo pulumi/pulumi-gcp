@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryDockerConfig {
+    /**
+     * @return The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+     * 
+     */
     private Boolean immutableTags;
 
     private GetRepositoryDockerConfig() {}
+    /**
+     * @return The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+     * 
+     */
     public Boolean immutableTags() {
         return this.immutableTags;
     }

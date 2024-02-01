@@ -10,25 +10,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceServerCaCert {
+    /**
+     * @return The certificate data in PEM format.
+     * 
+     */
     private String cert;
+    /**
+     * @return The time when the certificate was created.
+     * 
+     */
     private String createTime;
+    /**
+     * @return The time when the certificate expires.
+     * 
+     */
     private String expireTime;
+    /**
+     * @return Serial number, as extracted from the certificate.
+     * 
+     */
     private String serialNumber;
+    /**
+     * @return Sha1 Fingerprint of the certificate.
+     * 
+     */
     private String sha1Fingerprint;
 
     private GetInstanceServerCaCert() {}
+    /**
+     * @return The certificate data in PEM format.
+     * 
+     */
     public String cert() {
         return this.cert;
     }
+    /**
+     * @return The time when the certificate was created.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return The time when the certificate expires.
+     * 
+     */
     public String expireTime() {
         return this.expireTime;
     }
+    /**
+     * @return Serial number, as extracted from the certificate.
+     * 
+     */
     public String serialNumber() {
         return this.serialNumber;
     }
+    /**
+     * @return Sha1 Fingerprint of the certificate.
+     * 
+     */
     public String sha1Fingerprint() {
         return this.sha1Fingerprint;
     }

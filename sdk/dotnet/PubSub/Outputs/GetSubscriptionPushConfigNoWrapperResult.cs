@@ -13,6 +13,11 @@ namespace Pulumi.Gcp.PubSub.Outputs
     [OutputType]
     public sealed class GetSubscriptionPushConfigNoWrapperResult
     {
+        /// <summary>
+        /// When true, writes the Pub/Sub message metadata to
+        /// 'x-goog-pubsub-&lt;KEY&gt;:&lt;VAL&gt;' headers of the HTTP request. Writes the
+        /// Pub/Sub message attributes to '&lt;KEY&gt;:&lt;VAL&gt;' headers of the HTTP request.
+        /// </summary>
         public readonly bool WriteMetadata;
 
         [OutputConstructor]

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Storage.Outputs
     [OutputType]
     public sealed class GetBucketVersioningResult
     {
+        /// <summary>
+        /// While set to true, versioning is fully enabled for this bucket.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

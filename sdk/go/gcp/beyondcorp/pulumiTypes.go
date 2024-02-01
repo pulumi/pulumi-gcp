@@ -780,8 +780,10 @@ func (o AppGatewayAllocatedConnectionArrayOutput) Index(i pulumi.IntInput) AppGa
 }
 
 type GetAppConnectionApplicationEndpoint struct {
+	// Hostname or IP address of the remote application endpoint.
 	Host string `pulumi:"host"`
-	Port int    `pulumi:"port"`
+	// Port of the remote application endpoint.
+	Port int `pulumi:"port"`
 }
 
 // GetAppConnectionApplicationEndpointInput is an input type that accepts GetAppConnectionApplicationEndpointArgs and GetAppConnectionApplicationEndpointOutput values.
@@ -796,8 +798,10 @@ type GetAppConnectionApplicationEndpointInput interface {
 }
 
 type GetAppConnectionApplicationEndpointArgs struct {
+	// Hostname or IP address of the remote application endpoint.
 	Host pulumi.StringInput `pulumi:"host"`
-	Port pulumi.IntInput    `pulumi:"port"`
+	// Port of the remote application endpoint.
+	Port pulumi.IntInput `pulumi:"port"`
 }
 
 func (GetAppConnectionApplicationEndpointArgs) ElementType() reflect.Type {
@@ -851,10 +855,12 @@ func (o GetAppConnectionApplicationEndpointOutput) ToGetAppConnectionApplication
 	return o
 }
 
+// Hostname or IP address of the remote application endpoint.
 func (o GetAppConnectionApplicationEndpointOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectionApplicationEndpoint) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// Port of the remote application endpoint.
 func (o GetAppConnectionApplicationEndpointOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppConnectionApplicationEndpoint) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -880,10 +886,16 @@ func (o GetAppConnectionApplicationEndpointArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetAppConnectionGateway struct {
-	AppGateway  string `pulumi:"appGateway"`
-	IngressPort int    `pulumi:"ingressPort"`
-	Type        string `pulumi:"type"`
-	Uri         string `pulumi:"uri"`
+	// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+	AppGateway string `pulumi:"appGateway"`
+	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+	IngressPort int `pulumi:"ingressPort"`
+	// The type of hosting used by the gateway. Refer to
+	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+	// for a list of possible values.
+	Type string `pulumi:"type"`
+	// Server-defined URI for this resource.
+	Uri string `pulumi:"uri"`
 }
 
 // GetAppConnectionGatewayInput is an input type that accepts GetAppConnectionGatewayArgs and GetAppConnectionGatewayOutput values.
@@ -898,10 +910,16 @@ type GetAppConnectionGatewayInput interface {
 }
 
 type GetAppConnectionGatewayArgs struct {
-	AppGateway  pulumi.StringInput `pulumi:"appGateway"`
-	IngressPort pulumi.IntInput    `pulumi:"ingressPort"`
-	Type        pulumi.StringInput `pulumi:"type"`
-	Uri         pulumi.StringInput `pulumi:"uri"`
+	// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
+	AppGateway pulumi.StringInput `pulumi:"appGateway"`
+	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+	IngressPort pulumi.IntInput `pulumi:"ingressPort"`
+	// The type of hosting used by the gateway. Refer to
+	// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+	// for a list of possible values.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Server-defined URI for this resource.
+	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
 func (GetAppConnectionGatewayArgs) ElementType() reflect.Type {
@@ -955,18 +973,24 @@ func (o GetAppConnectionGatewayOutput) ToGetAppConnectionGatewayOutputWithContex
 	return o
 }
 
+// AppGateway name in following format: projects/{project_id}/locations/{locationId}/appgateways/{gateway_id}.
 func (o GetAppConnectionGatewayOutput) AppGateway() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectionGateway) string { return v.AppGateway }).(pulumi.StringOutput)
 }
 
+// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
 func (o GetAppConnectionGatewayOutput) IngressPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppConnectionGateway) int { return v.IngressPort }).(pulumi.IntOutput)
 }
 
+// The type of hosting used by the gateway. Refer to
+// https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
+// for a list of possible values.
 func (o GetAppConnectionGatewayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectionGateway) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Server-defined URI for this resource.
 func (o GetAppConnectionGatewayOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectionGateway) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -992,6 +1016,7 @@ func (o GetAppConnectionGatewayArrayOutput) Index(i pulumi.IntInput) GetAppConne
 }
 
 type GetAppConnectorPrincipalInfo struct {
+	// ServiceAccount represents a GCP service account.
 	ServiceAccounts []GetAppConnectorPrincipalInfoServiceAccount `pulumi:"serviceAccounts"`
 }
 
@@ -1007,6 +1032,7 @@ type GetAppConnectorPrincipalInfoInput interface {
 }
 
 type GetAppConnectorPrincipalInfoArgs struct {
+	// ServiceAccount represents a GCP service account.
 	ServiceAccounts GetAppConnectorPrincipalInfoServiceAccountArrayInput `pulumi:"serviceAccounts"`
 }
 
@@ -1061,6 +1087,7 @@ func (o GetAppConnectorPrincipalInfoOutput) ToGetAppConnectorPrincipalInfoOutput
 	return o
 }
 
+// ServiceAccount represents a GCP service account.
 func (o GetAppConnectorPrincipalInfoOutput) ServiceAccounts() GetAppConnectorPrincipalInfoServiceAccountArrayOutput {
 	return o.ApplyT(func(v GetAppConnectorPrincipalInfo) []GetAppConnectorPrincipalInfoServiceAccount {
 		return v.ServiceAccounts
@@ -1088,6 +1115,7 @@ func (o GetAppConnectorPrincipalInfoArrayOutput) Index(i pulumi.IntInput) GetApp
 }
 
 type GetAppConnectorPrincipalInfoServiceAccount struct {
+	// Email address of the service account.
 	Email string `pulumi:"email"`
 }
 
@@ -1103,6 +1131,7 @@ type GetAppConnectorPrincipalInfoServiceAccountInput interface {
 }
 
 type GetAppConnectorPrincipalInfoServiceAccountArgs struct {
+	// Email address of the service account.
 	Email pulumi.StringInput `pulumi:"email"`
 }
 
@@ -1157,6 +1186,7 @@ func (o GetAppConnectorPrincipalInfoServiceAccountOutput) ToGetAppConnectorPrinc
 	return o
 }
 
+// Email address of the service account.
 func (o GetAppConnectorPrincipalInfoServiceAccountOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppConnectorPrincipalInfoServiceAccount) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -1182,8 +1212,10 @@ func (o GetAppConnectorPrincipalInfoServiceAccountArrayOutput) Index(i pulumi.In
 }
 
 type GetAppGatewayAllocatedConnection struct {
-	IngressPort int    `pulumi:"ingressPort"`
-	PscUri      string `pulumi:"pscUri"`
+	// The ingress port of an allocated connection.
+	IngressPort int `pulumi:"ingressPort"`
+	// The PSC uri of an allocated connection.
+	PscUri string `pulumi:"pscUri"`
 }
 
 // GetAppGatewayAllocatedConnectionInput is an input type that accepts GetAppGatewayAllocatedConnectionArgs and GetAppGatewayAllocatedConnectionOutput values.
@@ -1198,8 +1230,10 @@ type GetAppGatewayAllocatedConnectionInput interface {
 }
 
 type GetAppGatewayAllocatedConnectionArgs struct {
-	IngressPort pulumi.IntInput    `pulumi:"ingressPort"`
-	PscUri      pulumi.StringInput `pulumi:"pscUri"`
+	// The ingress port of an allocated connection.
+	IngressPort pulumi.IntInput `pulumi:"ingressPort"`
+	// The PSC uri of an allocated connection.
+	PscUri pulumi.StringInput `pulumi:"pscUri"`
 }
 
 func (GetAppGatewayAllocatedConnectionArgs) ElementType() reflect.Type {
@@ -1253,10 +1287,12 @@ func (o GetAppGatewayAllocatedConnectionOutput) ToGetAppGatewayAllocatedConnecti
 	return o
 }
 
+// The ingress port of an allocated connection.
 func (o GetAppGatewayAllocatedConnectionOutput) IngressPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppGatewayAllocatedConnection) int { return v.IngressPort }).(pulumi.IntOutput)
 }
 
+// The PSC uri of an allocated connection.
 func (o GetAppGatewayAllocatedConnectionOutput) PscUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGatewayAllocatedConnection) string { return v.PscUri }).(pulumi.StringOutput)
 }

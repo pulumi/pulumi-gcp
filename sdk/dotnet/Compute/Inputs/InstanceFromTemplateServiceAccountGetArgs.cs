@@ -12,11 +12,18 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromTemplateServiceAccountGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The service account e-mail address.
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         [Input("scopes", required: true)]
         private InputList<string>? _scopes;
+
+        /// <summary>
+        /// A list of service scopes.
+        /// </summary>
         public InputList<string> Scopes
         {
             get => _scopes ?? (_scopes = new InputList<string>());

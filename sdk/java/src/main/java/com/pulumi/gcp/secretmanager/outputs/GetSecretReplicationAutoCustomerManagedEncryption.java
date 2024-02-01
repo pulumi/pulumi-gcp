@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplicationAutoCustomerManagedEncryption {
+    /**
+     * @return The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+     * 
+     */
     private String kmsKeyName;
 
     private GetSecretReplicationAutoCustomerManagedEncryption() {}
+    /**
+     * @return The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+     * 
+     */
     public String kmsKeyName() {
         return this.kmsKeyName;
     }

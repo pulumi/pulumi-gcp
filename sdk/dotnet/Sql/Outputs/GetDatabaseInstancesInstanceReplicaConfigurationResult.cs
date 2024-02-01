@@ -13,16 +13,49 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceReplicaConfigurationResult
     {
+        /// <summary>
+        /// PEM representation of the trusted CA's x509 certificate.
+        /// </summary>
         public readonly string CaCertificate;
+        /// <summary>
+        /// PEM representation of the replica's x509 certificate.
+        /// </summary>
         public readonly string ClientCertificate;
+        /// <summary>
+        /// PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
+        /// </summary>
         public readonly string ClientKey;
+        /// <summary>
+        /// The number of seconds between connect retries. MySQL's default is 60 seconds.
+        /// </summary>
         public readonly int ConnectRetryInterval;
+        /// <summary>
+        /// Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
+        /// </summary>
         public readonly string DumpFilePath;
+        /// <summary>
+        /// Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
+        /// </summary>
         public readonly bool FailoverTarget;
+        /// <summary>
+        /// Time in ms between replication heartbeats.
+        /// </summary>
         public readonly int MasterHeartbeatPeriod;
+        /// <summary>
+        /// Password for the replication connection.
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// Permissible ciphers for use in SSL encryption.
+        /// </summary>
         public readonly string SslCipher;
+        /// <summary>
+        /// Username for replication connection.
+        /// </summary>
         public readonly string Username;
+        /// <summary>
+        /// True if the master's common name value is checked during the SSL handshake.
+        /// </summary>
         public readonly bool VerifyServerCertificate;
 
         [OutputConstructor]

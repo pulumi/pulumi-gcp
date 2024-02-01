@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNetworkPolicy {
+    /**
+     * @return Whether network policy is enabled on the cluster.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return The selected network policy provider.
+     * 
+     */
     private String provider;
 
     private GetClusterNetworkPolicy() {}
+    /**
+     * @return Whether network policy is enabled on the cluster.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return The selected network policy provider.
+     * 
+     */
     public String provider() {
         return this.provider;
     }

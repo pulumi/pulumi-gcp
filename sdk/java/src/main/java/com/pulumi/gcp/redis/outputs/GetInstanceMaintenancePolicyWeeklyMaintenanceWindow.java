@@ -12,17 +12,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
+    /**
+     * @return Required. The day of week that maintenance updates occur.
+     * 
+     * - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+     * - MONDAY: Monday
+     * - TUESDAY: Tuesday
+     * - WEDNESDAY: Wednesday
+     * - THURSDAY: Thursday
+     * - FRIDAY: Friday
+     * - SATURDAY: Saturday
+     * - SUNDAY: Sunday Possible values: [&#34;DAY_OF_WEEK_UNSPECIFIED&#34;, &#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;, &#34;SUNDAY&#34;]
+     * 
+     */
     private String day;
+    /**
+     * @return Output only. Duration of the maintenance window.
+     * The current window is fixed at 1 hour.
+     * A duration in seconds with up to nine fractional digits,
+     * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String duration;
+    /**
+     * @return Required. Start time of the window in UTC time.
+     * 
+     */
     private List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes;
 
     private GetInstanceMaintenancePolicyWeeklyMaintenanceWindow() {}
+    /**
+     * @return Required. The day of week that maintenance updates occur.
+     * 
+     * - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+     * - MONDAY: Monday
+     * - TUESDAY: Tuesday
+     * - WEDNESDAY: Wednesday
+     * - THURSDAY: Thursday
+     * - FRIDAY: Friday
+     * - SATURDAY: Saturday
+     * - SUNDAY: Sunday Possible values: [&#34;DAY_OF_WEEK_UNSPECIFIED&#34;, &#34;MONDAY&#34;, &#34;TUESDAY&#34;, &#34;WEDNESDAY&#34;, &#34;THURSDAY&#34;, &#34;FRIDAY&#34;, &#34;SATURDAY&#34;, &#34;SUNDAY&#34;]
+     * 
+     */
     public String day() {
         return this.day;
     }
+    /**
+     * @return Output only. Duration of the maintenance window.
+     * The current window is fixed at 1 hour.
+     * A duration in seconds with up to nine fractional digits,
+     * terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String duration() {
         return this.duration;
     }
+    /**
+     * @return Required. Start time of the window in UTC time.
+     * 
+     */
     public List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTimes() {
         return this.startTimes;
     }

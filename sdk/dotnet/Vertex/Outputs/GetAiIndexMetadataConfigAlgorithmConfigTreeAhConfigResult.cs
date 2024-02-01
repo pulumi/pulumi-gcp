@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.Vertex.Outputs
     [OutputType]
     public sealed class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult
     {
+        /// <summary>
+        /// Number of embeddings on each leaf node. The default value is 1000 if not set.
+        /// </summary>
         public readonly int LeafNodeEmbeddingCount;
+        /// <summary>
+        /// The default percentage of leaf nodes that any query may be searched. Must be in
+        /// range 1-100, inclusive. The default value is 10 (means 10%) if not set.
+        /// </summary>
         public readonly int LeafNodesToSearchPercent;
 
         [OutputConstructor]

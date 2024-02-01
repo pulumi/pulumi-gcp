@@ -13,49 +13,189 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceOutlierDetection {
+    /**
+     * @return The base time that a host is ejected for. The real time is equal to the base
+     * time multiplied by the number of times the host has been ejected. Defaults to
+     * 30000ms or 30s.
+     * 
+     */
     private List<GetBackendServiceOutlierDetectionBaseEjectionTime> baseEjectionTimes;
+    /**
+     * @return Number of errors before a host is ejected from the connection pool. When the
+     * backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+     * Defaults to 5.
+     * 
+     */
     private Integer consecutiveErrors;
+    /**
+     * @return The number of consecutive gateway failures (502, 503, 504 status or connection
+     * errors that are mapped to one of those status codes) before a consecutive
+     * gateway failure ejection occurs. Defaults to 5.
+     * 
+     */
     private Integer consecutiveGatewayFailure;
+    /**
+     * @return The percentage chance that a host will be actually ejected when an outlier
+     * status is detected through consecutive 5xx. This setting can be used to disable
+     * ejection or to ramp it up slowly. Defaults to 100.
+     * 
+     */
     private Integer enforcingConsecutiveErrors;
+    /**
+     * @return The percentage chance that a host will be actually ejected when an outlier
+     * status is detected through consecutive gateway failures. This setting can be
+     * used to disable ejection or to ramp it up slowly. Defaults to 0.
+     * 
+     */
     private Integer enforcingConsecutiveGatewayFailure;
+    /**
+     * @return The percentage chance that a host will be actually ejected when an outlier
+     * status is detected through success rate statistics. This setting can be used to
+     * disable ejection or to ramp it up slowly. Defaults to 100.
+     * 
+     */
     private Integer enforcingSuccessRate;
+    /**
+     * @return Time interval between ejection sweep analysis. This can result in both new
+     * ejections as well as hosts being returned to service. Defaults to 10 seconds.
+     * 
+     */
     private List<GetBackendServiceOutlierDetectionInterval> intervals;
+    /**
+     * @return Maximum percentage of hosts in the load balancing pool for the backend service
+     * that can be ejected. Defaults to 10%.
+     * 
+     */
     private Integer maxEjectionPercent;
+    /**
+     * @return The number of hosts in a cluster that must have enough request volume to detect
+     * success rate outliers. If the number of hosts is less than this setting, outlier
+     * detection via success rate statistics is not performed for any host in the
+     * cluster. Defaults to 5.
+     * 
+     */
     private Integer successRateMinimumHosts;
+    /**
+     * @return The minimum number of total requests that must be collected in one interval (as
+     * defined by the interval duration above) to include this host in success rate
+     * based outlier detection. If the volume is lower than this setting, outlier
+     * detection via success rate statistics is not performed for that host. Defaults
+     * to 100.
+     * 
+     */
     private Integer successRateRequestVolume;
+    /**
+     * @return This factor is used to determine the ejection threshold for success rate outlier
+     * ejection. The ejection threshold is the difference between the mean success
+     * rate, and the product of this factor and the standard deviation of the mean
+     * success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+     * by a thousand to get a double. That is, if the desired factor is 1.9, the
+     * runtime value should be 1900. Defaults to 1900.
+     * 
+     */
     private Integer successRateStdevFactor;
 
     private GetBackendServiceOutlierDetection() {}
+    /**
+     * @return The base time that a host is ejected for. The real time is equal to the base
+     * time multiplied by the number of times the host has been ejected. Defaults to
+     * 30000ms or 30s.
+     * 
+     */
     public List<GetBackendServiceOutlierDetectionBaseEjectionTime> baseEjectionTimes() {
         return this.baseEjectionTimes;
     }
+    /**
+     * @return Number of errors before a host is ejected from the connection pool. When the
+     * backend host is accessed over HTTP, a 5xx return code qualifies as an error.
+     * Defaults to 5.
+     * 
+     */
     public Integer consecutiveErrors() {
         return this.consecutiveErrors;
     }
+    /**
+     * @return The number of consecutive gateway failures (502, 503, 504 status or connection
+     * errors that are mapped to one of those status codes) before a consecutive
+     * gateway failure ejection occurs. Defaults to 5.
+     * 
+     */
     public Integer consecutiveGatewayFailure() {
         return this.consecutiveGatewayFailure;
     }
+    /**
+     * @return The percentage chance that a host will be actually ejected when an outlier
+     * status is detected through consecutive 5xx. This setting can be used to disable
+     * ejection or to ramp it up slowly. Defaults to 100.
+     * 
+     */
     public Integer enforcingConsecutiveErrors() {
         return this.enforcingConsecutiveErrors;
     }
+    /**
+     * @return The percentage chance that a host will be actually ejected when an outlier
+     * status is detected through consecutive gateway failures. This setting can be
+     * used to disable ejection or to ramp it up slowly. Defaults to 0.
+     * 
+     */
     public Integer enforcingConsecutiveGatewayFailure() {
         return this.enforcingConsecutiveGatewayFailure;
     }
+    /**
+     * @return The percentage chance that a host will be actually ejected when an outlier
+     * status is detected through success rate statistics. This setting can be used to
+     * disable ejection or to ramp it up slowly. Defaults to 100.
+     * 
+     */
     public Integer enforcingSuccessRate() {
         return this.enforcingSuccessRate;
     }
+    /**
+     * @return Time interval between ejection sweep analysis. This can result in both new
+     * ejections as well as hosts being returned to service. Defaults to 10 seconds.
+     * 
+     */
     public List<GetBackendServiceOutlierDetectionInterval> intervals() {
         return this.intervals;
     }
+    /**
+     * @return Maximum percentage of hosts in the load balancing pool for the backend service
+     * that can be ejected. Defaults to 10%.
+     * 
+     */
     public Integer maxEjectionPercent() {
         return this.maxEjectionPercent;
     }
+    /**
+     * @return The number of hosts in a cluster that must have enough request volume to detect
+     * success rate outliers. If the number of hosts is less than this setting, outlier
+     * detection via success rate statistics is not performed for any host in the
+     * cluster. Defaults to 5.
+     * 
+     */
     public Integer successRateMinimumHosts() {
         return this.successRateMinimumHosts;
     }
+    /**
+     * @return The minimum number of total requests that must be collected in one interval (as
+     * defined by the interval duration above) to include this host in success rate
+     * based outlier detection. If the volume is lower than this setting, outlier
+     * detection via success rate statistics is not performed for that host. Defaults
+     * to 100.
+     * 
+     */
     public Integer successRateRequestVolume() {
         return this.successRateRequestVolume;
     }
+    /**
+     * @return This factor is used to determine the ejection threshold for success rate outlier
+     * ejection. The ejection threshold is the difference between the mean success
+     * rate, and the product of this factor and the standard deviation of the mean
+     * success rate: mean - (stdev * success_rate_stdev_factor). This factor is divided
+     * by a thousand to get a double. That is, if the desired factor is 1.9, the
+     * runtime value should be 1900. Defaults to 1900.
+     * 
+     */
     public Integer successRateStdevFactor() {
         return this.successRateStdevFactor;
     }

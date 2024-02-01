@@ -19,30 +19,62 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
 
     public static final NodePoolNodeConfigGuestAcceleratorArgs Empty = new NodePoolNodeConfigGuestAcceleratorArgs();
 
+    /**
+     * The number of the accelerator cards exposed to an instance.
+     * 
+     */
     @Import(name="count", required=true)
     private Output<Integer> count;
 
+    /**
+     * @return The number of the accelerator cards exposed to an instance.
+     * 
+     */
     public Output<Integer> count() {
         return this.count;
     }
 
+    /**
+     * Configuration for auto installation of GPU driver.
+     * 
+     */
     @Import(name="gpuDriverInstallationConfig")
     private @Nullable Output<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs> gpuDriverInstallationConfig;
 
+    /**
+     * @return Configuration for auto installation of GPU driver.
+     * 
+     */
     public Optional<Output<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs>> gpuDriverInstallationConfig() {
         return Optional.ofNullable(this.gpuDriverInstallationConfig);
     }
 
+    /**
+     * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+     * 
+     */
     @Import(name="gpuPartitionSize")
     private @Nullable Output<String> gpuPartitionSize;
 
+    /**
+     * @return Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+     * 
+     */
     public Optional<Output<String>> gpuPartitionSize() {
         return Optional.ofNullable(this.gpuPartitionSize);
     }
 
+    /**
+     * Configuration for GPU sharing.
+     * 
+     */
     @Import(name="gpuSharingConfig")
     private @Nullable Output<NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs> gpuSharingConfig;
 
+    /**
+     * @return Configuration for GPU sharing.
+     * 
+     */
     public Optional<Output<NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs>> gpuSharingConfig() {
         return Optional.ofNullable(this.gpuSharingConfig);
     }
@@ -94,38 +126,86 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
             $ = new NodePoolNodeConfigGuestAcceleratorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param count The number of the accelerator cards exposed to an instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Output<Integer> count) {
             $.count = count;
             return this;
         }
 
+        /**
+         * @param count The number of the accelerator cards exposed to an instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Integer count) {
             return count(Output.of(count));
         }
 
+        /**
+         * @param gpuDriverInstallationConfig Configuration for auto installation of GPU driver.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuDriverInstallationConfig(@Nullable Output<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs> gpuDriverInstallationConfig) {
             $.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
             return this;
         }
 
+        /**
+         * @param gpuDriverInstallationConfig Configuration for auto installation of GPU driver.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuDriverInstallationConfig(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs gpuDriverInstallationConfig) {
             return gpuDriverInstallationConfig(Output.of(gpuDriverInstallationConfig));
         }
 
+        /**
+         * @param gpuPartitionSize Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuPartitionSize(@Nullable Output<String> gpuPartitionSize) {
             $.gpuPartitionSize = gpuPartitionSize;
             return this;
         }
 
+        /**
+         * @param gpuPartitionSize Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuPartitionSize(String gpuPartitionSize) {
             return gpuPartitionSize(Output.of(gpuPartitionSize));
         }
 
+        /**
+         * @param gpuSharingConfig Configuration for GPU sharing.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuSharingConfig(@Nullable Output<NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs> gpuSharingConfig) {
             $.gpuSharingConfig = gpuSharingConfig;
             return this;
         }
 
+        /**
+         * @param gpuSharingConfig Configuration for GPU sharing.
+         * 
+         * @return builder
+         * 
+         */
         public Builder gpuSharingConfig(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs gpuSharingConfig) {
             return gpuSharingConfig(Output.of(gpuSharingConfig));
         }

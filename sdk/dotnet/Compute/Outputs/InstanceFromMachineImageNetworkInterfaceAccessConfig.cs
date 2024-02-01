@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromMachineImageNetworkInterfaceAccessConfig
     {
+        /// <summary>
+        /// The IP address that is be 1:1 mapped to the instance's network ip.
+        /// </summary>
         public readonly string? NatIp;
+        /// <summary>
+        /// The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+        /// </summary>
         public readonly string? NetworkTier;
+        /// <summary>
+        /// The DNS domain name for the public PTR record.
+        /// </summary>
         public readonly string? PublicPtrDomainName;
+        /// <summary>
+        /// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        /// </summary>
         public readonly string? SecurityPolicy;
 
         [OutputConstructor]

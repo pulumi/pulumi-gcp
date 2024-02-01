@@ -13,11 +13,33 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerSourceToBuildResult
     {
+        /// <summary>
+        /// The full resource name of the bitbucket server config.
+        /// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+        /// </summary>
         public readonly string BitbucketServerConfig;
+        /// <summary>
+        /// The full resource name of the github enterprise config.
+        /// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+        /// </summary>
         public readonly string GithubEnterpriseConfig;
+        /// <summary>
+        /// The branch or tag to use. Must start with "refs/" (required).
+        /// </summary>
         public readonly string Ref;
+        /// <summary>
+        /// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+        /// Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: ["UNKNOWN", "CLOUD_SOURCE_REPOSITORIES", "GITHUB", "BITBUCKET_SERVER"]
+        /// </summary>
         public readonly string RepoType;
+        /// <summary>
+        /// The qualified resource name of the Repo API repository.
+        /// Either uri or repository can be specified and is required.
+        /// </summary>
         public readonly string Repository;
+        /// <summary>
+        /// The URI of the repo.
+        /// </summary>
         public readonly string Uri;
 
         [OutputConstructor]

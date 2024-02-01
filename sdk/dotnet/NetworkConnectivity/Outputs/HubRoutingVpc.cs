@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
     [OutputType]
     public sealed class HubRoutingVpc
     {
+        /// <summary>
+        /// The URI of the VPC network.
+        /// </summary>
         public readonly string? Uri;
 
         [OutputConstructor]

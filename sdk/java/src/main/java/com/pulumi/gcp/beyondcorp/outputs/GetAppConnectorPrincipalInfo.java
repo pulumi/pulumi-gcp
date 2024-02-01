@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAppConnectorPrincipalInfo {
+    /**
+     * @return ServiceAccount represents a GCP service account.
+     * 
+     */
     private List<GetAppConnectorPrincipalInfoServiceAccount> serviceAccounts;
 
     private GetAppConnectorPrincipalInfo() {}
+    /**
+     * @return ServiceAccount represents a GCP service account.
+     * 
+     */
     public List<GetAppConnectorPrincipalInfoServiceAccount> serviceAccounts() {
         return this.serviceAccounts;
     }

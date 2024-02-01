@@ -29,6 +29,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
+        /// <summary>
+        /// The runtime logging config of the job
+        /// </summary>
         public readonly Outputs.JobSparkConfigLoggingConfig? LoggingConfig;
         /// <summary>
         /// The class containing the main method of the driver. Must be in a

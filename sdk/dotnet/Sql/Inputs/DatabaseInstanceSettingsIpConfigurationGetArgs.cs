@@ -52,6 +52,10 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         [Input("pscConfigs")]
         private InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigGetArgs>? _pscConfigs;
+
+        /// <summary>
+        /// PSC settings for a Cloud SQL instance.
+        /// </summary>
         public InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigGetArgs> PscConfigs
         {
             get => _pscConfigs ?? (_pscConfigs = new InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigGetArgs>());

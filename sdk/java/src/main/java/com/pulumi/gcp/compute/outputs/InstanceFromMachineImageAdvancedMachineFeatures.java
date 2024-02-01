@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceFromMachineImageAdvancedMachineFeatures {
+    /**
+     * @return Whether to enable nested virtualization or not.
+     * 
+     */
     private @Nullable Boolean enableNestedVirtualization;
+    /**
+     * @return The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+     * 
+     */
     private @Nullable Integer threadsPerCore;
+    /**
+     * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\&#39;s nominal CPU count and the underlying platform\&#39;s SMT width.
+     * 
+     */
     private @Nullable Integer visibleCoreCount;
 
     private InstanceFromMachineImageAdvancedMachineFeatures() {}
+    /**
+     * @return Whether to enable nested virtualization or not.
+     * 
+     */
     public Optional<Boolean> enableNestedVirtualization() {
         return Optional.ofNullable(this.enableNestedVirtualization);
     }
+    /**
+     * @return The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+     * 
+     */
     public Optional<Integer> threadsPerCore() {
         return Optional.ofNullable(this.threadsPerCore);
     }
+    /**
+     * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\&#39;s nominal CPU count and the underlying platform\&#39;s SMT width.
+     * 
+     */
     public Optional<Integer> visibleCoreCount() {
         return Optional.ofNullable(this.visibleCoreCount);
     }

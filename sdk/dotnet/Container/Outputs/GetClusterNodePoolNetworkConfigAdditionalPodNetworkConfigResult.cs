@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult
     {
+        /// <summary>
+        /// The maximum number of pods per node which use this pod network.
+        /// </summary>
         public readonly int MaxPodsPerNode;
+        /// <summary>
+        /// The name of the secondary range on the subnet which provides IP address for this pod range.
+        /// </summary>
         public readonly string SecondaryPodRange;
+        /// <summary>
+        /// Name of the subnetwork where the additional pod network belongs.
+        /// </summary>
         public readonly string Subnetwork;
 
         [OutputConstructor]

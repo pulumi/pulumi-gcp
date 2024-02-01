@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Iam.Outputs
     [OutputType]
     public sealed class GetWorkloadIdentityPoolProviderSamlResult
     {
+        /// <summary>
+        /// SAML Identity provider configuration metadata xml doc.
+        /// </summary>
         public readonly string IdpMetadataXml;
 
         [OutputConstructor]

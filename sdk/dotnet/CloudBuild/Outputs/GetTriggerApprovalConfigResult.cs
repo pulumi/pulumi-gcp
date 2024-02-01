@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerApprovalConfigResult
     {
+        /// <summary>
+        /// Whether or not approval is needed. If this is set on a build, it will become pending when run,
+        /// and will need to be explicitly approved to start.
+        /// </summary>
         public readonly bool ApprovalRequired;
 
         [OutputConstructor]

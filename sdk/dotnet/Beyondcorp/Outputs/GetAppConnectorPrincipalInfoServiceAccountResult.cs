@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
     [OutputType]
     public sealed class GetAppConnectorPrincipalInfoServiceAccountResult
     {
+        /// <summary>
+        /// Email address of the service account.
+        /// </summary>
         public readonly string Email;
 
         [OutputConstructor]

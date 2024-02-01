@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterMasterAuthClientCertificateConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether client certificate authorization is enabled for this cluster.
+        /// </summary>
         [Input("issueClientCertificate", required: true)]
         public Input<bool> IssueClientCertificate { get; set; } = null!;
 

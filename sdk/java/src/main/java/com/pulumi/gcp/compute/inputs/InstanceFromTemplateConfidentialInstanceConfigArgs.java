@@ -14,9 +14,17 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
 
     public static final InstanceFromTemplateConfidentialInstanceConfigArgs Empty = new InstanceFromTemplateConfidentialInstanceConfigArgs();
 
+    /**
+     * Defines whether the instance should have confidential compute enabled.
+     * 
+     */
     @Import(name="enableConfidentialCompute", required=true)
     private Output<Boolean> enableConfidentialCompute;
 
+    /**
+     * @return Defines whether the instance should have confidential compute enabled.
+     * 
+     */
     public Output<Boolean> enableConfidentialCompute() {
         return this.enableConfidentialCompute;
     }
@@ -45,11 +53,23 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
             $ = new InstanceFromTemplateConfidentialInstanceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableConfidentialCompute(Output<Boolean> enableConfidentialCompute) {
             $.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }
 
+        /**
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
             return enableConfidentialCompute(Output.of(enableConfidentialCompute));
         }

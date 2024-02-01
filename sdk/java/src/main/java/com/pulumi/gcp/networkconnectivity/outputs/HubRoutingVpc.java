@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HubRoutingVpc {
+    /**
+     * @return The URI of the VPC network.
+     * 
+     */
     private @Nullable String uri;
 
     private HubRoutingVpc() {}
+    /**
+     * @return The URI of the VPC network.
+     * 
+     */
     public Optional<String> uri() {
         return Optional.ofNullable(this.uri);
     }

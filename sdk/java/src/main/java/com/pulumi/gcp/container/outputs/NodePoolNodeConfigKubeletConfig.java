@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigKubeletConfig {
+    /**
+     * @return Enable CPU CFS quota enforcement for containers that specify CPU limits.
+     * 
+     */
     private @Nullable Boolean cpuCfsQuota;
+    /**
+     * @return Set the CPU CFS quota period value &#39;cpu.cfs_period_us&#39;.
+     * 
+     */
     private @Nullable String cpuCfsQuotaPeriod;
+    /**
+     * @return Control the CPU management policy on the node.
+     * 
+     */
     private String cpuManagerPolicy;
+    /**
+     * @return Controls the maximum number of processes allowed to run in a pod.
+     * 
+     */
     private @Nullable Integer podPidsLimit;
 
     private NodePoolNodeConfigKubeletConfig() {}
+    /**
+     * @return Enable CPU CFS quota enforcement for containers that specify CPU limits.
+     * 
+     */
     public Optional<Boolean> cpuCfsQuota() {
         return Optional.ofNullable(this.cpuCfsQuota);
     }
+    /**
+     * @return Set the CPU CFS quota period value &#39;cpu.cfs_period_us&#39;.
+     * 
+     */
     public Optional<String> cpuCfsQuotaPeriod() {
         return Optional.ofNullable(this.cpuCfsQuotaPeriod);
     }
+    /**
+     * @return Control the CPU management policy on the node.
+     * 
+     */
     public String cpuManagerPolicy() {
         return this.cpuManagerPolicy;
     }
+    /**
+     * @return Controls the maximum number of processes allowed to run in a pod.
+     * 
+     */
     public Optional<Integer> podPidsLimit() {
         return Optional.ofNullable(this.podPidsLimit);
     }

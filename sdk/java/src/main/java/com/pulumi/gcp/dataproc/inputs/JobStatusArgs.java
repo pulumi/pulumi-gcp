@@ -15,30 +15,62 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final JobStatusArgs Empty = new JobStatusArgs();
 
+    /**
+     * Output-only. Optional job state details, such as an error description if the state is ERROR
+     * 
+     */
     @Import(name="details")
     private @Nullable Output<String> details;
 
+    /**
+     * @return Output-only. Optional job state details, such as an error description if the state is ERROR
+     * 
+     */
     public Optional<Output<String>> details() {
         return Optional.ofNullable(this.details);
     }
 
+    /**
+     * Output-only. A state message specifying the overall job state
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return Output-only. A state message specifying the overall job state
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * Output-only. The time when this state was entered
+     * 
+     */
     @Import(name="stateStartTime")
     private @Nullable Output<String> stateStartTime;
 
+    /**
+     * @return Output-only. The time when this state was entered
+     * 
+     */
     public Optional<Output<String>> stateStartTime() {
         return Optional.ofNullable(this.stateStartTime);
     }
 
+    /**
+     * Output-only. Additional state information, which includes status reported by the agent
+     * 
+     */
     @Import(name="substate")
     private @Nullable Output<String> substate;
 
+    /**
+     * @return Output-only. Additional state information, which includes status reported by the agent
+     * 
+     */
     public Optional<Output<String>> substate() {
         return Optional.ofNullable(this.substate);
     }
@@ -70,38 +102,86 @@ public final class JobStatusArgs extends com.pulumi.resources.ResourceArgs {
             $ = new JobStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param details Output-only. Optional job state details, such as an error description if the state is ERROR
+         * 
+         * @return builder
+         * 
+         */
         public Builder details(@Nullable Output<String> details) {
             $.details = details;
             return this;
         }
 
+        /**
+         * @param details Output-only. Optional job state details, such as an error description if the state is ERROR
+         * 
+         * @return builder
+         * 
+         */
         public Builder details(String details) {
             return details(Output.of(details));
         }
 
+        /**
+         * @param state Output-only. A state message specifying the overall job state
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state Output-only. A state message specifying the overall job state
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }
 
+        /**
+         * @param stateStartTime Output-only. The time when this state was entered
+         * 
+         * @return builder
+         * 
+         */
         public Builder stateStartTime(@Nullable Output<String> stateStartTime) {
             $.stateStartTime = stateStartTime;
             return this;
         }
 
+        /**
+         * @param stateStartTime Output-only. The time when this state was entered
+         * 
+         * @return builder
+         * 
+         */
         public Builder stateStartTime(String stateStartTime) {
             return stateStartTime(Output.of(stateStartTime));
         }
 
+        /**
+         * @param substate Output-only. Additional state information, which includes status reported by the agent
+         * 
+         * @return builder
+         * 
+         */
         public Builder substate(@Nullable Output<String> substate) {
             $.substate = substate;
             return this;
         }
 
+        /**
+         * @param substate Output-only. Additional state information, which includes status reported by the agent
+         * 
+         * @return builder
+         * 
+         */
         public Builder substate(String substate) {
             return substate(Output.of(substate));
         }

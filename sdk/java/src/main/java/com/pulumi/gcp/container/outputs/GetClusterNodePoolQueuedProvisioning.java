@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolQueuedProvisioning {
+    /**
+     * @return Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterNodePoolQueuedProvisioning() {}
+    /**
+     * @return Whether nodes in this node pool are obtainable solely through the ProvisioningRequest API
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

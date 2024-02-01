@@ -22,10 +22,25 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         /// </summary>
         public readonly string InstanceTerminationAction;
+        /// <summary>
+        /// Specifies the maximum amount of time a Local Ssd Vm should wait while
+        ///   recovery of the Local Ssd state is attempted. Its value should be in
+        ///   between 0 and 168 hours with hour granularity and the default value being 1
+        ///   hour.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceSchedulingLocalSsdRecoveryTimeoutResult> LocalSsdRecoveryTimeouts;
+        /// <summary>
+        /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        /// </summary>
         public readonly string MaintenanceInterval;
+        /// <summary>
+        /// The timeout for new network connections to hosts.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceSchedulingMaxRunDurationResult> MaxRunDurations;
         public readonly int MinNodeCpus;
+        /// <summary>
+        /// Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceSchedulingNodeAffinityResult> NodeAffinities;
         /// <summary>
         /// Describes maintenance behavior for the

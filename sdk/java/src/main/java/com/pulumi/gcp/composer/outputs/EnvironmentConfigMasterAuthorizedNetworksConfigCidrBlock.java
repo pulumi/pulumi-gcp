@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+    /**
+     * @return cidr_block must be specified in CIDR notation.
+     * 
+     */
     private String cidrBlock;
+    /**
+     * @return display_name is a field for users to identify CIDR blocks.
+     * 
+     */
     private @Nullable String displayName;
 
     private EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock() {}
+    /**
+     * @return cidr_block must be specified in CIDR notation.
+     * 
+     */
     public String cidrBlock() {
         return this.cidrBlock;
     }
+    /**
+     * @return display_name is a field for users to identify CIDR blocks.
+     * 
+     */
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
     }

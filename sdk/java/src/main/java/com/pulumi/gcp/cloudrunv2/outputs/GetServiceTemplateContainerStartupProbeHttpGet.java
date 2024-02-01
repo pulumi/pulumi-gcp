@@ -13,17 +13,43 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateContainerStartupProbeHttpGet {
+    /**
+     * @return Custom headers to set in the request. HTTP allows repeated headers.
+     * 
+     */
     private List<GetServiceTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders;
+    /**
+     * @return Path to access on the HTTP server. Defaults to &#39;/&#39;.
+     * 
+     */
     private String path;
+    /**
+     * @return Port number to access on the container. Must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
+     * 
+     */
     private Integer port;
 
     private GetServiceTemplateContainerStartupProbeHttpGet() {}
+    /**
+     * @return Custom headers to set in the request. HTTP allows repeated headers.
+     * 
+     */
     public List<GetServiceTemplateContainerStartupProbeHttpGetHttpHeader> httpHeaders() {
         return this.httpHeaders;
     }
+    /**
+     * @return Path to access on the HTTP server. Defaults to &#39;/&#39;.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return Port number to access on the container. Must be in the range 1 to 65535.
+     * If not specified, defaults to the same value as container.ports[0].containerPort.
+     * 
+     */
     public Integer port() {
         return this.port;
     }

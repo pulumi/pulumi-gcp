@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class EnvironmentStorageConfig {
+    /**
+     * @return Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+     * 
+     */
     private String bucket;
 
     private EnvironmentStorageConfig() {}
+    /**
+     * @return Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+     * 
+     */
     public String bucket() {
         return this.bucket;
     }

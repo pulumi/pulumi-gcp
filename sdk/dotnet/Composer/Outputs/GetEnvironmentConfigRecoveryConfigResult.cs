@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigRecoveryConfigResult
     {
+        /// <summary>
+        /// The configuration settings for scheduled snapshots.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult> ScheduledSnapshotsConfigs;
 
         [OutputConstructor]

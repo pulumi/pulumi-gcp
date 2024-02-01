@@ -20,9 +20,17 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
 
     public static final InstanceNetworkInterfaceArgs Empty = new InstanceNetworkInterfaceArgs();
 
+    /**
+     * Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+     * 
+     */
     @Import(name="accessConfigs")
     private @Nullable Output<List<InstanceNetworkInterfaceAccessConfigArgs>> accessConfigs;
 
+    /**
+     * @return Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+     * 
+     */
     public Optional<Output<List<InstanceNetworkInterfaceAccessConfigArgs>>> accessConfigs() {
         return Optional.ofNullable(this.accessConfigs);
     }
@@ -46,9 +54,17 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.aliasIpRanges);
     }
 
+    /**
+     * The prefix length of the primary internal IPv6 range.
+     * 
+     */
     @Import(name="internalIpv6PrefixLength")
     private @Nullable Output<Integer> internalIpv6PrefixLength;
 
+    /**
+     * @return The prefix length of the primary internal IPv6 range.
+     * 
+     */
     public Optional<Output<Integer>> internalIpv6PrefixLength() {
         return Optional.ofNullable(this.internalIpv6PrefixLength);
     }
@@ -89,9 +105,17 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.ipv6AccessType);
     }
 
+    /**
+     * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     @Import(name="ipv6Address")
     private @Nullable Output<String> ipv6Address;
 
+    /**
+     * @return An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     public Optional<Output<String>> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
     }
@@ -311,15 +335,33 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
             $ = new InstanceNetworkInterfaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessConfigs Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(@Nullable Output<List<InstanceNetworkInterfaceAccessConfigArgs>> accessConfigs) {
             $.accessConfigs = accessConfigs;
             return this;
         }
 
+        /**
+         * @param accessConfigs Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(List<InstanceNetworkInterfaceAccessConfigArgs> accessConfigs) {
             return accessConfigs(Output.of(accessConfigs));
         }
 
+        /**
+         * @param accessConfigs Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessConfigs(InstanceNetworkInterfaceAccessConfigArgs... accessConfigs) {
             return accessConfigs(List.of(accessConfigs));
         }
@@ -361,11 +403,23 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
             return aliasIpRanges(List.of(aliasIpRanges));
         }
 
+        /**
+         * @param internalIpv6PrefixLength The prefix length of the primary internal IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder internalIpv6PrefixLength(@Nullable Output<Integer> internalIpv6PrefixLength) {
             $.internalIpv6PrefixLength = internalIpv6PrefixLength;
             return this;
         }
 
+        /**
+         * @param internalIpv6PrefixLength The prefix length of the primary internal IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder internalIpv6PrefixLength(Integer internalIpv6PrefixLength) {
             return internalIpv6PrefixLength(Output.of(internalIpv6PrefixLength));
         }
@@ -430,11 +484,23 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
             return ipv6AccessType(Output.of(ipv6AccessType));
         }
 
+        /**
+         * @param ipv6Address An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
             $.ipv6Address = ipv6Address;
             return this;
         }
 
+        /**
+         * @param ipv6Address An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipv6Address(String ipv6Address) {
             return ipv6Address(Output.of(ipv6Address));
         }

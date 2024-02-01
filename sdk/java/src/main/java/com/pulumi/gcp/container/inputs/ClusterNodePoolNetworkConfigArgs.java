@@ -21,16 +21,32 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
 
     public static final ClusterNodePoolNetworkConfigArgs Empty = new ClusterNodePoolNetworkConfigArgs();
 
+    /**
+     * We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+     * 
+     */
     @Import(name="additionalNodeNetworkConfigs")
     private @Nullable Output<List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>> additionalNodeNetworkConfigs;
 
+    /**
+     * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+     * 
+     */
     public Optional<Output<List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>>> additionalNodeNetworkConfigs() {
         return Optional.ofNullable(this.additionalNodeNetworkConfigs);
     }
 
+    /**
+     * We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+     * 
+     */
     @Import(name="additionalPodNetworkConfigs")
     private @Nullable Output<List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs>> additionalPodNetworkConfigs;
 
+    /**
+     * @return We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+     * 
+     */
     public Optional<Output<List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs>>> additionalPodNetworkConfigs() {
         return Optional.ofNullable(this.additionalPodNetworkConfigs);
     }
@@ -86,9 +102,17 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.networkPerformanceConfig);
     }
 
+    /**
+     * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * 
+     */
     @Import(name="podCidrOverprovisionConfig")
     private @Nullable Output<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig;
 
+    /**
+     * @return Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+     * 
+     */
     public Optional<Output<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs>> podCidrOverprovisionConfig() {
         return Optional.ofNullable(this.podCidrOverprovisionConfig);
     }
@@ -154,28 +178,64 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
             $ = new ClusterNodePoolNetworkConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param additionalNodeNetworkConfigs We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalNodeNetworkConfigs(@Nullable Output<List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>> additionalNodeNetworkConfigs) {
             $.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
             return this;
         }
 
+        /**
+         * @param additionalNodeNetworkConfigs We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalNodeNetworkConfigs(List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs> additionalNodeNetworkConfigs) {
             return additionalNodeNetworkConfigs(Output.of(additionalNodeNetworkConfigs));
         }
 
+        /**
+         * @param additionalNodeNetworkConfigs We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalNodeNetworkConfigs(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs... additionalNodeNetworkConfigs) {
             return additionalNodeNetworkConfigs(List.of(additionalNodeNetworkConfigs));
         }
 
+        /**
+         * @param additionalPodNetworkConfigs We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalPodNetworkConfigs(@Nullable Output<List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs>> additionalPodNetworkConfigs) {
             $.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
             return this;
         }
 
+        /**
+         * @param additionalPodNetworkConfigs We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalPodNetworkConfigs(List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs> additionalPodNetworkConfigs) {
             return additionalPodNetworkConfigs(Output.of(additionalPodNetworkConfigs));
         }
 
+        /**
+         * @param additionalPodNetworkConfigs We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalPodNetworkConfigs(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs... additionalPodNetworkConfigs) {
             return additionalPodNetworkConfigs(List.of(additionalPodNetworkConfigs));
         }
@@ -249,11 +309,23 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
             return networkPerformanceConfig(Output.of(networkPerformanceConfig));
         }
 
+        /**
+         * @param podCidrOverprovisionConfig Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         * 
+         * @return builder
+         * 
+         */
         public Builder podCidrOverprovisionConfig(@Nullable Output<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig) {
             $.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             return this;
         }
 
+        /**
+         * @param podCidrOverprovisionConfig Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         * 
+         * @return builder
+         * 
+         */
         public Builder podCidrOverprovisionConfig(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs podCidrOverprovisionConfig) {
             return podCidrOverprovisionConfig(Output.of(podCidrOverprovisionConfig));
         }

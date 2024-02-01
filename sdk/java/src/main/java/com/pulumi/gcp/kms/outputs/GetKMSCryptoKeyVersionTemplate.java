@@ -10,13 +10,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKMSCryptoKeyVersionTemplate {
+    /**
+     * @return The algorithm to use when creating a version based on this template.
+     * See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+     * 
+     */
     private String algorithm;
+    /**
+     * @return The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;, &#34;EXTERNAL_VPC&#34;. Defaults to &#34;SOFTWARE&#34;.
+     * 
+     */
     private String protectionLevel;
 
     private GetKMSCryptoKeyVersionTemplate() {}
+    /**
+     * @return The algorithm to use when creating a version based on this template.
+     * See the [algorithm reference](https://cloud.google.com/kms/docs/reference/rest/v1/CryptoKeyVersionAlgorithm) for possible inputs.
+     * 
+     */
     public String algorithm() {
         return this.algorithm;
     }
+    /**
+     * @return The protection level to use when creating a version based on this template. Possible values include &#34;SOFTWARE&#34;, &#34;HSM&#34;, &#34;EXTERNAL&#34;, &#34;EXTERNAL_VPC&#34;. Defaults to &#34;SOFTWARE&#34;.
+     * 
+     */
     public String protectionLevel() {
         return this.protectionLevel;
     }
