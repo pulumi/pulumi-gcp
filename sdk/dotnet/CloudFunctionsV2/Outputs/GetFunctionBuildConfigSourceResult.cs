@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     [OutputType]
     public sealed class GetFunctionBuildConfigSourceResult
     {
+        /// <summary>
+        /// If provided, get the source from this location in a Cloud Source Repository.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionBuildConfigSourceRepoSourceResult> RepoSources;
+        /// <summary>
+        /// If provided, get the source from this location in Google Cloud Storage.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionBuildConfigSourceStorageSourceResult> StorageSources;
 
         [OutputConstructor]

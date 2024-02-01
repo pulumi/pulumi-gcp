@@ -13,8 +13,18 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult
     {
+        /// <summary>
+        /// The user-provided ID of the upstream policy.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Entries with a greater priority value take precedence in the pull order.
+        /// </summary>
         public readonly int Priority;
+        /// <summary>
+        /// A reference to the repository resource, for example:
+        /// "projects/p1/locations/us-central1/repository/repo1".
+        /// </summary>
         public readonly string Repository;
 
         [OutputConstructor]

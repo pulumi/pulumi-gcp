@@ -12,17 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterResourceUsageExportConfig {
+    /**
+     * @return Parameters for using BigQuery as the destination of resource usage export.
+     * 
+     */
     private List<GetClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestinations;
+    /**
+     * @return Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created in the cluster to meter network egress traffic.
+     * 
+     */
     private Boolean enableNetworkEgressMetering;
+    /**
+     * @return Whether to enable resource consumption metering on this cluster. When enabled, a table will be created in the resource export BigQuery dataset to store resource consumption data. The resulting table can be joined with the resource usage table or with BigQuery billing export. Defaults to true.
+     * 
+     */
     private Boolean enableResourceConsumptionMetering;
 
     private GetClusterResourceUsageExportConfig() {}
+    /**
+     * @return Parameters for using BigQuery as the destination of resource usage export.
+     * 
+     */
     public List<GetClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestinations() {
         return this.bigqueryDestinations;
     }
+    /**
+     * @return Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created in the cluster to meter network egress traffic.
+     * 
+     */
     public Boolean enableNetworkEgressMetering() {
         return this.enableNetworkEgressMetering;
     }
+    /**
+     * @return Whether to enable resource consumption metering on this cluster. When enabled, a table will be created in the resource export BigQuery dataset to store resource consumption data. The resulting table can be joined with the resource usage table or with BigQuery billing export. Defaults to true.
+     * 
+     */
     public Boolean enableResourceConsumptionMetering() {
         return this.enableResourceConsumptionMetering;
     }

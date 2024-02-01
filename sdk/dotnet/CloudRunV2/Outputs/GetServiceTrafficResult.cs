@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetServiceTrafficResult
     {
+        /// <summary>
+        /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+        /// </summary>
         public readonly int Percent;
+        /// <summary>
+        /// Revision to which to send this portion of traffic, if traffic allocation is by revision.
+        /// </summary>
         public readonly string Revision;
+        /// <summary>
+        /// Indicates a string to be part of the URI to exclusively reference this target.
+        /// </summary>
         public readonly string Tag;
+        /// <summary>
+        /// The allocation type for this traffic target. Possible values: ["TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST", "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION"]
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

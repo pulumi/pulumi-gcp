@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class RouterPeerMd5AuthenticationKey {
+    /**
+     * @return Value of the key.
+     * 
+     */
     private String key;
     /**
      * @return Name of this BGP peer. The name must be 1-63 characters long,
@@ -23,6 +27,10 @@ public final class RouterPeerMd5AuthenticationKey {
     private String name;
 
     private RouterPeerMd5AuthenticationKey() {}
+    /**
+     * @return Value of the key.
+     * 
+     */
     public String key() {
         return this.key;
     }

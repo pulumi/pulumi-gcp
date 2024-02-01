@@ -3780,13 +3780,28 @@ export namespace artifactregistry {
 
 export namespace assuredworkloads {
     export interface WorkloadComplianceStatus {
+        /**
+         * Number of current orgPolicy violations which are acknowledged.
+         */
         acknowledgedViolationCounts?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Number of current orgPolicy violations which are not acknowledged.
+         */
         activeViolationCounts?: pulumi.Input<pulumi.Input<number>[]>;
     }
 
     export interface WorkloadEkmProvisioningResponse {
+        /**
+         * Indicates Ekm provisioning error if any. Possible values: EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED, UNSPECIFIED_ERROR, GOOGLE_SERVER_ERROR, EXTERNAL_USER_ERROR, EXTERNAL_PARTNER_ERROR, TIMEOUT_ERROR
+         */
         ekmProvisioningErrorDomain?: pulumi.Input<string>;
+        /**
+         * Detailed error message if Ekm provisioning fails Possible values: EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED, INVALID_SERVICE_ACCOUNT, MISSING_METRICS_SCOPE_ADMIN_PERMISSION, MISSING_EKM_CONNECTION_ADMIN_PERMISSION
+         */
         ekmProvisioningErrorMapping?: pulumi.Input<string>;
+        /**
+         * Indicates Ekm enrollment Provisioning of a given workload. Possible values: EKM_PROVISIONING_STATE_UNSPECIFIED, EKM_PROVISIONING_STATE_PENDING, EKM_PROVISIONING_STATE_FAILED, EKM_PROVISIONING_STATE_COMPLETED
+         */
         ekmProvisioningState?: pulumi.Input<string>;
     }
 
@@ -3843,7 +3858,13 @@ export namespace assuredworkloads {
     }
 
     export interface WorkloadSaaEnrollmentResponse {
+        /**
+         * Indicates SAA enrollment setup error if any.
+         */
         setupErrors?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+         */
         setupStatus?: pulumi.Input<string>;
     }
 }
@@ -5511,9 +5532,21 @@ export namespace bigquery {
     }
 
     export interface TableTableReplicationInfo {
+        /**
+         * The interval at which the source materialized view is polled for updates. The default is 300000.
+         */
         replicationIntervalMs?: pulumi.Input<number>;
+        /**
+         * The ID of the source dataset.
+         */
         sourceDatasetId: pulumi.Input<string>;
+        /**
+         * The ID of the source project.
+         */
         sourceProjectId: pulumi.Input<string>;
+        /**
+         * The ID of the source materialized view.
+         */
         sourceTableId: pulumi.Input<string>;
     }
 
@@ -5701,6 +5734,9 @@ export namespace bigtable {
          * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          */
         numNodes?: pulumi.Input<number>;
+        /**
+         * The state of the cluster
+         */
         state?: pulumi.Input<string>;
         /**
          * The storage type to use. One of `"SSD"` or
@@ -9332,8 +9368,17 @@ export namespace cloudbuildv2 {
     }
 
     export interface ConnectionInstallationState {
+        /**
+         * Output only. Link to follow for next action. Empty string if the installation is already complete.
+         */
         actionUri?: pulumi.Input<string>;
+        /**
+         * Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+         */
         message?: pulumi.Input<string>;
+        /**
+         * Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+         */
         stage?: pulumi.Input<string>;
     }
 }
@@ -9408,12 +9453,24 @@ export namespace clouddeploy {
     }
 
     export interface DeliveryPipelineCondition {
+        /**
+         * Details around the Pipeline's overall status.
+         */
         pipelineReadyConditions?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeliveryPipelineConditionPipelineReadyCondition>[]>;
+        /**
+         * Details around targets enumerated in the pipeline.
+         */
         targetsPresentConditions?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeliveryPipelineConditionTargetsPresentCondition>[]>;
+        /**
+         * Details on the whether the targets enumerated in the pipeline are of the same type.
+         */
         targetsTypeConditions?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeliveryPipelineConditionTargetsTypeCondition>[]>;
     }
 
     export interface DeliveryPipelineConditionPipelineReadyCondition {
+        /**
+         * True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+         */
         status?: pulumi.Input<boolean>;
         /**
          * Output only. Most recent time at which the pipeline was updated.
@@ -9422,7 +9479,13 @@ export namespace clouddeploy {
     }
 
     export interface DeliveryPipelineConditionTargetsPresentCondition {
+        /**
+         * The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+         */
         missingTargets?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * True if there aren't any missing Targets.
+         */
         status?: pulumi.Input<boolean>;
         /**
          * Output only. Most recent time at which the pipeline was updated.
@@ -9431,7 +9494,13 @@ export namespace clouddeploy {
     }
 
     export interface DeliveryPipelineConditionTargetsTypeCondition {
+        /**
+         * Human readable error message.
+         */
         errorDetails?: pulumi.Input<string>;
+        /**
+         * True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+         */
         status?: pulumi.Input<boolean>;
     }
 
@@ -10145,6 +10214,9 @@ export namespace cloudfunctions {
     }
 
     export interface FunctionSourceRepository {
+        /**
+         * The URL pointing to the hosted repository where the function was defined at the time of deployment.
+         */
         deployedUrl?: pulumi.Input<string>;
         /**
          * The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
@@ -12983,167 +13055,455 @@ export namespace cloudtasks {
 
 export namespace composer {
     export interface EnvironmentConfig {
+        /**
+         * The URI of the Apache Airflow Web UI hosted within this environment.
+         */
         airflowUri?: pulumi.Input<string>;
+        /**
+         * The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+         */
         dagGcsPrefix?: pulumi.Input<string>;
+        /**
+         * The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         databaseConfig?: pulumi.Input<inputs.composer.EnvironmentConfigDatabaseConfig>;
+        /**
+         * Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+         */
         enablePrivateBuildsOnly?: pulumi.Input<boolean>;
+        /**
+         * Optional. If true, a private Composer environment will be created.
+         */
         enablePrivateEnvironment?: pulumi.Input<boolean>;
+        /**
+         * The encryption options for the Composer environment and its dependencies.
+         */
         encryptionConfig?: pulumi.Input<inputs.composer.EnvironmentConfigEncryptionConfig>;
+        /**
+         * The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         environmentSize?: pulumi.Input<string>;
+        /**
+         * The Kubernetes Engine cluster used to run this environment.
+         */
         gkeCluster?: pulumi.Input<string>;
+        /**
+         * The configuration for Cloud Composer maintenance window.
+         */
         maintenanceWindow?: pulumi.Input<inputs.composer.EnvironmentConfigMaintenanceWindow>;
+        /**
+         * Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+         */
         masterAuthorizedNetworksConfig?: pulumi.Input<inputs.composer.EnvironmentConfigMasterAuthorizedNetworksConfig>;
+        /**
+         * The configuration used for the Kubernetes Engine cluster.
+         */
         nodeConfig?: pulumi.Input<inputs.composer.EnvironmentConfigNodeConfig>;
+        /**
+         * The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         nodeCount?: pulumi.Input<number>;
+        /**
+         * The configuration used for the Private IP Cloud Composer environment.
+         */
         privateEnvironmentConfig?: pulumi.Input<inputs.composer.EnvironmentConfigPrivateEnvironmentConfig>;
+        /**
+         * The recovery configuration settings for the Cloud Composer environment
+         */
         recoveryConfig?: pulumi.Input<inputs.composer.EnvironmentConfigRecoveryConfig>;
+        /**
+         * Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+         */
         resilienceMode?: pulumi.Input<string>;
+        /**
+         * The configuration settings for software inside the environment.
+         */
         softwareConfig?: pulumi.Input<inputs.composer.EnvironmentConfigSoftwareConfig>;
+        /**
+         * The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         webServerConfig?: pulumi.Input<inputs.composer.EnvironmentConfigWebServerConfig>;
+        /**
+         * Network-level access control policy for the Airflow web server.
+         */
         webServerNetworkAccessControl?: pulumi.Input<inputs.composer.EnvironmentConfigWebServerNetworkAccessControl>;
+        /**
+         * The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         workloadsConfig?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfig>;
     }
 
     export interface EnvironmentConfigDatabaseConfig {
+        /**
+         * Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+         */
         machineType?: pulumi.Input<string>;
+        /**
+         * Optional. Cloud SQL database preferred zone.
+         */
         zone?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigEncryptionConfig {
+        /**
+         * Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated.
+         */
         kmsKeyName: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigMaintenanceWindow {
+        /**
+         * Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to 'start_time'.
+         */
         endTime: pulumi.Input<string>;
+        /**
+         * Maintenance window recurrence. Format is a subset of RFC-5545 (https://tools.ietf.org/html/rfc5545) 'RRULE'. The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'. Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
+         */
         recurrence: pulumi.Input<string>;
+        /**
+         * Start time of the first recurrence of the maintenance window.
+         */
         startTime: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigMasterAuthorizedNetworksConfig {
+        /**
+         * cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
+         */
         cidrBlocks?: pulumi.Input<pulumi.Input<inputs.composer.EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>[]>;
+        /**
+         * Whether or not master authorized networks is enabled.
+         */
         enabled: pulumi.Input<boolean>;
     }
 
     export interface EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+        /**
+         * cidr_block must be specified in CIDR notation.
+         */
         cidrBlock: pulumi.Input<string>;
+        /**
+         * display_name is a field for users to identify CIDR blocks.
+         */
         displayName?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigNodeConfig {
+        /**
+         * IPv4 cidr range that will be used by Composer internal components.
+         */
         composerInternalIpv4CidrBlock?: pulumi.Input<string>;
+        /**
+         * The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         diskSizeGb?: pulumi.Input<number>;
+        /**
+         * Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
+         */
         enableIpMasqAgent?: pulumi.Input<boolean>;
+        /**
+         * Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
+         */
         ipAllocationPolicy?: pulumi.Input<inputs.composer.EnvironmentConfigNodeConfigIpAllocationPolicy>;
+        /**
+         * The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         machineType?: pulumi.Input<string>;
+        /**
+         * The maximum pods per node in the GKE cluster allocated during environment creation. Lowering this value reduces IP address consumption by the Cloud Composer Kubernetes cluster. This value can only be set during environment creation, and only if the environment is VPC-Native. The range of possible values is 8-110, and the default is 32. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         maxPodsPerNode?: pulumi.Input<number>;
+        /**
+         * The Compute Engine machine type used for cluster instances, specified as a name or relative resource name. For example: "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong to the enclosing environment's project and region/zone. The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
+         */
         network?: pulumi.Input<string>;
+        /**
+         * The set of Google API scopes to be made available on all node VMs. Cannot be updated. If empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         oauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
+         */
         serviceAccount?: pulumi.Input<string>;
+        /**
+         * The Compute Engine subnetwork to be used for machine communications, , specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
+         */
         subnetwork?: pulumi.Input<string>;
+        /**
+         * The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+         */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         zone?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigNodeConfigIpAllocationPolicy {
+        /**
+         * The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
+         */
         clusterIpv4CidrBlock?: pulumi.Input<string>;
+        /**
+         * The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+         */
         clusterSecondaryRangeName?: pulumi.Input<string>;
+        /**
+         * The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
+         */
         servicesIpv4CidrBlock?: pulumi.Input<string>;
+        /**
+         * The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
+         */
         servicesSecondaryRangeName?: pulumi.Input<string>;
+        /**
+         * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
+         */
         useIpAliases?: pulumi.Input<boolean>;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
+        /**
+         * When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         cloudComposerConnectionSubnetwork?: pulumi.Input<string>;
+        /**
+         * The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+         */
         cloudComposerNetworkIpv4CidrBlock?: pulumi.Input<string>;
+        /**
+         * The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block.
+         */
         cloudSqlIpv4CidrBlock?: pulumi.Input<string>;
+        /**
+         * Mode of internal communication within the Composer environment. Must be one of "VPC_PEERING" or "PRIVATE_SERVICE_CONNECT".
+         */
         connectionType?: pulumi.Input<string>;
+        /**
+         * If true, access to the public endpoint of the GKE cluster is denied. If this field is set to true, ip_allocation_policy.use_ip_aliases must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         enablePrivateEndpoint?: pulumi.Input<boolean>;
+        /**
+         * When enabled, IPs from public (non-RFC1918) ranges can be used for ip_allocation_policy.cluster_ipv4_cidr_block and ip_allocation_policy.service_ipv4_cidr_block.
+         */
         enablePrivatelyUsedPublicIps?: pulumi.Input<boolean>;
+        /**
+         * The IP range in CIDR notation to use for the hosted master network. This range is used for assigning internal IP addresses to the cluster master or set of masters and to the internal load balancer virtual IP. This range must not overlap with any other ranges in use within the cluster's network. If left blank, the default value of '172.16.0.0/28' is used.
+         */
         masterIpv4CidrBlock?: pulumi.Input<string>;
+        /**
+         * The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from masterIpv4CidrBlock and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+         */
         webServerIpv4CidrBlock?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigRecoveryConfig {
+        /**
+         * The configuration settings for scheduled snapshots.
+         */
         scheduledSnapshotsConfig?: pulumi.Input<inputs.composer.EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig>;
     }
 
     export interface EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
+        /**
+         * When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+         */
         enabled: pulumi.Input<boolean>;
+        /**
+         * Snapshot schedule, in the unix-cron format.
+         */
         snapshotCreationSchedule?: pulumi.Input<string>;
+        /**
+         * the URI of a bucket folder where to save the snapshot.
+         */
         snapshotLocation?: pulumi.Input<string>;
+        /**
+         * A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+         */
         timeZone?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigSoftwareConfig {
+        /**
+         * Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
+         */
         airflowConfigOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
+         */
         cloudDataLineageIntegration?: pulumi.Input<inputs.composer.EnvironmentConfigSoftwareConfigCloudDataLineageIntegration>;
+        /**
+         * Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression [a-zA-Z_][a-zA-Z0-9_]*. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+), and they cannot match any of the following reserved names: AIRFLOW_HOME C_FORCE_ROOT CONTAINER_NAME DAGS_FOLDER GCP_PROJECT GCS_BUCKET GKE_CLUSTER_NAME SQL_DATABASE SQL_INSTANCE SQL_PASSWORD SQL_PROJECT SQL_REGION SQL_USER.
+         */
         envVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?). The Cloud Composer portion of the image version is a full semantic version, or an alias in the form of major version number or 'latest'. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. See documentation for more details and version list.
+         */
         imageVersion?: pulumi.Input<string>;
+        /**
+         * Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]>=1.8.2, <1.9.2"). To specify a package without pinning it to a version specifier, use the empty string as the value.
+         */
         pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use Python major version 3.
+         */
         pythonVersion?: pulumi.Input<string>;
+        /**
+         * The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
+         */
         schedulerCount?: pulumi.Input<number>;
+        /**
+         * Should be either 'ENABLED' or 'DISABLED'. Defaults to 'ENABLED'. Used in Composer 3.
+         */
         webServerPluginsMode?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
+        /**
+         * Whether or not Cloud Data Lineage integration is enabled.
+         */
         enabled: pulumi.Input<boolean>;
     }
 
     export interface EnvironmentConfigWebServerConfig {
+        /**
+         * Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
+         */
         machineType: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigWebServerNetworkAccessControl {
+        /**
+         * A collection of allowed IP ranges with descriptions.
+         */
         allowedIpRanges?: pulumi.Input<pulumi.Input<inputs.composer.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange>[]>;
     }
 
     export interface EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+        /**
+         * A description of this ip range.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: 192.168.1.1 or 192.168.0.0/16 or 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. IP range prefixes should be properly truncated. For example, 1.2.3.4/24 should be truncated to 1.2.3.0/24. Similarly, for IPv6, 2001:db8::1/32 should be truncated to 2001:db8::/32.
+         */
         value: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigWorkloadsConfig {
+        /**
+         * Configuration for resources used by DAG processor.
+         */
         dagProcessor?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigDagProcessor>;
+        /**
+         * Configuration for resources used by Airflow schedulers.
+         */
         scheduler?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigScheduler>;
+        /**
+         * Configuration for resources used by Airflow triggerers.
+         */
         triggerer?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigTriggerer>;
+        /**
+         * Configuration for resources used by Airflow web server.
+         */
         webServer?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWebServer>;
+        /**
+         * Configuration for resources used by Airflow workers.
+         */
         worker?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWorker>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigDagProcessor {
+        /**
+         * CPU request and limit for DAG processor.
+         */
         cpu?: pulumi.Input<number>;
+        /**
+         * Memory (GB) request and limit for DAG processor.
+         */
         memoryGb?: pulumi.Input<number>;
+        /**
+         * Storage (GB) request and limit for DAG processor.
+         */
         storageGb?: pulumi.Input<number>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigScheduler {
+        /**
+         * The number of schedulers.
+         */
         count?: pulumi.Input<number>;
+        /**
+         * CPU request and limit for a single Airflow scheduler replica
+         */
         cpu?: pulumi.Input<number>;
+        /**
+         * Memory (GB) request and limit for a single Airflow scheduler replica.
+         */
         memoryGb?: pulumi.Input<number>;
+        /**
+         * Storage (GB) request and limit for a single Airflow scheduler replica.
+         */
         storageGb?: pulumi.Input<number>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigTriggerer {
+        /**
+         * The number of triggerers.
+         */
         count: pulumi.Input<number>;
+        /**
+         * CPU request and limit for a single Airflow triggerer replica.
+         */
         cpu: pulumi.Input<number>;
+        /**
+         * Memory (GB) request and limit for a single Airflow triggerer replica.
+         */
         memoryGb: pulumi.Input<number>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigWebServer {
+        /**
+         * CPU request and limit for Airflow web server.
+         */
         cpu?: pulumi.Input<number>;
+        /**
+         * Memory (GB) request and limit for Airflow web server.
+         */
         memoryGb?: pulumi.Input<number>;
+        /**
+         * Storage (GB) request and limit for Airflow web server.
+         */
         storageGb?: pulumi.Input<number>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigWorker {
+        /**
+         * CPU request and limit for a single Airflow worker replica.
+         */
         cpu?: pulumi.Input<number>;
+        /**
+         * Maximum number of workers for autoscaling.
+         */
         maxCount?: pulumi.Input<number>;
+        /**
+         * Memory (GB) request and limit for a single Airflow worker replica.
+         */
         memoryGb?: pulumi.Input<number>;
+        /**
+         * Minimum number of workers for autoscaling.
+         */
         minCount?: pulumi.Input<number>;
+        /**
+         * Storage (GB) request and limit for a single Airflow worker replica.
+         */
         storageGb?: pulumi.Input<number>;
     }
 
     export interface EnvironmentStorageConfig {
+        /**
+         * Optional. Name of an existing Cloud Storage bucket to be used by the environment.
+         */
         bucket: pulumi.Input<string>;
     }
 
@@ -14743,6 +15103,9 @@ export namespace compute {
          * to encrypt this disk. Only one of `kmsKeySelfLink` and `diskEncryptionKeyRaw` may be set.
          */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256?: pulumi.Input<string>;
         /**
          * The selfLink of the encryption key that is
@@ -14782,6 +15145,9 @@ export namespace compute {
          * may be set.
          */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256?: pulumi.Input<string>;
         /**
          * Parameters for a new disk that will be created
@@ -14851,6 +15217,9 @@ export namespace compute {
          * To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
          */
         provisionedThroughput?: pulumi.Input<number>;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
         /**
          * The size of the image in gigabytes. If not specified, it
@@ -14871,137 +15240,367 @@ export namespace compute {
     }
 
     export interface InstanceFromMachineImageAdvancedMachineFeatures {
+        /**
+         * Whether to enable nested virtualization or not.
+         */
         enableNestedVirtualization?: pulumi.Input<boolean>;
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore?: pulumi.Input<number>;
+        /**
+         * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+         */
         visibleCoreCount?: pulumi.Input<number>;
     }
 
     export interface InstanceFromMachineImageAttachedDisk {
+        /**
+         * Name with which the attached disk is accessible under /dev/disk/by-id/
+         */
         deviceName?: pulumi.Input<string>;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256?: pulumi.Input<string>;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+         */
         mode?: pulumi.Input<string>;
+        /**
+         * The name or selfLink of the disk attached to this instance.
+         */
         source: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageBootDisk {
+        /**
+         * Whether the disk will be auto-deleted when the instance is deleted.
+         */
         autoDelete?: pulumi.Input<boolean>;
+        /**
+         * Name with which attached disk will be accessible under /dev/disk/by-id/
+         */
         deviceName?: pulumi.Input<string>;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256?: pulumi.Input<string>;
+        /**
+         * Parameters with which a disk was created alongside the instance.
+         */
         initializeParams?: pulumi.Input<inputs.compute.InstanceFromMachineImageBootDiskInitializeParams>;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+         */
         mode?: pulumi.Input<string>;
+        /**
+         * The name or selfLink of the disk attached to this instance.
+         */
         source?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageBootDiskInitializeParams {
+        /**
+         * A flag to enable confidential compute mode on boot disk
+         */
         enableConfidentialCompute?: pulumi.Input<boolean>;
+        /**
+         * The image from which this disk was initialised.
+         */
         image?: pulumi.Input<string>;
+        /**
+         * A set of key/value label pairs assigned to the disk.
+         */
         labels?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         */
         provisionedIops?: pulumi.Input<number>;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         */
         provisionedThroughput?: pulumi.Input<number>;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The size of the image in gigabytes.
+         */
         size?: pulumi.Input<number>;
+        /**
+         * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+         */
         type?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageConfidentialInstanceConfig {
+        /**
+         * Defines whether the instance should have confidential compute enabled.
+         */
         enableConfidentialCompute: pulumi.Input<boolean>;
     }
 
     export interface InstanceFromMachineImageGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this instance.
+         */
         count: pulumi.Input<number>;
+        /**
+         * The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+         */
         type: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageNetworkInterface {
+        /**
+         * Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         */
         accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterfaceAccessConfig>[]>;
+        /**
+         * An array of alias IP ranges for this network interface.
+         */
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterfaceAliasIpRange>[]>;
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength?: pulumi.Input<number>;
+        /**
+         * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+         */
         ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig>[]>;
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType?: pulumi.Input<string>;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address?: pulumi.Input<string>;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name?: pulumi.Input<string>;
+        /**
+         * The name or selfLink of the network attached to this interface.
+         */
         network?: pulumi.Input<string>;
+        /**
+         * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         */
         networkAttachment?: pulumi.Input<string>;
+        /**
+         * The private IP address assigned to the instance.
+         */
         networkIp?: pulumi.Input<string>;
+        /**
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         */
         nicType?: pulumi.Input<string>;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
         queueCount?: pulumi.Input<number>;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy?: pulumi.Input<string>;
+        /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+         */
         stackType?: pulumi.Input<string>;
+        /**
+         * The name or selfLink of the subnetwork attached to this interface.
+         */
         subnetwork?: pulumi.Input<string>;
+        /**
+         * The project in which the subnetwork belongs.
+         */
         subnetworkProject?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageNetworkInterfaceAccessConfig {
+        /**
+         * The IP address that is be 1:1 mapped to the instance's network ip.
+         */
         natIp?: pulumi.Input<string>;
+        /**
+         * The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+         */
         networkTier?: pulumi.Input<string>;
+        /**
+         * The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName?: pulumi.Input<string>;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageNetworkInterfaceAliasIpRange {
+        /**
+         * The IP CIDR range represented by this alias IP range.
+         */
         ipCidrRange: pulumi.Input<string>;
+        /**
+         * The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+         */
         subnetworkRangeName?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+         */
         externalIpv6?: pulumi.Input<string>;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength?: pulumi.Input<string>;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name?: pulumi.Input<string>;
+        /**
+         * The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+         */
         networkTier: pulumi.Input<string>;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName?: pulumi.Input<string>;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+         */
         totalEgressBandwidthTier: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageParams {
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
     }
 
     export interface InstanceFromMachineImageReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use.
+         */
         specificReservation?: pulumi.Input<inputs.compute.InstanceFromMachineImageReservationAffinitySpecificReservation>;
+        /**
+         * The type of reservation from which this instance can consume resources.
+         */
         type: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageReservationAffinitySpecificReservation {
+        /**
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         */
         key: pulumi.Input<string>;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface InstanceFromMachineImageScheduling {
+        /**
+         * Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+         */
         automaticRestart?: pulumi.Input<boolean>;
+        /**
+         * Specifies the action GCE should take when SPOT VM is preempted.
+         */
         instanceTerminationAction?: pulumi.Input<string>;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeout?: pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout>;
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         */
         maintenanceInterval?: pulumi.Input<string>;
+        /**
+         * The timeout for new network connections to hosts.
+         */
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingMaxRunDuration>;
         minNodeCpus?: pulumi.Input<number>;
+        /**
+         * Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+         */
         nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingNodeAffinity>[]>;
+        /**
+         * Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+         */
         onHostMaintenance?: pulumi.Input<string>;
+        /**
+         * Whether the instance is preemptible.
+         */
         preemptible?: pulumi.Input<boolean>;
+        /**
+         * Whether the instance is spot. If this is set as SPOT.
+         */
         provisioningModel?: pulumi.Input<string>;
     }
 
     export interface InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: pulumi.Input<number>;
     }
 
     export interface InstanceFromMachineImageSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: pulumi.Input<number>;
     }
 
@@ -15012,154 +15611,408 @@ export namespace compute {
     }
 
     export interface InstanceFromMachineImageScratchDisk {
+        /**
+         * Name with which the attached disk is accessible under /dev/disk/by-id/
+         */
         deviceName?: pulumi.Input<string>;
+        /**
+         * The disk interface used for attaching this disk. One of SCSI or NVME.
+         */
         interface: pulumi.Input<string>;
+        /**
+         * The size of the disk in gigabytes. One of 375 or 3000.
+         */
         size?: pulumi.Input<number>;
     }
 
     export interface InstanceFromMachineImageServiceAccount {
+        /**
+         * The service account e-mail address.
+         */
         email?: pulumi.Input<string>;
+        /**
+         * A list of service scopes.
+         */
         scopes: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface InstanceFromMachineImageShieldedInstanceConfig {
+        /**
+         * Whether integrity monitoring is enabled for the instance.
+         */
         enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        /**
+         * Whether secure boot is enabled for the instance.
+         */
         enableSecureBoot?: pulumi.Input<boolean>;
+        /**
+         * Whether the instance uses vTPM.
+         */
         enableVtpm?: pulumi.Input<boolean>;
     }
 
     export interface InstanceFromTemplateAdvancedMachineFeatures {
+        /**
+         * Whether to enable nested virtualization or not.
+         */
         enableNestedVirtualization?: pulumi.Input<boolean>;
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore?: pulumi.Input<number>;
+        /**
+         * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
+         */
         visibleCoreCount?: pulumi.Input<number>;
     }
 
     export interface InstanceFromTemplateAttachedDisk {
+        /**
+         * Name with which the attached disk is accessible under /dev/disk/by-id/
+         */
         deviceName?: pulumi.Input<string>;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256?: pulumi.Input<string>;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+         */
         mode?: pulumi.Input<string>;
+        /**
+         * The name or selfLink of the disk attached to this instance.
+         */
         source: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateBootDisk {
+        /**
+         * Whether the disk will be auto-deleted when the instance is deleted.
+         */
         autoDelete?: pulumi.Input<boolean>;
+        /**
+         * Name with which attached disk will be accessible under /dev/disk/by-id/
+         */
         deviceName?: pulumi.Input<string>;
+        /**
+         * A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         diskEncryptionKeyRaw?: pulumi.Input<string>;
+        /**
+         * The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+         */
         diskEncryptionKeySha256?: pulumi.Input<string>;
+        /**
+         * Parameters with which a disk was created alongside the instance.
+         */
         initializeParams?: pulumi.Input<inputs.compute.InstanceFromTemplateBootDiskInitializeParams>;
+        /**
+         * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
+         */
         kmsKeySelfLink?: pulumi.Input<string>;
+        /**
+         * Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
+         */
         mode?: pulumi.Input<string>;
+        /**
+         * The name or selfLink of the disk attached to this instance.
+         */
         source?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateBootDiskInitializeParams {
+        /**
+         * A flag to enable confidential compute mode on boot disk
+         */
         enableConfidentialCompute?: pulumi.Input<boolean>;
+        /**
+         * The image from which this disk was initialised.
+         */
         image?: pulumi.Input<string>;
+        /**
+         * A set of key/value label pairs assigned to the disk.
+         */
         labels?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         */
         provisionedIops?: pulumi.Input<number>;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         */
         provisionedThroughput?: pulumi.Input<number>;
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * The size of the image in gigabytes.
+         */
         size?: pulumi.Input<number>;
+        /**
+         * The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
+         */
         type?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateConfidentialInstanceConfig {
+        /**
+         * Defines whether the instance should have confidential compute enabled.
+         */
         enableConfidentialCompute: pulumi.Input<boolean>;
     }
 
     export interface InstanceFromTemplateGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this instance.
+         */
         count: pulumi.Input<number>;
+        /**
+         * The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+         */
         type: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateNetworkInterface {
+        /**
+         * Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         */
         accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterfaceAccessConfig>[]>;
+        /**
+         * An array of alias IP ranges for this network interface.
+         */
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterfaceAliasIpRange>[]>;
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength?: pulumi.Input<number>;
+        /**
+         * An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+         */
         ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateNetworkInterfaceIpv6AccessConfig>[]>;
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType?: pulumi.Input<string>;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address?: pulumi.Input<string>;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name?: pulumi.Input<string>;
+        /**
+         * The name or selfLink of the network attached to this interface.
+         */
         network?: pulumi.Input<string>;
+        /**
+         * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         */
         networkAttachment?: pulumi.Input<string>;
+        /**
+         * The private IP address assigned to the instance.
+         */
         networkIp?: pulumi.Input<string>;
+        /**
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         */
         nicType?: pulumi.Input<string>;
+        /**
+         * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+         */
         queueCount?: pulumi.Input<number>;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy?: pulumi.Input<string>;
+        /**
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
+         */
         stackType?: pulumi.Input<string>;
+        /**
+         * The name or selfLink of the subnetwork attached to this interface.
+         */
         subnetwork?: pulumi.Input<string>;
+        /**
+         * The project in which the subnetwork belongs.
+         */
         subnetworkProject?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateNetworkInterfaceAccessConfig {
+        /**
+         * The IP address that is be 1:1 mapped to the instance's network ip.
+         */
         natIp?: pulumi.Input<string>;
+        /**
+         * The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
+         */
         networkTier?: pulumi.Input<string>;
+        /**
+         * The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName?: pulumi.Input<string>;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateNetworkInterfaceAliasIpRange {
+        /**
+         * The IP CIDR range represented by this alias IP range.
+         */
         ipCidrRange: pulumi.Input<string>;
+        /**
+         * The subnetwork secondary range name specifying the secondary range from which to allocate the IP CIDR range for this alias IP range.
+         */
         subnetworkRangeName?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+         */
         externalIpv6?: pulumi.Input<string>;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength?: pulumi.Input<string>;
         /**
          * A unique name for the resource, required by GCE.
          * Changing this forces a new resource to be created.
          */
         name?: pulumi.Input<string>;
+        /**
+         * The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+         */
         networkTier: pulumi.Input<string>;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName?: pulumi.Input<string>;
+        /**
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateNetworkPerformanceConfig {
+        /**
+         * The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+         */
         totalEgressBandwidthTier: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateParams {
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
     }
 
     export interface InstanceFromTemplateReservationAffinity {
+        /**
+         * Specifies the label selector for the reservation to use.
+         */
         specificReservation?: pulumi.Input<inputs.compute.InstanceFromTemplateReservationAffinitySpecificReservation>;
+        /**
+         * The type of reservation from which this instance can consume resources.
+         */
         type: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateReservationAffinitySpecificReservation {
+        /**
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+         */
         key: pulumi.Input<string>;
+        /**
+         * Corresponds to the label values of a reservation resource.
+         */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface InstanceFromTemplateScheduling {
+        /**
+         * Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+         */
         automaticRestart?: pulumi.Input<boolean>;
+        /**
+         * Specifies the action GCE should take when SPOT VM is preempted.
+         */
         instanceTerminationAction?: pulumi.Input<string>;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeout?: pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout>;
+        /**
+         * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         */
         maintenanceInterval?: pulumi.Input<string>;
+        /**
+         * The timeout for new network connections to hosts.
+         */
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingMaxRunDuration>;
         minNodeCpus?: pulumi.Input<number>;
+        /**
+         * Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+         */
         nodeAffinities?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingNodeAffinity>[]>;
+        /**
+         * Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+         */
         onHostMaintenance?: pulumi.Input<string>;
+        /**
+         * Whether the instance is preemptible.
+         */
         preemptible?: pulumi.Input<boolean>;
+        /**
+         * Whether the instance is spot. If this is set as SPOT.
+         */
         provisioningModel?: pulumi.Input<string>;
     }
 
     export interface InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: pulumi.Input<number>;
     }
 
     export interface InstanceFromTemplateSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
         nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
         seconds: pulumi.Input<number>;
     }
 
@@ -15170,19 +16023,43 @@ export namespace compute {
     }
 
     export interface InstanceFromTemplateScratchDisk {
+        /**
+         * Name with which the attached disk is accessible under /dev/disk/by-id/
+         */
         deviceName?: pulumi.Input<string>;
+        /**
+         * The disk interface used for attaching this disk. One of SCSI or NVME.
+         */
         interface: pulumi.Input<string>;
+        /**
+         * The size of the disk in gigabytes. One of 375 or 3000.
+         */
         size?: pulumi.Input<number>;
     }
 
     export interface InstanceFromTemplateServiceAccount {
+        /**
+         * The service account e-mail address.
+         */
         email?: pulumi.Input<string>;
+        /**
+         * A list of service scopes.
+         */
         scopes: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface InstanceFromTemplateShieldedInstanceConfig {
+        /**
+         * Whether integrity monitoring is enabled for the instance.
+         */
         enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        /**
+         * Whether secure boot is enabled for the instance.
+         */
         enableSecureBoot?: pulumi.Input<boolean>;
+        /**
+         * Whether the instance uses vTPM.
+         */
         enableVtpm?: pulumi.Input<boolean>;
     }
 
@@ -15287,6 +16164,9 @@ export namespace compute {
     }
 
     export interface InstanceGroupManagerStatusAllInstancesConfig {
+        /**
+         * A bit indicating whether this configuration has been applied to all managed instances in the group.
+         */
         effective?: pulumi.Input<boolean>;
     }
 
@@ -15309,6 +16189,9 @@ export namespace compute {
     }
 
     export interface InstanceGroupManagerStatusVersionTarget {
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
         isReached?: pulumi.Input<boolean>;
     }
 
@@ -15444,6 +16327,9 @@ export namespace compute {
     }
 
     export interface InstanceNetworkInterface {
+        /**
+         * Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
+         */
         accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterfaceAccessConfig>[]>;
         /**
          * An
@@ -15451,6 +16337,9 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterfaceAliasIpRange>[]>;
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength?: pulumi.Input<number>;
         /**
          * An array of IPv6 access configurations for this interface.
@@ -15463,6 +16352,9 @@ export namespace compute {
          * This field is always inherited from its subnetwork.
          */
         ipv6AccessType?: pulumi.Input<string>;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address?: pulumi.Input<string>;
         /**
          * A unique name for the resource, required by GCE.
@@ -15599,6 +16491,9 @@ export namespace compute {
     }
 
     export interface InstanceParams {
+        /**
+         * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
+         */
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
     }
 
@@ -15636,6 +16531,12 @@ export namespace compute {
          * Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: pulumi.Input<string>;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeout?: pulumi.Input<inputs.compute.InstanceSchedulingLocalSsdRecoveryTimeout>;
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -15992,6 +16893,9 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAliasIpRange>[]>;
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength?: pulumi.Input<number>;
         /**
          * An array of IPv6 access configurations for this interface.
@@ -15999,7 +16903,13 @@ export namespace compute {
          * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
          */
         ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceIpv6AccessConfig>[]>;
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType?: pulumi.Input<string>;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address?: pulumi.Input<string>;
         /**
          * The name of the instance template. If you leave
@@ -16057,6 +16967,9 @@ export namespace compute {
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier?: pulumi.Input<string>;
+        /**
+         * The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName?: pulumi.Input<string>;
     }
 
@@ -16078,7 +16991,13 @@ export namespace compute {
     }
 
     export interface InstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+         */
         externalIpv6?: pulumi.Input<string>;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength?: pulumi.Input<string>;
         /**
          * The name of the instance template. If you leave
@@ -16090,6 +17009,9 @@ export namespace compute {
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier: pulumi.Input<string>;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName?: pulumi.Input<string>;
     }
 
@@ -16134,6 +17056,12 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: pulumi.Input<string>;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeouts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateSchedulingLocalSsdRecoveryTimeout>[]>;
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -16145,6 +17073,9 @@ export namespace compute {
          * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
          */
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceTemplateSchedulingMaxRunDuration>;
+        /**
+         * Minimum number of cpus for the instance.
+         */
         minNodeCpus?: pulumi.Input<number>;
         /**
          * Specifies node affinities or anti-affinities
@@ -18043,6 +18974,9 @@ export namespace compute {
     }
 
     export interface RegionInstanceGroupManagerStatusAllInstancesConfig {
+        /**
+         * A bit indicating whether this configuration has been applied to all managed instances in the group.
+         */
         effective?: pulumi.Input<boolean>;
     }
 
@@ -18065,6 +18999,9 @@ export namespace compute {
     }
 
     export interface RegionInstanceGroupManagerStatusVersionTarget {
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
         isReached?: pulumi.Input<boolean>;
     }
 
@@ -18342,6 +19279,9 @@ export namespace compute {
          * interfaces on subnet-mode networks. Structure documented below.
          */
         aliasIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceTemplateNetworkInterfaceAliasIpRange>[]>;
+        /**
+         * The prefix length of the primary internal IPv6 range.
+         */
         internalIpv6PrefixLength?: pulumi.Input<number>;
         /**
          * An array of IPv6 access configurations for this interface.
@@ -18349,8 +19289,17 @@ export namespace compute {
          * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
          */
         ipv6AccessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig>[]>;
+        /**
+         * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+         */
         ipv6AccessType?: pulumi.Input<string>;
+        /**
+         * An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
+         */
         ipv6Address?: pulumi.Input<string>;
+        /**
+         * The name of the network_interface.
+         */
         name?: pulumi.Input<string>;
         /**
          * The name or selfLink of the network to attach this interface to.
@@ -18399,6 +19348,9 @@ export namespace compute {
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier?: pulumi.Input<string>;
+        /**
+         * The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+         */
         publicPtrDomainName?: pulumi.Input<string>;
     }
 
@@ -18420,14 +19372,26 @@ export namespace compute {
     }
 
     export interface RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+         */
         externalIpv6?: pulumi.Input<string>;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength?: pulumi.Input<string>;
+        /**
+         * The name of this access configuration.
+         */
         name?: pulumi.Input<string>;
         /**
          * The service-level to be provided for IPv6 traffic when the
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier: pulumi.Input<string>;
+        /**
+         * The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+         */
         publicPtrDomainName?: pulumi.Input<string>;
     }
 
@@ -18472,6 +19436,12 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: pulumi.Input<string>;
+        /**
+         * Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         */
         localSsdRecoveryTimeouts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>[]>;
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
@@ -18482,6 +19452,9 @@ export namespace compute {
          * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
          */
         maxRunDuration?: pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingMaxRunDuration>;
+        /**
+         * Minimum number of cpus for the instance.
+         */
         minNodeCpus?: pulumi.Input<number>;
         /**
          * Specifies node affinities or anti-affinities
@@ -20985,6 +21958,9 @@ export namespace compute {
     }
 
     export interface RouterPeerMd5AuthenticationKey {
+        /**
+         * Value of the key.
+         */
         key: pulumi.Input<string>;
         /**
          * Name of this BGP peer. The name must be 1-63 characters long,
@@ -23931,8 +24907,17 @@ export namespace container {
     }
 
     export interface AwsClusterWorkloadIdentityConfig {
+        /**
+         * The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+         */
         identityProvider?: pulumi.Input<string>;
+        /**
+         * The OIDC issuer URL for this cluster.
+         */
         issuerUri?: pulumi.Input<string>;
+        /**
+         * The Workload Identity Pool associated to the cluster.
+         */
         workloadPool?: pulumi.Input<string>;
     }
 
@@ -24300,8 +25285,17 @@ export namespace container {
     }
 
     export interface AzureClusterWorkloadIdentityConfig {
+        /**
+         * The ID of the OIDC Identity Provider (IdP) associated to the Workload Identity Pool.
+         */
         identityProvider?: pulumi.Input<string>;
+        /**
+         * The OIDC issuer URL for this cluster.
+         */
         issuerUri?: pulumi.Input<string>;
+        /**
+         * The Workload Identity Pool associated to the cluster.
+         */
         workloadPool?: pulumi.Input<string>;
     }
 
@@ -24683,10 +25677,16 @@ export namespace container {
          * Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
          */
         autoUpgrade?: pulumi.Input<boolean>;
+        /**
+         * Specifies the Auto Upgrade knobs for the node pool.
+         */
         upgradeOptions?: pulumi.Input<pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption>[]>;
     }
 
     export interface ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption {
+        /**
+         * This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+         */
         autoUpgradeStartTime?: pulumi.Input<string>;
         /**
          * Description of the cluster.
@@ -24839,7 +25839,13 @@ export namespace container {
     }
 
     export interface ClusterFleet {
+        /**
+         * Full resource name of the registered fleet membership of the cluster.
+         */
         membership?: pulumi.Input<string>;
+        /**
+         * Whether the cluster has been registered via the fleet API.
+         */
         preRegistered?: pulumi.Input<boolean>;
         /**
          * The name of the Fleet host project where this cluster will be registered.
@@ -24882,6 +25888,9 @@ export namespace container {
          * `clusterIpv4CidrBlock` can be used to automatically create a GKE-managed one.
          */
         clusterSecondaryRangeName?: pulumi.Input<string>;
+        /**
+         * Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+         */
         podCidrOverprovisionConfig?: pulumi.Input<inputs.container.ClusterIpAllocationPolicyPodCidrOverprovisionConfig>;
         /**
          * The IP address range of the services IPs in this cluster.
@@ -25006,6 +26015,9 @@ export namespace container {
     }
 
     export interface ClusterMasterAuth {
+        /**
+         * Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+         */
         clientCertificate?: pulumi.Input<string>;
         /**
          * Whether client certificate authorization is enabled for this cluster.  For example:
@@ -25017,11 +26029,20 @@ export namespace container {
          * This block also contains several computed attributes, documented below.
          */
         clientCertificateConfig: pulumi.Input<inputs.container.ClusterMasterAuthClientCertificateConfig>;
+        /**
+         * Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+         */
         clientKey?: pulumi.Input<string>;
+        /**
+         * Base64 encoded public certificate that is the root of trust for the cluster.
+         */
         clusterCaCertificate?: pulumi.Input<string>;
     }
 
     export interface ClusterMasterAuthClientCertificateConfig {
+        /**
+         * Whether client certificate authorization is enabled for this cluster.
+         */
         issueClientCertificate: pulumi.Input<boolean>;
     }
 
@@ -25125,6 +26146,9 @@ export namespace container {
          * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
          */
         diskType?: pulumi.Input<string>;
+        /**
+         * List of kubernetes taints applied to each node.
+         */
         effectiveTaints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigEffectiveTaint>[]>;
         /**
          * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
@@ -25184,6 +26208,9 @@ export namespace container {
          * ```
          */
         gvnic?: pulumi.Input<inputs.container.ClusterNodeConfigGvnic>;
+        /**
+         * The maintenance policy for the hosts on which the GKE VMs run on.
+         */
         hostMaintenancePolicy?: pulumi.Input<inputs.container.ClusterNodeConfigHostMaintenancePolicy>;
         /**
          * The image type to use for this node. Note that changing the image type
@@ -25270,6 +26297,9 @@ export namespace container {
          * for how these labels are applied to clusters, node pools and nodes.
          */
         resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Sandbox configuration for this node.
+         */
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodeConfigSandboxConfig>;
         /**
          * The service account to be used by the Node VMs.
@@ -25431,6 +26461,9 @@ export namespace container {
     }
 
     export interface ClusterNodeConfigHostMaintenancePolicy {
+        /**
+         * .
+         */
         maintenanceInterval: pulumi.Input<string>;
     }
 
@@ -25538,6 +26571,9 @@ export namespace container {
     }
 
     export interface ClusterNodeConfigSoleTenantConfig {
+        /**
+         * .
+         */
         nodeAffinities: pulumi.Input<pulumi.Input<inputs.container.ClusterNodeConfigSoleTenantConfigNodeAffinity>[]>;
     }
 
@@ -25583,6 +26619,9 @@ export namespace container {
     }
 
     export interface ClusterNodePool {
+        /**
+         * Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+         */
         autoscaling?: pulumi.Input<inputs.container.ClusterNodePoolAutoscaling>;
         /**
          * The number of nodes to create in this
@@ -25593,12 +26632,21 @@ export namespace container {
          * `removeDefaultNodePool` to `true`.
          */
         initialNodeCount?: pulumi.Input<number>;
+        /**
+         * The resource URLs of the managed instance groups associated with this node pool.
+         */
         instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of instance group URLs which have been assigned to this node pool.
+         */
         managedInstanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * NodeManagement configuration for this NodePool. Structure is documented below.
          */
         management?: pulumi.Input<inputs.container.ClusterNodePoolManagement>;
+        /**
+         * The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+         */
         maxPodsPerNode?: pulumi.Input<number>;
         /**
          * The name of the cluster, unique within the project and
@@ -25607,6 +26655,9 @@ export namespace container {
          * - - -
          */
         name?: pulumi.Input<string>;
+        /**
+         * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         */
         namePrefix?: pulumi.Input<string>;
         /**
          * Configuration for
@@ -25621,6 +26672,9 @@ export namespace container {
          * Structure is documented below.
          */
         nodeConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfig>;
+        /**
+         * The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+         */
         nodeCount?: pulumi.Input<number>;
         /**
          * The list of zones in which the cluster's nodes
@@ -25636,7 +26690,13 @@ export namespace container {
          * preferred.
          */
         nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Specifies the node placement policy
+         */
         placementPolicy?: pulumi.Input<inputs.container.ClusterNodePoolPlacementPolicy>;
+        /**
+         * Specifies the configuration of queued provisioning
+         */
         queuedProvisioning?: pulumi.Input<inputs.container.ClusterNodePoolQueuedProvisioning>;
         /**
          * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
@@ -25664,10 +26724,25 @@ export namespace container {
     }
 
     export interface ClusterNodePoolAutoscaling {
+        /**
+         * Location policy specifies the algorithm used when scaling-up the node pool. "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones. "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+         */
         locationPolicy?: pulumi.Input<string>;
+        /**
+         * Maximum number of nodes per zone in the node pool. Must be >= min_node_count. Cannot be used with total limits.
+         */
         maxNodeCount?: pulumi.Input<number>;
+        /**
+         * Minimum number of nodes per zone in the node pool. Must be >=0 and <= max_node_count. Cannot be used with total limits.
+         */
         minNodeCount?: pulumi.Input<number>;
+        /**
+         * Maximum number of all nodes in the node pool. Must be >= total_min_node_count. Cannot be used with per zone limits.
+         */
         totalMaxNodeCount?: pulumi.Input<number>;
+        /**
+         * Minimum number of all nodes in the node pool. Must be >=0 and <= total_max_node_count. Cannot be used with per zone limits.
+         */
         totalMinNodeCount?: pulumi.Input<number>;
     }
 
@@ -25710,7 +26785,13 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNetworkConfig {
+        /**
+         * We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+         */
         additionalNodeNetworkConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig>[]>;
+        /**
+         * We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+         */
         additionalPodNetworkConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig>[]>;
         /**
          * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
@@ -25727,6 +26808,9 @@ export namespace container {
          * Network bandwidth tier configuration.
          */
         networkPerformanceConfig?: pulumi.Input<inputs.container.ClusterNodePoolNetworkConfigNetworkPerformanceConfig>;
+        /**
+         * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         */
         podCidrOverprovisionConfig?: pulumi.Input<inputs.container.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig>;
         /**
          * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -25753,7 +26837,13 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+        /**
+         * The maximum number of pods per node which use this pod network.
+         */
         maxPodsPerNode?: pulumi.Input<number>;
+        /**
+         * The name of the secondary range on the subnet which provides IP address for this pod range.
+         */
         secondaryPodRange?: pulumi.Input<string>;
         /**
          * The name or selfLink of the Google Compute Engine
@@ -25802,6 +26892,9 @@ export namespace container {
          * (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
          */
         diskType?: pulumi.Input<string>;
+        /**
+         * List of kubernetes taints applied to each node.
+         */
         effectiveTaints?: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigEffectiveTaint>[]>;
         /**
          * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
@@ -25861,6 +26954,9 @@ export namespace container {
          * ```
          */
         gvnic?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGvnic>;
+        /**
+         * The maintenance policy for the hosts on which the GKE VMs run on.
+         */
         hostMaintenancePolicy?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigHostMaintenancePolicy>;
         /**
          * The image type to use for this node. Note that changing the image type
@@ -25947,6 +27043,9 @@ export namespace container {
          * for how these labels are applied to clusters, node pools and nodes.
          */
         resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Sandbox configuration for this node.
+         */
         sandboxConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigSandboxConfig>;
         /**
          * The service account to be used by the Node VMs.
@@ -26108,6 +27207,9 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNodeConfigHostMaintenancePolicy {
+        /**
+         * .
+         */
         maintenanceInterval: pulumi.Input<string>;
     }
 
@@ -26215,6 +27317,9 @@ export namespace container {
     }
 
     export interface ClusterNodePoolNodeConfigSoleTenantConfig {
+        /**
+         * .
+         */
         nodeAffinities: pulumi.Input<pulumi.Input<inputs.container.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity>[]>;
     }
 
@@ -26260,7 +27365,13 @@ export namespace container {
     }
 
     export interface ClusterNodePoolPlacementPolicy {
+        /**
+         * If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+         */
         policyName?: pulumi.Input<string>;
+        /**
+         * TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+         */
         tpuTopology?: pulumi.Input<string>;
         /**
          * Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -26480,6 +27591,9 @@ export namespace container {
     }
 
     export interface ClusterResourceUsageExportConfigBigqueryDestination {
+        /**
+         * The ID of a BigQuery Dataset.
+         */
         datasetId: pulumi.Input<string>;
     }
 
@@ -26506,7 +27620,13 @@ export namespace container {
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
          */
         enabled: pulumi.Input<boolean>;
+        /**
+         * IPv4 CIDR block reserved for Cloud TPU in the VPC.
+         */
         ipv4CidrBlock?: pulumi.Input<string>;
+        /**
+         * Whether to use service networking for Cloud TPU or not
+         */
         useServiceNetworking?: pulumi.Input<boolean>;
     }
 
@@ -26598,7 +27718,13 @@ export namespace container {
          * Whether nodes have internal IP addresses only.
          */
         enablePrivateNodes?: pulumi.Input<boolean>;
+        /**
+         * Network bandwidth tier configuration.
+         */
         networkPerformanceConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfigNetworkPerformanceConfig>;
+        /**
+         * Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+         */
         podCidrOverprovisionConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfigPodCidrOverprovisionConfig>;
         /**
          * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -26637,6 +27763,9 @@ export namespace container {
     }
 
     export interface NodePoolNetworkConfigNetworkPerformanceConfig {
+        /**
+         * Specifies the total network bandwidth tier for the NodePool.
+         */
         totalEgressBandwidthTier: pulumi.Input<string>;
     }
 
@@ -26645,49 +27774,160 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfig {
+        /**
+         * Specifies options for controlling advanced machine features.
+         */
         advancedMachineFeatures?: pulumi.Input<inputs.container.NodePoolNodeConfigAdvancedMachineFeatures>;
+        /**
+         * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+         */
         bootDiskKmsKey?: pulumi.Input<string>;
         /**
          * Configuration for Confidential Nodes feature. Structure is documented below.
          */
         confidentialNodes?: pulumi.Input<inputs.container.NodePoolNodeConfigConfidentialNodes>;
+        /**
+         * Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+         */
         diskSizeGb?: pulumi.Input<number>;
+        /**
+         * Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+         */
         diskType?: pulumi.Input<string>;
+        /**
+         * List of kubernetes taints applied to each node.
+         */
         effectiveTaints?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigEffectiveTaint>[]>;
+        /**
+         * If enabled boot disks are configured with confidential mode.
+         */
         enableConfidentialStorage?: pulumi.Input<boolean>;
+        /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+         */
         ephemeralStorageConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigEphemeralStorageConfig>;
+        /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+         */
         ephemeralStorageLocalSsdConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigEphemeralStorageLocalSsdConfig>;
+        /**
+         * Enable or disable NCCL Fast Socket in the node pool.
+         */
         fastSocket?: pulumi.Input<inputs.container.NodePoolNodeConfigFastSocket>;
+        /**
+         * GCFS configuration for this node.
+         */
         gcfsConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigGcfsConfig>;
+        /**
+         * List of the type and count of accelerator cards attached to the instance.
+         */
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigGuestAccelerator>[]>;
+        /**
+         * Enable or disable gvnic in the node pool.
+         */
         gvnic?: pulumi.Input<inputs.container.NodePoolNodeConfigGvnic>;
+        /**
+         * The maintenance policy for the hosts on which the GKE VMs run on.
+         */
         hostMaintenancePolicy?: pulumi.Input<inputs.container.NodePoolNodeConfigHostMaintenancePolicy>;
+        /**
+         * The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+         */
         imageType?: pulumi.Input<string>;
+        /**
+         * Node kubelet configs.
+         */
         kubeletConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigKubeletConfig>;
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+         */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Parameters that can be configured on Linux nodes.
+         */
         linuxNodeConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigLinuxNodeConfig>;
+        /**
+         * Parameters for raw-block local NVMe SSDs.
+         */
         localNvmeSsdBlockConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigLocalNvmeSsdBlockConfig>;
+        /**
+         * The number of local SSD disks to be attached to the node.
+         */
         localSsdCount?: pulumi.Input<number>;
+        /**
+         * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+         */
         loggingVariant?: pulumi.Input<string>;
+        /**
+         * The name of a Google Compute Engine machine type.
+         */
         machineType?: pulumi.Input<string>;
+        /**
+         * The metadata key/value pairs assigned to instances in the cluster.
+         */
         metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+         */
         minCpuPlatform?: pulumi.Input<string>;
+        /**
+         * Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+         */
         nodeGroup?: pulumi.Input<string>;
+        /**
+         * The set of Google API scopes to be made available on all of the node VMs.
+         */
         oauthScopes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether the nodes are created as preemptible VM instances.
+         */
         preemptible?: pulumi.Input<boolean>;
+        /**
+         * The reservation affinity configuration for the node pool.
+         */
         reservationAffinity?: pulumi.Input<inputs.container.NodePoolNodeConfigReservationAffinity>;
+        /**
+         * The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+         */
         resourceLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Sandbox configuration for this node.
+         */
         sandboxConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigSandboxConfig>;
+        /**
+         * The Google Cloud Platform Service Account to be used by the node VMs.
+         */
         serviceAccount?: pulumi.Input<string>;
+        /**
+         * Shielded Instance options.
+         */
         shieldedInstanceConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigShieldedInstanceConfig>;
+        /**
+         * Node affinity options for sole tenant node pools.
+         */
         soleTenantConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigSoleTenantConfig>;
+        /**
+         * Whether the nodes are created as spot VM instances.
+         */
         spot?: pulumi.Input<boolean>;
+        /**
+         * The list of instance tags applied to all nodes.
+         */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of Kubernetes taints to be applied to each node.
+         */
         taints?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigTaint>[]>;
+        /**
+         * The workload metadata configuration for this node.
+         */
         workloadMetadataConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigWorkloadMetadataConfig>;
     }
 
     export interface NodePoolNodeConfigAdvancedMachineFeatures {
+        /**
+         * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+         */
         threadsPerCore: pulumi.Input<number>;
     }
 
@@ -26700,16 +27940,31 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigEffectiveTaint {
+        /**
+         * Effect for taint.
+         */
         effect?: pulumi.Input<string>;
+        /**
+         * Key for taint.
+         */
         key?: pulumi.Input<string>;
+        /**
+         * Value for taint.
+         */
         value?: pulumi.Input<string>;
     }
 
     export interface NodePoolNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         */
         localSsdCount: pulumi.Input<number>;
     }
 
     export interface NodePoolNodeConfigEphemeralStorageLocalSsdConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
+         */
         localSsdCount: pulumi.Input<number>;
     }
 
@@ -26730,9 +27985,21 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigGuestAccelerator {
+        /**
+         * The number of the accelerator cards exposed to an instance.
+         */
         count: pulumi.Input<number>;
+        /**
+         * Configuration for auto installation of GPU driver.
+         */
         gpuDriverInstallationConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>;
+        /**
+         * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+         */
         gpuPartitionSize?: pulumi.Input<string>;
+        /**
+         * Configuration for GPU sharing.
+         */
         gpuSharingConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig>;
         /**
          * The type of the policy. Supports a single value: COMPACT.
@@ -26743,11 +28010,20 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        /**
+         * Mode for how the GPU driver is installed.
+         */
         gpuDriverVersion: pulumi.Input<string>;
     }
 
     export interface NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
+        /**
+         * The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+         */
         gpuSharingStrategy: pulumi.Input<string>;
+        /**
+         * The maximum number of containers that can share a GPU.
+         */
         maxSharedClientsPerGpu: pulumi.Input<number>;
     }
 
@@ -26760,57 +28036,123 @@ export namespace container {
     }
 
     export interface NodePoolNodeConfigHostMaintenancePolicy {
+        /**
+         * .
+         */
         maintenanceInterval: pulumi.Input<string>;
     }
 
     export interface NodePoolNodeConfigKubeletConfig {
+        /**
+         * Enable CPU CFS quota enforcement for containers that specify CPU limits.
+         */
         cpuCfsQuota?: pulumi.Input<boolean>;
+        /**
+         * Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+         */
         cpuCfsQuotaPeriod?: pulumi.Input<string>;
+        /**
+         * Control the CPU management policy on the node.
+         */
         cpuManagerPolicy: pulumi.Input<string>;
+        /**
+         * Controls the maximum number of processes allowed to run in a pod.
+         */
         podPidsLimit?: pulumi.Input<number>;
     }
 
     export interface NodePoolNodeConfigLinuxNodeConfig {
+        /**
+         * cgroupMode specifies the cgroup mode to be used on the node.
+         */
         cgroupMode?: pulumi.Input<string>;
+        /**
+         * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+         */
         sysctls?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface NodePoolNodeConfigLocalNvmeSsdBlockConfig {
+        /**
+         * Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+         */
         localSsdCount: pulumi.Input<number>;
     }
 
     export interface NodePoolNodeConfigReservationAffinity {
+        /**
+         * Corresponds to the type of reservation consumption.
+         */
         consumeReservationType: pulumi.Input<string>;
+        /**
+         * The label key of a reservation resource.
+         */
         key?: pulumi.Input<string>;
+        /**
+         * The label values of the reservation resource.
+         */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface NodePoolNodeConfigSandboxConfig {
+        /**
+         * Type of the sandbox to use for the node (e.g. 'gvisor')
+         */
         sandboxType: pulumi.Input<string>;
     }
 
     export interface NodePoolNodeConfigShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has integrity monitoring enabled.
+         */
         enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        /**
+         * Defines whether the instance has Secure Boot enabled.
+         */
         enableSecureBoot?: pulumi.Input<boolean>;
     }
 
     export interface NodePoolNodeConfigSoleTenantConfig {
+        /**
+         * .
+         */
         nodeAffinities: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigSoleTenantConfigNodeAffinity>[]>;
     }
 
     export interface NodePoolNodeConfigSoleTenantConfigNodeAffinity {
+        /**
+         * .
+         */
         key: pulumi.Input<string>;
+        /**
+         * .
+         */
         operator: pulumi.Input<string>;
+        /**
+         * .
+         */
         values: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface NodePoolNodeConfigTaint {
+        /**
+         * Effect for taint.
+         */
         effect: pulumi.Input<string>;
+        /**
+         * Key for taint.
+         */
         key: pulumi.Input<string>;
+        /**
+         * Value for taint.
+         */
         value: pulumi.Input<string>;
     }
 
     export interface NodePoolNodeConfigWorkloadMetadataConfig {
+        /**
+         * Mode is the configuration for how to expose metadata to workloads running on the node.
+         */
         mode: pulumi.Input<string>;
     }
 
@@ -33257,13 +34599,25 @@ export namespace dataplex {
     }
 
     export interface AssetDiscoveryStatus {
+        /**
+         * The duration of the last discovery run.
+         */
         lastRunDuration?: pulumi.Input<string>;
+        /**
+         * The start time of the last discovery run.
+         */
         lastRunTime?: pulumi.Input<string>;
+        /**
+         * Additional information about the current state.
+         */
         message?: pulumi.Input<string>;
         /**
          * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
          */
         state?: pulumi.Input<string>;
+        /**
+         * Data Stats of the asset reported by discovery.
+         */
         stats?: pulumi.Input<pulumi.Input<inputs.dataplex.AssetDiscoveryStatusStat>[]>;
         /**
          * Output only. The time when the asset was last updated.
@@ -33272,9 +34626,21 @@ export namespace dataplex {
     }
 
     export interface AssetDiscoveryStatusStat {
+        /**
+         * The count of data items within the referenced resource.
+         */
         dataItems?: pulumi.Input<number>;
+        /**
+         * The number of stored data bytes within the referenced resource.
+         */
         dataSize?: pulumi.Input<number>;
+        /**
+         * The count of fileset entities within the referenced resource.
+         */
         filesets?: pulumi.Input<number>;
+        /**
+         * The count of table entities within the referenced resource.
+         */
         tables?: pulumi.Input<number>;
     }
 
@@ -33308,6 +34674,9 @@ export namespace dataplex {
     }
 
     export interface AssetResourceStatus {
+        /**
+         * Additional information about the current state.
+         */
         message?: pulumi.Input<string>;
         /**
          * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -33320,6 +34689,9 @@ export namespace dataplex {
     }
 
     export interface AssetSecurityStatus {
+        /**
+         * Additional information about the current state.
+         */
         message?: pulumi.Input<string>;
         /**
          * Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -33661,7 +35033,13 @@ export namespace dataplex {
     }
 
     export interface LakeAssetStatus {
+        /**
+         * Number of active assets.
+         */
         activeAssets?: pulumi.Input<number>;
+        /**
+         * Number of assets that are in process of updating the security policy on attached resources.
+         */
         securityPolicyApplyingAssets?: pulumi.Input<number>;
         /**
          * Output only. The time when the lake was last updated.
@@ -33689,7 +35067,13 @@ export namespace dataplex {
     }
 
     export interface LakeMetastoreStatus {
+        /**
+         * The URI of the endpoint used to access the Metastore service.
+         */
         endpoint?: pulumi.Input<string>;
+        /**
+         * Additional information about the current status.
+         */
         message?: pulumi.Input<string>;
         /**
          * Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -34007,7 +35391,13 @@ export namespace dataplex {
     }
 
     export interface ZoneAssetStatus {
+        /**
+         * Number of active assets.
+         */
         activeAssets?: pulumi.Input<number>;
+        /**
+         * Number of assets that are in process of updating the security policy on attached resources.
+         */
         securityPolicyApplyingAssets?: pulumi.Input<number>;
         /**
          * Output only. The time when the zone was last updated.
@@ -34232,6 +35622,9 @@ export namespace dataproc {
          * Structure defined below.
          */
         auxiliaryNodeGroups?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroup>[]>;
+        /**
+         * The name of the cloud storage bucket ultimately used to house the staging data for the cluster. If stagingBucket is specified, it will contain this value, otherwise it will be the auto generated name.
+         */
         bucket?: pulumi.Input<string>;
         /**
          * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -34330,6 +35723,9 @@ export namespace dataproc {
     }
 
     export interface ClusterClusterConfigAuxiliaryNodeGroup {
+        /**
+         * A node group ID. Generated if not specified. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+         */
         nodeGroupId?: pulumi.Input<string>;
         /**
          * Node group configuration.
@@ -34366,6 +35762,9 @@ export namespace dataproc {
          * Disk Config
          */
         diskConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig>;
+        /**
+         * List of auxiliary node group instance names which have been assigned to the cluster.
+         */
         instanceNames?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The name of a Google Compute Engine machine type
@@ -34458,6 +35857,9 @@ export namespace dataproc {
          * on the cluster from external sources (aka Component Gateway). Defaults to false.
          */
         enableHttpPortAccess: pulumi.Input<boolean>;
+        /**
+         * The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
+         */
         httpPorts?: pulumi.Input<{[key: string]: any}>;
     }
 
@@ -34599,6 +36001,9 @@ export namespace dataproc {
          * (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
          */
         idleDeleteTtl?: pulumi.Input<string>;
+        /**
+         * Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+         */
         idleStartTime?: pulumi.Input<string>;
     }
 
@@ -34616,6 +36021,9 @@ export namespace dataproc {
          * for more information.
          */
         imageUri?: pulumi.Input<string>;
+        /**
+         * List of master instance names which have been assigned to the cluster.
+         */
         instanceNames?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The name of a Google Compute Engine machine type
@@ -34692,6 +36100,9 @@ export namespace dataproc {
          * Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
          */
         instanceFlexibilityPolicy?: pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy>;
+        /**
+         * List of preemptible instance names which have been assigned to the cluster.
+         */
         instanceNames?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Specifies the number of preemptible nodes to create.
@@ -34734,6 +36145,9 @@ export namespace dataproc {
          * List of instance selection options that the group will use when creating new VMs.
          */
         instanceSelectionLists?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList>[]>;
+        /**
+         * A list of instance selection results in the group.
+         */
         instanceSelectionResults?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult>[]>;
     }
 
@@ -34757,6 +36171,9 @@ export namespace dataproc {
          * computed value (currently `n1-standard-4`).
          */
         machineType?: pulumi.Input<string>;
+        /**
+         * Number of VM provisioned with the machine_type.
+         */
         vmCount?: pulumi.Input<number>;
     }
 
@@ -34891,6 +36308,9 @@ export namespace dataproc {
          * for more information.
          */
         imageUri?: pulumi.Input<string>;
+        /**
+         * List of master/worker instance names which have been assigned to the cluster.
+         */
         instanceNames?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The name of a Google Compute Engine machine type
@@ -35164,6 +36584,9 @@ export namespace dataproc {
          * HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          */
         jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig?: pulumi.Input<inputs.dataproc.JobHadoopConfigLoggingConfig>;
         /**
          * The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jarFileUris`. Conflicts with `mainJarFileUri`
@@ -35182,6 +36605,9 @@ export namespace dataproc {
     }
 
     export interface JobHadoopConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
@@ -35237,6 +36663,9 @@ export namespace dataproc {
          * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig?: pulumi.Input<inputs.dataproc.JobPigConfigLoggingConfig>;
         /**
          * A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site.xml`, `/etc/pig/conf/pig.properties`, and classes in user code.
@@ -35259,11 +36688,20 @@ export namespace dataproc {
     }
 
     export interface JobPigConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface JobPlacement {
+        /**
+         * The name of the cluster where the job will be submitted
+         */
         clusterName: pulumi.Input<string>;
+        /**
+         * Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted
+         */
         clusterUuid?: pulumi.Input<string>;
     }
 
@@ -35276,6 +36714,9 @@ export namespace dataproc {
          * Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
          */
         continueOnFailure?: pulumi.Input<boolean>;
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig?: pulumi.Input<inputs.dataproc.JobPrestoConfigLoggingConfig>;
         /**
          * The format in which query output will be displayed. See the Presto documentation for supported output formats.
@@ -35300,6 +36741,9 @@ export namespace dataproc {
     }
 
     export interface JobPrestoConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
@@ -35320,6 +36764,9 @@ export namespace dataproc {
          * HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
          */
         jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig?: pulumi.Input<inputs.dataproc.JobPysparkConfigLoggingConfig>;
         /**
          * The HCFS URI of the main Python file to use as the driver. Must be a .py file.
@@ -35338,15 +36785,27 @@ export namespace dataproc {
     }
 
     export interface JobPysparkConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface JobReference {
+        /**
+         * The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs
+         */
         jobId?: pulumi.Input<string>;
     }
 
     export interface JobScheduling {
+        /**
+         * Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         */
         maxFailuresPerHour: pulumi.Input<number>;
+        /**
+         * Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+         */
         maxFailuresTotal: pulumi.Input<number>;
     }
 
@@ -35367,6 +36826,9 @@ export namespace dataproc {
          * HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
          */
         jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig?: pulumi.Input<inputs.dataproc.JobSparkConfigLoggingConfig>;
         /**
          * The class containing the main method of the driver. Must be in a
@@ -35387,6 +36849,9 @@ export namespace dataproc {
     }
 
     export interface JobSparkConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
@@ -35397,6 +36862,9 @@ export namespace dataproc {
          * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The runtime logging config of the job
+         */
         loggingConfig?: pulumi.Input<inputs.dataproc.JobSparksqlConfigLoggingConfig>;
         /**
          * A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.
@@ -35419,13 +36887,28 @@ export namespace dataproc {
     }
 
     export interface JobSparksqlConfigLoggingConfig {
+        /**
+         * Optional. The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'.
+         */
         driverLogLevels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface JobStatus {
+        /**
+         * Output-only. Optional job state details, such as an error description if the state is ERROR
+         */
         details?: pulumi.Input<string>;
+        /**
+         * Output-only. A state message specifying the overall job state
+         */
         state?: pulumi.Input<string>;
+        /**
+         * Output-only. The time when this state was entered
+         */
         stateStartTime?: pulumi.Input<string>;
+        /**
+         * Output-only. Additional state information, which includes status reported by the agent
+         */
         substate?: pulumi.Input<string>;
     }
 
@@ -36390,7 +37873,13 @@ export namespace dataproc {
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
+        /**
+         * Output only. The name of the Instance Group Manager for this group.
+         */
         instanceGroupManagerName?: pulumi.Input<string>;
+        /**
+         * Output only. The name of the Instance Template used for the Managed Instance Group.
+         */
         instanceTemplateName?: pulumi.Input<string>;
     }
 
@@ -36471,7 +37960,13 @@ export namespace dataproc {
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig {
+        /**
+         * Output only. The name of the Instance Group Manager for this group.
+         */
         instanceGroupManagerName?: pulumi.Input<string>;
+        /**
+         * Output only. The name of the Instance Template used for the Managed Instance Group.
+         */
         instanceTemplateName?: pulumi.Input<string>;
     }
 
@@ -36645,7 +38140,13 @@ export namespace dataproc {
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig {
+        /**
+         * Output only. The name of the Instance Group Manager for this group.
+         */
         instanceGroupManagerName?: pulumi.Input<string>;
+        /**
+         * Output only. The name of the Instance Template used for the Managed Instance Group.
+         */
         instanceTemplateName?: pulumi.Input<string>;
     }
 }
@@ -39953,24 +41454,72 @@ export namespace dns {
     }
 
     export interface GetManagedZonesManagedZone {
+        /**
+         * A textual description field.
+         */
         description?: string;
+        /**
+         * The fully qualified DNS name of this zone.
+         */
         dnsName?: string;
+        /**
+         * DNS managed zone identifier
+         */
         id?: string;
+        /**
+         * Unique identifier for the resource; defined by the server.
+         */
         managedZoneId?: number;
+        /**
+         * A unique name for the resource.
+         */
         name?: string;
+        /**
+         * The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+         */
         nameServers?: string[];
+        /**
+         * The ID of the project for the Google Cloud.
+         */
         project?: string;
+        /**
+         * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+         */
         visibility?: string;
     }
 
     export interface GetManagedZonesManagedZoneArgs {
+        /**
+         * A textual description field.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * The fully qualified DNS name of this zone.
+         */
         dnsName?: pulumi.Input<string>;
+        /**
+         * DNS managed zone identifier
+         */
         id?: pulumi.Input<string>;
+        /**
+         * Unique identifier for the resource; defined by the server.
+         */
         managedZoneId?: pulumi.Input<number>;
+        /**
+         * A unique name for the resource.
+         */
         name?: pulumi.Input<string>;
+        /**
+         * The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+         */
         nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The ID of the project for the Google Cloud.
+         */
         project?: pulumi.Input<string>;
+        /**
+         * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+         */
         visibility?: pulumi.Input<string>;
     }
 
@@ -41739,6 +43288,9 @@ export namespace firebase {
 
 export namespace firebaserules {
     export interface RulesetMetadata {
+        /**
+         * Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
+         */
         services?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
@@ -41930,6 +43482,9 @@ export namespace folder {
          * or `deny` - (Optional) One or the other must be set.
          */
         allow?: pulumi.Input<inputs.folder.OrganizationPolicyListPolicyAllow>;
+        /**
+         * One or the other must be set.
+         */
         deny?: pulumi.Input<inputs.folder.OrganizationPolicyListPolicyDeny>;
         /**
          * If set to true, the values from the effective Policy of the parent resource
@@ -42722,6 +44277,9 @@ export namespace gkehub {
          * (Optional) Structure is documented below.
          */
         git?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit>;
+        /**
+         * The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+         */
         metricsGcpServiceAccountEmail?: pulumi.Input<string>;
         /**
          * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
@@ -42856,6 +44414,8 @@ export namespace gkehub {
 
     export interface FeatureMembershipMesh {
         /**
+         * **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+         *
          * @deprecated Deprecated in favor of the `management` field
          */
         controlPlane?: pulumi.Input<string>;
@@ -47311,12 +48871,33 @@ export namespace kms {
 
 export namespace logging {
     export interface BillingAccountBucketConfigCmekSettings {
+        /**
+         * The resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+         * To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+         * The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         kmsKeyName: pulumi.Input<string>;
+        /**
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+         * For example:
+         * "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+         */
         kmsKeyVersionName?: pulumi.Input<string>;
         /**
          * The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
          */
         name?: pulumi.Input<string>;
+        /**
+         * The service account associated with a project for which CMEK will apply.
+         * Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         serviceAccountId?: pulumi.Input<string>;
     }
 
@@ -47363,12 +48944,33 @@ export namespace logging {
     }
 
     export interface FolderBucketConfigCmekSettings {
+        /**
+         * The resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+         * To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+         * The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         kmsKeyName: pulumi.Input<string>;
+        /**
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+         * For example:
+         * "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+         */
         kmsKeyVersionName?: pulumi.Input<string>;
         /**
          * The resource name of the bucket. For example: "folders/my-folder-id/locations/my-location/buckets/my-bucket-id"
          */
         name?: pulumi.Input<string>;
+        /**
+         * The service account associated with a project for which CMEK will apply.
+         * Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         serviceAccountId?: pulumi.Input<string>;
     }
 
@@ -47537,12 +49139,33 @@ export namespace logging {
     }
 
     export interface OrganizationBucketConfigCmekSettings {
+        /**
+         * The resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]"
+         * To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
+         * The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         kmsKeyName: pulumi.Input<string>;
+        /**
+         * The CryptoKeyVersion resource name for the configured Cloud KMS key.
+         * KMS key name format:
+         * "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
+         * For example:
+         * "projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"
+         * This is a read-only field used to convey the specific configured CryptoKeyVersion of kmsKey that has been configured. It will be populated in cases where the CMEK settings are bound to a single key version.
+         */
         kmsKeyVersionName?: pulumi.Input<string>;
         /**
          * The resource name of the bucket. For example: "organizations/my-organization-id/locations/my-location/buckets/my-bucket-id"
          */
         name?: pulumi.Input<string>;
+        /**
+         * The service account associated with a project for which CMEK will apply.
+         * Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. Use [v2.getCmekSettings](https://cloud.google.com/logging/docs/reference/v2/rest/v2/TopLevel/getCmekSettings#google.logging.v2.ConfigServiceV2.GetCmekSettings) to obtain the service account ID.
+         * See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
+         */
         serviceAccountId?: pulumi.Input<string>;
     }
 
@@ -49614,6 +51237,9 @@ export namespace netapp {
 
 export namespace networkconnectivity {
     export interface HubRoutingVpc {
+        /**
+         * The URI of the VPC network.
+         */
         uri?: pulumi.Input<string>;
     }
 
@@ -52229,6 +53855,9 @@ export namespace organizations {
          * or `deny` - (Optional) One or the other must be set.
          */
         allow?: pulumi.Input<inputs.organizations.PolicyListPolicyAllow>;
+        /**
+         * One or the other must be set.
+         */
         deny?: pulumi.Input<inputs.organizations.PolicyListPolicyDeny>;
         /**
          * If set to true, the values from the effective Policy of the parent resource
@@ -54486,6 +56115,9 @@ export namespace projects {
          * or `deny` - (Optional) One or the other must be set.
          */
         allow?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicyAllow>;
+        /**
+         * One or the other must be set.
+         */
         deny?: pulumi.Input<inputs.projects.OrganizationPolicyListPolicyDeny>;
         /**
          * If set to true, the values from the effective Policy of the parent resource
@@ -56038,14 +57670,26 @@ export namespace sql {
     }
 
     export interface DatabaseInstanceServerCaCert {
+        /**
+         * The CA Certificate used to connect to the SQL Instance via SSL.
+         */
         cert?: pulumi.Input<string>;
+        /**
+         * The CN valid for the CA Cert.
+         */
         commonName?: pulumi.Input<string>;
+        /**
+         * Creation time of the CA Cert.
+         */
         createTime?: pulumi.Input<string>;
         /**
          * The [RFC 3339](https://tools.ietf.org/html/rfc3339)
          * formatted date time string indicating when this whitelist expires.
          */
         expirationTime?: pulumi.Input<string>;
+        /**
+         * SHA Fingerprint of the CA Cert.
+         */
         sha1Fingerprint?: pulumi.Input<string>;
     }
 
@@ -56075,8 +57719,14 @@ export namespace sql {
          * Specifies if connections must use Cloud SQL connectors.
          */
         connectorEnforcement?: pulumi.Input<string>;
+        /**
+         * Data cache configurations.
+         */
         dataCacheConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsDataCacheConfig>;
         databaseFlags?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsDatabaseFlag>[]>;
+        /**
+         * Configuration to protect against accidental instance deletion.
+         */
         deletionProtectionEnabled?: pulumi.Input<boolean>;
         denyMaintenancePeriod?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsDenyMaintenancePeriod>;
         /**
@@ -56099,9 +57749,15 @@ export namespace sql {
          * The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
          */
         edition?: pulumi.Input<string>;
+        /**
+         * Configuration of Query Insights.
+         */
         insightsConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsInsightsConfig>;
         ipConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfiguration>;
         locationPreference?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsLocationPreference>;
+        /**
+         * Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+         */
         maintenanceWindow?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsMaintenanceWindow>;
         passwordValidationPolicy?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsPasswordValidationPolicy>;
         /**
@@ -56123,6 +57779,9 @@ export namespace sql {
          * A set of key/value user label pairs to assign to the instance.
          */
         userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Used to make sure changes to the settings block are atomic.
+         */
         version?: pulumi.Input<number>;
     }
 
@@ -56268,6 +57927,9 @@ export namespace sql {
          * This setting can be updated, but it cannot be removed after it is set.
          */
         privateNetwork?: pulumi.Input<string>;
+        /**
+         * PSC settings for a Cloud SQL instance.
+         */
         pscConfigs?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationPscConfig>[]>;
         /**
          * Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
@@ -56427,7 +58089,13 @@ export namespace sql {
     }
 
     export interface UserSqlServerUserDetail {
+        /**
+         * If the user has been disabled.
+         */
         disabled?: pulumi.Input<boolean>;
+        /**
+         * The server roles for this user in the database.
+         */
         serverRoles?: pulumi.Input<pulumi.Input<string>[]>;
     }
 }

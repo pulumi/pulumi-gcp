@@ -30,12 +30,18 @@ __all__ = [
 class HubRoutingVpcArgs:
     def __init__(__self__, *,
                  uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] uri: The URI of the VPC network.
+        """
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
 
     @property
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the VPC network.
+        """
         return pulumi.get(self, "uri")
 
     @uri.setter

@@ -11,41 +11,113 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceGroupManagerUpdatePolicy {
+    /**
+     * @return The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+     * 
+     */
     private Integer maxSurgeFixed;
+    /**
+     * @return The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+     * 
+     */
     private Integer maxSurgePercent;
+    /**
+     * @return The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+     * 
+     */
     private Integer maxUnavailableFixed;
+    /**
+     * @return The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+     * 
+     */
     private Integer maxUnavailablePercent;
+    /**
+     * @return Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+     * 
+     */
     private Integer minReadySec;
+    /**
+     * @return Minimal action to be taken on an instance. You can specify either REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+     * 
+     */
     private String minimalAction;
+    /**
+     * @return Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+     * 
+     */
     private String mostDisruptiveAllowedAction;
+    /**
+     * @return The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+     * 
+     */
     private String replacementMethod;
+    /**
+     * @return The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+     * 
+     */
     private String type;
 
     private GetInstanceGroupManagerUpdatePolicy() {}
+    /**
+     * @return The maximum number of instances that can be created above the specified targetSize during the update process. Conflicts with max_surge_percent. If neither is set, defaults to 1
+     * 
+     */
     public Integer maxSurgeFixed() {
         return this.maxSurgeFixed;
     }
+    /**
+     * @return The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with max_surge_fixed.
+     * 
+     */
     public Integer maxSurgePercent() {
         return this.maxSurgePercent;
     }
+    /**
+     * @return The maximum number of instances that can be unavailable during the update process. Conflicts with max_unavailable_percent. If neither is set, defaults to 1.
+     * 
+     */
     public Integer maxUnavailableFixed() {
         return this.maxUnavailableFixed;
     }
+    /**
+     * @return The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with max_unavailable_fixed.
+     * 
+     */
     public Integer maxUnavailablePercent() {
         return this.maxUnavailablePercent;
     }
+    /**
+     * @return Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+     * 
+     */
     public Integer minReadySec() {
         return this.minReadySec;
     }
+    /**
+     * @return Minimal action to be taken on an instance. You can specify either REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+     * 
+     */
     public String minimalAction() {
         return this.minimalAction;
     }
+    /**
+     * @return Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+     * 
+     */
     public String mostDisruptiveAllowedAction() {
         return this.mostDisruptiveAllowedAction;
     }
+    /**
+     * @return The instance replacement method for managed instance groups. Valid values are: &#34;RECREATE&#34;, &#34;SUBSTITUTE&#34;. If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+     * 
+     */
     public String replacementMethod() {
         return this.replacementMethod;
     }
+    /**
+     * @return The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+     * 
+     */
     public String type() {
         return this.type;
     }

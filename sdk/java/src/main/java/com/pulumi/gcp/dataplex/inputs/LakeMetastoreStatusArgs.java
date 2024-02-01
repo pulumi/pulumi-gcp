@@ -15,16 +15,32 @@ public final class LakeMetastoreStatusArgs extends com.pulumi.resources.Resource
 
     public static final LakeMetastoreStatusArgs Empty = new LakeMetastoreStatusArgs();
 
+    /**
+     * The URI of the endpoint used to access the Metastore service.
+     * 
+     */
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
+    /**
+     * @return The URI of the endpoint used to access the Metastore service.
+     * 
+     */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
 
+    /**
+     * Additional information about the current status.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Additional information about the current status.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
@@ -86,20 +102,44 @@ public final class LakeMetastoreStatusArgs extends com.pulumi.resources.Resource
             $ = new LakeMetastoreStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param endpoint The URI of the endpoint used to access the Metastore service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoint(@Nullable Output<String> endpoint) {
             $.endpoint = endpoint;
             return this;
         }
 
+        /**
+         * @param endpoint The URI of the endpoint used to access the Metastore service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
         }
 
+        /**
+         * @param message Additional information about the current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Additional information about the current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }

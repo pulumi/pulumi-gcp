@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         [Input("instanceNames")]
         private InputList<string>? _instanceNames;
+
+        /// <summary>
+        /// List of preemptible instance names which have been assigned to the cluster.
+        /// </summary>
         public InputList<string> InstanceNames
         {
             get => _instanceNames ?? (_instanceNames = new InputList<string>());

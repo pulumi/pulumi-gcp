@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class JobScheduling {
+    /**
+     * @return Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     */
     private Integer maxFailuresPerHour;
+    /**
+     * @return Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     */
     private Integer maxFailuresTotal;
 
     private JobScheduling() {}
+    /**
+     * @return Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     */
     public Integer maxFailuresPerHour() {
         return this.maxFailuresPerHour;
     }
+    /**
+     * @return Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     */
     public Integer maxFailuresTotal() {
         return this.maxFailuresTotal;
     }

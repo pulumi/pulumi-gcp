@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTraffic {
+    /**
+     * @return Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+     * 
+     */
     private Integer percent;
+    /**
+     * @return Revision to which to send this portion of traffic, if traffic allocation is by revision.
+     * 
+     */
     private String revision;
+    /**
+     * @return Indicates a string to be part of the URI to exclusively reference this target.
+     * 
+     */
     private String tag;
+    /**
+     * @return The allocation type for this traffic target. Possible values: [&#34;TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST&#34;, &#34;TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION&#34;]
+     * 
+     */
     private String type;
 
     private GetServiceTraffic() {}
+    /**
+     * @return Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
+     * 
+     */
     public Integer percent() {
         return this.percent;
     }
+    /**
+     * @return Revision to which to send this portion of traffic, if traffic allocation is by revision.
+     * 
+     */
     public String revision() {
         return this.revision;
     }
+    /**
+     * @return Indicates a string to be part of the URI to exclusively reference this target.
+     * 
+     */
     public String tag() {
         return this.tag;
     }
+    /**
+     * @return The allocation type for this traffic target. Possible values: [&#34;TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST&#34;, &#34;TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION&#34;]
+     * 
+     */
     public String type() {
         return this.type;
     }

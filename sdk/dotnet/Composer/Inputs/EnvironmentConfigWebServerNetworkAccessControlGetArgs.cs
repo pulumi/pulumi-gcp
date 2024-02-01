@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Composer.Inputs
     {
         [Input("allowedIpRanges")]
         private InputList<Inputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeGetArgs>? _allowedIpRanges;
+
+        /// <summary>
+        /// A collection of allowed IP ranges with descriptions.
+        /// </summary>
         public InputList<Inputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeGetArgs> AllowedIpRanges
         {
             get => _allowedIpRanges ?? (_allowedIpRanges = new InputList<Inputs.EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeGetArgs>());

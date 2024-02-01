@@ -13,6 +13,11 @@ namespace Pulumi.Gcp.SecretManager.Outputs
     [OutputType]
     public sealed class GetSecretReplicationAutoResult
     {
+        /// <summary>
+        /// The customer-managed encryption configuration of the Secret.
+        /// If no configuration is provided, Google-managed default
+        /// encryption is used.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSecretReplicationAutoCustomerManagedEncryptionResult> CustomerManagedEncryptions;
 
         [OutputConstructor]

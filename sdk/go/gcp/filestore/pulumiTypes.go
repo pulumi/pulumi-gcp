@@ -563,13 +563,19 @@ func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutp
 }
 
 type GetInstanceFileShare struct {
+	// File share capacity in GiB. This must be at least 1024 GiB
+	// for the standard tier, or 2560 GiB for the premium tier.
 	CapacityGb int `pulumi:"capacityGb"`
 	// The name of a Filestore instance.
 	//
 	// ***
-	Name             string                                `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions []GetInstanceFileShareNfsExportOption `pulumi:"nfsExportOptions"`
-	SourceBackup     string                                `pulumi:"sourceBackup"`
+	// The resource name of the backup, in the format
+	// projects/{projectId}/locations/{locationId}/backups/{backupId},
+	// that this file share has been restored from.
+	SourceBackup string `pulumi:"sourceBackup"`
 }
 
 // GetInstanceFileShareInput is an input type that accepts GetInstanceFileShareArgs and GetInstanceFileShareOutput values.
@@ -584,13 +590,19 @@ type GetInstanceFileShareInput interface {
 }
 
 type GetInstanceFileShareArgs struct {
+	// File share capacity in GiB. This must be at least 1024 GiB
+	// for the standard tier, or 2560 GiB for the premium tier.
 	CapacityGb pulumi.IntInput `pulumi:"capacityGb"`
 	// The name of a Filestore instance.
 	//
 	// ***
-	Name             pulumi.StringInput                            `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// Nfs Export Options. There is a limit of 10 export options per file share.
 	NfsExportOptions GetInstanceFileShareNfsExportOptionArrayInput `pulumi:"nfsExportOptions"`
-	SourceBackup     pulumi.StringInput                            `pulumi:"sourceBackup"`
+	// The resource name of the backup, in the format
+	// projects/{projectId}/locations/{locationId}/backups/{backupId},
+	// that this file share has been restored from.
+	SourceBackup pulumi.StringInput `pulumi:"sourceBackup"`
 }
 
 func (GetInstanceFileShareArgs) ElementType() reflect.Type {
@@ -644,6 +656,8 @@ func (o GetInstanceFileShareOutput) ToGetInstanceFileShareOutputWithContext(ctx 
 	return o
 }
 
+// File share capacity in GiB. This must be at least 1024 GiB
+// for the standard tier, or 2560 GiB for the premium tier.
 func (o GetInstanceFileShareOutput) CapacityGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceFileShare) int { return v.CapacityGb }).(pulumi.IntOutput)
 }
@@ -655,10 +669,14 @@ func (o GetInstanceFileShareOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceFileShare) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Nfs Export Options. There is a limit of 10 export options per file share.
 func (o GetInstanceFileShareOutput) NfsExportOptions() GetInstanceFileShareNfsExportOptionArrayOutput {
 	return o.ApplyT(func(v GetInstanceFileShare) []GetInstanceFileShareNfsExportOption { return v.NfsExportOptions }).(GetInstanceFileShareNfsExportOptionArrayOutput)
 }
 
+// The resource name of the backup, in the format
+// projects/{projectId}/locations/{locationId}/backups/{backupId},
+// that this file share has been restored from.
 func (o GetInstanceFileShareOutput) SourceBackup() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceFileShare) string { return v.SourceBackup }).(pulumi.StringOutput)
 }
@@ -684,11 +702,24 @@ func (o GetInstanceFileShareArrayOutput) Index(i pulumi.IntInput) GetInstanceFil
 }
 
 type GetInstanceFileShareNfsExportOption struct {
-	AccessMode string   `pulumi:"accessMode"`
-	AnonGid    int      `pulumi:"anonGid"`
-	AnonUid    int      `pulumi:"anonUid"`
-	IpRanges   []string `pulumi:"ipRanges"`
-	SquashMode string   `pulumi:"squashMode"`
+	// Either READ_ONLY, for allowing only read requests on the exported directory,
+	// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE. Default value: "READ_WRITE" Possible values: ["READ_ONLY", "READ_WRITE"]
+	AccessMode string `pulumi:"accessMode"`
+	// An integer representing the anonymous group id with a default value of 65534.
+	// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+	// if this field is specified for other squashMode settings.
+	AnonGid int `pulumi:"anonGid"`
+	// An integer representing the anonymous user id with a default value of 65534.
+	// Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+	// if this field is specified for other squashMode settings.
+	AnonUid int `pulumi:"anonUid"`
+	// List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+	// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+	// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+	IpRanges []string `pulumi:"ipRanges"`
+	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+	// for not allowing root access. The default is NO_ROOT_SQUASH. Default value: "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
+	SquashMode string `pulumi:"squashMode"`
 }
 
 // GetInstanceFileShareNfsExportOptionInput is an input type that accepts GetInstanceFileShareNfsExportOptionArgs and GetInstanceFileShareNfsExportOptionOutput values.
@@ -703,11 +734,24 @@ type GetInstanceFileShareNfsExportOptionInput interface {
 }
 
 type GetInstanceFileShareNfsExportOptionArgs struct {
-	AccessMode pulumi.StringInput      `pulumi:"accessMode"`
-	AnonGid    pulumi.IntInput         `pulumi:"anonGid"`
-	AnonUid    pulumi.IntInput         `pulumi:"anonUid"`
-	IpRanges   pulumi.StringArrayInput `pulumi:"ipRanges"`
-	SquashMode pulumi.StringInput      `pulumi:"squashMode"`
+	// Either READ_ONLY, for allowing only read requests on the exported directory,
+	// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE. Default value: "READ_WRITE" Possible values: ["READ_ONLY", "READ_WRITE"]
+	AccessMode pulumi.StringInput `pulumi:"accessMode"`
+	// An integer representing the anonymous group id with a default value of 65534.
+	// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+	// if this field is specified for other squashMode settings.
+	AnonGid pulumi.IntInput `pulumi:"anonGid"`
+	// An integer representing the anonymous user id with a default value of 65534.
+	// Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+	// if this field is specified for other squashMode settings.
+	AnonUid pulumi.IntInput `pulumi:"anonUid"`
+	// List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+	// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+	// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
+	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+	// for not allowing root access. The default is NO_ROOT_SQUASH. Default value: "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
+	SquashMode pulumi.StringInput `pulumi:"squashMode"`
 }
 
 func (GetInstanceFileShareNfsExportOptionArgs) ElementType() reflect.Type {
@@ -761,22 +805,35 @@ func (o GetInstanceFileShareNfsExportOptionOutput) ToGetInstanceFileShareNfsExpo
 	return o
 }
 
+// Either READ_ONLY, for allowing only read requests on the exported directory,
+// or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE. Default value: "READ_WRITE" Possible values: ["READ_ONLY", "READ_WRITE"]
 func (o GetInstanceFileShareNfsExportOptionOutput) AccessMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) string { return v.AccessMode }).(pulumi.StringOutput)
 }
 
+// An integer representing the anonymous group id with a default value of 65534.
+// Anon_gid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+// if this field is specified for other squashMode settings.
 func (o GetInstanceFileShareNfsExportOptionOutput) AnonGid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) int { return v.AnonGid }).(pulumi.IntOutput)
 }
 
+// An integer representing the anonymous user id with a default value of 65534.
+// Anon_uid may only be set with squashMode of ROOT_SQUASH. An error will be returned
+// if this field is specified for other squashMode settings.
 func (o GetInstanceFileShareNfsExportOptionOutput) AnonUid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) int { return v.AnonUid }).(pulumi.IntOutput)
 }
 
+// List of either IPv4 addresses, or ranges in CIDR notation which may mount the file share.
+// Overlapping IP ranges are not allowed, both within and across NfsExportOptions. An error will be returned.
+// The limit is 64 IP ranges/addresses for each FileShareConfig among all NfsExportOptions.
 func (o GetInstanceFileShareNfsExportOptionOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
 
+// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH,
+// for not allowing root access. The default is NO_ROOT_SQUASH. Default value: "NO_ROOT_SQUASH" Possible values: ["NO_ROOT_SQUASH", "ROOT_SQUASH"]
 func (o GetInstanceFileShareNfsExportOptionOutput) SquashMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) string { return v.SquashMode }).(pulumi.StringOutput)
 }
@@ -802,11 +859,21 @@ func (o GetInstanceFileShareNfsExportOptionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstanceNetwork struct {
-	ConnectMode     string   `pulumi:"connectMode"`
-	IpAddresses     []string `pulumi:"ipAddresses"`
-	Modes           []string `pulumi:"modes"`
-	Network         string   `pulumi:"network"`
-	ReservedIpRange string   `pulumi:"reservedIpRange"`
+	// The network connect mode of the Filestore instance.
+	// If not provided, the connect mode defaults to
+	// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
+	ConnectMode string `pulumi:"connectMode"`
+	// A list of IPv4 or IPv6 addresses.
+	IpAddresses []string `pulumi:"ipAddresses"`
+	// IP versions for which the instance has
+	// IP addresses assigned. Possible values: ["ADDRESS_MODE_UNSPECIFIED", "MODE_IPV4", "MODE_IPV6"]
+	Modes []string `pulumi:"modes"`
+	// The name of the GCE VPC network to which the
+	// instance is connected.
+	Network string `pulumi:"network"`
+	// A /29 CIDR block that identifies the range of IP
+	// addresses reserved for this instance.
+	ReservedIpRange string `pulumi:"reservedIpRange"`
 }
 
 // GetInstanceNetworkInput is an input type that accepts GetInstanceNetworkArgs and GetInstanceNetworkOutput values.
@@ -821,11 +888,21 @@ type GetInstanceNetworkInput interface {
 }
 
 type GetInstanceNetworkArgs struct {
-	ConnectMode     pulumi.StringInput      `pulumi:"connectMode"`
-	IpAddresses     pulumi.StringArrayInput `pulumi:"ipAddresses"`
-	Modes           pulumi.StringArrayInput `pulumi:"modes"`
-	Network         pulumi.StringInput      `pulumi:"network"`
-	ReservedIpRange pulumi.StringInput      `pulumi:"reservedIpRange"`
+	// The network connect mode of the Filestore instance.
+	// If not provided, the connect mode defaults to
+	// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
+	ConnectMode pulumi.StringInput `pulumi:"connectMode"`
+	// A list of IPv4 or IPv6 addresses.
+	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	// IP versions for which the instance has
+	// IP addresses assigned. Possible values: ["ADDRESS_MODE_UNSPECIFIED", "MODE_IPV4", "MODE_IPV6"]
+	Modes pulumi.StringArrayInput `pulumi:"modes"`
+	// The name of the GCE VPC network to which the
+	// instance is connected.
+	Network pulumi.StringInput `pulumi:"network"`
+	// A /29 CIDR block that identifies the range of IP
+	// addresses reserved for this instance.
+	ReservedIpRange pulumi.StringInput `pulumi:"reservedIpRange"`
 }
 
 func (GetInstanceNetworkArgs) ElementType() reflect.Type {
@@ -879,22 +956,32 @@ func (o GetInstanceNetworkOutput) ToGetInstanceNetworkOutputWithContext(ctx cont
 	return o
 }
 
+// The network connect mode of the Filestore instance.
+// If not provided, the connect mode defaults to
+// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
 func (o GetInstanceNetworkOutput) ConnectMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.ConnectMode }).(pulumi.StringOutput)
 }
 
+// A list of IPv4 or IPv6 addresses.
 func (o GetInstanceNetworkOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
 
+// IP versions for which the instance has
+// IP addresses assigned. Possible values: ["ADDRESS_MODE_UNSPECIFIED", "MODE_IPV4", "MODE_IPV6"]
 func (o GetInstanceNetworkOutput) Modes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) []string { return v.Modes }).(pulumi.StringArrayOutput)
 }
 
+// The name of the GCE VPC network to which the
+// instance is connected.
 func (o GetInstanceNetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.Network }).(pulumi.StringOutput)
 }
 
+// A /29 CIDR block that identifies the range of IP
+// addresses reserved for this instance.
 func (o GetInstanceNetworkOutput) ReservedIpRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.ReservedIpRange }).(pulumi.StringOutput)
 }

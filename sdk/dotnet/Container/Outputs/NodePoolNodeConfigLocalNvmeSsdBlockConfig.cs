@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfigLocalNvmeSsdBlockConfig
     {
+        /// <summary>
+        /// Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
+        /// </summary>
         public readonly int LocalSsdCount;
 
         [OutputConstructor]

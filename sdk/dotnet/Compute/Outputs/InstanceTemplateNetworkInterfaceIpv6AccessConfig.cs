@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceTemplateNetworkInterfaceIpv6AccessConfig
     {
+        /// <summary>
+        /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        /// </summary>
         public readonly string? ExternalIpv6;
+        /// <summary>
+        /// The prefix length of the external IPv6 range.
+        /// </summary>
         public readonly string? ExternalIpv6PrefixLength;
         /// <summary>
         /// The name of the instance template. If you leave
@@ -25,6 +31,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         /// </summary>
         public readonly string NetworkTier;
+        /// <summary>
+        /// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        /// </summary>
         public readonly string? PublicPtrDomainName;
 
         [OutputConstructor]

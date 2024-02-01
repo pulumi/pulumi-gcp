@@ -11,21 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicyGroupPlacementPolicy {
+    /**
+     * @return The number of availability domains instances will be spread across. If two instances are in different
+     * availability domain, they will not be put in the same low latency network
+     * 
+     */
     private Integer availabilityDomainCount;
+    /**
+     * @return Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+     * Specify &#39;COLLOCATED&#39; to enable collocation. Can only be specified with &#39;vm_count&#39;. If compute instances are created
+     * with a COLLOCATED policy, then exactly &#39;vm_count&#39; instances must be created at the same time with the resource policy
+     * attached. Possible values: [&#34;COLLOCATED&#34;]
+     * 
+     */
     private String collocation;
+    /**
+     * @return Specifies the number of max logical switches.
+     * 
+     */
     private Integer maxDistance;
+    /**
+     * @return Number of VMs in this placement group. Google does not recommend that you use this field
+     * unless you use a compact policy and you want your policy to work only if it contains this
+     * exact number of VMs.
+     * 
+     */
     private Integer vmCount;
 
     private GetResourcePolicyGroupPlacementPolicy() {}
+    /**
+     * @return The number of availability domains instances will be spread across. If two instances are in different
+     * availability domain, they will not be put in the same low latency network
+     * 
+     */
     public Integer availabilityDomainCount() {
         return this.availabilityDomainCount;
     }
+    /**
+     * @return Collocation specifies whether to place VMs inside the same availability domain on the same low-latency network.
+     * Specify &#39;COLLOCATED&#39; to enable collocation. Can only be specified with &#39;vm_count&#39;. If compute instances are created
+     * with a COLLOCATED policy, then exactly &#39;vm_count&#39; instances must be created at the same time with the resource policy
+     * attached. Possible values: [&#34;COLLOCATED&#34;]
+     * 
+     */
     public String collocation() {
         return this.collocation;
     }
+    /**
+     * @return Specifies the number of max logical switches.
+     * 
+     */
     public Integer maxDistance() {
         return this.maxDistance;
     }
+    /**
+     * @return Number of VMs in this placement group. Google does not recommend that you use this field
+     * unless you use a compact policy and you want your policy to work only if it contains this
+     * exact number of VMs.
+     * 
+     */
     public Integer vmCount() {
         return this.vmCount;
     }

@@ -583,6 +583,11 @@ class ConnectionInstallationState(dict):
                  action_uri: Optional[str] = None,
                  message: Optional[str] = None,
                  stage: Optional[str] = None):
+        """
+        :param str action_uri: Output only. Link to follow for next action. Empty string if the installation is already complete.
+        :param str message: Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+        :param str stage: Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+        """
         if action_uri is not None:
             pulumi.set(__self__, "action_uri", action_uri)
         if message is not None:
@@ -593,16 +598,25 @@ class ConnectionInstallationState(dict):
     @property
     @pulumi.getter(name="actionUri")
     def action_uri(self) -> Optional[str]:
+        """
+        Output only. Link to follow for next action. Empty string if the installation is already complete.
+        """
         return pulumi.get(self, "action_uri")
 
     @property
     @pulumi.getter
     def message(self) -> Optional[str]:
+        """
+        Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def stage(self) -> Optional[str]:
+        """
+        Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+        """
         return pulumi.get(self, "stage")
 
 

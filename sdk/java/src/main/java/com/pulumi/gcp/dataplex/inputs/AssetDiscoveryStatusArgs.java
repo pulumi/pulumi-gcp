@@ -17,23 +17,47 @@ public final class AssetDiscoveryStatusArgs extends com.pulumi.resources.Resourc
 
     public static final AssetDiscoveryStatusArgs Empty = new AssetDiscoveryStatusArgs();
 
+    /**
+     * The duration of the last discovery run.
+     * 
+     */
     @Import(name="lastRunDuration")
     private @Nullable Output<String> lastRunDuration;
 
+    /**
+     * @return The duration of the last discovery run.
+     * 
+     */
     public Optional<Output<String>> lastRunDuration() {
         return Optional.ofNullable(this.lastRunDuration);
     }
 
+    /**
+     * The start time of the last discovery run.
+     * 
+     */
     @Import(name="lastRunTime")
     private @Nullable Output<String> lastRunTime;
 
+    /**
+     * @return The start time of the last discovery run.
+     * 
+     */
     public Optional<Output<String>> lastRunTime() {
         return Optional.ofNullable(this.lastRunTime);
     }
 
+    /**
+     * Additional information about the current state.
+     * 
+     */
     @Import(name="message")
     private @Nullable Output<String> message;
 
+    /**
+     * @return Additional information about the current state.
+     * 
+     */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
@@ -53,9 +77,17 @@ public final class AssetDiscoveryStatusArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * Data Stats of the asset reported by discovery.
+     * 
+     */
     @Import(name="stats")
     private @Nullable Output<List<AssetDiscoveryStatusStatArgs>> stats;
 
+    /**
+     * @return Data Stats of the asset reported by discovery.
+     * 
+     */
     public Optional<Output<List<AssetDiscoveryStatusStatArgs>>> stats() {
         return Optional.ofNullable(this.stats);
     }
@@ -104,29 +136,65 @@ public final class AssetDiscoveryStatusArgs extends com.pulumi.resources.Resourc
             $ = new AssetDiscoveryStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param lastRunDuration The duration of the last discovery run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastRunDuration(@Nullable Output<String> lastRunDuration) {
             $.lastRunDuration = lastRunDuration;
             return this;
         }
 
+        /**
+         * @param lastRunDuration The duration of the last discovery run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastRunDuration(String lastRunDuration) {
             return lastRunDuration(Output.of(lastRunDuration));
         }
 
+        /**
+         * @param lastRunTime The start time of the last discovery run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastRunTime(@Nullable Output<String> lastRunTime) {
             $.lastRunTime = lastRunTime;
             return this;
         }
 
+        /**
+         * @param lastRunTime The start time of the last discovery run.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lastRunTime(String lastRunTime) {
             return lastRunTime(Output.of(lastRunTime));
         }
 
+        /**
+         * @param message Additional information about the current state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
+        /**
+         * @param message Additional information about the current state.
+         * 
+         * @return builder
+         * 
+         */
         public Builder message(String message) {
             return message(Output.of(message));
         }
@@ -152,15 +220,33 @@ public final class AssetDiscoveryStatusArgs extends com.pulumi.resources.Resourc
             return state(Output.of(state));
         }
 
+        /**
+         * @param stats Data Stats of the asset reported by discovery.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stats(@Nullable Output<List<AssetDiscoveryStatusStatArgs>> stats) {
             $.stats = stats;
             return this;
         }
 
+        /**
+         * @param stats Data Stats of the asset reported by discovery.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stats(List<AssetDiscoveryStatusStatArgs> stats) {
             return stats(Output.of(stats));
         }
 
+        /**
+         * @param stats Data Stats of the asset reported by discovery.
+         * 
+         * @return builder
+         * 
+         */
         public Builder stats(AssetDiscoveryStatusStatArgs... stats) {
             return stats(List.of(stats));
         }

@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvValueFrom {
+    /**
+     * @return Selects a key (version) of a secret in Secret Manager.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef> secretKeyReves;
 
     private GetServiceTemplateSpecContainerEnvValueFrom() {}
+    /**
+     * @return Selects a key (version) of a secret in Secret Manager.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef> secretKeyReves() {
         return this.secretKeyReves;
     }

@@ -13,20 +13,65 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerResult
     {
+        /// <summary>
+        /// Arguments to the entrypoint.
+        /// The docker image's CMD is used if this is not provided.
+        /// </summary>
         public readonly ImmutableArray<string> Args;
+        /// <summary>
+        /// Entrypoint array. Not executed within a shell.
+        /// The docker image's ENTRYPOINT is used if this is not provided.
+        /// </summary>
         public readonly ImmutableArray<string> Commands;
+        /// <summary>
+        /// List of sources to populate environment variables in the container.
+        /// All invalid keys will be reported as an event when the container is starting.
+        /// When a key exists in multiple sources, the value associated with the last source will
+        /// take precedence. Values defined by an Env with a duplicate key will take
+        /// precedence.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvFromResult> EnvFroms;
+        /// <summary>
+        /// List of environment variables to set in the container.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvResult> Envs;
+        /// <summary>
+        /// Docker image name. This is most often a reference to a container located
+        /// in the container registry, such as gcr.io/cloudrun/hello
+        /// </summary>
         public readonly string Image;
+        /// <summary>
+        /// Periodic probe of container liveness. Container will be restarted if the probe fails.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerLivenessProbeResult> LivenessProbes;
         /// <summary>
         /// The name of the Cloud Run Service.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// List of open ports in the container.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerPortResult> Ports;
+        /// <summary>
+        /// Compute Resources required by this container. Used to set values such as max memory
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerResourceResult> Resources;
+        /// <summary>
+        /// Startup probe of application within the container.
+        /// All other probes are disabled if a startup probe is provided, until it
+        /// succeeds. Container will not be added to service endpoints if the probe fails.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerStartupProbeResult> StartupProbes;
+        /// <summary>
+        /// Volume to mount into the container's filesystem.
+        /// Only supports SecretVolumeSources.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerVolumeMountResult> VolumeMounts;
+        /// <summary>
+        /// Container's working directory.
+        /// If not specified, the container runtime's default will be used, which
+        /// might be configured in the container image.
+        /// </summary>
         public readonly string WorkingDir;
 
         [OutputConstructor]

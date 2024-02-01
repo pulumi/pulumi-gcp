@@ -1770,7 +1770,8 @@ func (o OrganizationPolicyBooleanPolicyPtrOutput) Enforced() pulumi.BoolPtrOutpu
 type OrganizationPolicyListPolicy struct {
 	// or `deny` - (Optional) One or the other must be set.
 	Allow *OrganizationPolicyListPolicyAllow `pulumi:"allow"`
-	Deny  *OrganizationPolicyListPolicyDeny  `pulumi:"deny"`
+	// One or the other must be set.
+	Deny *OrganizationPolicyListPolicyDeny `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 	//
@@ -1794,7 +1795,8 @@ type OrganizationPolicyListPolicyInput interface {
 type OrganizationPolicyListPolicyArgs struct {
 	// or `deny` - (Optional) One or the other must be set.
 	Allow OrganizationPolicyListPolicyAllowPtrInput `pulumi:"allow"`
-	Deny  OrganizationPolicyListPolicyDenyPtrInput  `pulumi:"deny"`
+	// One or the other must be set.
+	Deny OrganizationPolicyListPolicyDenyPtrInput `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 	//
@@ -1886,6 +1888,7 @@ func (o OrganizationPolicyListPolicyOutput) Allow() OrganizationPolicyListPolicy
 	return o.ApplyT(func(v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyAllow { return v.Allow }).(OrganizationPolicyListPolicyAllowPtrOutput)
 }
 
+// One or the other must be set.
 func (o OrganizationPolicyListPolicyOutput) Deny() OrganizationPolicyListPolicyDenyPtrOutput {
 	return o.ApplyT(func(v OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyDeny { return v.Deny }).(OrganizationPolicyListPolicyDenyPtrOutput)
 }
@@ -1937,6 +1940,7 @@ func (o OrganizationPolicyListPolicyPtrOutput) Allow() OrganizationPolicyListPol
 	}).(OrganizationPolicyListPolicyAllowPtrOutput)
 }
 
+// One or the other must be set.
 func (o OrganizationPolicyListPolicyPtrOutput) Deny() OrganizationPolicyListPolicyDenyPtrOutput {
 	return o.ApplyT(func(v *OrganizationPolicyListPolicy) *OrganizationPolicyListPolicyDeny {
 		if v == nil {
@@ -2419,6 +2423,7 @@ func (o OrganizationPolicyRestorePolicyPtrOutput) Default() pulumi.BoolPtrOutput
 }
 
 type GetOrganizationPolicyBooleanPolicy struct {
+	// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 	Enforced bool `pulumi:"enforced"`
 }
 
@@ -2434,6 +2439,7 @@ type GetOrganizationPolicyBooleanPolicyInput interface {
 }
 
 type GetOrganizationPolicyBooleanPolicyArgs struct {
+	// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 	Enforced pulumi.BoolInput `pulumi:"enforced"`
 }
 
@@ -2488,6 +2494,7 @@ func (o GetOrganizationPolicyBooleanPolicyOutput) ToGetOrganizationPolicyBoolean
 	return o
 }
 
+// If true, then the Policy is enforced. If false, then any configuration is acceptable.
 func (o GetOrganizationPolicyBooleanPolicyOutput) Enforced() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyBooleanPolicy) bool { return v.Enforced }).(pulumi.BoolOutput)
 }
@@ -2513,10 +2520,14 @@ func (o GetOrganizationPolicyBooleanPolicyArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetOrganizationPolicyListPolicy struct {
-	Allows            []GetOrganizationPolicyListPolicyAllow `pulumi:"allows"`
-	Denies            []GetOrganizationPolicyListPolicyDeny  `pulumi:"denies"`
-	InheritFromParent bool                                   `pulumi:"inheritFromParent"`
-	SuggestedValue    string                                 `pulumi:"suggestedValue"`
+	// One or the other must be set.
+	Allows []GetOrganizationPolicyListPolicyAllow `pulumi:"allows"`
+	// One or the other must be set.
+	Denies []GetOrganizationPolicyListPolicyDeny `pulumi:"denies"`
+	// If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+	InheritFromParent bool `pulumi:"inheritFromParent"`
+	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+	SuggestedValue string `pulumi:"suggestedValue"`
 }
 
 // GetOrganizationPolicyListPolicyInput is an input type that accepts GetOrganizationPolicyListPolicyArgs and GetOrganizationPolicyListPolicyOutput values.
@@ -2531,10 +2542,14 @@ type GetOrganizationPolicyListPolicyInput interface {
 }
 
 type GetOrganizationPolicyListPolicyArgs struct {
-	Allows            GetOrganizationPolicyListPolicyAllowArrayInput `pulumi:"allows"`
-	Denies            GetOrganizationPolicyListPolicyDenyArrayInput  `pulumi:"denies"`
-	InheritFromParent pulumi.BoolInput                               `pulumi:"inheritFromParent"`
-	SuggestedValue    pulumi.StringInput                             `pulumi:"suggestedValue"`
+	// One or the other must be set.
+	Allows GetOrganizationPolicyListPolicyAllowArrayInput `pulumi:"allows"`
+	// One or the other must be set.
+	Denies GetOrganizationPolicyListPolicyDenyArrayInput `pulumi:"denies"`
+	// If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+	InheritFromParent pulumi.BoolInput `pulumi:"inheritFromParent"`
+	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
+	SuggestedValue pulumi.StringInput `pulumi:"suggestedValue"`
 }
 
 func (GetOrganizationPolicyListPolicyArgs) ElementType() reflect.Type {
@@ -2588,18 +2603,22 @@ func (o GetOrganizationPolicyListPolicyOutput) ToGetOrganizationPolicyListPolicy
 	return o
 }
 
+// One or the other must be set.
 func (o GetOrganizationPolicyListPolicyOutput) Allows() GetOrganizationPolicyListPolicyAllowArrayOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyListPolicy) []GetOrganizationPolicyListPolicyAllow { return v.Allows }).(GetOrganizationPolicyListPolicyAllowArrayOutput)
 }
 
+// One or the other must be set.
 func (o GetOrganizationPolicyListPolicyOutput) Denies() GetOrganizationPolicyListPolicyDenyArrayOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyListPolicy) []GetOrganizationPolicyListPolicyDeny { return v.Denies }).(GetOrganizationPolicyListPolicyDenyArrayOutput)
 }
 
+// If set to true, the values from the effective Policy of the parent resource are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
 func (o GetOrganizationPolicyListPolicyOutput) InheritFromParent() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyListPolicy) bool { return v.InheritFromParent }).(pulumi.BoolOutput)
 }
 
+// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 func (o GetOrganizationPolicyListPolicyOutput) SuggestedValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyListPolicy) string { return v.SuggestedValue }).(pulumi.StringOutput)
 }
@@ -2625,7 +2644,9 @@ func (o GetOrganizationPolicyListPolicyArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetOrganizationPolicyListPolicyAllow struct {
-	All    bool     `pulumi:"all"`
+	// The policy allows or denies all values.
+	All bool `pulumi:"all"`
+	// The policy can define specific values that are allowed or denied.
 	Values []string `pulumi:"values"`
 }
 
@@ -2641,7 +2662,9 @@ type GetOrganizationPolicyListPolicyAllowInput interface {
 }
 
 type GetOrganizationPolicyListPolicyAllowArgs struct {
-	All    pulumi.BoolInput        `pulumi:"all"`
+	// The policy allows or denies all values.
+	All pulumi.BoolInput `pulumi:"all"`
+	// The policy can define specific values that are allowed or denied.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -2696,10 +2719,12 @@ func (o GetOrganizationPolicyListPolicyAllowOutput) ToGetOrganizationPolicyListP
 	return o
 }
 
+// The policy allows or denies all values.
 func (o GetOrganizationPolicyListPolicyAllowOutput) All() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyListPolicyAllow) bool { return v.All }).(pulumi.BoolOutput)
 }
 
+// The policy can define specific values that are allowed or denied.
 func (o GetOrganizationPolicyListPolicyAllowOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyListPolicyAllow) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -2725,7 +2750,9 @@ func (o GetOrganizationPolicyListPolicyAllowArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetOrganizationPolicyListPolicyDeny struct {
-	All    bool     `pulumi:"all"`
+	// The policy allows or denies all values.
+	All bool `pulumi:"all"`
+	// The policy can define specific values that are allowed or denied.
 	Values []string `pulumi:"values"`
 }
 
@@ -2741,7 +2768,9 @@ type GetOrganizationPolicyListPolicyDenyInput interface {
 }
 
 type GetOrganizationPolicyListPolicyDenyArgs struct {
-	All    pulumi.BoolInput        `pulumi:"all"`
+	// The policy allows or denies all values.
+	All pulumi.BoolInput `pulumi:"all"`
+	// The policy can define specific values that are allowed or denied.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -2796,10 +2825,12 @@ func (o GetOrganizationPolicyListPolicyDenyOutput) ToGetOrganizationPolicyListPo
 	return o
 }
 
+// The policy allows or denies all values.
 func (o GetOrganizationPolicyListPolicyDenyOutput) All() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyListPolicyDeny) bool { return v.All }).(pulumi.BoolOutput)
 }
 
+// The policy can define specific values that are allowed or denied.
 func (o GetOrganizationPolicyListPolicyDenyOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyListPolicyDeny) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -2825,6 +2856,7 @@ func (o GetOrganizationPolicyListPolicyDenyArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetOrganizationPolicyRestorePolicy struct {
+	// May only be set to true. If set, then the default Policy is restored.
 	Default bool `pulumi:"default"`
 }
 
@@ -2840,6 +2872,7 @@ type GetOrganizationPolicyRestorePolicyInput interface {
 }
 
 type GetOrganizationPolicyRestorePolicyArgs struct {
+	// May only be set to true. If set, then the default Policy is restored.
 	Default pulumi.BoolInput `pulumi:"default"`
 }
 
@@ -2894,6 +2927,7 @@ func (o GetOrganizationPolicyRestorePolicyOutput) ToGetOrganizationPolicyRestore
 	return o
 }
 
+// May only be set to true. If set, then the default Policy is restored.
 func (o GetOrganizationPolicyRestorePolicyOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetOrganizationPolicyRestorePolicy) bool { return v.Default }).(pulumi.BoolOutput)
 }

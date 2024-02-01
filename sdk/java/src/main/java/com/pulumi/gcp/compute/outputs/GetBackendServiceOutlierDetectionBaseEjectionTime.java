@@ -10,13 +10,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceOutlierDetectionBaseEjectionTime {
+    /**
+     * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
+     * less than one second are represented with a 0 &#39;seconds&#39; field and a positive
+     * &#39;nanos&#39; field. Must be from 0 to 999,999,999 inclusive.
+     * 
+     */
     private Integer nanos;
+    /**
+     * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+     * inclusive.
+     * 
+     */
     private Integer seconds;
 
     private GetBackendServiceOutlierDetectionBaseEjectionTime() {}
+    /**
+     * @return Span of time that&#39;s a fraction of a second at nanosecond resolution. Durations
+     * less than one second are represented with a 0 &#39;seconds&#39; field and a positive
+     * &#39;nanos&#39; field. Must be from 0 to 999,999,999 inclusive.
+     * 
+     */
     public Integer nanos() {
         return this.nanos;
     }
+    /**
+     * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000
+     * inclusive.
+     * 
+     */
     public Integer seconds() {
         return this.seconds;
     }

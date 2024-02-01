@@ -18,8 +18,17 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// under `/dev/disk/by-id/`
         /// </summary>
         public readonly string DeviceName;
+        /// <summary>
+        /// A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        /// </summary>
         public readonly string DiskEncryptionKeyRaw;
+        /// <summary>
+        /// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
+        /// </summary>
         public readonly string DiskEncryptionKeySha256;
+        /// <summary>
+        /// The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
+        /// </summary>
         public readonly string KmsKeySelfLink;
         /// <summary>
         /// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.

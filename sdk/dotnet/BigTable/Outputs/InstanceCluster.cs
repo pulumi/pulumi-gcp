@@ -39,6 +39,9 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         /// </summary>
         public readonly int? NumNodes;
+        /// <summary>
+        /// The state of the cluster
+        /// </summary>
         public readonly string? State;
         /// <summary>
         /// The storage type to use. One of `"SSD"` or

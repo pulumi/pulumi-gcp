@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworkPolicyExternalIp {
+    /**
+     * @return True if the service is enabled; false otherwise.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return State of the service. New values may be added to this enum when appropriate.
+     * 
+     */
     private String state;
 
     private GetNetworkPolicyExternalIp() {}
+    /**
+     * @return True if the service is enabled; false otherwise.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return State of the service. New values may be added to this enum when appropriate.
+     * 
+     */
     public String state() {
         return this.state;
     }

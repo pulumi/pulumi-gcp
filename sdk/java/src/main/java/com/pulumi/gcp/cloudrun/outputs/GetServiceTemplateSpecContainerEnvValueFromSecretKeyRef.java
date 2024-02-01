@@ -10,6 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
+    /**
+     * @return A Cloud Secret Manager secret version. Must be &#39;latest&#39; for the latest
+     * version or an integer for a specific version.
+     * 
+     */
     private String key;
     /**
      * @return The name of the Cloud Run Service.
@@ -18,6 +23,11 @@ public final class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef {
     private String name;
 
     private GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef() {}
+    /**
+     * @return A Cloud Secret Manager secret version. Must be &#39;latest&#39; for the latest
+     * version or an integer for a specific version.
+     * 
+     */
     public String key() {
         return this.key;
     }

@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionBuildConfigSource {
+    /**
+     * @return If provided, get the source from this location in a Cloud Source Repository.
+     * 
+     */
     private List<GetFunctionBuildConfigSourceRepoSource> repoSources;
+    /**
+     * @return If provided, get the source from this location in Google Cloud Storage.
+     * 
+     */
     private List<GetFunctionBuildConfigSourceStorageSource> storageSources;
 
     private GetFunctionBuildConfigSource() {}
+    /**
+     * @return If provided, get the source from this location in a Cloud Source Repository.
+     * 
+     */
     public List<GetFunctionBuildConfigSourceRepoSource> repoSources() {
         return this.repoSources;
     }
+    /**
+     * @return If provided, get the source from this location in Google Cloud Storage.
+     * 
+     */
     public List<GetFunctionBuildConfigSourceStorageSource> storageSources() {
         return this.storageSources;
     }

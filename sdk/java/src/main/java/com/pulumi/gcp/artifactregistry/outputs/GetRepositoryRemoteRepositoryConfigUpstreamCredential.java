@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigUpstreamCredential {
+    /**
+     * @return Use username and password to access the remote repository.
+     * 
+     */
     private List<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential> usernamePasswordCredentials;
 
     private GetRepositoryRemoteRepositoryConfigUpstreamCredential() {}
+    /**
+     * @return Use username and password to access the remote repository.
+     * 
+     */
     public List<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential> usernamePasswordCredentials() {
         return this.usernamePasswordCredentials;
     }

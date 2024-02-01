@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+    /**
+     * @return May contain up to seven (one for each day of the week) snapshot times.
+     * 
+     */
     private List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks;
 
     private GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule() {}
+    /**
+     * @return May contain up to seven (one for each day of the week) snapshot times.
+     * 
+     */
     public List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks() {
         return this.dayOfWeeks;
     }

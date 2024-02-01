@@ -7107,7 +7107,9 @@ func (o TransferJobTransferSpecTransferOptionsPtrOutput) OverwriteWhen() pulumi.
 }
 
 type GetBucketAutoclass struct {
-	Enabled              bool   `pulumi:"enabled"`
+	// While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+	Enabled bool `pulumi:"enabled"`
+	// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
 	TerminalStorageClass string `pulumi:"terminalStorageClass"`
 }
 
@@ -7123,7 +7125,9 @@ type GetBucketAutoclassInput interface {
 }
 
 type GetBucketAutoclassArgs struct {
-	Enabled              pulumi.BoolInput   `pulumi:"enabled"`
+	// While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
 	TerminalStorageClass pulumi.StringInput `pulumi:"terminalStorageClass"`
 }
 
@@ -7178,10 +7182,12 @@ func (o GetBucketAutoclassOutput) ToGetBucketAutoclassOutputWithContext(ctx cont
 	return o
 }
 
+// While set to true, autoclass automatically transitions objects in your bucket to appropriate storage classes based on each object's access pattern.
 func (o GetBucketAutoclassOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBucketAutoclass) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The storage class that objects in the bucket eventually transition to if they are not read for a certain length of time. Supported values include: NEARLINE, ARCHIVE.
 func (o GetBucketAutoclassOutput) TerminalStorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketAutoclass) string { return v.TerminalStorageClass }).(pulumi.StringOutput)
 }
@@ -7207,9 +7213,13 @@ func (o GetBucketAutoclassArrayOutput) Index(i pulumi.IntInput) GetBucketAutocla
 }
 
 type GetBucketCor struct {
-	MaxAgeSeconds   int      `pulumi:"maxAgeSeconds"`
-	Methods         []string `pulumi:"methods"`
-	Origins         []string `pulumi:"origins"`
+	// The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses.
+	MaxAgeSeconds int `pulumi:"maxAgeSeconds"`
+	// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+	Methods []string `pulumi:"methods"`
+	// The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+	Origins []string `pulumi:"origins"`
+	// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
 	ResponseHeaders []string `pulumi:"responseHeaders"`
 }
 
@@ -7225,9 +7235,13 @@ type GetBucketCorInput interface {
 }
 
 type GetBucketCorArgs struct {
-	MaxAgeSeconds   pulumi.IntInput         `pulumi:"maxAgeSeconds"`
-	Methods         pulumi.StringArrayInput `pulumi:"methods"`
-	Origins         pulumi.StringArrayInput `pulumi:"origins"`
+	// The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses.
+	MaxAgeSeconds pulumi.IntInput `pulumi:"maxAgeSeconds"`
+	// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+	Origins pulumi.StringArrayInput `pulumi:"origins"`
+	// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
 	ResponseHeaders pulumi.StringArrayInput `pulumi:"responseHeaders"`
 }
 
@@ -7282,18 +7296,22 @@ func (o GetBucketCorOutput) ToGetBucketCorOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses.
 func (o GetBucketCorOutput) MaxAgeSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBucketCor) int { return v.MaxAgeSeconds }).(pulumi.IntOutput)
 }
 
+// The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
 func (o GetBucketCorOutput) Methods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBucketCor) []string { return v.Methods }).(pulumi.StringArrayOutput)
 }
 
+// The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
 func (o GetBucketCorOutput) Origins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBucketCor) []string { return v.Origins }).(pulumi.StringArrayOutput)
 }
 
+// The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
 func (o GetBucketCorOutput) ResponseHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBucketCor) []string { return v.ResponseHeaders }).(pulumi.StringArrayOutput)
 }
@@ -7319,6 +7337,7 @@ func (o GetBucketCorArrayOutput) Index(i pulumi.IntInput) GetBucketCorOutput {
 }
 
 type GetBucketCustomPlacementConfig struct {
+	// The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the dataLocations changes, it will recreate the bucket.
 	DataLocations []string `pulumi:"dataLocations"`
 }
 
@@ -7334,6 +7353,7 @@ type GetBucketCustomPlacementConfigInput interface {
 }
 
 type GetBucketCustomPlacementConfigArgs struct {
+	// The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the dataLocations changes, it will recreate the bucket.
 	DataLocations pulumi.StringArrayInput `pulumi:"dataLocations"`
 }
 
@@ -7388,6 +7408,7 @@ func (o GetBucketCustomPlacementConfigOutput) ToGetBucketCustomPlacementConfigOu
 	return o
 }
 
+// The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the dataLocations changes, it will recreate the bucket.
 func (o GetBucketCustomPlacementConfigOutput) DataLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBucketCustomPlacementConfig) []string { return v.DataLocations }).(pulumi.StringArrayOutput)
 }
@@ -7413,6 +7434,7 @@ func (o GetBucketCustomPlacementConfigArrayOutput) Index(i pulumi.IntInput) GetB
 }
 
 type GetBucketEncryption struct {
+	// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
 	DefaultKmsKeyName string `pulumi:"defaultKmsKeyName"`
 }
 
@@ -7428,6 +7450,7 @@ type GetBucketEncryptionInput interface {
 }
 
 type GetBucketEncryptionArgs struct {
+	// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
 	DefaultKmsKeyName pulumi.StringInput `pulumi:"defaultKmsKeyName"`
 }
 
@@ -7482,6 +7505,7 @@ func (o GetBucketEncryptionOutput) ToGetBucketEncryptionOutputWithContext(ctx co
 	return o
 }
 
+// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
 func (o GetBucketEncryptionOutput) DefaultKmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketEncryption) string { return v.DefaultKmsKeyName }).(pulumi.StringOutput)
 }
@@ -7507,7 +7531,9 @@ func (o GetBucketEncryptionArrayOutput) Index(i pulumi.IntInput) GetBucketEncryp
 }
 
 type GetBucketLifecycleRule struct {
-	Actions    []GetBucketLifecycleRuleAction    `pulumi:"actions"`
+	// The Lifecycle Rule's action configuration. A single block of this type is supported.
+	Actions []GetBucketLifecycleRuleAction `pulumi:"actions"`
+	// The Lifecycle Rule's condition configuration.
 	Conditions []GetBucketLifecycleRuleCondition `pulumi:"conditions"`
 }
 
@@ -7523,7 +7549,9 @@ type GetBucketLifecycleRuleInput interface {
 }
 
 type GetBucketLifecycleRuleArgs struct {
-	Actions    GetBucketLifecycleRuleActionArrayInput    `pulumi:"actions"`
+	// The Lifecycle Rule's action configuration. A single block of this type is supported.
+	Actions GetBucketLifecycleRuleActionArrayInput `pulumi:"actions"`
+	// The Lifecycle Rule's condition configuration.
 	Conditions GetBucketLifecycleRuleConditionArrayInput `pulumi:"conditions"`
 }
 
@@ -7578,10 +7606,12 @@ func (o GetBucketLifecycleRuleOutput) ToGetBucketLifecycleRuleOutputWithContext(
 	return o
 }
 
+// The Lifecycle Rule's action configuration. A single block of this type is supported.
 func (o GetBucketLifecycleRuleOutput) Actions() GetBucketLifecycleRuleActionArrayOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRule) []GetBucketLifecycleRuleAction { return v.Actions }).(GetBucketLifecycleRuleActionArrayOutput)
 }
 
+// The Lifecycle Rule's condition configuration.
 func (o GetBucketLifecycleRuleOutput) Conditions() GetBucketLifecycleRuleConditionArrayOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRule) []GetBucketLifecycleRuleCondition { return v.Conditions }).(GetBucketLifecycleRuleConditionArrayOutput)
 }
@@ -7607,8 +7637,10 @@ func (o GetBucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) GetBucketLif
 }
 
 type GetBucketLifecycleRuleAction struct {
+	// The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
 	StorageClass string `pulumi:"storageClass"`
-	Type         string `pulumi:"type"`
+	// The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
+	Type string `pulumi:"type"`
 }
 
 // GetBucketLifecycleRuleActionInput is an input type that accepts GetBucketLifecycleRuleActionArgs and GetBucketLifecycleRuleActionOutput values.
@@ -7623,8 +7655,10 @@ type GetBucketLifecycleRuleActionInput interface {
 }
 
 type GetBucketLifecycleRuleActionArgs struct {
+	// The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
-	Type         pulumi.StringInput `pulumi:"type"`
+	// The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetBucketLifecycleRuleActionArgs) ElementType() reflect.Type {
@@ -7678,10 +7712,12 @@ func (o GetBucketLifecycleRuleActionOutput) ToGetBucketLifecycleRuleActionOutput
 	return o
 }
 
+// The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
 func (o GetBucketLifecycleRuleActionOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleAction) string { return v.StorageClass }).(pulumi.StringOutput)
 }
 
+// The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
 func (o GetBucketLifecycleRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -7707,18 +7743,31 @@ func (o GetBucketLifecycleRuleActionArrayOutput) Index(i pulumi.IntInput) GetBuc
 }
 
 type GetBucketLifecycleRuleCondition struct {
-	Age                     int      `pulumi:"age"`
-	CreatedBefore           string   `pulumi:"createdBefore"`
-	CustomTimeBefore        string   `pulumi:"customTimeBefore"`
-	DaysSinceCustomTime     int      `pulumi:"daysSinceCustomTime"`
-	DaysSinceNoncurrentTime int      `pulumi:"daysSinceNoncurrentTime"`
-	MatchesPrefixes         []string `pulumi:"matchesPrefixes"`
-	MatchesStorageClasses   []string `pulumi:"matchesStorageClasses"`
-	MatchesSuffixes         []string `pulumi:"matchesSuffixes"`
-	NoAge                   bool     `pulumi:"noAge"`
-	NoncurrentTimeBefore    string   `pulumi:"noncurrentTimeBefore"`
-	NumNewerVersions        int      `pulumi:"numNewerVersions"`
-	WithState               string   `pulumi:"withState"`
+	// Minimum age of an object in days to satisfy this condition.
+	Age int `pulumi:"age"`
+	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+	CreatedBefore string `pulumi:"createdBefore"`
+	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+	CustomTimeBefore string `pulumi:"customTimeBefore"`
+	// Number of days elapsed since the user-specified timestamp set on an object.
+	DaysSinceCustomTime int `pulumi:"daysSinceCustomTime"`
+	// Number of days elapsed since the noncurrent timestamp of an object. This
+	// 										condition is relevant only for versioned objects.
+	DaysSinceNoncurrentTime int `pulumi:"daysSinceNoncurrentTime"`
+	// One or more matching name prefixes to satisfy this condition.
+	MatchesPrefixes []string `pulumi:"matchesPrefixes"`
+	// Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
+	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
+	// One or more matching name suffixes to satisfy this condition.
+	MatchesSuffixes []string `pulumi:"matchesSuffixes"`
+	// While set true, age value will be omitted.Required to set true when age is unset in the config file.
+	NoAge bool `pulumi:"noAge"`
+	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+	NoncurrentTimeBefore string `pulumi:"noncurrentTimeBefore"`
+	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+	NumNewerVersions int `pulumi:"numNewerVersions"`
+	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
+	WithState string `pulumi:"withState"`
 }
 
 // GetBucketLifecycleRuleConditionInput is an input type that accepts GetBucketLifecycleRuleConditionArgs and GetBucketLifecycleRuleConditionOutput values.
@@ -7733,18 +7782,31 @@ type GetBucketLifecycleRuleConditionInput interface {
 }
 
 type GetBucketLifecycleRuleConditionArgs struct {
-	Age                     pulumi.IntInput         `pulumi:"age"`
-	CreatedBefore           pulumi.StringInput      `pulumi:"createdBefore"`
-	CustomTimeBefore        pulumi.StringInput      `pulumi:"customTimeBefore"`
-	DaysSinceCustomTime     pulumi.IntInput         `pulumi:"daysSinceCustomTime"`
-	DaysSinceNoncurrentTime pulumi.IntInput         `pulumi:"daysSinceNoncurrentTime"`
-	MatchesPrefixes         pulumi.StringArrayInput `pulumi:"matchesPrefixes"`
-	MatchesStorageClasses   pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
-	MatchesSuffixes         pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
-	NoAge                   pulumi.BoolInput        `pulumi:"noAge"`
-	NoncurrentTimeBefore    pulumi.StringInput      `pulumi:"noncurrentTimeBefore"`
-	NumNewerVersions        pulumi.IntInput         `pulumi:"numNewerVersions"`
-	WithState               pulumi.StringInput      `pulumi:"withState"`
+	// Minimum age of an object in days to satisfy this condition.
+	Age pulumi.IntInput `pulumi:"age"`
+	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+	CreatedBefore pulumi.StringInput `pulumi:"createdBefore"`
+	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+	CustomTimeBefore pulumi.StringInput `pulumi:"customTimeBefore"`
+	// Number of days elapsed since the user-specified timestamp set on an object.
+	DaysSinceCustomTime pulumi.IntInput `pulumi:"daysSinceCustomTime"`
+	// Number of days elapsed since the noncurrent timestamp of an object. This
+	// 										condition is relevant only for versioned objects.
+	DaysSinceNoncurrentTime pulumi.IntInput `pulumi:"daysSinceNoncurrentTime"`
+	// One or more matching name prefixes to satisfy this condition.
+	MatchesPrefixes pulumi.StringArrayInput `pulumi:"matchesPrefixes"`
+	// Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
+	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
+	// One or more matching name suffixes to satisfy this condition.
+	MatchesSuffixes pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
+	// While set true, age value will be omitted.Required to set true when age is unset in the config file.
+	NoAge pulumi.BoolInput `pulumi:"noAge"`
+	// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
+	NoncurrentTimeBefore pulumi.StringInput `pulumi:"noncurrentTimeBefore"`
+	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
+	NumNewerVersions pulumi.IntInput `pulumi:"numNewerVersions"`
+	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
+	WithState pulumi.StringInput `pulumi:"withState"`
 }
 
 func (GetBucketLifecycleRuleConditionArgs) ElementType() reflect.Type {
@@ -7798,50 +7860,64 @@ func (o GetBucketLifecycleRuleConditionOutput) ToGetBucketLifecycleRuleCondition
 	return o
 }
 
+// Minimum age of an object in days to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) Age() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.Age }).(pulumi.IntOutput)
 }
 
+// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) CreatedBefore() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) string { return v.CreatedBefore }).(pulumi.StringOutput)
 }
 
+// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) CustomTimeBefore() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) string { return v.CustomTimeBefore }).(pulumi.StringOutput)
 }
 
+// Number of days elapsed since the user-specified timestamp set on an object.
 func (o GetBucketLifecycleRuleConditionOutput) DaysSinceCustomTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.DaysSinceCustomTime }).(pulumi.IntOutput)
 }
 
+// Number of days elapsed since the noncurrent timestamp of an object. This
+//
+//	condition is relevant only for versioned objects.
 func (o GetBucketLifecycleRuleConditionOutput) DaysSinceNoncurrentTime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.DaysSinceNoncurrentTime }).(pulumi.IntOutput)
 }
 
+// One or more matching name prefixes to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) MatchesPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) []string { return v.MatchesPrefixes }).(pulumi.StringArrayOutput)
 }
 
+// Storage Class of objects to satisfy this condition. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, DURABLE_REDUCED_AVAILABILITY.
 func (o GetBucketLifecycleRuleConditionOutput) MatchesStorageClasses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) []string { return v.MatchesStorageClasses }).(pulumi.StringArrayOutput)
 }
 
+// One or more matching name suffixes to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) MatchesSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) []string { return v.MatchesSuffixes }).(pulumi.StringArrayOutput)
 }
 
+// While set true, age value will be omitted.Required to set true when age is unset in the config file.
 func (o GetBucketLifecycleRuleConditionOutput) NoAge() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) bool { return v.NoAge }).(pulumi.BoolOutput)
 }
 
+// Creation date of an object in RFC 3339 (e.g. 2017-06-13) to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) string { return v.NoncurrentTimeBefore }).(pulumi.StringOutput)
 }
 
+// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 func (o GetBucketLifecycleRuleConditionOutput) NumNewerVersions() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) int { return v.NumNewerVersions }).(pulumi.IntOutput)
 }
 
+// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: "LIVE", "ARCHIVED", "ANY".
 func (o GetBucketLifecycleRuleConditionOutput) WithState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) string { return v.WithState }).(pulumi.StringOutput)
 }
@@ -7867,7 +7943,9 @@ func (o GetBucketLifecycleRuleConditionArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetBucketLogging struct {
-	LogBucket       string `pulumi:"logBucket"`
+	// The bucket that will receive log objects.
+	LogBucket string `pulumi:"logBucket"`
+	// The object prefix for log objects. If it's not provided, by default Google Cloud Storage sets this to this bucket's name.
 	LogObjectPrefix string `pulumi:"logObjectPrefix"`
 }
 
@@ -7883,7 +7961,9 @@ type GetBucketLoggingInput interface {
 }
 
 type GetBucketLoggingArgs struct {
-	LogBucket       pulumi.StringInput `pulumi:"logBucket"`
+	// The bucket that will receive log objects.
+	LogBucket pulumi.StringInput `pulumi:"logBucket"`
+	// The object prefix for log objects. If it's not provided, by default Google Cloud Storage sets this to this bucket's name.
 	LogObjectPrefix pulumi.StringInput `pulumi:"logObjectPrefix"`
 }
 
@@ -7938,10 +8018,12 @@ func (o GetBucketLoggingOutput) ToGetBucketLoggingOutputWithContext(ctx context.
 	return o
 }
 
+// The bucket that will receive log objects.
 func (o GetBucketLoggingOutput) LogBucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketLogging) string { return v.LogBucket }).(pulumi.StringOutput)
 }
 
+// The object prefix for log objects. If it's not provided, by default Google Cloud Storage sets this to this bucket's name.
 func (o GetBucketLoggingOutput) LogObjectPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketLogging) string { return v.LogObjectPrefix }).(pulumi.StringOutput)
 }
@@ -7967,8 +8049,10 @@ func (o GetBucketLoggingArrayOutput) Index(i pulumi.IntInput) GetBucketLoggingOu
 }
 
 type GetBucketObjectContentCustomerEncryption struct {
+	// The encryption algorithm. Default: AES256
 	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
-	EncryptionKey       string `pulumi:"encryptionKey"`
+	// Base64 encoded customer supplied encryption key.
+	EncryptionKey string `pulumi:"encryptionKey"`
 }
 
 // GetBucketObjectContentCustomerEncryptionInput is an input type that accepts GetBucketObjectContentCustomerEncryptionArgs and GetBucketObjectContentCustomerEncryptionOutput values.
@@ -7983,8 +8067,10 @@ type GetBucketObjectContentCustomerEncryptionInput interface {
 }
 
 type GetBucketObjectContentCustomerEncryptionArgs struct {
+	// The encryption algorithm. Default: AES256
 	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
-	EncryptionKey       pulumi.StringInput `pulumi:"encryptionKey"`
+	// Base64 encoded customer supplied encryption key.
+	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
 }
 
 func (GetBucketObjectContentCustomerEncryptionArgs) ElementType() reflect.Type {
@@ -8038,10 +8124,12 @@ func (o GetBucketObjectContentCustomerEncryptionOutput) ToGetBucketObjectContent
 	return o
 }
 
+// The encryption algorithm. Default: AES256
 func (o GetBucketObjectContentCustomerEncryptionOutput) EncryptionAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentCustomerEncryption) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
 }
 
+// Base64 encoded customer supplied encryption key.
 func (o GetBucketObjectContentCustomerEncryptionOutput) EncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentCustomerEncryption) string { return v.EncryptionKey }).(pulumi.StringOutput)
 }
@@ -8067,7 +8155,9 @@ func (o GetBucketObjectContentCustomerEncryptionArrayOutput) Index(i pulumi.IntI
 }
 
 type GetBucketObjectContentRetention struct {
-	Mode            string `pulumi:"mode"`
+	// The object retention mode. Supported values include: "Unlocked", "Locked".
+	Mode string `pulumi:"mode"`
+	// Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
 	RetainUntilTime string `pulumi:"retainUntilTime"`
 }
 
@@ -8083,7 +8173,9 @@ type GetBucketObjectContentRetentionInput interface {
 }
 
 type GetBucketObjectContentRetentionArgs struct {
-	Mode            pulumi.StringInput `pulumi:"mode"`
+	// The object retention mode. Supported values include: "Unlocked", "Locked".
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
 	RetainUntilTime pulumi.StringInput `pulumi:"retainUntilTime"`
 }
 
@@ -8138,10 +8230,12 @@ func (o GetBucketObjectContentRetentionOutput) ToGetBucketObjectContentRetention
 	return o
 }
 
+// The object retention mode. Supported values include: "Unlocked", "Locked".
 func (o GetBucketObjectContentRetentionOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentRetention) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
 func (o GetBucketObjectContentRetentionOutput) RetainUntilTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectContentRetention) string { return v.RetainUntilTime }).(pulumi.StringOutput)
 }
@@ -8167,8 +8261,10 @@ func (o GetBucketObjectContentRetentionArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetBucketObjectCustomerEncryption struct {
+	// The encryption algorithm. Default: AES256
 	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
-	EncryptionKey       string `pulumi:"encryptionKey"`
+	// Base64 encoded customer supplied encryption key.
+	EncryptionKey string `pulumi:"encryptionKey"`
 }
 
 // GetBucketObjectCustomerEncryptionInput is an input type that accepts GetBucketObjectCustomerEncryptionArgs and GetBucketObjectCustomerEncryptionOutput values.
@@ -8183,8 +8279,10 @@ type GetBucketObjectCustomerEncryptionInput interface {
 }
 
 type GetBucketObjectCustomerEncryptionArgs struct {
+	// The encryption algorithm. Default: AES256
 	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
-	EncryptionKey       pulumi.StringInput `pulumi:"encryptionKey"`
+	// Base64 encoded customer supplied encryption key.
+	EncryptionKey pulumi.StringInput `pulumi:"encryptionKey"`
 }
 
 func (GetBucketObjectCustomerEncryptionArgs) ElementType() reflect.Type {
@@ -8238,10 +8336,12 @@ func (o GetBucketObjectCustomerEncryptionOutput) ToGetBucketObjectCustomerEncryp
 	return o
 }
 
+// The encryption algorithm. Default: AES256
 func (o GetBucketObjectCustomerEncryptionOutput) EncryptionAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectCustomerEncryption) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
 }
 
+// Base64 encoded customer supplied encryption key.
 func (o GetBucketObjectCustomerEncryptionOutput) EncryptionKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectCustomerEncryption) string { return v.EncryptionKey }).(pulumi.StringOutput)
 }
@@ -8267,7 +8367,9 @@ func (o GetBucketObjectCustomerEncryptionArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetBucketObjectRetention struct {
-	Mode            string `pulumi:"mode"`
+	// The object retention mode. Supported values include: "Unlocked", "Locked".
+	Mode string `pulumi:"mode"`
+	// Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
 	RetainUntilTime string `pulumi:"retainUntilTime"`
 }
 
@@ -8283,7 +8385,9 @@ type GetBucketObjectRetentionInput interface {
 }
 
 type GetBucketObjectRetentionArgs struct {
-	Mode            pulumi.StringInput `pulumi:"mode"`
+	// The object retention mode. Supported values include: "Unlocked", "Locked".
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
 	RetainUntilTime pulumi.StringInput `pulumi:"retainUntilTime"`
 }
 
@@ -8338,10 +8442,12 @@ func (o GetBucketObjectRetentionOutput) ToGetBucketObjectRetentionOutputWithCont
 	return o
 }
 
+// The object retention mode. Supported values include: "Unlocked", "Locked".
 func (o GetBucketObjectRetentionOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectRetention) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
 func (o GetBucketObjectRetentionOutput) RetainUntilTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketObjectRetention) string { return v.RetainUntilTime }).(pulumi.StringOutput)
 }
@@ -8367,8 +8473,10 @@ func (o GetBucketObjectRetentionArrayOutput) Index(i pulumi.IntInput) GetBucketO
 }
 
 type GetBucketRetentionPolicy struct {
-	IsLocked        bool `pulumi:"isLocked"`
-	RetentionPeriod int  `pulumi:"retentionPeriod"`
+	// If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+	IsLocked bool `pulumi:"isLocked"`
+	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+	RetentionPeriod int `pulumi:"retentionPeriod"`
 }
 
 // GetBucketRetentionPolicyInput is an input type that accepts GetBucketRetentionPolicyArgs and GetBucketRetentionPolicyOutput values.
@@ -8383,8 +8491,10 @@ type GetBucketRetentionPolicyInput interface {
 }
 
 type GetBucketRetentionPolicyArgs struct {
-	IsLocked        pulumi.BoolInput `pulumi:"isLocked"`
-	RetentionPeriod pulumi.IntInput  `pulumi:"retentionPeriod"`
+	// If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
+	IsLocked pulumi.BoolInput `pulumi:"isLocked"`
+	// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
+	RetentionPeriod pulumi.IntInput `pulumi:"retentionPeriod"`
 }
 
 func (GetBucketRetentionPolicyArgs) ElementType() reflect.Type {
@@ -8438,10 +8548,12 @@ func (o GetBucketRetentionPolicyOutput) ToGetBucketRetentionPolicyOutputWithCont
 	return o
 }
 
+// If set to true, the bucket will be locked and permanently restrict edits to the bucket's retention policy.  Caution: Locking a bucket is an irreversible action.
 func (o GetBucketRetentionPolicyOutput) IsLocked() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBucketRetentionPolicy) bool { return v.IsLocked }).(pulumi.BoolOutput)
 }
 
+// The period of time, in seconds, that objects in the bucket must be retained and cannot be deleted, overwritten, or archived. The value must be less than 3,155,760,000 seconds.
 func (o GetBucketRetentionPolicyOutput) RetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBucketRetentionPolicy) int { return v.RetentionPeriod }).(pulumi.IntOutput)
 }
@@ -8467,6 +8579,7 @@ func (o GetBucketRetentionPolicyArrayOutput) Index(i pulumi.IntInput) GetBucketR
 }
 
 type GetBucketVersioning struct {
+	// While set to true, versioning is fully enabled for this bucket.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -8482,6 +8595,7 @@ type GetBucketVersioningInput interface {
 }
 
 type GetBucketVersioningArgs struct {
+	// While set to true, versioning is fully enabled for this bucket.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -8536,6 +8650,7 @@ func (o GetBucketVersioningOutput) ToGetBucketVersioningOutputWithContext(ctx co
 	return o
 }
 
+// While set to true, versioning is fully enabled for this bucket.
 func (o GetBucketVersioningOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBucketVersioning) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -8561,8 +8676,10 @@ func (o GetBucketVersioningArrayOutput) Index(i pulumi.IntInput) GetBucketVersio
 }
 
 type GetBucketWebsite struct {
+	// Behaves as the bucket's directory index where missing objects are treated as potential directories.
 	MainPageSuffix string `pulumi:"mainPageSuffix"`
-	NotFoundPage   string `pulumi:"notFoundPage"`
+	// The custom object to return when a requested resource is not found.
+	NotFoundPage string `pulumi:"notFoundPage"`
 }
 
 // GetBucketWebsiteInput is an input type that accepts GetBucketWebsiteArgs and GetBucketWebsiteOutput values.
@@ -8577,8 +8694,10 @@ type GetBucketWebsiteInput interface {
 }
 
 type GetBucketWebsiteArgs struct {
+	// Behaves as the bucket's directory index where missing objects are treated as potential directories.
 	MainPageSuffix pulumi.StringInput `pulumi:"mainPageSuffix"`
-	NotFoundPage   pulumi.StringInput `pulumi:"notFoundPage"`
+	// The custom object to return when a requested resource is not found.
+	NotFoundPage pulumi.StringInput `pulumi:"notFoundPage"`
 }
 
 func (GetBucketWebsiteArgs) ElementType() reflect.Type {
@@ -8632,10 +8751,12 @@ func (o GetBucketWebsiteOutput) ToGetBucketWebsiteOutputWithContext(ctx context.
 	return o
 }
 
+// Behaves as the bucket's directory index where missing objects are treated as potential directories.
 func (o GetBucketWebsiteOutput) MainPageSuffix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketWebsite) string { return v.MainPageSuffix }).(pulumi.StringOutput)
 }
 
+// The custom object to return when a requested resource is not found.
 func (o GetBucketWebsiteOutput) NotFoundPage() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketWebsite) string { return v.NotFoundPage }).(pulumi.StringOutput)
 }

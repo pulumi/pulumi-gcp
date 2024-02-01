@@ -13,21 +13,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRouterNatRule {
+    /**
+     * @return The action to be enforced for traffic that matches this rule.
+     * 
+     */
     private List<GetRouterNatRuleAction> actions;
+    /**
+     * @return An optional description of this rule.
+     * 
+     */
     private String description;
+    /**
+     * @return CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+     * If it evaluates to true, the corresponding action is enforced.
+     * 
+     * The following examples are valid match expressions for public NAT:
+     * 
+     * &#34;inIpRange(destination.ip, &#39;1.1.0.0/16&#39;) || inIpRange(destination.ip, &#39;2.2.0.0/16&#39;)&#34;
+     * 
+     * &#34;destination.ip == &#39;1.1.0.1&#39; || destination.ip == &#39;8.8.8.8&#39;&#34;
+     * 
+     * The following example is a valid match expression for private NAT:
+     * 
+     * &#34;nexthop.hub == &#39;https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1&#39;&#34;
+     * 
+     */
     private String match;
+    /**
+     * @return An integer uniquely identifying a rule in the list.
+     * The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+     * 
+     */
     private Integer ruleNumber;
 
     private GetRouterNatRule() {}
+    /**
+     * @return The action to be enforced for traffic that matches this rule.
+     * 
+     */
     public List<GetRouterNatRuleAction> actions() {
         return this.actions;
     }
+    /**
+     * @return An optional description of this rule.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
+     * If it evaluates to true, the corresponding action is enforced.
+     * 
+     * The following examples are valid match expressions for public NAT:
+     * 
+     * &#34;inIpRange(destination.ip, &#39;1.1.0.0/16&#39;) || inIpRange(destination.ip, &#39;2.2.0.0/16&#39;)&#34;
+     * 
+     * &#34;destination.ip == &#39;1.1.0.1&#39; || destination.ip == &#39;8.8.8.8&#39;&#34;
+     * 
+     * The following example is a valid match expression for private NAT:
+     * 
+     * &#34;nexthop.hub == &#39;https://networkconnectivity.googleapis.com/v1alpha1/projects/my-project/global/hub/hub-1&#39;&#34;
+     * 
+     */
     public String match() {
         return this.match;
     }
+    /**
+     * @return An integer uniquely identifying a rule in the list.
+     * The rule number must be a positive value between 0 and 65000, and must be unique among rules within a NAT.
+     * 
+     */
     public Integer ruleNumber() {
         return this.ruleNumber;
     }

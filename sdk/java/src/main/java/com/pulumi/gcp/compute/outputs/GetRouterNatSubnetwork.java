@@ -17,7 +17,21 @@ public final class GetRouterNatSubnetwork {
      * 
      */
     private String name;
+    /**
+     * @return List of the secondary ranges of the subnetwork that are allowed
+     * to use NAT. This can be populated only if
+     * &#39;LIST_OF_SECONDARY_IP_RANGES&#39; is one of the values in
+     * sourceIpRangesToNat
+     * 
+     */
     private List<String> secondaryIpRangeNames;
+    /**
+     * @return List of options for which source IPs in the subnetwork
+     * should have NAT enabled. Supported values include:
+     * &#39;ALL_IP_RANGES&#39;, &#39;LIST_OF_SECONDARY_IP_RANGES&#39;,
+     * &#39;PRIMARY_IP_RANGE&#39;.
+     * 
+     */
     private List<String> sourceIpRangesToNats;
 
     private GetRouterNatSubnetwork() {}
@@ -29,9 +43,23 @@ public final class GetRouterNatSubnetwork {
     public String name() {
         return this.name;
     }
+    /**
+     * @return List of the secondary ranges of the subnetwork that are allowed
+     * to use NAT. This can be populated only if
+     * &#39;LIST_OF_SECONDARY_IP_RANGES&#39; is one of the values in
+     * sourceIpRangesToNat
+     * 
+     */
     public List<String> secondaryIpRangeNames() {
         return this.secondaryIpRangeNames;
     }
+    /**
+     * @return List of options for which source IPs in the subnetwork
+     * should have NAT enabled. Supported values include:
+     * &#39;ALL_IP_RANGES&#39;, &#39;LIST_OF_SECONDARY_IP_RANGES&#39;,
+     * &#39;PRIMARY_IP_RANGE&#39;.
+     * 
+     */
     public List<String> sourceIpRangesToNats() {
         return this.sourceIpRangesToNats;
     }

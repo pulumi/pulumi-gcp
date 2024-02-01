@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolAutoConfig {
+    /**
+     * @return Collection of Compute Engine network tags that can be applied to a node&#39;s underlying VM instance.
+     * 
+     */
     private List<GetClusterNodePoolAutoConfigNetworkTag> networkTags;
 
     private GetClusterNodePoolAutoConfig() {}
+    /**
+     * @return Collection of Compute Engine network tags that can be applied to a node&#39;s underlying VM instance.
+     * 
+     */
     public List<GetClusterNodePoolAutoConfigNetworkTag> networkTags() {
         return this.networkTags;
     }

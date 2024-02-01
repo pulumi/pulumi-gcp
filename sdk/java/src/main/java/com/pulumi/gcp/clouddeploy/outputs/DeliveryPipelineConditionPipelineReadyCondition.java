@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineConditionPipelineReadyCondition {
+    /**
+     * @return True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+     * 
+     */
     private @Nullable Boolean status;
     /**
      * @return Output only. Most recent time at which the pipeline was updated.
@@ -20,6 +24,10 @@ public final class DeliveryPipelineConditionPipelineReadyCondition {
     private @Nullable String updateTime;
 
     private DeliveryPipelineConditionPipelineReadyCondition() {}
+    /**
+     * @return True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+     * 
+     */
     public Optional<Boolean> status() {
         return Optional.ofNullable(this.status);
     }

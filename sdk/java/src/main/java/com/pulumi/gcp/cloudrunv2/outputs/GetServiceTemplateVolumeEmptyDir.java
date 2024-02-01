@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateVolumeEmptyDir {
+    /**
+     * @return The different types of medium supported for EmptyDir. Default value: &#34;MEMORY&#34; Possible values: [&#34;MEMORY&#34;]
+     * 
+     */
     private String medium;
+    /**
+     * @return Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#39;s values are of the &#39;Quantity&#39; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+     * 
+     */
     private String sizeLimit;
 
     private GetServiceTemplateVolumeEmptyDir() {}
+    /**
+     * @return The different types of medium supported for EmptyDir. Default value: &#34;MEMORY&#34; Possible values: [&#34;MEMORY&#34;]
+     * 
+     */
     public String medium() {
         return this.medium;
     }
+    /**
+     * @return Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#39;s values are of the &#39;Quantity&#39; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+     * 
+     */
     public String sizeLimit() {
         return this.sizeLimit;
     }

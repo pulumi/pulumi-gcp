@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicyDiskConsistencyGroupPolicy {
+    /**
+     * @return Enable disk consistency on the resource policy.
+     * 
+     */
     private Boolean enabled;
 
     private GetResourcePolicyDiskConsistencyGroupPolicy() {}
+    /**
+     * @return Enable disk consistency on the resource policy.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

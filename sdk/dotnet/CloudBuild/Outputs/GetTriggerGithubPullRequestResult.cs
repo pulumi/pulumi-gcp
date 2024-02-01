@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerGithubPullRequestResult
     {
+        /// <summary>
+        /// Regex of branches to match.
+        /// </summary>
         public readonly string Branch;
+        /// <summary>
+        /// Whether to block builds on a "/gcbrun" comment from a repository owner or collaborator. Possible values: ["COMMENTS_DISABLED", "COMMENTS_ENABLED", "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"]
+        /// </summary>
         public readonly string CommentControl;
+        /// <summary>
+        /// If true, branches that do NOT match the git_ref will trigger a build.
+        /// </summary>
         public readonly bool InvertRegex;
 
         [OutputConstructor]

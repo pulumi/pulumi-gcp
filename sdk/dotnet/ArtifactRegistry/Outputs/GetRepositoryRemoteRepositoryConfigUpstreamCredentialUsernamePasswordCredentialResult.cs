@@ -13,7 +13,15 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialResult
     {
+        /// <summary>
+        /// The Secret Manager key version that holds the password to access the
+        /// remote repository. Must be in the format of
+        /// 'projects/{project}/secrets/{secret}/versions/{version}'.
+        /// </summary>
         public readonly string PasswordSecretVersion;
+        /// <summary>
+        /// The username to access the remote repository.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

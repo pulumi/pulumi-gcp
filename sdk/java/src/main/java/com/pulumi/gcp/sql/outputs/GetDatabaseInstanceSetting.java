@@ -26,35 +26,116 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSetting {
+    /**
+     * @return This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+     * 
+     */
     private String activationPolicy;
     private List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs;
     private List<GetDatabaseInstanceSettingAdvancedMachineFeature> advancedMachineFeatures;
+    /**
+     * @return The availability type of the Cloud SQL instance, high availability
+     * (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+     * settings.backup_configuration.enabled is set to true.
+     * For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+     * For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+     * is set to true. Defaults to ZONAL.
+     * 
+     */
     private String availabilityType;
     private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
+    /**
+     * @return The name of server instance collation.
+     * 
+     */
     private String collation;
+    /**
+     * @return Specifies if connections must use Cloud SQL connectors.
+     * 
+     */
     private String connectorEnforcement;
+    /**
+     * @return Data cache configurations.
+     * 
+     */
     private List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs;
     private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
+    /**
+     * @return Configuration to protect against accidental instance deletion.
+     * 
+     */
     private Boolean deletionProtectionEnabled;
     private List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods;
+    /**
+     * @return Enables auto-resizing of the storage size. Defaults to true.
+     * 
+     */
     private Boolean diskAutoresize;
+    /**
+     * @return The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * 
+     */
     private Integer diskAutoresizeLimit;
+    /**
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * 
+     */
     private Integer diskSize;
+    /**
+     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+     * 
+     */
     private String diskType;
+    /**
+     * @return The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+     * 
+     */
     private String edition;
+    /**
+     * @return Configuration of Query Insights.
+     * 
+     */
     private List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs;
     private List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations;
     private List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
+    /**
+     * @return Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+     * 
+     */
     private List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows;
     private List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies;
+    /**
+     * @return Pricing plan for this instance, can only be PER_USE.
+     * 
+     */
     private String pricingPlan;
     private List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs;
+    /**
+     * @return The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
+     * 
+     */
     private String tier;
+    /**
+     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * 
+     */
     private String timeZone;
+    /**
+     * @return A set of key/value user label pairs to assign to the instance.
+     * 
+     */
     private Map<String,String> userLabels;
+    /**
+     * @return Used to make sure changes to the settings block are atomic.
+     * 
+     */
     private Integer version;
 
     private GetDatabaseInstanceSetting() {}
+    /**
+     * @return This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+     * 
+     */
     public String activationPolicy() {
         return this.activationPolicy;
     }
@@ -64,45 +145,94 @@ public final class GetDatabaseInstanceSetting {
     public List<GetDatabaseInstanceSettingAdvancedMachineFeature> advancedMachineFeatures() {
         return this.advancedMachineFeatures;
     }
+    /**
+     * @return The availability type of the Cloud SQL instance, high availability
+     * (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+     * settings.backup_configuration.enabled is set to true.
+     * For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+     * For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+     * is set to true. Defaults to ZONAL.
+     * 
+     */
     public String availabilityType() {
         return this.availabilityType;
     }
     public List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations() {
         return this.backupConfigurations;
     }
+    /**
+     * @return The name of server instance collation.
+     * 
+     */
     public String collation() {
         return this.collation;
     }
+    /**
+     * @return Specifies if connections must use Cloud SQL connectors.
+     * 
+     */
     public String connectorEnforcement() {
         return this.connectorEnforcement;
     }
+    /**
+     * @return Data cache configurations.
+     * 
+     */
     public List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs() {
         return this.dataCacheConfigs;
     }
     public List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags() {
         return this.databaseFlags;
     }
+    /**
+     * @return Configuration to protect against accidental instance deletion.
+     * 
+     */
     public Boolean deletionProtectionEnabled() {
         return this.deletionProtectionEnabled;
     }
     public List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods() {
         return this.denyMaintenancePeriods;
     }
+    /**
+     * @return Enables auto-resizing of the storage size. Defaults to true.
+     * 
+     */
     public Boolean diskAutoresize() {
         return this.diskAutoresize;
     }
+    /**
+     * @return The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+     * 
+     */
     public Integer diskAutoresizeLimit() {
         return this.diskAutoresizeLimit;
     }
+    /**
+     * @return The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+     * 
+     */
     public Integer diskSize() {
         return this.diskSize;
     }
+    /**
+     * @return The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+     * 
+     */
     public String diskType() {
         return this.diskType;
     }
+    /**
+     * @return The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+     * 
+     */
     public String edition() {
         return this.edition;
     }
+    /**
+     * @return Configuration of Query Insights.
+     * 
+     */
     public List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs() {
         return this.insightsConfigs;
     }
@@ -112,27 +242,51 @@ public final class GetDatabaseInstanceSetting {
     public List<GetDatabaseInstanceSettingLocationPreference> locationPreferences() {
         return this.locationPreferences;
     }
+    /**
+     * @return Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+     * 
+     */
     public List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows() {
         return this.maintenanceWindows;
     }
     public List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies() {
         return this.passwordValidationPolicies;
     }
+    /**
+     * @return Pricing plan for this instance, can only be PER_USE.
+     * 
+     */
     public String pricingPlan() {
         return this.pricingPlan;
     }
     public List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs() {
         return this.sqlServerAuditConfigs;
     }
+    /**
+     * @return The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
+     * 
+     */
     public String tier() {
         return this.tier;
     }
+    /**
+     * @return The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+     * 
+     */
     public String timeZone() {
         return this.timeZone;
     }
+    /**
+     * @return A set of key/value user label pairs to assign to the instance.
+     * 
+     */
     public Map<String,String> userLabels() {
         return this.userLabels;
     }
+    /**
+     * @return Used to make sure changes to the settings block are atomic.
+     * 
+     */
     public Integer version() {
         return this.version;
     }

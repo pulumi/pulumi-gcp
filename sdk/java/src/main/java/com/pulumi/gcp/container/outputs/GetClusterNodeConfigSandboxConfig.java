@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigSandboxConfig {
+    /**
+     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * 
+     */
     private String sandboxType;
 
     private GetClusterNodeConfigSandboxConfig() {}
+    /**
+     * @return Type of the sandbox to use for the node (e.g. &#39;gvisor&#39;)
+     * 
+     */
     public String sandboxType() {
         return this.sandboxType;
     }

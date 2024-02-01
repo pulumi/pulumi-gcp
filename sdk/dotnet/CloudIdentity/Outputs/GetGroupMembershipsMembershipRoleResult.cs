@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     [OutputType]
     public sealed class GetGroupMembershipsMembershipRoleResult
     {
+        /// <summary>
+        /// The MembershipRole expiry details, only supported for MEMBER role.
+        /// Other roles cannot be accompanied with MEMBER role having expiry.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupMembershipsMembershipRoleExpiryDetailResult> ExpiryDetails;
         /// <summary>
         /// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.

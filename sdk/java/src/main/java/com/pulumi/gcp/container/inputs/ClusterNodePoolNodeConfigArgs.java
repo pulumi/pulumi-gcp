@@ -119,9 +119,17 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.diskType);
     }
 
+    /**
+     * List of kubernetes taints applied to each node.
+     * 
+     */
     @Import(name="effectiveTaints")
     private @Nullable Output<List<ClusterNodePoolNodeConfigEffectiveTaintArgs>> effectiveTaints;
 
+    /**
+     * @return List of kubernetes taints applied to each node.
+     * 
+     */
     public Optional<Output<List<ClusterNodePoolNodeConfigEffectiveTaintArgs>>> effectiveTaints() {
         return Optional.ofNullable(this.effectiveTaints);
     }
@@ -433,9 +441,17 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.gvnic);
     }
 
+    /**
+     * The maintenance policy for the hosts on which the GKE VMs run on.
+     * 
+     */
     @Import(name="hostMaintenancePolicy")
     private @Nullable Output<ClusterNodePoolNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy;
 
+    /**
+     * @return The maintenance policy for the hosts on which the GKE VMs run on.
+     * 
+     */
     public Optional<Output<ClusterNodePoolNodeConfigHostMaintenancePolicyArgs>> hostMaintenancePolicy() {
         return Optional.ofNullable(this.hostMaintenancePolicy);
     }
@@ -751,9 +767,17 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.resourceLabels);
     }
 
+    /**
+     * Sandbox configuration for this node.
+     * 
+     */
     @Import(name="sandboxConfig")
     private @Nullable Output<ClusterNodePoolNodeConfigSandboxConfigArgs> sandboxConfig;
 
+    /**
+     * @return Sandbox configuration for this node.
+     * 
+     */
     public Optional<Output<ClusterNodePoolNodeConfigSandboxConfigArgs>> sandboxConfig() {
         return Optional.ofNullable(this.sandboxConfig);
     }
@@ -1102,15 +1126,33 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
             return diskType(Output.of(diskType));
         }
 
+        /**
+         * @param effectiveTaints List of kubernetes taints applied to each node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTaints(@Nullable Output<List<ClusterNodePoolNodeConfigEffectiveTaintArgs>> effectiveTaints) {
             $.effectiveTaints = effectiveTaints;
             return this;
         }
 
+        /**
+         * @param effectiveTaints List of kubernetes taints applied to each node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTaints(List<ClusterNodePoolNodeConfigEffectiveTaintArgs> effectiveTaints) {
             return effectiveTaints(Output.of(effectiveTaints));
         }
 
+        /**
+         * @param effectiveTaints List of kubernetes taints applied to each node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder effectiveTaints(ClusterNodePoolNodeConfigEffectiveTaintArgs... effectiveTaints) {
             return effectiveTaints(List.of(effectiveTaints));
         }
@@ -1475,11 +1517,23 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
             return gvnic(Output.of(gvnic));
         }
 
+        /**
+         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostMaintenancePolicy(@Nullable Output<ClusterNodePoolNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy) {
             $.hostMaintenancePolicy = hostMaintenancePolicy;
             return this;
         }
 
+        /**
+         * @param hostMaintenancePolicy The maintenance policy for the hosts on which the GKE VMs run on.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostMaintenancePolicy(ClusterNodePoolNodeConfigHostMaintenancePolicyArgs hostMaintenancePolicy) {
             return hostMaintenancePolicy(Output.of(hostMaintenancePolicy));
         }
@@ -1899,11 +1953,23 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
             return resourceLabels(Output.of(resourceLabels));
         }
 
+        /**
+         * @param sandboxConfig Sandbox configuration for this node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sandboxConfig(@Nullable Output<ClusterNodePoolNodeConfigSandboxConfigArgs> sandboxConfig) {
             $.sandboxConfig = sandboxConfig;
             return this;
         }
 
+        /**
+         * @param sandboxConfig Sandbox configuration for this node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sandboxConfig(ClusterNodePoolNodeConfigSandboxConfigArgs sandboxConfig) {
             return sandboxConfig(Output.of(sandboxConfig));
         }

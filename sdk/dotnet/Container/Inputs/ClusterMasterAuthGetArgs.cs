@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterMasterAuthGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+        /// </summary>
         [Input("clientCertificate")]
         public Input<string>? ClientCertificate { get; set; }
 
@@ -35,6 +38,10 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("clientKey")]
         private Input<string>? _clientKey;
+
+        /// <summary>
+        /// Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+        /// </summary>
         public Input<string>? ClientKey
         {
             get => _clientKey;
@@ -45,6 +52,9 @@ namespace Pulumi.Gcp.Container.Inputs
             }
         }
 
+        /// <summary>
+        /// Base64 encoded public certificate that is the root of trust for the cluster.
+        /// </summary>
         [Input("clusterCaCertificate")]
         public Input<string>? ClusterCaCertificate { get; set; }
 

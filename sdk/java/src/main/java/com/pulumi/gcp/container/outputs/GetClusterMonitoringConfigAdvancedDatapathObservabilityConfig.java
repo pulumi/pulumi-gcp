@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+    /**
+     * @return Whether or not the advanced datapath metrics are enabled.
+     * 
+     */
     private Boolean enableMetrics;
+    /**
+     * @return Mode used to make Relay available.
+     * 
+     */
     private String relayMode;
 
     private GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig() {}
+    /**
+     * @return Whether or not the advanced datapath metrics are enabled.
+     * 
+     */
     public Boolean enableMetrics() {
         return this.enableMetrics;
     }
+    /**
+     * @return Mode used to make Relay available.
+     * 
+     */
     public String relayMode() {
         return this.relayMode;
     }

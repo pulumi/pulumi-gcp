@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+    /**
+     * @return The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+     * 
+     */
     private String gpuSharingStrategy;
+    /**
+     * @return The maximum number of containers that can share a GPU.
+     * 
+     */
     private Integer maxSharedClientsPerGpu;
 
     private GetClusterNodeConfigGuestAcceleratorGpuSharingConfig() {}
+    /**
+     * @return The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+     * 
+     */
     public String gpuSharingStrategy() {
         return this.gpuSharingStrategy;
     }
+    /**
+     * @return The maximum number of containers that can share a GPU.
+     * 
+     */
     public Integer maxSharedClientsPerGpu() {
         return this.maxSharedClientsPerGpu;
     }

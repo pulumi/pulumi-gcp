@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingSqlServerAuditConfig {
+    /**
+     * @return The name of the destination bucket (e.g., gs://mybucket).
+     * 
+     */
     private String bucket;
+    /**
+     * @return How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;..
+     * 
+     */
     private String retentionInterval;
+    /**
+     * @return How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String uploadInterval;
 
     private GetDatabaseInstanceSettingSqlServerAuditConfig() {}
+    /**
+     * @return The name of the destination bucket (e.g., gs://mybucket).
+     * 
+     */
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @return How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;..
+     * 
+     */
     public String retentionInterval() {
         return this.retentionInterval;
     }
+    /**
+     * @return How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String uploadInterval() {
         return this.uploadInterval;
     }

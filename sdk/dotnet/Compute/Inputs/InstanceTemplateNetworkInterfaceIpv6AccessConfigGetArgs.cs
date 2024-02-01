@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceTemplateNetworkInterfaceIpv6AccessConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        /// </summary>
         [Input("externalIpv6")]
         public Input<string>? ExternalIpv6 { get; set; }
 
+        /// <summary>
+        /// The prefix length of the external IPv6 range.
+        /// </summary>
         [Input("externalIpv6PrefixLength")]
         public Input<string>? ExternalIpv6PrefixLength { get; set; }
 
@@ -32,6 +38,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("networkTier", required: true)]
         public Input<string> NetworkTier { get; set; } = null!;
 
+        /// <summary>
+        /// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+        /// </summary>
         [Input("publicPtrDomainName")]
         public Input<string>? PublicPtrDomainName { get; set; }
 

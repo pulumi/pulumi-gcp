@@ -11,6 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AssetSecurityStatus {
+    /**
+     * @return Additional information about the current state.
+     * 
+     */
     private @Nullable String message;
     /**
      * @return Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
@@ -24,6 +28,10 @@ public final class AssetSecurityStatus {
     private @Nullable String updateTime;
 
     private AssetSecurityStatus() {}
+    /**
+     * @return Additional information about the current state.
+     * 
+     */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }

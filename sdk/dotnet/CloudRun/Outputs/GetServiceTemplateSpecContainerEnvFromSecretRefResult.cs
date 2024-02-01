@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerEnvFromSecretRefResult
     {
+        /// <summary>
+        /// The Secret to select from.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult> LocalObjectReferences;
+        /// <summary>
+        /// Specify whether the Secret must be defined
+        /// </summary>
         public readonly bool Optional;
 
         [OutputConstructor]

@@ -13,25 +13,67 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicyInstanceSchedulePolicy {
+    /**
+     * @return The expiration time of the schedule. The timestamp is an RFC3339 string.
+     * 
+     */
     private String expirationTime;
+    /**
+     * @return The start time of the schedule. The timestamp is an RFC3339 string.
+     * 
+     */
     private String startTime;
+    /**
+     * @return Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+     * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * 
+     */
     private String timeZone;
+    /**
+     * @return Specifies the schedule for starting instances.
+     * 
+     */
     private List<GetResourcePolicyInstanceSchedulePolicyVmStartSchedule> vmStartSchedules;
+    /**
+     * @return Specifies the schedule for stopping instances.
+     * 
+     */
     private List<GetResourcePolicyInstanceSchedulePolicyVmStopSchedule> vmStopSchedules;
 
     private GetResourcePolicyInstanceSchedulePolicy() {}
+    /**
+     * @return The expiration time of the schedule. The timestamp is an RFC3339 string.
+     * 
+     */
     public String expirationTime() {
         return this.expirationTime;
     }
+    /**
+     * @return The start time of the schedule. The timestamp is an RFC3339 string.
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }
+    /**
+     * @return Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
+     * from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+     * 
+     */
     public String timeZone() {
         return this.timeZone;
     }
+    /**
+     * @return Specifies the schedule for starting instances.
+     * 
+     */
     public List<GetResourcePolicyInstanceSchedulePolicyVmStartSchedule> vmStartSchedules() {
         return this.vmStartSchedules;
     }
+    /**
+     * @return Specifies the schedule for stopping instances.
+     * 
+     */
     public List<GetResourcePolicyInstanceSchedulePolicyVmStopSchedule> vmStopSchedules() {
         return this.vmStopSchedules;
     }

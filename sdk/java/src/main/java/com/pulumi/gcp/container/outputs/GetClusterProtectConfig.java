@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterProtectConfig {
+    /**
+     * @return WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations.
+     * 
+     */
     private List<GetClusterProtectConfigWorkloadConfig> workloadConfigs;
+    /**
+     * @return Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+     * 
+     */
     private String workloadVulnerabilityMode;
 
     private GetClusterProtectConfig() {}
+    /**
+     * @return WorkloadConfig defines which actions are enabled for a cluster&#39;s workload configurations.
+     * 
+     */
     public List<GetClusterProtectConfigWorkloadConfig> workloadConfigs() {
         return this.workloadConfigs;
     }
+    /**
+     * @return Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+     * 
+     */
     public String workloadVulnerabilityMode() {
         return this.workloadVulnerabilityMode;
     }

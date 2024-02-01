@@ -12,11 +12,18 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNodeConfigLinuxNodeConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// cgroupMode specifies the cgroup mode to be used on the node.
+        /// </summary>
         [Input("cgroupMode")]
         public Input<string>? CgroupMode { get; set; }
 
         [Input("sysctls")]
         private InputMap<string>? _sysctls;
+
+        /// <summary>
+        /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+        /// </summary>
         public InputMap<string> Sysctls
         {
             get => _sysctls ?? (_sysctls = new InputMap<string>());

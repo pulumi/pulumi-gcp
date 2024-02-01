@@ -1385,7 +1385,15 @@ func (o InstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type GetInstanceAutoscalingConfig struct {
-	AutoscalingLimits  []GetInstanceAutoscalingConfigAutoscalingLimit  `pulumi:"autoscalingLimits"`
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events. Users can define the minimum and
+	// maximum compute capacity allocated to the instance, and the autoscaler will
+	// only scale within that range. Users can either use nodes or processing
+	// units to specify the limits, but should use the same unit to set both the
+	// minLimit and max_limit.
+	AutoscalingLimits []GetInstanceAutoscalingConfigAutoscalingLimit `pulumi:"autoscalingLimits"`
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
 	AutoscalingTargets []GetInstanceAutoscalingConfigAutoscalingTarget `pulumi:"autoscalingTargets"`
 }
 
@@ -1401,7 +1409,15 @@ type GetInstanceAutoscalingConfigInput interface {
 }
 
 type GetInstanceAutoscalingConfigArgs struct {
-	AutoscalingLimits  GetInstanceAutoscalingConfigAutoscalingLimitArrayInput  `pulumi:"autoscalingLimits"`
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events. Users can define the minimum and
+	// maximum compute capacity allocated to the instance, and the autoscaler will
+	// only scale within that range. Users can either use nodes or processing
+	// units to specify the limits, but should use the same unit to set both the
+	// minLimit and max_limit.
+	AutoscalingLimits GetInstanceAutoscalingConfigAutoscalingLimitArrayInput `pulumi:"autoscalingLimits"`
+	// Defines scale in controls to reduce the risk of response latency
+	// and outages due to abrupt scale-in events
 	AutoscalingTargets GetInstanceAutoscalingConfigAutoscalingTargetArrayInput `pulumi:"autoscalingTargets"`
 }
 
@@ -1456,12 +1472,20 @@ func (o GetInstanceAutoscalingConfigOutput) ToGetInstanceAutoscalingConfigOutput
 	return o
 }
 
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events. Users can define the minimum and
+// maximum compute capacity allocated to the instance, and the autoscaler will
+// only scale within that range. Users can either use nodes or processing
+// units to specify the limits, but should use the same unit to set both the
+// minLimit and max_limit.
 func (o GetInstanceAutoscalingConfigOutput) AutoscalingLimits() GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfig) []GetInstanceAutoscalingConfigAutoscalingLimit {
 		return v.AutoscalingLimits
 	}).(GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput)
 }
 
+// Defines scale in controls to reduce the risk of response latency
+// and outages due to abrupt scale-in events
 func (o GetInstanceAutoscalingConfigOutput) AutoscalingTargets() GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfig) []GetInstanceAutoscalingConfigAutoscalingTarget {
 		return v.AutoscalingTargets
@@ -1489,9 +1513,18 @@ func (o GetInstanceAutoscalingConfigArrayOutput) Index(i pulumi.IntInput) GetIns
 }
 
 type GetInstanceAutoscalingConfigAutoscalingLimit struct {
-	MaxNodes           int `pulumi:"maxNodes"`
+	// Specifies maximum number of nodes allocated to the instance. If set, this number
+	// should be greater than or equal to min_nodes.
+	MaxNodes int `pulumi:"maxNodes"`
+	// Specifies maximum number of processing units allocated to the instance.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
 	MaxProcessingUnits int `pulumi:"maxProcessingUnits"`
-	MinNodes           int `pulumi:"minNodes"`
+	// Specifies number of nodes allocated to the instance. If set, this number
+	// should be greater than or equal to 1.
+	MinNodes int `pulumi:"minNodes"`
+	// Specifies minimum number of processing units allocated to the instance.
+	// If set, this number should be multiples of 1000.
 	MinProcessingUnits int `pulumi:"minProcessingUnits"`
 }
 
@@ -1507,9 +1540,18 @@ type GetInstanceAutoscalingConfigAutoscalingLimitInput interface {
 }
 
 type GetInstanceAutoscalingConfigAutoscalingLimitArgs struct {
-	MaxNodes           pulumi.IntInput `pulumi:"maxNodes"`
+	// Specifies maximum number of nodes allocated to the instance. If set, this number
+	// should be greater than or equal to min_nodes.
+	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
+	// Specifies maximum number of processing units allocated to the instance.
+	// If set, this number should be multiples of 1000 and be greater than or equal to
+	// min_processing_units.
 	MaxProcessingUnits pulumi.IntInput `pulumi:"maxProcessingUnits"`
-	MinNodes           pulumi.IntInput `pulumi:"minNodes"`
+	// Specifies number of nodes allocated to the instance. If set, this number
+	// should be greater than or equal to 1.
+	MinNodes pulumi.IntInput `pulumi:"minNodes"`
+	// Specifies minimum number of processing units allocated to the instance.
+	// If set, this number should be multiples of 1000.
 	MinProcessingUnits pulumi.IntInput `pulumi:"minProcessingUnits"`
 }
 
@@ -1564,18 +1606,27 @@ func (o GetInstanceAutoscalingConfigAutoscalingLimitOutput) ToGetInstanceAutosca
 	return o
 }
 
+// Specifies maximum number of nodes allocated to the instance. If set, this number
+// should be greater than or equal to min_nodes.
 func (o GetInstanceAutoscalingConfigAutoscalingLimitOutput) MaxNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingLimit) int { return v.MaxNodes }).(pulumi.IntOutput)
 }
 
+// Specifies maximum number of processing units allocated to the instance.
+// If set, this number should be multiples of 1000 and be greater than or equal to
+// min_processing_units.
 func (o GetInstanceAutoscalingConfigAutoscalingLimitOutput) MaxProcessingUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingLimit) int { return v.MaxProcessingUnits }).(pulumi.IntOutput)
 }
 
+// Specifies number of nodes allocated to the instance. If set, this number
+// should be greater than or equal to 1.
 func (o GetInstanceAutoscalingConfigAutoscalingLimitOutput) MinNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingLimit) int { return v.MinNodes }).(pulumi.IntOutput)
 }
 
+// Specifies minimum number of processing units allocated to the instance.
+// If set, this number should be multiples of 1000.
 func (o GetInstanceAutoscalingConfigAutoscalingLimitOutput) MinProcessingUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingLimit) int { return v.MinProcessingUnits }).(pulumi.IntOutput)
 }
@@ -1601,8 +1652,14 @@ func (o GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput) Index(i pulumi.
 }
 
 type GetInstanceAutoscalingConfigAutoscalingTarget struct {
+	// Specifies the target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization)..
 	HighPriorityCpuUtilizationPercent int `pulumi:"highPriorityCpuUtilizationPercent"`
-	StorageUtilizationPercent         int `pulumi:"storageUtilizationPercent"`
+	// Specifies the target storage utilization percentage that the autoscaler
+	// should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	StorageUtilizationPercent int `pulumi:"storageUtilizationPercent"`
 }
 
 // GetInstanceAutoscalingConfigAutoscalingTargetInput is an input type that accepts GetInstanceAutoscalingConfigAutoscalingTargetArgs and GetInstanceAutoscalingConfigAutoscalingTargetOutput values.
@@ -1617,8 +1674,14 @@ type GetInstanceAutoscalingConfigAutoscalingTargetInput interface {
 }
 
 type GetInstanceAutoscalingConfigAutoscalingTargetArgs struct {
+	// Specifies the target high priority cpu utilization percentage that the autoscaler
+	// should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization)..
 	HighPriorityCpuUtilizationPercent pulumi.IntInput `pulumi:"highPriorityCpuUtilizationPercent"`
-	StorageUtilizationPercent         pulumi.IntInput `pulumi:"storageUtilizationPercent"`
+	// Specifies the target storage utilization percentage that the autoscaler
+	// should be trying to achieve for the instance.
+	// This number is on a scale from 0 (no utilization) to 100 (full utilization).
+	StorageUtilizationPercent pulumi.IntInput `pulumi:"storageUtilizationPercent"`
 }
 
 func (GetInstanceAutoscalingConfigAutoscalingTargetArgs) ElementType() reflect.Type {
@@ -1672,10 +1735,16 @@ func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) ToGetInstanceAutosc
 	return o
 }
 
+// Specifies the target high priority cpu utilization percentage that the autoscaler
+// should be trying to achieve for the instance.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization)..
 func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) HighPriorityCpuUtilizationPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingTarget) int { return v.HighPriorityCpuUtilizationPercent }).(pulumi.IntOutput)
 }
 
+// Specifies the target storage utilization percentage that the autoscaler
+// should be trying to achieve for the instance.
+// This number is on a scale from 0 (no utilization) to 100 (full utilization).
 func (o GetInstanceAutoscalingConfigAutoscalingTargetOutput) StorageUtilizationPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAutoscalingTarget) int { return v.StorageUtilizationPercent }).(pulumi.IntOutput)
 }

@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNotificationChannelSensitiveLabel {
+    /**
+     * @return An authorization token for a notification channel. Channel types that support this field include: slack
+     * 
+     */
     private String authToken;
+    /**
+     * @return An password for a notification channel. Channel types that support this field include: webhook_basicauth
+     * 
+     */
     private String password;
+    /**
+     * @return An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+     * 
+     */
     private String serviceKey;
 
     private GetNotificationChannelSensitiveLabel() {}
+    /**
+     * @return An authorization token for a notification channel. Channel types that support this field include: slack
+     * 
+     */
     public String authToken() {
         return this.authToken;
     }
+    /**
+     * @return An password for a notification channel. Channel types that support this field include: webhook_basicauth
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return An servicekey token for a notification channel. Channel types that support this field include: pagerduty
+     * 
+     */
     public String serviceKey() {
         return this.serviceKey;
     }

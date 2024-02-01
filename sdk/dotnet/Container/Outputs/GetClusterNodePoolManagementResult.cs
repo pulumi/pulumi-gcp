@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolManagementResult
     {
+        /// <summary>
+        /// Whether the nodes will be automatically repaired. Enabled by default.
+        /// </summary>
         public readonly bool AutoRepair;
+        /// <summary>
+        /// Whether the nodes will be automatically upgraded. Enabled by default.
+        /// </summary>
         public readonly bool AutoUpgrade;
 
         [OutputConstructor]

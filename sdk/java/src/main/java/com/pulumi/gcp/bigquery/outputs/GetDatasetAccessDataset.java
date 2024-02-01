@@ -12,13 +12,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatasetAccessDataset {
+    /**
+     * @return The dataset this entry applies to
+     * 
+     */
     private List<GetDatasetAccessDatasetDataset> datasets;
+    /**
+     * @return Which resources in the dataset this entry applies to. Currently, only views are supported,
+     * but additional target types may be added in the future. Possible values: VIEWS
+     * 
+     */
     private List<String> targetTypes;
 
     private GetDatasetAccessDataset() {}
+    /**
+     * @return The dataset this entry applies to
+     * 
+     */
     public List<GetDatasetAccessDatasetDataset> datasets() {
         return this.datasets;
     }
+    /**
+     * @return Which resources in the dataset this entry applies to. Currently, only views are supported,
+     * but additional target types may be added in the future. Possible values: VIEWS
+     * 
+     */
     public List<String> targetTypes() {
         return this.targetTypes;
     }

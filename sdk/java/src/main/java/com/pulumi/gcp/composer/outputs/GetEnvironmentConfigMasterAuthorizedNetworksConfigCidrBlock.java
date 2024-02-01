@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
+    /**
+     * @return cidr_block must be specified in CIDR notation.
+     * 
+     */
     private String cidrBlock;
+    /**
+     * @return display_name is a field for users to identify CIDR blocks.
+     * 
+     */
     private String displayName;
 
     private GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock() {}
+    /**
+     * @return cidr_block must be specified in CIDR notation.
+     * 
+     */
     public String cidrBlock() {
         return this.cidrBlock;
     }
+    /**
+     * @return display_name is a field for users to identify CIDR blocks.
+     * 
+     */
     public String displayName() {
         return this.displayName;
     }

@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class LakeAssetStatus {
+    /**
+     * @return Number of active assets.
+     * 
+     */
     private @Nullable Integer activeAssets;
+    /**
+     * @return Number of assets that are in process of updating the security policy on attached resources.
+     * 
+     */
     private @Nullable Integer securityPolicyApplyingAssets;
     /**
      * @return Output only. The time when the lake was last updated.
@@ -21,9 +29,17 @@ public final class LakeAssetStatus {
     private @Nullable String updateTime;
 
     private LakeAssetStatus() {}
+    /**
+     * @return Number of active assets.
+     * 
+     */
     public Optional<Integer> activeAssets() {
         return Optional.ofNullable(this.activeAssets);
     }
+    /**
+     * @return Number of assets that are in process of updating the security policy on attached resources.
+     * 
+     */
     public Optional<Integer> securityPolicyApplyingAssets() {
         return Optional.ofNullable(this.securityPolicyApplyingAssets);
     }

@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolDefaultNodeConfigDefault {
+    /**
+     * @return GCFS configuration for this node.
+     * 
+     */
     private List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs;
+    /**
+     * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+     * 
+     */
     private String loggingVariant;
 
     private GetClusterNodePoolDefaultNodeConfigDefault() {}
+    /**
+     * @return GCFS configuration for this node.
+     * 
+     */
     public List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs() {
         return this.gcfsConfigs;
     }
+    /**
+     * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+     * 
+     */
     public String loggingVariant() {
         return this.loggingVariant;
     }

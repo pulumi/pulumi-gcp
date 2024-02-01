@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromTemplateShieldedInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether integrity monitoring is enabled for the instance.
+        /// </summary>
         [Input("enableIntegrityMonitoring")]
         public Input<bool>? EnableIntegrityMonitoring { get; set; }
 
+        /// <summary>
+        /// Whether secure boot is enabled for the instance.
+        /// </summary>
         [Input("enableSecureBoot")]
         public Input<bool>? EnableSecureBoot { get; set; }
 
+        /// <summary>
+        /// Whether the instance uses vTPM.
+        /// </summary>
         [Input("enableVtpm")]
         public Input<bool>? EnableVtpm { get; set; }
 

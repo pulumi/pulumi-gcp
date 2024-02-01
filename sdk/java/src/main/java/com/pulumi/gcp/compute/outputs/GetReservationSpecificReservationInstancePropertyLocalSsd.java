@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetReservationSpecificReservationInstancePropertyLocalSsd {
+    /**
+     * @return The size of the disk in base-2 GB.
+     * 
+     */
     private Integer diskSizeGb;
+    /**
+     * @return The disk interface to use for attaching this disk. Default value: &#34;SCSI&#34; Possible values: [&#34;SCSI&#34;, &#34;NVME&#34;]
+     * 
+     */
     private String interface_;
 
     private GetReservationSpecificReservationInstancePropertyLocalSsd() {}
+    /**
+     * @return The size of the disk in base-2 GB.
+     * 
+     */
     public Integer diskSizeGb() {
         return this.diskSizeGb;
     }
+    /**
+     * @return The disk interface to use for attaching this disk. Default value: &#34;SCSI&#34; Possible values: [&#34;SCSI&#34;, &#34;NVME&#34;]
+     * 
+     */
     public String interface_() {
         return this.interface_;
     }

@@ -13,45 +13,153 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfig
     {
+        /// <summary>
+        /// Specifies options for controlling advanced machine features.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigAdvancedMachineFeatures? AdvancedMachineFeatures;
+        /// <summary>
+        /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
+        /// </summary>
         public readonly string? BootDiskKmsKey;
         /// <summary>
         /// Configuration for Confidential Nodes feature. Structure is documented below.
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigConfidentialNodes? ConfidentialNodes;
+        /// <summary>
+        /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        /// </summary>
         public readonly int? DiskSizeGb;
+        /// <summary>
+        /// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
+        /// </summary>
         public readonly string? DiskType;
+        /// <summary>
+        /// List of kubernetes taints applied to each node.
+        /// </summary>
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigEffectiveTaint> EffectiveTaints;
+        /// <summary>
+        /// If enabled boot disks are configured with confidential mode.
+        /// </summary>
         public readonly bool? EnableConfidentialStorage;
+        /// <summary>
+        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigEphemeralStorageConfig? EphemeralStorageConfig;
+        /// <summary>
+        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig? EphemeralStorageLocalSsdConfig;
+        /// <summary>
+        /// Enable or disable NCCL Fast Socket in the node pool.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigFastSocket? FastSocket;
+        /// <summary>
+        /// GCFS configuration for this node.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigGcfsConfig? GcfsConfig;
+        /// <summary>
+        /// List of the type and count of accelerator cards attached to the instance.
+        /// </summary>
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigGuestAccelerator> GuestAccelerators;
+        /// <summary>
+        /// Enable or disable gvnic in the node pool.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigGvnic? Gvnic;
+        /// <summary>
+        /// The maintenance policy for the hosts on which the GKE VMs run on.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigHostMaintenancePolicy? HostMaintenancePolicy;
+        /// <summary>
+        /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+        /// </summary>
         public readonly string? ImageType;
+        /// <summary>
+        /// Node kubelet configs.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigKubeletConfig? KubeletConfig;
+        /// <summary>
+        /// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// Parameters that can be configured on Linux nodes.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigLinuxNodeConfig? LinuxNodeConfig;
+        /// <summary>
+        /// Parameters for raw-block local NVMe SSDs.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig? LocalNvmeSsdBlockConfig;
+        /// <summary>
+        /// The number of local SSD disks to be attached to the node.
+        /// </summary>
         public readonly int? LocalSsdCount;
+        /// <summary>
+        /// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
+        /// </summary>
         public readonly string? LoggingVariant;
+        /// <summary>
+        /// The name of a Google Compute Engine machine type.
+        /// </summary>
         public readonly string? MachineType;
+        /// <summary>
+        /// The metadata key/value pairs assigned to instances in the cluster.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
+        /// <summary>
+        /// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
+        /// </summary>
         public readonly string? MinCpuPlatform;
+        /// <summary>
+        /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
+        /// </summary>
         public readonly string? NodeGroup;
+        /// <summary>
+        /// The set of Google API scopes to be made available on all of the node VMs.
+        /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
+        /// <summary>
+        /// Whether the nodes are created as preemptible VM instances.
+        /// </summary>
         public readonly bool? Preemptible;
+        /// <summary>
+        /// The reservation affinity configuration for the node pool.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigReservationAffinity? ReservationAffinity;
+        /// <summary>
+        /// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceLabels;
+        /// <summary>
+        /// Sandbox configuration for this node.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigSandboxConfig? SandboxConfig;
+        /// <summary>
+        /// The Google Cloud Platform Service Account to be used by the node VMs.
+        /// </summary>
         public readonly string? ServiceAccount;
+        /// <summary>
+        /// Shielded Instance options.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigShieldedInstanceConfig? ShieldedInstanceConfig;
+        /// <summary>
+        /// Node affinity options for sole tenant node pools.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigSoleTenantConfig? SoleTenantConfig;
+        /// <summary>
+        /// Whether the nodes are created as spot VM instances.
+        /// </summary>
         public readonly bool? Spot;
+        /// <summary>
+        /// The list of instance tags applied to all nodes.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// List of Kubernetes taints to be applied to each node.
+        /// </summary>
         public readonly ImmutableArray<Outputs.NodePoolNodeConfigTaint> Taints;
+        /// <summary>
+        /// The workload metadata configuration for this node.
+        /// </summary>
         public readonly Outputs.NodePoolNodeConfigWorkloadMetadataConfig? WorkloadMetadataConfig;
 
         [OutputConstructor]

@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.VpcAccess.Outputs
         /// - - -
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+        /// </summary>
         public readonly string ProjectId;
 
         [OutputConstructor]

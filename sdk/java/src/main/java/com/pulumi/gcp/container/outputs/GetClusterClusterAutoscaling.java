@@ -14,21 +14,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscaling {
+    /**
+     * @return Contains defaults for a node pool created by NAP.
+     * 
+     */
     private List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults;
+    /**
+     * @return Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
+     * 
+     */
     private String autoscalingProfile;
+    /**
+     * @return Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
+     * 
+     */
     private Boolean enabled;
+    /**
+     * @return Global constraints for machine resources in the cluster. Configuring the cpu and memory types is required if node auto-provisioning is enabled. These limits will apply to node pool autoscaling in addition to node auto-provisioning.
+     * 
+     */
     private List<GetClusterClusterAutoscalingResourceLimit> resourceLimits;
 
     private GetClusterClusterAutoscaling() {}
+    /**
+     * @return Contains defaults for a node pool created by NAP.
+     * 
+     */
     public List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults() {
         return this.autoProvisioningDefaults;
     }
+    /**
+     * @return Configuration options for the Autoscaling profile feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability when deciding to remove nodes from a cluster. Can be BALANCED or OPTIMIZE_UTILIZATION. Defaults to BALANCED.
+     * 
+     */
     public String autoscalingProfile() {
         return this.autoscalingProfile;
     }
+    /**
+     * @return Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return Global constraints for machine resources in the cluster. Configuring the cpu and memory types is required if node auto-provisioning is enabled. These limits will apply to node pool autoscaling in addition to node auto-provisioning.
+     * 
+     */
     public List<GetClusterClusterAutoscalingResourceLimit> resourceLimits() {
         return this.resourceLimits;
     }

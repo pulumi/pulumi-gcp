@@ -25,6 +25,10 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
      * 
      */
     private @Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy;
+    /**
+     * @return List of preemptible instance names which have been assigned to the cluster.
+     * 
+     */
     private @Nullable List<String> instanceNames;
     /**
      * @return Specifies the number of preemptible nodes to create.
@@ -57,6 +61,10 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
     public Optional<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy> instanceFlexibilityPolicy() {
         return Optional.ofNullable(this.instanceFlexibilityPolicy);
     }
+    /**
+     * @return List of preemptible instance names which have been assigned to the cluster.
+     * 
+     */
     public List<String> instanceNames() {
         return this.instanceNames == null ? List.of() : this.instanceNames;
     }

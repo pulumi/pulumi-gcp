@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class NodePoolNodeConfigWorkloadMetadataConfig
     {
+        /// <summary>
+        /// Mode is the configuration for how to expose metadata to workloads running on the node.
+        /// </summary>
         public readonly string Mode;
 
         [OutputConstructor]

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterResourceUsageExportConfigBigqueryDestination {
+    /**
+     * @return The ID of a BigQuery Dataset.
+     * 
+     */
     private String datasetId;
 
     private ClusterResourceUsageExportConfigBigqueryDestination() {}
+    /**
+     * @return The ID of a BigQuery Dataset.
+     * 
+     */
     public String datasetId() {
         return this.datasetId;
     }

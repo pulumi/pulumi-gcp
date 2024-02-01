@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfigTriggerer {
+    /**
+     * @return The number of triggerers.
+     * 
+     */
     private Integer count;
+    /**
+     * @return CPU request and limit for a single Airflow triggerer replica.
+     * 
+     */
     private Double cpu;
+    /**
+     * @return Memory (GB) request and limit for a single Airflow triggerer replica.
+     * 
+     */
     private Double memoryGb;
 
     private EnvironmentConfigWorkloadsConfigTriggerer() {}
+    /**
+     * @return The number of triggerers.
+     * 
+     */
     public Integer count() {
         return this.count;
     }
+    /**
+     * @return CPU request and limit for a single Airflow triggerer replica.
+     * 
+     */
     public Double cpu() {
         return this.cpu;
     }
+    /**
+     * @return Memory (GB) request and limit for a single Airflow triggerer replica.
+     * 
+     */
     public Double memoryGb() {
         return this.memoryGb;
     }

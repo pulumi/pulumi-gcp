@@ -12,37 +12,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetManagedZonesManagedZone {
+    /**
+     * @return A textual description field.
+     * 
+     */
     private String description;
+    /**
+     * @return The fully qualified DNS name of this zone.
+     * 
+     */
     private String dnsName;
+    /**
+     * @return DNS managed zone identifier
+     * 
+     */
     private String id;
+    /**
+     * @return Unique identifier for the resource; defined by the server.
+     * 
+     */
     private Integer managedZoneId;
+    /**
+     * @return A unique name for the resource.
+     * 
+     */
     private String name;
+    /**
+     * @return The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+     * 
+     */
     private List<String> nameServers;
+    /**
+     * @return The ID of the project for the Google Cloud.
+     * 
+     */
     private String project;
+    /**
+     * @return The zone&#39;s visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+     * 
+     */
     private String visibility;
 
     private GetManagedZonesManagedZone() {}
+    /**
+     * @return A textual description field.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return The fully qualified DNS name of this zone.
+     * 
+     */
     public String dnsName() {
         return this.dnsName;
     }
+    /**
+     * @return DNS managed zone identifier
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Unique identifier for the resource; defined by the server.
+     * 
+     */
     public Integer managedZoneId() {
         return this.managedZoneId;
     }
+    /**
+     * @return A unique name for the resource.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+     * 
+     */
     public List<String> nameServers() {
         return this.nameServers;
     }
+    /**
+     * @return The ID of the project for the Google Cloud.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return The zone&#39;s visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+     * 
+     */
     public String visibility() {
         return this.visibility;
     }

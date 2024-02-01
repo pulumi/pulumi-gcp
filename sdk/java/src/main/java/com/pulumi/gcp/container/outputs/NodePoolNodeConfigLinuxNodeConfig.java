@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNodeConfigLinuxNodeConfig {
+    /**
+     * @return cgroupMode specifies the cgroup mode to be used on the node.
+     * 
+     */
     private @Nullable String cgroupMode;
+    /**
+     * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     * 
+     */
     private @Nullable Map<String,String> sysctls;
 
     private NodePoolNodeConfigLinuxNodeConfig() {}
+    /**
+     * @return cgroupMode specifies the cgroup mode to be used on the node.
+     * 
+     */
     public Optional<String> cgroupMode() {
         return Optional.ofNullable(this.cgroupMode);
     }
+    /**
+     * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+     * 
+     */
     public Map<String,String> sysctls() {
         return this.sysctls == null ? Map.of() : this.sysctls;
     }

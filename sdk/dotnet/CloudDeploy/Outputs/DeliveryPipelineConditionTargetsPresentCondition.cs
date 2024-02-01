@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     [OutputType]
     public sealed class DeliveryPipelineConditionTargetsPresentCondition
     {
+        /// <summary>
+        /// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        /// </summary>
         public readonly ImmutableArray<string> MissingTargets;
+        /// <summary>
+        /// True if there aren't any missing Targets.
+        /// </summary>
         public readonly bool? Status;
         /// <summary>
         /// Output only. Most recent time at which the pipeline was updated.

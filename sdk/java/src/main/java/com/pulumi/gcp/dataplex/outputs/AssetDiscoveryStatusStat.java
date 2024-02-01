@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AssetDiscoveryStatusStat {
+    /**
+     * @return The count of data items within the referenced resource.
+     * 
+     */
     private @Nullable Integer dataItems;
+    /**
+     * @return The number of stored data bytes within the referenced resource.
+     * 
+     */
     private @Nullable Integer dataSize;
+    /**
+     * @return The count of fileset entities within the referenced resource.
+     * 
+     */
     private @Nullable Integer filesets;
+    /**
+     * @return The count of table entities within the referenced resource.
+     * 
+     */
     private @Nullable Integer tables;
 
     private AssetDiscoveryStatusStat() {}
+    /**
+     * @return The count of data items within the referenced resource.
+     * 
+     */
     public Optional<Integer> dataItems() {
         return Optional.ofNullable(this.dataItems);
     }
+    /**
+     * @return The number of stored data bytes within the referenced resource.
+     * 
+     */
     public Optional<Integer> dataSize() {
         return Optional.ofNullable(this.dataSize);
     }
+    /**
+     * @return The count of fileset entities within the referenced resource.
+     * 
+     */
     public Optional<Integer> filesets() {
         return Optional.ofNullable(this.filesets);
     }
+    /**
+     * @return The count of table entities within the referenced resource.
+     * 
+     */
     public Optional<Integer> tables() {
         return Optional.ofNullable(this.tables);
     }

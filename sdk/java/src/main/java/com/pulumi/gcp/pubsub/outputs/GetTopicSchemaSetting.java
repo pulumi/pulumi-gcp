@@ -10,13 +10,35 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTopicSchemaSetting {
+    /**
+     * @return The encoding of messages validated against schema. Default value: &#34;ENCODING_UNSPECIFIED&#34; Possible values: [&#34;ENCODING_UNSPECIFIED&#34;, &#34;JSON&#34;, &#34;BINARY&#34;]
+     * 
+     */
     private String encoding;
+    /**
+     * @return The name of the schema that messages published should be
+     * validated against. Format is projects/{project}/schemas/{schema}.
+     * The value of this field will be _deleted-schema_
+     * if the schema has been deleted.
+     * 
+     */
     private String schema;
 
     private GetTopicSchemaSetting() {}
+    /**
+     * @return The encoding of messages validated against schema. Default value: &#34;ENCODING_UNSPECIFIED&#34; Possible values: [&#34;ENCODING_UNSPECIFIED&#34;, &#34;JSON&#34;, &#34;BINARY&#34;]
+     * 
+     */
     public String encoding() {
         return this.encoding;
     }
+    /**
+     * @return The name of the schema that messages published should be
+     * validated against. Format is projects/{project}/schemas/{schema}.
+     * The value of this field will be _deleted-schema_
+     * if the schema has been deleted.
+     * 
+     */
     public String schema() {
         return this.schema;
     }

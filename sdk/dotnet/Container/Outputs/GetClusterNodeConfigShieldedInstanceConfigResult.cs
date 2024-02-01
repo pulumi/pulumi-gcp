@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodeConfigShieldedInstanceConfigResult
     {
+        /// <summary>
+        /// Defines whether the instance has integrity monitoring enabled.
+        /// </summary>
         public readonly bool EnableIntegrityMonitoring;
+        /// <summary>
+        /// Defines whether the instance has Secure Boot enabled.
+        /// </summary>
         public readonly bool EnableSecureBoot;
 
         [OutputConstructor]

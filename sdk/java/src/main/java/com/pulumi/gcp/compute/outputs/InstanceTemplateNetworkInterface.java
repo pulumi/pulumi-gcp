@@ -33,6 +33,10 @@ public final class InstanceTemplateNetworkInterface {
      * 
      */
     private @Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+    /**
+     * @return The prefix length of the primary internal IPv6 range.
+     * 
+     */
     private @Nullable Integer internalIpv6PrefixLength;
     /**
      * @return An array of IPv6 access configurations for this interface.
@@ -41,7 +45,15 @@ public final class InstanceTemplateNetworkInterface {
      * 
      */
     private @Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
+    /**
+     * @return One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+     * 
+     */
     private @Nullable String ipv6AccessType;
+    /**
+     * @return An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     private @Nullable String ipv6Address;
     /**
      * @return The name of the instance template. If you leave
@@ -118,6 +130,10 @@ public final class InstanceTemplateNetworkInterface {
     public List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges == null ? List.of() : this.aliasIpRanges;
     }
+    /**
+     * @return The prefix length of the primary internal IPv6 range.
+     * 
+     */
     public Optional<Integer> internalIpv6PrefixLength() {
         return Optional.ofNullable(this.internalIpv6PrefixLength);
     }
@@ -130,9 +146,17 @@ public final class InstanceTemplateNetworkInterface {
     public List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs() {
         return this.ipv6AccessConfigs == null ? List.of() : this.ipv6AccessConfigs;
     }
+    /**
+     * @return One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
+     * 
+     */
     public Optional<String> ipv6AccessType() {
         return Optional.ofNullable(this.ipv6AccessType);
     }
+    /**
+     * @return An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     public Optional<String> ipv6Address() {
         return Optional.ofNullable(this.ipv6Address);
     }

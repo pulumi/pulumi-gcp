@@ -270,7 +270,7 @@ import (
 //					},
 //					&projects.IAMAuditConfigAuditLogConfigArgs{
 //						ExemptedMembers: pulumi.StringArray{
-//							pulumi.String("user:joebloggs@hashicorp.com"),
+//							pulumi.String("user:joebloggs@example.com"),
 //						},
 //						LogType: pulumi.String("DATA_READ"),
 //					},

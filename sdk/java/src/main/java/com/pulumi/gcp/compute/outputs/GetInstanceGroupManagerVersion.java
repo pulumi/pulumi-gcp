@@ -12,15 +12,27 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceGroupManagerVersion {
+    /**
+     * @return The full URL to an instance template from which all new instances of this version will be created.
+     * 
+     */
     private String instanceTemplate;
     /**
      * @return The name of the instance group. Either `name` or `self_link` must be provided.
      * 
      */
     private String name;
+    /**
+     * @return The number of instances calculated as a fixed number or a percentage depending on the settings.
+     * 
+     */
     private List<GetInstanceGroupManagerVersionTargetSize> targetSizes;
 
     private GetInstanceGroupManagerVersion() {}
+    /**
+     * @return The full URL to an instance template from which all new instances of this version will be created.
+     * 
+     */
     public String instanceTemplate() {
         return this.instanceTemplate;
     }
@@ -31,6 +43,10 @@ public final class GetInstanceGroupManagerVersion {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The number of instances calculated as a fixed number or a percentage depending on the settings.
+     * 
+     */
     public List<GetInstanceGroupManagerVersionTargetSize> targetSizes() {
         return this.targetSizes;
     }

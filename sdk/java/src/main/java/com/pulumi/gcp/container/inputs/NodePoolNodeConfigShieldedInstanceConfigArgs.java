@@ -15,16 +15,32 @@ public final class NodePoolNodeConfigShieldedInstanceConfigArgs extends com.pulu
 
     public static final NodePoolNodeConfigShieldedInstanceConfigArgs Empty = new NodePoolNodeConfigShieldedInstanceConfigArgs();
 
+    /**
+     * Defines whether the instance has integrity monitoring enabled.
+     * 
+     */
     @Import(name="enableIntegrityMonitoring")
     private @Nullable Output<Boolean> enableIntegrityMonitoring;
 
+    /**
+     * @return Defines whether the instance has integrity monitoring enabled.
+     * 
+     */
     public Optional<Output<Boolean>> enableIntegrityMonitoring() {
         return Optional.ofNullable(this.enableIntegrityMonitoring);
     }
 
+    /**
+     * Defines whether the instance has Secure Boot enabled.
+     * 
+     */
     @Import(name="enableSecureBoot")
     private @Nullable Output<Boolean> enableSecureBoot;
 
+    /**
+     * @return Defines whether the instance has Secure Boot enabled.
+     * 
+     */
     public Optional<Output<Boolean>> enableSecureBoot() {
         return Optional.ofNullable(this.enableSecureBoot);
     }
@@ -54,20 +70,44 @@ public final class NodePoolNodeConfigShieldedInstanceConfigArgs extends com.pulu
             $ = new NodePoolNodeConfigShieldedInstanceConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableIntegrityMonitoring Defines whether the instance has integrity monitoring enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableIntegrityMonitoring(@Nullable Output<Boolean> enableIntegrityMonitoring) {
             $.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
 
+        /**
+         * @param enableIntegrityMonitoring Defines whether the instance has integrity monitoring enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableIntegrityMonitoring(Boolean enableIntegrityMonitoring) {
             return enableIntegrityMonitoring(Output.of(enableIntegrityMonitoring));
         }
 
+        /**
+         * @param enableSecureBoot Defines whether the instance has Secure Boot enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSecureBoot(@Nullable Output<Boolean> enableSecureBoot) {
             $.enableSecureBoot = enableSecureBoot;
             return this;
         }
 
+        /**
+         * @param enableSecureBoot Defines whether the instance has Secure Boot enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableSecureBoot(Boolean enableSecureBoot) {
             return enableSecureBoot(Output.of(enableSecureBoot));
         }

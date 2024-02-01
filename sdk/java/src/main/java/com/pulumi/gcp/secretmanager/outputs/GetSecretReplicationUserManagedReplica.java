@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplicationUserManagedReplica {
+    /**
+     * @return Customer Managed Encryption for the secret.
+     * 
+     */
     private List<GetSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions;
+    /**
+     * @return The canonical IDs of the location to replicate data. For example: &#34;us-east1&#34;.
+     * 
+     */
     private String location;
 
     private GetSecretReplicationUserManagedReplica() {}
+    /**
+     * @return Customer Managed Encryption for the secret.
+     * 
+     */
     public List<GetSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions() {
         return this.customerManagedEncryptions;
     }
+    /**
+     * @return The canonical IDs of the location to replicate data. For example: &#34;us-east1&#34;.
+     * 
+     */
     public String location() {
         return this.location;
     }

@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     [OutputType]
     public sealed class GetGroupsGroupResult
     {
+        /// <summary>
+        /// Additional group keys associated with the Group
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupsGroupAdditionalGroupKeyResult> AdditionalGroupKeys;
+        /// <summary>
+        /// The time when the Group was created.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// An extended description to help users determine the purpose of a Group.
@@ -27,6 +33,13 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         /// EntityKey of the Group.  Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupsGroupGroupKeyResult> GroupKeys;
+        /// <summary>
+        /// The initial configuration options for creating a Group.
+        /// 
+        /// See the
+        /// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+        /// for possible values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
+        /// </summary>
         public readonly string InitialGroupConfig;
         /// <summary>
         /// The labels that apply to the Group.
@@ -42,6 +55,9 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         /// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
         /// </summary>
         public readonly string Parent;
+        /// <summary>
+        /// The time when the Group was last updated.
+        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]

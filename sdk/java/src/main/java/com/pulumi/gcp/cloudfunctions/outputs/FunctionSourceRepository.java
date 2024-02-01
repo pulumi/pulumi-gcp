@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FunctionSourceRepository {
+    /**
+     * @return The URL pointing to the hosted repository where the function was defined at the time of deployment.
+     * 
+     */
     private @Nullable String deployedUrl;
     /**
      * @return The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
@@ -24,6 +28,10 @@ public final class FunctionSourceRepository {
     private String url;
 
     private FunctionSourceRepository() {}
+    /**
+     * @return The URL pointing to the hosted repository where the function was defined at the time of deployment.
+     * 
+     */
     public Optional<String> deployedUrl() {
         return Optional.ofNullable(this.deployedUrl);
     }

@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Vertex.Outputs
     [OutputType]
     public sealed class GetAiIndexIndexStatResult
     {
+        /// <summary>
+        /// The number of shards in the Index.
+        /// </summary>
         public readonly int ShardsCount;
+        /// <summary>
+        /// The number of vectors in the Index.
+        /// </summary>
         public readonly string VectorsCount;
 
         [OutputConstructor]

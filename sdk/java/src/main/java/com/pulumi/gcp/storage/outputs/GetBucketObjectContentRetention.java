@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketObjectContentRetention {
+    /**
+     * @return The object retention mode. Supported values include: &#34;Unlocked&#34;, &#34;Locked&#34;.
+     * 
+     */
     private String mode;
+    /**
+     * @return Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
+     * 
+     */
     private String retainUntilTime;
 
     private GetBucketObjectContentRetention() {}
+    /**
+     * @return The object retention mode. Supported values include: &#34;Unlocked&#34;, &#34;Locked&#34;.
+     * 
+     */
     public String mode() {
         return this.mode;
     }
+    /**
+     * @return Time in RFC 3339 (e.g. 2030-01-01T02:03:04Z) until which object retention protects this object.
+     * 
+     */
     public String retainUntilTime() {
         return this.retainUntilTime;
     }

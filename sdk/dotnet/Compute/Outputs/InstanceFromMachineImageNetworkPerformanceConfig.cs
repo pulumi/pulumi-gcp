@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromMachineImageNetworkPerformanceConfig
     {
+        /// <summary>
+        /// The egress bandwidth tier to enable. Possible values:TIER_1, DEFAULT
+        /// </summary>
         public readonly string TotalEgressBandwidthTier;
 
         [OutputConstructor]

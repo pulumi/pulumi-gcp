@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterBinaryAuthorizationResult
     {
+        /// <summary>
+        /// Enable Binary Authorization for this cluster.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Mode of operation for Binary Authorization policy evaluation.
+        /// </summary>
         public readonly string EvaluationMode;
 
         [OutputConstructor]

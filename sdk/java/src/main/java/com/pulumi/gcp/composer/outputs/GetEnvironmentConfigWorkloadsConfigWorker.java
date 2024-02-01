@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfigWorker {
+    /**
+     * @return CPU request and limit for a single Airflow worker replica.
+     * 
+     */
     private Double cpu;
+    /**
+     * @return Maximum number of workers for autoscaling.
+     * 
+     */
     private Integer maxCount;
+    /**
+     * @return Memory (GB) request and limit for a single Airflow worker replica.
+     * 
+     */
     private Double memoryGb;
+    /**
+     * @return Minimum number of workers for autoscaling.
+     * 
+     */
     private Integer minCount;
+    /**
+     * @return Storage (GB) request and limit for a single Airflow worker replica.
+     * 
+     */
     private Double storageGb;
 
     private GetEnvironmentConfigWorkloadsConfigWorker() {}
+    /**
+     * @return CPU request and limit for a single Airflow worker replica.
+     * 
+     */
     public Double cpu() {
         return this.cpu;
     }
+    /**
+     * @return Maximum number of workers for autoscaling.
+     * 
+     */
     public Integer maxCount() {
         return this.maxCount;
     }
+    /**
+     * @return Memory (GB) request and limit for a single Airflow worker replica.
+     * 
+     */
     public Double memoryGb() {
         return this.memoryGb;
     }
+    /**
+     * @return Minimum number of workers for autoscaling.
+     * 
+     */
     public Integer minCount() {
         return this.minCount;
     }
+    /**
+     * @return Storage (GB) request and limit for a single Airflow worker replica.
+     * 
+     */
     public Double storageGb() {
         return this.storageGb;
     }

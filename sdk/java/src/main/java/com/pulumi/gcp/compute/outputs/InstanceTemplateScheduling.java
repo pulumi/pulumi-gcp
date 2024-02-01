@@ -29,6 +29,13 @@ public final class InstanceTemplateScheduling {
      * 
      */
     private @Nullable String instanceTerminationAction;
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     private @Nullable List<InstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
     /**
      * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -42,6 +49,10 @@ public final class InstanceTemplateScheduling {
      * 
      */
     private @Nullable InstanceTemplateSchedulingMaxRunDuration maxRunDuration;
+    /**
+     * @return Minimum number of cpus for the instance.
+     * 
+     */
     private @Nullable Integer minNodeCpus;
     /**
      * @return Specifies node affinities or anti-affinities
@@ -91,6 +102,13 @@ public final class InstanceTemplateScheduling {
     public Optional<String> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
     }
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     public List<InstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts() {
         return this.localSsdRecoveryTimeouts == null ? List.of() : this.localSsdRecoveryTimeouts;
     }
@@ -110,6 +128,10 @@ public final class InstanceTemplateScheduling {
     public Optional<InstanceTemplateSchedulingMaxRunDuration> maxRunDuration() {
         return Optional.ofNullable(this.maxRunDuration);
     }
+    /**
+     * @return Minimum number of cpus for the instance.
+     * 
+     */
     public Optional<Integer> minNodeCpus() {
         return Optional.ofNullable(this.minNodeCpus);
     }

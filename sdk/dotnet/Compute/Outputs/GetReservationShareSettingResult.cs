@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetReservationShareSettingResult
     {
+        /// <summary>
+        /// A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetReservationShareSettingProjectMapResult> ProjectMaps;
+        /// <summary>
+        /// Type of sharing for this shared-reservation Possible values: ["LOCAL", "SPECIFIC_PROJECTS"]
+        /// </summary>
         public readonly string ShareType;
 
         [OutputConstructor]

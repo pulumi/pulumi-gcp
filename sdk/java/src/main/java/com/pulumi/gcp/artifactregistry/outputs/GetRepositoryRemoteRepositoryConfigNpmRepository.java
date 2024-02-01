@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigNpmRepository {
+    /**
+     * @return Address of the remote repository. Default value: &#34;NPMJS&#34; Possible values: [&#34;NPMJS&#34;]
+     * 
+     */
     private String publicRepository;
 
     private GetRepositoryRemoteRepositoryConfigNpmRepository() {}
+    /**
+     * @return Address of the remote repository. Default value: &#34;NPMJS&#34; Possible values: [&#34;NPMJS&#34;]
+     * 
+     */
     public String publicRepository() {
         return this.publicRepository;
     }

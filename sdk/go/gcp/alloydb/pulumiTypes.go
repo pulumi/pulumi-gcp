@@ -4242,7 +4242,9 @@ func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagArrayOutput) Index(i pulum
 }
 
 type GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions struct {
+	// The maximum value that can be specified, if applicable.
 	MaxValue string `pulumi:"maxValue"`
+	// The minimum value that can be specified, if applicable.
 	MinValue string `pulumi:"minValue"`
 }
 
@@ -4258,7 +4260,9 @@ type GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsInput inte
 }
 
 type GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsArgs struct {
+	// The maximum value that can be specified, if applicable.
 	MaxValue pulumi.StringInput `pulumi:"maxValue"`
+	// The minimum value that can be specified, if applicable.
 	MinValue pulumi.StringInput `pulumi:"minValue"`
 }
 
@@ -4288,15 +4292,18 @@ func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput)
 	return o
 }
 
+// The maximum value that can be specified, if applicable.
 func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput) MaxValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions) string { return v.MaxValue }).(pulumi.StringOutput)
 }
 
+// The minimum value that can be specified, if applicable.
 func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictionsOutput) MinValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions) string { return v.MinValue }).(pulumi.StringOutput)
 }
 
 type GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions struct {
+	// The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
 	AllowedValues []string `pulumi:"allowedValues"`
 }
 
@@ -4312,6 +4319,7 @@ type GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsInput inter
 }
 
 type GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsArgs struct {
+	// The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
 	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
 }
 
@@ -4341,6 +4349,7 @@ func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput) 
 	return o
 }
 
+// The list of allowed values, if bounded. This field will be empty if there is a unbounded number of allowed values.
 func (o GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictionsOutput) AllowedValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions) []string {
 		return v.AllowedValues

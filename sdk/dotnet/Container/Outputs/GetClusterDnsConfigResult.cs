@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterDnsConfigResult
     {
+        /// <summary>
+        /// Which in-cluster DNS provider should be used.
+        /// </summary>
         public readonly string ClusterDns;
+        /// <summary>
+        /// The suffix used for all cluster service records.
+        /// </summary>
         public readonly string ClusterDnsDomain;
+        /// <summary>
+        /// The scope of access to cluster DNS records.
+        /// </summary>
         public readonly string ClusterDnsScope;
 
         [OutputConstructor]

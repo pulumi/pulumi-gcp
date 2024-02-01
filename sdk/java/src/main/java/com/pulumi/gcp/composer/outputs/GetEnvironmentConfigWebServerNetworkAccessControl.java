@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWebServerNetworkAccessControl {
+    /**
+     * @return A collection of allowed IP ranges with descriptions.
+     * 
+     */
     private List<GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges;
 
     private GetEnvironmentConfigWebServerNetworkAccessControl() {}
+    /**
+     * @return A collection of allowed IP ranges with descriptions.
+     * 
+     */
     public List<GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange> allowedIpRanges() {
         return this.allowedIpRanges;
     }

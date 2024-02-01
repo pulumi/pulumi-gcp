@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     [OutputType]
     public sealed class GetDatasetExternalDatasetReferenceResult
     {
+        /// <summary>
+        /// The connection id that is used to access the externalSource.
+        /// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+        /// </summary>
         public readonly string Connection;
+        /// <summary>
+        /// External source that backs this dataset.
+        /// </summary>
         public readonly string ExternalSource;
 
         [OutputConstructor]

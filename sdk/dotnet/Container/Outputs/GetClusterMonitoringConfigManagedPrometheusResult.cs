@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterMonitoringConfigManagedPrometheusResult
     {
+        /// <summary>
+        /// Whether or not the managed collection is enabled.
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

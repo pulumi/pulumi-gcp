@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     [OutputType]
     public sealed class GetAuthorityConfigResult
     {
+        /// <summary>
+        /// Specifies some of the values in a certificate that are related to the subject.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthorityConfigSubjectConfigResult> SubjectConfigs;
+        /// <summary>
+        /// Describes how some of the technical X.509 fields in a certificate should be populated.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAuthorityConfigX509ConfigResult> X509Configs;
 
         [OutputConstructor]

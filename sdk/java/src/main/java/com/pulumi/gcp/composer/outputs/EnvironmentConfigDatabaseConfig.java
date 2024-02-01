@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigDatabaseConfig {
+    /**
+     * @return Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+     * 
+     */
     private @Nullable String machineType;
+    /**
+     * @return Optional. Cloud SQL database preferred zone.
+     * 
+     */
     private @Nullable String zone;
 
     private EnvironmentConfigDatabaseConfig() {}
+    /**
+     * @return Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+     * 
+     */
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
     }
+    /**
+     * @return Optional. Cloud SQL database preferred zone.
+     * 
+     */
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }

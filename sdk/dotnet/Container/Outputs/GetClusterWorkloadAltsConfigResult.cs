@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterWorkloadAltsConfigResult
     {
+        /// <summary>
+        /// Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool must be non-empty).
+        /// </summary>
         public readonly bool EnableAlts;
 
         [OutputConstructor]

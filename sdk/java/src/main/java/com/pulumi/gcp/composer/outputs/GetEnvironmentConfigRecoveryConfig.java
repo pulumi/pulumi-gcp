@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigRecoveryConfig {
+    /**
+     * @return The configuration settings for scheduled snapshots.
+     * 
+     */
     private List<GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig> scheduledSnapshotsConfigs;
 
     private GetEnvironmentConfigRecoveryConfig() {}
+    /**
+     * @return The configuration settings for scheduled snapshots.
+     * 
+     */
     public List<GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig> scheduledSnapshotsConfigs() {
         return this.scheduledSnapshotsConfigs;
     }

@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigSoleTenantConfigNodeAffinity {
+    /**
+     * @return .
+     * 
+     */
     private String key;
+    /**
+     * @return .
+     * 
+     */
     private String operator;
+    /**
+     * @return .
+     * 
+     */
     private List<String> values;
 
     private NodePoolNodeConfigSoleTenantConfigNodeAffinity() {}
+    /**
+     * @return .
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return .
+     * 
+     */
     public String operator() {
         return this.operator;
     }
+    /**
+     * @return .
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

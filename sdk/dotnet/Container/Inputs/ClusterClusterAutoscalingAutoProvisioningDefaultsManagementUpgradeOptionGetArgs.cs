@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This field is set when upgrades are about to commence with the approximate start time for the upgrades, in RFC3339 text format.
+        /// </summary>
         [Input("autoUpgradeStartTime")]
         public Input<string>? AutoUpgradeStartTime { get; set; }
 

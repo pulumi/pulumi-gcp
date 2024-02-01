@@ -12,15 +12,27 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// When enabled, Cloud Composer periodically saves snapshots of your environment to a Cloud Storage bucket.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Snapshot schedule, in the unix-cron format.
+        /// </summary>
         [Input("snapshotCreationSchedule")]
         public Input<string>? SnapshotCreationSchedule { get; set; }
 
+        /// <summary>
+        /// the URI of a bucket folder where to save the snapshot.
+        /// </summary>
         [Input("snapshotLocation")]
         public Input<string>? SnapshotLocation { get; set; }
 
+        /// <summary>
+        /// A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
+        /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
 

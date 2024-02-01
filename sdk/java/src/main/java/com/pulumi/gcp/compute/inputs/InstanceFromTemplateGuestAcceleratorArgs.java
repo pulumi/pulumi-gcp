@@ -15,16 +15,32 @@ public final class InstanceFromTemplateGuestAcceleratorArgs extends com.pulumi.r
 
     public static final InstanceFromTemplateGuestAcceleratorArgs Empty = new InstanceFromTemplateGuestAcceleratorArgs();
 
+    /**
+     * The number of the guest accelerator cards exposed to this instance.
+     * 
+     */
     @Import(name="count", required=true)
     private Output<Integer> count;
 
+    /**
+     * @return The number of the guest accelerator cards exposed to this instance.
+     * 
+     */
     public Output<Integer> count() {
         return this.count;
     }
 
+    /**
+     * The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -54,20 +70,44 @@ public final class InstanceFromTemplateGuestAcceleratorArgs extends com.pulumi.r
             $ = new InstanceFromTemplateGuestAcceleratorArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param count The number of the guest accelerator cards exposed to this instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Output<Integer> count) {
             $.count = count;
             return this;
         }
 
+        /**
+         * @param count The number of the guest accelerator cards exposed to this instance.
+         * 
+         * @return builder
+         * 
+         */
         public Builder count(Integer count) {
             return count(Output.of(count));
         }
 
+        /**
+         * @param type The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

@@ -11,21 +11,63 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigCaOption {
+    /**
+     * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
+     * 
+     */
     private Boolean isCa;
+    /**
+     * @return Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
+     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+     * requires setting &#39;zero_max_issuer_path_length = true&#39;.
+     * 
+     */
     private Integer maxIssuerPathLength;
+    /**
+     * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+     * If both &#39;is_ca&#39; and &#39;non_ca&#39; are unset, the extension will be omitted from the CA certificate.
+     * 
+     */
     private Boolean nonCa;
+    /**
+     * @return When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
+     * If both &#39;max_issuer_path_length&#39; and &#39;zero_max_issuer_path_length&#39; are unset,
+     * the max path length will be omitted from the CA certificate.
+     * 
+     */
     private Boolean zeroMaxIssuerPathLength;
 
     private GetAuthorityConfigX509ConfigCaOption() {}
+    /**
+     * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to true.
+     * 
+     */
     public Boolean isCa() {
         return this.isCa;
     }
+    /**
+     * @return Refers to the &#34;path length constraint&#34; in Basic Constraints extension. For a CA certificate, this value describes the depth of
+     * subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+     * requires setting &#39;zero_max_issuer_path_length = true&#39;.
+     * 
+     */
     public Integer maxIssuerPathLength() {
         return this.maxIssuerPathLength;
     }
+    /**
+     * @return When true, the &#34;CA&#34; in Basic Constraints extension will be set to false.
+     * If both &#39;is_ca&#39; and &#39;non_ca&#39; are unset, the extension will be omitted from the CA certificate.
+     * 
+     */
     public Boolean nonCa() {
         return this.nonCa;
     }
+    /**
+     * @return When true, the &#34;path length constraint&#34; in Basic Constraints extension will be set to 0.
+     * If both &#39;max_issuer_path_length&#39; and &#39;zero_max_issuer_path_length&#39; are unset,
+     * the max path length will be omitted from the CA certificate.
+     * 
+     */
     public Boolean zeroMaxIssuerPathLength() {
         return this.zeroMaxIssuerPathLength;
     }

@@ -35,6 +35,10 @@ public final class JobPysparkConfig {
      * 
      */
     private @Nullable List<String> jarFileUris;
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     private @Nullable JobPysparkConfigLoggingConfig loggingConfig;
     /**
      * @return The HCFS URI of the main Python file to use as the driver. Must be a .py file.
@@ -83,6 +87,10 @@ public final class JobPysparkConfig {
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
+    /**
+     * @return The runtime logging config of the job
+     * 
+     */
     public Optional<JobPysparkConfigLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }

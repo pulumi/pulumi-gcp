@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class NodePoolNodeConfigHostMaintenancePolicy {
+    /**
+     * @return .
+     * 
+     */
     private String maintenanceInterval;
 
     private NodePoolNodeConfigHostMaintenancePolicy() {}
+    /**
+     * @return .
+     * 
+     */
     public String maintenanceInterval() {
         return this.maintenanceInterval;
     }

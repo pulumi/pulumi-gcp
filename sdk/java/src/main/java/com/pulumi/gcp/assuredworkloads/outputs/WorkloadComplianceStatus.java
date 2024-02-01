@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkloadComplianceStatus {
+    /**
+     * @return Number of current orgPolicy violations which are acknowledged.
+     * 
+     */
     private @Nullable List<Integer> acknowledgedViolationCounts;
+    /**
+     * @return Number of current orgPolicy violations which are not acknowledged.
+     * 
+     */
     private @Nullable List<Integer> activeViolationCounts;
 
     private WorkloadComplianceStatus() {}
+    /**
+     * @return Number of current orgPolicy violations which are acknowledged.
+     * 
+     */
     public List<Integer> acknowledgedViolationCounts() {
         return this.acknowledgedViolationCounts == null ? List.of() : this.acknowledgedViolationCounts;
     }
+    /**
+     * @return Number of current orgPolicy violations which are not acknowledged.
+     * 
+     */
     public List<Integer> activeViolationCounts() {
         return this.activeViolationCounts == null ? List.of() : this.activeViolationCounts;
     }

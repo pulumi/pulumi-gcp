@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketObjectContentCustomerEncryption {
+    /**
+     * @return The encryption algorithm. Default: AES256
+     * 
+     */
     private String encryptionAlgorithm;
+    /**
+     * @return Base64 encoded customer supplied encryption key.
+     * 
+     */
     private String encryptionKey;
 
     private GetBucketObjectContentCustomerEncryption() {}
+    /**
+     * @return The encryption algorithm. Default: AES256
+     * 
+     */
     public String encryptionAlgorithm() {
         return this.encryptionAlgorithm;
     }
+    /**
+     * @return Base64 encoded customer supplied encryption key.
+     * 
+     */
     public String encryptionKey() {
         return this.encryptionKey;
     }

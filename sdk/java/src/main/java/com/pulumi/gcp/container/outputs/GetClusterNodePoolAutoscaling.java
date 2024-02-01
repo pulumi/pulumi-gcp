@@ -11,25 +11,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolAutoscaling {
+    /**
+     * @return Location policy specifies the algorithm used when scaling-up the node pool. &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones. &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+     * 
+     */
     private String locationPolicy;
+    /**
+     * @return Maximum number of nodes per zone in the node pool. Must be &gt;= min_node_count. Cannot be used with total limits.
+     * 
+     */
     private Integer maxNodeCount;
+    /**
+     * @return Minimum number of nodes per zone in the node pool. Must be &gt;=0 and &lt;= max_node_count. Cannot be used with total limits.
+     * 
+     */
     private Integer minNodeCount;
+    /**
+     * @return Maximum number of all nodes in the node pool. Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * 
+     */
     private Integer totalMaxNodeCount;
+    /**
+     * @return Minimum number of all nodes in the node pool. Must be &gt;=0 and &lt;= total_max_node_count. Cannot be used with per zone limits.
+     * 
+     */
     private Integer totalMinNodeCount;
 
     private GetClusterNodePoolAutoscaling() {}
+    /**
+     * @return Location policy specifies the algorithm used when scaling-up the node pool. &#34;BALANCED&#34; - Is a best effort policy that aims to balance the sizes of available zones. &#34;ANY&#34; - Instructs the cluster autoscaler to prioritize utilization of unused reservations, and reduces preemption risk for Spot VMs.
+     * 
+     */
     public String locationPolicy() {
         return this.locationPolicy;
     }
+    /**
+     * @return Maximum number of nodes per zone in the node pool. Must be &gt;= min_node_count. Cannot be used with total limits.
+     * 
+     */
     public Integer maxNodeCount() {
         return this.maxNodeCount;
     }
+    /**
+     * @return Minimum number of nodes per zone in the node pool. Must be &gt;=0 and &lt;= max_node_count. Cannot be used with total limits.
+     * 
+     */
     public Integer minNodeCount() {
         return this.minNodeCount;
     }
+    /**
+     * @return Maximum number of all nodes in the node pool. Must be &gt;= total_min_node_count. Cannot be used with per zone limits.
+     * 
+     */
     public Integer totalMaxNodeCount() {
         return this.totalMaxNodeCount;
     }
+    /**
+     * @return Minimum number of all nodes in the node pool. Must be &gt;=0 and &lt;= total_max_node_count. Cannot be used with per zone limits.
+     * 
+     */
     public Integer totalMinNodeCount() {
         return this.totalMinNodeCount;
     }

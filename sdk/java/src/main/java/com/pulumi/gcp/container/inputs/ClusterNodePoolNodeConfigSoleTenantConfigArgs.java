@@ -15,9 +15,17 @@ public final class ClusterNodePoolNodeConfigSoleTenantConfigArgs extends com.pul
 
     public static final ClusterNodePoolNodeConfigSoleTenantConfigArgs Empty = new ClusterNodePoolNodeConfigSoleTenantConfigArgs();
 
+    /**
+     * .
+     * 
+     */
     @Import(name="nodeAffinities", required=true)
     private Output<List<ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<List<ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities() {
         return this.nodeAffinities;
     }
@@ -46,15 +54,33 @@ public final class ClusterNodePoolNodeConfigSoleTenantConfigArgs extends com.pul
             $ = new ClusterNodePoolNodeConfigSoleTenantConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param nodeAffinities .
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(Output<List<ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs>> nodeAffinities) {
             $.nodeAffinities = nodeAffinities;
             return this;
         }
 
+        /**
+         * @param nodeAffinities .
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(List<ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs> nodeAffinities) {
             return nodeAffinities(Output.of(nodeAffinities));
         }
 
+        /**
+         * @param nodeAffinities .
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs... nodeAffinities) {
             return nodeAffinities(List.of(nodeAffinities));
         }

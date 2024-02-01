@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendBucketCdnPolicyBypassCacheOnRequestHeader {
+    /**
+     * @return The header field name to match on when bypassing cache. Values are case-insensitive.
+     * 
+     */
     private String headerName;
 
     private GetBackendBucketCdnPolicyBypassCacheOnRequestHeader() {}
+    /**
+     * @return The header field name to match on when bypassing cache. Values are case-insensitive.
+     * 
+     */
     public String headerName() {
         return this.headerName;
     }

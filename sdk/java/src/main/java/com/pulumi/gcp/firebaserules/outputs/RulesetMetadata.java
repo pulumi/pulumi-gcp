@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetMetadata {
+    /**
+     * @return Services that this ruleset has declarations for (e.g., &#34;cloud.firestore&#34;). There may be 0+ of these.
+     * 
+     */
     private @Nullable List<String> services;
 
     private RulesetMetadata() {}
+    /**
+     * @return Services that this ruleset has declarations for (e.g., &#34;cloud.firestore&#34;). There may be 0+ of these.
+     * 
+     */
     public List<String> services() {
         return this.services == null ? List.of() : this.services;
     }

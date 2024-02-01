@@ -21,6 +21,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy? InstanceFlexibilityPolicy;
+        /// <summary>
+        /// List of preemptible instance names which have been assigned to the cluster.
+        /// </summary>
         public readonly ImmutableArray<string> InstanceNames;
         /// <summary>
         /// Specifies the number of preemptible nodes to create.

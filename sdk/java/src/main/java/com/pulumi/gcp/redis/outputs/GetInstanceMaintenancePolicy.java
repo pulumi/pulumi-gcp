@@ -12,21 +12,69 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceMaintenancePolicy {
+    /**
+     * @return Output only. The time when the policy was created.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     private String createTime;
+    /**
+     * @return Optional. Description of what this policy is for.
+     * Create/Update methods return INVALID_ARGUMENT if the
+     * length is greater than 512.
+     * 
+     */
     private String description;
+    /**
+     * @return Output only. The time when the policy was last updated.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     private String updateTime;
+    /**
+     * @return Optional. Maintenance window that is applied to resources covered by this policy.
+     * Minimum 1. For the current version, the maximum number
+     * of weekly_window is expected to be one.
+     * 
+     */
     private List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows;
 
     private GetInstanceMaintenancePolicy() {}
+    /**
+     * @return Output only. The time when the policy was created.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return Optional. Description of what this policy is for.
+     * Create/Update methods return INVALID_ARGUMENT if the
+     * length is greater than 512.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Output only. The time when the policy was last updated.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }
+    /**
+     * @return Optional. Maintenance window that is applied to resources covered by this policy.
+     * Minimum 1. For the current version, the maximum number
+     * of weekly_window is expected to be one.
+     * 
+     */
     public List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows() {
         return this.weeklyMaintenanceWindows;
     }

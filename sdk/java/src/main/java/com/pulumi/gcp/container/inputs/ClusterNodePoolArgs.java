@@ -24,9 +24,17 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
 
     public static final ClusterNodePoolArgs Empty = new ClusterNodePoolArgs();
 
+    /**
+     * Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+     * 
+     */
     @Import(name="autoscaling")
     private @Nullable Output<ClusterNodePoolAutoscalingArgs> autoscaling;
 
+    /**
+     * @return Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+     * 
+     */
     public Optional<Output<ClusterNodePoolAutoscalingArgs>> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
     }
@@ -56,16 +64,32 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.initialNodeCount);
     }
 
+    /**
+     * The resource URLs of the managed instance groups associated with this node pool.
+     * 
+     */
     @Import(name="instanceGroupUrls")
     private @Nullable Output<List<String>> instanceGroupUrls;
 
+    /**
+     * @return The resource URLs of the managed instance groups associated with this node pool.
+     * 
+     */
     public Optional<Output<List<String>>> instanceGroupUrls() {
         return Optional.ofNullable(this.instanceGroupUrls);
     }
 
+    /**
+     * List of instance group URLs which have been assigned to this node pool.
+     * 
+     */
     @Import(name="managedInstanceGroupUrls")
     private @Nullable Output<List<String>> managedInstanceGroupUrls;
 
+    /**
+     * @return List of instance group URLs which have been assigned to this node pool.
+     * 
+     */
     public Optional<Output<List<String>>> managedInstanceGroupUrls() {
         return Optional.ofNullable(this.managedInstanceGroupUrls);
     }
@@ -85,9 +109,17 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.management);
     }
 
+    /**
+     * The maximum number of pods per node in this node pool. Note that this does not work on node pools which are &#34;route-based&#34; - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+     * 
+     */
     @Import(name="maxPodsPerNode")
     private @Nullable Output<Integer> maxPodsPerNode;
 
+    /**
+     * @return The maximum number of pods per node in this node pool. Note that this does not work on node pools which are &#34;route-based&#34; - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+     * 
+     */
     public Optional<Output<Integer>> maxPodsPerNode() {
         return Optional.ofNullable(this.maxPodsPerNode);
     }
@@ -113,9 +145,17 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * 
+     */
     @Import(name="namePrefix")
     private @Nullable Output<String> namePrefix;
 
+    /**
+     * @return Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+     * 
+     */
     public Optional<Output<String>> namePrefix() {
         return Optional.ofNullable(this.namePrefix);
     }
@@ -160,9 +200,17 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.nodeConfig);
     }
 
+    /**
+     * The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+     * 
+     */
     @Import(name="nodeCount")
     private @Nullable Output<Integer> nodeCount;
 
+    /**
+     * @return The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+     * 
+     */
     public Optional<Output<Integer>> nodeCount() {
         return Optional.ofNullable(this.nodeCount);
     }
@@ -202,16 +250,32 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.nodeLocations);
     }
 
+    /**
+     * Specifies the node placement policy
+     * 
+     */
     @Import(name="placementPolicy")
     private @Nullable Output<ClusterNodePoolPlacementPolicyArgs> placementPolicy;
 
+    /**
+     * @return Specifies the node placement policy
+     * 
+     */
     public Optional<Output<ClusterNodePoolPlacementPolicyArgs>> placementPolicy() {
         return Optional.ofNullable(this.placementPolicy);
     }
 
+    /**
+     * Specifies the configuration of queued provisioning
+     * 
+     */
     @Import(name="queuedProvisioning")
     private @Nullable Output<ClusterNodePoolQueuedProvisioningArgs> queuedProvisioning;
 
+    /**
+     * @return Specifies the configuration of queued provisioning
+     * 
+     */
     public Optional<Output<ClusterNodePoolQueuedProvisioningArgs>> queuedProvisioning() {
         return Optional.ofNullable(this.queuedProvisioning);
     }
@@ -277,11 +341,23 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             $ = new ClusterNodePoolArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param autoscaling Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaling(@Nullable Output<ClusterNodePoolAutoscalingArgs> autoscaling) {
             $.autoscaling = autoscaling;
             return this;
         }
 
+        /**
+         * @param autoscaling Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoscaling(ClusterNodePoolAutoscalingArgs autoscaling) {
             return autoscaling(Output.of(autoscaling));
         }
@@ -317,28 +393,64 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             return initialNodeCount(Output.of(initialNodeCount));
         }
 
+        /**
+         * @param instanceGroupUrls The resource URLs of the managed instance groups associated with this node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceGroupUrls(@Nullable Output<List<String>> instanceGroupUrls) {
             $.instanceGroupUrls = instanceGroupUrls;
             return this;
         }
 
+        /**
+         * @param instanceGroupUrls The resource URLs of the managed instance groups associated with this node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceGroupUrls(List<String> instanceGroupUrls) {
             return instanceGroupUrls(Output.of(instanceGroupUrls));
         }
 
+        /**
+         * @param instanceGroupUrls The resource URLs of the managed instance groups associated with this node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceGroupUrls(String... instanceGroupUrls) {
             return instanceGroupUrls(List.of(instanceGroupUrls));
         }
 
+        /**
+         * @param managedInstanceGroupUrls List of instance group URLs which have been assigned to this node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedInstanceGroupUrls(@Nullable Output<List<String>> managedInstanceGroupUrls) {
             $.managedInstanceGroupUrls = managedInstanceGroupUrls;
             return this;
         }
 
+        /**
+         * @param managedInstanceGroupUrls List of instance group URLs which have been assigned to this node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedInstanceGroupUrls(List<String> managedInstanceGroupUrls) {
             return managedInstanceGroupUrls(Output.of(managedInstanceGroupUrls));
         }
 
+        /**
+         * @param managedInstanceGroupUrls List of instance group URLs which have been assigned to this node pool.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedInstanceGroupUrls(String... managedInstanceGroupUrls) {
             return managedInstanceGroupUrls(List.of(managedInstanceGroupUrls));
         }
@@ -364,11 +476,23 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             return management(Output.of(management));
         }
 
+        /**
+         * @param maxPodsPerNode The maximum number of pods per node in this node pool. Note that this does not work on node pools which are &#34;route-based&#34; - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxPodsPerNode(@Nullable Output<Integer> maxPodsPerNode) {
             $.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
 
+        /**
+         * @param maxPodsPerNode The maximum number of pods per node in this node pool. Note that this does not work on node pools which are &#34;route-based&#34; - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxPodsPerNode(Integer maxPodsPerNode) {
             return maxPodsPerNode(Output.of(maxPodsPerNode));
         }
@@ -400,11 +524,23 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             return name(Output.of(name));
         }
 
+        /**
+         * @param namePrefix Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namePrefix(@Nullable Output<String> namePrefix) {
             $.namePrefix = namePrefix;
             return this;
         }
 
+        /**
+         * @param namePrefix Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namePrefix(String namePrefix) {
             return namePrefix(Output.of(namePrefix));
         }
@@ -461,11 +597,23 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             return nodeConfig(Output.of(nodeConfig));
         }
 
+        /**
+         * @param nodeCount The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeCount(@Nullable Output<Integer> nodeCount) {
             $.nodeCount = nodeCount;
             return this;
         }
 
+        /**
+         * @param nodeCount The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeCount(Integer nodeCount) {
             return nodeCount(Output.of(nodeCount));
         }
@@ -531,20 +679,44 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
             return nodeLocations(List.of(nodeLocations));
         }
 
+        /**
+         * @param placementPolicy Specifies the node placement policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder placementPolicy(@Nullable Output<ClusterNodePoolPlacementPolicyArgs> placementPolicy) {
             $.placementPolicy = placementPolicy;
             return this;
         }
 
+        /**
+         * @param placementPolicy Specifies the node placement policy
+         * 
+         * @return builder
+         * 
+         */
         public Builder placementPolicy(ClusterNodePoolPlacementPolicyArgs placementPolicy) {
             return placementPolicy(Output.of(placementPolicy));
         }
 
+        /**
+         * @param queuedProvisioning Specifies the configuration of queued provisioning
+         * 
+         * @return builder
+         * 
+         */
         public Builder queuedProvisioning(@Nullable Output<ClusterNodePoolQueuedProvisioningArgs> queuedProvisioning) {
             $.queuedProvisioning = queuedProvisioning;
             return this;
         }
 
+        /**
+         * @param queuedProvisioning Specifies the configuration of queued provisioning
+         * 
+         * @return builder
+         * 
+         */
         public Builder queuedProvisioning(ClusterNodePoolQueuedProvisioningArgs queuedProvisioning) {
             return queuedProvisioning(Output.of(queuedProvisioning));
         }

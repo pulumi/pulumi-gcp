@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult
     {
+        /// <summary>
+        /// The number of threads per physical core. Can be 1 or 2.
+        /// </summary>
         public readonly int ThreadsPerCore;
 
         [OutputConstructor]

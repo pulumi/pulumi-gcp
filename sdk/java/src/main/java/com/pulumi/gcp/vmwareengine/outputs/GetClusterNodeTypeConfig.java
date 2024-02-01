@@ -11,14 +11,36 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeTypeConfig {
+    /**
+     * @return Customized number of cores available to each node of the type.
+     * This number must always be one of &#39;nodeType.availableCustomCoreCounts&#39;.
+     * If zero is provided max value from &#39;nodeType.availableCustomCoreCounts&#39; will be used.
+     * Once the customer is created then corecount cannot be changed.
+     * 
+     */
     private Integer customCoreCount;
+    /**
+     * @return The number of nodes of this type in the cluster.
+     * 
+     */
     private Integer nodeCount;
     private String nodeTypeId;
 
     private GetClusterNodeTypeConfig() {}
+    /**
+     * @return Customized number of cores available to each node of the type.
+     * This number must always be one of &#39;nodeType.availableCustomCoreCounts&#39;.
+     * If zero is provided max value from &#39;nodeType.availableCustomCoreCounts&#39; will be used.
+     * Once the customer is created then corecount cannot be changed.
+     * 
+     */
     public Integer customCoreCount() {
         return this.customCoreCount;
     }
+    /**
+     * @return The number of nodes of this type in the cluster.
+     * 
+     */
     public Integer nodeCount() {
         return this.nodeCount;
     }

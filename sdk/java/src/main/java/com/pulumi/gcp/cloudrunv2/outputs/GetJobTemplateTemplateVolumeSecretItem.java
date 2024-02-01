@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetJobTemplateTemplateVolumeSecretItem {
+    /**
+     * @return Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume&#39;s default mode will be used.
+     * 
+     */
     private Integer mode;
+    /**
+     * @return The relative path of the secret in the container.
+     * 
+     */
     private String path;
+    /**
+     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version
+     * 
+     */
     private String version;
 
     private GetJobTemplateTemplateVolumeSecretItem() {}
+    /**
+     * @return Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume&#39;s default mode will be used.
+     * 
+     */
     public Integer mode() {
         return this.mode;
     }
+    /**
+     * @return The relative path of the secret in the container.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return The Cloud Secret Manager secret version. Can be &#39;latest&#39; for the latest value or an integer for a specific version
+     * 
+     */
     public String version() {
         return this.version;
     }

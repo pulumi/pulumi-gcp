@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigPythonRepository {
+    /**
+     * @return Address of the remote repository. Default value: &#34;PYPI&#34; Possible values: [&#34;PYPI&#34;]
+     * 
+     */
     private String publicRepository;
 
     private GetRepositoryRemoteRepositoryConfigPythonRepository() {}
+    /**
+     * @return Address of the remote repository. Default value: &#34;PYPI&#34; Possible values: [&#34;PYPI&#34;]
+     * 
+     */
     public String publicRepository() {
         return this.publicRepository;
     }

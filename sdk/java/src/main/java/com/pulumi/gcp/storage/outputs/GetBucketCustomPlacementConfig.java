@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketCustomPlacementConfig {
+    /**
+     * @return The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
+     * 
+     */
     private List<String> dataLocations;
 
     private GetBucketCustomPlacementConfig() {}
+    /**
+     * @return The list of individual regions that comprise a dual-region bucket. See the docs for a list of acceptable regions. Note: If any of the data_locations changes, it will recreate the bucket.
+     * 
+     */
     public List<String> dataLocations() {
         return this.dataLocations;
     }

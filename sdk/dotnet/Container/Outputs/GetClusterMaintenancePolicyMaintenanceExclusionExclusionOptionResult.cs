@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult
     {
+        /// <summary>
+        /// The scope of automatic upgrades to restrict in the exclusion window.
+        /// </summary>
         public readonly string Scope;
 
         [OutputConstructor]

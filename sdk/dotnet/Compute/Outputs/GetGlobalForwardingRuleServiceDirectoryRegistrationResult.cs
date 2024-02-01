@@ -13,7 +13,16 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetGlobalForwardingRuleServiceDirectoryRegistrationResult
     {
+        /// <summary>
+        /// Service Directory namespace to register the forwarding rule under.
+        /// </summary>
         public readonly string Namespace;
+        /// <summary>
+        /// [Optional] Service Directory region to register this global forwarding rule under.
+        /// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+        /// Google APIs Forwarding Rules on the same network should use the same Service
+        /// Directory region.
+        /// </summary>
         public readonly string ServiceDirectoryRegion;
 
         [OutputConstructor]

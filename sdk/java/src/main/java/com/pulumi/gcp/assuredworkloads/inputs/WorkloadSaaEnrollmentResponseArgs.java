@@ -16,16 +16,32 @@ public final class WorkloadSaaEnrollmentResponseArgs extends com.pulumi.resource
 
     public static final WorkloadSaaEnrollmentResponseArgs Empty = new WorkloadSaaEnrollmentResponseArgs();
 
+    /**
+     * Indicates SAA enrollment setup error if any.
+     * 
+     */
     @Import(name="setupErrors")
     private @Nullable Output<List<String>> setupErrors;
 
+    /**
+     * @return Indicates SAA enrollment setup error if any.
+     * 
+     */
     public Optional<Output<List<String>>> setupErrors() {
         return Optional.ofNullable(this.setupErrors);
     }
 
+    /**
+     * Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+     * 
+     */
     @Import(name="setupStatus")
     private @Nullable Output<String> setupStatus;
 
+    /**
+     * @return Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+     * 
+     */
     public Optional<Output<String>> setupStatus() {
         return Optional.ofNullable(this.setupStatus);
     }
@@ -55,24 +71,54 @@ public final class WorkloadSaaEnrollmentResponseArgs extends com.pulumi.resource
             $ = new WorkloadSaaEnrollmentResponseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param setupErrors Indicates SAA enrollment setup error if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder setupErrors(@Nullable Output<List<String>> setupErrors) {
             $.setupErrors = setupErrors;
             return this;
         }
 
+        /**
+         * @param setupErrors Indicates SAA enrollment setup error if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder setupErrors(List<String> setupErrors) {
             return setupErrors(Output.of(setupErrors));
         }
 
+        /**
+         * @param setupErrors Indicates SAA enrollment setup error if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder setupErrors(String... setupErrors) {
             return setupErrors(List.of(setupErrors));
         }
 
+        /**
+         * @param setupStatus Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+         * 
+         * @return builder
+         * 
+         */
         public Builder setupStatus(@Nullable Output<String> setupStatus) {
             $.setupStatus = setupStatus;
             return this;
         }
 
+        /**
+         * @param setupStatus Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
+         * 
+         * @return builder
+         * 
+         */
         public Builder setupStatus(String setupStatus) {
             return setupStatus(Output.of(setupStatus));
         }

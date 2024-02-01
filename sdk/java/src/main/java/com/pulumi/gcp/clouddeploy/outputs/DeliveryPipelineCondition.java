@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineCondition {
+    /**
+     * @return Details around the Pipeline&#39;s overall status.
+     * 
+     */
     private @Nullable List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions;
+    /**
+     * @return Details around targets enumerated in the pipeline.
+     * 
+     */
     private @Nullable List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions;
+    /**
+     * @return Details on the whether the targets enumerated in the pipeline are of the same type.
+     * 
+     */
     private @Nullable List<DeliveryPipelineConditionTargetsTypeCondition> targetsTypeConditions;
 
     private DeliveryPipelineCondition() {}
+    /**
+     * @return Details around the Pipeline&#39;s overall status.
+     * 
+     */
     public List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions() {
         return this.pipelineReadyConditions == null ? List.of() : this.pipelineReadyConditions;
     }
+    /**
+     * @return Details around targets enumerated in the pipeline.
+     * 
+     */
     public List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions() {
         return this.targetsPresentConditions == null ? List.of() : this.targetsPresentConditions;
     }
+    /**
+     * @return Details on the whether the targets enumerated in the pipeline are of the same type.
+     * 
+     */
     public List<DeliveryPipelineConditionTargetsTypeCondition> targetsTypeConditions() {
         return this.targetsTypeConditions == null ? List.of() : this.targetsTypeConditions;
     }

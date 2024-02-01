@@ -1133,6 +1133,14 @@ class GetSubscriptionBigqueryConfigResult(dict):
                  table: str,
                  use_topic_schema: bool,
                  write_metadata: bool):
+        """
+        :param bool drop_unknown_fields: When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+               Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+        :param str table: The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        :param bool use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+        :param bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+               The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+        """
         pulumi.set(__self__, "drop_unknown_fields", drop_unknown_fields)
         pulumi.set(__self__, "table", table)
         pulumi.set(__self__, "use_topic_schema", use_topic_schema)
@@ -1141,21 +1149,35 @@ class GetSubscriptionBigqueryConfigResult(dict):
     @property
     @pulumi.getter(name="dropUnknownFields")
     def drop_unknown_fields(self) -> bool:
+        """
+        When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
+        Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+        """
         return pulumi.get(self, "drop_unknown_fields")
 
     @property
     @pulumi.getter
     def table(self) -> str:
+        """
+        The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        """
         return pulumi.get(self, "table")
 
     @property
     @pulumi.getter(name="useTopicSchema")
     def use_topic_schema(self) -> bool:
+        """
+        When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+        """
         return pulumi.get(self, "use_topic_schema")
 
     @property
     @pulumi.getter(name="writeMetadata")
     def write_metadata(self) -> bool:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
+        The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+        """
         return pulumi.get(self, "write_metadata")
 
 
@@ -1169,6 +1191,18 @@ class GetSubscriptionCloudStorageConfigResult(dict):
                  max_bytes: int,
                  max_duration: str,
                  state: str):
+        """
+        :param Sequence['GetSubscriptionCloudStorageConfigAvroConfigArgs'] avro_configs: If set, message data will be written to Cloud Storage in Avro format.
+        :param str bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+        :param str filename_prefix: User-provided prefix for Cloud Storage filename.
+        :param str filename_suffix: User-provided suffix for Cloud Storage filename. Must not end in "/".
+        :param int max_bytes: The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+               The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+        :param str max_duration: The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+               May not exceed the subscription's acknowledgement deadline.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param str state: An output-only field that indicates whether or not the subscription can receive messages.
+        """
         pulumi.set(__self__, "avro_configs", avro_configs)
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "filename_prefix", filename_prefix)
@@ -1180,36 +1214,60 @@ class GetSubscriptionCloudStorageConfigResult(dict):
     @property
     @pulumi.getter(name="avroConfigs")
     def avro_configs(self) -> Sequence['outputs.GetSubscriptionCloudStorageConfigAvroConfigResult']:
+        """
+        If set, message data will be written to Cloud Storage in Avro format.
+        """
         return pulumi.get(self, "avro_configs")
 
     @property
     @pulumi.getter
     def bucket(self) -> str:
+        """
+        User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter(name="filenamePrefix")
     def filename_prefix(self) -> str:
+        """
+        User-provided prefix for Cloud Storage filename.
+        """
         return pulumi.get(self, "filename_prefix")
 
     @property
     @pulumi.getter(name="filenameSuffix")
     def filename_suffix(self) -> str:
+        """
+        User-provided suffix for Cloud Storage filename. Must not end in "/".
+        """
         return pulumi.get(self, "filename_suffix")
 
     @property
     @pulumi.getter(name="maxBytes")
     def max_bytes(self) -> int:
+        """
+        The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+        The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+        """
         return pulumi.get(self, "max_bytes")
 
     @property
     @pulumi.getter(name="maxDuration")
     def max_duration(self) -> str:
+        """
+        The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+        May not exceed the subscription's acknowledgement deadline.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
         return pulumi.get(self, "max_duration")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        An output-only field that indicates whether or not the subscription can receive messages.
+        """
         return pulumi.get(self, "state")
 
 
@@ -1217,11 +1275,17 @@ class GetSubscriptionCloudStorageConfigResult(dict):
 class GetSubscriptionCloudStorageConfigAvroConfigResult(dict):
     def __init__(__self__, *,
                  write_metadata: bool):
+        """
+        :param bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+        """
         pulumi.set(__self__, "write_metadata", write_metadata)
 
     @property
     @pulumi.getter(name="writeMetadata")
     def write_metadata(self) -> bool:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+        """
         return pulumi.get(self, "write_metadata")
 
 
@@ -1230,17 +1294,69 @@ class GetSubscriptionDeadLetterPolicyResult(dict):
     def __init__(__self__, *,
                  dead_letter_topic: str,
                  max_delivery_attempts: int):
+        """
+        :param str dead_letter_topic: The name of the topic to which dead letter messages should be published.
+               Format is 'projects/{project}/topics/{topic}'.
+               
+               The Cloud Pub/Sub service account associated with the enclosing subscription's
+               parent project (i.e.,
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+               permission to Publish() to this topic.
+               
+               The operation will fail if the topic does not exist.
+               Users should ensure that there is a subscription attached to this topic
+               since messages published to a topic with no subscriptions are lost.
+        :param int max_delivery_attempts: The maximum number of delivery attempts for any message. The value must be
+               between 5 and 100.
+               
+               The number of delivery attempts is defined as 1 + (the sum of number of
+               NACKs and number of times the acknowledgement deadline has been exceeded for the message).
+               
+               A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+               client libraries may automatically extend ack_deadlines.
+               
+               This field will be honored on a best effort basis.
+               
+               If this parameter is 0, a default value of 5 is used.
+        """
         pulumi.set(__self__, "dead_letter_topic", dead_letter_topic)
         pulumi.set(__self__, "max_delivery_attempts", max_delivery_attempts)
 
     @property
     @pulumi.getter(name="deadLetterTopic")
     def dead_letter_topic(self) -> str:
+        """
+        The name of the topic to which dead letter messages should be published.
+        Format is 'projects/{project}/topics/{topic}'.
+
+        The Cloud Pub/Sub service account associated with the enclosing subscription's
+        parent project (i.e.,
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        permission to Publish() to this topic.
+
+        The operation will fail if the topic does not exist.
+        Users should ensure that there is a subscription attached to this topic
+        since messages published to a topic with no subscriptions are lost.
+        """
         return pulumi.get(self, "dead_letter_topic")
 
     @property
     @pulumi.getter(name="maxDeliveryAttempts")
     def max_delivery_attempts(self) -> int:
+        """
+        The maximum number of delivery attempts for any message. The value must be
+        between 5 and 100.
+
+        The number of delivery attempts is defined as 1 + (the sum of number of
+        NACKs and number of times the acknowledgement deadline has been exceeded for the message).
+
+        A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
+        client libraries may automatically extend ack_deadlines.
+
+        This field will be honored on a best effort basis.
+
+        If this parameter is 0, a default value of 5 is used.
+        """
         return pulumi.get(self, "max_delivery_attempts")
 
 
@@ -1248,11 +1364,25 @@ class GetSubscriptionDeadLetterPolicyResult(dict):
 class GetSubscriptionExpirationPolicyResult(dict):
     def __init__(__self__, *,
                  ttl: str):
+        """
+        :param str ttl: Specifies the "time-to-live" duration for an associated resource. The
+               resource expires if it is not active for a period of ttl.
+               If ttl is set to "", the associated resource never expires.
+               A duration in seconds with up to nine fractional digits, terminated by 's'.
+               Example - "3.5s".
+        """
         pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter
     def ttl(self) -> str:
+        """
+        Specifies the "time-to-live" duration for an associated resource. The
+        resource expires if it is not active for a period of ttl.
+        If ttl is set to "", the associated resource never expires.
+        A duration in seconds with up to nine fractional digits, terminated by 's'.
+        Example - "3.5s".
+        """
         return pulumi.get(self, "ttl")
 
 
@@ -1263,6 +1393,38 @@ class GetSubscriptionPushConfigResult(dict):
                  no_wrappers: Sequence['outputs.GetSubscriptionPushConfigNoWrapperResult'],
                  oidc_tokens: Sequence['outputs.GetSubscriptionPushConfigOidcTokenResult'],
                  push_endpoint: str):
+        """
+        :param Mapping[str, str] attributes: Endpoint configuration attributes.
+               
+               Every endpoint has a set of API supported attributes that can
+               be used to control different aspects of the message delivery.
+               
+               The currently supported attribute is x-goog-version, which you
+               can use to change the format of the pushed message. This
+               attribute indicates the version of the data expected by
+               the endpoint. This controls the shape of the pushed message
+               (i.e., its fields and metadata). The endpoint version is
+               based on the version of the Pub/Sub API.
+               
+               If not present during the subscriptions.create call,
+               it will default to the version of the API used to make
+               such call. If not present during a subscriptions.modifyPushConfig
+               call, its value will not be changed. subscriptions.get
+               calls will always return a valid version, even if the
+               subscription was created without this attribute.
+               
+               The possible values for this attribute are:
+               
+               - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
+               - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
+        :param Sequence['GetSubscriptionPushConfigNoWrapperArgs'] no_wrappers: When set, the payload to the push endpoint is not wrapped.Sets the
+               'data' field as the HTTP body for delivery.
+        :param Sequence['GetSubscriptionPushConfigOidcTokenArgs'] oidc_tokens: If specified, Pub/Sub will generate and attach an OIDC JWT token as
+               an Authorization header in the HTTP request for every pushed message.
+        :param str push_endpoint: A URL locating the endpoint to which messages should be pushed.
+               For example, a Webhook endpoint might use
+               "https://example.com/push".
+        """
         pulumi.set(__self__, "attributes", attributes)
         pulumi.set(__self__, "no_wrappers", no_wrappers)
         pulumi.set(__self__, "oidc_tokens", oidc_tokens)
@@ -1271,21 +1433,59 @@ class GetSubscriptionPushConfigResult(dict):
     @property
     @pulumi.getter
     def attributes(self) -> Mapping[str, str]:
+        """
+        Endpoint configuration attributes.
+
+        Every endpoint has a set of API supported attributes that can
+        be used to control different aspects of the message delivery.
+
+        The currently supported attribute is x-goog-version, which you
+        can use to change the format of the pushed message. This
+        attribute indicates the version of the data expected by
+        the endpoint. This controls the shape of the pushed message
+        (i.e., its fields and metadata). The endpoint version is
+        based on the version of the Pub/Sub API.
+
+        If not present during the subscriptions.create call,
+        it will default to the version of the API used to make
+        such call. If not present during a subscriptions.modifyPushConfig
+        call, its value will not be changed. subscriptions.get
+        calls will always return a valid version, even if the
+        subscription was created without this attribute.
+
+        The possible values for this attribute are:
+
+        - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
+        - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
+        """
         return pulumi.get(self, "attributes")
 
     @property
     @pulumi.getter(name="noWrappers")
     def no_wrappers(self) -> Sequence['outputs.GetSubscriptionPushConfigNoWrapperResult']:
+        """
+        When set, the payload to the push endpoint is not wrapped.Sets the
+        'data' field as the HTTP body for delivery.
+        """
         return pulumi.get(self, "no_wrappers")
 
     @property
     @pulumi.getter(name="oidcTokens")
     def oidc_tokens(self) -> Sequence['outputs.GetSubscriptionPushConfigOidcTokenResult']:
+        """
+        If specified, Pub/Sub will generate and attach an OIDC JWT token as
+        an Authorization header in the HTTP request for every pushed message.
+        """
         return pulumi.get(self, "oidc_tokens")
 
     @property
     @pulumi.getter(name="pushEndpoint")
     def push_endpoint(self) -> str:
+        """
+        A URL locating the endpoint to which messages should be pushed.
+        For example, a Webhook endpoint might use
+        "https://example.com/push".
+        """
         return pulumi.get(self, "push_endpoint")
 
 
@@ -1293,11 +1493,21 @@ class GetSubscriptionPushConfigResult(dict):
 class GetSubscriptionPushConfigNoWrapperResult(dict):
     def __init__(__self__, *,
                  write_metadata: bool):
+        """
+        :param bool write_metadata: When true, writes the Pub/Sub message metadata to
+               'x-goog-pubsub-<KEY>:<VAL>' headers of the HTTP request. Writes the
+               Pub/Sub message attributes to '<KEY>:<VAL>' headers of the HTTP request.
+        """
         pulumi.set(__self__, "write_metadata", write_metadata)
 
     @property
     @pulumi.getter(name="writeMetadata")
     def write_metadata(self) -> bool:
+        """
+        When true, writes the Pub/Sub message metadata to
+        'x-goog-pubsub-<KEY>:<VAL>' headers of the HTTP request. Writes the
+        Pub/Sub message attributes to '<KEY>:<VAL>' headers of the HTTP request.
+        """
         return pulumi.get(self, "write_metadata")
 
 
@@ -1306,17 +1516,43 @@ class GetSubscriptionPushConfigOidcTokenResult(dict):
     def __init__(__self__, *,
                  audience: str,
                  service_account_email: str):
+        """
+        :param str audience: Audience to be used when generating OIDC token. The audience claim
+               identifies the recipients that the JWT is intended for. The audience
+               value is a single case-sensitive string. Having multiple values (array)
+               for the audience field is not supported. More info about the OIDC JWT
+               token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+               Note: if not specified, the Push endpoint URL will be used.
+        :param str service_account_email: Service account email to be used for generating the OIDC token.
+               The caller (for subscriptions.create, subscriptions.patch, and
+               subscriptions.modifyPushConfig RPCs) must have the
+               iam.serviceAccounts.actAs permission for the service account.
+        """
         pulumi.set(__self__, "audience", audience)
         pulumi.set(__self__, "service_account_email", service_account_email)
 
     @property
     @pulumi.getter
     def audience(self) -> str:
+        """
+        Audience to be used when generating OIDC token. The audience claim
+        identifies the recipients that the JWT is intended for. The audience
+        value is a single case-sensitive string. Having multiple values (array)
+        for the audience field is not supported. More info about the OIDC JWT
+        token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+        Note: if not specified, the Push endpoint URL will be used.
+        """
         return pulumi.get(self, "audience")
 
     @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> str:
+        """
+        Service account email to be used for generating the OIDC token.
+        The caller (for subscriptions.create, subscriptions.patch, and
+        subscriptions.modifyPushConfig RPCs) must have the
+        iam.serviceAccounts.actAs permission for the service account.
+        """
         return pulumi.get(self, "service_account_email")
 
 
@@ -1325,17 +1561,31 @@ class GetSubscriptionRetryPolicyResult(dict):
     def __init__(__self__, *,
                  maximum_backoff: str,
                  minimum_backoff: str):
+        """
+        :param str maximum_backoff: The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param str minimum_backoff: The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
         pulumi.set(__self__, "maximum_backoff", maximum_backoff)
         pulumi.set(__self__, "minimum_backoff", minimum_backoff)
 
     @property
     @pulumi.getter(name="maximumBackoff")
     def maximum_backoff(self) -> str:
+        """
+        The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
         return pulumi.get(self, "maximum_backoff")
 
     @property
     @pulumi.getter(name="minimumBackoff")
     def minimum_backoff(self) -> str:
+        """
+        The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
         return pulumi.get(self, "minimum_backoff")
 
 
@@ -1343,11 +1593,27 @@ class GetSubscriptionRetryPolicyResult(dict):
 class GetTopicMessageStoragePolicyResult(dict):
     def __init__(__self__, *,
                  allowed_persistence_regions: Sequence[str]):
+        """
+        :param Sequence[str] allowed_persistence_regions: A list of IDs of GCP regions where messages that are published to
+               the topic may be persisted in storage. Messages published by
+               publishers running in non-allowed GCP regions (or running outside
+               of GCP altogether) will be routed for storage in one of the
+               allowed regions. An empty list means that no regions are allowed,
+               and is not a valid configuration.
+        """
         pulumi.set(__self__, "allowed_persistence_regions", allowed_persistence_regions)
 
     @property
     @pulumi.getter(name="allowedPersistenceRegions")
     def allowed_persistence_regions(self) -> Sequence[str]:
+        """
+        A list of IDs of GCP regions where messages that are published to
+        the topic may be persisted in storage. Messages published by
+        publishers running in non-allowed GCP regions (or running outside
+        of GCP altogether) will be routed for storage in one of the
+        allowed regions. An empty list means that no regions are allowed,
+        and is not a valid configuration.
+        """
         return pulumi.get(self, "allowed_persistence_regions")
 
 
@@ -1356,17 +1622,33 @@ class GetTopicSchemaSettingResult(dict):
     def __init__(__self__, *,
                  encoding: str,
                  schema: str):
+        """
+        :param str encoding: The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
+        :param str schema: The name of the schema that messages published should be
+               validated against. Format is projects/{project}/schemas/{schema}.
+               The value of this field will be _deleted-schema_
+               if the schema has been deleted.
+        """
         pulumi.set(__self__, "encoding", encoding)
         pulumi.set(__self__, "schema", schema)
 
     @property
     @pulumi.getter
     def encoding(self) -> str:
+        """
+        The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
+        """
         return pulumi.get(self, "encoding")
 
     @property
     @pulumi.getter
     def schema(self) -> str:
+        """
+        The name of the schema that messages published should be
+        validated against. Format is projects/{project}/schemas/{schema}.
+        The value of this field will be _deleted-schema_
+        if the schema has been deleted.
+        """
         return pulumi.get(self, "schema")
 
 

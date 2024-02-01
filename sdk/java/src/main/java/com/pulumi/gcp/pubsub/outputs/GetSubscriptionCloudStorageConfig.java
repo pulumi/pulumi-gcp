@@ -13,33 +13,95 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSubscriptionCloudStorageConfig {
+    /**
+     * @return If set, message data will be written to Cloud Storage in Avro format.
+     * 
+     */
     private List<GetSubscriptionCloudStorageConfigAvroConfig> avroConfigs;
+    /**
+     * @return User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like &#34;gs://&#34;.
+     * 
+     */
     private String bucket;
+    /**
+     * @return User-provided prefix for Cloud Storage filename.
+     * 
+     */
     private String filenamePrefix;
+    /**
+     * @return User-provided suffix for Cloud Storage filename. Must not end in &#34;/&#34;.
+     * 
+     */
     private String filenameSuffix;
+    /**
+     * @return The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+     * The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+     * 
+     */
     private Integer maxBytes;
+    /**
+     * @return The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+     * May not exceed the subscription&#39;s acknowledgement deadline.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String maxDuration;
+    /**
+     * @return An output-only field that indicates whether or not the subscription can receive messages.
+     * 
+     */
     private String state;
 
     private GetSubscriptionCloudStorageConfig() {}
+    /**
+     * @return If set, message data will be written to Cloud Storage in Avro format.
+     * 
+     */
     public List<GetSubscriptionCloudStorageConfigAvroConfig> avroConfigs() {
         return this.avroConfigs;
     }
+    /**
+     * @return User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like &#34;gs://&#34;.
+     * 
+     */
     public String bucket() {
         return this.bucket;
     }
+    /**
+     * @return User-provided prefix for Cloud Storage filename.
+     * 
+     */
     public String filenamePrefix() {
         return this.filenamePrefix;
     }
+    /**
+     * @return User-provided suffix for Cloud Storage filename. Must not end in &#34;/&#34;.
+     * 
+     */
     public String filenameSuffix() {
         return this.filenameSuffix;
     }
+    /**
+     * @return The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+     * The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+     * 
+     */
     public Integer maxBytes() {
         return this.maxBytes;
     }
+    /**
+     * @return The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+     * May not exceed the subscription&#39;s acknowledgement deadline.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String maxDuration() {
         return this.maxDuration;
     }
+    /**
+     * @return An output-only field that indicates whether or not the subscription can receive messages.
+     * 
+     */
     public String state() {
         return this.state;
     }

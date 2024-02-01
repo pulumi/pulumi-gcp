@@ -12,21 +12,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionSecretVolume {
+    /**
+     * @return The path within the container to mount the secret volume. For example, setting the mount_path as &#34;/etc/secrets&#34; would mount the secret value files under the &#34;/etc/secrets&#34; directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: &#34;/etc/secrets&#34; Restricted mount paths: &#34;/cloudsql&#34;, &#34;/dev/log&#34;, &#34;/pod&#34;, &#34;/proc&#34;, &#34;/var/log&#34;.
+     * 
+     */
     private String mountPath;
+    /**
+     * @return Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function&#39;s project, assuming that the secret exists in the same project as of the function.
+     * 
+     */
     private String projectId;
+    /**
+     * @return ID of the secret in secret manager (not the full resource name).
+     * 
+     */
     private String secret;
+    /**
+     * @return List of secret versions to mount for this secret. If empty, the &#34;latest&#34; version of the secret will be made available in a file named after the secret under the mount point.
+     * 
+     */
     private List<GetFunctionSecretVolumeVersion> versions;
 
     private GetFunctionSecretVolume() {}
+    /**
+     * @return The path within the container to mount the secret volume. For example, setting the mount_path as &#34;/etc/secrets&#34; would mount the secret value files under the &#34;/etc/secrets&#34; directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: &#34;/etc/secrets&#34; Restricted mount paths: &#34;/cloudsql&#34;, &#34;/dev/log&#34;, &#34;/pod&#34;, &#34;/proc&#34;, &#34;/var/log&#34;.
+     * 
+     */
     public String mountPath() {
         return this.mountPath;
     }
+    /**
+     * @return Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function&#39;s project, assuming that the secret exists in the same project as of the function.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return ID of the secret in secret manager (not the full resource name).
+     * 
+     */
     public String secret() {
         return this.secret;
     }
+    /**
+     * @return List of secret versions to mount for this secret. If empty, the &#34;latest&#34; version of the secret will be made available in a file named after the secret under the mount point.
+     * 
+     */
     public List<GetFunctionSecretVolumeVersion> versions() {
         return this.versions;
     }

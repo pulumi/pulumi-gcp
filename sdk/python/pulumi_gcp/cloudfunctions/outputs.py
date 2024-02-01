@@ -363,6 +363,7 @@ class FunctionSourceRepository(dict):
                * To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`
                * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`. To refer to HEAD, use the `master` moveable alias.
                * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`
+        :param str deployed_url: The URL pointing to the hosted repository where the function was defined at the time of deployment.
         """
         pulumi.set(__self__, "url", url)
         if deployed_url is not None:
@@ -383,6 +384,9 @@ class FunctionSourceRepository(dict):
     @property
     @pulumi.getter(name="deployedUrl")
     def deployed_url(self) -> Optional[str]:
+        """
+        The URL pointing to the hosted repository where the function was defined at the time of deployment.
+        """
         return pulumi.get(self, "deployed_url")
 
 
@@ -455,6 +459,12 @@ class GetFunctionSecretEnvironmentVariableResult(dict):
                  project_id: str,
                  secret: str,
                  version: str):
+        """
+        :param str key: Name of the environment variable.
+        :param str project_id: Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        :param str secret: ID of the secret in secret manager (not the full resource name).
+        :param str version: Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "secret", secret)
@@ -463,21 +473,33 @@ class GetFunctionSecretEnvironmentVariableResult(dict):
     @property
     @pulumi.getter
     def key(self) -> str:
+        """
+        Name of the environment variable.
+        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def secret(self) -> str:
+        """
+        ID of the secret in secret manager (not the full resource name).
+        """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        Version of the secret (version number or the string "latest"). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+        """
         return pulumi.get(self, "version")
 
 
@@ -488,6 +510,12 @@ class GetFunctionSecretVolumeResult(dict):
                  project_id: str,
                  secret: str,
                  versions: Sequence['outputs.GetFunctionSecretVolumeVersionResult']):
+        """
+        :param str mount_path: The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+        :param str project_id: Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        :param str secret: ID of the secret in secret manager (not the full resource name).
+        :param Sequence['GetFunctionSecretVolumeVersionArgs'] versions: List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point.
+        """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "secret", secret)
@@ -496,21 +524,33 @@ class GetFunctionSecretVolumeResult(dict):
     @property
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> str:
+        """
+        The path within the container to mount the secret volume. For example, setting the mount_path as "/etc/secrets" would mount the secret value files under the "/etc/secrets" directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount paths: "/etc/secrets" Restricted mount paths: "/cloudsql", "/dev/log", "/pod", "/proc", "/var/log".
+        """
         return pulumi.get(self, "mount_path")
 
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
+        """
+        Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
+        """
         return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter
     def secret(self) -> str:
+        """
+        ID of the secret in secret manager (not the full resource name).
+        """
         return pulumi.get(self, "secret")
 
     @property
     @pulumi.getter
     def versions(self) -> Sequence['outputs.GetFunctionSecretVolumeVersionResult']:
+        """
+        List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point.
+        """
         return pulumi.get(self, "versions")
 
 
@@ -519,17 +559,27 @@ class GetFunctionSecretVolumeVersionResult(dict):
     def __init__(__self__, *,
                  path: str,
                  version: str):
+        """
+        :param str path: Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+        :param str version: Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+        """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
     def path(self) -> str:
+        """
+        Relative path of the file under the mount path where the secret value for this version will be fetched and made available. For example, setting the mount_path as "/etc/secrets" and path as "/secret_foo" would mount the secret value file at "/etc/secrets/secret_foo".
+        """
         return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        Version of the secret (version number or the string "latest"). It is preferable to use "latest" version with secret volumes as secret value changes are reflected immediately.
+        """
         return pulumi.get(self, "version")
 
 
@@ -539,6 +589,7 @@ class GetFunctionSourceRepositoryResult(dict):
                  deployed_url: str,
                  url: str):
         """
+        :param str deployed_url: The URL pointing to the hosted repository where the function was defined at the time of deployment.
         :param str url: The URL pointing to the hosted repository where the function is defined.
         """
         pulumi.set(__self__, "deployed_url", deployed_url)
@@ -547,6 +598,9 @@ class GetFunctionSourceRepositoryResult(dict):
     @property
     @pulumi.getter(name="deployedUrl")
     def deployed_url(self) -> str:
+        """
+        The URL pointing to the hosted repository where the function was defined at the time of deployment.
+        """
         return pulumi.get(self, "deployed_url")
 
     @property

@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingLocationPreference {
+    /**
+     * @return A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+     * 
+     */
     private String followGaeApplication;
+    /**
+     * @return The preferred Compute Engine zone for the secondary/failover
+     * 
+     */
     private String secondaryZone;
+    /**
+     * @return The preferred compute engine zone.
+     * 
+     */
     private String zone;
 
     private GetDatabaseInstanceSettingLocationPreference() {}
+    /**
+     * @return A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+     * 
+     */
     public String followGaeApplication() {
         return this.followGaeApplication;
     }
+    /**
+     * @return The preferred Compute Engine zone for the secondary/failover
+     * 
+     */
     public String secondaryZone() {
         return this.secondaryZone;
     }
+    /**
+     * @return The preferred compute engine zone.
+     * 
+     */
     public String zone() {
         return this.zone;
     }

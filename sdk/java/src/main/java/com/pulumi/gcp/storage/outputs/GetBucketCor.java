@@ -12,21 +12,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBucketCor {
+    /**
+     * @return The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses.
+     * 
+     */
     private Integer maxAgeSeconds;
+    /**
+     * @return The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: &#34;*&#34; is permitted in the list of methods, and means &#34;any method&#34;.
+     * 
+     */
     private List<String> methods;
+    /**
+     * @return The list of Origins eligible to receive CORS response headers. Note: &#34;*&#34; is permitted in the list of origins, and means &#34;any Origin&#34;.
+     * 
+     */
     private List<String> origins;
+    /**
+     * @return The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+     * 
+     */
     private List<String> responseHeaders;
 
     private GetBucketCor() {}
+    /**
+     * @return The value, in seconds, to return in the Access-Control-Max-Age header used in preflight responses.
+     * 
+     */
     public Integer maxAgeSeconds() {
         return this.maxAgeSeconds;
     }
+    /**
+     * @return The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: &#34;*&#34; is permitted in the list of methods, and means &#34;any method&#34;.
+     * 
+     */
     public List<String> methods() {
         return this.methods;
     }
+    /**
+     * @return The list of Origins eligible to receive CORS response headers. Note: &#34;*&#34; is permitted in the list of origins, and means &#34;any Origin&#34;.
+     * 
+     */
     public List<String> origins() {
         return this.origins;
     }
+    /**
+     * @return The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+     * 
+     */
     public List<String> responseHeaders() {
         return this.responseHeaders;
     }

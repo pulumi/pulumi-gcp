@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceGroupManagerStatefulInternalIpResult
     {
+        /// <summary>
+        /// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+        /// </summary>
         public readonly string DeleteRule;
+        /// <summary>
+        /// The network interface name
+        /// </summary>
         public readonly string InterfaceName;
 
         [OutputConstructor]

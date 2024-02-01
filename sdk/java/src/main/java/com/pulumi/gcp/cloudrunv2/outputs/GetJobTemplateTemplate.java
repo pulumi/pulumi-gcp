@@ -15,37 +15,105 @@ import java.util.Objects;
 
 @CustomType
 public final class GetJobTemplateTemplate {
+    /**
+     * @return Holds the single container that defines the unit of execution for this task.
+     * 
+     */
     private List<GetJobTemplateTemplateContainer> containers;
+    /**
+     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+     * 
+     */
     private String encryptionKey;
+    /**
+     * @return The execution environment being used to host this Task. Possible values: [&#34;EXECUTION_ENVIRONMENT_GEN1&#34;, &#34;EXECUTION_ENVIRONMENT_GEN2&#34;]
+     * 
+     */
     private String executionEnvironment;
+    /**
+     * @return Number of retries allowed per Task, before marking this Task failed.
+     * 
+     */
     private Integer maxRetries;
+    /**
+     * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
+     * 
+     */
     private String serviceAccount;
+    /**
+     * @return Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+     * 
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String timeout;
+    /**
+     * @return A list of Volumes to make available to containers.
+     * 
+     */
     private List<GetJobTemplateTemplateVolume> volumes;
+    /**
+     * @return VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+     * 
+     */
     private List<GetJobTemplateTemplateVpcAccess> vpcAccesses;
 
     private GetJobTemplateTemplate() {}
+    /**
+     * @return Holds the single container that defines the unit of execution for this task.
+     * 
+     */
     public List<GetJobTemplateTemplateContainer> containers() {
         return this.containers;
     }
+    /**
+     * @return A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+     * 
+     */
     public String encryptionKey() {
         return this.encryptionKey;
     }
+    /**
+     * @return The execution environment being used to host this Task. Possible values: [&#34;EXECUTION_ENVIRONMENT_GEN1&#34;, &#34;EXECUTION_ENVIRONMENT_GEN2&#34;]
+     * 
+     */
     public String executionEnvironment() {
         return this.executionEnvironment;
     }
+    /**
+     * @return Number of retries allowed per Task, before marking this Task failed.
+     * 
+     */
     public Integer maxRetries() {
         return this.maxRetries;
     }
+    /**
+     * @return Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project&#39;s default service account.
+     * 
+     */
     public String serviceAccount() {
         return this.serviceAccount;
     }
+    /**
+     * @return Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+     * 
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String timeout() {
         return this.timeout;
     }
+    /**
+     * @return A list of Volumes to make available to containers.
+     * 
+     */
     public List<GetJobTemplateTemplateVolume> volumes() {
         return this.volumes;
     }
+    /**
+     * @return VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+     * 
+     */
     public List<GetJobTemplateTemplateVpcAccess> vpcAccesses() {
         return this.vpcAccesses;
     }

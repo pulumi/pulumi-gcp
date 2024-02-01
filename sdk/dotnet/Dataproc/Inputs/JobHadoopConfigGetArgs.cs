@@ -60,6 +60,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
             set => _jarFileUris = value;
         }
 
+        /// <summary>
+        /// The runtime logging config of the job
+        /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.JobHadoopConfigLoggingConfigGetArgs>? LoggingConfig { get; set; }
 

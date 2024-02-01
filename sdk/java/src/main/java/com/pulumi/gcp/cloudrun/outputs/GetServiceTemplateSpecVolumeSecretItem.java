@@ -11,17 +11,55 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecVolumeSecretItem {
+    /**
+     * @return The Cloud Secret Manager secret version.
+     * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
+     * 
+     */
     private String key;
+    /**
+     * @return Mode bits to use on this file, must be a value between 0000 and 0777. If
+     * not specified, the volume defaultMode will be used. This might be in
+     * conflict with other options that affect the file mode, like fsGroup, and
+     * the result can be other mode bits set.
+     * 
+     */
     private Integer mode;
+    /**
+     * @return The relative path of the file to map the key to.
+     * May not be an absolute path.
+     * May not contain the path element &#39;..&#39;.
+     * May not start with the string &#39;..&#39;.
+     * 
+     */
     private String path;
 
     private GetServiceTemplateSpecVolumeSecretItem() {}
+    /**
+     * @return The Cloud Secret Manager secret version.
+     * Can be &#39;latest&#39; for the latest value or an integer for a specific version.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Mode bits to use on this file, must be a value between 0000 and 0777. If
+     * not specified, the volume defaultMode will be used. This might be in
+     * conflict with other options that affect the file mode, like fsGroup, and
+     * the result can be other mode bits set.
+     * 
+     */
     public Integer mode() {
         return this.mode;
     }
+    /**
+     * @return The relative path of the file to map the key to.
+     * May not be an absolute path.
+     * May not contain the path element &#39;..&#39;.
+     * May not start with the string &#39;..&#39;.
+     * 
+     */
     public String path() {
         return this.path;
     }

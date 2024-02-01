@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetDiskAsyncPrimaryDiskResult
     {
+        /// <summary>
+        /// Primary disk for asynchronous disk replication.
+        /// </summary>
         public readonly string Disk;
 
         [OutputConstructor]

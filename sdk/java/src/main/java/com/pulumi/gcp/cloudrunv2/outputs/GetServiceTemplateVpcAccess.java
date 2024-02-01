@@ -12,17 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateVpcAccess {
+    /**
+     * @return VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+     * 
+     */
     private String connector;
+    /**
+     * @return Traffic VPC egress settings. Possible values: [&#34;ALL_TRAFFIC&#34;, &#34;PRIVATE_RANGES_ONLY&#34;]
+     * 
+     */
     private String egress;
+    /**
+     * @return Direct VPC egress settings. Currently only single network interface is supported.
+     * 
+     */
     private List<GetServiceTemplateVpcAccessNetworkInterface> networkInterfaces;
 
     private GetServiceTemplateVpcAccess() {}
+    /**
+     * @return VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+     * 
+     */
     public String connector() {
         return this.connector;
     }
+    /**
+     * @return Traffic VPC egress settings. Possible values: [&#34;ALL_TRAFFIC&#34;, &#34;PRIVATE_RANGES_ONLY&#34;]
+     * 
+     */
     public String egress() {
         return this.egress;
     }
+    /**
+     * @return Direct VPC egress settings. Currently only single network interface is supported.
+     * 
+     */
     public List<GetServiceTemplateVpcAccessNetworkInterface> networkInterfaces() {
         return this.networkInterfaces;
     }

@@ -15,30 +15,80 @@ import java.util.Objects;
 
 @CustomType
 public final class GetJobTemplateTemplateContainer {
+    /**
+     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * 
+     */
     private List<String> args;
+    /**
+     * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * 
+     */
     private List<String> commands;
+    /**
+     * @return List of environment variables to set in the container.
+     * 
+     */
     private List<GetJobTemplateTemplateContainerEnv> envs;
+    /**
+     * @return URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+     * 
+     */
     private String image;
     /**
      * @return The name of the Cloud Run v2 Job.
      * 
      */
     private String name;
+    /**
+     * @return List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+     * 
+     * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+     * 
+     */
     private List<GetJobTemplateTemplateContainerPort> ports;
+    /**
+     * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     * 
+     */
     private List<GetJobTemplateTemplateContainerResource> resources;
+    /**
+     * @return Volume to mount into the container&#39;s filesystem.
+     * 
+     */
     private List<GetJobTemplateTemplateContainerVolumeMount> volumeMounts;
+    /**
+     * @return Container&#39;s working directory. If not specified, the container runtime&#39;s default will be used, which might be configured in the container image.
+     * 
+     */
     private String workingDir;
 
     private GetJobTemplateTemplateContainer() {}
+    /**
+     * @return Arguments to the entrypoint. The docker image&#39;s CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * 
+     */
     public List<String> args() {
         return this.args;
     }
+    /**
+     * @return Entrypoint array. Not executed within a shell. The docker image&#39;s ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container&#39;s environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+     * 
+     */
     public List<String> commands() {
         return this.commands;
     }
+    /**
+     * @return List of environment variables to set in the container.
+     * 
+     */
     public List<GetJobTemplateTemplateContainerEnv> envs() {
         return this.envs;
     }
+    /**
+     * @return URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+     * 
+     */
     public String image() {
         return this.image;
     }
@@ -49,15 +99,33 @@ public final class GetJobTemplateTemplateContainer {
     public String name() {
         return this.name;
     }
+    /**
+     * @return List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
+     * 
+     * If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
+     * 
+     */
     public List<GetJobTemplateTemplateContainerPort> ports() {
         return this.ports;
     }
+    /**
+     * @return Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+     * 
+     */
     public List<GetJobTemplateTemplateContainerResource> resources() {
         return this.resources;
     }
+    /**
+     * @return Volume to mount into the container&#39;s filesystem.
+     * 
+     */
     public List<GetJobTemplateTemplateContainerVolumeMount> volumeMounts() {
         return this.volumeMounts;
     }
+    /**
+     * @return Container&#39;s working directory. If not specified, the container runtime&#39;s default will be used, which might be configured in the container image.
+     * 
+     */
     public String workingDir() {
         return this.workingDir;
     }

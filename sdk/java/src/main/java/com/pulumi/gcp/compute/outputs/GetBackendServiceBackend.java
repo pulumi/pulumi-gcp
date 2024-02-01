@@ -12,26 +12,145 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBackendServiceBackend {
+    /**
+     * @return Specifies the balancing mode for this backend.
+     * 
+     * For global HTTP(S) or TCP/SSL load balancing, the default is
+     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+     * and CONNECTION (for TCP/SSL).
+     * 
+     * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;]
+     * 
+     */
     private String balancingMode;
+    /**
+     * @return A multiplier applied to the group&#39;s maximum servicing capacity
+     * (based on UTILIZATION, RATE or CONNECTION).
+     * 
+     * Default value is 1, which means the group will serve up to 100%
+     * of its configured capacity (depending on balancingMode). A
+     * setting of 0 means the group is completely drained, offering
+     * 0% of its available Capacity. Valid range is [0.0,1.0].
+     * 
+     */
     private Double capacityScaler;
     /**
      * @return Textual description for the Backend Service.
      * 
      */
     private String description;
+    /**
+     * @return The fully-qualified URL of an Instance Group or Network Endpoint
+     * Group resource. In case of instance group this defines the list
+     * of instances that serve traffic. Member virtual machine
+     * instances from each instance group must live in the same zone as
+     * the instance group itself. No two backends in a backend service
+     * are allowed to use same Instance Group resource.
+     * 
+     * For Network Endpoint Groups this defines list of endpoints. All
+     * endpoints of Network Endpoint Group must be hosted on instances
+     * located in the same zone as the Network Endpoint Group.
+     * 
+     * Backend services cannot mix Instance Group and
+     * Network Endpoint Group backends.
+     * 
+     * Note that you must specify an Instance Group or Network Endpoint
+     * Group resource using the fully-qualified URL, rather than a
+     * partial URL.
+     * 
+     */
     private String group;
+    /**
+     * @return The max number of simultaneous connections for the group. Can
+     * be used with either CONNECTION or UTILIZATION balancing modes.
+     * 
+     * For CONNECTION mode, either maxConnections or one
+     * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+     * as appropriate for group type, must be set.
+     * 
+     */
     private Integer maxConnections;
+    /**
+     * @return The max number of simultaneous connections that a single backend
+     * network endpoint can handle. This is used to calculate the
+     * capacity of the group. Can be used in either CONNECTION or
+     * UTILIZATION balancing modes.
+     * 
+     * For CONNECTION mode, either
+     * maxConnections or maxConnectionsPerEndpoint must be set.
+     * 
+     */
     private Integer maxConnectionsPerEndpoint;
+    /**
+     * @return The max number of simultaneous connections that a single
+     * backend instance can handle. This is used to calculate the
+     * capacity of the group. Can be used in either CONNECTION or
+     * UTILIZATION balancing modes.
+     * 
+     * For CONNECTION mode, either maxConnections or
+     * maxConnectionsPerInstance must be set.
+     * 
+     */
     private Integer maxConnectionsPerInstance;
+    /**
+     * @return The max requests per second (RPS) of the group.
+     * 
+     * Can be used with either RATE or UTILIZATION balancing modes,
+     * but required if RATE mode. For RATE mode, either maxRate or one
+     * of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+     * group type, must be set.
+     * 
+     */
     private Integer maxRate;
+    /**
+     * @return The max requests per second (RPS) that a single backend network
+     * endpoint can handle. This is used to calculate the capacity of
+     * the group. Can be used in either balancing mode. For RATE mode,
+     * either maxRate or maxRatePerEndpoint must be set.
+     * 
+     */
     private Double maxRatePerEndpoint;
+    /**
+     * @return The max requests per second (RPS) that a single backend
+     * instance can handle. This is used to calculate the capacity of
+     * the group. Can be used in either balancing mode. For RATE mode,
+     * either maxRate or maxRatePerInstance must be set.
+     * 
+     */
     private Double maxRatePerInstance;
+    /**
+     * @return Used when balancingMode is UTILIZATION. This ratio defines the
+     * CPU utilization target for the group. Valid range is [0.0, 1.0].
+     * 
+     */
     private Double maxUtilization;
 
     private GetBackendServiceBackend() {}
+    /**
+     * @return Specifies the balancing mode for this backend.
+     * 
+     * For global HTTP(S) or TCP/SSL load balancing, the default is
+     * UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S))
+     * and CONNECTION (for TCP/SSL).
+     * 
+     * See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
+     * for an explanation of load balancing modes. Default value: &#34;UTILIZATION&#34; Possible values: [&#34;UTILIZATION&#34;, &#34;RATE&#34;, &#34;CONNECTION&#34;]
+     * 
+     */
     public String balancingMode() {
         return this.balancingMode;
     }
+    /**
+     * @return A multiplier applied to the group&#39;s maximum servicing capacity
+     * (based on UTILIZATION, RATE or CONNECTION).
+     * 
+     * Default value is 1, which means the group will serve up to 100%
+     * of its configured capacity (depending on balancingMode). A
+     * setting of 0 means the group is completely drained, offering
+     * 0% of its available Capacity. Valid range is [0.0,1.0].
+     * 
+     */
     public Double capacityScaler() {
         return this.capacityScaler;
     }
@@ -42,27 +161,104 @@ public final class GetBackendServiceBackend {
     public String description() {
         return this.description;
     }
+    /**
+     * @return The fully-qualified URL of an Instance Group or Network Endpoint
+     * Group resource. In case of instance group this defines the list
+     * of instances that serve traffic. Member virtual machine
+     * instances from each instance group must live in the same zone as
+     * the instance group itself. No two backends in a backend service
+     * are allowed to use same Instance Group resource.
+     * 
+     * For Network Endpoint Groups this defines list of endpoints. All
+     * endpoints of Network Endpoint Group must be hosted on instances
+     * located in the same zone as the Network Endpoint Group.
+     * 
+     * Backend services cannot mix Instance Group and
+     * Network Endpoint Group backends.
+     * 
+     * Note that you must specify an Instance Group or Network Endpoint
+     * Group resource using the fully-qualified URL, rather than a
+     * partial URL.
+     * 
+     */
     public String group() {
         return this.group;
     }
+    /**
+     * @return The max number of simultaneous connections for the group. Can
+     * be used with either CONNECTION or UTILIZATION balancing modes.
+     * 
+     * For CONNECTION mode, either maxConnections or one
+     * of maxConnectionsPerInstance or maxConnectionsPerEndpoint,
+     * as appropriate for group type, must be set.
+     * 
+     */
     public Integer maxConnections() {
         return this.maxConnections;
     }
+    /**
+     * @return The max number of simultaneous connections that a single backend
+     * network endpoint can handle. This is used to calculate the
+     * capacity of the group. Can be used in either CONNECTION or
+     * UTILIZATION balancing modes.
+     * 
+     * For CONNECTION mode, either
+     * maxConnections or maxConnectionsPerEndpoint must be set.
+     * 
+     */
     public Integer maxConnectionsPerEndpoint() {
         return this.maxConnectionsPerEndpoint;
     }
+    /**
+     * @return The max number of simultaneous connections that a single
+     * backend instance can handle. This is used to calculate the
+     * capacity of the group. Can be used in either CONNECTION or
+     * UTILIZATION balancing modes.
+     * 
+     * For CONNECTION mode, either maxConnections or
+     * maxConnectionsPerInstance must be set.
+     * 
+     */
     public Integer maxConnectionsPerInstance() {
         return this.maxConnectionsPerInstance;
     }
+    /**
+     * @return The max requests per second (RPS) of the group.
+     * 
+     * Can be used with either RATE or UTILIZATION balancing modes,
+     * but required if RATE mode. For RATE mode, either maxRate or one
+     * of maxRatePerInstance or maxRatePerEndpoint, as appropriate for
+     * group type, must be set.
+     * 
+     */
     public Integer maxRate() {
         return this.maxRate;
     }
+    /**
+     * @return The max requests per second (RPS) that a single backend network
+     * endpoint can handle. This is used to calculate the capacity of
+     * the group. Can be used in either balancing mode. For RATE mode,
+     * either maxRate or maxRatePerEndpoint must be set.
+     * 
+     */
     public Double maxRatePerEndpoint() {
         return this.maxRatePerEndpoint;
     }
+    /**
+     * @return The max requests per second (RPS) that a single backend
+     * instance can handle. This is used to calculate the capacity of
+     * the group. Can be used in either balancing mode. For RATE mode,
+     * either maxRate or maxRatePerInstance must be set.
+     * 
+     */
     public Double maxRatePerInstance() {
         return this.maxRatePerInstance;
     }
+    /**
+     * @return Used when balancingMode is UTILIZATION. This ratio defines the
+     * CPU utilization target for the group. Valid range is [0.0, 1.0].
+     * 
+     */
     public Double maxUtilization() {
         return this.maxUtilization;
     }

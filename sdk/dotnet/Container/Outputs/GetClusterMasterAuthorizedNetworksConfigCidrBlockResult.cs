@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterMasterAuthorizedNetworksConfigCidrBlockResult
     {
+        /// <summary>
+        /// External network that can access Kubernetes master through HTTPS. Must be specified in CIDR notation.
+        /// </summary>
         public readonly string CidrBlock;
+        /// <summary>
+        /// Field for users to identify CIDR blocks.
+        /// </summary>
         public readonly string DisplayName;
 
         [OutputConstructor]

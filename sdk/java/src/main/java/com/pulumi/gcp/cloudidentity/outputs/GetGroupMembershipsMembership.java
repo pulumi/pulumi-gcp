@@ -14,6 +14,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupMembershipsMembership {
+    /**
+     * @return The time when the Membership was created.
+     * 
+     */
     private String createTime;
     /**
      * @return The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -45,9 +49,17 @@ public final class GetGroupMembershipsMembership {
      * 
      */
     private String type;
+    /**
+     * @return The time when the Membership was last updated.
+     * 
+     */
     private String updateTime;
 
     private GetGroupMembershipsMembership() {}
+    /**
+     * @return The time when the Membership was created.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
@@ -93,6 +105,10 @@ public final class GetGroupMembershipsMembership {
     public String type() {
         return this.type;
     }
+    /**
+     * @return The time when the Membership was last updated.
+     * 
+     */
     public String updateTime() {
         return this.updateTime;
     }

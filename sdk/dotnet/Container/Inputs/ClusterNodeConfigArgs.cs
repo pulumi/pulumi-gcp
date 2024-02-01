@@ -47,6 +47,10 @@ namespace Pulumi.Gcp.Container.Inputs
 
         [Input("effectiveTaints")]
         private InputList<Inputs.ClusterNodeConfigEffectiveTaintArgs>? _effectiveTaints;
+
+        /// <summary>
+        /// List of kubernetes taints applied to each node.
+        /// </summary>
         public InputList<Inputs.ClusterNodeConfigEffectiveTaintArgs> EffectiveTaints
         {
             get => _effectiveTaints ?? (_effectiveTaints = new InputList<Inputs.ClusterNodeConfigEffectiveTaintArgs>());
@@ -155,6 +159,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("gvnic")]
         public Input<Inputs.ClusterNodeConfigGvnicArgs>? Gvnic { get; set; }
 
+        /// <summary>
+        /// The maintenance policy for the hosts on which the GKE VMs run on.
+        /// </summary>
         [Input("hostMaintenancePolicy")]
         public Input<Inputs.ClusterNodeConfigHostMaintenancePolicyArgs>? HostMaintenancePolicy { get; set; }
 
@@ -303,6 +310,9 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _resourceLabels = value;
         }
 
+        /// <summary>
+        /// Sandbox configuration for this node.
+        /// </summary>
         [Input("sandboxConfig")]
         public Input<Inputs.ClusterNodeConfigSandboxConfigArgs>? SandboxConfig { get; set; }
 

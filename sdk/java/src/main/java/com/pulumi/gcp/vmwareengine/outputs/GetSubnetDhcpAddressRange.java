@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSubnetDhcpAddressRange {
+    /**
+     * @return The first IP address of the range.
+     * 
+     */
     private String firstAddress;
+    /**
+     * @return The last IP address of the range.
+     * 
+     */
     private String lastAddress;
 
     private GetSubnetDhcpAddressRange() {}
+    /**
+     * @return The first IP address of the range.
+     * 
+     */
     public String firstAddress() {
         return this.firstAddress;
     }
+    /**
+     * @return The last IP address of the range.
+     * 
+     */
     public String lastAddress() {
         return this.lastAddress;
     }

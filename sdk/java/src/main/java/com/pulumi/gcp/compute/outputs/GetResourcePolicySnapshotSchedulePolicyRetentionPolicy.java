@@ -11,13 +11,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+    /**
+     * @return Maximum age of the snapshot that is allowed to be kept.
+     * 
+     */
     private Integer maxRetentionDays;
+    /**
+     * @return Specifies the behavior to apply to scheduled snapshots when
+     * the source disk is deleted. Default value: &#34;KEEP_AUTO_SNAPSHOTS&#34; Possible values: [&#34;KEEP_AUTO_SNAPSHOTS&#34;, &#34;APPLY_RETENTION_POLICY&#34;]
+     * 
+     */
     private String onSourceDiskDelete;
 
     private GetResourcePolicySnapshotSchedulePolicyRetentionPolicy() {}
+    /**
+     * @return Maximum age of the snapshot that is allowed to be kept.
+     * 
+     */
     public Integer maxRetentionDays() {
         return this.maxRetentionDays;
     }
+    /**
+     * @return Specifies the behavior to apply to scheduled snapshots when
+     * the source disk is deleted. Default value: &#34;KEEP_AUTO_SNAPSHOTS&#34; Possible values: [&#34;KEEP_AUTO_SNAPSHOTS&#34;, &#34;APPLY_RETENTION_POLICY&#34;]
+     * 
+     */
     public String onSourceDiskDelete() {
         return this.onSourceDiskDelete;
     }

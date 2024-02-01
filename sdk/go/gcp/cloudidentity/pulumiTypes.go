@@ -1109,6 +1109,7 @@ func (o GetGroupLookupGroupKeyOutput) Namespace() pulumi.StringPtrOutput {
 }
 
 type GetGroupMembershipsMembership struct {
+	// The time when the Membership was created.
 	CreateTime string `pulumi:"createTime"`
 	// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
 	Group string `pulumi:"group"`
@@ -1121,7 +1122,8 @@ type GetGroupMembershipsMembership struct {
 	// The MembershipRoles that apply to the Membership. Structure is documented below.
 	Roles []GetGroupMembershipsMembershipRole `pulumi:"roles"`
 	// The type of the membership.
-	Type       string `pulumi:"type"`
+	Type string `pulumi:"type"`
+	// The time when the Membership was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -1137,6 +1139,7 @@ type GetGroupMembershipsMembershipInput interface {
 }
 
 type GetGroupMembershipsMembershipArgs struct {
+	// The time when the Membership was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
 	Group pulumi.StringInput `pulumi:"group"`
@@ -1149,7 +1152,8 @@ type GetGroupMembershipsMembershipArgs struct {
 	// The MembershipRoles that apply to the Membership. Structure is documented below.
 	Roles GetGroupMembershipsMembershipRoleArrayInput `pulumi:"roles"`
 	// The type of the membership.
-	Type       pulumi.StringInput `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
+	// The time when the Membership was last updated.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
@@ -1204,6 +1208,7 @@ func (o GetGroupMembershipsMembershipOutput) ToGetGroupMembershipsMembershipOutp
 	return o
 }
 
+// The time when the Membership was created.
 func (o GetGroupMembershipsMembershipOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembership) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -1240,6 +1245,7 @@ func (o GetGroupMembershipsMembershipOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembership) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The time when the Membership was last updated.
 func (o GetGroupMembershipsMembershipOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembership) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
@@ -1507,6 +1513,8 @@ func (o GetGroupMembershipsMembershipPreferredMemberKeyArrayOutput) Index(i pulu
 }
 
 type GetGroupMembershipsMembershipRole struct {
+	// The MembershipRole expiry details, only supported for MEMBER role.
+	// Other roles cannot be accompanied with MEMBER role having expiry.
 	ExpiryDetails []GetGroupMembershipsMembershipRoleExpiryDetail `pulumi:"expiryDetails"`
 	// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
 	Name string `pulumi:"name"`
@@ -1524,6 +1532,8 @@ type GetGroupMembershipsMembershipRoleInput interface {
 }
 
 type GetGroupMembershipsMembershipRoleArgs struct {
+	// The MembershipRole expiry details, only supported for MEMBER role.
+	// Other roles cannot be accompanied with MEMBER role having expiry.
 	ExpiryDetails GetGroupMembershipsMembershipRoleExpiryDetailArrayInput `pulumi:"expiryDetails"`
 	// The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -1580,6 +1590,8 @@ func (o GetGroupMembershipsMembershipRoleOutput) ToGetGroupMembershipsMembership
 	return o
 }
 
+// The MembershipRole expiry details, only supported for MEMBER role.
+// Other roles cannot be accompanied with MEMBER role having expiry.
 func (o GetGroupMembershipsMembershipRoleOutput) ExpiryDetails() GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembershipRole) []GetGroupMembershipsMembershipRoleExpiryDetail {
 		return v.ExpiryDetails
@@ -1612,6 +1624,12 @@ func (o GetGroupMembershipsMembershipRoleArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetGroupMembershipsMembershipRoleExpiryDetail struct {
+	// The time at which the MembershipRole will expire.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	//
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	ExpireTime string `pulumi:"expireTime"`
 }
 
@@ -1627,6 +1645,12 @@ type GetGroupMembershipsMembershipRoleExpiryDetailInput interface {
 }
 
 type GetGroupMembershipsMembershipRoleExpiryDetailArgs struct {
+	// The time at which the MembershipRole will expire.
+	//
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	//
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
 }
 
@@ -1681,6 +1705,12 @@ func (o GetGroupMembershipsMembershipRoleExpiryDetailOutput) ToGetGroupMembershi
 	return o
 }
 
+// The time at which the MembershipRole will expire.
+//
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
+//
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetGroupMembershipsMembershipRoleExpiryDetailOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembershipRoleExpiryDetail) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -1706,15 +1736,22 @@ func (o GetGroupMembershipsMembershipRoleExpiryDetailArrayOutput) Index(i pulumi
 }
 
 type GetGroupsGroup struct {
+	// Additional group keys associated with the Group
 	AdditionalGroupKeys []GetGroupsGroupAdditionalGroupKey `pulumi:"additionalGroupKeys"`
-	CreateTime          string                             `pulumi:"createTime"`
+	// The time when the Group was created.
+	CreateTime string `pulumi:"createTime"`
 	// An extended description to help users determine the purpose of a Group.
 	Description string `pulumi:"description"`
 	// The display name of the Group.
 	DisplayName string `pulumi:"displayName"`
 	// EntityKey of the Group.  Structure is documented below.
-	GroupKeys          []GetGroupsGroupGroupKey `pulumi:"groupKeys"`
-	InitialGroupConfig string                   `pulumi:"initialGroupConfig"`
+	GroupKeys []GetGroupsGroupGroupKey `pulumi:"groupKeys"`
+	// The initial configuration options for creating a Group.
+	//
+	// See the
+	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+	// for possible values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
+	InitialGroupConfig string `pulumi:"initialGroupConfig"`
 	// The labels that apply to the Group.
 	// Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
 	// 'system/groups/external': '' if the Group is an external-identity-mapped group.
@@ -1722,7 +1759,8 @@ type GetGroupsGroup struct {
 	// Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
 	Name string `pulumi:"name"`
 	// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
-	Parent     string `pulumi:"parent"`
+	Parent string `pulumi:"parent"`
+	// The time when the Group was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -1738,15 +1776,22 @@ type GetGroupsGroupInput interface {
 }
 
 type GetGroupsGroupArgs struct {
+	// Additional group keys associated with the Group
 	AdditionalGroupKeys GetGroupsGroupAdditionalGroupKeyArrayInput `pulumi:"additionalGroupKeys"`
-	CreateTime          pulumi.StringInput                         `pulumi:"createTime"`
+	// The time when the Group was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// An extended description to help users determine the purpose of a Group.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The display name of the Group.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// EntityKey of the Group.  Structure is documented below.
-	GroupKeys          GetGroupsGroupGroupKeyArrayInput `pulumi:"groupKeys"`
-	InitialGroupConfig pulumi.StringInput               `pulumi:"initialGroupConfig"`
+	GroupKeys GetGroupsGroupGroupKeyArrayInput `pulumi:"groupKeys"`
+	// The initial configuration options for creating a Group.
+	//
+	// See the
+	// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+	// for possible values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
+	InitialGroupConfig pulumi.StringInput `pulumi:"initialGroupConfig"`
 	// The labels that apply to the Group.
 	// Contains 'cloudidentity.googleapis.com/groups.discussion_forum': '' if the Group is a Google Group or
 	// 'system/groups/external': '' if the Group is an external-identity-mapped group.
@@ -1754,7 +1799,8 @@ type GetGroupsGroupArgs struct {
 	// Resource name of the Group in the format: groups/{group_id}, where `groupId` is the unique ID assigned to the Group.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
-	Parent     pulumi.StringInput `pulumi:"parent"`
+	Parent pulumi.StringInput `pulumi:"parent"`
+	// The time when the Group was last updated.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
@@ -1809,10 +1855,12 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Additional group keys associated with the Group
 func (o GetGroupsGroupOutput) AdditionalGroupKeys() GetGroupsGroupAdditionalGroupKeyArrayOutput {
 	return o.ApplyT(func(v GetGroupsGroup) []GetGroupsGroupAdditionalGroupKey { return v.AdditionalGroupKeys }).(GetGroupsGroupAdditionalGroupKeyArrayOutput)
 }
 
+// The time when the Group was created.
 func (o GetGroupsGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -1832,6 +1880,11 @@ func (o GetGroupsGroupOutput) GroupKeys() GetGroupsGroupGroupKeyArrayOutput {
 	return o.ApplyT(func(v GetGroupsGroup) []GetGroupsGroupGroupKey { return v.GroupKeys }).(GetGroupsGroupGroupKeyArrayOutput)
 }
 
+// The initial configuration options for creating a Group.
+//
+// See the
+// [API reference](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups/create#initialgroupconfig)
+// for possible values. Default value: "EMPTY" Possible values: ["INITIAL_GROUP_CONFIG_UNSPECIFIED", "WITH_INITIAL_OWNER", "EMPTY"]
 func (o GetGroupsGroupOutput) InitialGroupConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.InitialGroupConfig }).(pulumi.StringOutput)
 }
@@ -1853,6 +1906,7 @@ func (o GetGroupsGroupOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Parent }).(pulumi.StringOutput)
 }
 
+// The time when the Group was last updated.
 func (o GetGroupsGroupOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

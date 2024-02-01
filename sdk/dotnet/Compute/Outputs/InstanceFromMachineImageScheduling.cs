@@ -13,15 +13,45 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromMachineImageScheduling
     {
+        /// <summary>
+        /// Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        /// </summary>
         public readonly bool? AutomaticRestart;
+        /// <summary>
+        /// Specifies the action GCE should take when SPOT VM is preempted.
+        /// </summary>
         public readonly string? InstanceTerminationAction;
+        /// <summary>
+        /// Specifies the maximum amount of time a Local Ssd Vm should wait while
+        ///   recovery of the Local Ssd state is attempted. Its value should be in
+        ///   between 0 and 168 hours with hour granularity and the default value being 1
+        ///   hour.
+        /// </summary>
         public readonly Outputs.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout? LocalSsdRecoveryTimeout;
+        /// <summary>
+        /// Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+        /// </summary>
         public readonly string? MaintenanceInterval;
+        /// <summary>
+        /// The timeout for new network connections to hosts.
+        /// </summary>
         public readonly Outputs.InstanceFromMachineImageSchedulingMaxRunDuration? MaxRunDuration;
         public readonly int? MinNodeCpus;
+        /// <summary>
+        /// Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+        /// </summary>
         public readonly ImmutableArray<Outputs.InstanceFromMachineImageSchedulingNodeAffinity> NodeAffinities;
+        /// <summary>
+        /// Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+        /// </summary>
         public readonly string? OnHostMaintenance;
+        /// <summary>
+        /// Whether the instance is preemptible.
+        /// </summary>
         public readonly bool? Preemptible;
+        /// <summary>
+        /// Whether the instance is spot. If this is set as SPOT.
+        /// </summary>
         public readonly string? ProvisioningModel;
 
         [OutputConstructor]

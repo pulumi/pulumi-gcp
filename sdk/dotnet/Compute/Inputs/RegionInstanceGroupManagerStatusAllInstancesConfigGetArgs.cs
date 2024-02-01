@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class RegionInstanceGroupManagerStatusAllInstancesConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A bit indicating whether this configuration has been applied to all managed instances in the group.
+        /// </summary>
         [Input("effective")]
         public Input<bool>? Effective { get; set; }
 

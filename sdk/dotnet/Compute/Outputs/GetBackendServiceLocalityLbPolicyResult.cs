@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetBackendServiceLocalityLbPolicyResult
     {
+        /// <summary>
+        /// The configuration for a custom policy implemented by the user and
+        /// deployed with the client.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackendServiceLocalityLbPolicyCustomPolicyResult> CustomPolicies;
+        /// <summary>
+        /// The configuration for a built-in load balancing policy.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackendServiceLocalityLbPolicyPolicyResult> Policies;
 
         [OutputConstructor]

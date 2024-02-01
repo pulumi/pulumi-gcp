@@ -13,9 +13,21 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     [OutputType]
     public sealed class AssetDiscoveryStatusStat
     {
+        /// <summary>
+        /// The count of data items within the referenced resource.
+        /// </summary>
         public readonly int? DataItems;
+        /// <summary>
+        /// The number of stored data bytes within the referenced resource.
+        /// </summary>
         public readonly int? DataSize;
+        /// <summary>
+        /// The count of fileset entities within the referenced resource.
+        /// </summary>
         public readonly int? Filesets;
+        /// <summary>
+        /// The count of table entities within the referenced resource.
+        /// </summary>
         public readonly int? Tables;
 
         [OutputConstructor]

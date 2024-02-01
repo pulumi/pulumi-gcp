@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretReplicationUserManaged {
+    /**
+     * @return The list of Replicas for this Secret. Cannot be empty.
+     * 
+     */
     private List<GetSecretReplicationUserManagedReplica> replicas;
 
     private GetSecretReplicationUserManaged() {}
+    /**
+     * @return The list of Replicas for this Secret. Cannot be empty.
+     * 
+     */
     public List<GetSecretReplicationUserManagedReplica> replicas() {
         return this.replicas;
     }

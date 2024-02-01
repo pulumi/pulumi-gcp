@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("networkTier")]
         public Input<string>? NetworkTier { get; set; }
 
+        /// <summary>
+        /// The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+        /// </summary>
         [Input("publicPtrDomainName")]
         public Input<string>? PublicPtrDomainName { get; set; }
 

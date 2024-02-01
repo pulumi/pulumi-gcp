@@ -10,25 +10,69 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildArtifactMavenArtifact {
+    /**
+     * @return Maven artifactId value used when uploading the artifact to Artifact Registry.
+     * 
+     */
     private String artifactId;
+    /**
+     * @return Maven groupId value used when uploading the artifact to Artifact Registry.
+     * 
+     */
     private String groupId;
+    /**
+     * @return Path to an artifact in the build&#39;s workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+     * 
+     */
     private String path;
+    /**
+     * @return Artifact Registry repository, in the form &#34;https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY&#34;
+     * 
+     * Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+     * 
+     */
     private String repository;
+    /**
+     * @return Maven version value used when uploading the artifact to Artifact Registry.
+     * 
+     */
     private String version;
 
     private GetTriggerBuildArtifactMavenArtifact() {}
+    /**
+     * @return Maven artifactId value used when uploading the artifact to Artifact Registry.
+     * 
+     */
     public String artifactId() {
         return this.artifactId;
     }
+    /**
+     * @return Maven groupId value used when uploading the artifact to Artifact Registry.
+     * 
+     */
     public String groupId() {
         return this.groupId;
     }
+    /**
+     * @return Path to an artifact in the build&#39;s workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return Artifact Registry repository, in the form &#34;https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY&#34;
+     * 
+     * Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+     * 
+     */
     public String repository() {
         return this.repository;
     }
+    /**
+     * @return Maven version value used when uploading the artifact to Artifact Registry.
+     * 
+     */
     public String version() {
         return this.version;
     }

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions {
+    /**
+     * @return The maximum value that can be specified, if applicable.
+     * 
+     */
     private String maxValue;
+    /**
+     * @return The minimum value that can be specified, if applicable.
+     * 
+     */
     private String minValue;
 
     private GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions() {}
+    /**
+     * @return The maximum value that can be specified, if applicable.
+     * 
+     */
     public String maxValue() {
         return this.maxValue;
     }
+    /**
+     * @return The minimum value that can be specified, if applicable.
+     * 
+     */
     public String minValue() {
         return this.minValue;
     }

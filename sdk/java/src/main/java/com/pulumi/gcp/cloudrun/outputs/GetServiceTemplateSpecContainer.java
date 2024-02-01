@@ -18,39 +18,126 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainer {
+    /**
+     * @return Arguments to the entrypoint.
+     * The docker image&#39;s CMD is used if this is not provided.
+     * 
+     */
     private List<String> args;
+    /**
+     * @return Entrypoint array. Not executed within a shell.
+     * The docker image&#39;s ENTRYPOINT is used if this is not provided.
+     * 
+     */
     private List<String> commands;
+    /**
+     * @return List of sources to populate environment variables in the container.
+     * All invalid keys will be reported as an event when the container is starting.
+     * When a key exists in multiple sources, the value associated with the last source will
+     * take precedence. Values defined by an Env with a duplicate key will take
+     * precedence.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerEnvFrom> envFroms;
+    /**
+     * @return List of environment variables to set in the container.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerEnv> envs;
+    /**
+     * @return Docker image name. This is most often a reference to a container located
+     * in the container registry, such as gcr.io/cloudrun/hello
+     * 
+     */
     private String image;
+    /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes;
     /**
      * @return The name of the Cloud Run Service.
      * 
      */
     private String name;
+    /**
+     * @return List of open ports in the container.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerPort> ports;
+    /**
+     * @return Compute Resources required by this container. Used to set values such as max memory
+     * 
+     */
     private List<GetServiceTemplateSpecContainerResource> resources;
+    /**
+     * @return Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerStartupProbe> startupProbes;
+    /**
+     * @return Volume to mount into the container&#39;s filesystem.
+     * Only supports SecretVolumeSources.
+     * 
+     */
     private List<GetServiceTemplateSpecContainerVolumeMount> volumeMounts;
+    /**
+     * @return Container&#39;s working directory.
+     * If not specified, the container runtime&#39;s default will be used, which
+     * might be configured in the container image.
+     * 
+     */
     private String workingDir;
 
     private GetServiceTemplateSpecContainer() {}
+    /**
+     * @return Arguments to the entrypoint.
+     * The docker image&#39;s CMD is used if this is not provided.
+     * 
+     */
     public List<String> args() {
         return this.args;
     }
+    /**
+     * @return Entrypoint array. Not executed within a shell.
+     * The docker image&#39;s ENTRYPOINT is used if this is not provided.
+     * 
+     */
     public List<String> commands() {
         return this.commands;
     }
+    /**
+     * @return List of sources to populate environment variables in the container.
+     * All invalid keys will be reported as an event when the container is starting.
+     * When a key exists in multiple sources, the value associated with the last source will
+     * take precedence. Values defined by an Env with a duplicate key will take
+     * precedence.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerEnvFrom> envFroms() {
         return this.envFroms;
     }
+    /**
+     * @return List of environment variables to set in the container.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerEnv> envs() {
         return this.envs;
     }
+    /**
+     * @return Docker image name. This is most often a reference to a container located
+     * in the container registry, such as gcr.io/cloudrun/hello
+     * 
+     */
     public String image() {
         return this.image;
     }
+    /**
+     * @return Periodic probe of container liveness. Container will be restarted if the probe fails.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes() {
         return this.livenessProbes;
     }
@@ -61,18 +148,43 @@ public final class GetServiceTemplateSpecContainer {
     public String name() {
         return this.name;
     }
+    /**
+     * @return List of open ports in the container.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerPort> ports() {
         return this.ports;
     }
+    /**
+     * @return Compute Resources required by this container. Used to set values such as max memory
+     * 
+     */
     public List<GetServiceTemplateSpecContainerResource> resources() {
         return this.resources;
     }
+    /**
+     * @return Startup probe of application within the container.
+     * All other probes are disabled if a startup probe is provided, until it
+     * succeeds. Container will not be added to service endpoints if the probe fails.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerStartupProbe> startupProbes() {
         return this.startupProbes;
     }
+    /**
+     * @return Volume to mount into the container&#39;s filesystem.
+     * Only supports SecretVolumeSources.
+     * 
+     */
     public List<GetServiceTemplateSpecContainerVolumeMount> volumeMounts() {
         return this.volumeMounts;
     }
+    /**
+     * @return Container&#39;s working directory.
+     * If not specified, the container runtime&#39;s default will be used, which
+     * might be configured in the container image.
+     * 
+     */
     public String workingDir() {
         return this.workingDir;
     }

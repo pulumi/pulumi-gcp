@@ -98,9 +98,17 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.numNodes);
     }
 
+    /**
+     * The state of the cluster
+     * 
+     */
     @Import(name="state")
     private @Nullable Output<String> state;
 
+    /**
+     * @return The state of the cluster
+     * 
+     */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
@@ -275,11 +283,23 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
             return numNodes(Output.of(numNodes));
         }
 
+        /**
+         * @param state The state of the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(@Nullable Output<String> state) {
             $.state = state;
             return this;
         }
 
+        /**
+         * @param state The state of the cluster
+         * 
+         * @return builder
+         * 
+         */
         public Builder state(String state) {
             return state(Output.of(state));
         }

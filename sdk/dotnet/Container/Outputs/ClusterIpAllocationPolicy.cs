@@ -33,6 +33,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
         /// </summary>
         public readonly string? ClusterSecondaryRangeName;
+        /// <summary>
+        /// Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+        /// </summary>
         public readonly Outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig? PodCidrOverprovisionConfig;
         /// <summary>
         /// The IP address range of the services IPs in this cluster.

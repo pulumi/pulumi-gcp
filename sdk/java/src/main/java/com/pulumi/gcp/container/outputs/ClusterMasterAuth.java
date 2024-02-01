@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterMasterAuth {
+    /**
+     * @return Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     private @Nullable String clientCertificate;
     /**
      * @return Whether client certificate authorization is enabled for this cluster.  For example:
@@ -43,10 +47,22 @@ public final class ClusterMasterAuth {
      * 
      */
     private ClusterMasterAuthClientCertificateConfig clientCertificateConfig;
+    /**
+     * @return Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     private @Nullable String clientKey;
+    /**
+     * @return Base64 encoded public certificate that is the root of trust for the cluster.
+     * 
+     */
     private @Nullable String clusterCaCertificate;
 
     private ClusterMasterAuth() {}
+    /**
+     * @return Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     public Optional<String> clientCertificate() {
         return Optional.ofNullable(this.clientCertificate);
     }
@@ -81,9 +97,17 @@ public final class ClusterMasterAuth {
     public ClusterMasterAuthClientCertificateConfig clientCertificateConfig() {
         return this.clientCertificateConfig;
     }
+    /**
+     * @return Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     public Optional<String> clientKey() {
         return Optional.ofNullable(this.clientKey);
     }
+    /**
+     * @return Base64 encoded public certificate that is the root of trust for the cluster.
+     * 
+     */
     public Optional<String> clusterCaCertificate() {
         return Optional.ofNullable(this.clusterCaCertificate);
     }

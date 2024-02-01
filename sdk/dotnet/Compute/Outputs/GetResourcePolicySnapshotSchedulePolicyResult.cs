@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetResourcePolicySnapshotSchedulePolicyResult
     {
+        /// <summary>
+        /// Retention policy applied to snapshots created by this resource policy.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyRetentionPolicyResult> RetentionPolicies;
+        /// <summary>
+        /// Contains one of an 'hourlySchedule', 'dailySchedule', or 'weeklySchedule'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyScheduleResult> Schedules;
+        /// <summary>
+        /// Properties with which the snapshots are created, such as labels.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult> SnapshotProperties;
 
         [OutputConstructor]

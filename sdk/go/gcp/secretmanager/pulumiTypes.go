@@ -1461,7 +1461,9 @@ func (o SecretTopicArrayOutput) Index(i pulumi.IntInput) SecretTopicOutput {
 }
 
 type GetSecretReplication struct {
-	Autos        []GetSecretReplicationAuto        `pulumi:"autos"`
+	// The Secret will automatically be replicated without any restrictions.
+	Autos []GetSecretReplicationAuto `pulumi:"autos"`
+	// The Secret will be replicated to the regions specified by the user.
 	UserManageds []GetSecretReplicationUserManaged `pulumi:"userManageds"`
 }
 
@@ -1477,7 +1479,9 @@ type GetSecretReplicationInput interface {
 }
 
 type GetSecretReplicationArgs struct {
-	Autos        GetSecretReplicationAutoArrayInput        `pulumi:"autos"`
+	// The Secret will automatically be replicated without any restrictions.
+	Autos GetSecretReplicationAutoArrayInput `pulumi:"autos"`
+	// The Secret will be replicated to the regions specified by the user.
 	UserManageds GetSecretReplicationUserManagedArrayInput `pulumi:"userManageds"`
 }
 
@@ -1532,10 +1536,12 @@ func (o GetSecretReplicationOutput) ToGetSecretReplicationOutputWithContext(ctx 
 	return o
 }
 
+// The Secret will automatically be replicated without any restrictions.
 func (o GetSecretReplicationOutput) Autos() GetSecretReplicationAutoArrayOutput {
 	return o.ApplyT(func(v GetSecretReplication) []GetSecretReplicationAuto { return v.Autos }).(GetSecretReplicationAutoArrayOutput)
 }
 
+// The Secret will be replicated to the regions specified by the user.
 func (o GetSecretReplicationOutput) UserManageds() GetSecretReplicationUserManagedArrayOutput {
 	return o.ApplyT(func(v GetSecretReplication) []GetSecretReplicationUserManaged { return v.UserManageds }).(GetSecretReplicationUserManagedArrayOutput)
 }
@@ -1561,6 +1567,9 @@ func (o GetSecretReplicationArrayOutput) Index(i pulumi.IntInput) GetSecretRepli
 }
 
 type GetSecretReplicationAuto struct {
+	// The customer-managed encryption configuration of the Secret.
+	// If no configuration is provided, Google-managed default
+	// encryption is used.
 	CustomerManagedEncryptions []GetSecretReplicationAutoCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
 }
 
@@ -1576,6 +1585,9 @@ type GetSecretReplicationAutoInput interface {
 }
 
 type GetSecretReplicationAutoArgs struct {
+	// The customer-managed encryption configuration of the Secret.
+	// If no configuration is provided, Google-managed default
+	// encryption is used.
 	CustomerManagedEncryptions GetSecretReplicationAutoCustomerManagedEncryptionArrayInput `pulumi:"customerManagedEncryptions"`
 }
 
@@ -1630,6 +1642,9 @@ func (o GetSecretReplicationAutoOutput) ToGetSecretReplicationAutoOutputWithCont
 	return o
 }
 
+// The customer-managed encryption configuration of the Secret.
+// If no configuration is provided, Google-managed default
+// encryption is used.
 func (o GetSecretReplicationAutoOutput) CustomerManagedEncryptions() GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput {
 	return o.ApplyT(func(v GetSecretReplicationAuto) []GetSecretReplicationAutoCustomerManagedEncryption {
 		return v.CustomerManagedEncryptions
@@ -1657,6 +1672,7 @@ func (o GetSecretReplicationAutoArrayOutput) Index(i pulumi.IntInput) GetSecretR
 }
 
 type GetSecretReplicationAutoCustomerManagedEncryption struct {
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -1672,6 +1688,7 @@ type GetSecretReplicationAutoCustomerManagedEncryptionInput interface {
 }
 
 type GetSecretReplicationAutoCustomerManagedEncryptionArgs struct {
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
@@ -1726,6 +1743,7 @@ func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) ToGetSecretRepl
 	return o
 }
 
+// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
 func (o GetSecretReplicationAutoCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretReplicationAutoCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -1751,6 +1769,7 @@ func (o GetSecretReplicationAutoCustomerManagedEncryptionArrayOutput) Index(i pu
 }
 
 type GetSecretReplicationUserManaged struct {
+	// The list of Replicas for this Secret. Cannot be empty.
 	Replicas []GetSecretReplicationUserManagedReplica `pulumi:"replicas"`
 }
 
@@ -1766,6 +1785,7 @@ type GetSecretReplicationUserManagedInput interface {
 }
 
 type GetSecretReplicationUserManagedArgs struct {
+	// The list of Replicas for this Secret. Cannot be empty.
 	Replicas GetSecretReplicationUserManagedReplicaArrayInput `pulumi:"replicas"`
 }
 
@@ -1820,6 +1840,7 @@ func (o GetSecretReplicationUserManagedOutput) ToGetSecretReplicationUserManaged
 	return o
 }
 
+// The list of Replicas for this Secret. Cannot be empty.
 func (o GetSecretReplicationUserManagedOutput) Replicas() GetSecretReplicationUserManagedReplicaArrayOutput {
 	return o.ApplyT(func(v GetSecretReplicationUserManaged) []GetSecretReplicationUserManagedReplica { return v.Replicas }).(GetSecretReplicationUserManagedReplicaArrayOutput)
 }
@@ -1845,8 +1866,10 @@ func (o GetSecretReplicationUserManagedArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetSecretReplicationUserManagedReplica struct {
+	// Customer Managed Encryption for the secret.
 	CustomerManagedEncryptions []GetSecretReplicationUserManagedReplicaCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
-	Location                   string                                                            `pulumi:"location"`
+	// The canonical IDs of the location to replicate data. For example: "us-east1".
+	Location string `pulumi:"location"`
 }
 
 // GetSecretReplicationUserManagedReplicaInput is an input type that accepts GetSecretReplicationUserManagedReplicaArgs and GetSecretReplicationUserManagedReplicaOutput values.
@@ -1861,8 +1884,10 @@ type GetSecretReplicationUserManagedReplicaInput interface {
 }
 
 type GetSecretReplicationUserManagedReplicaArgs struct {
+	// Customer Managed Encryption for the secret.
 	CustomerManagedEncryptions GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayInput `pulumi:"customerManagedEncryptions"`
-	Location                   pulumi.StringInput                                                        `pulumi:"location"`
+	// The canonical IDs of the location to replicate data. For example: "us-east1".
+	Location pulumi.StringInput `pulumi:"location"`
 }
 
 func (GetSecretReplicationUserManagedReplicaArgs) ElementType() reflect.Type {
@@ -1916,12 +1941,14 @@ func (o GetSecretReplicationUserManagedReplicaOutput) ToGetSecretReplicationUser
 	return o
 }
 
+// Customer Managed Encryption for the secret.
 func (o GetSecretReplicationUserManagedReplicaOutput) CustomerManagedEncryptions() GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput {
 	return o.ApplyT(func(v GetSecretReplicationUserManagedReplica) []GetSecretReplicationUserManagedReplicaCustomerManagedEncryption {
 		return v.CustomerManagedEncryptions
 	}).(GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutput)
 }
 
+// The canonical IDs of the location to replicate data. For example: "us-east1".
 func (o GetSecretReplicationUserManagedReplicaOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretReplicationUserManagedReplica) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -1947,6 +1974,7 @@ func (o GetSecretReplicationUserManagedReplicaArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetSecretReplicationUserManagedReplicaCustomerManagedEncryption struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -1962,6 +1990,7 @@ type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionInput interf
 }
 
 type GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
@@ -2016,6 +2045,7 @@ func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) T
 	return o
 }
 
+// Describes the Cloud KMS encryption key that will be used to protect destination secret.
 func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretReplicationUserManagedReplicaCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -2041,8 +2071,12 @@ func (o GetSecretReplicationUserManagedReplicaCustomerManagedEncryptionArrayOutp
 }
 
 type GetSecretRotation struct {
+	// Timestamp in UTC at which the Secret is scheduled to rotate.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	NextRotationTime string `pulumi:"nextRotationTime"`
-	RotationPeriod   string `pulumi:"rotationPeriod"`
+	// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+	// If rotationPeriod is set, 'next_rotation_time' must be set. 'next_rotation_time' will be advanced by this period when the service automatically sends rotation notifications.
+	RotationPeriod string `pulumi:"rotationPeriod"`
 }
 
 // GetSecretRotationInput is an input type that accepts GetSecretRotationArgs and GetSecretRotationOutput values.
@@ -2057,8 +2091,12 @@ type GetSecretRotationInput interface {
 }
 
 type GetSecretRotationArgs struct {
+	// Timestamp in UTC at which the Secret is scheduled to rotate.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
-	RotationPeriod   pulumi.StringInput `pulumi:"rotationPeriod"`
+	// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+	// If rotationPeriod is set, 'next_rotation_time' must be set. 'next_rotation_time' will be advanced by this period when the service automatically sends rotation notifications.
+	RotationPeriod pulumi.StringInput `pulumi:"rotationPeriod"`
 }
 
 func (GetSecretRotationArgs) ElementType() reflect.Type {
@@ -2112,10 +2150,14 @@ func (o GetSecretRotationOutput) ToGetSecretRotationOutputWithContext(ctx contex
 	return o
 }
 
+// Timestamp in UTC at which the Secret is scheduled to rotate.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetSecretRotationOutput) NextRotationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretRotation) string { return v.NextRotationTime }).(pulumi.StringOutput)
 }
 
+// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+// If rotationPeriod is set, 'next_rotation_time' must be set. 'next_rotation_time' will be advanced by this period when the service automatically sends rotation notifications.
 func (o GetSecretRotationOutput) RotationPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretRotation) string { return v.RotationPeriod }).(pulumi.StringOutput)
 }
@@ -2141,6 +2183,8 @@ func (o GetSecretRotationArrayOutput) Index(i pulumi.IntInput) GetSecretRotation
 }
 
 type GetSecretTopic struct {
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
 	Name string `pulumi:"name"`
 }
 
@@ -2156,6 +2200,8 @@ type GetSecretTopicInput interface {
 }
 
 type GetSecretTopicArgs struct {
+	// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+	// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2210,6 +2256,8 @@ func (o GetSecretTopicOutput) ToGetSecretTopicOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The resource name of the Pub/Sub topic that will be published to, in the following format: projects/*/topics/*.
+// For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
 func (o GetSecretTopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretTopic) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2248,7 +2296,9 @@ type GetSecretsSecret struct {
 	// The resource name of the Pub/Sub topic that will be published to.
 	Name string `pulumi:"name"`
 	// The ID of the project.
-	Project      string            `pulumi:"project"`
+	Project string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The replication policy of the secret data attached to the Secret.
 	// Structure is documented below.
@@ -2256,11 +2306,15 @@ type GetSecretsSecret struct {
 	// The rotation time and period for a Secret.
 	// Structure is documented below.
 	Rotations []GetSecretsSecretRotation `pulumi:"rotations"`
-	SecretId  string                     `pulumi:"secretId"`
+	// This must be unique within the project.
+	SecretId string `pulumi:"secretId"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	// Structure is documented below.
 	Topics []GetSecretsSecretTopic `pulumi:"topics"`
-	Ttl    string                  `pulumi:"ttl"`
+	// The TTL for the Secret.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	// Only one of 'ttl' or 'expire_time' can be provided.
+	Ttl string `pulumi:"ttl"`
 	// Mapping from version alias to version name.
 	VersionAliases map[string]string `pulumi:"versionAliases"`
 }
@@ -2290,7 +2344,9 @@ type GetSecretsSecretArgs struct {
 	// The resource name of the Pub/Sub topic that will be published to.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID of the project.
-	Project      pulumi.StringInput    `pulumi:"project"`
+	Project pulumi.StringInput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
 	// The replication policy of the secret data attached to the Secret.
 	// Structure is documented below.
@@ -2298,11 +2354,15 @@ type GetSecretsSecretArgs struct {
 	// The rotation time and period for a Secret.
 	// Structure is documented below.
 	Rotations GetSecretsSecretRotationArrayInput `pulumi:"rotations"`
-	SecretId  pulumi.StringInput                 `pulumi:"secretId"`
+	// This must be unique within the project.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
 	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	// Structure is documented below.
 	Topics GetSecretsSecretTopicArrayInput `pulumi:"topics"`
-	Ttl    pulumi.StringInput              `pulumi:"ttl"`
+	// The TTL for the Secret.
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	// Only one of 'ttl' or 'expire_time' can be provided.
+	Ttl pulumi.StringInput `pulumi:"ttl"`
 	// Mapping from version alias to version name.
 	VersionAliases pulumi.StringMapInput `pulumi:"versionAliases"`
 }
@@ -2396,6 +2456,9 @@ func (o GetSecretsSecretOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
 func (o GetSecretsSecretOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
@@ -2412,6 +2475,7 @@ func (o GetSecretsSecretOutput) Rotations() GetSecretsSecretRotationArrayOutput 
 	return o.ApplyT(func(v GetSecretsSecret) []GetSecretsSecretRotation { return v.Rotations }).(GetSecretsSecretRotationArrayOutput)
 }
 
+// This must be unique within the project.
 func (o GetSecretsSecretOutput) SecretId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretId }).(pulumi.StringOutput)
 }
@@ -2422,6 +2486,9 @@ func (o GetSecretsSecretOutput) Topics() GetSecretsSecretTopicArrayOutput {
 	return o.ApplyT(func(v GetSecretsSecret) []GetSecretsSecretTopic { return v.Topics }).(GetSecretsSecretTopicArrayOutput)
 }
 
+// The TTL for the Secret.
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+// Only one of 'ttl' or 'expire_time' can be provided.
 func (o GetSecretsSecretOutput) Ttl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.Ttl }).(pulumi.StringOutput)
 }

@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolPlacementPolicy {
+    /**
+     * @return If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+     * 
+     */
     private String policyName;
+    /**
+     * @return TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+     * 
+     */
     private String tpuTopology;
+    /**
+     * @return Type defines the type of placement policy
+     * 
+     */
     private String type;
 
     private GetClusterNodePoolPlacementPolicy() {}
+    /**
+     * @return If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+     * 
+     */
     public String policyName() {
         return this.policyName;
     }
+    /**
+     * @return TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+     * 
+     */
     public String tpuTopology() {
         return this.tpuTopology;
     }
+    /**
+     * @return Type defines the type of placement policy
+     * 
+     */
     public String type() {
         return this.type;
     }

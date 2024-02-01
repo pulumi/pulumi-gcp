@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetServiceTemplateScalingResult
     {
+        /// <summary>
+        /// Maximum number of serving instances that this resource should have.
+        /// </summary>
         public readonly int MaxInstanceCount;
+        /// <summary>
+        /// Minimum number of serving instances that this resource should have.
+        /// </summary>
         public readonly int MinInstanceCount;
 
         [OutputConstructor]

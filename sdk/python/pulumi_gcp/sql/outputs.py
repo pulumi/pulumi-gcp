@@ -515,8 +515,12 @@ class DatabaseInstanceServerCaCert(dict):
                  expiration_time: Optional[str] = None,
                  sha1_fingerprint: Optional[str] = None):
         """
+        :param str cert: The CA Certificate used to connect to the SQL Instance via SSL.
+        :param str common_name: The CN valid for the CA Cert.
+        :param str create_time: Creation time of the CA Cert.
         :param str expiration_time: The [RFC 3339](https://tools.ietf.org/html/rfc3339)
                formatted date time string indicating when this whitelist expires.
+        :param str sha1_fingerprint: SHA Fingerprint of the CA Cert.
         """
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
@@ -532,16 +536,25 @@ class DatabaseInstanceServerCaCert(dict):
     @property
     @pulumi.getter
     def cert(self) -> Optional[str]:
+        """
+        The CA Certificate used to connect to the SQL Instance via SSL.
+        """
         return pulumi.get(self, "cert")
 
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
+        """
+        The CN valid for the CA Cert.
+        """
         return pulumi.get(self, "common_name")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[str]:
+        """
+        Creation time of the CA Cert.
+        """
         return pulumi.get(self, "create_time")
 
     @property
@@ -556,6 +569,9 @@ class DatabaseInstanceServerCaCert(dict):
     @property
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> Optional[str]:
+        """
+        SHA Fingerprint of the CA Cert.
+        """
         return pulumi.get(self, "sha1_fingerprint")
 
 
@@ -664,14 +680,19 @@ class DatabaseInstanceSettings(dict):
                is set to `true`. Defaults to `ZONAL`.
         :param str collation: The name of server instance collation.
         :param str connector_enforcement: Specifies if connections must use Cloud SQL connectors.
+        :param 'DatabaseInstanceSettingsDataCacheConfigArgs' data_cache_config: Data cache configurations.
+        :param bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`.
         :param int disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param str disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         :param str edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        :param 'DatabaseInstanceSettingsInsightsConfigArgs' insights_config: Configuration of Query Insights.
+        :param 'DatabaseInstanceSettingsMaintenanceWindowArgs' maintenance_window: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
         :param str pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param str time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param Mapping[str, str] user_labels: A set of key/value user label pairs to assign to the instance.
+        :param int version: Used to make sure changes to the settings block are atomic.
         """
         pulumi.set(__self__, "tier", tier)
         if activation_policy is not None:
@@ -793,6 +814,9 @@ class DatabaseInstanceSettings(dict):
     @property
     @pulumi.getter(name="dataCacheConfig")
     def data_cache_config(self) -> Optional['outputs.DatabaseInstanceSettingsDataCacheConfig']:
+        """
+        Data cache configurations.
+        """
         return pulumi.get(self, "data_cache_config")
 
     @property
@@ -803,6 +827,9 @@ class DatabaseInstanceSettings(dict):
     @property
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> Optional[bool]:
+        """
+        Configuration to protect against accidental instance deletion.
+        """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @property
@@ -853,6 +880,9 @@ class DatabaseInstanceSettings(dict):
     @property
     @pulumi.getter(name="insightsConfig")
     def insights_config(self) -> Optional['outputs.DatabaseInstanceSettingsInsightsConfig']:
+        """
+        Configuration of Query Insights.
+        """
         return pulumi.get(self, "insights_config")
 
     @property
@@ -868,6 +898,9 @@ class DatabaseInstanceSettings(dict):
     @property
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> Optional['outputs.DatabaseInstanceSettingsMaintenanceWindow']:
+        """
+        Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        """
         return pulumi.get(self, "maintenance_window")
 
     @property
@@ -907,6 +940,9 @@ class DatabaseInstanceSettings(dict):
     @property
     @pulumi.getter
     def version(self) -> Optional[int]:
+        """
+        Used to make sure changes to the settings block are atomic.
+        """
         return pulumi.get(self, "version")
 
 
@@ -1410,6 +1446,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                Specifying a network enables private IP.
                At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
                This setting can be updated, but it cannot be removed after it is set.
+        :param Sequence['DatabaseInstanceSettingsIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `ssl_mode`.
         :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `require_ssl`. To change this field, also set the correspoding value in `require_ssl`.
                * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `ssl_mode` field.
@@ -1479,6 +1516,9 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
     @property
     @pulumi.getter(name="pscConfigs")
     def psc_configs(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfig']]:
+        """
+        PSC settings for a Cloud SQL instance.
+        """
         return pulumi.get(self, "psc_configs")
 
     @property
@@ -2083,6 +2123,10 @@ class UserSqlServerUserDetail(dict):
     def __init__(__self__, *,
                  disabled: Optional[bool] = None,
                  server_roles: Optional[Sequence[str]] = None):
+        """
+        :param bool disabled: If the user has been disabled.
+        :param Sequence[str] server_roles: The server roles for this user in the database.
+        """
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if server_roles is not None:
@@ -2091,11 +2135,17 @@ class UserSqlServerUserDetail(dict):
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        If the user has been disabled.
+        """
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="serverRoles")
     def server_roles(self) -> Optional[Sequence[str]]:
+        """
+        The server roles for this user in the database.
+        """
         return pulumi.get(self, "server_roles")
 
 
@@ -2169,6 +2219,13 @@ class GetDatabaseInstanceCloneResult(dict):
                  point_in_time: str,
                  preferred_zone: str,
                  source_instance_name: str):
+        """
+        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param Sequence[str] database_names: (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
+        :param str point_in_time: The timestamp of the point in time that should be restored.
+        :param str preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+        :param str source_instance_name: The name of the instance from which the point in time should be restored.
+        """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "database_names", database_names)
         pulumi.set(__self__, "point_in_time", point_in_time)
@@ -2178,26 +2235,41 @@ class GetDatabaseInstanceCloneResult(dict):
     @property
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> str:
+        """
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
         return pulumi.get(self, "allocated_ip_range")
 
     @property
     @pulumi.getter(name="databaseNames")
     def database_names(self) -> Sequence[str]:
+        """
+        (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
+        """
         return pulumi.get(self, "database_names")
 
     @property
     @pulumi.getter(name="pointInTime")
     def point_in_time(self) -> str:
+        """
+        The timestamp of the point in time that should be restored.
+        """
         return pulumi.get(self, "point_in_time")
 
     @property
     @pulumi.getter(name="preferredZone")
     def preferred_zone(self) -> str:
+        """
+        (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+        """
         return pulumi.get(self, "preferred_zone")
 
     @property
     @pulumi.getter(name="sourceInstanceName")
     def source_instance_name(self) -> str:
+        """
+        The name of the instance from which the point in time should be restored.
+        """
         return pulumi.get(self, "source_instance_name")
 
 
@@ -2241,6 +2313,19 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
                  ssl_cipher: str,
                  username: str,
                  verify_server_certificate: bool):
+        """
+        :param str ca_certificate: PEM representation of the trusted CA's x509 certificate.
+        :param str client_certificate: PEM representation of the replica's x509 certificate.
+        :param str client_key: PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
+        :param int connect_retry_interval: The number of seconds between connect retries. MySQL's default is 60 seconds.
+        :param str dump_file_path: Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
+        :param bool failover_target: Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
+        :param int master_heartbeat_period: Time in ms between replication heartbeats.
+        :param str password: Password for the replication connection.
+        :param str ssl_cipher: Permissible ciphers for use in SSL encryption.
+        :param str username: Username for replication connection.
+        :param bool verify_server_certificate: True if the master's common name value is checked during the SSL handshake.
+        """
         pulumi.set(__self__, "ca_certificate", ca_certificate)
         pulumi.set(__self__, "client_certificate", client_certificate)
         pulumi.set(__self__, "client_key", client_key)
@@ -2256,56 +2341,89 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
     @property
     @pulumi.getter(name="caCertificate")
     def ca_certificate(self) -> str:
+        """
+        PEM representation of the trusted CA's x509 certificate.
+        """
         return pulumi.get(self, "ca_certificate")
 
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> str:
+        """
+        PEM representation of the replica's x509 certificate.
+        """
         return pulumi.get(self, "client_certificate")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> str:
+        """
+        PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="connectRetryInterval")
     def connect_retry_interval(self) -> int:
+        """
+        The number of seconds between connect retries. MySQL's default is 60 seconds.
+        """
         return pulumi.get(self, "connect_retry_interval")
 
     @property
     @pulumi.getter(name="dumpFilePath")
     def dump_file_path(self) -> str:
+        """
+        Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
+        """
         return pulumi.get(self, "dump_file_path")
 
     @property
     @pulumi.getter(name="failoverTarget")
     def failover_target(self) -> bool:
+        """
+        Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
+        """
         return pulumi.get(self, "failover_target")
 
     @property
     @pulumi.getter(name="masterHeartbeatPeriod")
     def master_heartbeat_period(self) -> int:
+        """
+        Time in ms between replication heartbeats.
+        """
         return pulumi.get(self, "master_heartbeat_period")
 
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        Password for the replication connection.
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="sslCipher")
     def ssl_cipher(self) -> str:
+        """
+        Permissible ciphers for use in SSL encryption.
+        """
         return pulumi.get(self, "ssl_cipher")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        Username for replication connection.
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="verifyServerCertificate")
     def verify_server_certificate(self) -> bool:
+        """
+        True if the master's common name value is checked during the SSL handshake.
+        """
         return pulumi.get(self, "verify_server_certificate")
 
 
@@ -2316,6 +2434,8 @@ class GetDatabaseInstanceRestoreBackupContextResult(dict):
                  instance_id: str,
                  project: str):
         """
+        :param int backup_run_id: The ID of the backup run to restore from.
+        :param str instance_id: The ID of the instance that the backup was taken from.
         :param str project: The ID of the project in which the resource belongs.
         """
         pulumi.set(__self__, "backup_run_id", backup_run_id)
@@ -2325,11 +2445,17 @@ class GetDatabaseInstanceRestoreBackupContextResult(dict):
     @property
     @pulumi.getter(name="backupRunId")
     def backup_run_id(self) -> int:
+        """
+        The ID of the backup run to restore from.
+        """
         return pulumi.get(self, "backup_run_id")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
+        """
+        The ID of the instance that the backup was taken from.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
@@ -2349,6 +2475,13 @@ class GetDatabaseInstanceServerCaCertResult(dict):
                  create_time: str,
                  expiration_time: str,
                  sha1_fingerprint: str):
+        """
+        :param str cert: The CA Certificate used to connect to the SQL Instance via SSL.
+        :param str common_name: The CN valid for the CA Cert.
+        :param str create_time: Creation time of the CA Cert.
+        :param str expiration_time: Expiration time of the CA Cert.
+        :param str sha1_fingerprint: SHA Fingerprint of the CA Cert.
+        """
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "common_name", common_name)
         pulumi.set(__self__, "create_time", create_time)
@@ -2358,26 +2491,41 @@ class GetDatabaseInstanceServerCaCertResult(dict):
     @property
     @pulumi.getter
     def cert(self) -> str:
+        """
+        The CA Certificate used to connect to the SQL Instance via SSL.
+        """
         return pulumi.get(self, "cert")
 
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> str:
+        """
+        The CN valid for the CA Cert.
+        """
         return pulumi.get(self, "common_name")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        Creation time of the CA Cert.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> str:
+        """
+        Expiration time of the CA Cert.
+        """
         return pulumi.get(self, "expiration_time")
 
     @property
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> str:
+        """
+        SHA Fingerprint of the CA Cert.
+        """
         return pulumi.get(self, "sha1_fingerprint")
 
 
@@ -2411,6 +2559,31 @@ class GetDatabaseInstanceSettingResult(dict):
                  time_zone: str,
                  user_labels: Mapping[str, str],
                  version: int):
+        """
+        :param str activation_policy: This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+        :param str availability_type: The availability type of the Cloud SQL instance, high availability
+               (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+               settings.backup_configuration.enabled is set to true.
+               For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+               For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+               is set to true. Defaults to ZONAL.
+        :param str collation: The name of server instance collation.
+        :param str connector_enforcement: Specifies if connections must use Cloud SQL connectors.
+        :param Sequence['GetDatabaseInstanceSettingDataCacheConfigArgs'] data_cache_configs: Data cache configurations.
+        :param bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
+        :param bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
+        :param int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        :param str disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+        :param str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+        :param Sequence['GetDatabaseInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
+        :param Sequence['GetDatabaseInstanceSettingMaintenanceWindowArgs'] maintenance_windows: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        :param str pricing_plan: Pricing plan for this instance, can only be PER_USE.
+        :param str tier: The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
+        :param str time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        :param Mapping[str, str] user_labels: A set of key/value user label pairs to assign to the instance.
+        :param int version: Used to make sure changes to the settings block are atomic.
+        """
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "active_directory_configs", active_directory_configs)
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -2442,6 +2615,9 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="activationPolicy")
     def activation_policy(self) -> str:
+        """
+        This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+        """
         return pulumi.get(self, "activation_policy")
 
     @property
@@ -2457,6 +2633,14 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> str:
+        """
+        The availability type of the Cloud SQL instance, high availability
+        (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+        settings.backup_configuration.enabled is set to true.
+        For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+        For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+        is set to true. Defaults to ZONAL.
+        """
         return pulumi.get(self, "availability_type")
 
     @property
@@ -2467,16 +2651,25 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter
     def collation(self) -> str:
+        """
+        The name of server instance collation.
+        """
         return pulumi.get(self, "collation")
 
     @property
     @pulumi.getter(name="connectorEnforcement")
     def connector_enforcement(self) -> str:
+        """
+        Specifies if connections must use Cloud SQL connectors.
+        """
         return pulumi.get(self, "connector_enforcement")
 
     @property
     @pulumi.getter(name="dataCacheConfigs")
     def data_cache_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingDataCacheConfigResult']:
+        """
+        Data cache configurations.
+        """
         return pulumi.get(self, "data_cache_configs")
 
     @property
@@ -2487,6 +2680,9 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> bool:
+        """
+        Configuration to protect against accidental instance deletion.
+        """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @property
@@ -2497,31 +2693,49 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> bool:
+        """
+        Enables auto-resizing of the storage size. Defaults to true.
+        """
         return pulumi.get(self, "disk_autoresize")
 
     @property
     @pulumi.getter(name="diskAutoresizeLimit")
     def disk_autoresize_limit(self) -> int:
+        """
+        The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        """
         return pulumi.get(self, "disk_autoresize_limit")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> int:
+        """
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
+        """
+        The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+        """
         return pulumi.get(self, "disk_type")
 
     @property
     @pulumi.getter
     def edition(self) -> str:
+        """
+        The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+        """
         return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="insightsConfigs")
     def insights_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult']:
+        """
+        Configuration of Query Insights.
+        """
         return pulumi.get(self, "insights_configs")
 
     @property
@@ -2537,6 +2751,9 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="maintenanceWindows")
     def maintenance_windows(self) -> Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult']:
+        """
+        Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        """
         return pulumi.get(self, "maintenance_windows")
 
     @property
@@ -2547,6 +2764,9 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="pricingPlan")
     def pricing_plan(self) -> str:
+        """
+        Pricing plan for this instance, can only be PER_USE.
+        """
         return pulumi.get(self, "pricing_plan")
 
     @property
@@ -2557,21 +2777,33 @@ class GetDatabaseInstanceSettingResult(dict):
     @property
     @pulumi.getter
     def tier(self) -> str:
+        """
+        The machine type to use. See tiers for more details and supported versions. Postgres supports only shared-core machine types, and custom machine types such as db-custom-2-13312. See the Custom Machine Type Documentation to learn about specifying custom machine types.
+        """
         return pulumi.get(self, "tier")
 
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> str:
+        """
+        The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        """
         return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> Mapping[str, str]:
+        """
+        A set of key/value user label pairs to assign to the instance.
+        """
         return pulumi.get(self, "user_labels")
 
     @property
     @pulumi.getter
     def version(self) -> int:
+        """
+        Used to make sure changes to the settings block are atomic.
+        """
         return pulumi.get(self, "version")
 
 
@@ -2579,11 +2811,17 @@ class GetDatabaseInstanceSettingResult(dict):
 class GetDatabaseInstanceSettingActiveDirectoryConfigResult(dict):
     def __init__(__self__, *,
                  domain: str):
+        """
+        :param str domain: Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
+        """
         pulumi.set(__self__, "domain", domain)
 
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
+        """
         return pulumi.get(self, "domain")
 
 
@@ -2591,11 +2829,17 @@ class GetDatabaseInstanceSettingActiveDirectoryConfigResult(dict):
 class GetDatabaseInstanceSettingAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  threads_per_core: int):
+        """
+        :param int threads_per_core: The number of threads per physical core. Can be 1 or 2.
+        """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> int:
+        """
+        The number of threads per physical core. Can be 1 or 2.
+        """
         return pulumi.get(self, "threads_per_core")
 
 
@@ -2609,6 +2853,14 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
                  point_in_time_recovery_enabled: bool,
                  start_time: str,
                  transaction_log_retention_days: int):
+        """
+        :param bool binary_log_enabled: True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
+        :param bool enabled: True if backup configuration is enabled.
+        :param str location: Location of the backup configuration.
+        :param bool point_in_time_recovery_enabled: True if Point-in-time recovery is enabled.
+        :param str start_time: HH:MM format time indicating when backup configuration starts.
+        :param int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
+        """
         pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
         pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         pulumi.set(__self__, "enabled", enabled)
@@ -2625,31 +2877,49 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
     @property
     @pulumi.getter(name="binaryLogEnabled")
     def binary_log_enabled(self) -> bool:
+        """
+        True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
+        """
         return pulumi.get(self, "binary_log_enabled")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        True if backup configuration is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def location(self) -> str:
+        """
+        Location of the backup configuration.
+        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="pointInTimeRecoveryEnabled")
     def point_in_time_recovery_enabled(self) -> bool:
+        """
+        True if Point-in-time recovery is enabled.
+        """
         return pulumi.get(self, "point_in_time_recovery_enabled")
 
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
+        """
+        HH:MM format time indicating when backup configuration starts.
+        """
         return pulumi.get(self, "start_time")
 
     @property
     @pulumi.getter(name="transactionLogRetentionDays")
     def transaction_log_retention_days(self) -> int:
+        """
+        The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
+        """
         return pulumi.get(self, "transaction_log_retention_days")
 
 
@@ -2658,17 +2928,27 @@ class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult(
     def __init__(__self__, *,
                  retained_backups: int,
                  retention_unit: str):
+        """
+        :param int retained_backups: Number of backups to retain.
+        :param str retention_unit: The unit that 'retainedBackups' represents. Defaults to COUNT
+        """
         pulumi.set(__self__, "retained_backups", retained_backups)
         pulumi.set(__self__, "retention_unit", retention_unit)
 
     @property
     @pulumi.getter(name="retainedBackups")
     def retained_backups(self) -> int:
+        """
+        Number of backups to retain.
+        """
         return pulumi.get(self, "retained_backups")
 
     @property
     @pulumi.getter(name="retentionUnit")
     def retention_unit(self) -> str:
+        """
+        The unit that 'retainedBackups' represents. Defaults to COUNT
+        """
         return pulumi.get(self, "retention_unit")
 
 
@@ -2676,11 +2956,17 @@ class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult(
 class GetDatabaseInstanceSettingDataCacheConfigResult(dict):
     def __init__(__self__, *,
                  data_cache_enabled: bool):
+        """
+        :param bool data_cache_enabled: Whether data cache is enabled for the instance.
+        """
         pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
 
     @property
     @pulumi.getter(name="dataCacheEnabled")
     def data_cache_enabled(self) -> bool:
+        """
+        Whether data cache is enabled for the instance.
+        """
         return pulumi.get(self, "data_cache_enabled")
 
 
@@ -2691,6 +2977,7 @@ class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
                  value: str):
         """
         :param str name: The name of the instance.
+        :param str value: Value of the flag.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -2706,6 +2993,9 @@ class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Value of the flag.
+        """
         return pulumi.get(self, "value")
 
 
@@ -2715,6 +3005,11 @@ class GetDatabaseInstanceSettingDenyMaintenancePeriodResult(dict):
                  end_date: str,
                  start_date: str,
                  time: str):
+        """
+        :param str end_date: End date before which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param str start_date: Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param str time: Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+        """
         pulumi.set(__self__, "end_date", end_date)
         pulumi.set(__self__, "start_date", start_date)
         pulumi.set(__self__, "time", time)
@@ -2722,16 +3017,25 @@ class GetDatabaseInstanceSettingDenyMaintenancePeriodResult(dict):
     @property
     @pulumi.getter(name="endDate")
     def end_date(self) -> str:
+        """
+        End date before which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        """
         return pulumi.get(self, "end_date")
 
     @property
     @pulumi.getter(name="startDate")
     def start_date(self) -> str:
+        """
+        Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        """
         return pulumi.get(self, "start_date")
 
     @property
     @pulumi.getter
     def time(self) -> str:
+        """
+        Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+        """
         return pulumi.get(self, "time")
 
 
@@ -2743,6 +3047,13 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
                  query_string_length: int,
                  record_application_tags: bool,
                  record_client_address: bool):
+        """
+        :param bool query_insights_enabled: True if Query Insights feature is enabled.
+        :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        :param bool record_application_tags: True if Query Insights will record application tags from query when enabled.
+        :param bool record_client_address: True if Query Insights will record client address when enabled.
+        """
         pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
         pulumi.set(__self__, "query_string_length", query_string_length)
@@ -2752,26 +3063,41 @@ class GetDatabaseInstanceSettingInsightsConfigResult(dict):
     @property
     @pulumi.getter(name="queryInsightsEnabled")
     def query_insights_enabled(self) -> bool:
+        """
+        True if Query Insights feature is enabled.
+        """
         return pulumi.get(self, "query_insights_enabled")
 
     @property
     @pulumi.getter(name="queryPlansPerMinute")
     def query_plans_per_minute(self) -> int:
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        """
         return pulumi.get(self, "query_plans_per_minute")
 
     @property
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> int:
+        """
+        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        """
         return pulumi.get(self, "query_string_length")
 
     @property
     @pulumi.getter(name="recordApplicationTags")
     def record_application_tags(self) -> bool:
+        """
+        True if Query Insights will record application tags from query when enabled.
+        """
         return pulumi.get(self, "record_application_tags")
 
     @property
     @pulumi.getter(name="recordClientAddress")
     def record_client_address(self) -> bool:
+        """
+        True if Query Insights will record client address when enabled.
+        """
         return pulumi.get(self, "record_client_address")
 
 
@@ -2786,6 +3112,15 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
                  psc_configs: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult'],
                  require_ssl: bool,
                  ssl_mode: str):
+        """
+        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param bool enable_private_path_for_google_cloud_services: Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+        :param bool ipv4_enabled: Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
+        :param str private_network: The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
+        :param Sequence['GetDatabaseInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
+        :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+        """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
@@ -2798,6 +3133,9 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     @property
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> str:
+        """
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
         return pulumi.get(self, "allocated_ip_range")
 
     @property
@@ -2808,31 +3146,49 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     @property
     @pulumi.getter(name="enablePrivatePathForGoogleCloudServices")
     def enable_private_path_for_google_cloud_services(self) -> bool:
+        """
+        Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+        """
         return pulumi.get(self, "enable_private_path_for_google_cloud_services")
 
     @property
     @pulumi.getter(name="ipv4Enabled")
     def ipv4_enabled(self) -> bool:
+        """
+        Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
+        """
         return pulumi.get(self, "ipv4_enabled")
 
     @property
     @pulumi.getter(name="privateNetwork")
     def private_network(self) -> str:
+        """
+        The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
+        """
         return pulumi.get(self, "private_network")
 
     @property
     @pulumi.getter(name="pscConfigs")
     def psc_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult']:
+        """
+        PSC settings for a Cloud SQL instance.
+        """
         return pulumi.get(self, "psc_configs")
 
     @property
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> bool:
+        """
+        Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
+        """
         return pulumi.get(self, "require_ssl")
 
     @property
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> str:
+        """
+        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+        """
         return pulumi.get(self, "ssl_mode")
 
 
@@ -2873,17 +3229,27 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Sequence[str],
                  psc_enabled: bool):
+        """
+        :param Sequence[str] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        :param bool psc_enabled: Whether PSC connectivity is enabled for this instance.
+        """
         pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         pulumi.set(__self__, "psc_enabled", psc_enabled)
 
     @property
     @pulumi.getter(name="allowedConsumerProjects")
     def allowed_consumer_projects(self) -> Sequence[str]:
+        """
+        List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        """
         return pulumi.get(self, "allowed_consumer_projects")
 
     @property
     @pulumi.getter(name="pscEnabled")
     def psc_enabled(self) -> bool:
+        """
+        Whether PSC connectivity is enabled for this instance.
+        """
         return pulumi.get(self, "psc_enabled")
 
 
@@ -2893,6 +3259,11 @@ class GetDatabaseInstanceSettingLocationPreferenceResult(dict):
                  follow_gae_application: str,
                  secondary_zone: str,
                  zone: str):
+        """
+        :param str follow_gae_application: A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+        :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover
+        :param str zone: The preferred compute engine zone.
+        """
         pulumi.set(__self__, "follow_gae_application", follow_gae_application)
         pulumi.set(__self__, "secondary_zone", secondary_zone)
         pulumi.set(__self__, "zone", zone)
@@ -2900,16 +3271,25 @@ class GetDatabaseInstanceSettingLocationPreferenceResult(dict):
     @property
     @pulumi.getter(name="followGaeApplication")
     def follow_gae_application(self) -> str:
+        """
+        A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+        """
         return pulumi.get(self, "follow_gae_application")
 
     @property
     @pulumi.getter(name="secondaryZone")
     def secondary_zone(self) -> str:
+        """
+        The preferred Compute Engine zone for the secondary/failover
+        """
         return pulumi.get(self, "secondary_zone")
 
     @property
     @pulumi.getter
     def zone(self) -> str:
+        """
+        The preferred compute engine zone.
+        """
         return pulumi.get(self, "zone")
 
 
@@ -2919,6 +3299,11 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
                  day: int,
                  hour: int,
                  update_track: str):
+        """
+        :param int day: Day of week (1-7), starting on Monday
+        :param int hour: Hour of day (0-23), ignored if day not set
+        :param str update_track: Receive updates earlier (canary) or later (stable)
+        """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "hour", hour)
         pulumi.set(__self__, "update_track", update_track)
@@ -2926,16 +3311,25 @@ class GetDatabaseInstanceSettingMaintenanceWindowResult(dict):
     @property
     @pulumi.getter
     def day(self) -> int:
+        """
+        Day of week (1-7), starting on Monday
+        """
         return pulumi.get(self, "day")
 
     @property
     @pulumi.getter
     def hour(self) -> int:
+        """
+        Hour of day (0-23), ignored if day not set
+        """
         return pulumi.get(self, "hour")
 
     @property
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> str:
+        """
+        Receive updates earlier (canary) or later (stable)
+        """
         return pulumi.get(self, "update_track")
 
 
@@ -2948,6 +3342,14 @@ class GetDatabaseInstanceSettingPasswordValidationPolicyResult(dict):
                  min_length: int,
                  password_change_interval: str,
                  reuse_interval: int):
+        """
+        :param str complexity: Password complexity.
+        :param bool disallow_username_substring: Disallow username as a part of the password.
+        :param bool enable_password_policy: Whether the password policy is enabled or not.
+        :param int min_length: Minimum number of characters allowed.
+        :param str password_change_interval: Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+        :param int reuse_interval: Number of previous passwords that cannot be reused.
+        """
         pulumi.set(__self__, "complexity", complexity)
         pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
         pulumi.set(__self__, "enable_password_policy", enable_password_policy)
@@ -2958,31 +3360,49 @@ class GetDatabaseInstanceSettingPasswordValidationPolicyResult(dict):
     @property
     @pulumi.getter
     def complexity(self) -> str:
+        """
+        Password complexity.
+        """
         return pulumi.get(self, "complexity")
 
     @property
     @pulumi.getter(name="disallowUsernameSubstring")
     def disallow_username_substring(self) -> bool:
+        """
+        Disallow username as a part of the password.
+        """
         return pulumi.get(self, "disallow_username_substring")
 
     @property
     @pulumi.getter(name="enablePasswordPolicy")
     def enable_password_policy(self) -> bool:
+        """
+        Whether the password policy is enabled or not.
+        """
         return pulumi.get(self, "enable_password_policy")
 
     @property
     @pulumi.getter(name="minLength")
     def min_length(self) -> int:
+        """
+        Minimum number of characters allowed.
+        """
         return pulumi.get(self, "min_length")
 
     @property
     @pulumi.getter(name="passwordChangeInterval")
     def password_change_interval(self) -> str:
+        """
+        Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+        """
         return pulumi.get(self, "password_change_interval")
 
     @property
     @pulumi.getter(name="reuseInterval")
     def reuse_interval(self) -> int:
+        """
+        Number of previous passwords that cannot be reused.
+        """
         return pulumi.get(self, "reuse_interval")
 
 
@@ -2992,6 +3412,11 @@ class GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
                  bucket: str,
                  retention_interval: str,
                  upload_interval: str):
+        """
+        :param str bucket: The name of the destination bucket (e.g., gs://mybucket).
+        :param str retention_interval: How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"..
+        :param str upload_interval: How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "retention_interval", retention_interval)
         pulumi.set(__self__, "upload_interval", upload_interval)
@@ -2999,16 +3424,25 @@ class GetDatabaseInstanceSettingSqlServerAuditConfigResult(dict):
     @property
     @pulumi.getter
     def bucket(self) -> str:
+        """
+        The name of the destination bucket (e.g., gs://mybucket).
+        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter(name="retentionInterval")
     def retention_interval(self) -> str:
+        """
+        How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"..
+        """
         return pulumi.get(self, "retention_interval")
 
     @property
     @pulumi.getter(name="uploadInterval")
     def upload_interval(self) -> str:
+        """
+        How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
         return pulumi.get(self, "upload_interval")
 
 
@@ -3041,9 +3475,22 @@ class GetDatabaseInstancesInstanceResult(dict):
                  service_account_email_address: str,
                  settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingResult']):
         """
+        :param Sequence[str] available_maintenance_versions: Available Maintenance versions.
+        :param Sequence['GetDatabaseInstancesInstanceCloneArgs'] clones: Configuration for creating a new instance as a clone of another instance.
+        :param str connection_name: The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
         :param str database_version: To filter out the Cloud SQL instances which are of the specified database version.
+        :param str dns_name: The dns name of the instance.
+        :param str instance_type: The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+        :param str maintenance_version: Maintenance version.
+        :param str master_instance_name: The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
         :param str project: The ID of the project in which the resources belong. If it is not provided, the provider project is used.
+        :param str psc_service_attachment_link: The link to service attachment of PSC instance.
         :param str region: To filter out the Cloud SQL instances which are located in the specified region.
+        :param Sequence['GetDatabaseInstancesInstanceReplicaConfigurationArgs'] replica_configurations: The configuration for replication.
+        :param str root_password: Initial root password. Required for MS SQL Server.
+        :param str self_link: The URI of the created resource.
+        :param str service_account_email_address: The service account email address assigned to the instance.
+        :param Sequence['GetDatabaseInstancesInstanceSettingArgs'] settings: The settings to use for the database. The configuration is detailed below.
         """
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         pulumi.set(__self__, "clones", clones)
@@ -3074,16 +3521,25 @@ class GetDatabaseInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="availableMaintenanceVersions")
     def available_maintenance_versions(self) -> Sequence[str]:
+        """
+        Available Maintenance versions.
+        """
         return pulumi.get(self, "available_maintenance_versions")
 
     @property
     @pulumi.getter
     def clones(self) -> Sequence['outputs.GetDatabaseInstancesInstanceCloneResult']:
+        """
+        Configuration for creating a new instance as a clone of another instance.
+        """
         return pulumi.get(self, "clones")
 
     @property
     @pulumi.getter(name="connectionName")
     def connection_name(self) -> str:
+        """
+        The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
+        """
         return pulumi.get(self, "connection_name")
 
     @property
@@ -3102,6 +3558,9 @@ class GetDatabaseInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> str:
+        """
+        The dns name of the instance.
+        """
         return pulumi.get(self, "dns_name")
 
     @property
@@ -3117,6 +3576,9 @@ class GetDatabaseInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
+        """
+        The type of the instance. The valid values are:- 'SQL_INSTANCE_TYPE_UNSPECIFIED', 'CLOUD_SQL_INSTANCE', 'ON_PREMISES_INSTANCE' and 'READ_REPLICA_INSTANCE'.
+        """
         return pulumi.get(self, "instance_type")
 
     @property
@@ -3127,11 +3589,17 @@ class GetDatabaseInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="maintenanceVersion")
     def maintenance_version(self) -> str:
+        """
+        Maintenance version.
+        """
         return pulumi.get(self, "maintenance_version")
 
     @property
     @pulumi.getter(name="masterInstanceName")
     def master_instance_name(self) -> str:
+        """
+        The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
+        """
         return pulumi.get(self, "master_instance_name")
 
     @property
@@ -3155,6 +3623,9 @@ class GetDatabaseInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="pscServiceAttachmentLink")
     def psc_service_attachment_link(self) -> str:
+        """
+        The link to service attachment of PSC instance.
+        """
         return pulumi.get(self, "psc_service_attachment_link")
 
     @property
@@ -3173,6 +3644,9 @@ class GetDatabaseInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="replicaConfigurations")
     def replica_configurations(self) -> Sequence['outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult']:
+        """
+        The configuration for replication.
+        """
         return pulumi.get(self, "replica_configurations")
 
     @property
@@ -3183,11 +3657,17 @@ class GetDatabaseInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> str:
+        """
+        Initial root password. Required for MS SQL Server.
+        """
         return pulumi.get(self, "root_password")
 
     @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
+        """
+        The URI of the created resource.
+        """
         return pulumi.get(self, "self_link")
 
     @property
@@ -3198,11 +3678,17 @@ class GetDatabaseInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="serviceAccountEmailAddress")
     def service_account_email_address(self) -> str:
+        """
+        The service account email address assigned to the instance.
+        """
         return pulumi.get(self, "service_account_email_address")
 
     @property
     @pulumi.getter
     def settings(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingResult']:
+        """
+        The settings to use for the database. The configuration is detailed below.
+        """
         return pulumi.get(self, "settings")
 
 
@@ -3214,6 +3700,13 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
                  point_in_time: str,
                  preferred_zone: str,
                  source_instance_name: str):
+        """
+        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param Sequence[str] database_names: (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
+        :param str point_in_time: The timestamp of the point in time that should be restored.
+        :param str preferred_zone: (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+        :param str source_instance_name: The name of the instance from which the point in time should be restored.
+        """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "database_names", database_names)
         pulumi.set(__self__, "point_in_time", point_in_time)
@@ -3223,26 +3716,41 @@ class GetDatabaseInstancesInstanceCloneResult(dict):
     @property
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> str:
+        """
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
         return pulumi.get(self, "allocated_ip_range")
 
     @property
     @pulumi.getter(name="databaseNames")
     def database_names(self) -> Sequence[str]:
+        """
+        (SQL Server only, use with point_in_time) clone only the specified databases from the source instance. Clone all databases if empty.
+        """
         return pulumi.get(self, "database_names")
 
     @property
     @pulumi.getter(name="pointInTime")
     def point_in_time(self) -> str:
+        """
+        The timestamp of the point in time that should be restored.
+        """
         return pulumi.get(self, "point_in_time")
 
     @property
     @pulumi.getter(name="preferredZone")
     def preferred_zone(self) -> str:
+        """
+        (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
+        """
         return pulumi.get(self, "preferred_zone")
 
     @property
     @pulumi.getter(name="sourceInstanceName")
     def source_instance_name(self) -> str:
+        """
+        The name of the instance from which the point in time should be restored.
+        """
         return pulumi.get(self, "source_instance_name")
 
 
@@ -3286,6 +3794,19 @@ class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
                  ssl_cipher: str,
                  username: str,
                  verify_server_certificate: bool):
+        """
+        :param str ca_certificate: PEM representation of the trusted CA's x509 certificate.
+        :param str client_certificate: PEM representation of the replica's x509 certificate.
+        :param str client_key: PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
+        :param int connect_retry_interval: The number of seconds between connect retries. MySQL's default is 60 seconds.
+        :param str dump_file_path: Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
+        :param bool failover_target: Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
+        :param int master_heartbeat_period: Time in ms between replication heartbeats.
+        :param str password: Password for the replication connection.
+        :param str ssl_cipher: Permissible ciphers for use in SSL encryption.
+        :param str username: Username for replication connection.
+        :param bool verify_server_certificate: True if the master's common name value is checked during the SSL handshake.
+        """
         pulumi.set(__self__, "ca_certificate", ca_certificate)
         pulumi.set(__self__, "client_certificate", client_certificate)
         pulumi.set(__self__, "client_key", client_key)
@@ -3301,56 +3822,89 @@ class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
     @property
     @pulumi.getter(name="caCertificate")
     def ca_certificate(self) -> str:
+        """
+        PEM representation of the trusted CA's x509 certificate.
+        """
         return pulumi.get(self, "ca_certificate")
 
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> str:
+        """
+        PEM representation of the replica's x509 certificate.
+        """
         return pulumi.get(self, "client_certificate")
 
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> str:
+        """
+        PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
+        """
         return pulumi.get(self, "client_key")
 
     @property
     @pulumi.getter(name="connectRetryInterval")
     def connect_retry_interval(self) -> int:
+        """
+        The number of seconds between connect retries. MySQL's default is 60 seconds.
+        """
         return pulumi.get(self, "connect_retry_interval")
 
     @property
     @pulumi.getter(name="dumpFilePath")
     def dump_file_path(self) -> str:
+        """
+        Path to a SQL file in Google Cloud Storage from which replica instances are created. Format is gs://bucket/filename.
+        """
         return pulumi.get(self, "dump_file_path")
 
     @property
     @pulumi.getter(name="failoverTarget")
     def failover_target(self) -> bool:
+        """
+        Specifies if the replica is the failover target. If the field is set to true the replica will be designated as a failover replica. If the master instance fails, the replica instance will be promoted as the new master instance. Not supported for Postgres
+        """
         return pulumi.get(self, "failover_target")
 
     @property
     @pulumi.getter(name="masterHeartbeatPeriod")
     def master_heartbeat_period(self) -> int:
+        """
+        Time in ms between replication heartbeats.
+        """
         return pulumi.get(self, "master_heartbeat_period")
 
     @property
     @pulumi.getter
     def password(self) -> str:
+        """
+        Password for the replication connection.
+        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="sslCipher")
     def ssl_cipher(self) -> str:
+        """
+        Permissible ciphers for use in SSL encryption.
+        """
         return pulumi.get(self, "ssl_cipher")
 
     @property
     @pulumi.getter
     def username(self) -> str:
+        """
+        Username for replication connection.
+        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter(name="verifyServerCertificate")
     def verify_server_certificate(self) -> bool:
+        """
+        True if the master's common name value is checked during the SSL handshake.
+        """
         return pulumi.get(self, "verify_server_certificate")
 
 
@@ -3361,6 +3915,8 @@ class GetDatabaseInstancesInstanceRestoreBackupContextResult(dict):
                  instance_id: str,
                  project: str):
         """
+        :param int backup_run_id: The ID of the backup run to restore from.
+        :param str instance_id: The ID of the instance that the backup was taken from.
         :param str project: The ID of the project in which the resources belong. If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "backup_run_id", backup_run_id)
@@ -3370,11 +3926,17 @@ class GetDatabaseInstancesInstanceRestoreBackupContextResult(dict):
     @property
     @pulumi.getter(name="backupRunId")
     def backup_run_id(self) -> int:
+        """
+        The ID of the backup run to restore from.
+        """
         return pulumi.get(self, "backup_run_id")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
+        """
+        The ID of the instance that the backup was taken from.
+        """
         return pulumi.get(self, "instance_id")
 
     @property
@@ -3394,6 +3956,13 @@ class GetDatabaseInstancesInstanceServerCaCertResult(dict):
                  create_time: str,
                  expiration_time: str,
                  sha1_fingerprint: str):
+        """
+        :param str cert: The CA Certificate used to connect to the SQL Instance via SSL.
+        :param str common_name: The CN valid for the CA Cert.
+        :param str create_time: Creation time of the CA Cert.
+        :param str expiration_time: Expiration time of the CA Cert.
+        :param str sha1_fingerprint: SHA Fingerprint of the CA Cert.
+        """
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "common_name", common_name)
         pulumi.set(__self__, "create_time", create_time)
@@ -3403,26 +3972,41 @@ class GetDatabaseInstancesInstanceServerCaCertResult(dict):
     @property
     @pulumi.getter
     def cert(self) -> str:
+        """
+        The CA Certificate used to connect to the SQL Instance via SSL.
+        """
         return pulumi.get(self, "cert")
 
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> str:
+        """
+        The CN valid for the CA Cert.
+        """
         return pulumi.get(self, "common_name")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
+        """
+        Creation time of the CA Cert.
+        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="expirationTime")
     def expiration_time(self) -> str:
+        """
+        Expiration time of the CA Cert.
+        """
         return pulumi.get(self, "expiration_time")
 
     @property
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> str:
+        """
+        SHA Fingerprint of the CA Cert.
+        """
         return pulumi.get(self, "sha1_fingerprint")
 
 
@@ -3457,7 +4041,29 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  user_labels: Mapping[str, str],
                  version: int):
         """
+        :param str activation_policy: This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+        :param str availability_type: The availability type of the Cloud SQL instance, high availability
+               (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+               settings.backup_configuration.enabled is set to true.
+               For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+               For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+               is set to true. Defaults to ZONAL.
+        :param str collation: The name of server instance collation.
+        :param str connector_enforcement: Specifies if connections must use Cloud SQL connectors.
+        :param Sequence['GetDatabaseInstancesInstanceSettingDataCacheConfigArgs'] data_cache_configs: Data cache configurations.
+        :param bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
+        :param bool disk_autoresize: Enables auto-resizing of the storage size. Defaults to true.
+        :param int disk_autoresize_limit: The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        :param str disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+        :param str edition: The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+        :param Sequence['GetDatabaseInstancesInstanceSettingInsightsConfigArgs'] insights_configs: Configuration of Query Insights.
+        :param Sequence['GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs'] maintenance_windows: Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        :param str pricing_plan: Pricing plan for this instance, can only be PER_USE.
         :param str tier: To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
+        :param str time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        :param Mapping[str, str] user_labels: A set of key/value user label pairs to assign to the instance.
+        :param int version: Used to make sure changes to the settings block are atomic.
         """
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "active_directory_configs", active_directory_configs)
@@ -3490,6 +4096,9 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="activationPolicy")
     def activation_policy(self) -> str:
+        """
+        This specifies when the instance should be active. Can be either ALWAYS, NEVER or ON_DEMAND.
+        """
         return pulumi.get(self, "activation_policy")
 
     @property
@@ -3505,6 +4114,14 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> str:
+        """
+        The availability type of the Cloud SQL instance, high availability
+        (REGIONAL) or single zone (ZONAL). For all instances, ensure that
+        settings.backup_configuration.enabled is set to true.
+        For MySQL instances, ensure that settings.backup_configuration.binary_log_enabled is set to true.
+        For Postgres instances, ensure that settings.backup_configuration.point_in_time_recovery_enabled
+        is set to true. Defaults to ZONAL.
+        """
         return pulumi.get(self, "availability_type")
 
     @property
@@ -3515,16 +4132,25 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @property
     @pulumi.getter
     def collation(self) -> str:
+        """
+        The name of server instance collation.
+        """
         return pulumi.get(self, "collation")
 
     @property
     @pulumi.getter(name="connectorEnforcement")
     def connector_enforcement(self) -> str:
+        """
+        Specifies if connections must use Cloud SQL connectors.
+        """
         return pulumi.get(self, "connector_enforcement")
 
     @property
     @pulumi.getter(name="dataCacheConfigs")
     def data_cache_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingDataCacheConfigResult']:
+        """
+        Data cache configurations.
+        """
         return pulumi.get(self, "data_cache_configs")
 
     @property
@@ -3535,6 +4161,9 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> bool:
+        """
+        Configuration to protect against accidental instance deletion.
+        """
         return pulumi.get(self, "deletion_protection_enabled")
 
     @property
@@ -3545,31 +4174,49 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="diskAutoresize")
     def disk_autoresize(self) -> bool:
+        """
+        Enables auto-resizing of the storage size. Defaults to true.
+        """
         return pulumi.get(self, "disk_autoresize")
 
     @property
     @pulumi.getter(name="diskAutoresizeLimit")
     def disk_autoresize_limit(self) -> int:
+        """
+        The maximum size, in GB, to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
+        """
         return pulumi.get(self, "disk_autoresize_limit")
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> int:
+        """
+        The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
+        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
+        """
+        The type of data disk: PD_SSD or PD_HDD. Defaults to PD_SSD.
+        """
         return pulumi.get(self, "disk_type")
 
     @property
     @pulumi.getter
     def edition(self) -> str:
+        """
+        The edition of the instance, can be ENTERPRISE or ENTERPRISE_PLUS.
+        """
         return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="insightsConfigs")
     def insights_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult']:
+        """
+        Configuration of Query Insights.
+        """
         return pulumi.get(self, "insights_configs")
 
     @property
@@ -3585,6 +4232,9 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="maintenanceWindows")
     def maintenance_windows(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingMaintenanceWindowResult']:
+        """
+        Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+        """
         return pulumi.get(self, "maintenance_windows")
 
     @property
@@ -3595,6 +4245,9 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="pricingPlan")
     def pricing_plan(self) -> str:
+        """
+        Pricing plan for this instance, can only be PER_USE.
+        """
         return pulumi.get(self, "pricing_plan")
 
     @property
@@ -3613,16 +4266,25 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> str:
+        """
+        The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
+        """
         return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> Mapping[str, str]:
+        """
+        A set of key/value user label pairs to assign to the instance.
+        """
         return pulumi.get(self, "user_labels")
 
     @property
     @pulumi.getter
     def version(self) -> int:
+        """
+        Used to make sure changes to the settings block are atomic.
+        """
         return pulumi.get(self, "version")
 
 
@@ -3630,11 +4292,17 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
 class GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult(dict):
     def __init__(__self__, *,
                  domain: str):
+        """
+        :param str domain: Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
+        """
         pulumi.set(__self__, "domain", domain)
 
     @property
     @pulumi.getter
     def domain(self) -> str:
+        """
+        Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
+        """
         return pulumi.get(self, "domain")
 
 
@@ -3642,11 +4310,17 @@ class GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult(dict):
 class GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  threads_per_core: int):
+        """
+        :param int threads_per_core: The number of threads per physical core. Can be 1 or 2.
+        """
         pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> int:
+        """
+        The number of threads per physical core. Can be 1 or 2.
+        """
         return pulumi.get(self, "threads_per_core")
 
 
@@ -3660,6 +4334,14 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
                  point_in_time_recovery_enabled: bool,
                  start_time: str,
                  transaction_log_retention_days: int):
+        """
+        :param bool binary_log_enabled: True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
+        :param bool enabled: True if backup configuration is enabled.
+        :param str location: Location of the backup configuration.
+        :param bool point_in_time_recovery_enabled: True if Point-in-time recovery is enabled.
+        :param str start_time: HH:MM format time indicating when backup configuration starts.
+        :param int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
+        """
         pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
         pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         pulumi.set(__self__, "enabled", enabled)
@@ -3676,31 +4358,49 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationResult(dict):
     @property
     @pulumi.getter(name="binaryLogEnabled")
     def binary_log_enabled(self) -> bool:
+        """
+        True if binary logging is enabled. If settings.backup_configuration.enabled is false, this must be as well. Can only be used with MySQL.
+        """
         return pulumi.get(self, "binary_log_enabled")
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        True if backup configuration is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def location(self) -> str:
+        """
+        Location of the backup configuration.
+        """
         return pulumi.get(self, "location")
 
     @property
     @pulumi.getter(name="pointInTimeRecoveryEnabled")
     def point_in_time_recovery_enabled(self) -> bool:
+        """
+        True if Point-in-time recovery is enabled.
+        """
         return pulumi.get(self, "point_in_time_recovery_enabled")
 
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
+        """
+        HH:MM format time indicating when backup configuration starts.
+        """
         return pulumi.get(self, "start_time")
 
     @property
     @pulumi.getter(name="transactionLogRetentionDays")
     def transaction_log_retention_days(self) -> int:
+        """
+        The number of days of transaction logs we retain for point in time restore, from 1-7. (For PostgreSQL Enterprise Plus instances, from 1 to 35.)
+        """
         return pulumi.get(self, "transaction_log_retention_days")
 
 
@@ -3709,17 +4409,27 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetti
     def __init__(__self__, *,
                  retained_backups: int,
                  retention_unit: str):
+        """
+        :param int retained_backups: Number of backups to retain.
+        :param str retention_unit: The unit that 'retainedBackups' represents. Defaults to COUNT
+        """
         pulumi.set(__self__, "retained_backups", retained_backups)
         pulumi.set(__self__, "retention_unit", retention_unit)
 
     @property
     @pulumi.getter(name="retainedBackups")
     def retained_backups(self) -> int:
+        """
+        Number of backups to retain.
+        """
         return pulumi.get(self, "retained_backups")
 
     @property
     @pulumi.getter(name="retentionUnit")
     def retention_unit(self) -> str:
+        """
+        The unit that 'retainedBackups' represents. Defaults to COUNT
+        """
         return pulumi.get(self, "retention_unit")
 
 
@@ -3727,11 +4437,17 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetti
 class GetDatabaseInstancesInstanceSettingDataCacheConfigResult(dict):
     def __init__(__self__, *,
                  data_cache_enabled: bool):
+        """
+        :param bool data_cache_enabled: Whether data cache is enabled for the instance.
+        """
         pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
 
     @property
     @pulumi.getter(name="dataCacheEnabled")
     def data_cache_enabled(self) -> bool:
+        """
+        Whether data cache is enabled for the instance.
+        """
         return pulumi.get(self, "data_cache_enabled")
 
 
@@ -3740,17 +4456,27 @@ class GetDatabaseInstancesInstanceSettingDatabaseFlagResult(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
+        """
+        :param str name: Name of the flag.
+        :param str value: Value of the flag.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name of the flag.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Value of the flag.
+        """
         return pulumi.get(self, "value")
 
 
@@ -3760,6 +4486,11 @@ class GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult(dict):
                  end_date: str,
                  start_date: str,
                  time: str):
+        """
+        :param str end_date: End date before which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param str start_date: Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        :param str time: Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+        """
         pulumi.set(__self__, "end_date", end_date)
         pulumi.set(__self__, "start_date", start_date)
         pulumi.set(__self__, "time", time)
@@ -3767,16 +4498,25 @@ class GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult(dict):
     @property
     @pulumi.getter(name="endDate")
     def end_date(self) -> str:
+        """
+        End date before which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        """
         return pulumi.get(self, "end_date")
 
     @property
     @pulumi.getter(name="startDate")
     def start_date(self) -> str:
+        """
+        Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+        """
         return pulumi.get(self, "start_date")
 
     @property
     @pulumi.getter
     def time(self) -> str:
+        """
+        Time in UTC when the "deny maintenance period" starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+        """
         return pulumi.get(self, "time")
 
 
@@ -3788,6 +4528,13 @@ class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
                  query_string_length: int,
                  record_application_tags: bool,
                  record_client_address: bool):
+        """
+        :param bool query_insights_enabled: True if Query Insights feature is enabled.
+        :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        :param bool record_application_tags: True if Query Insights will record application tags from query when enabled.
+        :param bool record_client_address: True if Query Insights will record client address when enabled.
+        """
         pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         pulumi.set(__self__, "query_plans_per_minute", query_plans_per_minute)
         pulumi.set(__self__, "query_string_length", query_string_length)
@@ -3797,26 +4544,41 @@ class GetDatabaseInstancesInstanceSettingInsightsConfigResult(dict):
     @property
     @pulumi.getter(name="queryInsightsEnabled")
     def query_insights_enabled(self) -> bool:
+        """
+        True if Query Insights feature is enabled.
+        """
         return pulumi.get(self, "query_insights_enabled")
 
     @property
     @pulumi.getter(name="queryPlansPerMinute")
     def query_plans_per_minute(self) -> int:
+        """
+        Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        """
         return pulumi.get(self, "query_plans_per_minute")
 
     @property
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> int:
+        """
+        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        """
         return pulumi.get(self, "query_string_length")
 
     @property
     @pulumi.getter(name="recordApplicationTags")
     def record_application_tags(self) -> bool:
+        """
+        True if Query Insights will record application tags from query when enabled.
+        """
         return pulumi.get(self, "record_application_tags")
 
     @property
     @pulumi.getter(name="recordClientAddress")
     def record_client_address(self) -> bool:
+        """
+        True if Query Insights will record client address when enabled.
+        """
         return pulumi.get(self, "record_client_address")
 
 
@@ -3831,6 +4593,15 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
                  psc_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult'],
                  require_ssl: bool,
                  ssl_mode: str):
+        """
+        :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        :param bool enable_private_path_for_google_cloud_services: Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+        :param bool ipv4_enabled: Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
+        :param str private_network: The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
+        :param Sequence['GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
+        :param bool require_ssl: Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+        """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
@@ -3843,6 +4614,9 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
     @property
     @pulumi.getter(name="allocatedIpRange")
     def allocated_ip_range(self) -> str:
+        """
+        The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
+        """
         return pulumi.get(self, "allocated_ip_range")
 
     @property
@@ -3853,31 +4627,49 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
     @property
     @pulumi.getter(name="enablePrivatePathForGoogleCloudServices")
     def enable_private_path_for_google_cloud_services(self) -> bool:
+        """
+        Whether Google Cloud services such as BigQuery are allowed to access data in this Cloud SQL instance over a private IP connection. SQLSERVER database type is not supported.
+        """
         return pulumi.get(self, "enable_private_path_for_google_cloud_services")
 
     @property
     @pulumi.getter(name="ipv4Enabled")
     def ipv4_enabled(self) -> bool:
+        """
+        Whether this Cloud SQL instance should be assigned a public IPV4 address. At least ipv4_enabled must be enabled or a private_network must be configured.
+        """
         return pulumi.get(self, "ipv4_enabled")
 
     @property
     @pulumi.getter(name="privateNetwork")
     def private_network(self) -> str:
+        """
+        The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
+        """
         return pulumi.get(self, "private_network")
 
     @property
     @pulumi.getter(name="pscConfigs")
     def psc_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult']:
+        """
+        PSC settings for a Cloud SQL instance.
+        """
         return pulumi.get(self, "psc_configs")
 
     @property
     @pulumi.getter(name="requireSsl")
     def require_ssl(self) -> bool:
+        """
+        Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in ssl_mode if it has been set too.
+        """
         return pulumi.get(self, "require_ssl")
 
     @property
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> str:
+        """
+        Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to require_ssl. To change this field, also set the correspoding value in require_ssl.
+        """
         return pulumi.get(self, "ssl_mode")
 
 
@@ -3912,17 +4704,27 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Sequence[str],
                  psc_enabled: bool):
+        """
+        :param Sequence[str] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        :param bool psc_enabled: Whether PSC connectivity is enabled for this instance.
+        """
         pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         pulumi.set(__self__, "psc_enabled", psc_enabled)
 
     @property
     @pulumi.getter(name="allowedConsumerProjects")
     def allowed_consumer_projects(self) -> Sequence[str]:
+        """
+        List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        """
         return pulumi.get(self, "allowed_consumer_projects")
 
     @property
     @pulumi.getter(name="pscEnabled")
     def psc_enabled(self) -> bool:
+        """
+        Whether PSC connectivity is enabled for this instance.
+        """
         return pulumi.get(self, "psc_enabled")
 
 
@@ -3933,6 +4735,8 @@ class GetDatabaseInstancesInstanceSettingLocationPreferenceResult(dict):
                  secondary_zone: str,
                  zone: str):
         """
+        :param str follow_gae_application: A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+        :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover
         :param str zone: To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
         """
         pulumi.set(__self__, "follow_gae_application", follow_gae_application)
@@ -3942,11 +4746,17 @@ class GetDatabaseInstancesInstanceSettingLocationPreferenceResult(dict):
     @property
     @pulumi.getter(name="followGaeApplication")
     def follow_gae_application(self) -> str:
+        """
+        A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
+        """
         return pulumi.get(self, "follow_gae_application")
 
     @property
     @pulumi.getter(name="secondaryZone")
     def secondary_zone(self) -> str:
+        """
+        The preferred Compute Engine zone for the secondary/failover
+        """
         return pulumi.get(self, "secondary_zone")
 
     @property
@@ -3964,6 +4774,11 @@ class GetDatabaseInstancesInstanceSettingMaintenanceWindowResult(dict):
                  day: int,
                  hour: int,
                  update_track: str):
+        """
+        :param int day: Day of week (1-7), starting on Monday
+        :param int hour: Hour of day (0-23), ignored if day not set
+        :param str update_track: Receive updates earlier (canary) or later (stable)
+        """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "hour", hour)
         pulumi.set(__self__, "update_track", update_track)
@@ -3971,16 +4786,25 @@ class GetDatabaseInstancesInstanceSettingMaintenanceWindowResult(dict):
     @property
     @pulumi.getter
     def day(self) -> int:
+        """
+        Day of week (1-7), starting on Monday
+        """
         return pulumi.get(self, "day")
 
     @property
     @pulumi.getter
     def hour(self) -> int:
+        """
+        Hour of day (0-23), ignored if day not set
+        """
         return pulumi.get(self, "hour")
 
     @property
     @pulumi.getter(name="updateTrack")
     def update_track(self) -> str:
+        """
+        Receive updates earlier (canary) or later (stable)
+        """
         return pulumi.get(self, "update_track")
 
 
@@ -3993,6 +4817,14 @@ class GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult(dict):
                  min_length: int,
                  password_change_interval: str,
                  reuse_interval: int):
+        """
+        :param str complexity: Password complexity.
+        :param bool disallow_username_substring: Disallow username as a part of the password.
+        :param bool enable_password_policy: Whether the password policy is enabled or not.
+        :param int min_length: Minimum number of characters allowed.
+        :param str password_change_interval: Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+        :param int reuse_interval: Number of previous passwords that cannot be reused.
+        """
         pulumi.set(__self__, "complexity", complexity)
         pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
         pulumi.set(__self__, "enable_password_policy", enable_password_policy)
@@ -4003,31 +4835,49 @@ class GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult(dict):
     @property
     @pulumi.getter
     def complexity(self) -> str:
+        """
+        Password complexity.
+        """
         return pulumi.get(self, "complexity")
 
     @property
     @pulumi.getter(name="disallowUsernameSubstring")
     def disallow_username_substring(self) -> bool:
+        """
+        Disallow username as a part of the password.
+        """
         return pulumi.get(self, "disallow_username_substring")
 
     @property
     @pulumi.getter(name="enablePasswordPolicy")
     def enable_password_policy(self) -> bool:
+        """
+        Whether the password policy is enabled or not.
+        """
         return pulumi.get(self, "enable_password_policy")
 
     @property
     @pulumi.getter(name="minLength")
     def min_length(self) -> int:
+        """
+        Minimum number of characters allowed.
+        """
         return pulumi.get(self, "min_length")
 
     @property
     @pulumi.getter(name="passwordChangeInterval")
     def password_change_interval(self) -> str:
+        """
+        Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+        """
         return pulumi.get(self, "password_change_interval")
 
     @property
     @pulumi.getter(name="reuseInterval")
     def reuse_interval(self) -> int:
+        """
+        Number of previous passwords that cannot be reused.
+        """
         return pulumi.get(self, "reuse_interval")
 
 
@@ -4037,6 +4887,11 @@ class GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult(dict):
                  bucket: str,
                  retention_interval: str,
                  upload_interval: str):
+        """
+        :param str bucket: The name of the destination bucket (e.g., gs://mybucket).
+        :param str retention_interval: How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"..
+        :param str upload_interval: How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "retention_interval", retention_interval)
         pulumi.set(__self__, "upload_interval", upload_interval)
@@ -4044,16 +4899,25 @@ class GetDatabaseInstancesInstanceSettingSqlServerAuditConfigResult(dict):
     @property
     @pulumi.getter
     def bucket(self) -> str:
+        """
+        The name of the destination bucket (e.g., gs://mybucket).
+        """
         return pulumi.get(self, "bucket")
 
     @property
     @pulumi.getter(name="retentionInterval")
     def retention_interval(self) -> str:
+        """
+        How long to keep generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"..
+        """
         return pulumi.get(self, "retention_interval")
 
     @property
     @pulumi.getter(name="uploadInterval")
     def upload_interval(self) -> str:
+        """
+        How often to upload generated audit files. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
         return pulumi.get(self, "upload_interval")
 
 
@@ -4068,7 +4932,23 @@ class GetDatabasesDatabaseResult(dict):
                  project: str,
                  self_link: str):
         """
+        :param str charset: The charset value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+               for more details and supported values. Postgres databases only support
+               a value of 'UTF8' at creation time.
+        :param str collation: The collation value. See MySQL's
+               [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+               and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+               for more details and supported values. Postgres databases only support
+               a value of 'en_US.UTF8' at creation time.
+        :param str deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource
+               to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+               deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+               values are: "ABANDON", "DELETE". Defaults to "DELETE".
         :param str instance: The name of the Cloud SQL database instance in which the database belongs.
+        :param str name: The name of the database in the Cloud SQL instance.
+               This does not include the project ID or instance name.
         :param str project: The ID of the project in which the instance belongs.
                
                > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
@@ -4084,16 +4964,36 @@ class GetDatabasesDatabaseResult(dict):
     @property
     @pulumi.getter
     def charset(self) -> str:
+        """
+        The charset value. See MySQL's
+        [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+        and Postgres' [Character Set Support](https://www.postgresql.org/docs/9.6/static/multibyte.html)
+        for more details and supported values. Postgres databases only support
+        a value of 'UTF8' at creation time.
+        """
         return pulumi.get(self, "charset")
 
     @property
     @pulumi.getter
     def collation(self) -> str:
+        """
+        The collation value. See MySQL's
+        [Supported Character Sets and Collations](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html)
+        and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
+        for more details and supported values. Postgres databases only support
+        a value of 'en_US.UTF8' at creation time.
+        """
         return pulumi.get(self, "collation")
 
     @property
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> str:
+        """
+        The deletion policy for the database. Setting ABANDON allows the resource
+        to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
+        deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
+        values are: "ABANDON", "DELETE". Defaults to "DELETE".
+        """
         return pulumi.get(self, "deletion_policy")
 
     @property
@@ -4107,6 +5007,10 @@ class GetDatabasesDatabaseResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the database in the Cloud SQL instance.
+        This does not include the project ID or instance name.
+        """
         return pulumi.get(self, "name")
 
     @property

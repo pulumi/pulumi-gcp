@@ -10,13 +10,31 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerWebhookConfig {
+    /**
+     * @return Resource name for the secret required as a URL parameter.
+     * 
+     */
     private String secret;
+    /**
+     * @return Potential issues with the underlying Pub/Sub subscription configuration.
+     * Only populated on get requests.
+     * 
+     */
     private String state;
 
     private GetTriggerWebhookConfig() {}
+    /**
+     * @return Resource name for the secret required as a URL parameter.
+     * 
+     */
     public String secret() {
         return this.secret;
     }
+    /**
+     * @return Potential issues with the underlying Pub/Sub subscription configuration.
+     * Only populated on get requests.
+     * 
+     */
     public String state() {
         return this.state;
     }

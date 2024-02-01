@@ -1949,9 +1949,21 @@ func (o InstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) InstanceServer
 }
 
 type GetInstanceMaintenancePolicy struct {
-	CreateTime               string                                                `pulumi:"createTime"`
-	Description              string                                                `pulumi:"description"`
-	UpdateTime               string                                                `pulumi:"updateTime"`
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	CreateTime string `pulumi:"createTime"`
+	// Optional. Description of what this policy is for.
+	// Create/Update methods return INVALID_ARGUMENT if the
+	// length is greater than 512.
+	Description string `pulumi:"description"`
+	// Output only. The time when the policy was last updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	UpdateTime string `pulumi:"updateTime"`
+	// Optional. Maintenance window that is applied to resources covered by this policy.
+	// Minimum 1. For the current version, the maximum number
+	// of weeklyWindow is expected to be one.
 	WeeklyMaintenanceWindows []GetInstanceMaintenancePolicyWeeklyMaintenanceWindow `pulumi:"weeklyMaintenanceWindows"`
 }
 
@@ -1967,9 +1979,21 @@ type GetInstanceMaintenancePolicyInput interface {
 }
 
 type GetInstanceMaintenancePolicyArgs struct {
-	CreateTime               pulumi.StringInput                                            `pulumi:"createTime"`
-	Description              pulumi.StringInput                                            `pulumi:"description"`
-	UpdateTime               pulumi.StringInput                                            `pulumi:"updateTime"`
+	// Output only. The time when the policy was created.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Optional. Description of what this policy is for.
+	// Create/Update methods return INVALID_ARGUMENT if the
+	// length is greater than 512.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Output only. The time when the policy was last updated.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// Optional. Maintenance window that is applied to resources covered by this policy.
+	// Minimum 1. For the current version, the maximum number
+	// of weeklyWindow is expected to be one.
 	WeeklyMaintenanceWindows GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayInput `pulumi:"weeklyMaintenanceWindows"`
 }
 
@@ -2024,18 +2048,30 @@ func (o GetInstanceMaintenancePolicyOutput) ToGetInstanceMaintenancePolicyOutput
 	return o
 }
 
+// Output only. The time when the policy was created.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
 func (o GetInstanceMaintenancePolicyOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicy) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. Description of what this policy is for.
+// Create/Update methods return INVALID_ARGUMENT if the
+// length is greater than 512.
 func (o GetInstanceMaintenancePolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicy) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Output only. The time when the policy was last updated.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
 func (o GetInstanceMaintenancePolicyOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicy) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// Optional. Maintenance window that is applied to resources covered by this policy.
+// Minimum 1. For the current version, the maximum number
+// of weeklyWindow is expected to be one.
 func (o GetInstanceMaintenancePolicyOutput) WeeklyMaintenanceWindows() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicy) []GetInstanceMaintenancePolicyWeeklyMaintenanceWindow {
 		return v.WeeklyMaintenanceWindows
@@ -2063,8 +2099,23 @@ func (o GetInstanceMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetIns
 }
 
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindow struct {
-	Day        string                                                         `pulumi:"day"`
-	Duration   string                                                         `pulumi:"duration"`
+	// Required. The day of week that maintenance updates occur.
+	//
+	// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+	// - MONDAY: Monday
+	// - TUESDAY: Tuesday
+	// - WEDNESDAY: Wednesday
+	// - THURSDAY: Thursday
+	// - FRIDAY: Friday
+	// - SATURDAY: Saturday
+	// - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	Day string `pulumi:"day"`
+	// Output only. Duration of the maintenance window.
+	// The current window is fixed at 1 hour.
+	// A duration in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s".
+	Duration string `pulumi:"duration"`
+	// Required. Start time of the window in UTC time.
 	StartTimes []GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime `pulumi:"startTimes"`
 }
 
@@ -2080,8 +2131,23 @@ type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowInput interface {
 }
 
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArgs struct {
-	Day        pulumi.StringInput                                                     `pulumi:"day"`
-	Duration   pulumi.StringInput                                                     `pulumi:"duration"`
+	// Required. The day of week that maintenance updates occur.
+	//
+	// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+	// - MONDAY: Monday
+	// - TUESDAY: Tuesday
+	// - WEDNESDAY: Wednesday
+	// - THURSDAY: Thursday
+	// - FRIDAY: Friday
+	// - SATURDAY: Saturday
+	// - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	Day pulumi.StringInput `pulumi:"day"`
+	// Output only. Duration of the maintenance window.
+	// The current window is fixed at 1 hour.
+	// A duration in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s".
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Required. Start time of the window in UTC time.
 	StartTimes GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayInput `pulumi:"startTimes"`
 }
 
@@ -2136,14 +2202,29 @@ func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) ToGetInstance
 	return o
 }
 
+// Required. The day of week that maintenance updates occur.
+//
+// - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+// - MONDAY: Monday
+// - TUESDAY: Tuesday
+// - WEDNESDAY: Wednesday
+// - THURSDAY: Thursday
+// - FRIDAY: Friday
+// - SATURDAY: Saturday
+// - SUNDAY: Sunday Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
 }
 
+// Output only. Duration of the maintenance window.
+// The current window is fixed at 1 hour.
+// A duration in seconds with up to nine fractional digits,
+// terminated by 's'. Example: "3.5s".
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindow) string { return v.Duration }).(pulumi.StringOutput)
 }
 
+// Required. Start time of the window in UTC time.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowOutput) StartTimes() GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindow) []GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime {
 		return v.StartTimes
@@ -2171,9 +2252,15 @@ func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowArrayOutput) Index(i 
 }
 
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime struct {
-	Hours   int `pulumi:"hours"`
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
 	Minutes int `pulumi:"minutes"`
-	Nanos   int `pulumi:"nanos"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	// An API may allow the value 60 if it allows leap-seconds.
 	Seconds int `pulumi:"seconds"`
 }
 
@@ -2189,9 +2276,15 @@ type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput interface
 }
 
 type GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs struct {
-	Hours   pulumi.IntInput `pulumi:"hours"`
+	// Hours of day in 24 hour format. Should be from 0 to 23.
+	// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
 	Minutes pulumi.IntInput `pulumi:"minutes"`
-	Nanos   pulumi.IntInput `pulumi:"nanos"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59.
+	// An API may allow the value 60 if it allows leap-seconds.
 	Seconds pulumi.IntInput `pulumi:"seconds"`
 }
 
@@ -2246,18 +2339,24 @@ func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) ToGe
 	return o
 }
 
+// Hours of day in 24 hour format. Should be from 0 to 23.
+// An API may choose to allow the value "24:00:00" for scenarios like business closing time.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Hours() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Hours }).(pulumi.IntOutput)
 }
 
+// Minutes of hour of day. Must be from 0 to 59.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Minutes() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Minutes }).(pulumi.IntOutput)
 }
 
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Nanos() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Nanos }).(pulumi.IntOutput)
 }
 
+// Seconds of minutes of the time. Must normally be from 0 to 59.
+// An API may allow the value 60 if it allows leap-seconds.
 func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput) Seconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime) int { return v.Seconds }).(pulumi.IntOutput)
 }
@@ -2283,9 +2382,19 @@ func (o GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArrayOutput)
 }
 
 type GetInstanceMaintenanceSchedule struct {
-	EndTime              string `pulumi:"endTime"`
+	// Output only. The end time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	EndTime string `pulumi:"endTime"`
+	// Output only. The deadline that the maintenance schedule start time
+	// can not go beyond, including reschedule.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime string `pulumi:"scheduleDeadlineTime"`
-	StartTime            string `pulumi:"startTime"`
+	// Output only. The start time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	StartTime string `pulumi:"startTime"`
 }
 
 // GetInstanceMaintenanceScheduleInput is an input type that accepts GetInstanceMaintenanceScheduleArgs and GetInstanceMaintenanceScheduleOutput values.
@@ -2300,9 +2409,19 @@ type GetInstanceMaintenanceScheduleInput interface {
 }
 
 type GetInstanceMaintenanceScheduleArgs struct {
-	EndTime              pulumi.StringInput `pulumi:"endTime"`
+	// Output only. The end time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Output only. The deadline that the maintenance schedule start time
+	// can not go beyond, including reschedule.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime pulumi.StringInput `pulumi:"scheduleDeadlineTime"`
-	StartTime            pulumi.StringInput `pulumi:"startTime"`
+	// Output only. The start time of any upcoming scheduled maintenance for this instance.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+	// resolution and up to nine fractional digits.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (GetInstanceMaintenanceScheduleArgs) ElementType() reflect.Type {
@@ -2356,14 +2475,24 @@ func (o GetInstanceMaintenanceScheduleOutput) ToGetInstanceMaintenanceScheduleOu
 	return o
 }
 
+// Output only. The end time of any upcoming scheduled maintenance for this instance.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
 func (o GetInstanceMaintenanceScheduleOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMaintenanceSchedule) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
+// Output only. The deadline that the maintenance schedule start time
+// can not go beyond, including reschedule.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
 func (o GetInstanceMaintenanceScheduleOutput) ScheduleDeadlineTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMaintenanceSchedule) string { return v.ScheduleDeadlineTime }).(pulumi.StringOutput)
 }
 
+// Output only. The start time of any upcoming scheduled maintenance for this instance.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+// resolution and up to nine fractional digits.
 func (o GetInstanceMaintenanceScheduleOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceMaintenanceSchedule) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -2389,7 +2518,9 @@ func (o GetInstanceMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) GetI
 }
 
 type GetInstanceNode struct {
-	Id   string `pulumi:"id"`
+	// Node identifying string. e.g. 'node-0', 'node-1'
+	Id string `pulumi:"id"`
+	// Location of the node.
 	Zone string `pulumi:"zone"`
 }
 
@@ -2405,7 +2536,9 @@ type GetInstanceNodeInput interface {
 }
 
 type GetInstanceNodeArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
+	// Node identifying string. e.g. 'node-0', 'node-1'
+	Id pulumi.StringInput `pulumi:"id"`
+	// Location of the node.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
 
@@ -2460,10 +2593,12 @@ func (o GetInstanceNodeOutput) ToGetInstanceNodeOutputWithContext(ctx context.Co
 	return o
 }
 
+// Node identifying string. e.g. 'node-0', 'node-1'
 func (o GetInstanceNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Location of the node.
 func (o GetInstanceNodeOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNode) string { return v.Zone }).(pulumi.StringOutput)
 }
@@ -2489,9 +2624,29 @@ func (o GetInstanceNodeArrayOutput) Index(i pulumi.IntInput) GetInstanceNodeOutp
 }
 
 type GetInstancePersistenceConfig struct {
-	PersistenceMode      string `pulumi:"persistenceMode"`
-	RdbNextSnapshotTime  string `pulumi:"rdbNextSnapshotTime"`
-	RdbSnapshotPeriod    string `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	//
+	// - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+	// - RDB: RDB based Persistence is enabled. Possible values: ["DISABLED", "RDB"]
+	PersistenceMode string `pulumi:"persistenceMode"`
+	// Output only. The next time that a snapshot attempt is scheduled to occur.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+	// to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	RdbNextSnapshotTime string `pulumi:"rdbNextSnapshotTime"`
+	// Optional. Available snapshot periods for scheduling.
+	//
+	// - ONE_HOUR:	Snapshot every 1 hour.
+	// - SIX_HOURS:	Snapshot every 6 hours.
+	// - TWELVE_HOURS:	Snapshot every 12 hours.
+	// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
+	RdbSnapshotPeriod string `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Date and time that the first snapshot was/will be attempted,
+	// and to which future snapshots will be aligned. If not provided,
+	// the current time will be used.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+	// and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	RdbSnapshotStartTime string `pulumi:"rdbSnapshotStartTime"`
 }
 
@@ -2507,9 +2662,29 @@ type GetInstancePersistenceConfigInput interface {
 }
 
 type GetInstancePersistenceConfigArgs struct {
-	PersistenceMode      pulumi.StringInput `pulumi:"persistenceMode"`
-	RdbNextSnapshotTime  pulumi.StringInput `pulumi:"rdbNextSnapshotTime"`
-	RdbSnapshotPeriod    pulumi.StringInput `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	//
+	// - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+	// - RDB: RDB based Persistence is enabled. Possible values: ["DISABLED", "RDB"]
+	PersistenceMode pulumi.StringInput `pulumi:"persistenceMode"`
+	// Output only. The next time that a snapshot attempt is scheduled to occur.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+	// to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	RdbNextSnapshotTime pulumi.StringInput `pulumi:"rdbNextSnapshotTime"`
+	// Optional. Available snapshot periods for scheduling.
+	//
+	// - ONE_HOUR:	Snapshot every 1 hour.
+	// - SIX_HOURS:	Snapshot every 6 hours.
+	// - TWELVE_HOURS:	Snapshot every 12 hours.
+	// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
+	RdbSnapshotPeriod pulumi.StringInput `pulumi:"rdbSnapshotPeriod"`
+	// Optional. Date and time that the first snapshot was/will be attempted,
+	// and to which future snapshots will be aligned. If not provided,
+	// the current time will be used.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+	// and up to nine fractional digits.
+	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	RdbSnapshotStartTime pulumi.StringInput `pulumi:"rdbSnapshotStartTime"`
 }
 
@@ -2564,18 +2739,38 @@ func (o GetInstancePersistenceConfigOutput) ToGetInstancePersistenceConfigOutput
 	return o
 }
 
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+//
+// - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
+// - RDB: RDB based Persistence is enabled. Possible values: ["DISABLED", "RDB"]
 func (o GetInstancePersistenceConfigOutput) PersistenceMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePersistenceConfig) string { return v.PersistenceMode }).(pulumi.StringOutput)
 }
 
+// Output only. The next time that a snapshot attempt is scheduled to occur.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
+// to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetInstancePersistenceConfigOutput) RdbNextSnapshotTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePersistenceConfig) string { return v.RdbNextSnapshotTime }).(pulumi.StringOutput)
 }
 
+// Optional. Available snapshot periods for scheduling.
+//
+// - ONE_HOUR:	Snapshot every 1 hour.
+// - SIX_HOURS:	Snapshot every 6 hours.
+// - TWELVE_HOURS:	Snapshot every 12 hours.
+// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours. Possible values: ["ONE_HOUR", "SIX_HOURS", "TWELVE_HOURS", "TWENTY_FOUR_HOURS"]
 func (o GetInstancePersistenceConfigOutput) RdbSnapshotPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePersistenceConfig) string { return v.RdbSnapshotPeriod }).(pulumi.StringOutput)
 }
 
+// Optional. Date and time that the first snapshot was/will be attempted,
+// and to which future snapshots will be aligned. If not provided,
+// the current time will be used.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution
+// and up to nine fractional digits.
+// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o GetInstancePersistenceConfigOutput) RdbSnapshotStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancePersistenceConfig) string { return v.RdbSnapshotStartTime }).(pulumi.StringOutput)
 }
@@ -2601,10 +2796,15 @@ func (o GetInstancePersistenceConfigArrayOutput) Index(i pulumi.IntInput) GetIns
 }
 
 type GetInstanceServerCaCert struct {
-	Cert            string `pulumi:"cert"`
-	CreateTime      string `pulumi:"createTime"`
-	ExpireTime      string `pulumi:"expireTime"`
-	SerialNumber    string `pulumi:"serialNumber"`
+	// The certificate data in PEM format.
+	Cert string `pulumi:"cert"`
+	// The time when the certificate was created.
+	CreateTime string `pulumi:"createTime"`
+	// The time when the certificate expires.
+	ExpireTime string `pulumi:"expireTime"`
+	// Serial number, as extracted from the certificate.
+	SerialNumber string `pulumi:"serialNumber"`
+	// Sha1 Fingerprint of the certificate.
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
 }
 
@@ -2620,10 +2820,15 @@ type GetInstanceServerCaCertInput interface {
 }
 
 type GetInstanceServerCaCertArgs struct {
-	Cert            pulumi.StringInput `pulumi:"cert"`
-	CreateTime      pulumi.StringInput `pulumi:"createTime"`
-	ExpireTime      pulumi.StringInput `pulumi:"expireTime"`
-	SerialNumber    pulumi.StringInput `pulumi:"serialNumber"`
+	// The certificate data in PEM format.
+	Cert pulumi.StringInput `pulumi:"cert"`
+	// The time when the certificate was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The time when the certificate expires.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// Serial number, as extracted from the certificate.
+	SerialNumber pulumi.StringInput `pulumi:"serialNumber"`
+	// Sha1 Fingerprint of the certificate.
 	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
 }
 
@@ -2678,22 +2883,27 @@ func (o GetInstanceServerCaCertOutput) ToGetInstanceServerCaCertOutputWithContex
 	return o
 }
 
+// The certificate data in PEM format.
 func (o GetInstanceServerCaCertOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceServerCaCert) string { return v.Cert }).(pulumi.StringOutput)
 }
 
+// The time when the certificate was created.
 func (o GetInstanceServerCaCertOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceServerCaCert) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The time when the certificate expires.
 func (o GetInstanceServerCaCertOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceServerCaCert) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
+// Serial number, as extracted from the certificate.
 func (o GetInstanceServerCaCertOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceServerCaCert) string { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
+// Sha1 Fingerprint of the certificate.
 func (o GetInstanceServerCaCertOutput) Sha1Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceServerCaCert) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
 }

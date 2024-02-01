@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterLoggingConfigResult
     {
+        /// <summary>
+        /// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+        /// </summary>
         public readonly ImmutableArray<string> EnableComponents;
 
         [OutputConstructor]

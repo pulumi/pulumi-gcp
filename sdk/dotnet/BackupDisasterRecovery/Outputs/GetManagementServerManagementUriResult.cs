@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
     [OutputType]
     public sealed class GetManagementServerManagementUriResult
     {
+        /// <summary>
+        /// The management console api endpoint.
+        /// </summary>
         public readonly string Api;
+        /// <summary>
+        /// The management console webUi.
+        /// </summary>
         public readonly string WebUi;
 
         [OutputConstructor]

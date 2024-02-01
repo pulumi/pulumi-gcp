@@ -27,10 +27,29 @@ public final class GetInstanceScheduling {
      * 
      */
     private String instanceTerminationAction;
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     private List<GetInstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
+    /**
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * 
+     */
     private String maintenanceInterval;
+    /**
+     * @return The timeout for new network connections to hosts.
+     * 
+     */
     private List<GetInstanceSchedulingMaxRunDuration> maxRunDurations;
     private Integer minNodeCpus;
+    /**
+     * @return Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+     * 
+     */
     private List<GetInstanceSchedulingNodeAffinity> nodeAffinities;
     /**
      * @return Describes maintenance behavior for the
@@ -66,18 +85,37 @@ public final class GetInstanceScheduling {
     public String instanceTerminationAction() {
         return this.instanceTerminationAction;
     }
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     public List<GetInstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts() {
         return this.localSsdRecoveryTimeouts;
     }
+    /**
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * 
+     */
     public String maintenanceInterval() {
         return this.maintenanceInterval;
     }
+    /**
+     * @return The timeout for new network connections to hosts.
+     * 
+     */
     public List<GetInstanceSchedulingMaxRunDuration> maxRunDurations() {
         return this.maxRunDurations;
     }
     public Integer minNodeCpus() {
         return this.minNodeCpus;
     }
+    /**
+     * @return Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+     * 
+     */
     public List<GetInstanceSchedulingNodeAffinity> nodeAffinities() {
         return this.nodeAffinities;
     }

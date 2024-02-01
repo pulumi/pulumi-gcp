@@ -17,6 +17,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// The name of the Cloud Run v2 Service.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The header field value
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

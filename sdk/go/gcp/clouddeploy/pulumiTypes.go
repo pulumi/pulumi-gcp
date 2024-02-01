@@ -750,9 +750,12 @@ func (o AutomationSelectorTargetArrayOutput) Index(i pulumi.IntInput) Automation
 }
 
 type DeliveryPipelineCondition struct {
-	PipelineReadyConditions  []DeliveryPipelineConditionPipelineReadyCondition  `pulumi:"pipelineReadyConditions"`
+	// Details around the Pipeline's overall status.
+	PipelineReadyConditions []DeliveryPipelineConditionPipelineReadyCondition `pulumi:"pipelineReadyConditions"`
+	// Details around targets enumerated in the pipeline.
 	TargetsPresentConditions []DeliveryPipelineConditionTargetsPresentCondition `pulumi:"targetsPresentConditions"`
-	TargetsTypeConditions    []DeliveryPipelineConditionTargetsTypeCondition    `pulumi:"targetsTypeConditions"`
+	// Details on the whether the targets enumerated in the pipeline are of the same type.
+	TargetsTypeConditions []DeliveryPipelineConditionTargetsTypeCondition `pulumi:"targetsTypeConditions"`
 }
 
 // DeliveryPipelineConditionInput is an input type that accepts DeliveryPipelineConditionArgs and DeliveryPipelineConditionOutput values.
@@ -767,9 +770,12 @@ type DeliveryPipelineConditionInput interface {
 }
 
 type DeliveryPipelineConditionArgs struct {
-	PipelineReadyConditions  DeliveryPipelineConditionPipelineReadyConditionArrayInput  `pulumi:"pipelineReadyConditions"`
+	// Details around the Pipeline's overall status.
+	PipelineReadyConditions DeliveryPipelineConditionPipelineReadyConditionArrayInput `pulumi:"pipelineReadyConditions"`
+	// Details around targets enumerated in the pipeline.
 	TargetsPresentConditions DeliveryPipelineConditionTargetsPresentConditionArrayInput `pulumi:"targetsPresentConditions"`
-	TargetsTypeConditions    DeliveryPipelineConditionTargetsTypeConditionArrayInput    `pulumi:"targetsTypeConditions"`
+	// Details on the whether the targets enumerated in the pipeline are of the same type.
+	TargetsTypeConditions DeliveryPipelineConditionTargetsTypeConditionArrayInput `pulumi:"targetsTypeConditions"`
 }
 
 func (DeliveryPipelineConditionArgs) ElementType() reflect.Type {
@@ -823,18 +829,21 @@ func (o DeliveryPipelineConditionOutput) ToDeliveryPipelineConditionOutputWithCo
 	return o
 }
 
+// Details around the Pipeline's overall status.
 func (o DeliveryPipelineConditionOutput) PipelineReadyConditions() DeliveryPipelineConditionPipelineReadyConditionArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineCondition) []DeliveryPipelineConditionPipelineReadyCondition {
 		return v.PipelineReadyConditions
 	}).(DeliveryPipelineConditionPipelineReadyConditionArrayOutput)
 }
 
+// Details around targets enumerated in the pipeline.
 func (o DeliveryPipelineConditionOutput) TargetsPresentConditions() DeliveryPipelineConditionTargetsPresentConditionArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineCondition) []DeliveryPipelineConditionTargetsPresentCondition {
 		return v.TargetsPresentConditions
 	}).(DeliveryPipelineConditionTargetsPresentConditionArrayOutput)
 }
 
+// Details on the whether the targets enumerated in the pipeline are of the same type.
 func (o DeliveryPipelineConditionOutput) TargetsTypeConditions() DeliveryPipelineConditionTargetsTypeConditionArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineCondition) []DeliveryPipelineConditionTargetsTypeCondition {
 		return v.TargetsTypeConditions
@@ -862,6 +871,7 @@ func (o DeliveryPipelineConditionArrayOutput) Index(i pulumi.IntInput) DeliveryP
 }
 
 type DeliveryPipelineConditionPipelineReadyCondition struct {
+	// True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
 	Status *bool `pulumi:"status"`
 	// Output only. Most recent time at which the pipeline was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -879,6 +889,7 @@ type DeliveryPipelineConditionPipelineReadyConditionInput interface {
 }
 
 type DeliveryPipelineConditionPipelineReadyConditionArgs struct {
+	// True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
 	Status pulumi.BoolPtrInput `pulumi:"status"`
 	// Output only. Most recent time at which the pipeline was updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
@@ -935,6 +946,7 @@ func (o DeliveryPipelineConditionPipelineReadyConditionOutput) ToDeliveryPipelin
 	return o
 }
 
+// True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
 func (o DeliveryPipelineConditionPipelineReadyConditionOutput) Status() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineConditionPipelineReadyCondition) *bool { return v.Status }).(pulumi.BoolPtrOutput)
 }
@@ -965,8 +977,10 @@ func (o DeliveryPipelineConditionPipelineReadyConditionArrayOutput) Index(i pulu
 }
 
 type DeliveryPipelineConditionTargetsPresentCondition struct {
+	// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
 	MissingTargets []string `pulumi:"missingTargets"`
-	Status         *bool    `pulumi:"status"`
+	// True if there aren't any missing Targets.
+	Status *bool `pulumi:"status"`
 	// Output only. Most recent time at which the pipeline was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -983,8 +997,10 @@ type DeliveryPipelineConditionTargetsPresentConditionInput interface {
 }
 
 type DeliveryPipelineConditionTargetsPresentConditionArgs struct {
+	// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
 	MissingTargets pulumi.StringArrayInput `pulumi:"missingTargets"`
-	Status         pulumi.BoolPtrInput     `pulumi:"status"`
+	// True if there aren't any missing Targets.
+	Status pulumi.BoolPtrInput `pulumi:"status"`
 	// Output only. Most recent time at which the pipeline was updated.
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
@@ -1040,10 +1056,12 @@ func (o DeliveryPipelineConditionTargetsPresentConditionOutput) ToDeliveryPipeli
 	return o
 }
 
+// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
 func (o DeliveryPipelineConditionTargetsPresentConditionOutput) MissingTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineConditionTargetsPresentCondition) []string { return v.MissingTargets }).(pulumi.StringArrayOutput)
 }
 
+// True if there aren't any missing Targets.
 func (o DeliveryPipelineConditionTargetsPresentConditionOutput) Status() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineConditionTargetsPresentCondition) *bool { return v.Status }).(pulumi.BoolPtrOutput)
 }
@@ -1074,8 +1092,10 @@ func (o DeliveryPipelineConditionTargetsPresentConditionArrayOutput) Index(i pul
 }
 
 type DeliveryPipelineConditionTargetsTypeCondition struct {
+	// Human readable error message.
 	ErrorDetails *string `pulumi:"errorDetails"`
-	Status       *bool   `pulumi:"status"`
+	// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+	Status *bool `pulumi:"status"`
 }
 
 // DeliveryPipelineConditionTargetsTypeConditionInput is an input type that accepts DeliveryPipelineConditionTargetsTypeConditionArgs and DeliveryPipelineConditionTargetsTypeConditionOutput values.
@@ -1090,8 +1110,10 @@ type DeliveryPipelineConditionTargetsTypeConditionInput interface {
 }
 
 type DeliveryPipelineConditionTargetsTypeConditionArgs struct {
+	// Human readable error message.
 	ErrorDetails pulumi.StringPtrInput `pulumi:"errorDetails"`
-	Status       pulumi.BoolPtrInput   `pulumi:"status"`
+	// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+	Status pulumi.BoolPtrInput `pulumi:"status"`
 }
 
 func (DeliveryPipelineConditionTargetsTypeConditionArgs) ElementType() reflect.Type {
@@ -1145,10 +1167,12 @@ func (o DeliveryPipelineConditionTargetsTypeConditionOutput) ToDeliveryPipelineC
 	return o
 }
 
+// Human readable error message.
 func (o DeliveryPipelineConditionTargetsTypeConditionOutput) ErrorDetails() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineConditionTargetsTypeCondition) *string { return v.ErrorDetails }).(pulumi.StringPtrOutput)
 }
 
+// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
 func (o DeliveryPipelineConditionTargetsTypeConditionOutput) Status() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineConditionTargetsTypeCondition) *bool { return v.Status }).(pulumi.BoolPtrOutput)
 }

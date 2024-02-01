@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetServiceTemplateVolumeCloudSqlInstanceResult
     {
+        /// <summary>
+        /// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
+        /// </summary>
         public readonly ImmutableArray<string> Instances;
 
         [OutputConstructor]

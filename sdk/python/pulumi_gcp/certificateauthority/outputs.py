@@ -6808,17 +6808,31 @@ class GetAuthorityAccessUrlResult(dict):
     def __init__(__self__, *,
                  ca_certificate_access_url: str,
                  crl_access_urls: Sequence[str]):
+        """
+        :param str ca_certificate_access_url: The URL where this CertificateAuthority's CA certificate is published. This will only be
+               set for CAs that have been activated.
+        :param Sequence[str] crl_access_urls: The URL where this CertificateAuthority's CRLs are published. This will only be set for
+               CAs that have been activated.
+        """
         pulumi.set(__self__, "ca_certificate_access_url", ca_certificate_access_url)
         pulumi.set(__self__, "crl_access_urls", crl_access_urls)
 
     @property
     @pulumi.getter(name="caCertificateAccessUrl")
     def ca_certificate_access_url(self) -> str:
+        """
+        The URL where this CertificateAuthority's CA certificate is published. This will only be
+        set for CAs that have been activated.
+        """
         return pulumi.get(self, "ca_certificate_access_url")
 
     @property
     @pulumi.getter(name="crlAccessUrls")
     def crl_access_urls(self) -> Sequence[str]:
+        """
+        The URL where this CertificateAuthority's CRLs are published. This will only be set for
+        CAs that have been activated.
+        """
         return pulumi.get(self, "crl_access_urls")
 
 
@@ -6827,17 +6841,27 @@ class GetAuthorityConfigResult(dict):
     def __init__(__self__, *,
                  subject_configs: Sequence['outputs.GetAuthorityConfigSubjectConfigResult'],
                  x509_configs: Sequence['outputs.GetAuthorityConfigX509ConfigResult']):
+        """
+        :param Sequence['GetAuthorityConfigSubjectConfigArgs'] subject_configs: Specifies some of the values in a certificate that are related to the subject.
+        :param Sequence['GetAuthorityConfigX509ConfigArgs'] x509_configs: Describes how some of the technical X.509 fields in a certificate should be populated.
+        """
         pulumi.set(__self__, "subject_configs", subject_configs)
         pulumi.set(__self__, "x509_configs", x509_configs)
 
     @property
     @pulumi.getter(name="subjectConfigs")
     def subject_configs(self) -> Sequence['outputs.GetAuthorityConfigSubjectConfigResult']:
+        """
+        Specifies some of the values in a certificate that are related to the subject.
+        """
         return pulumi.get(self, "subject_configs")
 
     @property
     @pulumi.getter(name="x509Configs")
     def x509_configs(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigResult']:
+        """
+        Describes how some of the technical X.509 fields in a certificate should be populated.
+        """
         return pulumi.get(self, "x509_configs")
 
 
@@ -6846,17 +6870,27 @@ class GetAuthorityConfigSubjectConfigResult(dict):
     def __init__(__self__, *,
                  subject_alt_names: Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectAltNameResult'],
                  subjects: Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectResult']):
+        """
+        :param Sequence['GetAuthorityConfigSubjectConfigSubjectAltNameArgs'] subject_alt_names: The subject alternative name fields.
+        :param Sequence['GetAuthorityConfigSubjectConfigSubjectArgs'] subjects: Contains distinguished name fields such as the location and organization.
+        """
         pulumi.set(__self__, "subject_alt_names", subject_alt_names)
         pulumi.set(__self__, "subjects", subjects)
 
     @property
     @pulumi.getter(name="subjectAltNames")
     def subject_alt_names(self) -> Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectAltNameResult']:
+        """
+        The subject alternative name fields.
+        """
         return pulumi.get(self, "subject_alt_names")
 
     @property
     @pulumi.getter
     def subjects(self) -> Sequence['outputs.GetAuthorityConfigSubjectConfigSubjectResult']:
+        """
+        Contains distinguished name fields such as the location and organization.
+        """
         return pulumi.get(self, "subjects")
 
 
@@ -6871,6 +6905,16 @@ class GetAuthorityConfigSubjectConfigSubjectResult(dict):
                  postal_code: str,
                  province: str,
                  street_address: str):
+        """
+        :param str common_name: The common name of the distinguished name.
+        :param str country_code: The country code of the subject.
+        :param str locality: The locality or city of the subject.
+        :param str organization: The organization of the subject.
+        :param str organizational_unit: The organizational unit of the subject.
+        :param str postal_code: The postal code of the subject.
+        :param str province: The province, territory, or regional state of the subject.
+        :param str street_address: The street address of the subject.
+        """
         pulumi.set(__self__, "common_name", common_name)
         pulumi.set(__self__, "country_code", country_code)
         pulumi.set(__self__, "locality", locality)
@@ -6883,41 +6927,65 @@ class GetAuthorityConfigSubjectConfigSubjectResult(dict):
     @property
     @pulumi.getter(name="commonName")
     def common_name(self) -> str:
+        """
+        The common name of the distinguished name.
+        """
         return pulumi.get(self, "common_name")
 
     @property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> str:
+        """
+        The country code of the subject.
+        """
         return pulumi.get(self, "country_code")
 
     @property
     @pulumi.getter
     def locality(self) -> str:
+        """
+        The locality or city of the subject.
+        """
         return pulumi.get(self, "locality")
 
     @property
     @pulumi.getter
     def organization(self) -> str:
+        """
+        The organization of the subject.
+        """
         return pulumi.get(self, "organization")
 
     @property
     @pulumi.getter(name="organizationalUnit")
     def organizational_unit(self) -> str:
+        """
+        The organizational unit of the subject.
+        """
         return pulumi.get(self, "organizational_unit")
 
     @property
     @pulumi.getter(name="postalCode")
     def postal_code(self) -> str:
+        """
+        The postal code of the subject.
+        """
         return pulumi.get(self, "postal_code")
 
     @property
     @pulumi.getter
     def province(self) -> str:
+        """
+        The province, territory, or regional state of the subject.
+        """
         return pulumi.get(self, "province")
 
     @property
     @pulumi.getter(name="streetAddress")
     def street_address(self) -> str:
+        """
+        The street address of the subject.
+        """
         return pulumi.get(self, "street_address")
 
 
@@ -6928,6 +6996,12 @@ class GetAuthorityConfigSubjectConfigSubjectAltNameResult(dict):
                  email_addresses: Sequence[str],
                  ip_addresses: Sequence[str],
                  uris: Sequence[str]):
+        """
+        :param Sequence[str] dns_names: Contains only valid, fully-qualified host names.
+        :param Sequence[str] email_addresses: Contains only valid RFC 2822 E-mail addresses.
+        :param Sequence[str] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        :param Sequence[str] uris: Contains only valid RFC 3986 URIs.
+        """
         pulumi.set(__self__, "dns_names", dns_names)
         pulumi.set(__self__, "email_addresses", email_addresses)
         pulumi.set(__self__, "ip_addresses", ip_addresses)
@@ -6936,21 +7010,33 @@ class GetAuthorityConfigSubjectConfigSubjectAltNameResult(dict):
     @property
     @pulumi.getter(name="dnsNames")
     def dns_names(self) -> Sequence[str]:
+        """
+        Contains only valid, fully-qualified host names.
+        """
         return pulumi.get(self, "dns_names")
 
     @property
     @pulumi.getter(name="emailAddresses")
     def email_addresses(self) -> Sequence[str]:
+        """
+        Contains only valid RFC 2822 E-mail addresses.
+        """
         return pulumi.get(self, "email_addresses")
 
     @property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Sequence[str]:
+        """
+        Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        """
         return pulumi.get(self, "ip_addresses")
 
     @property
     @pulumi.getter
     def uris(self) -> Sequence[str]:
+        """
+        Contains only valid RFC 3986 URIs.
+        """
         return pulumi.get(self, "uris")
 
 
@@ -6963,6 +7049,15 @@ class GetAuthorityConfigX509ConfigResult(dict):
                  key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageResult'],
                  name_constraints: Sequence['outputs.GetAuthorityConfigX509ConfigNameConstraintResult'],
                  policy_ids: Sequence['outputs.GetAuthorityConfigX509ConfigPolicyIdResult']):
+        """
+        :param Sequence['GetAuthorityConfigX509ConfigAdditionalExtensionArgs'] additional_extensions: Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        :param Sequence[str] aia_ocsp_servers: Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+               "Authority Information Access" extension in the certificate.
+        :param Sequence['GetAuthorityConfigX509ConfigCaOptionArgs'] ca_options: Describes values that are relevant in a CA certificate.
+        :param Sequence['GetAuthorityConfigX509ConfigKeyUsageArgs'] key_usages: Indicates the intended use for keys that correspond to a certificate.
+        :param Sequence['GetAuthorityConfigX509ConfigNameConstraintArgs'] name_constraints: Describes the X.509 name constraints extension.
+        :param Sequence['GetAuthorityConfigX509ConfigPolicyIdArgs'] policy_ids: Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        """
         pulumi.set(__self__, "additional_extensions", additional_extensions)
         pulumi.set(__self__, "aia_ocsp_servers", aia_ocsp_servers)
         pulumi.set(__self__, "ca_options", ca_options)
@@ -6973,31 +7068,50 @@ class GetAuthorityConfigX509ConfigResult(dict):
     @property
     @pulumi.getter(name="additionalExtensions")
     def additional_extensions(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionResult']:
+        """
+        Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
+        """
         return pulumi.get(self, "additional_extensions")
 
     @property
     @pulumi.getter(name="aiaOcspServers")
     def aia_ocsp_servers(self) -> Sequence[str]:
+        """
+        Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+        "Authority Information Access" extension in the certificate.
+        """
         return pulumi.get(self, "aia_ocsp_servers")
 
     @property
     @pulumi.getter(name="caOptions")
     def ca_options(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigCaOptionResult']:
+        """
+        Describes values that are relevant in a CA certificate.
+        """
         return pulumi.get(self, "ca_options")
 
     @property
     @pulumi.getter(name="keyUsages")
     def key_usages(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageResult']:
+        """
+        Indicates the intended use for keys that correspond to a certificate.
+        """
         return pulumi.get(self, "key_usages")
 
     @property
     @pulumi.getter(name="nameConstraints")
     def name_constraints(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigNameConstraintResult']:
+        """
+        Describes the X.509 name constraints extension.
+        """
         return pulumi.get(self, "name_constraints")
 
     @property
     @pulumi.getter(name="policyIds")
     def policy_ids(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigPolicyIdResult']:
+        """
+        Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+        """
         return pulumi.get(self, "policy_ids")
 
 
@@ -7007,6 +7121,12 @@ class GetAuthorityConfigX509ConfigAdditionalExtensionResult(dict):
                  critical: bool,
                  object_ids: Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult'],
                  value: str):
+        """
+        :param bool critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
+               handle this extension, the client should consider this to be an error).
+        :param Sequence['GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs'] object_ids: Describes values that are relevant in a CA certificate.
+        :param str value: The value of this X.509 extension. A base64-encoded string.
+        """
         pulumi.set(__self__, "critical", critical)
         pulumi.set(__self__, "object_ids", object_ids)
         pulumi.set(__self__, "value", value)
@@ -7014,16 +7134,26 @@ class GetAuthorityConfigX509ConfigAdditionalExtensionResult(dict):
     @property
     @pulumi.getter
     def critical(self) -> bool:
+        """
+        Indicates whether or not this extension is critical (i.e., if the client does not know how to
+        handle this extension, the client should consider this to be an error).
+        """
         return pulumi.get(self, "critical")
 
     @property
     @pulumi.getter(name="objectIds")
     def object_ids(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult']:
+        """
+        Describes values that are relevant in a CA certificate.
+        """
         return pulumi.get(self, "object_ids")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The value of this X.509 extension. A base64-encoded string.
+        """
         return pulumi.get(self, "value")
 
 
@@ -7031,11 +7161,17 @@ class GetAuthorityConfigX509ConfigAdditionalExtensionResult(dict):
 class GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdResult(dict):
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
+        """
+        :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
         pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
     def object_id_paths(self) -> Sequence[int]:
+        """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
         return pulumi.get(self, "object_id_paths")
 
 
@@ -7046,6 +7182,17 @@ class GetAuthorityConfigX509ConfigCaOptionResult(dict):
                  max_issuer_path_length: int,
                  non_ca: bool,
                  zero_max_issuer_path_length: bool):
+        """
+        :param bool is_ca: When true, the "CA" in Basic Constraints extension will be set to true.
+        :param int max_issuer_path_length: Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+               subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+               requires setting 'zero_max_issuer_path_length = true'.
+        :param bool non_ca: When true, the "CA" in Basic Constraints extension will be set to false.
+               If both 'is_ca' and 'non_ca' are unset, the extension will be omitted from the CA certificate.
+        :param bool zero_max_issuer_path_length: When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+               If both 'max_issuer_path_length' and 'zero_max_issuer_path_length' are unset,
+               the max path length will be omitted from the CA certificate.
+        """
         pulumi.set(__self__, "is_ca", is_ca)
         pulumi.set(__self__, "max_issuer_path_length", max_issuer_path_length)
         pulumi.set(__self__, "non_ca", non_ca)
@@ -7054,21 +7201,38 @@ class GetAuthorityConfigX509ConfigCaOptionResult(dict):
     @property
     @pulumi.getter(name="isCa")
     def is_ca(self) -> bool:
+        """
+        When true, the "CA" in Basic Constraints extension will be set to true.
+        """
         return pulumi.get(self, "is_ca")
 
     @property
     @pulumi.getter(name="maxIssuerPathLength")
     def max_issuer_path_length(self) -> int:
+        """
+        Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+        subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+        requires setting 'zero_max_issuer_path_length = true'.
+        """
         return pulumi.get(self, "max_issuer_path_length")
 
     @property
     @pulumi.getter(name="nonCa")
     def non_ca(self) -> bool:
+        """
+        When true, the "CA" in Basic Constraints extension will be set to false.
+        If both 'is_ca' and 'non_ca' are unset, the extension will be omitted from the CA certificate.
+        """
         return pulumi.get(self, "non_ca")
 
     @property
     @pulumi.getter(name="zeroMaxIssuerPathLength")
     def zero_max_issuer_path_length(self) -> bool:
+        """
+        When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+        If both 'max_issuer_path_length' and 'zero_max_issuer_path_length' are unset,
+        the max path length will be omitted from the CA certificate.
+        """
         return pulumi.get(self, "zero_max_issuer_path_length")
 
 
@@ -7078,6 +7242,11 @@ class GetAuthorityConfigX509ConfigKeyUsageResult(dict):
                  base_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult'],
                  extended_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult'],
                  unknown_extended_key_usages: Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult']):
+        """
+        :param Sequence['GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs'] base_key_usages: Describes high-level ways in which a key may be used.
+        :param Sequence['GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs'] extended_key_usages: Describes high-level ways in which a key may be used.
+        :param Sequence['GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs'] unknown_extended_key_usages: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
         pulumi.set(__self__, "base_key_usages", base_key_usages)
         pulumi.set(__self__, "extended_key_usages", extended_key_usages)
         pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
@@ -7085,16 +7254,25 @@ class GetAuthorityConfigX509ConfigKeyUsageResult(dict):
     @property
     @pulumi.getter(name="baseKeyUsages")
     def base_key_usages(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult']:
+        """
+        Describes high-level ways in which a key may be used.
+        """
         return pulumi.get(self, "base_key_usages")
 
     @property
     @pulumi.getter(name="extendedKeyUsages")
     def extended_key_usages(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult']:
+        """
+        Describes high-level ways in which a key may be used.
+        """
         return pulumi.get(self, "extended_key_usages")
 
     @property
     @pulumi.getter(name="unknownExtendedKeyUsages")
     def unknown_extended_key_usages(self) -> Sequence['outputs.GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult']:
+        """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
         return pulumi.get(self, "unknown_extended_key_usages")
 
 
@@ -7110,6 +7288,17 @@ class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult(dict):
                  encipher_only: bool,
                  key_agreement: bool,
                  key_encipherment: bool):
+        """
+        :param bool cert_sign: The key may be used to sign certificates.
+        :param bool content_commitment: The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        :param bool crl_sign: The key may be used sign certificate revocation lists.
+        :param bool data_encipherment: The key may be used to encipher data.
+        :param bool decipher_only: The key may be used to decipher only.
+        :param bool digital_signature: The key may be used for digital signatures.
+        :param bool encipher_only: The key may be used to encipher only.
+        :param bool key_agreement: The key may be used in a key agreement protocol.
+        :param bool key_encipherment: The key may be used to encipher other keys.
+        """
         pulumi.set(__self__, "cert_sign", cert_sign)
         pulumi.set(__self__, "content_commitment", content_commitment)
         pulumi.set(__self__, "crl_sign", crl_sign)
@@ -7123,46 +7312,73 @@ class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageResult(dict):
     @property
     @pulumi.getter(name="certSign")
     def cert_sign(self) -> bool:
+        """
+        The key may be used to sign certificates.
+        """
         return pulumi.get(self, "cert_sign")
 
     @property
     @pulumi.getter(name="contentCommitment")
     def content_commitment(self) -> bool:
+        """
+        The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
+        """
         return pulumi.get(self, "content_commitment")
 
     @property
     @pulumi.getter(name="crlSign")
     def crl_sign(self) -> bool:
+        """
+        The key may be used sign certificate revocation lists.
+        """
         return pulumi.get(self, "crl_sign")
 
     @property
     @pulumi.getter(name="dataEncipherment")
     def data_encipherment(self) -> bool:
+        """
+        The key may be used to encipher data.
+        """
         return pulumi.get(self, "data_encipherment")
 
     @property
     @pulumi.getter(name="decipherOnly")
     def decipher_only(self) -> bool:
+        """
+        The key may be used to decipher only.
+        """
         return pulumi.get(self, "decipher_only")
 
     @property
     @pulumi.getter(name="digitalSignature")
     def digital_signature(self) -> bool:
+        """
+        The key may be used for digital signatures.
+        """
         return pulumi.get(self, "digital_signature")
 
     @property
     @pulumi.getter(name="encipherOnly")
     def encipher_only(self) -> bool:
+        """
+        The key may be used to encipher only.
+        """
         return pulumi.get(self, "encipher_only")
 
     @property
     @pulumi.getter(name="keyAgreement")
     def key_agreement(self) -> bool:
+        """
+        The key may be used in a key agreement protocol.
+        """
         return pulumi.get(self, "key_agreement")
 
     @property
     @pulumi.getter(name="keyEncipherment")
     def key_encipherment(self) -> bool:
+        """
+        The key may be used to encipher other keys.
+        """
         return pulumi.get(self, "key_encipherment")
 
 
@@ -7175,6 +7391,14 @@ class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult(dict):
                  ocsp_signing: bool,
                  server_auth: bool,
                  time_stamping: bool):
+        """
+        :param bool client_auth: Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+        :param bool code_signing: Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+        :param bool email_protection: Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+        :param bool ocsp_signing: Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+        :param bool server_auth: Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+        :param bool time_stamping: Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+        """
         pulumi.set(__self__, "client_auth", client_auth)
         pulumi.set(__self__, "code_signing", code_signing)
         pulumi.set(__self__, "email_protection", email_protection)
@@ -7185,31 +7409,49 @@ class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult(dict):
     @property
     @pulumi.getter(name="clientAuth")
     def client_auth(self) -> bool:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+        """
         return pulumi.get(self, "client_auth")
 
     @property
     @pulumi.getter(name="codeSigning")
     def code_signing(self) -> bool:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+        """
         return pulumi.get(self, "code_signing")
 
     @property
     @pulumi.getter(name="emailProtection")
     def email_protection(self) -> bool:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
+        """
         return pulumi.get(self, "email_protection")
 
     @property
     @pulumi.getter(name="ocspSigning")
     def ocsp_signing(self) -> bool:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+        """
         return pulumi.get(self, "ocsp_signing")
 
     @property
     @pulumi.getter(name="serverAuth")
     def server_auth(self) -> bool:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+        """
         return pulumi.get(self, "server_auth")
 
     @property
     @pulumi.getter(name="timeStamping")
     def time_stamping(self) -> bool:
+        """
+        Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+        """
         return pulumi.get(self, "time_stamping")
 
 
@@ -7217,11 +7459,17 @@ class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageResult(dict):
 class GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageResult(dict):
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
+        """
+        :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
         pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
     def object_id_paths(self) -> Sequence[int]:
+        """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
         return pulumi.get(self, "object_id_paths")
 
 
@@ -7237,6 +7485,41 @@ class GetAuthorityConfigX509ConfigNameConstraintResult(dict):
                  permitted_email_addresses: Sequence[str],
                  permitted_ip_ranges: Sequence[str],
                  permitted_uris: Sequence[str]):
+        """
+        :param bool critical: Indicates whether or not the name constraints are marked critical.
+        :param Sequence[str] excluded_dns_names: Contains excluded DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+               would satisfy 'example.com' while 'example1.com' does not.
+        :param Sequence[str] excluded_email_addresses: Contains the excluded email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. '.example.com') to indicate
+               all email addresses in that domain.
+        :param Sequence[str] excluded_ip_ranges: Contains the excluded IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param Sequence[str] excluded_uris: Contains the excluded URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like '.example.com')
+        :param Sequence[str] permitted_dns_names: Contains permitted DNS names. Any DNS name that can be
+               constructed by simply adding zero or more labels to
+               the left-hand side of the name satisfies the name constraint.
+               For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+               would satisfy 'example.com' while 'example1.com' does not.
+        :param Sequence[str] permitted_email_addresses: Contains the permitted email addresses. The value can be a particular
+               email address, a hostname to indicate all email addresses on that host or
+               a domain with a leading period (e.g. '.example.com') to indicate
+               all email addresses in that domain.
+        :param Sequence[str] permitted_ip_ranges: Contains the permitted IP ranges. For IPv4 addresses, the ranges
+               are expressed using CIDR notation as specified in RFC 4632.
+               For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+               addresses.
+        :param Sequence[str] permitted_uris: Contains the permitted URIs that apply to the host part of the name.
+               The value can be a hostname or a domain with a
+               leading period (like '.example.com')
+        """
         pulumi.set(__self__, "critical", critical)
         pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
         pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
@@ -7250,46 +7533,97 @@ class GetAuthorityConfigX509ConfigNameConstraintResult(dict):
     @property
     @pulumi.getter
     def critical(self) -> bool:
+        """
+        Indicates whether or not the name constraints are marked critical.
+        """
         return pulumi.get(self, "critical")
 
     @property
     @pulumi.getter(name="excludedDnsNames")
     def excluded_dns_names(self) -> Sequence[str]:
+        """
+        Contains excluded DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+        would satisfy 'example.com' while 'example1.com' does not.
+        """
         return pulumi.get(self, "excluded_dns_names")
 
     @property
     @pulumi.getter(name="excludedEmailAddresses")
     def excluded_email_addresses(self) -> Sequence[str]:
+        """
+        Contains the excluded email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. '.example.com') to indicate
+        all email addresses in that domain.
+        """
         return pulumi.get(self, "excluded_email_addresses")
 
     @property
     @pulumi.getter(name="excludedIpRanges")
     def excluded_ip_ranges(self) -> Sequence[str]:
+        """
+        Contains the excluded IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
         return pulumi.get(self, "excluded_ip_ranges")
 
     @property
     @pulumi.getter(name="excludedUris")
     def excluded_uris(self) -> Sequence[str]:
+        """
+        Contains the excluded URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like '.example.com')
+        """
         return pulumi.get(self, "excluded_uris")
 
     @property
     @pulumi.getter(name="permittedDnsNames")
     def permitted_dns_names(self) -> Sequence[str]:
+        """
+        Contains permitted DNS names. Any DNS name that can be
+        constructed by simply adding zero or more labels to
+        the left-hand side of the name satisfies the name constraint.
+        For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+        would satisfy 'example.com' while 'example1.com' does not.
+        """
         return pulumi.get(self, "permitted_dns_names")
 
     @property
     @pulumi.getter(name="permittedEmailAddresses")
     def permitted_email_addresses(self) -> Sequence[str]:
+        """
+        Contains the permitted email addresses. The value can be a particular
+        email address, a hostname to indicate all email addresses on that host or
+        a domain with a leading period (e.g. '.example.com') to indicate
+        all email addresses in that domain.
+        """
         return pulumi.get(self, "permitted_email_addresses")
 
     @property
     @pulumi.getter(name="permittedIpRanges")
     def permitted_ip_ranges(self) -> Sequence[str]:
+        """
+        Contains the permitted IP ranges. For IPv4 addresses, the ranges
+        are expressed using CIDR notation as specified in RFC 4632.
+        For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+        addresses.
+        """
         return pulumi.get(self, "permitted_ip_ranges")
 
     @property
     @pulumi.getter(name="permittedUris")
     def permitted_uris(self) -> Sequence[str]:
+        """
+        Contains the permitted URIs that apply to the host part of the name.
+        The value can be a hostname or a domain with a
+        leading period (like '.example.com')
+        """
         return pulumi.get(self, "permitted_uris")
 
 
@@ -7297,11 +7631,17 @@ class GetAuthorityConfigX509ConfigNameConstraintResult(dict):
 class GetAuthorityConfigX509ConfigPolicyIdResult(dict):
     def __init__(__self__, *,
                  object_id_paths: Sequence[int]):
+        """
+        :param Sequence[int] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
         pulumi.set(__self__, "object_id_paths", object_id_paths)
 
     @property
     @pulumi.getter(name="objectIdPaths")
     def object_id_paths(self) -> Sequence[int]:
+        """
+        An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+        """
         return pulumi.get(self, "object_id_paths")
 
 
@@ -7310,17 +7650,31 @@ class GetAuthorityKeySpecResult(dict):
     def __init__(__self__, *,
                  algorithm: str,
                  cloud_kms_key_version: str):
+        """
+        :param str algorithm: The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+               experience. All managed keys will be have their ProtectionLevel as HSM. Possible values: ["SIGN_HASH_ALGORITHM_UNSPECIFIED", "RSA_PSS_2048_SHA256", "RSA_PSS_3072_SHA256", "RSA_PSS_4096_SHA256", "RSA_PKCS1_2048_SHA256", "RSA_PKCS1_3072_SHA256", "RSA_PKCS1_4096_SHA256", "EC_P256_SHA256", "EC_P384_SHA384"]
+        :param str cloud_kms_key_version: The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+               'projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*'.
+        """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "cloud_kms_key_version", cloud_kms_key_version)
 
     @property
     @pulumi.getter
     def algorithm(self) -> str:
+        """
+        The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+        experience. All managed keys will be have their ProtectionLevel as HSM. Possible values: ["SIGN_HASH_ALGORITHM_UNSPECIFIED", "RSA_PSS_2048_SHA256", "RSA_PSS_3072_SHA256", "RSA_PSS_4096_SHA256", "RSA_PKCS1_2048_SHA256", "RSA_PKCS1_3072_SHA256", "RSA_PKCS1_4096_SHA256", "EC_P256_SHA256", "EC_P384_SHA384"]
+        """
         return pulumi.get(self, "algorithm")
 
     @property
     @pulumi.getter(name="cloudKmsKeyVersion")
     def cloud_kms_key_version(self) -> str:
+        """
+        The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+        'projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*'.
+        """
         return pulumi.get(self, "cloud_kms_key_version")
 
 
@@ -7329,17 +7683,35 @@ class GetAuthoritySubordinateConfigResult(dict):
     def __init__(__self__, *,
                  certificate_authority: str,
                  pem_issuer_chains: Sequence['outputs.GetAuthoritySubordinateConfigPemIssuerChainResult']):
+        """
+        :param str certificate_authority: This can refer to a CertificateAuthority that was used to create a
+               subordinate CertificateAuthority. This field is used for information
+               and usability purposes only. The resource name is in the format
+               'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+        :param Sequence['GetAuthoritySubordinateConfigPemIssuerChainArgs'] pem_issuer_chains: Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+               but not pem certificate for this CA itself.
+        """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
         pulumi.set(__self__, "pem_issuer_chains", pem_issuer_chains)
 
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> str:
+        """
+        This can refer to a CertificateAuthority that was used to create a
+        subordinate CertificateAuthority. This field is used for information
+        and usability purposes only. The resource name is in the format
+        'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @property
     @pulumi.getter(name="pemIssuerChains")
     def pem_issuer_chains(self) -> Sequence['outputs.GetAuthoritySubordinateConfigPemIssuerChainResult']:
+        """
+        Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+        but not pem certificate for this CA itself.
+        """
         return pulumi.get(self, "pem_issuer_chains")
 
 
@@ -7347,11 +7719,17 @@ class GetAuthoritySubordinateConfigResult(dict):
 class GetAuthoritySubordinateConfigPemIssuerChainResult(dict):
     def __init__(__self__, *,
                  pem_certificates: Sequence[str]):
+        """
+        :param Sequence[str] pem_certificates: Expected to be in leaf-to-root order according to RFC 5246.
+        """
         pulumi.set(__self__, "pem_certificates", pem_certificates)
 
     @property
     @pulumi.getter(name="pemCertificates")
     def pem_certificates(self) -> Sequence[str]:
+        """
+        Expected to be in leaf-to-root order according to RFC 5246.
+        """
         return pulumi.get(self, "pem_certificates")
 
 

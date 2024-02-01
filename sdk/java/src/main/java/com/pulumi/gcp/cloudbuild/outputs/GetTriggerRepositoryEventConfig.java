@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerRepositoryEventConfig {
+    /**
+     * @return Contains filter properties for matching Pull Requests.
+     * 
+     */
     private List<GetTriggerRepositoryEventConfigPullRequest> pullRequests;
+    /**
+     * @return Contains filter properties for matching git pushes.
+     * 
+     */
     private List<GetTriggerRepositoryEventConfigPush> pushes;
+    /**
+     * @return The resource name of the Repo API resource.
+     * 
+     */
     private String repository;
 
     private GetTriggerRepositoryEventConfig() {}
+    /**
+     * @return Contains filter properties for matching Pull Requests.
+     * 
+     */
     public List<GetTriggerRepositoryEventConfigPullRequest> pullRequests() {
         return this.pullRequests;
     }
+    /**
+     * @return Contains filter properties for matching git pushes.
+     * 
+     */
     public List<GetTriggerRepositoryEventConfigPush> pushes() {
         return this.pushes;
     }
+    /**
+     * @return The resource name of the Repo API resource.
+     * 
+     */
     public String repository() {
         return this.repository;
     }

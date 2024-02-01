@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterEnableK8sBetaApi {
+    /**
+     * @return Enabled Kubernetes Beta APIs.
+     * 
+     */
     private List<String> enabledApis;
 
     private GetClusterEnableK8sBetaApi() {}
+    /**
+     * @return Enabled Kubernetes Beta APIs.
+     * 
+     */
     public List<String> enabledApis() {
         return this.enabledApis;
     }

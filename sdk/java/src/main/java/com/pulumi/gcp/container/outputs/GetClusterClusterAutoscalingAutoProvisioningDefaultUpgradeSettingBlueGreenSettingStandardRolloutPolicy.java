@@ -12,17 +12,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
+    /**
+     * @return Number of blue nodes to drain in a batch.
+     * 
+     */
     private Integer batchNodeCount;
+    /**
+     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+     * 
+     */
     private Double batchPercentage;
+    /**
+     * @return Soak time after each batch gets drained.
+     * 
+     *                                                                             A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     private String batchSoakDuration;
 
     private GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy() {}
+    /**
+     * @return Number of blue nodes to drain in a batch.
+     * 
+     */
     public Integer batchNodeCount() {
         return this.batchNodeCount;
     }
+    /**
+     * @return Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+     * 
+     */
     public Double batchPercentage() {
         return this.batchPercentage;
     }
+    /**
+     * @return Soak time after each batch gets drained.
+     * 
+     *                                                                             A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
     public String batchSoakDuration() {
         return this.batchSoakDuration;
     }

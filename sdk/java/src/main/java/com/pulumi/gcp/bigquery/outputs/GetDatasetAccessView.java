@@ -15,7 +15,17 @@ public final class GetDatasetAccessView {
      * 
      */
     private String datasetId;
+    /**
+     * @return The ID of the project containing this table.
+     * 
+     */
     private String projectId;
+    /**
+     * @return The ID of the table. The ID must contain only letters (a-z,
+     * A-Z), numbers (0-9), or underscores (_). The maximum length
+     * is 1,024 characters.
+     * 
+     */
     private String tableId;
 
     private GetDatasetAccessView() {}
@@ -26,9 +36,19 @@ public final class GetDatasetAccessView {
     public String datasetId() {
         return this.datasetId;
     }
+    /**
+     * @return The ID of the project containing this table.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return The ID of the table. The ID must contain only letters (a-z,
+     * A-Z), numbers (0-9), or underscores (_). The maximum length
+     * is 1,024 characters.
+     * 
+     */
     public String tableId() {
         return this.tableId;
     }

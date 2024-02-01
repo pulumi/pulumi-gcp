@@ -12,21 +12,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMasterAuth {
+    /**
+     * @return Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     private String clientCertificate;
+    /**
+     * @return Whether client certificate authorization is enabled for this cluster.
+     * 
+     */
     private List<GetClusterMasterAuthClientCertificateConfig> clientCertificateConfigs;
+    /**
+     * @return Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     private String clientKey;
+    /**
+     * @return Base64 encoded public certificate that is the root of trust for the cluster.
+     * 
+     */
     private String clusterCaCertificate;
 
     private GetClusterMasterAuth() {}
+    /**
+     * @return Base64 encoded public certificate used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     public String clientCertificate() {
         return this.clientCertificate;
     }
+    /**
+     * @return Whether client certificate authorization is enabled for this cluster.
+     * 
+     */
     public List<GetClusterMasterAuthClientCertificateConfig> clientCertificateConfigs() {
         return this.clientCertificateConfigs;
     }
+    /**
+     * @return Base64 encoded private key used by clients to authenticate to the cluster endpoint.
+     * 
+     */
     public String clientKey() {
         return this.clientKey;
     }
+    /**
+     * @return Base64 encoded public certificate that is the root of trust for the cluster.
+     * 
+     */
     public String clusterCaCertificate() {
         return this.clusterCaCertificate;
     }

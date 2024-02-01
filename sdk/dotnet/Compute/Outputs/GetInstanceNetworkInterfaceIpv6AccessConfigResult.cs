@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceNetworkInterfaceIpv6AccessConfigResult
     {
+        /// <summary>
+        /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        /// </summary>
         public readonly string ExternalIpv6;
+        /// <summary>
+        /// The prefix length of the external IPv6 range.
+        /// </summary>
         public readonly string ExternalIpv6PrefixLength;
         /// <summary>
         /// The name of the instance. One of `name` or `self_link` must be provided.
@@ -27,6 +33,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The DNS domain name for the public PTR record.
         /// </summary>
         public readonly string PublicPtrDomainName;
+        /// <summary>
+        /// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        /// </summary>
         public readonly string SecurityPolicy;
 
         [OutputConstructor]

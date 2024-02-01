@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class NodePoolNetworkConfigNetworkPerformanceConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the total network bandwidth tier for the NodePool.
+        /// </summary>
         [Input("totalEgressBandwidthTier", required: true)]
         public Input<string> TotalEgressBandwidthTier { get; set; } = null!;
 

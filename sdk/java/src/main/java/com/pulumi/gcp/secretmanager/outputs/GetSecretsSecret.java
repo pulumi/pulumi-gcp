@@ -47,6 +47,11 @@ public final class GetSecretsSecret {
      * 
      */
     private String project;
+    /**
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
     private Map<String,String> pulumiLabels;
     /**
      * @return The replication policy of the secret data attached to the Secret.
@@ -60,6 +65,10 @@ public final class GetSecretsSecret {
      * 
      */
     private List<GetSecretsSecretRotation> rotations;
+    /**
+     * @return This must be unique within the project.
+     * 
+     */
     private String secretId;
     /**
      * @return A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
@@ -67,6 +76,12 @@ public final class GetSecretsSecret {
      * 
      */
     private List<GetSecretsSecretTopic> topics;
+    /**
+     * @return The TTL for the Secret.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of &#39;ttl&#39; or &#39;expire_time&#39; can be provided.
+     * 
+     */
     private String ttl;
     /**
      * @return Mapping from version alias to version name.
@@ -123,6 +138,11 @@ public final class GetSecretsSecret {
     public String project() {
         return this.project;
     }
+    /**
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
@@ -142,6 +162,10 @@ public final class GetSecretsSecret {
     public List<GetSecretsSecretRotation> rotations() {
         return this.rotations;
     }
+    /**
+     * @return This must be unique within the project.
+     * 
+     */
     public String secretId() {
         return this.secretId;
     }
@@ -153,6 +177,12 @@ public final class GetSecretsSecret {
     public List<GetSecretsSecretTopic> topics() {
         return this.topics;
     }
+    /**
+     * @return The TTL for the Secret.
+     * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * Only one of &#39;ttl&#39; or &#39;expire_time&#39; can be provided.
+     * 
+     */
     public String ttl() {
         return this.ttl;
     }

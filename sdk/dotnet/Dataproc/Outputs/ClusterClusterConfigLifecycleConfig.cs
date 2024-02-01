@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// (no jobs running). After this TTL, the cluster will be deleted. Valid range: [10m, 14d].
         /// </summary>
         public readonly string? IdleDeleteTtl;
+        /// <summary>
+        /// Time when the cluster became idle (most recent job finished) and became eligible for deletion due to idleness.
+        /// </summary>
         public readonly string? IdleStartTime;
 
         [OutputConstructor]

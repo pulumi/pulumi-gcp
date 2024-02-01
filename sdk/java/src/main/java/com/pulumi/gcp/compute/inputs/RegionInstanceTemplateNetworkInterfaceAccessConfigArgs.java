@@ -49,9 +49,17 @@ public final class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs extend
         return Optional.ofNullable(this.networkTier);
     }
 
+    /**
+     * The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+     * 
+     */
     @Import(name="publicPtrDomainName")
     private @Nullable Output<String> publicPtrDomainName;
 
+    /**
+     * @return The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+     * 
+     */
     public Optional<Output<String>> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }
@@ -128,11 +136,23 @@ public final class RegionInstanceTemplateNetworkInterfaceAccessConfigArgs extend
             return networkTier(Output.of(networkTier));
         }
 
+        /**
+         * @param publicPtrDomainName The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPtrDomainName(@Nullable Output<String> publicPtrDomainName) {
             $.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
 
+        /**
+         * @param publicPtrDomainName The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicPtrDomainName(String publicPtrDomainName) {
             return publicPtrDomainName(Output.of(publicPtrDomainName));
         }

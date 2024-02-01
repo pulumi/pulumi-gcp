@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Projects.Outputs
     [OutputType]
     public sealed class GetOrganizationPolicyRestorePolicyResult
     {
+        /// <summary>
+        /// May only be set to true. If set, then the default Policy is restored.
+        /// </summary>
         public readonly bool Default;
 
         [OutputConstructor]

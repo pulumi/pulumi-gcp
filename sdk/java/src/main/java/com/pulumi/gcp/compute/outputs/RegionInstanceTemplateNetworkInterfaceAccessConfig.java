@@ -23,6 +23,10 @@ public final class RegionInstanceTemplateNetworkInterfaceAccessConfig {
      * 
      */
     private @Nullable String networkTier;
+    /**
+     * @return The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+     * 
+     */
     private @Nullable String publicPtrDomainName;
 
     private RegionInstanceTemplateNetworkInterfaceAccessConfig() {}
@@ -42,6 +46,10 @@ public final class RegionInstanceTemplateNetworkInterfaceAccessConfig {
     public Optional<String> networkTier() {
         return Optional.ofNullable(this.networkTier);
     }
+    /**
+     * @return The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
+     * 
+     */
     public Optional<String> publicPtrDomainName() {
         return Optional.ofNullable(this.publicPtrDomainName);
     }

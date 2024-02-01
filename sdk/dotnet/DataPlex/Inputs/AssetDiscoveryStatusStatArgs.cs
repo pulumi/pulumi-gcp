@@ -12,15 +12,27 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
     public sealed class AssetDiscoveryStatusStatArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The count of data items within the referenced resource.
+        /// </summary>
         [Input("dataItems")]
         public Input<int>? DataItems { get; set; }
 
+        /// <summary>
+        /// The number of stored data bytes within the referenced resource.
+        /// </summary>
         [Input("dataSize")]
         public Input<int>? DataSize { get; set; }
 
+        /// <summary>
+        /// The count of fileset entities within the referenced resource.
+        /// </summary>
         [Input("filesets")]
         public Input<int>? Filesets { get; set; }
 
+        /// <summary>
+        /// The count of table entities within the referenced resource.
+        /// </summary>
         [Input("tables")]
         public Input<int>? Tables { get; set; }
 

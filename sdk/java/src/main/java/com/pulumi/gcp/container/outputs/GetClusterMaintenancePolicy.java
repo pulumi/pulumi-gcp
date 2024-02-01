@@ -13,17 +13,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMaintenancePolicy {
+    /**
+     * @return Time window specified for daily maintenance operations. Specify start_time in RFC3339 format &#34;HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+     * 
+     */
     private List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows;
+    /**
+     * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
+     * 
+     */
     private List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
+    /**
+     * @return Time window for recurring maintenance operations.
+     * 
+     */
     private List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows;
 
     private GetClusterMaintenancePolicy() {}
+    /**
+     * @return Time window specified for daily maintenance operations. Specify start_time in RFC3339 format &#34;HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+     * 
+     */
     public List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows() {
         return this.dailyMaintenanceWindows;
     }
+    /**
+     * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
+     * 
+     */
     public List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions() {
         return this.maintenanceExclusions;
     }
+    /**
+     * @return Time window for recurring maintenance operations.
+     * 
+     */
     public List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows() {
         return this.recurringWindows;
     }

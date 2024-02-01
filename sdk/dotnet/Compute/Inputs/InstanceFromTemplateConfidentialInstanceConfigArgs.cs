@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceFromTemplateConfidentialInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled.
+        /// </summary>
         [Input("enableConfidentialCompute", required: true)]
         public Input<bool> EnableConfidentialCompute { get; set; } = null!;
 

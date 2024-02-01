@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetJobTemplateTemplateVpcAccessResult
     {
+        /// <summary>
+        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
+        /// </summary>
         public readonly string Connector;
+        /// <summary>
+        /// Traffic VPC egress settings. Possible values: ["ALL_TRAFFIC", "PRIVATE_RANGES_ONLY"]
+        /// </summary>
         public readonly string Egress;
+        /// <summary>
+        /// Direct VPC egress settings. Currently only single network interface is supported.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetJobTemplateTemplateVpcAccessNetworkInterfaceResult> NetworkInterfaces;
 
         [OutputConstructor]

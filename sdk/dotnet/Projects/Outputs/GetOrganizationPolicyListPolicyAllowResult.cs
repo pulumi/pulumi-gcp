@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Projects.Outputs
     [OutputType]
     public sealed class GetOrganizationPolicyListPolicyAllowResult
     {
+        /// <summary>
+        /// The policy allows or denies all values.
+        /// </summary>
         public readonly bool All;
+        /// <summary>
+        /// The policy can define specific values that are allowed or denied.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

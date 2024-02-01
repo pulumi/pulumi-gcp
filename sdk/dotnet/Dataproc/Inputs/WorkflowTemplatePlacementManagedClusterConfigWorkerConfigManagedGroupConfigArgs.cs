@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
     public sealed class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Output only. The name of the Instance Group Manager for this group.
+        /// </summary>
         [Input("instanceGroupManagerName")]
         public Input<string>? InstanceGroupManagerName { get; set; }
 
+        /// <summary>
+        /// Output only. The name of the Instance Template used for the Managed Instance Group.
+        /// </summary>
         [Input("instanceTemplateName")]
         public Input<string>? InstanceTemplateName { get; set; }
 

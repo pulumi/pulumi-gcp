@@ -10,17 +10,55 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceMaintenanceSchedule {
+    /**
+     * @return Output only. The end time of any upcoming scheduled maintenance for this instance.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     private String endTime;
+    /**
+     * @return Output only. The deadline that the maintenance schedule start time
+     * can not go beyond, including reschedule.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     private String scheduleDeadlineTime;
+    /**
+     * @return Output only. The start time of any upcoming scheduled maintenance for this instance.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     private String startTime;
 
     private GetInstanceMaintenanceSchedule() {}
+    /**
+     * @return Output only. The end time of any upcoming scheduled maintenance for this instance.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     public String endTime() {
         return this.endTime;
     }
+    /**
+     * @return Output only. The deadline that the maintenance schedule start time
+     * can not go beyond, including reschedule.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     public String scheduleDeadlineTime() {
         return this.scheduleDeadlineTime;
     }
+    /**
+     * @return Output only. The start time of any upcoming scheduled maintenance for this instance.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
+     * resolution and up to nine fractional digits.
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }

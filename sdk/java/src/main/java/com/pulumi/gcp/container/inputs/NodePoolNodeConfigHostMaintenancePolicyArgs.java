@@ -14,9 +14,17 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
 
     public static final NodePoolNodeConfigHostMaintenancePolicyArgs Empty = new NodePoolNodeConfigHostMaintenancePolicyArgs();
 
+    /**
+     * .
+     * 
+     */
     @Import(name="maintenanceInterval", required=true)
     private Output<String> maintenanceInterval;
 
+    /**
+     * @return .
+     * 
+     */
     public Output<String> maintenanceInterval() {
         return this.maintenanceInterval;
     }
@@ -45,11 +53,23 @@ public final class NodePoolNodeConfigHostMaintenancePolicyArgs extends com.pulum
             $ = new NodePoolNodeConfigHostMaintenancePolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param maintenanceInterval .
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(Output<String> maintenanceInterval) {
             $.maintenanceInterval = maintenanceInterval;
             return this;
         }
 
+        /**
+         * @param maintenanceInterval .
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(String maintenanceInterval) {
             return maintenanceInterval(Output.of(maintenanceInterval));
         }

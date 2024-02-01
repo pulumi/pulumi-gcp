@@ -18,7 +18,15 @@ public final class ClusterTpuConfig {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return IPv4 CIDR block reserved for Cloud TPU in the VPC.
+     * 
+     */
     private @Nullable String ipv4CidrBlock;
+    /**
+     * @return Whether to use service networking for Cloud TPU or not
+     * 
+     */
     private @Nullable Boolean useServiceNetworking;
 
     private ClusterTpuConfig() {}
@@ -29,9 +37,17 @@ public final class ClusterTpuConfig {
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return IPv4 CIDR block reserved for Cloud TPU in the VPC.
+     * 
+     */
     public Optional<String> ipv4CidrBlock() {
         return Optional.ofNullable(this.ipv4CidrBlock);
     }
+    /**
+     * @return Whether to use service networking for Cloud TPU or not
+     * 
+     */
     public Optional<Boolean> useServiceNetworking() {
         return Optional.ofNullable(this.useServiceNetworking);
     }

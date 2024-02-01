@@ -10,13 +10,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerBuildArtifactNpmPackage {
+    /**
+     * @return Path to the package.json. e.g. workspace/path/to/package
+     * 
+     */
     private String packagePath;
+    /**
+     * @return Artifact Registry repository, in the form &#34;https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY&#34;
+     * 
+     * Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+     * 
+     */
     private String repository;
 
     private GetTriggerBuildArtifactNpmPackage() {}
+    /**
+     * @return Path to the package.json. e.g. workspace/path/to/package
+     * 
+     */
     public String packagePath() {
         return this.packagePath;
     }
+    /**
+     * @return Artifact Registry repository, in the form &#34;https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY&#34;
+     * 
+     * Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+     * 
+     */
     public String repository() {
         return this.repository;
     }

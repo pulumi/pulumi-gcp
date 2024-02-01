@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const config = new gcp.organizations.IamAuditConfig("config", {
  *     auditLogConfigs: [{
- *         exemptedMembers: ["user:joebloggs@hashicorp.com"],
+ *         exemptedMembers: ["user:joebloggs@example.com"],
  *         logType: "DATA_READ",
  *     }],
  *     orgId: "your-organization-id",

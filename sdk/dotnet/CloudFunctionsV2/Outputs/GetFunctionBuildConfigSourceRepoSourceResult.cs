@@ -13,12 +13,35 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
     [OutputType]
     public sealed class GetFunctionBuildConfigSourceRepoSourceResult
     {
+        /// <summary>
+        /// Regex matching branches to build.
+        /// </summary>
         public readonly string BranchName;
+        /// <summary>
+        /// Regex matching tags to build.
+        /// </summary>
         public readonly string CommitSha;
+        /// <summary>
+        /// Directory, relative to the source root, in which to run the build.
+        /// </summary>
         public readonly string Dir;
+        /// <summary>
+        /// Only trigger a build if the revision regex does
+        /// NOT match the revision regex.
+        /// </summary>
         public readonly bool InvertRegex;
+        /// <summary>
+        /// ID of the project that owns the Cloud Source Repository. If omitted, the
+        /// project ID requesting the build is assumed.
+        /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// Name of the Cloud Source Repository.
+        /// </summary>
         public readonly string RepoName;
+        /// <summary>
+        /// Regex matching tags to build.
+        /// </summary>
         public readonly string TagName;
 
         [OutputConstructor]

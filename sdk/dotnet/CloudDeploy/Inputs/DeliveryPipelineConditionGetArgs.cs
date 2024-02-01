@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
     {
         [Input("pipelineReadyConditions")]
         private InputList<Inputs.DeliveryPipelineConditionPipelineReadyConditionGetArgs>? _pipelineReadyConditions;
+
+        /// <summary>
+        /// Details around the Pipeline's overall status.
+        /// </summary>
         public InputList<Inputs.DeliveryPipelineConditionPipelineReadyConditionGetArgs> PipelineReadyConditions
         {
             get => _pipelineReadyConditions ?? (_pipelineReadyConditions = new InputList<Inputs.DeliveryPipelineConditionPipelineReadyConditionGetArgs>());
@@ -22,6 +26,10 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
 
         [Input("targetsPresentConditions")]
         private InputList<Inputs.DeliveryPipelineConditionTargetsPresentConditionGetArgs>? _targetsPresentConditions;
+
+        /// <summary>
+        /// Details around targets enumerated in the pipeline.
+        /// </summary>
         public InputList<Inputs.DeliveryPipelineConditionTargetsPresentConditionGetArgs> TargetsPresentConditions
         {
             get => _targetsPresentConditions ?? (_targetsPresentConditions = new InputList<Inputs.DeliveryPipelineConditionTargetsPresentConditionGetArgs>());
@@ -30,6 +38,10 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
 
         [Input("targetsTypeConditions")]
         private InputList<Inputs.DeliveryPipelineConditionTargetsTypeConditionGetArgs>? _targetsTypeConditions;
+
+        /// <summary>
+        /// Details on the whether the targets enumerated in the pipeline are of the same type.
+        /// </summary>
         public InputList<Inputs.DeliveryPipelineConditionTargetsTypeConditionGetArgs> TargetsTypeConditions
         {
             get => _targetsTypeConditions ?? (_targetsTypeConditions = new InputList<Inputs.DeliveryPipelineConditionTargetsTypeConditionGetArgs>());

@@ -12,21 +12,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionServiceConfigSecretVolume {
+    /**
+     * @return The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+     * 
+     */
     private String mountPath;
+    /**
+     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * 
+     */
     private String projectId;
+    /**
+     * @return Name of the secret in secret manager (not the full resource name).
+     * 
+     */
     private String secret;
+    /**
+     * @return List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.&#39;
+     * 
+     */
     private List<GetFunctionServiceConfigSecretVolumeVersion> versions;
 
     private GetFunctionServiceConfigSecretVolume() {}
+    /**
+     * @return The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
+     * 
+     */
     public String mountPath() {
         return this.mountPath;
     }
+    /**
+     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return Name of the secret in secret manager (not the full resource name).
+     * 
+     */
     public String secret() {
         return this.secret;
     }
+    /**
+     * @return List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.&#39;
+     * 
+     */
     public List<GetFunctionServiceConfigSecretVolumeVersion> versions() {
         return this.versions;
     }

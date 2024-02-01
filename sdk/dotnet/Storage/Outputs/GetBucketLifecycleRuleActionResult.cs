@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Storage.Outputs
     [OutputType]
     public sealed class GetBucketLifecycleRuleActionResult
     {
+        /// <summary>
+        /// The target Storage Class of objects affected by this Lifecycle Rule. Supported values include: MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE.
+        /// </summary>
         public readonly string StorageClass;
+        /// <summary>
+        /// The type of the action of this Lifecycle Rule. Supported values include: Delete, SetStorageClass and AbortIncompleteMultipartUpload.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

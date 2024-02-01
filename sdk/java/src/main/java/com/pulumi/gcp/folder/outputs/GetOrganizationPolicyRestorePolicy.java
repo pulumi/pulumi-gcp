@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOrganizationPolicyRestorePolicy {
+    /**
+     * @return May only be set to true. If set, then the default Policy is restored.
+     * 
+     */
     private Boolean default_;
 
     private GetOrganizationPolicyRestorePolicy() {}
+    /**
+     * @return May only be set to true. If set, then the default Policy is restored.
+     * 
+     */
     public Boolean default_() {
         return this.default_;
     }

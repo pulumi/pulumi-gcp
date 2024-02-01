@@ -25,6 +25,10 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
      * 
      */
     private @Nullable Boolean autoUpgrade;
+    /**
+     * @return Specifies the Auto Upgrade knobs for the node pool.
+     * 
+     */
     private @Nullable List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption> upgradeOptions;
 
     private ClusterClusterAutoscalingAutoProvisioningDefaultsManagement() {}
@@ -44,6 +48,10 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
     public Optional<Boolean> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
     }
+    /**
+     * @return Specifies the Auto Upgrade knobs for the node pool.
+     * 
+     */
     public List<ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption> upgradeOptions() {
         return this.upgradeOptions == null ? List.of() : this.upgradeOptions;
     }

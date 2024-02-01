@@ -15,58 +15,122 @@ public final class GetManagedZonesManagedZone extends com.pulumi.resources.Invok
 
     public static final GetManagedZonesManagedZone Empty = new GetManagedZonesManagedZone();
 
+    /**
+     * A textual description field.
+     * 
+     */
     @Import(name="description", required=true)
     private String description;
 
+    /**
+     * @return A textual description field.
+     * 
+     */
     public String description() {
         return this.description;
     }
 
+    /**
+     * The fully qualified DNS name of this zone.
+     * 
+     */
     @Import(name="dnsName", required=true)
     private String dnsName;
 
+    /**
+     * @return The fully qualified DNS name of this zone.
+     * 
+     */
     public String dnsName() {
         return this.dnsName;
     }
 
+    /**
+     * DNS managed zone identifier
+     * 
+     */
     @Import(name="id", required=true)
     private String id;
 
+    /**
+     * @return DNS managed zone identifier
+     * 
+     */
     public String id() {
         return this.id;
     }
 
+    /**
+     * Unique identifier for the resource; defined by the server.
+     * 
+     */
     @Import(name="managedZoneId", required=true)
     private Integer managedZoneId;
 
+    /**
+     * @return Unique identifier for the resource; defined by the server.
+     * 
+     */
     public Integer managedZoneId() {
         return this.managedZoneId;
     }
 
+    /**
+     * A unique name for the resource.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return A unique name for the resource.
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+     * 
+     */
     @Import(name="nameServers", required=true)
     private List<String> nameServers;
 
+    /**
+     * @return The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+     * 
+     */
     public List<String> nameServers() {
         return this.nameServers;
     }
 
+    /**
+     * The ID of the project for the Google Cloud.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return The ID of the project for the Google Cloud.
+     * 
+     */
     public String project() {
         return this.project;
     }
 
+    /**
+     * The zone&#39;s visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+     * 
+     */
     @Import(name="visibility", required=true)
     private String visibility;
 
+    /**
+     * @return The zone&#39;s visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+     * 
+     */
     public String visibility() {
         return this.visibility;
     }
@@ -102,45 +166,99 @@ public final class GetManagedZonesManagedZone extends com.pulumi.resources.Invok
             $ = new GetManagedZonesManagedZone(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description A textual description field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param dnsName The fully qualified DNS name of this zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dnsName(String dnsName) {
             $.dnsName = dnsName;
             return this;
         }
 
+        /**
+         * @param id DNS managed zone identifier
+         * 
+         * @return builder
+         * 
+         */
         public Builder id(String id) {
             $.id = id;
             return this;
         }
 
+        /**
+         * @param managedZoneId Unique identifier for the resource; defined by the server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedZoneId(Integer managedZoneId) {
             $.managedZoneId = managedZoneId;
             return this;
         }
 
+        /**
+         * @param name A unique name for the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param nameServers The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameServers(List<String> nameServers) {
             $.nameServers = nameServers;
             return this;
         }
 
+        /**
+         * @param nameServers The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameServers(String... nameServers) {
             return nameServers(List.of(nameServers));
         }
 
+        /**
+         * @param project The ID of the project for the Google Cloud.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param visibility The zone&#39;s visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+         * 
+         * @return builder
+         * 
+         */
         public Builder visibility(String visibility) {
             $.visibility = visibility;
             return this;

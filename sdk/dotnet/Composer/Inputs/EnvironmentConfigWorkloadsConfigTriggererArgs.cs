@@ -12,12 +12,21 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigWorkloadsConfigTriggererArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The number of triggerers.
+        /// </summary>
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
+        /// <summary>
+        /// CPU request and limit for a single Airflow triggerer replica.
+        /// </summary>
         [Input("cpu", required: true)]
         public Input<double> Cpu { get; set; } = null!;
 
+        /// <summary>
+        /// Memory (GB) request and limit for a single Airflow triggerer replica.
+        /// </summary>
         [Input("memoryGb", required: true)]
         public Input<double> MemoryGb { get; set; } = null!;
 

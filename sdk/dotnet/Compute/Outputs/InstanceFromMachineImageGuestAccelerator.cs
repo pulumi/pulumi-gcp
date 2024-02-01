@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceFromMachineImageGuestAccelerator
     {
+        /// <summary>
+        /// The number of the guest accelerator cards exposed to this instance.
+        /// </summary>
         public readonly int Count;
+        /// <summary>
+        /// The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

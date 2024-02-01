@@ -125,9 +125,17 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.connectorEnforcement);
     }
 
+    /**
+     * Data cache configurations.
+     * 
+     */
     @Import(name="dataCacheConfig")
     private @Nullable Output<DatabaseInstanceSettingsDataCacheConfigArgs> dataCacheConfig;
 
+    /**
+     * @return Data cache configurations.
+     * 
+     */
     public Optional<Output<DatabaseInstanceSettingsDataCacheConfigArgs>> dataCacheConfig() {
         return Optional.ofNullable(this.dataCacheConfig);
     }
@@ -139,9 +147,17 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.databaseFlags);
     }
 
+    /**
+     * Configuration to protect against accidental instance deletion.
+     * 
+     */
     @Import(name="deletionProtectionEnabled")
     private @Nullable Output<Boolean> deletionProtectionEnabled;
 
+    /**
+     * @return Configuration to protect against accidental instance deletion.
+     * 
+     */
     public Optional<Output<Boolean>> deletionProtectionEnabled() {
         return Optional.ofNullable(this.deletionProtectionEnabled);
     }
@@ -228,9 +244,17 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.edition);
     }
 
+    /**
+     * Configuration of Query Insights.
+     * 
+     */
     @Import(name="insightsConfig")
     private @Nullable Output<DatabaseInstanceSettingsInsightsConfigArgs> insightsConfig;
 
+    /**
+     * @return Configuration of Query Insights.
+     * 
+     */
     public Optional<Output<DatabaseInstanceSettingsInsightsConfigArgs>> insightsConfig() {
         return Optional.ofNullable(this.insightsConfig);
     }
@@ -249,9 +273,17 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.locationPreference);
     }
 
+    /**
+     * Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+     * 
+     */
     @Import(name="maintenanceWindow")
     private @Nullable Output<DatabaseInstanceSettingsMaintenanceWindowArgs> maintenanceWindow;
 
+    /**
+     * @return Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+     * 
+     */
     public Optional<Output<DatabaseInstanceSettingsMaintenanceWindowArgs>> maintenanceWindow() {
         return Optional.ofNullable(this.maintenanceWindow);
     }
@@ -334,9 +366,17 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.userLabels);
     }
 
+    /**
+     * Used to make sure changes to the settings block are atomic.
+     * 
+     */
     @Import(name="version")
     private @Nullable Output<Integer> version;
 
+    /**
+     * @return Used to make sure changes to the settings block are atomic.
+     * 
+     */
     public Optional<Output<Integer>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -514,11 +554,23 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
             return connectorEnforcement(Output.of(connectorEnforcement));
         }
 
+        /**
+         * @param dataCacheConfig Data cache configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataCacheConfig(@Nullable Output<DatabaseInstanceSettingsDataCacheConfigArgs> dataCacheConfig) {
             $.dataCacheConfig = dataCacheConfig;
             return this;
         }
 
+        /**
+         * @param dataCacheConfig Data cache configurations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataCacheConfig(DatabaseInstanceSettingsDataCacheConfigArgs dataCacheConfig) {
             return dataCacheConfig(Output.of(dataCacheConfig));
         }
@@ -536,11 +588,23 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
             return databaseFlags(List.of(databaseFlags));
         }
 
+        /**
+         * @param deletionProtectionEnabled Configuration to protect against accidental instance deletion.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtectionEnabled(@Nullable Output<Boolean> deletionProtectionEnabled) {
             $.deletionProtectionEnabled = deletionProtectionEnabled;
             return this;
         }
 
+        /**
+         * @param deletionProtectionEnabled Configuration to protect against accidental instance deletion.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
             return deletionProtectionEnabled(Output.of(deletionProtectionEnabled));
         }
@@ -659,11 +723,23 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
             return edition(Output.of(edition));
         }
 
+        /**
+         * @param insightsConfig Configuration of Query Insights.
+         * 
+         * @return builder
+         * 
+         */
         public Builder insightsConfig(@Nullable Output<DatabaseInstanceSettingsInsightsConfigArgs> insightsConfig) {
             $.insightsConfig = insightsConfig;
             return this;
         }
 
+        /**
+         * @param insightsConfig Configuration of Query Insights.
+         * 
+         * @return builder
+         * 
+         */
         public Builder insightsConfig(DatabaseInstanceSettingsInsightsConfigArgs insightsConfig) {
             return insightsConfig(Output.of(insightsConfig));
         }
@@ -686,11 +762,23 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
             return locationPreference(Output.of(locationPreference));
         }
 
+        /**
+         * @param maintenanceWindow Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceWindow(@Nullable Output<DatabaseInstanceSettingsMaintenanceWindowArgs> maintenanceWindow) {
             $.maintenanceWindow = maintenanceWindow;
             return this;
         }
 
+        /**
+         * @param maintenanceWindow Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceWindow(DatabaseInstanceSettingsMaintenanceWindowArgs maintenanceWindow) {
             return maintenanceWindow(Output.of(maintenanceWindow));
         }
@@ -801,11 +889,23 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
             return userLabels(Output.of(userLabels));
         }
 
+        /**
+         * @param version Used to make sure changes to the settings block are atomic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(@Nullable Output<Integer> version) {
             $.version = version;
             return this;
         }
 
+        /**
+         * @param version Used to make sure changes to the settings block are atomic.
+         * 
+         * @return builder
+         * 
+         */
         public Builder version(Integer version) {
             return version(Output.of(version));
         }

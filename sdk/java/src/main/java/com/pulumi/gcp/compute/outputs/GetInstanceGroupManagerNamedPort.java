@@ -16,6 +16,10 @@ public final class GetInstanceGroupManagerNamedPort {
      * 
      */
     private String name;
+    /**
+     * @return The port number.
+     * 
+     */
     private Integer port;
 
     private GetInstanceGroupManagerNamedPort() {}
@@ -26,6 +30,10 @@ public final class GetInstanceGroupManagerNamedPort {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The port number.
+     * 
+     */
     public Integer port() {
         return this.port;
     }

@@ -35,9 +35,17 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         return Optional.ofNullable(this.machineType);
     }
 
+    /**
+     * Number of VM provisioned with the machine_type.
+     * 
+     */
     @Import(name="vmCount")
     private @Nullable Output<Integer> vmCount;
 
+    /**
+     * @return Number of VM provisioned with the machine_type.
+     * 
+     */
     public Optional<Output<Integer>> vmCount() {
         return Optional.ofNullable(this.vmCount);
     }
@@ -92,11 +100,23 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
             return machineType(Output.of(machineType));
         }
 
+        /**
+         * @param vmCount Number of VM provisioned with the machine_type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmCount(@Nullable Output<Integer> vmCount) {
             $.vmCount = vmCount;
             return this;
         }
 
+        /**
+         * @param vmCount Number of VM provisioned with the machine_type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vmCount(Integer vmCount) {
             return vmCount(Output.of(vmCount));
         }

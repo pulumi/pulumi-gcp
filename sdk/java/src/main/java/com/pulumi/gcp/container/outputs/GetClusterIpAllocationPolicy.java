@@ -13,33 +13,89 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterIpAllocationPolicy {
+    /**
+     * @return AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+     * 
+     */
     private List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs;
+    /**
+     * @return The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+     * 
+     */
     private String clusterIpv4CidrBlock;
+    /**
+     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+     * 
+     */
     private String clusterSecondaryRangeName;
+    /**
+     * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * 
+     */
     private List<GetClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
+    /**
+     * @return The IP address range of the services IPs in this cluster. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+     * 
+     */
     private String servicesIpv4CidrBlock;
+    /**
+     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for service ClusterIPs. Alternatively, services_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+     * 
+     */
     private String servicesSecondaryRangeName;
+    /**
+     * @return The IP Stack type of the cluster. Choose between IPV4 and IPV4_IPV6. Default type is IPV4 Only if not set
+     * 
+     */
     private String stackType;
 
     private GetClusterIpAllocationPolicy() {}
+    /**
+     * @return AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate message.
+     * 
+     */
     public List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs() {
         return this.additionalPodRangesConfigs;
     }
+    /**
+     * @return The IP address range for the cluster pod IPs. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+     * 
+     */
     public String clusterIpv4CidrBlock() {
         return this.clusterIpv4CidrBlock;
     }
+    /**
+     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for pod IP addresses. Alternatively, cluster_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+     * 
+     */
     public String clusterSecondaryRangeName() {
         return this.clusterSecondaryRangeName;
     }
+    /**
+     * @return Configuration for cluster level pod cidr overprovision. Default is disabled=false.
+     * 
+     */
     public List<GetClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfigs() {
         return this.podCidrOverprovisionConfigs;
     }
+    /**
+     * @return The IP address range of the services IPs in this cluster. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use.
+     * 
+     */
     public String servicesIpv4CidrBlock() {
         return this.servicesIpv4CidrBlock;
     }
+    /**
+     * @return The name of the existing secondary range in the cluster&#39;s subnetwork to use for service ClusterIPs. Alternatively, services_ipv4_cidr_block can be used to automatically create a GKE-managed one.
+     * 
+     */
     public String servicesSecondaryRangeName() {
         return this.servicesSecondaryRangeName;
     }
+    /**
+     * @return The IP Stack type of the cluster. Choose between IPV4 and IPV4_IPV6. Default type is IPV4 Only if not set
+     * 
+     */
     public String stackType() {
         return this.stackType;
     }

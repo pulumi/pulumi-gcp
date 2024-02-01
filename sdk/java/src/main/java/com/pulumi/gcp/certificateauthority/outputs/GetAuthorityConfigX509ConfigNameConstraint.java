@@ -12,41 +12,161 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAuthorityConfigX509ConfigNameConstraint {
+    /**
+     * @return Indicates whether or not the name constraints are marked critical.
+     * 
+     */
     private Boolean critical;
+    /**
+     * @return Contains excluded DNS names. Any DNS name that can be
+     * constructed by simply adding zero or more labels to
+     * the left-hand side of the name satisfies the name constraint.
+     * For example, &#39;example.com&#39;, &#39;www.example.com&#39;, &#39;www.sub.example.com&#39;
+     * would satisfy &#39;example.com&#39; while &#39;example1.com&#39; does not.
+     * 
+     */
     private List<String> excludedDnsNames;
+    /**
+     * @return Contains the excluded email addresses. The value can be a particular
+     * email address, a hostname to indicate all email addresses on that host or
+     * a domain with a leading period (e.g. &#39;.example.com&#39;) to indicate
+     * all email addresses in that domain.
+     * 
+     */
     private List<String> excludedEmailAddresses;
+    /**
+     * @return Contains the excluded IP ranges. For IPv4 addresses, the ranges
+     * are expressed using CIDR notation as specified in RFC 4632.
+     * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+     * addresses.
+     * 
+     */
     private List<String> excludedIpRanges;
+    /**
+     * @return Contains the excluded URIs that apply to the host part of the name.
+     * The value can be a hostname or a domain with a
+     * leading period (like &#39;.example.com&#39;)
+     * 
+     */
     private List<String> excludedUris;
+    /**
+     * @return Contains permitted DNS names. Any DNS name that can be
+     * constructed by simply adding zero or more labels to
+     * the left-hand side of the name satisfies the name constraint.
+     * For example, &#39;example.com&#39;, &#39;www.example.com&#39;, &#39;www.sub.example.com&#39;
+     * would satisfy &#39;example.com&#39; while &#39;example1.com&#39; does not.
+     * 
+     */
     private List<String> permittedDnsNames;
+    /**
+     * @return Contains the permitted email addresses. The value can be a particular
+     * email address, a hostname to indicate all email addresses on that host or
+     * a domain with a leading period (e.g. &#39;.example.com&#39;) to indicate
+     * all email addresses in that domain.
+     * 
+     */
     private List<String> permittedEmailAddresses;
+    /**
+     * @return Contains the permitted IP ranges. For IPv4 addresses, the ranges
+     * are expressed using CIDR notation as specified in RFC 4632.
+     * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+     * addresses.
+     * 
+     */
     private List<String> permittedIpRanges;
+    /**
+     * @return Contains the permitted URIs that apply to the host part of the name.
+     * The value can be a hostname or a domain with a
+     * leading period (like &#39;.example.com&#39;)
+     * 
+     */
     private List<String> permittedUris;
 
     private GetAuthorityConfigX509ConfigNameConstraint() {}
+    /**
+     * @return Indicates whether or not the name constraints are marked critical.
+     * 
+     */
     public Boolean critical() {
         return this.critical;
     }
+    /**
+     * @return Contains excluded DNS names. Any DNS name that can be
+     * constructed by simply adding zero or more labels to
+     * the left-hand side of the name satisfies the name constraint.
+     * For example, &#39;example.com&#39;, &#39;www.example.com&#39;, &#39;www.sub.example.com&#39;
+     * would satisfy &#39;example.com&#39; while &#39;example1.com&#39; does not.
+     * 
+     */
     public List<String> excludedDnsNames() {
         return this.excludedDnsNames;
     }
+    /**
+     * @return Contains the excluded email addresses. The value can be a particular
+     * email address, a hostname to indicate all email addresses on that host or
+     * a domain with a leading period (e.g. &#39;.example.com&#39;) to indicate
+     * all email addresses in that domain.
+     * 
+     */
     public List<String> excludedEmailAddresses() {
         return this.excludedEmailAddresses;
     }
+    /**
+     * @return Contains the excluded IP ranges. For IPv4 addresses, the ranges
+     * are expressed using CIDR notation as specified in RFC 4632.
+     * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+     * addresses.
+     * 
+     */
     public List<String> excludedIpRanges() {
         return this.excludedIpRanges;
     }
+    /**
+     * @return Contains the excluded URIs that apply to the host part of the name.
+     * The value can be a hostname or a domain with a
+     * leading period (like &#39;.example.com&#39;)
+     * 
+     */
     public List<String> excludedUris() {
         return this.excludedUris;
     }
+    /**
+     * @return Contains permitted DNS names. Any DNS name that can be
+     * constructed by simply adding zero or more labels to
+     * the left-hand side of the name satisfies the name constraint.
+     * For example, &#39;example.com&#39;, &#39;www.example.com&#39;, &#39;www.sub.example.com&#39;
+     * would satisfy &#39;example.com&#39; while &#39;example1.com&#39; does not.
+     * 
+     */
     public List<String> permittedDnsNames() {
         return this.permittedDnsNames;
     }
+    /**
+     * @return Contains the permitted email addresses. The value can be a particular
+     * email address, a hostname to indicate all email addresses on that host or
+     * a domain with a leading period (e.g. &#39;.example.com&#39;) to indicate
+     * all email addresses in that domain.
+     * 
+     */
     public List<String> permittedEmailAddresses() {
         return this.permittedEmailAddresses;
     }
+    /**
+     * @return Contains the permitted IP ranges. For IPv4 addresses, the ranges
+     * are expressed using CIDR notation as specified in RFC 4632.
+     * For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+     * addresses.
+     * 
+     */
     public List<String> permittedIpRanges() {
         return this.permittedIpRanges;
     }
+    /**
+     * @return Contains the permitted URIs that apply to the host part of the name.
+     * The value can be a hostname or a domain with a
+     * leading period (like &#39;.example.com&#39;)
+     * 
+     */
     public List<String> permittedUris() {
         return this.permittedUris;
     }

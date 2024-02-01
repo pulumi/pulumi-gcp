@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     [OutputType]
     public sealed class GetSubnetDhcpAddressRangeResult
     {
+        /// <summary>
+        /// The first IP address of the range.
+        /// </summary>
         public readonly string FirstAddress;
+        /// <summary>
+        /// The last IP address of the range.
+        /// </summary>
         public readonly string LastAddress;
 
         [OutputConstructor]

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolAutoConfigResult
     {
+        /// <summary>
+        /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoConfigNetworkTagResult> NetworkTags;
 
         [OutputConstructor]

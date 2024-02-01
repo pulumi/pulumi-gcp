@@ -21,37 +21,83 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
 
     public static final InstanceFromMachineImageSchedulingArgs Empty = new InstanceFromMachineImageSchedulingArgs();
 
+    /**
+     * Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+     * 
+     */
     @Import(name="automaticRestart")
     private @Nullable Output<Boolean> automaticRestart;
 
+    /**
+     * @return Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+     * 
+     */
     public Optional<Output<Boolean>> automaticRestart() {
         return Optional.ofNullable(this.automaticRestart);
     }
 
+    /**
+     * Specifies the action GCE should take when SPOT VM is preempted.
+     * 
+     */
     @Import(name="instanceTerminationAction")
     private @Nullable Output<String> instanceTerminationAction;
 
+    /**
+     * @return Specifies the action GCE should take when SPOT VM is preempted.
+     * 
+     */
     public Optional<Output<String>> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
     }
 
+    /**
+     * Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     @Import(name="localSsdRecoveryTimeout")
     private @Nullable Output<InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeout;
 
+    /**
+     * @return Specifies the maximum amount of time a Local Ssd Vm should wait while
+     *   recovery of the Local Ssd state is attempted. Its value should be in
+     *   between 0 and 168 hours with hour granularity and the default value being 1
+     *   hour.
+     * 
+     */
     public Optional<Output<InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeout() {
         return Optional.ofNullable(this.localSsdRecoveryTimeout);
     }
 
+    /**
+     * Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * 
+     */
     @Import(name="maintenanceInterval")
     private @Nullable Output<String> maintenanceInterval;
 
+    /**
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+     * 
+     */
     public Optional<Output<String>> maintenanceInterval() {
         return Optional.ofNullable(this.maintenanceInterval);
     }
 
+    /**
+     * The timeout for new network connections to hosts.
+     * 
+     */
     @Import(name="maxRunDuration")
     private @Nullable Output<InstanceFromMachineImageSchedulingMaxRunDurationArgs> maxRunDuration;
 
+    /**
+     * @return The timeout for new network connections to hosts.
+     * 
+     */
     public Optional<Output<InstanceFromMachineImageSchedulingMaxRunDurationArgs>> maxRunDuration() {
         return Optional.ofNullable(this.maxRunDuration);
     }
@@ -63,30 +109,62 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
         return Optional.ofNullable(this.minNodeCpus);
     }
 
+    /**
+     * Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+     * 
+     */
     @Import(name="nodeAffinities")
     private @Nullable Output<List<InstanceFromMachineImageSchedulingNodeAffinityArgs>> nodeAffinities;
 
+    /**
+     * @return Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+     * 
+     */
     public Optional<Output<List<InstanceFromMachineImageSchedulingNodeAffinityArgs>>> nodeAffinities() {
         return Optional.ofNullable(this.nodeAffinities);
     }
 
+    /**
+     * Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+     * 
+     */
     @Import(name="onHostMaintenance")
     private @Nullable Output<String> onHostMaintenance;
 
+    /**
+     * @return Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+     * 
+     */
     public Optional<Output<String>> onHostMaintenance() {
         return Optional.ofNullable(this.onHostMaintenance);
     }
 
+    /**
+     * Whether the instance is preemptible.
+     * 
+     */
     @Import(name="preemptible")
     private @Nullable Output<Boolean> preemptible;
 
+    /**
+     * @return Whether the instance is preemptible.
+     * 
+     */
     public Optional<Output<Boolean>> preemptible() {
         return Optional.ofNullable(this.preemptible);
     }
 
+    /**
+     * Whether the instance is spot. If this is set as SPOT.
+     * 
+     */
     @Import(name="provisioningModel")
     private @Nullable Output<String> provisioningModel;
 
+    /**
+     * @return Whether the instance is spot. If this is set as SPOT.
+     * 
+     */
     public Optional<Output<String>> provisioningModel() {
         return Optional.ofNullable(this.provisioningModel);
     }
@@ -124,47 +202,113 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
             $ = new InstanceFromMachineImageSchedulingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param automaticRestart Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+         * 
+         * @return builder
+         * 
+         */
         public Builder automaticRestart(@Nullable Output<Boolean> automaticRestart) {
             $.automaticRestart = automaticRestart;
             return this;
         }
 
+        /**
+         * @param automaticRestart Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+         * 
+         * @return builder
+         * 
+         */
         public Builder automaticRestart(Boolean automaticRestart) {
             return automaticRestart(Output.of(automaticRestart));
         }
 
+        /**
+         * @param instanceTerminationAction Specifies the action GCE should take when SPOT VM is preempted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceTerminationAction(@Nullable Output<String> instanceTerminationAction) {
             $.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
 
+        /**
+         * @param instanceTerminationAction Specifies the action GCE should take when SPOT VM is preempted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             return instanceTerminationAction(Output.of(instanceTerminationAction));
         }
 
+        /**
+         * @param localSsdRecoveryTimeout Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdRecoveryTimeout(@Nullable Output<InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeout) {
             $.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
             return this;
         }
 
+        /**
+         * @param localSsdRecoveryTimeout Specifies the maximum amount of time a Local Ssd Vm should wait while
+         *   recovery of the Local Ssd state is attempted. Its value should be in
+         *   between 0 and 168 hours with hour granularity and the default value being 1
+         *   hour.
+         * 
+         * @return builder
+         * 
+         */
         public Builder localSsdRecoveryTimeout(InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs localSsdRecoveryTimeout) {
             return localSsdRecoveryTimeout(Output.of(localSsdRecoveryTimeout));
         }
 
+        /**
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(@Nullable Output<String> maintenanceInterval) {
             $.maintenanceInterval = maintenanceInterval;
             return this;
         }
 
+        /**
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: PERIODIC
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(String maintenanceInterval) {
             return maintenanceInterval(Output.of(maintenanceInterval));
         }
 
+        /**
+         * @param maxRunDuration The timeout for new network connections to hosts.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRunDuration(@Nullable Output<InstanceFromMachineImageSchedulingMaxRunDurationArgs> maxRunDuration) {
             $.maxRunDuration = maxRunDuration;
             return this;
         }
 
+        /**
+         * @param maxRunDuration The timeout for new network connections to hosts.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRunDuration(InstanceFromMachineImageSchedulingMaxRunDurationArgs maxRunDuration) {
             return maxRunDuration(Output.of(maxRunDuration));
         }
@@ -178,42 +322,96 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
             return minNodeCpus(Output.of(minNodeCpus));
         }
 
+        /**
+         * @param nodeAffinities Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(@Nullable Output<List<InstanceFromMachineImageSchedulingNodeAffinityArgs>> nodeAffinities) {
             $.nodeAffinities = nodeAffinities;
             return this;
         }
 
+        /**
+         * @param nodeAffinities Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(List<InstanceFromMachineImageSchedulingNodeAffinityArgs> nodeAffinities) {
             return nodeAffinities(Output.of(nodeAffinities));
         }
 
+        /**
+         * @param nodeAffinities Specifies node affinities or anti-affinities to determine which sole-tenant nodes your instances and managed instance groups will use as host systems.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeAffinities(InstanceFromMachineImageSchedulingNodeAffinityArgs... nodeAffinities) {
             return nodeAffinities(List.of(nodeAffinities));
         }
 
+        /**
+         * @param onHostMaintenance Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+         * 
+         * @return builder
+         * 
+         */
         public Builder onHostMaintenance(@Nullable Output<String> onHostMaintenance) {
             $.onHostMaintenance = onHostMaintenance;
             return this;
         }
 
+        /**
+         * @param onHostMaintenance Describes maintenance behavior for the instance. One of MIGRATE or TERMINATE,
+         * 
+         * @return builder
+         * 
+         */
         public Builder onHostMaintenance(String onHostMaintenance) {
             return onHostMaintenance(Output.of(onHostMaintenance));
         }
 
+        /**
+         * @param preemptible Whether the instance is preemptible.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preemptible(@Nullable Output<Boolean> preemptible) {
             $.preemptible = preemptible;
             return this;
         }
 
+        /**
+         * @param preemptible Whether the instance is preemptible.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preemptible(Boolean preemptible) {
             return preemptible(Output.of(preemptible));
         }
 
+        /**
+         * @param provisioningModel Whether the instance is spot. If this is set as SPOT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioningModel(@Nullable Output<String> provisioningModel) {
             $.provisioningModel = provisioningModel;
             return this;
         }
 
+        /**
+         * @param provisioningModel Whether the instance is spot. If this is set as SPOT.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioningModel(String provisioningModel) {
             return provisioningModel(Output.of(provisioningModel));
         }

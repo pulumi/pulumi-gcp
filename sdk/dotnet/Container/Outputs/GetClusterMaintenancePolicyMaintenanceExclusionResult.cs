@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly string EndTime;
         public readonly string ExclusionName;
+        /// <summary>
+        /// Maintenance exclusion related options.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult> ExclusionOptions;
         public readonly string StartTime;
 

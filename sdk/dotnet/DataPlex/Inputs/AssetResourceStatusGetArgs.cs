@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
     public sealed class AssetResourceStatusGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Additional information about the current state.
+        /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 

@@ -36,6 +36,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
         /// </summary>
         public readonly string? DiskType;
+        /// <summary>
+        /// List of kubernetes taints applied to each node.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeConfigEffectiveTaint> EffectiveTaints;
         /// <summary>
         /// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
@@ -119,6 +122,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// ```
         /// </summary>
         public readonly Outputs.ClusterNodeConfigGvnic? Gvnic;
+        /// <summary>
+        /// The maintenance policy for the hosts on which the GKE VMs run on.
+        /// </summary>
         public readonly Outputs.ClusterNodeConfigHostMaintenancePolicy? HostMaintenancePolicy;
         /// <summary>
         /// The image type to use for this node. Note that changing the image type
@@ -211,6 +217,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// for how these labels are applied to clusters, node pools and nodes.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceLabels;
+        /// <summary>
+        /// Sandbox configuration for this node.
+        /// </summary>
         public readonly Outputs.ClusterNodeConfigSandboxConfig? SandboxConfig;
         /// <summary>
         /// The service account to be used by the Node VMs.

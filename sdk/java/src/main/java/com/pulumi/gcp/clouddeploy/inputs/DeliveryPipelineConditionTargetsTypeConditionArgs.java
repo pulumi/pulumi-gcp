@@ -16,16 +16,32 @@ public final class DeliveryPipelineConditionTargetsTypeConditionArgs extends com
 
     public static final DeliveryPipelineConditionTargetsTypeConditionArgs Empty = new DeliveryPipelineConditionTargetsTypeConditionArgs();
 
+    /**
+     * Human readable error message.
+     * 
+     */
     @Import(name="errorDetails")
     private @Nullable Output<String> errorDetails;
 
+    /**
+     * @return Human readable error message.
+     * 
+     */
     public Optional<Output<String>> errorDetails() {
         return Optional.ofNullable(this.errorDetails);
     }
 
+    /**
+     * True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+     * 
+     */
     @Import(name="status")
     private @Nullable Output<Boolean> status;
 
+    /**
+     * @return True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+     * 
+     */
     public Optional<Output<Boolean>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -55,20 +71,44 @@ public final class DeliveryPipelineConditionTargetsTypeConditionArgs extends com
             $ = new DeliveryPipelineConditionTargetsTypeConditionArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param errorDetails Human readable error message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorDetails(@Nullable Output<String> errorDetails) {
             $.errorDetails = errorDetails;
             return this;
         }
 
+        /**
+         * @param errorDetails Human readable error message.
+         * 
+         * @return builder
+         * 
+         */
         public Builder errorDetails(String errorDetails) {
             return errorDetails(Output.of(errorDetails));
         }
 
+        /**
+         * @param status True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(@Nullable Output<Boolean> status) {
             $.status = status;
             return this;
         }
 
+        /**
+         * @param status True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+         * 
+         * @return builder
+         * 
+         */
         public Builder status(Boolean status) {
             return status(Output.of(status));
         }

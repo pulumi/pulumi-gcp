@@ -12,17 +12,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetReservationSpecificReservation {
+    /**
+     * @return The number of resources that are allocated.
+     * 
+     */
     private Integer count;
+    /**
+     * @return How many instances are in use.
+     * 
+     */
     private Integer inUseCount;
+    /**
+     * @return The instance properties for the reservation.
+     * 
+     */
     private List<GetReservationSpecificReservationInstanceProperty> instanceProperties;
 
     private GetReservationSpecificReservation() {}
+    /**
+     * @return The number of resources that are allocated.
+     * 
+     */
     public Integer count() {
         return this.count;
     }
+    /**
+     * @return How many instances are in use.
+     * 
+     */
     public Integer inUseCount() {
         return this.inUseCount;
     }
+    /**
+     * @return The instance properties for the reservation.
+     * 
+     */
     public List<GetReservationSpecificReservationInstanceProperty> instanceProperties() {
         return this.instanceProperties;
     }

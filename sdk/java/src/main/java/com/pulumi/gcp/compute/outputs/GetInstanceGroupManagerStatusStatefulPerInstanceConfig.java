@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceGroupManagerStatusStatefulPerInstanceConfig {
+    /**
+     * @return A bit indicating if all of the group&#39;s per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+     * 
+     */
     private Boolean allEffective;
 
     private GetInstanceGroupManagerStatusStatefulPerInstanceConfig() {}
+    /**
+     * @return A bit indicating if all of the group&#39;s per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+     * 
+     */
     public Boolean allEffective() {
         return this.allEffective;
     }

@@ -10,33 +10,103 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerGitFileSource {
+    /**
+     * @return The full resource name of the bitbucket server config.
+     * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+     * 
+     */
     private String bitbucketServerConfig;
+    /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
     private String githubEnterpriseConfig;
+    /**
+     * @return The path of the file, with the repo root as the root of the path.
+     * 
+     */
     private String path;
+    /**
+     * @return The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+     * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: [&#34;UNKNOWN&#34;, &#34;CLOUD_SOURCE_REPOSITORIES&#34;, &#34;GITHUB&#34;, &#34;BITBUCKET_SERVER&#34;]
+     * 
+     */
     private String repoType;
+    /**
+     * @return The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+     * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+     * 
+     */
     private String repository;
+    /**
+     * @return The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+     * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+     * If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+     * 
+     */
     private String revision;
+    /**
+     * @return The URI of the repo (optional). If unspecified, the repo from which the trigger
+     * invocation originated is assumed to be the repo from which to read the specified path.
+     * 
+     */
     private String uri;
 
     private GetTriggerGitFileSource() {}
+    /**
+     * @return The full resource name of the bitbucket server config.
+     * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+     * 
+     */
     public String bitbucketServerConfig() {
         return this.bitbucketServerConfig;
     }
+    /**
+     * @return The full resource name of the github enterprise config.
+     * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
+     * 
+     */
     public String githubEnterpriseConfig() {
         return this.githubEnterpriseConfig;
     }
+    /**
+     * @return The path of the file, with the repo root as the root of the path.
+     * 
+     */
     public String path() {
         return this.path;
     }
+    /**
+     * @return The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
+     * Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER Possible values: [&#34;UNKNOWN&#34;, &#34;CLOUD_SOURCE_REPOSITORIES&#34;, &#34;GITHUB&#34;, &#34;BITBUCKET_SERVER&#34;]
+     * 
+     */
     public String repoType() {
         return this.repoType;
     }
+    /**
+     * @return The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+     * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+     * 
+     */
     public String repository() {
         return this.repository;
     }
+    /**
+     * @return The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
+     * filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions
+     * If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
+     * 
+     */
     public String revision() {
         return this.revision;
     }
+    /**
+     * @return The URI of the repo (optional). If unspecified, the repo from which the trigger
+     * invocation originated is assumed to be the repo from which to read the specified path.
+     * 
+     */
     public String uri() {
         return this.uri;
     }

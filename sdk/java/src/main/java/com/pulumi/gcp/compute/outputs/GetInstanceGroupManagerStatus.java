@@ -14,21 +14,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceGroupManagerStatus {
+    /**
+     * @return Status of all-instances configuration on the group.
+     * 
+     */
     private List<GetInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs;
+    /**
+     * @return A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+     * 
+     */
     private Boolean isStable;
+    /**
+     * @return Stateful status of the given Instance Group Manager.
+     * 
+     */
     private List<GetInstanceGroupManagerStatusStateful> statefuls;
+    /**
+     * @return A status of consistency of Instances&#39; versions with their target version specified by version field on Instance Group Manager.
+     * 
+     */
     private List<GetInstanceGroupManagerStatusVersionTarget> versionTargets;
 
     private GetInstanceGroupManagerStatus() {}
+    /**
+     * @return Status of all-instances configuration on the group.
+     * 
+     */
     public List<GetInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs() {
         return this.allInstancesConfigs;
     }
+    /**
+     * @return A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+     * 
+     */
     public Boolean isStable() {
         return this.isStable;
     }
+    /**
+     * @return Stateful status of the given Instance Group Manager.
+     * 
+     */
     public List<GetInstanceGroupManagerStatusStateful> statefuls() {
         return this.statefuls;
     }
+    /**
+     * @return A status of consistency of Instances&#39; versions with their target version specified by version field on Instance Group Manager.
+     * 
+     */
     public List<GetInstanceGroupManagerStatusVersionTarget> versionTargets() {
         return this.versionTargets;
     }

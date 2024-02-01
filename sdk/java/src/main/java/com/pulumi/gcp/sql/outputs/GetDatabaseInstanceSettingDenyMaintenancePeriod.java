@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatabaseInstanceSettingDenyMaintenancePeriod {
+    /**
+     * @return End date before which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+     * 
+     */
     private String endDate;
+    /**
+     * @return Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+     * 
+     */
     private String startDate;
+    /**
+     * @return Time in UTC when the &#34;deny maintenance period&#34; starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+     * 
+     */
     private String time;
 
     private GetDatabaseInstanceSettingDenyMaintenancePeriod() {}
+    /**
+     * @return End date before which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+     * 
+     */
     public String endDate() {
         return this.endDate;
     }
+    /**
+     * @return Start date after which maintenance will not take place. The date is in format yyyy-mm-dd i.e., 2020-11-01, or mm-dd, i.e., 11-01
+     * 
+     */
     public String startDate() {
         return this.startDate;
     }
+    /**
+     * @return Time in UTC when the &#34;deny maintenance period&#34; starts on start_date and ends on end_date. The time is in format: HH:mm:SS, i.e., 00:00:00
+     * 
+     */
     public String time() {
         return this.time;
     }

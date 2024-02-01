@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult
     {
+        /// <summary>
+        /// cidr_block must be specified in CIDR notation.
+        /// </summary>
         public readonly string CidrBlock;
+        /// <summary>
+        /// display_name is a field for users to identify CIDR blocks.
+        /// </summary>
         public readonly string DisplayName;
 
         [OutputConstructor]

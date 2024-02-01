@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodeConfigGcfsConfig {
+    /**
+     * @return Whether or not GCFS is enabled
+     * 
+     */
     private Boolean enabled;
 
     private GetClusterNodeConfigGcfsConfig() {}
+    /**
+     * @return Whether or not GCFS is enabled
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

@@ -10,13 +10,33 @@ import java.util.Objects;
 
 @CustomType
 public final class GetSecretRotation {
+    /**
+     * @return Timestamp in UTC at which the Secret is scheduled to rotate.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     private String nextRotationTime;
+    /**
+     * @return The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+     * If rotationPeriod is set, &#39;next_rotation_time&#39; must be set. &#39;next_rotation_time&#39; will be advanced by this period when the service automatically sends rotation notifications.
+     * 
+     */
     private String rotationPeriod;
 
     private GetSecretRotation() {}
+    /**
+     * @return Timestamp in UTC at which the Secret is scheduled to rotate.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
     public String nextRotationTime() {
         return this.nextRotationTime;
     }
+    /**
+     * @return The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
+     * If rotationPeriod is set, &#39;next_rotation_time&#39; must be set. &#39;next_rotation_time&#39; will be advanced by this period when the service automatically sends rotation notifications.
+     * 
+     */
     public String rotationPeriod() {
         return this.rotationPeriod;
     }

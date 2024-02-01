@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolNodeConfigGvnicResult
     {
+        /// <summary>
+        /// Whether or not gvnic is enabled
+        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]

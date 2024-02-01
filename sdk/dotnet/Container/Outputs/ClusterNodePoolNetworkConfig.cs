@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterNodePoolNetworkConfig
     {
+        /// <summary>
+        /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> AdditionalNodeNetworkConfigs;
+        /// <summary>
+        /// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
+        /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> AdditionalPodNetworkConfigs;
         /// <summary>
         /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
@@ -30,6 +36,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Network bandwidth tier configuration.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfig? NetworkPerformanceConfig;
+        /// <summary>
+        /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
+        /// </summary>
         public readonly Outputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig? PodCidrOverprovisionConfig;
         /// <summary>
         /// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.

@@ -12,6 +12,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipMesh {
     /**
+     * @return **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+     * 
      * @deprecated
      * Deprecated in favor of the `management` field
      * 
@@ -26,6 +28,8 @@ public final class FeatureMembershipMesh {
 
     private FeatureMembershipMesh() {}
     /**
+     * @return **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+     * 
      * @deprecated
      * Deprecated in favor of the `management` field
      * 

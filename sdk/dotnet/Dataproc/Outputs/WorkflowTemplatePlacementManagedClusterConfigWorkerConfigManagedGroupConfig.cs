@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     [OutputType]
     public sealed class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig
     {
+        /// <summary>
+        /// Output only. The name of the Instance Group Manager for this group.
+        /// </summary>
         public readonly string? InstanceGroupManagerName;
+        /// <summary>
+        /// Output only. The name of the Instance Template used for the Managed Instance Group.
+        /// </summary>
         public readonly string? InstanceTemplateName;
 
         [OutputConstructor]

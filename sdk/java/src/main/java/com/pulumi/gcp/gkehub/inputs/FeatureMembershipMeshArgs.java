@@ -16,6 +16,8 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
     public static final FeatureMembershipMeshArgs Empty = new FeatureMembershipMeshArgs();
 
     /**
+     * **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+     * 
      * @deprecated
      * Deprecated in favor of the `management` field
      * 
@@ -25,6 +27,8 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> controlPlane;
 
     /**
+     * @return **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+     * 
      * @deprecated
      * Deprecated in favor of the `management` field
      * 
@@ -75,6 +79,8 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param controlPlane **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+         * 
          * @return builder
          * 
          * @deprecated
@@ -88,6 +94,8 @@ public final class FeatureMembershipMeshArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param controlPlane **DEPRECATED** Whether to automatically manage Service Mesh control planes. Possible values: CONTROL_PLANE_MANAGEMENT_UNSPECIFIED, AUTOMATIC, MANUAL
+         * 
          * @return builder
          * 
          * @deprecated

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAiIndexDeployedIndex {
+    /**
+     * @return The ID of the DeployedIndex in the above IndexEndpoint.
+     * 
+     */
     private String deployedIndexId;
+    /**
+     * @return A resource name of the IndexEndpoint.
+     * 
+     */
     private String indexEndpoint;
 
     private GetAiIndexDeployedIndex() {}
+    /**
+     * @return The ID of the DeployedIndex in the above IndexEndpoint.
+     * 
+     */
     public String deployedIndexId() {
         return this.deployedIndexId;
     }
+    /**
+     * @return A resource name of the IndexEndpoint.
+     * 
+     */
     public String indexEndpoint() {
         return this.indexEndpoint;
     }

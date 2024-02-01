@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterMasterAuthorizedNetworksConfigResult
     {
+        /// <summary>
+        /// External networks that can access the Kubernetes cluster master through HTTPS.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult> CidrBlocks;
+        /// <summary>
+        /// Whether master is accessbile via Google Compute Engine Public IP addresses.
+        /// </summary>
         public readonly bool GcpPublicCidrsAccessEnabled;
 
         [OutputConstructor]

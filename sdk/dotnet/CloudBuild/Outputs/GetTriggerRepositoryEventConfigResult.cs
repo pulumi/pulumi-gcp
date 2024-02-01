@@ -13,8 +13,17 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerRepositoryEventConfigResult
     {
+        /// <summary>
+        /// Contains filter properties for matching Pull Requests.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTriggerRepositoryEventConfigPullRequestResult> PullRequests;
+        /// <summary>
+        /// Contains filter properties for matching git pushes.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetTriggerRepositoryEventConfigPushResult> Pushes;
+        /// <summary>
+        /// The resource name of the Repo API resource.
+        /// </summary>
         public readonly string Repository;
 
         [OutputConstructor]

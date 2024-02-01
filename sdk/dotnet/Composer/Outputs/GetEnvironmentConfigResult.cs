@@ -13,24 +13,81 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigResult
     {
+        /// <summary>
+        /// The URI of the Apache Airflow Web UI hosted within this environment.
+        /// </summary>
         public readonly string AirflowUri;
+        /// <summary>
+        /// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        /// </summary>
         public readonly string DagGcsPrefix;
+        /// <summary>
+        /// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigDatabaseConfigResult> DatabaseConfigs;
+        /// <summary>
+        /// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
+        /// </summary>
         public readonly bool EnablePrivateBuildsOnly;
+        /// <summary>
+        /// Optional. If true, a private Composer environment will be created.
+        /// </summary>
         public readonly bool EnablePrivateEnvironment;
+        /// <summary>
+        /// The encryption options for the Composer environment and its dependencies.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigEncryptionConfigResult> EncryptionConfigs;
+        /// <summary>
+        /// The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
         public readonly string EnvironmentSize;
+        /// <summary>
+        /// The Kubernetes Engine cluster used to run this environment.
+        /// </summary>
         public readonly string GkeCluster;
+        /// <summary>
+        /// The configuration for Cloud Composer maintenance window.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigMaintenanceWindowResult> MaintenanceWindows;
+        /// <summary>
+        /// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigResult> MasterAuthorizedNetworksConfigs;
+        /// <summary>
+        /// The configuration used for the Kubernetes Engine cluster.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigResult> NodeConfigs;
+        /// <summary>
+        /// The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// </summary>
         public readonly int NodeCount;
+        /// <summary>
+        /// The configuration used for the Private IP Cloud Composer environment.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult> PrivateEnvironmentConfigs;
+        /// <summary>
+        /// The recovery configuration settings for the Cloud Composer environment
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigRecoveryConfigResult> RecoveryConfigs;
+        /// <summary>
+        /// Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
+        /// </summary>
         public readonly string ResilienceMode;
+        /// <summary>
+        /// The configuration settings for software inside the environment.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigSoftwareConfigResult> SoftwareConfigs;
+        /// <summary>
+        /// The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWebServerConfigResult> WebServerConfigs;
+        /// <summary>
+        /// Network-level access control policy for the Airflow web server.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult> WebServerNetworkAccessControls;
+        /// <summary>
+        /// The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigResult> WorkloadsConfigs;
 
         [OutputConstructor]

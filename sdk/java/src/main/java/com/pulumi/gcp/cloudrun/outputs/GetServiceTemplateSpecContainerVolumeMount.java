@@ -10,6 +10,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecContainerVolumeMount {
+    /**
+     * @return Path within the container at which the volume should be mounted.  Must
+     * not contain &#39;:&#39;.
+     * 
+     */
     private String mountPath;
     /**
      * @return The name of the Cloud Run Service.
@@ -18,6 +23,11 @@ public final class GetServiceTemplateSpecContainerVolumeMount {
     private String name;
 
     private GetServiceTemplateSpecContainerVolumeMount() {}
+    /**
+     * @return Path within the container at which the volume should be mounted.  Must
+     * not contain &#39;:&#39;.
+     * 
+     */
     public String mountPath() {
         return this.mountPath;
     }

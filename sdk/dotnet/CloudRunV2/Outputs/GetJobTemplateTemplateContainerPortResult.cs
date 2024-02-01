@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     [OutputType]
     public sealed class GetJobTemplateTemplateContainerPortResult
     {
+        /// <summary>
+        /// Port number the container listens on. This must be a valid TCP port number, 0 &lt; containerPort &lt; 65536.
+        /// </summary>
         public readonly int ContainerPort;
         /// <summary>
         /// The name of the Cloud Run v2 Job.

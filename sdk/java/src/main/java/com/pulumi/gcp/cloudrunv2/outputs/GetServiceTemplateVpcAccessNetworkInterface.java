@@ -11,17 +11,49 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateVpcAccessNetworkInterface {
+    /**
+     * @return The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+     * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+     * looked up from the subnetwork.
+     * 
+     */
     private String network;
+    /**
+     * @return The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+     * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+     * subnetwork with the same name with the network will be used.
+     * 
+     */
     private String subnetwork;
+    /**
+     * @return Network tags applied to this Cloud Run service.
+     * 
+     */
     private List<String> tags;
 
     private GetServiceTemplateVpcAccessNetworkInterface() {}
+    /**
+     * @return The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
+     * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
+     * looked up from the subnetwork.
+     * 
+     */
     public String network() {
         return this.network;
     }
+    /**
+     * @return The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
+     * network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
+     * subnetwork with the same name with the network will be used.
+     * 
+     */
     public String subnetwork() {
         return this.subnetwork;
     }
+    /**
+     * @return Network tags applied to this Cloud Run service.
+     * 
+     */
     public List<String> tags() {
         return this.tags;
     }

@@ -11,33 +11,93 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionBuildConfigSourceRepoSource {
+    /**
+     * @return Regex matching branches to build.
+     * 
+     */
     private String branchName;
+    /**
+     * @return Regex matching tags to build.
+     * 
+     */
     private String commitSha;
+    /**
+     * @return Directory, relative to the source root, in which to run the build.
+     * 
+     */
     private String dir;
+    /**
+     * @return Only trigger a build if the revision regex does
+     * NOT match the revision regex.
+     * 
+     */
     private Boolean invertRegex;
+    /**
+     * @return ID of the project that owns the Cloud Source Repository. If omitted, the
+     * project ID requesting the build is assumed.
+     * 
+     */
     private String projectId;
+    /**
+     * @return Name of the Cloud Source Repository.
+     * 
+     */
     private String repoName;
+    /**
+     * @return Regex matching tags to build.
+     * 
+     */
     private String tagName;
 
     private GetFunctionBuildConfigSourceRepoSource() {}
+    /**
+     * @return Regex matching branches to build.
+     * 
+     */
     public String branchName() {
         return this.branchName;
     }
+    /**
+     * @return Regex matching tags to build.
+     * 
+     */
     public String commitSha() {
         return this.commitSha;
     }
+    /**
+     * @return Directory, relative to the source root, in which to run the build.
+     * 
+     */
     public String dir() {
         return this.dir;
     }
+    /**
+     * @return Only trigger a build if the revision regex does
+     * NOT match the revision regex.
+     * 
+     */
     public Boolean invertRegex() {
         return this.invertRegex;
     }
+    /**
+     * @return ID of the project that owns the Cloud Source Repository. If omitted, the
+     * project ID requesting the build is assumed.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return Name of the Cloud Source Repository.
+     * 
+     */
     public String repoName() {
         return this.repoName;
     }
+    /**
+     * @return Regex matching tags to build.
+     * 
+     */
     public String tagName() {
         return this.tagName;
     }

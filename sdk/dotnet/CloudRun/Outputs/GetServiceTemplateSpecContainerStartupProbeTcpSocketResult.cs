@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecContainerStartupProbeTcpSocketResult
     {
+        /// <summary>
+        /// Port number to access on the container. Number must be in the range 1 to 65535.
+        /// If not specified, defaults to the same value as container.ports[0].containerPort.
+        /// </summary>
         public readonly int Port;
 
         [OutputConstructor]

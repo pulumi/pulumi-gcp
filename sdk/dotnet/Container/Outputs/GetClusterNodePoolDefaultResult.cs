@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolDefaultResult
     {
+        /// <summary>
+        /// Subset of NodeConfig message that has defaults.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolDefaultNodeConfigDefaultResult> NodeConfigDefaults;
 
         [OutputConstructor]

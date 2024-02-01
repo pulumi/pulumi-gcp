@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     [OutputType]
     public sealed class GetGroupMembershipsMembershipResult
     {
+        /// <summary>
+        /// The time when the Membership was created.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
@@ -38,6 +41,9 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         /// The type of the membership.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The time when the Membership was last updated.
+        /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]

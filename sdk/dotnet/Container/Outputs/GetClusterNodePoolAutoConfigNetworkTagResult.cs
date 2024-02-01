@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolAutoConfigNetworkTagResult
     {
+        /// <summary>
+        /// List of network tags applied to auto-provisioned node pools.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]

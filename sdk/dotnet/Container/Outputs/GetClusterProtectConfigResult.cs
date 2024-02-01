@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterProtectConfigResult
     {
+        /// <summary>
+        /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterProtectConfigWorkloadConfigResult> WorkloadConfigs;
+        /// <summary>
+        /// Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+        /// </summary>
         public readonly string WorkloadVulnerabilityMode;
 
         [OutputConstructor]

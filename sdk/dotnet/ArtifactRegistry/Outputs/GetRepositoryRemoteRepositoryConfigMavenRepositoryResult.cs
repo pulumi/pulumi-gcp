@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult
     {
+        /// <summary>
+        /// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
+        /// </summary>
         public readonly string PublicRepository;
 
         [OutputConstructor]

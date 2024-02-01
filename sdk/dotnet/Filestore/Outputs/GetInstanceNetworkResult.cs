@@ -13,10 +13,30 @@ namespace Pulumi.Gcp.Filestore.Outputs
     [OutputType]
     public sealed class GetInstanceNetworkResult
     {
+        /// <summary>
+        /// The network connect mode of the Filestore instance.
+        /// If not provided, the connect mode defaults to
+        /// DIRECT_PEERING. Default value: "DIRECT_PEERING" Possible values: ["DIRECT_PEERING", "PRIVATE_SERVICE_ACCESS"]
+        /// </summary>
         public readonly string ConnectMode;
+        /// <summary>
+        /// A list of IPv4 or IPv6 addresses.
+        /// </summary>
         public readonly ImmutableArray<string> IpAddresses;
+        /// <summary>
+        /// IP versions for which the instance has
+        /// IP addresses assigned. Possible values: ["ADDRESS_MODE_UNSPECIFIED", "MODE_IPV4", "MODE_IPV6"]
+        /// </summary>
         public readonly ImmutableArray<string> Modes;
+        /// <summary>
+        /// The name of the GCE VPC network to which the
+        /// instance is connected.
+        /// </summary>
         public readonly string Network;
+        /// <summary>
+        /// A /29 CIDR block that identifies the range of IP
+        /// addresses reserved for this instance.
+        /// </summary>
         public readonly string ReservedIpRange;
 
         [OutputConstructor]

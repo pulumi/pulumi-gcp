@@ -49,9 +49,17 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
         return Optional.ofNullable(this.instanceFlexibilityPolicy);
     }
 
+    /**
+     * List of preemptible instance names which have been assigned to the cluster.
+     * 
+     */
     @Import(name="instanceNames")
     private @Nullable Output<List<String>> instanceNames;
 
+    /**
+     * @return List of preemptible instance names which have been assigned to the cluster.
+     * 
+     */
     public Optional<Output<List<String>>> instanceNames() {
         return Optional.ofNullable(this.instanceNames);
     }
@@ -166,15 +174,33 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigArgs extends com.p
             return instanceFlexibilityPolicy(Output.of(instanceFlexibilityPolicy));
         }
 
+        /**
+         * @param instanceNames List of preemptible instance names which have been assigned to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceNames(@Nullable Output<List<String>> instanceNames) {
             $.instanceNames = instanceNames;
             return this;
         }
 
+        /**
+         * @param instanceNames List of preemptible instance names which have been assigned to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceNames(List<String> instanceNames) {
             return instanceNames(Output.of(instanceNames));
         }
 
+        /**
+         * @param instanceNames List of preemptible instance names which have been assigned to the cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceNames(String... instanceNames) {
             return instanceNames(List.of(instanceNames));
         }

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     [OutputType]
     public sealed class DeliveryPipelineConditionPipelineReadyCondition
     {
+        /// <summary>
+        /// True if the Pipeline is in a valid state. Otherwise at least one condition in `PipelineCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Pipeline.
+        /// </summary>
         public readonly bool? Status;
         /// <summary>
         /// Output only. Most recent time at which the pipeline was updated.

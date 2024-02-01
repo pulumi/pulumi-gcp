@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMasterAuthorizedNetworksConfigCidrBlock {
+    /**
+     * @return External network that can access Kubernetes master through HTTPS. Must be specified in CIDR notation.
+     * 
+     */
     private String cidrBlock;
+    /**
+     * @return Field for users to identify CIDR blocks.
+     * 
+     */
     private String displayName;
 
     private GetClusterMasterAuthorizedNetworksConfigCidrBlock() {}
+    /**
+     * @return External network that can access Kubernetes master through HTTPS. Must be specified in CIDR notation.
+     * 
+     */
     public String cidrBlock() {
         return this.cidrBlock;
     }
+    /**
+     * @return Field for users to identify CIDR blocks.
+     * 
+     */
     public String displayName() {
         return this.displayName;
     }

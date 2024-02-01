@@ -13,7 +13,14 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerWebhookConfigResult
     {
+        /// <summary>
+        /// Resource name for the secret required as a URL parameter.
+        /// </summary>
         public readonly string Secret;
+        /// <summary>
+        /// Potential issues with the underlying Pub/Sub subscription configuration.
+        /// Only populated on get requests.
+        /// </summary>
         public readonly string State;
 
         [OutputConstructor]

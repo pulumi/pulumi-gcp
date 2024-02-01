@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
+    /**
+     * @return Name for pod secondary ipv4 range which has the actual range defined ahead.
+     * 
+     */
     private List<String> podRangeNames;
 
     private GetClusterIpAllocationPolicyAdditionalPodRangesConfig() {}
+    /**
+     * @return Name for pod secondary ipv4 range which has the actual range defined ahead.
+     * 
+     */
     public List<String> podRangeNames() {
         return this.podRangeNames;
     }

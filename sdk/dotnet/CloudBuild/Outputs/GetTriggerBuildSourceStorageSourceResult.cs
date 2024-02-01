@@ -13,8 +13,19 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerBuildSourceStorageSourceResult
     {
+        /// <summary>
+        /// Google Cloud Storage bucket containing the source.
+        /// </summary>
         public readonly string Bucket;
+        /// <summary>
+        /// Google Cloud Storage generation for the object.
+        /// If the generation is omitted, the latest generation will be used
+        /// </summary>
         public readonly string Generation;
+        /// <summary>
+        /// Google Cloud Storage object containing the source.
+        /// This object must be a gzipped archive file (.tar.gz) containing source to build.
+        /// </summary>
         public readonly string Object;
 
         [OutputConstructor]

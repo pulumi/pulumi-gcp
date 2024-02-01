@@ -12,7 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolPlacementPolicy {
+    /**
+     * @return If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+     * 
+     */
     private @Nullable String policyName;
+    /**
+     * @return TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+     * 
+     */
     private @Nullable String tpuTopology;
     /**
      * @return Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -22,9 +30,17 @@ public final class ClusterNodePoolPlacementPolicy {
     private String type;
 
     private ClusterNodePoolPlacementPolicy() {}
+    /**
+     * @return If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in the same project and region as the node pool. If not found, InvalidArgument error is returned.
+     * 
+     */
     public Optional<String> policyName() {
         return Optional.ofNullable(this.policyName);
     }
+    /**
+     * @return TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+     * 
+     */
     public Optional<String> tpuTopology() {
         return Optional.ofNullable(this.tpuTopology);
     }

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterNodePool
     {
+        /// <summary>
+        /// Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+        /// </summary>
         public readonly Outputs.ClusterNodePoolAutoscaling? Autoscaling;
         /// <summary>
         /// The number of nodes to create in this
@@ -23,12 +26,21 @@ namespace Pulumi.Gcp.Container.Outputs
         /// `remove_default_node_pool` to `true`.
         /// </summary>
         public readonly int? InitialNodeCount;
+        /// <summary>
+        /// The resource URLs of the managed instance groups associated with this node pool.
+        /// </summary>
         public readonly ImmutableArray<string> InstanceGroupUrls;
+        /// <summary>
+        /// List of instance group URLs which have been assigned to this node pool.
+        /// </summary>
         public readonly ImmutableArray<string> ManagedInstanceGroupUrls;
         /// <summary>
         /// NodeManagement configuration for this NodePool. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolManagement? Management;
+        /// <summary>
+        /// The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
+        /// </summary>
         public readonly int? MaxPodsPerNode;
         /// <summary>
         /// The name of the cluster, unique within the project and
@@ -37,6 +49,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// - - -
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+        /// </summary>
         public readonly string? NamePrefix;
         /// <summary>
         /// Configuration for
@@ -51,6 +66,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfig? NodeConfig;
+        /// <summary>
+        /// The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
+        /// </summary>
         public readonly int? NodeCount;
         /// <summary>
         /// The list of zones in which the cluster's nodes
@@ -66,7 +84,13 @@ namespace Pulumi.Gcp.Container.Outputs
         /// preferred.
         /// </summary>
         public readonly ImmutableArray<string> NodeLocations;
+        /// <summary>
+        /// Specifies the node placement policy
+        /// </summary>
         public readonly Outputs.ClusterNodePoolPlacementPolicy? PlacementPolicy;
+        /// <summary>
+        /// Specifies the configuration of queued provisioning
+        /// </summary>
         public readonly Outputs.ClusterNodePoolQueuedProvisioning? QueuedProvisioning;
         /// <summary>
         /// Specifies the upgrade settings for NAP created node pools. Structure is documented below.

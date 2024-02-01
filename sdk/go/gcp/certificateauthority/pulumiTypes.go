@@ -15278,8 +15278,12 @@ func (o CertificateTemplatePredefinedValuesPolicyIdArrayOutput) Index(i pulumi.I
 }
 
 type GetAuthorityAccessUrl struct {
-	CaCertificateAccessUrl string   `pulumi:"caCertificateAccessUrl"`
-	CrlAccessUrls          []string `pulumi:"crlAccessUrls"`
+	// The URL where this CertificateAuthority's CA certificate is published. This will only be
+	// set for CAs that have been activated.
+	CaCertificateAccessUrl string `pulumi:"caCertificateAccessUrl"`
+	// The URL where this CertificateAuthority's CRLs are published. This will only be set for
+	// CAs that have been activated.
+	CrlAccessUrls []string `pulumi:"crlAccessUrls"`
 }
 
 // GetAuthorityAccessUrlInput is an input type that accepts GetAuthorityAccessUrlArgs and GetAuthorityAccessUrlOutput values.
@@ -15294,8 +15298,12 @@ type GetAuthorityAccessUrlInput interface {
 }
 
 type GetAuthorityAccessUrlArgs struct {
-	CaCertificateAccessUrl pulumi.StringInput      `pulumi:"caCertificateAccessUrl"`
-	CrlAccessUrls          pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
+	// The URL where this CertificateAuthority's CA certificate is published. This will only be
+	// set for CAs that have been activated.
+	CaCertificateAccessUrl pulumi.StringInput `pulumi:"caCertificateAccessUrl"`
+	// The URL where this CertificateAuthority's CRLs are published. This will only be set for
+	// CAs that have been activated.
+	CrlAccessUrls pulumi.StringArrayInput `pulumi:"crlAccessUrls"`
 }
 
 func (GetAuthorityAccessUrlArgs) ElementType() reflect.Type {
@@ -15349,10 +15357,14 @@ func (o GetAuthorityAccessUrlOutput) ToGetAuthorityAccessUrlOutputWithContext(ct
 	return o
 }
 
+// The URL where this CertificateAuthority's CA certificate is published. This will only be
+// set for CAs that have been activated.
 func (o GetAuthorityAccessUrlOutput) CaCertificateAccessUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityAccessUrl) string { return v.CaCertificateAccessUrl }).(pulumi.StringOutput)
 }
 
+// The URL where this CertificateAuthority's CRLs are published. This will only be set for
+// CAs that have been activated.
 func (o GetAuthorityAccessUrlOutput) CrlAccessUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityAccessUrl) []string { return v.CrlAccessUrls }).(pulumi.StringArrayOutput)
 }
@@ -15378,8 +15390,10 @@ func (o GetAuthorityAccessUrlArrayOutput) Index(i pulumi.IntInput) GetAuthorityA
 }
 
 type GetAuthorityConfig struct {
+	// Specifies some of the values in a certificate that are related to the subject.
 	SubjectConfigs []GetAuthorityConfigSubjectConfig `pulumi:"subjectConfigs"`
-	X509Configs    []GetAuthorityConfigX509Config    `pulumi:"x509Configs"`
+	// Describes how some of the technical X.509 fields in a certificate should be populated.
+	X509Configs []GetAuthorityConfigX509Config `pulumi:"x509Configs"`
 }
 
 // GetAuthorityConfigInput is an input type that accepts GetAuthorityConfigArgs and GetAuthorityConfigOutput values.
@@ -15394,8 +15408,10 @@ type GetAuthorityConfigInput interface {
 }
 
 type GetAuthorityConfigArgs struct {
+	// Specifies some of the values in a certificate that are related to the subject.
 	SubjectConfigs GetAuthorityConfigSubjectConfigArrayInput `pulumi:"subjectConfigs"`
-	X509Configs    GetAuthorityConfigX509ConfigArrayInput    `pulumi:"x509Configs"`
+	// Describes how some of the technical X.509 fields in a certificate should be populated.
+	X509Configs GetAuthorityConfigX509ConfigArrayInput `pulumi:"x509Configs"`
 }
 
 func (GetAuthorityConfigArgs) ElementType() reflect.Type {
@@ -15449,10 +15465,12 @@ func (o GetAuthorityConfigOutput) ToGetAuthorityConfigOutputWithContext(ctx cont
 	return o
 }
 
+// Specifies some of the values in a certificate that are related to the subject.
 func (o GetAuthorityConfigOutput) SubjectConfigs() GetAuthorityConfigSubjectConfigArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfig) []GetAuthorityConfigSubjectConfig { return v.SubjectConfigs }).(GetAuthorityConfigSubjectConfigArrayOutput)
 }
 
+// Describes how some of the technical X.509 fields in a certificate should be populated.
 func (o GetAuthorityConfigOutput) X509Configs() GetAuthorityConfigX509ConfigArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfig) []GetAuthorityConfigX509Config { return v.X509Configs }).(GetAuthorityConfigX509ConfigArrayOutput)
 }
@@ -15478,8 +15496,10 @@ func (o GetAuthorityConfigArrayOutput) Index(i pulumi.IntInput) GetAuthorityConf
 }
 
 type GetAuthorityConfigSubjectConfig struct {
+	// The subject alternative name fields.
 	SubjectAltNames []GetAuthorityConfigSubjectConfigSubjectAltName `pulumi:"subjectAltNames"`
-	Subjects        []GetAuthorityConfigSubjectConfigSubject        `pulumi:"subjects"`
+	// Contains distinguished name fields such as the location and organization.
+	Subjects []GetAuthorityConfigSubjectConfigSubject `pulumi:"subjects"`
 }
 
 // GetAuthorityConfigSubjectConfigInput is an input type that accepts GetAuthorityConfigSubjectConfigArgs and GetAuthorityConfigSubjectConfigOutput values.
@@ -15494,8 +15514,10 @@ type GetAuthorityConfigSubjectConfigInput interface {
 }
 
 type GetAuthorityConfigSubjectConfigArgs struct {
+	// The subject alternative name fields.
 	SubjectAltNames GetAuthorityConfigSubjectConfigSubjectAltNameArrayInput `pulumi:"subjectAltNames"`
-	Subjects        GetAuthorityConfigSubjectConfigSubjectArrayInput        `pulumi:"subjects"`
+	// Contains distinguished name fields such as the location and organization.
+	Subjects GetAuthorityConfigSubjectConfigSubjectArrayInput `pulumi:"subjects"`
 }
 
 func (GetAuthorityConfigSubjectConfigArgs) ElementType() reflect.Type {
@@ -15549,12 +15571,14 @@ func (o GetAuthorityConfigSubjectConfigOutput) ToGetAuthorityConfigSubjectConfig
 	return o
 }
 
+// The subject alternative name fields.
 func (o GetAuthorityConfigSubjectConfigOutput) SubjectAltNames() GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfig) []GetAuthorityConfigSubjectConfigSubjectAltName {
 		return v.SubjectAltNames
 	}).(GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput)
 }
 
+// Contains distinguished name fields such as the location and organization.
 func (o GetAuthorityConfigSubjectConfigOutput) Subjects() GetAuthorityConfigSubjectConfigSubjectArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfig) []GetAuthorityConfigSubjectConfigSubject { return v.Subjects }).(GetAuthorityConfigSubjectConfigSubjectArrayOutput)
 }
@@ -15580,14 +15604,22 @@ func (o GetAuthorityConfigSubjectConfigArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetAuthorityConfigSubjectConfigSubject struct {
-	CommonName         string `pulumi:"commonName"`
-	CountryCode        string `pulumi:"countryCode"`
-	Locality           string `pulumi:"locality"`
-	Organization       string `pulumi:"organization"`
+	// The common name of the distinguished name.
+	CommonName string `pulumi:"commonName"`
+	// The country code of the subject.
+	CountryCode string `pulumi:"countryCode"`
+	// The locality or city of the subject.
+	Locality string `pulumi:"locality"`
+	// The organization of the subject.
+	Organization string `pulumi:"organization"`
+	// The organizational unit of the subject.
 	OrganizationalUnit string `pulumi:"organizationalUnit"`
-	PostalCode         string `pulumi:"postalCode"`
-	Province           string `pulumi:"province"`
-	StreetAddress      string `pulumi:"streetAddress"`
+	// The postal code of the subject.
+	PostalCode string `pulumi:"postalCode"`
+	// The province, territory, or regional state of the subject.
+	Province string `pulumi:"province"`
+	// The street address of the subject.
+	StreetAddress string `pulumi:"streetAddress"`
 }
 
 // GetAuthorityConfigSubjectConfigSubjectInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectArgs and GetAuthorityConfigSubjectConfigSubjectOutput values.
@@ -15602,14 +15634,22 @@ type GetAuthorityConfigSubjectConfigSubjectInput interface {
 }
 
 type GetAuthorityConfigSubjectConfigSubjectArgs struct {
-	CommonName         pulumi.StringInput `pulumi:"commonName"`
-	CountryCode        pulumi.StringInput `pulumi:"countryCode"`
-	Locality           pulumi.StringInput `pulumi:"locality"`
-	Organization       pulumi.StringInput `pulumi:"organization"`
+	// The common name of the distinguished name.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+	// The country code of the subject.
+	CountryCode pulumi.StringInput `pulumi:"countryCode"`
+	// The locality or city of the subject.
+	Locality pulumi.StringInput `pulumi:"locality"`
+	// The organization of the subject.
+	Organization pulumi.StringInput `pulumi:"organization"`
+	// The organizational unit of the subject.
 	OrganizationalUnit pulumi.StringInput `pulumi:"organizationalUnit"`
-	PostalCode         pulumi.StringInput `pulumi:"postalCode"`
-	Province           pulumi.StringInput `pulumi:"province"`
-	StreetAddress      pulumi.StringInput `pulumi:"streetAddress"`
+	// The postal code of the subject.
+	PostalCode pulumi.StringInput `pulumi:"postalCode"`
+	// The province, territory, or regional state of the subject.
+	Province pulumi.StringInput `pulumi:"province"`
+	// The street address of the subject.
+	StreetAddress pulumi.StringInput `pulumi:"streetAddress"`
 }
 
 func (GetAuthorityConfigSubjectConfigSubjectArgs) ElementType() reflect.Type {
@@ -15663,34 +15703,42 @@ func (o GetAuthorityConfigSubjectConfigSubjectOutput) ToGetAuthorityConfigSubjec
 	return o
 }
 
+// The common name of the distinguished name.
 func (o GetAuthorityConfigSubjectConfigSubjectOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
+// The country code of the subject.
 func (o GetAuthorityConfigSubjectConfigSubjectOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.CountryCode }).(pulumi.StringOutput)
 }
 
+// The locality or city of the subject.
 func (o GetAuthorityConfigSubjectConfigSubjectOutput) Locality() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.Locality }).(pulumi.StringOutput)
 }
 
+// The organization of the subject.
 func (o GetAuthorityConfigSubjectConfigSubjectOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.Organization }).(pulumi.StringOutput)
 }
 
+// The organizational unit of the subject.
 func (o GetAuthorityConfigSubjectConfigSubjectOutput) OrganizationalUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.OrganizationalUnit }).(pulumi.StringOutput)
 }
 
+// The postal code of the subject.
 func (o GetAuthorityConfigSubjectConfigSubjectOutput) PostalCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.PostalCode }).(pulumi.StringOutput)
 }
 
+// The province, territory, or regional state of the subject.
 func (o GetAuthorityConfigSubjectConfigSubjectOutput) Province() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.Province }).(pulumi.StringOutput)
 }
 
+// The street address of the subject.
 func (o GetAuthorityConfigSubjectConfigSubjectOutput) StreetAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubject) string { return v.StreetAddress }).(pulumi.StringOutput)
 }
@@ -15716,10 +15764,14 @@ func (o GetAuthorityConfigSubjectConfigSubjectArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetAuthorityConfigSubjectConfigSubjectAltName struct {
-	DnsNames       []string `pulumi:"dnsNames"`
+	// Contains only valid, fully-qualified host names.
+	DnsNames []string `pulumi:"dnsNames"`
+	// Contains only valid RFC 2822 E-mail addresses.
 	EmailAddresses []string `pulumi:"emailAddresses"`
-	IpAddresses    []string `pulumi:"ipAddresses"`
-	Uris           []string `pulumi:"uris"`
+	// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+	IpAddresses []string `pulumi:"ipAddresses"`
+	// Contains only valid RFC 3986 URIs.
+	Uris []string `pulumi:"uris"`
 }
 
 // GetAuthorityConfigSubjectConfigSubjectAltNameInput is an input type that accepts GetAuthorityConfigSubjectConfigSubjectAltNameArgs and GetAuthorityConfigSubjectConfigSubjectAltNameOutput values.
@@ -15734,10 +15786,14 @@ type GetAuthorityConfigSubjectConfigSubjectAltNameInput interface {
 }
 
 type GetAuthorityConfigSubjectConfigSubjectAltNameArgs struct {
-	DnsNames       pulumi.StringArrayInput `pulumi:"dnsNames"`
+	// Contains only valid, fully-qualified host names.
+	DnsNames pulumi.StringArrayInput `pulumi:"dnsNames"`
+	// Contains only valid RFC 2822 E-mail addresses.
 	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
-	IpAddresses    pulumi.StringArrayInput `pulumi:"ipAddresses"`
-	Uris           pulumi.StringArrayInput `pulumi:"uris"`
+	// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	// Contains only valid RFC 3986 URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
 }
 
 func (GetAuthorityConfigSubjectConfigSubjectAltNameArgs) ElementType() reflect.Type {
@@ -15791,18 +15847,22 @@ func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) ToGetAuthorityConfi
 	return o
 }
 
+// Contains only valid, fully-qualified host names.
 func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) DnsNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubjectAltName) []string { return v.DnsNames }).(pulumi.StringArrayOutput)
 }
 
+// Contains only valid RFC 2822 E-mail addresses.
 func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) EmailAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubjectAltName) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
 }
 
+// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
 func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubjectAltName) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
 
+// Contains only valid RFC 3986 URIs.
 func (o GetAuthorityConfigSubjectConfigSubjectAltNameOutput) Uris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectConfigSubjectAltName) []string { return v.Uris }).(pulumi.StringArrayOutput)
 }
@@ -15828,12 +15888,19 @@ func (o GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput) Index(i pulumi
 }
 
 type GetAuthorityConfigX509Config struct {
+	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 	AdditionalExtensions []GetAuthorityConfigX509ConfigAdditionalExtension `pulumi:"additionalExtensions"`
-	AiaOcspServers       []string                                          `pulumi:"aiaOcspServers"`
-	CaOptions            []GetAuthorityConfigX509ConfigCaOption            `pulumi:"caOptions"`
-	KeyUsages            []GetAuthorityConfigX509ConfigKeyUsage            `pulumi:"keyUsages"`
-	NameConstraints      []GetAuthorityConfigX509ConfigNameConstraint      `pulumi:"nameConstraints"`
-	PolicyIds            []GetAuthorityConfigX509ConfigPolicyId            `pulumi:"policyIds"`
+	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+	// "Authority Information Access" extension in the certificate.
+	AiaOcspServers []string `pulumi:"aiaOcspServers"`
+	// Describes values that are relevant in a CA certificate.
+	CaOptions []GetAuthorityConfigX509ConfigCaOption `pulumi:"caOptions"`
+	// Indicates the intended use for keys that correspond to a certificate.
+	KeyUsages []GetAuthorityConfigX509ConfigKeyUsage `pulumi:"keyUsages"`
+	// Describes the X.509 name constraints extension.
+	NameConstraints []GetAuthorityConfigX509ConfigNameConstraint `pulumi:"nameConstraints"`
+	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	PolicyIds []GetAuthorityConfigX509ConfigPolicyId `pulumi:"policyIds"`
 }
 
 // GetAuthorityConfigX509ConfigInput is an input type that accepts GetAuthorityConfigX509ConfigArgs and GetAuthorityConfigX509ConfigOutput values.
@@ -15848,12 +15915,19 @@ type GetAuthorityConfigX509ConfigInput interface {
 }
 
 type GetAuthorityConfigX509ConfigArgs struct {
+	// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 	AdditionalExtensions GetAuthorityConfigX509ConfigAdditionalExtensionArrayInput `pulumi:"additionalExtensions"`
-	AiaOcspServers       pulumi.StringArrayInput                                   `pulumi:"aiaOcspServers"`
-	CaOptions            GetAuthorityConfigX509ConfigCaOptionArrayInput            `pulumi:"caOptions"`
-	KeyUsages            GetAuthorityConfigX509ConfigKeyUsageArrayInput            `pulumi:"keyUsages"`
-	NameConstraints      GetAuthorityConfigX509ConfigNameConstraintArrayInput      `pulumi:"nameConstraints"`
-	PolicyIds            GetAuthorityConfigX509ConfigPolicyIdArrayInput            `pulumi:"policyIds"`
+	// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+	// "Authority Information Access" extension in the certificate.
+	AiaOcspServers pulumi.StringArrayInput `pulumi:"aiaOcspServers"`
+	// Describes values that are relevant in a CA certificate.
+	CaOptions GetAuthorityConfigX509ConfigCaOptionArrayInput `pulumi:"caOptions"`
+	// Indicates the intended use for keys that correspond to a certificate.
+	KeyUsages GetAuthorityConfigX509ConfigKeyUsageArrayInput `pulumi:"keyUsages"`
+	// Describes the X.509 name constraints extension.
+	NameConstraints GetAuthorityConfigX509ConfigNameConstraintArrayInput `pulumi:"nameConstraints"`
+	// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
+	PolicyIds GetAuthorityConfigX509ConfigPolicyIdArrayInput `pulumi:"policyIds"`
 }
 
 func (GetAuthorityConfigX509ConfigArgs) ElementType() reflect.Type {
@@ -15907,30 +15981,37 @@ func (o GetAuthorityConfigX509ConfigOutput) ToGetAuthorityConfigX509ConfigOutput
 	return o
 }
 
+// Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 func (o GetAuthorityConfigX509ConfigOutput) AdditionalExtensions() GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigAdditionalExtension {
 		return v.AdditionalExtensions
 	}).(GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput)
 }
 
+// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
+// "Authority Information Access" extension in the certificate.
 func (o GetAuthorityConfigX509ConfigOutput) AiaOcspServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509Config) []string { return v.AiaOcspServers }).(pulumi.StringArrayOutput)
 }
 
+// Describes values that are relevant in a CA certificate.
 func (o GetAuthorityConfigX509ConfigOutput) CaOptions() GetAuthorityConfigX509ConfigCaOptionArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigCaOption { return v.CaOptions }).(GetAuthorityConfigX509ConfigCaOptionArrayOutput)
 }
 
+// Indicates the intended use for keys that correspond to a certificate.
 func (o GetAuthorityConfigX509ConfigOutput) KeyUsages() GetAuthorityConfigX509ConfigKeyUsageArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigKeyUsage { return v.KeyUsages }).(GetAuthorityConfigX509ConfigKeyUsageArrayOutput)
 }
 
+// Describes the X.509 name constraints extension.
 func (o GetAuthorityConfigX509ConfigOutput) NameConstraints() GetAuthorityConfigX509ConfigNameConstraintArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigNameConstraint {
 		return v.NameConstraints
 	}).(GetAuthorityConfigX509ConfigNameConstraintArrayOutput)
 }
 
+// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 func (o GetAuthorityConfigX509ConfigOutput) PolicyIds() GetAuthorityConfigX509ConfigPolicyIdArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509Config) []GetAuthorityConfigX509ConfigPolicyId { return v.PolicyIds }).(GetAuthorityConfigX509ConfigPolicyIdArrayOutput)
 }
@@ -15956,9 +16037,13 @@ func (o GetAuthorityConfigX509ConfigArrayOutput) Index(i pulumi.IntInput) GetAut
 }
 
 type GetAuthorityConfigX509ConfigAdditionalExtension struct {
-	Critical  bool                                                      `pulumi:"critical"`
+	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+	// handle this extension, the client should consider this to be an error).
+	Critical bool `pulumi:"critical"`
+	// Describes values that are relevant in a CA certificate.
 	ObjectIds []GetAuthorityConfigX509ConfigAdditionalExtensionObjectId `pulumi:"objectIds"`
-	Value     string                                                    `pulumi:"value"`
+	// The value of this X.509 extension. A base64-encoded string.
+	Value string `pulumi:"value"`
 }
 
 // GetAuthorityConfigX509ConfigAdditionalExtensionInput is an input type that accepts GetAuthorityConfigX509ConfigAdditionalExtensionArgs and GetAuthorityConfigX509ConfigAdditionalExtensionOutput values.
@@ -15973,9 +16058,13 @@ type GetAuthorityConfigX509ConfigAdditionalExtensionInput interface {
 }
 
 type GetAuthorityConfigX509ConfigAdditionalExtensionArgs struct {
-	Critical  pulumi.BoolInput                                                  `pulumi:"critical"`
+	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+	// handle this extension, the client should consider this to be an error).
+	Critical pulumi.BoolInput `pulumi:"critical"`
+	// Describes values that are relevant in a CA certificate.
 	ObjectIds GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayInput `pulumi:"objectIds"`
-	Value     pulumi.StringInput                                                `pulumi:"value"`
+	// The value of this X.509 extension. A base64-encoded string.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetAuthorityConfigX509ConfigAdditionalExtensionArgs) ElementType() reflect.Type {
@@ -16029,16 +16118,20 @@ func (o GetAuthorityConfigX509ConfigAdditionalExtensionOutput) ToGetAuthorityCon
 	return o
 }
 
+// Indicates whether or not this extension is critical (i.e., if the client does not know how to
+// handle this extension, the client should consider this to be an error).
 func (o GetAuthorityConfigX509ConfigAdditionalExtensionOutput) Critical() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigAdditionalExtension) bool { return v.Critical }).(pulumi.BoolOutput)
 }
 
+// Describes values that are relevant in a CA certificate.
 func (o GetAuthorityConfigX509ConfigAdditionalExtensionOutput) ObjectIds() GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigAdditionalExtension) []GetAuthorityConfigX509ConfigAdditionalExtensionObjectId {
 		return v.ObjectIds
 	}).(GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput)
 }
 
+// The value of this X.509 extension. A base64-encoded string.
 func (o GetAuthorityConfigX509ConfigAdditionalExtensionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigAdditionalExtension) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -16064,6 +16157,7 @@ func (o GetAuthorityConfigX509ConfigAdditionalExtensionArrayOutput) Index(i pulu
 }
 
 type GetAuthorityConfigX509ConfigAdditionalExtensionObjectId struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -16079,6 +16173,7 @@ type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdInput interface {
 }
 
 type GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
 
@@ -16133,6 +16228,7 @@ func (o GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput) ToGetAuth
 	return o
 }
 
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigAdditionalExtensionObjectId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
 }
@@ -16158,9 +16254,18 @@ func (o GetAuthorityConfigX509ConfigAdditionalExtensionObjectIdArrayOutput) Inde
 }
 
 type GetAuthorityConfigX509ConfigCaOption struct {
-	IsCa                    bool `pulumi:"isCa"`
-	MaxIssuerPathLength     int  `pulumi:"maxIssuerPathLength"`
-	NonCa                   bool `pulumi:"nonCa"`
+	// When true, the "CA" in Basic Constraints extension will be set to true.
+	IsCa bool `pulumi:"isCa"`
+	// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+	// requires setting 'zero_max_issuer_path_length = true'.
+	MaxIssuerPathLength int `pulumi:"maxIssuerPathLength"`
+	// When true, the "CA" in Basic Constraints extension will be set to false.
+	// If both 'is_ca' and 'non_ca' are unset, the extension will be omitted from the CA certificate.
+	NonCa bool `pulumi:"nonCa"`
+	// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+	// If both 'max_issuer_path_length' and 'zero_max_issuer_path_length' are unset,
+	// the max path length will be omitted from the CA certificate.
 	ZeroMaxIssuerPathLength bool `pulumi:"zeroMaxIssuerPathLength"`
 }
 
@@ -16176,9 +16281,18 @@ type GetAuthorityConfigX509ConfigCaOptionInput interface {
 }
 
 type GetAuthorityConfigX509ConfigCaOptionArgs struct {
-	IsCa                    pulumi.BoolInput `pulumi:"isCa"`
-	MaxIssuerPathLength     pulumi.IntInput  `pulumi:"maxIssuerPathLength"`
-	NonCa                   pulumi.BoolInput `pulumi:"nonCa"`
+	// When true, the "CA" in Basic Constraints extension will be set to true.
+	IsCa pulumi.BoolInput `pulumi:"isCa"`
+	// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+	// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+	// requires setting 'zero_max_issuer_path_length = true'.
+	MaxIssuerPathLength pulumi.IntInput `pulumi:"maxIssuerPathLength"`
+	// When true, the "CA" in Basic Constraints extension will be set to false.
+	// If both 'is_ca' and 'non_ca' are unset, the extension will be omitted from the CA certificate.
+	NonCa pulumi.BoolInput `pulumi:"nonCa"`
+	// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+	// If both 'max_issuer_path_length' and 'zero_max_issuer_path_length' are unset,
+	// the max path length will be omitted from the CA certificate.
 	ZeroMaxIssuerPathLength pulumi.BoolInput `pulumi:"zeroMaxIssuerPathLength"`
 }
 
@@ -16233,18 +16347,27 @@ func (o GetAuthorityConfigX509ConfigCaOptionOutput) ToGetAuthorityConfigX509Conf
 	return o
 }
 
+// When true, the "CA" in Basic Constraints extension will be set to true.
 func (o GetAuthorityConfigX509ConfigCaOptionOutput) IsCa() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigCaOption) bool { return v.IsCa }).(pulumi.BoolOutput)
 }
 
+// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
+// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
+// requires setting 'zero_max_issuer_path_length = true'.
 func (o GetAuthorityConfigX509ConfigCaOptionOutput) MaxIssuerPathLength() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigCaOption) int { return v.MaxIssuerPathLength }).(pulumi.IntOutput)
 }
 
+// When true, the "CA" in Basic Constraints extension will be set to false.
+// If both 'is_ca' and 'non_ca' are unset, the extension will be omitted from the CA certificate.
 func (o GetAuthorityConfigX509ConfigCaOptionOutput) NonCa() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigCaOption) bool { return v.NonCa }).(pulumi.BoolOutput)
 }
 
+// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
+// If both 'max_issuer_path_length' and 'zero_max_issuer_path_length' are unset,
+// the max path length will be omitted from the CA certificate.
 func (o GetAuthorityConfigX509ConfigCaOptionOutput) ZeroMaxIssuerPathLength() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigCaOption) bool { return v.ZeroMaxIssuerPathLength }).(pulumi.BoolOutput)
 }
@@ -16270,8 +16393,11 @@ func (o GetAuthorityConfigX509ConfigCaOptionArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetAuthorityConfigX509ConfigKeyUsage struct {
-	BaseKeyUsages            []GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage            `pulumi:"baseKeyUsages"`
-	ExtendedKeyUsages        []GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage        `pulumi:"extendedKeyUsages"`
+	// Describes high-level ways in which a key may be used.
+	BaseKeyUsages []GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage `pulumi:"baseKeyUsages"`
+	// Describes high-level ways in which a key may be used.
+	ExtendedKeyUsages []GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage `pulumi:"extendedKeyUsages"`
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	UnknownExtendedKeyUsages []GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage `pulumi:"unknownExtendedKeyUsages"`
 }
 
@@ -16287,8 +16413,11 @@ type GetAuthorityConfigX509ConfigKeyUsageInput interface {
 }
 
 type GetAuthorityConfigX509ConfigKeyUsageArgs struct {
-	BaseKeyUsages            GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput            `pulumi:"baseKeyUsages"`
-	ExtendedKeyUsages        GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput        `pulumi:"extendedKeyUsages"`
+	// Describes high-level ways in which a key may be used.
+	BaseKeyUsages GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayInput `pulumi:"baseKeyUsages"`
+	// Describes high-level ways in which a key may be used.
+	ExtendedKeyUsages GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayInput `pulumi:"extendedKeyUsages"`
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	UnknownExtendedKeyUsages GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayInput `pulumi:"unknownExtendedKeyUsages"`
 }
 
@@ -16343,18 +16472,21 @@ func (o GetAuthorityConfigX509ConfigKeyUsageOutput) ToGetAuthorityConfigX509Conf
 	return o
 }
 
+// Describes high-level ways in which a key may be used.
 func (o GetAuthorityConfigX509ConfigKeyUsageOutput) BaseKeyUsages() GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsage) []GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
 		return v.BaseKeyUsages
 	}).(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput)
 }
 
+// Describes high-level ways in which a key may be used.
 func (o GetAuthorityConfigX509ConfigKeyUsageOutput) ExtendedKeyUsages() GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsage) []GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
 		return v.ExtendedKeyUsages
 	}).(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput)
 }
 
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o GetAuthorityConfigX509ConfigKeyUsageOutput) UnknownExtendedKeyUsages() GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsage) []GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
 		return v.UnknownExtendedKeyUsages
@@ -16382,15 +16514,24 @@ func (o GetAuthorityConfigX509ConfigKeyUsageArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage struct {
-	CertSign          bool `pulumi:"certSign"`
+	// The key may be used to sign certificates.
+	CertSign bool `pulumi:"certSign"`
+	// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
 	ContentCommitment bool `pulumi:"contentCommitment"`
-	CrlSign           bool `pulumi:"crlSign"`
-	DataEncipherment  bool `pulumi:"dataEncipherment"`
-	DecipherOnly      bool `pulumi:"decipherOnly"`
-	DigitalSignature  bool `pulumi:"digitalSignature"`
-	EncipherOnly      bool `pulumi:"encipherOnly"`
-	KeyAgreement      bool `pulumi:"keyAgreement"`
-	KeyEncipherment   bool `pulumi:"keyEncipherment"`
+	// The key may be used sign certificate revocation lists.
+	CrlSign bool `pulumi:"crlSign"`
+	// The key may be used to encipher data.
+	DataEncipherment bool `pulumi:"dataEncipherment"`
+	// The key may be used to decipher only.
+	DecipherOnly bool `pulumi:"decipherOnly"`
+	// The key may be used for digital signatures.
+	DigitalSignature bool `pulumi:"digitalSignature"`
+	// The key may be used to encipher only.
+	EncipherOnly bool `pulumi:"encipherOnly"`
+	// The key may be used in a key agreement protocol.
+	KeyAgreement bool `pulumi:"keyAgreement"`
+	// The key may be used to encipher other keys.
+	KeyEncipherment bool `pulumi:"keyEncipherment"`
 }
 
 // GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput values.
@@ -16405,15 +16546,24 @@ type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageInput interface {
 }
 
 type GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs struct {
-	CertSign          pulumi.BoolInput `pulumi:"certSign"`
+	// The key may be used to sign certificates.
+	CertSign pulumi.BoolInput `pulumi:"certSign"`
+	// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
 	ContentCommitment pulumi.BoolInput `pulumi:"contentCommitment"`
-	CrlSign           pulumi.BoolInput `pulumi:"crlSign"`
-	DataEncipherment  pulumi.BoolInput `pulumi:"dataEncipherment"`
-	DecipherOnly      pulumi.BoolInput `pulumi:"decipherOnly"`
-	DigitalSignature  pulumi.BoolInput `pulumi:"digitalSignature"`
-	EncipherOnly      pulumi.BoolInput `pulumi:"encipherOnly"`
-	KeyAgreement      pulumi.BoolInput `pulumi:"keyAgreement"`
-	KeyEncipherment   pulumi.BoolInput `pulumi:"keyEncipherment"`
+	// The key may be used sign certificate revocation lists.
+	CrlSign pulumi.BoolInput `pulumi:"crlSign"`
+	// The key may be used to encipher data.
+	DataEncipherment pulumi.BoolInput `pulumi:"dataEncipherment"`
+	// The key may be used to decipher only.
+	DecipherOnly pulumi.BoolInput `pulumi:"decipherOnly"`
+	// The key may be used for digital signatures.
+	DigitalSignature pulumi.BoolInput `pulumi:"digitalSignature"`
+	// The key may be used to encipher only.
+	EncipherOnly pulumi.BoolInput `pulumi:"encipherOnly"`
+	// The key may be used in a key agreement protocol.
+	KeyAgreement pulumi.BoolInput `pulumi:"keyAgreement"`
+	// The key may be used to encipher other keys.
+	KeyEncipherment pulumi.BoolInput `pulumi:"keyEncipherment"`
 }
 
 func (GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs) ElementType() reflect.Type {
@@ -16467,38 +16617,47 @@ func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ToGetAuthorityCo
 	return o
 }
 
+// The key may be used to sign certificates.
 func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) CertSign() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.CertSign }).(pulumi.BoolOutput)
 }
 
+// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
 func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) ContentCommitment() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.ContentCommitment }).(pulumi.BoolOutput)
 }
 
+// The key may be used sign certificate revocation lists.
 func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) CrlSign() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.CrlSign }).(pulumi.BoolOutput)
 }
 
+// The key may be used to encipher data.
 func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) DataEncipherment() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.DataEncipherment }).(pulumi.BoolOutput)
 }
 
+// The key may be used to decipher only.
 func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) DecipherOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.DecipherOnly }).(pulumi.BoolOutput)
 }
 
+// The key may be used for digital signatures.
 func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) DigitalSignature() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.DigitalSignature }).(pulumi.BoolOutput)
 }
 
+// The key may be used to encipher only.
 func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) EncipherOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.EncipherOnly }).(pulumi.BoolOutput)
 }
 
+// The key may be used in a key agreement protocol.
 func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) KeyAgreement() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.KeyAgreement }).(pulumi.BoolOutput)
 }
 
+// The key may be used to encipher other keys.
 func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageOutput) KeyEncipherment() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage) bool { return v.KeyEncipherment }).(pulumi.BoolOutput)
 }
@@ -16524,12 +16683,18 @@ func (o GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsageArrayOutput) Index(i pul
 }
 
 type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage struct {
-	ClientAuth      bool `pulumi:"clientAuth"`
-	CodeSigning     bool `pulumi:"codeSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+	ClientAuth bool `pulumi:"clientAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+	CodeSigning bool `pulumi:"codeSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
 	EmailProtection bool `pulumi:"emailProtection"`
-	OcspSigning     bool `pulumi:"ocspSigning"`
-	ServerAuth      bool `pulumi:"serverAuth"`
-	TimeStamping    bool `pulumi:"timeStamping"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+	OcspSigning bool `pulumi:"ocspSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+	ServerAuth bool `pulumi:"serverAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+	TimeStamping bool `pulumi:"timeStamping"`
 }
 
 // GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput is an input type that accepts GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs and GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput values.
@@ -16544,12 +16709,18 @@ type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageInput interface {
 }
 
 type GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs struct {
-	ClientAuth      pulumi.BoolInput `pulumi:"clientAuth"`
-	CodeSigning     pulumi.BoolInput `pulumi:"codeSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
+	ClientAuth pulumi.BoolInput `pulumi:"clientAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
+	CodeSigning pulumi.BoolInput `pulumi:"codeSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
 	EmailProtection pulumi.BoolInput `pulumi:"emailProtection"`
-	OcspSigning     pulumi.BoolInput `pulumi:"ocspSigning"`
-	ServerAuth      pulumi.BoolInput `pulumi:"serverAuth"`
-	TimeStamping    pulumi.BoolInput `pulumi:"timeStamping"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
+	OcspSigning pulumi.BoolInput `pulumi:"ocspSigning"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
+	ServerAuth pulumi.BoolInput `pulumi:"serverAuth"`
+	// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
+	TimeStamping pulumi.BoolInput `pulumi:"timeStamping"`
 }
 
 func (GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs) ElementType() reflect.Type {
@@ -16603,26 +16774,32 @@ func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ToGetAuthori
 	return o
 }
 
+// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
 func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ClientAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.ClientAuth }).(pulumi.BoolOutput)
 }
 
+// Corresponds to OID 1.3.6.1.5.5.7.3.3. Officially described as "Signing of downloadable executable code client authentication".
 func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) CodeSigning() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.CodeSigning }).(pulumi.BoolOutput)
 }
 
+// Corresponds to OID 1.3.6.1.5.5.7.3.4. Officially described as "Email protection".
 func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) EmailProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.EmailProtection }).(pulumi.BoolOutput)
 }
 
+// Corresponds to OID 1.3.6.1.5.5.7.3.9. Officially described as "Signing OCSP responses".
 func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) OcspSigning() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.OcspSigning }).(pulumi.BoolOutput)
 }
 
+// Corresponds to OID 1.3.6.1.5.5.7.3.1. Officially described as "TLS WWW server authentication", though regularly used for non-WWW TLS.
 func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) ServerAuth() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.ServerAuth }).(pulumi.BoolOutput)
 }
 
+// Corresponds to OID 1.3.6.1.5.5.7.3.8. Officially described as "Binding the hash of an object to a time".
 func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageOutput) TimeStamping() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage) bool { return v.TimeStamping }).(pulumi.BoolOutput)
 }
@@ -16648,6 +16825,7 @@ func (o GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArrayOutput) Index(i
 }
 
 type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -16663,6 +16841,7 @@ type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageInput interface 
 }
 
 type GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
 
@@ -16717,6 +16896,7 @@ func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput) ToGet
 	return o
 }
 
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
 }
@@ -16742,15 +16922,48 @@ func (o GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArrayOutput) 
 }
 
 type GetAuthorityConfigX509ConfigNameConstraint struct {
-	Critical                bool     `pulumi:"critical"`
-	ExcludedDnsNames        []string `pulumi:"excludedDnsNames"`
-	ExcludedEmailAddresses  []string `pulumi:"excludedEmailAddresses"`
-	ExcludedIpRanges        []string `pulumi:"excludedIpRanges"`
-	ExcludedUris            []string `pulumi:"excludedUris"`
-	PermittedDnsNames       []string `pulumi:"permittedDnsNames"`
+	// Indicates whether or not the name constraints are marked critical.
+	Critical bool `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+	// would satisfy 'example.com' while 'example1.com' does not.
+	ExcludedDnsNames []string `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. '.example.com') to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses []string `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges []string `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like '.example.com')
+	ExcludedUris []string `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+	// would satisfy 'example.com' while 'example1.com' does not.
+	PermittedDnsNames []string `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. '.example.com') to indicate
+	// all email addresses in that domain.
 	PermittedEmailAddresses []string `pulumi:"permittedEmailAddresses"`
-	PermittedIpRanges       []string `pulumi:"permittedIpRanges"`
-	PermittedUris           []string `pulumi:"permittedUris"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges []string `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like '.example.com')
+	PermittedUris []string `pulumi:"permittedUris"`
 }
 
 // GetAuthorityConfigX509ConfigNameConstraintInput is an input type that accepts GetAuthorityConfigX509ConfigNameConstraintArgs and GetAuthorityConfigX509ConfigNameConstraintOutput values.
@@ -16765,15 +16978,48 @@ type GetAuthorityConfigX509ConfigNameConstraintInput interface {
 }
 
 type GetAuthorityConfigX509ConfigNameConstraintArgs struct {
-	Critical                pulumi.BoolInput        `pulumi:"critical"`
-	ExcludedDnsNames        pulumi.StringArrayInput `pulumi:"excludedDnsNames"`
-	ExcludedEmailAddresses  pulumi.StringArrayInput `pulumi:"excludedEmailAddresses"`
-	ExcludedIpRanges        pulumi.StringArrayInput `pulumi:"excludedIpRanges"`
-	ExcludedUris            pulumi.StringArrayInput `pulumi:"excludedUris"`
-	PermittedDnsNames       pulumi.StringArrayInput `pulumi:"permittedDnsNames"`
+	// Indicates whether or not the name constraints are marked critical.
+	Critical pulumi.BoolInput `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+	// would satisfy 'example.com' while 'example1.com' does not.
+	ExcludedDnsNames pulumi.StringArrayInput `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. '.example.com') to indicate
+	// all email addresses in that domain.
+	ExcludedEmailAddresses pulumi.StringArrayInput `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	ExcludedIpRanges pulumi.StringArrayInput `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like '.example.com')
+	ExcludedUris pulumi.StringArrayInput `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be
+	// constructed by simply adding zero or more labels to
+	// the left-hand side of the name satisfies the name constraint.
+	// For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+	// would satisfy 'example.com' while 'example1.com' does not.
+	PermittedDnsNames pulumi.StringArrayInput `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular
+	// email address, a hostname to indicate all email addresses on that host or
+	// a domain with a leading period (e.g. '.example.com') to indicate
+	// all email addresses in that domain.
 	PermittedEmailAddresses pulumi.StringArrayInput `pulumi:"permittedEmailAddresses"`
-	PermittedIpRanges       pulumi.StringArrayInput `pulumi:"permittedIpRanges"`
-	PermittedUris           pulumi.StringArrayInput `pulumi:"permittedUris"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+	// are expressed using CIDR notation as specified in RFC 4632.
+	// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+	// addresses.
+	PermittedIpRanges pulumi.StringArrayInput `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name.
+	// The value can be a hostname or a domain with a
+	// leading period (like '.example.com')
+	PermittedUris pulumi.StringArrayInput `pulumi:"permittedUris"`
 }
 
 func (GetAuthorityConfigX509ConfigNameConstraintArgs) ElementType() reflect.Type {
@@ -16827,38 +17073,71 @@ func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ToGetAuthorityConfigX5
 	return o
 }
 
+// Indicates whether or not the name constraints are marked critical.
 func (o GetAuthorityConfigX509ConfigNameConstraintOutput) Critical() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) bool { return v.Critical }).(pulumi.BoolOutput)
 }
 
+// Contains excluded DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+// would satisfy 'example.com' while 'example1.com' does not.
 func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.ExcludedDnsNames }).(pulumi.StringArrayOutput)
 }
 
+// Contains the excluded email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. '.example.com') to indicate
+// all email addresses in that domain.
 func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.ExcludedEmailAddresses }).(pulumi.StringArrayOutput)
 }
 
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
 func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.ExcludedIpRanges }).(pulumi.StringArrayOutput)
 }
 
+// Contains the excluded URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like '.example.com')
 func (o GetAuthorityConfigX509ConfigNameConstraintOutput) ExcludedUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.ExcludedUris }).(pulumi.StringArrayOutput)
 }
 
+// Contains permitted DNS names. Any DNS name that can be
+// constructed by simply adding zero or more labels to
+// the left-hand side of the name satisfies the name constraint.
+// For example, 'example.com', 'www.example.com', 'www.sub.example.com'
+// would satisfy 'example.com' while 'example1.com' does not.
 func (o GetAuthorityConfigX509ConfigNameConstraintOutput) PermittedDnsNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.PermittedDnsNames }).(pulumi.StringArrayOutput)
 }
 
+// Contains the permitted email addresses. The value can be a particular
+// email address, a hostname to indicate all email addresses on that host or
+// a domain with a leading period (e.g. '.example.com') to indicate
+// all email addresses in that domain.
 func (o GetAuthorityConfigX509ConfigNameConstraintOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.PermittedEmailAddresses }).(pulumi.StringArrayOutput)
 }
 
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges
+// are expressed using CIDR notation as specified in RFC 4632.
+// For IPv6 addresses, the ranges are expressed in similar encoding as IPv4
+// addresses.
 func (o GetAuthorityConfigX509ConfigNameConstraintOutput) PermittedIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.PermittedIpRanges }).(pulumi.StringArrayOutput)
 }
 
+// Contains the permitted URIs that apply to the host part of the name.
+// The value can be a hostname or a domain with a
+// leading period (like '.example.com')
 func (o GetAuthorityConfigX509ConfigNameConstraintOutput) PermittedUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigNameConstraint) []string { return v.PermittedUris }).(pulumi.StringArrayOutput)
 }
@@ -16884,6 +17163,7 @@ func (o GetAuthorityConfigX509ConfigNameConstraintArrayOutput) Index(i pulumi.In
 }
 
 type GetAuthorityConfigX509ConfigPolicyId struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -16899,6 +17179,7 @@ type GetAuthorityConfigX509ConfigPolicyIdInput interface {
 }
 
 type GetAuthorityConfigX509ConfigPolicyIdArgs struct {
+	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
 
@@ -16953,6 +17234,7 @@ func (o GetAuthorityConfigX509ConfigPolicyIdOutput) ToGetAuthorityConfigX509Conf
 	return o
 }
 
+// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o GetAuthorityConfigX509ConfigPolicyIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetAuthorityConfigX509ConfigPolicyId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
 }
@@ -16978,7 +17260,11 @@ func (o GetAuthorityConfigX509ConfigPolicyIdArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetAuthorityKeySpec struct {
-	Algorithm          string `pulumi:"algorithm"`
+	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+	// experience. All managed keys will be have their ProtectionLevel as HSM. Possible values: ["SIGN_HASH_ALGORITHM_UNSPECIFIED", "RSA_PSS_2048_SHA256", "RSA_PSS_3072_SHA256", "RSA_PSS_4096_SHA256", "RSA_PKCS1_2048_SHA256", "RSA_PKCS1_3072_SHA256", "RSA_PKCS1_4096_SHA256", "EC_P256_SHA256", "EC_P384_SHA384"]
+	Algorithm string `pulumi:"algorithm"`
+	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+	// 'projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*'.
 	CloudKmsKeyVersion string `pulumi:"cloudKmsKeyVersion"`
 }
 
@@ -16994,7 +17280,11 @@ type GetAuthorityKeySpecInput interface {
 }
 
 type GetAuthorityKeySpecArgs struct {
-	Algorithm          pulumi.StringInput `pulumi:"algorithm"`
+	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+	// experience. All managed keys will be have their ProtectionLevel as HSM. Possible values: ["SIGN_HASH_ALGORITHM_UNSPECIFIED", "RSA_PSS_2048_SHA256", "RSA_PSS_3072_SHA256", "RSA_PSS_4096_SHA256", "RSA_PKCS1_2048_SHA256", "RSA_PKCS1_3072_SHA256", "RSA_PKCS1_4096_SHA256", "EC_P256_SHA256", "EC_P384_SHA384"]
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+	// 'projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*'.
 	CloudKmsKeyVersion pulumi.StringInput `pulumi:"cloudKmsKeyVersion"`
 }
 
@@ -17049,10 +17339,14 @@ func (o GetAuthorityKeySpecOutput) ToGetAuthorityKeySpecOutputWithContext(ctx co
 	return o
 }
 
+// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+// experience. All managed keys will be have their ProtectionLevel as HSM. Possible values: ["SIGN_HASH_ALGORITHM_UNSPECIFIED", "RSA_PSS_2048_SHA256", "RSA_PSS_3072_SHA256", "RSA_PSS_4096_SHA256", "RSA_PKCS1_2048_SHA256", "RSA_PKCS1_3072_SHA256", "RSA_PKCS1_4096_SHA256", "EC_P256_SHA256", "EC_P384_SHA384"]
 func (o GetAuthorityKeySpecOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityKeySpec) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
+// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+// 'projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*'.
 func (o GetAuthorityKeySpecOutput) CloudKmsKeyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityKeySpec) string { return v.CloudKmsKeyVersion }).(pulumi.StringOutput)
 }
@@ -17078,8 +17372,14 @@ func (o GetAuthorityKeySpecArrayOutput) Index(i pulumi.IntInput) GetAuthorityKey
 }
 
 type GetAuthoritySubordinateConfig struct {
-	CertificateAuthority string                                        `pulumi:"certificateAuthority"`
-	PemIssuerChains      []GetAuthoritySubordinateConfigPemIssuerChain `pulumi:"pemIssuerChains"`
+	// This can refer to a CertificateAuthority that was used to create a
+	// subordinate CertificateAuthority. This field is used for information
+	// and usability purposes only. The resource name is in the format
+	// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+	CertificateAuthority string `pulumi:"certificateAuthority"`
+	// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+	// but not pem certificate for this CA itself.
+	PemIssuerChains []GetAuthoritySubordinateConfigPemIssuerChain `pulumi:"pemIssuerChains"`
 }
 
 // GetAuthoritySubordinateConfigInput is an input type that accepts GetAuthoritySubordinateConfigArgs and GetAuthoritySubordinateConfigOutput values.
@@ -17094,8 +17394,14 @@ type GetAuthoritySubordinateConfigInput interface {
 }
 
 type GetAuthoritySubordinateConfigArgs struct {
-	CertificateAuthority pulumi.StringInput                                    `pulumi:"certificateAuthority"`
-	PemIssuerChains      GetAuthoritySubordinateConfigPemIssuerChainArrayInput `pulumi:"pemIssuerChains"`
+	// This can refer to a CertificateAuthority that was used to create a
+	// subordinate CertificateAuthority. This field is used for information
+	// and usability purposes only. The resource name is in the format
+	// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
+	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
+	// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+	// but not pem certificate for this CA itself.
+	PemIssuerChains GetAuthoritySubordinateConfigPemIssuerChainArrayInput `pulumi:"pemIssuerChains"`
 }
 
 func (GetAuthoritySubordinateConfigArgs) ElementType() reflect.Type {
@@ -17149,10 +17455,16 @@ func (o GetAuthoritySubordinateConfigOutput) ToGetAuthoritySubordinateConfigOutp
 	return o
 }
 
+// This can refer to a CertificateAuthority that was used to create a
+// subordinate CertificateAuthority. This field is used for information
+// and usability purposes only. The resource name is in the format
+// 'projects/*/locations/*/caPools/*/certificateAuthorities/*'.
 func (o GetAuthoritySubordinateConfigOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthoritySubordinateConfig) string { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
 
+// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
+// but not pem certificate for this CA itself.
 func (o GetAuthoritySubordinateConfigOutput) PemIssuerChains() GetAuthoritySubordinateConfigPemIssuerChainArrayOutput {
 	return o.ApplyT(func(v GetAuthoritySubordinateConfig) []GetAuthoritySubordinateConfigPemIssuerChain {
 		return v.PemIssuerChains
@@ -17180,6 +17492,7 @@ func (o GetAuthoritySubordinateConfigArrayOutput) Index(i pulumi.IntInput) GetAu
 }
 
 type GetAuthoritySubordinateConfigPemIssuerChain struct {
+	// Expected to be in leaf-to-root order according to RFC 5246.
 	PemCertificates []string `pulumi:"pemCertificates"`
 }
 
@@ -17195,6 +17508,7 @@ type GetAuthoritySubordinateConfigPemIssuerChainInput interface {
 }
 
 type GetAuthoritySubordinateConfigPemIssuerChainArgs struct {
+	// Expected to be in leaf-to-root order according to RFC 5246.
 	PemCertificates pulumi.StringArrayInput `pulumi:"pemCertificates"`
 }
 
@@ -17249,6 +17563,7 @@ func (o GetAuthoritySubordinateConfigPemIssuerChainOutput) ToGetAuthoritySubordi
 	return o
 }
 
+// Expected to be in leaf-to-root order according to RFC 5246.
 func (o GetAuthoritySubordinateConfigPemIssuerChainOutput) PemCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAuthoritySubordinateConfigPemIssuerChain) []string { return v.PemCertificates }).(pulumi.StringArrayOutput)
 }

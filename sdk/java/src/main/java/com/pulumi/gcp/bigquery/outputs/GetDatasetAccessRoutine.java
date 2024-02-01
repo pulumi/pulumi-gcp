@@ -15,7 +15,17 @@ public final class GetDatasetAccessRoutine {
      * 
      */
     private String datasetId;
+    /**
+     * @return The ID of the project containing this table.
+     * 
+     */
     private String projectId;
+    /**
+     * @return The ID of the routine. The ID must contain only letters (a-z,
+     * A-Z), numbers (0-9), or underscores (_). The maximum length
+     * is 256 characters.
+     * 
+     */
     private String routineId;
 
     private GetDatasetAccessRoutine() {}
@@ -26,9 +36,19 @@ public final class GetDatasetAccessRoutine {
     public String datasetId() {
         return this.datasetId;
     }
+    /**
+     * @return The ID of the project containing this table.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return The ID of the routine. The ID must contain only letters (a-z,
+     * A-Z), numbers (0-9), or underscores (_). The maximum length
+     * is 256 characters.
+     * 
+     */
     public String routineId() {
         return this.routineId;
     }

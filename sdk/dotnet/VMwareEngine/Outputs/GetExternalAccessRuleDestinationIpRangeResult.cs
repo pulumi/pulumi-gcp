@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     [OutputType]
     public sealed class GetExternalAccessRuleDestinationIpRangeResult
     {
+        /// <summary>
+        /// The name of an 'ExternalAddress' resource.
+        /// </summary>
         public readonly string ExternalAddress;
+        /// <summary>
+        /// An IP address range in the CIDR format.
+        /// </summary>
         public readonly string IpAddressRange;
 
         [OutputConstructor]

@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceGroupManagerStatusAllInstancesConfig
     {
+        /// <summary>
+        /// A bit indicating whether this configuration has been applied to all managed instances in the group.
+        /// </summary>
         public readonly bool? Effective;
 
         [OutputConstructor]
