@@ -50,7 +50,7 @@ func TestWarningsNotDuplicated(t *testing.T) {
 		SkipRefresh:   true,
 		Env:           []string{"GOOGLE_PROJECT=", "GOOGLE_APPLICATION_CREDENTIALS="},
 		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
-			fmt.Printf("output: %v\n", outputBuf.String())
+			t.Logf("output: %v\n", outputBuf.String())
 			assert.Equal(t, 1, strings.Count(outputBuf.String(), "Pulumi will rely on per-resource settings for this operation"))
 		},
 	}
