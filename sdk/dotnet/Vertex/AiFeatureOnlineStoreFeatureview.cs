@@ -111,6 +111,153 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Featureonlinestore Featureview With Vector Search
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         Bigtable = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableArgs
+    ///         {
+    ///             AutoScaling = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs
+    ///             {
+    ///                 MinNodeCount = 1,
+    ///                 MaxNodeCount = 2,
+    ///                 CpuUtilizationTarget = 80,
+    ///             },
+    ///         },
+    ///         EmbeddingManagement = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreEmbeddingManagementArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var tf_test_dataset = new Gcp.BigQuery.Dataset("tf-test-dataset", new()
+    ///     {
+    ///         DatasetId = "example_feature_view_vector_search",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var tf_test_table = new Gcp.BigQuery.Table("tf-test-table", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         DatasetId = tf_test_dataset.DatasetId,
+    ///         TableId = "example_feature_view_vector_search",
+    ///         Schema = @"[
+    /// {
+    ///   ""name"": ""test_primary_id"",
+    ///   ""mode"": ""NULLABLE"",
+    ///   ""type"": ""STRING"",
+    ///   ""description"": ""primary test id""
+    /// },
+    /// {
+    ///   ""name"": ""embedding"",
+    ///   ""mode"": ""REPEATED"",
+    ///   ""type"": ""FLOAT"",
+    ///   ""description"": ""embedding column for primary_id column""
+    /// },
+    /// {
+    ///   ""name"": ""country"",
+    ///   ""mode"": ""NULLABLE"",
+    ///   ""type"": ""STRING"",
+    ///   ""description"": ""country""
+    /// },
+    /// {
+    ///   ""name"": ""test_crowding_column"",
+    ///   ""mode"": ""NULLABLE"",
+    ///   ""type"": ""INTEGER"",
+    ///   ""description"": ""test crowding column""
+    /// },
+    /// {
+    ///   ""name"": ""entity_id"",
+    ///   ""mode"": ""NULLABLE"",
+    ///   ""type"": ""STRING"",
+    ///   ""description"": ""Test default entity_id""
+    /// },
+    /// {
+    ///   ""name"": ""test_entity_column"",
+    ///   ""mode"": ""NULLABLE"",
+    ///   ""type"": ""STRING"",
+    ///   ""description"": ""test secondary entity column""
+    /// },
+    /// {
+    ///   ""name"": ""feature_timestamp"",
+    ///   ""mode"": ""NULLABLE"",
+    ///   ""type"": ""TIMESTAMP"",
+    ///   ""description"": ""Default timestamp value""
+    /// }
+    /// ]
+    /// ",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var featureviewVectorSearch = new Gcp.Vertex.AiFeatureOnlineStoreFeatureview("featureviewVectorSearch", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         FeatureOnlineStore = featureonlinestore.Name,
+    ///         SyncConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs
+    ///         {
+    ///             Cron = "0 0 * * *",
+    ///         },
+    ///         BigQuerySource = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs
+    ///         {
+    ///             Uri = Output.Tuple(tf_test_table.Project, tf_test_table.DatasetId, tf_test_table.TableId).Apply(values =&gt;
+    ///             {
+    ///                 var project = values.Item1;
+    ///                 var datasetId = values.Item2;
+    ///                 var tableId = values.Item3;
+    ///                 return $"bq://{project}.{datasetId}.{tableId}";
+    ///             }),
+    ///             EntityIdColumns = new[]
+    ///             {
+    ///                 "test_entity_column",
+    ///             },
+    ///         },
+    ///         VectorSearchConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs
+    ///         {
+    ///             EmbeddingColumn = "embedding",
+    ///             FilterColumns = new[]
+    ///             {
+    ///                 "country",
+    ///             },
+    ///             CrowdingColumn = "test_crowding_column",
+    ///             DistanceMeasureType = "DOT_PRODUCT_DISTANCE",
+    ///             TreeAhConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs
+    ///             {
+    ///                 LeafNodeEmbeddingCount = "1000",
+    ///             },
+    ///             EmbeddingDimension = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -210,6 +357,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("vectorSearchConfig")]
+        public Output<Outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig?> VectorSearchConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -318,6 +472,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("syncConfig")]
         public Input<Inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs>? SyncConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vectorSearchConfig")]
+        public Input<Inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs>? VectorSearchConfig { get; set; }
 
         public AiFeatureOnlineStoreFeatureviewArgs()
         {
@@ -428,6 +589,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vectorSearchConfig")]
+        public Input<Inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigGetArgs>? VectorSearchConfig { get; set; }
 
         public AiFeatureOnlineStoreFeatureviewState()
         {

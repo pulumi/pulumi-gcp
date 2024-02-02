@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerDestination {
     /**
-     * @return [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+     * @return The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
      * 
      */
     private @Nullable String cloudFunction;
@@ -36,7 +36,7 @@ public final class TriggerDestination {
 
     private TriggerDestination() {}
     /**
-     * @return [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+     * @return The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
      * 
      */
     public Optional<String> cloudFunction() {

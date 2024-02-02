@@ -10,6 +10,7 @@ import com.pulumi.gcp.workstations.inputs.WorkstationConfigContainerArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigEncryptionKeyArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryArgs;
+import com.pulumi.gcp.workstations.inputs.WorkstationConfigReadinessCheckArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -234,6 +235,23 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Readiness checks to be performed on a workstation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="readinessChecks")
+    private @Nullable Output<List<WorkstationConfigReadinessCheckArgs>> readinessChecks;
+
+    /**
+     * @return Readiness checks to be performed on a workstation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkstationConfigReadinessCheckArgs>>> readinessChecks() {
+        return Optional.ofNullable(this.readinessChecks);
+    }
+
+    /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
      * 
@@ -312,6 +330,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
         this.location = $.location;
         this.persistentDirectories = $.persistentDirectories;
         this.project = $.project;
+        this.readinessChecks = $.readinessChecks;
         this.replicaZones = $.replicaZones;
         this.runningTimeout = $.runningTimeout;
         this.workstationClusterId = $.workstationClusterId;
@@ -627,6 +646,40 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param readinessChecks Readiness checks to be performed on a workstation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessChecks(@Nullable Output<List<WorkstationConfigReadinessCheckArgs>> readinessChecks) {
+            $.readinessChecks = readinessChecks;
+            return this;
+        }
+
+        /**
+         * @param readinessChecks Readiness checks to be performed on a workstation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessChecks(List<WorkstationConfigReadinessCheckArgs> readinessChecks) {
+            return readinessChecks(Output.of(readinessChecks));
+        }
+
+        /**
+         * @param readinessChecks Readiness checks to be performed on a workstation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readinessChecks(WorkstationConfigReadinessCheckArgs... readinessChecks) {
+            return readinessChecks(List.of(readinessChecks));
         }
 
         /**

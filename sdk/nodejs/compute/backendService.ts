@@ -21,6 +21,21 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  *
  * ## Example Usage
+ * ### Backend Service External Iap
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.BackendService("default", {
+ *     iap: {
+ *         oauth2ClientId: "abc",
+ *         oauth2ClientSecret: "xyz",
+ *     },
+ *     loadBalancingScheme: "EXTERNAL",
+ *     protocol: "HTTP",
+ * });
+ * ```
  * ### Backend Service Cache Include Http Headers
  *
  * ```typescript

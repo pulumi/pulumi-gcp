@@ -10037,7 +10037,7 @@ class InstanceGuestAccelerator(dict):
                  type: str):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
-        :param str type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -10054,7 +10054,7 @@ class InstanceGuestAccelerator(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
 
@@ -10898,7 +10898,6 @@ class InstanceScheduling(dict):
                  between 0 and 168 hours with hour granularity and the default value being 1
                  hour.
         :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         :param 'InstanceSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
@@ -10973,7 +10972,6 @@ class InstanceScheduling(dict):
     def maintenance_interval(self) -> Optional[str]:
         """
         Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -11963,8 +11961,7 @@ class InstanceTemplateGuestAccelerator(dict):
                  type: str):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
-        :param str type: The type of GCE disk, can be either `"SCRATCH"` or
-               `"PERSISTENT"`.
+        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -11981,8 +11978,7 @@ class InstanceTemplateGuestAccelerator(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of GCE disk, can be either `"SCRATCH"` or
-        `"PERSISTENT"`.
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
 
@@ -12636,7 +12632,6 @@ class InstanceTemplateScheduling(dict):
                  between 0 and 168 hours with hour granularity and the default value being 1
                  hour.
         :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         :param 'InstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param int min_node_cpus: Minimum number of cpus for the instance.
@@ -12710,7 +12705,6 @@ class InstanceTemplateScheduling(dict):
     def maintenance_interval(self) -> Optional[str]:
         """
         Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -19776,8 +19770,7 @@ class RegionInstanceTemplateGuestAccelerator(dict):
                  type: str):
         """
         :param int count: The number of the guest accelerator cards exposed to this instance.
-        :param str type: The type of GCE disk, can be either `"SCRATCH"` or
-               `"PERSISTENT"`.
+        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -19794,8 +19787,7 @@ class RegionInstanceTemplateGuestAccelerator(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of GCE disk, can be either `"SCRATCH"` or
-        `"PERSISTENT"`.
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
 
@@ -20416,8 +20408,7 @@ class RegionInstanceTemplateScheduling(dict):
                  recovery of the Local Ssd state is attempted. Its value should be in
                  between 0 and 168 hours with hour granularity and the default value being 1
                  hour.
-        :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
-               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
+        :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         :param 'RegionInstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         :param int min_node_cpus: Minimum number of cpus for the instance.
         :param Sequence['RegionInstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
@@ -20489,8 +20480,7 @@ class RegionInstanceTemplateScheduling(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[str]:
         """
-        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
-        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -41572,7 +41562,7 @@ class GetInstanceNetworkInterfaceResult(dict):
         :param str ipv6_address: An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         :param str name: The name of the instance. One of `name` or `self_link` must be provided.
         :param str network: The name or self_link of the network attached to this interface.
-        :param str network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        :param str network_attachment: Beta The URL of the network attachment to this interface.
         :param str network_ip: The private IP address assigned to the instance.
         :param str nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
         :param int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
@@ -41667,7 +41657,7 @@ class GetInstanceNetworkInterfaceResult(dict):
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> str:
         """
-        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        Beta The URL of the network attachment to this interface.
         """
         return pulumi.get(self, "network_attachment")
 

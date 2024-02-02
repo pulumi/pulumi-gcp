@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// </summary>
         public readonly string? DagGcsPrefix;
         /// <summary>
+        /// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+        /// </summary>
+        public readonly Outputs.EnvironmentConfigDataRetentionConfig? DataRetentionConfig;
+        /// <summary>
         /// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly Outputs.EnvironmentConfigDatabaseConfig? DatabaseConfig;
@@ -96,6 +100,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string? dagGcsPrefix,
 
+            Outputs.EnvironmentConfigDataRetentionConfig? dataRetentionConfig,
+
             Outputs.EnvironmentConfigDatabaseConfig? databaseConfig,
 
             bool? enablePrivateBuildsOnly,
@@ -132,6 +138,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         {
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
+            DataRetentionConfig = dataRetentionConfig;
             DatabaseConfig = databaseConfig;
             EnablePrivateBuildsOnly = enablePrivateBuildsOnly;
             EnablePrivateEnvironment = enablePrivateEnvironment;

@@ -1110,12 +1110,17 @@ func (o SchemaIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type SubscriptionBigqueryConfig struct {
-	// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-	// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	// When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+	// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+	// and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields *bool `pulumi:"dropUnknownFields"`
 	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 	Table string `pulumi:"table"`
+	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+	// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+	UseTableSchema *bool `pulumi:"useTableSchema"`
 	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	// Only one of useTopicSchema and useTableSchema can be set.
 	UseTopicSchema *bool `pulumi:"useTopicSchema"`
 	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
 	// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
@@ -1134,12 +1139,17 @@ type SubscriptionBigqueryConfigInput interface {
 }
 
 type SubscriptionBigqueryConfigArgs struct {
-	// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-	// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	// When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+	// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+	// and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields pulumi.BoolPtrInput `pulumi:"dropUnknownFields"`
 	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 	Table pulumi.StringInput `pulumi:"table"`
+	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+	// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+	UseTableSchema pulumi.BoolPtrInput `pulumi:"useTableSchema"`
 	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	// Only one of useTopicSchema and useTableSchema can be set.
 	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
 	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
 	// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
@@ -1223,8 +1233,9 @@ func (o SubscriptionBigqueryConfigOutput) ToSubscriptionBigqueryConfigPtrOutputW
 	}).(SubscriptionBigqueryConfigPtrOutput)
 }
 
-// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+// When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+// and any messages with extra fields are not written and remain in the subscription's backlog.
 func (o SubscriptionBigqueryConfigOutput) DropUnknownFields() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SubscriptionBigqueryConfig) *bool { return v.DropUnknownFields }).(pulumi.BoolPtrOutput)
 }
@@ -1234,7 +1245,14 @@ func (o SubscriptionBigqueryConfigOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v SubscriptionBigqueryConfig) string { return v.Table }).(pulumi.StringOutput)
 }
 
+// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+func (o SubscriptionBigqueryConfigOutput) UseTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubscriptionBigqueryConfig) *bool { return v.UseTableSchema }).(pulumi.BoolPtrOutput)
+}
+
 // When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+// Only one of useTopicSchema and useTableSchema can be set.
 func (o SubscriptionBigqueryConfigOutput) UseTopicSchema() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SubscriptionBigqueryConfig) *bool { return v.UseTopicSchema }).(pulumi.BoolPtrOutput)
 }
@@ -1269,8 +1287,9 @@ func (o SubscriptionBigqueryConfigPtrOutput) Elem() SubscriptionBigqueryConfigOu
 	}).(SubscriptionBigqueryConfigOutput)
 }
 
-// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+// When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+// and any messages with extra fields are not written and remain in the subscription's backlog.
 func (o SubscriptionBigqueryConfigPtrOutput) DropUnknownFields() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *bool {
 		if v == nil {
@@ -1290,7 +1309,19 @@ func (o SubscriptionBigqueryConfigPtrOutput) Table() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+func (o SubscriptionBigqueryConfigPtrOutput) UseTableSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTableSchema
+	}).(pulumi.BoolPtrOutput)
+}
+
 // When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+// Only one of useTopicSchema and useTableSchema can be set.
 func (o SubscriptionBigqueryConfigPtrOutput) UseTopicSchema() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SubscriptionBigqueryConfig) *bool {
 		if v == nil {
@@ -3857,12 +3888,17 @@ func (o TopicSchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
 }
 
 type GetSubscriptionBigqueryConfig struct {
-	// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-	// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	// When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+	// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+	// and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields bool `pulumi:"dropUnknownFields"`
 	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 	Table string `pulumi:"table"`
+	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+	// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+	UseTableSchema bool `pulumi:"useTableSchema"`
 	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	// Only one of useTopicSchema and useTableSchema can be set.
 	UseTopicSchema bool `pulumi:"useTopicSchema"`
 	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
 	// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
@@ -3881,12 +3917,17 @@ type GetSubscriptionBigqueryConfigInput interface {
 }
 
 type GetSubscriptionBigqueryConfigArgs struct {
-	// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-	// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+	// When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+	// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+	// and any messages with extra fields are not written and remain in the subscription's backlog.
 	DropUnknownFields pulumi.BoolInput `pulumi:"dropUnknownFields"`
 	// The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
 	Table pulumi.StringInput `pulumi:"table"`
+	// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+	// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+	UseTableSchema pulumi.BoolInput `pulumi:"useTableSchema"`
 	// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+	// Only one of useTopicSchema and useTableSchema can be set.
 	UseTopicSchema pulumi.BoolInput `pulumi:"useTopicSchema"`
 	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
 	// The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
@@ -3944,8 +3985,9 @@ func (o GetSubscriptionBigqueryConfigOutput) ToGetSubscriptionBigqueryConfigOutp
 	return o
 }
 
-// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+// When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+// and any messages with extra fields are not written and remain in the subscription's backlog.
 func (o GetSubscriptionBigqueryConfigOutput) DropUnknownFields() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.DropUnknownFields }).(pulumi.BoolOutput)
 }
@@ -3955,7 +3997,14 @@ func (o GetSubscriptionBigqueryConfigOutput) Table() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) string { return v.Table }).(pulumi.StringOutput)
 }
 
+// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+// must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+func (o GetSubscriptionBigqueryConfigOutput) UseTableSchema() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.UseTableSchema }).(pulumi.BoolOutput)
+}
+
 // When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+// Only one of useTopicSchema and useTableSchema can be set.
 func (o GetSubscriptionBigqueryConfigOutput) UseTopicSchema() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSubscriptionBigqueryConfig) bool { return v.UseTopicSchema }).(pulumi.BoolOutput)
 }

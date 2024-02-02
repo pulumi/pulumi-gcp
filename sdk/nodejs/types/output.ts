@@ -12130,7 +12130,7 @@ export namespace cloudfunctionsv2 {
         /**
          * User managed repository created in Artifact Registry optionally with a customer managed encryption key.
          */
-        dockerRepository?: string;
+        dockerRepository: string;
         /**
          * The name of the function (as defined in source code) that will be executed.
          * Defaults to the resource name suffix, if not specified. For backward
@@ -13769,6 +13769,10 @@ export namespace cloudrun {
 
     export interface GetServiceTemplateSpecVolume {
         /**
+         * A filesystem specified by the Container Storage Interface (CSI).
+         */
+        csis: outputs.cloudrun.GetServiceTemplateSpecVolumeCsi[];
+        /**
          * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
          */
         emptyDirs: outputs.cloudrun.GetServiceTemplateSpecVolumeEmptyDir[];
@@ -13782,6 +13786,26 @@ export namespace cloudrun {
          * the file is the secret_name.
          */
         secrets: outputs.cloudrun.GetServiceTemplateSpecVolumeSecret[];
+    }
+
+    export interface GetServiceTemplateSpecVolumeCsi {
+        /**
+         * Unique name representing the type of file system to be created. Cloud Run supports the following values:
+         *   * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+         *     run.googleapis.com/execution-environment annotation to be set to "gen2" and
+         *     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+         */
+        driver: string;
+        /**
+         * If true, all mounts created from this volume will be read-only.
+         */
+        readOnly: boolean;
+        /**
+         * Driver-specific attributes. The following options are supported for available drivers:
+         *   * gcsfuse.run.googleapis.com
+         *     * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+         */
+        volumeAttributes: {[key: string]: string};
     }
 
     export interface GetServiceTemplateSpecVolumeEmptyDir {
@@ -14578,6 +14602,11 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecVolume {
         /**
+         * A filesystem specified by the Container Storage Interface (CSI).
+         * Structure is documented below.
+         */
+        csi?: outputs.cloudrun.ServiceTemplateSpecVolumeCsi;
+        /**
          * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
          * Structure is documented below.
          */
@@ -14595,6 +14624,28 @@ export namespace cloudrun {
         secret?: outputs.cloudrun.ServiceTemplateSpecVolumeSecret;
     }
 
+    export interface ServiceTemplateSpecVolumeCsi {
+        /**
+         * Unique name representing the type of file system to be created. Cloud Run supports the following values:
+         * * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+         * run.googleapis.com/execution-environment annotation to be set to "gen2" and
+         * run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+         */
+        driver: string;
+        /**
+         * If true, all mounts created from this volume will be read-only.
+         */
+        readOnly: boolean;
+        /**
+         * Driver-specific attributes. The following options are supported for available drivers:
+         * * gcsfuse.run.googleapis.com
+         * * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+         *
+         * - - -
+         */
+        volumeAttributes?: {[key: string]: string};
+    }
+
     export interface ServiceTemplateSpecVolumeEmptyDir {
         /**
          * The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
@@ -14602,8 +14653,6 @@ export namespace cloudrun {
         medium?: string;
         /**
          * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-         *
-         * - - -
          */
         sizeLimit?: string;
     }
@@ -17084,6 +17133,10 @@ export namespace composer {
          */
         dagGcsPrefix: string;
         /**
+         * The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+         */
+        dataRetentionConfig: outputs.composer.EnvironmentConfigDataRetentionConfig;
+        /**
          * The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         databaseConfig: outputs.composer.EnvironmentConfigDatabaseConfig;
@@ -17151,6 +17204,20 @@ export namespace composer {
          * The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
          */
         workloadsConfig: outputs.composer.EnvironmentConfigWorkloadsConfig;
+    }
+
+    export interface EnvironmentConfigDataRetentionConfig {
+        /**
+         * Optional. The configuration setting for Task Logs.
+         */
+        taskLogsRetentionConfigs: outputs.composer.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig[];
+    }
+
+    export interface EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
+        /**
+         * Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+         */
+        storageMode?: string;
     }
 
     export interface EnvironmentConfigDatabaseConfig {
@@ -17537,6 +17604,10 @@ export namespace composer {
          */
         dagGcsPrefix: string;
         /**
+         * The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+         */
+        dataRetentionConfigs: outputs.composer.GetEnvironmentConfigDataRetentionConfig[];
+        /**
          * The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         databaseConfigs: outputs.composer.GetEnvironmentConfigDatabaseConfig[];
@@ -17604,6 +17675,20 @@ export namespace composer {
          * The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
          */
         workloadsConfigs: outputs.composer.GetEnvironmentConfigWorkloadsConfig[];
+    }
+
+    export interface GetEnvironmentConfigDataRetentionConfig {
+        /**
+         * Optional. The configuration setting for Task Logs.
+         */
+        taskLogsRetentionConfigs: outputs.composer.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig[];
+    }
+
+    export interface GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
+        /**
+         * Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+         */
+        storageMode: string;
     }
 
     export interface GetEnvironmentConfigDatabaseConfig {
@@ -20654,7 +20739,7 @@ export namespace compute {
          */
         network: string;
         /**
-         * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * Beta The URL of the network attachment to this interface.
          */
         networkAttachment: string;
         /**
@@ -24259,7 +24344,7 @@ export namespace compute {
          */
         count: number;
         /**
-         * The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
     }
@@ -24516,7 +24601,6 @@ export namespace compute {
         localSsdRecoveryTimeout?: outputs.compute.InstanceSchedulingLocalSsdRecoveryTimeout;
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-         * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
          */
         maintenanceInterval?: string;
         /**
@@ -24847,8 +24931,7 @@ export namespace compute {
          */
         count: number;
         /**
-         * The type of GCE disk, can be either `"SCRATCH"` or
-         * `"PERSISTENT"`.
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
     }
@@ -25041,7 +25124,6 @@ export namespace compute {
         localSsdRecoveryTimeouts?: outputs.compute.InstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-         * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
          */
         maintenanceInterval?: string;
         /**
@@ -27241,8 +27323,7 @@ export namespace compute {
          */
         count: number;
         /**
-         * The type of GCE disk, can be either `"SCRATCH"` or
-         * `"PERSISTENT"`.
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
     }
@@ -27420,8 +27501,7 @@ export namespace compute {
          */
         localSsdRecoveryTimeouts?: outputs.compute.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
         /**
-         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
-         * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
+         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          */
         maintenanceInterval?: string;
         /**
@@ -52709,9 +52789,9 @@ export namespace essentialcontacts {
 export namespace eventarc {
     export interface TriggerDestination {
         /**
-         * [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+         * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
          */
-        cloudFunction?: string;
+        cloudFunction: string;
         /**
          * Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
          */
@@ -53027,7 +53107,8 @@ export namespace firebase {
         /**
          * Params whose values are only available at deployment time.
          * Unlike other params, these will not be set as environment variables on
-         * functions.
+         * functions. See a full list of system parameters at
+         * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
          */
         systemParams: {[key: string]: string};
     }
@@ -66653,8 +66734,9 @@ export namespace projects {
 export namespace pubsub {
     export interface GetSubscriptionBigqueryConfig {
         /**
-         * When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-         * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+         * When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+         * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+         * and any messages with extra fields are not written and remain in the subscription's backlog.
          */
         dropUnknownFields: boolean;
         /**
@@ -66662,7 +66744,13 @@ export namespace pubsub {
          */
         table: string;
         /**
+         * When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+         * must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+         */
+        useTableSchema: boolean;
+        /**
          * When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+         * Only one of useTopicSchema and useTableSchema can be set.
          */
         useTopicSchema: boolean;
         /**
@@ -66936,8 +67024,9 @@ export namespace pubsub {
 
     export interface SubscriptionBigqueryConfig {
         /**
-         * When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-         * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+         * When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+         * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+         * and any messages with extra fields are not written and remain in the subscription's backlog.
          */
         dropUnknownFields?: boolean;
         /**
@@ -66945,7 +67034,13 @@ export namespace pubsub {
          */
         table: string;
         /**
+         * When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+         * must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+         */
+        useTableSchema?: boolean;
+        /**
          * When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+         * Only one of useTopicSchema and useTableSchema can be set.
          */
         useTopicSchema?: boolean;
         /**
@@ -68453,6 +68548,394 @@ export namespace securitycenter {
         description?: string;
         expression: string;
         title: string;
+    }
+
+}
+
+export namespace securityposture {
+    export interface PosturePolicySet {
+        /**
+         * Description of the policy set.
+         */
+        description?: string;
+        /**
+         * List of security policy
+         * Structure is documented below.
+         */
+        policies?: outputs.securityposture.PosturePolicySetPolicy[];
+        /**
+         * ID of the policy set.
+         */
+        policySetId: string;
+    }
+
+    export interface PosturePolicySetPolicy {
+        /**
+         * Mapping for policy to security standards and controls.
+         * Structure is documented below.
+         */
+        complianceStandards?: outputs.securityposture.PosturePolicySetPolicyComplianceStandard[];
+        /**
+         * Policy constraint definition.It can have the definition of one of following constraints: orgPolicyConstraint orgPolicyConstraintCustom securityHealthAnalyticsModule securityHealthAnalyticsCustomModule
+         * Structure is documented below.
+         */
+        constraint: outputs.securityposture.PosturePolicySetPolicyConstraint;
+        /**
+         * Description of the policy.
+         */
+        description?: string;
+        /**
+         * ID of the policy.
+         */
+        policyId: string;
+    }
+
+    export interface PosturePolicySetPolicyComplianceStandard {
+        /**
+         * Mapping of security controls for the policy.
+         */
+        control?: string;
+        /**
+         * Mapping of compliance standards for the policy.
+         */
+        standard?: string;
+    }
+
+    export interface PosturePolicySetPolicyConstraint {
+        /**
+         * Organization policy canned constraint definition.
+         * Structure is documented below.
+         */
+        orgPolicyConstraint?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraint;
+        /**
+         * Organization policy custom constraint policy definition.
+         * Structure is documented below.
+         */
+        orgPolicyConstraintCustom?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom;
+        /**
+         * Definition of Security Health Analytics Custom Module.
+         * Structure is documented below.
+         */
+        securityHealthAnalyticsCustomModule?: outputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule;
+        /**
+         * Security Health Analytics built-in detector definition.
+         * Structure is documented below.
+         */
+        securityHealthAnalyticsModule?: outputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraint {
+        /**
+         * Organization policy canned constraint Id
+         */
+        cannedConstraintId: string;
+        /**
+         * Definition of policy rules
+         * Structure is documented below.
+         */
+        policyRules: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule[];
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom {
+        /**
+         * Organization policy custom constraint definition.
+         * Structure is documented below.
+         */
+        customConstraint?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint;
+        /**
+         * Definition of policy rules
+         * Structure is documented below.
+         */
+        policyRules: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule[];
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint {
+        /**
+         * The action to take if the condition is met.
+         * Possible values are: `ALLOW`, `DENY`.
+         */
+        actionType: string;
+        /**
+         * A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+         */
+        condition: string;
+        /**
+         * A human-friendly description of the constraint to display as an error message when the policy is violated.
+         */
+        description?: string;
+        /**
+         * A human-friendly name for the constraint.
+         */
+        displayName?: string;
+        /**
+         * A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+         */
+        methodTypes: string[];
+        /**
+         * Immutable. The name of the custom constraint. This is unique within the organization.
+         */
+        name: string;
+        /**
+         * Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
+         */
+        resourceTypes: string[];
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule {
+        /**
+         * Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+         */
+        allowAll?: boolean;
+        /**
+         * Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+         */
+        denyAll?: boolean;
+        /**
+         * If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
+         * This field can be set only in policies for boolean constraints.
+         */
+        enforce?: boolean;
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
+         */
+        expr?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr;
+        /**
+         * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+         * Structure is documented below.
+         */
+        values?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr {
+        /**
+         * Description of the expression
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: string;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues {
+        /**
+         * List of values allowed at this resource.
+         */
+        allowedValues?: string[];
+        /**
+         * List of values denied at this resource.
+         */
+        deniedValues?: string[];
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule {
+        /**
+         * Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+         */
+        allowAll?: boolean;
+        /**
+         * Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+         */
+        denyAll?: boolean;
+        /**
+         * If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
+         * This field can be set only in policies for boolean constraints.
+         */
+        enforce?: boolean;
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
+         */
+        expr?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr;
+        /**
+         * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+         * Structure is documented below.
+         */
+        values?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr {
+        /**
+         * Description of the expression
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: string;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues {
+        /**
+         * List of values allowed at this resource.
+         */
+        allowedValues?: string[];
+        /**
+         * List of values denied at this resource.
+         */
+        deniedValues?: string[];
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule {
+        /**
+         * Custom module details.
+         * Structure is documented below.
+         */
+        config: outputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig;
+        /**
+         * The display name of the Security Health Analytics custom module. This
+         * display name becomes the finding category for all findings that are
+         * returned by this custom module.
+         */
+        displayName?: string;
+        /**
+         * (Output)
+         * A server generated id of custom module.
+         */
+        id: string;
+        /**
+         * The state of enablement for the module at its level of the resource hierarchy.
+         * Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+         */
+        moduleEnablementState?: string;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig {
+        /**
+         * Custom output properties. A set of optional name-value pairs that define custom source properties to
+         * return with each finding that is generated by the custom module. The custom
+         * source properties that are defined here are included in the finding JSON
+         * under `sourceProperties`.
+         * Structure is documented below.
+         */
+        customOutput?: outputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput;
+        /**
+         * Text that describes the vulnerability or misconfiguration that the custom
+         * module detects.
+         */
+        description?: string;
+        /**
+         * The CEL expression to evaluate to produce findings.When the expression
+         * evaluates to true against a resource, a finding is generated.
+         * Structure is documented below.
+         */
+        predicate: outputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicate;
+        /**
+         * An explanation of the recommended steps that security teams can take to
+         * resolve the detected issue
+         */
+        recommendation?: string;
+        /**
+         * The resource types that the custom module operates on. Each custom module
+         * can specify up to 5 resource types.
+         * Structure is documented below.
+         */
+        resourceSelector: outputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector;
+        /**
+         * The severity to assign to findings generated by the module.
+         * Possible values are: `SEVERITY_UNSPECIFIED`, `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        severity: string;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput {
+        /**
+         * A list of custom output properties to add to the finding.
+         * Structure is documented below.
+         */
+        properties?: outputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty[];
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty {
+        /**
+         * Name of the property for the custom output.
+         */
+        name: string;
+        /**
+         * The CEL expression for the custom output. A resource property can be
+         * specified to return the value of the property or a text string enclosed
+         * in quotation marks.
+         * Structure is documented below.
+         */
+        valueExpression?: outputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression {
+        /**
+         * Description of the expression
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: string;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicate {
+        /**
+         * Description of the expression
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: string;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector {
+        /**
+         * The resource types to run the detector on.
+         */
+        resourceTypes: string[];
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule {
+        /**
+         * The state of enablement for the module at its level of the resource hierarchy.
+         * Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+         */
+        moduleEnablementState?: string;
+        /**
+         * The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
+         */
+        moduleName: string;
     }
 
 }
@@ -71630,6 +72113,50 @@ export namespace vertex {
         cron: string;
     }
 
+    export interface AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
+        /**
+         * Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+         */
+        bruteForceConfig?: outputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig;
+        /**
+         * Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
+         */
+        crowdingColumn?: string;
+        /**
+         * The distance measure used in nearest neighbor search.
+         * For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
+         * Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
+         */
+        distanceMeasureType?: string;
+        /**
+         * Column of embedding. This column contains the source data to create index for vector search.
+         */
+        embeddingColumn: string;
+        /**
+         * The number of dimensions of the input embedding.
+         */
+        embeddingDimension?: number;
+        /**
+         * Columns of features that are used to filter vector search results.
+         */
+        filterColumns?: string[];
+        /**
+         * Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+         * Structure is documented below.
+         */
+        treeAhConfig?: outputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig;
+    }
+
+    export interface AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig {
+    }
+
+    export interface AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
+        /**
+         * Number of embeddings on each leaf node. The default value is 1000 if not set.
+         */
+        leafNodeEmbeddingCount: string;
+    }
+
     export interface AiFeatureOnlineStoreOptimized {
     }
 
@@ -72968,6 +73495,17 @@ export namespace workstations {
          * Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
          */
         sourceSnapshot?: string;
+    }
+
+    export interface WorkstationConfigReadinessCheck {
+        /**
+         * Path to which the request should be sent.
+         */
+        path: string;
+        /**
+         * Port to which the request should be sent.
+         */
+        port: number;
     }
 
     export interface WorkstationIamBindingCondition {

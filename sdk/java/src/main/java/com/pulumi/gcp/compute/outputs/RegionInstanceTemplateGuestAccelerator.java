@@ -17,8 +17,7 @@ public final class RegionInstanceTemplateGuestAccelerator {
      */
     private Integer count;
     /**
-     * @return The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
-     * `&#34;PERSISTENT&#34;`.
+     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
     private String type;
@@ -32,8 +31,7 @@ public final class RegionInstanceTemplateGuestAccelerator {
         return this.count;
     }
     /**
-     * @return The type of GCE disk, can be either `&#34;SCRATCH&#34;` or
-     * `&#34;PERSISTENT&#34;`.
+     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
     public String type() {

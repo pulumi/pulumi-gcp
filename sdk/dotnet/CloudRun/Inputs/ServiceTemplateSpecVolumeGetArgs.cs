@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.CloudRun.Inputs
     public sealed class ServiceTemplateSpecVolumeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A filesystem specified by the Container Storage Interface (CSI).
+        /// Structure is documented below.
+        /// </summary>
+        [Input("csi")]
+        public Input<Inputs.ServiceTemplateSpecVolumeCsiGetArgs>? Csi { get; set; }
+
+        /// <summary>
         /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
         /// Structure is documented below.
         /// </summary>

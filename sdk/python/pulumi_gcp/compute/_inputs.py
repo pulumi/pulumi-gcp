@@ -9947,7 +9947,7 @@ class InstanceGuestAcceleratorArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
-        :param pulumi.Input[str] type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -9968,7 +9968,7 @@ class InstanceGuestAcceleratorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
 
@@ -10784,7 +10784,6 @@ class InstanceSchedulingArgs:
                  between 0 and 168 hours with hour granularity and the default value being 1
                  hour.
         :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         :param pulumi.Input['InstanceSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param pulumi.Input[int] min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
@@ -10871,7 +10870,6 @@ class InstanceSchedulingArgs:
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -11893,8 +11891,7 @@ class InstanceTemplateGuestAcceleratorArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
-        :param pulumi.Input[str] type: The type of GCE disk, can be either `"SCRATCH"` or
-               `"PERSISTENT"`.
+        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -11915,8 +11912,7 @@ class InstanceTemplateGuestAcceleratorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of GCE disk, can be either `"SCRATCH"` or
-        `"PERSISTENT"`.
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
 
@@ -12525,7 +12521,6 @@ class InstanceTemplateSchedulingArgs:
                  between 0 and 168 hours with hour granularity and the default value being 1
                  hour.
         :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param pulumi.Input[int] min_node_cpus: Minimum number of cpus for the instance.
@@ -12611,7 +12606,6 @@ class InstanceTemplateSchedulingArgs:
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -19715,8 +19709,7 @@ class RegionInstanceTemplateGuestAcceleratorArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
-        :param pulumi.Input[str] type: The type of GCE disk, can be either `"SCRATCH"` or
-               `"PERSISTENT"`.
+        :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
@@ -19737,8 +19730,7 @@ class RegionInstanceTemplateGuestAcceleratorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of GCE disk, can be either `"SCRATCH"` or
-        `"PERSISTENT"`.
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
         """
         return pulumi.get(self, "type")
 
@@ -20312,8 +20304,7 @@ class RegionInstanceTemplateSchedulingArgs:
                  recovery of the Local Ssd state is attempted. Its value should be in
                  between 0 and 168 hours with hour granularity and the default value being 1
                  hour.
-        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
-               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         :param pulumi.Input['RegionInstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         :param pulumi.Input[int] min_node_cpus: Minimum number of cpus for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
@@ -20397,8 +20388,7 @@ class RegionInstanceTemplateSchedulingArgs:
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
-        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         """
         return pulumi.get(self, "maintenance_interval")
 

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeCsi;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeEmptyDir;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeSecret;
 import java.lang.String;
@@ -13,6 +14,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecVolume {
+    /**
+     * @return A filesystem specified by the Container Storage Interface (CSI).
+     * 
+     */
+    private List<GetServiceTemplateSpecVolumeCsi> csis;
     /**
      * @return Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
      * 
@@ -32,6 +38,13 @@ public final class GetServiceTemplateSpecVolume {
     private List<GetServiceTemplateSpecVolumeSecret> secrets;
 
     private GetServiceTemplateSpecVolume() {}
+    /**
+     * @return A filesystem specified by the Container Storage Interface (CSI).
+     * 
+     */
+    public List<GetServiceTemplateSpecVolumeCsi> csis() {
+        return this.csis;
+    }
     /**
      * @return Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
      * 
@@ -65,17 +78,30 @@ public final class GetServiceTemplateSpecVolume {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetServiceTemplateSpecVolumeCsi> csis;
         private List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs;
         private String name;
         private List<GetServiceTemplateSpecVolumeSecret> secrets;
         public Builder() {}
         public Builder(GetServiceTemplateSpecVolume defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.csis = defaults.csis;
     	      this.emptyDirs = defaults.emptyDirs;
     	      this.name = defaults.name;
     	      this.secrets = defaults.secrets;
         }
 
+        @CustomType.Setter
+        public Builder csis(List<GetServiceTemplateSpecVolumeCsi> csis) {
+            if (csis == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecVolume", "csis");
+            }
+            this.csis = csis;
+            return this;
+        }
+        public Builder csis(GetServiceTemplateSpecVolumeCsi... csis) {
+            return csis(List.of(csis));
+        }
         @CustomType.Setter
         public Builder emptyDirs(List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs) {
             if (emptyDirs == null) {
@@ -108,6 +134,7 @@ public final class GetServiceTemplateSpecVolume {
         }
         public GetServiceTemplateSpecVolume build() {
             final var _resultValue = new GetServiceTemplateSpecVolume();
+            _resultValue.csis = csis;
             _resultValue.emptyDirs = emptyDirs;
             _resultValue.name = name;
             _resultValue.secrets = secrets;

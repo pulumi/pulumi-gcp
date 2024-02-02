@@ -561,7 +561,7 @@ class Feature(pulumi.CustomResource):
             ),
             location="global")
         ```
-        ### Enable Fleet Default Member Config Policycontroller Set Empty
+        ### Enable Fleet Default Member Config Policycontroller Minimal
 
         ```python
         import pulumi
@@ -818,7 +818,7 @@ class Feature(pulumi.CustomResource):
             ),
             location="global")
         ```
-        ### Enable Fleet Default Member Config Policycontroller Set Empty
+        ### Enable Fleet Default Member Config Policycontroller Minimal
 
         ```python
         import pulumi

@@ -27,6 +27,11 @@ import (
 type Workflow struct {
 	pulumi.CustomResourceState
 
+	// Describes the level of platform logging to apply to calls and call responses during
+	// executions of this workflow. If both the workflow and the execution specify a logging level,
+	// the execution level takes precedence.
+	// Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+	CallLogLevel pulumi.StringPtrOutput `pulumi:"callLogLevel"`
 	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The KMS key used to encrypt workflow and execution data.
@@ -64,7 +69,7 @@ type Workflow struct {
 	// If not provided, workflow will use the project's default service account.
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
-	// Workflow code to be executed. The size limit is 32KB.
+	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents pulumi.StringPtrOutput `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -109,6 +114,11 @@ func GetWorkflow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workflow resources.
 type workflowState struct {
+	// Describes the level of platform logging to apply to calls and call responses during
+	// executions of this workflow. If both the workflow and the execution specify a logging level,
+	// the execution level takes precedence.
+	// Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+	CallLogLevel *string `pulumi:"callLogLevel"`
 	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
 	// The KMS key used to encrypt workflow and execution data.
@@ -146,7 +156,7 @@ type workflowState struct {
 	// If not provided, workflow will use the project's default service account.
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// Workflow code to be executed. The size limit is 32KB.
+	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents *string `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State *string `pulumi:"state"`
@@ -157,6 +167,11 @@ type workflowState struct {
 }
 
 type WorkflowState struct {
+	// Describes the level of platform logging to apply to calls and call responses during
+	// executions of this workflow. If both the workflow and the execution specify a logging level,
+	// the execution level takes precedence.
+	// Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+	CallLogLevel pulumi.StringPtrInput
 	// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
 	// The KMS key used to encrypt workflow and execution data.
@@ -194,7 +209,7 @@ type WorkflowState struct {
 	// If not provided, workflow will use the project's default service account.
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
-	// Workflow code to be executed. The size limit is 32KB.
+	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents pulumi.StringPtrInput
 	// State of the workflow deployment.
 	State pulumi.StringPtrInput
@@ -209,6 +224,11 @@ func (WorkflowState) ElementType() reflect.Type {
 }
 
 type workflowArgs struct {
+	// Describes the level of platform logging to apply to calls and call responses during
+	// executions of this workflow. If both the workflow and the execution specify a logging level,
+	// the execution level takes precedence.
+	// Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+	CallLogLevel *string `pulumi:"callLogLevel"`
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
 	CryptoKeyName *string `pulumi:"cryptoKeyName"`
@@ -237,7 +257,7 @@ type workflowArgs struct {
 	// If not provided, workflow will use the project's default service account.
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// Workflow code to be executed. The size limit is 32KB.
+	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents *string `pulumi:"sourceContents"`
 	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars map[string]string `pulumi:"userEnvVars"`
@@ -245,6 +265,11 @@ type workflowArgs struct {
 
 // The set of arguments for constructing a Workflow resource.
 type WorkflowArgs struct {
+	// Describes the level of platform logging to apply to calls and call responses during
+	// executions of this workflow. If both the workflow and the execution specify a logging level,
+	// the execution level takes precedence.
+	// Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+	CallLogLevel pulumi.StringPtrInput
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
 	CryptoKeyName pulumi.StringPtrInput
@@ -273,7 +298,7 @@ type WorkflowArgs struct {
 	// If not provided, workflow will use the project's default service account.
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
-	// Workflow code to be executed. The size limit is 32KB.
+	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents pulumi.StringPtrInput
 	// User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
 	UserEnvVars pulumi.StringMapInput
@@ -366,6 +391,14 @@ func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) Workflo
 	return o
 }
 
+// Describes the level of platform logging to apply to calls and call responses during
+// executions of this workflow. If both the workflow and the execution specify a logging level,
+// the execution level takes precedence.
+// Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+func (o WorkflowOutput) CallLogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.CallLogLevel }).(pulumi.StringPtrOutput)
+}
+
 // The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o WorkflowOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -439,7 +472,7 @@ func (o WorkflowOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-// Workflow code to be executed. The size limit is 32KB.
+// Workflow code to be executed. The size limit is 128KB.
 func (o WorkflowOutput) SourceContents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.SourceContents }).(pulumi.StringPtrOutput)
 }

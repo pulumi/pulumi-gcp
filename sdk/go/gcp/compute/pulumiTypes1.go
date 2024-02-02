@@ -11342,7 +11342,7 @@ type GetInstanceNetworkInterface struct {
 	Name string `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
 	Network string `pulumi:"network"`
-	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+	// Beta The URL of the network attachment to this interface.
 	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The private IP address assigned to the instance.
 	NetworkIp string `pulumi:"networkIp"`
@@ -11389,7 +11389,7 @@ type GetInstanceNetworkInterfaceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name or selfLink of the network attached to this interface.
 	Network pulumi.StringInput `pulumi:"network"`
-	// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+	// Beta The URL of the network attachment to this interface.
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The private IP address assigned to the instance.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
@@ -11501,7 +11501,7 @@ func (o GetInstanceNetworkInterfaceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+// Beta The URL of the network attachment to this interface.
 func (o GetInstanceNetworkInterfaceOutput) NetworkAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkAttachment }).(pulumi.StringOutput)
 }

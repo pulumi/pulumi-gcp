@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     public sealed class ServiceTemplateSpecVolume
     {
         /// <summary>
+        /// A filesystem specified by the Container Storage Interface (CSI).
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateSpecVolumeCsi? Csi;
+        /// <summary>
         /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
         /// Structure is documented below.
         /// </summary>
@@ -32,12 +37,15 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
         [OutputConstructor]
         private ServiceTemplateSpecVolume(
+            Outputs.ServiceTemplateSpecVolumeCsi? csi,
+
             Outputs.ServiceTemplateSpecVolumeEmptyDir? emptyDir,
 
             string name,
 
             Outputs.ServiceTemplateSpecVolumeSecret? secret)
         {
+            Csi = csi;
             EmptyDir = emptyDir;
             Name = name;
             Secret = secret;

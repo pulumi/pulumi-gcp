@@ -32,7 +32,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly Outputs.InstanceSchedulingLocalSsdRecoveryTimeout? LocalSsdRecoveryTimeout;
         /// <summary>
         /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-        /// &lt;a name="nested_guest_accelerator"&gt;&lt;/a&gt;The `guest_accelerator` block supports:
         /// </summary>
         public readonly string? MaintenanceInterval;
         /// <summary>

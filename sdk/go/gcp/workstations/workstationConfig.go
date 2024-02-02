@@ -630,6 +630,9 @@ type WorkstationConfig struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Readiness checks to be performed on a workstation.
+	// Structure is documented below.
+	ReadinessChecks WorkstationConfigReadinessCheckArrayOutput `pulumi:"readinessChecks"`
 	// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
 	// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
 	ReplicaZones pulumi.StringArrayOutput `pulumi:"replicaZones"`
@@ -747,6 +750,9 @@ type workstationConfigState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Readiness checks to be performed on a workstation.
+	// Structure is documented below.
+	ReadinessChecks []WorkstationConfigReadinessCheck `pulumi:"readinessChecks"`
 	// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
 	// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
 	ReplicaZones []string `pulumi:"replicaZones"`
@@ -821,6 +827,9 @@ type WorkstationConfigState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Readiness checks to be performed on a workstation.
+	// Structure is documented below.
+	ReadinessChecks WorkstationConfigReadinessCheckArrayInput
 	// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
 	// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
 	ReplicaZones pulumi.StringArrayInput
@@ -879,6 +888,9 @@ type workstationConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Readiness checks to be performed on a workstation.
+	// Structure is documented below.
+	ReadinessChecks []WorkstationConfigReadinessCheck `pulumi:"readinessChecks"`
 	// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
 	// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
 	ReplicaZones []string `pulumi:"replicaZones"`
@@ -932,6 +944,9 @@ type WorkstationConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Readiness checks to be performed on a workstation.
+	// Structure is documented below.
+	ReadinessChecks WorkstationConfigReadinessCheckArrayInput
 	// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
 	// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
 	ReplicaZones pulumi.StringArrayInput
@@ -1150,6 +1165,12 @@ func (o WorkstationConfigOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o WorkstationConfigOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Readiness checks to be performed on a workstation.
+// Structure is documented below.
+func (o WorkstationConfigOutput) ReadinessChecks() WorkstationConfigReadinessCheckArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfig) WorkstationConfigReadinessCheckArrayOutput { return v.ReadinessChecks }).(WorkstationConfigReadinessCheckArrayOutput)
 }
 
 // Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.

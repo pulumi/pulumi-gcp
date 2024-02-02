@@ -1198,6 +1198,21 @@ class RegionBackendService(pulumi.CustomResource):
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
         ## Example Usage
+        ### Region Backend Service External Iap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            iap=gcp.compute.RegionBackendServiceIapArgs(
+                oauth2_client_id="abc",
+                oauth2_client_secret="xyz",
+            ),
+            load_balancing_scheme="EXTERNAL",
+            protocol="HTTP",
+            region="us-central1")
+        ```
 
         ## Import
 
@@ -1326,6 +1341,21 @@ class RegionBackendService(pulumi.CustomResource):
             * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 
         ## Example Usage
+        ### Region Backend Service External Iap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionBackendService("default",
+            iap=gcp.compute.RegionBackendServiceIapArgs(
+                oauth2_client_id="abc",
+                oauth2_client_secret="xyz",
+            ),
+            load_balancing_scheme="EXTERNAL",
+            protocol="HTTP",
+            region="us-central1")
+        ```
 
         ## Import
 

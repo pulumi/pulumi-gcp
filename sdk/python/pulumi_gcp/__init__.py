@@ -110,6 +110,8 @@ if typing.TYPE_CHECKING:
     deploymentmanager = __deploymentmanager
     import pulumi_gcp.diagflow as __diagflow
     diagflow = __diagflow
+    import pulumi_gcp.discoveryengine as __discoveryengine
+    discoveryengine = __discoveryengine
     import pulumi_gcp.dns as __dns
     dns = __dns
     import pulumi_gcp.edgecontainer as __edgecontainer
@@ -200,6 +202,8 @@ if typing.TYPE_CHECKING:
     securesourcemanager = __securesourcemanager
     import pulumi_gcp.securitycenter as __securitycenter
     securitycenter = __securitycenter
+    import pulumi_gcp.securityposture as __securityposture
+    securityposture = __securityposture
     import pulumi_gcp.serviceaccount as __serviceaccount
     serviceaccount = __serviceaccount
     import pulumi_gcp.servicedirectory as __servicedirectory
@@ -283,6 +287,7 @@ else:
     datastream = _utilities.lazy_import('pulumi_gcp.datastream')
     deploymentmanager = _utilities.lazy_import('pulumi_gcp.deploymentmanager')
     diagflow = _utilities.lazy_import('pulumi_gcp.diagflow')
+    discoveryengine = _utilities.lazy_import('pulumi_gcp.discoveryengine')
     dns = _utilities.lazy_import('pulumi_gcp.dns')
     edgecontainer = _utilities.lazy_import('pulumi_gcp.edgecontainer')
     edgenetwork = _utilities.lazy_import('pulumi_gcp.edgenetwork')
@@ -328,6 +333,7 @@ else:
     secretmanager = _utilities.lazy_import('pulumi_gcp.secretmanager')
     securesourcemanager = _utilities.lazy_import('pulumi_gcp.securesourcemanager')
     securitycenter = _utilities.lazy_import('pulumi_gcp.securitycenter')
+    securityposture = _utilities.lazy_import('pulumi_gcp.securityposture')
     serviceaccount = _utilities.lazy_import('pulumi_gcp.serviceaccount')
     servicedirectory = _utilities.lazy_import('pulumi_gcp.servicedirectory')
     servicenetworking = _utilities.lazy_import('pulumi_gcp.servicenetworking')
@@ -3854,6 +3860,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "discoveryengine/dataStore",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/dataStore:DataStore": "DataStore"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dns/dnsManagedZoneIamBinding",
   "fqn": "pulumi_gcp.dns",
   "classes": {
@@ -6346,6 +6360,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": "SourceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securityposture/posture",
+  "fqn": "pulumi_gcp.securityposture",
+  "classes": {
+   "gcp:securityposture/posture:Posture": "Posture"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securityposture/postureDeployment",
+  "fqn": "pulumi_gcp.securityposture",
+  "classes": {
+   "gcp:securityposture/postureDeployment:PostureDeployment": "PostureDeployment"
   }
  },
  {

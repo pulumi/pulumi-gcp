@@ -23,67 +23,26 @@ import * as utilities from "../utilities";
  * chosen location.
  *
  * ## Example Usage
- * ### Firestore Field Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const basic = new gcp.firestore.Field("basic", {
- *     collection: "chatrooms_%{random_suffix}",
- *     database: "(default)",
- *     field: "basic",
- *     indexConfig: {
- *         indexes: [
- *             {
- *                 order: "ASCENDING",
- *                 queryScope: "COLLECTION_GROUP",
- *             },
- *             {
- *                 arrayConfig: "CONTAINS",
- *             },
- *         ],
- *     },
- *     project: "my-project-name",
- * });
- * ```
  * ### Firestore Field Timestamp
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const timestamp = new gcp.firestore.Field("timestamp", {
- *     collection: "chatrooms_%{random_suffix}",
- *     field: "timestamp",
- *     indexConfig: {},
+ * const database = new gcp.firestore.Database("database", {
  *     project: "my-project-name",
- *     ttlConfig: {},
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
  * });
- * ```
- * ### Firestore Field Match Override
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const matchOverride = new gcp.firestore.Field("matchOverride", {
- *     collection: "chatrooms_%{random_suffix}",
- *     field: "field_with_same_configuration_as_ancestor",
- *     indexConfig: {
- *         indexes: [
- *             {
- *                 order: "ASCENDING",
- *             },
- *             {
- *                 order: "DESCENDING",
- *             },
- *             {
- *                 arrayConfig: "CONTAINS",
- *             },
- *         ],
- *     },
+ * const timestamp = new gcp.firestore.Field("timestamp", {
  *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "chatrooms",
+ *     field: "timestamp",
+ *     ttlConfig: {},
+ *     indexConfig: {},
  * });
  * ```
  *

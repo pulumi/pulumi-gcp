@@ -182,51 +182,49 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
- *     location: "us-central1",
- *     repositoryId: "my-repository",
- *     description: "example docker repository with cleanup policies",
- *     format: "DOCKER",
- *     cleanupPolicyDryRun: false,
  *     cleanupPolicies: [
  *         {
- *             id: "delete-prerelease",
  *             action: "DELETE",
  *             condition: {
- *                 tagState: "TAGGED",
+ *                 olderThan: "2592000s",
  *                 tagPrefixes: [
  *                     "alpha",
  *                     "v0",
  *                 ],
- *                 olderThan: "2592000s",
+ *                 tagState: "TAGGED",
  *             },
+ *             id: "delete-prerelease",
  *         },
  *         {
- *             id: "keep-tagged-release",
  *             action: "KEEP",
  *             condition: {
- *                 tagState: "TAGGED",
- *                 tagPrefixes: ["release"],
  *                 packageNamePrefixes: [
  *                     "webapp",
  *                     "mobile",
  *                 ],
+ *                 tagPrefixes: ["release"],
+ *                 tagState: "TAGGED",
  *             },
+ *             id: "keep-tagged-release",
  *         },
  *         {
- *             id: "keep-minimum-versions",
  *             action: "KEEP",
+ *             id: "keep-minimum-versions",
  *             mostRecentVersions: {
+ *                 keepCount: 5,
  *                 packageNamePrefixes: [
  *                     "webapp",
  *                     "mobile",
  *                     "sandbox",
  *                 ],
- *                 keepCount: 5,
  *             },
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
+ *     cleanupPolicyDryRun: false,
+ *     description: "example docker repository with cleanup policies",
+ *     format: "DOCKER",
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
  * });
  * ```
  * ### Artifact Registry Repository Remote Custom

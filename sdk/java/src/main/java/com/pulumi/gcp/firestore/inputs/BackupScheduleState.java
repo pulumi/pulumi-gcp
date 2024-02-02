@@ -49,7 +49,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The unique backup schedule identifier across all locations and databases for the given project. Format:
-     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
      * 
      */
     @Import(name="name")
@@ -57,7 +57,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The unique backup schedule identifier across all locations and databases for the given project. Format:
-     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -194,7 +194,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param name The unique backup schedule identifier across all locations and databases for the given project. Format:
-         * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+         * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class BackupScheduleState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param name The unique backup schedule identifier across all locations and databases for the given project. Format:
-         * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+         * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
          * 
          * @return builder
          * 

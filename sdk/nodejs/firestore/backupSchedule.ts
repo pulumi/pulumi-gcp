@@ -29,12 +29,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const daily_backup = new gcp.firestore.BackupSchedule("daily-backup", {
- *     dailyRecurrence: {},
+ * const database = new gcp.firestore.Database("database", {
  *     project: "my-project-name",
- *     retention: "604800s",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
  * });
- * // 7 days (maximum possible value for daily backups)
+ * const daily_backup = new gcp.firestore.BackupSchedule("daily-backup", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     retention: "604800s",
+ *     dailyRecurrence: {},
+ * });
  * ```
  * ### Firestore Backup Schedule Weekly
  *
@@ -42,9 +49,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const weekly_backup = new gcp.firestore.BackupSchedule("weekly-backup", {
- *     database: "(default)",
+ * const database = new gcp.firestore.Database("database", {
  *     project: "my-project-name",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const weekly_backup = new gcp.firestore.BackupSchedule("weekly-backup", {
+ *     project: "my-project-name",
+ *     database: database.name,
  *     retention: "8467200s",
  *     weeklyRecurrence: {
  *         day: "SUNDAY",
@@ -106,7 +120,7 @@ export class BackupSchedule extends pulumi.CustomResource {
     public readonly database!: pulumi.Output<string | undefined>;
     /**
      * The unique backup schedule identifier across all locations and databases for the given project. Format:
-     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -179,7 +193,7 @@ export interface BackupScheduleState {
     database?: pulumi.Input<string>;
     /**
      * The unique backup schedule identifier across all locations and databases for the given project. Format:
-     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
      */
     name?: pulumi.Input<string>;
     /**

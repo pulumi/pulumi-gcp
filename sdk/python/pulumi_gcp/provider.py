@@ -83,6 +83,7 @@ class ProviderArgs:
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
+                 discovery_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -150,6 +151,7 @@ class ProviderArgs:
                  secure_source_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 securityposture_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -312,6 +314,8 @@ class ProviderArgs:
             pulumi.set(__self__, "dialogflow_cx_custom_endpoint", dialogflow_cx_custom_endpoint)
         if disable_google_partner_name is not None:
             pulumi.set(__self__, "disable_google_partner_name", disable_google_partner_name)
+        if discovery_engine_custom_endpoint is not None:
+            pulumi.set(__self__, "discovery_engine_custom_endpoint", discovery_engine_custom_endpoint)
         if dns_custom_endpoint is not None:
             pulumi.set(__self__, "dns_custom_endpoint", dns_custom_endpoint)
         if document_ai_custom_endpoint is not None:
@@ -450,6 +454,8 @@ class ProviderArgs:
             pulumi.set(__self__, "security_center_custom_endpoint", security_center_custom_endpoint)
         if security_scanner_custom_endpoint is not None:
             pulumi.set(__self__, "security_scanner_custom_endpoint", security_scanner_custom_endpoint)
+        if securityposture_custom_endpoint is not None:
+            pulumi.set(__self__, "securityposture_custom_endpoint", securityposture_custom_endpoint)
         if service_directory_custom_endpoint is not None:
             pulumi.set(__self__, "service_directory_custom_endpoint", service_directory_custom_endpoint)
         if service_management_custom_endpoint is not None:
@@ -1112,6 +1118,15 @@ class ProviderArgs:
         pulumi.set(self, "disable_google_partner_name", value)
 
     @property
+    @pulumi.getter(name="discoveryEngineCustomEndpoint")
+    def discovery_engine_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "discovery_engine_custom_endpoint")
+
+    @discovery_engine_custom_endpoint.setter
+    def discovery_engine_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_engine_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="dnsCustomEndpoint")
     def dns_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dns_custom_endpoint")
@@ -1715,6 +1730,15 @@ class ProviderArgs:
         pulumi.set(self, "security_scanner_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="securitypostureCustomEndpoint")
+    def securityposture_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "securityposture_custom_endpoint")
+
+    @securityposture_custom_endpoint.setter
+    def securityposture_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "securityposture_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="serviceDirectoryCustomEndpoint")
     def service_directory_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "service_directory_custom_endpoint")
@@ -1995,6 +2019,7 @@ class Provider(pulumi.ProviderResource):
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
+                 discovery_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2062,6 +2087,7 @@ class Provider(pulumi.ProviderResource):
                  secure_source_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 securityposture_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2190,6 +2216,7 @@ class Provider(pulumi.ProviderResource):
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
+                 discovery_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2257,6 +2284,7 @@ class Provider(pulumi.ProviderResource):
                  secure_source_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  security_scanner_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 securityposture_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_management_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  service_networking_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2357,6 +2385,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dialogflow_custom_endpoint"] = dialogflow_custom_endpoint
             __props__.__dict__["dialogflow_cx_custom_endpoint"] = dialogflow_cx_custom_endpoint
             __props__.__dict__["disable_google_partner_name"] = pulumi.Output.from_input(disable_google_partner_name).apply(pulumi.runtime.to_json) if disable_google_partner_name is not None else None
+            __props__.__dict__["discovery_engine_custom_endpoint"] = discovery_engine_custom_endpoint
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
             __props__.__dict__["document_ai_custom_endpoint"] = document_ai_custom_endpoint
             __props__.__dict__["document_ai_warehouse_custom_endpoint"] = document_ai_warehouse_custom_endpoint
@@ -2428,6 +2457,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["secure_source_manager_custom_endpoint"] = secure_source_manager_custom_endpoint
             __props__.__dict__["security_center_custom_endpoint"] = security_center_custom_endpoint
             __props__.__dict__["security_scanner_custom_endpoint"] = security_scanner_custom_endpoint
+            __props__.__dict__["securityposture_custom_endpoint"] = securityposture_custom_endpoint
             __props__.__dict__["service_directory_custom_endpoint"] = service_directory_custom_endpoint
             __props__.__dict__["service_management_custom_endpoint"] = service_management_custom_endpoint
             __props__.__dict__["service_networking_custom_endpoint"] = service_networking_custom_endpoint
@@ -2785,6 +2815,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "dialogflow_cx_custom_endpoint")
 
     @property
+    @pulumi.getter(name="discoveryEngineCustomEndpoint")
+    def discovery_engine_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "discovery_engine_custom_endpoint")
+
+    @property
     @pulumi.getter(name="dnsCustomEndpoint")
     def dns_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dns_custom_endpoint")
@@ -3108,6 +3143,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="securityScannerCustomEndpoint")
     def security_scanner_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "security_scanner_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="securitypostureCustomEndpoint")
+    def securityposture_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "securityposture_custom_endpoint")
 
     @property
     @pulumi.getter(name="serviceDirectoryCustomEndpoint")

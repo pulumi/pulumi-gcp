@@ -37,8 +37,6 @@ namespace Pulumi.Gcp.Firestore
     /// {
     ///     var database = new Gcp.Firestore.Database("database", new()
     ///     {
-    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
-    ///         DeletionPolicy = "DELETE",
     ///         LocationId = "nam5",
     ///         Project = "my-project-name",
     ///         Type = "FIRESTORE_NATIVE",
@@ -82,8 +80,6 @@ namespace Pulumi.Gcp.Firestore
     /// {
     ///     var datastoreModeDatabase = new Gcp.Firestore.Database("datastoreModeDatabase", new()
     ///     {
-    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
-    ///         DeletionPolicy = "DELETE",
     ///         LocationId = "nam5",
     ///         Project = "my-project-name",
     ///         Type = "DATASTORE_MODE",

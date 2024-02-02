@@ -12,8 +12,9 @@ import java.util.Objects;
 @CustomType
 public final class GetSubscriptionBigqueryConfig {
     /**
-     * @return When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-     * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
+     * @return When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+     * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+     * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
      * 
      */
     private Boolean dropUnknownFields;
@@ -23,7 +24,14 @@ public final class GetSubscriptionBigqueryConfig {
      */
     private String table;
     /**
+     * @return When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
+     * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+     * 
+     */
+    private Boolean useTableSchema;
+    /**
      * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
+     * Only one of use_topic_schema and use_table_schema can be set.
      * 
      */
     private Boolean useTopicSchema;
@@ -36,8 +44,9 @@ public final class GetSubscriptionBigqueryConfig {
 
     private GetSubscriptionBigqueryConfig() {}
     /**
-     * @return When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-     * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
+     * @return When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+     * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+     * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
      * 
      */
     public Boolean dropUnknownFields() {
@@ -51,7 +60,16 @@ public final class GetSubscriptionBigqueryConfig {
         return this.table;
     }
     /**
+     * @return When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
+     * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+     * 
+     */
+    public Boolean useTableSchema() {
+        return this.useTableSchema;
+    }
+    /**
      * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
+     * Only one of use_topic_schema and use_table_schema can be set.
      * 
      */
     public Boolean useTopicSchema() {
@@ -77,6 +95,7 @@ public final class GetSubscriptionBigqueryConfig {
     public static final class Builder {
         private Boolean dropUnknownFields;
         private String table;
+        private Boolean useTableSchema;
         private Boolean useTopicSchema;
         private Boolean writeMetadata;
         public Builder() {}
@@ -84,6 +103,7 @@ public final class GetSubscriptionBigqueryConfig {
     	      Objects.requireNonNull(defaults);
     	      this.dropUnknownFields = defaults.dropUnknownFields;
     	      this.table = defaults.table;
+    	      this.useTableSchema = defaults.useTableSchema;
     	      this.useTopicSchema = defaults.useTopicSchema;
     	      this.writeMetadata = defaults.writeMetadata;
         }
@@ -102,6 +122,14 @@ public final class GetSubscriptionBigqueryConfig {
               throw new MissingRequiredPropertyException("GetSubscriptionBigqueryConfig", "table");
             }
             this.table = table;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder useTableSchema(Boolean useTableSchema) {
+            if (useTableSchema == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionBigqueryConfig", "useTableSchema");
+            }
+            this.useTableSchema = useTableSchema;
             return this;
         }
         @CustomType.Setter
@@ -124,6 +152,7 @@ public final class GetSubscriptionBigqueryConfig {
             final var _resultValue = new GetSubscriptionBigqueryConfig();
             _resultValue.dropUnknownFields = dropUnknownFields;
             _resultValue.table = table;
+            _resultValue.useTableSchema = useTableSchema;
             _resultValue.useTopicSchema = useTopicSchema;
             _resultValue.writeMetadata = writeMetadata;
             return _resultValue;

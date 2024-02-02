@@ -15,6 +15,7 @@ import com.pulumi.gcp.workstations.outputs.WorkstationConfigContainer;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigEncryptionKey;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigHost;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigPersistentDirectory;
+import com.pulumi.gcp.workstations.outputs.WorkstationConfigReadinessCheck;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -972,6 +973,22 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * Readiness checks to be performed on a workstation.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="readinessChecks", refs={List.class,WorkstationConfigReadinessCheck.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkstationConfigReadinessCheck>> readinessChecks;
+
+    /**
+     * @return Readiness checks to be performed on a workstation.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<WorkstationConfigReadinessCheck>>> readinessChecks() {
+        return Codegen.optional(this.readinessChecks);
     }
     /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster&#39;s region must be specified—for example, `[&#39;us-central1-a&#39;, &#39;us-central1-f&#39;]`.

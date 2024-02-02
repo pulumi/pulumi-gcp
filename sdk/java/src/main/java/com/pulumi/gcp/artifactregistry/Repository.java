@@ -355,7 +355,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyArgs;
  * import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyConditionArgs;
  * import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyMostRecentVersionsArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -370,48 +369,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository&#34;)
- *             .description(&#34;example docker repository with cleanup policies&#34;)
- *             .format(&#34;DOCKER&#34;)
- *             .cleanupPolicyDryRun(false)
  *             .cleanupPolicies(            
  *                 RepositoryCleanupPolicyArgs.builder()
- *                     .id(&#34;delete-prerelease&#34;)
  *                     .action(&#34;DELETE&#34;)
  *                     .condition(RepositoryCleanupPolicyConditionArgs.builder()
- *                         .tagState(&#34;TAGGED&#34;)
+ *                         .olderThan(&#34;2592000s&#34;)
  *                         .tagPrefixes(                        
  *                             &#34;alpha&#34;,
  *                             &#34;v0&#34;)
- *                         .olderThan(&#34;2592000s&#34;)
+ *                         .tagState(&#34;TAGGED&#34;)
  *                         .build())
+ *                     .id(&#34;delete-prerelease&#34;)
  *                     .build(),
  *                 RepositoryCleanupPolicyArgs.builder()
- *                     .id(&#34;keep-tagged-release&#34;)
  *                     .action(&#34;KEEP&#34;)
  *                     .condition(RepositoryCleanupPolicyConditionArgs.builder()
- *                         .tagState(&#34;TAGGED&#34;)
- *                         .tagPrefixes(&#34;release&#34;)
  *                         .packageNamePrefixes(                        
  *                             &#34;webapp&#34;,
  *                             &#34;mobile&#34;)
+ *                         .tagPrefixes(&#34;release&#34;)
+ *                         .tagState(&#34;TAGGED&#34;)
  *                         .build())
+ *                     .id(&#34;keep-tagged-release&#34;)
  *                     .build(),
  *                 RepositoryCleanupPolicyArgs.builder()
- *                     .id(&#34;keep-minimum-versions&#34;)
  *                     .action(&#34;KEEP&#34;)
+ *                     .id(&#34;keep-minimum-versions&#34;)
  *                     .mostRecentVersions(RepositoryCleanupPolicyMostRecentVersionsArgs.builder()
+ *                         .keepCount(5)
  *                         .packageNamePrefixes(                        
  *                             &#34;webapp&#34;,
  *                             &#34;mobile&#34;,
  *                             &#34;sandbox&#34;)
- *                         .keepCount(5)
  *                         .build())
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .cleanupPolicyDryRun(false)
+ *             .description(&#34;example docker repository with cleanup policies&#34;)
+ *             .format(&#34;DOCKER&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryId(&#34;my-repository&#34;)
+ *             .build());
  * 
  *     }
  * }

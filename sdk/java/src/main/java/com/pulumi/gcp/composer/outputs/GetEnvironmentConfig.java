@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigDataRetentionConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigDatabaseConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigEncryptionConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigMaintenanceWindow;
@@ -34,6 +35,11 @@ public final class GetEnvironmentConfig {
      * 
      */
     private String dagGcsPrefix;
+    /**
+     * @return The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+     * 
+     */
+    private List<GetEnvironmentConfigDataRetentionConfig> dataRetentionConfigs;
     /**
      * @return The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
@@ -134,6 +140,13 @@ public final class GetEnvironmentConfig {
      */
     public String dagGcsPrefix() {
         return this.dagGcsPrefix;
+    }
+    /**
+     * @return The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+     * 
+     */
+    public List<GetEnvironmentConfigDataRetentionConfig> dataRetentionConfigs() {
+        return this.dataRetentionConfigs;
     }
     /**
      * @return The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -266,6 +279,7 @@ public final class GetEnvironmentConfig {
     public static final class Builder {
         private String airflowUri;
         private String dagGcsPrefix;
+        private List<GetEnvironmentConfigDataRetentionConfig> dataRetentionConfigs;
         private List<GetEnvironmentConfigDatabaseConfig> databaseConfigs;
         private Boolean enablePrivateBuildsOnly;
         private Boolean enablePrivateEnvironment;
@@ -288,6 +302,7 @@ public final class GetEnvironmentConfig {
     	      Objects.requireNonNull(defaults);
     	      this.airflowUri = defaults.airflowUri;
     	      this.dagGcsPrefix = defaults.dagGcsPrefix;
+    	      this.dataRetentionConfigs = defaults.dataRetentionConfigs;
     	      this.databaseConfigs = defaults.databaseConfigs;
     	      this.enablePrivateBuildsOnly = defaults.enablePrivateBuildsOnly;
     	      this.enablePrivateEnvironment = defaults.enablePrivateEnvironment;
@@ -322,6 +337,17 @@ public final class GetEnvironmentConfig {
             }
             this.dagGcsPrefix = dagGcsPrefix;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dataRetentionConfigs(List<GetEnvironmentConfigDataRetentionConfig> dataRetentionConfigs) {
+            if (dataRetentionConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "dataRetentionConfigs");
+            }
+            this.dataRetentionConfigs = dataRetentionConfigs;
+            return this;
+        }
+        public Builder dataRetentionConfigs(GetEnvironmentConfigDataRetentionConfig... dataRetentionConfigs) {
+            return dataRetentionConfigs(List.of(dataRetentionConfigs));
         }
         @CustomType.Setter
         public Builder databaseConfigs(List<GetEnvironmentConfigDatabaseConfig> databaseConfigs) {
@@ -496,6 +522,7 @@ public final class GetEnvironmentConfig {
             final var _resultValue = new GetEnvironmentConfig();
             _resultValue.airflowUri = airflowUri;
             _resultValue.dagGcsPrefix = dagGcsPrefix;
+            _resultValue.dataRetentionConfigs = dataRetentionConfigs;
             _resultValue.databaseConfigs = databaseConfigs;
             _resultValue.enablePrivateBuildsOnly = enablePrivateBuildsOnly;
             _resultValue.enablePrivateEnvironment = enablePrivateEnvironment;

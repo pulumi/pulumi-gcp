@@ -17,6 +17,27 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
     public static final WorkflowArgs Empty = new WorkflowArgs();
 
     /**
+     * Describes the level of platform logging to apply to calls and call responses during
+     * executions of this workflow. If both the workflow and the execution specify a logging level,
+     * the execution level takes precedence.
+     * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+     * 
+     */
+    @Import(name="callLogLevel")
+    private @Nullable Output<String> callLogLevel;
+
+    /**
+     * @return Describes the level of platform logging to apply to calls and call responses during
+     * executions of this workflow. If both the workflow and the execution specify a logging level,
+     * the execution level takes precedence.
+     * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+     * 
+     */
+    public Optional<Output<String>> callLogLevel() {
+        return Optional.ofNullable(this.callLogLevel);
+    }
+
+    /**
      * The KMS key used to encrypt workflow and execution data.
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      * 
@@ -161,14 +182,14 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Workflow code to be executed. The size limit is 32KB.
+     * Workflow code to be executed. The size limit is 128KB.
      * 
      */
     @Import(name="sourceContents")
     private @Nullable Output<String> sourceContents;
 
     /**
-     * @return Workflow code to be executed. The size limit is 32KB.
+     * @return Workflow code to be executed. The size limit is 128KB.
      * 
      */
     public Optional<Output<String>> sourceContents() {
@@ -193,6 +214,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
     private WorkflowArgs() {}
 
     private WorkflowArgs(WorkflowArgs $) {
+        this.callLogLevel = $.callLogLevel;
         this.cryptoKeyName = $.cryptoKeyName;
         this.description = $.description;
         this.labels = $.labels;
@@ -221,6 +243,33 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WorkflowArgs defaults) {
             $ = new WorkflowArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param callLogLevel Describes the level of platform logging to apply to calls and call responses during
+         * executions of this workflow. If both the workflow and the execution specify a logging level,
+         * the execution level takes precedence.
+         * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder callLogLevel(@Nullable Output<String> callLogLevel) {
+            $.callLogLevel = callLogLevel;
+            return this;
+        }
+
+        /**
+         * @param callLogLevel Describes the level of platform logging to apply to calls and call responses during
+         * executions of this workflow. If both the workflow and the execution specify a logging level,
+         * the execution level takes precedence.
+         * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder callLogLevel(String callLogLevel) {
+            return callLogLevel(Output.of(callLogLevel));
         }
 
         /**
@@ -416,7 +465,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceContents Workflow code to be executed. The size limit is 32KB.
+         * @param sourceContents Workflow code to be executed. The size limit is 128KB.
          * 
          * @return builder
          * 
@@ -427,7 +476,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceContents Workflow code to be executed. The size limit is 32KB.
+         * @param sourceContents Workflow code to be executed. The size limit is 128KB.
          * 
          * @return builder
          * 

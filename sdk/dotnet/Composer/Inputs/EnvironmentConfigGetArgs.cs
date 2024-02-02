@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Composer.Inputs
         public Input<string>? DagGcsPrefix { get; set; }
 
         /// <summary>
+        /// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+        /// </summary>
+        [Input("dataRetentionConfig")]
+        public Input<Inputs.EnvironmentConfigDataRetentionConfigGetArgs>? DataRetentionConfig { get; set; }
+
+        /// <summary>
         /// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         [Input("databaseConfig")]

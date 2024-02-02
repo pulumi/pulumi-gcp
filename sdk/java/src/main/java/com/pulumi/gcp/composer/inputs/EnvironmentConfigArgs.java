@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.composer.inputs.EnvironmentConfigDataRetentionConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigDatabaseConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigEncryptionConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigMaintenanceWindowArgs;
@@ -56,6 +57,21 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> dagGcsPrefix() {
         return Optional.ofNullable(this.dagGcsPrefix);
+    }
+
+    /**
+     * The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+     * 
+     */
+    @Import(name="dataRetentionConfig")
+    private @Nullable Output<EnvironmentConfigDataRetentionConfigArgs> dataRetentionConfig;
+
+    /**
+     * @return The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+     * 
+     */
+    public Optional<Output<EnvironmentConfigDataRetentionConfigArgs>> dataRetentionConfig() {
+        return Optional.ofNullable(this.dataRetentionConfig);
     }
 
     /**
@@ -318,6 +334,7 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
     private EnvironmentConfigArgs(EnvironmentConfigArgs $) {
         this.airflowUri = $.airflowUri;
         this.dagGcsPrefix = $.dagGcsPrefix;
+        this.dataRetentionConfig = $.dataRetentionConfig;
         this.databaseConfig = $.databaseConfig;
         this.enablePrivateBuildsOnly = $.enablePrivateBuildsOnly;
         this.enablePrivateEnvironment = $.enablePrivateEnvironment;
@@ -395,6 +412,27 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder dagGcsPrefix(String dagGcsPrefix) {
             return dagGcsPrefix(Output.of(dagGcsPrefix));
+        }
+
+        /**
+         * @param dataRetentionConfig The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataRetentionConfig(@Nullable Output<EnvironmentConfigDataRetentionConfigArgs> dataRetentionConfig) {
+            $.dataRetentionConfig = dataRetentionConfig;
+            return this;
+        }
+
+        /**
+         * @param dataRetentionConfig The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataRetentionConfig(EnvironmentConfigDataRetentionConfigArgs dataRetentionConfig) {
+            return dataRetentionConfig(Output.of(dataRetentionConfig));
         }
 
         /**

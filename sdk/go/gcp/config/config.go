@@ -215,6 +215,9 @@ func GetDialogflowCxCustomEndpoint(ctx *pulumi.Context) string {
 func GetDisableGooglePartnerName(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gcp:disableGooglePartnerName")
 }
+func GetDiscoveryEngineCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:discoveryEngineCustomEndpoint")
+}
 func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dnsCustomEndpoint")
 }
@@ -431,6 +434,9 @@ func GetSecurityCenterCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetSecurityScannerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:securityScannerCustomEndpoint")
+}
+func GetSecuritypostureCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:securitypostureCustomEndpoint")
 }
 func GetServiceDirectoryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:serviceDirectoryCustomEndpoint")

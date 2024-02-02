@@ -341,7 +341,7 @@ class ExtensionsInstance(pulumi.CustomResource):
             instance_id="storage-resize-images",
             config=gcp.firebase.ExtensionsInstanceConfigArgs(
                 extension_ref="firebase/storage-resize-images",
-                extension_version="0.1.37",
+                extension_version="0.2.2",
                 params={
                     "DELETE_ORIGINAL_FILE": "false",
                     "MAKE_PUBLIC": "false",
@@ -351,15 +351,14 @@ class ExtensionsInstance(pulumi.CustomResource):
                     "DO_BACKFILL": "false",
                     "IMG_SIZES": "200x200",
                     "IMG_BUCKET": images.name,
-                    "LOCATION": "",
                 },
                 system_params={
+                    "firebaseextensions.v1beta.function/location": "",
                     "firebaseextensions.v1beta.function/maxInstances": "3000",
-                    "firebaseextensions.v1beta.function/memory": "256",
                     "firebaseextensions.v1beta.function/minInstances": "0",
                     "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
                 },
-                allowed_event_types=["firebase.extensions.storage-resize-images.v1.complete"],
+                allowed_event_types=["firebase.extensions.storage-resize-images.v1.onCompletion"],
                 eventarc_channel="projects/my-project-name/locations//channels/firebase",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -415,7 +414,7 @@ class ExtensionsInstance(pulumi.CustomResource):
             instance_id="storage-resize-images",
             config=gcp.firebase.ExtensionsInstanceConfigArgs(
                 extension_ref="firebase/storage-resize-images",
-                extension_version="0.1.37",
+                extension_version="0.2.2",
                 params={
                     "DELETE_ORIGINAL_FILE": "false",
                     "MAKE_PUBLIC": "false",
@@ -425,15 +424,14 @@ class ExtensionsInstance(pulumi.CustomResource):
                     "DO_BACKFILL": "false",
                     "IMG_SIZES": "200x200",
                     "IMG_BUCKET": images.name,
-                    "LOCATION": "",
                 },
                 system_params={
+                    "firebaseextensions.v1beta.function/location": "",
                     "firebaseextensions.v1beta.function/maxInstances": "3000",
-                    "firebaseextensions.v1beta.function/memory": "256",
                     "firebaseextensions.v1beta.function/minInstances": "0",
                     "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
                 },
-                allowed_event_types=["firebase.extensions.storage-resize-images.v1.complete"],
+                allowed_event_types=["firebase.extensions.storage-resize-images.v1.onCompletion"],
                 eventarc_channel="projects/my-project-name/locations//channels/firebase",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))

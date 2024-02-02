@@ -219,6 +219,9 @@ public final class Config {
     public Optional<Boolean> disableGooglePartnerName() {
         return Codegen.booleanProp("disableGooglePartnerName").config(config).get();
     }
+    public Optional<String> discoveryEngineCustomEndpoint() {
+        return Codegen.stringProp("discoveryEngineCustomEndpoint").config(config).get();
+    }
     public Optional<String> dnsCustomEndpoint() {
         return Codegen.stringProp("dnsCustomEndpoint").config(config).get();
     }
@@ -419,6 +422,9 @@ public final class Config {
     }
     public Optional<String> securityScannerCustomEndpoint() {
         return Codegen.stringProp("securityScannerCustomEndpoint").config(config).get();
+    }
+    public Optional<String> securitypostureCustomEndpoint() {
+        return Codegen.stringProp("securitypostureCustomEndpoint").config(config).get();
     }
     public Optional<String> serviceDirectoryCustomEndpoint() {
         return Codegen.stringProp("serviceDirectoryCustomEndpoint").config(config).get();

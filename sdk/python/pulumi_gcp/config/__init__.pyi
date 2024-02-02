@@ -146,6 +146,8 @@ dialogflowCxCustomEndpoint: Optional[str]
 
 disableGooglePartnerName: Optional[bool]
 
+discoveryEngineCustomEndpoint: Optional[str]
+
 dnsCustomEndpoint: Optional[str]
 
 documentAiCustomEndpoint: Optional[str]
@@ -279,6 +281,8 @@ secureSourceManagerCustomEndpoint: Optional[str]
 securityCenterCustomEndpoint: Optional[str]
 
 securityScannerCustomEndpoint: Optional[str]
+
+securitypostureCustomEndpoint: Optional[str]
 
 serviceDirectoryCustomEndpoint: Optional[str]
 

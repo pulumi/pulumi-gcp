@@ -40,6 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
  * import com.pulumi.gcp.firestore.BackupSchedule;
  * import com.pulumi.gcp.firestore.BackupScheduleArgs;
  * import com.pulumi.gcp.firestore.inputs.BackupScheduleDailyRecurrenceArgs;
@@ -56,10 +58,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var daily_backup = new BackupSchedule(&#34;daily-backup&#34;, BackupScheduleArgs.builder()        
- *             .dailyRecurrence()
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .build());
+ * 
+ *         var daily_backup = new BackupSchedule(&#34;daily-backup&#34;, BackupScheduleArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .database(database.name())
  *             .retention(&#34;604800s&#34;)
+ *             .dailyRecurrence()
  *             .build());
  * 
  *     }
@@ -72,6 +83,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
  * import com.pulumi.gcp.firestore.BackupSchedule;
  * import com.pulumi.gcp.firestore.BackupScheduleArgs;
  * import com.pulumi.gcp.firestore.inputs.BackupScheduleWeeklyRecurrenceArgs;
@@ -88,9 +101,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var weekly_backup = new BackupSchedule(&#34;weekly-backup&#34;, BackupScheduleArgs.builder()        
- *             .database(&#34;(default)&#34;)
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .build());
+ * 
+ *         var weekly_backup = new BackupSchedule(&#34;weekly-backup&#34;, BackupScheduleArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .database(database.name())
  *             .retention(&#34;8467200s&#34;)
  *             .weeklyRecurrence(BackupScheduleWeeklyRecurrenceArgs.builder()
  *                 .day(&#34;SUNDAY&#34;)
@@ -150,7 +171,7 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
     }
     /**
      * The unique backup schedule identifier across all locations and databases for the given project. Format:
-     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -158,7 +179,7 @@ public class BackupSchedule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The unique backup schedule identifier across all locations and databases for the given project. Format:
-     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+     * `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
      * 
      */
     public Output<String> name() {

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     instanceId: "storage-resize-images",
  *     config: {
  *         extensionRef: "firebase/storage-resize-images",
- *         extensionVersion: "0.1.37",
+ *         extensionVersion: "0.2.2",
  *         params: {
  *             DELETE_ORIGINAL_FILE: "false",
  *             MAKE_PUBLIC: "false",
@@ -37,15 +37,14 @@ import * as utilities from "../utilities";
  *             DO_BACKFILL: "false",
  *             IMG_SIZES: "200x200",
  *             IMG_BUCKET: images.name,
- *             LOCATION: "",
  *         },
  *         systemParams: {
+ *             "firebaseextensions.v1beta.function/location": "",
  *             "firebaseextensions.v1beta.function/maxInstances": "3000",
- *             "firebaseextensions.v1beta.function/memory": "256",
  *             "firebaseextensions.v1beta.function/minInstances": "0",
  *             "firebaseextensions.v1beta.function/vpcConnectorEgressSettings": "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED",
  *         },
- *         allowedEventTypes: ["firebase.extensions.storage-resize-images.v1.complete"],
+ *         allowedEventTypes: ["firebase.extensions.storage-resize-images.v1.onCompletion"],
  *         eventarcChannel: "projects/my-project-name/locations//channels/firebase",
  *     },
  * }, {

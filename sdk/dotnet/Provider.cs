@@ -213,6 +213,9 @@ namespace Pulumi.Gcp
         [Output("dialogflowCxCustomEndpoint")]
         public Output<string?> DialogflowCxCustomEndpoint { get; private set; } = null!;
 
+        [Output("discoveryEngineCustomEndpoint")]
+        public Output<string?> DiscoveryEngineCustomEndpoint { get; private set; } = null!;
+
         [Output("dnsCustomEndpoint")]
         public Output<string?> DnsCustomEndpoint { get; private set; } = null!;
 
@@ -407,6 +410,9 @@ namespace Pulumi.Gcp
 
         [Output("securityScannerCustomEndpoint")]
         public Output<string?> SecurityScannerCustomEndpoint { get; private set; } = null!;
+
+        [Output("securitypostureCustomEndpoint")]
+        public Output<string?> SecuritypostureCustomEndpoint { get; private set; } = null!;
 
         [Output("serviceDirectoryCustomEndpoint")]
         public Output<string?> ServiceDirectoryCustomEndpoint { get; private set; } = null!;
@@ -711,6 +717,9 @@ namespace Pulumi.Gcp
         [Input("disableGooglePartnerName", json: true)]
         public Input<bool>? DisableGooglePartnerName { get; set; }
 
+        [Input("discoveryEngineCustomEndpoint")]
+        public Input<string>? DiscoveryEngineCustomEndpoint { get; set; }
+
         [Input("dnsCustomEndpoint")]
         public Input<string>? DnsCustomEndpoint { get; set; }
 
@@ -921,6 +930,9 @@ namespace Pulumi.Gcp
 
         [Input("securityScannerCustomEndpoint")]
         public Input<string>? SecurityScannerCustomEndpoint { get; set; }
+
+        [Input("securitypostureCustomEndpoint")]
+        public Input<string>? SecuritypostureCustomEndpoint { get; set; }
 
         [Input("serviceDirectoryCustomEndpoint")]
         public Input<string>? ServiceDirectoryCustomEndpoint { get; set; }

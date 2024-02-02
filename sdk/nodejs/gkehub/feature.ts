@@ -191,7 +191,7 @@ import * as utilities from "../utilities";
  *     location: "global",
  * });
  * ```
- * ### Enable Fleet Default Member Config Policycontroller Set Empty
+ * ### Enable Fleet Default Member Config Policycontroller Minimal
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

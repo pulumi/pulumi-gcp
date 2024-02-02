@@ -11561,6 +11561,11 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecVolume {
         /**
+         * A filesystem specified by the Container Storage Interface (CSI).
+         * Structure is documented below.
+         */
+        csi?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecVolumeCsi>;
+        /**
          * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
          * Structure is documented below.
          */
@@ -11578,6 +11583,28 @@ export namespace cloudrun {
         secret?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecVolumeSecret>;
     }
 
+    export interface ServiceTemplateSpecVolumeCsi {
+        /**
+         * Unique name representing the type of file system to be created. Cloud Run supports the following values:
+         * * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+         * run.googleapis.com/execution-environment annotation to be set to "gen2" and
+         * run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+         */
+        driver: pulumi.Input<string>;
+        /**
+         * If true, all mounts created from this volume will be read-only.
+         */
+        readOnly?: pulumi.Input<boolean>;
+        /**
+         * Driver-specific attributes. The following options are supported for available drivers:
+         * * gcsfuse.run.googleapis.com
+         * * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+         *
+         * - - -
+         */
+        volumeAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
     export interface ServiceTemplateSpecVolumeEmptyDir {
         /**
          * The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
@@ -11585,8 +11612,6 @@ export namespace cloudrun {
         medium?: pulumi.Input<string>;
         /**
          * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-         *
-         * - - -
          */
         sizeLimit?: pulumi.Input<string>;
     }
@@ -13064,6 +13089,10 @@ export namespace composer {
          */
         dagGcsPrefix?: pulumi.Input<string>;
         /**
+         * The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+         */
+        dataRetentionConfig?: pulumi.Input<inputs.composer.EnvironmentConfigDataRetentionConfig>;
+        /**
          * The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         databaseConfig?: pulumi.Input<inputs.composer.EnvironmentConfigDatabaseConfig>;
@@ -13131,6 +13160,20 @@ export namespace composer {
          * The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
          */
         workloadsConfig?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfig>;
+    }
+
+    export interface EnvironmentConfigDataRetentionConfig {
+        /**
+         * Optional. The configuration setting for Task Logs.
+         */
+        taskLogsRetentionConfigs: pulumi.Input<pulumi.Input<inputs.composer.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>[]>;
+    }
+
+    export interface EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
+        /**
+         * Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+         */
+        storageMode?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigDatabaseConfig {
@@ -16283,7 +16326,7 @@ export namespace compute {
          */
         count: pulumi.Input<number>;
         /**
-         * The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: pulumi.Input<string>;
     }
@@ -16540,7 +16583,6 @@ export namespace compute {
         localSsdRecoveryTimeout?: pulumi.Input<inputs.compute.InstanceSchedulingLocalSsdRecoveryTimeout>;
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-         * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
          */
         maintenanceInterval?: pulumi.Input<string>;
         /**
@@ -16871,8 +16913,7 @@ export namespace compute {
          */
         count: pulumi.Input<number>;
         /**
-         * The type of GCE disk, can be either `"SCRATCH"` or
-         * `"PERSISTENT"`.
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: pulumi.Input<string>;
     }
@@ -17065,7 +17106,6 @@ export namespace compute {
         localSsdRecoveryTimeouts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateSchedulingLocalSsdRecoveryTimeout>[]>;
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-         * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
          */
         maintenanceInterval?: pulumi.Input<string>;
         /**
@@ -19265,8 +19305,7 @@ export namespace compute {
          */
         count: pulumi.Input<number>;
         /**
-         * The type of GCE disk, can be either `"SCRATCH"` or
-         * `"PERSISTENT"`.
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: pulumi.Input<string>;
     }
@@ -19444,8 +19483,7 @@ export namespace compute {
          */
         localSsdRecoveryTimeouts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>[]>;
         /**
-         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
-         * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
+         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          */
         maintenanceInterval?: pulumi.Input<string>;
         /**
@@ -42665,7 +42703,7 @@ export namespace essentialcontacts {
 export namespace eventarc {
     export interface TriggerDestination {
         /**
-         * [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+         * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
          */
         cloudFunction?: pulumi.Input<string>;
         /**
@@ -42898,7 +42936,8 @@ export namespace firebase {
         /**
          * Params whose values are only available at deployment time.
          * Unlike other params, these will not be set as environment variables on
-         * functions.
+         * functions. See a full list of system parameters at
+         * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
          */
         systemParams?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -56231,8 +56270,9 @@ export namespace pubsub {
 
     export interface SubscriptionBigqueryConfig {
         /**
-         * When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-         * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+         * When true and useTopicSchema or useTableSchema is true, any fields that are a part of the topic schema or message schema that
+         * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+         * and any messages with extra fields are not written and remain in the subscription's backlog.
          */
         dropUnknownFields?: pulumi.Input<boolean>;
         /**
@@ -56240,7 +56280,13 @@ export namespace pubsub {
          */
         table: pulumi.Input<string>;
         /**
+         * When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+         * must be published in JSON format. Only one of useTopicSchema and useTableSchema can be set.
+         */
+        useTableSchema?: pulumi.Input<boolean>;
+        /**
          * When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+         * Only one of useTopicSchema and useTableSchema can be set.
          */
         useTopicSchema?: pulumi.Input<boolean>;
         /**
@@ -57367,6 +57413,393 @@ export namespace securitycenter {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+}
+
+export namespace securityposture {
+    export interface PosturePolicySet {
+        /**
+         * Description of the policy set.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * List of security policy
+         * Structure is documented below.
+         */
+        policies?: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySetPolicy>[]>;
+        /**
+         * ID of the policy set.
+         */
+        policySetId: pulumi.Input<string>;
+    }
+
+    export interface PosturePolicySetPolicy {
+        /**
+         * Mapping for policy to security standards and controls.
+         * Structure is documented below.
+         */
+        complianceStandards?: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySetPolicyComplianceStandard>[]>;
+        /**
+         * Policy constraint definition.It can have the definition of one of following constraints: orgPolicyConstraint orgPolicyConstraintCustom securityHealthAnalyticsModule securityHealthAnalyticsCustomModule
+         * Structure is documented below.
+         */
+        constraint: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraint>;
+        /**
+         * Description of the policy.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * ID of the policy.
+         */
+        policyId: pulumi.Input<string>;
+    }
+
+    export interface PosturePolicySetPolicyComplianceStandard {
+        /**
+         * Mapping of security controls for the policy.
+         */
+        control?: pulumi.Input<string>;
+        /**
+         * Mapping of compliance standards for the policy.
+         */
+        standard?: pulumi.Input<string>;
+    }
+
+    export interface PosturePolicySetPolicyConstraint {
+        /**
+         * Organization policy canned constraint definition.
+         * Structure is documented below.
+         */
+        orgPolicyConstraint?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraint>;
+        /**
+         * Organization policy custom constraint policy definition.
+         * Structure is documented below.
+         */
+        orgPolicyConstraintCustom?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom>;
+        /**
+         * Definition of Security Health Analytics Custom Module.
+         * Structure is documented below.
+         */
+        securityHealthAnalyticsCustomModule?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule>;
+        /**
+         * Security Health Analytics built-in detector definition.
+         * Structure is documented below.
+         */
+        securityHealthAnalyticsModule?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraint {
+        /**
+         * Organization policy canned constraint Id
+         */
+        cannedConstraintId: pulumi.Input<string>;
+        /**
+         * Definition of policy rules
+         * Structure is documented below.
+         */
+        policyRules: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule>[]>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom {
+        /**
+         * Organization policy custom constraint definition.
+         * Structure is documented below.
+         */
+        customConstraint?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint>;
+        /**
+         * Definition of policy rules
+         * Structure is documented below.
+         */
+        policyRules: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule>[]>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint {
+        /**
+         * The action to take if the condition is met.
+         * Possible values are: `ALLOW`, `DENY`.
+         */
+        actionType: pulumi.Input<string>;
+        /**
+         * A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+         */
+        condition: pulumi.Input<string>;
+        /**
+         * A human-friendly description of the constraint to display as an error message when the policy is violated.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * A human-friendly name for the constraint.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
+         */
+        methodTypes: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Immutable. The name of the custom constraint. This is unique within the organization.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
+         */
+        resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule {
+        /**
+         * Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+         */
+        allowAll?: pulumi.Input<boolean>;
+        /**
+         * Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+         */
+        denyAll?: pulumi.Input<boolean>;
+        /**
+         * If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
+         * This field can be set only in policies for boolean constraints.
+         */
+        enforce?: pulumi.Input<boolean>;
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
+         */
+        expr?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr>;
+        /**
+         * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+         * Structure is documented below.
+         */
+        values?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr {
+        /**
+         * Description of the expression
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues {
+        /**
+         * List of values allowed at this resource.
+         */
+        allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of values denied at this resource.
+         */
+        deniedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule {
+        /**
+         * Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
+         */
+        allowAll?: pulumi.Input<boolean>;
+        /**
+         * Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+         */
+        denyAll?: pulumi.Input<boolean>;
+        /**
+         * If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
+         * This field can be set only in policies for boolean constraints.
+         */
+        enforce?: pulumi.Input<boolean>;
+        /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
+         */
+        expr?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr>;
+        /**
+         * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+         * Structure is documented below.
+         */
+        values?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr {
+        /**
+         * Description of the expression
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues {
+        /**
+         * List of values allowed at this resource.
+         */
+        allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of values denied at this resource.
+         */
+        deniedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule {
+        /**
+         * Custom module details.
+         * Structure is documented below.
+         */
+        config: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig>;
+        /**
+         * The display name of the Security Health Analytics custom module. This
+         * display name becomes the finding category for all findings that are
+         * returned by this custom module.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A server generated id of custom module.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * The state of enablement for the module at its level of the resource hierarchy.
+         * Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+         */
+        moduleEnablementState?: pulumi.Input<string>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig {
+        /**
+         * Custom output properties. A set of optional name-value pairs that define custom source properties to
+         * return with each finding that is generated by the custom module. The custom
+         * source properties that are defined here are included in the finding JSON
+         * under `sourceProperties`.
+         * Structure is documented below.
+         */
+        customOutput?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput>;
+        /**
+         * Text that describes the vulnerability or misconfiguration that the custom
+         * module detects.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The CEL expression to evaluate to produce findings.When the expression
+         * evaluates to true against a resource, a finding is generated.
+         * Structure is documented below.
+         */
+        predicate: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicate>;
+        /**
+         * An explanation of the recommended steps that security teams can take to
+         * resolve the detected issue
+         */
+        recommendation?: pulumi.Input<string>;
+        /**
+         * The resource types that the custom module operates on. Each custom module
+         * can specify up to 5 resource types.
+         * Structure is documented below.
+         */
+        resourceSelector: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector>;
+        /**
+         * The severity to assign to findings generated by the module.
+         * Possible values are: `SEVERITY_UNSPECIFIED`, `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
+         */
+        severity: pulumi.Input<string>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput {
+        /**
+         * A list of custom output properties to add to the finding.
+         * Structure is documented below.
+         */
+        properties?: pulumi.Input<pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty>[]>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty {
+        /**
+         * Name of the property for the custom output.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * The CEL expression for the custom output. A resource property can be
+         * specified to return the value of the property or a text string enclosed
+         * in quotation marks.
+         * Structure is documented below.
+         */
+        valueExpression?: pulumi.Input<inputs.securityposture.PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpression {
+        /**
+         * Description of the expression
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicate {
+        /**
+         * Description of the expression
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector {
+        /**
+         * The resource types to run the detector on.
+         */
+        resourceTypes: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule {
+        /**
+         * The state of enablement for the module at its level of the resource hierarchy.
+         * Possible values are: `ENABLEMENT_STATE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
+         */
+        moduleEnablementState?: pulumi.Input<string>;
+        /**
+         * The name of the module eg: BIGQUERY_TABLE_CMEK_DISABLED.
+         */
+        moduleName: pulumi.Input<string>;
     }
 }
 
@@ -59231,6 +59664,50 @@ export namespace vertex {
         cron?: pulumi.Input<string>;
     }
 
+    export interface AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
+        /**
+         * Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+         */
+        bruteForceConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig>;
+        /**
+         * Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
+         */
+        crowdingColumn?: pulumi.Input<string>;
+        /**
+         * The distance measure used in nearest neighbor search.
+         * For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
+         * Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
+         */
+        distanceMeasureType?: pulumi.Input<string>;
+        /**
+         * Column of embedding. This column contains the source data to create index for vector search.
+         */
+        embeddingColumn: pulumi.Input<string>;
+        /**
+         * The number of dimensions of the input embedding.
+         */
+        embeddingDimension?: pulumi.Input<number>;
+        /**
+         * Columns of features that are used to filter vector search results.
+         */
+        filterColumns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+         * Structure is documented below.
+         */
+        treeAhConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig>;
+    }
+
+    export interface AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig {
+    }
+
+    export interface AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
+        /**
+         * Number of embeddings on each leaf node. The default value is 1000 if not set.
+         */
+        leafNodeEmbeddingCount?: pulumi.Input<string>;
+    }
+
     export interface AiFeatureOnlineStoreOptimized {
     }
 
@@ -60241,6 +60718,17 @@ export namespace workstations {
          * Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
          */
         sourceSnapshot?: pulumi.Input<string>;
+    }
+
+    export interface WorkstationConfigReadinessCheck {
+        /**
+         * Path to which the request should be sent.
+         */
+        path: pulumi.Input<string>;
+        /**
+         * Port to which the request should be sent.
+         */
+        port: pulumi.Input<number>;
     }
 
     export interface WorkstationIamBindingCondition {

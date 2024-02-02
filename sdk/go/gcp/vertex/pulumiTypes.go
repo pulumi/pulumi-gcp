@@ -2885,6 +2885,530 @@ func (o AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) Cron() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfig struct {
+	// Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+	BruteForceConfig *AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig `pulumi:"bruteForceConfig"`
+	// Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
+	CrowdingColumn *string `pulumi:"crowdingColumn"`
+	// The distance measure used in nearest neighbor search.
+	// For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
+	// Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
+	DistanceMeasureType *string `pulumi:"distanceMeasureType"`
+	// Column of embedding. This column contains the source data to create index for vector search.
+	EmbeddingColumn string `pulumi:"embeddingColumn"`
+	// The number of dimensions of the input embedding.
+	EmbeddingDimension *int `pulumi:"embeddingDimension"`
+	// Columns of features that are used to filter vector search results.
+	FilterColumns []string `pulumi:"filterColumns"`
+	// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	// Structure is documented below.
+	TreeAhConfig *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig `pulumi:"treeAhConfig"`
+}
+
+// AiFeatureOnlineStoreFeatureviewVectorSearchConfigInput is an input type that accepts AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs and AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewVectorSearchConfigInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs{...}
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs struct {
+	// Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+	BruteForceConfig AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrInput `pulumi:"bruteForceConfig"`
+	// Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
+	CrowdingColumn pulumi.StringPtrInput `pulumi:"crowdingColumn"`
+	// The distance measure used in nearest neighbor search.
+	// For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
+	// Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
+	DistanceMeasureType pulumi.StringPtrInput `pulumi:"distanceMeasureType"`
+	// Column of embedding. This column contains the source data to create index for vector search.
+	EmbeddingColumn pulumi.StringInput `pulumi:"embeddingColumn"`
+	// The number of dimensions of the input embedding.
+	EmbeddingDimension pulumi.IntPtrInput `pulumi:"embeddingDimension"`
+	// Columns of features that are used to filter vector search results.
+	FilterColumns pulumi.StringArrayInput `pulumi:"filterColumns"`
+	// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+	// Structure is documented below.
+	TreeAhConfig AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrInput `pulumi:"treeAhConfig"`
+}
+
+func (AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfig)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput)
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput).ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrInput is an input type that accepts AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs, AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtr and AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrInput` via:
+//
+//	        AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput
+}
+
+type aiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrType AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs
+
+func AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtr(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs) AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrInput {
+	return (*aiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewVectorSearchConfig)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrType) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrType) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+	return o.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
+		return &v
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput)
+}
+
+// Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) BruteForceConfig() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig {
+		return v.BruteForceConfig
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput)
+}
+
+// Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) CrowdingColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *string { return v.CrowdingColumn }).(pulumi.StringPtrOutput)
+}
+
+// The distance measure used in nearest neighbor search.
+// For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
+// Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) DistanceMeasureType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *string { return v.DistanceMeasureType }).(pulumi.StringPtrOutput)
+}
+
+// Column of embedding. This column contains the source data to create index for vector search.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) EmbeddingColumn() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) string { return v.EmbeddingColumn }).(pulumi.StringOutput)
+}
+
+// The number of dimensions of the input embedding.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) EmbeddingDimension() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *int { return v.EmbeddingDimension }).(pulumi.IntPtrOutput)
+}
+
+// Columns of features that are used to filter vector search results.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) FilterColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) []string { return v.FilterColumns }).(pulumi.StringArrayOutput)
+}
+
+// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+// Structure is documented below.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput) TreeAhConfig() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
+		return v.TreeAhConfig
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewVectorSearchConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) Elem() AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfig) AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreFeatureviewVectorSearchConfig
+		return ret
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput)
+}
+
+// Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) BruteForceConfig() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.BruteForceConfig
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput)
+}
+
+// Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) CrowdingColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CrowdingColumn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The distance measure used in nearest neighbor search.
+// For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
+// Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) DistanceMeasureType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DistanceMeasureType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Column of embedding. This column contains the source data to create index for vector search.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) EmbeddingColumn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EmbeddingColumn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of dimensions of the input embedding.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) EmbeddingDimension() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EmbeddingDimension
+	}).(pulumi.IntPtrOutput)
+}
+
+// Columns of features that are used to filter vector search results.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) FilterColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+// Structure is documented below.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput) TreeAhConfig() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfig) *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TreeAhConfig
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig struct {
+}
+
+// AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigInput is an input type that accepts AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs and AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs{...}
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs struct {
+}
+
+func (AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput)
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput).ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrInput is an input type that accepts AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs, AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtr and AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrInput` via:
+//
+//	        AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput
+}
+
+type aiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrType AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs
+
+func AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtr(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrInput {
+	return (*aiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrType) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrType) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return o.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig) *AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig {
+		return &v
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput) Elem() AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig) AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig
+		return ret
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig struct {
+	// Number of embeddings on each leaf node. The default value is 1000 if not set.
+	LeafNodeEmbeddingCount *string `pulumi:"leafNodeEmbeddingCount"`
+}
+
+// AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigInput is an input type that accepts AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs and AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs{...}
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs struct {
+	// Number of embeddings on each leaf node. The default value is 1000 if not set.
+	LeafNodeEmbeddingCount pulumi.StringPtrInput `pulumi:"leafNodeEmbeddingCount"`
+}
+
+func (AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput)
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput).ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrInput is an input type that accepts AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs, AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtr and AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrInput` via:
+//
+//	        AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput
+	ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput
+}
+
+type aiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrType AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs
+
+func AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtr(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrInput {
+	return (*aiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrType) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrType) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return o.ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig) *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
+		return &v
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput)
+}
+
+// Number of embeddings on each leaf node. The default value is 1000 if not set.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput) LeafNodeEmbeddingCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig) *string {
+		return v.LeafNodeEmbeddingCount
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput) ToAiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput) Elem() AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig) AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig
+		return ret
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput)
+}
+
+// Number of embeddings on each leaf node. The default value is 1000 if not set.
+func (o AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput) LeafNodeEmbeddingCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LeafNodeEmbeddingCount
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureOnlineStoreOptimized struct {
 }
 
@@ -7581,6 +8105,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewSyncConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewSyncConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreOptimizedInput)(nil)).Elem(), AiFeatureOnlineStoreOptimizedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreOptimizedPtrInput)(nil)).Elem(), AiFeatureOnlineStoreOptimizedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
@@ -7681,6 +8211,12 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewSyncConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreOptimizedOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreOptimizedPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecOutput{})

@@ -125,6 +125,156 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Featureonlinestore Featureview With Vector Search
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			featureonlinestore, err := vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				Bigtable: &vertex.AiFeatureOnlineStoreBigtableArgs{
+//					AutoScaling: &vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs{
+//						MinNodeCount:         pulumi.Int(1),
+//						MaxNodeCount:         pulumi.Int(2),
+//						CpuUtilizationTarget: pulumi.Int(80),
+//					},
+//				},
+//				EmbeddingManagement: &vertex.AiFeatureOnlineStoreEmbeddingManagementArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDataset(ctx, "tf-test-dataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("example_feature_view_vector_search"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewTable(ctx, "tf-test-table", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          tf_test_dataset.DatasetId,
+//				TableId:            pulumi.String("example_feature_view_vector_search"),
+//				Schema: pulumi.String(`[
+//
+//	{
+//	  "name": "test_primary_id",
+//	  "mode": "NULLABLE",
+//	  "type": "STRING",
+//	  "description": "primary test id"
+//	},
+//
+//	{
+//	  "name": "embedding",
+//	  "mode": "REPEATED",
+//	  "type": "FLOAT",
+//	  "description": "embedding column for primary_id column"
+//	},
+//
+//	{
+//	  "name": "country",
+//	  "mode": "NULLABLE",
+//	  "type": "STRING",
+//	  "description": "country"
+//	},
+//
+//	{
+//	  "name": "test_crowding_column",
+//	  "mode": "NULLABLE",
+//	  "type": "INTEGER",
+//	  "description": "test crowding column"
+//	},
+//
+//	{
+//	  "name": "entity_id",
+//	  "mode": "NULLABLE",
+//	  "type": "STRING",
+//	  "description": "Test default entity_id"
+//	},
+//
+//	{
+//	  "name": "test_entity_column",
+//	  "mode": "NULLABLE",
+//	  "type": "STRING",
+//	  "description": "test secondary entity column"
+//	},
+//
+//	{
+//	  "name": "feature_timestamp",
+//	  "mode": "NULLABLE",
+//	  "type": "TIMESTAMP",
+//	  "description": "Default timestamp value"
+//	}
+//
+// ]
+// `),
+//
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureOnlineStoreFeatureview(ctx, "featureviewVectorSearch", &vertex.AiFeatureOnlineStoreFeatureviewArgs{
+//				Region:             pulumi.String("us-central1"),
+//				FeatureOnlineStore: featureonlinestore.Name,
+//				SyncConfig: &vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs{
+//					Cron: pulumi.String("0 0 * * *"),
+//				},
+//				BigQuerySource: &vertex.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{
+//					Uri: pulumi.All(tf_test_table.Project, tf_test_table.DatasetId, tf_test_table.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						project := _args[0].(string)
+//						datasetId := _args[1].(string)
+//						tableId := _args[2].(string)
+//						return fmt.Sprintf("bq://%v.%v.%v", project, datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//					EntityIdColumns: pulumi.StringArray{
+//						pulumi.String("test_entity_column"),
+//					},
+//				},
+//				VectorSearchConfig: &vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs{
+//					EmbeddingColumn: pulumi.String("embedding"),
+//					FilterColumns: pulumi.StringArray{
+//						pulumi.String("country"),
+//					},
+//					CrowdingColumn:      pulumi.String("test_crowding_column"),
+//					DistanceMeasureType: pulumi.String("DOT_PRODUCT_DISTANCE"),
+//					TreeAhConfig: &vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs{
+//						LeafNodeEmbeddingCount: pulumi.String("1000"),
+//					},
+//					EmbeddingDimension: pulumi.Int(2),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -187,6 +337,9 @@ type AiFeatureOnlineStoreFeatureview struct {
 	SyncConfig AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput `pulumi:"syncConfig"`
 	// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	// Structure is documented below.
+	VectorSearchConfig AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput `pulumi:"vectorSearchConfig"`
 }
 
 // NewAiFeatureOnlineStoreFeatureview registers a new resource with the given unique name, arguments, and options.
@@ -261,6 +414,9 @@ type aiFeatureOnlineStoreFeatureviewState struct {
 	SyncConfig *AiFeatureOnlineStoreFeatureviewSyncConfig `pulumi:"syncConfig"`
 	// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	// Structure is documented below.
+	VectorSearchConfig *AiFeatureOnlineStoreFeatureviewVectorSearchConfig `pulumi:"vectorSearchConfig"`
 }
 
 type AiFeatureOnlineStoreFeatureviewState struct {
@@ -295,6 +451,9 @@ type AiFeatureOnlineStoreFeatureviewState struct {
 	SyncConfig AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput
 	// The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
+	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	// Structure is documented below.
+	VectorSearchConfig AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrInput
 }
 
 func (AiFeatureOnlineStoreFeatureviewState) ElementType() reflect.Type {
@@ -324,6 +483,9 @@ type aiFeatureOnlineStoreFeatureviewArgs struct {
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
 	SyncConfig *AiFeatureOnlineStoreFeatureviewSyncConfig `pulumi:"syncConfig"`
+	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	// Structure is documented below.
+	VectorSearchConfig *AiFeatureOnlineStoreFeatureviewVectorSearchConfig `pulumi:"vectorSearchConfig"`
 }
 
 // The set of arguments for constructing a AiFeatureOnlineStoreFeatureview resource.
@@ -350,6 +512,9 @@ type AiFeatureOnlineStoreFeatureviewArgs struct {
 	// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
 	// Structure is documented below.
 	SyncConfig AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput
+	// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+	// Structure is documented below.
+	VectorSearchConfig AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrInput
 }
 
 func (AiFeatureOnlineStoreFeatureviewArgs) ElementType() reflect.Type {
@@ -505,6 +670,14 @@ func (o AiFeatureOnlineStoreFeatureviewOutput) SyncConfig() AiFeatureOnlineStore
 // The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 func (o AiFeatureOnlineStoreFeatureviewOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+// Structure is documented below.
+func (o AiFeatureOnlineStoreFeatureviewOutput) VectorSearchConfig() AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput {
+		return v.VectorSearchConfig
+	}).(AiFeatureOnlineStoreFeatureviewVectorSearchConfigPtrOutput)
 }
 
 type AiFeatureOnlineStoreFeatureviewArrayOutput struct{ *pulumi.OutputState }

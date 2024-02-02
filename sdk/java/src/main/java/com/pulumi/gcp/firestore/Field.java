@@ -33,49 +33,6 @@ import javax.annotation.Nullable;
  * chosen location.
  * 
  * ## Example Usage
- * ### Firestore Field Basic
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.firestore.Field;
- * import com.pulumi.gcp.firestore.FieldArgs;
- * import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var basic = new Field(&#34;basic&#34;, FieldArgs.builder()        
- *             .collection(&#34;chatrooms_%{random_suffix}&#34;)
- *             .database(&#34;(default)&#34;)
- *             .field(&#34;basic&#34;)
- *             .indexConfig(FieldIndexConfigArgs.builder()
- *                 .indexes(                
- *                     FieldIndexConfigIndexArgs.builder()
- *                         .order(&#34;ASCENDING&#34;)
- *                         .queryScope(&#34;COLLECTION_GROUP&#34;)
- *                         .build(),
- *                     FieldIndexConfigIndexArgs.builder()
- *                         .arrayConfig(&#34;CONTAINS&#34;)
- *                         .build())
- *                 .build())
- *             .project(&#34;my-project-name&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * ### Firestore Field Timestamp
  * ```java
  * package generated_program;
@@ -83,10 +40,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
  * import com.pulumi.gcp.firestore.Field;
  * import com.pulumi.gcp.firestore.FieldArgs;
- * import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
  * import com.pulumi.gcp.firestore.inputs.FieldTtlConfigArgs;
+ * import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -100,56 +59,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var timestamp = new Field(&#34;timestamp&#34;, FieldArgs.builder()        
- *             .collection(&#34;chatrooms_%{random_suffix}&#34;)
- *             .field(&#34;timestamp&#34;)
- *             .indexConfig()
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
- *             .ttlConfig()
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
  *             .build());
  * 
- *     }
- * }
- * ```
- * ### Firestore Field Match Override
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.firestore.Field;
- * import com.pulumi.gcp.firestore.FieldArgs;
- * import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var matchOverride = new Field(&#34;matchOverride&#34;, FieldArgs.builder()        
- *             .collection(&#34;chatrooms_%{random_suffix}&#34;)
- *             .field(&#34;field_with_same_configuration_as_ancestor&#34;)
- *             .indexConfig(FieldIndexConfigArgs.builder()
- *                 .indexes(                
- *                     FieldIndexConfigIndexArgs.builder()
- *                         .order(&#34;ASCENDING&#34;)
- *                         .build(),
- *                     FieldIndexConfigIndexArgs.builder()
- *                         .order(&#34;DESCENDING&#34;)
- *                         .build(),
- *                     FieldIndexConfigIndexArgs.builder()
- *                         .arrayConfig(&#34;CONTAINS&#34;)
- *                         .build())
- *                 .build())
+ *         var timestamp = new Field(&#34;timestamp&#34;, FieldArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
+ *             .database(database.name())
+ *             .collection(&#34;chatrooms&#34;)
+ *             .field(&#34;timestamp&#34;)
+ *             .ttlConfig()
+ *             .indexConfig()
  *             .build());
  * 
  *     }

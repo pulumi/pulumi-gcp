@@ -984,6 +984,47 @@ class Subscription(pulumi.CustomResource):
                     editor,
                 ]))
         ```
+        ### Pubsub Subscription Push Bq Table Schema
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        project = gcp.organizations.get_project()
+        viewer = gcp.projects.IAMMember("viewer",
+            project=project.project_id,
+            role="roles/bigquery.metadataViewer",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        editor = gcp.projects.IAMMember("editor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="example_dataset")
+        test_table = gcp.bigquery.Table("testTable",
+            deletion_protection=False,
+            table_id="example_table",
+            dataset_id=test_dataset.dataset_id,
+            schema=\"\"\"[
+          {
+            "name": "data",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The data"
+          }
+        ]
+        \"\"\")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.id,
+            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
+                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+                use_table_schema=True,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    viewer,
+                    editor,
+                ]))
+        ```
 
         ## Import
 
@@ -1201,6 +1242,47 @@ class Subscription(pulumi.CustomResource):
             topic=example_topic.id,
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    viewer,
+                    editor,
+                ]))
+        ```
+        ### Pubsub Subscription Push Bq Table Schema
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        project = gcp.organizations.get_project()
+        viewer = gcp.projects.IAMMember("viewer",
+            project=project.project_id,
+            role="roles/bigquery.metadataViewer",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        editor = gcp.projects.IAMMember("editor",
+            project=project.project_id,
+            role="roles/bigquery.dataEditor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="example_dataset")
+        test_table = gcp.bigquery.Table("testTable",
+            deletion_protection=False,
+            table_id="example_table",
+            dataset_id=test_dataset.dataset_id,
+            schema=\"\"\"[
+          {
+            "name": "data",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The data"
+          }
+        ]
+        \"\"\")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.id,
+            bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
+                table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
+                use_table_schema=True,
             ),
             opts=pulumi.ResourceOptions(depends_on=[
                     viewer,

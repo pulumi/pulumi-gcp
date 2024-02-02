@@ -12,6 +12,8 @@ from . import outputs
 
 __all__ = [
     'EnvironmentConfig',
+    'EnvironmentConfigDataRetentionConfig',
+    'EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig',
     'EnvironmentConfigDatabaseConfig',
     'EnvironmentConfigEncryptionConfig',
     'EnvironmentConfigMaintenanceWindow',
@@ -35,6 +37,8 @@ __all__ = [
     'EnvironmentConfigWorkloadsConfigWorker',
     'EnvironmentStorageConfig',
     'GetEnvironmentConfigResult',
+    'GetEnvironmentConfigDataRetentionConfigResult',
+    'GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult',
     'GetEnvironmentConfigDatabaseConfigResult',
     'GetEnvironmentConfigEncryptionConfigResult',
     'GetEnvironmentConfigMaintenanceWindowResult',
@@ -69,6 +73,8 @@ class EnvironmentConfig(dict):
             suggest = "airflow_uri"
         elif key == "dagGcsPrefix":
             suggest = "dag_gcs_prefix"
+        elif key == "dataRetentionConfig":
+            suggest = "data_retention_config"
         elif key == "databaseConfig":
             suggest = "database_config"
         elif key == "enablePrivateBuildsOnly":
@@ -118,6 +124,7 @@ class EnvironmentConfig(dict):
     def __init__(__self__, *,
                  airflow_uri: Optional[str] = None,
                  dag_gcs_prefix: Optional[str] = None,
+                 data_retention_config: Optional['outputs.EnvironmentConfigDataRetentionConfig'] = None,
                  database_config: Optional['outputs.EnvironmentConfigDatabaseConfig'] = None,
                  enable_private_builds_only: Optional[bool] = None,
                  enable_private_environment: Optional[bool] = None,
@@ -138,6 +145,7 @@ class EnvironmentConfig(dict):
         """
         :param str airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment.
         :param str dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        :param 'EnvironmentConfigDataRetentionConfigArgs' data_retention_config: The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
         :param 'EnvironmentConfigDatabaseConfigArgs' database_config: The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param bool enable_private_builds_only: Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
         :param bool enable_private_environment: Optional. If true, a private Composer environment will be created.
@@ -160,6 +168,8 @@ class EnvironmentConfig(dict):
             pulumi.set(__self__, "airflow_uri", airflow_uri)
         if dag_gcs_prefix is not None:
             pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
+        if data_retention_config is not None:
+            pulumi.set(__self__, "data_retention_config", data_retention_config)
         if database_config is not None:
             pulumi.set(__self__, "database_config", database_config)
         if enable_private_builds_only is not None:
@@ -210,6 +220,14 @@ class EnvironmentConfig(dict):
         The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
         """
         return pulumi.get(self, "dag_gcs_prefix")
+
+    @property
+    @pulumi.getter(name="dataRetentionConfig")
+    def data_retention_config(self) -> Optional['outputs.EnvironmentConfigDataRetentionConfig']:
+        """
+        The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+        """
+        return pulumi.get(self, "data_retention_config")
 
     @property
     @pulumi.getter(name="databaseConfig")
@@ -346,6 +364,77 @@ class EnvironmentConfig(dict):
         The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         """
         return pulumi.get(self, "workloads_config")
+
+
+@pulumi.output_type
+class EnvironmentConfigDataRetentionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "taskLogsRetentionConfigs":
+            suggest = "task_logs_retention_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigDataRetentionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigDataRetentionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigDataRetentionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 task_logs_retention_configs: Sequence['outputs.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig']):
+        """
+        :param Sequence['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs'] task_logs_retention_configs: Optional. The configuration setting for Task Logs.
+        """
+        pulumi.set(__self__, "task_logs_retention_configs", task_logs_retention_configs)
+
+    @property
+    @pulumi.getter(name="taskLogsRetentionConfigs")
+    def task_logs_retention_configs(self) -> Sequence['outputs.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig']:
+        """
+        Optional. The configuration setting for Task Logs.
+        """
+        return pulumi.get(self, "task_logs_retention_configs")
+
+
+@pulumi.output_type
+class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageMode":
+            suggest = "storage_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 storage_mode: Optional[str] = None):
+        """
+        :param str storage_mode: Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        """
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[str]:
+        """
+        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        """
+        return pulumi.get(self, "storage_mode")
 
 
 @pulumi.output_type
@@ -1812,6 +1901,7 @@ class GetEnvironmentConfigResult(dict):
     def __init__(__self__, *,
                  airflow_uri: str,
                  dag_gcs_prefix: str,
+                 data_retention_configs: Sequence['outputs.GetEnvironmentConfigDataRetentionConfigResult'],
                  database_configs: Sequence['outputs.GetEnvironmentConfigDatabaseConfigResult'],
                  enable_private_builds_only: bool,
                  enable_private_environment: bool,
@@ -1832,6 +1922,7 @@ class GetEnvironmentConfigResult(dict):
         """
         :param str airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment.
         :param str dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        :param Sequence['GetEnvironmentConfigDataRetentionConfigArgs'] data_retention_configs: The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
         :param Sequence['GetEnvironmentConfigDatabaseConfigArgs'] database_configs: The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param bool enable_private_builds_only: Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
         :param bool enable_private_environment: Optional. If true, a private Composer environment will be created.
@@ -1852,6 +1943,7 @@ class GetEnvironmentConfigResult(dict):
         """
         pulumi.set(__self__, "airflow_uri", airflow_uri)
         pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
+        pulumi.set(__self__, "data_retention_configs", data_retention_configs)
         pulumi.set(__self__, "database_configs", database_configs)
         pulumi.set(__self__, "enable_private_builds_only", enable_private_builds_only)
         pulumi.set(__self__, "enable_private_environment", enable_private_environment)
@@ -1885,6 +1977,14 @@ class GetEnvironmentConfigResult(dict):
         The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
         """
         return pulumi.get(self, "dag_gcs_prefix")
+
+    @property
+    @pulumi.getter(name="dataRetentionConfigs")
+    def data_retention_configs(self) -> Sequence['outputs.GetEnvironmentConfigDataRetentionConfigResult']:
+        """
+        The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+        """
+        return pulumi.get(self, "data_retention_configs")
 
     @property
     @pulumi.getter(name="databaseConfigs")
@@ -2021,6 +2121,42 @@ class GetEnvironmentConfigResult(dict):
         The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         """
         return pulumi.get(self, "workloads_configs")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigDataRetentionConfigResult(dict):
+    def __init__(__self__, *,
+                 task_logs_retention_configs: Sequence['outputs.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult']):
+        """
+        :param Sequence['GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs'] task_logs_retention_configs: Optional. The configuration setting for Task Logs.
+        """
+        pulumi.set(__self__, "task_logs_retention_configs", task_logs_retention_configs)
+
+    @property
+    @pulumi.getter(name="taskLogsRetentionConfigs")
+    def task_logs_retention_configs(self) -> Sequence['outputs.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult']:
+        """
+        Optional. The configuration setting for Task Logs.
+        """
+        return pulumi.get(self, "task_logs_retention_configs")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult(dict):
+    def __init__(__self__, *,
+                 storage_mode: str):
+        """
+        :param str storage_mode: Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        """
+        pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> str:
+        """
+        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        """
+        return pulumi.get(self, "storage_mode")
 
 
 @pulumi.output_type

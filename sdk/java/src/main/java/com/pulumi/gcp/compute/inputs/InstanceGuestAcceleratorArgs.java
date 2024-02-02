@@ -31,14 +31,14 @@ public final class InstanceGuestAcceleratorArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+     * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+     * @return The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
      * 
      */
     public Output<String> type() {
@@ -92,7 +92,7 @@ public final class InstanceGuestAcceleratorArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+         * @param type The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class InstanceGuestAcceleratorArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param type The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
+         * @param type The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          * 
          * @return builder
          * 

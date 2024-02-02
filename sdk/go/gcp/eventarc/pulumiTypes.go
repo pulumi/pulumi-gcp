@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type TriggerDestination struct {
-	// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction *string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
 	CloudRunService *TriggerDestinationCloudRunService `pulumi:"cloudRunService"`
@@ -36,7 +36,7 @@ type TriggerDestinationInput interface {
 }
 
 type TriggerDestinationArgs struct {
-	// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction pulumi.StringPtrInput `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
 	CloudRunService TriggerDestinationCloudRunServicePtrInput `pulumi:"cloudRunService"`
@@ -123,7 +123,7 @@ func (o TriggerDestinationOutput) ToTriggerDestinationPtrOutputWithContext(ctx c
 	}).(TriggerDestinationPtrOutput)
 }
 
-// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 func (o TriggerDestinationOutput) CloudFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *string { return v.CloudFunction }).(pulumi.StringPtrOutput)
 }
@@ -167,7 +167,7 @@ func (o TriggerDestinationPtrOutput) Elem() TriggerDestinationOutput {
 	}).(TriggerDestinationOutput)
 }
 
-// [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 func (o TriggerDestinationPtrOutput) CloudFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerDestination) *string {
 		if v == nil {

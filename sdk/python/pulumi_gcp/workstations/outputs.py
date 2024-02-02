@@ -26,6 +26,7 @@ __all__ = [
     'WorkstationConfigIamMemberCondition',
     'WorkstationConfigPersistentDirectory',
     'WorkstationConfigPersistentDirectoryGcePd',
+    'WorkstationConfigReadinessCheck',
     'WorkstationIamBindingCondition',
     'WorkstationIamMemberCondition',
 ]
@@ -932,6 +933,35 @@ class WorkstationConfigPersistentDirectoryGcePd(dict):
         Name of the snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
         """
         return pulumi.get(self, "source_snapshot")
+
+
+@pulumi.output_type
+class WorkstationConfigReadinessCheck(dict):
+    def __init__(__self__, *,
+                 path: str,
+                 port: int):
+        """
+        :param str path: Path to which the request should be sent.
+        :param int port: Port to which the request should be sent.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path to which the request should be sent.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port to which the request should be sent.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

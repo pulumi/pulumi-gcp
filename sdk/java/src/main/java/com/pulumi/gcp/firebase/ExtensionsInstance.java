@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .instanceId(&#34;storage-resize-images&#34;)
  *             .config(ExtensionsInstanceConfigArgs.builder()
  *                 .extensionRef(&#34;firebase/storage-resize-images&#34;)
- *                 .extensionVersion(&#34;0.1.37&#34;)
+ *                 .extensionVersion(&#34;0.2.2&#34;)
  *                 .params(Map.ofEntries(
  *                     Map.entry(&#34;DELETE_ORIGINAL_FILE&#34;, false),
  *                     Map.entry(&#34;MAKE_PUBLIC&#34;, false),
@@ -68,16 +68,15 @@ import javax.annotation.Nullable;
  *                     Map.entry(&#34;FUNCTION_MEMORY&#34;, 1024),
  *                     Map.entry(&#34;DO_BACKFILL&#34;, false),
  *                     Map.entry(&#34;IMG_SIZES&#34;, &#34;200x200&#34;),
- *                     Map.entry(&#34;IMG_BUCKET&#34;, images.name()),
- *                     Map.entry(&#34;LOCATION&#34;, &#34;&#34;)
+ *                     Map.entry(&#34;IMG_BUCKET&#34;, images.name())
  *                 ))
  *                 .systemParams(Map.ofEntries(
+ *                     Map.entry(&#34;firebaseextensions.v1beta.function/location&#34;, &#34;&#34;),
  *                     Map.entry(&#34;firebaseextensions.v1beta.function/maxInstances&#34;, 3000),
- *                     Map.entry(&#34;firebaseextensions.v1beta.function/memory&#34;, 256),
  *                     Map.entry(&#34;firebaseextensions.v1beta.function/minInstances&#34;, 0),
  *                     Map.entry(&#34;firebaseextensions.v1beta.function/vpcConnectorEgressSettings&#34;, &#34;VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED&#34;)
  *                 ))
- *                 .allowedEventTypes(&#34;firebase.extensions.storage-resize-images.v1.complete&#34;)
+ *                 .allowedEventTypes(&#34;firebase.extensions.storage-resize-images.v1.onCompletion&#34;)
  *                 .eventarcChannel(&#34;projects/my-project-name/locations//channels/firebase&#34;)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

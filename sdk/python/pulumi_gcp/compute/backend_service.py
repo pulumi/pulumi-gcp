@@ -1275,6 +1275,20 @@ class BackendService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         ## Example Usage
+        ### Backend Service External Iap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            iap=gcp.compute.BackendServiceIapArgs(
+                oauth2_client_id="abc",
+                oauth2_client_secret="xyz",
+            ),
+            load_balancing_scheme="EXTERNAL",
+            protocol="HTTP")
+        ```
         ### Backend Service Cache Include Http Headers
 
         ```python
@@ -1478,6 +1492,20 @@ class BackendService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         ## Example Usage
+        ### Backend Service External Iap
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            iap=gcp.compute.BackendServiceIapArgs(
+                oauth2_client_id="abc",
+                oauth2_client_secret="xyz",
+            ),
+            load_balancing_scheme="EXTERNAL",
+            protocol="HTTP")
+        ```
         ### Backend Service Cache Include Http Headers
 
         ```python

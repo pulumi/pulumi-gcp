@@ -42,7 +42,8 @@ type ExtensionsInstanceConfig struct {
 	PopulatedPostinstallContent *string `pulumi:"populatedPostinstallContent"`
 	// Params whose values are only available at deployment time.
 	// Unlike other params, these will not be set as environment variables on
-	// functions.
+	// functions. See a full list of system parameters at
+	// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
 	SystemParams map[string]string `pulumi:"systemParams"`
 }
 
@@ -86,7 +87,8 @@ type ExtensionsInstanceConfigArgs struct {
 	PopulatedPostinstallContent pulumi.StringPtrInput `pulumi:"populatedPostinstallContent"`
 	// Params whose values are only available at deployment time.
 	// Unlike other params, these will not be set as environment variables on
-	// functions.
+	// functions. See a full list of system parameters at
+	// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
 	SystemParams pulumi.StringMapInput `pulumi:"systemParams"`
 }
 
@@ -219,7 +221,8 @@ func (o ExtensionsInstanceConfigOutput) PopulatedPostinstallContent() pulumi.Str
 
 // Params whose values are only available at deployment time.
 // Unlike other params, these will not be set as environment variables on
-// functions.
+// functions. See a full list of system parameters at
+// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
 func (o ExtensionsInstanceConfigOutput) SystemParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ExtensionsInstanceConfig) map[string]string { return v.SystemParams }).(pulumi.StringMapOutput)
 }
@@ -340,7 +343,8 @@ func (o ExtensionsInstanceConfigPtrOutput) PopulatedPostinstallContent() pulumi.
 
 // Params whose values are only available at deployment time.
 // Unlike other params, these will not be set as environment variables on
-// functions.
+// functions. See a full list of system parameters at
+// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
 func (o ExtensionsInstanceConfigPtrOutput) SystemParams() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ExtensionsInstanceConfig) map[string]string {
 		if v == nil {

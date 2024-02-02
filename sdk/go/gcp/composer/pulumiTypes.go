@@ -18,6 +18,8 @@ type EnvironmentConfig struct {
 	AirflowUri *string `pulumi:"airflowUri"`
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
+	// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+	DataRetentionConfig *EnvironmentConfigDataRetentionConfig `pulumi:"dataRetentionConfig"`
 	// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig *EnvironmentConfigDatabaseConfig `pulumi:"databaseConfig"`
 	// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
@@ -70,6 +72,8 @@ type EnvironmentConfigArgs struct {
 	AirflowUri pulumi.StringPtrInput `pulumi:"airflowUri"`
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
+	// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+	DataRetentionConfig EnvironmentConfigDataRetentionConfigPtrInput `pulumi:"dataRetentionConfig"`
 	// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfig EnvironmentConfigDatabaseConfigPtrInput `pulumi:"databaseConfig"`
 	// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
@@ -191,6 +195,11 @@ func (o EnvironmentConfigOutput) AirflowUri() pulumi.StringPtrOutput {
 // The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.DagGcsPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+func (o EnvironmentConfigOutput) DataRetentionConfig() EnvironmentConfigDataRetentionConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigDataRetentionConfig { return v.DataRetentionConfig }).(EnvironmentConfigDataRetentionConfigPtrOutput)
 }
 
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -326,6 +335,16 @@ func (o EnvironmentConfigPtrOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 		}
 		return v.DagGcsPrefix
 	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+func (o EnvironmentConfigPtrOutput) DataRetentionConfig() EnvironmentConfigDataRetentionConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigDataRetentionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataRetentionConfig
+	}).(EnvironmentConfigDataRetentionConfigPtrOutput)
 }
 
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -496,6 +515,242 @@ func (o EnvironmentConfigPtrOutput) WorkloadsConfig() EnvironmentConfigWorkloads
 		}
 		return v.WorkloadsConfig
 	}).(EnvironmentConfigWorkloadsConfigPtrOutput)
+}
+
+type EnvironmentConfigDataRetentionConfig struct {
+	// Optional. The configuration setting for Task Logs.
+	TaskLogsRetentionConfigs []EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig `pulumi:"taskLogsRetentionConfigs"`
+}
+
+// EnvironmentConfigDataRetentionConfigInput is an input type that accepts EnvironmentConfigDataRetentionConfigArgs and EnvironmentConfigDataRetentionConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigDataRetentionConfigInput` via:
+//
+//	EnvironmentConfigDataRetentionConfigArgs{...}
+type EnvironmentConfigDataRetentionConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigDataRetentionConfigOutput() EnvironmentConfigDataRetentionConfigOutput
+	ToEnvironmentConfigDataRetentionConfigOutputWithContext(context.Context) EnvironmentConfigDataRetentionConfigOutput
+}
+
+type EnvironmentConfigDataRetentionConfigArgs struct {
+	// Optional. The configuration setting for Task Logs.
+	TaskLogsRetentionConfigs EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput `pulumi:"taskLogsRetentionConfigs"`
+}
+
+func (EnvironmentConfigDataRetentionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigDataRetentionConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigDataRetentionConfigArgs) ToEnvironmentConfigDataRetentionConfigOutput() EnvironmentConfigDataRetentionConfigOutput {
+	return i.ToEnvironmentConfigDataRetentionConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigDataRetentionConfigArgs) ToEnvironmentConfigDataRetentionConfigOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDataRetentionConfigOutput)
+}
+
+func (i EnvironmentConfigDataRetentionConfigArgs) ToEnvironmentConfigDataRetentionConfigPtrOutput() EnvironmentConfigDataRetentionConfigPtrOutput {
+	return i.ToEnvironmentConfigDataRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigDataRetentionConfigArgs) ToEnvironmentConfigDataRetentionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDataRetentionConfigOutput).ToEnvironmentConfigDataRetentionConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigDataRetentionConfigPtrInput is an input type that accepts EnvironmentConfigDataRetentionConfigArgs, EnvironmentConfigDataRetentionConfigPtr and EnvironmentConfigDataRetentionConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigDataRetentionConfigPtrInput` via:
+//
+//	        EnvironmentConfigDataRetentionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentConfigDataRetentionConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigDataRetentionConfigPtrOutput() EnvironmentConfigDataRetentionConfigPtrOutput
+	ToEnvironmentConfigDataRetentionConfigPtrOutputWithContext(context.Context) EnvironmentConfigDataRetentionConfigPtrOutput
+}
+
+type environmentConfigDataRetentionConfigPtrType EnvironmentConfigDataRetentionConfigArgs
+
+func EnvironmentConfigDataRetentionConfigPtr(v *EnvironmentConfigDataRetentionConfigArgs) EnvironmentConfigDataRetentionConfigPtrInput {
+	return (*environmentConfigDataRetentionConfigPtrType)(v)
+}
+
+func (*environmentConfigDataRetentionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigDataRetentionConfig)(nil)).Elem()
+}
+
+func (i *environmentConfigDataRetentionConfigPtrType) ToEnvironmentConfigDataRetentionConfigPtrOutput() EnvironmentConfigDataRetentionConfigPtrOutput {
+	return i.ToEnvironmentConfigDataRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigDataRetentionConfigPtrType) ToEnvironmentConfigDataRetentionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDataRetentionConfigPtrOutput)
+}
+
+type EnvironmentConfigDataRetentionConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigDataRetentionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigDataRetentionConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigDataRetentionConfigOutput) ToEnvironmentConfigDataRetentionConfigOutput() EnvironmentConfigDataRetentionConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigDataRetentionConfigOutput) ToEnvironmentConfigDataRetentionConfigOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigDataRetentionConfigOutput) ToEnvironmentConfigDataRetentionConfigPtrOutput() EnvironmentConfigDataRetentionConfigPtrOutput {
+	return o.ToEnvironmentConfigDataRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigDataRetentionConfigOutput) ToEnvironmentConfigDataRetentionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigDataRetentionConfig) *EnvironmentConfigDataRetentionConfig {
+		return &v
+	}).(EnvironmentConfigDataRetentionConfigPtrOutput)
+}
+
+// Optional. The configuration setting for Task Logs.
+func (o EnvironmentConfigDataRetentionConfigOutput) TaskLogsRetentionConfigs() EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return o.ApplyT(func(v EnvironmentConfigDataRetentionConfig) []EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
+		return v.TaskLogsRetentionConfigs
+	}).(EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput)
+}
+
+type EnvironmentConfigDataRetentionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigDataRetentionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigDataRetentionConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigDataRetentionConfigPtrOutput) ToEnvironmentConfigDataRetentionConfigPtrOutput() EnvironmentConfigDataRetentionConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigDataRetentionConfigPtrOutput) ToEnvironmentConfigDataRetentionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigDataRetentionConfigPtrOutput) Elem() EnvironmentConfigDataRetentionConfigOutput {
+	return o.ApplyT(func(v *EnvironmentConfigDataRetentionConfig) EnvironmentConfigDataRetentionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigDataRetentionConfig
+		return ret
+	}).(EnvironmentConfigDataRetentionConfigOutput)
+}
+
+// Optional. The configuration setting for Task Logs.
+func (o EnvironmentConfigDataRetentionConfigPtrOutput) TaskLogsRetentionConfigs() EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return o.ApplyT(func(v *EnvironmentConfigDataRetentionConfig) []EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TaskLogsRetentionConfigs
+	}).(EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput)
+}
+
+type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig struct {
+	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+	StorageMode *string `pulumi:"storageMode"`
+}
+
+// EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput is an input type that accepts EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs and EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput` via:
+//
+//	EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs{...}
+type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput() EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput
+	ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutputWithContext(context.Context) EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput
+}
+
+type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs struct {
+	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+	StorageMode pulumi.StringPtrInput `pulumi:"storageMode"`
+}
+
+func (EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs) ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput() EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return i.ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs) ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput)
+}
+
+// EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput is an input type that accepts EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray and EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput values.
+// You can construct a concrete instance of `EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput` via:
+//
+//	EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray{ EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs{...} }
+type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput() EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput
+	ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutputWithContext(context.Context) EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput
+}
+
+type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray []EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput
+
+func (EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray) ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput() EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return i.ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray) ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput)
+}
+
+type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput() EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return o
+}
+
+// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+func (o EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) StorageMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig) *string { return v.StorageMode }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput) ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput() EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return o
+}
+
+func (o EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput) ToEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutputWithContext(ctx context.Context) EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return o
+}
+
+func (o EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput) Index(i pulumi.IntInput) EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
+		return vs[0].([]EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)[vs[1].(int)]
+	}).(EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput)
 }
 
 type EnvironmentConfigDatabaseConfig struct {
@@ -4482,6 +4737,8 @@ type GetEnvironmentConfig struct {
 	AirflowUri string `pulumi:"airflowUri"`
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 	DagGcsPrefix string `pulumi:"dagGcsPrefix"`
+	// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+	DataRetentionConfigs []GetEnvironmentConfigDataRetentionConfig `pulumi:"dataRetentionConfigs"`
 	// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfigs []GetEnvironmentConfigDatabaseConfig `pulumi:"databaseConfigs"`
 	// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
@@ -4534,6 +4791,8 @@ type GetEnvironmentConfigArgs struct {
 	AirflowUri pulumi.StringInput `pulumi:"airflowUri"`
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 	DagGcsPrefix pulumi.StringInput `pulumi:"dagGcsPrefix"`
+	// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+	DataRetentionConfigs GetEnvironmentConfigDataRetentionConfigArrayInput `pulumi:"dataRetentionConfigs"`
 	// The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DatabaseConfigs GetEnvironmentConfigDatabaseConfigArrayInput `pulumi:"databaseConfigs"`
 	// Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
@@ -4629,6 +4888,11 @@ func (o GetEnvironmentConfigOutput) AirflowUri() pulumi.StringOutput {
 // The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
 func (o GetEnvironmentConfigOutput) DagGcsPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.DagGcsPrefix }).(pulumi.StringOutput)
+}
+
+// The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+func (o GetEnvironmentConfigOutput) DataRetentionConfigs() GetEnvironmentConfigDataRetentionConfigArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigDataRetentionConfig { return v.DataRetentionConfigs }).(GetEnvironmentConfigDataRetentionConfigArrayOutput)
 }
 
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -4740,6 +5004,202 @@ func (o GetEnvironmentConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironment
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfig {
 		return vs[0].([]GetEnvironmentConfig)[vs[1].(int)]
 	}).(GetEnvironmentConfigOutput)
+}
+
+type GetEnvironmentConfigDataRetentionConfig struct {
+	// Optional. The configuration setting for Task Logs.
+	TaskLogsRetentionConfigs []GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig `pulumi:"taskLogsRetentionConfigs"`
+}
+
+// GetEnvironmentConfigDataRetentionConfigInput is an input type that accepts GetEnvironmentConfigDataRetentionConfigArgs and GetEnvironmentConfigDataRetentionConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigDataRetentionConfigInput` via:
+//
+//	GetEnvironmentConfigDataRetentionConfigArgs{...}
+type GetEnvironmentConfigDataRetentionConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigDataRetentionConfigOutput() GetEnvironmentConfigDataRetentionConfigOutput
+	ToGetEnvironmentConfigDataRetentionConfigOutputWithContext(context.Context) GetEnvironmentConfigDataRetentionConfigOutput
+}
+
+type GetEnvironmentConfigDataRetentionConfigArgs struct {
+	// Optional. The configuration setting for Task Logs.
+	TaskLogsRetentionConfigs GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput `pulumi:"taskLogsRetentionConfigs"`
+}
+
+func (GetEnvironmentConfigDataRetentionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigDataRetentionConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigDataRetentionConfigArgs) ToGetEnvironmentConfigDataRetentionConfigOutput() GetEnvironmentConfigDataRetentionConfigOutput {
+	return i.ToGetEnvironmentConfigDataRetentionConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigDataRetentionConfigArgs) ToGetEnvironmentConfigDataRetentionConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigDataRetentionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigDataRetentionConfigOutput)
+}
+
+// GetEnvironmentConfigDataRetentionConfigArrayInput is an input type that accepts GetEnvironmentConfigDataRetentionConfigArray and GetEnvironmentConfigDataRetentionConfigArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigDataRetentionConfigArrayInput` via:
+//
+//	GetEnvironmentConfigDataRetentionConfigArray{ GetEnvironmentConfigDataRetentionConfigArgs{...} }
+type GetEnvironmentConfigDataRetentionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigDataRetentionConfigArrayOutput() GetEnvironmentConfigDataRetentionConfigArrayOutput
+	ToGetEnvironmentConfigDataRetentionConfigArrayOutputWithContext(context.Context) GetEnvironmentConfigDataRetentionConfigArrayOutput
+}
+
+type GetEnvironmentConfigDataRetentionConfigArray []GetEnvironmentConfigDataRetentionConfigInput
+
+func (GetEnvironmentConfigDataRetentionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigDataRetentionConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigDataRetentionConfigArray) ToGetEnvironmentConfigDataRetentionConfigArrayOutput() GetEnvironmentConfigDataRetentionConfigArrayOutput {
+	return i.ToGetEnvironmentConfigDataRetentionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigDataRetentionConfigArray) ToGetEnvironmentConfigDataRetentionConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigDataRetentionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigDataRetentionConfigArrayOutput)
+}
+
+type GetEnvironmentConfigDataRetentionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigDataRetentionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigDataRetentionConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigOutput) ToGetEnvironmentConfigDataRetentionConfigOutput() GetEnvironmentConfigDataRetentionConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigOutput) ToGetEnvironmentConfigDataRetentionConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigDataRetentionConfigOutput {
+	return o
+}
+
+// Optional. The configuration setting for Task Logs.
+func (o GetEnvironmentConfigDataRetentionConfigOutput) TaskLogsRetentionConfigs() GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigDataRetentionConfig) []GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
+		return v.TaskLogsRetentionConfigs
+	}).(GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput)
+}
+
+type GetEnvironmentConfigDataRetentionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigDataRetentionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigDataRetentionConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigArrayOutput) ToGetEnvironmentConfigDataRetentionConfigArrayOutput() GetEnvironmentConfigDataRetentionConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigArrayOutput) ToGetEnvironmentConfigDataRetentionConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigDataRetentionConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigDataRetentionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigDataRetentionConfig {
+		return vs[0].([]GetEnvironmentConfigDataRetentionConfig)[vs[1].(int)]
+	}).(GetEnvironmentConfigDataRetentionConfigOutput)
+}
+
+type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig struct {
+	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+	StorageMode string `pulumi:"storageMode"`
+}
+
+// GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput is an input type that accepts GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs and GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput` via:
+//
+//	GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs{...}
+type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput() GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput
+	ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutputWithContext(context.Context) GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput
+}
+
+type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs struct {
+	// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+	StorageMode pulumi.StringInput `pulumi:"storageMode"`
+}
+
+func (GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs) ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput() GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return i.ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs) ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput)
+}
+
+// GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput is an input type that accepts GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray and GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput` via:
+//
+//	GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray{ GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs{...} }
+type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput() GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput
+	ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutputWithContext(context.Context) GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput
+}
+
+type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray []GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput
+
+func (GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray) ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput() GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return i.ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray) ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput)
+}
+
+type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput() GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return o
+}
+
+// Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+func (o GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput) StorageMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig) string { return v.StorageMode }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput) ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput() GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput) ToGetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
+		return vs[0].([]GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig)[vs[1].(int)]
+	}).(GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput)
 }
 
 type GetEnvironmentConfigDatabaseConfig struct {
@@ -7506,6 +7966,10 @@ func (o GetImageVersionsImageVersionArrayOutput) Index(i pulumi.IntInput) GetIma
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigInput)(nil)).Elem(), EnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigPtrInput)(nil)).Elem(), EnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigDataRetentionConfigInput)(nil)).Elem(), EnvironmentConfigDataRetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigDataRetentionConfigPtrInput)(nil)).Elem(), EnvironmentConfigDataRetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput)(nil)).Elem(), EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput)(nil)).Elem(), EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigDatabaseConfigInput)(nil)).Elem(), EnvironmentConfigDatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigDatabaseConfigPtrInput)(nil)).Elem(), EnvironmentConfigDatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigEncryptionConfigInput)(nil)).Elem(), EnvironmentConfigEncryptionConfigArgs{})
@@ -7552,6 +8016,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentStorageConfigPtrInput)(nil)).Elem(), EnvironmentStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigInput)(nil)).Elem(), GetEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigDataRetentionConfigInput)(nil)).Elem(), GetEnvironmentConfigDataRetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigDataRetentionConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigDataRetentionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigInput)(nil)).Elem(), GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigDatabaseConfigInput)(nil)).Elem(), GetEnvironmentConfigDatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigDatabaseConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigDatabaseConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigEncryptionConfigInput)(nil)).Elem(), GetEnvironmentConfigEncryptionConfigArgs{})
@@ -7600,6 +8068,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageVersionsImageVersionArrayInput)(nil)).Elem(), GetImageVersionsImageVersionArray{})
 	pulumi.RegisterOutputType(EnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigDataRetentionConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigDataRetentionConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigDatabaseConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigDatabaseConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigEncryptionConfigOutput{})
@@ -7646,6 +8118,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigDataRetentionConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigDataRetentionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigDatabaseConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigDatabaseConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigEncryptionConfigOutput{})

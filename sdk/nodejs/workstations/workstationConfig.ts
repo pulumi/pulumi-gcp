@@ -537,6 +537,11 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Readiness checks to be performed on a workstation.
+     * Structure is documented below.
+     */
+    public readonly readinessChecks!: pulumi.Output<outputs.workstations.WorkstationConfigReadinessCheck[] | undefined>;
+    /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
      */
@@ -592,6 +597,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["persistentDirectories"] = state ? state.persistentDirectories : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["readinessChecks"] = state ? state.readinessChecks : undefined;
             resourceInputs["replicaZones"] = state ? state.replicaZones : undefined;
             resourceInputs["runningTimeout"] = state ? state.runningTimeout : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
@@ -620,6 +626,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["persistentDirectories"] = args ? args.persistentDirectories : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["readinessChecks"] = args ? args.readinessChecks : undefined;
             resourceInputs["replicaZones"] = args ? args.replicaZones : undefined;
             resourceInputs["runningTimeout"] = args ? args.runningTimeout : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
@@ -746,6 +753,11 @@ export interface WorkstationConfigState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Readiness checks to be performed on a workstation.
+     * Structure is documented below.
+     */
+    readinessChecks?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigReadinessCheck>[]>;
+    /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
      */
@@ -837,6 +849,11 @@ export interface WorkstationConfigArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Readiness checks to be performed on a workstation.
+     * Structure is documented below.
+     */
+    readinessChecks?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigReadinessCheck>[]>;
     /**
      * Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
      * If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.

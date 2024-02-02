@@ -348,7 +348,7 @@ import (
 //	}
 //
 // ```
-// ### Enable Fleet Default Member Config Policycontroller Set Empty
+// ### Enable Fleet Default Member Config Policycontroller Minimal
 //
 // ```go
 // package main

@@ -25,6 +25,7 @@ __all__ = [
     'WorkstationConfigIamMemberConditionArgs',
     'WorkstationConfigPersistentDirectoryArgs',
     'WorkstationConfigPersistentDirectoryGcePdArgs',
+    'WorkstationConfigReadinessCheckArgs',
     'WorkstationIamBindingConditionArgs',
     'WorkstationIamMemberConditionArgs',
 ]
@@ -938,6 +939,43 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     @source_snapshot.setter
     def source_snapshot(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_snapshot", value)
+
+
+@pulumi.input_type
+class WorkstationConfigReadinessCheckArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 port: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] path: Path to which the request should be sent.
+        :param pulumi.Input[int] port: Port to which the request should be sent.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Path to which the request should be sent.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Port to which the request should be sent.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
 
 
 @pulumi.input_type

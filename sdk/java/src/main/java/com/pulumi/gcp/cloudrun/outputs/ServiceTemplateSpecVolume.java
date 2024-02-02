@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeCsi;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeEmptyDir;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeSecret;
 import java.lang.String;
@@ -14,6 +15,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceTemplateSpecVolume {
+    /**
+     * @return A filesystem specified by the Container Storage Interface (CSI).
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateSpecVolumeCsi csi;
     /**
      * @return Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
      * Structure is documented below.
@@ -35,6 +42,14 @@ public final class ServiceTemplateSpecVolume {
     private @Nullable ServiceTemplateSpecVolumeSecret secret;
 
     private ServiceTemplateSpecVolume() {}
+    /**
+     * @return A filesystem specified by the Container Storage Interface (CSI).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateSpecVolumeCsi> csi() {
+        return Optional.ofNullable(this.csi);
+    }
     /**
      * @return Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
      * Structure is documented below.
@@ -70,17 +85,25 @@ public final class ServiceTemplateSpecVolume {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ServiceTemplateSpecVolumeCsi csi;
         private @Nullable ServiceTemplateSpecVolumeEmptyDir emptyDir;
         private String name;
         private @Nullable ServiceTemplateSpecVolumeSecret secret;
         public Builder() {}
         public Builder(ServiceTemplateSpecVolume defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.csi = defaults.csi;
     	      this.emptyDir = defaults.emptyDir;
     	      this.name = defaults.name;
     	      this.secret = defaults.secret;
         }
 
+        @CustomType.Setter
+        public Builder csi(@Nullable ServiceTemplateSpecVolumeCsi csi) {
+
+            this.csi = csi;
+            return this;
+        }
         @CustomType.Setter
         public Builder emptyDir(@Nullable ServiceTemplateSpecVolumeEmptyDir emptyDir) {
 
@@ -103,6 +126,7 @@ public final class ServiceTemplateSpecVolume {
         }
         public ServiceTemplateSpecVolume build() {
             final var _resultValue = new ServiceTemplateSpecVolume();
+            _resultValue.csi = csi;
             _resultValue.emptyDir = emptyDir;
             _resultValue.name = name;
             _resultValue.secret = secret;
