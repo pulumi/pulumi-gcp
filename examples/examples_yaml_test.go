@@ -40,7 +40,6 @@ func TestPulumiLabelsSecretYAML(t *testing.T) {
 }
 
 func TestWarningsNotDuplicated(t *testing.T) {
-	t.Skip("Skipping due to environment interactions with other tests.")
 	var outputBuf bytes.Buffer
 	opts := integration.ProgramTestOptions{
 		Dir:           filepath.Join(getCwd(t), "simple-bucket"),
