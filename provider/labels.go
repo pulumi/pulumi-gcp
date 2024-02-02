@@ -108,7 +108,21 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 		// Rename pulumiLabel fields and obtain paths
 		labelPaths := update(rMap.Get(token).Schema(), &info.Fields)
 		if len(labelPaths) > 0 {
-			info.TransformFromState = ensureLabelPathsExist(labelPaths)
+			oldTFS := info.TransformFromState
+			info.TransformFromState = func(ctx context.Context, pm resource.PropertyMap) (resource.PropertyMap, error) {
+				var err error
+				if oldTFS != nil {
+					pm, err = oldTFS(ctx, pm)
+					if err != nil {
+						return pm, err
+					}
+				}
+				pm, err = ensureLabelPathsExist(labelPaths)(ctx, pm)
+				if err != nil {
+					return pm, err
+				}
+				return pm, nil
+			}
 		}
 	}
 

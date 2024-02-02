@@ -459,3 +459,77 @@ func TestCheckConfigWrongRegion(t *testing.T) {
 `,
 	)
 }
+
+func TestRegress1488(t *testing.T) {
+	// Test that going from replication.automatic: true (v6-style) to replication.auto: {}
+	// (v7-style) is not a replacement.
+	replay.ReplaySequence(t, providerServer(t), `[
+	{
+	  "method": "/pulumirpc.ResourceProvider/Configure",
+	  "request": {
+	    "variables": {
+	      "gcp:config:project": "pulumi-development"
+	    },
+	    "args": {
+	      "project": "pulumi-development",
+	      "version": "7.4.0"
+	    },
+	    "acceptSecrets": true,
+	    "acceptResources": true,
+	    "sendsOldInputs": true,
+	    "sendsOldInputsToDelete": true
+	  },
+	  "response": {
+	    "supportsPreview": true
+	  }
+	},
+	{
+	  "method": "/pulumirpc.ResourceProvider/Diff",
+	  "request": {
+	    "id": "projects/pulumi-development/secrets/my-secr",
+	    "urn": "urn:pulumi:dev::gcp-1488::gcp:secretmanager/secret:Secret::my-secr",
+	    "olds": {
+	      "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+	      "createTime": "2024-01-31T22:23:26.772032Z",
+	      "expireTime": "",
+	      "id": "projects/pulumi-development/secrets/my-secr",
+	      "labels": {},
+	      "name": "projects/921927215178/secrets/my-secr",
+	      "project": "pulumi-development",
+	      "replication": {
+		"automatic": true,
+		"userManaged": null
+	      },
+	      "rotation": null,
+	      "secretId": "my-secr",
+	      "topics": []
+	    },
+	    "news": {
+	      "__defaults": [],
+	      "project": "pulumi-development",
+	      "replication": {
+		"__defaults": [],
+		"auto": {
+		  "__defaults": []
+		}
+	      },
+	      "secretId": "my-secr"
+	    },
+	    "oldInputs": {
+	      "__defaults": [],
+	      "project": "pulumi-development",
+	      "replication": {
+		"__defaults": [],
+		"automatic": true
+	      },
+	      "secretId": "my-secr"
+	    }
+	  },
+	  "response": {
+	    "stables": "*",
+	    "changes": "*",
+	    "hasDetailedDiff": "*"
+	  }
+	}
+	]`)
+}

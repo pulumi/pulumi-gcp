@@ -2559,9 +2559,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_identity_platform_tenant": {Tok: gcpResource(gcpIdentityPlatform, "Tenant")},
 
 			// Secret Manager
-			"google_secret_manager_secret": {
-				DeleteBeforeReplace: true,
-			},
+			"google_secret_manager_secret": resourceSecretManagerSecret(),
 			"google_secret_manager_secret_iam_binding": {
 				Docs: &tfbridge.DocInfo{
 					Source: "secret_manager_secret_iam.html.markdown",
