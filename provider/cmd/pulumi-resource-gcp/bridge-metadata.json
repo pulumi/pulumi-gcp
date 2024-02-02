@@ -3141,6 +3141,9 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
+                                                        "csi": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "empty_dir": {
                                                             "maxItemsOne": true
                                                         },
@@ -4427,6 +4430,16 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "data_retention_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "task_logs_retention_config": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "database_config": {
                                     "maxItemsOne": true
                                 },
@@ -14242,6 +14255,15 @@
                     }
                 }
             },
+            "google_discovery_engine_data_store": {
+                "current": "gcp:discoveryengine/dataStore:DataStore",
+                "majorVersion": 7,
+                "fields": {
+                    "solution_types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_dns_managed_zone": {
                 "current": "gcp:dns/managedZone:ManagedZone",
                 "majorVersion": 7,
@@ -21759,6 +21781,160 @@
                     }
                 }
             },
+            "google_securityposture_posture": {
+                "current": "gcp:securityposture/posture:Posture",
+                "majorVersion": 7,
+                "fields": {
+                    "policy_sets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "policies": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "compliance_standards": {
+                                                "maxItemsOne": false
+                                            },
+                                            "constraint": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "org_policy_constraint": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "policy_rules": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "expr": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "values": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "allowed_values": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "denied_values": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "org_policy_constraint_custom": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "custom_constraint": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "method_types": {
+                                                                                    "maxItemsOne": false
+                                                                                },
+                                                                                "resource_types": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "policy_rules": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "expr": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "values": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "allowed_values": {
+                                                                                                "maxItemsOne": false
+                                                                                            },
+                                                                                            "denied_values": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "security_health_analytics_custom_module": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "config": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "custom_output": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "properties": {
+                                                                                                "maxItemsOne": false,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "value_expression": {
+                                                                                                            "maxItemsOne": true
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "predicate": {
+                                                                                    "maxItemsOne": true
+                                                                                },
+                                                                                "resource_selector": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "resource_types": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "security_health_analytics_module": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_securityposture_posture_deployment": {
+                "current": "gcp:securityposture/postureDeployment:PostureDeployment",
+                "majorVersion": 7
+            },
             "google_service_account": {
                 "current": "gcp:serviceaccount/account:Account",
                 "past": [
@@ -22744,6 +22920,22 @@
                     },
                     "sync_config": {
                         "maxItemsOne": true
+                    },
+                    "vector_search_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "brute_force_config": {
+                                    "maxItemsOne": true
+                                },
+                                "filter_columns": {
+                                    "maxItemsOne": false
+                                },
+                                "tree_ah_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -23206,6 +23398,9 @@
                                 }
                             }
                         }
+                    },
+                    "readiness_checks": {
+                        "maxItemsOne": false
                     },
                     "replica_zones": {
                         "maxItemsOne": false
@@ -23856,6 +24051,9 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
+                                                        "csi": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "empty_dir": {
                                                             "maxItemsOne": false
                                                         },
@@ -24494,6 +24692,16 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "data_retention_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "task_logs_retention_config": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "database_config": {
                                     "maxItemsOne": false
                                 },
@@ -28687,6 +28895,7 @@
             "gcp:diagflow/entityType:EntityType": 0,
             "gcp:diagflow/fulfillment:Fulfillment": 0,
             "gcp:diagflow/intent:Intent": 0,
+            "gcp:discoveryengine/dataStore:DataStore": 0,
             "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding": 0,
             "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember": 0,
             "gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy": 0,
@@ -28999,6 +29208,8 @@
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": 0,
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": 0,
+            "gcp:securityposture/posture:Posture": 0,
+            "gcp:securityposture/postureDeployment:PostureDeployment": 0,
             "gcp:serviceaccount/account:Account": 0,
             "gcp:serviceaccount/iAMBinding:IAMBinding": 0,
             "gcp:serviceaccount/iAMMember:IAMMember": 0,
@@ -29829,6 +30040,7 @@
             "gcp:diagflow/entityType:EntityType": "google_dialogflow_entity_type",
             "gcp:diagflow/fulfillment:Fulfillment": "google_dialogflow_fulfillment",
             "gcp:diagflow/intent:Intent": "google_dialogflow_intent",
+            "gcp:discoveryengine/dataStore:DataStore": "google_discovery_engine_data_store",
             "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding": "google_dns_managed_zone_iam_binding",
             "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember": "google_dns_managed_zone_iam_member",
             "gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy": "google_dns_managed_zone_iam_policy",
@@ -30141,6 +30353,8 @@
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": "google_scc_source_iam_binding",
             "gcp:securitycenter/sourceIamMember:SourceIamMember": "google_scc_source_iam_member",
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": "google_scc_source_iam_policy",
+            "gcp:securityposture/posture:Posture": "google_securityposture_posture",
+            "gcp:securityposture/postureDeployment:PostureDeployment": "google_securityposture_posture_deployment",
             "gcp:serviceaccount/account:Account": "google_service_account",
             "gcp:serviceaccount/iAMBinding:IAMBinding": "google_service_account_iam_binding",
             "gcp:serviceaccount/iAMMember:IAMMember": "google_service_account_iam_member",
@@ -34357,6 +34571,10 @@
             "gcp:cloudrun/ServiceTemplateSpecVolume:ServiceTemplateSpecVolume": {
                 "emptyDir": "empty_dir"
             },
+            "gcp:cloudrun/ServiceTemplateSpecVolumeCsi:ServiceTemplateSpecVolumeCsi": {
+                "readOnly": "read_only",
+                "volumeAttributes": "volume_attributes"
+            },
             "gcp:cloudrun/ServiceTemplateSpecVolumeEmptyDir:ServiceTemplateSpecVolumeEmptyDir": {
                 "sizeLimit": "size_limit"
             },
@@ -34467,8 +34685,13 @@
                 "mountPath": "mount_path"
             },
             "gcp:cloudrun/getServiceTemplateSpecVolume:getServiceTemplateSpecVolume": {
+                "csis": "csi",
                 "emptyDirs": "empty_dir",
                 "secrets": "secret"
+            },
+            "gcp:cloudrun/getServiceTemplateSpecVolumeCsi:getServiceTemplateSpecVolumeCsi": {
+                "readOnly": "read_only",
+                "volumeAttributes": "volume_attributes"
             },
             "gcp:cloudrun/getServiceTemplateSpecVolumeEmptyDir:getServiceTemplateSpecVolumeEmptyDir": {
                 "sizeLimit": "size_limit"
@@ -34949,6 +35172,7 @@
             "gcp:composer/EnvironmentConfig:EnvironmentConfig": {
                 "airflowUri": "airflow_uri",
                 "dagGcsPrefix": "dag_gcs_prefix",
+                "dataRetentionConfig": "data_retention_config",
                 "databaseConfig": "database_config",
                 "enablePrivateBuildsOnly": "enable_private_builds_only",
                 "enablePrivateEnvironment": "enable_private_environment",
@@ -34966,6 +35190,12 @@
                 "webServerConfig": "web_server_config",
                 "webServerNetworkAccessControl": "web_server_network_access_control",
                 "workloadsConfig": "workloads_config"
+            },
+            "gcp:composer/EnvironmentConfigDataRetentionConfig:EnvironmentConfigDataRetentionConfig": {
+                "taskLogsRetentionConfigs": "task_logs_retention_config"
+            },
+            "gcp:composer/EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig:EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig": {
+                "storageMode": "storage_mode"
             },
             "gcp:composer/EnvironmentConfigDatabaseConfig:EnvironmentConfigDatabaseConfig": {
                 "machineType": "machine_type"
@@ -35074,6 +35304,7 @@
             "gcp:composer/getEnvironmentConfig:getEnvironmentConfig": {
                 "airflowUri": "airflow_uri",
                 "dagGcsPrefix": "dag_gcs_prefix",
+                "dataRetentionConfigs": "data_retention_config",
                 "databaseConfigs": "database_config",
                 "enablePrivateBuildsOnly": "enable_private_builds_only",
                 "enablePrivateEnvironment": "enable_private_environment",
@@ -35091,6 +35322,12 @@
                 "webServerConfigs": "web_server_config",
                 "webServerNetworkAccessControls": "web_server_network_access_control",
                 "workloadsConfigs": "workloads_config"
+            },
+            "gcp:composer/getEnvironmentConfigDataRetentionConfig:getEnvironmentConfigDataRetentionConfig": {
+                "taskLogsRetentionConfigs": "task_logs_retention_config"
+            },
+            "gcp:composer/getEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig:getEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig": {
+                "storageMode": "storage_mode"
             },
             "gcp:composer/getEnvironmentConfigDatabaseConfig:getEnvironmentConfigDatabaseConfig": {
                 "machineType": "machine_type"
@@ -43752,6 +43989,16 @@
                 "rootFollowupIntentName": "root_followup_intent_name",
                 "webhookState": "webhook_state"
             },
+            "gcp:discoveryengine/dataStore:DataStore": {
+                "contentConfig": "content_config",
+                "createAdvancedSiteSearch": "create_advanced_site_search",
+                "createTime": "create_time",
+                "dataStoreId": "data_store_id",
+                "defaultSchemaId": "default_schema_id",
+                "displayName": "display_name",
+                "industryVertical": "industry_vertical",
+                "solutionTypes": "solution_types"
+            },
             "gcp:dns/ManagedZoneCloudLoggingConfig:ManagedZoneCloudLoggingConfig": {
                 "enableLogging": "enable_logging"
             },
@@ -45927,6 +46174,7 @@
                 "dialogflowCustomEndpoint": "dialogflow_custom_endpoint",
                 "dialogflowCxCustomEndpoint": "dialogflow_cx_custom_endpoint",
                 "disableGooglePartnerName": "disable_google_partner_name",
+                "discoveryEngineCustomEndpoint": "discovery_engine_custom_endpoint",
                 "dnsCustomEndpoint": "dns_custom_endpoint",
                 "documentAiCustomEndpoint": "document_ai_custom_endpoint",
                 "documentAiWarehouseCustomEndpoint": "document_ai_warehouse_custom_endpoint",
@@ -45991,6 +46239,7 @@
                 "secureSourceManagerCustomEndpoint": "secure_source_manager_custom_endpoint",
                 "securityCenterCustomEndpoint": "security_center_custom_endpoint",
                 "securityScannerCustomEndpoint": "security_scanner_custom_endpoint",
+                "securitypostureCustomEndpoint": "securityposture_custom_endpoint",
                 "serviceDirectoryCustomEndpoint": "service_directory_custom_endpoint",
                 "serviceManagementCustomEndpoint": "service_management_custom_endpoint",
                 "serviceNetworkingCustomEndpoint": "service_networking_custom_endpoint",
@@ -48331,6 +48580,7 @@
             },
             "gcp:pubsub/SubscriptionBigqueryConfig:SubscriptionBigqueryConfig": {
                 "dropUnknownFields": "drop_unknown_fields",
+                "useTableSchema": "use_table_schema",
                 "useTopicSchema": "use_topic_schema",
                 "writeMetadata": "write_metadata"
             },
@@ -48386,6 +48636,7 @@
             },
             "gcp:pubsub/getSubscriptionBigqueryConfig:getSubscriptionBigqueryConfig": {
                 "dropUnknownFields": "drop_unknown_fields",
+                "useTableSchema": "use_table_schema",
                 "useTopicSchema": "use_topic_schema",
                 "writeMetadata": "write_metadata"
             },
@@ -48899,6 +49150,85 @@
             },
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": {
                 "policyData": "policy_data"
+            },
+            "gcp:securityposture/PosturePolicySet:PosturePolicySet": {
+                "policySetId": "policy_set_id"
+            },
+            "gcp:securityposture/PosturePolicySetPolicy:PosturePolicySetPolicy": {
+                "complianceStandards": "compliance_standards",
+                "policyId": "policy_id"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraint:PosturePolicySetPolicyConstraint": {
+                "orgPolicyConstraint": "org_policy_constraint",
+                "orgPolicyConstraintCustom": "org_policy_constraint_custom",
+                "securityHealthAnalyticsCustomModule": "security_health_analytics_custom_module",
+                "securityHealthAnalyticsModule": "security_health_analytics_module"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintOrgPolicyConstraint:PosturePolicySetPolicyConstraintOrgPolicyConstraint": {
+                "cannedConstraintId": "canned_constraint_id",
+                "policyRules": "policy_rules"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom:PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom": {
+                "customConstraint": "custom_constraint",
+                "policyRules": "policy_rules"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint:PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint": {
+                "actionType": "action_type",
+                "displayName": "display_name",
+                "methodTypes": "method_types",
+                "resourceTypes": "resource_types"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule:PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule": {
+                "allowAll": "allow_all",
+                "denyAll": "deny_all"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues:PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues": {
+                "allowedValues": "allowed_values",
+                "deniedValues": "denied_values"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule:PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule": {
+                "allowAll": "allow_all",
+                "denyAll": "deny_all"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues:PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues": {
+                "allowedValues": "allowed_values",
+                "deniedValues": "denied_values"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule:PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModule": {
+                "displayName": "display_name",
+                "moduleEnablementState": "module_enablement_state"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig:PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig": {
+                "customOutput": "custom_output",
+                "resourceSelector": "resource_selector"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty:PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputProperty": {
+                "valueExpression": "value_expression"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector:PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector": {
+                "resourceTypes": "resource_types"
+            },
+            "gcp:securityposture/PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule:PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModule": {
+                "moduleEnablementState": "module_enablement_state",
+                "moduleName": "module_name"
+            },
+            "gcp:securityposture/posture:Posture": {
+                "createTime": "create_time",
+                "policySets": "policy_sets",
+                "postureId": "posture_id",
+                "revisionId": "revision_id",
+                "updateTime": "update_time"
+            },
+            "gcp:securityposture/postureDeployment:PostureDeployment": {
+                "createTime": "create_time",
+                "desiredPostureId": "desired_posture_id",
+                "desiredPostureRevisionId": "desired_posture_revision_id",
+                "failureMessage": "failure_message",
+                "postureDeploymentId": "posture_deployment_id",
+                "postureId": "posture_id",
+                "postureRevisionId": "posture_revision_id",
+                "targetResource": "target_resource",
+                "updateTime": "update_time"
             },
             "gcp:serviceaccount/account:Account": {
                 "accountId": "account_id",
@@ -50131,6 +50461,18 @@
             "gcp:vertex/AiFeatureOnlineStoreFeatureviewBigQuerySource:AiFeatureOnlineStoreFeatureviewBigQuerySource": {
                 "entityIdColumns": "entity_id_columns"
             },
+            "gcp:vertex/AiFeatureOnlineStoreFeatureviewVectorSearchConfig:AiFeatureOnlineStoreFeatureviewVectorSearchConfig": {
+                "bruteForceConfig": "brute_force_config",
+                "crowdingColumn": "crowding_column",
+                "distanceMeasureType": "distance_measure_type",
+                "embeddingColumn": "embedding_column",
+                "embeddingDimension": "embedding_dimension",
+                "filterColumns": "filter_columns",
+                "treeAhConfig": "tree_ah_config"
+            },
+            "gcp:vertex/AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig:AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig": {
+                "leafNodeEmbeddingCount": "leaf_node_embedding_count"
+            },
             "gcp:vertex/AiFeatureStoreEncryptionSpec:AiFeatureStoreEncryptionSpec": {
                 "kmsKeyName": "kms_key_name"
             },
@@ -50248,7 +50590,8 @@
                 "featureOnlineStore": "feature_online_store",
                 "pulumiLabels": "terraform_labels",
                 "syncConfig": "sync_config",
-                "updateTime": "update_time"
+                "updateTime": "update_time",
+                "vectorSearchConfig": "vector_search_config"
             },
             "gcp:vertex/aiFeatureStore:AiFeatureStore": {
                 "createTime": "create_time",
@@ -50654,6 +50997,7 @@
                 "policyData": "policy_data"
             },
             "gcp:workflows/workflow:Workflow": {
+                "callLogLevel": "call_log_level",
                 "createTime": "create_time",
                 "cryptoKeyName": "crypto_key_name",
                 "effectiveLabels": "effective_labels",
@@ -50755,6 +51099,7 @@
                 "idleTimeout": "idle_timeout",
                 "persistentDirectories": "persistent_directories",
                 "pulumiLabels": "terraform_labels",
+                "readinessChecks": "readiness_checks",
                 "replicaZones": "replica_zones",
                 "runningTimeout": "running_timeout",
                 "workstationClusterId": "workstation_cluster_id",
@@ -50857,6 +51202,7 @@
             "dialogflowCustomEndpoint": "dialogflow_custom_endpoint",
             "dialogflowCxCustomEndpoint": "dialogflow_cx_custom_endpoint",
             "disableGooglePartnerName": "disable_google_partner_name",
+            "discoveryEngineCustomEndpoint": "discovery_engine_custom_endpoint",
             "dnsCustomEndpoint": "dns_custom_endpoint",
             "documentAiCustomEndpoint": "document_ai_custom_endpoint",
             "documentAiWarehouseCustomEndpoint": "document_ai_warehouse_custom_endpoint",
@@ -50921,6 +51267,7 @@
             "secureSourceManagerCustomEndpoint": "secure_source_manager_custom_endpoint",
             "securityCenterCustomEndpoint": "security_center_custom_endpoint",
             "securityScannerCustomEndpoint": "security_scanner_custom_endpoint",
+            "securitypostureCustomEndpoint": "securityposture_custom_endpoint",
             "serviceDirectoryCustomEndpoint": "service_directory_custom_endpoint",
             "serviceManagementCustomEndpoint": "service_management_custom_endpoint",
             "serviceNetworkingCustomEndpoint": "service_networking_custom_endpoint",

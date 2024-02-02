@@ -49,9 +49,9 @@ const (
 	gcpBackupDR                 = "BackupDisasterRecovery"   // Backup and Disaster Recovery resources
 	gcpBeyondcorp               = "Beyondcorp"               // Beyondcorp resources
 	gcpBigLake                  = "BigLake"                  // BigLake resources
+	gcpBigQuery                 = "BigQuery"                 // BigQuery resources
 	gcpBigQueryAnalyticsHub     = "BigQueryAnalyticsHub"     // BigQuery Analytics Hub resources
 	gcpBigQueryDataPolicy       = "BigQueryDataPolicy"       // BigQuery Data Policy resources
-	gcpBigQuery                 = "BigQuery"                 // BigQuery resources
 	gcpBigTable                 = "BigTable"                 // BitTable resources
 	gcpBilling                  = "Billing"                  // Billing resources
 	gcpBinaryAuthorization      = "BinaryAuthorization"      // Binary Authorization resources
@@ -63,8 +63,8 @@ const (
 	gcpCloudDeploy              = "CloudDeploy"              // CloudDeploy resources
 	gcpCloudFunctions           = "CloudFunctions"           // CloudFunction resources
 	gcpCloudFunctionsV2         = "CloudFunctionsV2"         // CloudFunction (2nd Gen) resources
-	gcpCloudIds                 = "CloudIds"                 // CloudIds resources
 	gcpCloudIdentity            = "CloudIdentity"            // CloudIdentity resources
+	gcpCloudIds                 = "CloudIds"                 // CloudIds resources
 	gcpCloudRun                 = "CloudRun"                 // CloudRun resources
 	gcpCloudRunV2               = "CloudRunV2"               // CloudRun (2nd Gen) resources
 	gcpCloudScheduler           = "CloudScheduler"           // Cloud Scheduler resources
@@ -72,19 +72,20 @@ const (
 	gcpComposer                 = "Composer"                 // Cloud Composer resources
 	gcpCompute                  = "Compute"                  // Compute resources
 	gcpContainerAnalysis        = "ContainerAnalysis"        // Container Analysis resources
-	gcpDataform                 = "Dataform"                 // Dataform resources
 	gcpDNS                      = "Dns"                      // DNS resources
-	gcpDatabaseMigrationService = "DatabaseMigrationService" // Database Migration Service resources
 	gcpDataCatalog              = "DataCatalog"              // Data Catalog resources
 	gcpDataFlow                 = "Dataflow"                 // DataFlow resources
 	gcpDataFusion               = "DataFusion"               // DataFusion resources
 	gcpDataLoss                 = "DataLoss"                 // DataLoss resources
 	gcpDataPlex                 = "DataPlex"                 // DataPlex
 	gcpDataProc                 = "Dataproc"                 // DataProc resources
+	gcpDatabaseMigrationService = "DatabaseMigrationService" // Database Migration Service resources
+	gcpDataform                 = "Dataform"                 // Dataform resources
 	gcpDatastore                = "Datastore"                // Datastore resources
 	gcpDatastream               = "Datastream"               // Datastream resources
 	gcpDeploymentManager        = "DeploymentManager"        // DeploymentManager resources
 	gcpDiagflow                 = "Diagflow"                 // Diagflow resources
+	gcpDiscoveryEngine          = "DiscoveryEngine"          // Discovery Engine
 	gcpEdgeNetwork              = "EdgeNetwork"              // Distributed Cloud Edge Network resources
 	gcpEdgecontainer            = "EdgeContainer"            // Cloud Edge Container resources
 	gcpEndPoints                = "Endpoints"                // End Point resources
@@ -133,6 +134,7 @@ const (
 	gcpSecretManager            = "SecretManager"            // Secret Manager resources
 	gcpSecureSourceManager      = "SecureSourceManager"      // Secure Source Manager
 	gcpSecurityCenter           = "SecurityCenter"           // Security Center
+	gcpSecurityPosture          = "SecurityPosture"          // Security Posture
 	gcpServiceAccount           = "ServiceAccount"           // Service Account resources
 	gcpServiceDirectory         = "ServiceDirectory"         // Service Directory resources
 	gcpServiceNetworking        = "ServiceNetworking"        // Service Networking resources
@@ -163,46 +165,48 @@ var moduleMapping = map[string]string{
 	"backup_dr":                       gcpBackupDR,
 	"beyondcorp":                      gcpBeyondcorp,
 	"biglake":                         gcpBigLake,
+	"bigquery":                        gcpBigQuery,
 	"bigquery_analytics_hub":          gcpBigQueryAnalyticsHub,
 	"bigquery_datapolicy_data_policy": gcpBigQueryDataPolicy,
-	"bigquery":                        gcpBigQuery,
 	"bigtable":                        gcpBigTable,
 	"billing":                         gcpBilling,
 	"binary_authorization":            gcpBinaryAuthorization,
-	"privateca":                       gcpCertificateAuthority,
 	"certificate_manager":             gcpCertificateManager,
 	"cloud_asset":                     gcpCloudAsset,
-	"cloudbuild":                      gcpCloudBuild,
-	"cloudbuildv2":                    gcpCloudBuildV2,
-	"clouddeploy":                     gcpCloudDeploy,
-	"cloudfunctions":                  gcpCloudFunctions,
-	"cloudfunctions2":                 gcpCloudFunctionsV2,
-	"clouddomains":                    "CloudDomains",
-	"cloud_ids":                       gcpCloudIds,
 	"cloud_identity":                  gcpCloudIdentity,
+	"cloud_ids":                       gcpCloudIds,
 	"cloud_run":                       gcpCloudRun,
 	"cloud_run_v2":                    gcpCloudRunV2,
 	"cloud_scheduler":                 gcpCloudScheduler,
 	"cloud_tasks":                     gcpCloudTasks,
+	"cloudbuild":                      gcpCloudBuild,
+	"cloudbuildv2":                    gcpCloudBuildV2,
+	"clouddeploy":                     gcpCloudDeploy,
+	"clouddomains":                    "CloudDomains",
+	"cloudfunctions":                  gcpCloudFunctions,
+	"cloudfunctions2":                 gcpCloudFunctionsV2,
+	"cloudiot":                        gcpIot,
 	"composer":                        gcpComposer,
 	"compute":                         gcpCompute,
+	"container":                       gcpKubernetes,
 	"container_analysis":              gcpContainerAnalysis,
-	"dataform":                        gcpDataform,
-	"dns":                             gcpDNS,
-	"database_migration_service":      gcpDatabaseMigrationService,
 	"data_catalog":                    gcpDataCatalog,
-	"dataflow":                        gcpDataFlow,
 	"data_fusion":                     gcpDataFusion,
 	"data_loss":                       gcpDataLoss,
 	"data_pipeline":                   gcpDataFlow, // Intentionally the same as "dataflow" since in Google's docs, data pipelines are nested under DataFlow.
+	"database_migration_service":      gcpDatabaseMigrationService,
+	"dataflow":                        gcpDataFlow,
+	"dataform":                        gcpDataform,
 	"dataplex":                        gcpDataPlex,
 	"dataproc":                        gcpDataProc,
 	"datastore":                       gcpDatastore,
 	"datastream":                      gcpDatastream,
 	"deployment_manager":              gcpDeploymentManager,
 	"dialogflow":                      gcpDiagflow,
-	"edgenetwork":                     gcpEdgeNetwork,
+	"discovery_engine":                gcpDiscoveryEngine,
+	"dns":                             gcpDNS,
 	"edgecontainer":                   gcpEdgecontainer,
+	"edgenetwork":                     gcpEdgeNetwork,
 	"endpoints":                       gcpEndPoints,
 	"essential_contacts":              gcpEssentialContacts,
 	"eventarc":                        gcpEventarc,
@@ -218,27 +222,26 @@ var moduleMapping = map[string]string{
 	"healthcare":                      gcpHealthcare,
 	"iam":                             gcpIAM,
 	"iap":                             gcpIAP,
-	"integration_connectors":          gcpIntegrationConnectors,
-	"looker":                          gcpLooker,
 	"identity_platform":               gcpIdentityPlatform,
-	"cloudiot":                        gcpIot,
+	"integration_connectors":          gcpIntegrationConnectors,
 	"kms":                             gcpKMS,
-	"container":                       gcpKubernetes,
 	"logging":                         gcpLogging,
+	"looker":                          gcpLooker,
 	"memcache":                        gcpMemcache,
 	"migration_center":                gcpMigrationCenter,
 	"ml":                              gcpMachingLearning,
 	"monitoring":                      gcpMonitoring,
+	"netapp":                          gcpNetapp,
 	"network_connectivity":            gcpNetworkConnectivity,
 	"network_management":              gcpNetworkManagement,
 	"network_security":                gcpNetworkSecurity,
-	"netapp":                          gcpNetapp,
 	"network_services":                gcpNetworkServices,
 	"notebooks":                       gcpNotebooks,
 	"org_policy":                      gcpOrgPolicy,
 	"organization":                    gcpOrganization,
 	"os_config":                       gcpOsConfig,
 	"os_login":                        gcpOsLogin,
+	"privateca":                       gcpCertificateAuthority,
 	"project":                         gcpProject,
 	"public":                          gcpCompute,
 	"pubsub":                          gcpPubSub,
@@ -249,6 +252,7 @@ var moduleMapping = map[string]string{
 	"scc":                             gcpSecurityCenter,
 	"secret_manager":                  gcpSecretManager,
 	"secure_source_manager":           gcpSecureSourceManager,
+	"securityposture":                 gcpSecurityPosture,
 	"service_account":                 gcpServiceAccount,
 	"service_directory":               gcpServiceDirectory,
 	"service_networking":              gcpServiceNetworking,
