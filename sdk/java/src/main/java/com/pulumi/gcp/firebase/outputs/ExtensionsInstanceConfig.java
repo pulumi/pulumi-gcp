@@ -67,7 +67,8 @@ public final class ExtensionsInstanceConfig {
     /**
      * @return Params whose values are only available at deployment time.
      * Unlike other params, these will not be set as environment variables on
-     * functions.
+     * functions. See a full list of system parameters at
+     * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
      * 
      */
     private @Nullable Map<String,String> systemParams;
@@ -142,7 +143,8 @@ public final class ExtensionsInstanceConfig {
     /**
      * @return Params whose values are only available at deployment time.
      * Unlike other params, these will not be set as environment variables on
-     * functions.
+     * functions. See a full list of system parameters at
+     * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
      * 
      */
     public Map<String,String> systemParams() {

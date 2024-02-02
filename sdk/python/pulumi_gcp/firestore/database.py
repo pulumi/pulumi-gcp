@@ -591,8 +591,6 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.firestore.Database("database",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            deletion_policy="DELETE",
             location_id="nam5",
             project="my-project-name",
             type="FIRESTORE_NATIVE")
@@ -620,8 +618,6 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            deletion_policy="DELETE",
             location_id="nam5",
             project="my-project-name",
             type="DATASTORE_MODE")
@@ -727,8 +723,6 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         database = gcp.firestore.Database("database",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            deletion_policy="DELETE",
             location_id="nam5",
             project="my-project-name",
             type="FIRESTORE_NATIVE")
@@ -756,8 +750,6 @@ class Database(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            deletion_policy="DELETE",
             location_id="nam5",
             project="my-project-name",
             type="DATASTORE_MODE")

@@ -58,7 +58,8 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// <summary>
         /// Params whose values are only available at deployment time.
         /// Unlike other params, these will not be set as environment variables on
-        /// functions.
+        /// functions. See a full list of system parameters at
+        /// https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
         /// </summary>
         public readonly ImmutableDictionary<string, string>? SystemParams;
 

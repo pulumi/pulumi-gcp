@@ -6660,6 +6660,9 @@ func (o ServiceTemplateSpecContainerVolumeMountArrayOutput) Index(i pulumi.IntIn
 }
 
 type ServiceTemplateSpecVolume struct {
+	// A filesystem specified by the Container Storage Interface (CSI).
+	// Structure is documented below.
+	Csi *ServiceTemplateSpecVolumeCsi `pulumi:"csi"`
 	// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 	// Structure is documented below.
 	EmptyDir *ServiceTemplateSpecVolumeEmptyDir `pulumi:"emptyDir"`
@@ -6684,6 +6687,9 @@ type ServiceTemplateSpecVolumeInput interface {
 }
 
 type ServiceTemplateSpecVolumeArgs struct {
+	// A filesystem specified by the Container Storage Interface (CSI).
+	// Structure is documented below.
+	Csi ServiceTemplateSpecVolumeCsiPtrInput `pulumi:"csi"`
 	// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 	// Structure is documented below.
 	EmptyDir ServiceTemplateSpecVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
@@ -6747,6 +6753,12 @@ func (o ServiceTemplateSpecVolumeOutput) ToServiceTemplateSpecVolumeOutputWithCo
 	return o
 }
 
+// A filesystem specified by the Container Storage Interface (CSI).
+// Structure is documented below.
+func (o ServiceTemplateSpecVolumeOutput) Csi() ServiceTemplateSpecVolumeCsiPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolume) *ServiceTemplateSpecVolumeCsi { return v.Csi }).(ServiceTemplateSpecVolumeCsiPtrOutput)
+}
+
 // Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 // Structure is documented below.
 func (o ServiceTemplateSpecVolumeOutput) EmptyDir() ServiceTemplateSpecVolumeEmptyDirPtrOutput {
@@ -6786,12 +6798,213 @@ func (o ServiceTemplateSpecVolumeArrayOutput) Index(i pulumi.IntInput) ServiceTe
 	}).(ServiceTemplateSpecVolumeOutput)
 }
 
+type ServiceTemplateSpecVolumeCsi struct {
+	// Unique name representing the type of file system to be created. Cloud Run supports the following values:
+	// * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+	//   run.googleapis.com/execution-environment annotation to be set to "gen2" and
+	//   run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	Driver string `pulumi:"driver"`
+	// If true, all mounts created from this volume will be read-only.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Driver-specific attributes. The following options are supported for available drivers:
+	// * gcsfuse.run.googleapis.com
+	// * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+	//
+	// ***
+	VolumeAttributes map[string]string `pulumi:"volumeAttributes"`
+}
+
+// ServiceTemplateSpecVolumeCsiInput is an input type that accepts ServiceTemplateSpecVolumeCsiArgs and ServiceTemplateSpecVolumeCsiOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecVolumeCsiInput` via:
+//
+//	ServiceTemplateSpecVolumeCsiArgs{...}
+type ServiceTemplateSpecVolumeCsiInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecVolumeCsiOutput() ServiceTemplateSpecVolumeCsiOutput
+	ToServiceTemplateSpecVolumeCsiOutputWithContext(context.Context) ServiceTemplateSpecVolumeCsiOutput
+}
+
+type ServiceTemplateSpecVolumeCsiArgs struct {
+	// Unique name representing the type of file system to be created. Cloud Run supports the following values:
+	// * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+	//   run.googleapis.com/execution-environment annotation to be set to "gen2" and
+	//   run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	Driver pulumi.StringInput `pulumi:"driver"`
+	// If true, all mounts created from this volume will be read-only.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Driver-specific attributes. The following options are supported for available drivers:
+	// * gcsfuse.run.googleapis.com
+	// * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+	//
+	// ***
+	VolumeAttributes pulumi.StringMapInput `pulumi:"volumeAttributes"`
+}
+
+func (ServiceTemplateSpecVolumeCsiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecVolumeCsi)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecVolumeCsiArgs) ToServiceTemplateSpecVolumeCsiOutput() ServiceTemplateSpecVolumeCsiOutput {
+	return i.ToServiceTemplateSpecVolumeCsiOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecVolumeCsiArgs) ToServiceTemplateSpecVolumeCsiOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeCsiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeCsiOutput)
+}
+
+func (i ServiceTemplateSpecVolumeCsiArgs) ToServiceTemplateSpecVolumeCsiPtrOutput() ServiceTemplateSpecVolumeCsiPtrOutput {
+	return i.ToServiceTemplateSpecVolumeCsiPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecVolumeCsiArgs) ToServiceTemplateSpecVolumeCsiPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeCsiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeCsiOutput).ToServiceTemplateSpecVolumeCsiPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecVolumeCsiPtrInput is an input type that accepts ServiceTemplateSpecVolumeCsiArgs, ServiceTemplateSpecVolumeCsiPtr and ServiceTemplateSpecVolumeCsiPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecVolumeCsiPtrInput` via:
+//
+//	        ServiceTemplateSpecVolumeCsiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecVolumeCsiPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecVolumeCsiPtrOutput() ServiceTemplateSpecVolumeCsiPtrOutput
+	ToServiceTemplateSpecVolumeCsiPtrOutputWithContext(context.Context) ServiceTemplateSpecVolumeCsiPtrOutput
+}
+
+type serviceTemplateSpecVolumeCsiPtrType ServiceTemplateSpecVolumeCsiArgs
+
+func ServiceTemplateSpecVolumeCsiPtr(v *ServiceTemplateSpecVolumeCsiArgs) ServiceTemplateSpecVolumeCsiPtrInput {
+	return (*serviceTemplateSpecVolumeCsiPtrType)(v)
+}
+
+func (*serviceTemplateSpecVolumeCsiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecVolumeCsi)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecVolumeCsiPtrType) ToServiceTemplateSpecVolumeCsiPtrOutput() ServiceTemplateSpecVolumeCsiPtrOutput {
+	return i.ToServiceTemplateSpecVolumeCsiPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecVolumeCsiPtrType) ToServiceTemplateSpecVolumeCsiPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeCsiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeCsiPtrOutput)
+}
+
+type ServiceTemplateSpecVolumeCsiOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecVolumeCsiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecVolumeCsi)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecVolumeCsiOutput) ToServiceTemplateSpecVolumeCsiOutput() ServiceTemplateSpecVolumeCsiOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeCsiOutput) ToServiceTemplateSpecVolumeCsiOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeCsiOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeCsiOutput) ToServiceTemplateSpecVolumeCsiPtrOutput() ServiceTemplateSpecVolumeCsiPtrOutput {
+	return o.ToServiceTemplateSpecVolumeCsiPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecVolumeCsiOutput) ToServiceTemplateSpecVolumeCsiPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeCsiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecVolumeCsi) *ServiceTemplateSpecVolumeCsi {
+		return &v
+	}).(ServiceTemplateSpecVolumeCsiPtrOutput)
+}
+
+// Unique name representing the type of file system to be created. Cloud Run supports the following values:
+//   - gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
+//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+func (o ServiceTemplateSpecVolumeCsiOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeCsi) string { return v.Driver }).(pulumi.StringOutput)
+}
+
+// If true, all mounts created from this volume will be read-only.
+func (o ServiceTemplateSpecVolumeCsiOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeCsi) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Driver-specific attributes. The following options are supported for available drivers:
+// * gcsfuse.run.googleapis.com
+// * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+//
+// ***
+func (o ServiceTemplateSpecVolumeCsiOutput) VolumeAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeCsi) map[string]string { return v.VolumeAttributes }).(pulumi.StringMapOutput)
+}
+
+type ServiceTemplateSpecVolumeCsiPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecVolumeCsiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecVolumeCsi)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecVolumeCsiPtrOutput) ToServiceTemplateSpecVolumeCsiPtrOutput() ServiceTemplateSpecVolumeCsiPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeCsiPtrOutput) ToServiceTemplateSpecVolumeCsiPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeCsiPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeCsiPtrOutput) Elem() ServiceTemplateSpecVolumeCsiOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeCsi) ServiceTemplateSpecVolumeCsi {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecVolumeCsi
+		return ret
+	}).(ServiceTemplateSpecVolumeCsiOutput)
+}
+
+// Unique name representing the type of file system to be created. Cloud Run supports the following values:
+//   - gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
+//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+func (o ServiceTemplateSpecVolumeCsiPtrOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeCsi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Driver
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, all mounts created from this volume will be read-only.
+func (o ServiceTemplateSpecVolumeCsiPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeCsi) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Driver-specific attributes. The following options are supported for available drivers:
+// * gcsfuse.run.googleapis.com
+// * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+//
+// ***
+func (o ServiceTemplateSpecVolumeCsiPtrOutput) VolumeAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeCsi) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeAttributes
+	}).(pulumi.StringMapOutput)
+}
+
 type ServiceTemplateSpecVolumeEmptyDir struct {
 	// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
 	Medium *string `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-	//
-	// ***
 	SizeLimit *string `pulumi:"sizeLimit"`
 }
 
@@ -6810,8 +7023,6 @@ type ServiceTemplateSpecVolumeEmptyDirArgs struct {
 	// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
 	Medium pulumi.StringPtrInput `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-	//
-	// ***
 	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
 }
 
@@ -6898,8 +7109,6 @@ func (o ServiceTemplateSpecVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput
 }
 
 // Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-//
-// ***
 func (o ServiceTemplateSpecVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
 }
@@ -6939,8 +7148,6 @@ func (o ServiceTemplateSpecVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOut
 }
 
 // Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-//
-// ***
 func (o ServiceTemplateSpecVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpecVolumeEmptyDir) *string {
 		if v == nil {
@@ -11168,6 +11375,8 @@ func (o GetServiceTemplateSpecContainerVolumeMountArrayOutput) Index(i pulumi.In
 }
 
 type GetServiceTemplateSpecVolume struct {
+	// A filesystem specified by the Container Storage Interface (CSI).
+	Csis []GetServiceTemplateSpecVolumeCsi `pulumi:"csis"`
 	// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 	EmptyDirs []GetServiceTemplateSpecVolumeEmptyDir `pulumi:"emptyDirs"`
 	// The name of the Cloud Run Service.
@@ -11190,6 +11399,8 @@ type GetServiceTemplateSpecVolumeInput interface {
 }
 
 type GetServiceTemplateSpecVolumeArgs struct {
+	// A filesystem specified by the Container Storage Interface (CSI).
+	Csis GetServiceTemplateSpecVolumeCsiArrayInput `pulumi:"csis"`
 	// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 	EmptyDirs GetServiceTemplateSpecVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
 	// The name of the Cloud Run Service.
@@ -11251,6 +11462,11 @@ func (o GetServiceTemplateSpecVolumeOutput) ToGetServiceTemplateSpecVolumeOutput
 	return o
 }
 
+// A filesystem specified by the Container Storage Interface (CSI).
+func (o GetServiceTemplateSpecVolumeOutput) Csis() GetServiceTemplateSpecVolumeCsiArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolume) []GetServiceTemplateSpecVolumeCsi { return v.Csis }).(GetServiceTemplateSpecVolumeCsiArrayOutput)
+}
+
 // Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 func (o GetServiceTemplateSpecVolumeOutput) EmptyDirs() GetServiceTemplateSpecVolumeEmptyDirArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecVolume) []GetServiceTemplateSpecVolumeEmptyDir { return v.EmptyDirs }).(GetServiceTemplateSpecVolumeEmptyDirArrayOutput)
@@ -11286,6 +11502,136 @@ func (o GetServiceTemplateSpecVolumeArrayOutput) Index(i pulumi.IntInput) GetSer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecVolume {
 		return vs[0].([]GetServiceTemplateSpecVolume)[vs[1].(int)]
 	}).(GetServiceTemplateSpecVolumeOutput)
+}
+
+type GetServiceTemplateSpecVolumeCsi struct {
+	// Unique name representing the type of file system to be created. Cloud Run supports the following values:
+	//   * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+	//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
+	//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	Driver string `pulumi:"driver"`
+	// If true, all mounts created from this volume will be read-only.
+	ReadOnly bool `pulumi:"readOnly"`
+	// Driver-specific attributes. The following options are supported for available drivers:
+	//   * gcsfuse.run.googleapis.com
+	//     * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+	VolumeAttributes map[string]string `pulumi:"volumeAttributes"`
+}
+
+// GetServiceTemplateSpecVolumeCsiInput is an input type that accepts GetServiceTemplateSpecVolumeCsiArgs and GetServiceTemplateSpecVolumeCsiOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecVolumeCsiInput` via:
+//
+//	GetServiceTemplateSpecVolumeCsiArgs{...}
+type GetServiceTemplateSpecVolumeCsiInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecVolumeCsiOutput() GetServiceTemplateSpecVolumeCsiOutput
+	ToGetServiceTemplateSpecVolumeCsiOutputWithContext(context.Context) GetServiceTemplateSpecVolumeCsiOutput
+}
+
+type GetServiceTemplateSpecVolumeCsiArgs struct {
+	// Unique name representing the type of file system to be created. Cloud Run supports the following values:
+	//   * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+	//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
+	//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+	Driver pulumi.StringInput `pulumi:"driver"`
+	// If true, all mounts created from this volume will be read-only.
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+	// Driver-specific attributes. The following options are supported for available drivers:
+	//   * gcsfuse.run.googleapis.com
+	//     * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+	VolumeAttributes pulumi.StringMapInput `pulumi:"volumeAttributes"`
+}
+
+func (GetServiceTemplateSpecVolumeCsiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecVolumeCsi)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecVolumeCsiArgs) ToGetServiceTemplateSpecVolumeCsiOutput() GetServiceTemplateSpecVolumeCsiOutput {
+	return i.ToGetServiceTemplateSpecVolumeCsiOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecVolumeCsiArgs) ToGetServiceTemplateSpecVolumeCsiOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeCsiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecVolumeCsiOutput)
+}
+
+// GetServiceTemplateSpecVolumeCsiArrayInput is an input type that accepts GetServiceTemplateSpecVolumeCsiArray and GetServiceTemplateSpecVolumeCsiArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecVolumeCsiArrayInput` via:
+//
+//	GetServiceTemplateSpecVolumeCsiArray{ GetServiceTemplateSpecVolumeCsiArgs{...} }
+type GetServiceTemplateSpecVolumeCsiArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecVolumeCsiArrayOutput() GetServiceTemplateSpecVolumeCsiArrayOutput
+	ToGetServiceTemplateSpecVolumeCsiArrayOutputWithContext(context.Context) GetServiceTemplateSpecVolumeCsiArrayOutput
+}
+
+type GetServiceTemplateSpecVolumeCsiArray []GetServiceTemplateSpecVolumeCsiInput
+
+func (GetServiceTemplateSpecVolumeCsiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecVolumeCsi)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecVolumeCsiArray) ToGetServiceTemplateSpecVolumeCsiArrayOutput() GetServiceTemplateSpecVolumeCsiArrayOutput {
+	return i.ToGetServiceTemplateSpecVolumeCsiArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecVolumeCsiArray) ToGetServiceTemplateSpecVolumeCsiArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeCsiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecVolumeCsiArrayOutput)
+}
+
+type GetServiceTemplateSpecVolumeCsiOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecVolumeCsiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecVolumeCsi)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecVolumeCsiOutput) ToGetServiceTemplateSpecVolumeCsiOutput() GetServiceTemplateSpecVolumeCsiOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeCsiOutput) ToGetServiceTemplateSpecVolumeCsiOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeCsiOutput {
+	return o
+}
+
+// Unique name representing the type of file system to be created. Cloud Run supports the following values:
+//   - gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+//     run.googleapis.com/execution-environment annotation to be set to "gen2" and
+//     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+func (o GetServiceTemplateSpecVolumeCsiOutput) Driver() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeCsi) string { return v.Driver }).(pulumi.StringOutput)
+}
+
+// If true, all mounts created from this volume will be read-only.
+func (o GetServiceTemplateSpecVolumeCsiOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeCsi) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// Driver-specific attributes. The following options are supported for available drivers:
+//   - gcsfuse.run.googleapis.com
+//   - bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+func (o GetServiceTemplateSpecVolumeCsiOutput) VolumeAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeCsi) map[string]string { return v.VolumeAttributes }).(pulumi.StringMapOutput)
+}
+
+type GetServiceTemplateSpecVolumeCsiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecVolumeCsiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecVolumeCsi)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecVolumeCsiArrayOutput) ToGetServiceTemplateSpecVolumeCsiArrayOutput() GetServiceTemplateSpecVolumeCsiArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeCsiArrayOutput) ToGetServiceTemplateSpecVolumeCsiArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeCsiArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeCsiArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecVolumeCsiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecVolumeCsi {
+		return vs[0].([]GetServiceTemplateSpecVolumeCsi)[vs[1].(int)]
+	}).(GetServiceTemplateSpecVolumeCsiOutput)
 }
 
 type GetServiceTemplateSpecVolumeEmptyDir struct {
@@ -11911,6 +12257,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerVolumeMountArrayInput)(nil)).Elem(), ServiceTemplateSpecContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeInput)(nil)).Elem(), ServiceTemplateSpecVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeArrayInput)(nil)).Elem(), ServiceTemplateSpecVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeCsiInput)(nil)).Elem(), ServiceTemplateSpecVolumeCsiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeCsiPtrInput)(nil)).Elem(), ServiceTemplateSpecVolumeCsiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeEmptyDirInput)(nil)).Elem(), ServiceTemplateSpecVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeEmptyDirPtrInput)(nil)).Elem(), ServiceTemplateSpecVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeSecretInput)(nil)).Elem(), ServiceTemplateSpecVolumeSecretArgs{})
@@ -11977,6 +12325,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerVolumeMountArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeInput)(nil)).Elem(), GetServiceTemplateSpecVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeCsiInput)(nil)).Elem(), GetServiceTemplateSpecVolumeCsiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeCsiArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeCsiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeEmptyDirInput)(nil)).Elem(), GetServiceTemplateSpecVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeEmptyDirArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeEmptyDirArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeSecretInput)(nil)).Elem(), GetServiceTemplateSpecVolumeSecretArgs{})
@@ -12057,6 +12407,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeCsiOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeCsiPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeEmptyDirOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeEmptyDirPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeSecretOutput{})
@@ -12123,6 +12475,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeCsiOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeCsiArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeEmptyDirOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeEmptyDirArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeSecretOutput{})

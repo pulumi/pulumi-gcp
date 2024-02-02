@@ -289,6 +289,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('disableGooglePartnerName')
 
     @property
+    def discovery_engine_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('discoveryEngineCustomEndpoint')
+
+    @property
     def dns_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dnsCustomEndpoint')
 
@@ -555,6 +559,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def security_scanner_custom_endpoint(self) -> Optional[str]:
         return __config__.get('securityScannerCustomEndpoint')
+
+    @property
+    def securityposture_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('securitypostureCustomEndpoint')
 
     @property
     def service_directory_custom_endpoint(self) -> Optional[str]:

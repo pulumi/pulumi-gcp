@@ -2582,6 +2582,112 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SourceSnapshot() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkstationConfigReadinessCheck struct {
+	// Path to which the request should be sent.
+	Path string `pulumi:"path"`
+	// Port to which the request should be sent.
+	Port int `pulumi:"port"`
+}
+
+// WorkstationConfigReadinessCheckInput is an input type that accepts WorkstationConfigReadinessCheckArgs and WorkstationConfigReadinessCheckOutput values.
+// You can construct a concrete instance of `WorkstationConfigReadinessCheckInput` via:
+//
+//	WorkstationConfigReadinessCheckArgs{...}
+type WorkstationConfigReadinessCheckInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigReadinessCheckOutput() WorkstationConfigReadinessCheckOutput
+	ToWorkstationConfigReadinessCheckOutputWithContext(context.Context) WorkstationConfigReadinessCheckOutput
+}
+
+type WorkstationConfigReadinessCheckArgs struct {
+	// Path to which the request should be sent.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Port to which the request should be sent.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (WorkstationConfigReadinessCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigReadinessCheck)(nil)).Elem()
+}
+
+func (i WorkstationConfigReadinessCheckArgs) ToWorkstationConfigReadinessCheckOutput() WorkstationConfigReadinessCheckOutput {
+	return i.ToWorkstationConfigReadinessCheckOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigReadinessCheckArgs) ToWorkstationConfigReadinessCheckOutputWithContext(ctx context.Context) WorkstationConfigReadinessCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigReadinessCheckOutput)
+}
+
+// WorkstationConfigReadinessCheckArrayInput is an input type that accepts WorkstationConfigReadinessCheckArray and WorkstationConfigReadinessCheckArrayOutput values.
+// You can construct a concrete instance of `WorkstationConfigReadinessCheckArrayInput` via:
+//
+//	WorkstationConfigReadinessCheckArray{ WorkstationConfigReadinessCheckArgs{...} }
+type WorkstationConfigReadinessCheckArrayInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigReadinessCheckArrayOutput() WorkstationConfigReadinessCheckArrayOutput
+	ToWorkstationConfigReadinessCheckArrayOutputWithContext(context.Context) WorkstationConfigReadinessCheckArrayOutput
+}
+
+type WorkstationConfigReadinessCheckArray []WorkstationConfigReadinessCheckInput
+
+func (WorkstationConfigReadinessCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigReadinessCheck)(nil)).Elem()
+}
+
+func (i WorkstationConfigReadinessCheckArray) ToWorkstationConfigReadinessCheckArrayOutput() WorkstationConfigReadinessCheckArrayOutput {
+	return i.ToWorkstationConfigReadinessCheckArrayOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigReadinessCheckArray) ToWorkstationConfigReadinessCheckArrayOutputWithContext(ctx context.Context) WorkstationConfigReadinessCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigReadinessCheckArrayOutput)
+}
+
+type WorkstationConfigReadinessCheckOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigReadinessCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigReadinessCheck)(nil)).Elem()
+}
+
+func (o WorkstationConfigReadinessCheckOutput) ToWorkstationConfigReadinessCheckOutput() WorkstationConfigReadinessCheckOutput {
+	return o
+}
+
+func (o WorkstationConfigReadinessCheckOutput) ToWorkstationConfigReadinessCheckOutputWithContext(ctx context.Context) WorkstationConfigReadinessCheckOutput {
+	return o
+}
+
+// Path to which the request should be sent.
+func (o WorkstationConfigReadinessCheckOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationConfigReadinessCheck) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Port to which the request should be sent.
+func (o WorkstationConfigReadinessCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v WorkstationConfigReadinessCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type WorkstationConfigReadinessCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigReadinessCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigReadinessCheck)(nil)).Elem()
+}
+
+func (o WorkstationConfigReadinessCheckArrayOutput) ToWorkstationConfigReadinessCheckArrayOutput() WorkstationConfigReadinessCheckArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigReadinessCheckArrayOutput) ToWorkstationConfigReadinessCheckArrayOutputWithContext(ctx context.Context) WorkstationConfigReadinessCheckArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigReadinessCheckArrayOutput) Index(i pulumi.IntInput) WorkstationConfigReadinessCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkstationConfigReadinessCheck {
+		return vs[0].([]WorkstationConfigReadinessCheck)[vs[1].(int)]
+	}).(WorkstationConfigReadinessCheckOutput)
+}
+
 type WorkstationIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -2939,6 +3045,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryArrayInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePdInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGcePdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigPersistentDirectoryGcePdPtrInput)(nil)).Elem(), WorkstationConfigPersistentDirectoryGcePdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigReadinessCheckInput)(nil)).Elem(), WorkstationConfigReadinessCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigReadinessCheckArrayInput)(nil)).Elem(), WorkstationConfigReadinessCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationIamBindingConditionInput)(nil)).Elem(), WorkstationIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationIamBindingConditionPtrInput)(nil)).Elem(), WorkstationIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationIamMemberConditionInput)(nil)).Elem(), WorkstationIamMemberConditionArgs{})
@@ -2973,6 +3081,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryArrayOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGcePdOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigPersistentDirectoryGcePdPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigReadinessCheckOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigReadinessCheckArrayOutput{})
 	pulumi.RegisterOutputType(WorkstationIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(WorkstationIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationIamMemberConditionOutput{})

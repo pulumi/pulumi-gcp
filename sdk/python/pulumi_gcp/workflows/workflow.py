@@ -14,6 +14,7 @@ __all__ = ['WorkflowArgs', 'Workflow']
 @pulumi.input_type
 class WorkflowArgs:
     def __init__(__self__, *,
+                 call_log_level: Optional[pulumi.Input[str]] = None,
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -26,6 +27,10 @@ class WorkflowArgs:
                  user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Workflow resource.
+        :param pulumi.Input[str] call_log_level: Describes the level of platform logging to apply to calls and call responses during
+               executions of this workflow. If both the workflow and the execution specify a logging level,
+               the execution level takes precedence.
+               Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
         :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -46,9 +51,11 @@ class WorkflowArgs:
                The {account} value can be the email address or the unique_id of the service account.
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
-        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
+        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
+        if call_log_level is not None:
+            pulumi.set(__self__, "call_log_level", call_log_level)
         if crypto_key_name is not None:
             pulumi.set(__self__, "crypto_key_name", crypto_key_name)
         if description is not None:
@@ -69,6 +76,21 @@ class WorkflowArgs:
             pulumi.set(__self__, "source_contents", source_contents)
         if user_env_vars is not None:
             pulumi.set(__self__, "user_env_vars", user_env_vars)
+
+    @property
+    @pulumi.getter(name="callLogLevel")
+    def call_log_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the level of platform logging to apply to calls and call responses during
+        executions of this workflow. If both the workflow and the execution specify a logging level,
+        the execution level takes precedence.
+        Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+        """
+        return pulumi.get(self, "call_log_level")
+
+    @call_log_level.setter
+    def call_log_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "call_log_level", value)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
@@ -182,7 +204,7 @@ class WorkflowArgs:
     @pulumi.getter(name="sourceContents")
     def source_contents(self) -> Optional[pulumi.Input[str]]:
         """
-        Workflow code to be executed. The size limit is 32KB.
+        Workflow code to be executed. The size limit is 128KB.
         """
         return pulumi.get(self, "source_contents")
 
@@ -206,6 +228,7 @@ class WorkflowArgs:
 @pulumi.input_type
 class _WorkflowState:
     def __init__(__self__, *,
+                 call_log_level: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -224,6 +247,10 @@ class _WorkflowState:
                  user_env_vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Workflow resources.
+        :param pulumi.Input[str] call_log_level: Describes the level of platform logging to apply to calls and call responses during
+               executions of this workflow. If both the workflow and the execution specify a logging level,
+               the execution level takes precedence.
+               Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
         :param pulumi.Input[str] create_time: The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
@@ -249,11 +276,13 @@ class _WorkflowState:
                The {account} value can be the email address or the unique_id of the service account.
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
-        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
+        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
+        if call_log_level is not None:
+            pulumi.set(__self__, "call_log_level", call_log_level)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if crypto_key_name is not None:
@@ -286,6 +315,21 @@ class _WorkflowState:
             pulumi.set(__self__, "update_time", update_time)
         if user_env_vars is not None:
             pulumi.set(__self__, "user_env_vars", user_env_vars)
+
+    @property
+    @pulumi.getter(name="callLogLevel")
+    def call_log_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the level of platform logging to apply to calls and call responses during
+        executions of this workflow. If both the workflow and the execution specify a logging level,
+        the execution level takes precedence.
+        Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+        """
+        return pulumi.get(self, "call_log_level")
+
+    @call_log_level.setter
+    def call_log_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "call_log_level", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -448,7 +492,7 @@ class _WorkflowState:
     @pulumi.getter(name="sourceContents")
     def source_contents(self) -> Optional[pulumi.Input[str]]:
         """
-        Workflow code to be executed. The size limit is 32KB.
+        Workflow code to be executed. The size limit is 128KB.
         """
         return pulumi.get(self, "source_contents")
 
@@ -498,6 +542,7 @@ class Workflow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 call_log_level: Optional[pulumi.Input[str]] = None,
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -526,6 +571,10 @@ class Workflow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] call_log_level: Describes the level of platform logging to apply to calls and call responses during
+               executions of this workflow. If both the workflow and the execution specify a logging level,
+               the execution level takes precedence.
+               Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
         :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -546,7 +595,7 @@ class Workflow(pulumi.CustomResource):
                The {account} value can be the email address or the unique_id of the service account.
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
-        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
+        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         ...
@@ -585,6 +634,7 @@ class Workflow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 call_log_level: Optional[pulumi.Input[str]] = None,
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -604,6 +654,7 @@ class Workflow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkflowArgs.__new__(WorkflowArgs)
 
+            __props__.__dict__["call_log_level"] = call_log_level
             __props__.__dict__["crypto_key_name"] = crypto_key_name
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
@@ -632,6 +683,7 @@ class Workflow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            call_log_level: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             crypto_key_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -655,6 +707,10 @@ class Workflow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] call_log_level: Describes the level of platform logging to apply to calls and call responses during
+               executions of this workflow. If both the workflow and the execution specify a logging level,
+               the execution level takes precedence.
+               Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
         :param pulumi.Input[str] create_time: The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] crypto_key_name: The KMS key used to encrypt workflow and execution data.
                Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
@@ -680,7 +736,7 @@ class Workflow(pulumi.CustomResource):
                The {account} value can be the email address or the unique_id of the service account.
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
-        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
+        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
@@ -689,6 +745,7 @@ class Workflow(pulumi.CustomResource):
 
         __props__ = _WorkflowState.__new__(_WorkflowState)
 
+        __props__.__dict__["call_log_level"] = call_log_level
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["crypto_key_name"] = crypto_key_name
         __props__.__dict__["description"] = description
@@ -706,6 +763,17 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["user_env_vars"] = user_env_vars
         return Workflow(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="callLogLevel")
+    def call_log_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        Describes the level of platform logging to apply to calls and call responses during
+        executions of this workflow. If both the workflow and the execution specify a logging level,
+        the execution level takes precedence.
+        Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+        """
+        return pulumi.get(self, "call_log_level")
 
     @property
     @pulumi.getter(name="createTime")
@@ -820,7 +888,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="sourceContents")
     def source_contents(self) -> pulumi.Output[Optional[str]]:
         """
-        Workflow code to be executed. The size limit is 32KB.
+        Workflow code to be executed. The size limit is 128KB.
         """
         return pulumi.get(self, "source_contents")
 

@@ -79,6 +79,41 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Backend Service External Iap
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceIapArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new BackendService(&#34;default&#34;, BackendServiceArgs.builder()        
+ *             .iap(BackendServiceIapArgs.builder()
+ *                 .oauth2ClientId(&#34;abc&#34;)
+ *                 .oauth2ClientSecret(&#34;xyz&#34;)
+ *                 .build())
+ *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Backend Service Cache Simple
  * 
  * ```java

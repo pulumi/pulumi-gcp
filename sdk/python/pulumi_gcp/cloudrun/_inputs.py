@@ -46,6 +46,7 @@ __all__ = [
     'ServiceTemplateSpecContainerStartupProbeTcpSocketArgs',
     'ServiceTemplateSpecContainerVolumeMountArgs',
     'ServiceTemplateSpecVolumeArgs',
+    'ServiceTemplateSpecVolumeCsiArgs',
     'ServiceTemplateSpecVolumeEmptyDirArgs',
     'ServiceTemplateSpecVolumeSecretArgs',
     'ServiceTemplateSpecVolumeSecretItemArgs',
@@ -2879,10 +2880,13 @@ class ServiceTemplateSpecContainerVolumeMountArgs:
 class ServiceTemplateSpecVolumeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 csi: Optional[pulumi.Input['ServiceTemplateSpecVolumeCsiArgs']] = None,
                  empty_dir: Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs']] = None,
                  secret: Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input['ServiceTemplateSpecVolumeCsiArgs'] csi: A filesystem specified by the Container Storage Interface (CSI).
+               Structure is documented below.
         :param pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs'] empty_dir: Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateSpecVolumeSecretArgs'] secret: The secret's value will be presented as the content of a file whose
@@ -2891,6 +2895,8 @@ class ServiceTemplateSpecVolumeArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
+        if csi is not None:
+            pulumi.set(__self__, "csi", csi)
         if empty_dir is not None:
             pulumi.set(__self__, "empty_dir", empty_dir)
         if secret is not None:
@@ -2907,6 +2913,19 @@ class ServiceTemplateSpecVolumeArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def csi(self) -> Optional[pulumi.Input['ServiceTemplateSpecVolumeCsiArgs']]:
+        """
+        A filesystem specified by the Container Storage Interface (CSI).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "csi")
+
+    @csi.setter
+    def csi(self, value: Optional[pulumi.Input['ServiceTemplateSpecVolumeCsiArgs']]):
+        pulumi.set(self, "csi", value)
 
     @property
     @pulumi.getter(name="emptyDir")
@@ -2938,6 +2957,74 @@ class ServiceTemplateSpecVolumeArgs:
 
 
 @pulumi.input_type
+class ServiceTemplateSpecVolumeCsiArgs:
+    def __init__(__self__, *,
+                 driver: pulumi.Input[str],
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 volume_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] driver: Unique name representing the type of file system to be created. Cloud Run supports the following values:
+               * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+               run.googleapis.com/execution-environment annotation to be set to "gen2" and
+               run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        :param pulumi.Input[bool] read_only: If true, all mounts created from this volume will be read-only.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] volume_attributes: Driver-specific attributes. The following options are supported for available drivers:
+               * gcsfuse.run.googleapis.com
+               * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+               
+               - - -
+        """
+        pulumi.set(__self__, "driver", driver)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if volume_attributes is not None:
+            pulumi.set(__self__, "volume_attributes", volume_attributes)
+
+    @property
+    @pulumi.getter
+    def driver(self) -> pulumi.Input[str]:
+        """
+        Unique name representing the type of file system to be created. Cloud Run supports the following values:
+        * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
+        run.googleapis.com/execution-environment annotation to be set to "gen2" and
+        run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        """
+        return pulumi.get(self, "driver")
+
+    @driver.setter
+    def driver(self, value: pulumi.Input[str]):
+        pulumi.set(self, "driver", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, all mounts created from this volume will be read-only.
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="volumeAttributes")
+    def volume_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Driver-specific attributes. The following options are supported for available drivers:
+        * gcsfuse.run.googleapis.com
+        * bucketName: The name of the Cloud Storage Bucket that backs this volume. The Cloud Run Service identity must have access to this bucket.
+
+        - - -
+        """
+        return pulumi.get(self, "volume_attributes")
+
+    @volume_attributes.setter
+    def volume_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "volume_attributes", value)
+
+
+@pulumi.input_type
 class ServiceTemplateSpecVolumeEmptyDirArgs:
     def __init__(__self__, *,
                  medium: Optional[pulumi.Input[str]] = None,
@@ -2945,8 +3032,6 @@ class ServiceTemplateSpecVolumeEmptyDirArgs:
         """
         :param pulumi.Input[str] medium: The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
         :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-               
-               - - -
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -2970,8 +3055,6 @@ class ServiceTemplateSpecVolumeEmptyDirArgs:
     def size_limit(self) -> Optional[pulumi.Input[str]]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-
-        - - -
         """
         return pulumi.get(self, "size_limit")
 

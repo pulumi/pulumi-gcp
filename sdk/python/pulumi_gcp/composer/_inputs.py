@@ -11,6 +11,8 @@ from .. import _utilities
 
 __all__ = [
     'EnvironmentConfigArgs',
+    'EnvironmentConfigDataRetentionConfigArgs',
+    'EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs',
     'EnvironmentConfigDatabaseConfigArgs',
     'EnvironmentConfigEncryptionConfigArgs',
     'EnvironmentConfigMaintenanceWindowArgs',
@@ -40,6 +42,7 @@ class EnvironmentConfigArgs:
     def __init__(__self__, *,
                  airflow_uri: Optional[pulumi.Input[str]] = None,
                  dag_gcs_prefix: Optional[pulumi.Input[str]] = None,
+                 data_retention_config: Optional[pulumi.Input['EnvironmentConfigDataRetentionConfigArgs']] = None,
                  database_config: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']] = None,
                  enable_private_builds_only: Optional[pulumi.Input[bool]] = None,
                  enable_private_environment: Optional[pulumi.Input[bool]] = None,
@@ -60,6 +63,7 @@ class EnvironmentConfigArgs:
         """
         :param pulumi.Input[str] airflow_uri: The URI of the Apache Airflow Web UI hosted within this environment.
         :param pulumi.Input[str] dag_gcs_prefix: The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using '/'-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with this prefix.
+        :param pulumi.Input['EnvironmentConfigDataRetentionConfigArgs'] data_retention_config: The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
         :param pulumi.Input['EnvironmentConfigDatabaseConfigArgs'] database_config: The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input[bool] enable_private_builds_only: Optional. If true, builds performed during operations that install Python packages have only private connectivity to Google services. If false, the builds also have access to the internet.
         :param pulumi.Input[bool] enable_private_environment: Optional. If true, a private Composer environment will be created.
@@ -82,6 +86,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "airflow_uri", airflow_uri)
         if dag_gcs_prefix is not None:
             pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
+        if data_retention_config is not None:
+            pulumi.set(__self__, "data_retention_config", data_retention_config)
         if database_config is not None:
             pulumi.set(__self__, "database_config", database_config)
         if enable_private_builds_only is not None:
@@ -140,6 +146,18 @@ class EnvironmentConfigArgs:
     @dag_gcs_prefix.setter
     def dag_gcs_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dag_gcs_prefix", value)
+
+    @property
+    @pulumi.getter(name="dataRetentionConfig")
+    def data_retention_config(self) -> Optional[pulumi.Input['EnvironmentConfigDataRetentionConfigArgs']]:
+        """
+        The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+        """
+        return pulumi.get(self, "data_retention_config")
+
+    @data_retention_config.setter
+    def data_retention_config(self, value: Optional[pulumi.Input['EnvironmentConfigDataRetentionConfigArgs']]):
+        pulumi.set(self, "data_retention_config", value)
 
     @property
     @pulumi.getter(name="databaseConfig")
@@ -344,6 +362,51 @@ class EnvironmentConfigArgs:
     @workloads_config.setter
     def workloads_config(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigArgs']]):
         pulumi.set(self, "workloads_config", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigDataRetentionConfigArgs:
+    def __init__(__self__, *,
+                 task_logs_retention_configs: pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs']]] task_logs_retention_configs: Optional. The configuration setting for Task Logs.
+        """
+        pulumi.set(__self__, "task_logs_retention_configs", task_logs_retention_configs)
+
+    @property
+    @pulumi.getter(name="taskLogsRetentionConfigs")
+    def task_logs_retention_configs(self) -> pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs']]]:
+        """
+        Optional. The configuration setting for Task Logs.
+        """
+        return pulumi.get(self, "task_logs_retention_configs")
+
+    @task_logs_retention_configs.setter
+    def task_logs_retention_configs(self, value: pulumi.Input[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs']]]):
+        pulumi.set(self, "task_logs_retention_configs", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs:
+    def __init__(__self__, *,
+                 storage_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] storage_mode: Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        """
+        if storage_mode is not None:
+            pulumi.set(__self__, "storage_mode", storage_mode)
+
+    @property
+    @pulumi.getter(name="storageMode")
+    def storage_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether logs in cloud logging only is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4 and newer.
+        """
+        return pulumi.get(self, "storage_mode")
+
+    @storage_mode.setter
+    def storage_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_mode", value)
 
 
 @pulumi.input_type

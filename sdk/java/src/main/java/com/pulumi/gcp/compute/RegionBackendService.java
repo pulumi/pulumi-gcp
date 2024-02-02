@@ -82,6 +82,42 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Region Backend Service External Iap
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionBackendServiceIapArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionBackendService(&#34;default&#34;, RegionBackendServiceArgs.builder()        
+ *             .iap(RegionBackendServiceIapArgs.builder()
+ *                 .oauth2ClientId(&#34;abc&#34;)
+ *                 .oauth2ClientSecret(&#34;xyz&#34;)
+ *                 .build())
+ *             .loadBalancingScheme(&#34;EXTERNAL&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Region Backend Service Cache
  * 
  * ```java

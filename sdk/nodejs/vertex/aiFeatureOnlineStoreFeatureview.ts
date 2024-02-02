@@ -80,6 +80,115 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * ### Vertex Ai Featureonlinestore Featureview With Vector Search
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     bigtable: {
+ *         autoScaling: {
+ *             minNodeCount: 1,
+ *             maxNodeCount: 2,
+ *             cpuUtilizationTarget: 80,
+ *         },
+ *     },
+ *     embeddingManagement: {
+ *         enabled: true,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const tf_test_dataset = new gcp.bigquery.Dataset("tf-test-dataset", {
+ *     datasetId: "example_feature_view_vector_search",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const tf_test_table = new gcp.bigquery.Table("tf-test-table", {
+ *     deletionProtection: false,
+ *     datasetId: tf_test_dataset.datasetId,
+ *     tableId: "example_feature_view_vector_search",
+ *     schema: `[
+ * {
+ *   "name": "test_primary_id",
+ *   "mode": "NULLABLE",
+ *   "type": "STRING",
+ *   "description": "primary test id"
+ * },
+ * {
+ *   "name": "embedding",
+ *   "mode": "REPEATED",
+ *   "type": "FLOAT",
+ *   "description": "embedding column for primary_id column"
+ * },
+ * {
+ *   "name": "country",
+ *   "mode": "NULLABLE",
+ *   "type": "STRING",
+ *   "description": "country"
+ * },
+ * {
+ *   "name": "test_crowding_column",
+ *   "mode": "NULLABLE",
+ *   "type": "INTEGER",
+ *   "description": "test crowding column"
+ * },
+ * {
+ *   "name": "entity_id",
+ *   "mode": "NULLABLE",
+ *   "type": "STRING",
+ *   "description": "Test default entity_id"
+ * },
+ * {
+ *   "name": "test_entity_column",
+ *   "mode": "NULLABLE",
+ *   "type": "STRING",
+ *   "description": "test secondary entity column"
+ * },
+ * {
+ *   "name": "feature_timestamp",
+ *   "mode": "NULLABLE",
+ *   "type": "TIMESTAMP",
+ *   "description": "Default timestamp value"
+ * }
+ * ]
+ * `,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const featureviewVectorSearch = new gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewVectorSearch", {
+ *     region: "us-central1",
+ *     featureOnlineStore: featureonlinestore.name,
+ *     syncConfig: {
+ *         cron: "0 0 * * *",
+ *     },
+ *     bigQuerySource: {
+ *         uri: pulumi.interpolate`bq://${tf_test_table.project}.${tf_test_table.datasetId}.${tf_test_table.tableId}`,
+ *         entityIdColumns: ["test_entity_column"],
+ *     },
+ *     vectorSearchConfig: {
+ *         embeddingColumn: "embedding",
+ *         filterColumns: ["country"],
+ *         crowdingColumn: "test_crowding_column",
+ *         distanceMeasureType: "DOT_PRODUCT_DISTANCE",
+ *         treeAhConfig: {
+ *             leafNodeEmbeddingCount: "1000",
+ *         },
+ *         embeddingDimension: 2,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
  *
  * ## Import
  *
@@ -183,6 +292,11 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
      * The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Structure is documented below.
+     */
+    public readonly vectorSearchConfig!: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfig | undefined>;
 
     /**
      * Create a AiFeatureOnlineStoreFeatureview resource with the given unique name, arguments, and options.
@@ -208,6 +322,7 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["syncConfig"] = state ? state.syncConfig : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["vectorSearchConfig"] = state ? state.vectorSearchConfig : undefined;
         } else {
             const args = argsOrState as AiFeatureOnlineStoreFeatureviewArgs | undefined;
             if ((!args || args.featureOnlineStore === undefined) && !opts.urn) {
@@ -223,6 +338,7 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["syncConfig"] = args ? args.syncConfig : undefined;
+            resourceInputs["vectorSearchConfig"] = args ? args.vectorSearchConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -293,6 +409,11 @@ export interface AiFeatureOnlineStoreFeatureviewState {
      * The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Structure is documented below.
+     */
+    vectorSearchConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfig>;
 }
 
 /**
@@ -336,4 +457,9 @@ export interface AiFeatureOnlineStoreFeatureviewArgs {
      * Structure is documented below.
      */
     syncConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewSyncConfig>;
+    /**
+     * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Structure is documented below.
+     */
+    vectorSearchConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewVectorSearchConfig>;
 }

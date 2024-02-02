@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Firestore
     /// will be the same as the App Engine location specified.
     /// 
     /// ## Example Usage
-    /// ### Firestore Index Basic
+    /// ### Firestore Index Datastore Mode
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -41,39 +41,9 @@ namespace Pulumi.Gcp.Firestore
     /// {
     ///     var my_index = new Gcp.Firestore.Index("my-index", new()
     ///     {
-    ///         Collection = "chatrooms",
-    ///         Fields = new[]
-    ///         {
-    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
-    ///             {
-    ///                 FieldPath = "name",
-    ///                 Order = "ASCENDING",
-    ///             },
-    ///             new Gcp.Firestore.Inputs.IndexFieldArgs
-    ///             {
-    ///                 FieldPath = "description",
-    ///                 Order = "DESCENDING",
-    ///             },
-    ///         },
-    ///         Project = "my-project-name",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Firestore Index Datastore Mode
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_datastore_mode_index = new Gcp.Firestore.Index("my-datastore-mode-index", new()
-    ///     {
     ///         ApiScope = "DATASTORE_MODE_API",
     ///         Collection = "chatrooms",
+    ///         Database = "(default)",
     ///         Fields = new[]
     ///         {
     ///             new Gcp.Firestore.Inputs.IndexFieldArgs

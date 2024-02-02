@@ -21,6 +21,37 @@ import (
 //   - [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
 //
 // ## Example Usage
+// ### Region Backend Service External Iap
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Iap: &compute.RegionBackendServiceIapArgs{
+//					Oauth2ClientId:     pulumi.String("abc"),
+//					Oauth2ClientSecret: pulumi.String("xyz"),
+//				},
+//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
+//				Protocol:            pulumi.String("HTTP"),
+//				Region:              pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

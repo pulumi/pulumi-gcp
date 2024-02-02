@@ -161,7 +161,8 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
     /**
      * Params whose values are only available at deployment time.
      * Unlike other params, these will not be set as environment variables on
-     * functions.
+     * functions. See a full list of system parameters at
+     * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
      * 
      */
     @Import(name="systemParams")
@@ -170,7 +171,8 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
     /**
      * @return Params whose values are only available at deployment time.
      * Unlike other params, these will not be set as environment variables on
-     * functions.
+     * functions. See a full list of system parameters at
+     * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
      * 
      */
     public Optional<Output<Map<String,String>>> systemParams() {
@@ -411,7 +413,8 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
         /**
          * @param systemParams Params whose values are only available at deployment time.
          * Unlike other params, these will not be set as environment variables on
-         * functions.
+         * functions. See a full list of system parameters at
+         * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
          * 
          * @return builder
          * 
@@ -424,7 +427,8 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
         /**
          * @param systemParams Params whose values are only available at deployment time.
          * Unlike other params, these will not be set as environment variables on
-         * functions.
+         * functions. See a full list of system parameters at
+         * https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
          * 
          * @return builder
          * 

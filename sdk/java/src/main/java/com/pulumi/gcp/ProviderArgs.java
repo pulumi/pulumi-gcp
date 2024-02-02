@@ -496,6 +496,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.disableGooglePartnerName);
     }
 
+    @Import(name="discoveryEngineCustomEndpoint")
+    private @Nullable Output<String> discoveryEngineCustomEndpoint;
+
+    public Optional<Output<String>> discoveryEngineCustomEndpoint() {
+        return Optional.ofNullable(this.discoveryEngineCustomEndpoint);
+    }
+
     @Import(name="dnsCustomEndpoint")
     private @Nullable Output<String> dnsCustomEndpoint;
 
@@ -965,6 +972,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.securityScannerCustomEndpoint);
     }
 
+    @Import(name="securitypostureCustomEndpoint")
+    private @Nullable Output<String> securitypostureCustomEndpoint;
+
+    public Optional<Output<String>> securitypostureCustomEndpoint() {
+        return Optional.ofNullable(this.securitypostureCustomEndpoint);
+    }
+
     @Import(name="serviceDirectoryCustomEndpoint")
     private @Nullable Output<String> serviceDirectoryCustomEndpoint;
 
@@ -1197,6 +1211,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dialogflowCustomEndpoint = $.dialogflowCustomEndpoint;
         this.dialogflowCxCustomEndpoint = $.dialogflowCxCustomEndpoint;
         this.disableGooglePartnerName = $.disableGooglePartnerName;
+        this.discoveryEngineCustomEndpoint = $.discoveryEngineCustomEndpoint;
         this.dnsCustomEndpoint = $.dnsCustomEndpoint;
         this.documentAiCustomEndpoint = $.documentAiCustomEndpoint;
         this.documentAiWarehouseCustomEndpoint = $.documentAiWarehouseCustomEndpoint;
@@ -1264,6 +1279,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.secureSourceManagerCustomEndpoint = $.secureSourceManagerCustomEndpoint;
         this.securityCenterCustomEndpoint = $.securityCenterCustomEndpoint;
         this.securityScannerCustomEndpoint = $.securityScannerCustomEndpoint;
+        this.securitypostureCustomEndpoint = $.securitypostureCustomEndpoint;
         this.serviceDirectoryCustomEndpoint = $.serviceDirectoryCustomEndpoint;
         this.serviceManagementCustomEndpoint = $.serviceManagementCustomEndpoint;
         this.serviceNetworkingCustomEndpoint = $.serviceNetworkingCustomEndpoint;
@@ -1919,6 +1935,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return disableGooglePartnerName(Output.of(disableGooglePartnerName));
         }
 
+        public Builder discoveryEngineCustomEndpoint(@Nullable Output<String> discoveryEngineCustomEndpoint) {
+            $.discoveryEngineCustomEndpoint = discoveryEngineCustomEndpoint;
+            return this;
+        }
+
+        public Builder discoveryEngineCustomEndpoint(String discoveryEngineCustomEndpoint) {
+            return discoveryEngineCustomEndpoint(Output.of(discoveryEngineCustomEndpoint));
+        }
+
         public Builder dnsCustomEndpoint(@Nullable Output<String> dnsCustomEndpoint) {
             $.dnsCustomEndpoint = dnsCustomEndpoint;
             return this;
@@ -2528,6 +2553,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder securityScannerCustomEndpoint(String securityScannerCustomEndpoint) {
             return securityScannerCustomEndpoint(Output.of(securityScannerCustomEndpoint));
+        }
+
+        public Builder securitypostureCustomEndpoint(@Nullable Output<String> securitypostureCustomEndpoint) {
+            $.securitypostureCustomEndpoint = securitypostureCustomEndpoint;
+            return this;
+        }
+
+        public Builder securitypostureCustomEndpoint(String securitypostureCustomEndpoint) {
+            return securitypostureCustomEndpoint(Output.of(securitypostureCustomEndpoint));
         }
 
         public Builder serviceDirectoryCustomEndpoint(@Nullable Output<String> serviceDirectoryCustomEndpoint) {

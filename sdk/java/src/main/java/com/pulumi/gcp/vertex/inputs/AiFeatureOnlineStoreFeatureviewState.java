@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs;
+import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -201,6 +202,23 @@ public final class AiFeatureOnlineStoreFeatureviewState extends com.pulumi.resou
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="vectorSearchConfig")
+    private @Nullable Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs> vectorSearchConfig;
+
+    /**
+     * @return Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs>> vectorSearchConfig() {
+        return Optional.ofNullable(this.vectorSearchConfig);
+    }
+
     private AiFeatureOnlineStoreFeatureviewState() {}
 
     private AiFeatureOnlineStoreFeatureviewState(AiFeatureOnlineStoreFeatureviewState $) {
@@ -215,6 +233,7 @@ public final class AiFeatureOnlineStoreFeatureviewState extends com.pulumi.resou
         this.region = $.region;
         this.syncConfig = $.syncConfig;
         this.updateTime = $.updateTime;
+        this.vectorSearchConfig = $.vectorSearchConfig;
     }
 
     public static Builder builder() {
@@ -482,6 +501,29 @@ public final class AiFeatureOnlineStoreFeatureviewState extends com.pulumi.resou
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param vectorSearchConfig Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vectorSearchConfig(@Nullable Output<AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs> vectorSearchConfig) {
+            $.vectorSearchConfig = vectorSearchConfig;
+            return this;
+        }
+
+        /**
+         * @param vectorSearchConfig Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vectorSearchConfig(AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs vectorSearchConfig) {
+            return vectorSearchConfig(Output.of(vectorSearchConfig));
         }
 
         public AiFeatureOnlineStoreFeatureviewState build() {

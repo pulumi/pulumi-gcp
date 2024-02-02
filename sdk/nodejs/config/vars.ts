@@ -553,6 +553,14 @@ Object.defineProperty(exports, "disableGooglePartnerName", {
     enumerable: true,
 });
 
+export declare const discoveryEngineCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "discoveryEngineCustomEndpoint", {
+    get() {
+        return __config.get("discoveryEngineCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const dnsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dnsCustomEndpoint", {
     get() {
@@ -1085,6 +1093,14 @@ export declare const securityScannerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "securityScannerCustomEndpoint", {
     get() {
         return __config.get("securityScannerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const securitypostureCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "securitypostureCustomEndpoint", {
+    get() {
+        return __config.get("securitypostureCustomEndpoint");
     },
     enumerable: true,
 });

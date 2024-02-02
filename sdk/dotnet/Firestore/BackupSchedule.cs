@@ -36,14 +36,23 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var daily_backup = new Gcp.Firestore.BackupSchedule("daily-backup", new()
+    ///     var database = new Gcp.Firestore.Database("database", new()
     ///     {
-    ///         DailyRecurrence = null,
     ///         Project = "my-project-name",
-    ///         Retention = "604800s",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
     ///     });
     /// 
-    ///     // 7 days (maximum possible value for daily backups)
+    ///     var daily_backup = new Gcp.Firestore.BackupSchedule("daily-backup", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Retention = "604800s",
+    ///         DailyRecurrence = null,
+    ///     });
+    /// 
     /// });
     /// ```
     /// ### Firestore Backup Schedule Weekly
@@ -56,10 +65,19 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
     ///     var weekly_backup = new Gcp.Firestore.BackupSchedule("weekly-backup", new()
     ///     {
-    ///         Database = "(default)",
     ///         Project = "my-project-name",
+    ///         Database = database.Name,
     ///         Retention = "8467200s",
     ///         WeeklyRecurrence = new Gcp.Firestore.Inputs.BackupScheduleWeeklyRecurrenceArgs
     ///         {
@@ -103,7 +121,7 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The unique backup schedule identifier across all locations and databases for the given project. Format:
-        /// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+        /// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -238,7 +256,7 @@ namespace Pulumi.Gcp.Firestore
 
         /// <summary>
         /// The unique backup schedule identifier across all locations and databases for the given project. Format:
-        /// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+        /// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.composer.outputs.EnvironmentConfigDataRetentionConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigDatabaseConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigEncryptionConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigMaintenanceWindow;
@@ -34,6 +35,11 @@ public final class EnvironmentConfig {
      * 
      */
     private @Nullable String dagGcsPrefix;
+    /**
+     * @return The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+     * 
+     */
+    private @Nullable EnvironmentConfigDataRetentionConfig dataRetentionConfig;
     /**
      * @return The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
@@ -134,6 +140,13 @@ public final class EnvironmentConfig {
      */
     public Optional<String> dagGcsPrefix() {
         return Optional.ofNullable(this.dagGcsPrefix);
+    }
+    /**
+     * @return The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
+     * 
+     */
+    public Optional<EnvironmentConfigDataRetentionConfig> dataRetentionConfig() {
+        return Optional.ofNullable(this.dataRetentionConfig);
     }
     /**
      * @return The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -266,6 +279,7 @@ public final class EnvironmentConfig {
     public static final class Builder {
         private @Nullable String airflowUri;
         private @Nullable String dagGcsPrefix;
+        private @Nullable EnvironmentConfigDataRetentionConfig dataRetentionConfig;
         private @Nullable EnvironmentConfigDatabaseConfig databaseConfig;
         private @Nullable Boolean enablePrivateBuildsOnly;
         private @Nullable Boolean enablePrivateEnvironment;
@@ -288,6 +302,7 @@ public final class EnvironmentConfig {
     	      Objects.requireNonNull(defaults);
     	      this.airflowUri = defaults.airflowUri;
     	      this.dagGcsPrefix = defaults.dagGcsPrefix;
+    	      this.dataRetentionConfig = defaults.dataRetentionConfig;
     	      this.databaseConfig = defaults.databaseConfig;
     	      this.enablePrivateBuildsOnly = defaults.enablePrivateBuildsOnly;
     	      this.enablePrivateEnvironment = defaults.enablePrivateEnvironment;
@@ -317,6 +332,12 @@ public final class EnvironmentConfig {
         public Builder dagGcsPrefix(@Nullable String dagGcsPrefix) {
 
             this.dagGcsPrefix = dagGcsPrefix;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dataRetentionConfig(@Nullable EnvironmentConfigDataRetentionConfig dataRetentionConfig) {
+
+            this.dataRetentionConfig = dataRetentionConfig;
             return this;
         }
         @CustomType.Setter
@@ -425,6 +446,7 @@ public final class EnvironmentConfig {
             final var _resultValue = new EnvironmentConfig();
             _resultValue.airflowUri = airflowUri;
             _resultValue.dagGcsPrefix = dagGcsPrefix;
+            _resultValue.dataRetentionConfig = dataRetentionConfig;
             _resultValue.databaseConfig = databaseConfig;
             _resultValue.enablePrivateBuildsOnly = enablePrivateBuildsOnly;
             _resultValue.enablePrivateEnvironment = enablePrivateEnvironment;

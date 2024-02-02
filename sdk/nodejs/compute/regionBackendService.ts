@@ -17,6 +17,22 @@ import * as utilities from "../utilities";
  *     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
  *
  * ## Example Usage
+ * ### Region Backend Service External Iap
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     iap: {
+ *         oauth2ClientId: "abc",
+ *         oauth2ClientSecret: "xyz",
+ *     },
+ *     loadBalancingScheme: "EXTERNAL",
+ *     protocol: "HTTP",
+ *     region: "us-central1",
+ * });
+ * ```
  *
  * ## Import
  *

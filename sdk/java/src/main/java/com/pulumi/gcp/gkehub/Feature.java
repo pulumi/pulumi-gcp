@@ -408,7 +408,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Enable Fleet Default Member Config Policycontroller Update
+ * ### Enable Fleet Default Member Config Policycontroller Full
  * 
  * ```java
  * package generated_program;
@@ -494,7 +494,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Enable Fleet Default Member Config Policycontroller Set Empty
+ * ### Enable Fleet Default Member Config Policycontroller Minimal
  * ```java
  * package generated_program;
  * 

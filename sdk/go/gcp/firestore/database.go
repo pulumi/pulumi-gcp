@@ -42,11 +42,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
-//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
-//				DeletionPolicy:        pulumi.String("DELETE"),
-//				LocationId:            pulumi.String("nam5"),
-//				Project:               pulumi.String("my-project-name"),
-//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				LocationId: pulumi.String("nam5"),
+//				Project:    pulumi.String("my-project-name"),
+//				Type:       pulumi.String("FIRESTORE_NATIVE"),
 //			})
 //			if err != nil {
 //				return err
@@ -103,11 +101,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firestore.NewDatabase(ctx, "datastoreModeDatabase", &firestore.DatabaseArgs{
-//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
-//				DeletionPolicy:        pulumi.String("DELETE"),
-//				LocationId:            pulumi.String("nam5"),
-//				Project:               pulumi.String("my-project-name"),
-//				Type:                  pulumi.String("DATASTORE_MODE"),
+//				LocationId: pulumi.String("nam5"),
+//				Project:    pulumi.String("my-project-name"),
+//				Type:       pulumi.String("DATASTORE_MODE"),
 //			})
 //			if err != nil {
 //				return err

@@ -867,50 +867,49 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example docker repository with cleanup policies",
-            format="DOCKER",
-            cleanup_policy_dry_run=False,
             cleanup_policies=[
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="delete-prerelease",
                     action="DELETE",
                     condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
+                        older_than="2592000s",
                         tag_prefixes=[
                             "alpha",
                             "v0",
                         ],
-                        older_than="2592000s",
+                        tag_state="TAGGED",
                     ),
+                    id="delete-prerelease",
                 ),
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-tagged-release",
                     action="KEEP",
                     condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=["release"],
                         package_name_prefixes=[
                             "webapp",
                             "mobile",
                         ],
+                        tag_prefixes=["release"],
+                        tag_state="TAGGED",
                     ),
+                    id="keep-tagged-release",
                 ),
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-minimum-versions",
                     action="KEEP",
+                    id="keep-minimum-versions",
                     most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
+                        keep_count=5,
                         package_name_prefixes=[
                             "webapp",
                             "mobile",
                             "sandbox",
                         ],
-                        keep_count=5,
                     ),
                 ),
             ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            cleanup_policy_dry_run=False,
+            description="example docker repository with cleanup policies",
+            format="DOCKER",
+            location="us-central1",
+            repository_id="my-repository")
         ```
         ### Artifact Registry Repository Remote Custom
 
@@ -1189,50 +1188,49 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_repo = gcp.artifactregistry.Repository("my-repo",
-            location="us-central1",
-            repository_id="my-repository",
-            description="example docker repository with cleanup policies",
-            format="DOCKER",
-            cleanup_policy_dry_run=False,
             cleanup_policies=[
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="delete-prerelease",
                     action="DELETE",
                     condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
+                        older_than="2592000s",
                         tag_prefixes=[
                             "alpha",
                             "v0",
                         ],
-                        older_than="2592000s",
+                        tag_state="TAGGED",
                     ),
+                    id="delete-prerelease",
                 ),
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-tagged-release",
                     action="KEEP",
                     condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
-                        tag_state="TAGGED",
-                        tag_prefixes=["release"],
                         package_name_prefixes=[
                             "webapp",
                             "mobile",
                         ],
+                        tag_prefixes=["release"],
+                        tag_state="TAGGED",
                     ),
+                    id="keep-tagged-release",
                 ),
                 gcp.artifactregistry.RepositoryCleanupPolicyArgs(
-                    id="keep-minimum-versions",
                     action="KEEP",
+                    id="keep-minimum-versions",
                     most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
+                        keep_count=5,
                         package_name_prefixes=[
                             "webapp",
                             "mobile",
                             "sandbox",
                         ],
-                        keep_count=5,
                     ),
                 ),
             ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            cleanup_policy_dry_run=False,
+            description="example docker repository with cleanup policies",
+            format="DOCKER",
+            location="us-central1",
+            repository_id="my-repository")
         ```
         ### Artifact Registry Repository Remote Custom
 

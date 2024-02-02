@@ -754,6 +754,13 @@ namespace Pulumi.Gcp.Workstations
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Readiness checks to be performed on a workstation.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("readinessChecks")]
+        public Output<ImmutableArray<Outputs.WorkstationConfigReadinessCheck>> ReadinessChecks { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
         /// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         /// </summary>
@@ -941,6 +948,19 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("readinessChecks")]
+        private InputList<Inputs.WorkstationConfigReadinessCheckArgs>? _readinessChecks;
+
+        /// <summary>
+        /// Readiness checks to be performed on a workstation.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkstationConfigReadinessCheckArgs> ReadinessChecks
+        {
+            get => _readinessChecks ?? (_readinessChecks = new InputList<Inputs.WorkstationConfigReadinessCheckArgs>());
+            set => _readinessChecks = value;
+        }
 
         [Input("replicaZones")]
         private InputList<string>? _replicaZones;
@@ -1170,6 +1190,19 @@ namespace Pulumi.Gcp.Workstations
                 var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
+        }
+
+        [Input("readinessChecks")]
+        private InputList<Inputs.WorkstationConfigReadinessCheckGetArgs>? _readinessChecks;
+
+        /// <summary>
+        /// Readiness checks to be performed on a workstation.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkstationConfigReadinessCheckGetArgs> ReadinessChecks
+        {
+            get => _readinessChecks ?? (_readinessChecks = new InputList<Inputs.WorkstationConfigReadinessCheckGetArgs>());
+            set => _readinessChecks = value;
         }
 
         [Input("replicaZones")]

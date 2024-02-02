@@ -92,6 +92,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly deploymentManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCxCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly discoveryEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dnsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly documentAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly documentAiWarehouseCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -157,6 +158,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly secureSourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly securityCenterCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly securityScannerCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly securitypostureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly serviceDirectoryCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly serviceManagementCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly serviceNetworkingCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -259,6 +261,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
             resourceInputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
             resourceInputs["disableGooglePartnerName"] = pulumi.output(args ? args.disableGooglePartnerName : undefined).apply(JSON.stringify);
+            resourceInputs["discoveryEngineCustomEndpoint"] = args ? args.discoveryEngineCustomEndpoint : undefined;
             resourceInputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             resourceInputs["documentAiCustomEndpoint"] = args ? args.documentAiCustomEndpoint : undefined;
             resourceInputs["documentAiWarehouseCustomEndpoint"] = args ? args.documentAiWarehouseCustomEndpoint : undefined;
@@ -326,6 +329,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["secureSourceManagerCustomEndpoint"] = args ? args.secureSourceManagerCustomEndpoint : undefined;
             resourceInputs["securityCenterCustomEndpoint"] = args ? args.securityCenterCustomEndpoint : undefined;
             resourceInputs["securityScannerCustomEndpoint"] = args ? args.securityScannerCustomEndpoint : undefined;
+            resourceInputs["securitypostureCustomEndpoint"] = args ? args.securitypostureCustomEndpoint : undefined;
             resourceInputs["serviceDirectoryCustomEndpoint"] = args ? args.serviceDirectoryCustomEndpoint : undefined;
             resourceInputs["serviceManagementCustomEndpoint"] = args ? args.serviceManagementCustomEndpoint : undefined;
             resourceInputs["serviceNetworkingCustomEndpoint"] = args ? args.serviceNetworkingCustomEndpoint : undefined;
@@ -427,6 +431,7 @@ export interface ProviderArgs {
     dialogflowCustomEndpoint?: pulumi.Input<string>;
     dialogflowCxCustomEndpoint?: pulumi.Input<string>;
     disableGooglePartnerName?: pulumi.Input<boolean>;
+    discoveryEngineCustomEndpoint?: pulumi.Input<string>;
     dnsCustomEndpoint?: pulumi.Input<string>;
     documentAiCustomEndpoint?: pulumi.Input<string>;
     documentAiWarehouseCustomEndpoint?: pulumi.Input<string>;
@@ -494,6 +499,7 @@ export interface ProviderArgs {
     secureSourceManagerCustomEndpoint?: pulumi.Input<string>;
     securityCenterCustomEndpoint?: pulumi.Input<string>;
     securityScannerCustomEndpoint?: pulumi.Input<string>;
+    securitypostureCustomEndpoint?: pulumi.Input<string>;
     serviceDirectoryCustomEndpoint?: pulumi.Input<string>;
     serviceManagementCustomEndpoint?: pulumi.Input<string>;
     serviceNetworkingCustomEndpoint?: pulumi.Input<string>;

@@ -36,46 +36,6 @@ import javax.annotation.Nullable;
  * will be the same as the App Engine location specified.
  * 
  * ## Example Usage
- * ### Firestore Index Basic
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.firestore.Index;
- * import com.pulumi.gcp.firestore.IndexArgs;
- * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
- *             .collection(&#34;chatrooms&#34;)
- *             .fields(            
- *                 IndexFieldArgs.builder()
- *                     .fieldPath(&#34;name&#34;)
- *                     .order(&#34;ASCENDING&#34;)
- *                     .build(),
- *                 IndexFieldArgs.builder()
- *                     .fieldPath(&#34;description&#34;)
- *                     .order(&#34;DESCENDING&#34;)
- *                     .build())
- *             .project(&#34;my-project-name&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
  * ### Firestore Index Datastore Mode
  * ```java
  * package generated_program;
@@ -99,9 +59,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_datastore_mode_index = new Index(&#34;my-datastore-mode-index&#34;, IndexArgs.builder()        
+ *         var my_index = new Index(&#34;my-index&#34;, IndexArgs.builder()        
  *             .apiScope(&#34;DATASTORE_MODE_API&#34;)
  *             .collection(&#34;chatrooms&#34;)
+ *             .database(&#34;(default)&#34;)
  *             .fields(            
  *                 IndexFieldArgs.builder()
  *                     .fieldPath(&#34;name&#34;)

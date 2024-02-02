@@ -317,6 +317,8 @@ class SubscriptionBigqueryConfig(dict):
         suggest = None
         if key == "dropUnknownFields":
             suggest = "drop_unknown_fields"
+        elif key == "useTableSchema":
+            suggest = "use_table_schema"
         elif key == "useTopicSchema":
             suggest = "use_topic_schema"
         elif key == "writeMetadata":
@@ -336,19 +338,26 @@ class SubscriptionBigqueryConfig(dict):
     def __init__(__self__, *,
                  table: str,
                  drop_unknown_fields: Optional[bool] = None,
+                 use_table_schema: Optional[bool] = None,
                  use_topic_schema: Optional[bool] = None,
                  write_metadata: Optional[bool] = None):
         """
         :param str table: The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
-        :param bool drop_unknown_fields: When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-               Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+        :param bool drop_unknown_fields: When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+               are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+               and any messages with extra fields are not written and remain in the subscription's backlog.
+        :param bool use_table_schema: When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+               must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
         :param bool use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+               Only one of use_topic_schema and use_table_schema can be set.
         :param bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
                The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
         """
         pulumi.set(__self__, "table", table)
         if drop_unknown_fields is not None:
             pulumi.set(__self__, "drop_unknown_fields", drop_unknown_fields)
+        if use_table_schema is not None:
+            pulumi.set(__self__, "use_table_schema", use_table_schema)
         if use_topic_schema is not None:
             pulumi.set(__self__, "use_topic_schema", use_topic_schema)
         if write_metadata is not None:
@@ -366,16 +375,27 @@ class SubscriptionBigqueryConfig(dict):
     @pulumi.getter(name="dropUnknownFields")
     def drop_unknown_fields(self) -> Optional[bool]:
         """
-        When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-        Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+        When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+        are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+        and any messages with extra fields are not written and remain in the subscription's backlog.
         """
         return pulumi.get(self, "drop_unknown_fields")
+
+    @property
+    @pulumi.getter(name="useTableSchema")
+    def use_table_schema(self) -> Optional[bool]:
+        """
+        When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+        must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+        """
+        return pulumi.get(self, "use_table_schema")
 
     @property
     @pulumi.getter(name="useTopicSchema")
     def use_topic_schema(self) -> Optional[bool]:
         """
         When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+        Only one of use_topic_schema and use_table_schema can be set.
         """
         return pulumi.get(self, "use_topic_schema")
 
@@ -1131,18 +1151,24 @@ class GetSubscriptionBigqueryConfigResult(dict):
     def __init__(__self__, *,
                  drop_unknown_fields: bool,
                  table: str,
+                 use_table_schema: bool,
                  use_topic_schema: bool,
                  write_metadata: bool):
         """
-        :param bool drop_unknown_fields: When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-               Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+        :param bool drop_unknown_fields: When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+               are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+               and any messages with extra fields are not written and remain in the subscription's backlog.
         :param str table: The name of the table to which to write data, of the form {projectId}:{datasetId}.{tableId}
+        :param bool use_table_schema: When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+               must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
         :param bool use_topic_schema: When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+               Only one of use_topic_schema and use_table_schema can be set.
         :param bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
                The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
         """
         pulumi.set(__self__, "drop_unknown_fields", drop_unknown_fields)
         pulumi.set(__self__, "table", table)
+        pulumi.set(__self__, "use_table_schema", use_table_schema)
         pulumi.set(__self__, "use_topic_schema", use_topic_schema)
         pulumi.set(__self__, "write_metadata", write_metadata)
 
@@ -1150,8 +1176,9 @@ class GetSubscriptionBigqueryConfigResult(dict):
     @pulumi.getter(name="dropUnknownFields")
     def drop_unknown_fields(self) -> bool:
         """
-        When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-        Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+        When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+        are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+        and any messages with extra fields are not written and remain in the subscription's backlog.
         """
         return pulumi.get(self, "drop_unknown_fields")
 
@@ -1164,10 +1191,20 @@ class GetSubscriptionBigqueryConfigResult(dict):
         return pulumi.get(self, "table")
 
     @property
+    @pulumi.getter(name="useTableSchema")
+    def use_table_schema(self) -> bool:
+        """
+        When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+        must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+        """
+        return pulumi.get(self, "use_table_schema")
+
+    @property
     @pulumi.getter(name="useTopicSchema")
     def use_topic_schema(self) -> bool:
         """
         When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+        Only one of use_topic_schema and use_table_schema can be set.
         """
         return pulumi.get(self, "use_topic_schema")
 

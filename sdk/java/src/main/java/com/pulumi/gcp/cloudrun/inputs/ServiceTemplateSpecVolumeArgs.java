@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrun.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeCsiArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeEmptyDirArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeSecretArgs;
 import java.lang.String;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceTemplateSpecVolumeArgs Empty = new ServiceTemplateSpecVolumeArgs();
+
+    /**
+     * A filesystem specified by the Container Storage Interface (CSI).
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="csi")
+    private @Nullable Output<ServiceTemplateSpecVolumeCsiArgs> csi;
+
+    /**
+     * @return A filesystem specified by the Container Storage Interface (CSI).
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateSpecVolumeCsiArgs>> csi() {
+        return Optional.ofNullable(this.csi);
+    }
 
     /**
      * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
@@ -74,6 +92,7 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
     private ServiceTemplateSpecVolumeArgs() {}
 
     private ServiceTemplateSpecVolumeArgs(ServiceTemplateSpecVolumeArgs $) {
+        this.csi = $.csi;
         this.emptyDir = $.emptyDir;
         this.name = $.name;
         this.secret = $.secret;
@@ -95,6 +114,29 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
 
         public Builder(ServiceTemplateSpecVolumeArgs defaults) {
             $ = new ServiceTemplateSpecVolumeArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param csi A filesystem specified by the Container Storage Interface (CSI).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder csi(@Nullable Output<ServiceTemplateSpecVolumeCsiArgs> csi) {
+            $.csi = csi;
+            return this;
+        }
+
+        /**
+         * @param csi A filesystem specified by the Container Storage Interface (CSI).
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder csi(ServiceTemplateSpecVolumeCsiArgs csi) {
+            return csi(Output.of(csi));
         }
 
         /**

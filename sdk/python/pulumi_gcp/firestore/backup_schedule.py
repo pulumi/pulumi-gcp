@@ -128,7 +128,7 @@ class _BackupScheduleState:
         :param pulumi.Input['BackupScheduleDailyRecurrenceArgs'] daily_recurrence: For a schedule that runs daily at a specified time.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] name: The unique backup schedule identifier across all locations and databases for the given project. Format:
-               `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+               `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
@@ -182,7 +182,7 @@ class _BackupScheduleState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The unique backup schedule identifier across all locations and databases for the given project. Format:
-        `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+        `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
         """
         return pulumi.get(self, "name")
 
@@ -268,11 +268,17 @@ class BackupSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        daily_backup = gcp.firestore.BackupSchedule("daily-backup",
-            daily_recurrence=gcp.firestore.BackupScheduleDailyRecurrenceArgs(),
+        database = gcp.firestore.Database("database",
             project="my-project-name",
-            retention="604800s")
-        # 7 days (maximum possible value for daily backups)
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        daily_backup = gcp.firestore.BackupSchedule("daily-backup",
+            project="my-project-name",
+            database=database.name,
+            retention="604800s",
+            daily_recurrence=gcp.firestore.BackupScheduleDailyRecurrenceArgs())
         ```
         ### Firestore Backup Schedule Weekly
 
@@ -280,9 +286,15 @@ class BackupSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        weekly_backup = gcp.firestore.BackupSchedule("weekly-backup",
-            database="(default)",
+        database = gcp.firestore.Database("database",
             project="my-project-name",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        weekly_backup = gcp.firestore.BackupSchedule("weekly-backup",
+            project="my-project-name",
+            database=database.name,
             retention="8467200s",
             weekly_recurrence=gcp.firestore.BackupScheduleWeeklyRecurrenceArgs(
                 day="SUNDAY",
@@ -349,11 +361,17 @@ class BackupSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        daily_backup = gcp.firestore.BackupSchedule("daily-backup",
-            daily_recurrence=gcp.firestore.BackupScheduleDailyRecurrenceArgs(),
+        database = gcp.firestore.Database("database",
             project="my-project-name",
-            retention="604800s")
-        # 7 days (maximum possible value for daily backups)
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        daily_backup = gcp.firestore.BackupSchedule("daily-backup",
+            project="my-project-name",
+            database=database.name,
+            retention="604800s",
+            daily_recurrence=gcp.firestore.BackupScheduleDailyRecurrenceArgs())
         ```
         ### Firestore Backup Schedule Weekly
 
@@ -361,9 +379,15 @@ class BackupSchedule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        weekly_backup = gcp.firestore.BackupSchedule("weekly-backup",
-            database="(default)",
+        database = gcp.firestore.Database("database",
             project="my-project-name",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        weekly_backup = gcp.firestore.BackupSchedule("weekly-backup",
+            project="my-project-name",
+            database=database.name,
             retention="8467200s",
             weekly_recurrence=gcp.firestore.BackupScheduleWeeklyRecurrenceArgs(
                 day="SUNDAY",
@@ -449,7 +473,7 @@ class BackupSchedule(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BackupScheduleDailyRecurrenceArgs']] daily_recurrence: For a schedule that runs daily at a specified time.
         :param pulumi.Input[str] database: The Firestore database id. Defaults to `"(default)"`.
         :param pulumi.Input[str] name: The unique backup schedule identifier across all locations and databases for the given project. Format:
-               `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+               `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] retention: At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
@@ -494,7 +518,7 @@ class BackupSchedule(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The unique backup schedule identifier across all locations and databases for the given project. Format:
-        `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+        `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
         """
         return pulumi.get(self, "name")
 

@@ -77,16 +77,14 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
-     * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+     * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     @Import(name="maintenanceInterval")
     private @Nullable Output<String> maintenanceInterval;
 
     /**
-     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * 
      */
     public Optional<Output<String>> maintenanceInterval() {
@@ -323,8 +321,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * 
          * @return builder
          * 
@@ -335,8 +332,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
         }
 
         /**
-         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.\
-         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+         * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * 
          * @return builder
          * 

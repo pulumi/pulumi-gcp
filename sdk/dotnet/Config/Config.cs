@@ -508,6 +508,13 @@ namespace Pulumi.Gcp
             set => _disableGooglePartnerName.Set(value);
         }
 
+        private static readonly __Value<string?> _discoveryEngineCustomEndpoint = new __Value<string?>(() => __config.Get("discoveryEngineCustomEndpoint"));
+        public static string? DiscoveryEngineCustomEndpoint
+        {
+            get => _discoveryEngineCustomEndpoint.Get();
+            set => _discoveryEngineCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _dnsCustomEndpoint = new __Value<string?>(() => __config.Get("dnsCustomEndpoint"));
         public static string? DnsCustomEndpoint
         {
@@ -975,6 +982,13 @@ namespace Pulumi.Gcp
         {
             get => _securityScannerCustomEndpoint.Get();
             set => _securityScannerCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _securitypostureCustomEndpoint = new __Value<string?>(() => __config.Get("securitypostureCustomEndpoint"));
+        public static string? SecuritypostureCustomEndpoint
+        {
+            get => _securitypostureCustomEndpoint.Get();
+            set => _securitypostureCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _serviceDirectoryCustomEndpoint = new __Value<string?>(() => __config.Get("serviceDirectoryCustomEndpoint"));

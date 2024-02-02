@@ -68,7 +68,8 @@ class ExtensionsInstanceConfigArgs:
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] system_params: Params whose values are only available at deployment time.
                Unlike other params, these will not be set as environment variables on
-               functions.
+               functions. See a full list of system parameters at
+               https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
         """
         pulumi.set(__self__, "extension_ref", extension_ref)
         pulumi.set(__self__, "params", params)
@@ -199,7 +200,8 @@ class ExtensionsInstanceConfigArgs:
         """
         Params whose values are only available at deployment time.
         Unlike other params, these will not be set as environment variables on
-        functions.
+        functions. See a full list of system parameters at
+        https://firebase.google.com/docs/extensions/publishers/parameters#system_parameters
         """
         return pulumi.get(self, "system_params")
 

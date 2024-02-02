@@ -314,52 +314,52 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
-//				Location:            pulumi.String("us-central1"),
-//				RepositoryId:        pulumi.String("my-repository"),
-//				Description:         pulumi.String("example docker repository with cleanup policies"),
-//				Format:              pulumi.String("DOCKER"),
-//				CleanupPolicyDryRun: pulumi.Bool(false),
 //				CleanupPolicies: artifactregistry.RepositoryCleanupPolicyArray{
 //					&artifactregistry.RepositoryCleanupPolicyArgs{
-//						Id:     pulumi.String("delete-prerelease"),
 //						Action: pulumi.String("DELETE"),
 //						Condition: &artifactregistry.RepositoryCleanupPolicyConditionArgs{
-//							TagState: pulumi.String("TAGGED"),
+//							OlderThan: pulumi.String("2592000s"),
 //							TagPrefixes: pulumi.StringArray{
 //								pulumi.String("alpha"),
 //								pulumi.String("v0"),
 //							},
-//							OlderThan: pulumi.String("2592000s"),
+//							TagState: pulumi.String("TAGGED"),
 //						},
+//						Id: pulumi.String("delete-prerelease"),
 //					},
 //					&artifactregistry.RepositoryCleanupPolicyArgs{
-//						Id:     pulumi.String("keep-tagged-release"),
 //						Action: pulumi.String("KEEP"),
 //						Condition: &artifactregistry.RepositoryCleanupPolicyConditionArgs{
-//							TagState: pulumi.String("TAGGED"),
-//							TagPrefixes: pulumi.StringArray{
-//								pulumi.String("release"),
-//							},
 //							PackageNamePrefixes: pulumi.StringArray{
 //								pulumi.String("webapp"),
 //								pulumi.String("mobile"),
 //							},
+//							TagPrefixes: pulumi.StringArray{
+//								pulumi.String("release"),
+//							},
+//							TagState: pulumi.String("TAGGED"),
 //						},
+//						Id: pulumi.String("keep-tagged-release"),
 //					},
 //					&artifactregistry.RepositoryCleanupPolicyArgs{
-//						Id:     pulumi.String("keep-minimum-versions"),
 //						Action: pulumi.String("KEEP"),
+//						Id:     pulumi.String("keep-minimum-versions"),
 //						MostRecentVersions: &artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs{
+//							KeepCount: pulumi.Int(5),
 //							PackageNamePrefixes: pulumi.StringArray{
 //								pulumi.String("webapp"),
 //								pulumi.String("mobile"),
 //								pulumi.String("sandbox"),
 //							},
-//							KeepCount: pulumi.Int(5),
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//				CleanupPolicyDryRun: pulumi.Bool(false),
+//				Description:         pulumi.String("example docker repository with cleanup policies"),
+//				Format:              pulumi.String("DOCKER"),
+//				Location:            pulumi.String("us-central1"),
+//				RepositoryId:        pulumi.String("my-repository"),
+//			})
 //			if err != nil {
 //				return err
 //			}

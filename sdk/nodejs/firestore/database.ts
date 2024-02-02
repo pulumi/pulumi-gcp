@@ -27,8 +27,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const database = new gcp.firestore.Database("database", {
- *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
- *     deletionPolicy: "DELETE",
  *     locationId: "nam5",
  *     project: "my-project-name",
  *     type: "FIRESTORE_NATIVE",
@@ -58,8 +56,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const datastoreModeDatabase = new gcp.firestore.Database("datastoreModeDatabase", {
- *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
- *     deletionPolicy: "DELETE",
  *     locationId: "nam5",
  *     project: "my-project-name",
  *     type: "DATASTORE_MODE",

@@ -63,6 +63,7 @@ import * as datastore from "./datastore";
 import * as datastream from "./datastream";
 import * as deploymentmanager from "./deploymentmanager";
 import * as diagflow from "./diagflow";
+import * as discoveryengine from "./discoveryengine";
 import * as dns from "./dns";
 import * as edgecontainer from "./edgecontainer";
 import * as edgenetwork from "./edgenetwork";
@@ -108,6 +109,7 @@ import * as runtimeconfig from "./runtimeconfig";
 import * as secretmanager from "./secretmanager";
 import * as securesourcemanager from "./securesourcemanager";
 import * as securitycenter from "./securitycenter";
+import * as securityposture from "./securityposture";
 import * as serviceaccount from "./serviceaccount";
 import * as servicedirectory from "./servicedirectory";
 import * as servicenetworking from "./servicenetworking";
@@ -177,6 +179,7 @@ export {
     datastream,
     deploymentmanager,
     diagflow,
+    discoveryengine,
     dns,
     edgecontainer,
     edgenetwork,
@@ -222,6 +225,7 @@ export {
     secretmanager,
     securesourcemanager,
     securitycenter,
+    securityposture,
     serviceaccount,
     servicedirectory,
     servicenetworking,

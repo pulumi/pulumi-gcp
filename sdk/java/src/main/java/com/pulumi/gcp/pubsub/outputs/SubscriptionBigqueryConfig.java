@@ -14,8 +14,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SubscriptionBigqueryConfig {
     /**
-     * @return When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-     * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
+     * @return When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+     * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+     * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
      * 
      */
     private @Nullable Boolean dropUnknownFields;
@@ -25,7 +26,14 @@ public final class SubscriptionBigqueryConfig {
      */
     private String table;
     /**
+     * @return When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
+     * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+     * 
+     */
+    private @Nullable Boolean useTableSchema;
+    /**
      * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
+     * Only one of use_topic_schema and use_table_schema can be set.
      * 
      */
     private @Nullable Boolean useTopicSchema;
@@ -38,8 +46,9 @@ public final class SubscriptionBigqueryConfig {
 
     private SubscriptionBigqueryConfig() {}
     /**
-     * @return When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-     * Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
+     * @return When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+     * are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+     * and any messages with extra fields are not written and remain in the subscription&#39;s backlog.
      * 
      */
     public Optional<Boolean> dropUnknownFields() {
@@ -53,7 +62,16 @@ public final class SubscriptionBigqueryConfig {
         return this.table;
     }
     /**
+     * @return When true, use the BigQuery table&#39;s schema as the columns to write to in BigQuery. Messages
+     * must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+     * 
+     */
+    public Optional<Boolean> useTableSchema() {
+        return Optional.ofNullable(this.useTableSchema);
+    }
+    /**
      * @return When true, use the topic&#39;s schema as the columns to write to in BigQuery, if it exists.
+     * Only one of use_topic_schema and use_table_schema can be set.
      * 
      */
     public Optional<Boolean> useTopicSchema() {
@@ -79,6 +97,7 @@ public final class SubscriptionBigqueryConfig {
     public static final class Builder {
         private @Nullable Boolean dropUnknownFields;
         private String table;
+        private @Nullable Boolean useTableSchema;
         private @Nullable Boolean useTopicSchema;
         private @Nullable Boolean writeMetadata;
         public Builder() {}
@@ -86,6 +105,7 @@ public final class SubscriptionBigqueryConfig {
     	      Objects.requireNonNull(defaults);
     	      this.dropUnknownFields = defaults.dropUnknownFields;
     	      this.table = defaults.table;
+    	      this.useTableSchema = defaults.useTableSchema;
     	      this.useTopicSchema = defaults.useTopicSchema;
     	      this.writeMetadata = defaults.writeMetadata;
         }
@@ -105,6 +125,12 @@ public final class SubscriptionBigqueryConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder useTableSchema(@Nullable Boolean useTableSchema) {
+
+            this.useTableSchema = useTableSchema;
+            return this;
+        }
+        @CustomType.Setter
         public Builder useTopicSchema(@Nullable Boolean useTopicSchema) {
 
             this.useTopicSchema = useTopicSchema;
@@ -120,6 +146,7 @@ public final class SubscriptionBigqueryConfig {
             final var _resultValue = new SubscriptionBigqueryConfig();
             _resultValue.dropUnknownFields = dropUnknownFields;
             _resultValue.table = table;
+            _resultValue.useTableSchema = useTableSchema;
             _resultValue.useTopicSchema = useTopicSchema;
             _resultValue.writeMetadata = writeMetadata;
             return _resultValue;

@@ -264,65 +264,62 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
     ///     {
-    ///         Location = "us-central1",
-    ///         RepositoryId = "my-repository",
-    ///         Description = "example docker repository with cleanup policies",
-    ///         Format = "DOCKER",
-    ///         CleanupPolicyDryRun = false,
     ///         CleanupPolicies = new[]
     ///         {
     ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
     ///             {
-    ///                 Id = "delete-prerelease",
     ///                 Action = "DELETE",
     ///                 Condition = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyConditionArgs
     ///                 {
-    ///                     TagState = "TAGGED",
+    ///                     OlderThan = "2592000s",
     ///                     TagPrefixes = new[]
     ///                     {
     ///                         "alpha",
     ///                         "v0",
     ///                     },
-    ///                     OlderThan = "2592000s",
+    ///                     TagState = "TAGGED",
     ///                 },
+    ///                 Id = "delete-prerelease",
     ///             },
     ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
     ///             {
-    ///                 Id = "keep-tagged-release",
     ///                 Action = "KEEP",
     ///                 Condition = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyConditionArgs
     ///                 {
-    ///                     TagState = "TAGGED",
-    ///                     TagPrefixes = new[]
-    ///                     {
-    ///                         "release",
-    ///                     },
     ///                     PackageNamePrefixes = new[]
     ///                     {
     ///                         "webapp",
     ///                         "mobile",
     ///                     },
+    ///                     TagPrefixes = new[]
+    ///                     {
+    ///                         "release",
+    ///                     },
+    ///                     TagState = "TAGGED",
     ///                 },
+    ///                 Id = "keep-tagged-release",
     ///             },
     ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
     ///             {
-    ///                 Id = "keep-minimum-versions",
     ///                 Action = "KEEP",
+    ///                 Id = "keep-minimum-versions",
     ///                 MostRecentVersions = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyMostRecentVersionsArgs
     ///                 {
+    ///                     KeepCount = 5,
     ///                     PackageNamePrefixes = new[]
     ///                     {
     ///                         "webapp",
     ///                         "mobile",
     ///                         "sandbox",
     ///                     },
-    ///                     KeepCount = 5,
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         CleanupPolicyDryRun = false,
+    ///         Description = "example docker repository with cleanup policies",
+    ///         Format = "DOCKER",
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
     ///     });
     /// 
     /// });

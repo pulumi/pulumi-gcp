@@ -313,35 +313,16 @@ class Index(pulumi.CustomResource):
         will be the same as the App Engine location specified.
 
         ## Example Usage
-        ### Firestore Index Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_index = gcp.firestore.Index("my-index",
-            collection="chatrooms",
-            fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    order="DESCENDING",
-                ),
-            ],
-            project="my-project-name")
-        ```
         ### Firestore Index Datastore Mode
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        my_datastore_mode_index = gcp.firestore.Index("my-datastore-mode-index",
+        my_index = gcp.firestore.Index("my-index",
             api_scope="DATASTORE_MODE_API",
             collection="chatrooms",
+            database="(default)",
             fields=[
                 gcp.firestore.IndexFieldArgs(
                     field_path="name",
@@ -410,35 +391,16 @@ class Index(pulumi.CustomResource):
         will be the same as the App Engine location specified.
 
         ## Example Usage
-        ### Firestore Index Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_index = gcp.firestore.Index("my-index",
-            collection="chatrooms",
-            fields=[
-                gcp.firestore.IndexFieldArgs(
-                    field_path="name",
-                    order="ASCENDING",
-                ),
-                gcp.firestore.IndexFieldArgs(
-                    field_path="description",
-                    order="DESCENDING",
-                ),
-            ],
-            project="my-project-name")
-        ```
         ### Firestore Index Datastore Mode
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        my_datastore_mode_index = gcp.firestore.Index("my-datastore-mode-index",
+        my_index = gcp.firestore.Index("my-index",
             api_scope="DATASTORE_MODE_API",
             collection="chatrooms",
+            database="(default)",
             fields=[
                 gcp.firestore.IndexFieldArgs(
                     field_path="name",

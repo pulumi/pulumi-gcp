@@ -42,10 +42,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firestore.NewBackupSchedule(ctx, "daily-backup", &firestore.BackupScheduleArgs{
-//				DailyRecurrence: nil,
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewBackupSchedule(ctx, "daily-backup", &firestore.BackupScheduleArgs{
 //				Project:         pulumi.String("my-project-name"),
+//				Database:        database.Name,
 //				Retention:       pulumi.String("604800s"),
+//				DailyRecurrence: nil,
 //			})
 //			if err != nil {
 //				return err
@@ -69,9 +80,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firestore.NewBackupSchedule(ctx, "weekly-backup", &firestore.BackupScheduleArgs{
-//				Database:  pulumi.String("(default)"),
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewBackupSchedule(ctx, "weekly-backup", &firestore.BackupScheduleArgs{
 //				Project:   pulumi.String("my-project-name"),
+//				Database:  database.Name,
 //				Retention: pulumi.String("8467200s"),
 //				WeeklyRecurrence: &firestore.BackupScheduleWeeklyRecurrenceArgs{
 //					Day: pulumi.String("SUNDAY"),
@@ -115,7 +136,7 @@ type BackupSchedule struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrOutput `pulumi:"database"`
 	// The unique backup schedule identifier across all locations and databases for the given project. Format:
-	// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+	// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -169,7 +190,7 @@ type backupScheduleState struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
 	// The unique backup schedule identifier across all locations and databases for the given project. Format:
-	// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+	// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -191,7 +212,7 @@ type BackupScheduleState struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
 	// The unique backup schedule identifier across all locations and databases for the given project. Format:
-	// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+	// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -348,7 +369,7 @@ func (o BackupScheduleOutput) Database() pulumi.StringPtrOutput {
 }
 
 // The unique backup schedule identifier across all locations and databases for the given project. Format:
-// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}
+// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
 func (o BackupScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -78,7 +78,6 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
 
     /**
      * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
      * 
      */
     @Import(name="maintenanceInterval")
@@ -86,7 +85,6 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
 
     /**
      * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
      * 
      */
     public Optional<Output<String>> maintenanceInterval() {
@@ -326,7 +324,6 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
 
         /**
          * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
          * 
          * @return builder
          * 
@@ -338,7 +335,6 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
 
         /**
          * @param maintenanceInterval Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
          * 
          * @return builder
          * 

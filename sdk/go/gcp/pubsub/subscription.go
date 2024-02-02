@@ -233,6 +233,97 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Subscription Push Bq Table Schema
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", nil)
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
+//				Project: *pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.metadataViewer"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
+//				Project: *pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/bigquery.dataEditor"),
+//				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testDataset, err := bigquery.NewDataset(ctx, "testDataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testTable, err := bigquery.NewTable(ctx, "testTable", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				TableId:            pulumi.String("example_table"),
+//				DatasetId:          testDataset.DatasetId,
+//				Schema: pulumi.String(`[
+//	  {
+//	    "name": "data",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE",
+//	    "description": "The data"
+//	  }
+//
+// ]
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
+//				Topic: exampleTopic.ID(),
+//				BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
+//					Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//						project := _args[0].(string)
+//						datasetId := _args[1].(string)
+//						tableId := _args[2].(string)
+//						return fmt.Sprintf("%v.%v.%v", project, datasetId, tableId), nil
+//					}).(pulumi.StringOutput),
+//					UseTableSchema: pulumi.Bool(true),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				viewer,
+//				editor,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

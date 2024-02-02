@@ -26,36 +26,16 @@ import * as utilities from "../utilities";
  * will be the same as the App Engine location specified.
  *
  * ## Example Usage
- * ### Firestore Index Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my_index = new gcp.firestore.Index("my-index", {
- *     collection: "chatrooms",
- *     fields: [
- *         {
- *             fieldPath: "name",
- *             order: "ASCENDING",
- *         },
- *         {
- *             fieldPath: "description",
- *             order: "DESCENDING",
- *         },
- *     ],
- *     project: "my-project-name",
- * });
- * ```
  * ### Firestore Index Datastore Mode
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_datastore_mode_index = new gcp.firestore.Index("my-datastore-mode-index", {
+ * const my_index = new gcp.firestore.Index("my-index", {
  *     apiScope: "DATASTORE_MODE_API",
  *     collection: "chatrooms",
+ *     database: "(default)",
  *     fields: [
  *         {
  *             fieldPath: "name",

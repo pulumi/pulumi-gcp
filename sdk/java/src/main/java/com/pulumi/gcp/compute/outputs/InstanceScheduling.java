@@ -39,7 +39,6 @@ public final class InstanceScheduling {
     private @Nullable InstanceSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout;
     /**
      * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
      * 
      */
     private @Nullable String maintenanceInterval;
@@ -115,7 +114,6 @@ public final class InstanceScheduling {
     }
     /**
      * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
      * 
      */
     public Optional<String> maintenanceInterval() {

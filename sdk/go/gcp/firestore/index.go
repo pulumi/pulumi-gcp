@@ -33,42 +33,6 @@ import (
 // will be the same as the App Engine location specified.
 //
 // ## Example Usage
-// ### Firestore Index Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/firestore"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
-//				Collection: pulumi.String("chatrooms"),
-//				Fields: firestore.IndexFieldArray{
-//					&firestore.IndexFieldArgs{
-//						FieldPath: pulumi.String("name"),
-//						Order:     pulumi.String("ASCENDING"),
-//					},
-//					&firestore.IndexFieldArgs{
-//						FieldPath: pulumi.String("description"),
-//						Order:     pulumi.String("DESCENDING"),
-//					},
-//				},
-//				Project: pulumi.String("my-project-name"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Firestore Index Datastore Mode
 //
 // ```go
@@ -83,9 +47,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firestore.NewIndex(ctx, "my-datastore-mode-index", &firestore.IndexArgs{
+//			_, err := firestore.NewIndex(ctx, "my-index", &firestore.IndexArgs{
 //				ApiScope:   pulumi.String("DATASTORE_MODE_API"),
 //				Collection: pulumi.String("chatrooms"),
+//				Database:   pulumi.String("(default)"),
 //				Fields: firestore.IndexFieldArray{
 //					&firestore.IndexFieldArgs{
 //						FieldPath: pulumi.String("name"),

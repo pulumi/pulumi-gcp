@@ -28,6 +28,15 @@ namespace Pulumi.Gcp.Workflows
     public partial class Workflow : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Describes the level of platform logging to apply to calls and call responses during
+        /// executions of this workflow. If both the workflow and the execution specify a logging level,
+        /// the execution level takes precedence.
+        /// Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+        /// </summary>
+        [Output("callLogLevel")]
+        public Output<string?> CallLogLevel { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("createTime")]
@@ -113,7 +122,7 @@ namespace Pulumi.Gcp.Workflows
         public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Workflow code to be executed. The size limit is 32KB.
+        /// Workflow code to be executed. The size limit is 128KB.
         /// </summary>
         [Output("sourceContents")]
         public Output<string?> SourceContents { get; private set; } = null!;
@@ -188,6 +197,15 @@ namespace Pulumi.Gcp.Workflows
     public sealed class WorkflowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Describes the level of platform logging to apply to calls and call responses during
+        /// executions of this workflow. If both the workflow and the execution specify a logging level,
+        /// the execution level takes precedence.
+        /// Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+        /// </summary>
+        [Input("callLogLevel")]
+        public Input<string>? CallLogLevel { get; set; }
+
+        /// <summary>
         /// The KMS key used to encrypt workflow and execution data.
         /// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
         /// </summary>
@@ -254,7 +272,7 @@ namespace Pulumi.Gcp.Workflows
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// Workflow code to be executed. The size limit is 32KB.
+        /// Workflow code to be executed. The size limit is 128KB.
         /// </summary>
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }
@@ -279,6 +297,15 @@ namespace Pulumi.Gcp.Workflows
 
     public sealed class WorkflowState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Describes the level of platform logging to apply to calls and call responses during
+        /// executions of this workflow. If both the workflow and the execution specify a logging level,
+        /// the execution level takes precedence.
+        /// Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+        /// </summary>
+        [Input("callLogLevel")]
+        public Input<string>? CallLogLevel { get; set; }
+
         /// <summary>
         /// The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
@@ -391,7 +418,7 @@ namespace Pulumi.Gcp.Workflows
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// Workflow code to be executed. The size limit is 32KB.
+        /// Workflow code to be executed. The size limit is 128KB.
         /// </summary>
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }

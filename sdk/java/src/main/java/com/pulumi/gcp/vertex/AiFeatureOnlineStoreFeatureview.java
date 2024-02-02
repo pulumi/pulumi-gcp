@@ -12,6 +12,7 @@ import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureviewArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewState;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreFeatureviewBigQuerySource;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreFeatureviewSyncConfig;
+import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -125,6 +126,158 @@ import javax.annotation.Nullable;
  *                 .entityIdColumns(&#34;test_entity_column&#34;)
  *                 .build())
  *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
+ * ```
+ * ### Vertex Ai Featureonlinestore Featureview With Vector Search
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStore;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreEmbeddingManagementArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureview;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureviewArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .region(&#34;us-central1&#34;)
+ *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
+ *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
+ *                     .minNodeCount(1)
+ *                     .maxNodeCount(2)
+ *                     .cpuUtilizationTarget(80)
+ *                     .build())
+ *                 .build())
+ *             .embeddingManagement(AiFeatureOnlineStoreEmbeddingManagementArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var tf_test_dataset = new Dataset(&#34;tf-test-dataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;example_feature_view_vector_search&#34;)
+ *             .friendlyName(&#34;test&#34;)
+ *             .description(&#34;This is a test description&#34;)
+ *             .location(&#34;US&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var tf_test_table = new Table(&#34;tf-test-table&#34;, TableArgs.builder()        
+ *             .deletionProtection(false)
+ *             .datasetId(tf_test_dataset.datasetId())
+ *             .tableId(&#34;example_feature_view_vector_search&#34;)
+ *             .schema(&#34;&#34;&#34;
+ * [
+ * {
+ *   &#34;name&#34;: &#34;test_primary_id&#34;,
+ *   &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *   &#34;type&#34;: &#34;STRING&#34;,
+ *   &#34;description&#34;: &#34;primary test id&#34;
+ * },
+ * {
+ *   &#34;name&#34;: &#34;embedding&#34;,
+ *   &#34;mode&#34;: &#34;REPEATED&#34;,
+ *   &#34;type&#34;: &#34;FLOAT&#34;,
+ *   &#34;description&#34;: &#34;embedding column for primary_id column&#34;
+ * },
+ * {
+ *   &#34;name&#34;: &#34;country&#34;,
+ *   &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *   &#34;type&#34;: &#34;STRING&#34;,
+ *   &#34;description&#34;: &#34;country&#34;
+ * },
+ * {
+ *   &#34;name&#34;: &#34;test_crowding_column&#34;,
+ *   &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *   &#34;type&#34;: &#34;INTEGER&#34;,
+ *   &#34;description&#34;: &#34;test crowding column&#34;
+ * },
+ * {
+ *   &#34;name&#34;: &#34;entity_id&#34;,
+ *   &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *   &#34;type&#34;: &#34;STRING&#34;,
+ *   &#34;description&#34;: &#34;Test default entity_id&#34;
+ * },
+ * {
+ *   &#34;name&#34;: &#34;test_entity_column&#34;,
+ *   &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *   &#34;type&#34;: &#34;STRING&#34;,
+ *   &#34;description&#34;: &#34;test secondary entity column&#34;
+ * },
+ * {
+ *   &#34;name&#34;: &#34;feature_timestamp&#34;,
+ *   &#34;mode&#34;: &#34;NULLABLE&#34;,
+ *   &#34;type&#34;: &#34;TIMESTAMP&#34;,
+ *   &#34;description&#34;: &#34;Default timestamp value&#34;
+ * }
+ * ]
+ *             &#34;&#34;&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var featureviewVectorSearch = new AiFeatureOnlineStoreFeatureview(&#34;featureviewVectorSearch&#34;, AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .featureOnlineStore(featureonlinestore.name())
+ *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
+ *                 .cron(&#34;0 0 * * *&#34;)
+ *                 .build())
+ *             .bigQuerySource(AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs.builder()
+ *                 .uri(Output.tuple(tf_test_table.project(), tf_test_table.datasetId(), tf_test_table.tableId()).applyValue(values -&gt; {
+ *                     var project = values.t1;
+ *                     var datasetId = values.t2;
+ *                     var tableId = values.t3;
+ *                     return String.format(&#34;bq://%s.%s.%s&#34;, project,datasetId,tableId);
+ *                 }))
+ *                 .entityIdColumns(&#34;test_entity_column&#34;)
+ *                 .build())
+ *             .vectorSearchConfig(AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs.builder()
+ *                 .embeddingColumn(&#34;embedding&#34;)
+ *                 .filterColumns(&#34;country&#34;)
+ *                 .crowdingColumn(&#34;test_crowding_column&#34;)
+ *                 .distanceMeasureType(&#34;DOT_PRODUCT_DISTANCE&#34;)
+ *                 .treeAhConfig(AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs.builder()
+ *                     .leafNodeEmbeddingCount(&#34;1000&#34;)
+ *                     .build())
+ *                 .embeddingDimension(&#34;2&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
@@ -326,6 +479,22 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="vectorSearchConfig", refs={AiFeatureOnlineStoreFeatureviewVectorSearchConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AiFeatureOnlineStoreFeatureviewVectorSearchConfig> vectorSearchConfig;
+
+    /**
+     * @return Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AiFeatureOnlineStoreFeatureviewVectorSearchConfig>> vectorSearchConfig() {
+        return Codegen.optional(this.vectorSearchConfig);
     }
 
     /**

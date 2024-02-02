@@ -25,6 +25,36 @@ import (
 //   - [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 //
 // ## Example Usage
+// ### Backend Service External Iap
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Iap: &compute.BackendServiceIapArgs{
+//					Oauth2ClientId:     pulumi.String("abc"),
+//					Oauth2ClientSecret: pulumi.String("xyz"),
+//				},
+//				LoadBalancingScheme: pulumi.String("EXTERNAL"),
+//				Protocol:            pulumi.String("HTTP"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Backend Service Cache Include Http Headers
 //
 // ```go

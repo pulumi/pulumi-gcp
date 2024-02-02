@@ -30,6 +30,7 @@ class WorkstationConfigArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigReadinessCheckArgs']]]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None):
         """
@@ -64,6 +65,8 @@ class WorkstationConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigReadinessCheckArgs']]] readiness_checks: Readiness checks to be performed on a workstation.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
                If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
@@ -94,6 +97,8 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "persistent_directories", persistent_directories)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if readiness_checks is not None:
+            pulumi.set(__self__, "readiness_checks", readiness_checks)
         if replica_zones is not None:
             pulumi.set(__self__, "replica_zones", replica_zones)
         if running_timeout is not None:
@@ -284,6 +289,19 @@ class WorkstationConfigArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="readinessChecks")
+    def readiness_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigReadinessCheckArgs']]]]:
+        """
+        Readiness checks to be performed on a workstation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "readiness_checks")
+
+    @readiness_checks.setter
+    def readiness_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigReadinessCheckArgs']]]]):
+        pulumi.set(self, "readiness_checks", value)
+
+    @property
     @pulumi.getter(name="replicaZones")
     def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -333,6 +351,7 @@ class _WorkstationConfigState:
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigReadinessCheckArgs']]]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
@@ -380,6 +399,8 @@ class _WorkstationConfigState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigReadinessCheckArgs']]] readiness_checks: Readiness checks to be performed on a workstation.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
                If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
@@ -428,6 +449,8 @@ class _WorkstationConfigState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if readiness_checks is not None:
+            pulumi.set(__self__, "readiness_checks", readiness_checks)
         if replica_zones is not None:
             pulumi.set(__self__, "replica_zones", replica_zones)
         if running_timeout is not None:
@@ -700,6 +723,19 @@ class _WorkstationConfigState:
         pulumi.set(self, "pulumi_labels", value)
 
     @property
+    @pulumi.getter(name="readinessChecks")
+    def readiness_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigReadinessCheckArgs']]]]:
+        """
+        Readiness checks to be performed on a workstation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "readiness_checks")
+
+    @readiness_checks.setter
+    def readiness_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigReadinessCheckArgs']]]]):
+        pulumi.set(self, "readiness_checks", value)
+
+    @property
     @pulumi.getter(name="replicaZones")
     def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -779,6 +815,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigReadinessCheckArgs']]]]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -1159,6 +1196,8 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigReadinessCheckArgs']]]] readiness_checks: Readiness checks to be performed on a workstation.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
                If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
@@ -1544,6 +1583,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigReadinessCheckArgs']]]]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -1571,6 +1611,7 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["persistent_directories"] = persistent_directories
             __props__.__dict__["project"] = project
+            __props__.__dict__["readiness_checks"] = readiness_checks
             __props__.__dict__["replica_zones"] = replica_zones
             __props__.__dict__["running_timeout"] = running_timeout
             if workstation_cluster_id is None and not opts.urn:
@@ -1620,6 +1661,7 @@ class WorkstationConfig(pulumi.CustomResource):
             persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigReadinessCheckArgs']]]]] = None,
             replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             running_timeout: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -1672,6 +1714,8 @@ class WorkstationConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigReadinessCheckArgs']]]] readiness_checks: Readiness checks to be performed on a workstation.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
                If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
         :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
@@ -1704,6 +1748,7 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["persistent_directories"] = persistent_directories
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["readiness_checks"] = readiness_checks
         __props__.__dict__["replica_zones"] = replica_zones
         __props__.__dict__["running_timeout"] = running_timeout
         __props__.__dict__["uid"] = uid
@@ -1890,6 +1935,15 @@ class WorkstationConfig(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="readinessChecks")
+    def readiness_checks(self) -> pulumi.Output[Optional[Sequence['outputs.WorkstationConfigReadinessCheck']]]:
+        """
+        Readiness checks to be performed on a workstation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "readiness_checks")
 
     @property
     @pulumi.getter(name="replicaZones")

@@ -83,6 +83,7 @@ type Provider struct {
 	DeploymentManagerCustomEndpoint        pulumi.StringPtrOutput `pulumi:"deploymentManagerCustomEndpoint"`
 	DialogflowCustomEndpoint               pulumi.StringPtrOutput `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dialogflowCxCustomEndpoint"`
+	DiscoveryEngineCustomEndpoint          pulumi.StringPtrOutput `pulumi:"discoveryEngineCustomEndpoint"`
 	DnsCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"dnsCustomEndpoint"`
 	DocumentAiCustomEndpoint               pulumi.StringPtrOutput `pulumi:"documentAiCustomEndpoint"`
 	DocumentAiWarehouseCustomEndpoint      pulumi.StringPtrOutput `pulumi:"documentAiWarehouseCustomEndpoint"`
@@ -148,6 +149,7 @@ type Provider struct {
 	SecureSourceManagerCustomEndpoint      pulumi.StringPtrOutput `pulumi:"secureSourceManagerCustomEndpoint"`
 	SecurityCenterCustomEndpoint           pulumi.StringPtrOutput `pulumi:"securityCenterCustomEndpoint"`
 	SecurityScannerCustomEndpoint          pulumi.StringPtrOutput `pulumi:"securityScannerCustomEndpoint"`
+	SecuritypostureCustomEndpoint          pulumi.StringPtrOutput `pulumi:"securitypostureCustomEndpoint"`
 	ServiceDirectoryCustomEndpoint         pulumi.StringPtrOutput `pulumi:"serviceDirectoryCustomEndpoint"`
 	ServiceManagementCustomEndpoint        pulumi.StringPtrOutput `pulumi:"serviceManagementCustomEndpoint"`
 	ServiceNetworkingCustomEndpoint        pulumi.StringPtrOutput `pulumi:"serviceNetworkingCustomEndpoint"`
@@ -272,6 +274,7 @@ type providerArgs struct {
 	DialogflowCustomEndpoint               *string           `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint             *string           `pulumi:"dialogflowCxCustomEndpoint"`
 	DisableGooglePartnerName               *bool             `pulumi:"disableGooglePartnerName"`
+	DiscoveryEngineCustomEndpoint          *string           `pulumi:"discoveryEngineCustomEndpoint"`
 	DnsCustomEndpoint                      *string           `pulumi:"dnsCustomEndpoint"`
 	DocumentAiCustomEndpoint               *string           `pulumi:"documentAiCustomEndpoint"`
 	DocumentAiWarehouseCustomEndpoint      *string           `pulumi:"documentAiWarehouseCustomEndpoint"`
@@ -339,6 +342,7 @@ type providerArgs struct {
 	SecureSourceManagerCustomEndpoint      *string           `pulumi:"secureSourceManagerCustomEndpoint"`
 	SecurityCenterCustomEndpoint           *string           `pulumi:"securityCenterCustomEndpoint"`
 	SecurityScannerCustomEndpoint          *string           `pulumi:"securityScannerCustomEndpoint"`
+	SecuritypostureCustomEndpoint          *string           `pulumi:"securitypostureCustomEndpoint"`
 	ServiceDirectoryCustomEndpoint         *string           `pulumi:"serviceDirectoryCustomEndpoint"`
 	ServiceManagementCustomEndpoint        *string           `pulumi:"serviceManagementCustomEndpoint"`
 	ServiceNetworkingCustomEndpoint        *string           `pulumi:"serviceNetworkingCustomEndpoint"`
@@ -434,6 +438,7 @@ type ProviderArgs struct {
 	DialogflowCustomEndpoint               pulumi.StringPtrInput
 	DialogflowCxCustomEndpoint             pulumi.StringPtrInput
 	DisableGooglePartnerName               pulumi.BoolPtrInput
+	DiscoveryEngineCustomEndpoint          pulumi.StringPtrInput
 	DnsCustomEndpoint                      pulumi.StringPtrInput
 	DocumentAiCustomEndpoint               pulumi.StringPtrInput
 	DocumentAiWarehouseCustomEndpoint      pulumi.StringPtrInput
@@ -501,6 +506,7 @@ type ProviderArgs struct {
 	SecureSourceManagerCustomEndpoint      pulumi.StringPtrInput
 	SecurityCenterCustomEndpoint           pulumi.StringPtrInput
 	SecurityScannerCustomEndpoint          pulumi.StringPtrInput
+	SecuritypostureCustomEndpoint          pulumi.StringPtrInput
 	ServiceDirectoryCustomEndpoint         pulumi.StringPtrInput
 	ServiceManagementCustomEndpoint        pulumi.StringPtrInput
 	ServiceNetworkingCustomEndpoint        pulumi.StringPtrInput
@@ -823,6 +829,10 @@ func (o ProviderOutput) DialogflowCxCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DialogflowCxCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) DiscoveryEngineCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DiscoveryEngineCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) DnsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DnsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1081,6 +1091,10 @@ func (o ProviderOutput) SecurityCenterCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) SecurityScannerCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecurityScannerCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) SecuritypostureCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecuritypostureCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ServiceDirectoryCustomEndpoint() pulumi.StringPtrOutput {

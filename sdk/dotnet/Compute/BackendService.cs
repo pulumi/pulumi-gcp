@@ -24,6 +24,29 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
     /// 
     /// ## Example Usage
+    /// ### Backend Service External Iap
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Iap = new Gcp.Compute.Inputs.BackendServiceIapArgs
+    ///         {
+    ///             Oauth2ClientId = "abc",
+    ///             Oauth2ClientSecret = "xyz",
+    ///         },
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///         Protocol = "HTTP",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Backend Service Cache Include Http Headers
     /// 
     /// ```csharp

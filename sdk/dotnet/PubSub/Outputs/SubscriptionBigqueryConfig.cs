@@ -14,8 +14,9 @@ namespace Pulumi.Gcp.PubSub.Outputs
     public sealed class SubscriptionBigqueryConfig
     {
         /// <summary>
-        /// When true and useTopicSchema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery.
-        /// Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
+        /// When true and use_topic_schema or use_table_schema is true, any fields that are a part of the topic schema or message schema that
+        /// are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync
+        /// and any messages with extra fields are not written and remain in the subscription's backlog.
         /// </summary>
         public readonly bool? DropUnknownFields;
         /// <summary>
@@ -23,7 +24,13 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly string Table;
         /// <summary>
+        /// When true, use the BigQuery table's schema as the columns to write to in BigQuery. Messages
+        /// must be published in JSON format. Only one of use_topic_schema and use_table_schema can be set.
+        /// </summary>
+        public readonly bool? UseTableSchema;
+        /// <summary>
         /// When true, use the topic's schema as the columns to write to in BigQuery, if it exists.
+        /// Only one of use_topic_schema and use_table_schema can be set.
         /// </summary>
         public readonly bool? UseTopicSchema;
         /// <summary>
@@ -38,12 +45,15 @@ namespace Pulumi.Gcp.PubSub.Outputs
 
             string table,
 
+            bool? useTableSchema,
+
             bool? useTopicSchema,
 
             bool? writeMetadata)
         {
             DropUnknownFields = dropUnknownFields;
             Table = table;
+            UseTableSchema = useTableSchema;
             UseTopicSchema = useTopicSchema;
             WriteMetadata = writeMetadata;
         }

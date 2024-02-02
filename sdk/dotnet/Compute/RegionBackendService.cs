@@ -20,6 +20,30 @@ namespace Pulumi.Gcp.Compute
     ///     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
     /// 
     /// ## Example Usage
+    /// ### Region Backend Service External Iap
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Iap = new Gcp.Compute.Inputs.RegionBackendServiceIapArgs
+    ///         {
+    ///             Oauth2ClientId = "abc",
+    ///             Oauth2ClientSecret = "xyz",
+    ///         },
+    ///         LoadBalancingScheme = "EXTERNAL",
+    ///         Protocol = "HTTP",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Firebase
     ///         Config = new Gcp.Firebase.Inputs.ExtensionsInstanceConfigArgs
     ///         {
     ///             ExtensionRef = "firebase/storage-resize-images",
-    ///             ExtensionVersion = "0.1.37",
+    ///             ExtensionVersion = "0.2.2",
     ///             Params = 
     ///             {
     ///                 { "DELETE_ORIGINAL_FILE", "false" },
@@ -50,18 +50,17 @@ namespace Pulumi.Gcp.Firebase
     ///                 { "DO_BACKFILL", "false" },
     ///                 { "IMG_SIZES", "200x200" },
     ///                 { "IMG_BUCKET", images.Name },
-    ///                 { "LOCATION", "" },
     ///             },
     ///             SystemParams = 
     ///             {
+    ///                 { "firebaseextensions.v1beta.function/location", "" },
     ///                 { "firebaseextensions.v1beta.function/maxInstances", "3000" },
-    ///                 { "firebaseextensions.v1beta.function/memory", "256" },
     ///                 { "firebaseextensions.v1beta.function/minInstances", "0" },
     ///                 { "firebaseextensions.v1beta.function/vpcConnectorEgressSettings", "VPC_CONNECTOR_EGRESS_SETTINGS_UNSPECIFIED" },
     ///             },
     ///             AllowedEventTypes = new[]
     ///             {
-    ///                 "firebase.extensions.storage-resize-images.v1.complete",
+    ///                 "firebase.extensions.storage-resize-images.v1.onCompletion",
     ///             },
     ///             EventarcChannel = "projects/my-project-name/locations//channels/firebase",
     ///         },

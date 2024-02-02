@@ -30,6 +30,9 @@ __all__ = [
     'AiFeatureOnlineStoreEmbeddingManagement',
     'AiFeatureOnlineStoreFeatureviewBigQuerySource',
     'AiFeatureOnlineStoreFeatureviewSyncConfig',
+    'AiFeatureOnlineStoreFeatureviewVectorSearchConfig',
+    'AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig',
+    'AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig',
     'AiFeatureOnlineStoreOptimized',
     'AiFeatureStoreEncryptionSpec',
     'AiFeatureStoreEntityTypeIamBindingCondition',
@@ -1144,6 +1147,173 @@ class AiFeatureOnlineStoreFeatureviewSyncConfig(dict):
         To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
         """
         return pulumi.get(self, "cron")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreFeatureviewVectorSearchConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "embeddingColumn":
+            suggest = "embedding_column"
+        elif key == "bruteForceConfig":
+            suggest = "brute_force_config"
+        elif key == "crowdingColumn":
+            suggest = "crowding_column"
+        elif key == "distanceMeasureType":
+            suggest = "distance_measure_type"
+        elif key == "embeddingDimension":
+            suggest = "embedding_dimension"
+        elif key == "filterColumns":
+            suggest = "filter_columns"
+        elif key == "treeAhConfig":
+            suggest = "tree_ah_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreFeatureviewVectorSearchConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureOnlineStoreFeatureviewVectorSearchConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureOnlineStoreFeatureviewVectorSearchConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 embedding_column: str,
+                 brute_force_config: Optional['outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig'] = None,
+                 crowding_column: Optional[str] = None,
+                 distance_measure_type: Optional[str] = None,
+                 embedding_dimension: Optional[int] = None,
+                 filter_columns: Optional[Sequence[str]] = None,
+                 tree_ah_config: Optional['outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig'] = None):
+        """
+        :param str embedding_column: Column of embedding. This column contains the source data to create index for vector search.
+        :param 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs' brute_force_config: Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+        :param str crowding_column: Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
+        :param str distance_measure_type: The distance measure used in nearest neighbor search.
+               For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
+               Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
+        :param int embedding_dimension: The number of dimensions of the input embedding.
+        :param Sequence[str] filter_columns: Columns of features that are used to filter vector search results.
+        :param 'AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs' tree_ah_config: Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "embedding_column", embedding_column)
+        if brute_force_config is not None:
+            pulumi.set(__self__, "brute_force_config", brute_force_config)
+        if crowding_column is not None:
+            pulumi.set(__self__, "crowding_column", crowding_column)
+        if distance_measure_type is not None:
+            pulumi.set(__self__, "distance_measure_type", distance_measure_type)
+        if embedding_dimension is not None:
+            pulumi.set(__self__, "embedding_dimension", embedding_dimension)
+        if filter_columns is not None:
+            pulumi.set(__self__, "filter_columns", filter_columns)
+        if tree_ah_config is not None:
+            pulumi.set(__self__, "tree_ah_config", tree_ah_config)
+
+    @property
+    @pulumi.getter(name="embeddingColumn")
+    def embedding_column(self) -> str:
+        """
+        Column of embedding. This column contains the source data to create index for vector search.
+        """
+        return pulumi.get(self, "embedding_column")
+
+    @property
+    @pulumi.getter(name="bruteForceConfig")
+    def brute_force_config(self) -> Optional['outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig']:
+        """
+        Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
+        """
+        return pulumi.get(self, "brute_force_config")
+
+    @property
+    @pulumi.getter(name="crowdingColumn")
+    def crowding_column(self) -> Optional[str]:
+        """
+        Column of crowding. This column contains crowding attribute which is a constraint on a neighbor list produced by nearest neighbor search requiring that no more than some value k' of the k neighbors returned have the same value of crowdingAttribute.
+        """
+        return pulumi.get(self, "crowding_column")
+
+    @property
+    @pulumi.getter(name="distanceMeasureType")
+    def distance_measure_type(self) -> Optional[str]:
+        """
+        The distance measure used in nearest neighbor search.
+        For details on allowed values, see the [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.featureOnlineStores.featureViews#DistanceMeasureType).
+        Possible values are: `SQUARED_L2_DISTANCE`, `COSINE_DISTANCE`, `DOT_PRODUCT_DISTANCE`.
+        """
+        return pulumi.get(self, "distance_measure_type")
+
+    @property
+    @pulumi.getter(name="embeddingDimension")
+    def embedding_dimension(self) -> Optional[int]:
+        """
+        The number of dimensions of the input embedding.
+        """
+        return pulumi.get(self, "embedding_dimension")
+
+    @property
+    @pulumi.getter(name="filterColumns")
+    def filter_columns(self) -> Optional[Sequence[str]]:
+        """
+        Columns of features that are used to filter vector search results.
+        """
+        return pulumi.get(self, "filter_columns")
+
+    @property
+    @pulumi.getter(name="treeAhConfig")
+    def tree_ah_config(self) -> Optional['outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig']:
+        """
+        Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tree_ah_config")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "leafNodeEmbeddingCount":
+            suggest = "leaf_node_embedding_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 leaf_node_embedding_count: Optional[str] = None):
+        """
+        :param str leaf_node_embedding_count: Number of embeddings on each leaf node. The default value is 1000 if not set.
+        """
+        if leaf_node_embedding_count is not None:
+            pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
+
+    @property
+    @pulumi.getter(name="leafNodeEmbeddingCount")
+    def leaf_node_embedding_count(self) -> Optional[str]:
+        """
+        Number of embeddings on each leaf node. The default value is 1000 if not set.
+        """
+        return pulumi.get(self, "leaf_node_embedding_count")
 
 
 @pulumi.output_type

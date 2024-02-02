@@ -35,6 +35,26 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:workflows/workflow:Workflow")
 public class Workflow extends com.pulumi.resources.CustomResource {
     /**
+     * Describes the level of platform logging to apply to calls and call responses during
+     * executions of this workflow. If both the workflow and the execution specify a logging level,
+     * the execution level takes precedence.
+     * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+     * 
+     */
+    @Export(name="callLogLevel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> callLogLevel;
+
+    /**
+     * @return Describes the level of platform logging to apply to calls and call responses during
+     * executions of this workflow. If both the workflow and the execution specify a logging level,
+     * the execution level takes precedence.
+     * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+     * 
+     */
+    public Output<Optional<String>> callLogLevel() {
+        return Codegen.optional(this.callLogLevel);
+    }
+    /**
      * The timestamp of when the workflow was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
@@ -229,14 +249,14 @@ public class Workflow extends com.pulumi.resources.CustomResource {
         return this.serviceAccount;
     }
     /**
-     * Workflow code to be executed. The size limit is 32KB.
+     * Workflow code to be executed. The size limit is 128KB.
      * 
      */
     @Export(name="sourceContents", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceContents;
 
     /**
-     * @return Workflow code to be executed. The size limit is 32KB.
+     * @return Workflow code to be executed. The size limit is 128KB.
      * 
      */
     public Output<Optional<String>> sourceContents() {

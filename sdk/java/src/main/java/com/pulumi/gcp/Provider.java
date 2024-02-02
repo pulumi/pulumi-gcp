@@ -412,6 +412,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> dialogflowCxCustomEndpoint() {
         return Codegen.optional(this.dialogflowCxCustomEndpoint);
     }
+    @Export(name="discoveryEngineCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> discoveryEngineCustomEndpoint;
+
+    public Output<Optional<String>> discoveryEngineCustomEndpoint() {
+        return Codegen.optional(this.discoveryEngineCustomEndpoint);
+    }
     @Export(name="dnsCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dnsCustomEndpoint;
 
@@ -801,6 +807,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> securityScannerCustomEndpoint() {
         return Codegen.optional(this.securityScannerCustomEndpoint);
+    }
+    @Export(name="securitypostureCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securitypostureCustomEndpoint;
+
+    public Output<Optional<String>> securitypostureCustomEndpoint() {
+        return Codegen.optional(this.securitypostureCustomEndpoint);
     }
     @Export(name="serviceDirectoryCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceDirectoryCustomEndpoint;

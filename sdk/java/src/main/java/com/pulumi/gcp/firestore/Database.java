@@ -53,8 +53,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
  *             .locationId(&#34;nam5&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .type(&#34;FIRESTORE_NATIVE&#34;)
@@ -122,8 +120,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var datastoreModeDatabase = new Database(&#34;datastoreModeDatabase&#34;, DatabaseArgs.builder()        
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .deletionPolicy(&#34;DELETE&#34;)
  *             .locationId(&#34;nam5&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .type(&#34;DATASTORE_MODE&#34;)

@@ -48,6 +48,13 @@ export class Workflow extends pulumi.CustomResource {
     }
 
     /**
+     * Describes the level of platform logging to apply to calls and call responses during
+     * executions of this workflow. If both the workflow and the execution specify a logging level,
+     * the execution level takes precedence.
+     * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+     */
+    public readonly callLogLevel!: pulumi.Output<string | undefined>;
+    /**
      * The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -109,7 +116,7 @@ export class Workflow extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<string>;
     /**
-     * Workflow code to be executed. The size limit is 32KB.
+     * Workflow code to be executed. The size limit is 128KB.
      */
     public readonly sourceContents!: pulumi.Output<string | undefined>;
     /**
@@ -138,6 +145,7 @@ export class Workflow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowState | undefined;
+            resourceInputs["callLogLevel"] = state ? state.callLogLevel : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["cryptoKeyName"] = state ? state.cryptoKeyName : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -156,6 +164,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["userEnvVars"] = state ? state.userEnvVars : undefined;
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
+            resourceInputs["callLogLevel"] = args ? args.callLogLevel : undefined;
             resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -184,6 +193,13 @@ export class Workflow extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Workflow resources.
  */
 export interface WorkflowState {
+    /**
+     * Describes the level of platform logging to apply to calls and call responses during
+     * executions of this workflow. If both the workflow and the execution specify a logging level,
+     * the execution level takes precedence.
+     * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+     */
+    callLogLevel?: pulumi.Input<string>;
     /**
      * The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
@@ -246,7 +262,7 @@ export interface WorkflowState {
      */
     serviceAccount?: pulumi.Input<string>;
     /**
-     * Workflow code to be executed. The size limit is 32KB.
+     * Workflow code to be executed. The size limit is 128KB.
      */
     sourceContents?: pulumi.Input<string>;
     /**
@@ -267,6 +283,13 @@ export interface WorkflowState {
  * The set of arguments for constructing a Workflow resource.
  */
 export interface WorkflowArgs {
+    /**
+     * Describes the level of platform logging to apply to calls and call responses during
+     * executions of this workflow. If both the workflow and the execution specify a logging level,
+     * the execution level takes precedence.
+     * Possible values are: `CALL_LOG_LEVEL_UNSPECIFIED`, `LOG_ALL_CALLS`, `LOG_ERRORS_ONLY`, `LOG_NONE`.
+     */
+    callLogLevel?: pulumi.Input<string>;
     /**
      * The KMS key used to encrypt workflow and execution data.
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
@@ -312,7 +335,7 @@ export interface WorkflowArgs {
      */
     serviceAccount?: pulumi.Input<string>;
     /**
-     * Workflow code to be executed. The size limit is 32KB.
+     * Workflow code to be executed. The size limit is 128KB.
      */
     sourceContents?: pulumi.Input<string>;
     /**

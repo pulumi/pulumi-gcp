@@ -18,14 +18,14 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
     public static final TriggerDestinationArgs Empty = new TriggerDestinationArgs();
 
     /**
-     * [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+     * The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
      * 
      */
     @Import(name="cloudFunction")
     private @Nullable Output<String> cloudFunction;
 
     /**
-     * @return [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+     * @return The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
      * 
      */
     public Optional<Output<String>> cloudFunction() {
@@ -105,7 +105,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudFunction [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+         * @param cloudFunction The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cloudFunction [WARNING] Configuring a Cloud Function in Trigger is not supported as of today. The Cloud Function resource name. Format: projects/{project}/locations/{location}/functions/{function}
+         * @param cloudFunction The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
          * 
          * @return builder
          * 
