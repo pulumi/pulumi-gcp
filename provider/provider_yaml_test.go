@@ -18,6 +18,7 @@
 package gcp
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -461,17 +462,25 @@ func TestCheckConfigWrongRegion(t *testing.T) {
 }
 
 func TestRegress1488(t *testing.T) {
+	if testing.Short() {
+		t.Skip("Only run in long mode, since we want credentials.")
+	}
+
 	// Test that going from replication.automatic: true (v6-style) to replication.auto: {}
 	// (v7-style) is not a replacement.
-	replay.ReplaySequence(t, providerServer(t), `[
+	proj := os.Getenv("GOOGLE_PROJECT")
+	if proj == "" {
+		proj = "pulumi-development"
+	}
+	replay.ReplaySequence(t, providerServer(t), fmt.Sprintf(`[
 	{
 	  "method": "/pulumirpc.ResourceProvider/Configure",
 	  "request": {
 	    "variables": {
-	      "gcp:config:project": "pulumi-development"
+	      "gcp:config:project": %q
 	    },
 	    "args": {
-	      "project": "pulumi-development",
+	      "project": %q,
 	      "version": "7.4.0"
 	    },
 	    "acceptSecrets": true,
@@ -531,5 +540,5 @@ func TestRegress1488(t *testing.T) {
 	    "hasDetailedDiff": "*"
 	  }
 	}
-	]`)
+	]`, proj, proj))
 }
