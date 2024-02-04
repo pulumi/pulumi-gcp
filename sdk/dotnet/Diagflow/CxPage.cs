@@ -163,12 +163,12 @@ namespace Pulumi.Gcp.Diagflow
     ///             {
     ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentConditionalCaseArgs
     ///                 {
-    ///                     Cases = JsonSerializer.Serialize(new[]
+    ///                     Cases = JsonSerializer.Serialize(new object?[]
     ///                     {
     ///                         new Dictionary&lt;string, object?&gt;
     ///                         {
     ///                             ["condition"] = "$sys.func.RAND() &lt; 0.5",
-    ///                             ["caseContent"] = new[]
+    ///                             ["caseContent"] = new object?[]
     ///                             {
     ///                                 new Dictionary&lt;string, object?&gt;
     ///                                 {
@@ -334,12 +334,12 @@ namespace Pulumi.Gcp.Diagflow
     ///                     {
     ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs
     ///                         {
-    ///                             Cases = JsonSerializer.Serialize(new[]
+    ///                             Cases = JsonSerializer.Serialize(new object?[]
     ///                             {
     ///                                 new Dictionary&lt;string, object?&gt;
     ///                                 {
     ///                                     ["condition"] = "$sys.func.RAND() &lt; 0.5",
-    ///                                     ["caseContent"] = new[]
+    ///                                     ["caseContent"] = new object?[]
     ///                                     {
     ///                                         new Dictionary&lt;string, object?&gt;
     ///                                         {
@@ -512,12 +512,12 @@ namespace Pulumi.Gcp.Diagflow
     ///                             {
     ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs
     ///                                 {
-    ///                                     Cases = JsonSerializer.Serialize(new[]
+    ///                                     Cases = JsonSerializer.Serialize(new object?[]
     ///                                     {
     ///                                         new Dictionary&lt;string, object?&gt;
     ///                                         {
     ///                                             ["condition"] = "$sys.func.RAND() &lt; 0.5",
-    ///                                             ["caseContent"] = new[]
+    ///                                             ["caseContent"] = new object?[]
     ///                                             {
     ///                                                 new Dictionary&lt;string, object?&gt;
     ///                                                 {
@@ -685,12 +685,12 @@ namespace Pulumi.Gcp.Diagflow
     ///                                     {
     ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs
     ///                                         {
-    ///                                             Cases = JsonSerializer.Serialize(new[]
+    ///                                             Cases = JsonSerializer.Serialize(new object?[]
     ///                                             {
     ///                                                 new Dictionary&lt;string, object?&gt;
     ///                                                 {
     ///                                                     ["condition"] = "$sys.func.RAND() &lt; 0.5",
-    ///                                                     ["caseContent"] = new[]
+    ///                                                     ["caseContent"] = new object?[]
     ///                                                     {
     ///                                                         new Dictionary&lt;string, object?&gt;
     ///                                                         {
@@ -882,12 +882,12 @@ namespace Pulumi.Gcp.Diagflow
     ///                     {
     ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs
     ///                         {
-    ///                             Cases = JsonSerializer.Serialize(new[]
+    ///                             Cases = JsonSerializer.Serialize(new object?[]
     ///                             {
     ///                                 new Dictionary&lt;string, object?&gt;
     ///                                 {
     ///                                     ["condition"] = "$sys.func.RAND() &lt; 0.5",
-    ///                                     ["caseContent"] = new[]
+    ///                                     ["caseContent"] = new object?[]
     ///                                     {
     ///                                         new Dictionary&lt;string, object?&gt;
     ///                                         {

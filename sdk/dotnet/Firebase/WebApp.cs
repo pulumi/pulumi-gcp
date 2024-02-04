@@ -55,26 +55,16 @@ namespace Pulumi.Gcp.Firebase
     ///     var defaultBucketObject = new Gcp.Storage.BucketObject("defaultBucketObject", new()
     ///     {
     ///         Bucket = defaultBucket.Name,
-    ///         Content = Output.Tuple(basicWebApp.AppId, basicWebAppConfig, basicWebAppConfig, basicWebAppConfig["database_url"] ?? "", basicWebAppConfig["storage_bucket"] ?? "", basicWebAppConfig["messaging_sender_id"] ?? "", basicWebAppConfig["measurement_id"] ?? "").Apply(values =&gt;
+    ///         Content = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             var appId = values.Item1;
-    ///             var basicWebAppConfig = values.Item2;
-    ///             var basicWebAppConfig1 = values.Item3;
-    ///             var s = values.Item4;
-    ///             var s1 = values.Item5;
-    ///             var s2 = values.Item6;
-    ///             var s3 = values.Item7;
-    ///             return JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["appId"] = appId,
-    ///                 ["apiKey"] = basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.ApiKey),
-    ///                 ["authDomain"] = basicWebAppConfig1.AuthDomain,
-    ///                 ["databaseURL"] = s,
-    ///                 ["storageBucket"] = s1,
-    ///                 ["messagingSenderId"] = s2,
-    ///                 ["measurementId"] = s3,
-    ///             });
-    ///         }),
+    ///             ["appId"] = basicWebApp.AppId,
+    ///             ["apiKey"] = basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.ApiKey),
+    ///             ["authDomain"] = basicWebAppConfig.Apply(getWebAppConfigResult =&gt; getWebAppConfigResult.AuthDomain),
+    ///             ["databaseURL"] = basicWebAppConfig["database_url"] ?? "",
+    ///             ["storageBucket"] = basicWebAppConfig["storage_bucket"] ?? "",
+    ///             ["messagingSenderId"] = basicWebAppConfig["messaging_sender_id"] ?? "",
+    ///             ["measurementId"] = basicWebAppConfig["measurement_id"] ?? "",
+    ///         })),
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
