@@ -55,6 +55,7 @@ const (
 	gcpBigTable                 = "BigTable"                 // BitTable resources
 	gcpBilling                  = "Billing"                  // Billing resources
 	gcpBinaryAuthorization      = "BinaryAuthorization"      // Binary Authorization resources
+	gcpBlockchainNodeEngine     = "BlockchainNodeEngine"     // Blockchain Node Engine resources
 	gcpCertificateAuthority     = "CertificateAuthority"     // CertificateAuthority resources
 	gcpCertificateManager       = "CertificateManager"       // CertificateManager resources
 	gcpCloudAsset               = "CloudAsset"               // CloudAsset resources
@@ -170,6 +171,7 @@ var moduleMapping = map[string]string{
 	"bigquery_datapolicy_data_policy": gcpBigQueryDataPolicy,
 	"bigtable":                        gcpBigTable,
 	"billing":                         gcpBilling,
+	"blockchain_node_engine":          gcpBlockchainNodeEngine,
 	"binary_authorization":            gcpBinaryAuthorization,
 	"certificate_manager":             gcpCertificateManager,
 	"cloud_asset":                     gcpCloudAsset,
