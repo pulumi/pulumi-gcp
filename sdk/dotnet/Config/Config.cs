@@ -207,6 +207,13 @@ namespace Pulumi.Gcp
             set => _binaryAuthorizationCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _blockchainNodeEngineCustomEndpoint = new __Value<string?>(() => __config.Get("blockchainNodeEngineCustomEndpoint"));
+        public static string? BlockchainNodeEngineCustomEndpoint
+        {
+            get => _blockchainNodeEngineCustomEndpoint.Get();
+            set => _blockchainNodeEngineCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _certificateManagerCustomEndpoint = new __Value<string?>(() => __config.Get("certificateManagerCustomEndpoint"));
         public static string? CertificateManagerCustomEndpoint
         {

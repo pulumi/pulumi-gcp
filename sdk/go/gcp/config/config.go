@@ -86,6 +86,9 @@ func GetBillingProject(ctx *pulumi.Context) string {
 func GetBinaryAuthorizationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:binaryAuthorizationCustomEndpoint")
 }
+func GetBlockchainNodeEngineCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:blockchainNodeEngineCustomEndpoint")
+}
 func GetCertificateManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:certificateManagerCustomEndpoint")
 }

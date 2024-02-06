@@ -31,6 +31,7 @@ import * as bigquerydatapolicy from "./bigquerydatapolicy";
 import * as bigtable from "./bigtable";
 import * as billing from "./billing";
 import * as binaryauthorization from "./binaryauthorization";
+import * as blockchainnodeengine from "./blockchainnodeengine";
 import * as certificateauthority from "./certificateauthority";
 import * as certificatemanager from "./certificatemanager";
 import * as cloudasset from "./cloudasset";
@@ -147,6 +148,7 @@ export {
     bigtable,
     billing,
     binaryauthorization,
+    blockchainnodeengine,
     certificateauthority,
     certificatemanager,
     cloudasset,

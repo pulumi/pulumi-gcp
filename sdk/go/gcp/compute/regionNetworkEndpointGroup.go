@@ -12,13 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A regional NEG that can support Serverless Products.
+// A regional NEG that can support Serverless Products and proxying traffic to external backends.
 //
 // To get more information about RegionNetworkEndpointGroup, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+//   - [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+//   - [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 //
 // ## Example Usage
 // ### Region Network Endpoint Group Functions
@@ -251,6 +252,68 @@ import (
 //	}
 //
 // ```
+// ### Region Network Endpoint Group Internet Ip Port
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "regionNetworkEndpointGroupInternetIpPort", &compute.RegionNetworkEndpointGroupArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Network:             _default.ID(),
+//				NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Region Network Endpoint Group Internet Fqdn Port
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "regionNetworkEndpointGroupInternetFqdnPort", &compute.RegionNetworkEndpointGroupArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Network:             _default.ID(),
+//				NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -282,15 +345,15 @@ import (
 type RegionNetworkEndpointGroup struct {
 	pulumi.CustomResourceState
 
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine RegionNetworkEndpointGroupAppEnginePtrOutput `pulumi:"appEngine"`
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction RegionNetworkEndpointGroupCloudFunctionPtrOutput `pulumi:"cloudFunction"`
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun RegionNetworkEndpointGroupCloudRunPtrOutput `pulumi:"cloudRun"`
@@ -305,31 +368,32 @@ type RegionNetworkEndpointGroup struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// This field is only used for PSC.
+	// This field is only used for PSC and INTERNET NEGs.
 	// The URL of the network to which all network endpoints in the NEG belong. Uses
 	// "default" project network if unspecified.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
 	// Default value is `SERVERLESS`.
-	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
 	NetworkEndpointType pulumi.StringPtrOutput `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService pulumi.StringPtrOutput `pulumi:"pscTargetService"`
-	// A reference to the region where the Serverless NEGs Reside.
+	// A reference to the region where the regional NEGs reside.
 	//
 	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrOutput `pulumi:"serverlessDeployment"`
-	// This field is only used for PSC.
+	// This field is only used for PSC NEGs.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrOutput `pulumi:"subnetwork"`
 }
@@ -367,15 +431,15 @@ func GetRegionNetworkEndpointGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionNetworkEndpointGroup resources.
 type regionNetworkEndpointGroupState struct {
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine *RegionNetworkEndpointGroupAppEngine `pulumi:"appEngine"`
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction *RegionNetworkEndpointGroupCloudFunction `pulumi:"cloudFunction"`
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun *RegionNetworkEndpointGroupCloudRun `pulumi:"cloudRun"`
@@ -390,45 +454,46 @@ type regionNetworkEndpointGroupState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// This field is only used for PSC.
+	// This field is only used for PSC and INTERNET NEGs.
 	// The URL of the network to which all network endpoints in the NEG belong. Uses
 	// "default" project network if unspecified.
 	Network *string `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
 	// Default value is `SERVERLESS`.
-	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService *string `pulumi:"pscTargetService"`
-	// A reference to the region where the Serverless NEGs Reside.
+	// A reference to the region where the regional NEGs reside.
 	//
 	// ***
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	ServerlessDeployment *RegionNetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
-	// This field is only used for PSC.
+	// This field is only used for PSC NEGs.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 type RegionNetworkEndpointGroupState struct {
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine RegionNetworkEndpointGroupAppEnginePtrInput
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction RegionNetworkEndpointGroupCloudFunctionPtrInput
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun RegionNetworkEndpointGroupCloudRunPtrInput
@@ -443,31 +508,32 @@ type RegionNetworkEndpointGroupState struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// This field is only used for PSC.
+	// This field is only used for PSC and INTERNET NEGs.
 	// The URL of the network to which all network endpoints in the NEG belong. Uses
 	// "default" project network if unspecified.
 	Network pulumi.StringPtrInput
-	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
 	// Default value is `SERVERLESS`.
-	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService pulumi.StringPtrInput
-	// A reference to the region where the Serverless NEGs Reside.
+	// A reference to the region where the regional NEGs reside.
 	//
 	// ***
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrInput
-	// This field is only used for PSC.
+	// This field is only used for PSC NEGs.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput
 }
@@ -477,15 +543,15 @@ func (RegionNetworkEndpointGroupState) ElementType() reflect.Type {
 }
 
 type regionNetworkEndpointGroupArgs struct {
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine *RegionNetworkEndpointGroupAppEngine `pulumi:"appEngine"`
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction *RegionNetworkEndpointGroupCloudFunction `pulumi:"cloudFunction"`
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun *RegionNetworkEndpointGroupCloudRun `pulumi:"cloudRun"`
@@ -500,44 +566,45 @@ type regionNetworkEndpointGroupArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// This field is only used for PSC.
+	// This field is only used for PSC and INTERNET NEGs.
 	// The URL of the network to which all network endpoints in the NEG belong. Uses
 	// "default" project network if unspecified.
 	Network *string `pulumi:"network"`
-	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
 	// Default value is `SERVERLESS`.
-	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService *string `pulumi:"pscTargetService"`
-	// A reference to the region where the Serverless NEGs Reside.
+	// A reference to the region where the regional NEGs reside.
 	//
 	// ***
 	Region string `pulumi:"region"`
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	ServerlessDeployment *RegionNetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
-	// This field is only used for PSC.
+	// This field is only used for PSC NEGs.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
 
 // The set of arguments for constructing a RegionNetworkEndpointGroup resource.
 type RegionNetworkEndpointGroupArgs struct {
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	AppEngine RegionNetworkEndpointGroupAppEnginePtrInput
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudFunction RegionNetworkEndpointGroupCloudFunctionPtrInput
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	CloudRun RegionNetworkEndpointGroupCloudRunPtrInput
@@ -552,29 +619,30 @@ type RegionNetworkEndpointGroupArgs struct {
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// This field is only used for PSC.
+	// This field is only used for PSC and INTERNET NEGs.
 	// The URL of the network to which all network endpoints in the NEG belong. Uses
 	// "default" project network if unspecified.
 	Network pulumi.StringPtrInput
-	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+	// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
 	// Default value is `SERVERLESS`.
-	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+	// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
 	NetworkEndpointType pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService pulumi.StringPtrInput
-	// A reference to the region where the Serverless NEGs Reside.
+	// A reference to the region where the regional NEGs reside.
 	//
 	// ***
 	Region pulumi.StringInput
-	// Only valid when networkEndpointType is "SERVERLESS".
+	// This field is only used for SERVERLESS NEGs.
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
 	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrInput
-	// This field is only used for PSC.
+	// This field is only used for PSC NEGs.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 	Subnetwork pulumi.StringPtrInput
 }
@@ -666,14 +734,14 @@ func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutputWith
 	return o
 }
 
-// Only valid when networkEndpointType is "SERVERLESS".
+// This field is only used for SERVERLESS NEGs.
 // Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 // Structure is documented below.
 func (o RegionNetworkEndpointGroupOutput) AppEngine() RegionNetworkEndpointGroupAppEnginePtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) RegionNetworkEndpointGroupAppEnginePtrOutput { return v.AppEngine }).(RegionNetworkEndpointGroupAppEnginePtrOutput)
 }
 
-// Only valid when networkEndpointType is "SERVERLESS".
+// This field is only used for SERVERLESS NEGs.
 // Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 // Structure is documented below.
 func (o RegionNetworkEndpointGroupOutput) CloudFunction() RegionNetworkEndpointGroupCloudFunctionPtrOutput {
@@ -682,7 +750,7 @@ func (o RegionNetworkEndpointGroupOutput) CloudFunction() RegionNetworkEndpointG
 	}).(RegionNetworkEndpointGroupCloudFunctionPtrOutput)
 }
 
-// Only valid when networkEndpointType is "SERVERLESS".
+// This field is only used for SERVERLESS NEGs.
 // Only one of cloud_run, app_engine, cloudFunction or serverlessDeployment may be set.
 // Structure is documented below.
 func (o RegionNetworkEndpointGroupOutput) CloudRun() RegionNetworkEndpointGroupCloudRunPtrOutput {
@@ -706,16 +774,16 @@ func (o RegionNetworkEndpointGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// This field is only used for PSC.
+// This field is only used for PSC and INTERNET NEGs.
 // The URL of the network to which all network endpoints in the NEG belong. Uses
 // "default" project network if unspecified.
 func (o RegionNetworkEndpointGroupOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
 // Default value is `SERVERLESS`.
-// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
 func (o RegionNetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.NetworkEndpointType }).(pulumi.StringPtrOutput)
 }
@@ -726,13 +794,14 @@ func (o RegionNetworkEndpointGroupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// This field is only used for PSC and INTERNET NEGs.
 // The target service url used to set up private service connection to
 // a Google API or a PSC Producer Service Attachment.
 func (o RegionNetworkEndpointGroupOutput) PscTargetService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.PscTargetService }).(pulumi.StringPtrOutput)
 }
 
-// A reference to the region where the Serverless NEGs Reside.
+// A reference to the region where the regional NEGs reside.
 //
 // ***
 func (o RegionNetworkEndpointGroupOutput) Region() pulumi.StringOutput {
@@ -744,7 +813,7 @@ func (o RegionNetworkEndpointGroupOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Only valid when networkEndpointType is "SERVERLESS".
+// This field is only used for SERVERLESS NEGs.
 // Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 // Structure is documented below.
 func (o RegionNetworkEndpointGroupOutput) ServerlessDeployment() RegionNetworkEndpointGroupServerlessDeploymentPtrOutput {
@@ -753,7 +822,7 @@ func (o RegionNetworkEndpointGroupOutput) ServerlessDeployment() RegionNetworkEn
 	}).(RegionNetworkEndpointGroupServerlessDeploymentPtrOutput)
 }
 
-// This field is only used for PSC.
+// This field is only used for PSC NEGs.
 // Optional URL of the subnetwork to which all network endpoints in the NEG belong.
 func (o RegionNetworkEndpointGroupOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringPtrOutput { return v.Subnetwork }).(pulumi.StringPtrOutput)

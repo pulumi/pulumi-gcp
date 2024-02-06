@@ -90,6 +90,9 @@ namespace Pulumi.Gcp
         [Output("binaryAuthorizationCustomEndpoint")]
         public Output<string?> BinaryAuthorizationCustomEndpoint { get; private set; } = null!;
 
+        [Output("blockchainNodeEngineCustomEndpoint")]
+        public Output<string?> BlockchainNodeEngineCustomEndpoint { get; private set; } = null!;
+
         [Output("certificateManagerCustomEndpoint")]
         public Output<string?> CertificateManagerCustomEndpoint { get; private set; } = null!;
 
@@ -582,6 +585,9 @@ namespace Pulumi.Gcp
 
         [Input("binaryAuthorizationCustomEndpoint")]
         public Input<string>? BinaryAuthorizationCustomEndpoint { get; set; }
+
+        [Input("blockchainNodeEngineCustomEndpoint")]
+        public Input<string>? BlockchainNodeEngineCustomEndpoint { get; set; }
 
         [Input("certificateManagerCustomEndpoint")]
         public Input<string>? CertificateManagerCustomEndpoint { get; set; }

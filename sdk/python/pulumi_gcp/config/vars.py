@@ -117,6 +117,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('binaryAuthorizationCustomEndpoint')
 
     @property
+    def blockchain_node_engine_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('blockchainNodeEngineCustomEndpoint')
+
+    @property
     def certificate_manager_custom_endpoint(self) -> Optional[str]:
         return __config__.get('certificateManagerCustomEndpoint')
 

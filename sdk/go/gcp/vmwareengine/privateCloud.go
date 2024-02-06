@@ -165,7 +165,6 @@ type PrivateCloud struct {
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Initial type of the private cloud.
-	// Default value is `STANDARD`.
 	// Possible values are: `STANDARD`, `TIME_LIMITED`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// System-generated unique identifier for the resource.
@@ -239,7 +238,6 @@ type privateCloudState struct {
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State *string `pulumi:"state"`
 	// Initial type of the private cloud.
-	// Default value is `STANDARD`.
 	// Possible values are: `STANDARD`, `TIME_LIMITED`.
 	Type *string `pulumi:"type"`
 	// System-generated unique identifier for the resource.
@@ -275,7 +273,6 @@ type PrivateCloudState struct {
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringPtrInput
 	// Initial type of the private cloud.
-	// Default value is `STANDARD`.
 	// Possible values are: `STANDARD`, `TIME_LIMITED`.
 	Type pulumi.StringPtrInput
 	// System-generated unique identifier for the resource.
@@ -306,7 +303,6 @@ type privateCloudArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Initial type of the private cloud.
-	// Default value is `STANDARD`.
 	// Possible values are: `STANDARD`, `TIME_LIMITED`.
 	Type *string `pulumi:"type"`
 }
@@ -329,7 +325,6 @@ type PrivateCloudArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Initial type of the private cloud.
-	// Default value is `STANDARD`.
 	// Possible values are: `STANDARD`, `TIME_LIMITED`.
 	Type pulumi.StringPtrInput
 }
@@ -473,7 +468,6 @@ func (o PrivateCloudOutput) State() pulumi.StringOutput {
 }
 
 // Initial type of the private cloud.
-// Default value is `STANDARD`.
 // Possible values are: `STANDARD`, `TIME_LIMITED`.
 func (o PrivateCloudOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)

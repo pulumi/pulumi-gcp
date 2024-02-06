@@ -1224,7 +1224,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="databaseFlags")
-    def database_flags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def database_flags(self) -> pulumi.Output[Mapping[str, str]]:
         """
         Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         """

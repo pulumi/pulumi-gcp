@@ -159,7 +159,6 @@ export class PrivateCloud extends pulumi.CustomResource {
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * Initial type of the private cloud.
-     * Default value is `STANDARD`.
      * Possible values are: `STANDARD`, `TIME_LIMITED`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
@@ -275,7 +274,6 @@ export interface PrivateCloudState {
     state?: pulumi.Input<string>;
     /**
      * Initial type of the private cloud.
-     * Default value is `STANDARD`.
      * Possible values are: `STANDARD`, `TIME_LIMITED`.
      */
     type?: pulumi.Input<string>;
@@ -323,7 +321,6 @@ export interface PrivateCloudArgs {
     project?: pulumi.Input<string>;
     /**
      * Initial type of the private cloud.
-     * Default value is `STANDARD`.
      * Possible values are: `STANDARD`, `TIME_LIMITED`.
      */
     type?: pulumi.Input<string>;

@@ -29,6 +29,7 @@ class InterconnectAttachmentArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None):
         """
@@ -104,6 +105,11 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
+        :param pulumi.Input[str] stack_type: The stack type for this interconnect attachment to identify whether the IPv6
+               feature is enabled or not. If not specified, IPV4_ONLY will be used.
+               This field can be both set at interconnect attachments creation and update
+               interconnect attachment operations.
+               Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
                Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -135,6 +141,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vlan_tag8021q is not None:
@@ -355,6 +363,22 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this interconnect attachment to identify whether the IPv6
+        feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        This field can be both set at interconnect attachments creation and update
+        interconnect attachment operations.
+        Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -406,6 +430,7 @@ class _InterconnectAttachmentState:
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None):
@@ -499,6 +524,11 @@ class _InterconnectAttachmentState:
                automatically connect the Interconnect to the network & region within which the
                Cloud Router is configured.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] stack_type: The stack type for this interconnect attachment to identify whether the IPv6
+               feature is enabled or not. If not specified, IPV4_ONLY will be used.
+               This field can be both set at interconnect attachments creation and update
+               interconnect attachment operations.
+               Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
         :param pulumi.Input[str] state: [Output Only] The current state of this attachment's functionality.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
@@ -548,6 +578,8 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "router", router)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if type is not None:
@@ -875,6 +907,22 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack type for this interconnect attachment to identify whether the IPv6
+        feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        This field can be both set at interconnect attachments creation and update
+        interconnect attachment operations.
+        Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stack_type", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -932,6 +980,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1078,6 +1127,11 @@ class InterconnectAttachment(pulumi.CustomResource):
                the same region as this InterconnectAttachment. The InterconnectAttachment will
                automatically connect the Interconnect to the network & region within which the
                Cloud Router is configured.
+        :param pulumi.Input[str] stack_type: The stack type for this interconnect attachment to identify whether the IPv6
+               feature is enabled or not. If not specified, IPV4_ONLY will be used.
+               This field can be both set at interconnect attachments creation and update
+               interconnect attachment operations.
+               Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
                Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -1188,6 +1242,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1214,6 +1269,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             if router is None and not opts.urn:
                 raise TypeError("Missing required property 'router'")
             __props__.__dict__["router"] = router
+            __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["type"] = type
             __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
             __props__.__dict__["cloud_router_ip_address"] = None
@@ -1256,6 +1312,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            stack_type: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             vlan_tag8021q: Optional[pulumi.Input[int]] = None) -> 'InterconnectAttachment':
@@ -1354,6 +1411,11 @@ class InterconnectAttachment(pulumi.CustomResource):
                automatically connect the Interconnect to the network & region within which the
                Cloud Router is configured.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] stack_type: The stack type for this interconnect attachment to identify whether the IPv6
+               feature is enabled or not. If not specified, IPV4_ONLY will be used.
+               This field can be both set at interconnect attachments creation and update
+               interconnect attachment operations.
+               Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
         :param pulumi.Input[str] state: [Output Only] The current state of this attachment's functionality.
         :param pulumi.Input[str] type: The type of InterconnectAttachment you wish to create. Defaults to
                DEDICATED.
@@ -1386,6 +1448,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["router"] = router
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["stack_type"] = stack_type
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
         __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
@@ -1625,6 +1688,18 @@ class InterconnectAttachment(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> pulumi.Output[str]:
+        """
+        The stack type for this interconnect attachment to identify whether the IPv6
+        feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        This field can be both set at interconnect attachments creation and update
+        interconnect attachment operations.
+        Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+        """
+        return pulumi.get(self, "stack_type")
 
     @property
     @pulumi.getter

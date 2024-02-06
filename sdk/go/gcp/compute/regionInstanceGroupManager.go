@@ -159,6 +159,8 @@ type RegionInstanceGroupManager struct {
 	// appending a hyphen and a random four-character string to the base instance
 	// name.
 	BaseInstanceName pulumi.StringOutput `pulumi:"baseInstanceName"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional textual description of the instance
 	// group manager.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -281,6 +283,8 @@ type regionInstanceGroupManagerState struct {
 	// appending a hyphen and a random four-character string to the base instance
 	// name.
 	BaseInstanceName *string `pulumi:"baseInstanceName"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional textual description of the instance
 	// group manager.
 	Description *string `pulumi:"description"`
@@ -368,6 +372,8 @@ type RegionInstanceGroupManagerState struct {
 	// appending a hyphen and a random four-character string to the base instance
 	// name.
 	BaseInstanceName pulumi.StringPtrInput
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
 	// An optional textual description of the instance
 	// group manager.
 	Description pulumi.StringPtrInput
@@ -715,6 +721,11 @@ func (o RegionInstanceGroupManagerOutput) AutoHealingPolicies() RegionInstanceGr
 // name.
 func (o RegionInstanceGroupManagerOutput) BaseInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.BaseInstanceName }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o RegionInstanceGroupManagerOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
 // An optional textual description of the instance

@@ -153,6 +153,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly baseInstanceName!: pulumi.Output<string>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
      * An optional textual description of the instance
      * group manager.
      */
@@ -276,6 +280,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["allInstancesConfig"] = state ? state.allInstancesConfig : undefined;
             resourceInputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
             resourceInputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["instanceGroup"] = state ? state.instanceGroup : undefined;
@@ -324,6 +329,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["waitForInstances"] = args ? args.waitForInstances : undefined;
             resourceInputs["waitForInstancesStatus"] = args ? args.waitForInstancesStatus : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
@@ -359,6 +365,10 @@ export interface InstanceGroupManagerState {
      * name.
      */
     baseInstanceName?: pulumi.Input<string>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional textual description of the instance
      * group manager.

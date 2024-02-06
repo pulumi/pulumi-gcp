@@ -6716,6 +6716,118 @@ export namespace binaryauthorization {
 
 }
 
+export namespace blockchainnodeengine {
+    export interface BlockchainNodesConnectionInfo {
+        /**
+         * (Output)
+         * The endpoint information through which to interact with a blockchain node.
+         * Structure is documented below.
+         */
+        endpointInfos: outputs.blockchainnodeengine.BlockchainNodesConnectionInfoEndpointInfo[];
+        /**
+         * (Output)
+         * A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+         */
+        serviceAttachment: string;
+    }
+
+    export interface BlockchainNodesConnectionInfoEndpointInfo {
+        /**
+         * (Output)
+         * The assigned URL for the node JSON-RPC API endpoint.
+         */
+        jsonRpcApiEndpoint: string;
+        /**
+         * (Output)
+         * The assigned URL for the node WebSockets API endpoint.
+         */
+        websocketsApiEndpoint: string;
+    }
+
+    export interface BlockchainNodesEthereumDetails {
+        /**
+         * (Output)
+         * User-provided key-value pairs
+         * Structure is documented below.
+         */
+        additionalEndpoints: outputs.blockchainnodeengine.BlockchainNodesEthereumDetailsAdditionalEndpoint[];
+        /**
+         * Enables JSON-RPC access to functions in the admin namespace. Defaults to false.
+         */
+        apiEnableAdmin?: boolean;
+        /**
+         * Enables JSON-RPC access to functions in the debug namespace. Defaults to false.
+         */
+        apiEnableDebug?: boolean;
+        /**
+         * The consensus client
+         * Possible values are: `CONSENSUS_CLIENT_UNSPECIFIED`, `LIGHTHOUSE`.
+         */
+        consensusClient?: string;
+        /**
+         * The execution client
+         * Possible values are: `EXECUTION_CLIENT_UNSPECIFIED`, `GETH`, `ERIGON`.
+         */
+        executionClient?: string;
+        /**
+         * User-provided key-value pairs
+         * Structure is documented below.
+         */
+        gethDetails?: outputs.blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetails;
+        /**
+         * The Ethereum environment being accessed.
+         * Possible values are: `MAINNET`, `TESTNET_GOERLI_PRATER`, `TESTNET_SEPOLIA`.
+         */
+        network?: string;
+        /**
+         * The type of Ethereum node.
+         * Possible values are: `LIGHT`, `FULL`, `ARCHIVE`.
+         */
+        nodeType?: string;
+        /**
+         * Configuration for validator-related parameters on the beacon client, and for any managed validator client.
+         * Structure is documented below.
+         */
+        validatorConfig?: outputs.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfig;
+    }
+
+    export interface BlockchainNodesEthereumDetailsAdditionalEndpoint {
+        /**
+         * (Output)
+         * The assigned URL for the node's Beacon API endpoint.
+         */
+        beaconApiEndpoint: string;
+        /**
+         * (Output)
+         * The assigned URL for the node's Beacon Prometheus metrics endpoint.
+         */
+        beaconPrometheusMetricsApiEndpoint: string;
+        /**
+         * (Output)
+         * The assigned URL for the node's execution client's Prometheus metrics endpoint.
+         */
+        executionClientPrometheusMetricsApiEndpoint: string;
+    }
+
+    export interface BlockchainNodesEthereumDetailsGethDetails {
+        /**
+         * Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
+         * Possible values are: `FULL`, `ARCHIVE`.
+         *
+         * <a name="nestedAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
+         */
+        garbageCollectionMode?: string;
+    }
+
+    export interface BlockchainNodesEthereumDetailsValidatorConfig {
+        /**
+         * URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
+         */
+        mevRelayUrls?: string[];
+    }
+
+}
+
 export namespace certificateauthority {
     export interface AuthorityAccessUrl {
         /**
@@ -21461,6 +21573,86 @@ export namespace compute {
          * - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
          */
         enableVtpm: boolean;
+    }
+
+    export interface GetMachineTypesMachineType {
+        /**
+         * A list of accelerator configurations assigned to this machine type. Structure is documented below.
+         */
+        accelerators: outputs.compute.GetMachineTypesMachineTypeAccelerator[];
+        /**
+         * The configuration of bundled local SSD for the machine type. Structure is documented below.
+         */
+        bundledLocalSsds: outputs.compute.GetMachineTypesMachineTypeBundledLocalSsd[];
+        /**
+         * The deprecation status associated with this machine type. Structure is documented below.
+         */
+        deprecateds: outputs.compute.GetMachineTypesMachineTypeDeprecated[];
+        /**
+         * A textual description of the machine type.
+         */
+        description: string;
+        /**
+         * The number of virtual CPUs that are available to the instance.
+         */
+        guestCpus: number;
+        /**
+         * Whether this machine type has a shared CPU.
+         */
+        isSharedCpus: boolean;
+        /**
+         * The maximum persistent disks allowed.
+         */
+        maximumPersistentDisks: number;
+        /**
+         * The maximum total persistent disks size (GB) allowed.
+         */
+        maximumPersistentDisksSizeGb: number;
+        /**
+         * The amount of physical memory available to the instance, defined in MB.
+         */
+        memoryMb: number;
+        /**
+         * The name of the machine type.
+         */
+        name: string;
+        /**
+         * The server-defined URL for the machine type.
+         */
+        selfLink: string;
+    }
+
+    export interface GetMachineTypesMachineTypeAccelerator {
+        /**
+         * Number of accelerator cards exposed to the guest.
+         */
+        guestAcceleratorCount: number;
+        /**
+         * The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
+         */
+        guestAcceleratorType: string;
+    }
+
+    export interface GetMachineTypesMachineTypeBundledLocalSsd {
+        /**
+         * The default disk interface if the interface is not specified.
+         */
+        defaultInterface: string;
+        /**
+         * The number of partitions.
+         */
+        partitionCount: number;
+    }
+
+    export interface GetMachineTypesMachineTypeDeprecated {
+        /**
+         * The URL of the suggested replacement for a deprecated machine type.
+         */
+        replacement: string;
+        /**
+         * The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
+         */
+        state: string;
     }
 
     export interface GetRegionDiskAsyncPrimaryDisk {
@@ -51491,6 +51683,76 @@ export namespace diagflow {
 
 }
 
+export namespace discoveryengine {
+    export interface ChatEngineChatEngineConfig {
+        /**
+         * The configuration to generate the Dialogflow agent that is associated to this Engine.
+         * Structure is documented below.
+         */
+        agentCreationConfig: outputs.discoveryengine.ChatEngineChatEngineConfigAgentCreationConfig;
+    }
+
+    export interface ChatEngineChatEngineConfigAgentCreationConfig {
+        /**
+         * Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+         */
+        business?: string;
+        /**
+         * The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+         */
+        defaultLanguageCode: string;
+        /**
+         * Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
+         *
+         * - - -
+         */
+        location?: string;
+        /**
+         * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+         */
+        timeZone: string;
+    }
+
+    export interface ChatEngineChatEngineMetadata {
+        /**
+         * (Output)
+         * The resource name of a Dialogflow agent, that this Chat Engine refers to.
+         */
+        dialogflowAgent: string;
+    }
+
+    export interface ChatEngineCommonConfig {
+        /**
+         * The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+         */
+        companyName?: string;
+    }
+
+    export interface SearchEngineCommonConfig {
+        /**
+         * The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+         */
+        companyName?: string;
+    }
+
+    export interface SearchEngineSearchEngineConfig {
+        /**
+         * The add-on that this search engine enables.
+         * Each value may be one of: `SEARCH_ADD_ON_LLM`.
+         *
+         * - - -
+         */
+        searchAddOns?: string[];
+        /**
+         * The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+         * Default value is `SEARCH_TIER_STANDARD`.
+         * Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
+         */
+        searchTier?: string;
+    }
+
+}
+
 export namespace dns {
     export interface DnsManagedZoneIamBindingCondition {
         description?: string;
@@ -52981,12 +53243,11 @@ export namespace filestore {
          */
         nfsExportOptions?: outputs.filestore.InstanceFileSharesNfsExportOption[];
         /**
-         * (Output)
          * The resource name of the backup, in the format
          * projects/{projectId}/locations/{locationId}/backups/{backupId},
          * that this file share has been restored from.
          */
-        sourceBackup: string;
+        sourceBackup?: string;
     }
 
     export interface InstanceFileSharesNfsExportOption {

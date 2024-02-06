@@ -429,6 +429,7 @@ class _RegionInstanceGroupManagerState:
                  all_instances_config: Optional[pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: Optional[pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs']] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -464,6 +465,7 @@ class _RegionInstanceGroupManagerState:
                are lowercase letters, numbers, and hyphens (-). Instances are named by
                appending a hyphen and a random four-character string to the base instance
                name.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -519,6 +521,8 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if base_instance_name is not None:
             pulumi.set(__self__, "base_instance_name", base_instance_name)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if distribution_policy_target_shape is not None:
@@ -607,6 +611,18 @@ class _RegionInstanceGroupManagerState:
     @base_instance_name.setter
     def base_instance_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "base_instance_name", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -1236,6 +1252,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["versions"] = versions
             __props__.__dict__["wait_for_instances"] = wait_for_instances
             __props__.__dict__["wait_for_instances_status"] = wait_for_instances_status
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["instance_group"] = None
             __props__.__dict__["self_link"] = None
@@ -1253,6 +1270,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             all_instances_config: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAllInstancesConfigArgs']]] = None,
             auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
             base_instance_name: Optional[pulumi.Input[str]] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
             distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1293,6 +1311,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                are lowercase letters, numbers, and hyphens (-). Instances are named by
                appending a hyphen and a random four-character string to the base instance
                name.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -1349,6 +1368,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["all_instances_config"] = all_instances_config
         __props__.__dict__["auto_healing_policies"] = auto_healing_policies
         __props__.__dict__["base_instance_name"] = base_instance_name
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["distribution_policy_target_shape"] = distribution_policy_target_shape
         __props__.__dict__["distribution_policy_zones"] = distribution_policy_zones
@@ -1404,6 +1424,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         name.
         """
         return pulumi.get(self, "base_instance_name")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter

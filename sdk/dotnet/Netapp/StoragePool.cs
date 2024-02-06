@@ -18,7 +18,9 @@ namespace Pulumi.Gcp.Netapp
     /// * LDAP use for NFS volumes, if applicable
     /// * Customer-managed encryption key (CMEK) policy
     /// 
-    /// The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool independent of consumption at the volume level.
+    /// The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
+    /// component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
+    /// independent of consumption at the volume level.
     /// 
     /// To get more information about storagePool, see:
     /// 
@@ -37,9 +39,11 @@ namespace Pulumi.Gcp.Netapp
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // Create a network or use datasource to reference existing network
     ///     var peeringNetwork = new Gcp.Compute.Network("peeringNetwork");
     /// 
-    ///     // Create an IP address
+    ///     // Reserve a CIDR for NetApp Volumes to use
+    ///     // When using shared-VPCs, this resource needs to be created in host project
     ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
     ///     {
     ///         Purpose = "VPC_PEERING",
@@ -48,7 +52,8 @@ namespace Pulumi.Gcp.Netapp
     ///         Network = peeringNetwork.Id,
     ///     });
     /// 
-    ///     // Create a private connection
+    ///     // Create a Private Service Access connection
+    ///     // When using shared-VPCs, this resource needs to be created in host project
     ///     var @default = new Gcp.ServiceNetworking.Connection("default", new()
     ///     {
     ///         Network = peeringNetwork.Id,
@@ -59,6 +64,18 @@ namespace Pulumi.Gcp.Netapp
     ///         },
     ///     });
     /// 
+    ///     // Modify the PSA Connection to allow import/export of custom routes
+    ///     // When using shared-VPCs, this resource needs to be created in host project
+    ///     var routeUpdates = new Gcp.Compute.NetworkPeeringRoutesConfig("routeUpdates", new()
+    ///     {
+    ///         Peering = @default.Peering,
+    ///         Network = peeringNetwork.Name,
+    ///         ImportCustomRoutes = true,
+    ///         ExportCustomRoutes = true,
+    ///     });
+    /// 
+    ///     // Create a storage pool
+    ///     // Create this resource in the project which is expected to own the volumes
     ///     var testPool = new Gcp.Netapp.StoragePool("testPool", new()
     ///     {
     ///         Location = "us-central1",

@@ -260,6 +260,11 @@ export const getMachineImageIamPolicy: typeof import("./getMachineImageIamPolicy
 export const getMachineImageIamPolicyOutput: typeof import("./getMachineImageIamPolicy").getMachineImageIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getMachineImageIamPolicy","getMachineImageIamPolicyOutput"], () => require("./getMachineImageIamPolicy"));
 
+export { GetMachineTypesArgs, GetMachineTypesResult, GetMachineTypesOutputArgs } from "./getMachineTypes";
+export const getMachineTypes: typeof import("./getMachineTypes").getMachineTypes = null as any;
+export const getMachineTypesOutput: typeof import("./getMachineTypes").getMachineTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getMachineTypes","getMachineTypesOutput"], () => require("./getMachineTypes"));
+
 export { GetNetblockIPRangesArgs, GetNetblockIPRangesResult, GetNetblockIPRangesOutputArgs } from "./getNetblockIPRanges";
 export const getNetblockIPRanges: typeof import("./getNetblockIPRanges").getNetblockIPRanges = null as any;
 export const getNetblockIPRangesOutput: typeof import("./getNetblockIPRanges").getNetblockIPRangesOutput = null as any;
@@ -725,6 +730,11 @@ export type RegionInstanceTemplate = import("./regionInstanceTemplate").RegionIn
 export const RegionInstanceTemplate: typeof import("./regionInstanceTemplate").RegionInstanceTemplate = null as any;
 utilities.lazyLoad(exports, ["RegionInstanceTemplate"], () => require("./regionInstanceTemplate"));
 
+export { RegionNetworkEndpointArgs, RegionNetworkEndpointState } from "./regionNetworkEndpoint";
+export type RegionNetworkEndpoint = import("./regionNetworkEndpoint").RegionNetworkEndpoint;
+export const RegionNetworkEndpoint: typeof import("./regionNetworkEndpoint").RegionNetworkEndpoint = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkEndpoint"], () => require("./regionNetworkEndpoint"));
+
 export { RegionNetworkEndpointGroupArgs, RegionNetworkEndpointGroupState } from "./regionNetworkEndpointGroup";
 export type RegionNetworkEndpointGroup = import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup;
 export const RegionNetworkEndpointGroup: typeof import("./regionNetworkEndpointGroup").RegionNetworkEndpointGroup = null as any;
@@ -1146,6 +1156,8 @@ const _module = {
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
             case "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate":
                 return new RegionInstanceTemplate(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint":
+                return new RegionNetworkEndpoint(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup":
                 return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy":
@@ -1334,6 +1346,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionDiskResourcePolicyAt
 pulumi.runtime.registerResourceModule("gcp", "compute/regionHealthCheck", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceGroupManager", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionInstanceTemplate", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpointGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyAssociation", _module)

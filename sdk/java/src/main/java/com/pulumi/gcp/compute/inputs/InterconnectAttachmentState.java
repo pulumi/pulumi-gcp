@@ -467,6 +467,29 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
     }
 
     /**
+     * The stack type for this interconnect attachment to identify whether the IPv6
+     * feature is enabled or not. If not specified, IPV4_ONLY will be used.
+     * This field can be both set at interconnect attachments creation and update
+     * interconnect attachment operations.
+     * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+     * 
+     */
+    @Import(name="stackType")
+    private @Nullable Output<String> stackType;
+
+    /**
+     * @return The stack type for this interconnect attachment to identify whether the IPv6
+     * feature is enabled or not. If not specified, IPV4_ONLY will be used.
+     * This field can be both set at interconnect attachments creation and update
+     * interconnect attachment operations.
+     * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+     * 
+     */
+    public Optional<Output<String>> stackType() {
+        return Optional.ofNullable(this.stackType);
+    }
+
+    /**
      * [Output Only] The current state of this attachment&#39;s functionality.
      * 
      */
@@ -541,6 +564,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
         this.region = $.region;
         this.router = $.router;
         this.selfLink = $.selfLink;
+        this.stackType = $.stackType;
         this.state = $.state;
         this.type = $.type;
         this.vlanTag8021q = $.vlanTag8021q;
@@ -1187,6 +1211,35 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
          */
         public Builder selfLink(String selfLink) {
             return selfLink(Output.of(selfLink));
+        }
+
+        /**
+         * @param stackType The stack type for this interconnect attachment to identify whether the IPv6
+         * feature is enabled or not. If not specified, IPV4_ONLY will be used.
+         * This field can be both set at interconnect attachments creation and update
+         * interconnect attachment operations.
+         * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(@Nullable Output<String> stackType) {
+            $.stackType = stackType;
+            return this;
+        }
+
+        /**
+         * @param stackType The stack type for this interconnect attachment to identify whether the IPv6
+         * feature is enabled or not. If not specified, IPV4_ONLY will be used.
+         * This field can be both set at interconnect attachments creation and update
+         * interconnect attachment operations.
+         * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stackType(String stackType) {
+            return stackType(Output.of(stackType));
         }
 
         /**

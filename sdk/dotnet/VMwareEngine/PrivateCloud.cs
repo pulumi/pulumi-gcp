@@ -185,7 +185,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// Initial type of the private cloud.
-        /// Default value is `STANDARD`.
         /// Possible values are: `STANDARD`, `TIME_LIMITED`.
         /// </summary>
         [Output("type")]
@@ -291,7 +290,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// Initial type of the private cloud.
-        /// Default value is `STANDARD`.
         /// Possible values are: `STANDARD`, `TIME_LIMITED`.
         /// </summary>
         [Input("type")]
@@ -379,7 +377,6 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// Initial type of the private cloud.
-        /// Default value is `STANDARD`.
         /// Possible values are: `STANDARD`, `TIME_LIMITED`.
         /// </summary>
         [Input("type")]

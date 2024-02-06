@@ -60,6 +60,8 @@ billingProject: Optional[str]
 
 binaryAuthorizationCustomEndpoint: Optional[str]
 
+blockchainNodeEngineCustomEndpoint: Optional[str]
+
 certificateManagerCustomEndpoint: Optional[str]
 
 cloudAssetCustomEndpoint: Optional[str]

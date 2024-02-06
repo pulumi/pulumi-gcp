@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StoragePool{}
 	case "gcp:netapp/volume:Volume":
 		r = &Volume{}
+	case "gcp:netapp/volumeSnapshot:VolumeSnapshot":
+		r = &VolumeSnapshot{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -74,6 +76,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"netapp/volume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"netapp/volumeSnapshot",
 		&module{version},
 	)
 }

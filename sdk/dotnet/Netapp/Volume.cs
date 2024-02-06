@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.Netapp
     ///         {
     ///             "NFSV3",
     ///         },
+    ///         DeletionPolicy = "DEFAULT",
     ///     });
     /// 
     /// });
@@ -92,6 +93,14 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("capacityGib")]
         public Output<string> CapacityGib { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy to determine if the volume should be deleted forcefully.
+        /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+        /// Setting this parameter to FORCE will delete volumes including nested snapshots.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource.
@@ -330,6 +339,14 @@ namespace Pulumi.Gcp.Netapp
         public Input<string> CapacityGib { get; set; } = null!;
 
         /// <summary>
+        /// Policy to determine if the volume should be deleted forcefully.
+        /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+        /// Setting this parameter to FORCE will delete volumes including nested snapshots.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
@@ -483,6 +500,14 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("capacityGib")]
         public Input<string>? CapacityGib { get; set; }
+
+        /// <summary>
+        /// Policy to determine if the volume should be deleted forcefully.
+        /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+        /// Setting this parameter to FORCE will delete volumes including nested snapshots.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// An optional description of this resource.

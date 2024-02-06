@@ -179,6 +179,10 @@ type Instance struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Contains the name of allocated IP address ranges associated with
+	// the private service access connection for example, "test-default"
+	// associated with IP range 10.0.0.0/29.
+	ReservedIpRangeIds pulumi.StringArrayOutput `pulumi:"reservedIpRangeIds"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
@@ -279,6 +283,10 @@ type instanceState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// Contains the name of allocated IP address ranges associated with
+	// the private service access connection for example, "test-default"
+	// associated with IP range 10.0.0.0/29.
+	ReservedIpRangeIds []string `pulumi:"reservedIpRangeIds"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones []string `pulumi:"zones"`
@@ -339,6 +347,10 @@ type InstanceState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// Contains the name of allocated IP address ranges associated with
+	// the private service access connection for example, "test-default"
+	// associated with IP range 10.0.0.0/29.
+	ReservedIpRangeIds pulumi.StringArrayInput
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones pulumi.StringArrayInput
@@ -383,6 +395,10 @@ type instanceArgs struct {
 	Project *string `pulumi:"project"`
 	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// Contains the name of allocated IP address ranges associated with
+	// the private service access connection for example, "test-default"
+	// associated with IP range 10.0.0.0/29.
+	ReservedIpRangeIds []string `pulumi:"reservedIpRangeIds"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones []string `pulumi:"zones"`
@@ -424,6 +440,10 @@ type InstanceArgs struct {
 	Project pulumi.StringPtrInput
 	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// Contains the name of allocated IP address ranges associated with
+	// the private service access connection for example, "test-default"
+	// associated with IP range 10.0.0.0/29.
+	ReservedIpRangeIds pulumi.StringArrayInput
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones pulumi.StringArrayInput
@@ -622,6 +642,13 @@ func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 // The region of the Memcache instance. If it is not provided, the provider region is used.
 func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Contains the name of allocated IP address ranges associated with
+// the private service access connection for example, "test-default"
+// associated with IP range 10.0.0.0/29.
+func (o InstanceOutput) ReservedIpRangeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.ReservedIpRangeIds }).(pulumi.StringArrayOutput)
 }
 
 // Zones where memcache nodes should be provisioned.  If not

@@ -311,14 +311,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="databaseFlags", refs={Map.class,String.class}, tree="[0,1,1]")
-    private Output</* @Nullable */ Map<String,String>> databaseFlags;
+    private Output<Map<String,String>> databaseFlags;
 
     /**
      * @return Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
      * 
      */
-    public Output<Optional<Map<String,String>>> databaseFlags() {
-        return Codegen.optional(this.databaseFlags);
+    public Output<Map<String,String>> databaseFlags() {
+        return this.databaseFlags;
     }
     /**
      * User-settable and human-readable display name for the Instance.

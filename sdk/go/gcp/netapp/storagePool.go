@@ -20,7 +20,9 @@ import (
 // * LDAP use for NFS volumes, if applicable
 // * Customer-managed encryption key (CMEK) policy
 //
-// The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool independent of consumption at the volume level.
+// The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
+// component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
+// independent of consumption at the volume level.
 //
 // To get more information about storagePool, see:
 //
@@ -64,6 +66,15 @@ import (
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "routeUpdates", &compute.NetworkPeeringRoutesConfigArgs{
+//				Peering:            _default.Peering,
+//				Network:            peeringNetwork.Name,
+//				ImportCustomRoutes: pulumi.Bool(true),
+//				ExportCustomRoutes: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

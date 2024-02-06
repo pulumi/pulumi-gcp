@@ -90,6 +90,21 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     }
 
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Import(name="creationTimestamp")
+    private @Nullable Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Optional<Output<String>> creationTimestamp() {
+        return Optional.ofNullable(this.creationTimestamp);
+    }
+
+    /**
      * An optional textual description of the instance
      * group manager.
      * 
@@ -477,6 +492,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         this.allInstancesConfig = $.allInstancesConfig;
         this.autoHealingPolicies = $.autoHealingPolicies;
         this.baseInstanceName = $.baseInstanceName;
+        this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.distributionPolicyTargetShape = $.distributionPolicyTargetShape;
         this.distributionPolicyZones = $.distributionPolicyZones;
@@ -596,6 +612,27 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
          */
         public Builder baseInstanceName(String baseInstanceName) {
             return baseInstanceName(Output.of(baseInstanceName));
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(@Nullable Output<String> creationTimestamp) {
+            $.creationTimestamp = creationTimestamp;
+            return this;
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(String creationTimestamp) {
+            return creationTimestamp(Output.of(creationTimestamp));
         }
 
         /**

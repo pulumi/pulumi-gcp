@@ -22,7 +22,7 @@ class GetInstanceGroupManagerResult:
     """
     A collection of values returned by getInstanceGroupManager.
     """
-    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, description=None, fingerprint=None, id=None, instance_group=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, project=None, self_link=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
+    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, project=None, self_link=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
         if all_instances_configs and not isinstance(all_instances_configs, list):
             raise TypeError("Expected argument 'all_instances_configs' to be a list")
         pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -32,6 +32,9 @@ class GetInstanceGroupManagerResult:
         if base_instance_name and not isinstance(base_instance_name, str):
             raise TypeError("Expected argument 'base_instance_name' to be a str")
         pulumi.set(__self__, "base_instance_name", base_instance_name)
+        if creation_timestamp and not isinstance(creation_timestamp, str):
+            raise TypeError("Expected argument 'creation_timestamp' to be a str")
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -113,6 +116,11 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="baseInstanceName")
     def base_instance_name(self) -> str:
         return pulumi.get(self, "base_instance_name")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter
@@ -237,6 +245,7 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
             all_instances_configs=self.all_instances_configs,
             auto_healing_policies=self.auto_healing_policies,
             base_instance_name=self.base_instance_name,
+            creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
             id=self.id,
@@ -300,6 +309,7 @@ def get_instance_group_manager(name: Optional[str] = None,
         all_instances_configs=pulumi.get(__ret__, 'all_instances_configs'),
         auto_healing_policies=pulumi.get(__ret__, 'auto_healing_policies'),
         base_instance_name=pulumi.get(__ret__, 'base_instance_name'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         id=pulumi.get(__ret__, 'id'),

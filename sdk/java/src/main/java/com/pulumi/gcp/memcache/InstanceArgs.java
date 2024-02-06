@@ -212,6 +212,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, &#34;test-default&#34;
+     * associated with IP range 10.0.0.0/29.
+     * 
+     */
+    @Import(name="reservedIpRangeIds")
+    private @Nullable Output<List<String>> reservedIpRangeIds;
+
+    /**
+     * @return Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, &#34;test-default&#34;
+     * associated with IP range 10.0.0.0/29.
+     * 
+     */
+    public Optional<Output<List<String>>> reservedIpRangeIds() {
+        return Optional.ofNullable(this.reservedIpRangeIds);
+    }
+
+    /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.
      * 
@@ -242,6 +261,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.nodeCount = $.nodeCount;
         this.project = $.project;
         this.region = $.region;
+        this.reservedIpRangeIds = $.reservedIpRangeIds;
         this.zones = $.zones;
     }
 
@@ -516,6 +536,43 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param reservedIpRangeIds Contains the name of allocated IP address ranges associated with
+         * the private service access connection for example, &#34;test-default&#34;
+         * associated with IP range 10.0.0.0/29.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedIpRangeIds(@Nullable Output<List<String>> reservedIpRangeIds) {
+            $.reservedIpRangeIds = reservedIpRangeIds;
+            return this;
+        }
+
+        /**
+         * @param reservedIpRangeIds Contains the name of allocated IP address ranges associated with
+         * the private service access connection for example, &#34;test-default&#34;
+         * associated with IP range 10.0.0.0/29.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedIpRangeIds(List<String> reservedIpRangeIds) {
+            return reservedIpRangeIds(Output.of(reservedIpRangeIds));
+        }
+
+        /**
+         * @param reservedIpRangeIds Contains the name of allocated IP address ranges associated with
+         * the private service access connection for example, &#34;test-default&#34;
+         * associated with IP range 10.0.0.0/29.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reservedIpRangeIds(String... reservedIpRangeIds) {
+            return reservedIpRangeIds(List.of(reservedIpRangeIds));
         }
 
         /**

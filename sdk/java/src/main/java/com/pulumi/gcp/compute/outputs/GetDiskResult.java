@@ -33,6 +33,7 @@ public final class GetDiskResult {
      */
     private String description;
     private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
+    private String diskId;
     private Map<String,String> effectiveLabels;
     private Boolean enableConfidentialCompute;
     private List<GetDiskGuestOsFeature> guestOsFeatures;
@@ -165,6 +166,9 @@ public final class GetDiskResult {
     }
     public List<GetDiskDiskEncryptionKey> diskEncryptionKeys() {
         return this.diskEncryptionKeys;
+    }
+    public String diskId() {
+        return this.diskId;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -353,6 +357,7 @@ public final class GetDiskResult {
         private String creationTimestamp;
         private String description;
         private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
+        private String diskId;
         private Map<String,String> effectiveLabels;
         private Boolean enableConfidentialCompute;
         private List<GetDiskGuestOsFeature> guestOsFeatures;
@@ -391,6 +396,7 @@ public final class GetDiskResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
+    	      this.diskId = defaults.diskId;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
@@ -461,6 +467,14 @@ public final class GetDiskResult {
         }
         public Builder diskEncryptionKeys(GetDiskDiskEncryptionKey... diskEncryptionKeys) {
             return diskEncryptionKeys(List.of(diskEncryptionKeys));
+        }
+        @CustomType.Setter
+        public Builder diskId(String diskId) {
+            if (diskId == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "diskId");
+            }
+            this.diskId = diskId;
+            return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
@@ -730,6 +744,7 @@ public final class GetDiskResult {
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
             _resultValue.diskEncryptionKeys = diskEncryptionKeys;
+            _resultValue.diskId = diskId;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
             _resultValue.guestOsFeatures = guestOsFeatures;

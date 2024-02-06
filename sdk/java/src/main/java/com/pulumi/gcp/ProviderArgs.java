@@ -195,6 +195,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.binaryAuthorizationCustomEndpoint);
     }
 
+    @Import(name="blockchainNodeEngineCustomEndpoint")
+    private @Nullable Output<String> blockchainNodeEngineCustomEndpoint;
+
+    public Optional<Output<String>> blockchainNodeEngineCustomEndpoint() {
+        return Optional.ofNullable(this.blockchainNodeEngineCustomEndpoint);
+    }
+
     @Import(name="certificateManagerCustomEndpoint")
     private @Nullable Output<String> certificateManagerCustomEndpoint;
 
@@ -1168,6 +1175,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.billingCustomEndpoint = $.billingCustomEndpoint;
         this.billingProject = $.billingProject;
         this.binaryAuthorizationCustomEndpoint = $.binaryAuthorizationCustomEndpoint;
+        this.blockchainNodeEngineCustomEndpoint = $.blockchainNodeEngineCustomEndpoint;
         this.certificateManagerCustomEndpoint = $.certificateManagerCustomEndpoint;
         this.cloudAssetCustomEndpoint = $.cloudAssetCustomEndpoint;
         this.cloudBillingCustomEndpoint = $.cloudBillingCustomEndpoint;
@@ -1546,6 +1554,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder binaryAuthorizationCustomEndpoint(String binaryAuthorizationCustomEndpoint) {
             return binaryAuthorizationCustomEndpoint(Output.of(binaryAuthorizationCustomEndpoint));
+        }
+
+        public Builder blockchainNodeEngineCustomEndpoint(@Nullable Output<String> blockchainNodeEngineCustomEndpoint) {
+            $.blockchainNodeEngineCustomEndpoint = blockchainNodeEngineCustomEndpoint;
+            return this;
+        }
+
+        public Builder blockchainNodeEngineCustomEndpoint(String blockchainNodeEngineCustomEndpoint) {
+            return blockchainNodeEngineCustomEndpoint(Output.of(blockchainNodeEngineCustomEndpoint));
         }
 
         public Builder certificateManagerCustomEndpoint(@Nullable Output<String> certificateManagerCustomEndpoint) {

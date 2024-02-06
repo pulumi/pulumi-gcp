@@ -189,6 +189,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.DiskDiskEncryptionKey?> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("diskId")]
+        public Output<string> DiskId { get; private set; } = null!;
+
+        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
@@ -778,6 +784,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("diskEncryptionKey")]
         public Input<Inputs.DiskDiskEncryptionKeyGetArgs>? DiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("diskId")]
+        public Input<string>? DiskId { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

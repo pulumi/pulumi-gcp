@@ -261,6 +261,14 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * The stack type for this interconnect attachment to identify whether the IPv6
+     * feature is enabled or not. If not specified, IPV4_ONLY will be used.
+     * This field can be both set at interconnect attachments creation and update
+     * interconnect attachment operations.
+     * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+     */
+    public readonly stackType!: pulumi.Output<string>;
+    /**
      * [Output Only] The current state of this attachment's functionality.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -310,6 +318,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["stackType"] = state ? state.stackType : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vlanTag8021q"] = state ? state.vlanTag8021q : undefined;
@@ -331,6 +340,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
+            resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
             resourceInputs["cloudRouterIpAddress"] = undefined /*out*/;
@@ -504,6 +514,14 @@ export interface InterconnectAttachmentState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * The stack type for this interconnect attachment to identify whether the IPv6
+     * feature is enabled or not. If not specified, IPV4_ONLY will be used.
+     * This field can be both set at interconnect attachments creation and update
+     * interconnect attachment operations.
+     * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+     */
+    stackType?: pulumi.Input<string>;
+    /**
      * [Output Only] The current state of this attachment's functionality.
      */
     state?: pulumi.Input<string>;
@@ -634,6 +652,14 @@ export interface InterconnectAttachmentArgs {
      * Cloud Router is configured.
      */
     router: pulumi.Input<string>;
+    /**
+     * The stack type for this interconnect attachment to identify whether the IPv6
+     * feature is enabled or not. If not specified, IPV4_ONLY will be used.
+     * This field can be both set at interconnect attachments creation and update
+     * interconnect attachment operations.
+     * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+     */
+    stackType?: pulumi.Input<string>;
     /**
      * The type of InterconnectAttachment you wish to create. Defaults to
      * DEDICATED.

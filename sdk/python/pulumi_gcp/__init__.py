@@ -46,6 +46,8 @@ if typing.TYPE_CHECKING:
     billing = __billing
     import pulumi_gcp.binaryauthorization as __binaryauthorization
     binaryauthorization = __binaryauthorization
+    import pulumi_gcp.blockchainnodeengine as __blockchainnodeengine
+    blockchainnodeengine = __blockchainnodeengine
     import pulumi_gcp.certificateauthority as __certificateauthority
     certificateauthority = __certificateauthority
     import pulumi_gcp.certificatemanager as __certificatemanager
@@ -255,6 +257,7 @@ else:
     bigtable = _utilities.lazy_import('pulumi_gcp.bigtable')
     billing = _utilities.lazy_import('pulumi_gcp.billing')
     binaryauthorization = _utilities.lazy_import('pulumi_gcp.binaryauthorization')
+    blockchainnodeengine = _utilities.lazy_import('pulumi_gcp.blockchainnodeengine')
     certificateauthority = _utilities.lazy_import('pulumi_gcp.certificateauthority')
     certificatemanager = _utilities.lazy_import('pulumi_gcp.certificatemanager')
     cloudasset = _utilities.lazy_import('pulumi_gcp.cloudasset')
@@ -1400,6 +1403,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.binaryauthorization",
   "classes": {
    "gcp:binaryauthorization/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "blockchainnodeengine/blockchainNodes",
+  "fqn": "pulumi_gcp.blockchainnodeengine",
+  "classes": {
+   "gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes": "BlockchainNodes"
   }
  },
  {
@@ -2636,6 +2647,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/regionNetworkEndpoint",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint": "RegionNetworkEndpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/regionNetworkEndpointGroup",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3860,10 +3879,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "discoveryengine/chatEngine",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/chatEngine:ChatEngine": "ChatEngine"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "discoveryengine/dataStore",
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/dataStore:DataStore": "DataStore"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/searchEngine",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/searchEngine:SearchEngine": "SearchEngine"
   }
  },
  {
@@ -5472,6 +5507,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.netapp",
   "classes": {
    "gcp:netapp/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "netapp/volumeSnapshot",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/volumeSnapshot:VolumeSnapshot": "VolumeSnapshot"
   }
  },
  {

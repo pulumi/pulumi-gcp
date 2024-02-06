@@ -13,7 +13,9 @@ import * as utilities from "../utilities";
  * * LDAP use for NFS volumes, if applicable
  * * Customer-managed encryption key (CMEK) policy
  *
- * The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool independent of consumption at the volume level.
+ * The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
+ * component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
+ * independent of consumption at the volume level.
  *
  * To get more information about storagePool, see:
  *
@@ -28,20 +30,33 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * // Create a network or use datasource to reference existing network
  * const peeringNetwork = new gcp.compute.Network("peeringNetwork", {});
- * // Create an IP address
+ * // Reserve a CIDR for NetApp Volumes to use
+ * // When using shared-VPCs, this resource needs to be created in host project
  * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 16,
  *     network: peeringNetwork.id,
  * });
- * // Create a private connection
+ * // Create a Private Service Access connection
+ * // When using shared-VPCs, this resource needs to be created in host project
  * const _default = new gcp.servicenetworking.Connection("default", {
  *     network: peeringNetwork.id,
  *     service: "netapp.servicenetworking.goog",
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });
+ * // Modify the PSA Connection to allow import/export of custom routes
+ * // When using shared-VPCs, this resource needs to be created in host project
+ * const routeUpdates = new gcp.compute.NetworkPeeringRoutesConfig("routeUpdates", {
+ *     peering: _default.peering,
+ *     network: peeringNetwork.name,
+ *     importCustomRoutes: true,
+ *     exportCustomRoutes: true,
+ * });
+ * // Create a storage pool
+ * // Create this resource in the project which is expected to own the volumes
  * const testPool = new gcp.netapp.StoragePool("testPool", {
  *     location: "us-central1",
  *     serviceLevel: "PREMIUM",

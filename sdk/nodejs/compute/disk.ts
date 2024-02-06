@@ -170,6 +170,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.DiskDiskEncryptionKey | undefined>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly diskId!: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
@@ -388,6 +392,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
+            resourceInputs["diskId"] = state ? state.diskId : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableConfidentialCompute"] = state ? state.enableConfidentialCompute : undefined;
             resourceInputs["guestOsFeatures"] = state ? state.guestOsFeatures : undefined;
@@ -444,6 +449,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["diskId"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["lastAttachTimestamp"] = undefined /*out*/;
@@ -493,6 +499,10 @@ export interface DiskState {
      * Structure is documented below.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    diskId?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */

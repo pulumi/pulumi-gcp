@@ -19,13 +19,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A regional NEG that can support Serverless Products.
+ * A regional NEG that can support Serverless Products and proxying traffic to external backends.
  * 
  * To get more information about RegionNetworkEndpointGroup, see:
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+ *     * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+ *     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
  * 
  * ## Example Usage
  * ### Region Network Endpoint Group Functions
@@ -368,6 +369,74 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Region Network Endpoint Group Internet Ip Port
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;);
+ * 
+ *         var regionNetworkEndpointGroupInternetIpPort = new RegionNetworkEndpointGroup(&#34;regionNetworkEndpointGroupInternetIpPort&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .network(default_.id())
+ *             .networkEndpointType(&#34;INTERNET_IP_PORT&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Region Network Endpoint Group Internet Fqdn Port
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
+ * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network(&#34;default&#34;);
+ * 
+ *         var regionNetworkEndpointGroupInternetFqdnPort = new RegionNetworkEndpointGroup(&#34;regionNetworkEndpointGroupInternetFqdnPort&#34;, RegionNetworkEndpointGroupArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .network(default_.id())
+ *             .networkEndpointType(&#34;INTERNET_FQDN_PORT&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -393,7 +462,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup")
 public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -402,7 +471,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ RegionNetworkEndpointGroupAppEngine> appEngine;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -411,7 +480,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.appEngine);
     }
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -420,7 +489,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ RegionNetworkEndpointGroupCloudFunction> cloudFunction;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -429,7 +498,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.cloudFunction);
     }
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -438,7 +507,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ RegionNetworkEndpointGroupCloudRun> cloudRun;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -489,7 +558,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return this.name;
     }
     /**
-     * This field is only used for PSC.
+     * This field is only used for PSC and INTERNET NEGs.
      * The URL of the network to which all network endpoints in the NEG belong. Uses
      * &#34;default&#34; project network if unspecified.
      * 
@@ -498,7 +567,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ String> network;
 
     /**
-     * @return This field is only used for PSC.
+     * @return This field is only used for PSC and INTERNET NEGs.
      * The URL of the network to which all network endpoints in the NEG belong. Uses
      * &#34;default&#34; project network if unspecified.
      * 
@@ -507,18 +576,18 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.network);
     }
     /**
-     * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+     * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
      * 
      */
     @Export(name="networkEndpointType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkEndpointType;
 
     /**
-     * @return Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+     * @return Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
      * 
      */
     public Output<Optional<String>> networkEndpointType() {
@@ -541,6 +610,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return this.project;
     }
     /**
+     * This field is only used for PSC and INTERNET NEGs.
      * The target service url used to set up private service connection to
      * a Google API or a PSC Producer Service Attachment.
      * 
@@ -549,7 +619,8 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ String> pscTargetService;
 
     /**
-     * @return The target service url used to set up private service connection to
+     * @return This field is only used for PSC and INTERNET NEGs.
+     * The target service url used to set up private service connection to
      * a Google API or a PSC Producer Service Attachment.
      * 
      */
@@ -557,7 +628,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.pscTargetService);
     }
     /**
-     * A reference to the region where the Serverless NEGs Reside.
+     * A reference to the region where the regional NEGs reside.
      * 
      * ***
      * 
@@ -566,7 +637,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output<String> region;
 
     /**
-     * @return A reference to the region where the Serverless NEGs Reside.
+     * @return A reference to the region where the regional NEGs reside.
      * 
      * ***
      * 
@@ -589,7 +660,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return this.selfLink;
     }
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
@@ -598,7 +669,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ RegionNetworkEndpointGroupServerlessDeployment> serverlessDeployment;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return This field is only used for SERVERLESS NEGs.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
@@ -607,7 +678,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.serverlessDeployment);
     }
     /**
-     * This field is only used for PSC.
+     * This field is only used for PSC NEGs.
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      * 
      */
@@ -615,7 +686,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ String> subnetwork;
 
     /**
-     * @return This field is only used for PSC.
+     * @return This field is only used for PSC NEGs.
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      * 
      */

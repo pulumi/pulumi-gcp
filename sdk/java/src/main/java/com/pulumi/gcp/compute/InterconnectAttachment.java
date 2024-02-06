@@ -582,6 +582,28 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
         return this.selfLink;
     }
     /**
+     * The stack type for this interconnect attachment to identify whether the IPv6
+     * feature is enabled or not. If not specified, IPV4_ONLY will be used.
+     * This field can be both set at interconnect attachments creation and update
+     * interconnect attachment operations.
+     * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+     * 
+     */
+    @Export(name="stackType", refs={String.class}, tree="[0]")
+    private Output<String> stackType;
+
+    /**
+     * @return The stack type for this interconnect attachment to identify whether the IPv6
+     * feature is enabled or not. If not specified, IPV4_ONLY will be used.
+     * This field can be both set at interconnect attachments creation and update
+     * interconnect attachment operations.
+     * Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+     * 
+     */
+    public Output<String> stackType() {
+        return this.stackType;
+    }
+    /**
      * [Output Only] The current state of this attachment&#39;s functionality.
      * 
      */

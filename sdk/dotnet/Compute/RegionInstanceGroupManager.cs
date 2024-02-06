@@ -167,6 +167,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> BaseInstanceName { get; private set; } = null!;
 
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
         /// An optional textual description of the instance
         /// group manager.
         /// </summary>
@@ -605,6 +611,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("baseInstanceName")]
         public Input<string>? BaseInstanceName { get; set; }
+
+        /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Input("creationTimestamp")]
+        public Input<string>? CreationTimestamp { get; set; }
 
         /// <summary>
         /// An optional textual description of the instance

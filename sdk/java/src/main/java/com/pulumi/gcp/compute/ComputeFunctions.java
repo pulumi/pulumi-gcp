@@ -56,6 +56,8 @@ import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceTemplatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetMachineTypesArgs;
+import com.pulumi.gcp.compute.inputs.GetMachineTypesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
 import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
@@ -135,6 +137,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceSerialPortResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetLBIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetMachineImageIamPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetMachineTypesResult;
 import com.pulumi.gcp.compute.outputs.GetNetblockIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkPeeringResult;
@@ -4847,6 +4850,96 @@ public final class ComputeFunctions {
     }
     public static CompletableFuture<GetMachineImageIamPolicyResult> getMachineImageIamPolicyPlain(GetMachineImageIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", TypeShape.of(GetMachineImageIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available Google Compute machine types in a zone for a given project.
+     * See more about [machine type availability](https://cloud.google.com/compute/docs/regions-zones#available) in the upstream docs.
+     * 
+     * To get more information about machine types, see:
+     * 
+     * * [API Documentation](https://cloud.google.com/compute/docs/reference/rest/v1/machineTypes/list)
+     * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetMachineTypesResult> getMachineTypes() {
+        return getMachineTypes(GetMachineTypesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available Google Compute machine types in a zone for a given project.
+     * See more about [machine type availability](https://cloud.google.com/compute/docs/regions-zones#available) in the upstream docs.
+     * 
+     * To get more information about machine types, see:
+     * 
+     * * [API Documentation](https://cloud.google.com/compute/docs/reference/rest/v1/machineTypes/list)
+     * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetMachineTypesResult> getMachineTypesPlain() {
+        return getMachineTypesPlain(GetMachineTypesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available Google Compute machine types in a zone for a given project.
+     * See more about [machine type availability](https://cloud.google.com/compute/docs/regions-zones#available) in the upstream docs.
+     * 
+     * To get more information about machine types, see:
+     * 
+     * * [API Documentation](https://cloud.google.com/compute/docs/reference/rest/v1/machineTypes/list)
+     * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetMachineTypesResult> getMachineTypes(GetMachineTypesArgs args) {
+        return getMachineTypes(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available Google Compute machine types in a zone for a given project.
+     * See more about [machine type availability](https://cloud.google.com/compute/docs/regions-zones#available) in the upstream docs.
+     * 
+     * To get more information about machine types, see:
+     * 
+     * * [API Documentation](https://cloud.google.com/compute/docs/reference/rest/v1/machineTypes/list)
+     * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetMachineTypesResult> getMachineTypesPlain(GetMachineTypesPlainArgs args) {
+        return getMachineTypesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available Google Compute machine types in a zone for a given project.
+     * See more about [machine type availability](https://cloud.google.com/compute/docs/regions-zones#available) in the upstream docs.
+     * 
+     * To get more information about machine types, see:
+     * 
+     * * [API Documentation](https://cloud.google.com/compute/docs/reference/rest/v1/machineTypes/list)
+     * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static Output<GetMachineTypesResult> getMachineTypes(GetMachineTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getMachineTypes:getMachineTypes", TypeShape.of(GetMachineTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available Google Compute machine types in a zone for a given project.
+     * See more about [machine type availability](https://cloud.google.com/compute/docs/regions-zones#available) in the upstream docs.
+     * 
+     * To get more information about machine types, see:
+     * 
+     * * [API Documentation](https://cloud.google.com/compute/docs/reference/rest/v1/machineTypes/list)
+     * * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
+     * 
+     * ## Example Usage
+     * 
+     */
+    public static CompletableFuture<GetMachineTypesResult> getMachineTypesPlain(GetMachineTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getMachineTypes:getMachineTypes", TypeShape.of(GetMachineTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.

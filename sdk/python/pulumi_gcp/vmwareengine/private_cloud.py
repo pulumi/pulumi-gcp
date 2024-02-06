@@ -35,7 +35,6 @@ class PrivateCloudArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: Initial type of the private cloud.
-               Default value is `STANDARD`.
                Possible values are: `STANDARD`, `TIME_LIMITED`.
         """
         pulumi.set(__self__, "location", location)
@@ -130,7 +129,6 @@ class PrivateCloudArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Initial type of the private cloud.
-        Default value is `STANDARD`.
         Possible values are: `STANDARD`, `TIME_LIMITED`.
         """
         return pulumi.get(self, "type")
@@ -173,7 +171,6 @@ class _PrivateCloudState:
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
         :param pulumi.Input[str] type: Initial type of the private cloud.
-               Default value is `STANDARD`.
                Possible values are: `STANDARD`, `TIME_LIMITED`.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]] vcenters: Details about a vCenter Server management appliance.
@@ -323,7 +320,6 @@ class _PrivateCloudState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Initial type of the private cloud.
-        Default value is `STANDARD`.
         Possible values are: `STANDARD`, `TIME_LIMITED`.
         """
         return pulumi.get(self, "type")
@@ -460,7 +456,6 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: Initial type of the private cloud.
-               Default value is `STANDARD`.
                Possible values are: `STANDARD`, `TIME_LIMITED`.
         """
         ...
@@ -640,7 +635,6 @@ class PrivateCloud(pulumi.CustomResource):
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
         :param pulumi.Input[str] type: Initial type of the private cloud.
-               Default value is `STANDARD`.
                Possible values are: `STANDARD`, `TIME_LIMITED`.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudVcenterArgs']]]] vcenters: Details about a vCenter Server management appliance.
@@ -747,7 +741,6 @@ class PrivateCloud(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[str]]:
         """
         Initial type of the private cloud.
-        Default value is `STANDARD`.
         Possible values are: `STANDARD`, `TIME_LIMITED`.
         """
         return pulumi.get(self, "type")

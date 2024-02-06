@@ -90,6 +90,9 @@ public final class Config {
     public Optional<String> binaryAuthorizationCustomEndpoint() {
         return Codegen.stringProp("binaryAuthorizationCustomEndpoint").config(config).get();
     }
+    public Optional<String> blockchainNodeEngineCustomEndpoint() {
+        return Codegen.stringProp("blockchainNodeEngineCustomEndpoint").config(config).get();
+    }
     public Optional<String> certificateManagerCustomEndpoint() {
         return Codegen.stringProp("certificateManagerCustomEndpoint").config(config).get();
     }

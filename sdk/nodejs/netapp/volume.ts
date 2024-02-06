@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *     shareName: "test-volume",
  *     storagePool: defaultStoragePool.name,
  *     protocols: ["NFSV3"],
+ *     deletionPolicy: "DEFAULT",
  * });
  * ```
  *
@@ -97,6 +98,12 @@ export class Volume extends pulumi.CustomResource {
      * Capacity of the volume (in GiB).
      */
     public readonly capacityGib!: pulumi.Output<string>;
+    /**
+     * Policy to determine if the volume should be deleted forcefully.
+     * Volumes may have nested snapshot resources. Deleting such a volume will fail.
+     * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -238,6 +245,7 @@ export class Volume extends pulumi.CustomResource {
             const state = argsOrState as VolumeState | undefined;
             resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
             resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
@@ -283,6 +291,7 @@ export class Volume extends pulumi.CustomResource {
                 throw new Error("Missing required property 'storagePool'");
             }
             resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["exportPolicy"] = args ? args.exportPolicy : undefined;
             resourceInputs["kerberosEnabled"] = args ? args.kerberosEnabled : undefined;
@@ -331,6 +340,12 @@ export interface VolumeState {
      * Capacity of the volume (in GiB).
      */
     capacityGib?: pulumi.Input<string>;
+    /**
+     * Policy to determine if the volume should be deleted forcefully.
+     * Volumes may have nested snapshot resources. Deleting such a volume will fail.
+     * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */
@@ -466,6 +481,12 @@ export interface VolumeArgs {
      * Capacity of the volume (in GiB).
      */
     capacityGib: pulumi.Input<string>;
+    /**
+     * Policy to determine if the volume should be deleted forcefully.
+     * Volumes may have nested snapshot resources. Deleting such a volume will fail.
+     * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * An optional description of this resource.
      */
