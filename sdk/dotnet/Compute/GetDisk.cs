@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> DiskEncryptionKeys;
+        public readonly string DiskId;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool EnableConfidentialCompute;
         public readonly ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> GuestOsFeatures;
@@ -272,6 +273,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> diskEncryptionKeys,
 
+            string diskId,
+
             ImmutableDictionary<string, string> effectiveLabels,
 
             bool enableConfidentialCompute,
@@ -338,6 +341,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKeys = diskEncryptionKeys;
+            DiskId = diskId;
             EffectiveLabels = effectiveLabels;
             EnableConfidentialCompute = enableConfidentialCompute;
             GuestOsFeatures = guestOsFeatures;

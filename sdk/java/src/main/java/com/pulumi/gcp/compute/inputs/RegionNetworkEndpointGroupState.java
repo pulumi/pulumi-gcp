@@ -20,7 +20,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     public static final RegionNetworkEndpointGroupState Empty = new RegionNetworkEndpointGroupState();
 
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -29,7 +29,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<RegionNetworkEndpointGroupAppEngineArgs> appEngine;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -39,7 +39,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -48,7 +48,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<RegionNetworkEndpointGroupCloudFunctionArgs> cloudFunction;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -58,7 +58,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -67,7 +67,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<RegionNetworkEndpointGroupCloudRunArgs> cloudRun;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return This field is only used for SERVERLESS NEGs.
      * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
      * Structure is documented below.
      * 
@@ -121,7 +121,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
-     * This field is only used for PSC.
+     * This field is only used for PSC and INTERNET NEGs.
      * The URL of the network to which all network endpoints in the NEG belong. Uses
      * &#34;default&#34; project network if unspecified.
      * 
@@ -130,7 +130,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<String> network;
 
     /**
-     * @return This field is only used for PSC.
+     * @return This field is only used for PSC and INTERNET NEGs.
      * The URL of the network to which all network endpoints in the NEG belong. Uses
      * &#34;default&#34; project network if unspecified.
      * 
@@ -140,18 +140,18 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
-     * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+     * Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
      * 
      */
     @Import(name="networkEndpointType")
     private @Nullable Output<String> networkEndpointType;
 
     /**
-     * @return Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+     * @return Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
      * Default value is `SERVERLESS`.
-     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+     * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
      * 
      */
     public Optional<Output<String>> networkEndpointType() {
@@ -176,6 +176,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
+     * This field is only used for PSC and INTERNET NEGs.
      * The target service url used to set up private service connection to
      * a Google API or a PSC Producer Service Attachment.
      * 
@@ -184,7 +185,8 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<String> pscTargetService;
 
     /**
-     * @return The target service url used to set up private service connection to
+     * @return This field is only used for PSC and INTERNET NEGs.
+     * The target service url used to set up private service connection to
      * a Google API or a PSC Producer Service Attachment.
      * 
      */
@@ -193,7 +195,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
-     * A reference to the region where the Serverless NEGs Reside.
+     * A reference to the region where the regional NEGs reside.
      * 
      * ***
      * 
@@ -202,7 +204,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<String> region;
 
     /**
-     * @return A reference to the region where the Serverless NEGs Reside.
+     * @return A reference to the region where the regional NEGs reside.
      * 
      * ***
      * 
@@ -227,7 +229,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * This field is only used for SERVERLESS NEGs.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
@@ -236,7 +238,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<RegionNetworkEndpointGroupServerlessDeploymentArgs> serverlessDeployment;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return This field is only used for SERVERLESS NEGs.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
@@ -246,7 +248,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
-     * This field is only used for PSC.
+     * This field is only used for PSC NEGs.
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      * 
      */
@@ -254,7 +256,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<String> subnetwork;
 
     /**
-     * @return This field is only used for PSC.
+     * @return This field is only used for PSC NEGs.
      * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
      * 
      */
@@ -299,7 +301,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param appEngine Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param appEngine This field is only used for SERVERLESS NEGs.
          * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
          * Structure is documented below.
          * 
@@ -312,7 +314,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param appEngine Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param appEngine This field is only used for SERVERLESS NEGs.
          * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
          * Structure is documented below.
          * 
@@ -324,7 +326,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param cloudFunction Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param cloudFunction This field is only used for SERVERLESS NEGs.
          * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
          * Structure is documented below.
          * 
@@ -337,7 +339,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param cloudFunction Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param cloudFunction This field is only used for SERVERLESS NEGs.
          * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
          * Structure is documented below.
          * 
@@ -349,7 +351,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param cloudRun Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param cloudRun This field is only used for SERVERLESS NEGs.
          * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
          * Structure is documented below.
          * 
@@ -362,7 +364,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param cloudRun Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param cloudRun This field is only used for SERVERLESS NEGs.
          * Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
          * Structure is documented below.
          * 
@@ -430,7 +432,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param network This field is only used for PSC.
+         * @param network This field is only used for PSC and INTERNET NEGs.
          * The URL of the network to which all network endpoints in the NEG belong. Uses
          * &#34;default&#34; project network if unspecified.
          * 
@@ -443,7 +445,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param network This field is only used for PSC.
+         * @param network This field is only used for PSC and INTERNET NEGs.
          * The URL of the network to which all network endpoints in the NEG belong. Uses
          * &#34;default&#34; project network if unspecified.
          * 
@@ -455,9 +457,9 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param networkEndpointType Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+         * @param networkEndpointType Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
          * Default value is `SERVERLESS`.
-         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
          * 
          * @return builder
          * 
@@ -468,9 +470,9 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param networkEndpointType Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+         * @param networkEndpointType Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
          * Default value is `SERVERLESS`.
-         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+         * Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
          * 
          * @return builder
          * 
@@ -503,7 +505,8 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param pscTargetService The target service url used to set up private service connection to
+         * @param pscTargetService This field is only used for PSC and INTERNET NEGs.
+         * The target service url used to set up private service connection to
          * a Google API or a PSC Producer Service Attachment.
          * 
          * @return builder
@@ -515,7 +518,8 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param pscTargetService The target service url used to set up private service connection to
+         * @param pscTargetService This field is only used for PSC and INTERNET NEGs.
+         * The target service url used to set up private service connection to
          * a Google API or a PSC Producer Service Attachment.
          * 
          * @return builder
@@ -526,7 +530,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param region A reference to the region where the Serverless NEGs Reside.
+         * @param region A reference to the region where the regional NEGs reside.
          * 
          * ***
          * 
@@ -539,7 +543,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param region A reference to the region where the Serverless NEGs Reside.
+         * @param region A reference to the region where the regional NEGs reside.
          * 
          * ***
          * 
@@ -572,7 +576,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param serverlessDeployment Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param serverlessDeployment This field is only used for SERVERLESS NEGs.
          * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
@@ -585,7 +589,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param serverlessDeployment Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param serverlessDeployment This field is only used for SERVERLESS NEGs.
          * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
@@ -597,7 +601,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param subnetwork This field is only used for PSC.
+         * @param subnetwork This field is only used for PSC NEGs.
          * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
          * 
          * @return builder
@@ -609,7 +613,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param subnetwork This field is only used for PSC.
+         * @param subnetwork This field is only used for PSC NEGs.
          * Optional URL of the subnetwork to which all network endpoints in the NEG belong.
          * 
          * @return builder

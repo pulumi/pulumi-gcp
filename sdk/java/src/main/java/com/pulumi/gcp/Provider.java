@@ -166,6 +166,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> binaryAuthorizationCustomEndpoint() {
         return Codegen.optional(this.binaryAuthorizationCustomEndpoint);
     }
+    @Export(name="blockchainNodeEngineCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> blockchainNodeEngineCustomEndpoint;
+
+    public Output<Optional<String>> blockchainNodeEngineCustomEndpoint() {
+        return Codegen.optional(this.blockchainNodeEngineCustomEndpoint);
+    }
     @Export(name="certificateManagerCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateManagerCustomEndpoint;
 

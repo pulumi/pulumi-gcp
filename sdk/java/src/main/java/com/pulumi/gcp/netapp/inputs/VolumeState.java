@@ -52,6 +52,25 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Policy to determine if the volume should be deleted forcefully.
+     * Volumes may have nested snapshot resources. Deleting such a volume will fail.
+     * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Policy to determine if the volume should be deleted forcefully.
+     * Volumes may have nested snapshot resources. Deleting such a volume will fail.
+     * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * An optional description of this resource.
      * 
      */
@@ -493,6 +512,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     private VolumeState(VolumeState $) {
         this.activeDirectory = $.activeDirectory;
         this.capacityGib = $.capacityGib;
+        this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.encryptionType = $.encryptionType;
@@ -580,6 +600,31 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder capacityGib(String capacityGib) {
             return capacityGib(Output.of(capacityGib));
+        }
+
+        /**
+         * @param deletionPolicy Policy to determine if the volume should be deleted forcefully.
+         * Volumes may have nested snapshot resources. Deleting such a volume will fail.
+         * Setting this parameter to FORCE will delete volumes including nested snapshots.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Policy to determine if the volume should be deleted forcefully.
+         * Volumes may have nested snapshot resources. Deleting such a volume will fail.
+         * Setting this parameter to FORCE will delete volumes including nested snapshots.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

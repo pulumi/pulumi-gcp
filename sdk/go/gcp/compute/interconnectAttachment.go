@@ -255,6 +255,12 @@ type InterconnectAttachment struct {
 	Router pulumi.StringOutput `pulumi:"router"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The stack type for this interconnect attachment to identify whether the IPv6
+	// feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	// This field can be both set at interconnect attachments creation and update
+	// interconnect attachment operations.
+	// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+	StackType pulumi.StringOutput `pulumi:"stackType"`
 	// [Output Only] The current state of this attachment's functionality.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
@@ -407,6 +413,12 @@ type interconnectAttachmentState struct {
 	Router *string `pulumi:"router"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The stack type for this interconnect attachment to identify whether the IPv6
+	// feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	// This field can be both set at interconnect attachments creation and update
+	// interconnect attachment operations.
+	// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+	StackType *string `pulumi:"stackType"`
 	// [Output Only] The current state of this attachment's functionality.
 	State *string `pulumi:"state"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
@@ -527,6 +539,12 @@ type InterconnectAttachmentState struct {
 	Router pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// The stack type for this interconnect attachment to identify whether the IPv6
+	// feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	// This field can be both set at interconnect attachments creation and update
+	// interconnect attachment operations.
+	// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+	StackType pulumi.StringPtrInput
 	// [Output Only] The current state of this attachment's functionality.
 	State pulumi.StringPtrInput
 	// The type of InterconnectAttachment you wish to create. Defaults to
@@ -626,6 +644,12 @@ type interconnectAttachmentArgs struct {
 	// automatically connect the Interconnect to the network & region within which the
 	// Cloud Router is configured.
 	Router string `pulumi:"router"`
+	// The stack type for this interconnect attachment to identify whether the IPv6
+	// feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	// This field can be both set at interconnect attachments creation and update
+	// interconnect attachment operations.
+	// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+	StackType *string `pulumi:"stackType"`
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
 	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -720,6 +744,12 @@ type InterconnectAttachmentArgs struct {
 	// automatically connect the Interconnect to the network & region within which the
 	// Cloud Router is configured.
 	Router pulumi.StringInput
+	// The stack type for this interconnect attachment to identify whether the IPv6
+	// feature is enabled or not. If not specified, IPV4_ONLY will be used.
+	// This field can be both set at interconnect attachments creation and update
+	// interconnect attachment operations.
+	// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+	StackType pulumi.StringPtrInput
 	// The type of InterconnectAttachment you wish to create. Defaults to
 	// DEDICATED.
 	// Possible values are: `DEDICATED`, `PARTNER`, `PARTNER_PROVIDER`.
@@ -987,6 +1017,15 @@ func (o InterconnectAttachmentOutput) Router() pulumi.StringOutput {
 // The URI of the created resource.
 func (o InterconnectAttachmentOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The stack type for this interconnect attachment to identify whether the IPv6
+// feature is enabled or not. If not specified, IPV4_ONLY will be used.
+// This field can be both set at interconnect attachments creation and update
+// interconnect attachment operations.
+// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+func (o InterconnectAttachmentOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.StackType }).(pulumi.StringOutput)
 }
 
 // [Output Only] The current state of this attachment's functionality.

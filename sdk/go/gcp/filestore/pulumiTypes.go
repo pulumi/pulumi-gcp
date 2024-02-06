@@ -22,7 +22,6 @@ type InstanceFileShares struct {
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	// Structure is documented below.
 	NfsExportOptions []InstanceFileSharesNfsExportOption `pulumi:"nfsExportOptions"`
-	// (Output)
 	// The resource name of the backup, in the format
 	// projects/{projectId}/locations/{locationId}/backups/{backupId},
 	// that this file share has been restored from.
@@ -49,7 +48,6 @@ type InstanceFileSharesArgs struct {
 	// Nfs Export Options. There is a limit of 10 export options per file share.
 	// Structure is documented below.
 	NfsExportOptions InstanceFileSharesNfsExportOptionArrayInput `pulumi:"nfsExportOptions"`
-	// (Output)
 	// The resource name of the backup, in the format
 	// projects/{projectId}/locations/{locationId}/backups/{backupId},
 	// that this file share has been restored from.
@@ -150,7 +148,6 @@ func (o InstanceFileSharesOutput) NfsExportOptions() InstanceFileSharesNfsExport
 	return o.ApplyT(func(v InstanceFileShares) []InstanceFileSharesNfsExportOption { return v.NfsExportOptions }).(InstanceFileSharesNfsExportOptionArrayOutput)
 }
 
-// (Output)
 // The resource name of the backup, in the format
 // projects/{projectId}/locations/{locationId}/backups/{backupId},
 // that this file share has been restored from.
@@ -214,7 +211,6 @@ func (o InstanceFileSharesPtrOutput) NfsExportOptions() InstanceFileSharesNfsExp
 	}).(InstanceFileSharesNfsExportOptionArrayOutput)
 }
 
-// (Output)
 // The resource name of the backup, in the format
 // projects/{projectId}/locations/{locationId}/backups/{backupId},
 // that this file share has been restored from.

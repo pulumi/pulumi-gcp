@@ -244,6 +244,14 @@ namespace Pulumi.Gcp.Memcache
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// Contains the name of allocated IP address ranges associated with
+        /// the private service access connection for example, "test-default"
+        /// associated with IP range 10.0.0.0/29.
+        /// </summary>
+        [Output("reservedIpRangeIds")]
+        public Output<ImmutableArray<string>> ReservedIpRangeIds { get; private set; } = null!;
+
+        /// <summary>
         /// Zones where memcache nodes should be provisioned.  If not
         /// provided, all zones will be used.
         /// </summary>
@@ -384,6 +392,20 @@ namespace Pulumi.Gcp.Memcache
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("reservedIpRangeIds")]
+        private InputList<string>? _reservedIpRangeIds;
+
+        /// <summary>
+        /// Contains the name of allocated IP address ranges associated with
+        /// the private service access connection for example, "test-default"
+        /// associated with IP range 10.0.0.0/29.
+        /// </summary>
+        public InputList<string> ReservedIpRangeIds
+        {
+            get => _reservedIpRangeIds ?? (_reservedIpRangeIds = new InputList<string>());
+            set => _reservedIpRangeIds = value;
+        }
 
         [Input("zones")]
         private InputList<string>? _zones;
@@ -569,6 +591,20 @@ namespace Pulumi.Gcp.Memcache
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("reservedIpRangeIds")]
+        private InputList<string>? _reservedIpRangeIds;
+
+        /// <summary>
+        /// Contains the name of allocated IP address ranges associated with
+        /// the private service access connection for example, "test-default"
+        /// associated with IP range 10.0.0.0/29.
+        /// </summary>
+        public InputList<string> ReservedIpRangeIds
+        {
+            get => _reservedIpRangeIds ?? (_reservedIpRangeIds = new InputList<string>());
+            set => _reservedIpRangeIds = value;
+        }
 
         [Input("zones")]
         private InputList<string>? _zones;

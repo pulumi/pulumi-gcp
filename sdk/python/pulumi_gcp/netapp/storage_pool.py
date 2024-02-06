@@ -527,7 +527,9 @@ class StoragePool(pulumi.CustomResource):
         * LDAP use for NFS volumes, if applicable
         * Customer-managed encryption key (CMEK) policy
 
-        The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool independent of consumption at the volume level.
+        The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
+        component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
+        independent of consumption at the volume level.
 
         To get more information about storagePool, see:
 
@@ -542,18 +544,30 @@ class StoragePool(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # Create a network or use datasource to reference existing network
         peering_network = gcp.compute.Network("peeringNetwork")
-        # Create an IP address
+        # Reserve a CIDR for NetApp Volumes to use
+        # When using shared-VPCs, this resource needs to be created in host project
         private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=peering_network.id)
-        # Create a private connection
+        # Create a Private Service Access connection
+        # When using shared-VPCs, this resource needs to be created in host project
         default = gcp.servicenetworking.Connection("default",
             network=peering_network.id,
             service="netapp.servicenetworking.goog",
             reserved_peering_ranges=[private_ip_alloc.name])
+        # Modify the PSA Connection to allow import/export of custom routes
+        # When using shared-VPCs, this resource needs to be created in host project
+        route_updates = gcp.compute.NetworkPeeringRoutesConfig("routeUpdates",
+            peering=default.peering,
+            network=peering_network.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        # Create a storage pool
+        # Create this resource in the project which is expected to own the volumes
         test_pool = gcp.netapp.StoragePool("testPool",
             location="us-central1",
             service_level="PREMIUM",
@@ -617,7 +631,9 @@ class StoragePool(pulumi.CustomResource):
         * LDAP use for NFS volumes, if applicable
         * Customer-managed encryption key (CMEK) policy
 
-        The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool independent of consumption at the volume level.
+        The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
+        component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
+        independent of consumption at the volume level.
 
         To get more information about storagePool, see:
 
@@ -632,18 +648,30 @@ class StoragePool(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        # Create a network or use datasource to reference existing network
         peering_network = gcp.compute.Network("peeringNetwork")
-        # Create an IP address
+        # Reserve a CIDR for NetApp Volumes to use
+        # When using shared-VPCs, this resource needs to be created in host project
         private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
             prefix_length=16,
             network=peering_network.id)
-        # Create a private connection
+        # Create a Private Service Access connection
+        # When using shared-VPCs, this resource needs to be created in host project
         default = gcp.servicenetworking.Connection("default",
             network=peering_network.id,
             service="netapp.servicenetworking.goog",
             reserved_peering_ranges=[private_ip_alloc.name])
+        # Modify the PSA Connection to allow import/export of custom routes
+        # When using shared-VPCs, this resource needs to be created in host project
+        route_updates = gcp.compute.NetworkPeeringRoutesConfig("routeUpdates",
+            peering=default.peering,
+            network=peering_network.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        # Create a storage pool
+        # Create this resource in the project which is expected to own the volumes
         test_pool = gcp.netapp.StoragePool("testPool",
             location="us-central1",
             service_level="PREMIUM",

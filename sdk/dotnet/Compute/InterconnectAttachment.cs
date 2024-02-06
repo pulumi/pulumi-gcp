@@ -314,6 +314,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// The stack type for this interconnect attachment to identify whether the IPv6
+        /// feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        /// This field can be both set at interconnect attachments creation and update
+        /// interconnect attachment operations.
+        /// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+        /// </summary>
+        [Output("stackType")]
+        public Output<string> StackType { get; private set; } = null!;
+
+        /// <summary>
         /// [Output Only] The current state of this attachment's functionality.
         /// </summary>
         [Output("state")]
@@ -527,6 +537,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;
+
+        /// <summary>
+        /// The stack type for this interconnect attachment to identify whether the IPv6
+        /// feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        /// This field can be both set at interconnect attachments creation and update
+        /// interconnect attachment operations.
+        /// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
 
         /// <summary>
         /// The type of InterconnectAttachment you wish to create. Defaults to
@@ -761,6 +781,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// The stack type for this interconnect attachment to identify whether the IPv6
+        /// feature is enabled or not. If not specified, IPV4_ONLY will be used.
+        /// This field can be both set at interconnect attachments creation and update
+        /// interconnect attachment operations.
+        /// Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
+        /// </summary>
+        [Input("stackType")]
+        public Input<string>? StackType { get; set; }
 
         /// <summary>
         /// [Output Only] The current state of this attachment's functionality.

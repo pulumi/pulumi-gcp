@@ -116,7 +116,6 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Initial type of the private cloud.
-     * Default value is `STANDARD`.
      * Possible values are: `STANDARD`, `TIME_LIMITED`.
      * 
      */
@@ -125,7 +124,6 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Initial type of the private cloud.
-     * Default value is `STANDARD`.
      * Possible values are: `STANDARD`, `TIME_LIMITED`.
      * 
      */
@@ -297,7 +295,6 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Initial type of the private cloud.
-         * Default value is `STANDARD`.
          * Possible values are: `STANDARD`, `TIME_LIMITED`.
          * 
          * @return builder
@@ -310,7 +307,6 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type Initial type of the private cloud.
-         * Default value is `STANDARD`.
          * Possible values are: `STANDARD`, `TIME_LIMITED`.
          * 
          * @return builder

@@ -51,6 +51,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly billingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly billingProject!: pulumi.Output<string | undefined>;
     public readonly binaryAuthorizationCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly blockchainNodeEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly certificateManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudAssetCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudBillingCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -218,6 +219,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["billingCustomEndpoint"] = args ? args.billingCustomEndpoint : undefined;
             resourceInputs["billingProject"] = args ? args.billingProject : undefined;
             resourceInputs["binaryAuthorizationCustomEndpoint"] = args ? args.binaryAuthorizationCustomEndpoint : undefined;
+            resourceInputs["blockchainNodeEngineCustomEndpoint"] = args ? args.blockchainNodeEngineCustomEndpoint : undefined;
             resourceInputs["certificateManagerCustomEndpoint"] = args ? args.certificateManagerCustomEndpoint : undefined;
             resourceInputs["cloudAssetCustomEndpoint"] = args ? args.cloudAssetCustomEndpoint : undefined;
             resourceInputs["cloudBillingCustomEndpoint"] = args ? args.cloudBillingCustomEndpoint : undefined;
@@ -388,6 +390,7 @@ export interface ProviderArgs {
     billingCustomEndpoint?: pulumi.Input<string>;
     billingProject?: pulumi.Input<string>;
     binaryAuthorizationCustomEndpoint?: pulumi.Input<string>;
+    blockchainNodeEngineCustomEndpoint?: pulumi.Input<string>;
     certificateManagerCustomEndpoint?: pulumi.Input<string>;
     cloudAssetCustomEndpoint?: pulumi.Input<string>;
     cloudBillingCustomEndpoint?: pulumi.Input<string>;

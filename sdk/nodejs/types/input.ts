@@ -6189,6 +6189,117 @@ export namespace binaryauthorization {
     }
 }
 
+export namespace blockchainnodeengine {
+    export interface BlockchainNodesConnectionInfo {
+        /**
+         * (Output)
+         * The endpoint information through which to interact with a blockchain node.
+         * Structure is documented below.
+         */
+        endpointInfos?: pulumi.Input<pulumi.Input<inputs.blockchainnodeengine.BlockchainNodesConnectionInfoEndpointInfo>[]>;
+        /**
+         * (Output)
+         * A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+         */
+        serviceAttachment?: pulumi.Input<string>;
+    }
+
+    export interface BlockchainNodesConnectionInfoEndpointInfo {
+        /**
+         * (Output)
+         * The assigned URL for the node JSON-RPC API endpoint.
+         */
+        jsonRpcApiEndpoint?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The assigned URL for the node WebSockets API endpoint.
+         */
+        websocketsApiEndpoint?: pulumi.Input<string>;
+    }
+
+    export interface BlockchainNodesEthereumDetails {
+        /**
+         * (Output)
+         * User-provided key-value pairs
+         * Structure is documented below.
+         */
+        additionalEndpoints?: pulumi.Input<pulumi.Input<inputs.blockchainnodeengine.BlockchainNodesEthereumDetailsAdditionalEndpoint>[]>;
+        /**
+         * Enables JSON-RPC access to functions in the admin namespace. Defaults to false.
+         */
+        apiEnableAdmin?: pulumi.Input<boolean>;
+        /**
+         * Enables JSON-RPC access to functions in the debug namespace. Defaults to false.
+         */
+        apiEnableDebug?: pulumi.Input<boolean>;
+        /**
+         * The consensus client
+         * Possible values are: `CONSENSUS_CLIENT_UNSPECIFIED`, `LIGHTHOUSE`.
+         */
+        consensusClient?: pulumi.Input<string>;
+        /**
+         * The execution client
+         * Possible values are: `EXECUTION_CLIENT_UNSPECIFIED`, `GETH`, `ERIGON`.
+         */
+        executionClient?: pulumi.Input<string>;
+        /**
+         * User-provided key-value pairs
+         * Structure is documented below.
+         */
+        gethDetails?: pulumi.Input<inputs.blockchainnodeengine.BlockchainNodesEthereumDetailsGethDetails>;
+        /**
+         * The Ethereum environment being accessed.
+         * Possible values are: `MAINNET`, `TESTNET_GOERLI_PRATER`, `TESTNET_SEPOLIA`.
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * The type of Ethereum node.
+         * Possible values are: `LIGHT`, `FULL`, `ARCHIVE`.
+         */
+        nodeType?: pulumi.Input<string>;
+        /**
+         * Configuration for validator-related parameters on the beacon client, and for any managed validator client.
+         * Structure is documented below.
+         */
+        validatorConfig?: pulumi.Input<inputs.blockchainnodeengine.BlockchainNodesEthereumDetailsValidatorConfig>;
+    }
+
+    export interface BlockchainNodesEthereumDetailsAdditionalEndpoint {
+        /**
+         * (Output)
+         * The assigned URL for the node's Beacon API endpoint.
+         */
+        beaconApiEndpoint?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The assigned URL for the node's Beacon Prometheus metrics endpoint.
+         */
+        beaconPrometheusMetricsApiEndpoint?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The assigned URL for the node's execution client's Prometheus metrics endpoint.
+         */
+        executionClientPrometheusMetricsApiEndpoint?: pulumi.Input<string>;
+    }
+
+    export interface BlockchainNodesEthereumDetailsGethDetails {
+        /**
+         * Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
+         * Possible values are: `FULL`, `ARCHIVE`.
+         *
+         * <a name="nestedAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
+         */
+        garbageCollectionMode?: pulumi.Input<string>;
+    }
+
+    export interface BlockchainNodesEthereumDetailsValidatorConfig {
+        /**
+         * URLs for MEV-relay services to use for block building. When set, a managed MEV-boost service is configured on the beacon client.
+         */
+        mevRelayUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+}
+
 export namespace certificateauthority {
     export interface AuthorityAccessUrl {
         /**
@@ -41478,6 +41589,75 @@ export namespace diagflow {
     }
 }
 
+export namespace discoveryengine {
+    export interface ChatEngineChatEngineConfig {
+        /**
+         * The configuration to generate the Dialogflow agent that is associated to this Engine.
+         * Structure is documented below.
+         */
+        agentCreationConfig: pulumi.Input<inputs.discoveryengine.ChatEngineChatEngineConfigAgentCreationConfig>;
+    }
+
+    export interface ChatEngineChatEngineConfigAgentCreationConfig {
+        /**
+         * Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
+         */
+        business?: pulumi.Input<string>;
+        /**
+         * The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
+         */
+        defaultLanguageCode: pulumi.Input<string>;
+        /**
+         * Agent location for Agent creation, currently supported values: global/us/eu, it needs to be the same region as the Chat Engine.
+         *
+         * - - -
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+         */
+        timeZone: pulumi.Input<string>;
+    }
+
+    export interface ChatEngineChatEngineMetadata {
+        /**
+         * (Output)
+         * The resource name of a Dialogflow agent, that this Chat Engine refers to.
+         */
+        dialogflowAgent?: pulumi.Input<string>;
+    }
+
+    export interface ChatEngineCommonConfig {
+        /**
+         * The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
+         */
+        companyName?: pulumi.Input<string>;
+    }
+
+    export interface SearchEngineCommonConfig {
+        /**
+         * The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.cd
+         */
+        companyName?: pulumi.Input<string>;
+    }
+
+    export interface SearchEngineSearchEngineConfig {
+        /**
+         * The add-on that this search engine enables.
+         * Each value may be one of: `SEARCH_ADD_ON_LLM`.
+         *
+         * - - -
+         */
+        searchAddOns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The search feature tier of this engine. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+         * Default value is `SEARCH_TIER_STANDARD`.
+         * Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
+         */
+        searchTier?: pulumi.Input<string>;
+    }
+}
+
 export namespace dns {
     export interface DnsManagedZoneIamBindingCondition {
         description?: pulumi.Input<string>;
@@ -42811,7 +42991,6 @@ export namespace filestore {
          */
         nfsExportOptions?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceFileSharesNfsExportOption>[]>;
         /**
-         * (Output)
          * The resource name of the backup, in the format
          * projects/{projectId}/locations/{locationId}/backups/{backupId},
          * that this file share has been restored from.

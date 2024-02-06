@@ -235,7 +235,7 @@ namespace Pulumi.Gcp.Alloydb
         /// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         /// </summary>
         [Output("databaseFlags")]
-        public Output<ImmutableDictionary<string, string>?> DatabaseFlags { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> DatabaseFlags { get; private set; } = null!;
 
         /// <summary>
         /// User-settable and human-readable display name for the Instance.

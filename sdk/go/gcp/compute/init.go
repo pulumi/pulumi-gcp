@@ -207,6 +207,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionInstanceGroupManager{}
 	case "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate":
 		r = &RegionInstanceTemplate{}
+	case "gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint":
+		r = &RegionNetworkEndpoint{}
 	case "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup":
 		r = &RegionNetworkEndpointGroup{}
 	case "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy":
@@ -773,6 +775,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionInstanceTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionNetworkEndpoint",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

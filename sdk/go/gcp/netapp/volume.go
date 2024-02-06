@@ -64,6 +64,7 @@ import (
 //				Protocols: pulumi.StringArray{
 //					pulumi.String("NFSV3"),
 //				},
+//				DeletionPolicy: pulumi.String("DEFAULT"),
 //			})
 //			if err != nil {
 //				return err
@@ -102,6 +103,10 @@ type Volume struct {
 	ActiveDirectory pulumi.StringOutput `pulumi:"activeDirectory"`
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
+	// Policy to determine if the volume should be deleted forcefully.
+	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -228,6 +233,10 @@ type volumeState struct {
 	ActiveDirectory *string `pulumi:"activeDirectory"`
 	// Capacity of the volume (in GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
+	// Policy to determine if the volume should be deleted forcefully.
+	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -305,6 +314,10 @@ type VolumeState struct {
 	ActiveDirectory pulumi.StringPtrInput
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringPtrInput
+	// Policy to determine if the volume should be deleted forcefully.
+	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -384,6 +397,10 @@ func (VolumeState) ElementType() reflect.Type {
 type volumeArgs struct {
 	// Capacity of the volume (in GiB).
 	CapacityGib string `pulumi:"capacityGib"`
+	// Policy to determine if the volume should be deleted forcefully.
+	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Export policy of the volume for NFSV3 and/or NFSV4.1 access.
@@ -436,6 +453,10 @@ type volumeArgs struct {
 type VolumeArgs struct {
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringInput
+	// Policy to determine if the volume should be deleted forcefully.
+	// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+	// Setting this parameter to FORCE will delete volumes including nested snapshots.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Export policy of the volume for NFSV3 and/or NFSV4.1 access.
@@ -579,6 +600,13 @@ func (o VolumeOutput) ActiveDirectory() pulumi.StringOutput {
 // Capacity of the volume (in GiB).
 func (o VolumeOutput) CapacityGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.CapacityGib }).(pulumi.StringOutput)
+}
+
+// Policy to determine if the volume should be deleted forcefully.
+// Volumes may have nested snapshot resources. Deleting such a volume will fail.
+// Setting this parameter to FORCE will delete volumes including nested snapshots.
+func (o VolumeOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // An optional description of this resource.

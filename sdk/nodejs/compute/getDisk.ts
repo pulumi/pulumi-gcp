@@ -73,6 +73,7 @@ export interface GetDiskResult {
      */
     readonly description: string;
     readonly diskEncryptionKeys: outputs.compute.GetDiskDiskEncryptionKey[];
+    readonly diskId: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly enableConfidentialCompute: boolean;
     readonly guestOsFeatures: outputs.compute.GetDiskGuestOsFeature[];

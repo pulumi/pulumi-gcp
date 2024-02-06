@@ -209,6 +209,14 @@ Object.defineProperty(exports, "binaryAuthorizationCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const blockchainNodeEngineCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "blockchainNodeEngineCustomEndpoint", {
+    get() {
+        return __config.get("blockchainNodeEngineCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const certificateManagerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "certificateManagerCustomEndpoint", {
     get() {

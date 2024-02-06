@@ -67,6 +67,7 @@ export interface GetInstanceGroupManagerResult {
     readonly allInstancesConfigs: outputs.compute.GetInstanceGroupManagerAllInstancesConfig[];
     readonly autoHealingPolicies: outputs.compute.GetInstanceGroupManagerAutoHealingPolicy[];
     readonly baseInstanceName: string;
+    readonly creationTimestamp: string;
     readonly description: string;
     readonly fingerprint: string;
     /**

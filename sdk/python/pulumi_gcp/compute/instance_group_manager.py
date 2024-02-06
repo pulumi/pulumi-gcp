@@ -397,6 +397,7 @@ class _InstanceGroupManagerState:
                  all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: Optional[pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
@@ -431,6 +432,7 @@ class _InstanceGroupManagerState:
                are lowercase letters, numbers, and hyphens (-). Instances are named by
                appending a hyphen and a random four-character string to the base instance
                name.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
@@ -484,6 +486,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if base_instance_name is not None:
             pulumi.set(__self__, "base_instance_name", base_instance_name)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fingerprint is not None:
@@ -570,6 +574,18 @@ class _InstanceGroupManagerState:
     @base_instance_name.setter
     def base_instance_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "base_instance_name", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
 
     @property
     @pulumi.getter
@@ -1188,6 +1204,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["wait_for_instances"] = wait_for_instances
             __props__.__dict__["wait_for_instances_status"] = wait_for_instances_status
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["instance_group"] = None
             __props__.__dict__["operation"] = None
@@ -1206,6 +1223,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
             auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
             base_instance_name: Optional[pulumi.Input[str]] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
@@ -1245,6 +1263,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                are lowercase letters, numbers, and hyphens (-). Instances are named by
                appending a hyphen and a random four-character string to the base instance
                name.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
@@ -1299,6 +1318,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["all_instances_config"] = all_instances_config
         __props__.__dict__["auto_healing_policies"] = auto_healing_policies
         __props__.__dict__["base_instance_name"] = base_instance_name
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["instance_group"] = instance_group
@@ -1353,6 +1373,14 @@ class InstanceGroupManager(pulumi.CustomResource):
         name.
         """
         return pulumi.get(self, "base_instance_name")
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
 
     @property
     @pulumi.getter

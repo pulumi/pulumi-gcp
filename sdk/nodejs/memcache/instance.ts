@@ -207,6 +207,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, "test-default"
+     * associated with IP range 10.0.0.0/29.
+     */
+    public readonly reservedIpRangeIds!: pulumi.Output<string[] | undefined>;
+    /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.
      */
@@ -243,6 +249,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["reservedIpRangeIds"] = state ? state.reservedIpRangeIds : undefined;
             resourceInputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -263,6 +270,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["reservedIpRangeIds"] = args ? args.reservedIpRangeIds : undefined;
             resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoint"] = undefined /*out*/;
@@ -374,6 +382,12 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
+     * Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, "test-default"
+     * associated with IP range 10.0.0.0/29.
+     */
+    reservedIpRangeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.
      */
@@ -440,6 +454,12 @@ export interface InstanceArgs {
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, "test-default"
+     * associated with IP range 10.0.0.0/29.
+     */
+    reservedIpRangeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.

@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:discoveryengine/chatEngine:ChatEngine":
+		r = &ChatEngine{}
 	case "gcp:discoveryengine/dataStore:DataStore":
 		r = &DataStore{}
+	case "gcp:discoveryengine/searchEngine:SearchEngine":
+		r = &SearchEngine{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,7 +42,17 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"discoveryengine/chatEngine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"discoveryengine/dataStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"discoveryengine/searchEngine",
 		&module{version},
 	)
 }

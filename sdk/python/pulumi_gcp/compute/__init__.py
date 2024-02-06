@@ -56,6 +56,7 @@ from .get_instance_serial_port import *
 from .get_instance_template import *
 from .get_lbip_ranges import *
 from .get_machine_image_iam_policy import *
+from .get_machine_types import *
 from .get_netblock_ip_ranges import *
 from .get_network import *
 from .get_network_endpoint_group import *
@@ -149,6 +150,7 @@ from .region_disk_resource_policy_attachment import *
 from .region_health_check import *
 from .region_instance_group_manager import *
 from .region_instance_template import *
+from .region_network_endpoint import *
 from .region_network_endpoint_group import *
 from .region_network_firewall_policy import *
 from .region_network_firewall_policy_association import *

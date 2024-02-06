@@ -21,6 +21,7 @@ class VolumeArgs:
                  protocols: pulumi.Input[Sequence[pulumi.Input[str]]],
                  share_name: pulumi.Input[str],
                  storage_pool: pulumi.Input[str],
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  export_policy: Optional[pulumi.Input['VolumeExportPolicyArgs']] = None,
                  kerberos_enabled: Optional[pulumi.Input[bool]] = None,
@@ -41,6 +42,9 @@ class VolumeArgs:
                Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
         :param pulumi.Input[str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
+               Volumes may have nested snapshot resources. Deleting such a volume will fail.
+               Setting this parameter to FORCE will delete volumes including nested snapshots.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input['VolumeExportPolicyArgs'] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
@@ -73,6 +77,8 @@ class VolumeArgs:
         pulumi.set(__self__, "protocols", protocols)
         pulumi.set(__self__, "share_name", share_name)
         pulumi.set(__self__, "storage_pool", storage_pool)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if export_policy is not None:
@@ -158,6 +164,20 @@ class VolumeArgs:
     @storage_pool.setter
     def storage_pool(self, value: pulumi.Input[str]):
         pulumi.set(self, "storage_pool", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to determine if the volume should be deleted forcefully.
+        Volumes may have nested snapshot resources. Deleting such a volume will fail.
+        Setting this parameter to FORCE will delete volumes including nested snapshots.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter
@@ -323,6 +343,7 @@ class _VolumeState:
     def __init__(__self__, *,
                  active_directory: Optional[pulumi.Input[str]] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption_type: Optional[pulumi.Input[str]] = None,
@@ -354,6 +375,9 @@ class _VolumeState:
         Input properties used for looking up and filtering Volume resources.
         :param pulumi.Input[str] active_directory: Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
+               Volumes may have nested snapshot resources. Deleting such a volume will fail.
+               Setting this parameter to FORCE will delete volumes including nested snapshots.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] encryption_type: Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
@@ -403,6 +427,8 @@ class _VolumeState:
             pulumi.set(__self__, "active_directory", active_directory)
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -481,6 +507,20 @@ class _VolumeState:
     @capacity_gib.setter
     def capacity_gib(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "capacity_gib", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to determine if the volume should be deleted forcefully.
+        Volumes may have nested snapshot resources. Deleting such a volume will fail.
+        Setting this parameter to FORCE will delete volumes including nested snapshots.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter
@@ -830,6 +870,7 @@ class Volume(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  export_policy: Optional[pulumi.Input[pulumi.InputType['VolumeExportPolicyArgs']]] = None,
                  kerberos_enabled: Optional[pulumi.Input[bool]] = None,
@@ -879,7 +920,8 @@ class Volume(pulumi.CustomResource):
             capacity_gib="100",
             share_name="test-volume",
             storage_pool=default_storage_pool.name,
-            protocols=["NFSV3"])
+            protocols=["NFSV3"],
+            deletion_policy="DEFAULT")
         ```
 
         ## Import
@@ -901,6 +943,9 @@ class Volume(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
+               Volumes may have nested snapshot resources. Deleting such a volume will fail.
+               Setting this parameter to FORCE will delete volumes including nested snapshots.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[pulumi.InputType['VolumeExportPolicyArgs']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
@@ -971,7 +1016,8 @@ class Volume(pulumi.CustomResource):
             capacity_gib="100",
             share_name="test-volume",
             storage_pool=default_storage_pool.name,
-            protocols=["NFSV3"])
+            protocols=["NFSV3"],
+            deletion_policy="DEFAULT")
         ```
 
         ## Import
@@ -1006,6 +1052,7 @@ class Volume(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  export_policy: Optional[pulumi.Input[pulumi.InputType['VolumeExportPolicyArgs']]] = None,
                  kerberos_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1034,6 +1081,7 @@ class Volume(pulumi.CustomResource):
             if capacity_gib is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["export_policy"] = export_policy
             __props__.__dict__["kerberos_enabled"] = kerberos_enabled
@@ -1084,6 +1132,7 @@ class Volume(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             active_directory: Optional[pulumi.Input[str]] = None,
             capacity_gib: Optional[pulumi.Input[str]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_type: Optional[pulumi.Input[str]] = None,
@@ -1120,6 +1169,9 @@ class Volume(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] active_directory: Reports the resource name of the Active Directory policy being used. Inherited from storage pool.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
+               Volumes may have nested snapshot resources. Deleting such a volume will fail.
+               Setting this parameter to FORCE will delete volumes including nested snapshots.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] encryption_type: Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
@@ -1171,6 +1223,7 @@ class Volume(pulumi.CustomResource):
 
         __props__.__dict__["active_directory"] = active_directory
         __props__.__dict__["capacity_gib"] = capacity_gib
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_type"] = encryption_type
@@ -1215,6 +1268,16 @@ class Volume(pulumi.CustomResource):
         Capacity of the volume (in GiB).
         """
         return pulumi.get(self, "capacity_gib")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Policy to determine if the volume should be deleted forcefully.
+        Volumes may have nested snapshot resources. Deleting such a volume will fail.
+        Setting this parameter to FORCE will delete volumes including nested snapshots.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter

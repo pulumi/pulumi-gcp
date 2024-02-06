@@ -22,7 +22,7 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
+    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, enable_confidential_compute=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
@@ -35,6 +35,9 @@ class GetDiskResult:
         if disk_encryption_keys and not isinstance(disk_encryption_keys, list):
             raise TypeError("Expected argument 'disk_encryption_keys' to be a list")
         pulumi.set(__self__, "disk_encryption_keys", disk_encryption_keys)
+        if disk_id and not isinstance(disk_id, str):
+            raise TypeError("Expected argument 'disk_id' to be a str")
+        pulumi.set(__self__, "disk_id", disk_id)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -154,6 +157,11 @@ class GetDiskResult:
     @pulumi.getter(name="diskEncryptionKeys")
     def disk_encryption_keys(self) -> Sequence['outputs.GetDiskDiskEncryptionKeyResult']:
         return pulumi.get(self, "disk_encryption_keys")
+
+    @property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> str:
+        return pulumi.get(self, "disk_id")
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -384,6 +392,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_keys=self.disk_encryption_keys,
+            disk_id=self.disk_id,
             effective_labels=self.effective_labels,
             enable_confidential_compute=self.enable_confidential_compute,
             guest_os_features=self.guest_os_features,
@@ -461,6 +470,7 @@ def get_disk(name: Optional[str] = None,
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         disk_encryption_keys=pulumi.get(__ret__, 'disk_encryption_keys'),
+        disk_id=pulumi.get(__ret__, 'disk_id'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         enable_confidential_compute=pulumi.get(__ret__, 'enable_confidential_compute'),
         guest_os_features=pulumi.get(__ret__, 'guest_os_features'),

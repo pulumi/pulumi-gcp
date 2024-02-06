@@ -16001,6 +16001,513 @@ func (o GetInstanceTemplateShieldedInstanceConfigArrayOutput) Index(i pulumi.Int
 	}).(GetInstanceTemplateShieldedInstanceConfigOutput)
 }
 
+type GetMachineTypesMachineType struct {
+	// A list of accelerator configurations assigned to this machine type. Structure is documented below.
+	Accelerators []GetMachineTypesMachineTypeAccelerator `pulumi:"accelerators"`
+	// The configuration of bundled local SSD for the machine type. Structure is documented below.
+	BundledLocalSsds []GetMachineTypesMachineTypeBundledLocalSsd `pulumi:"bundledLocalSsds"`
+	// The deprecation status associated with this machine type. Structure is documented below.
+	Deprecateds []GetMachineTypesMachineTypeDeprecated `pulumi:"deprecateds"`
+	// A textual description of the machine type.
+	Description string `pulumi:"description"`
+	// The number of virtual CPUs that are available to the instance.
+	GuestCpus int `pulumi:"guestCpus"`
+	// Whether this machine type has a shared CPU.
+	IsSharedCpus bool `pulumi:"isSharedCpus"`
+	// The maximum persistent disks allowed.
+	MaximumPersistentDisks int `pulumi:"maximumPersistentDisks"`
+	// The maximum total persistent disks size (GB) allowed.
+	MaximumPersistentDisksSizeGb int `pulumi:"maximumPersistentDisksSizeGb"`
+	// The amount of physical memory available to the instance, defined in MB.
+	MemoryMb int `pulumi:"memoryMb"`
+	// The name of the machine type.
+	Name string `pulumi:"name"`
+	// The server-defined URL for the machine type.
+	SelfLink string `pulumi:"selfLink"`
+}
+
+// GetMachineTypesMachineTypeInput is an input type that accepts GetMachineTypesMachineTypeArgs and GetMachineTypesMachineTypeOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeInput` via:
+//
+//	GetMachineTypesMachineTypeArgs{...}
+type GetMachineTypesMachineTypeInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeOutput() GetMachineTypesMachineTypeOutput
+	ToGetMachineTypesMachineTypeOutputWithContext(context.Context) GetMachineTypesMachineTypeOutput
+}
+
+type GetMachineTypesMachineTypeArgs struct {
+	// A list of accelerator configurations assigned to this machine type. Structure is documented below.
+	Accelerators GetMachineTypesMachineTypeAcceleratorArrayInput `pulumi:"accelerators"`
+	// The configuration of bundled local SSD for the machine type. Structure is documented below.
+	BundledLocalSsds GetMachineTypesMachineTypeBundledLocalSsdArrayInput `pulumi:"bundledLocalSsds"`
+	// The deprecation status associated with this machine type. Structure is documented below.
+	Deprecateds GetMachineTypesMachineTypeDeprecatedArrayInput `pulumi:"deprecateds"`
+	// A textual description of the machine type.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The number of virtual CPUs that are available to the instance.
+	GuestCpus pulumi.IntInput `pulumi:"guestCpus"`
+	// Whether this machine type has a shared CPU.
+	IsSharedCpus pulumi.BoolInput `pulumi:"isSharedCpus"`
+	// The maximum persistent disks allowed.
+	MaximumPersistentDisks pulumi.IntInput `pulumi:"maximumPersistentDisks"`
+	// The maximum total persistent disks size (GB) allowed.
+	MaximumPersistentDisksSizeGb pulumi.IntInput `pulumi:"maximumPersistentDisksSizeGb"`
+	// The amount of physical memory available to the instance, defined in MB.
+	MemoryMb pulumi.IntInput `pulumi:"memoryMb"`
+	// The name of the machine type.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The server-defined URL for the machine type.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+}
+
+func (GetMachineTypesMachineTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineType)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeArgs) ToGetMachineTypesMachineTypeOutput() GetMachineTypesMachineTypeOutput {
+	return i.ToGetMachineTypesMachineTypeOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeArgs) ToGetMachineTypesMachineTypeOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeOutput)
+}
+
+// GetMachineTypesMachineTypeArrayInput is an input type that accepts GetMachineTypesMachineTypeArray and GetMachineTypesMachineTypeArrayOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeArrayInput` via:
+//
+//	GetMachineTypesMachineTypeArray{ GetMachineTypesMachineTypeArgs{...} }
+type GetMachineTypesMachineTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeArrayOutput() GetMachineTypesMachineTypeArrayOutput
+	ToGetMachineTypesMachineTypeArrayOutputWithContext(context.Context) GetMachineTypesMachineTypeArrayOutput
+}
+
+type GetMachineTypesMachineTypeArray []GetMachineTypesMachineTypeInput
+
+func (GetMachineTypesMachineTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineType)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeArray) ToGetMachineTypesMachineTypeArrayOutput() GetMachineTypesMachineTypeArrayOutput {
+	return i.ToGetMachineTypesMachineTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeArray) ToGetMachineTypesMachineTypeArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeArrayOutput)
+}
+
+type GetMachineTypesMachineTypeOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineType)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeOutput) ToGetMachineTypesMachineTypeOutput() GetMachineTypesMachineTypeOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeOutput) ToGetMachineTypesMachineTypeOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeOutput {
+	return o
+}
+
+// A list of accelerator configurations assigned to this machine type. Structure is documented below.
+func (o GetMachineTypesMachineTypeOutput) Accelerators() GetMachineTypesMachineTypeAcceleratorArrayOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) []GetMachineTypesMachineTypeAccelerator { return v.Accelerators }).(GetMachineTypesMachineTypeAcceleratorArrayOutput)
+}
+
+// The configuration of bundled local SSD for the machine type. Structure is documented below.
+func (o GetMachineTypesMachineTypeOutput) BundledLocalSsds() GetMachineTypesMachineTypeBundledLocalSsdArrayOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) []GetMachineTypesMachineTypeBundledLocalSsd {
+		return v.BundledLocalSsds
+	}).(GetMachineTypesMachineTypeBundledLocalSsdArrayOutput)
+}
+
+// The deprecation status associated with this machine type. Structure is documented below.
+func (o GetMachineTypesMachineTypeOutput) Deprecateds() GetMachineTypesMachineTypeDeprecatedArrayOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) []GetMachineTypesMachineTypeDeprecated { return v.Deprecateds }).(GetMachineTypesMachineTypeDeprecatedArrayOutput)
+}
+
+// A textual description of the machine type.
+func (o GetMachineTypesMachineTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The number of virtual CPUs that are available to the instance.
+func (o GetMachineTypesMachineTypeOutput) GuestCpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) int { return v.GuestCpus }).(pulumi.IntOutput)
+}
+
+// Whether this machine type has a shared CPU.
+func (o GetMachineTypesMachineTypeOutput) IsSharedCpus() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) bool { return v.IsSharedCpus }).(pulumi.BoolOutput)
+}
+
+// The maximum persistent disks allowed.
+func (o GetMachineTypesMachineTypeOutput) MaximumPersistentDisks() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) int { return v.MaximumPersistentDisks }).(pulumi.IntOutput)
+}
+
+// The maximum total persistent disks size (GB) allowed.
+func (o GetMachineTypesMachineTypeOutput) MaximumPersistentDisksSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) int { return v.MaximumPersistentDisksSizeGb }).(pulumi.IntOutput)
+}
+
+// The amount of physical memory available to the instance, defined in MB.
+func (o GetMachineTypesMachineTypeOutput) MemoryMb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) int { return v.MemoryMb }).(pulumi.IntOutput)
+}
+
+// The name of the machine type.
+func (o GetMachineTypesMachineTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The server-defined URL for the machine type.
+func (o GetMachineTypesMachineTypeOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineType) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+type GetMachineTypesMachineTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineType)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeArrayOutput) ToGetMachineTypesMachineTypeArrayOutput() GetMachineTypesMachineTypeArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeArrayOutput) ToGetMachineTypesMachineTypeArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeArrayOutput) Index(i pulumi.IntInput) GetMachineTypesMachineTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineTypesMachineType {
+		return vs[0].([]GetMachineTypesMachineType)[vs[1].(int)]
+	}).(GetMachineTypesMachineTypeOutput)
+}
+
+type GetMachineTypesMachineTypeAccelerator struct {
+	// Number of accelerator cards exposed to the guest.
+	GuestAcceleratorCount int `pulumi:"guestAcceleratorCount"`
+	// The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
+	GuestAcceleratorType string `pulumi:"guestAcceleratorType"`
+}
+
+// GetMachineTypesMachineTypeAcceleratorInput is an input type that accepts GetMachineTypesMachineTypeAcceleratorArgs and GetMachineTypesMachineTypeAcceleratorOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeAcceleratorInput` via:
+//
+//	GetMachineTypesMachineTypeAcceleratorArgs{...}
+type GetMachineTypesMachineTypeAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeAcceleratorOutput() GetMachineTypesMachineTypeAcceleratorOutput
+	ToGetMachineTypesMachineTypeAcceleratorOutputWithContext(context.Context) GetMachineTypesMachineTypeAcceleratorOutput
+}
+
+type GetMachineTypesMachineTypeAcceleratorArgs struct {
+	// Number of accelerator cards exposed to the guest.
+	GuestAcceleratorCount pulumi.IntInput `pulumi:"guestAcceleratorCount"`
+	// The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
+	GuestAcceleratorType pulumi.StringInput `pulumi:"guestAcceleratorType"`
+}
+
+func (GetMachineTypesMachineTypeAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeAccelerator)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeAcceleratorArgs) ToGetMachineTypesMachineTypeAcceleratorOutput() GetMachineTypesMachineTypeAcceleratorOutput {
+	return i.ToGetMachineTypesMachineTypeAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeAcceleratorArgs) ToGetMachineTypesMachineTypeAcceleratorOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeAcceleratorOutput)
+}
+
+// GetMachineTypesMachineTypeAcceleratorArrayInput is an input type that accepts GetMachineTypesMachineTypeAcceleratorArray and GetMachineTypesMachineTypeAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeAcceleratorArrayInput` via:
+//
+//	GetMachineTypesMachineTypeAcceleratorArray{ GetMachineTypesMachineTypeAcceleratorArgs{...} }
+type GetMachineTypesMachineTypeAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeAcceleratorArrayOutput() GetMachineTypesMachineTypeAcceleratorArrayOutput
+	ToGetMachineTypesMachineTypeAcceleratorArrayOutputWithContext(context.Context) GetMachineTypesMachineTypeAcceleratorArrayOutput
+}
+
+type GetMachineTypesMachineTypeAcceleratorArray []GetMachineTypesMachineTypeAcceleratorInput
+
+func (GetMachineTypesMachineTypeAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeAccelerator)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeAcceleratorArray) ToGetMachineTypesMachineTypeAcceleratorArrayOutput() GetMachineTypesMachineTypeAcceleratorArrayOutput {
+	return i.ToGetMachineTypesMachineTypeAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeAcceleratorArray) ToGetMachineTypesMachineTypeAcceleratorArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeAcceleratorArrayOutput)
+}
+
+type GetMachineTypesMachineTypeAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeAccelerator)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorOutput) ToGetMachineTypesMachineTypeAcceleratorOutput() GetMachineTypesMachineTypeAcceleratorOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorOutput) ToGetMachineTypesMachineTypeAcceleratorOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeAcceleratorOutput {
+	return o
+}
+
+// Number of accelerator cards exposed to the guest.
+func (o GetMachineTypesMachineTypeAcceleratorOutput) GuestAcceleratorCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeAccelerator) int { return v.GuestAcceleratorCount }).(pulumi.IntOutput)
+}
+
+// The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
+func (o GetMachineTypesMachineTypeAcceleratorOutput) GuestAcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeAccelerator) string { return v.GuestAcceleratorType }).(pulumi.StringOutput)
+}
+
+type GetMachineTypesMachineTypeAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeAccelerator)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorArrayOutput) ToGetMachineTypesMachineTypeAcceleratorArrayOutput() GetMachineTypesMachineTypeAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorArrayOutput) ToGetMachineTypesMachineTypeAcceleratorArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeAcceleratorArrayOutput) Index(i pulumi.IntInput) GetMachineTypesMachineTypeAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineTypesMachineTypeAccelerator {
+		return vs[0].([]GetMachineTypesMachineTypeAccelerator)[vs[1].(int)]
+	}).(GetMachineTypesMachineTypeAcceleratorOutput)
+}
+
+type GetMachineTypesMachineTypeBundledLocalSsd struct {
+	// The default disk interface if the interface is not specified.
+	DefaultInterface string `pulumi:"defaultInterface"`
+	// The number of partitions.
+	PartitionCount int `pulumi:"partitionCount"`
+}
+
+// GetMachineTypesMachineTypeBundledLocalSsdInput is an input type that accepts GetMachineTypesMachineTypeBundledLocalSsdArgs and GetMachineTypesMachineTypeBundledLocalSsdOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeBundledLocalSsdInput` via:
+//
+//	GetMachineTypesMachineTypeBundledLocalSsdArgs{...}
+type GetMachineTypesMachineTypeBundledLocalSsdInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeBundledLocalSsdOutput() GetMachineTypesMachineTypeBundledLocalSsdOutput
+	ToGetMachineTypesMachineTypeBundledLocalSsdOutputWithContext(context.Context) GetMachineTypesMachineTypeBundledLocalSsdOutput
+}
+
+type GetMachineTypesMachineTypeBundledLocalSsdArgs struct {
+	// The default disk interface if the interface is not specified.
+	DefaultInterface pulumi.StringInput `pulumi:"defaultInterface"`
+	// The number of partitions.
+	PartitionCount pulumi.IntInput `pulumi:"partitionCount"`
+}
+
+func (GetMachineTypesMachineTypeBundledLocalSsdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsd)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeBundledLocalSsdArgs) ToGetMachineTypesMachineTypeBundledLocalSsdOutput() GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return i.ToGetMachineTypesMachineTypeBundledLocalSsdOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeBundledLocalSsdArgs) ToGetMachineTypesMachineTypeBundledLocalSsdOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeBundledLocalSsdOutput)
+}
+
+// GetMachineTypesMachineTypeBundledLocalSsdArrayInput is an input type that accepts GetMachineTypesMachineTypeBundledLocalSsdArray and GetMachineTypesMachineTypeBundledLocalSsdArrayOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeBundledLocalSsdArrayInput` via:
+//
+//	GetMachineTypesMachineTypeBundledLocalSsdArray{ GetMachineTypesMachineTypeBundledLocalSsdArgs{...} }
+type GetMachineTypesMachineTypeBundledLocalSsdArrayInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutput() GetMachineTypesMachineTypeBundledLocalSsdArrayOutput
+	ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutputWithContext(context.Context) GetMachineTypesMachineTypeBundledLocalSsdArrayOutput
+}
+
+type GetMachineTypesMachineTypeBundledLocalSsdArray []GetMachineTypesMachineTypeBundledLocalSsdInput
+
+func (GetMachineTypesMachineTypeBundledLocalSsdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeBundledLocalSsd)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeBundledLocalSsdArray) ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutput() GetMachineTypesMachineTypeBundledLocalSsdArrayOutput {
+	return i.ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeBundledLocalSsdArray) ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeBundledLocalSsdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeBundledLocalSsdArrayOutput)
+}
+
+type GetMachineTypesMachineTypeBundledLocalSsdOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeBundledLocalSsdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsd)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdOutput) ToGetMachineTypesMachineTypeBundledLocalSsdOutput() GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdOutput) ToGetMachineTypesMachineTypeBundledLocalSsdOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return o
+}
+
+// The default disk interface if the interface is not specified.
+func (o GetMachineTypesMachineTypeBundledLocalSsdOutput) DefaultInterface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeBundledLocalSsd) string { return v.DefaultInterface }).(pulumi.StringOutput)
+}
+
+// The number of partitions.
+func (o GetMachineTypesMachineTypeBundledLocalSsdOutput) PartitionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeBundledLocalSsd) int { return v.PartitionCount }).(pulumi.IntOutput)
+}
+
+type GetMachineTypesMachineTypeBundledLocalSsdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeBundledLocalSsdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeBundledLocalSsd)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdArrayOutput) ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutput() GetMachineTypesMachineTypeBundledLocalSsdArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdArrayOutput) ToGetMachineTypesMachineTypeBundledLocalSsdArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeBundledLocalSsdArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeBundledLocalSsdArrayOutput) Index(i pulumi.IntInput) GetMachineTypesMachineTypeBundledLocalSsdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineTypesMachineTypeBundledLocalSsd {
+		return vs[0].([]GetMachineTypesMachineTypeBundledLocalSsd)[vs[1].(int)]
+	}).(GetMachineTypesMachineTypeBundledLocalSsdOutput)
+}
+
+type GetMachineTypesMachineTypeDeprecated struct {
+	// The URL of the suggested replacement for a deprecated machine type.
+	Replacement string `pulumi:"replacement"`
+	// The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
+	State string `pulumi:"state"`
+}
+
+// GetMachineTypesMachineTypeDeprecatedInput is an input type that accepts GetMachineTypesMachineTypeDeprecatedArgs and GetMachineTypesMachineTypeDeprecatedOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeDeprecatedInput` via:
+//
+//	GetMachineTypesMachineTypeDeprecatedArgs{...}
+type GetMachineTypesMachineTypeDeprecatedInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeDeprecatedOutput() GetMachineTypesMachineTypeDeprecatedOutput
+	ToGetMachineTypesMachineTypeDeprecatedOutputWithContext(context.Context) GetMachineTypesMachineTypeDeprecatedOutput
+}
+
+type GetMachineTypesMachineTypeDeprecatedArgs struct {
+	// The URL of the suggested replacement for a deprecated machine type.
+	Replacement pulumi.StringInput `pulumi:"replacement"`
+	// The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetMachineTypesMachineTypeDeprecatedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeDeprecated)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeDeprecatedArgs) ToGetMachineTypesMachineTypeDeprecatedOutput() GetMachineTypesMachineTypeDeprecatedOutput {
+	return i.ToGetMachineTypesMachineTypeDeprecatedOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeDeprecatedArgs) ToGetMachineTypesMachineTypeDeprecatedOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeDeprecatedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeDeprecatedOutput)
+}
+
+// GetMachineTypesMachineTypeDeprecatedArrayInput is an input type that accepts GetMachineTypesMachineTypeDeprecatedArray and GetMachineTypesMachineTypeDeprecatedArrayOutput values.
+// You can construct a concrete instance of `GetMachineTypesMachineTypeDeprecatedArrayInput` via:
+//
+//	GetMachineTypesMachineTypeDeprecatedArray{ GetMachineTypesMachineTypeDeprecatedArgs{...} }
+type GetMachineTypesMachineTypeDeprecatedArrayInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesMachineTypeDeprecatedArrayOutput() GetMachineTypesMachineTypeDeprecatedArrayOutput
+	ToGetMachineTypesMachineTypeDeprecatedArrayOutputWithContext(context.Context) GetMachineTypesMachineTypeDeprecatedArrayOutput
+}
+
+type GetMachineTypesMachineTypeDeprecatedArray []GetMachineTypesMachineTypeDeprecatedInput
+
+func (GetMachineTypesMachineTypeDeprecatedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeDeprecated)(nil)).Elem()
+}
+
+func (i GetMachineTypesMachineTypeDeprecatedArray) ToGetMachineTypesMachineTypeDeprecatedArrayOutput() GetMachineTypesMachineTypeDeprecatedArrayOutput {
+	return i.ToGetMachineTypesMachineTypeDeprecatedArrayOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesMachineTypeDeprecatedArray) ToGetMachineTypesMachineTypeDeprecatedArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeDeprecatedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesMachineTypeDeprecatedArrayOutput)
+}
+
+type GetMachineTypesMachineTypeDeprecatedOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeDeprecatedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesMachineTypeDeprecated)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedOutput) ToGetMachineTypesMachineTypeDeprecatedOutput() GetMachineTypesMachineTypeDeprecatedOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedOutput) ToGetMachineTypesMachineTypeDeprecatedOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeDeprecatedOutput {
+	return o
+}
+
+// The URL of the suggested replacement for a deprecated machine type.
+func (o GetMachineTypesMachineTypeDeprecatedOutput) Replacement() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeDeprecated) string { return v.Replacement }).(pulumi.StringOutput)
+}
+
+// The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
+func (o GetMachineTypesMachineTypeDeprecatedOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesMachineTypeDeprecated) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetMachineTypesMachineTypeDeprecatedArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesMachineTypeDeprecatedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesMachineTypeDeprecated)(nil)).Elem()
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedArrayOutput) ToGetMachineTypesMachineTypeDeprecatedArrayOutput() GetMachineTypesMachineTypeDeprecatedArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedArrayOutput) ToGetMachineTypesMachineTypeDeprecatedArrayOutputWithContext(ctx context.Context) GetMachineTypesMachineTypeDeprecatedArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesMachineTypeDeprecatedArrayOutput) Index(i pulumi.IntInput) GetMachineTypesMachineTypeDeprecatedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineTypesMachineTypeDeprecated {
+		return vs[0].([]GetMachineTypesMachineTypeDeprecated)[vs[1].(int)]
+	}).(GetMachineTypesMachineTypeDeprecatedOutput)
+}
+
 type GetRegionDiskAsyncPrimaryDisk struct {
 	// Primary disk for asynchronous disk replication.
 	Disk string `pulumi:"disk"`
@@ -24273,6 +24780,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateServiceAccountArrayInput)(nil)).Elem(), GetInstanceTemplateServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateShieldedInstanceConfigInput)(nil)).Elem(), GetInstanceTemplateShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateShieldedInstanceConfigArrayInput)(nil)).Elem(), GetInstanceTemplateShieldedInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeInput)(nil)).Elem(), GetMachineTypesMachineTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeAcceleratorInput)(nil)).Elem(), GetMachineTypesMachineTypeAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeAcceleratorArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsdInput)(nil)).Elem(), GetMachineTypesMachineTypeBundledLocalSsdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeBundledLocalSsdArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeBundledLocalSsdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeDeprecatedInput)(nil)).Elem(), GetMachineTypesMachineTypeDeprecatedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeDeprecatedArrayInput)(nil)).Elem(), GetMachineTypesMachineTypeDeprecatedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskAsyncPrimaryDiskInput)(nil)).Elem(), GetRegionDiskAsyncPrimaryDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskAsyncPrimaryDiskArrayInput)(nil)).Elem(), GetRegionDiskAsyncPrimaryDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskDiskEncryptionKeyInput)(nil)).Elem(), GetRegionDiskDiskEncryptionKeyArgs{})
@@ -24619,6 +25134,14 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTemplateServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeBundledLocalSsdOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeBundledLocalSsdArrayOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeDeprecatedOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesMachineTypeDeprecatedArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionDiskAsyncPrimaryDiskOutput{})
 	pulumi.RegisterOutputType(GetRegionDiskAsyncPrimaryDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionDiskDiskEncryptionKeyOutput{})

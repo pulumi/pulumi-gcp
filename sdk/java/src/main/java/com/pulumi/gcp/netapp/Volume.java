@@ -78,6 +78,7 @@ import javax.annotation.Nullable;
  *             .shareName(&#34;test-volume&#34;)
  *             .storagePool(defaultStoragePool.name())
  *             .protocols(&#34;NFSV3&#34;)
+ *             .deletionPolicy(&#34;DEFAULT&#34;)
  *             .build());
  * 
  *     }
@@ -130,6 +131,24 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> capacityGib() {
         return this.capacityGib;
+    }
+    /**
+     * Policy to determine if the volume should be deleted forcefully.
+     * Volumes may have nested snapshot resources. Deleting such a volume will fail.
+     * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return Policy to determine if the volume should be deleted forcefully.
+     * Volumes may have nested snapshot resources. Deleting such a volume will fail.
+     * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * An optional description of this resource.

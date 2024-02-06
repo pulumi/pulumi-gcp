@@ -146,6 +146,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly baseInstanceName!: pulumi.Output<string>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
      * An optional textual description of the instance
      * group manager.
      */
@@ -276,6 +280,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["allInstancesConfig"] = state ? state.allInstancesConfig : undefined;
             resourceInputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
             resourceInputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["distributionPolicyTargetShape"] = state ? state.distributionPolicyTargetShape : undefined;
             resourceInputs["distributionPolicyZones"] = state ? state.distributionPolicyZones : undefined;
@@ -327,6 +332,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["versions"] = args ? args.versions : undefined;
             resourceInputs["waitForInstances"] = args ? args.waitForInstances : undefined;
             resourceInputs["waitForInstancesStatus"] = args ? args.waitForInstancesStatus : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -361,6 +367,10 @@ export interface RegionInstanceGroupManagerState {
      * name.
      */
     baseInstanceName?: pulumi.Input<string>;
+    /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    creationTimestamp?: pulumi.Input<string>;
     /**
      * An optional textual description of the instance
      * group manager.

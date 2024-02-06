@@ -28,6 +28,7 @@ public final class GetInstanceGroupManagerResult {
     private List<GetInstanceGroupManagerAllInstancesConfig> allInstancesConfigs;
     private List<GetInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
     private String baseInstanceName;
+    private String creationTimestamp;
     private String description;
     private String fingerprint;
     /**
@@ -64,6 +65,9 @@ public final class GetInstanceGroupManagerResult {
     }
     public String baseInstanceName() {
         return this.baseInstanceName;
+    }
+    public String creationTimestamp() {
+        return this.creationTimestamp;
     }
     public String description() {
         return this.description;
@@ -148,6 +152,7 @@ public final class GetInstanceGroupManagerResult {
         private List<GetInstanceGroupManagerAllInstancesConfig> allInstancesConfigs;
         private List<GetInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
         private String baseInstanceName;
+        private String creationTimestamp;
         private String description;
         private String fingerprint;
         private String id;
@@ -176,6 +181,7 @@ public final class GetInstanceGroupManagerResult {
     	      this.allInstancesConfigs = defaults.allInstancesConfigs;
     	      this.autoHealingPolicies = defaults.autoHealingPolicies;
     	      this.baseInstanceName = defaults.baseInstanceName;
+    	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
@@ -228,6 +234,14 @@ public final class GetInstanceGroupManagerResult {
               throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "baseInstanceName");
             }
             this.baseInstanceName = baseInstanceName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder creationTimestamp(String creationTimestamp) {
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
@@ -430,6 +444,7 @@ public final class GetInstanceGroupManagerResult {
             _resultValue.allInstancesConfigs = allInstancesConfigs;
             _resultValue.autoHealingPolicies = autoHealingPolicies;
             _resultValue.baseInstanceName = baseInstanceName;
+            _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;

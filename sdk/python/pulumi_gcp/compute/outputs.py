@@ -624,6 +624,10 @@ __all__ = [
     'GetInstanceTemplateSchedulingNodeAffinityResult',
     'GetInstanceTemplateServiceAccountResult',
     'GetInstanceTemplateShieldedInstanceConfigResult',
+    'GetMachineTypesMachineTypeResult',
+    'GetMachineTypesMachineTypeAcceleratorResult',
+    'GetMachineTypesMachineTypeBundledLocalSsdResult',
+    'GetMachineTypesMachineTypeDeprecatedResult',
     'GetRegionDiskAsyncPrimaryDiskResult',
     'GetRegionDiskDiskEncryptionKeyResult',
     'GetRegionDiskGuestOsFeatureResult',
@@ -43515,6 +43519,221 @@ class GetInstanceTemplateShieldedInstanceConfigResult(dict):
         - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         """
         return pulumi.get(self, "enable_vtpm")
+
+
+@pulumi.output_type
+class GetMachineTypesMachineTypeResult(dict):
+    def __init__(__self__, *,
+                 accelerators: Sequence['outputs.GetMachineTypesMachineTypeAcceleratorResult'],
+                 bundled_local_ssds: Sequence['outputs.GetMachineTypesMachineTypeBundledLocalSsdResult'],
+                 deprecateds: Sequence['outputs.GetMachineTypesMachineTypeDeprecatedResult'],
+                 description: str,
+                 guest_cpus: int,
+                 is_shared_cpus: bool,
+                 maximum_persistent_disks: int,
+                 maximum_persistent_disks_size_gb: int,
+                 memory_mb: int,
+                 name: str,
+                 self_link: str):
+        """
+        :param Sequence['GetMachineTypesMachineTypeAcceleratorArgs'] accelerators: A list of accelerator configurations assigned to this machine type. Structure is documented below.
+        :param Sequence['GetMachineTypesMachineTypeBundledLocalSsdArgs'] bundled_local_ssds: The configuration of bundled local SSD for the machine type. Structure is documented below.
+        :param Sequence['GetMachineTypesMachineTypeDeprecatedArgs'] deprecateds: The deprecation status associated with this machine type. Structure is documented below.
+        :param str description: A textual description of the machine type.
+        :param int guest_cpus: The number of virtual CPUs that are available to the instance.
+        :param bool is_shared_cpus: Whether this machine type has a shared CPU.
+        :param int maximum_persistent_disks: The maximum persistent disks allowed.
+        :param int maximum_persistent_disks_size_gb: The maximum total persistent disks size (GB) allowed.
+        :param int memory_mb: The amount of physical memory available to the instance, defined in MB.
+        :param str name: The name of the machine type.
+        :param str self_link: The server-defined URL for the machine type.
+        """
+        pulumi.set(__self__, "accelerators", accelerators)
+        pulumi.set(__self__, "bundled_local_ssds", bundled_local_ssds)
+        pulumi.set(__self__, "deprecateds", deprecateds)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "guest_cpus", guest_cpus)
+        pulumi.set(__self__, "is_shared_cpus", is_shared_cpus)
+        pulumi.set(__self__, "maximum_persistent_disks", maximum_persistent_disks)
+        pulumi.set(__self__, "maximum_persistent_disks_size_gb", maximum_persistent_disks_size_gb)
+        pulumi.set(__self__, "memory_mb", memory_mb)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Sequence['outputs.GetMachineTypesMachineTypeAcceleratorResult']:
+        """
+        A list of accelerator configurations assigned to this machine type. Structure is documented below.
+        """
+        return pulumi.get(self, "accelerators")
+
+    @property
+    @pulumi.getter(name="bundledLocalSsds")
+    def bundled_local_ssds(self) -> Sequence['outputs.GetMachineTypesMachineTypeBundledLocalSsdResult']:
+        """
+        The configuration of bundled local SSD for the machine type. Structure is documented below.
+        """
+        return pulumi.get(self, "bundled_local_ssds")
+
+    @property
+    @pulumi.getter
+    def deprecateds(self) -> Sequence['outputs.GetMachineTypesMachineTypeDeprecatedResult']:
+        """
+        The deprecation status associated with this machine type. Structure is documented below.
+        """
+        return pulumi.get(self, "deprecateds")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A textual description of the machine type.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="guestCpus")
+    def guest_cpus(self) -> int:
+        """
+        The number of virtual CPUs that are available to the instance.
+        """
+        return pulumi.get(self, "guest_cpus")
+
+    @property
+    @pulumi.getter(name="isSharedCpus")
+    def is_shared_cpus(self) -> bool:
+        """
+        Whether this machine type has a shared CPU.
+        """
+        return pulumi.get(self, "is_shared_cpus")
+
+    @property
+    @pulumi.getter(name="maximumPersistentDisks")
+    def maximum_persistent_disks(self) -> int:
+        """
+        The maximum persistent disks allowed.
+        """
+        return pulumi.get(self, "maximum_persistent_disks")
+
+    @property
+    @pulumi.getter(name="maximumPersistentDisksSizeGb")
+    def maximum_persistent_disks_size_gb(self) -> int:
+        """
+        The maximum total persistent disks size (GB) allowed.
+        """
+        return pulumi.get(self, "maximum_persistent_disks_size_gb")
+
+    @property
+    @pulumi.getter(name="memoryMb")
+    def memory_mb(self) -> int:
+        """
+        The amount of physical memory available to the instance, defined in MB.
+        """
+        return pulumi.get(self, "memory_mb")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the machine type.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> str:
+        """
+        The server-defined URL for the machine type.
+        """
+        return pulumi.get(self, "self_link")
+
+
+@pulumi.output_type
+class GetMachineTypesMachineTypeAcceleratorResult(dict):
+    def __init__(__self__, *,
+                 guest_accelerator_count: int,
+                 guest_accelerator_type: str):
+        """
+        :param int guest_accelerator_count: Number of accelerator cards exposed to the guest.
+        :param str guest_accelerator_type: The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
+        """
+        pulumi.set(__self__, "guest_accelerator_count", guest_accelerator_count)
+        pulumi.set(__self__, "guest_accelerator_type", guest_accelerator_type)
+
+    @property
+    @pulumi.getter(name="guestAcceleratorCount")
+    def guest_accelerator_count(self) -> int:
+        """
+        Number of accelerator cards exposed to the guest.
+        """
+        return pulumi.get(self, "guest_accelerator_count")
+
+    @property
+    @pulumi.getter(name="guestAcceleratorType")
+    def guest_accelerator_type(self) -> str:
+        """
+        The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
+        """
+        return pulumi.get(self, "guest_accelerator_type")
+
+
+@pulumi.output_type
+class GetMachineTypesMachineTypeBundledLocalSsdResult(dict):
+    def __init__(__self__, *,
+                 default_interface: str,
+                 partition_count: int):
+        """
+        :param str default_interface: The default disk interface if the interface is not specified.
+        :param int partition_count: The number of partitions.
+        """
+        pulumi.set(__self__, "default_interface", default_interface)
+        pulumi.set(__self__, "partition_count", partition_count)
+
+    @property
+    @pulumi.getter(name="defaultInterface")
+    def default_interface(self) -> str:
+        """
+        The default disk interface if the interface is not specified.
+        """
+        return pulumi.get(self, "default_interface")
+
+    @property
+    @pulumi.getter(name="partitionCount")
+    def partition_count(self) -> int:
+        """
+        The number of partitions.
+        """
+        return pulumi.get(self, "partition_count")
+
+
+@pulumi.output_type
+class GetMachineTypesMachineTypeDeprecatedResult(dict):
+    def __init__(__self__, *,
+                 replacement: str,
+                 state: str):
+        """
+        :param str replacement: The URL of the suggested replacement for a deprecated machine type.
+        :param str state: The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
+        """
+        pulumi.set(__self__, "replacement", replacement)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def replacement(self) -> str:
+        """
+        The URL of the suggested replacement for a deprecated machine type.
+        """
+        return pulumi.get(self, "replacement")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The deprecation state of this resource. This can be `ACTIVE`, `DEPRECATED`, `OBSOLETE`, or `DELETED`.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

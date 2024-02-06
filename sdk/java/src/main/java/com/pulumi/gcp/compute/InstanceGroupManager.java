@@ -232,6 +232,20 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return this.baseInstanceName;
     }
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    private Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Output<String> creationTimestamp() {
+        return this.creationTimestamp;
+    }
+    /**
      * An optional textual description of the instance
      * group manager.
      * 

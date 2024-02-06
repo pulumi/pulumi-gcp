@@ -81,6 +81,7 @@ type LookupDiskResult struct {
 	// The optional description of this resource.
 	Description               string                     `pulumi:"description"`
 	DiskEncryptionKeys        []GetDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
+	DiskId                    string                     `pulumi:"diskId"`
 	EffectiveLabels           map[string]string          `pulumi:"effectiveLabels"`
 	EnableConfidentialCompute bool                       `pulumi:"enableConfidentialCompute"`
 	GuestOsFeatures           []GetDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
@@ -204,6 +205,10 @@ func (o LookupDiskResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupDiskResultOutput) DiskEncryptionKeys() GetDiskDiskEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v LookupDiskResult) []GetDiskDiskEncryptionKey { return v.DiskEncryptionKeys }).(GetDiskDiskEncryptionKeyArrayOutput)
+}
+
+func (o LookupDiskResultOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskResult) string { return v.DiskId }).(pulumi.StringOutput)
 }
 
 func (o LookupDiskResultOutput) EffectiveLabels() pulumi.StringMapOutput {

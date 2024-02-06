@@ -27,7 +27,9 @@ import javax.annotation.Nullable;
  * * LDAP use for NFS volumes, if applicable
  * * Customer-managed encryption key (CMEK) policy
  * 
- * The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool independent of consumption at the volume level.
+ * The capacity of the pool can be split up and assigned to volumes within the pool. Storage pools are a billable
+ * component of NetApp Volumes. Billing is based on the location, service level, and capacity allocated to a pool
+ * independent of consumption at the volume level.
  * 
  * To get more information about storagePool, see:
  * 
@@ -48,6 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfig;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfigArgs;
  * import com.pulumi.gcp.netapp.StoragePool;
  * import com.pulumi.gcp.netapp.StoragePoolArgs;
  * import java.util.List;
@@ -76,6 +80,13 @@ import javax.annotation.Nullable;
  *             .network(peeringNetwork.id())
  *             .service(&#34;netapp.servicenetworking.goog&#34;)
  *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var routeUpdates = new NetworkPeeringRoutesConfig(&#34;routeUpdates&#34;, NetworkPeeringRoutesConfigArgs.builder()        
+ *             .peering(default_.peering())
+ *             .network(peeringNetwork.name())
+ *             .importCustomRoutes(true)
+ *             .exportCustomRoutes(true)
  *             .build());
  * 
  *         var testPool = new StoragePool(&#34;testPool&#34;, StoragePoolArgs.builder()        

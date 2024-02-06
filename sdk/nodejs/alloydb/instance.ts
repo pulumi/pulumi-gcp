@@ -184,7 +184,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
      */
-    public readonly databaseFlags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly databaseFlags!: pulumi.Output<{[key: string]: string}>;
     /**
      * User-settable and human-readable display name for the Instance.
      */

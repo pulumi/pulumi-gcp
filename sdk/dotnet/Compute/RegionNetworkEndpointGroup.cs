@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// A regional NEG that can support Serverless Products.
+    /// A regional NEG that can support Serverless Products and proxying traffic to external backends.
     /// 
     /// To get more information about RegionNetworkEndpointGroup, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+    ///     * [Serverless NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
+    ///     * [Internet NEGs Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
     /// 
     /// ## Example Usage
     /// ### Region Network Endpoint Group Functions
@@ -227,6 +228,48 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Network Endpoint Group Internet Ip Port
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default");
+    /// 
+    ///     var regionNetworkEndpointGroupInternetIpPort = new Gcp.Compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetIpPort", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///         NetworkEndpointType = "INTERNET_IP_PORT",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Network Endpoint Group Internet Fqdn Port
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default");
+    /// 
+    ///     var regionNetworkEndpointGroupInternetFqdnPort = new Gcp.Compute.RegionNetworkEndpointGroup("regionNetworkEndpointGroupInternetFqdnPort", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = @default.Id,
+    ///         NetworkEndpointType = "INTERNET_FQDN_PORT",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -252,7 +295,7 @@ namespace Pulumi.Gcp.Compute
     public partial class RegionNetworkEndpointGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -260,7 +303,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionNetworkEndpointGroupAppEngine?> AppEngine { get; private set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -268,7 +311,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionNetworkEndpointGroupCloudFunction?> CloudFunction { get; private set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -295,7 +338,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// This field is only used for PSC.
+        /// This field is only used for PSC and INTERNET NEGs.
         /// The URL of the network to which all network endpoints in the NEG belong. Uses
         /// "default" project network if unspecified.
         /// </summary>
@@ -303,9 +346,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+        /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
         /// Default value is `SERVERLESS`.
-        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string?> NetworkEndpointType { get; private set; } = null!;
@@ -318,6 +361,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// This field is only used for PSC and INTERNET NEGs.
         /// The target service url used to set up private service connection to
         /// a Google API or a PSC Producer Service Attachment.
         /// </summary>
@@ -325,7 +369,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> PscTargetService { get; private set; } = null!;
 
         /// <summary>
-        /// A reference to the region where the Serverless NEGs Reside.
+        /// A reference to the region where the regional NEGs reside.
         /// 
         /// 
         /// - - -
@@ -340,7 +384,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -348,7 +392,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionNetworkEndpointGroupServerlessDeployment?> ServerlessDeployment { get; private set; } = null!;
 
         /// <summary>
-        /// This field is only used for PSC.
+        /// This field is only used for PSC NEGs.
         /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         /// </summary>
         [Output("subnetwork")]
@@ -401,7 +445,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionNetworkEndpointGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -409,7 +453,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionNetworkEndpointGroupAppEngineArgs>? AppEngine { get; set; }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -417,7 +461,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionNetworkEndpointGroupCloudFunctionArgs>? CloudFunction { get; set; }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -444,7 +488,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// This field is only used for PSC.
+        /// This field is only used for PSC and INTERNET NEGs.
         /// The URL of the network to which all network endpoints in the NEG belong. Uses
         /// "default" project network if unspecified.
         /// </summary>
@@ -452,9 +496,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+        /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
         /// Default value is `SERVERLESS`.
-        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
@@ -467,6 +511,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// This field is only used for PSC and INTERNET NEGs.
         /// The target service url used to set up private service connection to
         /// a Google API or a PSC Producer Service Attachment.
         /// </summary>
@@ -474,7 +519,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? PscTargetService { get; set; }
 
         /// <summary>
-        /// A reference to the region where the Serverless NEGs Reside.
+        /// A reference to the region where the regional NEGs reside.
         /// 
         /// 
         /// - - -
@@ -483,7 +528,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -491,7 +536,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentArgs>? ServerlessDeployment { get; set; }
 
         /// <summary>
-        /// This field is only used for PSC.
+        /// This field is only used for PSC NEGs.
         /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         /// </summary>
         [Input("subnetwork")]
@@ -506,7 +551,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionNetworkEndpointGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -514,7 +559,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionNetworkEndpointGroupAppEngineGetArgs>? AppEngine { get; set; }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -522,7 +567,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionNetworkEndpointGroupCloudFunctionGetArgs>? CloudFunction { get; set; }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -549,7 +594,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// This field is only used for PSC.
+        /// This field is only used for PSC and INTERNET NEGs.
         /// The URL of the network to which all network endpoints in the NEG belong. Uses
         /// "default" project network if unspecified.
         /// </summary>
@@ -557,9 +602,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS
+        /// Type of network endpoints in this network endpoint group. Defaults to SERVERLESS.
         /// Default value is `SERVERLESS`.
-        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`.
+        /// Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<string>? NetworkEndpointType { get; set; }
@@ -572,6 +617,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// This field is only used for PSC and INTERNET NEGs.
         /// The target service url used to set up private service connection to
         /// a Google API or a PSC Producer Service Attachment.
         /// </summary>
@@ -579,7 +625,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? PscTargetService { get; set; }
 
         /// <summary>
-        /// A reference to the region where the Serverless NEGs Reside.
+        /// A reference to the region where the regional NEGs reside.
         /// 
         /// 
         /// - - -
@@ -594,7 +640,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// Only valid when networkEndpointType is "SERVERLESS".
+        /// This field is only used for SERVERLESS NEGs.
         /// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         /// Structure is documented below.
         /// </summary>
@@ -602,7 +648,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionNetworkEndpointGroupServerlessDeploymentGetArgs>? ServerlessDeployment { get; set; }
 
         /// <summary>
-        /// This field is only used for PSC.
+        /// This field is only used for PSC NEGs.
         /// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         /// </summary>
         [Input("subnetwork")]

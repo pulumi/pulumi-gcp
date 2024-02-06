@@ -292,7 +292,6 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
     }
     /**
      * Initial type of the private cloud.
-     * Default value is `STANDARD`.
      * Possible values are: `STANDARD`, `TIME_LIMITED`.
      * 
      */
@@ -301,7 +300,6 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Initial type of the private cloud.
-     * Default value is `STANDARD`.
      * Possible values are: `STANDARD`, `TIME_LIMITED`.
      * 
      */

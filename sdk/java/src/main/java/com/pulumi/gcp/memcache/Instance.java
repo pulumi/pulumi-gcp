@@ -415,6 +415,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, &#34;test-default&#34;
+     * associated with IP range 10.0.0.0/29.
+     * 
+     */
+    @Export(name="reservedIpRangeIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> reservedIpRangeIds;
+
+    /**
+     * @return Contains the name of allocated IP address ranges associated with
+     * the private service access connection for example, &#34;test-default&#34;
+     * associated with IP range 10.0.0.0/29.
+     * 
+     */
+    public Output<Optional<List<String>>> reservedIpRangeIds() {
+        return Codegen.optional(this.reservedIpRangeIds);
+    }
+    /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.
      * 
