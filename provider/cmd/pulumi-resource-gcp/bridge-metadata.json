@@ -2750,6 +2750,45 @@
                     }
                 }
             },
+            "google_blockchain_node_engine_blockchain_nodes": {
+                "current": "gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes",
+                "majorVersion": 7,
+                "fields": {
+                    "connection_info": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "endpoint_info": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ethereum_details": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "additional_endpoints": {
+                                    "maxItemsOne": false
+                                },
+                                "geth_details": {
+                                    "maxItemsOne": true
+                                },
+                                "validator_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "mev_relay_urls": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_certificate_manager_certificate": {
                 "current": "gcp:certificatemanager/certificate:Certificate",
                 "majorVersion": 7,
@@ -6542,6 +6581,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_compute_region_network_endpoint": {
+                "current": "gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint",
+                "majorVersion": 7
             },
             "google_compute_region_network_endpoint_group": {
                 "current": "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup",
@@ -14255,12 +14298,59 @@
                     }
                 }
             },
+            "google_discovery_engine_chat_engine": {
+                "current": "gcp:discoveryengine/chatEngine:ChatEngine",
+                "majorVersion": 7,
+                "fields": {
+                    "chat_engine_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "agent_creation_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "chat_engine_metadata": {
+                        "maxItemsOne": false
+                    },
+                    "common_config": {
+                        "maxItemsOne": true
+                    },
+                    "data_store_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_discovery_engine_data_store": {
                 "current": "gcp:discoveryengine/dataStore:DataStore",
                 "majorVersion": 7,
                 "fields": {
                     "solution_types": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_discovery_engine_search_engine": {
+                "current": "gcp:discoveryengine/searchEngine:SearchEngine",
+                "majorVersion": 7,
+                "fields": {
+                    "common_config": {
+                        "maxItemsOne": true
+                    },
+                    "data_store_ids": {
+                        "maxItemsOne": false
+                    },
+                    "search_engine_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "search_add_ons": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -17926,6 +18016,9 @@
                     "node_config": {
                         "maxItemsOne": true
                     },
+                    "reserved_ip_range_id": {
+                        "maxItemsOne": false
+                    },
                     "zones": {
                         "maxItemsOne": false
                     }
@@ -18374,6 +18467,10 @@
                         }
                     }
                 }
+            },
+            "google_netapp_volume_snapshot": {
+                "current": "gcp:netapp/volumeSnapshot:VolumeSnapshot",
+                "majorVersion": 7
             },
             "google_network_connectivity_hub": {
                 "current": "gcp:networkconnectivity/hub:Hub",
@@ -25448,6 +25545,28 @@
                 "current": "gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy",
                 "majorVersion": 7
             },
+            "google_compute_machine_types": {
+                "current": "gcp:compute/getMachineTypes:getMachineTypes",
+                "majorVersion": 7,
+                "fields": {
+                    "machine_types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "accelerators": {
+                                    "maxItemsOne": false
+                                },
+                                "bundled_local_ssds": {
+                                    "maxItemsOne": false
+                                },
+                                "deprecated": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_compute_network": {
                 "current": "gcp:compute/getNetwork:getNetwork",
                 "majorVersion": 7,
@@ -28588,6 +28707,7 @@
             "gcp:binaryauthorization/attestorIamMember:AttestorIamMember": 0,
             "gcp:binaryauthorization/attestorIamPolicy:AttestorIamPolicy": 0,
             "gcp:binaryauthorization/policy:Policy": 0,
+            "gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes": 0,
             "gcp:certificateauthority/authority:Authority": 0,
             "gcp:certificateauthority/caPool:CaPool": 0,
             "gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding": 0,
@@ -28742,6 +28862,7 @@
             "gcp:compute/regionHealthCheck:RegionHealthCheck": 0,
             "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager": 0,
             "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate": 0,
+            "gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint": 0,
             "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup": 0,
             "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy": 0,
             "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation": 0,
@@ -28895,7 +29016,9 @@
             "gcp:diagflow/entityType:EntityType": 0,
             "gcp:diagflow/fulfillment:Fulfillment": 0,
             "gcp:diagflow/intent:Intent": 0,
+            "gcp:discoveryengine/chatEngine:ChatEngine": 0,
             "gcp:discoveryengine/dataStore:DataStore": 0,
+            "gcp:discoveryengine/searchEngine:SearchEngine": 0,
             "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding": 0,
             "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember": 0,
             "gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy": 0,
@@ -29097,6 +29220,7 @@
             "gcp:netapp/kmsconfig:Kmsconfig": 0,
             "gcp:netapp/storagePool:StoragePool": 0,
             "gcp:netapp/volume:Volume": 0,
+            "gcp:netapp/volumeSnapshot:VolumeSnapshot": 0,
             "gcp:networkconnectivity/hub:Hub": 0,
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": 0,
             "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy": 0,
@@ -29397,6 +29521,7 @@
             "gcp:compute/getInstanceTemplate:getInstanceTemplate": 0,
             "gcp:compute/getLBIPRanges:getLBIPRanges": 0,
             "gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy": 0,
+            "gcp:compute/getMachineTypes:getMachineTypes": 0,
             "gcp:compute/getNetblockIPRanges:getNetblockIPRanges": 0,
             "gcp:compute/getNetwork:getNetwork": 0,
             "gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup": 0,
@@ -29733,6 +29858,7 @@
             "gcp:binaryauthorization/attestorIamMember:AttestorIamMember": "google_binary_authorization_attestor_iam_member",
             "gcp:binaryauthorization/attestorIamPolicy:AttestorIamPolicy": "google_binary_authorization_attestor_iam_policy",
             "gcp:binaryauthorization/policy:Policy": "google_binary_authorization_policy",
+            "gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes": "google_blockchain_node_engine_blockchain_nodes",
             "gcp:certificateauthority/authority:Authority": "google_privateca_certificate_authority",
             "gcp:certificateauthority/caPool:CaPool": "google_privateca_ca_pool",
             "gcp:certificateauthority/caPoolIamBinding:CaPoolIamBinding": "google_privateca_ca_pool_iam_binding",
@@ -29887,6 +30013,7 @@
             "gcp:compute/regionHealthCheck:RegionHealthCheck": "google_compute_region_health_check",
             "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager": "google_compute_region_instance_group_manager",
             "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate": "google_compute_region_instance_template",
+            "gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint": "google_compute_region_network_endpoint",
             "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup": "google_compute_region_network_endpoint_group",
             "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy": "google_compute_region_network_firewall_policy",
             "gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation": "google_compute_region_network_firewall_policy_association",
@@ -30040,7 +30167,9 @@
             "gcp:diagflow/entityType:EntityType": "google_dialogflow_entity_type",
             "gcp:diagflow/fulfillment:Fulfillment": "google_dialogflow_fulfillment",
             "gcp:diagflow/intent:Intent": "google_dialogflow_intent",
+            "gcp:discoveryengine/chatEngine:ChatEngine": "google_discovery_engine_chat_engine",
             "gcp:discoveryengine/dataStore:DataStore": "google_discovery_engine_data_store",
+            "gcp:discoveryengine/searchEngine:SearchEngine": "google_discovery_engine_search_engine",
             "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding": "google_dns_managed_zone_iam_binding",
             "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember": "google_dns_managed_zone_iam_member",
             "gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy": "google_dns_managed_zone_iam_policy",
@@ -30242,6 +30371,7 @@
             "gcp:netapp/kmsconfig:Kmsconfig": "google_netapp_kmsconfig",
             "gcp:netapp/storagePool:StoragePool": "google_netapp_storage_pool",
             "gcp:netapp/volume:Volume": "google_netapp_volume",
+            "gcp:netapp/volumeSnapshot:VolumeSnapshot": "google_netapp_volume_snapshot",
             "gcp:networkconnectivity/hub:Hub": "google_network_connectivity_hub",
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": "google_network_connectivity_policy_based_route",
             "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy": "google_network_connectivity_service_connection_policy",
@@ -30542,6 +30672,7 @@
             "gcp:compute/getInstanceTemplate:getInstanceTemplate": "google_compute_instance_template",
             "gcp:compute/getLBIPRanges:getLBIPRanges": "google_compute_lb_ip_ranges",
             "gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy": "google_compute_machine_image_iam_policy",
+            "gcp:compute/getMachineTypes:getMachineTypes": "google_compute_machine_types",
             "gcp:compute/getNetblockIPRanges:getNetblockIPRanges": "google_netblock_ip_ranges",
             "gcp:compute/getNetwork:getNetwork": "google_compute_network",
             "gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup": "google_compute_network_endpoint_group",
@@ -32875,6 +33006,45 @@
                 "clusterAdmissionRules": "cluster_admission_rules",
                 "defaultAdmissionRule": "default_admission_rule",
                 "globalPolicyEvaluationMode": "global_policy_evaluation_mode"
+            },
+            "gcp:blockchainnodeengine/BlockchainNodesConnectionInfo:BlockchainNodesConnectionInfo": {
+                "endpointInfos": "endpoint_info",
+                "serviceAttachment": "service_attachment"
+            },
+            "gcp:blockchainnodeengine/BlockchainNodesConnectionInfoEndpointInfo:BlockchainNodesConnectionInfoEndpointInfo": {
+                "jsonRpcApiEndpoint": "json_rpc_api_endpoint",
+                "websocketsApiEndpoint": "websockets_api_endpoint"
+            },
+            "gcp:blockchainnodeengine/BlockchainNodesEthereumDetails:BlockchainNodesEthereumDetails": {
+                "additionalEndpoints": "additional_endpoints",
+                "apiEnableAdmin": "api_enable_admin",
+                "apiEnableDebug": "api_enable_debug",
+                "consensusClient": "consensus_client",
+                "executionClient": "execution_client",
+                "gethDetails": "geth_details",
+                "nodeType": "node_type",
+                "validatorConfig": "validator_config"
+            },
+            "gcp:blockchainnodeengine/BlockchainNodesEthereumDetailsAdditionalEndpoint:BlockchainNodesEthereumDetailsAdditionalEndpoint": {
+                "beaconApiEndpoint": "beacon_api_endpoint",
+                "beaconPrometheusMetricsApiEndpoint": "beacon_prometheus_metrics_api_endpoint",
+                "executionClientPrometheusMetricsApiEndpoint": "execution_client_prometheus_metrics_api_endpoint"
+            },
+            "gcp:blockchainnodeengine/BlockchainNodesEthereumDetailsGethDetails:BlockchainNodesEthereumDetailsGethDetails": {
+                "garbageCollectionMode": "garbage_collection_mode"
+            },
+            "gcp:blockchainnodeengine/BlockchainNodesEthereumDetailsValidatorConfig:BlockchainNodesEthereumDetailsValidatorConfig": {
+                "mevRelayUrls": "mev_relay_urls"
+            },
+            "gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes": {
+                "blockchainNodeId": "blockchain_node_id",
+                "blockchainType": "blockchain_type",
+                "connectionInfos": "connection_info",
+                "createTime": "create_time",
+                "effectiveLabels": "effective_labels",
+                "ethereumDetails": "ethereum_details",
+                "pulumiLabels": "terraform_labels",
+                "updateTime": "update_time"
             },
             "gcp:certificateauthority/AuthorityAccessUrl:AuthorityAccessUrl": {
                 "caCertificateAccessUrl": "ca_certificate_access_url",
@@ -37374,6 +37544,7 @@
                 "asyncPrimaryDisk": "async_primary_disk",
                 "creationTimestamp": "creation_timestamp",
                 "diskEncryptionKey": "disk_encryption_key",
+                "diskId": "disk_id",
                 "effectiveLabels": "effective_labels",
                 "enableConfidentialCompute": "enable_confidential_compute",
                 "guestOsFeatures": "guest_os_features",
@@ -37640,6 +37811,7 @@
                 "asyncPrimaryDisks": "async_primary_disk",
                 "creationTimestamp": "creation_timestamp",
                 "diskEncryptionKeys": "disk_encryption_key",
+                "diskId": "disk_id",
                 "effectiveLabels": "effective_labels",
                 "enableConfidentialCompute": "enable_confidential_compute",
                 "guestOsFeatures": "guest_os_features",
@@ -37880,6 +38052,7 @@
                 "allInstancesConfigs": "all_instances_config",
                 "autoHealingPolicies": "auto_healing_policies",
                 "baseInstanceName": "base_instance_name",
+                "creationTimestamp": "creation_timestamp",
                 "instanceGroup": "instance_group",
                 "instanceLifecyclePolicies": "instance_lifecycle_policy",
                 "listManagedInstancesResults": "list_managed_instances_results",
@@ -38129,6 +38302,27 @@
             "gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy": {
                 "machineImage": "machine_image",
                 "policyData": "policy_data"
+            },
+            "gcp:compute/getMachineTypes:getMachineTypes": {
+                "machineTypes": "machine_types"
+            },
+            "gcp:compute/getMachineTypesMachineType:getMachineTypesMachineType": {
+                "bundledLocalSsds": "bundled_local_ssds",
+                "deprecateds": "deprecated",
+                "guestCpus": "guest_cpus",
+                "isSharedCpus": "is_shared_cpus",
+                "maximumPersistentDisks": "maximum_persistent_disks",
+                "maximumPersistentDisksSizeGb": "maximum_persistent_disks_size_gb",
+                "memoryMb": "memory_mb",
+                "selfLink": "self_link"
+            },
+            "gcp:compute/getMachineTypesMachineTypeAccelerator:getMachineTypesMachineTypeAccelerator": {
+                "guestAcceleratorCount": "guest_accelerator_count",
+                "guestAcceleratorType": "guest_accelerator_type"
+            },
+            "gcp:compute/getMachineTypesMachineTypeBundledLocalSsd:getMachineTypesMachineTypeBundledLocalSsd": {
+                "defaultInterface": "default_interface",
+                "partitionCount": "partition_count"
             },
             "gcp:compute/getNetblockIPRanges:getNetblockIPRanges": {
                 "cidrBlocks": "cidr_blocks",
@@ -38740,6 +38934,7 @@
                 "allInstancesConfig": "all_instances_config",
                 "autoHealingPolicies": "auto_healing_policies",
                 "baseInstanceName": "base_instance_name",
+                "creationTimestamp": "creation_timestamp",
                 "instanceGroup": "instance_group",
                 "instanceLifecyclePolicy": "instance_lifecycle_policy",
                 "listManagedInstancesResults": "list_managed_instances_results",
@@ -38805,6 +39000,7 @@
                 "partnerAsn": "partner_asn",
                 "privateInterconnectInfos": "private_interconnect_info",
                 "selfLink": "self_link",
+                "stackType": "stack_type",
                 "vlanTag8021q": "vlan_tag8021q"
             },
             "gcp:compute/machineImage:MachineImage": {
@@ -39052,6 +39248,7 @@
                 "allInstancesConfig": "all_instances_config",
                 "autoHealingPolicies": "auto_healing_policies",
                 "baseInstanceName": "base_instance_name",
+                "creationTimestamp": "creation_timestamp",
                 "distributionPolicyTargetShape": "distribution_policy_target_shape",
                 "distributionPolicyZones": "distribution_policy_zones",
                 "instanceGroup": "instance_group",
@@ -39094,6 +39291,10 @@
                 "serviceAccount": "service_account",
                 "shieldedInstanceConfig": "shielded_instance_config",
                 "tagsFingerprint": "tags_fingerprint"
+            },
+            "gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint": {
+                "ipAddress": "ip_address",
+                "regionNetworkEndpointGroup": "region_network_endpoint_group"
             },
             "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup": {
                 "appEngine": "app_engine",
@@ -43989,6 +44190,38 @@
                 "rootFollowupIntentName": "root_followup_intent_name",
                 "webhookState": "webhook_state"
             },
+            "gcp:discoveryengine/ChatEngineChatEngineConfig:ChatEngineChatEngineConfig": {
+                "agentCreationConfig": "agent_creation_config"
+            },
+            "gcp:discoveryengine/ChatEngineChatEngineConfigAgentCreationConfig:ChatEngineChatEngineConfigAgentCreationConfig": {
+                "defaultLanguageCode": "default_language_code",
+                "timeZone": "time_zone"
+            },
+            "gcp:discoveryengine/ChatEngineChatEngineMetadata:ChatEngineChatEngineMetadata": {
+                "dialogflowAgent": "dialogflow_agent"
+            },
+            "gcp:discoveryengine/ChatEngineCommonConfig:ChatEngineCommonConfig": {
+                "companyName": "company_name"
+            },
+            "gcp:discoveryengine/SearchEngineCommonConfig:SearchEngineCommonConfig": {
+                "companyName": "company_name"
+            },
+            "gcp:discoveryengine/SearchEngineSearchEngineConfig:SearchEngineSearchEngineConfig": {
+                "searchAddOns": "search_add_ons",
+                "searchTier": "search_tier"
+            },
+            "gcp:discoveryengine/chatEngine:ChatEngine": {
+                "chatEngineConfig": "chat_engine_config",
+                "chatEngineMetadatas": "chat_engine_metadata",
+                "collectionId": "collection_id",
+                "commonConfig": "common_config",
+                "createTime": "create_time",
+                "dataStoreIds": "data_store_ids",
+                "displayName": "display_name",
+                "engineId": "engine_id",
+                "industryVertical": "industry_vertical",
+                "updateTime": "update_time"
+            },
             "gcp:discoveryengine/dataStore:DataStore": {
                 "contentConfig": "content_config",
                 "createAdvancedSiteSearch": "create_advanced_site_search",
@@ -43998,6 +44231,17 @@
                 "displayName": "display_name",
                 "industryVertical": "industry_vertical",
                 "solutionTypes": "solution_types"
+            },
+            "gcp:discoveryengine/searchEngine:SearchEngine": {
+                "collectionId": "collection_id",
+                "commonConfig": "common_config",
+                "createTime": "create_time",
+                "dataStoreIds": "data_store_ids",
+                "displayName": "display_name",
+                "engineId": "engine_id",
+                "industryVertical": "industry_vertical",
+                "searchEngineConfig": "search_engine_config",
+                "updateTime": "update_time"
             },
             "gcp:dns/ManagedZoneCloudLoggingConfig:ManagedZoneCloudLoggingConfig": {
                 "enableLogging": "enable_logging"
@@ -46132,6 +46376,7 @@
                 "billingCustomEndpoint": "billing_custom_endpoint",
                 "billingProject": "billing_project",
                 "binaryAuthorizationCustomEndpoint": "binary_authorization_custom_endpoint",
+                "blockchainNodeEngineCustomEndpoint": "blockchain_node_engine_custom_endpoint",
                 "certificateManagerCustomEndpoint": "certificate_manager_custom_endpoint",
                 "cloudAssetCustomEndpoint": "cloud_asset_custom_endpoint",
                 "cloudBillingCustomEndpoint": "cloud_billing_custom_endpoint",
@@ -46839,7 +47084,8 @@
                 "memcacheVersion": "memcache_version",
                 "nodeConfig": "node_config",
                 "nodeCount": "node_count",
-                "pulumiLabels": "terraform_labels"
+                "pulumiLabels": "terraform_labels",
+                "reservedIpRangeIds": "reserved_ip_range_id"
             },
             "gcp:migrationcenter/group:Group": {
                 "createTime": "create_time",
@@ -47248,6 +47494,7 @@
             "gcp:netapp/volume:Volume": {
                 "activeDirectory": "active_directory",
                 "capacityGib": "capacity_gib",
+                "deletionPolicy": "deletion_policy",
                 "effectiveLabels": "effective_labels",
                 "encryptionType": "encryption_type",
                 "exportPolicy": "export_policy",
@@ -47268,6 +47515,12 @@
                 "storagePool": "storage_pool",
                 "unixPermissions": "unix_permissions",
                 "usedGib": "used_gib"
+            },
+            "gcp:netapp/volumeSnapshot:VolumeSnapshot": {
+                "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
+                "usedBytes": "used_bytes",
+                "volumeName": "volume_name"
             },
             "gcp:networkconnectivity/PolicyBasedRouteFilter:PolicyBasedRouteFilter": {
                 "destRange": "dest_range",
@@ -51160,6 +51413,7 @@
             "billingCustomEndpoint": "billing_custom_endpoint",
             "billingProject": "billing_project",
             "binaryAuthorizationCustomEndpoint": "binary_authorization_custom_endpoint",
+            "blockchainNodeEngineCustomEndpoint": "blockchain_node_engine_custom_endpoint",
             "certificateManagerCustomEndpoint": "certificate_manager_custom_endpoint",
             "cloudAssetCustomEndpoint": "cloud_asset_custom_endpoint",
             "cloudBillingCustomEndpoint": "cloud_billing_custom_endpoint",
