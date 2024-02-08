@@ -294,8 +294,6 @@ serviceNetworkingCustomEndpoint: Optional[str]
 
 serviceUsageCustomEndpoint: Optional[str]
 
-skipRegionValidation: bool
-
 sourceRepoCustomEndpoint: Optional[str]
 
 spannerCustomEndpoint: Optional[str]
