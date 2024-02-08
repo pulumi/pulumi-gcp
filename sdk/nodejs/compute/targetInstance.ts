@@ -80,22 +80,32 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example
+ * TargetInstance can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}`
+ *
+ *  * `{{project}}/{{zone}}/{{name}}`
+ *
+ *  * `{{zone}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
+ * $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
+ * $ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
+ * $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
+ * $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
  * ```
  */
 export class TargetInstance extends pulumi.CustomResource {

@@ -63,10 +63,14 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     /// ## Import
     /// 
-    /// Fulfillment can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Fulfillment can be imported using one of the formats above. For example
+    /// Fulfillment can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Fulfillment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}
+    /// $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:diagflow/fulfillment:Fulfillment")]

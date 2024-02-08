@@ -506,22 +506,32 @@ class Cluster(pulumi.CustomResource):
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/clusters/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example
+        Cluster can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/clusters/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}
+        $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:redis/cluster:Cluster default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:redis/cluster:Cluster default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:redis/cluster:Cluster default {{region}}/{{name}}
+        $ pulumi import gcp:redis/cluster:Cluster default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:redis/cluster:Cluster default {{name}}
+        $ pulumi import gcp:redis/cluster:Cluster default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -594,22 +604,32 @@ class Cluster(pulumi.CustomResource):
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/clusters/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example
+        Cluster can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/clusters/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}
+        $ pulumi import gcp:redis/cluster:Cluster default projects/{{project}}/locations/{{region}}/clusters/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:redis/cluster:Cluster default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:redis/cluster:Cluster default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:redis/cluster:Cluster default {{region}}/{{name}}
+        $ pulumi import gcp:redis/cluster:Cluster default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:redis/cluster:Cluster default {{name}}
+        $ pulumi import gcp:redis/cluster:Cluster default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

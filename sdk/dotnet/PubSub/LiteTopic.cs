@@ -64,22 +64,32 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// ## Import
     /// 
-    /// Topic can be imported using any of these accepted formats* `projects/{{project}}/locations/{{zone}}/topics/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Topic can be imported using one of the formats above. For example
+    /// Topic can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{zone}}/topics/{{name}}`
+    /// 
+    ///  * `{{project}}/{{zone}}/{{name}}`
+    /// 
+    ///  * `{{zone}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Topic can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/liteTopic:LiteTopic default projects/{{project}}/locations/{{zone}}/topics/{{name}}
+    /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default projects/{{project}}/locations/{{zone}}/topics/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{project}}/{{zone}}/{{name}}
+    /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{project}}/{{zone}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{zone}}/{{name}}
+    /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{zone}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
+    /// $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:pubsub/liteTopic:LiteTopic")]

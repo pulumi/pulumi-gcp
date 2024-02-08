@@ -518,18 +518,26 @@ namespace Pulumi.Gcp.GkeBackup
     /// 
     /// ## Import
     /// 
-    /// RestorePlan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example
+    /// RestorePlan can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}`
+    /// 
+    ///  * `{{project}}/{{location}}/{{name}}`
+    /// 
+    ///  * `{{location}}/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
+    /// $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default {{project}}/{{location}}/{{name}}
+    /// $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default {{project}}/{{location}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default {{location}}/{{name}}
+    /// $ pulumi import gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy default {{location}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gkebackup/restorePlanIamPolicy:RestorePlanIamPolicy")]

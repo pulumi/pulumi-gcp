@@ -89,18 +89,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Mesh can be imported using any of these accepted formats* `projects/{{project}}/locations/global/meshes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example
+ * Mesh can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/locations/global/meshes/{{name}}`
+ * 
+ *  * `{{project}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/global/meshes/{{name}}
+ * $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/global/meshes/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{name}}
+ * $ pulumi import gcp:networkservices/mesh:Mesh default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:networkservices/mesh:Mesh default {{name}}
+ * $ pulumi import gcp:networkservices/mesh:Mesh default {{name}}
  * ```
  * 
  */

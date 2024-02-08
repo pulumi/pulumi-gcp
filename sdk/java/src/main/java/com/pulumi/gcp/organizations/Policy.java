@@ -180,10 +180,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Organization Policies can be imported using the `org_id` and the `constraint`, e.g. * `{{org_id}}/constraints/{{constraint}}` When using the `pulumi import` command, Organization Policies can be imported using one of the formats above. For example
+ * Organization Policies can be imported using the `org_id` and the `constraint`, e.g.
+ * 
+ *  * `{{org_id}}/constraints/{{constraint}}`
+ * 
+ *  When using the `pulumi import` command, Organization Policies can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:organizations/policy:Policy default {{org_id}}/constraints/{{constraint}}
+ * $ pulumi import gcp:organizations/policy:Policy default {{org_id}}/constraints/{{constraint}}
  * ```
  * 
  *  It is all right if the constraint contains a slash, as in the example above.

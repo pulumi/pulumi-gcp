@@ -610,18 +610,26 @@ class Registration(pulumi.CustomResource):
 
         ## Import
 
-        Registration can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}` * `{{project}}/{{location}}/{{domain_name}}` * `{{location}}/{{domain_name}}` When using the `pulumi import` command, Registration can be imported using one of the formats above. For example
+        Registration can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
+
+         * `{{project}}/{{location}}/{{domain_name}}`
+
+         * `{{location}}/{{domain_name}}`
+
+         When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
+        $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
         ```
 
         ```sh
-         $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
+        $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
         ```
 
         ```sh
-         $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
+        $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -722,18 +730,26 @@ class Registration(pulumi.CustomResource):
 
         ## Import
 
-        Registration can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}` * `{{project}}/{{location}}/{{domain_name}}` * `{{location}}/{{domain_name}}` When using the `pulumi import` command, Registration can be imported using one of the formats above. For example
+        Registration can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}`
+
+         * `{{project}}/{{location}}/{{domain_name}}`
+
+         * `{{location}}/{{domain_name}}`
+
+         When using the `pulumi import` command, Registration can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
+        $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
         ```
 
         ```sh
-         $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
+        $ pulumi import gcp:clouddomains/registration:Registration default {{project}}/{{location}}/{{domain_name}}
         ```
 
         ```sh
-         $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
+        $ pulumi import gcp:clouddomains/registration:Registration default {{location}}/{{domain_name}}
         ```
 
         :param str resource_name: The name of the resource.

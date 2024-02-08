@@ -114,18 +114,26 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// ## Import
     /// 
-    /// Database can be imported using any of these accepted formats* `projects/{{project}}/databases/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Database can be imported using one of the formats above. For example
+    /// Database can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/databases/{{name}}`
+    /// 
+    ///  * `{{project}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}
+    /// $ pulumi import gcp:firestore/database:Database default projects/{{project}}/databases/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firestore/database:Database default {{project}}/{{name}}
+    /// $ pulumi import gcp:firestore/database:Database default {{project}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firestore/database:Database default {{name}}
+    /// $ pulumi import gcp:firestore/database:Database default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firestore/database:Database")]

@@ -369,22 +369,32 @@ class DataExchange(pulumi.CustomResource):
 
         ## Import
 
-        DataExchange can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}` * `{{project}}/{{location}}/{{data_exchange_id}}` * `{{location}}/{{data_exchange_id}}` * `{{data_exchange_id}}` When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example
+        DataExchange can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}`
+
+         * `{{project}}/{{location}}/{{data_exchange_id}}`
+
+         * `{{location}}/{{data_exchange_id}}`
+
+         * `{{data_exchange_id}}`
+
+         When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}
+        $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{project}}/{{location}}/{{data_exchange_id}}
+        $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{project}}/{{location}}/{{data_exchange_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{location}}/{{data_exchange_id}}
+        $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{location}}/{{data_exchange_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{data_exchange_id}}
+        $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{data_exchange_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -433,22 +443,32 @@ class DataExchange(pulumi.CustomResource):
 
         ## Import
 
-        DataExchange can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}` * `{{project}}/{{location}}/{{data_exchange_id}}` * `{{location}}/{{data_exchange_id}}` * `{{data_exchange_id}}` When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example
+        DataExchange can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}`
+
+         * `{{project}}/{{location}}/{{data_exchange_id}}`
+
+         * `{{location}}/{{data_exchange_id}}`
+
+         * `{{data_exchange_id}}`
+
+         When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}
+        $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{project}}/{{location}}/{{data_exchange_id}}
+        $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{project}}/{{location}}/{{data_exchange_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{location}}/{{data_exchange_id}}
+        $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{location}}/{{data_exchange_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{data_exchange_id}}
+        $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default {{data_exchange_id}}
         ```
 
         :param str resource_name: The name of the resource.

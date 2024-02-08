@@ -328,24 +328,26 @@ import (
 //
 // ## Import
 //
-// CertificateAuthority can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}` * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}` * `{{location}}/{{pool}}/{{certificate_authority_id}}` When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example
+// CertificateAuthority can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}`
+//
+//   - `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}`
+//
+//   - `{{location}}/{{pool}}/{{certificate_authority_id}}`
+//
+//     When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
-//
+// $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
-//
+// $ pulumi import gcp:certificateauthority/authority:Authority default {{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
-//
+// $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{pool}}/{{certificate_authority_id}}
 // ```
 type Authority struct {
 	pulumi.CustomResourceState

@@ -67,18 +67,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * storagePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/storagePools/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example
+ * storagePool can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/storagePools/{{name}}`
+ *
+ *  * `{{project}}/{{location}}/{{name}}`
+ *
+ *  * `{{location}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, storagePool can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}
+ * $ pulumi import gcp:netapp/storagePool:StoragePool default projects/{{project}}/locations/{{location}}/storagePools/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:netapp/storagePool:StoragePool default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:netapp/storagePool:StoragePool default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:netapp/storagePool:StoragePool default {{location}}/{{name}}
+ * $ pulumi import gcp:netapp/storagePool:StoragePool default {{location}}/{{name}}
  * ```
  */
 export class StoragePool extends pulumi.CustomResource {

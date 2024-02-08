@@ -102,18 +102,26 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// ## Import
     /// 
-    /// WorkflowTemplate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example
+    /// WorkflowTemplate can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}`
+    /// 
+    ///  * `{{project}}/{{location}}/{{name}}`
+    /// 
+    ///  * `{{location}}/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, WorkflowTemplate can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
+    /// $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default projects/{{project}}/locations/{{location}}/workflowTemplates/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
+    /// $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{project}}/{{location}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
+    /// $ pulumi import gcp:dataproc/workflowTemplate:WorkflowTemplate default {{location}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:dataproc/workflowTemplate:WorkflowTemplate")]

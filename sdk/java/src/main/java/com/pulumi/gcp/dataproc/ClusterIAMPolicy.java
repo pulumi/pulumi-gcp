@@ -132,14 +132,28 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example* `projects/{project}/regions/{region}/clusters/{cluster}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * ### Importing IAM policies
+ * 
+ *  IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example:
+ * 
+ *  * `projects/{project}/regions/{region}/clusters/{cluster}`
+ * 
+ *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * 
+ *  tf
+ * 
+ *  import {
  * 
  *  id = projects/{project}/regions/{region}/clusters/{cluster}
  * 
- *  to = google_dataproc_cluster_iam_policy.default } The `pulumi import` command can also be used
+ *  to = google_dataproc_cluster_iam_policy.default
+ * 
+ *  }
+ * 
+ *  The `pulumi import` command can also be used:
  * 
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}
+ * $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy default projects/{project}/regions/{region}/clusters/{cluster}
  * ```
  * 
  */

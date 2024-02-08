@@ -454,22 +454,32 @@ class NodeTemplate(pulumi.CustomResource):
 
         ## Import
 
-        NodeTemplate can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example
+        NodeTemplate can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
+        $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
+        $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
+        $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -544,22 +554,32 @@ class NodeTemplate(pulumi.CustomResource):
 
         ## Import
 
-        NodeTemplate can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example
+        NodeTemplate can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, NodeTemplate can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
+        $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
+        $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
+        $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

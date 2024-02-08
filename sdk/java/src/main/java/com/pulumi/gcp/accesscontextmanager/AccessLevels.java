@@ -106,14 +106,20 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AccessLevels can be imported using any of these accepted formats* `{{parent}}/accessLevels` * `{{parent}}` When using the `pulumi import` command, AccessLevels can be imported using one of the formats above. For example
+ * AccessLevels can be imported using any of these accepted formats:
+ * 
+ *  * `{{parent}}/accessLevels`
+ * 
+ *  * `{{parent}}`
+ * 
+ *  When using the `pulumi import` command, AccessLevels can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
+ * $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
+ * $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
  * ```
  * 
  */

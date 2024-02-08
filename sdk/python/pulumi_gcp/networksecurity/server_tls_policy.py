@@ -529,18 +529,26 @@ class ServerTlsPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ServerTlsPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example
+        ServerTlsPolicy can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}
+        $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{location}}/{{name}}
+        $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -688,18 +696,26 @@ class ServerTlsPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ServerTlsPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example
+        ServerTlsPolicy can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, ServerTlsPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}
+        $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default projects/{{project}}/locations/{{location}}/serverTlsPolicies/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{location}}/{{name}}
+        $ pulumi import gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

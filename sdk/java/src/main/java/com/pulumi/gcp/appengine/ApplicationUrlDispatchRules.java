@@ -105,10 +105,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ApplicationUrlDispatchRules can be imported using any of these accepted formats* `{{project}}` When using the `pulumi import` command, ApplicationUrlDispatchRules can be imported using one of the formats above. For example
+ * ApplicationUrlDispatchRules can be imported using any of these accepted formats:
+ * 
+ *  * `{{project}}`
+ * 
+ *  When using the `pulumi import` command, ApplicationUrlDispatchRules can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
+ * $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
  * ```
  * 
  */

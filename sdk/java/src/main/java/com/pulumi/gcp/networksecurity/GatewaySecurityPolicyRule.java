@@ -114,18 +114,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GatewaySecurityPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}` * `{{project}}/{{location}}/{{gateway_security_policy}}/{{name}}` * `{{location}}/{{gateway_security_policy}}/{{name}}` When using the `pulumi import` command, GatewaySecurityPolicyRule can be imported using one of the formats above. For example
+ * GatewaySecurityPolicyRule can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}`
+ * 
+ *  * `{{project}}/{{location}}/{{gateway_security_policy}}/{{name}}`
+ * 
+ *  * `{{location}}/{{gateway_security_policy}}/{{name}}`
+ * 
+ *  When using the `pulumi import` command, GatewaySecurityPolicyRule can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}
+ * $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{gateway_security_policy}}/rules/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default {{project}}/{{location}}/{{gateway_security_policy}}/{{name}}
+ * $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default {{project}}/{{location}}/{{gateway_security_policy}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default {{location}}/{{gateway_security_policy}}/{{name}}
+ * $ pulumi import gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule default {{location}}/{{gateway_security_policy}}/{{name}}
  * ```
  * 
  */

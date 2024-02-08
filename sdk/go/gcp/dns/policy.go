@@ -82,24 +82,26 @@ import (
 //
 // ## Import
 //
-// Policy can be imported using any of these accepted formats* `projects/{{project}}/policies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Policy can be imported using one of the formats above. For example
+// Policy can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/policies/{{name}}`
+//
+//   - `{{project}}/{{name}}`
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}
-//
+// $ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/policy:Policy default {{project}}/{{name}}
-//
+// $ pulumi import gcp:dns/policy:Policy default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/policy:Policy default {{name}}
-//
+// $ pulumi import gcp:dns/policy:Policy default {{name}}
 // ```
 type Policy struct {
 	pulumi.CustomResourceState

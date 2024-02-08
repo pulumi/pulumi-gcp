@@ -32,18 +32,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * backupVault can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/backupVaults/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, backupVault can be imported using one of the formats above. For example
+ * backupVault can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/backupVaults/{{name}}`
+ *
+ *  * `{{project}}/{{location}}/{{name}}`
+ *
+ *  * `{{location}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, backupVault can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:netapp/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{name}}
+ * $ pulumi import gcp:netapp/backupVault:BackupVault default projects/{{project}}/locations/{{location}}/backupVaults/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:netapp/backupVault:BackupVault default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:netapp/backupVault:BackupVault default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:netapp/backupVault:BackupVault default {{location}}/{{name}}
+ * $ pulumi import gcp:netapp/backupVault:BackupVault default {{location}}/{{name}}
  * ```
  */
 export class BackupVault extends pulumi.CustomResource {

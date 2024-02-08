@@ -37,18 +37,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ManagedSslCertificate can be imported using any of these accepted formats* `projects/{{project}}/global/sslCertificates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example
+ * ManagedSslCertificate can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/global/sslCertificates/{{name}}`
+ *
+ *  * `{{project}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+ * $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{project}}/{{name}}
+ * $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{name}}
+ * $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{name}}
  * ```
  */
 export class ManagedSslCertificate extends pulumi.CustomResource {

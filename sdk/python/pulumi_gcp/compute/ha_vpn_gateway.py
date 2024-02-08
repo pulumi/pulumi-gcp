@@ -426,22 +426,32 @@ class HaVpnGateway(pulumi.CustomResource):
 
         ## Import
 
-        HaVpnGateway can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example
+        HaVpnGateway can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
+        $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
+        $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
+        $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -563,22 +573,32 @@ class HaVpnGateway(pulumi.CustomResource):
 
         ## Import
 
-        HaVpnGateway can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example
+        HaVpnGateway can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, HaVpnGateway can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
+        $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default projects/{{project}}/regions/{{region}}/vpnGateways/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
+        $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
+        $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -15,14 +15,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * EnvKeystore can be imported using any of these accepted formats* `{{env_id}}/keystores/{{name}}` * `{{env_id}}/{{name}}` When using the `pulumi import` command, EnvKeystore can be imported using one of the formats above. For example
+ * EnvKeystore can be imported using any of these accepted formats:
+ *
+ *  * `{{env_id}}/keystores/{{name}}`
+ *
+ *  * `{{env_id}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, EnvKeystore can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/keystores/{{name}}
+ * $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/keystores/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/{{name}}
+ * $ pulumi import gcp:apigee/envKeystore:EnvKeystore default {{env_id}}/{{name}}
  * ```
  */
 export class EnvKeystore extends pulumi.CustomResource {

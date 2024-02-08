@@ -70,10 +70,14 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// ## Import
     /// 
-    /// Subnet can be imported using any of these accepted formats* `{{parent}}/subnets/{{name}}` When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example
+    /// Subnet can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{parent}}/subnets/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vmwareengine/subnet:Subnet default {{parent}}/subnets/{{name}}
+    /// $ pulumi import gcp:vmwareengine/subnet:Subnet default {{parent}}/subnets/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:vmwareengine/subnet:Subnet")]

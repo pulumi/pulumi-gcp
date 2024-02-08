@@ -44,18 +44,26 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// ## Import
     /// 
-    /// Brand can be imported using any of these accepted formats* `projects/{{project_id}}/brands/{{brand_id}}` * `projects/{{project_number}}/brands/{{brand_id}}` * `{{project_number}}/{{brand_id}}` When using the `pulumi import` command, Brand can be imported using one of the formats above. For example
+    /// Brand can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project_id}}/brands/{{brand_id}}`
+    /// 
+    ///  * `projects/{{project_number}}/brands/{{brand_id}}`
+    /// 
+    ///  * `{{project_number}}/{{brand_id}}`
+    /// 
+    ///  When using the `pulumi import` command, Brand can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
+    /// $ pulumi import gcp:iap/brand:Brand default projects/{{project_id}}/brands/{{brand_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
+    /// $ pulumi import gcp:iap/brand:Brand default projects/{{project_number}}/brands/{{brand_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
+    /// $ pulumi import gcp:iap/brand:Brand default {{project_number}}/{{brand_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:iap/brand:Brand")]

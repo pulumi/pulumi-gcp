@@ -217,14 +217,28 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the Healthcare DICOM store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies
+
+         IAM policy imports use the identifier of the Healthcare DICOM store resource. For example:
+
+         * `"{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"`
+
+         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+
+         tf
+
+         import {
 
          id = "{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"
 
-         to = google_healthcare_dicom_store_iam_policy.default } The `pulumi import` command can also be used
+         to = google_healthcare_dicom_store_iam_policy.default
+
+         }
+
+         The `pulumi import` command can also be used:
 
         ```sh
-         $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}
+        $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -303,14 +317,28 @@ class DicomStoreIamPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the Healthcare DICOM store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies
+
+         IAM policy imports use the identifier of the Healthcare DICOM store resource. For example:
+
+         * `"{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"`
+
+         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+
+         tf
+
+         import {
 
          id = "{{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}"
 
-         to = google_healthcare_dicom_store_iam_policy.default } The `pulumi import` command can also be used
+         to = google_healthcare_dicom_store_iam_policy.default
+
+         }
+
+         The `pulumi import` command can also be used:
 
         ```sh
-         $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}
+        $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy default {{project_id}}/{{location}}/{{dataset}}/{{dicom_store}}
         ```
 
         :param str resource_name: The name of the resource.

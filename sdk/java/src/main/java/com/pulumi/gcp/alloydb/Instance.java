@@ -199,18 +199,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}` * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}` * `{{location}}/{{cluster}}/{{instance_id}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
+ * Instance can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}`
+ * 
+ *  * `{{project}}/{{location}}/{{cluster}}/{{instance_id}}`
+ * 
+ *  * `{{location}}/{{cluster}}/{{instance_id}}`
+ * 
+ *  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
+ * $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
+ * $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
+ * $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
  * ```
  * 
  */

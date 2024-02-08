@@ -72,10 +72,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CryptoKeyVersion can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, CryptoKeyVersion can be imported using one of the formats above. For example
+ * CryptoKeyVersion can be imported using any of these accepted formats:
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, CryptoKeyVersion can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:kms/cryptoKeyVersion:CryptoKeyVersion default {{name}}
+ * $ pulumi import gcp:kms/cryptoKeyVersion:CryptoKeyVersion default {{name}}
  * ```
  * 
  */

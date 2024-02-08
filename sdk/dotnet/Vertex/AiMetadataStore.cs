@@ -32,22 +32,32 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// ## Import
     /// 
-    /// MetadataStore can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/metadataStores/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, MetadataStore can be imported using one of the formats above. For example
+    /// MetadataStore can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{region}}/metadataStores/{{name}}`
+    /// 
+    ///  * `{{project}}/{{region}}/{{name}}`
+    /// 
+    ///  * `{{region}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, MetadataStore can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default projects/{{project}}/locations/{{region}}/metadataStores/{{name}}
+    /// $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default projects/{{project}}/locations/{{region}}/metadataStores/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{project}}/{{region}}/{{name}}
+    /// $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{project}}/{{region}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{region}}/{{name}}
+    /// $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{region}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{name}}
+    /// $ pulumi import gcp:vertex/aiMetadataStore:AiMetadataStore default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:vertex/aiMetadataStore:AiMetadataStore")]

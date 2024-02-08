@@ -676,18 +676,26 @@ class Function(pulumi.CustomResource):
 
         ## Import
 
-        function can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/functions/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, function can be imported using one of the formats above. For example
+        function can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/functions/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, function can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}
+        $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:cloudfunctionsv2/function:Function default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:cloudfunctionsv2/function:Function default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
+        $ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -913,18 +921,26 @@ class Function(pulumi.CustomResource):
 
         ## Import
 
-        function can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/functions/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, function can be imported using one of the formats above. For example
+        function can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/functions/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, function can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}
+        $ pulumi import gcp:cloudfunctionsv2/function:Function default projects/{{project}}/locations/{{location}}/functions/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:cloudfunctionsv2/function:Function default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:cloudfunctionsv2/function:Function default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
+        $ pulumi import gcp:cloudfunctionsv2/function:Function default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

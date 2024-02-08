@@ -100,14 +100,28 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// ## Import
     /// 
-    /// ### Importing IAM policies IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example* `"projects/{project}/instances/{instance}"` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+    /// ### Importing IAM policies
+    /// 
+    ///  IAM policy imports use the `instance` identifier of the Bigtable Instance resource only. For example:
+    /// 
+    ///  * `"projects/{project}/instances/{instance}"`
+    /// 
+    ///  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+    /// 
+    ///  tf
+    /// 
+    ///  import {
     /// 
     ///  id = "projects/{project}/instances/{instance}"
     /// 
-    ///  to = google_bigtable_instance_iam_policy.default } The `pulumi import` command can also be used
+    ///  to = google_bigtable_instance_iam_policy.default
+    /// 
+    ///  }
+    /// 
+    ///  The `pulumi import` command can also be used:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember default projects/{project}/instances/{instance}
+    /// $ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember default projects/{project}/instances/{instance}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigtable/instanceIamMember:InstanceIamMember")]

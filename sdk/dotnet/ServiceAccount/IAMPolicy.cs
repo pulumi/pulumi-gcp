@@ -193,14 +193,16 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// ## Import
     /// 
-    /// ### Importing with conditionsHere are examples of importing IAM memberships and bindings that include conditions
+    /// ### Importing with conditions:
+    /// 
+    ///  Here are examples of importing IAM memberships and bindings that include conditions:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceaccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+    /// $ pulumi import gcp:serviceaccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceaccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+    /// $ pulumi import gcp:serviceaccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
     /// ```
     /// </summary>
     [GcpResourceType("gcp:serviceaccount/iAMPolicy:IAMPolicy")]

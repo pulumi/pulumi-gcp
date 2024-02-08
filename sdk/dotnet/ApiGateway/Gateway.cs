@@ -79,22 +79,32 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// ## Import
     /// 
-    /// Gateway can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}` * `{{project}}/{{region}}/{{gateway_id}}` * `{{region}}/{{gateway_id}}` * `{{gateway_id}}` When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example
+    /// Gateway can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}`
+    /// 
+    ///  * `{{project}}/{{region}}/{{gateway_id}}`
+    /// 
+    ///  * `{{region}}/{{gateway_id}}`
+    /// 
+    ///  * `{{gateway_id}}`
+    /// 
+    ///  When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
+    /// $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{gateway_id}}
+    /// $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{gateway_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{gateway_id}}
+    /// $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{gateway_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
+    /// $ pulumi import gcp:apigateway/gateway:Gateway default {{gateway_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:apigateway/gateway:Gateway")]

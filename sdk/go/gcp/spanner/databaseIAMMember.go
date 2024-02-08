@@ -129,16 +129,28 @@ import (
 //
 // ## Import
 //
-// ### Importing IAM policies IAM policy imports use the identifier of the Spanner Database resource in question. For example* `{{project}}/{{instance}}/{{database}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+// ### Importing IAM policies
+//
+//	IAM policy imports use the identifier of the Spanner Database resource in question. For example:
+//
+//	* `{{project}}/{{instance}}/{{database}}`
+//
+//	An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+//
+//	tf
+//
+//	import {
 //
 //	id = {{project}}/{{instance}}/{{database}}
 //
-//	to = google_spanner_database_iam_policy.default } The `pulumi import` command can also be used
+//	to = google_spanner_database_iam_policy.default
+//
+//	}
+//
+//	The `pulumi import` command can also be used:
 //
 // ```sh
-//
-//	$ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember default {{project}}/{{instance}}/{{database}}
-//
+// $ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember default {{project}}/{{instance}}/{{database}}
 // ```
 type DatabaseIAMMember struct {
 	pulumi.CustomResourceState

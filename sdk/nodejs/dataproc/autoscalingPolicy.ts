@@ -42,18 +42,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * AutoscalingPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}` * `{{project}}/{{location}}/{{policy_id}}` * `{{location}}/{{policy_id}}` When using the `pulumi import` command, AutoscalingPolicy can be imported using one of the formats above. For example
+ * AutoscalingPolicy can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}`
+ *
+ *  * `{{project}}/{{location}}/{{policy_id}}`
+ *
+ *  * `{{location}}/{{policy_id}}`
+ *
+ *  When using the `pulumi import` command, AutoscalingPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
+ * $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
+ * $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
+ * $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
  * ```
  */
 export class AutoscalingPolicy extends pulumi.CustomResource {

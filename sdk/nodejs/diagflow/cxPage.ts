@@ -588,14 +588,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` When using the `pulumi import` command, Page can be imported using one of the formats above. For example
+ * Page can be imported using any of these accepted formats:
+ *
+ *  * `{{parent}}/pages/{{name}}`
+ *
+ *  * `{{parent}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, Page can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
+ * $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/{{name}}
+ * $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/{{name}}
  * ```
  */
 export class CxPage extends pulumi.CustomResource {

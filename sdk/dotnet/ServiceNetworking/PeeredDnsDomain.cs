@@ -37,10 +37,22 @@ namespace Pulumi.Gcp.ServiceNetworking
     /// 
     /// ## Import
     /// 
-    /// Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, where- `service` is the service connection, defaults to `servicenetworking.googleapis.com`. - `project` is the producer project name. - `network` is the consumer network name. - `name` is the name of your peered DNS domain. * `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}` When using the `pulumi import` command, project peered DNS domains can be imported using one of the formats above. For example
+    /// Project peered DNS domains can be imported using the `service`, `project`, `network` and `name`, where:
+    /// 
+    ///  - `service` is the service connection, defaults to `servicenetworking.googleapis.com`.
+    /// 
+    ///  - `project` is the producer project name.
+    /// 
+    ///  - `network` is the consumer network name.
+    /// 
+    ///  - `name` is the name of your peered DNS domain.
+    /// 
+    ///  * `services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}`
+    /// 
+    ///  When using the `pulumi import` command, project peered DNS domains can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain default services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
+    /// $ pulumi import gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain default services/{service}/projects/{project}/global/networks/{network}/peeredDnsDomains/{name}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain")]

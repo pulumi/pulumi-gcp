@@ -40,18 +40,26 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ## Import
     /// 
-    /// BiReservation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/biReservation` * `{{project}}/{{location}}` * `{{location}}` When using the `pulumi import` command, BiReservation can be imported using one of the formats above. For example
+    /// BiReservation can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{location}}/biReservation`
+    /// 
+    ///  * `{{project}}/{{location}}`
+    /// 
+    ///  * `{{location}}`
+    /// 
+    ///  When using the `pulumi import` command, BiReservation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:bigquery/biReservation:BiReservation default projects/{{project}}/locations/{{location}}/biReservation
+    /// $ pulumi import gcp:bigquery/biReservation:BiReservation default projects/{{project}}/locations/{{location}}/biReservation
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:bigquery/biReservation:BiReservation default {{project}}/{{location}}
+    /// $ pulumi import gcp:bigquery/biReservation:BiReservation default {{project}}/{{location}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:bigquery/biReservation:BiReservation default {{location}}
+    /// $ pulumi import gcp:bigquery/biReservation:BiReservation default {{location}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigquery/biReservation:BiReservation")]

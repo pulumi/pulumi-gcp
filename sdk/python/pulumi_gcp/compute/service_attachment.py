@@ -578,22 +578,32 @@ class ServiceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        ServiceAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ServiceAttachment can be imported using one of the formats above. For example
+        ServiceAttachment can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, ServiceAttachment can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}
+        $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{region}}/{{name}}
+        $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{name}}
+        $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -651,22 +661,32 @@ class ServiceAttachment(pulumi.CustomResource):
 
         ## Import
 
-        ServiceAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ServiceAttachment can be imported using one of the formats above. For example
+        ServiceAttachment can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, ServiceAttachment can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}
+        $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default projects/{{project}}/regions/{{region}}/serviceAttachments/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{region}}/{{name}}
+        $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{name}}
+        $ pulumi import gcp:compute/serviceAttachment:ServiceAttachment default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

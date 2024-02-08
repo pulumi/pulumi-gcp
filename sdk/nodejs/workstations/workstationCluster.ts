@@ -116,18 +116,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * WorkstationCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}` * `{{location}}/{{workstation_cluster_id}}` When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example
+ * WorkstationCluster can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}`
+ *
+ *  * `{{project}}/{{location}}/{{workstation_cluster_id}}`
+ *
+ *  * `{{location}}/{{workstation_cluster_id}}`
+ *
+ *  When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
+ * $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{project}}/{{location}}/{{workstation_cluster_id}}
+ * $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{project}}/{{location}}/{{workstation_cluster_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
+ * $ pulumi import gcp:workstations/workstationCluster:WorkstationCluster default {{location}}/{{workstation_cluster_id}}
  * ```
  */
 export class WorkstationCluster extends pulumi.CustomResource {

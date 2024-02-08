@@ -570,18 +570,26 @@ class GuestPolicies(pulumi.CustomResource):
 
         ## Import
 
-        GuestPolicies can be imported using any of these accepted formats* `projects/{{project}}/guestPolicies/{{guest_policy_id}}` * `{{project}}/{{guest_policy_id}}` * `{{guest_policy_id}}` When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example
+        GuestPolicies can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
+
+         * `{{project}}/{{guest_policy_id}}`
+
+         * `{{guest_policy_id}}`
+
+         When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
+        $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
+        $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
+        $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -768,18 +776,26 @@ class GuestPolicies(pulumi.CustomResource):
 
         ## Import
 
-        GuestPolicies can be imported using any of these accepted formats* `projects/{{project}}/guestPolicies/{{guest_policy_id}}` * `{{project}}/{{guest_policy_id}}` * `{{guest_policy_id}}` When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example
+        GuestPolicies can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/guestPolicies/{{guest_policy_id}}`
+
+         * `{{project}}/{{guest_policy_id}}`
+
+         * `{{guest_policy_id}}`
+
+         When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
+        $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
+        $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{guest_policy_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
+        $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{guest_policy_id}}
         ```
 
         :param str resource_name: The name of the resource.

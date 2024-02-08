@@ -305,14 +305,28 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing Audit Configs An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource&#39;s `folder_id` and the `service`, e.g* `&#34;folder/{{folder_id}} foo.googleapis.com&#34;` An `import` block (Terraform v1.5.0 and later) can be used to import audit configstf import {
+ * ### Importing Audit Configs
+ * 
+ *  An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource&#39;s `folder_id` and the `service`, e.g:
+ * 
+ *  * `&#34;folder/{{folder_id}} foo.googleapis.com&#34;`
+ * 
+ *  An `import` block (Terraform v1.5.0 and later) can be used to import audit configs:
+ * 
+ *  tf
+ * 
+ *  import {
  * 
  *  id = &#34;folder/{{folder_id}} foo.googleapis.com&#34;
  * 
- *  to = google_folder_iam_audit_config.default } The `pulumi import` command can also be used
+ *  to = google_folder_iam_audit_config.default
+ * 
+ *  }
+ * 
+ *  The `pulumi import` command can also be used:
  * 
  * ```sh
- *  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig default &#34;folder/{{folder_id}} foo.googleapis.com&#34;
+ * $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig default &#34;folder/{{folder_id}} foo.googleapis.com&#34;
  * ```
  * 
  */

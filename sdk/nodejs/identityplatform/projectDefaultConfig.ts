@@ -44,18 +44,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ProjectDefaultConfig can be imported using any of these accepted formats* `projects/{{project}}/config/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ProjectDefaultConfig can be imported using one of the formats above. For example
+ * ProjectDefaultConfig can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/config/{{name}}`
+ *
+ *  * `{{project}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, ProjectDefaultConfig can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig default projects/{{project}}/config/{{name}}
+ * $ pulumi import gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig default projects/{{project}}/config/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig default {{project}}/{{name}}
+ * $ pulumi import gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig default {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig default {{name}}
+ * $ pulumi import gcp:identityplatform/projectDefaultConfig:ProjectDefaultConfig default {{name}}
  * ```
  */
 export class ProjectDefaultConfig extends pulumi.CustomResource {

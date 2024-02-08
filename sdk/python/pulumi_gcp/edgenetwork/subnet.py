@@ -513,26 +513,38 @@ class Subnet(pulumi.CustomResource):
 
         ## Import
 
-        Subnet can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}` * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}` * `{{location}}/{{zone}}/{{subnet_id}}` * `{{location}}/{{subnet_id}}` * `{{name}}` When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example
+        Subnet can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
+
+         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
+
+         * `{{location}}/{{zone}}/{{subnet_id}}`
+
+         * `{{location}}/{{subnet_id}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -619,26 +631,38 @@ class Subnet(pulumi.CustomResource):
 
         ## Import
 
-        Subnet can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}` * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}` * `{{location}}/{{zone}}/{{subnet_id}}` * `{{location}}/{{subnet_id}}` * `{{name}}` When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example
+        Subnet can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}`
+
+         * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}`
+
+         * `{{location}}/{{zone}}/{{subnet_id}}`
+
+         * `{{location}}/{{subnet_id}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default {{project}}/{{location}}/{{zone}}/{{subnet_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{zone}}/{{subnet_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default {{location}}/{{subnet_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
+        $ pulumi import gcp:edgenetwork/subnet:Subnet default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

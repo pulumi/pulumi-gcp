@@ -107,22 +107,32 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RepositoryWorkflowConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}` * `{{project}}/{{region}}/{{repository}}/{{name}}` * `{{region}}/{{repository}}/{{name}}` * `{{repository}}/{{name}}` When using the `pulumi import` command, RepositoryWorkflowConfig can be imported using one of the formats above. For example
+ * RepositoryWorkflowConfig can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}`
+ *
+ *  * `{{project}}/{{region}}/{{repository}}/{{name}}`
+ *
+ *  * `{{region}}/{{repository}}/{{name}}`
+ *
+ *  * `{{repository}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, RepositoryWorkflowConfig can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}
+ * $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/workflowConfigs/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{project}}/{{region}}/{{repository}}/{{name}}
+ * $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{project}}/{{region}}/{{repository}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{region}}/{{repository}}/{{name}}
+ * $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{region}}/{{repository}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{repository}}/{{name}}
+ * $ pulumi import gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig default {{repository}}/{{name}}
  * ```
  */
 export class RepositoryWorkflowConfig extends pulumi.CustomResource {

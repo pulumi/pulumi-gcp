@@ -273,18 +273,26 @@ class Schema(pulumi.CustomResource):
 
         ## Import
 
-        Schema can be imported using any of these accepted formats* `projects/{{project}}/schemas/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Schema can be imported using one of the formats above. For example
+        Schema can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/schemas/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}
+        $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:pubsub/schema:Schema default {{project}}/{{name}}
+        $ pulumi import gcp:pubsub/schema:Schema default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:pubsub/schema:Schema default {{name}}
+        $ pulumi import gcp:pubsub/schema:Schema default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -372,18 +380,26 @@ class Schema(pulumi.CustomResource):
 
         ## Import
 
-        Schema can be imported using any of these accepted formats* `projects/{{project}}/schemas/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Schema can be imported using one of the formats above. For example
+        Schema can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/schemas/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Schema can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}
+        $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:pubsub/schema:Schema default {{project}}/{{name}}
+        $ pulumi import gcp:pubsub/schema:Schema default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:pubsub/schema:Schema default {{name}}
+        $ pulumi import gcp:pubsub/schema:Schema default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
