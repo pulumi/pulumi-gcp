@@ -18,7 +18,6 @@
 package gcp
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"testing"
