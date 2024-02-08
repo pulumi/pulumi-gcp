@@ -81,21 +81,45 @@ func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	}
 }
 
-func validateAPITest(isValid func(body string)) func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+func validateAPITest(isValid func(body string)) func(
+	t *testing.T, stack integration.RuntimeValidationStackInfo,
+) {
+	retrySchedule := []time.Duration{
+		5 * time.Second,
+		10 * time.Second,
+		20 * time.Second,
+		40 * time.Second,
+		80 * time.Second,
+		160 * time.Second,
+	}
+	isRetryable := func(resp *http.Response) bool {
+		// The infra may return 5xx before it has finished provisioning.
+		if resp.StatusCode >= 500 {
+			return true
+		}
+		// HttpCallbackFunction may 404 before code provisioning is fully completed.
+		if resp.StatusCode == 404 {
+			return true
+		}
+		return false
+	}
 	return func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+		t.Helper()
 		var resp *http.Response
 		var err error
 		url := stack.Outputs["url"].(string)
-		// Retry a couple times on 5xx
-		for i := 0; i <= 5; i++ {
+		for _, sleepInterval := range retrySchedule {
 			resp, err = http.Get(url)
 			if !assert.NoError(t, err) {
 				return
 			}
-			if resp.StatusCode < 500 {
+			if isRetryable(resp) {
+				t.Logf("validateAPITest: retrying HTTP %v", resp.StatusCode)
+			} else {
 				break
 			}
-			time.Sleep(1 * time.Minute)
+			t.Logf("validateAPITest: backing off for %v", sleepInterval)
+			time.Sleep(sleepInterval)
 		}
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
