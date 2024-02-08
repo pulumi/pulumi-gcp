@@ -92,20 +92,19 @@ func validateAPITest(isValid func(body string)) func(
 		80 * time.Second,
 		160 * time.Second,
 	}
-	isRetryable := func(t *testing.T, resp *http.Response) bool {
+	isRetryable := func(resp *http.Response) bool {
 		// The infra may return 5xx before it has finished provisioning.
 		if resp.StatusCode >= 500 {
-			t.Logf("validateAPITest: retrying HTTP %v", resp.StatusCode)
 			return true
 		}
 		// HttpCallbackFunction may 404 before code provisioning is fully completed.
 		if resp.StatusCode == 404 {
-			t.Logf("validateAPITest: retrying HTTP %v", resp.StatusCode)
 			return true
 		}
 		return false
 	}
 	return func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+		t.Helper()
 		var resp *http.Response
 		var err error
 		url := stack.Outputs["url"].(string)
@@ -114,7 +113,9 @@ func validateAPITest(isValid func(body string)) func(
 			if !assert.NoError(t, err) {
 				return
 			}
-			if !isRetryable(t, resp) {
+			if isRetryable(resp) {
+				t.Logf("validateAPITest: retrying HTTP %v", resp.StatusCode)
+			} else {
 				break
 			}
 			t.Logf("validateAPITest: backing off for %v", sleepInterval)
