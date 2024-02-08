@@ -467,18 +467,26 @@ class Budget(pulumi.CustomResource):
 
         ## Import
 
-        Budget can be imported using any of these accepted formats* `billingAccounts/{{billing_account}}/budgets/{{name}}` * `{{billing_account}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Budget can be imported using one of the formats above. For example
+        Budget can be imported using any of these accepted formats:
+
+         * `billingAccounts/{{billing_account}}/budgets/{{name}}`
+
+         * `{{billing_account}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
+        $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
+        $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:billing/budget:Budget default {{name}}
+        $ pulumi import gcp:billing/budget:Budget default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -685,18 +693,26 @@ class Budget(pulumi.CustomResource):
 
         ## Import
 
-        Budget can be imported using any of these accepted formats* `billingAccounts/{{billing_account}}/budgets/{{name}}` * `{{billing_account}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Budget can be imported using one of the formats above. For example
+        Budget can be imported using any of these accepted formats:
+
+         * `billingAccounts/{{billing_account}}/budgets/{{name}}`
+
+         * `{{billing_account}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Budget can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
+        $ pulumi import gcp:billing/budget:Budget default billingAccounts/{{billing_account}}/budgets/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
+        $ pulumi import gcp:billing/budget:Budget default {{billing_account}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:billing/budget:Budget default {{name}}
+        $ pulumi import gcp:billing/budget:Budget default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

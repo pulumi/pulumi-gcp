@@ -47,22 +47,32 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Subscription can be imported using any of these accepted formats* `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example
+ * Subscription can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}`
+ *
+ *  * `{{project}}/{{zone}}/{{name}}`
+ *
+ *  * `{{zone}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}
+ * $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{project}}/{{zone}}/{{name}}
+ * $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{project}}/{{zone}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{zone}}/{{name}}
+ * $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{zone}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
+ * $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
  * ```
  */
 export class LiteSubscription extends pulumi.CustomResource {

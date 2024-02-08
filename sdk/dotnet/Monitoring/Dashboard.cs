@@ -128,14 +128,20 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ## Import
     /// 
-    /// Dashboard can be imported using any of these accepted formats* `projects/{{project}}/dashboards/{{dashboard_id}}` * `{{dashboard_id}}` When using the `pulumi import` command, Dashboard can be imported using one of the formats above. For example
+    /// Dashboard can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/dashboards/{{dashboard_id}}`
+    /// 
+    ///  * `{{dashboard_id}}`
+    /// 
+    ///  When using the `pulumi import` command, Dashboard can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:monitoring/dashboard:Dashboard default projects/{{project}}/dashboards/{{dashboard_id}}
+    /// $ pulumi import gcp:monitoring/dashboard:Dashboard default projects/{{project}}/dashboards/{{dashboard_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:monitoring/dashboard:Dashboard default {{dashboard_id}}
+    /// $ pulumi import gcp:monitoring/dashboard:Dashboard default {{dashboard_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/dashboard:Dashboard")]

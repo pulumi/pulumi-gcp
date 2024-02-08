@@ -371,18 +371,26 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// ## Import
     /// 
-    /// FeatureMembership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}` * `{{project}}/{{location}}/{{feature}}/{{membership}}` * `{{location}}/{{feature}}/{{membership}}` When using the `pulumi import` command, FeatureMembership can be imported using one of the formats above. For example
+    /// FeatureMembership can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}`
+    /// 
+    ///  * `{{project}}/{{location}}/{{feature}}/{{membership}}`
+    /// 
+    ///  * `{{location}}/{{feature}}/{{membership}}`
+    /// 
+    ///  When using the `pulumi import` command, FeatureMembership can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}
+    /// $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default projects/{{project}}/locations/{{location}}/features/{{feature}}/membershipId/{{membership}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{project}}/{{location}}/{{feature}}/{{membership}}
+    /// $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{project}}/{{location}}/{{feature}}/{{membership}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{location}}/{{feature}}/{{membership}}
+    /// $ pulumi import gcp:gkehub/featureMembership:FeatureMembership default {{location}}/{{feature}}/{{membership}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:gkehub/featureMembership:FeatureMembership")]

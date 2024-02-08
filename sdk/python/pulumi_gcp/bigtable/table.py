@@ -322,18 +322,28 @@ class Table(pulumi.CustomResource):
 
         ## Import
 
-        -> **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported`split_keys` Bigtable Tables can be imported using any of these accepted formats* `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}` * `{{project}}/{{instance_name}}/{{name}}` * `{{instance_name}}/{{name}}` When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example
+        -> **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported: `split_keys`
+
+         Bigtable Tables can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}`
+
+         * `{{project}}/{{instance_name}}/{{name}}`
+
+         * `{{instance_name}}/{{name}}`
+
+         When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
+        $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
+        $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
+        $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -394,18 +404,28 @@ class Table(pulumi.CustomResource):
 
         ## Import
 
-        -> **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported`split_keys` Bigtable Tables can be imported using any of these accepted formats* `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}` * `{{project}}/{{instance_name}}/{{name}}` * `{{instance_name}}/{{name}}` When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example
+        -> **Fields affected by import** The following fields can't be read and will show diffs if set in config when imported: `split_keys`
+
+         Bigtable Tables can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/instances/{{instance_name}}/tables/{{name}}`
+
+         * `{{project}}/{{instance_name}}/{{name}}`
+
+         * `{{instance_name}}/{{name}}`
+
+         When using the `pulumi import` command, Bigtable Tables can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
+        $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
+        $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
+        $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

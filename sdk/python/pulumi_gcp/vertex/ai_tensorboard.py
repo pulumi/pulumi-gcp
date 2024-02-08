@@ -430,22 +430,32 @@ class AiTensorboard(pulumi.CustomResource):
 
         ## Import
 
-        Tensorboard can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/tensorboards/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Tensorboard can be imported using one of the formats above. For example
+        Tensorboard can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/tensorboards/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Tensorboard can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default projects/{{project}}/locations/{{region}}/tensorboards/{{name}}
+        $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default projects/{{project}}/locations/{{region}}/tensorboards/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{region}}/{{name}}
+        $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{name}}
+        $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -523,22 +533,32 @@ class AiTensorboard(pulumi.CustomResource):
 
         ## Import
 
-        Tensorboard can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/tensorboards/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Tensorboard can be imported using one of the formats above. For example
+        Tensorboard can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/tensorboards/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Tensorboard can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default projects/{{project}}/locations/{{region}}/tensorboards/{{name}}
+        $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default projects/{{project}}/locations/{{region}}/tensorboards/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{region}}/{{name}}
+        $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{name}}
+        $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -43,10 +43,14 @@ namespace Pulumi.Gcp.SecurityCenter
     /// 
     /// ## Import
     /// 
-    /// MuteConfig can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, MuteConfig can be imported using one of the formats above. For example
+    /// MuteConfig can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, MuteConfig can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:securitycenter/muteConfig:MuteConfig default {{name}}
+    /// $ pulumi import gcp:securitycenter/muteConfig:MuteConfig default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:securitycenter/muteConfig:MuteConfig")]

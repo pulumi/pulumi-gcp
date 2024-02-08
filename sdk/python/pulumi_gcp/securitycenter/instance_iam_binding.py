@@ -338,22 +338,32 @@ class InstanceIamBinding(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
+        Instance can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default projects/{{project}}/locations/{{region}}/instances/{{name}}
+        $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default projects/{{project}}/locations/{{region}}/instances/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{region}}/{{name}}
+        $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{name}}
+        $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -484,22 +494,32 @@ class InstanceIamBinding(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
+        Instance can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/instances/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default projects/{{project}}/locations/{{region}}/instances/{{name}}
+        $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default projects/{{project}}/locations/{{region}}/instances/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{region}}/{{name}}
+        $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{name}}
+        $ pulumi import gcp:securitycenter/instanceIamBinding:InstanceIamBinding default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

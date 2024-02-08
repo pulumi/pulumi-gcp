@@ -262,18 +262,26 @@ class TransferAgentPool(pulumi.CustomResource):
 
         ## Import
 
-        AgentPool can be imported using any of these accepted formats* `projects/{{project}}/agentPools/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example
+        AgentPool can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/agentPools/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
+        $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{project}}/{{name}}
+        $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
+        $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -332,18 +340,26 @@ class TransferAgentPool(pulumi.CustomResource):
 
         ## Import
 
-        AgentPool can be imported using any of these accepted formats* `projects/{{project}}/agentPools/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example
+        AgentPool can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/agentPools/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, AgentPool can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
+        $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default projects/{{project}}/agentPools/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{project}}/{{name}}
+        $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
+        $ pulumi import gcp:storage/transferAgentPool:TransferAgentPool default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

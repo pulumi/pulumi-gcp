@@ -595,10 +595,14 @@ class Agent(pulumi.CustomResource):
 
         ## Import
 
-        Agent can be imported using any of these accepted formats* `{{project}}` When using the `pulumi import` command, Agent can be imported using one of the formats above. For example
+        Agent can be imported using any of these accepted formats:
+
+         * `{{project}}`
+
+         When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:diagflow/agent:Agent default {{project}}
+        $ pulumi import gcp:diagflow/agent:Agent default {{project}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -689,10 +693,14 @@ class Agent(pulumi.CustomResource):
 
         ## Import
 
-        Agent can be imported using any of these accepted formats* `{{project}}` When using the `pulumi import` command, Agent can be imported using one of the formats above. For example
+        Agent can be imported using any of these accepted formats:
+
+         * `{{project}}`
+
+         When using the `pulumi import` command, Agent can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:diagflow/agent:Agent default {{project}}
+        $ pulumi import gcp:diagflow/agent:Agent default {{project}}
         ```
 
         :param str resource_name: The name of the resource.

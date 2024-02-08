@@ -112,26 +112,38 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AndroidApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/androidApps/{{app_id}}` * `projects/{{project}}/androidApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `androidApps/{{app_id}}` * `{{app_id}}` When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example
+ * AndroidApp can be imported using any of these accepted formats:
+ * 
+ *  * `{{project}} projects/{{project}}/androidApps/{{app_id}}`
+ * 
+ *  * `projects/{{project}}/androidApps/{{app_id}}`
+ * 
+ *  * `{{project}}/{{project}}/{{app_id}}`
+ * 
+ *  * `androidApps/{{app_id}}`
+ * 
+ *  * `{{app_id}}`
+ * 
+ *  When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}} projects/{{project}}/androidApps/{{app_id}}
+ * $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}} projects/{{project}}/androidApps/{{app_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{app_id}}
+ * $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{app_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{project}}/{{app_id}}
+ * $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{project}}/{{app_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
+ * $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
+ * $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
  * ```
  * 
  */

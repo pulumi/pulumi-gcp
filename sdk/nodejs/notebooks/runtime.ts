@@ -180,18 +180,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Runtime can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/runtimes/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Runtime can be imported using one of the formats above. For example
+ * Runtime can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/runtimes/{{name}}`
+ *
+ *  * `{{project}}/{{location}}/{{name}}`
+ *
+ *  * `{{location}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, Runtime can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:notebooks/runtime:Runtime default projects/{{project}}/locations/{{location}}/runtimes/{{name}}
+ * $ pulumi import gcp:notebooks/runtime:Runtime default projects/{{project}}/locations/{{location}}/runtimes/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:notebooks/runtime:Runtime default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:notebooks/runtime:Runtime default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:notebooks/runtime:Runtime default {{location}}/{{name}}
+ * $ pulumi import gcp:notebooks/runtime:Runtime default {{location}}/{{name}}
  * ```
  */
 export class Runtime extends pulumi.CustomResource {

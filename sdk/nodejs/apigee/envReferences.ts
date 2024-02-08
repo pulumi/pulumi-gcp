@@ -15,14 +15,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * EnvReferences can be imported using any of these accepted formats* `{{env_id}}/references/{{name}}` * `{{env_id}}/{{name}}` When using the `pulumi import` command, EnvReferences can be imported using one of the formats above. For example
+ * EnvReferences can be imported using any of these accepted formats:
+ *
+ *  * `{{env_id}}/references/{{name}}`
+ *
+ *  * `{{env_id}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, EnvReferences can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/references/{{name}}
+ * $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/references/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/{{name}}
+ * $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/{{name}}
  * ```
  */
 export class EnvReferences extends pulumi.CustomResource {

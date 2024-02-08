@@ -302,10 +302,14 @@ class Document(pulumi.CustomResource):
 
         ## Import
 
-        Document can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Document can be imported using one of the formats above. For example
+        Document can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firestore/document:Document default {{name}}
+        $ pulumi import gcp:firestore/document:Document default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -351,10 +355,14 @@ class Document(pulumi.CustomResource):
 
         ## Import
 
-        Document can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Document can be imported using one of the formats above. For example
+        Document can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Document can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firestore/document:Document default {{name}}
+        $ pulumi import gcp:firestore/document:Document default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

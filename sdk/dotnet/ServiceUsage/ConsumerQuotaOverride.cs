@@ -24,18 +24,26 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// ## Import
     /// 
-    /// ConsumerQuotaOverride can be imported using any of these accepted formats* `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}` * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}` * `{{service}}/{{metric}}/{{limit}}/{{name}}` When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example
+    /// ConsumerQuotaOverride can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
+    /// 
+    ///  * `services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}`
+    /// 
+    ///  * `{{service}}/{{metric}}/{{limit}}/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, ConsumerQuotaOverride can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
+    /// $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
+    /// $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
+    /// $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride")]

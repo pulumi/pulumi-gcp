@@ -89,22 +89,32 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// ## Import
     /// 
-    /// FeatureGroup can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, FeatureGroup can be imported using one of the formats above. For example
+    /// FeatureGroup can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{region}}/featureGroups/{{name}}`
+    /// 
+    ///  * `{{project}}/{{region}}/{{name}}`
+    /// 
+    ///  * `{{region}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, FeatureGroup can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default projects/{{project}}/locations/{{region}}/featureGroups/{{name}}
+    /// $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default projects/{{project}}/locations/{{region}}/featureGroups/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{project}}/{{region}}/{{name}}
+    /// $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{project}}/{{region}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{region}}/{{name}}
+    /// $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{region}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{name}}
+    /// $ pulumi import gcp:vertex/aiFeatureGroup:AiFeatureGroup default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:vertex/aiFeatureGroup:AiFeatureGroup")]

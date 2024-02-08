@@ -284,10 +284,14 @@ class CustomService(pulumi.CustomResource):
 
         ## Import
 
-        Service can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Service can be imported using one of the formats above. For example
+        Service can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
+        $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -346,10 +350,14 @@ class CustomService(pulumi.CustomResource):
 
         ## Import
 
-        Service can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Service can be imported using one of the formats above. For example
+        Service can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
+        $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

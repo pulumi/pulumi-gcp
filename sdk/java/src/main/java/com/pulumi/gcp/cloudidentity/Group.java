@@ -73,10 +73,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Group can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Group can be imported using one of the formats above. For example
+ * Group can be imported using any of these accepted formats:
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:cloudidentity/group:Group default {{name}}
+ * $ pulumi import gcp:cloudidentity/group:Group default {{name}}
  * ```
  * 
  */

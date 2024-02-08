@@ -119,12 +119,14 @@ import (
 //
 // ## Import
 //
-// Slo can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Slo can be imported using one of the formats above. For example
+// Slo can be imported using any of these accepted formats:
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, Slo can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/slo:Slo default {{name}}
-//
+// $ pulumi import gcp:monitoring/slo:Slo default {{name}}
 // ```
 type Slo struct {
 	pulumi.CustomResourceState

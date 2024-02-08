@@ -398,10 +398,14 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
 
         ## Import
 
-        FeaturestoreEntitytypeFeature can be imported using any of these accepted formats* `{{entitytype}}/features/{{name}}` When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example
+        FeaturestoreEntitytypeFeature can be imported using any of these accepted formats:
+
+         * `{{entitytype}}/features/{{name}}`
+
+         When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -504,10 +508,14 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
 
         ## Import
 
-        FeaturestoreEntitytypeFeature can be imported using any of these accepted formats* `{{entitytype}}/features/{{name}}` When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example
+        FeaturestoreEntitytypeFeature can be imported using any of these accepted formats:
+
+         * `{{entitytype}}/features/{{name}}`
+
+         When using the `pulumi import` command, FeaturestoreEntitytypeFeature can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

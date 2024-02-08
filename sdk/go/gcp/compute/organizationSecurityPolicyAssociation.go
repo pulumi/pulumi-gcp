@@ -94,12 +94,14 @@ import (
 //
 // ## Import
 //
-// OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats* `{{policy_id}}/association/{{name}}` When using the `pulumi import` command, OrganizationSecurityPolicyAssociation can be imported using one of the formats above. For example
+// OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats:
+//
+//   - `{{policy_id}}/association/{{name}}`
+//
+//     When using the `pulumi import` command, OrganizationSecurityPolicyAssociation can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
-//
+// $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
 // ```
 type OrganizationSecurityPolicyAssociation struct {
 	pulumi.CustomResourceState

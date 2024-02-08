@@ -87,12 +87,14 @@ import (
 //
 // ## Import
 //
-// ExternalAddress can be imported using any of these accepted formats* `{{parent}}/externalAddresses/{{name}}` When using the `pulumi import` command, ExternalAddress can be imported using one of the formats above. For example
+// ExternalAddress can be imported using any of these accepted formats:
+//
+//   - `{{parent}}/externalAddresses/{{name}}`
+//
+//     When using the `pulumi import` command, ExternalAddress can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:vmwareengine/externalAddress:ExternalAddress default {{parent}}/externalAddresses/{{name}}
-//
+// $ pulumi import gcp:vmwareengine/externalAddress:ExternalAddress default {{parent}}/externalAddresses/{{name}}
 // ```
 type ExternalAddress struct {
 	pulumi.CustomResourceState

@@ -79,14 +79,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OrganizationSettings can be imported using any of these accepted formats* `organizations/{{organization_id}}/accessApprovalSettings` * `{{organization_id}}` When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example
+ * OrganizationSettings can be imported using any of these accepted formats:
+ *
+ *  * `organizations/{{organization_id}}/accessApprovalSettings`
+ *
+ *  * `{{organization_id}}`
+ *
+ *  When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default organizations/{{organization_id}}/accessApprovalSettings
+ * $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default organizations/{{organization_id}}/accessApprovalSettings
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default {{organization_id}}
+ * $ pulumi import gcp:organizations/accessApprovalSettings:AccessApprovalSettings default {{organization_id}}
  * ```
  */
 export class AccessApprovalSettings extends pulumi.CustomResource {

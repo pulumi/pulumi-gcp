@@ -349,10 +349,14 @@ class ConsentStore(pulumi.CustomResource):
 
         ## Import
 
-        ConsentStore can be imported using any of these accepted formats* `{{dataset}}/consentStores/{{name}}` When using the `pulumi import` command, ConsentStore can be imported using one of the formats above. For example
+        ConsentStore can be imported using any of these accepted formats:
+
+         * `{{dataset}}/consentStores/{{name}}`
+
+         When using the `pulumi import` command, ConsentStore can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
+        $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -439,10 +443,14 @@ class ConsentStore(pulumi.CustomResource):
 
         ## Import
 
-        ConsentStore can be imported using any of these accepted formats* `{{dataset}}/consentStores/{{name}}` When using the `pulumi import` command, ConsentStore can be imported using one of the formats above. For example
+        ConsentStore can be imported using any of these accepted formats:
+
+         * `{{dataset}}/consentStores/{{name}}`
+
+         When using the `pulumi import` command, ConsentStore can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
+        $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

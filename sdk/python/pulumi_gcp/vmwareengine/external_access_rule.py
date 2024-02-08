@@ -542,10 +542,14 @@ class ExternalAccessRule(pulumi.CustomResource):
 
         ## Import
 
-        ExternalAccessRule can be imported using any of these accepted formats* `{{parent}}/externalAccessRules/{{name}}` When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example
+        ExternalAccessRule can be imported using any of these accepted formats:
+
+         * `{{parent}}/externalAccessRules/{{name}}`
+
+         When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}
+        $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -659,10 +663,14 @@ class ExternalAccessRule(pulumi.CustomResource):
 
         ## Import
 
-        ExternalAccessRule can be imported using any of these accepted formats* `{{parent}}/externalAccessRules/{{name}}` When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example
+        ExternalAccessRule can be imported using any of these accepted formats:
+
+         * `{{parent}}/externalAccessRules/{{name}}`
+
+         When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}
+        $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

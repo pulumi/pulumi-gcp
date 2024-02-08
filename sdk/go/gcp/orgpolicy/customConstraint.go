@@ -108,12 +108,14 @@ import (
 //
 // ## Import
 //
-// CustomConstraint can be imported using any of these accepted formats* `{{parent}}/customConstraints/{{name}}` When using the `pulumi import` command, CustomConstraint can be imported using one of the formats above. For example
+// CustomConstraint can be imported using any of these accepted formats:
+//
+//   - `{{parent}}/customConstraints/{{name}}`
+//
+//     When using the `pulumi import` command, CustomConstraint can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}
-//
+// $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}
 // ```
 type CustomConstraint struct {
 	pulumi.CustomResourceState

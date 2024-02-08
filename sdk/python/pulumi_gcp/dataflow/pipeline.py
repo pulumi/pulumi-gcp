@@ -543,22 +543,32 @@ class Pipeline(pulumi.CustomResource):
 
         ## Import
 
-        Pipeline can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/pipelines/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example
+        Pipeline can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/pipelines/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:dataflow/pipeline:Pipeline default projects/{{project}}/locations/{{region}}/pipelines/{{name}}
+        $ pulumi import gcp:dataflow/pipeline:Pipeline default projects/{{project}}/locations/{{region}}/pipelines/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataflow/pipeline:Pipeline default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:dataflow/pipeline:Pipeline default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataflow/pipeline:Pipeline default {{region}}/{{name}}
+        $ pulumi import gcp:dataflow/pipeline:Pipeline default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataflow/pipeline:Pipeline default {{name}}
+        $ pulumi import gcp:dataflow/pipeline:Pipeline default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -660,22 +670,32 @@ class Pipeline(pulumi.CustomResource):
 
         ## Import
 
-        Pipeline can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/pipelines/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example
+        Pipeline can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/pipelines/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:dataflow/pipeline:Pipeline default projects/{{project}}/locations/{{region}}/pipelines/{{name}}
+        $ pulumi import gcp:dataflow/pipeline:Pipeline default projects/{{project}}/locations/{{region}}/pipelines/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataflow/pipeline:Pipeline default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:dataflow/pipeline:Pipeline default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataflow/pipeline:Pipeline default {{region}}/{{name}}
+        $ pulumi import gcp:dataflow/pipeline:Pipeline default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataflow/pipeline:Pipeline default {{name}}
+        $ pulumi import gcp:dataflow/pipeline:Pipeline default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -387,27 +387,29 @@ import (
 //
 // ## Import
 //
-// DNS record sets can be imported using either of these accepted formats* `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}` * `{{project}}/{{zone}}/{{name}}/{{type}}` * `{{zone}}/{{name}}/{{type}}` When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example
+// DNS record sets can be imported using either of these accepted formats:
+//
+//   - `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}`
+//
+//   - `{{project}}/{{zone}}/{{name}}/{{type}}`
+//
+//   - `{{zone}}/{{name}}/{{type}}`
+//
+//     When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
-//
+// $ pulumi import gcp:dns/recordSet:RecordSet default projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{zone}}/{{name}}/{{type}}
-//
+// $ pulumi import gcp:dns/recordSet:RecordSet default {{project}}/{{zone}}/{{name}}/{{type}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
-//
+// $ pulumi import gcp:dns/recordSet:RecordSet default {{zone}}/{{name}}/{{type}}
 // ```
 //
-//	NoteThe record name must include the trailing dot at the end.
+//	Note: The record name must include the trailing dot at the end.
 type RecordSet struct {
 	pulumi.CustomResourceState
 

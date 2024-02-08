@@ -210,25 +210,39 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/regions/{{region}}/subnetworks/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine subnetwork IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+    /// For all import syntaxes, the "resource in question" can take any of the following forms:
+    /// 
+    ///  * projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
+    /// 
+    ///  * {{project}}/{{region}}/{{name}}
+    /// 
+    ///  * {{region}}/{{name}}
+    /// 
+    ///  * {{name}}
+    /// 
+    ///  Any variables not passed in the import command will be taken from the provider configuration.
+    /// 
+    ///  Compute Engine subnetwork IAM resources can be imported using the resource identifiers, role, and member.
+    /// 
+    ///  IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
+    /// $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
     /// ```
     /// 
-    ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+    ///  IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
+    /// $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
+    /// $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
     /// ```
     /// 
-    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    ///  -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>

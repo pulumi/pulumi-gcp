@@ -64,18 +64,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * PolicyBasedRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example
+ * PolicyBasedRoute can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/global/policyBasedRoutes/{{name}}`
+ *
+ *  * `{{project}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, PolicyBasedRoute can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default projects/{{project}}/locations/global/policyBasedRoutes/{{name}}
+ * $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default projects/{{project}}/locations/global/policyBasedRoutes/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{project}}/{{name}}
+ * $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{name}}
+ * $ pulumi import gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute default {{name}}
  * ```
  */
 export class PolicyBasedRoute extends pulumi.CustomResource {

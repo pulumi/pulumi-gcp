@@ -9,18 +9,26 @@ import * as utilities from "../utilities";
 /**
  * ## Import
  *
- * Instance templates can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example
+ * Instance templates can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}`
+ *
+ *  * `{{project}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}
+ * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{project}}/{{name}}
+ * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{name}}
+ * $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default {{name}}
  * ```
  */
 export class RegionInstanceTemplate extends pulumi.CustomResource {

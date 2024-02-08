@@ -48,18 +48,20 @@ import (
 //
 // ## Import
 //
-// Router interfaces can be imported using the `project` (optional), `region`, `router`, and `name`, e.g. * `{{project_id}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` When using the `pulumi import` command, router interfaces can be imported using one of the formats above. For example
+// Router interfaces can be imported using the `project` (optional), `region`, `router`, and `name`, e.g.
+//
+//   - `{{project_id}}/{{region}}/{{router}}/{{name}}`
+//
+//   - `{{region}}/{{router}}/{{name}}`
+//
+//     When using the `pulumi import` command, router interfaces can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/routerInterface:RouterInterface default {{project_id}}/{{region}}/{{router}}/{{name}}
-//
+// $ pulumi import gcp:compute/routerInterface:RouterInterface default {{project_id}}/{{region}}/{{router}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/routerInterface:RouterInterface default {{region}}/{{router}}/{{name}}
-//
+// $ pulumi import gcp:compute/routerInterface:RouterInterface default {{region}}/{{router}}/{{name}}
 // ```
 type RouterInterface struct {
 	pulumi.CustomResourceState

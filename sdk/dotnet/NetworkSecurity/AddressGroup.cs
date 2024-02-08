@@ -95,10 +95,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// ## Import
     /// 
-    /// AddressGroup can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/addressGroups/{{name}}` When using the `pulumi import` command, AddressGroup can be imported using one of the formats above. For example
+    /// AddressGroup can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{parent}}/locations/{{location}}/addressGroups/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, AddressGroup can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:networksecurity/addressGroup:AddressGroup default {{parent}}/locations/{{location}}/addressGroups/{{name}}
+    /// $ pulumi import gcp:networksecurity/addressGroup:AddressGroup default {{parent}}/locations/{{location}}/addressGroups/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networksecurity/addressGroup:AddressGroup")]

@@ -133,14 +133,20 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
-        Project can be imported using any of these accepted formats* `projects/{{project}}` * `{{project}}` When using the `pulumi import` command, Project can be imported using one of the formats above. For example
+        Project can be imported using any of these accepted formats:
+
+         * `projects/{{project}}`
+
+         * `{{project}}`
+
+         When using the `pulumi import` command, Project can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/project:Project default projects/{{project}}
+        $ pulumi import gcp:firebase/project:Project default projects/{{project}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/project:Project default {{project}}
+        $ pulumi import gcp:firebase/project:Project default {{project}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -185,14 +191,20 @@ class Project(pulumi.CustomResource):
 
         ## Import
 
-        Project can be imported using any of these accepted formats* `projects/{{project}}` * `{{project}}` When using the `pulumi import` command, Project can be imported using one of the formats above. For example
+        Project can be imported using any of these accepted formats:
+
+         * `projects/{{project}}`
+
+         * `{{project}}`
+
+         When using the `pulumi import` command, Project can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/project:Project default projects/{{project}}
+        $ pulumi import gcp:firebase/project:Project default projects/{{project}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/project:Project default {{project}}
+        $ pulumi import gcp:firebase/project:Project default {{project}}
         ```
 
         :param str resource_name: The name of the resource.

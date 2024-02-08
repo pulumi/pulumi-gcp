@@ -105,10 +105,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Storage Transfer Jobs can be imported using the Transfer Job's `project` and `name` (without the `transferJob/` prefix), e.g. * `{{project_id}}/{{name}}`, where `name` is a numeric value. When using the `pulumi import` command, Storage Transfer Jobs can be imported using one of the formats above. For example
+ * Storage Transfer Jobs can be imported using the Transfer Job's `project` and `name` (without the `transferJob/` prefix), e.g.
+ *
+ *  * `{{project_id}}/{{name}}`, where `name` is a numeric value.
+ *
+ *  When using the `pulumi import` command, Storage Transfer Jobs can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:storage/transferJob:TransferJob default {{project_id}}/123456789
+ * $ pulumi import gcp:storage/transferJob:TransferJob default {{project_id}}/123456789
  * ```
  */
 export class TransferJob extends pulumi.CustomResource {

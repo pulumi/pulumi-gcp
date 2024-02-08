@@ -164,22 +164,32 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Subnetwork can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Subnetwork can be imported using one of the formats above. For example
+ * Subnetwork can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}`
+ *
+ *  * `{{project}}/{{region}}/{{name}}`
+ *
+ *  * `{{region}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, Subnetwork can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
+ * $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/subnetwork:Subnetwork default {{project}}/{{region}}/{{name}}
+ * $ pulumi import gcp:compute/subnetwork:Subnetwork default {{project}}/{{region}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/subnetwork:Subnetwork default {{region}}/{{name}}
+ * $ pulumi import gcp:compute/subnetwork:Subnetwork default {{region}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
+ * $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
  * ```
  */
 export class Subnetwork extends pulumi.CustomResource {

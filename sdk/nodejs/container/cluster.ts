@@ -69,21 +69,35 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example
+ * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default
+ *
+ *  provider value will be used. Examples:
+ *
+ *  * `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}`
+ *
+ *  * `{{project_id}}/{{location}}/{{cluster_id}}`
+ *
+ *  * `{{location}}/{{cluster_id}}`
+ *
+ *  When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
+ * $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
+ * $ pulumi import gcp:container/cluster:Cluster default {{project_id}}/{{location}}/{{cluster_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
+ * $ pulumi import gcp:container/cluster:Cluster default {{location}}/{{cluster_id}}
  * ```
  *
- *  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
+ *  For example, the following fields will show diffs if set in config:
+ *
+ *  - `min_master_version`
+ *
+ *  - `remove_default_node_pool`
  */
 export class Cluster extends pulumi.CustomResource {
     /**

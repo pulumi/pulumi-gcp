@@ -46,10 +46,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Database can be imported using any of these accepted formats* `{{catalog}}/databases/{{name}}` When using the `pulumi import` command, Database can be imported using one of the formats above. For example
+ * Database can be imported using any of these accepted formats:
+ *
+ *  * `{{catalog}}/databases/{{name}}`
+ *
+ *  When using the `pulumi import` command, Database can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:biglake/database:Database default {{catalog}}/databases/{{name}}
+ * $ pulumi import gcp:biglake/database:Database default {{catalog}}/databases/{{name}}
  * ```
  */
 export class Database extends pulumi.CustomResource {

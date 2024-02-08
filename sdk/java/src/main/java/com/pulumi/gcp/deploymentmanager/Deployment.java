@@ -77,18 +77,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Deployment can be imported using any of these accepted formats* `projects/{{project}}/deployments/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Deployment can be imported using one of the formats above. For example
+ * Deployment can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/deployments/{{name}}`
+ * 
+ *  * `{{project}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, Deployment can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:deploymentmanager/deployment:Deployment default projects/{{project}}/deployments/{{name}}
+ * $ pulumi import gcp:deploymentmanager/deployment:Deployment default projects/{{project}}/deployments/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{project}}/{{name}}
+ * $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
+ * $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
  * ```
  * 
  */

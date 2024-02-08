@@ -29,18 +29,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Lake can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Lake can be imported using one of the formats above. For example
+ * Lake can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/lakes/{{name}}`
+ *
+ *  * `{{project}}/{{location}}/{{name}}`
+ *
+ *  * `{{location}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, Lake can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:dataplex/lake:Lake default projects/{{project}}/locations/{{location}}/lakes/{{name}}
+ * $ pulumi import gcp:dataplex/lake:Lake default projects/{{project}}/locations/{{location}}/lakes/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataplex/lake:Lake default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:dataplex/lake:Lake default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataplex/lake:Lake default {{location}}/{{name}}
+ * $ pulumi import gcp:dataplex/lake:Lake default {{location}}/{{name}}
  * ```
  */
 export class Lake extends pulumi.CustomResource {

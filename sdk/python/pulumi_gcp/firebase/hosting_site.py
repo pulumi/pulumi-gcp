@@ -224,22 +224,32 @@ class HostingSite(pulumi.CustomResource):
 
         ## Import
 
-        Site can be imported using any of these accepted formats* `projects/{{project}}/sites/{{site_id}}` * `{{project}}/{{site_id}}` * `sites/{{site_id}}` * `{{site_id}}` When using the `pulumi import` command, Site can be imported using one of the formats above. For example
+        Site can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/sites/{{site_id}}`
+
+         * `{{project}}/{{site_id}}`
+
+         * `sites/{{site_id}}`
+
+         * `{{site_id}}`
+
+         When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}
+        $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingSite:HostingSite default {{project}}/{{site_id}}
+        $ pulumi import gcp:firebase/hostingSite:HostingSite default {{project}}/{{site_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingSite:HostingSite default sites/{{site_id}}
+        $ pulumi import gcp:firebase/hostingSite:HostingSite default sites/{{site_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingSite:HostingSite default {{site_id}}
+        $ pulumi import gcp:firebase/hostingSite:HostingSite default {{site_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -290,22 +300,32 @@ class HostingSite(pulumi.CustomResource):
 
         ## Import
 
-        Site can be imported using any of these accepted formats* `projects/{{project}}/sites/{{site_id}}` * `{{project}}/{{site_id}}` * `sites/{{site_id}}` * `{{site_id}}` When using the `pulumi import` command, Site can be imported using one of the formats above. For example
+        Site can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/sites/{{site_id}}`
+
+         * `{{project}}/{{site_id}}`
+
+         * `sites/{{site_id}}`
+
+         * `{{site_id}}`
+
+         When using the `pulumi import` command, Site can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}
+        $ pulumi import gcp:firebase/hostingSite:HostingSite default projects/{{project}}/sites/{{site_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingSite:HostingSite default {{project}}/{{site_id}}
+        $ pulumi import gcp:firebase/hostingSite:HostingSite default {{project}}/{{site_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingSite:HostingSite default sites/{{site_id}}
+        $ pulumi import gcp:firebase/hostingSite:HostingSite default sites/{{site_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingSite:HostingSite default {{site_id}}
+        $ pulumi import gcp:firebase/hostingSite:HostingSite default {{site_id}}
         ```
 
         :param str resource_name: The name of the resource.

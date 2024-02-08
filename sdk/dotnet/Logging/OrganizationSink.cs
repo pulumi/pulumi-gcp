@@ -50,10 +50,14 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Import
     /// 
-    /// Organization-level logging sinks can be imported using this format* `organizations/{{organization_id}}/sinks/{{sink_id}}` When using the `pulumi import` command, organization-level logging sinks can be imported using one of the formats above. For example
+    /// Organization-level logging sinks can be imported using this format:
+    /// 
+    ///  * `organizations/{{organization_id}}/sinks/{{sink_id}}`
+    /// 
+    ///  When using the `pulumi import` command, organization-level logging sinks can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:logging/organizationSink:OrganizationSink default organizations/{{organization_id}}/sinks/{{sink_id}}
+    /// $ pulumi import gcp:logging/organizationSink:OrganizationSink default organizations/{{organization_id}}/sinks/{{sink_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/organizationSink:OrganizationSink")]

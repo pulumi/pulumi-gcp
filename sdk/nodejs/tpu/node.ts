@@ -67,22 +67,32 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Node can be imported using any of these accepted formats* `projects/{{project}}/locations/{{zone}}/nodes/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Node can be imported using one of the formats above. For example
+ * Node can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+ *
+ *  * `{{project}}/{{zone}}/{{name}}`
+ *
+ *  * `{{zone}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, Node can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
+ * $ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:tpu/node:Node default {{project}}/{{zone}}/{{name}}
+ * $ pulumi import gcp:tpu/node:Node default {{project}}/{{zone}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:tpu/node:Node default {{zone}}/{{name}}
+ * $ pulumi import gcp:tpu/node:Node default {{zone}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:tpu/node:Node default {{name}}
+ * $ pulumi import gcp:tpu/node:Node default {{name}}
  * ```
  */
 export class Node extends pulumi.CustomResource {

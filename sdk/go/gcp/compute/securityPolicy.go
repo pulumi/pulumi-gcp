@@ -238,24 +238,26 @@ import (
 //
 // ## Import
 //
-// Security policies can be imported using any of these accepted formats* `projects/{{project}}/global/securityPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, security policies can be imported using one of the formats above. For example
+// Security policies can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/global/securityPolicies/{{name}}`
+//
+//   - `{{project}}/{{name}}`
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, security policies can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
-//
+// $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
-//
+// $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
-//
+// $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default {{name}}
 // ```
 type SecurityPolicy struct {
 	pulumi.CustomResourceState

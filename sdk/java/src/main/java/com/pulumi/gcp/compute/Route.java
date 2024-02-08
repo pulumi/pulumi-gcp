@@ -286,18 +286,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Route can be imported using any of these accepted formats* `projects/{{project}}/global/routes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Route can be imported using one of the formats above. For example
+ * Route can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/global/routes/{{name}}`
+ * 
+ *  * `{{project}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, Route can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}
+ * $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/route:Route default {{project}}/{{name}}
+ * $ pulumi import gcp:compute/route:Route default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/route:Route default {{name}}
+ * $ pulumi import gcp:compute/route:Route default {{name}}
  * ```
  * 
  */

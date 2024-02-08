@@ -61,14 +61,28 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ### Importing IAM policies IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example* `{{billing_account_id}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * ### Importing IAM policies
+ *
+ *  IAM policy imports use the `billing_account_id` identifier of the Billing Account resource only. For example:
+ *
+ *  * `{{billing_account_id}}`
+ *
+ *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ *
+ *  tf
+ *
+ *  import {
  *
  *  id = {{billing_account_id}}
  *
- *  to = google_billing_account_iam_policy.default } The `pulumi import` command can also be used
+ *  to = google_billing_account_iam_policy.default
+ *
+ *  }
+ *
+ *  The `pulumi import` command can also be used:
  *
  * ```sh
- *  $ pulumi import gcp:billing/accountIamPolicy:AccountIamPolicy default {{billing_account_id}}
+ * $ pulumi import gcp:billing/accountIamPolicy:AccountIamPolicy default {{billing_account_id}}
  * ```
  */
 export class AccountIamPolicy extends pulumi.CustomResource {

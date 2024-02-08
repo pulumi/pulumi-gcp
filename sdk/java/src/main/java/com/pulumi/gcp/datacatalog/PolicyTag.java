@@ -123,10 +123,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * PolicyTag can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, PolicyTag can be imported using one of the formats above. For example
+ * PolicyTag can be imported using any of these accepted formats:
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, PolicyTag can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
+ * $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
  * ```
  * 
  */

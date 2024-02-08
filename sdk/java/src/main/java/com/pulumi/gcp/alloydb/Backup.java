@@ -180,18 +180,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Backup can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}` * `{{project}}/{{location}}/{{backup_id}}` * `{{location}}/{{backup_id}}` When using the `pulumi import` command, Backup can be imported using one of the formats above. For example
+ * Backup can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/locations/{{location}}/backups/{{backup_id}}`
+ * 
+ *  * `{{project}}/{{location}}/{{backup_id}}`
+ * 
+ *  * `{{location}}/{{backup_id}}`
+ * 
+ *  When using the `pulumi import` command, Backup can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
+ * $ pulumi import gcp:alloydb/backup:Backup default projects/{{project}}/locations/{{location}}/backups/{{backup_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
+ * $ pulumi import gcp:alloydb/backup:Backup default {{project}}/{{location}}/{{backup_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
+ * $ pulumi import gcp:alloydb/backup:Backup default {{location}}/{{backup_id}}
  * ```
  * 
  */

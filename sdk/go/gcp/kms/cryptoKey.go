@@ -100,18 +100,20 @@ import (
 //
 // ## Import
 //
-// CryptoKey can be imported using any of these accepted formats* `{{key_ring}}/cryptoKeys/{{name}}` * `{{key_ring}}/{{name}}` When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example
+// CryptoKey can be imported using any of these accepted formats:
+//
+//   - `{{key_ring}}/cryptoKeys/{{name}}`
+//
+//   - `{{key_ring}}/{{name}}`
+//
+//     When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
-//
+// $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
-//
+// $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
 // ```
 type CryptoKey struct {
 	pulumi.CustomResourceState

@@ -204,14 +204,20 @@ class Folder(pulumi.CustomResource):
 
         ## Import
 
-        Folders can be imported using the folder's id, e.g. * `folders/{{folder_id}}` * `{{folder_id}}` When using the `pulumi import` command, Folders can be imported using one of the formats above. For example
+        Folders can be imported using the folder's id, e.g.
+
+         * `folders/{{folder_id}}`
+
+         * `{{folder_id}}`
+
+         When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
+        $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
+        $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -260,14 +266,20 @@ class Folder(pulumi.CustomResource):
 
         ## Import
 
-        Folders can be imported using the folder's id, e.g. * `folders/{{folder_id}}` * `{{folder_id}}` When using the `pulumi import` command, Folders can be imported using one of the formats above. For example
+        Folders can be imported using the folder's id, e.g.
+
+         * `folders/{{folder_id}}`
+
+         * `{{folder_id}}`
+
+         When using the `pulumi import` command, Folders can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
+        $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
+        $ pulumi import gcp:organizations/folder:Folder default folders/{{folder_id}}
         ```
 
         :param str resource_name: The name of the resource.

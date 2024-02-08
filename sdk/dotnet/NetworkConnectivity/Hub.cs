@@ -38,18 +38,26 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// ## Import
     /// 
-    /// Hub can be imported using any of these accepted formats* `projects/{{project}}/locations/global/hubs/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Hub can be imported using one of the formats above. For example
+    /// Hub can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/global/hubs/{{name}}`
+    /// 
+    ///  * `{{project}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Hub can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:networkconnectivity/hub:Hub default projects/{{project}}/locations/global/hubs/{{name}}
+    /// $ pulumi import gcp:networkconnectivity/hub:Hub default projects/{{project}}/locations/global/hubs/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:networkconnectivity/hub:Hub default {{project}}/{{name}}
+    /// $ pulumi import gcp:networkconnectivity/hub:Hub default {{project}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:networkconnectivity/hub:Hub default {{name}}
+    /// $ pulumi import gcp:networkconnectivity/hub:Hub default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networkconnectivity/hub:Hub")]

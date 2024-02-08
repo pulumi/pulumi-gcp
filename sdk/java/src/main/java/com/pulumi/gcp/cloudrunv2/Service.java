@@ -669,18 +669,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Service can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/services/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Service can be imported using one of the formats above. For example
+ * Service can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/locations/{{location}}/services/{{name}}`
+ * 
+ *  * `{{project}}/{{location}}/{{name}}`
+ * 
+ *  * `{{location}}/{{name}}`
+ * 
+ *  When using the `pulumi import` command, Service can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
+ * $ pulumi import gcp:cloudrunv2/service:Service default projects/{{project}}/locations/{{location}}/services/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:cloudrunv2/service:Service default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:cloudrunv2/service:Service default {{project}}/{{location}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:cloudrunv2/service:Service default {{location}}/{{name}}
+ * $ pulumi import gcp:cloudrunv2/service:Service default {{location}}/{{name}}
  * ```
  * 
  */

@@ -683,22 +683,32 @@ class HostingCustomDomain(pulumi.CustomResource):
 
         ## Import
 
-        CustomDomain can be imported using any of these accepted formats* `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}` * `sites/{{site_id}}/customDomains/{{custom_domain}}` * `{{project}}/{{site_id}}/{{custom_domain}}` * `{{site_id}}/{{custom_domain}}` When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example
+        CustomDomain can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
+
+         * `sites/{{site_id}}/customDomains/{{custom_domain}}`
+
+         * `{{project}}/{{site_id}}/{{custom_domain}}`
+
+         * `{{site_id}}/{{custom_domain}}`
+
+         When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
+        $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
+        $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
+        $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
+        $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -808,22 +818,32 @@ class HostingCustomDomain(pulumi.CustomResource):
 
         ## Import
 
-        CustomDomain can be imported using any of these accepted formats* `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}` * `sites/{{site_id}}/customDomains/{{custom_domain}}` * `{{project}}/{{site_id}}/{{custom_domain}}` * `{{site_id}}/{{custom_domain}}` When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example
+        CustomDomain can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}`
+
+         * `sites/{{site_id}}/customDomains/{{custom_domain}}`
+
+         * `{{project}}/{{site_id}}/{{custom_domain}}`
+
+         * `{{site_id}}/{{custom_domain}}`
+
+         When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
+        $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
+        $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default sites/{{site_id}}/customDomains/{{custom_domain}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
+        $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{project}}/{{site_id}}/{{custom_domain}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
+        $ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain default {{site_id}}/{{custom_domain}}
         ```
 
         :param str resource_name: The name of the resource.

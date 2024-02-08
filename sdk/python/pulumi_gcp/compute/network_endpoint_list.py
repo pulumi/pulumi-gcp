@@ -269,22 +269,32 @@ class NetworkEndpointList(pulumi.CustomResource):
 
         ## Import
 
-        NetworkEndpoints can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}` * `{{project}}/{{zone}}/{{network_endpoint_group}}` * `{{zone}}/{{network_endpoint_group}}` * `{{network_endpoint_group}}` When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example
+        NetworkEndpoints can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}`
+
+         * `{{project}}/{{zone}}/{{network_endpoint_group}}`
+
+         * `{{zone}}/{{network_endpoint_group}}`
+
+         * `{{network_endpoint_group}}`
+
+         When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}
+        $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{project}}/{{zone}}/{{network_endpoint_group}}
+        $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{project}}/{{zone}}/{{network_endpoint_group}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{zone}}/{{network_endpoint_group}}
+        $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{zone}}/{{network_endpoint_group}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
+        $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -382,22 +392,32 @@ class NetworkEndpointList(pulumi.CustomResource):
 
         ## Import
 
-        NetworkEndpoints can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}` * `{{project}}/{{zone}}/{{network_endpoint_group}}` * `{{zone}}/{{network_endpoint_group}}` * `{{network_endpoint_group}}` When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example
+        NetworkEndpoints can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}`
+
+         * `{{project}}/{{zone}}/{{network_endpoint_group}}`
+
+         * `{{zone}}/{{network_endpoint_group}}`
+
+         * `{{network_endpoint_group}}`
+
+         When using the `pulumi import` command, NetworkEndpoints can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}
+        $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{project}}/{{zone}}/{{network_endpoint_group}}
+        $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{project}}/{{zone}}/{{network_endpoint_group}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{zone}}/{{network_endpoint_group}}
+        $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{zone}}/{{network_endpoint_group}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
+        $ pulumi import gcp:compute/networkEndpointList:NetworkEndpointList default {{network_endpoint_group}}
         ```
 
         :param str resource_name: The name of the resource.

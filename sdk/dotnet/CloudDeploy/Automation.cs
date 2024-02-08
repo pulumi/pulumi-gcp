@@ -172,18 +172,26 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// ## Import
     /// 
-    /// Automation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}` * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}` * `{{location}}/{{delivery_pipeline}}/{{name}}` When using the `pulumi import` command, Automation can be imported using one of the formats above. For example
+    /// Automation can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}`
+    /// 
+    ///  * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}`
+    /// 
+    ///  * `{{location}}/{{delivery_pipeline}}/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Automation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}
+    /// $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:clouddeploy/automation:Automation default {{project}}/{{location}}/{{delivery_pipeline}}/{{name}}
+    /// $ pulumi import gcp:clouddeploy/automation:Automation default {{project}}/{{location}}/{{delivery_pipeline}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:clouddeploy/automation:Automation default {{location}}/{{delivery_pipeline}}/{{name}}
+    /// $ pulumi import gcp:clouddeploy/automation:Automation default {{location}}/{{delivery_pipeline}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:clouddeploy/automation:Automation")]

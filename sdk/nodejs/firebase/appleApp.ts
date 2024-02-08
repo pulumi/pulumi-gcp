@@ -51,26 +51,38 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * AppleApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/iosApps/{{app_id}}` * `projects/{{project}}/iosApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `iosApps/{{app_id}}` * `{{app_id}}` When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example
+ * AppleApp can be imported using any of these accepted formats:
+ *
+ *  * `{{project}} projects/{{project}}/iosApps/{{app_id}}`
+ *
+ *  * `projects/{{project}}/iosApps/{{app_id}}`
+ *
+ *  * `{{project}}/{{project}}/{{app_id}}`
+ *
+ *  * `iosApps/{{app_id}}`
+ *
+ *  * `{{app_id}}`
+ *
+ *  When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}
+ * $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:firebase/appleApp:AppleApp default projects/{{project}}/iosApps/{{app_id}}
+ * $ pulumi import gcp:firebase/appleApp:AppleApp default projects/{{project}}/iosApps/{{app_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}}/{{project}}/{{app_id}}
+ * $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}}/{{project}}/{{app_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:firebase/appleApp:AppleApp default iosApps/{{app_id}}
+ * $ pulumi import gcp:firebase/appleApp:AppleApp default iosApps/{{app_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:firebase/appleApp:AppleApp default {{app_id}}
+ * $ pulumi import gcp:firebase/appleApp:AppleApp default {{app_id}}
  * ```
  */
 export class AppleApp extends pulumi.CustomResource {

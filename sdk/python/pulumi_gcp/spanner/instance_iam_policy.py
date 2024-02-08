@@ -245,14 +245,28 @@ class InstanceIAMPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the Spanner Instances resource . For example* `{{project}}/{{instance}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies
+
+         IAM policy imports use the identifier of the Spanner Instances resource . For example:
+
+         * `{{project}}/{{instance}}`
+
+         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+
+         tf
+
+         import {
 
          id = {{project}}/{{instance}}
 
-         to = google_spanner_instance_iam_policy.default } The `pulumi import` command can also be used
+         to = google_spanner_instance_iam_policy.default
+
+         }
+
+         The `pulumi import` command can also be used:
 
         ```sh
-         $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy default {{project}}/{{instance}}
+        $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy default {{project}}/{{instance}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -333,14 +347,28 @@ class InstanceIAMPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the Spanner Instances resource . For example* `{{project}}/{{instance}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies
+
+         IAM policy imports use the identifier of the Spanner Instances resource . For example:
+
+         * `{{project}}/{{instance}}`
+
+         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+
+         tf
+
+         import {
 
          id = {{project}}/{{instance}}
 
-         to = google_spanner_instance_iam_policy.default } The `pulumi import` command can also be used
+         to = google_spanner_instance_iam_policy.default
+
+         }
+
+         The `pulumi import` command can also be used:
 
         ```sh
-         $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy default {{project}}/{{instance}}
+        $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy default {{project}}/{{instance}}
         ```
 
         :param str resource_name: The name of the resource.
