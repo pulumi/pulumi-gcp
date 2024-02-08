@@ -9,7 +9,7 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.26.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.73.0
 	github.com/pulumi/pulumi/pkg/v3 v3.104.2
-	github.com/pulumi/pulumi/sdk/v3 v3.104.2
+	github.com/pulumi/pulumi/sdk/v3 v3.105.0
 	github.com/stretchr/testify v1.8.4
 	google.golang.org/api v0.157.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -274,3 +274,7 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.4.2 // indirect
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.78.2-0.20240208110534-13d6d9c762d2
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.105.1-0.20240208110534-13d6d9c762d2
