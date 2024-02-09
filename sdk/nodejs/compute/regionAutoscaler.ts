@@ -80,22 +80,32 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RegionAutoscaler can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/autoscalers/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionAutoscaler can be imported using one of the formats above. For example
+ * RegionAutoscaler can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/regions/{{region}}/autoscalers/{{name}}`
+ *
+ *  * `{{project}}/{{region}}/{{name}}`
+ *
+ *  * `{{region}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, RegionAutoscaler can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
+ * $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{project}}/{{region}}/{{name}}
+ * $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{project}}/{{region}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{region}}/{{name}}
+ * $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{region}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
+ * $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
  * ```
  */
 export class RegionAutoscaler extends pulumi.CustomResource {

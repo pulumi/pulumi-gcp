@@ -554,10 +554,14 @@ class MetricDescriptor(pulumi.CustomResource):
 
         ## Import
 
-        MetricDescriptor can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, MetricDescriptor can be imported using one of the formats above. For example
+        MetricDescriptor can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, MetricDescriptor can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
+        $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -666,10 +670,14 @@ class MetricDescriptor(pulumi.CustomResource):
 
         ## Import
 
-        MetricDescriptor can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, MetricDescriptor can be imported using one of the formats above. For example
+        MetricDescriptor can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, MetricDescriptor can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
+        $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

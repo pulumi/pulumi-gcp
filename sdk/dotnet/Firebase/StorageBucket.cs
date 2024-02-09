@@ -44,18 +44,26 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// ## Import
     /// 
-    /// Bucket can be imported using any of these accepted formats* `projects/{{project}}/buckets/{{bucket_id}}` * `{{project}}/{{bucket_id}}` * `{{bucket_id}}` When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example
+    /// Bucket can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/buckets/{{bucket_id}}`
+    /// 
+    ///  * `{{project}}/{{bucket_id}}`
+    /// 
+    ///  * `{{bucket_id}}`
+    /// 
+    ///  When using the `pulumi import` command, Bucket can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}
+    /// $ pulumi import gcp:firebase/storageBucket:StorageBucket default projects/{{project}}/buckets/{{bucket_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{project}}/{{bucket_id}}
+    /// $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{project}}/{{bucket_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
+    /// $ pulumi import gcp:firebase/storageBucket:StorageBucket default {{bucket_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firebase/storageBucket:StorageBucket")]

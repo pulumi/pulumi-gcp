@@ -127,26 +127,38 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// ## Import
     /// 
-    /// WebApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/webApps/{{app_id}}` * `projects/{{project}}/webApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `webApps/{{app_id}}` * `{{app_id}}` When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example
+    /// WebApp can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{project}} projects/{{project}}/webApps/{{app_id}}`
+    /// 
+    ///  * `projects/{{project}}/webApps/{{app_id}}`
+    /// 
+    ///  * `{{project}}/{{project}}/{{app_id}}`
+    /// 
+    ///  * `webApps/{{app_id}}`
+    /// 
+    ///  * `{{app_id}}`
+    /// 
+    ///  When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}
+    /// $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/webApp:WebApp default projects/{{project}}/webApps/{{app_id}}
+    /// $ pulumi import gcp:firebase/webApp:WebApp default projects/{{project}}/webApps/{{app_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{project}}/{{app_id}}
+    /// $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{project}}/{{app_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
+    /// $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
+    /// $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firebase/webApp:WebApp")]

@@ -319,10 +319,14 @@ class TagTemplate(pulumi.CustomResource):
 
         ## Import
 
-        TagTemplate can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, TagTemplate can be imported using one of the formats above. For example
+        TagTemplate can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, TagTemplate can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
+        $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -404,10 +408,14 @@ class TagTemplate(pulumi.CustomResource):
 
         ## Import
 
-        TagTemplate can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, TagTemplate can be imported using one of the formats above. For example
+        TagTemplate can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, TagTemplate can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
+        $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

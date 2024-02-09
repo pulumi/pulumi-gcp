@@ -42,14 +42,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Client can be imported using any of these accepted formats* `{{brand}}/identityAwareProxyClients/{{client_id}}` * `{{brand}}/{{client_id}}` When using the `pulumi import` command, Client can be imported using one of the formats above. For example
+ * Client can be imported using any of these accepted formats:
+ *
+ *  * `{{brand}}/identityAwareProxyClients/{{client_id}}`
+ *
+ *  * `{{brand}}/{{client_id}}`
+ *
+ *  When using the `pulumi import` command, Client can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
+ * $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
+ * $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
  * ```
  */
 export class Client extends pulumi.CustomResource {

@@ -81,14 +81,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * FolderSettings can be imported using any of these accepted formats* `folders/{{folder_id}}/accessApprovalSettings` * `{{folder_id}}` When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example
+ * FolderSettings can be imported using any of these accepted formats:
+ *
+ *  * `folders/{{folder_id}}/accessApprovalSettings`
+ *
+ *  * `{{folder_id}}`
+ *
+ *  When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
+ * $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default folders/{{folder_id}}/accessApprovalSettings
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
+ * $ pulumi import gcp:folder/accessApprovalSettings:AccessApprovalSettings default {{folder_id}}
  * ```
  */
 export class AccessApprovalSettings extends pulumi.CustomResource {

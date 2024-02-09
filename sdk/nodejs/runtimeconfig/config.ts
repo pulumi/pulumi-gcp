@@ -18,14 +18,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Runtime Configs can be imported using the `name` or full config name, e.g. * `projects/{{project_id}}/configs/{{name}}` * `{{name}}` When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example
+ * Runtime Configs can be imported using the `name` or full config name, e.g.
+ *
+ *  * `projects/{{project_id}}/configs/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:runtimeconfig/config:Config default projects/{{project_id}}/configs/{{name}}
+ * $ pulumi import gcp:runtimeconfig/config:Config default projects/{{project_id}}/configs/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:runtimeconfig/config:Config default {{name}}
+ * $ pulumi import gcp:runtimeconfig/config:Config default {{name}}
  * ```
  *
  *  When importing using only the name, the provider project must be set.

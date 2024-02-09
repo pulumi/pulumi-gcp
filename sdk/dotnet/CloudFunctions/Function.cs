@@ -124,14 +124,20 @@ namespace Pulumi.Gcp.CloudFunctions
     /// 
     /// ## Import
     /// 
-    /// Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g. * `{{project}}/{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Functions can be imported using one of the formats above. For example
+    /// Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
+    /// 
+    ///  * `{{project}}/{{region}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Functions can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}
+    /// $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:cloudfunctions/function:Function default {{name}}
+    /// $ pulumi import gcp:cloudfunctions/function:Function default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudfunctions/function:Function")]

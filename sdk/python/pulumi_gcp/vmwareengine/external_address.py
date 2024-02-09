@@ -316,10 +316,14 @@ class ExternalAddress(pulumi.CustomResource):
 
         ## Import
 
-        ExternalAddress can be imported using any of these accepted formats* `{{parent}}/externalAddresses/{{name}}` When using the `pulumi import` command, ExternalAddress can be imported using one of the formats above. For example
+        ExternalAddress can be imported using any of these accepted formats:
+
+         * `{{parent}}/externalAddresses/{{name}}`
+
+         When using the `pulumi import` command, ExternalAddress can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vmwareengine/externalAddress:ExternalAddress default {{parent}}/externalAddresses/{{name}}
+        $ pulumi import gcp:vmwareengine/externalAddress:ExternalAddress default {{parent}}/externalAddresses/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,10 +389,14 @@ class ExternalAddress(pulumi.CustomResource):
 
         ## Import
 
-        ExternalAddress can be imported using any of these accepted formats* `{{parent}}/externalAddresses/{{name}}` When using the `pulumi import` command, ExternalAddress can be imported using one of the formats above. For example
+        ExternalAddress can be imported using any of these accepted formats:
+
+         * `{{parent}}/externalAddresses/{{name}}`
+
+         When using the `pulumi import` command, ExternalAddress can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vmwareengine/externalAddress:ExternalAddress default {{parent}}/externalAddresses/{{name}}
+        $ pulumi import gcp:vmwareengine/externalAddress:ExternalAddress default {{parent}}/externalAddresses/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

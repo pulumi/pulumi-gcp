@@ -877,21 +877,33 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Import
 
-        Database instances can be imported using one of any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example
+        Database instances can be imported using one of any of these accepted formats:
+
+         * `projects/{{project}}/instances/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
+        $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{project}}/{{name}}
+        $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
+        $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
         ```
 
-         config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.
+         config and set on the server.
+
+         When importing, double-check that your config has all the fields set that you expect- just seeing
+
+         no diff isn't sufficient to know that your config could reproduce the imported resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1029,21 +1041,33 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Import
 
-        Database instances can be imported using one of any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example
+        Database instances can be imported using one of any of these accepted formats:
+
+         * `projects/{{project}}/instances/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Database instances can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
+        $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default projects/{{project}}/instances/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{project}}/{{name}}
+        $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
+        $ pulumi import gcp:sql/databaseInstance:DatabaseInstance default {{name}}
         ```
 
-         config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.
+         config and set on the server.
+
+         When importing, double-check that your config has all the fields set that you expect- just seeing
+
+         no diff isn't sufficient to know that your config could reproduce the imported resource.
 
         :param str resource_name: The name of the resource.
         :param DatabaseInstanceArgs args: The arguments to use to populate this resource's properties.

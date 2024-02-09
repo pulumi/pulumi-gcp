@@ -392,22 +392,32 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         ## Import
 
-        RepositoryReleaseConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}` * `{{project}}/{{region}}/{{repository}}/{{name}}` * `{{region}}/{{repository}}/{{name}}` * `{{repository}}/{{name}}` When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example
+        RepositoryReleaseConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
+
+         * `{{project}}/{{region}}/{{repository}}/{{name}}`
+
+         * `{{region}}/{{repository}}/{{name}}`
+
+         * `{{repository}}/{{name}}`
+
+         When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}
+        $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{project}}/{{region}}/{{repository}}/{{name}}
+        $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{project}}/{{region}}/{{repository}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{region}}/{{repository}}/{{name}}
+        $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{region}}/{{repository}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{repository}}/{{name}}
+        $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{repository}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -488,22 +498,32 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         ## Import
 
-        RepositoryReleaseConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}` * `{{project}}/{{region}}/{{repository}}/{{name}}` * `{{region}}/{{repository}}/{{name}}` * `{{repository}}/{{name}}` When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example
+        RepositoryReleaseConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}`
+
+         * `{{project}}/{{region}}/{{repository}}/{{name}}`
+
+         * `{{region}}/{{repository}}/{{name}}`
+
+         * `{{repository}}/{{name}}`
+
+         When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}
+        $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{project}}/{{region}}/{{repository}}/{{name}}
+        $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{project}}/{{region}}/{{repository}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{region}}/{{repository}}/{{name}}
+        $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{region}}/{{repository}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{repository}}/{{name}}
+        $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default {{repository}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -49,18 +49,26 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// ## Import
     /// 
-    /// Namespace can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}` * `{{project}}/{{location}}/{{namespace_id}}` * `{{location}}/{{namespace_id}}` When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example
+    /// Namespace can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}`
+    /// 
+    ///  * `{{project}}/{{location}}/{{namespace_id}}`
+    /// 
+    ///  * `{{location}}/{{namespace_id}}`
+    /// 
+    ///  When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:servicedirectory/namespace:Namespace default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
+    /// $ pulumi import gcp:servicedirectory/namespace:Namespace default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:servicedirectory/namespace:Namespace default {{project}}/{{location}}/{{namespace_id}}
+    /// $ pulumi import gcp:servicedirectory/namespace:Namespace default {{project}}/{{location}}/{{namespace_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:servicedirectory/namespace:Namespace default {{location}}/{{namespace_id}}
+    /// $ pulumi import gcp:servicedirectory/namespace:Namespace default {{location}}/{{namespace_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:servicedirectory/namespace:Namespace")]

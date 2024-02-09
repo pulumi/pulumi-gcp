@@ -64,10 +64,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Applications can be imported using the ID of the project the application belongs to, e.g. * `{{project-id}}` When using the `pulumi import` command, Applications can be imported using one of the formats above. For example
+ * Applications can be imported using the ID of the project the application belongs to, e.g.
+ * 
+ *  * `{{project-id}}`
+ * 
+ *  When using the `pulumi import` command, Applications can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:appengine/application:Application default {{project-id}}
+ * $ pulumi import gcp:appengine/application:Application default {{project-id}}
  * ```
  * 
  */

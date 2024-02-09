@@ -49,22 +49,32 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// PublicDelegatedPrefix can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, PublicDelegatedPrefix can be imported using one of the formats above. For example
+    /// PublicDelegatedPrefix can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}`
+    /// 
+    ///  * `{{project}}/{{region}}/{{name}}`
+    /// 
+    ///  * `{{region}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, PublicDelegatedPrefix can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}
+    /// $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{project}}/{{region}}/{{name}}
+    /// $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{project}}/{{region}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{region}}/{{name}}
+    /// $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{region}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{name}}
+    /// $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix")]

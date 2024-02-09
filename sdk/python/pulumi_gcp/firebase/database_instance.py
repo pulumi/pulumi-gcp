@@ -353,22 +353,32 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{instance_id}}` * `{{project}}/{{region}}/{{instance_id}}` * `{{region}}/{{instance_id}}` * `{{instance_id}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
+        Instance can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/instances/{{instance_id}}`
+
+         * `{{project}}/{{region}}/{{instance_id}}`
+
+         * `{{region}}/{{instance_id}}`
+
+         * `{{instance_id}}`
+
+         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default projects/{{project}}/locations/{{region}}/instances/{{instance_id}}
+        $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default projects/{{project}}/locations/{{region}}/instances/{{instance_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{project}}/{{region}}/{{instance_id}}
+        $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{project}}/{{region}}/{{instance_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
+        $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
+        $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -453,22 +463,32 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{instance_id}}` * `{{project}}/{{region}}/{{instance_id}}` * `{{region}}/{{instance_id}}` * `{{instance_id}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
+        Instance can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/instances/{{instance_id}}`
+
+         * `{{project}}/{{region}}/{{instance_id}}`
+
+         * `{{region}}/{{instance_id}}`
+
+         * `{{instance_id}}`
+
+         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default projects/{{project}}/locations/{{region}}/instances/{{instance_id}}
+        $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default projects/{{project}}/locations/{{region}}/instances/{{instance_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{project}}/{{region}}/{{instance_id}}
+        $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{project}}/{{region}}/{{instance_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
+        $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{region}}/{{instance_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
+        $ pulumi import gcp:firebase/databaseInstance:DatabaseInstance default {{instance_id}}
         ```
 
         :param str resource_name: The name of the resource.

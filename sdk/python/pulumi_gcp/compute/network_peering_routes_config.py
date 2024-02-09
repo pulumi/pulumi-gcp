@@ -292,18 +292,26 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
 
         ## Import
 
-        NetworkPeeringRoutesConfig can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}` * `{{project}}/{{network}}/{{peering}}` * `{{network}}/{{peering}}` When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example
+        NetworkPeeringRoutesConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
+
+         * `{{project}}/{{network}}/{{peering}}`
+
+         * `{{network}}/{{peering}}`
+
+         When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
+        $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
+        $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
+        $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -406,18 +414,26 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
 
         ## Import
 
-        NetworkPeeringRoutesConfig can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}` * `{{project}}/{{network}}/{{peering}}` * `{{network}}/{{peering}}` When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example
+        NetworkPeeringRoutesConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}`
+
+         * `{{project}}/{{network}}/{{peering}}`
+
+         * `{{network}}/{{peering}}`
+
+         When using the `pulumi import` command, NetworkPeeringRoutesConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
+        $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
+        $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
+        $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
         ```
 
         :param str resource_name: The name of the resource.

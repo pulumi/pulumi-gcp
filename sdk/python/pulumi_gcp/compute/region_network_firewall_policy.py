@@ -292,22 +292,32 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
 
         ## Import
 
-        RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
+        RegionNetworkFirewallPolicy can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, RegionNetworkFirewallPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{region}}/{{name}}
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{name}}
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -342,22 +352,32 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
 
         ## Import
 
-        RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
+        RegionNetworkFirewallPolicy can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, RegionNetworkFirewallPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{region}}/{{name}}
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{name}}
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -128,18 +128,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GrpcRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/grpcRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example
+ * GrpcRoute can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/global/grpcRoutes/{{name}}`
+ *
+ *  * `{{project}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, GrpcRoute can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}
+ * $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default projects/{{project}}/locations/global/grpcRoutes/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{name}}
+ * $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{name}}
+ * $ pulumi import gcp:networkservices/grpcRoute:GrpcRoute default {{name}}
  * ```
  */
 export class GrpcRoute extends pulumi.CustomResource {

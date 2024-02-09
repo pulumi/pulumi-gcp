@@ -49,10 +49,14 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Import
     /// 
-    /// LogView can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}` When using the `pulumi import` command, LogView can be imported using one of the formats above. For example
+    /// LogView can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, LogView can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
+    /// $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:logging/logView:LogView")]

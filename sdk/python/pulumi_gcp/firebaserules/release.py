@@ -252,7 +252,7 @@ class Release(pulumi.CustomResource):
 
         ## Import
 
-        Release can be imported using any of these accepted formats* `projects/{{project}}/releases/{{name}}`
+        Release can be imported using any of these accepted formats: * `projects/{{project}}/releases/{{name}}`
 
         When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 
@@ -333,7 +333,7 @@ class Release(pulumi.CustomResource):
 
         ## Import
 
-        Release can be imported using any of these accepted formats* `projects/{{project}}/releases/{{name}}`
+        Release can be imported using any of these accepted formats: * `projects/{{project}}/releases/{{name}}`
 
         When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
 

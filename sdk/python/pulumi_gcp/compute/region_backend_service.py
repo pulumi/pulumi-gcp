@@ -1216,22 +1216,32 @@ class RegionBackendService(pulumi.CustomResource):
 
         ## Import
 
-        RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example
+        RegionBackendService can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
+        $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
+        $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
+        $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1359,22 +1369,32 @@ class RegionBackendService(pulumi.CustomResource):
 
         ## Import
 
-        RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example
+        RegionBackendService can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/backendServices/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
+        $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
+        $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
+        $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

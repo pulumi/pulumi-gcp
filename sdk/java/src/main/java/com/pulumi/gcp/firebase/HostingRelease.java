@@ -190,22 +190,32 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Release can be imported using any of these accepted formats* `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}` * `sites/{{site_id}}/releases/{{release_id}}` * `{{site_id}}/{{channel_id}}/{{release_id}}` * `{{site_id}}/{{release_id}}` When using the `pulumi import` command, Release can be imported using one of the formats above. For example
+ * Release can be imported using any of these accepted formats:
+ * 
+ *  * `sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}`
+ * 
+ *  * `sites/{{site_id}}/releases/{{release_id}}`
+ * 
+ *  * `{{site_id}}/{{channel_id}}/{{release_id}}`
+ * 
+ *  * `{{site_id}}/{{release_id}}`
+ * 
+ *  When using the `pulumi import` command, Release can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}
+ * $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/channels/{{channel_id}}/releases/{{release_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/releases/{{release_id}}
+ * $ pulumi import gcp:firebase/hostingRelease:HostingRelease default sites/{{site_id}}/releases/{{release_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{channel_id}}/{{release_id}}
+ * $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{channel_id}}/{{release_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{release_id}}
+ * $ pulumi import gcp:firebase/hostingRelease:HostingRelease default {{site_id}}/{{release_id}}
  * ```
  * 
  */

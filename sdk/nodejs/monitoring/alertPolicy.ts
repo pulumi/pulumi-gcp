@@ -127,10 +127,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * AlertPolicy can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example
+ * AlertPolicy can be imported using any of these accepted formats:
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
+ * $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
  * ```
  */
 export class AlertPolicy extends pulumi.CustomResource {

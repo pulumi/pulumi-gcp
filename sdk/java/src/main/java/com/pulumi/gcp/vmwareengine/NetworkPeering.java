@@ -116,18 +116,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NetworkPeering can be imported using any of these accepted formats* `projects/{{project}}/locations/global/networkPeerings/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NetworkPeering can be imported using one of the formats above. For example
+ * NetworkPeering can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/locations/global/networkPeerings/{{name}}`
+ * 
+ *  * `{{project}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, NetworkPeering can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default projects/{{project}}/locations/global/networkPeerings/{{name}}
+ * $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default projects/{{project}}/locations/global/networkPeerings/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default {{project}}/{{name}}
+ * $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default {{name}}
+ * $ pulumi import gcp:vmwareengine/networkPeering:NetworkPeering default {{name}}
  * ```
  * 
  */

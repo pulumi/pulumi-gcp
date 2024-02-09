@@ -51,18 +51,20 @@ import (
 //
 // ## Import
 //
-// TagKey can be imported using any of these accepted formats* `tagKeys/{{name}}` * `{{name}}` When using the `pulumi import` command, TagKey can be imported using one of the formats above. For example
+// TagKey can be imported using any of these accepted formats:
+//
+//   - `tagKeys/{{name}}`
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, TagKey can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}
-//
+// $ pulumi import gcp:tags/tagKey:TagKey default tagKeys/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:tags/tagKey:TagKey default {{name}}
-//
+// $ pulumi import gcp:tags/tagKey:TagKey default {{name}}
 // ```
 type TagKey struct {
 	pulumi.CustomResourceState

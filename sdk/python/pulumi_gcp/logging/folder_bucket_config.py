@@ -332,10 +332,14 @@ class FolderBucketConfig(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the following format* `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}` When using the `pulumi import` command, this resource can be imported using one of the formats above. For example
+        This resource can be imported using the following format:
+
+         * `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}`
+
+         When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
+        $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -385,10 +389,14 @@ class FolderBucketConfig(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the following format* `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}` When using the `pulumi import` command, this resource can be imported using one of the formats above. For example
+        This resource can be imported using the following format:
+
+         * `folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}`
+
+         When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
+        $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
         ```
 
         :param str resource_name: The name of the resource.

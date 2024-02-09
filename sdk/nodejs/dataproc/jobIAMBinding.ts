@@ -65,14 +65,28 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ### Importing IAM policies IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example* `projects/{project}/regions/{region}/jobs/{job_id}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * ### Importing IAM policies
+ *
+ *  IAM policy imports use the `job_id` identifier of the Dataproc Job resource only. For example:
+ *
+ *  * `projects/{project}/regions/{region}/jobs/{job_id}`
+ *
+ *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ *
+ *  tf
+ *
+ *  import {
  *
  *  id = "projects/{project}/regions/{region}/jobs/{job_id}"
  *
- *  to = google_dataproc_job_iam_policy.default } The `pulumi import` command can also be used
+ *  to = google_dataproc_job_iam_policy.default
+ *
+ *  }
+ *
+ *  The `pulumi import` command can also be used:
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/jobIAMBinding:JobIAMBinding default "projects/{project}/regions/{region}/jobs/{job_id}"
+ * $ pulumi import gcp:dataproc/jobIAMBinding:JobIAMBinding default "projects/{project}/regions/{region}/jobs/{job_id}"
  * ```
  */
 export class JobIAMBinding extends pulumi.CustomResource {

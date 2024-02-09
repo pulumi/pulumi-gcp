@@ -99,18 +99,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Ruleset can be imported using any of these accepted formats* `projects/{{project}}/rulesets/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Ruleset can be imported using one of the formats above. For example
+ * Ruleset can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/rulesets/{{name}}`
+ * 
+ *  * `{{project}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, Ruleset can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:firebaserules/ruleset:Ruleset default projects/{{project}}/rulesets/{{name}}
+ * $ pulumi import gcp:firebaserules/ruleset:Ruleset default projects/{{project}}/rulesets/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebaserules/ruleset:Ruleset default {{project}}/{{name}}
+ * $ pulumi import gcp:firebaserules/ruleset:Ruleset default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebaserules/ruleset:Ruleset default {{name}}
+ * $ pulumi import gcp:firebaserules/ruleset:Ruleset default {{name}}
  * ```
  * 
  */

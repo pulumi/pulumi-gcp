@@ -584,18 +584,26 @@ class Network(pulumi.CustomResource):
 
         ## Import
 
-        Network can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Network can be imported using one of the formats above. For example
+        Network can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/global/networks/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
+        $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
+        $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/network:Network default {{name}}
+        $ pulumi import gcp:compute/network:Network default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -692,18 +700,26 @@ class Network(pulumi.CustomResource):
 
         ## Import
 
-        Network can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Network can be imported using one of the formats above. For example
+        Network can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/global/networks/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
+        $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
+        $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/network:Network default {{name}}
+        $ pulumi import gcp:compute/network:Network default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

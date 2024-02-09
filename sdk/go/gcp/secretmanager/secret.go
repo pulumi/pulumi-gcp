@@ -150,24 +150,26 @@ import (
 //
 // ## Import
 //
-// Secret can be imported using any of these accepted formats* `projects/{{project}}/secrets/{{secret_id}}` * `{{project}}/{{secret_id}}` * `{{secret_id}}` When using the `pulumi import` command, Secret can be imported using one of the formats above. For example
+// Secret can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/secrets/{{secret_id}}`
+//
+//   - `{{project}}/{{secret_id}}`
+//
+//   - `{{secret_id}}`
+//
+//     When using the `pulumi import` command, Secret can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
-//
+// $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
-//
+// $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
-//
+// $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
 // ```
 type Secret struct {
 	pulumi.CustomResourceState

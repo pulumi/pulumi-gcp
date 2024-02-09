@@ -152,22 +152,32 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
+ * Instance group managers can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}`
+ * 
+ *  * `{{project}}/{{zone}}/{{name}}`
+ * 
+ *  * `{{project}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+ * $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
+ * $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{zone}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
+ * $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
+ * $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default {{name}}
  * ```
  * 
  */

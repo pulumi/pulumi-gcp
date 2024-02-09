@@ -64,24 +64,26 @@ import (
 //
 // ## Import
 //
-// GenericService can be imported using any of these accepted formats* `projects/{{project}}/services/{{service_id}}` * `{{project}}/{{service_id}}` * `{{service_id}}` When using the `pulumi import` command, GenericService can be imported using one of the formats above. For example
+// GenericService can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/services/{{service_id}}`
+//
+//   - `{{project}}/{{service_id}}`
+//
+//   - `{{service_id}}`
+//
+//     When using the `pulumi import` command, GenericService can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/genericService:GenericService default projects/{{project}}/services/{{service_id}}
-//
+// $ pulumi import gcp:monitoring/genericService:GenericService default projects/{{project}}/services/{{service_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/genericService:GenericService default {{project}}/{{service_id}}
-//
+// $ pulumi import gcp:monitoring/genericService:GenericService default {{project}}/{{service_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/genericService:GenericService default {{service_id}}
-//
+// $ pulumi import gcp:monitoring/genericService:GenericService default {{service_id}}
 // ```
 type GenericService struct {
 	pulumi.CustomResourceState

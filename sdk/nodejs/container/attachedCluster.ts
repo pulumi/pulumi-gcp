@@ -71,18 +71,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example
+ * Cluster can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}`
+ *
+ *  * `{{project}}/{{location}}/{{name}}`
+ *
+ *  * `{{location}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}
+ * $ pulumi import gcp:container/attachedCluster:AttachedCluster default projects/{{project}}/locations/{{location}}/attachedClusters/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
+ * $ pulumi import gcp:container/attachedCluster:AttachedCluster default {{location}}/{{name}}
  * ```
  */
 export class AttachedCluster extends pulumi.CustomResource {

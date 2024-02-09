@@ -184,18 +184,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example
+ * Dataset can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/datasets/{{dataset_id}}`
+ *
+ *  * `{{project}}/{{dataset_id}}`
+ *
+ *  * `{{dataset_id}}`
+ *
+ *  When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
+ * $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
+ * $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
+ * $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
  * ```
  */
 export class Dataset extends pulumi.CustomResource {

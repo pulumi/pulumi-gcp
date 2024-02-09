@@ -254,14 +254,20 @@ class Sharedflow(pulumi.CustomResource):
 
         ## Import
 
-        SharedFlow can be imported using any of these accepted formats* `{{org_id}}/sharedflows/{{name}}` * `{{org_id}}/{{name}}` When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example
+        SharedFlow can be imported using any of these accepted formats:
+
+         * `{{org_id}}/sharedflows/{{name}}`
+
+         * `{{org_id}}/{{name}}`
+
+         When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
+        $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
+        $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -291,14 +297,20 @@ class Sharedflow(pulumi.CustomResource):
 
         ## Import
 
-        SharedFlow can be imported using any of these accepted formats* `{{org_id}}/sharedflows/{{name}}` * `{{org_id}}/{{name}}` When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example
+        SharedFlow can be imported using any of these accepted formats:
+
+         * `{{org_id}}/sharedflows/{{name}}`
+
+         * `{{org_id}}/{{name}}`
+
+         When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
+        $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
+        $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

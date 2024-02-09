@@ -264,14 +264,20 @@ class HostingVersion(pulumi.CustomResource):
 
         ## Import
 
-        Version can be imported using any of these accepted formats* `sites/{{site_id}}/versions/{{version_id}}` * `{{site_id}}/{{version_id}}` When using the `pulumi import` command, Version can be imported using one of the formats above. For example
+        Version can be imported using any of these accepted formats:
+
+         * `sites/{{site_id}}/versions/{{version_id}}`
+
+         * `{{site_id}}/{{version_id}}`
+
+         When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
+        $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
+        $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -403,14 +409,20 @@ class HostingVersion(pulumi.CustomResource):
 
         ## Import
 
-        Version can be imported using any of these accepted formats* `sites/{{site_id}}/versions/{{version_id}}` * `{{site_id}}/{{version_id}}` When using the `pulumi import` command, Version can be imported using one of the formats above. For example
+        Version can be imported using any of these accepted formats:
+
+         * `sites/{{site_id}}/versions/{{version_id}}`
+
+         * `{{site_id}}/{{version_id}}`
+
+         When using the `pulumi import` command, Version can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
+        $ pulumi import gcp:firebase/hostingVersion:HostingVersion default sites/{{site_id}}/versions/{{version_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
+        $ pulumi import gcp:firebase/hostingVersion:HostingVersion default {{site_id}}/{{version_id}}
         ```
 
         :param str resource_name: The name of the resource.

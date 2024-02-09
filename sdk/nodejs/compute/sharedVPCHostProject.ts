@@ -35,10 +35,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Google Compute Engine Shared VPC host project feature can be imported using `project`, e.g. * `{{project_id}}` When using the `pulumi import` command, Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example
+ * Google Compute Engine Shared VPC host project feature can be imported using `project`, e.g.
+ *
+ *  * `{{project_id}}`
+ *
+ *  When using the `pulumi import` command, Google Compute Engine Shared VPC host projects can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}
+ * $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject default {{project_id}}
  * ```
  */
 export class SharedVPCHostProject extends pulumi.CustomResource {

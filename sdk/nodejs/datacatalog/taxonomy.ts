@@ -29,10 +29,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Taxonomy can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Taxonomy can be imported using one of the formats above. For example
+ * Taxonomy can be imported using any of these accepted formats:
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, Taxonomy can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
+ * $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
  * ```
  */
 export class Taxonomy extends pulumi.CustomResource {

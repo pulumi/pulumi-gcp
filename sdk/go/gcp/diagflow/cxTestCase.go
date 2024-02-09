@@ -225,12 +225,14 @@ import (
 //
 // ## Import
 //
-// TestCase can be imported using any of these accepted formats* `{{parent}}/testCases/{{name}}` When using the `pulumi import` command, TestCase can be imported using one of the formats above. For example
+// TestCase can be imported using any of these accepted formats:
+//
+//   - `{{parent}}/testCases/{{name}}`
+//
+//     When using the `pulumi import` command, TestCase can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:diagflow/cxTestCase:CxTestCase default {{parent}}/testCases/{{name}}
-//
+// $ pulumi import gcp:diagflow/cxTestCase:CxTestCase default {{parent}}/testCases/{{name}}
 // ```
 type CxTestCase struct {
 	pulumi.CustomResourceState

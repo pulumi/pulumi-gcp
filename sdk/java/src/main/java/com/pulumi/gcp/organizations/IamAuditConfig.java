@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * IAM audit config imports use the identifier of the resource in question and the service, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config &#34;your-organization-id foo.googleapis.com&#34;
+ * $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config &#34;your-organization-id foo.googleapis.com&#34;
  * ```
  * 
  */

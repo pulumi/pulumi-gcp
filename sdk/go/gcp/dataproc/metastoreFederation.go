@@ -118,24 +118,26 @@ import (
 //
 // ## Import
 //
-// Federation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}` * `{{project}}/{{location}}/{{federation_id}}` * `{{location}}/{{federation_id}}` When using the `pulumi import` command, Federation can be imported using one of the formats above. For example
+// Federation can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}`
+//
+//   - `{{project}}/{{location}}/{{federation_id}}`
+//
+//   - `{{location}}/{{federation_id}}`
+//
+//     When using the `pulumi import` command, Federation can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
-//
+// $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
-//
+// $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{project}}/{{location}}/{{federation_id}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
-//
+// $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default {{location}}/{{federation_id}}
 // ```
 type MetastoreFederation struct {
 	pulumi.CustomResourceState

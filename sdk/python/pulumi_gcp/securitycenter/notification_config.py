@@ -279,14 +279,20 @@ class NotificationConfig(pulumi.CustomResource):
 
         ## Import
 
-        NotificationConfig can be imported using any of these accepted formats* `organizations/{{organization}}/notificationConfigs/{{name}}` * `{{organization}}/{{name}}` When using the `pulumi import` command, NotificationConfig can be imported using one of the formats above. For example
+        NotificationConfig can be imported using any of these accepted formats:
+
+         * `organizations/{{organization}}/notificationConfigs/{{name}}`
+
+         * `{{organization}}/{{name}}`
+
+         When using the `pulumi import` command, NotificationConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default organizations/{{organization}}/notificationConfigs/{{name}}
+        $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default organizations/{{organization}}/notificationConfigs/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default {{organization}}/{{name}}
+        $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default {{organization}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -341,14 +347,20 @@ class NotificationConfig(pulumi.CustomResource):
 
         ## Import
 
-        NotificationConfig can be imported using any of these accepted formats* `organizations/{{organization}}/notificationConfigs/{{name}}` * `{{organization}}/{{name}}` When using the `pulumi import` command, NotificationConfig can be imported using one of the formats above. For example
+        NotificationConfig can be imported using any of these accepted formats:
+
+         * `organizations/{{organization}}/notificationConfigs/{{name}}`
+
+         * `{{organization}}/{{name}}`
+
+         When using the `pulumi import` command, NotificationConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default organizations/{{organization}}/notificationConfigs/{{name}}
+        $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default organizations/{{organization}}/notificationConfigs/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default {{organization}}/{{name}}
+        $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default {{organization}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

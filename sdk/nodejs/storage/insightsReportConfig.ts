@@ -75,18 +75,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ReportConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, ReportConfig can be imported using one of the formats above. For example
+ * ReportConfig can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}`
+ *
+ *  * `{{project}}/{{location}}/{{name}}`
+ *
+ *  * `{{location}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, ReportConfig can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}
+ * $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default projects/{{project}}/locations/{{location}}/reportConfigs/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{location}}/{{name}}
+ * $ pulumi import gcp:storage/insightsReportConfig:InsightsReportConfig default {{location}}/{{name}}
  * ```
  */
 export class InsightsReportConfig extends pulumi.CustomResource {

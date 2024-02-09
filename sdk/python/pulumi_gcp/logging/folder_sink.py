@@ -425,10 +425,14 @@ class FolderSink(pulumi.CustomResource):
 
         ## Import
 
-        Folder-level logging sinks can be imported using this format* `folders/{{folder_id}}/sinks/{{name}}` When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example
+        Folder-level logging sinks can be imported using this format:
+
+         * `folders/{{folder_id}}/sinks/{{name}}`
+
+         When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}
+        $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -490,10 +494,14 @@ class FolderSink(pulumi.CustomResource):
 
         ## Import
 
-        Folder-level logging sinks can be imported using this format* `folders/{{folder_id}}/sinks/{{name}}` When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example
+        Folder-level logging sinks can be imported using this format:
+
+         * `folders/{{folder_id}}/sinks/{{name}}`
+
+         When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}
+        $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -102,10 +102,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Projects can be imported using the `project_id`, e.g. * `{{project_id}}` When using the `pulumi import` command, Projects can be imported using one of the formats above. For example
+ * Projects can be imported using the `project_id`, e.g.
+ * 
+ *  * `{{project_id}}`
+ * 
+ *  When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
+ * $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
  * ```
  * 
  */

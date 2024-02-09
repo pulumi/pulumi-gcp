@@ -68,18 +68,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * BackupSchedule can be imported using any of these accepted formats* `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}` * `{{project}}/{{database}}/{{name}}` * `{{database}}/{{name}}` When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example
+ * BackupSchedule can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}`
+ *
+ *  * `{{project}}/{{database}}/{{name}}`
+ *
+ *  * `{{database}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}
+ * $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{project}}/{{database}}/{{name}}
+ * $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{project}}/{{database}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{database}}/{{name}}
+ * $ pulumi import gcp:firestore/backupSchedule:BackupSchedule default {{database}}/{{name}}
  * ```
  */
 export class BackupSchedule extends pulumi.CustomResource {

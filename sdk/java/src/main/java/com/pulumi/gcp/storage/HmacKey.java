@@ -65,18 +65,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * HmacKey can be imported using any of these accepted formats* `projects/{{project}}/hmacKeys/{{access_id}}` * `{{project}}/{{access_id}}` * `{{access_id}}` When using the `pulumi import` command, HmacKey can be imported using one of the formats above. For example
+ * HmacKey can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/hmacKeys/{{access_id}}`
+ * 
+ *  * `{{project}}/{{access_id}}`
+ * 
+ *  * `{{access_id}}`
+ * 
+ *  When using the `pulumi import` command, HmacKey can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}
+ * $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:storage/hmacKey:HmacKey default {{project}}/{{access_id}}
+ * $ pulumi import gcp:storage/hmacKey:HmacKey default {{project}}/{{access_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:storage/hmacKey:HmacKey default {{access_id}}
+ * $ pulumi import gcp:storage/hmacKey:HmacKey default {{access_id}}
  * ```
  * 
  */

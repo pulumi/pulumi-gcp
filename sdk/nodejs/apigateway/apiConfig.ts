@@ -42,18 +42,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ApiConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}` * `{{project}}/{{api}}/{{api_config_id}}` * `{{api}}/{{api_config_id}}` When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example
+ * ApiConfig can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}`
+ *
+ *  * `{{project}}/{{api}}/{{api_config_id}}`
+ *
+ *  * `{{api}}/{{api_config_id}}`
+ *
+ *  When using the `pulumi import` command, ApiConfig can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
+ * $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
+ * $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{api_config_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
+ * $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{api_config_id}}
  * ```
  */
 export class ApiConfig extends pulumi.CustomResource {

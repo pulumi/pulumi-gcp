@@ -304,12 +304,14 @@ import (
 //
 // ## Import
 //
-// UptimeCheckConfig can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example
+// UptimeCheckConfig can be imported using any of these accepted formats:
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
-//
+// $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
 // ```
 type UptimeCheckConfig struct {
 	pulumi.CustomResourceState

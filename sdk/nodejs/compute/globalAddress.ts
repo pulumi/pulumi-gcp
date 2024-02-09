@@ -44,18 +44,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example
+ * GlobalAddress can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/global/addresses/{{name}}`
+ *
+ *  * `{{project}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
+ * $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
+ * $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
+ * $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
  * ```
  */
 export class GlobalAddress extends pulumi.CustomResource {

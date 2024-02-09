@@ -133,31 +133,39 @@ import (
 //
 // ## Import
 //
-// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/instances/{{instance_name}} * {{project}}/{{location}}/{{instance_name}} * {{location}}/{{instance_name}} * {{instance_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud AI Notebooks instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+// For all import syntaxes, the "resource in question" can take any of the following forms:
+//
+//   - projects/{{project}}/locations/{{location}}/instances/{{instance_name}}
+//
+//   - {{project}}/{{location}}/{{instance_name}}
+//
+//   - {{location}}/{{instance_name}}
+//
+//   - {{instance_name}}
+//
+//     Any variables not passed in the import command will be taken from the provider configuration.
+//
+//     Cloud AI Notebooks instance IAM resources can be imported using the resource identifiers, role, and member.
+//
+//     IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/instanceIamPolicy:InstanceIamPolicy editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer user:jane@example.com"
-//
+// $ pulumi import gcp:notebooks/instanceIamPolicy:InstanceIamPolicy editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer user:jane@example.com"
 // ```
 //
-//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//	IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/instanceIamPolicy:InstanceIamPolicy editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer"
-//
+// $ pulumi import gcp:notebooks/instanceIamPolicy:InstanceIamPolicy editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer"
 // ```
 //
 //	IAM policy imports use the identifier of the resource in question, e.g.
 //
 // ```sh
-//
-//	$ pulumi import gcp:notebooks/instanceIamPolicy:InstanceIamPolicy editor projects/{{project}}/locations/{{location}}/instances/{{instance_name}}
-//
+// $ pulumi import gcp:notebooks/instanceIamPolicy:InstanceIamPolicy editor projects/{{project}}/locations/{{location}}/instances/{{instance_name}}
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//	-> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type InstanceIamPolicy struct {

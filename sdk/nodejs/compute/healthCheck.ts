@@ -260,18 +260,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * HealthCheck can be imported using any of these accepted formats* `projects/{{project}}/global/healthChecks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, HealthCheck can be imported using one of the formats above. For example
+ * HealthCheck can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/global/healthChecks/{{name}}`
+ *
+ *  * `{{project}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, HealthCheck can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/healthCheck:HealthCheck default projects/{{project}}/global/healthChecks/{{name}}
+ * $ pulumi import gcp:compute/healthCheck:HealthCheck default projects/{{project}}/global/healthChecks/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/healthCheck:HealthCheck default {{project}}/{{name}}
+ * $ pulumi import gcp:compute/healthCheck:HealthCheck default {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/healthCheck:HealthCheck default {{name}}
+ * $ pulumi import gcp:compute/healthCheck:HealthCheck default {{name}}
  * ```
  */
 export class HealthCheck extends pulumi.CustomResource {

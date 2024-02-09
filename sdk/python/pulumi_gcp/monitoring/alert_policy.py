@@ -645,10 +645,14 @@ class AlertPolicy(pulumi.CustomResource):
 
         ## Import
 
-        AlertPolicy can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example
+        AlertPolicy can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
+        $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -816,10 +820,14 @@ class AlertPolicy(pulumi.CustomResource):
 
         ## Import
 
-        AlertPolicy can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example
+        AlertPolicy can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
+        $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

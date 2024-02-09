@@ -98,12 +98,14 @@ import (
 //
 // ## Import
 //
-// AccessPolicy can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, AccessPolicy can be imported using one of the formats above. For example
+// AccessPolicy can be imported using any of these accepted formats:
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, AccessPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
-//
+// $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
 // ```
 type AccessPolicy struct {
 	pulumi.CustomResourceState

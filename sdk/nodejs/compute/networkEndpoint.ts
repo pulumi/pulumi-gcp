@@ -62,22 +62,32 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NetworkEndpoint can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}` * `{{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}` * `{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}` * `{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}` When using the `pulumi import` command, NetworkEndpoint can be imported using one of the formats above. For example
+ * NetworkEndpoint can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
+ *
+ *  * `{{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
+ *
+ *  * `{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
+ *
+ *  * `{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}`
+ *
+ *  When using the `pulumi import` command, NetworkEndpoint can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+ * $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+ * $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+ * $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+ * $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
  * ```
  */
 export class NetworkEndpoint extends pulumi.CustomResource {

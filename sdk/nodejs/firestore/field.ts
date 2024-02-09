@@ -48,10 +48,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Field can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Field can be imported using one of the formats above. For example
+ * Field can be imported using any of these accepted formats:
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, Field can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:firestore/field:Field default {{name}}
+ * $ pulumi import gcp:firestore/field:Field default {{name}}
  * ```
  */
 export class Field extends pulumi.CustomResource {

@@ -462,10 +462,14 @@ class Posture(pulumi.CustomResource):
 
         ## Import
 
-        Posture can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/postures/{{posture_id}}` When using the `pulumi import` command, Posture can be imported using one of the formats above. For example
+        Posture can be imported using any of these accepted formats:
+
+         * `{{parent}}/locations/{{location}}/postures/{{posture_id}}`
+
+         When using the `pulumi import` command, Posture can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:securityposture/posture:Posture default {{parent}}/locations/{{location}}/postures/{{posture_id}}
+        $ pulumi import gcp:securityposture/posture:Posture default {{parent}}/locations/{{location}}/postures/{{posture_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -602,10 +606,14 @@ class Posture(pulumi.CustomResource):
 
         ## Import
 
-        Posture can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/postures/{{posture_id}}` When using the `pulumi import` command, Posture can be imported using one of the formats above. For example
+        Posture can be imported using any of these accepted formats:
+
+         * `{{parent}}/locations/{{location}}/postures/{{posture_id}}`
+
+         When using the `pulumi import` command, Posture can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:securityposture/posture:Posture default {{parent}}/locations/{{location}}/postures/{{posture_id}}
+        $ pulumi import gcp:securityposture/posture:Posture default {{parent}}/locations/{{location}}/postures/{{posture_id}}
         ```
 
         :param str resource_name: The name of the resource.

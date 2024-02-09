@@ -633,10 +633,14 @@ class Intent(pulumi.CustomResource):
 
         ## Import
 
-        Intent can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Intent can be imported using one of the formats above. For example
+        Intent can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:diagflow/intent:Intent default {{name}}
+        $ pulumi import gcp:diagflow/intent:Intent default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -745,10 +749,14 @@ class Intent(pulumi.CustomResource):
 
         ## Import
 
-        Intent can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Intent can be imported using one of the formats above. For example
+        Intent can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:diagflow/intent:Intent default {{name}}
+        $ pulumi import gcp:diagflow/intent:Intent default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -52,14 +52,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Channel can be imported using any of these accepted formats* `sites/{{site_id}}/channels/{{channel_id}}` * `{{site_id}}/{{channel_id}}` When using the `pulumi import` command, Channel can be imported using one of the formats above. For example
+ * Channel can be imported using any of these accepted formats:
+ *
+ *  * `sites/{{site_id}}/channels/{{channel_id}}`
+ *
+ *  * `{{site_id}}/{{channel_id}}`
+ *
+ *  When using the `pulumi import` command, Channel can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
+ * $ pulumi import gcp:firebase/hostingChannel:HostingChannel default sites/{{site_id}}/channels/{{channel_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
+ * $ pulumi import gcp:firebase/hostingChannel:HostingChannel default {{site_id}}/{{channel_id}}
  * ```
  */
 export class HostingChannel extends pulumi.CustomResource {
