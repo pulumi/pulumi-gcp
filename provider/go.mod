@@ -5,10 +5,10 @@ go 1.21.0
 require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/providertest v0.0.10
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.26.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.73.0
-	github.com/pulumi/pulumi/pkg/v3 v3.104.2
-	github.com/pulumi/pulumi/sdk/v3 v3.104.2
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.27.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.74.0
+	github.com/pulumi/pulumi/pkg/v3 v3.105.0
+	github.com/pulumi/pulumi/sdk/v3 v3.105.0
 	github.com/stretchr/testify v1.8.4
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
 )
