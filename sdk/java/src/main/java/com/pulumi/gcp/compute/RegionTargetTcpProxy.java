@@ -84,22 +84,32 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RegionTargetTcpProxy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionTargetTcpProxy can be imported using one of the formats above. For example
+ * RegionTargetTcpProxy can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}`
+ * 
+ *  * `{{project}}/{{region}}/{{name}}`
+ * 
+ *  * `{{region}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, RegionTargetTcpProxy can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}
+ * $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default projects/{{project}}/regions/{{region}}/targetTcpProxies/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{project}}/{{region}}/{{name}}
+ * $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{project}}/{{region}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{region}}/{{name}}
+ * $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{region}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{name}}
+ * $ pulumi import gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy default {{name}}
  * ```
  * 
  */

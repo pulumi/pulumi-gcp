@@ -540,18 +540,20 @@ import (
 //
 // ## Import
 //
-// DocumentSchema can be imported using any of these accepted formats* `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}` * `{{project_number}}/{{location}}/{{name}}` When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example
+// DocumentSchema can be imported using any of these accepted formats:
+//
+//   - `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}`
+//
+//   - `{{project_number}}/{{location}}/{{name}}`
+//
+//     When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}
-//
+// $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default {{project_number}}/{{location}}/{{name}}
-//
+// $ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema default {{project_number}}/{{location}}/{{name}}
 // ```
 type DocumentAiWarehouseDocumentSchema struct {
 	pulumi.CustomResourceState

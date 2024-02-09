@@ -111,18 +111,20 @@ import (
 //
 // ## Import
 //
-// FirewallPolicyRule can be imported using any of these accepted formats* `locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}` * `{{firewall_policy}}/{{priority}}` When using the `pulumi import` command, FirewallPolicyRule can be imported using one of the formats above. For example
+// FirewallPolicyRule can be imported using any of these accepted formats:
+//
+//   - `locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}`
+//
+//   - `{{firewall_policy}}/{{priority}}`
+//
+//     When using the `pulumi import` command, FirewallPolicyRule can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}
-//
+// $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default locations/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default {{firewall_policy}}/{{priority}}
-//
+// $ pulumi import gcp:compute/firewallPolicyRule:FirewallPolicyRule default {{firewall_policy}}/{{priority}}
 // ```
 type FirewallPolicyRule struct {
 	pulumi.CustomResourceState

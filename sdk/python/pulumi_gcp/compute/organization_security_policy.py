@@ -253,14 +253,20 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         ## Import
 
-        OrganizationSecurityPolicy can be imported using any of these accepted formats* `locations/global/securityPolicies/{{policy_id}}` * `{{policy_id}}` When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example
+        OrganizationSecurityPolicy can be imported using any of these accepted formats:
+
+         * `locations/global/securityPolicies/{{policy_id}}`
+
+         * `{{policy_id}}`
+
+         When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
+        $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
+        $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -308,14 +314,20 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
 
         ## Import
 
-        OrganizationSecurityPolicy can be imported using any of these accepted formats* `locations/global/securityPolicies/{{policy_id}}` * `{{policy_id}}` When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example
+        OrganizationSecurityPolicy can be imported using any of these accepted formats:
+
+         * `locations/global/securityPolicies/{{policy_id}}`
+
+         * `{{policy_id}}`
+
+         When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
+        $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
+        $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
         ```
 
         :param str resource_name: The name of the resource.

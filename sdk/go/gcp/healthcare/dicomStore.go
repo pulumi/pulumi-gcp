@@ -142,18 +142,20 @@ import (
 //
 // ## Import
 //
-// DicomStore can be imported using any of these accepted formats* `{{dataset}}/dicomStores/{{name}}` * `{{dataset}}/{{name}}` When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example
+// DicomStore can be imported using any of these accepted formats:
+//
+//   - `{{dataset}}/dicomStores/{{name}}`
+//
+//   - `{{dataset}}/{{name}}`
+//
+//     When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
-//
+// $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
-//
+// $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
 // ```
 type DicomStore struct {
 	pulumi.CustomResourceState

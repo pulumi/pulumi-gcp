@@ -467,24 +467,26 @@ import (
 //
 // ## Import
 //
-// Job can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/jobs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Job can be imported using one of the formats above. For example
+// Job can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/locations/{{location}}/jobs/{{name}}`
+//
+//   - `{{project}}/{{location}}/{{name}}`
+//
+//   - `{{location}}/{{name}}`
+//
+//     When using the `pulumi import` command, Job can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
-//
+// $ pulumi import gcp:cloudrunv2/job:Job default projects/{{project}}/locations/{{location}}/jobs/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudrunv2/job:Job default {{project}}/{{location}}/{{name}}
-//
+// $ pulumi import gcp:cloudrunv2/job:Job default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
-//
+// $ pulumi import gcp:cloudrunv2/job:Job default {{location}}/{{name}}
 // ```
 type Job struct {
 	pulumi.CustomResourceState

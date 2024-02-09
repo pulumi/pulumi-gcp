@@ -71,10 +71,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Project metadata can be imported using the project ID* `{{project_id}}` When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example
+    /// Project metadata can be imported using the project ID:
+    /// 
+    ///  * `{{project_id}}`
+    /// 
+    ///  When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}
+    /// $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/projectMetadata:ProjectMetadata")]

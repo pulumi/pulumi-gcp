@@ -20,12 +20,14 @@ import (
 //
 // ## Import
 //
-// AccessBoundaryPolicy can be imported using any of these accepted formats* `{{parent}}/{{name}}` When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example
+// AccessBoundaryPolicy can be imported using any of these accepted formats:
+//
+//   - `{{parent}}/{{name}}`
+//
+//     When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy default {{parent}}/{{name}}
-//
+// $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy default {{parent}}/{{name}}
 // ```
 type AccessBoundaryPolicy struct {
 	pulumi.CustomResourceState

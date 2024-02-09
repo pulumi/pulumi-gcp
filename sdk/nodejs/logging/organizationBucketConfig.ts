@@ -36,10 +36,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using the following format* `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}` When using the `pulumi import` command, this resource can be imported using one of the formats above. For example
+ * This resource can be imported using the following format:
+ *
+ *  * `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}`
+ *
+ *  When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
+ * $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
  * ```
  */
 export class OrganizationBucketConfig extends pulumi.CustomResource {

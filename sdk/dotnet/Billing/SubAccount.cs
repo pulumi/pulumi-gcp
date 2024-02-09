@@ -33,10 +33,14 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// ## Import
     /// 
-    /// Billing Subaccounts can be imported using any of these accepted formats* `billingAccounts/{billing_account_id}` When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example
+    /// Billing Subaccounts can be imported using any of these accepted formats:
+    /// 
+    ///  * `billingAccounts/{billing_account_id}`
+    /// 
+    ///  When using the `pulumi import` command, Billing Subaccounts can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
+    /// $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:billing/subAccount:SubAccount")]

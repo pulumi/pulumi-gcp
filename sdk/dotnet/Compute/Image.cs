@@ -112,18 +112,26 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Image can be imported using any of these accepted formats* `projects/{{project}}/global/images/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Image can be imported using one of the formats above. For example
+    /// Image can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/global/images/{{name}}`
+    /// 
+    ///  * `{{project}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Image can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
+    /// $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/image:Image default {{project}}/{{name}}
+    /// $ pulumi import gcp:compute/image:Image default {{project}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/image:Image default {{name}}
+    /// $ pulumi import gcp:compute/image:Image default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/image:Image")]

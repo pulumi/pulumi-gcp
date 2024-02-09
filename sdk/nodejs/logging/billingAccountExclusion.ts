@@ -20,10 +20,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Billing account logging exclusions can be imported using their URI, e.g. * `billingAccounts/{{billing_account}}/exclusions/{{name}}` When using the `pulumi import` command, billing account logging exclusions can be imported using one of the formats above. For example
+ * Billing account logging exclusions can be imported using their URI, e.g.
+ *
+ *  * `billingAccounts/{{billing_account}}/exclusions/{{name}}`
+ *
+ *  When using the `pulumi import` command, billing account logging exclusions can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion default billingAccounts/{{billing_account}}/exclusions/{{name}}
+ * $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion default billingAccounts/{{billing_account}}/exclusions/{{name}}
  * ```
  */
 export class BillingAccountExclusion extends pulumi.CustomResource {

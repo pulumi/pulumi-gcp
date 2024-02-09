@@ -128,18 +128,26 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// MachineImage can be imported using any of these accepted formats* `projects/{{project}}/global/machineImages/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example
+    /// MachineImage can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/global/machineImages/{{name}}`
+    /// 
+    ///  * `{{project}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
+    /// $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
+    /// $ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
+    /// $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/machineImage:MachineImage")]

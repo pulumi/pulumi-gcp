@@ -119,18 +119,26 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// ## Import
     /// 
-    /// ServiceSplitTraffic can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}` * `{{project}}/{{service}}` * `{{service}}` When using the `pulumi import` command, ServiceSplitTraffic can be imported using one of the formats above. For example
+    /// ServiceSplitTraffic can be imported using any of these accepted formats:
+    /// 
+    ///  * `apps/{{project}}/services/{{service}}`
+    /// 
+    ///  * `{{project}}/{{service}}`
+    /// 
+    ///  * `{{service}}`
+    /// 
+    ///  When using the `pulumi import` command, ServiceSplitTraffic can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default apps/{{project}}/services/{{service}}
+    /// $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default apps/{{project}}/services/{{service}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{project}}/{{service}}
+    /// $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{project}}/{{service}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{service}}
+    /// $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{service}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:appengine/engineSplitTraffic:EngineSplitTraffic")]

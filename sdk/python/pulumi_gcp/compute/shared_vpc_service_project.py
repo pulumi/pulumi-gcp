@@ -158,10 +158,14 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         ## Import
 
-        Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g. * `{{host_project}/{{service_project}}` When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example
+        Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
+
+         * `{{host_project}/{{service_project}}`
+
+         When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
+        $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -204,10 +208,14 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         ## Import
 
-        Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g. * `{{host_project}/{{service_project}}` When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example
+        Google Compute Engine Shared VPC service project feature can be imported using the `host_project` and `service_project`, e.g.
+
+         * `{{host_project}/{{service_project}}`
+
+         When using the `pulumi import` command, Google Compute Engine Shared VPC service project can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
+        $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject default {{host_project}/{{service_project}}
         ```
 
         :param str resource_name: The name of the resource.

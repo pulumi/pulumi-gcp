@@ -44,10 +44,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * DefaultObjectAccessControl can be imported using any of these accepted formats* `{{bucket}}/{{entity}}` When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example
+ * DefaultObjectAccessControl can be imported using any of these accepted formats:
+ *
+ *  * `{{bucket}}/{{entity}}`
+ *
+ *  When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
+ * $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
  * ```
  */
 export class DefaultObjectAccessControl extends pulumi.CustomResource {

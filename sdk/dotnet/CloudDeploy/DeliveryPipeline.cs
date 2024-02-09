@@ -328,18 +328,26 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// ## Import
     /// 
-    /// DeliveryPipeline can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example
+    /// DeliveryPipeline can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}`
+    /// 
+    ///  * `{{project}}/{{location}}/{{name}}`
+    /// 
+    ///  * `{{location}}/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}
+    /// $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{project}}/{{location}}/{{name}}
+    /// $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{project}}/{{location}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{location}}/{{name}}
+    /// $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default {{location}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:clouddeploy/deliveryPipeline:DeliveryPipeline")]

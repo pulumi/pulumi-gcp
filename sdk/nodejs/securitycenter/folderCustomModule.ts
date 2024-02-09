@@ -91,14 +91,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * FolderCustomModule can be imported using any of these accepted formats* `folders/{{folder}}/securityHealthAnalyticsSettings/customModules/{{name}}` * `{{folder}}/{{name}}` When using the `pulumi import` command, FolderCustomModule can be imported using one of the formats above. For example
+ * FolderCustomModule can be imported using any of these accepted formats:
+ *
+ *  * `folders/{{folder}}/securityHealthAnalyticsSettings/customModules/{{name}}`
+ *
+ *  * `{{folder}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, FolderCustomModule can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:securitycenter/folderCustomModule:FolderCustomModule default folders/{{folder}}/securityHealthAnalyticsSettings/customModules/{{name}}
+ * $ pulumi import gcp:securitycenter/folderCustomModule:FolderCustomModule default folders/{{folder}}/securityHealthAnalyticsSettings/customModules/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:securitycenter/folderCustomModule:FolderCustomModule default {{folder}}/{{name}}
+ * $ pulumi import gcp:securitycenter/folderCustomModule:FolderCustomModule default {{folder}}/{{name}}
  * ```
  */
 export class FolderCustomModule extends pulumi.CustomResource {

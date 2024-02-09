@@ -63,22 +63,32 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example
+ * ForwardingRule can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}`
+ *
+ *  * `{{project}}/{{region}}/{{name}}`
+ *
+ *  * `{{region}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}
+ * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{project}}/{{region}}/{{name}}
+ * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{project}}/{{region}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{region}}/{{name}}
+ * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{region}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
+ * $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
  * ```
  */
 export class ForwardingRule extends pulumi.CustomResource {

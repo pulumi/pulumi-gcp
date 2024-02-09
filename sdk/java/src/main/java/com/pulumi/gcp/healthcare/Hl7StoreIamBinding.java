@@ -133,14 +133,28 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example* `&#34;{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}&#34;` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * ### Importing IAM policies
+ * 
+ *  IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example:
+ * 
+ *  * `&#34;{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}&#34;`
+ * 
+ *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * 
+ *  tf
+ * 
+ *  import {
  * 
  *  id = &#34;{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}&#34;
  * 
- *  to = google_healthcare_hl7_v2_store_iam_policy.default } The `pulumi import` command can also be used
+ *  to = google_healthcare_hl7_v2_store_iam_policy.default
+ * 
+ *  }
+ * 
+ *  The `pulumi import` command can also be used:
  * 
  * ```sh
- *  $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}
+ * $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}
  * ```
  * 
  */

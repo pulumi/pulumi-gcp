@@ -174,18 +174,26 @@ class VpcscConfig(pulumi.CustomResource):
 
         ## Import
 
-        VPCSCConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example
+        VPCSCConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}
+        $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{location}}/{{name}}
+        $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -218,18 +226,26 @@ class VpcscConfig(pulumi.CustomResource):
 
         ## Import
 
-        VPCSCConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example
+        VPCSCConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}
+        $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{location}}/{{name}}
+        $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -482,22 +482,32 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
         ## Import
 
-        RegionPerInstanceConfig can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}` * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}` * `{{region}}/{{region_instance_group_manager}}/{{name}}` * `{{region_instance_group_manager}}/{{name}}` When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example
+        RegionPerInstanceConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}`
+
+         * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}`
+
+         * `{{region}}/{{region_instance_group_manager}}/{{name}}`
+
+         * `{{region_instance_group_manager}}/{{name}}`
+
+         When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
+        $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}
+        $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
+        $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
+        $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -615,22 +625,32 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
         ## Import
 
-        RegionPerInstanceConfig can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}` * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}` * `{{region}}/{{region_instance_group_manager}}/{{name}}` * `{{region_instance_group_manager}}/{{name}}` When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example
+        RegionPerInstanceConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}`
+
+         * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}`
+
+         * `{{region}}/{{region_instance_group_manager}}/{{name}}`
+
+         * `{{region_instance_group_manager}}/{{name}}`
+
+         When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
+        $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}
+        $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
+        $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
+        $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

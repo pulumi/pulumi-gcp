@@ -33,10 +33,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Service accounts can be imported using their URI, e.g. * `projects/{{project_id}}/serviceAccounts/{{email}}` When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example
+ * Service accounts can be imported using their URI, e.g.
+ *
+ *  * `projects/{{project_id}}/serviceAccounts/{{email}}`
+ *
+ *  When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}
+ * $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}
  * ```
  */
 export class Account extends pulumi.CustomResource {

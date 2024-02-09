@@ -67,10 +67,10 @@ import javax.annotation.Nullable;
  * These bindings can be imported using the `org_id` and role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org &#34;your-org-id roles/viewer&#34;
+ * $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org &#34;your-org-id roles/viewer&#34;
  * ```
  * 
- *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ *  -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 

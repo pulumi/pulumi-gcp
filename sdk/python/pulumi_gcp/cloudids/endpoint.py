@@ -378,18 +378,26 @@ class Endpoint(pulumi.CustomResource):
 
         ## Import
 
-        Endpoint can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/endpoints/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example
+        Endpoint can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:cloudids/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
+        $ pulumi import gcp:cloudids/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:cloudids/endpoint:Endpoint default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:cloudids/endpoint:Endpoint default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:cloudids/endpoint:Endpoint default {{location}}/{{name}}
+        $ pulumi import gcp:cloudids/endpoint:Endpoint default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -446,18 +454,26 @@ class Endpoint(pulumi.CustomResource):
 
         ## Import
 
-        Endpoint can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/endpoints/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example
+        Endpoint can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/endpoints/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, Endpoint can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:cloudids/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
+        $ pulumi import gcp:cloudids/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/endpoints/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:cloudids/endpoint:Endpoint default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:cloudids/endpoint:Endpoint default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:cloudids/endpoint:Endpoint default {{location}}/{{name}}
+        $ pulumi import gcp:cloudids/endpoint:Endpoint default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -261,18 +261,26 @@ class Tenant(pulumi.CustomResource):
 
         ## Import
 
-        Tenant can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example
+        Tenant can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/tenants/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
+        $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
+        $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
+        $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -319,18 +327,26 @@ class Tenant(pulumi.CustomResource):
 
         ## Import
 
-        Tenant can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example
+        Tenant can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/tenants/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
+        $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
+        $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
+        $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

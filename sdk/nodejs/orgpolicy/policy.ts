@@ -126,7 +126,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Policy can be imported using any of these accepted formats* `{{parent}}/policies/{{name}}`
+ * Policy can be imported using any of these accepted formats: * `{{parent}}/policies/{{name}}`
  *
  * When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
  *

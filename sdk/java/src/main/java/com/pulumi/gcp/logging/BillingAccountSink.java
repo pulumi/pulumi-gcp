@@ -76,10 +76,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Billing account logging sinks can be imported using this format* `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}` When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example
+ * Billing account logging sinks can be imported using this format:
+ * 
+ *  * `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}`
+ * 
+ *  When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
+ * $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
  * ```
  * 
  */

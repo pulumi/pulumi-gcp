@@ -1036,22 +1036,32 @@ class InterconnectAttachment(pulumi.CustomResource):
 
         ## Import
 
-        InterconnectAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example
+        InterconnectAttachment can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
+        $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
+        $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
+        $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1196,22 +1206,32 @@ class InterconnectAttachment(pulumi.CustomResource):
 
         ## Import
 
-        InterconnectAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example
+        InterconnectAttachment can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, InterconnectAttachment can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
+        $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
+        $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
+        $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

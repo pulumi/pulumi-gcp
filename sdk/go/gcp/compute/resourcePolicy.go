@@ -266,30 +266,32 @@ import (
 //
 // ## Import
 //
-// ResourcePolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ResourcePolicy can be imported using one of the formats above. For example
+// ResourcePolicy can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}`
+//
+//   - `{{project}}/{{region}}/{{name}}`
+//
+//   - `{{region}}/{{name}}`
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, ResourcePolicy can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}
-//
+// $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{project}}/{{region}}/{{name}}
-//
+// $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{region}}/{{name}}
-//
+// $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
-//
+// $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
 // ```
 type ResourcePolicy struct {
 	pulumi.CustomResourceState

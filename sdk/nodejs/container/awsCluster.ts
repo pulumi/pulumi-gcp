@@ -247,18 +247,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example
+ * Cluster can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/awsClusters/{{name}}`
+ *
+ *  * `{{project}}/{{location}}/{{name}}`
+ *
+ *  * `{{location}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}
+ * $ pulumi import gcp:container/awsCluster:AwsCluster default projects/{{project}}/locations/{{location}}/awsClusters/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/awsCluster:AwsCluster default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:container/awsCluster:AwsCluster default {{project}}/{{location}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/awsCluster:AwsCluster default {{location}}/{{name}}
+ * $ pulumi import gcp:container/awsCluster:AwsCluster default {{location}}/{{name}}
  * ```
  */
 export class AwsCluster extends pulumi.CustomResource {

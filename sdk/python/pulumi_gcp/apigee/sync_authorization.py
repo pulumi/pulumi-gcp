@@ -180,14 +180,20 @@ class SyncAuthorization(pulumi.CustomResource):
 
         ## Import
 
-        SyncAuthorization can be imported using any of these accepted formats* `organizations/{{name}}/syncAuthorization` * `{{name}}` When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example
+        SyncAuthorization can be imported using any of these accepted formats:
+
+         * `organizations/{{name}}/syncAuthorization`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization
+        $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization
         ```
 
         ```sh
-         $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default {{name}}
+        $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -247,14 +253,20 @@ class SyncAuthorization(pulumi.CustomResource):
 
         ## Import
 
-        SyncAuthorization can be imported using any of these accepted formats* `organizations/{{name}}/syncAuthorization` * `{{name}}` When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example
+        SyncAuthorization can be imported using any of these accepted formats:
+
+         * `organizations/{{name}}/syncAuthorization`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, SyncAuthorization can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization
+        $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default organizations/{{name}}/syncAuthorization
         ```
 
         ```sh
-         $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default {{name}}
+        $ pulumi import gcp:apigee/syncAuthorization:SyncAuthorization default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -258,14 +258,20 @@ class FolderSettings(pulumi.CustomResource):
 
         ## Import
 
-        FolderSettings can be imported using any of these accepted formats* `folders/{{folder}}/settings` * `{{folder}}` When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example
+        FolderSettings can be imported using any of these accepted formats:
+
+         * `folders/{{folder}}/settings`
+
+         * `{{folder}}`
+
+         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings
+        $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings
         ```
 
         ```sh
-         $ pulumi import gcp:logging/folderSettings:FolderSettings default {{folder}}
+        $ pulumi import gcp:logging/folderSettings:FolderSettings default {{folder}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -318,14 +324,20 @@ class FolderSettings(pulumi.CustomResource):
 
         ## Import
 
-        FolderSettings can be imported using any of these accepted formats* `folders/{{folder}}/settings` * `{{folder}}` When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example
+        FolderSettings can be imported using any of these accepted formats:
+
+         * `folders/{{folder}}/settings`
+
+         * `{{folder}}`
+
+         When using the `pulumi import` command, FolderSettings can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings
+        $ pulumi import gcp:logging/folderSettings:FolderSettings default folders/{{folder}}/settings
         ```
 
         ```sh
-         $ pulumi import gcp:logging/folderSettings:FolderSettings default {{folder}}
+        $ pulumi import gcp:logging/folderSettings:FolderSettings default {{folder}}
         ```
 
         :param str resource_name: The name of the resource.

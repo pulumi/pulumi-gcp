@@ -710,22 +710,32 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         ## Import
 
-        RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example
+        RegionNetworkEndpointGroup can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
+        $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
+        $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
+        $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -935,22 +945,32 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         ## Import
 
-        RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example
+        RegionNetworkEndpointGroup can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
+        $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
+        $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
+        $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

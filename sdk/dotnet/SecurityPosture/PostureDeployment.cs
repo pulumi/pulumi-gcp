@@ -86,10 +86,14 @@ namespace Pulumi.Gcp.SecurityPosture
     /// 
     /// ## Import
     /// 
-    /// PostureDeployment can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}` When using the `pulumi import` command, PostureDeployment can be imported using one of the formats above. For example
+    /// PostureDeployment can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}`
+    /// 
+    ///  When using the `pulumi import` command, PostureDeployment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:securityposture/postureDeployment:PostureDeployment default {{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}
+    /// $ pulumi import gcp:securityposture/postureDeployment:PostureDeployment default {{parent}}/locations/{{location}}/postureDeployments/{{posture_deployment_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:securityposture/postureDeployment:PostureDeployment")]

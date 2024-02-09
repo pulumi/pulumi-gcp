@@ -1262,18 +1262,26 @@ class InstanceTemplate(pulumi.CustomResource):
 
         ## Import
 
-        Instance templates can be imported using any of these accepted formats* `projects/{{project}}/global/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example
+        Instance templates can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/global/instanceTemplates/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
+        $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
+        $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
+        $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1476,18 +1484,26 @@ class InstanceTemplate(pulumi.CustomResource):
 
         ## Import
 
-        Instance templates can be imported using any of these accepted formats* `projects/{{project}}/global/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example
+        Instance templates can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/global/instanceTemplates/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
+        $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
+        $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
+        $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

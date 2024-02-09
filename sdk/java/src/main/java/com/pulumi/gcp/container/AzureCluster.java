@@ -201,18 +201,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example
+ * Cluster can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}`
+ * 
+ *  * `{{project}}/{{location}}/{{name}}`
+ * 
+ *  * `{{location}}/{{name}}`
+ * 
+ *  When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:container/azureCluster:AzureCluster default projects/{{project}}/locations/{{location}}/azureClusters/{{name}}
+ * $ pulumi import gcp:container/azureCluster:AzureCluster default projects/{{project}}/locations/{{location}}/azureClusters/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:container/azureCluster:AzureCluster default {{project}}/{{location}}/{{name}}
+ * $ pulumi import gcp:container/azureCluster:AzureCluster default {{project}}/{{location}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:container/azureCluster:AzureCluster default {{location}}/{{name}}
+ * $ pulumi import gcp:container/azureCluster:AzureCluster default {{location}}/{{name}}
  * ```
  * 
  */

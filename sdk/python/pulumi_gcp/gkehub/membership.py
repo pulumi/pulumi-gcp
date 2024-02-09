@@ -466,18 +466,26 @@ class Membership(pulumi.CustomResource):
 
         ## Import
 
-        Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` When using the `pulumi import` command, Membership can be imported using one of the formats above. For example
+        Membership can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
+
+         * `{{project}}/{{location}}/{{membership_id}}`
+
+         * `{{location}}/{{membership_id}}`
+
+         When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
+        $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
+        $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
+        $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -593,18 +601,26 @@ class Membership(pulumi.CustomResource):
 
         ## Import
 
-        Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` When using the `pulumi import` command, Membership can be imported using one of the formats above. For example
+        Membership can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}`
+
+         * `{{project}}/{{location}}/{{membership_id}}`
+
+         * `{{location}}/{{membership_id}}`
+
+         When using the `pulumi import` command, Membership can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
+        $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
+        $ pulumi import gcp:gkehub/membership:Membership default {{project}}/{{location}}/{{membership_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
+        $ pulumi import gcp:gkehub/membership:Membership default {{location}}/{{membership_id}}
         ```
 
         :param str resource_name: The name of the resource.

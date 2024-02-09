@@ -322,12 +322,14 @@ import (
 //
 // ## Import
 //
-// ServicePerimeter can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, ServicePerimeter can be imported using one of the formats above. For example
+// ServicePerimeter can be imported using any of these accepted formats:
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, ServicePerimeter can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}
-//
+// $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}
 // ```
 type ServicePerimeter struct {
 	pulumi.CustomResourceState

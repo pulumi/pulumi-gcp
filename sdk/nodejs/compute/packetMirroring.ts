@@ -21,22 +21,32 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * PacketMirroring can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example
+ * PacketMirroring can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}`
+ *
+ *  * `{{project}}/{{region}}/{{name}}`
+ *
+ *  * `{{region}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, PacketMirroring can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
+ * $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
+ * $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
+ * $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
+ * $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
  * ```
  */
 export class PacketMirroring extends pulumi.CustomResource {

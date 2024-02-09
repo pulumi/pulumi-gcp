@@ -198,10 +198,14 @@ class DenyPolicy(pulumi.CustomResource):
 
         ## Import
 
-        DenyPolicy can be imported using any of these accepted formats* `{{parent}}/{{name}}` When using the `pulumi import` command, DenyPolicy can be imported using one of the formats above. For example
+        DenyPolicy can be imported using any of these accepted formats:
+
+         * `{{parent}}/{{name}}`
+
+         When using the `pulumi import` command, DenyPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
+        $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -231,10 +235,14 @@ class DenyPolicy(pulumi.CustomResource):
 
         ## Import
 
-        DenyPolicy can be imported using any of these accepted formats* `{{parent}}/{{name}}` When using the `pulumi import` command, DenyPolicy can be imported using one of the formats above. For example
+        DenyPolicy can be imported using any of these accepted formats:
+
+         * `{{parent}}/{{name}}`
+
+         When using the `pulumi import` command, DenyPolicy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
+        $ pulumi import gcp:iam/denyPolicy:DenyPolicy default {{parent}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

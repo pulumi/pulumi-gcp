@@ -41,18 +41,26 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// PublicAdvertisedPrefix can be imported using any of these accepted formats* `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, PublicAdvertisedPrefix can be imported using one of the formats above. For example
+    /// PublicAdvertisedPrefix can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}`
+    /// 
+    ///  * `{{project}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, PublicAdvertisedPrefix can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}
+    /// $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default projects/{{project}}/global/publicAdvertisedPrefixes/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{project}}/{{name}}
+    /// $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{project}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{name}}
+    /// $ pulumi import gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix")]

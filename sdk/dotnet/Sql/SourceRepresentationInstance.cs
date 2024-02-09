@@ -66,18 +66,26 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// ## Import
     /// 
-    /// SourceRepresentationInstance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example
+    /// SourceRepresentationInstance can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/instances/{{name}}`
+    /// 
+    ///  * `{{project}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
+    /// $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{project}}/{{name}}
+    /// $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{project}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
+    /// $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance")]

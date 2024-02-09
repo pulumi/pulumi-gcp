@@ -449,10 +449,14 @@ class ProjectSink(pulumi.CustomResource):
         """
         ## Import
 
-        Project-level logging sinks can be imported using their URI, e.g. * `projects/{{project_id}}/sinks/{{name}}` When using the `pulumi import` command, project-level logging sinks can be imported using one of the formats above. For example
+        Project-level logging sinks can be imported using their URI, e.g.
+
+         * `projects/{{project_id}}/sinks/{{name}}`
+
+         When using the `pulumi import` command, project-level logging sinks can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
+        $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -493,10 +497,14 @@ class ProjectSink(pulumi.CustomResource):
         """
         ## Import
 
-        Project-level logging sinks can be imported using their URI, e.g. * `projects/{{project_id}}/sinks/{{name}}` When using the `pulumi import` command, project-level logging sinks can be imported using one of the formats above. For example
+        Project-level logging sinks can be imported using their URI, e.g.
+
+         * `projects/{{project_id}}/sinks/{{name}}`
+
+         When using the `pulumi import` command, project-level logging sinks can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
+        $ pulumi import gcp:logging/projectSink:ProjectSink default projects/{{project_id}}/sinks/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

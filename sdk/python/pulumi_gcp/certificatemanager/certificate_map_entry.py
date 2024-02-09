@@ -494,18 +494,26 @@ class CertificateMapEntry(pulumi.CustomResource):
 
         ## Import
 
-        CertificateMapEntry can be imported using any of these accepted formats* `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}` * `{{project}}/{{map}}/{{name}}` * `{{map}}/{{name}}` When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example
+        CertificateMapEntry can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
+
+         * `{{project}}/{{map}}/{{name}}`
+
+         * `{{map}}/{{name}}`
+
+         When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
+        $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
+        $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
+        $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -589,18 +597,26 @@ class CertificateMapEntry(pulumi.CustomResource):
 
         ## Import
 
-        CertificateMapEntry can be imported using any of these accepted formats* `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}` * `{{project}}/{{map}}/{{name}}` * `{{map}}/{{name}}` When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example
+        CertificateMapEntry can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}`
+
+         * `{{project}}/{{map}}/{{name}}`
+
+         * `{{map}}/{{name}}`
+
+         When using the `pulumi import` command, CertificateMapEntry can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
+        $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default projects/{{project}}/locations/global/certificateMaps/{{map}}/certificateMapEntries/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
+        $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{project}}/{{map}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
+        $ pulumi import gcp:certificatemanager/certificateMapEntry:CertificateMapEntry default {{map}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -155,10 +155,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance group managers can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
+ * Instance group managers can be imported using any of these accepted formats:
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager default {{name}}
+ * $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager default {{name}}
  * ```
  * 
  */

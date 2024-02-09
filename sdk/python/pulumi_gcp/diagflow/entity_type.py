@@ -300,10 +300,14 @@ class EntityType(pulumi.CustomResource):
 
         ## Import
 
-        EntityType can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example
+        EntityType can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
+        $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -374,10 +378,14 @@ class EntityType(pulumi.CustomResource):
 
         ## Import
 
-        EntityType can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example
+        EntityType can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, EntityType can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
+        $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

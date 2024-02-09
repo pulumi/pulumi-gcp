@@ -189,18 +189,26 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// ## Import
     /// 
-    /// Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}` * `{{project}}/{{location}}/{{parent_connection}}/{{name}}` * `{{location}}/{{parent_connection}}/{{name}}` When using the `pulumi import` command, Repository can be imported using one of the formats above. For example
+    /// Repository can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}`
+    /// 
+    ///  * `{{project}}/{{location}}/{{parent_connection}}/{{name}}`
+    /// 
+    ///  * `{{location}}/{{parent_connection}}/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:cloudbuildv2/repository:Repository default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}
+    /// $ pulumi import gcp:cloudbuildv2/repository:Repository default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:cloudbuildv2/repository:Repository default {{project}}/{{location}}/{{parent_connection}}/{{name}}
+    /// $ pulumi import gcp:cloudbuildv2/repository:Repository default {{project}}/{{location}}/{{parent_connection}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:cloudbuildv2/repository:Repository default {{location}}/{{parent_connection}}/{{name}}
+    /// $ pulumi import gcp:cloudbuildv2/repository:Repository default {{location}}/{{parent_connection}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:cloudbuildv2/repository:Repository")]

@@ -21,18 +21,26 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/environments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Environment can be imported using one of the formats above. For example
+ * Environment can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
+ * 
+ *  * `{{project}}/{{region}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, Environment can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
+ * $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
+ * $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:composer/environment:Environment default {{name}}
+ * $ pulumi import gcp:composer/environment:Environment default {{name}}
  * ```
  * 
  */

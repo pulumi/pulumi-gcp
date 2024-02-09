@@ -99,24 +99,26 @@ import (
 //
 // ## Import
 //
-// NetworkPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, NetworkPolicy can be imported using one of the formats above. For example
+// NetworkPolicy can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}`
+//
+//   - `{{project}}/{{location}}/{{name}}`
+//
+//   - `{{location}}/{{name}}`
+//
+//     When using the `pulumi import` command, NetworkPolicy can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}
-//
+// $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default {{project}}/{{location}}/{{name}}
-//
+// $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default {{project}}/{{location}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default {{location}}/{{name}}
-//
+// $ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy default {{location}}/{{name}}
 // ```
 type NetworkPolicy struct {
 	pulumi.CustomResourceState

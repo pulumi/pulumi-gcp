@@ -354,10 +354,14 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        Service accounts can be imported using their URI, e.g. * `projects/{{project_id}}/serviceAccounts/{{email}}` When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example
+        Service accounts can be imported using their URI, e.g.
+
+         * `projects/{{project_id}}/serviceAccounts/{{email}}`
+
+         When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}
+        $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -410,10 +414,14 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        Service accounts can be imported using their URI, e.g. * `projects/{{project_id}}/serviceAccounts/{{email}}` When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example
+        Service accounts can be imported using their URI, e.g.
+
+         * `projects/{{project_id}}/serviceAccounts/{{email}}`
+
+         When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}
+        $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}
         ```
 
         :param str resource_name: The name of the resource.

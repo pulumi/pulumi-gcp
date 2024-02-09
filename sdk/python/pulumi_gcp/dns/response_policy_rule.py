@@ -295,18 +295,26 @@ class ResponsePolicyRule(pulumi.CustomResource):
 
         ## Import
 
-        ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example
+        ResponsePolicyRule can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}`
+
+         * `{{project}}/{{response_policy}}/{{rule_name}}`
+
+         * `{{response_policy}}/{{rule_name}}`
+
+         When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
+        $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{project}}/{{response_policy}}/{{rule_name}}
+        $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{project}}/{{response_policy}}/{{rule_name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{response_policy}}/{{rule_name}}
+        $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{response_policy}}/{{rule_name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -371,18 +379,26 @@ class ResponsePolicyRule(pulumi.CustomResource):
 
         ## Import
 
-        ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example
+        ResponsePolicyRule can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}`
+
+         * `{{project}}/{{response_policy}}/{{rule_name}}`
+
+         * `{{response_policy}}/{{rule_name}}`
+
+         When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
+        $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{project}}/{{response_policy}}/{{rule_name}}
+        $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{project}}/{{response_policy}}/{{rule_name}}
         ```
 
         ```sh
-         $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{response_policy}}/{{rule_name}}
+        $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default {{response_policy}}/{{rule_name}}
         ```
 
         :param str resource_name: The name of the resource.

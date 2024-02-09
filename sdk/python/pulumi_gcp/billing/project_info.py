@@ -135,14 +135,20 @@ class ProjectInfo(pulumi.CustomResource):
 
         ## Import
 
-        ProjectInfo can be imported using any of these accepted formats* `projects/{{project}}` * `{{project}}` When using the `pulumi import` command, ProjectInfo can be imported using one of the formats above. For example
+        ProjectInfo can be imported using any of these accepted formats:
+
+         * `projects/{{project}}`
+
+         * `{{project}}`
+
+         When using the `pulumi import` command, ProjectInfo can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:billing/projectInfo:ProjectInfo default projects/{{project}}
+        $ pulumi import gcp:billing/projectInfo:ProjectInfo default projects/{{project}}
         ```
 
         ```sh
-         $ pulumi import gcp:billing/projectInfo:ProjectInfo default {{project}}
+        $ pulumi import gcp:billing/projectInfo:ProjectInfo default {{project}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -175,14 +181,20 @@ class ProjectInfo(pulumi.CustomResource):
 
         ## Import
 
-        ProjectInfo can be imported using any of these accepted formats* `projects/{{project}}` * `{{project}}` When using the `pulumi import` command, ProjectInfo can be imported using one of the formats above. For example
+        ProjectInfo can be imported using any of these accepted formats:
+
+         * `projects/{{project}}`
+
+         * `{{project}}`
+
+         When using the `pulumi import` command, ProjectInfo can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:billing/projectInfo:ProjectInfo default projects/{{project}}
+        $ pulumi import gcp:billing/projectInfo:ProjectInfo default projects/{{project}}
         ```
 
         ```sh
-         $ pulumi import gcp:billing/projectInfo:ProjectInfo default {{project}}
+        $ pulumi import gcp:billing/projectInfo:ProjectInfo default {{project}}
         ```
 
         :param str resource_name: The name of the resource.

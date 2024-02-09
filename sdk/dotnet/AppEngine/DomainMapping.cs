@@ -43,18 +43,26 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// ## Import
     /// 
-    /// DomainMapping can be imported using any of these accepted formats* `apps/{{project}}/domainMappings/{{domain_name}}` * `{{project}}/{{domain_name}}` * `{{domain_name}}` When using the `pulumi import` command, DomainMapping can be imported using one of the formats above. For example
+    /// DomainMapping can be imported using any of these accepted formats:
+    /// 
+    ///  * `apps/{{project}}/domainMappings/{{domain_name}}`
+    /// 
+    ///  * `{{project}}/{{domain_name}}`
+    /// 
+    ///  * `{{domain_name}}`
+    /// 
+    ///  When using the `pulumi import` command, DomainMapping can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:appengine/domainMapping:DomainMapping default apps/{{project}}/domainMappings/{{domain_name}}
+    /// $ pulumi import gcp:appengine/domainMapping:DomainMapping default apps/{{project}}/domainMappings/{{domain_name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{project}}/{{domain_name}}
+    /// $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{project}}/{{domain_name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
+    /// $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:appengine/domainMapping:DomainMapping")]

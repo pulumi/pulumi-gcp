@@ -92,10 +92,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Dataflow jobs can be imported using the job `id` e.g. * `{{id}}` When using the `pulumi import` command, dataflow jobs can be imported using one of the formats above. For example
+ * Dataflow jobs can be imported using the job `id` e.g.
+ *
+ *  * `{{id}}`
+ *
+ *  When using the `pulumi import` command, dataflow jobs can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:dataflow/job:Job default {{id}}
+ * $ pulumi import gcp:dataflow/job:Job default {{id}}
  * ```
  */
 export class Job extends pulumi.CustomResource {

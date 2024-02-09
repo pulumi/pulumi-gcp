@@ -827,22 +827,32 @@ class V2Vm(pulumi.CustomResource):
 
         ## Import
 
-        Vm can be imported using any of these accepted formats* `projects/{{project}}/locations/{{zone}}/nodes/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Vm can be imported using one of the formats above. For example
+        Vm can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+
+         * `{{project}}/{{zone}}/{{name}}`
+
+         * `{{zone}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
+        $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{project}}/{{zone}}/{{name}}
+        $ pulumi import gcp:tpu/v2Vm:V2Vm default {{project}}/{{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
+        $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
+        $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -907,22 +917,32 @@ class V2Vm(pulumi.CustomResource):
 
         ## Import
 
-        Vm can be imported using any of these accepted formats* `projects/{{project}}/locations/{{zone}}/nodes/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Vm can be imported using one of the formats above. For example
+        Vm can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{zone}}/nodes/{{name}}`
+
+         * `{{project}}/{{zone}}/{{name}}`
+
+         * `{{zone}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Vm can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
+        $ pulumi import gcp:tpu/v2Vm:V2Vm default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{project}}/{{zone}}/{{name}}
+        $ pulumi import gcp:tpu/v2Vm:V2Vm default {{project}}/{{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
+        $ pulumi import gcp:tpu/v2Vm:V2Vm default {{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
+        $ pulumi import gcp:tpu/v2Vm:V2Vm default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
