@@ -364,26 +364,38 @@ class Network(pulumi.CustomResource):
 
         ## Import
 
-        Network can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}` * `{{project}}/{{location}}/{{zone}}/{{network_id}}` * `{{location}}/{{zone}}/{{network_id}}` * `{{location}}/{{network_id}}` * `{{name}}` When using the `pulumi import` command, Network can be imported using one of the formats above. For example
+        Network can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
+
+         * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
+
+         * `{{location}}/{{zone}}/{{network_id}}`
+
+         * `{{location}}/{{network_id}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
+        $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default {{project}}/{{location}}/{{zone}}/{{network_id}}
+        $ pulumi import gcp:edgenetwork/network:Network default {{project}}/{{location}}/{{zone}}/{{network_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{zone}}/{{network_id}}
+        $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{zone}}/{{network_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{network_id}}
+        $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{network_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default {{name}}
+        $ pulumi import gcp:edgenetwork/network:Network default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -435,26 +447,38 @@ class Network(pulumi.CustomResource):
 
         ## Import
 
-        Network can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}` * `{{project}}/{{location}}/{{zone}}/{{network_id}}` * `{{location}}/{{zone}}/{{network_id}}` * `{{location}}/{{network_id}}` * `{{name}}` When using the `pulumi import` command, Network can be imported using one of the formats above. For example
+        Network can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}`
+
+         * `{{project}}/{{location}}/{{zone}}/{{network_id}}`
+
+         * `{{location}}/{{zone}}/{{network_id}}`
+
+         * `{{location}}/{{network_id}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Network can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
+        $ pulumi import gcp:edgenetwork/network:Network default projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default {{project}}/{{location}}/{{zone}}/{{network_id}}
+        $ pulumi import gcp:edgenetwork/network:Network default {{project}}/{{location}}/{{zone}}/{{network_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{zone}}/{{network_id}}
+        $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{zone}}/{{network_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{network_id}}
+        $ pulumi import gcp:edgenetwork/network:Network default {{location}}/{{network_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:edgenetwork/network:Network default {{name}}
+        $ pulumi import gcp:edgenetwork/network:Network default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

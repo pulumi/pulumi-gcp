@@ -44,14 +44,20 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// NetworkFirewallPolicyAssociation can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}` * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}` When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example
+    /// NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
+    /// 
+    ///  * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}
+    /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{region}}/{{firewall_policy}}/{{name}}
+    /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{region}}/{{firewall_policy}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation")]

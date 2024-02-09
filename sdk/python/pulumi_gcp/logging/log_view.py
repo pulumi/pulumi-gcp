@@ -303,10 +303,14 @@ class LogView(pulumi.CustomResource):
 
         ## Import
 
-        LogView can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}` When using the `pulumi import` command, LogView can be imported using one of the formats above. For example
+        LogView can be imported using any of these accepted formats:
+
+         * `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}`
+
+         When using the `pulumi import` command, LogView can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
+        $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -356,10 +360,14 @@ class LogView(pulumi.CustomResource):
 
         ## Import
 
-        LogView can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}` When using the `pulumi import` command, LogView can be imported using one of the formats above. For example
+        LogView can be imported using any of these accepted formats:
+
+         * `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}`
+
+         When using the `pulumi import` command, LogView can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
+        $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

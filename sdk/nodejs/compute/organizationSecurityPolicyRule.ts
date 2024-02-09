@@ -58,10 +58,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OrganizationSecurityPolicyRule can be imported using any of these accepted formats* `{{policy_id}}/priority/{{priority}}` When using the `pulumi import` command, OrganizationSecurityPolicyRule can be imported using one of the formats above. For example
+ * OrganizationSecurityPolicyRule can be imported using any of these accepted formats:
+ *
+ *  * `{{policy_id}}/priority/{{priority}}`
+ *
+ *  When using the `pulumi import` command, OrganizationSecurityPolicyRule can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
+ * $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
  * ```
  */
 export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {

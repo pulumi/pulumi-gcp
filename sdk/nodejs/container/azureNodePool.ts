@@ -98,18 +98,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}` * `{{project}}/{{location}}/{{cluster}}/{{name}}` * `{{location}}/{{cluster}}/{{name}}` When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example
+ * NodePool can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}`
+ *
+ *  * `{{project}}/{{location}}/{{cluster}}/{{name}}`
+ *
+ *  * `{{location}}/{{cluster}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, NodePool can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:container/azureNodePool:AzureNodePool default projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}
+ * $ pulumi import gcp:container/azureNodePool:AzureNodePool default projects/{{project}}/locations/{{location}}/azureClusters/{{cluster}}/azureNodePools/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
+ * $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{project}}/{{location}}/{{cluster}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{location}}/{{cluster}}/{{name}}
+ * $ pulumi import gcp:container/azureNodePool:AzureNodePool default {{location}}/{{cluster}}/{{name}}
  * ```
  */
 export class AzureNodePool extends pulumi.CustomResource {

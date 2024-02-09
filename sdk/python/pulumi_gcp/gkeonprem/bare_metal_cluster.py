@@ -1330,18 +1330,26 @@ class BareMetalCluster(pulumi.CustomResource):
 
         ## Import
 
-        BareMetalCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, BareMetalCluster can be imported using one of the formats above. For example
+        BareMetalCluster can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, BareMetalCluster can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}
+        $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{location}}/{{name}}
+        $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1684,18 +1692,26 @@ class BareMetalCluster(pulumi.CustomResource):
 
         ## Import
 
-        BareMetalCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, BareMetalCluster can be imported using one of the formats above. For example
+        BareMetalCluster can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, BareMetalCluster can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}
+        $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{location}}/{{name}}
+        $ pulumi import gcp:gkeonprem/bareMetalCluster:BareMetalCluster default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

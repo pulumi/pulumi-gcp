@@ -22,16 +22,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g. * `{{project_id}}/{{instance}}/{{host}}/{{name}}` SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g. * `{{project_id}}/{{instance}}/{{name}}` When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For exampleMySQL database
+ * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
+ * 
+ *  * `{{project_id}}/{{instance}}/{{host}}/{{name}}`
+ * 
+ *  SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
+ * 
+ *  * `{{project_id}}/{{instance}}/{{name}}`
+ * 
+ *  When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
+ * 
+ *  MySQL database
  * 
  * ```sh
- *  $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{host}}/{{name}}
+ * $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{host}}/{{name}}
  * ```
  * 
  *  PostgreSQL database
  * 
  * ```sh
- *  $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{name}}
+ * $ pulumi import gcp:sql/user:User default {{project_id}}/{{instance}}/{{name}}
  * ```
  * 
  */

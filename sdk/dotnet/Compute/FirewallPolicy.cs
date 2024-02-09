@@ -38,14 +38,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// FirewallPolicy can be imported using any of these accepted formats
+    /// FirewallPolicy can be imported using any of these accepted formats:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
+    /// $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default locations/global/firewallPolicies/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default {{name}}
+    /// $ pulumi import gcp:compute/firewallPolicy:FirewallPolicy default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/firewallPolicy:FirewallPolicy")]

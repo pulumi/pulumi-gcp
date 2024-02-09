@@ -133,14 +133,28 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies IAM policy imports use the identifier of the Healthcare FHIR store resource. For example* `&#34;{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}&#34;` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * ### Importing IAM policies
+ * 
+ *  IAM policy imports use the identifier of the Healthcare FHIR store resource. For example:
+ * 
+ *  * `&#34;{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}&#34;`
+ * 
+ *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * 
+ *  tf
+ * 
+ *  import {
  * 
  *  id = &#34;{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}&#34;
  * 
- *  to = google_healthcare_fhir_store_iam_policy.default } The `pulumi import` command can also be used
+ *  to = google_healthcare_fhir_store_iam_policy.default
+ * 
+ *  }
+ * 
+ *  The `pulumi import` command can also be used:
  * 
  * ```sh
- *  $ pulumi import gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
+ * $ pulumi import gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding default {{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}
  * ```
  * 
  */

@@ -31,18 +31,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * TenantOauthIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}` * `{{project}}/{{tenant}}/{{name}}` * `{{tenant}}/{{name}}` When using the `pulumi import` command, TenantOauthIdpConfig can be imported using one of the formats above. For example
+ * TenantOauthIdpConfig can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}`
+ *
+ *  * `{{project}}/{{tenant}}/{{name}}`
+ *
+ *  * `{{tenant}}/{{name}}`
+ *
+ *  When using the `pulumi import` command, TenantOauthIdpConfig can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}
+ * $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{project}}/{{tenant}}/{{name}}
+ * $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{project}}/{{tenant}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
+ * $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
  * ```
  */
 export class TenantOauthIdpConfig extends pulumi.CustomResource {

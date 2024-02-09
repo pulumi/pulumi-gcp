@@ -19,18 +19,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * TargetSslProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetSslProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example
+ * TargetSslProxy can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/global/targetSslProxies/{{name}}`
+ *
+ *  * `{{project}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
+ * $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
+ * $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
+ * $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
  * ```
  */
 export class TargetSSLProxy extends pulumi.CustomResource {

@@ -577,22 +577,32 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         ## Import
 
-        FeatureOnlineStoreFeatureview can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}` * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}` * `{{region}}/{{feature_online_store}}/{{name}}` * `{{feature_online_store}}/{{name}}` When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example
+        FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
+
+         * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
+
+         * `{{region}}/{{feature_online_store}}/{{name}}`
+
+         * `{{feature_online_store}}/{{name}}`
+
+         When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -796,22 +806,32 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
 
         ## Import
 
-        FeatureOnlineStoreFeatureview can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}` * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}` * `{{region}}/{{feature_online_store}}/{{name}}` * `{{feature_online_store}}/{{name}}` When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example
+        FeatureOnlineStoreFeatureview can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}`
+
+         * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}`
+
+         * `{{region}}/{{feature_online_store}}/{{name}}`
+
+         * `{{feature_online_store}}/{{name}}`
+
+         When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{project}}/{{region}}/{{feature_online_store}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{region}}/{{feature_online_store}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
+        $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default {{feature_online_store}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

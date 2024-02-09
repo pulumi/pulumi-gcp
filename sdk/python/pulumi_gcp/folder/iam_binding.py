@@ -238,10 +238,10 @@ class IAMBinding(pulumi.CustomResource):
         These bindings can be imported using the `folder` and role, e.g.
 
         ```sh
-         $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+        $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
         ```
 
-         -> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
+         -> **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
 
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -299,10 +299,10 @@ class IAMBinding(pulumi.CustomResource):
         These bindings can be imported using the `folder` and role, e.g.
 
         ```sh
-         $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+        $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
         ```
 
-         -> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
+         -> **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
 
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

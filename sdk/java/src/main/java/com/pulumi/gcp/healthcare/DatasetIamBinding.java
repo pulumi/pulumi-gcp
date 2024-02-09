@@ -133,14 +133,28 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies IAM policy imports use the identifier of the Healthcase Dataset resource. For example* `&#34;{{project_id}}/{{location}}/{{dataset}}&#34;` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * ### Importing IAM policies
+ * 
+ *  IAM policy imports use the identifier of the Healthcase Dataset resource. For example:
+ * 
+ *  * `&#34;{{project_id}}/{{location}}/{{dataset}}&#34;`
+ * 
+ *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+ * 
+ *  tf
+ * 
+ *  import {
  * 
  *  id = &#34;{{project_id}}/{{location}}/{{dataset}}&#34;
  * 
- *  to = google_healthcare_dataset_iam_policy.default } The `pulumi import` command can also be used
+ *  to = google_healthcare_dataset_iam_policy.default
+ * 
+ *  }
+ * 
+ *  The `pulumi import` command can also be used:
  * 
  * ```sh
- *  $ pulumi import gcp:healthcare/datasetIamBinding:DatasetIamBinding default {{project_id}}/{{location}}/{{dataset}}
+ * $ pulumi import gcp:healthcare/datasetIamBinding:DatasetIamBinding default {{project_id}}/{{location}}/{{dataset}}
  * ```
  * 
  */

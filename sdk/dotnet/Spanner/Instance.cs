@@ -127,18 +127,26 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// ## Import
     /// 
-    /// Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
+    /// Instance can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/instances/{{name}}`
+    /// 
+    ///  * `{{project}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
+    /// $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
+    /// $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/instance:Instance default {{name}}
+    /// $ pulumi import gcp:spanner/instance:Instance default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:spanner/instance:Instance")]

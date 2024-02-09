@@ -53,12 +53,14 @@ import (
 //
 // ## Import
 //
-// Domain can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Domain can be imported using one of the formats above. For example
+// Domain can be imported using any of these accepted formats:
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:activedirectory/domain:Domain default {{name}}
-//
+// $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
 // ```
 type Domain struct {
 	pulumi.CustomResourceState

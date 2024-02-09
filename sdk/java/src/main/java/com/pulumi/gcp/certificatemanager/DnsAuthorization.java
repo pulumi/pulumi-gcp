@@ -57,18 +57,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DnsAuthorization can be imported using any of these accepted formats* `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example
+ * DnsAuthorization can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}`
+ * 
+ *  * `{{project}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
+ * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
+ * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
+ * $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default {{name}}
  * ```
  * 
  */

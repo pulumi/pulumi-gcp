@@ -370,18 +370,26 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// ## Import
     /// 
-    /// PatchDeployment can be imported using any of these accepted formats* `projects/{{project}}/patchDeployments/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example
+    /// PatchDeployment can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/patchDeployments/{{name}}`
+    /// 
+    ///  * `{{project}}/{{name}}`
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, PatchDeployment can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default projects/{{project}}/patchDeployments/{{name}}
+    /// $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default projects/{{project}}/patchDeployments/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{project}}/{{name}}
+    /// $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{project}}/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
+    /// $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:osconfig/patchDeployment:PatchDeployment")]

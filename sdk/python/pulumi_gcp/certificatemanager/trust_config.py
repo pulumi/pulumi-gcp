@@ -372,18 +372,26 @@ class TrustConfig(pulumi.CustomResource):
 
         ## Import
 
-        TrustConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, TrustConfig can be imported using one of the formats above. For example
+        TrustConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, TrustConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}
+        $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{location}}/{{name}}
+        $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -443,18 +451,26 @@ class TrustConfig(pulumi.CustomResource):
 
         ## Import
 
-        TrustConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, TrustConfig can be imported using one of the formats above. For example
+        TrustConfig can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, TrustConfig can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}
+        $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default projects/{{project}}/locations/{{location}}/trustConfigs/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{location}}/{{name}}
+        $ pulumi import gcp:certificatemanager/trustConfig:TrustConfig default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

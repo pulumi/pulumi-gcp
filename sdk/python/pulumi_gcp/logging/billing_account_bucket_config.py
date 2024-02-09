@@ -312,10 +312,14 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the following format* `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}` When using the `pulumi import` command, this resource can be imported using one of the formats above. For example
+        This resource can be imported using the following format:
+
+         * `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}`
+
+         When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
+        $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -345,10 +349,14 @@ class BillingAccountBucketConfig(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the following format* `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}` When using the `pulumi import` command, this resource can be imported using one of the formats above. For example
+        This resource can be imported using the following format:
+
+         * `billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}`
+
+         When using the `pulumi import` command, this resource can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
+        $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
         ```
 
         :param str resource_name: The name of the resource.

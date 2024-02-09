@@ -312,22 +312,32 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
 
         ## Import
 
-        NetworkEdgeSecurityService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NetworkEdgeSecurityService can be imported using one of the formats above. For example
+        NetworkEdgeSecurityService can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, NetworkEdgeSecurityService can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}
+        $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{region}}/{{name}}
+        $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{name}}
+        $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -364,22 +374,32 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
 
         ## Import
 
-        NetworkEdgeSecurityService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NetworkEdgeSecurityService can be imported using one of the formats above. For example
+        NetworkEdgeSecurityService can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, NetworkEdgeSecurityService can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}
+        $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{region}}/{{name}}
+        $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{name}}
+        $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

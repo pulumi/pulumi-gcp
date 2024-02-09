@@ -21,10 +21,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ServicePerimeterEgressPolicy can be imported using any of these accepted formats* `{{perimeter}}` When using the `pulumi import` command, ServicePerimeterEgressPolicy can be imported using one of the formats above. For example
+ * ServicePerimeterEgressPolicy can be imported using any of these accepted formats:
+ *
+ *  * `{{perimeter}}`
+ *
+ *  When using the `pulumi import` command, ServicePerimeterEgressPolicy can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy default {{perimeter}}
+ * $ pulumi import gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy default {{perimeter}}
  * ```
  */
 export class ServicePerimeterEgressPolicy extends pulumi.CustomResource {

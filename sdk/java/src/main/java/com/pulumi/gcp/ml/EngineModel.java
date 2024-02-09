@@ -97,18 +97,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Model can be imported using any of these accepted formats* `projects/{{project}}/models/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Model can be imported using one of the formats above. For example
+ * Model can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/models/{{name}}`
+ * 
+ *  * `{{project}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, Model can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
+ * $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
+ * $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
+ * $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
  * ```
  * 
  */

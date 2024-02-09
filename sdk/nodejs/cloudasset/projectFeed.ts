@@ -19,18 +19,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ProjectFeed can be imported using any of these accepted formats* `projects/{{project}}/feeds/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example
+ * ProjectFeed can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/feeds/{{name}}`
+ *
+ *  * `{{project}}/{{name}}`
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, ProjectFeed can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}
+ * $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{project}}/{{name}}
+ * $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{project}}/{{name}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{name}}
+ * $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{name}}
  * ```
  */
 export class ProjectFeed extends pulumi.CustomResource {

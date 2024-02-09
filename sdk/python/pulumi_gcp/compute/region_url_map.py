@@ -555,22 +555,32 @@ class RegionUrlMap(pulumi.CustomResource):
 
         ## Import
 
-        RegionUrlMap can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionUrlMap can be imported using one of the formats above. For example
+        RegionUrlMap can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, RegionUrlMap can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
+        $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
+        $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
+        $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -629,22 +639,32 @@ class RegionUrlMap(pulumi.CustomResource):
 
         ## Import
 
-        RegionUrlMap can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionUrlMap can be imported using one of the formats above. For example
+        RegionUrlMap can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}`
+
+         * `{{project}}/{{region}}/{{name}}`
+
+         * `{{region}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, RegionUrlMap can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
+        $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{project}}/{{region}}/{{name}}
+        $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{project}}/{{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
+        $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
+        $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

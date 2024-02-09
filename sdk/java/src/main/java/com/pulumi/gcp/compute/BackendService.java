@@ -560,18 +560,26 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * BackendService can be imported using any of these accepted formats* `projects/{{project}}/global/backendServices/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example
+ * BackendService can be imported using any of these accepted formats:
+ * 
+ *  * `projects/{{project}}/global/backendServices/{{name}}`
+ * 
+ *  * `{{project}}/{{name}}`
+ * 
+ *  * `{{name}}`
+ * 
+ *  When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example:
  * 
  * ```sh
- *  $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}
+ * $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/backendService:BackendService default {{project}}/{{name}}
+ * $ pulumi import gcp:compute/backendService:BackendService default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:compute/backendService:BackendService default {{name}}
+ * $ pulumi import gcp:compute/backendService:BackendService default {{name}}
  * ```
  * 
  */

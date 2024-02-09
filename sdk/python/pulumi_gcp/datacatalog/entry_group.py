@@ -265,10 +265,14 @@ class EntryGroup(pulumi.CustomResource):
 
         ## Import
 
-        EntryGroup can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example
+        EntryGroup can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
+        $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -322,10 +326,14 @@ class EntryGroup(pulumi.CustomResource):
 
         ## Import
 
-        EntryGroup can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example
+        EntryGroup can be imported using any of these accepted formats:
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, EntryGroup can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
+        $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

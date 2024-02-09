@@ -37,10 +37,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Compute Engine Default Network Tier can be imported using any of these accepted formats* `{{project_id}}` When using the `pulumi import` command, Compute Engine Default Network Tier can be imported using one of the formats above. For example
+    /// Compute Engine Default Network Tier can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{project_id}}`
+    /// 
+    ///  When using the `pulumi import` command, Compute Engine Default Network Tier can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default {{project_id}}
+    /// $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default {{project_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier")]

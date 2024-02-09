@@ -1228,18 +1228,26 @@ class VMwareCluster(pulumi.CustomResource):
 
         ## Import
 
-        VmwareCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example
+        VmwareCluster can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
+        $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
+        $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1516,18 +1524,26 @@ class VMwareCluster(pulumi.CustomResource):
 
         ## Import
 
-        VmwareCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example
+        VmwareCluster can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
+        $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
+        $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

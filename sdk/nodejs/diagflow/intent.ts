@@ -78,10 +78,14 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Intent can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Intent can be imported using one of the formats above. For example
+ * Intent can be imported using any of these accepted formats:
+ *
+ *  * `{{name}}`
+ *
+ *  When using the `pulumi import` command, Intent can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:diagflow/intent:Intent default {{name}}
+ * $ pulumi import gcp:diagflow/intent:Intent default {{name}}
  * ```
  */
 export class Intent extends pulumi.CustomResource {

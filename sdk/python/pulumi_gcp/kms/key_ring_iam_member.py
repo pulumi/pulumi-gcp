@@ -340,14 +340,28 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies
+
+         IAM policy imports use the identifier of the Cloud KMS key ring only. For example:
+
+         * `{{project_id}}/{{location}}/{{key_ring_name}}`
+
+         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+
+         tf
+
+         import {
 
          id = "{{project_id}}/{{location}}/{{key_ring_name}}"
 
-         to = google_kms_key_ring_iam_policy.default } The `pulumi import` command can also be used
+         to = google_kms_key_ring_iam_policy.default
+
+         }
+
+         The `pulumi import` command can also be used:
 
         ```sh
-         $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember default {{project_id}}/{{location}}/{{key_ring_name}}
+        $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember default {{project_id}}/{{location}}/{{key_ring_name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -485,14 +499,28 @@ class KeyRingIAMMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies
+
+         IAM policy imports use the identifier of the Cloud KMS key ring only. For example:
+
+         * `{{project_id}}/{{location}}/{{key_ring_name}}`
+
+         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+
+         tf
+
+         import {
 
          id = "{{project_id}}/{{location}}/{{key_ring_name}}"
 
-         to = google_kms_key_ring_iam_policy.default } The `pulumi import` command can also be used
+         to = google_kms_key_ring_iam_policy.default
+
+         }
+
+         The `pulumi import` command can also be used:
 
         ```sh
-         $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember default {{project_id}}/{{location}}/{{key_ring_name}}
+        $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember default {{project_id}}/{{location}}/{{key_ring_name}}
         ```
 
         :param str resource_name: The name of the resource.

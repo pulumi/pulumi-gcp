@@ -248,18 +248,26 @@ class DataStoreIndex(pulumi.CustomResource):
 
         ## Import
 
-        Index can be imported using any of these accepted formats* `projects/{{project}}/indexes/{{index_id}}` * `{{project}}/{{index_id}}` * `{{index_id}}` When using the `pulumi import` command, Index can be imported using one of the formats above. For example
+        Index can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/indexes/{{index_id}}`
+
+         * `{{project}}/{{index_id}}`
+
+         * `{{index_id}}`
+
+         When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}
+        $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{project}}/{{index_id}}
+        $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{project}}/{{index_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{index_id}}
+        $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{index_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -320,18 +328,26 @@ class DataStoreIndex(pulumi.CustomResource):
 
         ## Import
 
-        Index can be imported using any of these accepted formats* `projects/{{project}}/indexes/{{index_id}}` * `{{project}}/{{index_id}}` * `{{index_id}}` When using the `pulumi import` command, Index can be imported using one of the formats above. For example
+        Index can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/indexes/{{index_id}}`
+
+         * `{{project}}/{{index_id}}`
+
+         * `{{index_id}}`
+
+         When using the `pulumi import` command, Index can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}
+        $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{project}}/{{index_id}}
+        $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{project}}/{{index_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{index_id}}
+        $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{index_id}}
         ```
 
         :param str resource_name: The name of the resource.

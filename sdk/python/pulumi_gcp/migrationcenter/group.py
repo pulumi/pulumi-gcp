@@ -357,18 +357,26 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        Group can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/groups/{{group_id}}` * `{{project}}/{{location}}/{{group_id}}` * `{{location}}/{{group_id}}` When using the `pulumi import` command, Group can be imported using one of the formats above. For example
+        Group can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/groups/{{group_id}}`
+
+         * `{{project}}/{{location}}/{{group_id}}`
+
+         * `{{location}}/{{group_id}}`
+
+         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:migrationcenter/group:Group default projects/{{project}}/locations/{{location}}/groups/{{group_id}}
+        $ pulumi import gcp:migrationcenter/group:Group default projects/{{project}}/locations/{{location}}/groups/{{group_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:migrationcenter/group:Group default {{project}}/{{location}}/{{group_id}}
+        $ pulumi import gcp:migrationcenter/group:Group default {{project}}/{{location}}/{{group_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:migrationcenter/group:Group default {{location}}/{{group_id}}
+        $ pulumi import gcp:migrationcenter/group:Group default {{location}}/{{group_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -414,18 +422,26 @@ class Group(pulumi.CustomResource):
 
         ## Import
 
-        Group can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/groups/{{group_id}}` * `{{project}}/{{location}}/{{group_id}}` * `{{location}}/{{group_id}}` When using the `pulumi import` command, Group can be imported using one of the formats above. For example
+        Group can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/groups/{{group_id}}`
+
+         * `{{project}}/{{location}}/{{group_id}}`
+
+         * `{{location}}/{{group_id}}`
+
+         When using the `pulumi import` command, Group can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:migrationcenter/group:Group default projects/{{project}}/locations/{{location}}/groups/{{group_id}}
+        $ pulumi import gcp:migrationcenter/group:Group default projects/{{project}}/locations/{{location}}/groups/{{group_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:migrationcenter/group:Group default {{project}}/{{location}}/{{group_id}}
+        $ pulumi import gcp:migrationcenter/group:Group default {{project}}/{{location}}/{{group_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:migrationcenter/group:Group default {{location}}/{{group_id}}
+        $ pulumi import gcp:migrationcenter/group:Group default {{location}}/{{group_id}}
         ```
 
         :param str resource_name: The name of the resource.

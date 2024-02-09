@@ -54,18 +54,20 @@ import (
 //
 // ## Import
 //
-// Fleet can be imported using any of these accepted formats* `projects/{{project}}/locations/global/fleets/default` * `{{project}}` When using the `pulumi import` command, Fleet can be imported using one of the formats above. For example
+// Fleet can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/locations/global/fleets/default`
+//
+//   - `{{project}}`
+//
+//     When using the `pulumi import` command, Fleet can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:gkehub/fleet:Fleet default projects/{{project}}/locations/global/fleets/default
-//
+// $ pulumi import gcp:gkehub/fleet:Fleet default projects/{{project}}/locations/global/fleets/default
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:gkehub/fleet:Fleet default {{project}}
-//
+// $ pulumi import gcp:gkehub/fleet:Fleet default {{project}}
 // ```
 type Fleet struct {
 	pulumi.CustomResourceState

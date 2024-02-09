@@ -27,18 +27,26 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Api can be imported using any of these accepted formats* `projects/{{project}}/locations/global/apis/{{api_id}}` * `{{project}}/{{api_id}}` * `{{api_id}}` When using the `pulumi import` command, Api can be imported using one of the formats above. For example
+ * Api can be imported using any of these accepted formats:
+ *
+ *  * `projects/{{project}}/locations/global/apis/{{api_id}}`
+ *
+ *  * `{{project}}/{{api_id}}`
+ *
+ *  * `{{api_id}}`
+ *
+ *  When using the `pulumi import` command, Api can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
+ * $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{api_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
+ * $ pulumi import gcp:apigateway/api:Api default {{project}}/{{api_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:apigateway/api:Api default {{api_id}}
+ * $ pulumi import gcp:apigateway/api:Api default {{api_id}}
  * ```
  */
 export class Api extends pulumi.CustomResource {

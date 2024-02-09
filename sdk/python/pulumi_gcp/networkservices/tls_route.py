@@ -305,18 +305,26 @@ class TlsRoute(pulumi.CustomResource):
 
         ## Import
 
-        TlsRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/tlsRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example
+        TlsRoute can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/global/tlsRoutes/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -344,18 +352,26 @@ class TlsRoute(pulumi.CustomResource):
 
         ## Import
 
-        TlsRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/tlsRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example
+        TlsRoute can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/global/tlsRoutes/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, TlsRoute can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default projects/{{project}}/locations/global/tlsRoutes/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
+        $ pulumi import gcp:networkservices/tlsRoute:TlsRoute default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

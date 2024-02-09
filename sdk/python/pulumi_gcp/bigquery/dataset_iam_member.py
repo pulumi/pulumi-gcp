@@ -308,14 +308,28 @@ class DatasetIamMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the BigQuery Dataset resource. For example* `projects/{{project_id}}/datasets/{{dataset_id}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies
+
+         IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
+
+         * `projects/{{project_id}}/datasets/{{dataset_id}}`
+
+         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+
+         tf
+
+         import {
 
          id = projects/{{project_id}}/datasets/{{dataset_id}}
 
-         to = google_bigquery_dataset_iam_policy.default } The `pulumi import` command can also be used
+         to = google_bigquery_dataset_iam_policy.default
+
+         }
+
+         The `pulumi import` command can also be used:
 
         ```sh
-         $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember default projects/{{project_id}}/datasets/{{dataset_id}}
+        $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember default projects/{{project_id}}/datasets/{{dataset_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -405,14 +419,28 @@ class DatasetIamMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the BigQuery Dataset resource. For example* `projects/{{project_id}}/datasets/{{dataset_id}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies
+
+         IAM policy imports use the identifier of the BigQuery Dataset resource. For example:
+
+         * `projects/{{project_id}}/datasets/{{dataset_id}}`
+
+         An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
+
+         tf
+
+         import {
 
          id = projects/{{project_id}}/datasets/{{dataset_id}}
 
-         to = google_bigquery_dataset_iam_policy.default } The `pulumi import` command can also be used
+         to = google_bigquery_dataset_iam_policy.default
+
+         }
+
+         The `pulumi import` command can also be used:
 
         ```sh
-         $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember default projects/{{project_id}}/datasets/{{dataset_id}}
+        $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember default projects/{{project_id}}/datasets/{{dataset_id}}
         ```
 
         :param str resource_name: The name of the resource.

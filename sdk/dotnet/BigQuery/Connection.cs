@@ -317,18 +317,26 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ## Import
     /// 
-    /// Connection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}` * `{{project}}/{{location}}/{{connection_id}}` * `{{location}}/{{connection_id}}` When using the `pulumi import` command, Connection can be imported using one of the formats above. For example
+    /// Connection can be imported using any of these accepted formats:
+    /// 
+    ///  * `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`
+    /// 
+    ///  * `{{project}}/{{location}}/{{connection_id}}`
+    /// 
+    ///  * `{{location}}/{{connection_id}}`
+    /// 
+    ///  When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
+    /// $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:bigquery/connection:Connection default {{project}}/{{location}}/{{connection_id}}
+    /// $ pulumi import gcp:bigquery/connection:Connection default {{project}}/{{location}}/{{connection_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:bigquery/connection:Connection default {{location}}/{{connection_id}}
+    /// $ pulumi import gcp:bigquery/connection:Connection default {{location}}/{{connection_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:bigquery/connection:Connection")]

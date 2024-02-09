@@ -141,30 +141,32 @@ import (
 //
 // ## Import
 //
-// AppConnection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/appConnections/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, AppConnection can be imported using one of the formats above. For example
+// AppConnection can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/locations/{{region}}/appConnections/{{name}}`
+//
+//   - `{{project}}/{{region}}/{{name}}`
+//
+//   - `{{region}}/{{name}}`
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, AppConnection can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:beyondcorp/appConnection:AppConnection default projects/{{project}}/locations/{{region}}/appConnections/{{name}}
-//
+// $ pulumi import gcp:beyondcorp/appConnection:AppConnection default projects/{{project}}/locations/{{region}}/appConnections/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{project}}/{{region}}/{{name}}
-//
+// $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{project}}/{{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{region}}/{{name}}
-//
+// $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{region}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{name}}
-//
+// $ pulumi import gcp:beyondcorp/appConnection:AppConnection default {{name}}
 // ```
 type AppConnection struct {
 	pulumi.CustomResourceState

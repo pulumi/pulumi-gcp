@@ -87,10 +87,14 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ## Import
     /// 
-    /// NotificationChannel can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example
+    /// NotificationChannel can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
+    /// $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/notificationChannel:NotificationChannel")]

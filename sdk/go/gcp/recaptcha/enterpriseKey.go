@@ -241,24 +241,26 @@ import (
 //
 // ## Import
 //
-// Key can be imported using any of these accepted formats* `projects/{{project}}/keys/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Key can be imported using one of the formats above. For example
+// Key can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/keys/{{name}}`
+//
+//   - `{{project}}/{{name}}`
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, Key can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
-//
+// $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default projects/{{project}}/keys/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{project}}/{{name}}
-//
+// $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{project}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{name}}
-//
+// $ pulumi import gcp:recaptcha/enterpriseKey:EnterpriseKey default {{name}}
 // ```
 type EnterpriseKey struct {
 	pulumi.CustomResourceState

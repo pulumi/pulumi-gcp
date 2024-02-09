@@ -211,10 +211,10 @@ class IAMBinding(pulumi.CustomResource):
         These bindings can be imported using the `org_id` and role, e.g.
 
         ```sh
-         $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+        $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
         ```
 
-         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -263,10 +263,10 @@ class IAMBinding(pulumi.CustomResource):
         These bindings can be imported using the `org_id` and role, e.g.
 
         ```sh
-         $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+        $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
         ```
 
-         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+         -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
 
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

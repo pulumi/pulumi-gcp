@@ -374,18 +374,26 @@ class TargetGrpcProxy(pulumi.CustomResource):
 
         ## Import
 
-        TargetGrpcProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetGrpcProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetGrpcProxy can be imported using one of the formats above. For example
+        TargetGrpcProxy can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/global/targetGrpcProxies/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, TargetGrpcProxy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default projects/{{project}}/global/targetGrpcProxies/{{name}}
+        $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default projects/{{project}}/global/targetGrpcProxies/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{project}}/{{name}}
+        $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
+        $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -439,18 +447,26 @@ class TargetGrpcProxy(pulumi.CustomResource):
 
         ## Import
 
-        TargetGrpcProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetGrpcProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetGrpcProxy can be imported using one of the formats above. For example
+        TargetGrpcProxy can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/global/targetGrpcProxies/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, TargetGrpcProxy can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default projects/{{project}}/global/targetGrpcProxies/{{name}}
+        $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default projects/{{project}}/global/targetGrpcProxies/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{project}}/{{name}}
+        $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
+        $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

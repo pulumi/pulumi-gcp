@@ -89,24 +89,26 @@ import (
 //
 // ## Import
 //
-// Instances can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instances can be imported using one of the formats above. For example
+// Instances can be imported using any of these accepted formats:
+//
+//   - `projects/{{project}}/zones/{{zone}}/instances/{{name}}`
+//
+//   - `{{project}}/{{zone}}/{{name}}`
+//
+//   - `{{name}}`
+//
+//     When using the `pulumi import` command, instances can be imported using one of the formats above. For example:
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
-//
+// $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
-//
+// $ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
 // ```
 //
 // ```sh
-//
-//	$ pulumi import gcp:compute/instance:Instance default {{name}}
-//
+// $ pulumi import gcp:compute/instance:Instance default {{name}}
 // ```
 type Instance struct {
 	pulumi.CustomResourceState

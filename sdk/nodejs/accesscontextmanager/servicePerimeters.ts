@@ -70,14 +70,20 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ServicePerimeters can be imported using any of these accepted formats* `{{parent}}/servicePerimeters` * `{{parent}}` When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example
+ * ServicePerimeters can be imported using any of these accepted formats:
+ *
+ *  * `{{parent}}/servicePerimeters`
+ *
+ *  * `{{parent}}`
+ *
+ *  When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example:
  *
  * ```sh
- *  $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters
+ * $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
+ * $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
  * ```
  */
 export class ServicePerimeters extends pulumi.CustomResource {

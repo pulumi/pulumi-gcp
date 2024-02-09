@@ -86,10 +86,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// ## Import
     /// 
-    /// SecurityProfile can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/securityProfiles/{{name}}` When using the `pulumi import` command, SecurityProfile can be imported using one of the formats above. For example
+    /// SecurityProfile can be imported using any of these accepted formats:
+    /// 
+    ///  * `{{parent}}/locations/{{location}}/securityProfiles/{{name}}`
+    /// 
+    ///  When using the `pulumi import` command, SecurityProfile can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:networksecurity/securityProfile:SecurityProfile default {{parent}}/locations/{{location}}/securityProfiles/{{name}}
+    /// $ pulumi import gcp:networksecurity/securityProfile:SecurityProfile default {{parent}}/locations/{{location}}/securityProfiles/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:networksecurity/securityProfile:SecurityProfile")]

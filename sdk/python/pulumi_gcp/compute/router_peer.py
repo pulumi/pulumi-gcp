@@ -963,22 +963,32 @@ class RouterPeer(pulumi.CustomResource):
 
         ## Import
 
-        RouterBgpPeer can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example
+        RouterBgpPeer can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
+
+         * `{{project}}/{{region}}/{{router}}/{{name}}`
+
+         * `{{region}}/{{router}}/{{name}}`
+
+         * `{{router}}/{{name}}`
+
+         When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
+        $ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/routerPeer:RouterPeer default {{project}}/{{region}}/{{router}}/{{name}}
+        $ pulumi import gcp:compute/routerPeer:RouterPeer default {{project}}/{{region}}/{{router}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/routerPeer:RouterPeer default {{region}}/{{router}}/{{name}}
+        $ pulumi import gcp:compute/routerPeer:RouterPeer default {{region}}/{{router}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
+        $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1183,22 +1193,32 @@ class RouterPeer(pulumi.CustomResource):
 
         ## Import
 
-        RouterBgpPeer can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example
+        RouterBgpPeer can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}`
+
+         * `{{project}}/{{region}}/{{router}}/{{name}}`
+
+         * `{{region}}/{{router}}/{{name}}`
+
+         * `{{router}}/{{name}}`
+
+         When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
+        $ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/routerPeer:RouterPeer default {{project}}/{{region}}/{{router}}/{{name}}
+        $ pulumi import gcp:compute/routerPeer:RouterPeer default {{project}}/{{region}}/{{router}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/routerPeer:RouterPeer default {{region}}/{{router}}/{{name}}
+        $ pulumi import gcp:compute/routerPeer:RouterPeer default {{region}}/{{router}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
+        $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

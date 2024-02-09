@@ -395,18 +395,26 @@ class EdgeCacheKeyset(pulumi.CustomResource):
 
         ## Import
 
-        EdgeCacheKeyset can be imported using any of these accepted formats* `projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, EdgeCacheKeyset can be imported using one of the formats above. For example
+        EdgeCacheKeyset can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, EdgeCacheKeyset can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}
+        $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{project}}/{{name}}
+        $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{name}}
+        $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -498,18 +506,26 @@ class EdgeCacheKeyset(pulumi.CustomResource):
 
         ## Import
 
-        EdgeCacheKeyset can be imported using any of these accepted formats* `projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, EdgeCacheKeyset can be imported using one of the formats above. For example
+        EdgeCacheKeyset can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, EdgeCacheKeyset can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}
+        $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default projects/{{project}}/locations/global/edgeCacheKeysets/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{project}}/{{name}}
+        $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{name}}
+        $ pulumi import gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

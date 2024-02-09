@@ -124,18 +124,26 @@ class Location(pulumi.CustomResource):
 
         ## Import
 
-        Location can be imported using any of these accepted formats* `projects/{{project}}/locations/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Location can be imported using one of the formats above. For example
+        Location can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Location can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}
+        $ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:notebooks/location:Location default {{project}}/{{name}}
+        $ pulumi import gcp:notebooks/location:Location default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:notebooks/location:Location default {{name}}
+        $ pulumi import gcp:notebooks/location:Location default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -155,18 +163,26 @@ class Location(pulumi.CustomResource):
 
         ## Import
 
-        Location can be imported using any of these accepted formats* `projects/{{project}}/locations/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Location can be imported using one of the formats above. For example
+        Location can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{name}}`
+
+         * `{{project}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Location can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}
+        $ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:notebooks/location:Location default {{project}}/{{name}}
+        $ pulumi import gcp:notebooks/location:Location default {{project}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:notebooks/location:Location default {{name}}
+        $ pulumi import gcp:notebooks/location:Location default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

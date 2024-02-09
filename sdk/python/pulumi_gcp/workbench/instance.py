@@ -630,18 +630,26 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/instances/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
+        Instance can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:workbench/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
+        $ pulumi import gcp:workbench/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:workbench/instance:Instance default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:workbench/instance:Instance default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:workbench/instance:Instance default {{location}}/{{name}}
+        $ pulumi import gcp:workbench/instance:Instance default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -786,18 +794,26 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/instances/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
+        Instance can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/locations/{{location}}/instances/{{name}}`
+
+         * `{{project}}/{{location}}/{{name}}`
+
+         * `{{location}}/{{name}}`
+
+         When using the `pulumi import` command, Instance can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:workbench/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
+        $ pulumi import gcp:workbench/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:workbench/instance:Instance default {{project}}/{{location}}/{{name}}
+        $ pulumi import gcp:workbench/instance:Instance default {{project}}/{{location}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:workbench/instance:Instance default {{location}}/{{name}}
+        $ pulumi import gcp:workbench/instance:Instance default {{location}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -1416,22 +1416,32 @@ class Disk(pulumi.CustomResource):
 
         ## Import
 
-        Disk can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/disks/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Disk can be imported using one of the formats above. For example
+        Disk can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
+
+         * `{{project}}/{{zone}}/{{name}}`
+
+         * `{{zone}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
+        $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
+        $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
+        $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/disk:Disk default {{name}}
+        $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1628,22 +1638,32 @@ class Disk(pulumi.CustomResource):
 
         ## Import
 
-        Disk can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/disks/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Disk can be imported using one of the formats above. For example
+        Disk can be imported using any of these accepted formats:
+
+         * `projects/{{project}}/zones/{{zone}}/disks/{{name}}`
+
+         * `{{project}}/{{zone}}/{{name}}`
+
+         * `{{zone}}/{{name}}`
+
+         * `{{name}}`
+
+         When using the `pulumi import` command, Disk can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
+        $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
+        $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
+        $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:compute/disk:Disk default {{name}}
+        $ pulumi import gcp:compute/disk:Disk default {{name}}
         ```
 
         :param str resource_name: The name of the resource.

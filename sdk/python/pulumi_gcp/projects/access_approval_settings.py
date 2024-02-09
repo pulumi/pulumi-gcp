@@ -381,14 +381,20 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         ## Import
 
-        ProjectSettings can be imported using any of these accepted formats* `projects/{{project_id}}/accessApprovalSettings` * `{{project_id}}` When using the `pulumi import` command, ProjectSettings can be imported using one of the formats above. For example
+        ProjectSettings can be imported using any of these accepted formats:
+
+         * `projects/{{project_id}}/accessApprovalSettings`
+
+         * `{{project_id}}`
+
+         When using the `pulumi import` command, ProjectSettings can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
+        $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
         ```
 
         ```sh
-         $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default {{project_id}}
+        $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default {{project_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -473,14 +479,20 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         ## Import
 
-        ProjectSettings can be imported using any of these accepted formats* `projects/{{project_id}}/accessApprovalSettings` * `{{project_id}}` When using the `pulumi import` command, ProjectSettings can be imported using one of the formats above. For example
+        ProjectSettings can be imported using any of these accepted formats:
+
+         * `projects/{{project_id}}/accessApprovalSettings`
+
+         * `{{project_id}}`
+
+         When using the `pulumi import` command, ProjectSettings can be imported using one of the formats above. For example:
 
         ```sh
-         $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
+        $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
         ```
 
         ```sh
-         $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default {{project_id}}
+        $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default {{project_id}}
         ```
 
         :param str resource_name: The name of the resource.
