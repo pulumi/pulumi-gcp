@@ -15,7 +15,7 @@ jobs:
             sdk/go.sum
         go-version: 1.21.x
     - name: Checkout Repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
       shell: bash
