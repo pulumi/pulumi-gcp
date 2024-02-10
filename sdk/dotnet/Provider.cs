@@ -547,7 +547,7 @@ namespace Pulumi.Gcp
         [Input("backupDrCustomEndpoint")]
         public Input<string>? BackupDrCustomEndpoint { get; set; }
 
-        [Input("batching", json: true)]
+        [Input("batching")]
         public Input<Inputs.ProviderBatchingArgs>? Batching { get; set; }
 
         [Input("beyondcorpCustomEndpoint")]
@@ -703,7 +703,7 @@ namespace Pulumi.Gcp
         [Input("datastreamCustomEndpoint")]
         public Input<string>? DatastreamCustomEndpoint { get; set; }
 
-        [Input("defaultLabels", json: true)]
+        [Input("defaultLabels")]
         private InputMap<string>? _defaultLabels;
         public InputMap<string> DefaultLabels
         {
@@ -720,7 +720,7 @@ namespace Pulumi.Gcp
         [Input("dialogflowCxCustomEndpoint")]
         public Input<string>? DialogflowCxCustomEndpoint { get; set; }
 
-        [Input("disableGooglePartnerName", json: true)]
+        [Input("disableGooglePartnerName")]
         public Input<bool>? DisableGooglePartnerName { get; set; }
 
         [Input("discoveryEngineCustomEndpoint")]
@@ -816,7 +816,7 @@ namespace Pulumi.Gcp
         [Input("impersonateServiceAccount")]
         public Input<string>? ImpersonateServiceAccount { get; set; }
 
-        [Input("impersonateServiceAccountDelegates", json: true)]
+        [Input("impersonateServiceAccountDelegates")]
         private InputList<string>? _impersonateServiceAccountDelegates;
         public InputList<string> ImpersonateServiceAccountDelegates
         {
@@ -917,7 +917,7 @@ namespace Pulumi.Gcp
         [Input("runtimeconfigCustomEndpoint")]
         public Input<string>? RuntimeconfigCustomEndpoint { get; set; }
 
-        [Input("scopes", json: true)]
+        [Input("scopes")]
         private InputList<string>? _scopes;
         public InputList<string> Scopes
         {
@@ -985,7 +985,7 @@ namespace Pulumi.Gcp
         [Input("universeDomain")]
         public Input<string>? UniverseDomain { get; set; }
 
-        [Input("userProjectOverride", json: true)]
+        [Input("userProjectOverride")]
         public Input<bool>? UserProjectOverride { get; set; }
 
         [Input("vertexAiCustomEndpoint")]
