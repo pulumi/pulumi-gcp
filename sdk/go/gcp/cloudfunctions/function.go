@@ -65,6 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// IAM entry for all users to invoke the function
 //			_, err = cloudfunctions.NewFunctionIamMember(ctx, "invoker", &cloudfunctions.FunctionIamMemberArgs{
 //				Project:       function.Project,
 //				Region:        function.Region,
@@ -128,6 +129,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// IAM entry for a single user to invoke the function
 //			_, err = cloudfunctions.NewFunctionIamMember(ctx, "invoker", &cloudfunctions.FunctionIamMemberArgs{
 //				Project:       function.Project,
 //				Region:        function.Region,
