@@ -1,0 +1,4 @@
+unable to detect a global setting for GCP Project.
+Pulumi will rely on per-resource settings for this operation.
+Set the GCP Project by using:
+    `pulumi config set gcp:project <project>`

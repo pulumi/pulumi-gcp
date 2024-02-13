@@ -585,6 +585,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('serviceUsageCustomEndpoint')
 
     @property
+    def skip_region_validation(self) -> bool:
+        return __config__.get_bool('skipRegionValidation') or (_utilities.get_env_bool('PULUMI_GCP_SKIP_REGION_VALIDATION') or False)
+
+    @property
     def source_repo_custom_endpoint(self) -> Optional[str]:
         return __config__.get('sourceRepoCustomEndpoint')
 
