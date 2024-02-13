@@ -319,8 +319,8 @@ func nameField(info *tfbridge.SchemaInfo) map[string]*tfbridge.SchemaInfo {
 	}
 }
 
-func getRegionsList(project string) ([]string, error) {
-	computeService, err := compute.NewService(context.Background())
+func getRegionsList(ctx context.Context, project string) ([]string, error) {
+	computeService, err := compute.NewService(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create compute service: %w", err)
 	}
@@ -400,9 +400,13 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool) func(
 		)
 
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {
-			regionList, err := getRegionsList(config.Project)
+			regionList, err := getRegionsList(ctx, config.Project)
 			if err != nil {
-				return fmt.Errorf("failed to get regions list: %w", err)
+				// host is nil in tests.
+				if host != nil {
+					_ = host.Log(ctx, diag.Warning, "", fmt.Sprintf("failed to get regions list: %v", err))
+				}
+				return nil
 			}
 			for _, region := range regionList {
 				if region == config.Region {
