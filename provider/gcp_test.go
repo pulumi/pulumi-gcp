@@ -32,6 +32,9 @@ func RegionListReturnHandler(regions []string) func(http.ResponseWriter, *http.R
 }
 
 func TestPreConfigureCallbackNoErrWhenRegionMatches(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
 	var credentialsValidationRun atomic.Bool
 
 	ts := httptest.NewServer(http.HandlerFunc(RegionListReturnHandler([]string{"region1"})))
@@ -50,6 +53,9 @@ func TestPreConfigureCallbackNoErrWhenRegionMatches(t *testing.T) {
 }
 
 func TestPreConfigureCallbackErrWhenRegionDifferent(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
 	var credentialsValidationRun atomic.Bool
 
 	ts := httptest.NewServer(http.HandlerFunc(RegionListReturnHandler([]string{"region1"})))
@@ -70,6 +76,9 @@ func TestPreConfigureCallbackErrWhenRegionDifferent(t *testing.T) {
 }
 
 func TestPreConfigureCallbackNoErrWhenRegionCheckSkipped(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
 	var credentialsValidationRun atomic.Bool
 
 	ts := httptest.NewServer(http.HandlerFunc(RegionListReturnHandler([]string{"region1"})))
@@ -96,6 +105,9 @@ func RegionListErrorHandler(message string, status int) func(http.ResponseWriter
 }
 
 func TestPreConfigureCallbackNoErrWhenRegionListCallErrors(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
 	var credentialsValidationRun atomic.Bool
 
 	ts := httptest.NewServer(http.HandlerFunc(
