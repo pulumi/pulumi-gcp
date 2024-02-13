@@ -69,6 +69,26 @@ func TestPreConfigureCallbackErrWhenRegionDifferent(t *testing.T) {
 	require.Contains(t, err.Error(), `region "region2" is not available for project "myproject"`)
 }
 
+func TestPreConfigureCallbackNoErrWhenRegionCheckSkipped(t *testing.T) {
+	var credentialsValidationRun atomic.Bool
+
+	ts := httptest.NewServer(http.HandlerFunc(RegionListReturnHandler([]string{"region1"})))
+	defer ts.Close()
+
+	t.Setenv("GOOGLE_PROJECT", "myproject")
+	t.Setenv("GOOGLE_REGION", "region2")
+	t.Setenv("PULUMI_GCP_SKIP_REGION_VALIDATION", "true")
+
+	preConfigureCall := preConfigureCallbackWithLogger(
+		&credentialsValidationRun, []option.ClientOption{
+			option.WithoutAuthentication(), option.WithEndpoint(ts.URL),
+		},
+	)
+
+	err := preConfigureCall(context.Background(), nil, nil, nil)
+	require.NoError(t, err)
+}
+
 func RegionListErrorHandler(message string, status int) func (http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, message, status)
