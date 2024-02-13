@@ -13,7 +13,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-func RegionListReturnHandler(regions []string) func (http.ResponseWriter, *http.Request) {
+func RegionListReturnHandler(regions []string) func(http.ResponseWriter, *http.Request) {
 	regionList := make([]*compute.Region, 0, len(regions))
 	for _, region := range regions {
 		regionList = append(regionList, &compute.Region{Name: region})
@@ -89,7 +89,7 @@ func TestPreConfigureCallbackNoErrWhenRegionCheckSkipped(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func RegionListErrorHandler(message string, status int) func (http.ResponseWriter, *http.Request) {
+func RegionListErrorHandler(message string, status int) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, message, status)
 	}

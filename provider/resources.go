@@ -4,29 +4,30 @@ package gcp
 
 import (
 	"context"
-	_ "embed"
 	"fmt"
 	"path"
 	"strings"
 	"sync/atomic"
 	"unicode"
 
-	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
+	_ "embed"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	gcpPFProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/fwprovider"
 	gcpProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/provider"
 	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
+	"google.golang.org/api/compute/v1"
+	"google.golang.org/api/option"
+
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"google.golang.org/api/compute/v1"
-	"google.golang.org/api/option"
 
 	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 )
