@@ -26,6 +26,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"google.golang.org/api/compute/v1"
+	"google.golang.org/api/option"
 
 	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 )
@@ -319,8 +320,8 @@ func nameField(info *tfbridge.SchemaInfo) map[string]*tfbridge.SchemaInfo {
 	}
 }
 
-func getRegionsList(ctx context.Context, project string) ([]string, error) {
-	computeService, err := compute.NewService(ctx)
+func getRegionsList(ctx context.Context, project string, clientOpts []option.ClientOption) ([]string, error) {
+	computeService, err := compute.NewService(ctx, clientOpts...)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create compute service: %w", err)
 	}
@@ -345,9 +346,19 @@ var wrongRegionErr string
 //go:embed errors/no_project.txt
 var noProjectErr string
 
-func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool) func(
+type preConfigureCallbackOpts struct {
+	gcpClientOpts []option.ClientOption
+}
+
+type preConfigureCallbackOption func (options *preConfigureCallbackOpts)
+
+func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, opts ...preConfigureCallbackOption) func(
 	ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig,
 ) error {
+	options := preConfigureCallbackOpts{}
+	for _, opt := range opts {
+		opt(&options)
+	}
 	return func(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
 		if !credentialsValidationRun.CompareAndSwap(false, true) {
 			return nil
@@ -400,7 +411,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool) func(
 		)
 
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {
-			regionList, err := getRegionsList(ctx, config.Project)
+			regionList, err := getRegionsList(ctx, config.Project, options.gcpClientOpts)
 			if err != nil {
 				// host is nil in tests.
 				if host != nil {
