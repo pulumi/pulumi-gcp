@@ -13,16 +13,6 @@ import (
 	"google.golang.org/api/option"
 )
 
-func WithoutAuthentication(options *preConfigureCallbackOpts) {
-	options.gcpClientOpts = append(options.gcpClientOpts, option.WithoutAuthentication())
-}
-
-func WithEndpoint(endpoint string) func(*preConfigureCallbackOpts) {
-	return func(options *preConfigureCallbackOpts) {
-		options.gcpClientOpts = append(options.gcpClientOpts, option.WithEndpoint(endpoint))
-	}
-}
-
 func RegionListReturnHandler(regions []string) func (http.ResponseWriter, *http.Request) {
 	regionList := make([]*compute.Region, 0, len(regions))
 	for _, region := range regions {
@@ -51,7 +41,9 @@ func TestPreConfigureCallbackNoErrWhenRegionMatches(t *testing.T) {
 	t.Setenv("GOOGLE_REGION", "region1")
 
 	preConfigureCall := preConfigureCallbackWithLogger(
-		&credentialsValidationRun, WithoutAuthentication, WithEndpoint(ts.URL),
+		&credentialsValidationRun, []option.ClientOption{
+			option.WithoutAuthentication(), option.WithEndpoint(ts.URL),
+		},
 	)
 	err := preConfigureCall(context.Background(), nil, nil, nil)
 	require.NoError(t, err)
@@ -67,8 +59,11 @@ func TestPreConfigureCallbackErrWhenRegionDifferent(t *testing.T) {
 	t.Setenv("GOOGLE_REGION", "region2")
 
 	preConfigureCall := preConfigureCallbackWithLogger(
-		&credentialsValidationRun, WithoutAuthentication, WithEndpoint(ts.URL),
+		&credentialsValidationRun, []option.ClientOption{
+			option.WithoutAuthentication(), option.WithEndpoint(ts.URL),
+		},
 	)
+
 	err := preConfigureCall(context.Background(), nil, nil, nil)
 	require.Error(t, err)
 	require.Contains(t, err.Error(), `region "region2" is not available for project "myproject"`)
@@ -92,7 +87,9 @@ func TestPreConfigureCallbackNoErrWhenRegionListCallErrors(t *testing.T) {
 	t.Setenv("GOOGLE_REGION", "region2")
 
 	preConfigureCall := preConfigureCallbackWithLogger(
-		&credentialsValidationRun, WithoutAuthentication, WithEndpoint(ts.URL),
+		&credentialsValidationRun, []option.ClientOption{
+			option.WithoutAuthentication(), option.WithEndpoint(ts.URL),
+		},
 	)
 	err := preConfigureCall(context.Background(), nil, nil, nil)
 	require.NoError(t, err)

@@ -346,19 +346,9 @@ var wrongRegionErr string
 //go:embed errors/no_project.txt
 var noProjectErr string
 
-type preConfigureCallbackOpts struct {
-	gcpClientOpts []option.ClientOption
-}
-
-type preConfigureCallbackOption func (options *preConfigureCallbackOpts)
-
-func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, opts ...preConfigureCallbackOption) func(
+func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpClientOpts []option.ClientOption) func(
 	ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig,
 ) error {
-	options := preConfigureCallbackOpts{}
-	for _, opt := range opts {
-		opt(&options)
-	}
 	return func(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
 		if !credentialsValidationRun.CompareAndSwap(false, true) {
 			return nil
@@ -411,7 +401,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, opts 
 		)
 
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {
-			regionList, err := getRegionsList(ctx, config.Project, options.gcpClientOpts)
+			regionList, err := getRegionsList(ctx, config.Project, gcpClientOpts)
 			if err != nil {
 				// host is nil in tests.
 				if host != nil {
@@ -509,7 +499,7 @@ func Provider() tfbridge.ProviderInfo {
 			// See: https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/data_source_dataproc_metastore_service
 			"google_dataproc_metastore_service",
 		},
-		PreConfigureCallbackWithLogger: preConfigureCallbackWithLogger(&credentialsValidationRun),
+		PreConfigureCallbackWithLogger: preConfigureCallbackWithLogger(&credentialsValidationRun, nil),
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Access Context Manager
 			"google_access_context_manager_access_level": {
