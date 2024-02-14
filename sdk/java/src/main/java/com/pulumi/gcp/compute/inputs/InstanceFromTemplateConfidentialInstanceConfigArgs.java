@@ -5,9 +5,11 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,23 +17,43 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
     public static final InstanceFromTemplateConfidentialInstanceConfigArgs Empty = new InstanceFromTemplateConfidentialInstanceConfigArgs();
 
     /**
-     * Defines whether the instance should have confidential compute enabled.
+     * Specifies which confidential computing technology to use.
+     * 								This could be one of the following values: SEV, SEV_SNP.
+     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
      * 
      */
-    @Import(name="enableConfidentialCompute", required=true)
-    private Output<Boolean> enableConfidentialCompute;
+    @Import(name="confidentialInstanceType")
+    private @Nullable Output<String> confidentialInstanceType;
 
     /**
-     * @return Defines whether the instance should have confidential compute enabled.
+     * @return Specifies which confidential computing technology to use.
+     * 								This could be one of the following values: SEV, SEV_SNP.
+     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
      * 
      */
-    public Output<Boolean> enableConfidentialCompute() {
-        return this.enableConfidentialCompute;
+    public Optional<Output<String>> confidentialInstanceType() {
+        return Optional.ofNullable(this.confidentialInstanceType);
+    }
+
+    /**
+     * Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+     * 
+     */
+    @Import(name="enableConfidentialCompute")
+    private @Nullable Output<Boolean> enableConfidentialCompute;
+
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+     * 
+     */
+    public Optional<Output<Boolean>> enableConfidentialCompute() {
+        return Optional.ofNullable(this.enableConfidentialCompute);
     }
 
     private InstanceFromTemplateConfidentialInstanceConfigArgs() {}
 
     private InstanceFromTemplateConfidentialInstanceConfigArgs(InstanceFromTemplateConfidentialInstanceConfigArgs $) {
+        this.confidentialInstanceType = $.confidentialInstanceType;
         this.enableConfidentialCompute = $.enableConfidentialCompute;
     }
 
@@ -54,18 +76,43 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
         }
 
         /**
-         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled.
+         * @param confidentialInstanceType Specifies which confidential computing technology to use.
+         * 								This could be one of the following values: SEV, SEV_SNP.
+         * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
          * 
          * @return builder
          * 
          */
-        public Builder enableConfidentialCompute(Output<Boolean> enableConfidentialCompute) {
+        public Builder confidentialInstanceType(@Nullable Output<String> confidentialInstanceType) {
+            $.confidentialInstanceType = confidentialInstanceType;
+            return this;
+        }
+
+        /**
+         * @param confidentialInstanceType Specifies which confidential computing technology to use.
+         * 								This could be one of the following values: SEV, SEV_SNP.
+         * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialInstanceType(String confidentialInstanceType) {
+            return confidentialInstanceType(Output.of(confidentialInstanceType));
+        }
+
+        /**
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableConfidentialCompute(@Nullable Output<Boolean> enableConfidentialCompute) {
             $.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }
 
         /**
-         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled.
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
          * 
          * @return builder
          * 
@@ -75,9 +122,6 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
         }
 
         public InstanceFromTemplateConfidentialInstanceConfigArgs build() {
-            if ($.enableConfidentialCompute == null) {
-                throw new MissingRequiredPropertyException("InstanceFromTemplateConfidentialInstanceConfigArgs", "enableConfidentialCompute");
-            }
             return $;
         }
     }

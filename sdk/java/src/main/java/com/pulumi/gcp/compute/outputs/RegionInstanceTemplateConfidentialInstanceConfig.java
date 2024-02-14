@@ -4,25 +4,39 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RegionInstanceTemplateConfidentialInstanceConfig {
     /**
-     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * @return Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
      * 
      */
-    private Boolean enableConfidentialCompute;
+    private @Nullable String confidentialInstanceType;
+    /**
+     * @return Defines whether the instance should have confidential compute enabled on AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * 
+     */
+    private @Nullable Boolean enableConfidentialCompute;
 
     private RegionInstanceTemplateConfidentialInstanceConfig() {}
     /**
-     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * @return Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
      * 
      */
-    public Boolean enableConfidentialCompute() {
-        return this.enableConfidentialCompute;
+    public Optional<String> confidentialInstanceType() {
+        return Optional.ofNullable(this.confidentialInstanceType);
+    }
+    /**
+     * @return Defines whether the instance should have confidential compute enabled on AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * 
+     */
+    public Optional<Boolean> enableConfidentialCompute() {
+        return Optional.ofNullable(this.enableConfidentialCompute);
     }
 
     public static Builder builder() {
@@ -34,23 +48,30 @@ public final class RegionInstanceTemplateConfidentialInstanceConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean enableConfidentialCompute;
+        private @Nullable String confidentialInstanceType;
+        private @Nullable Boolean enableConfidentialCompute;
         public Builder() {}
         public Builder(RegionInstanceTemplateConfidentialInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.confidentialInstanceType = defaults.confidentialInstanceType;
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
         }
 
         @CustomType.Setter
-        public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
-            if (enableConfidentialCompute == null) {
-              throw new MissingRequiredPropertyException("RegionInstanceTemplateConfidentialInstanceConfig", "enableConfidentialCompute");
-            }
+        public Builder confidentialInstanceType(@Nullable String confidentialInstanceType) {
+
+            this.confidentialInstanceType = confidentialInstanceType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableConfidentialCompute(@Nullable Boolean enableConfidentialCompute) {
+
             this.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }
         public RegionInstanceTemplateConfidentialInstanceConfig build() {
             final var _resultValue = new RegionInstanceTemplateConfidentialInstanceConfig();
+            _resultValue.confidentialInstanceType = confidentialInstanceType;
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
             return _resultValue;
         }

@@ -128,7 +128,6 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/workbench"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -146,18 +145,6 @@ import (
 //				Network:     myNetwork.ID(),
 //				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-//				Location: pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = kms.NewCryptoKey(ctx, "crypto-key", &kms.CryptoKeyArgs{
-//				KeyRing: keyring.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -182,13 +169,13 @@ import (
 //						DiskSizeGb:     pulumi.String("310"),
 //						DiskType:       pulumi.String("PD_SSD"),
 //						DiskEncryption: pulumi.String("GMEK"),
-//						KmsKey:         crypto_key.ID(),
+//						KmsKey:         pulumi.String("my-crypto-key"),
 //					},
 //					DataDisks: &workbench.InstanceGceSetupDataDisksArgs{
 //						DiskSizeGb:     pulumi.String("330"),
 //						DiskType:       pulumi.String("PD_SSD"),
 //						DiskEncryption: pulumi.String("GMEK"),
-//						KmsKey:         crypto_key.ID(),
+//						KmsKey:         pulumi.String("my-crypto-key"),
 //					},
 //					NetworkInterfaces: workbench.InstanceGceSetupNetworkInterfaceArray{
 //						&workbench.InstanceGceSetupNetworkInterfaceArgs{

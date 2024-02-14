@@ -243,6 +243,9 @@ namespace Pulumi.Gcp
         [Output("filestoreCustomEndpoint")]
         public Output<string?> FilestoreCustomEndpoint { get; private set; } = null!;
 
+        [Output("firebaseAppCheckCustomEndpoint")]
+        public Output<string?> FirebaseAppCheckCustomEndpoint { get; private set; } = null!;
+
         [Output("firebaseCustomEndpoint")]
         public Output<string?> FirebaseCustomEndpoint { get; private set; } = null!;
 
@@ -453,6 +456,9 @@ namespace Pulumi.Gcp
         [Output("tagsLocationCustomEndpoint")]
         public Output<string?> TagsLocationCustomEndpoint { get; private set; } = null!;
 
+        [Output("terraformAttributionLabelAdditionStrategy")]
+        public Output<string?> TerraformAttributionLabelAdditionStrategy { get; private set; } = null!;
+
         [Output("tpuCustomEndpoint")]
         public Output<string?> TpuCustomEndpoint { get; private set; } = null!;
 
@@ -522,6 +528,9 @@ namespace Pulumi.Gcp
 
         [Input("activeDirectoryCustomEndpoint")]
         public Input<string>? ActiveDirectoryCustomEndpoint { get; set; }
+
+        [Input("addTerraformAttributionLabel", json: true)]
+        public Input<bool>? AddTerraformAttributionLabel { get; set; }
 
         [Input("alloydbCustomEndpoint")]
         public Input<string>? AlloydbCustomEndpoint { get; set; }
@@ -750,6 +759,9 @@ namespace Pulumi.Gcp
         [Input("filestoreCustomEndpoint")]
         public Input<string>? FilestoreCustomEndpoint { get; set; }
 
+        [Input("firebaseAppCheckCustomEndpoint")]
+        public Input<string>? FirebaseAppCheckCustomEndpoint { get; set; }
+
         [Input("firebaseCustomEndpoint")]
         public Input<string>? FirebaseCustomEndpoint { get; set; }
 
@@ -975,6 +987,9 @@ namespace Pulumi.Gcp
 
         [Input("tagsLocationCustomEndpoint")]
         public Input<string>? TagsLocationCustomEndpoint { get; set; }
+
+        [Input("terraformAttributionLabelAdditionStrategy")]
+        public Input<string>? TerraformAttributionLabelAdditionStrategy { get; set; }
 
         [Input("tpuCustomEndpoint")]
         public Input<string>? TpuCustomEndpoint { get; set; }

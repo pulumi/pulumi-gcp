@@ -10,6 +10,11 @@ export type AndroidApp = import("./androidApp").AndroidApp;
 export const AndroidApp: typeof import("./androidApp").AndroidApp = null as any;
 utilities.lazyLoad(exports, ["AndroidApp"], () => require("./androidApp"));
 
+export { AppCheckServiceConfigArgs, AppCheckServiceConfigState } from "./appCheckServiceConfig";
+export type AppCheckServiceConfig = import("./appCheckServiceConfig").AppCheckServiceConfig;
+export const AppCheckServiceConfig: typeof import("./appCheckServiceConfig").AppCheckServiceConfig = null as any;
+utilities.lazyLoad(exports, ["AppCheckServiceConfig"], () => require("./appCheckServiceConfig"));
+
 export { AppleAppArgs, AppleAppState } from "./appleApp";
 export type AppleApp = import("./appleApp").AppleApp;
 export const AppleApp: typeof import("./appleApp").AppleApp = null as any;
@@ -107,6 +112,8 @@ const _module = {
         switch (type) {
             case "gcp:firebase/androidApp:AndroidApp":
                 return new AndroidApp(name, <any>undefined, { urn })
+            case "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig":
+                return new AppCheckServiceConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appleApp:AppleApp":
                 return new AppleApp(name, <any>undefined, { urn })
             case "gcp:firebase/databaseInstance:DatabaseInstance":
@@ -135,6 +142,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "firebase/androidApp", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckServiceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appleApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/databaseInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/extensionsInstance", _module)

@@ -18,6 +18,8 @@ accessToken: Optional[str]
 
 activeDirectoryCustomEndpoint: Optional[str]
 
+addTerraformAttributionLabel: Optional[bool]
+
 alloydbCustomEndpoint: Optional[str]
 
 apiGatewayCustomEndpoint: Optional[str]
@@ -166,6 +168,8 @@ eventarcCustomEndpoint: Optional[str]
 
 filestoreCustomEndpoint: Optional[str]
 
+firebaseAppCheckCustomEndpoint: Optional[str]
+
 firebaseCustomEndpoint: Optional[str]
 
 firebaseDatabaseCustomEndpoint: Optional[str]
@@ -309,6 +313,8 @@ storageTransferCustomEndpoint: Optional[str]
 tagsCustomEndpoint: Optional[str]
 
 tagsLocationCustomEndpoint: Optional[str]
+
+terraformAttributionLabelAdditionStrategy: Optional[str]
 
 tpuCustomEndpoint: Optional[str]
 

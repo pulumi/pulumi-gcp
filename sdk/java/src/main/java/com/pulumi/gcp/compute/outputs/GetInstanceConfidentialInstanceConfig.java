@@ -6,19 +6,36 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceConfidentialInstanceConfig {
     /**
-     * @return Defines whether the instance should have confidential compute enabled.
+     * @return Specifies which confidential computing technology to use.
+     * 								This could be one of the following values: SEV, SEV_SNP.
+     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+     * 
+     */
+    private String confidentialInstanceType;
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
      * 
      */
     private Boolean enableConfidentialCompute;
 
     private GetInstanceConfidentialInstanceConfig() {}
     /**
-     * @return Defines whether the instance should have confidential compute enabled.
+     * @return Specifies which confidential computing technology to use.
+     * 								This could be one of the following values: SEV, SEV_SNP.
+     * 								If SEV_SNP, min_cpu_platform = &#34;AMD Milan&#34; is currently required.
+     * 
+     */
+    public String confidentialInstanceType() {
+        return this.confidentialInstanceType;
+    }
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
      * 
      */
     public Boolean enableConfidentialCompute() {
@@ -34,13 +51,23 @@ public final class GetInstanceConfidentialInstanceConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String confidentialInstanceType;
         private Boolean enableConfidentialCompute;
         public Builder() {}
         public Builder(GetInstanceConfidentialInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.confidentialInstanceType = defaults.confidentialInstanceType;
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
         }
 
+        @CustomType.Setter
+        public Builder confidentialInstanceType(String confidentialInstanceType) {
+            if (confidentialInstanceType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceConfidentialInstanceConfig", "confidentialInstanceType");
+            }
+            this.confidentialInstanceType = confidentialInstanceType;
+            return this;
+        }
         @CustomType.Setter
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
             if (enableConfidentialCompute == null) {
@@ -51,6 +78,7 @@ public final class GetInstanceConfidentialInstanceConfig {
         }
         public GetInstanceConfidentialInstanceConfig build() {
             final var _resultValue = new GetInstanceConfidentialInstanceConfig();
+            _resultValue.confidentialInstanceType = confidentialInstanceType;
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
             return _resultValue;
         }

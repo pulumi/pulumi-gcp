@@ -107,6 +107,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceGroup{}
 	case "gcp:compute/instanceGroupManager:InstanceGroupManager":
 		r = &InstanceGroupManager{}
+	case "gcp:compute/instanceGroupMembership:InstanceGroupMembership":
+		r = &InstanceGroupMembership{}
 	case "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort":
 		r = &InstanceGroupNamedPort{}
 	case "gcp:compute/instanceIAMBinding:InstanceIAMBinding":
@@ -525,6 +527,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/instanceGroupManager",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/instanceGroupMembership",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

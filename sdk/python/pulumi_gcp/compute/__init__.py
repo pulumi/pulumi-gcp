@@ -100,6 +100,7 @@ from .instance_from_machine_image import *
 from .instance_from_template import *
 from .instance_group import *
 from .instance_group_manager import *
+from .instance_group_membership import *
 from .instance_group_named_port import *
 from .instance_iam_binding import *
 from .instance_iam_member import *

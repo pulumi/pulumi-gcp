@@ -25,6 +25,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Automation{}
 	case "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline":
 		r = &DeliveryPipeline{}
+	case "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding":
+		r = &DeliveryPipelineIamBinding{}
+	case "gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember":
+		r = &DeliveryPipelineIamMember{}
+	case "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy":
+		r = &DeliveryPipelineIamPolicy{}
 	case "gcp:clouddeploy/target:Target":
 		r = &Target{}
 	default:
@@ -48,6 +54,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"clouddeploy/deliveryPipeline",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"clouddeploy/deliveryPipelineIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"clouddeploy/deliveryPipelineIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"clouddeploy/deliveryPipelineIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -1647,6 +1647,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "clouddeploy/deliveryPipelineIamBinding",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding": "DeliveryPipelineIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddeploy/deliveryPipelineIamMember",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember": "DeliveryPipelineIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddeploy/deliveryPipelineIamPolicy",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy": "DeliveryPipelineIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "clouddeploy/target",
   "fqn": "pulumi_gcp.clouddeploy",
   "classes": {
@@ -2243,6 +2267,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/instanceGroupManager:InstanceGroupManager": "InstanceGroupManager"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/instanceGroupMembership",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/instanceGroupMembership:InstanceGroupMembership": "InstanceGroupMembership"
   }
  },
  {
@@ -4155,6 +4187,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firebase",
   "classes": {
    "gcp:firebase/androidApp:AndroidApp": "AndroidApp"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firebase/appCheckServiceConfig",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig": "AppCheckServiceConfig"
   }
  },
  {

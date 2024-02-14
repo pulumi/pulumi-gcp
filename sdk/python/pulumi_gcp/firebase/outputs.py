@@ -925,11 +925,11 @@ class HostingCustomDomainCertVerificationHttp(dict):
 class HostingCustomDomainIssue(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
-                 details: Optional[Sequence[Mapping[str, Any]]] = None,
+                 details: Optional[str] = None,
                  message: Optional[str] = None):
         """
         :param int code: The status code, which should be an enum value of `google.rpc.Code`
-        :param Sequence[Mapping[str, Any]] details: A list of messages that carry the error details.
+        :param str details: A list of messages that carry the error details.
         :param str message: Error message
         """
         if code is not None:
@@ -949,7 +949,7 @@ class HostingCustomDomainIssue(dict):
 
     @property
     @pulumi.getter
-    def details(self) -> Optional[Sequence[Mapping[str, Any]]]:
+    def details(self) -> Optional[str]:
         """
         A list of messages that carry the error details.
         """

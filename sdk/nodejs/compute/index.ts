@@ -480,6 +480,11 @@ export type InstanceGroupManager = import("./instanceGroupManager").InstanceGrou
 export const InstanceGroupManager: typeof import("./instanceGroupManager").InstanceGroupManager = null as any;
 utilities.lazyLoad(exports, ["InstanceGroupManager"], () => require("./instanceGroupManager"));
 
+export { InstanceGroupMembershipArgs, InstanceGroupMembershipState } from "./instanceGroupMembership";
+export type InstanceGroupMembership = import("./instanceGroupMembership").InstanceGroupMembership;
+export const InstanceGroupMembership: typeof import("./instanceGroupMembership").InstanceGroupMembership = null as any;
+utilities.lazyLoad(exports, ["InstanceGroupMembership"], () => require("./instanceGroupMembership"));
+
 export { InstanceGroupNamedPortArgs, InstanceGroupNamedPortState } from "./instanceGroupNamedPort";
 export type InstanceGroupNamedPort = import("./instanceGroupNamedPort").InstanceGroupNamedPort;
 export const InstanceGroupNamedPort: typeof import("./instanceGroupNamedPort").InstanceGroupNamedPort = null as any;
@@ -1056,6 +1061,8 @@ const _module = {
                 return new InstanceGroup(name, <any>undefined, { urn })
             case "gcp:compute/instanceGroupManager:InstanceGroupManager":
                 return new InstanceGroupManager(name, <any>undefined, { urn })
+            case "gcp:compute/instanceGroupMembership:InstanceGroupMembership":
+                return new InstanceGroupMembership(name, <any>undefined, { urn })
             case "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort":
                 return new InstanceGroupNamedPort(name, <any>undefined, { urn })
             case "gcp:compute/instanceIAMBinding:InstanceIAMBinding":
@@ -1296,6 +1303,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/instanceFromMachineImage",
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceFromTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceGroupManager", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instanceGroupMembership", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceGroupNamedPort", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMMember", _module)

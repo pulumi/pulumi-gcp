@@ -102,6 +102,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly essentialContactsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly eventarcCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly filestoreCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly firebaseAppCheckCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseDatabaseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseExtensionsCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -172,6 +173,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly storageTransferCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tagsLocationCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly terraformAttributionLabelAdditionStrategy!: pulumi.Output<string | undefined>;
     public readonly tpuCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuV2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly universeDomain!: pulumi.Output<string | undefined>;
@@ -198,6 +200,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["accessContextManagerCustomEndpoint"] = args ? args.accessContextManagerCustomEndpoint : undefined;
             resourceInputs["accessToken"] = args ? args.accessToken : undefined;
             resourceInputs["activeDirectoryCustomEndpoint"] = args ? args.activeDirectoryCustomEndpoint : undefined;
+            resourceInputs["addTerraformAttributionLabel"] = pulumi.output(args ? args.addTerraformAttributionLabel : undefined).apply(JSON.stringify);
             resourceInputs["alloydbCustomEndpoint"] = args ? args.alloydbCustomEndpoint : undefined;
             resourceInputs["apiGatewayCustomEndpoint"] = args ? args.apiGatewayCustomEndpoint : undefined;
             resourceInputs["apigeeCustomEndpoint"] = args ? args.apigeeCustomEndpoint : undefined;
@@ -272,6 +275,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
             resourceInputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
             resourceInputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
+            resourceInputs["firebaseAppCheckCustomEndpoint"] = args ? args.firebaseAppCheckCustomEndpoint : undefined;
             resourceInputs["firebaseCustomEndpoint"] = args ? args.firebaseCustomEndpoint : undefined;
             resourceInputs["firebaseDatabaseCustomEndpoint"] = args ? args.firebaseDatabaseCustomEndpoint : undefined;
             resourceInputs["firebaseExtensionsCustomEndpoint"] = args ? args.firebaseExtensionsCustomEndpoint : undefined;
@@ -344,6 +348,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["storageTransferCustomEndpoint"] = args ? args.storageTransferCustomEndpoint : undefined;
             resourceInputs["tagsCustomEndpoint"] = args ? args.tagsCustomEndpoint : undefined;
             resourceInputs["tagsLocationCustomEndpoint"] = args ? args.tagsLocationCustomEndpoint : undefined;
+            resourceInputs["terraformAttributionLabelAdditionStrategy"] = args ? args.terraformAttributionLabelAdditionStrategy : undefined;
             resourceInputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             resourceInputs["tpuV2CustomEndpoint"] = args ? args.tpuV2CustomEndpoint : undefined;
             resourceInputs["universeDomain"] = args ? args.universeDomain : undefined;
@@ -369,6 +374,7 @@ export interface ProviderArgs {
     accessContextManagerCustomEndpoint?: pulumi.Input<string>;
     accessToken?: pulumi.Input<string>;
     activeDirectoryCustomEndpoint?: pulumi.Input<string>;
+    addTerraformAttributionLabel?: pulumi.Input<boolean>;
     alloydbCustomEndpoint?: pulumi.Input<string>;
     apiGatewayCustomEndpoint?: pulumi.Input<string>;
     apigeeCustomEndpoint?: pulumi.Input<string>;
@@ -443,6 +449,7 @@ export interface ProviderArgs {
     essentialContactsCustomEndpoint?: pulumi.Input<string>;
     eventarcCustomEndpoint?: pulumi.Input<string>;
     filestoreCustomEndpoint?: pulumi.Input<string>;
+    firebaseAppCheckCustomEndpoint?: pulumi.Input<string>;
     firebaseCustomEndpoint?: pulumi.Input<string>;
     firebaseDatabaseCustomEndpoint?: pulumi.Input<string>;
     firebaseExtensionsCustomEndpoint?: pulumi.Input<string>;
@@ -515,6 +522,7 @@ export interface ProviderArgs {
     storageTransferCustomEndpoint?: pulumi.Input<string>;
     tagsCustomEndpoint?: pulumi.Input<string>;
     tagsLocationCustomEndpoint?: pulumi.Input<string>;
+    terraformAttributionLabelAdditionStrategy?: pulumi.Input<string>;
     tpuCustomEndpoint?: pulumi.Input<string>;
     tpuV2CustomEndpoint?: pulumi.Input<string>;
     universeDomain?: pulumi.Input<string>;

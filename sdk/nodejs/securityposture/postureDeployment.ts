@@ -107,13 +107,13 @@ export class PostureDeployment extends pulumi.CustomResource {
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture to be deployed.
+     * It denotes the desired posture to be deployed.
      */
     public /*out*/ readonly desiredPostureId!: pulumi.Output<string>;
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture revisionId to be deployed.
+     * It denotes the desired posture revisionId to be deployed.
      */
     public /*out*/ readonly desiredPostureRevisionId!: pulumi.Output<string>;
     /**
@@ -148,7 +148,7 @@ export class PostureDeployment extends pulumi.CustomResource {
     public readonly postureDeploymentId!: pulumi.Output<string>;
     /**
      * Relative name of the posture which needs to be deployed. It should be in the format:
-     * organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+     * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      */
     public readonly postureId!: pulumi.Output<string>;
     /**
@@ -160,14 +160,15 @@ export class PostureDeployment extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * State of the posture deployment.
+     * State of the posture deployment. A posture deployment can be in the following terminal states:
+     * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The resource on which the posture should be deployed. This can be in one of the following formats:
-     * projects/<project_number>
-     * folders/<folder_number>
-     * organizations/<organization_id>
+     * projects/{project_number},
+     * folders/{folder_number},
+     * organizations/{organization_id}
      */
     public readonly targetResource!: pulumi.Output<string>;
     /**
@@ -261,13 +262,13 @@ export interface PostureDeploymentState {
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture to be deployed.
+     * It denotes the desired posture to be deployed.
      */
     desiredPostureId?: pulumi.Input<string>;
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture revisionId to be deployed.
+     * It denotes the desired posture revisionId to be deployed.
      */
     desiredPostureRevisionId?: pulumi.Input<string>;
     /**
@@ -302,7 +303,7 @@ export interface PostureDeploymentState {
     postureDeploymentId?: pulumi.Input<string>;
     /**
      * Relative name of the posture which needs to be deployed. It should be in the format:
-     * organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+     * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      */
     postureId?: pulumi.Input<string>;
     /**
@@ -314,14 +315,15 @@ export interface PostureDeploymentState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * State of the posture deployment.
+     * State of the posture deployment. A posture deployment can be in the following terminal states:
+     * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
      */
     state?: pulumi.Input<string>;
     /**
      * The resource on which the posture should be deployed. This can be in one of the following formats:
-     * projects/<project_number>
-     * folders/<folder_number>
-     * organizations/<organization_id>
+     * projects/{project_number},
+     * folders/{folder_number},
+     * organizations/{organization_id}
      */
     targetResource?: pulumi.Input<string>;
     /**
@@ -355,7 +357,7 @@ export interface PostureDeploymentArgs {
     postureDeploymentId: pulumi.Input<string>;
     /**
      * Relative name of the posture which needs to be deployed. It should be in the format:
-     * organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+     * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      */
     postureId: pulumi.Input<string>;
     /**
@@ -364,9 +366,9 @@ export interface PostureDeploymentArgs {
     postureRevisionId: pulumi.Input<string>;
     /**
      * The resource on which the posture should be deployed. This can be in one of the following formats:
-     * projects/<project_number>
-     * folders/<folder_number>
-     * organizations/<organization_id>
+     * projects/{project_number},
+     * folders/{folder_number},
+     * organizations/{organization_id}
      */
     targetResource: pulumi.Input<string>;
 }

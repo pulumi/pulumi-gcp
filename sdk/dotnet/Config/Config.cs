@@ -60,6 +60,13 @@ namespace Pulumi.Gcp
             set => _activeDirectoryCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<bool?> _addTerraformAttributionLabel = new __Value<bool?>(() => __config.GetBoolean("addTerraformAttributionLabel"));
+        public static bool? AddTerraformAttributionLabel
+        {
+            get => _addTerraformAttributionLabel.Get();
+            set => _addTerraformAttributionLabel.Set(value);
+        }
+
         private static readonly __Value<string?> _alloydbCustomEndpoint = new __Value<string?>(() => __config.Get("alloydbCustomEndpoint"));
         public static string? AlloydbCustomEndpoint
         {
@@ -578,6 +585,13 @@ namespace Pulumi.Gcp
             set => _filestoreCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _firebaseAppCheckCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseAppCheckCustomEndpoint"));
+        public static string? FirebaseAppCheckCustomEndpoint
+        {
+            get => _firebaseAppCheckCustomEndpoint.Get();
+            set => _firebaseAppCheckCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _firebaseCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseCustomEndpoint"));
         public static string? FirebaseCustomEndpoint
         {
@@ -1080,6 +1094,13 @@ namespace Pulumi.Gcp
         {
             get => _tagsLocationCustomEndpoint.Get();
             set => _tagsLocationCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _terraformAttributionLabelAdditionStrategy = new __Value<string?>(() => __config.Get("terraformAttributionLabelAdditionStrategy"));
+        public static string? TerraformAttributionLabelAdditionStrategy
+        {
+            get => _terraformAttributionLabelAdditionStrategy.Get();
+            set => _terraformAttributionLabelAdditionStrategy.Set(value);
         }
 
         private static readonly __Value<string?> _tpuCustomEndpoint = new __Value<string?>(() => __config.Get("tpuCustomEndpoint"));

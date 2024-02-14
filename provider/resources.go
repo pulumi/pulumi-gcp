@@ -3898,6 +3898,9 @@ func Provider() tfbridge.ProviderInfo {
 	fixLabelNames(&prov)
 
 	allowMissingResourceDocs := []string{
+		"google_clouddeploy_delivery_pipeline_iam_binding",
+		"google_clouddeploy_delivery_pipeline_iam_member",
+		"google_clouddeploy_delivery_pipeline_iam_policy",
 		"google_dataform_repository_iam_binding",
 		"google_dataform_repository_iam_member",
 		"google_dataform_repository_iam_policy",

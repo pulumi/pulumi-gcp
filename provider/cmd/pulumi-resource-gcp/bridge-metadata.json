@@ -4164,6 +4164,31 @@
                     }
                 }
             },
+            "google_clouddeploy_delivery_pipeline_iam_binding": {
+                "current": "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_clouddeploy_delivery_pipeline_iam_member": {
+                "current": "gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_clouddeploy_delivery_pipeline_iam_policy": {
+                "current": "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy",
+                "majorVersion": 7
+            },
             "google_clouddeploy_target": {
                 "current": "gcp:clouddeploy/target:Target",
                 "majorVersion": 7,
@@ -5600,6 +5625,10 @@
                         }
                     }
                 }
+            },
+            "google_compute_instance_group_membership": {
+                "current": "gcp:compute/instanceGroupMembership:InstanceGroupMembership",
+                "majorVersion": 7
             },
             "google_compute_instance_group_named_port": {
                 "current": "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort",
@@ -15017,6 +15046,10 @@
                     }
                 }
             },
+            "google_firebase_app_check_service_config": {
+                "current": "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig",
+                "majorVersion": 7
+            },
             "google_firebase_apple_app": {
                 "current": "gcp:firebase/appleApp:AppleApp",
                 "majorVersion": 7
@@ -15117,14 +15150,7 @@
                         }
                     },
                     "issues": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "details": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
+                        "maxItemsOne": false
                     },
                     "required_dns_updates": {
                         "maxItemsOne": false,
@@ -24685,6 +24711,10 @@
                 "current": "gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy",
                 "majorVersion": 7
             },
+            "google_clouddeploy_delivery_pipeline_iam_policy": {
+                "current": "gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy",
+                "majorVersion": 7
+            },
             "google_cloudfunctions2_function": {
                 "current": "gcp:cloudfunctionsv2/getFunction:getFunction",
                 "majorVersion": 7,
@@ -28737,6 +28767,9 @@
             "gcp:cloudbuildv2/repository:Repository": 0,
             "gcp:clouddeploy/automation:Automation": 0,
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": 0,
+            "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding": 0,
+            "gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember": 0,
+            "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy": 0,
             "gcp:clouddeploy/target:Target": 0,
             "gcp:clouddomains/registration:Registration": 0,
             "gcp:cloudfunctions/function:Function": 0,
@@ -28812,6 +28845,7 @@
             "gcp:compute/instanceFromTemplate:InstanceFromTemplate": 0,
             "gcp:compute/instanceGroup:InstanceGroup": 0,
             "gcp:compute/instanceGroupManager:InstanceGroupManager": 0,
+            "gcp:compute/instanceGroupMembership:InstanceGroupMembership": 0,
             "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort": 0,
             "gcp:compute/instanceIAMBinding:InstanceIAMBinding": 0,
             "gcp:compute/instanceIAMMember:InstanceIAMMember": 0,
@@ -29051,6 +29085,7 @@
             "gcp:filestore/instance:Instance": 0,
             "gcp:filestore/snapshot:Snapshot": 0,
             "gcp:firebase/androidApp:AndroidApp": 0,
+            "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig": 0,
             "gcp:firebase/appleApp:AppleApp": 0,
             "gcp:firebase/databaseInstance:DatabaseInstance": 0,
             "gcp:firebase/extensionsInstance:ExtensionsInstance": 0,
@@ -29479,6 +29514,7 @@
             "gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll": 0,
             "gcp:cloudbuild/getTrigger:getTrigger": 0,
             "gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy": 0,
+            "gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy": 0,
             "gcp:cloudfunctions/getFunction:getFunction": 0,
             "gcp:cloudfunctions/getFunctionIamPolicy:getFunctionIamPolicy": 0,
             "gcp:cloudfunctionsv2/getFunction:getFunction": 0,
@@ -29888,6 +29924,9 @@
             "gcp:cloudbuildv2/repository:Repository": "google_cloudbuildv2_repository",
             "gcp:clouddeploy/automation:Automation": "google_clouddeploy_automation",
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": "google_clouddeploy_delivery_pipeline",
+            "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding": "google_clouddeploy_delivery_pipeline_iam_binding",
+            "gcp:clouddeploy/deliveryPipelineIamMember:DeliveryPipelineIamMember": "google_clouddeploy_delivery_pipeline_iam_member",
+            "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy": "google_clouddeploy_delivery_pipeline_iam_policy",
             "gcp:clouddeploy/target:Target": "google_clouddeploy_target",
             "gcp:clouddomains/registration:Registration": "google_clouddomains_registration",
             "gcp:cloudfunctions/function:Function": "google_cloudfunctions_function",
@@ -29963,6 +30002,7 @@
             "gcp:compute/instanceFromTemplate:InstanceFromTemplate": "google_compute_instance_from_template",
             "gcp:compute/instanceGroup:InstanceGroup": "google_compute_instance_group",
             "gcp:compute/instanceGroupManager:InstanceGroupManager": "google_compute_instance_group_manager",
+            "gcp:compute/instanceGroupMembership:InstanceGroupMembership": "google_compute_instance_group_membership",
             "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort": "google_compute_instance_group_named_port",
             "gcp:compute/instanceIAMBinding:InstanceIAMBinding": "google_compute_instance_iam_binding",
             "gcp:compute/instanceIAMMember:InstanceIAMMember": "google_compute_instance_iam_member",
@@ -30202,6 +30242,7 @@
             "gcp:filestore/instance:Instance": "google_filestore_instance",
             "gcp:filestore/snapshot:Snapshot": "google_filestore_snapshot",
             "gcp:firebase/androidApp:AndroidApp": "google_firebase_android_app",
+            "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig": "google_firebase_app_check_service_config",
             "gcp:firebase/appleApp:AppleApp": "google_firebase_apple_app",
             "gcp:firebase/databaseInstance:DatabaseInstance": "google_firebase_database_instance",
             "gcp:firebase/extensionsInstance:ExtensionsInstance": "google_firebase_extensions_instance",
@@ -30630,6 +30671,7 @@
             "gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll": "google_cloud_asset_resources_search_all",
             "gcp:cloudbuild/getTrigger:getTrigger": "google_cloudbuild_trigger",
             "gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy": "google_cloudbuildv2_connection_iam_policy",
+            "gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy": "google_clouddeploy_delivery_pipeline_iam_policy",
             "gcp:cloudfunctions/getFunction:getFunction": "google_cloudfunctions_function",
             "gcp:cloudfunctions/getFunctionIamPolicy:getFunctionIamPolicy": "google_cloudfunctions_function_iam_policy",
             "gcp:cloudfunctionsv2/getFunction:getFunction": "google_cloudfunctions2_function",
@@ -34272,6 +34314,12 @@
                 "serialPipeline": "serial_pipeline",
                 "updateTime": "update_time"
             },
+            "gcp:clouddeploy/deliveryPipelineIamPolicy:DeliveryPipelineIamPolicy": {
+                "policyData": "policy_data"
+            },
+            "gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy": {
+                "policyData": "policy_data"
+            },
             "gcp:clouddeploy/target:Target": {
                 "anthosCluster": "anthos_cluster",
                 "createTime": "create_time",
@@ -35839,6 +35887,7 @@
                 "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceConfidentialInstanceConfig:InstanceConfidentialInstanceConfig": {
+                "confidentialInstanceType": "confidential_instance_type",
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
             "gcp:compute/InstanceFromMachineImageAdvancedMachineFeatures:InstanceFromMachineImageAdvancedMachineFeatures": {
@@ -35867,6 +35916,7 @@
                 "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceFromMachineImageConfidentialInstanceConfig:InstanceFromMachineImageConfidentialInstanceConfig": {
+                "confidentialInstanceType": "confidential_instance_type",
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
             "gcp:compute/InstanceFromMachineImageNetworkInterface:InstanceFromMachineImageNetworkInterface": {
@@ -35955,6 +36005,7 @@
                 "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceFromTemplateConfidentialInstanceConfig:InstanceFromTemplateConfidentialInstanceConfig": {
+                "confidentialInstanceType": "confidential_instance_type",
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
             "gcp:compute/InstanceFromTemplateNetworkInterface:InstanceFromTemplateNetworkInterface": {
@@ -36132,6 +36183,7 @@
                 "visibleCoreCount": "visible_core_count"
             },
             "gcp:compute/InstanceTemplateConfidentialInstanceConfig:InstanceTemplateConfidentialInstanceConfig": {
+                "confidentialInstanceType": "confidential_instance_type",
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
             "gcp:compute/InstanceTemplateDisk:InstanceTemplateDisk": {
@@ -36499,6 +36551,7 @@
                 "visibleCoreCount": "visible_core_count"
             },
             "gcp:compute/RegionInstanceTemplateConfidentialInstanceConfig:RegionInstanceTemplateConfidentialInstanceConfig": {
+                "confidentialInstanceType": "confidential_instance_type",
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
             "gcp:compute/RegionInstanceTemplateDisk:RegionInstanceTemplateDisk": {
@@ -38042,6 +38095,7 @@
                 "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/getInstanceConfidentialInstanceConfig:getInstanceConfidentialInstanceConfig": {
+                "confidentialInstanceType": "confidential_instance_type",
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
             "gcp:compute/getInstanceGroup:getInstanceGroup": {
@@ -38216,6 +38270,7 @@
                 "visibleCoreCount": "visible_core_count"
             },
             "gcp:compute/getInstanceTemplateConfidentialInstanceConfig:getInstanceTemplateConfidentialInstanceConfig": {
+                "confidentialInstanceType": "confidential_instance_type",
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
             "gcp:compute/getInstanceTemplateDisk:getInstanceTemplateDisk": {
@@ -38424,6 +38479,7 @@
                 "visibleCoreCount": "visible_core_count"
             },
             "gcp:compute/getRegionInstanceTemplateConfidentialInstanceConfig:getRegionInstanceTemplateConfidentialInstanceConfig": {
+                "confidentialInstanceType": "confidential_instance_type",
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
             "gcp:compute/getRegionInstanceTemplateDisk:getRegionInstanceTemplateDisk": {
@@ -38950,6 +39006,9 @@
                 "versions": "version",
                 "waitForInstances": "wait_for_instances",
                 "waitForInstancesStatus": "wait_for_instances_status"
+            },
+            "gcp:compute/instanceGroupMembership:InstanceGroupMembership": {
+                "instanceGroup": "instance_group"
             },
             "gcp:compute/instanceIAMBinding:InstanceIAMBinding": {
                 "instanceName": "instance_name"
@@ -44829,6 +44888,10 @@
                 "sha1Hashes": "sha1_hashes",
                 "sha256Hashes": "sha256_hashes"
             },
+            "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig": {
+                "enforcementMode": "enforcement_mode",
+                "serviceId": "service_id"
+            },
             "gcp:firebase/appleApp:AppleApp": {
                 "apiKeyId": "api_key_id",
                 "appId": "app_id",
@@ -46356,6 +46419,7 @@
                 "accessContextManagerCustomEndpoint": "access_context_manager_custom_endpoint",
                 "accessToken": "access_token",
                 "activeDirectoryCustomEndpoint": "active_directory_custom_endpoint",
+                "addTerraformAttributionLabel": "add_terraform_attribution_label",
                 "alloydbCustomEndpoint": "alloydb_custom_endpoint",
                 "apiGatewayCustomEndpoint": "api_gateway_custom_endpoint",
                 "apigeeCustomEndpoint": "apigee_custom_endpoint",
@@ -46428,6 +46492,7 @@
                 "essentialContactsCustomEndpoint": "essential_contacts_custom_endpoint",
                 "eventarcCustomEndpoint": "eventarc_custom_endpoint",
                 "filestoreCustomEndpoint": "filestore_custom_endpoint",
+                "firebaseAppCheckCustomEndpoint": "firebase_app_check_custom_endpoint",
                 "firebaseCustomEndpoint": "firebase_custom_endpoint",
                 "firebaseDatabaseCustomEndpoint": "firebase_database_custom_endpoint",
                 "firebaseExtensionsCustomEndpoint": "firebase_extensions_custom_endpoint",
@@ -46497,6 +46562,7 @@
                 "storageTransferCustomEndpoint": "storage_transfer_custom_endpoint",
                 "tagsCustomEndpoint": "tags_custom_endpoint",
                 "tagsLocationCustomEndpoint": "tags_location_custom_endpoint",
+                "terraformAttributionLabelAdditionStrategy": "terraform_attribution_label_addition_strategy",
                 "tpuCustomEndpoint": "tpu_custom_endpoint",
                 "tpuV2CustomEndpoint": "tpu_v2_custom_endpoint",
                 "universeDomain": "universe_domain",
@@ -51393,6 +51459,7 @@
             "accessContextManagerCustomEndpoint": "access_context_manager_custom_endpoint",
             "accessToken": "access_token",
             "activeDirectoryCustomEndpoint": "active_directory_custom_endpoint",
+            "addTerraformAttributionLabel": "add_terraform_attribution_label",
             "alloydbCustomEndpoint": "alloydb_custom_endpoint",
             "apiGatewayCustomEndpoint": "api_gateway_custom_endpoint",
             "apigeeCustomEndpoint": "apigee_custom_endpoint",
@@ -51465,6 +51532,7 @@
             "essentialContactsCustomEndpoint": "essential_contacts_custom_endpoint",
             "eventarcCustomEndpoint": "eventarc_custom_endpoint",
             "filestoreCustomEndpoint": "filestore_custom_endpoint",
+            "firebaseAppCheckCustomEndpoint": "firebase_app_check_custom_endpoint",
             "firebaseCustomEndpoint": "firebase_custom_endpoint",
             "firebaseDatabaseCustomEndpoint": "firebase_database_custom_endpoint",
             "firebaseExtensionsCustomEndpoint": "firebase_extensions_custom_endpoint",
@@ -51534,6 +51602,7 @@
             "storageTransferCustomEndpoint": "storage_transfer_custom_endpoint",
             "tagsCustomEndpoint": "tags_custom_endpoint",
             "tagsLocationCustomEndpoint": "tags_location_custom_endpoint",
+            "terraformAttributionLabelAdditionStrategy": "terraform_attribution_label_addition_strategy",
             "tpuCustomEndpoint": "tpu_custom_endpoint",
             "tpuV2CustomEndpoint": "tpu_v2_custom_endpoint",
             "universeDomain": "universe_domain",

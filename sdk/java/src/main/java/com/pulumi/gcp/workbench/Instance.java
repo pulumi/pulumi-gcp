@@ -145,10 +145,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.Subnetwork;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.gcp.kms.KeyRing;
- * import com.pulumi.gcp.kms.KeyRingArgs;
- * import com.pulumi.gcp.kms.CryptoKey;
- * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
@@ -177,14 +173,6 @@ import javax.annotation.Nullable;
  *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
  *             .build());
  * 
- *         var keyring = new KeyRing(&#34;keyring&#34;, KeyRingArgs.builder()        
- *             .location(&#34;global&#34;)
- *             .build());
- * 
- *         var crypto_key = new CryptoKey(&#34;crypto-key&#34;, CryptoKeyArgs.builder()        
- *             .keyRing(keyring.id())
- *             .build());
- * 
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
  *             .location(&#34;us-central1-a&#34;)
  *             .gceSetup(InstanceGceSetupArgs.builder()
@@ -201,13 +189,13 @@ import javax.annotation.Nullable;
  *                     .diskSizeGb(310)
  *                     .diskType(&#34;PD_SSD&#34;)
  *                     .diskEncryption(&#34;GMEK&#34;)
- *                     .kmsKey(crypto_key.id())
+ *                     .kmsKey(&#34;my-crypto-key&#34;)
  *                     .build())
  *                 .dataDisks(InstanceGceSetupDataDisksArgs.builder()
  *                     .diskSizeGb(330)
  *                     .diskType(&#34;PD_SSD&#34;)
  *                     .diskEncryption(&#34;GMEK&#34;)
- *                     .kmsKey(crypto_key.id())
+ *                     .kmsKey(&#34;my-crypto-key&#34;)
  *                     .build())
  *                 .networkInterfaces(InstanceGceSetupNetworkInterfaceArgs.builder()
  *                     .network(myNetwork.id())

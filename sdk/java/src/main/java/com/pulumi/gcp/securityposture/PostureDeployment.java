@@ -136,7 +136,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture to be deployed.
+     * It denotes the desired posture to be deployed.
      * 
      */
     @Export(name="desiredPostureId", refs={String.class}, tree="[0]")
@@ -145,7 +145,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
     /**
      * @return This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture to be deployed.
+     * It denotes the desired posture to be deployed.
      * 
      */
     public Output<String> desiredPostureId() {
@@ -154,7 +154,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture revision_id to be deployed.
+     * It denotes the desired posture revision_id to be deployed.
      * 
      */
     @Export(name="desiredPostureRevisionId", refs={String.class}, tree="[0]")
@@ -163,7 +163,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
     /**
      * @return This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture revision_id to be deployed.
+     * It denotes the desired posture revision_id to be deployed.
      * 
      */
     public Output<String> desiredPostureRevisionId() {
@@ -265,7 +265,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
     }
     /**
      * Relative name of the posture which needs to be deployed. It should be in the format:
-     * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+     * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      * 
      */
     @Export(name="postureId", refs={String.class}, tree="[0]")
@@ -273,7 +273,7 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Relative name of the posture which needs to be deployed. It should be in the format:
-     * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+     * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      * 
      */
     public Output<String> postureId() {
@@ -308,14 +308,16 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
         return this.reconciling;
     }
     /**
-     * State of the posture deployment.
+     * State of the posture deployment. A posture deployment can be in the following terminal states:
+     * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return State of the posture deployment.
+     * @return State of the posture deployment. A posture deployment can be in the following terminal states:
+     * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
      * 
      */
     public Output<String> state() {
@@ -323,9 +325,9 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource on which the posture should be deployed. This can be in one of the following formats:
-     * projects/&lt;project_number&gt;
-     * folders/&lt;folder_number&gt;
-     * organizations/&lt;organization_id&gt;
+     * projects/{project_number},
+     * folders/{folder_number},
+     * organizations/{organization_id}
      * 
      */
     @Export(name="targetResource", refs={String.class}, tree="[0]")
@@ -333,9 +335,9 @@ public class PostureDeployment extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource on which the posture should be deployed. This can be in one of the following formats:
-     * projects/&lt;project_number&gt;
-     * folders/&lt;folder_number&gt;
-     * organizations/&lt;organization_id&gt;
+     * projects/{project_number},
+     * folders/{folder_number},
+     * organizations/{organization_id}
      * 
      */
     public Output<String> targetResource() {

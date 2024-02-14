@@ -13,10 +13,16 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceConfidentialInstanceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        /// Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         /// </summary>
-        [Input("enableConfidentialCompute", required: true)]
-        public Input<bool> EnableConfidentialCompute { get; set; } = null!;
+        [Input("confidentialInstanceType")]
+        public Input<string>? ConfidentialInstanceType { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
 
         public InstanceConfidentialInstanceConfigGetArgs()
         {

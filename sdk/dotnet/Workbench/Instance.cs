@@ -126,16 +126,6 @@ namespace Pulumi.Gcp.Workbench
     ///         IpCidrRange = "10.0.1.0/24",
     ///     });
     /// 
-    ///     var keyring = new Gcp.Kms.KeyRing("keyring", new()
-    ///     {
-    ///         Location = "global",
-    ///     });
-    /// 
-    ///     var crypto_key = new Gcp.Kms.CryptoKey("crypto-key", new()
-    ///     {
-    ///         KeyRing = keyring.Id,
-    ///     });
-    /// 
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Location = "us-central1-a",
@@ -163,14 +153,14 @@ namespace Pulumi.Gcp.Workbench
     ///                 DiskSizeGb = "310",
     ///                 DiskType = "PD_SSD",
     ///                 DiskEncryption = "GMEK",
-    ///                 KmsKey = crypto_key.Id,
+    ///                 KmsKey = "my-crypto-key",
     ///             },
     ///             DataDisks = new Gcp.Workbench.Inputs.InstanceGceSetupDataDisksArgs
     ///             {
     ///                 DiskSizeGb = "330",
     ///                 DiskType = "PD_SSD",
     ///                 DiskEncryption = "GMEK",
-    ///                 KmsKey = crypto_key.Id,
+    ///                 KmsKey = "my-crypto-key",
     ///             },
     ///             NetworkInterfaces = new[]
     ///             {
