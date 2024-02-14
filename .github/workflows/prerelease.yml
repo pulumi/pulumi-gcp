@@ -278,7 +278,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Publish SDKs
-      uses: pulumi/pulumi-package-publisher@v0.0.13
+      uses: pulumi/pulumi-package-publisher@v0.0.14
       with:
         sdk: all
     - env:
