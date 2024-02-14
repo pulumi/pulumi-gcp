@@ -74,8 +74,6 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     ipCidrRange: "10.0.1.0/24",
  * });
- * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
- * const crypto_key = new gcp.kms.CryptoKey("crypto-key", {keyRing: keyring.id});
  * const instance = new gcp.workbench.Instance("instance", {
  *     location: "us-central1-a",
  *     gceSetup: {
@@ -92,13 +90,13 @@ import * as utilities from "../utilities";
  *             diskSizeGb: "310",
  *             diskType: "PD_SSD",
  *             diskEncryption: "GMEK",
- *             kmsKey: crypto_key.id,
+ *             kmsKey: "my-crypto-key",
  *         },
  *         dataDisks: {
  *             diskSizeGb: "330",
  *             diskType: "PD_SSD",
  *             diskEncryption: "GMEK",
- *             kmsKey: crypto_key.id,
+ *             kmsKey: "my-crypto-key",
  *         },
  *         networkInterfaces: [{
  *             network: myNetwork.id,

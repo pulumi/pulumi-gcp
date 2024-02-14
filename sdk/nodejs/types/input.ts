@@ -9615,6 +9615,18 @@ export namespace clouddeploy {
         status?: pulumi.Input<boolean>;
     }
 
+    export interface DeliveryPipelineIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface DeliveryPipelineIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface DeliveryPipelineSerialPipeline {
         /**
          * Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
@@ -15388,9 +15400,13 @@ export namespace compute {
 
     export interface InstanceConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
-        enableConfidentialCompute: pulumi.Input<boolean>;
+        confidentialInstanceType?: pulumi.Input<string>;
+        /**
+         * Defines whether the instance should have confidential compute enabled with AMD SEV. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
+        enableConfidentialCompute?: pulumi.Input<boolean>;
     }
 
     export interface InstanceFromMachineImageAdvancedMachineFeatures {
@@ -15507,9 +15523,15 @@ export namespace compute {
 
     export interface InstanceFromMachineImageConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled.
+         * Specifies which confidential computing technology to use.
+         * 								This could be one of the following values: SEV, SEV_SNP.
+         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
          */
-        enableConfidentialCompute: pulumi.Input<boolean>;
+        confidentialInstanceType?: pulumi.Input<string>;
+        /**
+         * Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+         */
+        enableConfidentialCompute?: pulumi.Input<boolean>;
     }
 
     export interface InstanceFromMachineImageGuestAccelerator {
@@ -15919,9 +15941,15 @@ export namespace compute {
 
     export interface InstanceFromTemplateConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled.
+         * Specifies which confidential computing technology to use.
+         * 								This could be one of the following values: SEV, SEV_SNP.
+         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
          */
-        enableConfidentialCompute: pulumi.Input<boolean>;
+        confidentialInstanceType?: pulumi.Input<string>;
+        /**
+         * Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+         */
+        enableConfidentialCompute?: pulumi.Input<boolean>;
     }
 
     export interface InstanceFromTemplateGuestAccelerator {
@@ -16856,9 +16884,13 @@ export namespace compute {
 
     export interface InstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
-        enableConfidentialCompute: pulumi.Input<boolean>;
+        confidentialInstanceType?: pulumi.Input<string>;
+        /**
+         * Defines whether the instance should have confidential compute enabled with AMD SEV. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
+        enableConfidentialCompute?: pulumi.Input<boolean>;
     }
 
     export interface InstanceTemplateDisk {
@@ -19248,9 +19280,13 @@ export namespace compute {
 
     export interface RegionInstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
-        enableConfidentialCompute: pulumi.Input<boolean>;
+        confidentialInstanceType?: pulumi.Input<string>;
+        /**
+         * Defines whether the instance should have confidential compute enabled on AMD SEV. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
+        enableConfidentialCompute?: pulumi.Input<boolean>;
     }
 
     export interface RegionInstanceTemplateDisk {
@@ -43335,7 +43371,7 @@ export namespace firebase {
         /**
          * A list of messages that carry the error details.
          */
-        details?: pulumi.Input<pulumi.Input<{[key: string]: any}>[]>;
+        details?: pulumi.Input<string>;
         /**
          * Error message
          */

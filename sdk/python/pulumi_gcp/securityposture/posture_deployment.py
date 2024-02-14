@@ -30,12 +30,12 @@ class PostureDeploymentArgs:
                
                - - -
         :param pulumi.Input[str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
-               organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+               organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[str] posture_revision_id: Revision_id the posture which needs to be deployed.
         :param pulumi.Input[str] target_resource: The resource on which the posture should be deployed. This can be in one of the following formats:
-               projects/<project_number>
-               folders/<folder_number>
-               organizations/<organization_id>
+               projects/{project_number},
+               folders/{folder_number},
+               organizations/{organization_id}
         :param pulumi.Input[str] description: Description of the posture deployment.
         """
         pulumi.set(__self__, "location", location)
@@ -91,7 +91,7 @@ class PostureDeploymentArgs:
     def posture_id(self) -> pulumi.Input[str]:
         """
         Relative name of the posture which needs to be deployed. It should be in the format:
-        organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+        organizations/{organization_id}/locations/{location}/postures/{posture_id}
         """
         return pulumi.get(self, "posture_id")
 
@@ -116,9 +116,9 @@ class PostureDeploymentArgs:
     def target_resource(self) -> pulumi.Input[str]:
         """
         The resource on which the posture should be deployed. This can be in one of the following formats:
-        projects/<project_number>
-        folders/<folder_number>
-        organizations/<organization_id>
+        projects/{project_number},
+        folders/{folder_number},
+        organizations/{organization_id}
         """
         return pulumi.get(self, "target_resource")
 
@@ -164,10 +164,10 @@ class _PostureDeploymentState:
         :param pulumi.Input[str] description: Description of the posture deployment.
         :param pulumi.Input[str] desired_posture_id: This is an output only optional field which will be filled in case when
                PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-               It denotes the desired Posture to be deployed.
+               It denotes the desired posture to be deployed.
         :param pulumi.Input[str] desired_posture_revision_id: This is an output only optional field which will be filled in case when
                PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-               It denotes the desired Posture revision_id to be deployed.
+               It denotes the desired posture revision_id to be deployed.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] failure_message: This is a output only optional field which will be filled in case where
                PostureDeployment enters a failure state like UPDATE_FAILED or
@@ -181,14 +181,15 @@ class _PostureDeploymentState:
                
                - - -
         :param pulumi.Input[str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
-               organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+               organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[str] posture_revision_id: Revision_id the posture which needs to be deployed.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the posture deployment.
-        :param pulumi.Input[str] state: State of the posture deployment.
+        :param pulumi.Input[str] state: State of the posture deployment. A posture deployment can be in the following terminal states:
+               ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
         :param pulumi.Input[str] target_resource: The resource on which the posture should be deployed. This can be in one of the following formats:
-               projects/<project_number>
-               folders/<folder_number>
-               organizations/<organization_id>
+               projects/{project_number},
+               folders/{folder_number},
+               organizations/{organization_id}
         :param pulumi.Input[str] update_time: Time the posture deployment was updated in UTC.
         """
         if create_time is not None:
@@ -254,7 +255,7 @@ class _PostureDeploymentState:
         """
         This is an output only optional field which will be filled in case when
         PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        It denotes the desired Posture to be deployed.
+        It denotes the desired posture to be deployed.
         """
         return pulumi.get(self, "desired_posture_id")
 
@@ -268,7 +269,7 @@ class _PostureDeploymentState:
         """
         This is an output only optional field which will be filled in case when
         PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        It denotes the desired Posture revision_id to be deployed.
+        It denotes the desired posture revision_id to be deployed.
         """
         return pulumi.get(self, "desired_posture_revision_id")
 
@@ -359,7 +360,7 @@ class _PostureDeploymentState:
     def posture_id(self) -> Optional[pulumi.Input[str]]:
         """
         Relative name of the posture which needs to be deployed. It should be in the format:
-        organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+        organizations/{organization_id}/locations/{location}/postures/{posture_id}
         """
         return pulumi.get(self, "posture_id")
 
@@ -395,7 +396,8 @@ class _PostureDeploymentState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of the posture deployment.
+        State of the posture deployment. A posture deployment can be in the following terminal states:
+        ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
         """
         return pulumi.get(self, "state")
 
@@ -408,9 +410,9 @@ class _PostureDeploymentState:
     def target_resource(self) -> Optional[pulumi.Input[str]]:
         """
         The resource on which the posture should be deployed. This can be in one of the following formats:
-        projects/<project_number>
-        folders/<folder_number>
-        organizations/<organization_id>
+        projects/{project_number},
+        folders/{folder_number},
+        organizations/{organization_id}
         """
         return pulumi.get(self, "target_resource")
 
@@ -516,12 +518,12 @@ class PostureDeployment(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
-               organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+               organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[str] posture_revision_id: Revision_id the posture which needs to be deployed.
         :param pulumi.Input[str] target_resource: The resource on which the posture should be deployed. This can be in one of the following formats:
-               projects/<project_number>
-               folders/<folder_number>
-               organizations/<organization_id>
+               projects/{project_number},
+               folders/{folder_number},
+               organizations/{organization_id}
         """
         ...
     @overload
@@ -687,10 +689,10 @@ class PostureDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the posture deployment.
         :param pulumi.Input[str] desired_posture_id: This is an output only optional field which will be filled in case when
                PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-               It denotes the desired Posture to be deployed.
+               It denotes the desired posture to be deployed.
         :param pulumi.Input[str] desired_posture_revision_id: This is an output only optional field which will be filled in case when
                PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-               It denotes the desired Posture revision_id to be deployed.
+               It denotes the desired posture revision_id to be deployed.
         :param pulumi.Input[str] etag: For Resource freshness validation (https://google.aip.dev/154)
         :param pulumi.Input[str] failure_message: This is a output only optional field which will be filled in case where
                PostureDeployment enters a failure state like UPDATE_FAILED or
@@ -704,14 +706,15 @@ class PostureDeployment(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] posture_id: Relative name of the posture which needs to be deployed. It should be in the format:
-               organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+               organizations/{organization_id}/locations/{location}/postures/{posture_id}
         :param pulumi.Input[str] posture_revision_id: Revision_id the posture which needs to be deployed.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the posture deployment.
-        :param pulumi.Input[str] state: State of the posture deployment.
+        :param pulumi.Input[str] state: State of the posture deployment. A posture deployment can be in the following terminal states:
+               ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
         :param pulumi.Input[str] target_resource: The resource on which the posture should be deployed. This can be in one of the following formats:
-               projects/<project_number>
-               folders/<folder_number>
-               organizations/<organization_id>
+               projects/{project_number},
+               folders/{folder_number},
+               organizations/{organization_id}
         :param pulumi.Input[str] update_time: Time the posture deployment was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -758,7 +761,7 @@ class PostureDeployment(pulumi.CustomResource):
         """
         This is an output only optional field which will be filled in case when
         PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        It denotes the desired Posture to be deployed.
+        It denotes the desired posture to be deployed.
         """
         return pulumi.get(self, "desired_posture_id")
 
@@ -768,7 +771,7 @@ class PostureDeployment(pulumi.CustomResource):
         """
         This is an output only optional field which will be filled in case when
         PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        It denotes the desired Posture revision_id to be deployed.
+        It denotes the desired posture revision_id to be deployed.
         """
         return pulumi.get(self, "desired_posture_revision_id")
 
@@ -831,7 +834,7 @@ class PostureDeployment(pulumi.CustomResource):
     def posture_id(self) -> pulumi.Output[str]:
         """
         Relative name of the posture which needs to be deployed. It should be in the format:
-        organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+        organizations/{organization_id}/locations/{location}/postures/{posture_id}
         """
         return pulumi.get(self, "posture_id")
 
@@ -855,7 +858,8 @@ class PostureDeployment(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        State of the posture deployment.
+        State of the posture deployment. A posture deployment can be in the following terminal states:
+        ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
         """
         return pulumi.get(self, "state")
 
@@ -864,9 +868,9 @@ class PostureDeployment(pulumi.CustomResource):
     def target_resource(self) -> pulumi.Output[str]:
         """
         The resource on which the posture should be deployed. This can be in one of the following formats:
-        projects/<project_number>
-        folders/<folder_number>
-        organizations/<organization_id>
+        projects/{project_number},
+        folders/{folder_number},
+        organizations/{organization_id}
         """
         return pulumi.get(self, "target_resource")
 

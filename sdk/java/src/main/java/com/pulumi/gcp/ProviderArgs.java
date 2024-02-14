@@ -48,6 +48,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.activeDirectoryCustomEndpoint);
     }
 
+    @Import(name="addTerraformAttributionLabel", json=true)
+    private @Nullable Output<Boolean> addTerraformAttributionLabel;
+
+    public Optional<Output<Boolean>> addTerraformAttributionLabel() {
+        return Optional.ofNullable(this.addTerraformAttributionLabel);
+    }
+
     @Import(name="alloydbCustomEndpoint")
     private @Nullable Output<String> alloydbCustomEndpoint;
 
@@ -566,6 +573,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.filestoreCustomEndpoint);
     }
 
+    @Import(name="firebaseAppCheckCustomEndpoint")
+    private @Nullable Output<String> firebaseAppCheckCustomEndpoint;
+
+    public Optional<Output<String>> firebaseAppCheckCustomEndpoint() {
+        return Optional.ofNullable(this.firebaseAppCheckCustomEndpoint);
+    }
+
     @Import(name="firebaseCustomEndpoint")
     private @Nullable Output<String> firebaseCustomEndpoint;
 
@@ -1070,6 +1084,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tagsLocationCustomEndpoint);
     }
 
+    @Import(name="terraformAttributionLabelAdditionStrategy")
+    private @Nullable Output<String> terraformAttributionLabelAdditionStrategy;
+
+    public Optional<Output<String>> terraformAttributionLabelAdditionStrategy() {
+        return Optional.ofNullable(this.terraformAttributionLabelAdditionStrategy);
+    }
+
     @Import(name="tpuCustomEndpoint")
     private @Nullable Output<String> tpuCustomEndpoint;
 
@@ -1154,6 +1175,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.accessContextManagerCustomEndpoint = $.accessContextManagerCustomEndpoint;
         this.accessToken = $.accessToken;
         this.activeDirectoryCustomEndpoint = $.activeDirectoryCustomEndpoint;
+        this.addTerraformAttributionLabel = $.addTerraformAttributionLabel;
         this.alloydbCustomEndpoint = $.alloydbCustomEndpoint;
         this.apiGatewayCustomEndpoint = $.apiGatewayCustomEndpoint;
         this.apigeeCustomEndpoint = $.apigeeCustomEndpoint;
@@ -1228,6 +1250,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.essentialContactsCustomEndpoint = $.essentialContactsCustomEndpoint;
         this.eventarcCustomEndpoint = $.eventarcCustomEndpoint;
         this.filestoreCustomEndpoint = $.filestoreCustomEndpoint;
+        this.firebaseAppCheckCustomEndpoint = $.firebaseAppCheckCustomEndpoint;
         this.firebaseCustomEndpoint = $.firebaseCustomEndpoint;
         this.firebaseDatabaseCustomEndpoint = $.firebaseDatabaseCustomEndpoint;
         this.firebaseExtensionsCustomEndpoint = $.firebaseExtensionsCustomEndpoint;
@@ -1300,6 +1323,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.storageTransferCustomEndpoint = $.storageTransferCustomEndpoint;
         this.tagsCustomEndpoint = $.tagsCustomEndpoint;
         this.tagsLocationCustomEndpoint = $.tagsLocationCustomEndpoint;
+        this.terraformAttributionLabelAdditionStrategy = $.terraformAttributionLabelAdditionStrategy;
         this.tpuCustomEndpoint = $.tpuCustomEndpoint;
         this.tpuV2CustomEndpoint = $.tpuV2CustomEndpoint;
         this.universeDomain = $.universeDomain;
@@ -1365,6 +1389,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder activeDirectoryCustomEndpoint(String activeDirectoryCustomEndpoint) {
             return activeDirectoryCustomEndpoint(Output.of(activeDirectoryCustomEndpoint));
+        }
+
+        public Builder addTerraformAttributionLabel(@Nullable Output<Boolean> addTerraformAttributionLabel) {
+            $.addTerraformAttributionLabel = addTerraformAttributionLabel;
+            return this;
+        }
+
+        public Builder addTerraformAttributionLabel(Boolean addTerraformAttributionLabel) {
+            return addTerraformAttributionLabel(Output.of(addTerraformAttributionLabel));
         }
 
         public Builder alloydbCustomEndpoint(@Nullable Output<String> alloydbCustomEndpoint) {
@@ -2033,6 +2066,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return filestoreCustomEndpoint(Output.of(filestoreCustomEndpoint));
         }
 
+        public Builder firebaseAppCheckCustomEndpoint(@Nullable Output<String> firebaseAppCheckCustomEndpoint) {
+            $.firebaseAppCheckCustomEndpoint = firebaseAppCheckCustomEndpoint;
+            return this;
+        }
+
+        public Builder firebaseAppCheckCustomEndpoint(String firebaseAppCheckCustomEndpoint) {
+            return firebaseAppCheckCustomEndpoint(Output.of(firebaseAppCheckCustomEndpoint));
+        }
+
         public Builder firebaseCustomEndpoint(@Nullable Output<String> firebaseCustomEndpoint) {
             $.firebaseCustomEndpoint = firebaseCustomEndpoint;
             return this;
@@ -2687,6 +2729,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder tagsLocationCustomEndpoint(String tagsLocationCustomEndpoint) {
             return tagsLocationCustomEndpoint(Output.of(tagsLocationCustomEndpoint));
+        }
+
+        public Builder terraformAttributionLabelAdditionStrategy(@Nullable Output<String> terraformAttributionLabelAdditionStrategy) {
+            $.terraformAttributionLabelAdditionStrategy = terraformAttributionLabelAdditionStrategy;
+            return this;
+        }
+
+        public Builder terraformAttributionLabelAdditionStrategy(String terraformAttributionLabelAdditionStrategy) {
+            return terraformAttributionLabelAdditionStrategy(Output.of(terraformAttributionLabelAdditionStrategy));
         }
 
         public Builder tpuCustomEndpoint(@Nullable Output<String> tpuCustomEndpoint) {

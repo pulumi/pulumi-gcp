@@ -2118,7 +2118,7 @@ type HostingCustomDomainIssue struct {
 	// The status code, which should be an enum value of `google.rpc.Code`
 	Code *int `pulumi:"code"`
 	// A list of messages that carry the error details.
-	Details []map[string]interface{} `pulumi:"details"`
+	Details *string `pulumi:"details"`
 	// Error message
 	Message *string `pulumi:"message"`
 }
@@ -2138,7 +2138,7 @@ type HostingCustomDomainIssueArgs struct {
 	// The status code, which should be an enum value of `google.rpc.Code`
 	Code pulumi.IntPtrInput `pulumi:"code"`
 	// A list of messages that carry the error details.
-	Details pulumi.MapArrayInput `pulumi:"details"`
+	Details pulumi.StringPtrInput `pulumi:"details"`
 	// Error message
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -2200,8 +2200,8 @@ func (o HostingCustomDomainIssueOutput) Code() pulumi.IntPtrOutput {
 }
 
 // A list of messages that carry the error details.
-func (o HostingCustomDomainIssueOutput) Details() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v HostingCustomDomainIssue) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+func (o HostingCustomDomainIssueOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HostingCustomDomainIssue) *string { return v.Details }).(pulumi.StringPtrOutput)
 }
 
 // Error message

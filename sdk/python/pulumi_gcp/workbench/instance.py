@@ -581,8 +581,6 @@ class Instance(pulumi.CustomResource):
             network=my_network.id,
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        crypto_key = gcp.kms.CryptoKey("crypto-key", key_ring=keyring.id)
         instance = gcp.workbench.Instance("instance",
             location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
@@ -599,13 +597,13 @@ class Instance(pulumi.CustomResource):
                     disk_size_gb="310",
                     disk_type="PD_SSD",
                     disk_encryption="GMEK",
-                    kms_key=crypto_key.id,
+                    kms_key="my-crypto-key",
                 ),
                 data_disks=gcp.workbench.InstanceGceSetupDataDisksArgs(
                     disk_size_gb="330",
                     disk_type="PD_SSD",
                     disk_encryption="GMEK",
-                    kms_key=crypto_key.id,
+                    kms_key="my-crypto-key",
                 ),
                 network_interfaces=[gcp.workbench.InstanceGceSetupNetworkInterfaceArgs(
                     network=my_network.id,
@@ -745,8 +743,6 @@ class Instance(pulumi.CustomResource):
             network=my_network.id,
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
-        keyring = gcp.kms.KeyRing("keyring", location="global")
-        crypto_key = gcp.kms.CryptoKey("crypto-key", key_ring=keyring.id)
         instance = gcp.workbench.Instance("instance",
             location="us-central1-a",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
@@ -763,13 +759,13 @@ class Instance(pulumi.CustomResource):
                     disk_size_gb="310",
                     disk_type="PD_SSD",
                     disk_encryption="GMEK",
-                    kms_key=crypto_key.id,
+                    kms_key="my-crypto-key",
                 ),
                 data_disks=gcp.workbench.InstanceGceSetupDataDisksArgs(
                     disk_size_gb="330",
                     disk_type="PD_SSD",
                     disk_encryption="GMEK",
-                    kms_key=crypto_key.id,
+                    kms_key="my-crypto-key",
                 ),
                 network_interfaces=[gcp.workbench.InstanceGceSetupNetworkInterfaceArgs(
                     network=my_network.id,

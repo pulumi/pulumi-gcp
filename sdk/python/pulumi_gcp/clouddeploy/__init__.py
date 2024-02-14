@@ -7,6 +7,10 @@ import typing
 # Export this package's modules as members:
 from .automation import *
 from .delivery_pipeline import *
+from .delivery_pipeline_iam_binding import *
+from .delivery_pipeline_iam_member import *
+from .delivery_pipeline_iam_policy import *
+from .get_delivery_pipeline_iam_policy import *
 from .target import *
 from ._inputs import *
 from . import outputs

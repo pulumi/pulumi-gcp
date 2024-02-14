@@ -41,6 +41,14 @@ Object.defineProperty(exports, "activeDirectoryCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const addTerraformAttributionLabel: boolean | undefined;
+Object.defineProperty(exports, "addTerraformAttributionLabel", {
+    get() {
+        return __config.getObject<boolean>("addTerraformAttributionLabel");
+    },
+    enumerable: true,
+});
+
 export declare const alloydbCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "alloydbCustomEndpoint", {
     get() {
@@ -633,6 +641,14 @@ Object.defineProperty(exports, "filestoreCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const firebaseAppCheckCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseAppCheckCustomEndpoint", {
+    get() {
+        return __config.get("firebaseAppCheckCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const firebaseCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaseCustomEndpoint", {
     get() {
@@ -1205,6 +1221,14 @@ export declare const tagsLocationCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "tagsLocationCustomEndpoint", {
     get() {
         return __config.get("tagsLocationCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const terraformAttributionLabelAdditionStrategy: string | undefined;
+Object.defineProperty(exports, "terraformAttributionLabelAdditionStrategy", {
+    get() {
+        return __config.get("terraformAttributionLabelAdditionStrategy");
     },
     enumerable: true,
 });

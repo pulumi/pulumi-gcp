@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Firebase.Outputs
         /// <summary>
         /// A list of messages that carry the error details.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, object>> Details;
+        public readonly string? Details;
         /// <summary>
         /// Error message
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Firebase.Outputs
         private HostingCustomDomainIssue(
             int? code,
 
-            ImmutableArray<ImmutableDictionary<string, object>> details,
+            string? details,
 
             string? message)
         {

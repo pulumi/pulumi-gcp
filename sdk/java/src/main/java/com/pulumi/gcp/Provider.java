@@ -472,6 +472,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> filestoreCustomEndpoint() {
         return Codegen.optional(this.filestoreCustomEndpoint);
     }
+    @Export(name="firebaseAppCheckCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> firebaseAppCheckCustomEndpoint;
+
+    public Output<Optional<String>> firebaseAppCheckCustomEndpoint() {
+        return Codegen.optional(this.firebaseAppCheckCustomEndpoint);
+    }
     @Export(name="firebaseCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> firebaseCustomEndpoint;
 
@@ -891,6 +897,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> tagsLocationCustomEndpoint() {
         return Codegen.optional(this.tagsLocationCustomEndpoint);
+    }
+    @Export(name="terraformAttributionLabelAdditionStrategy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> terraformAttributionLabelAdditionStrategy;
+
+    public Output<Optional<String>> terraformAttributionLabelAdditionStrategy() {
+        return Codegen.optional(this.terraformAttributionLabelAdditionStrategy);
     }
     @Export(name="tpuCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tpuCustomEndpoint;

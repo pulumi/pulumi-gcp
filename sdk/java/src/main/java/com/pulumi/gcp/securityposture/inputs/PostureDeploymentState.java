@@ -49,7 +49,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture to be deployed.
+     * It denotes the desired posture to be deployed.
      * 
      */
     @Import(name="desiredPostureId")
@@ -58,7 +58,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
     /**
      * @return This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture to be deployed.
+     * It denotes the desired posture to be deployed.
      * 
      */
     public Optional<Output<String>> desiredPostureId() {
@@ -68,7 +68,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
     /**
      * This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture revision_id to be deployed.
+     * It denotes the desired posture revision_id to be deployed.
      * 
      */
     @Import(name="desiredPostureRevisionId")
@@ -77,7 +77,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
     /**
      * @return This is an output only optional field which will be filled in case when
      * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-     * It denotes the desired Posture revision_id to be deployed.
+     * It denotes the desired posture revision_id to be deployed.
      * 
      */
     public Optional<Output<String>> desiredPostureRevisionId() {
@@ -186,7 +186,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
     /**
      * Relative name of the posture which needs to be deployed. It should be in the format:
-     * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+     * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      * 
      */
     @Import(name="postureId")
@@ -194,7 +194,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
     /**
      * @return Relative name of the posture which needs to be deployed. It should be in the format:
-     * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+     * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      * 
      */
     public Optional<Output<String>> postureId() {
@@ -232,14 +232,16 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * State of the posture deployment.
+     * State of the posture deployment. A posture deployment can be in the following terminal states:
+     * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the posture deployment.
+     * @return State of the posture deployment. A posture deployment can be in the following terminal states:
+     * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
      * 
      */
     public Optional<Output<String>> state() {
@@ -248,9 +250,9 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
     /**
      * The resource on which the posture should be deployed. This can be in one of the following formats:
-     * projects/&lt;project_number&gt;
-     * folders/&lt;folder_number&gt;
-     * organizations/&lt;organization_id&gt;
+     * projects/{project_number},
+     * folders/{folder_number},
+     * organizations/{organization_id}
      * 
      */
     @Import(name="targetResource")
@@ -258,9 +260,9 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The resource on which the posture should be deployed. This can be in one of the following formats:
-     * projects/&lt;project_number&gt;
-     * folders/&lt;folder_number&gt;
-     * organizations/&lt;organization_id&gt;
+     * projects/{project_number},
+     * folders/{folder_number},
+     * organizations/{organization_id}
      * 
      */
     public Optional<Output<String>> targetResource() {
@@ -366,7 +368,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         /**
          * @param desiredPostureId This is an output only optional field which will be filled in case when
          * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-         * It denotes the desired Posture to be deployed.
+         * It denotes the desired posture to be deployed.
          * 
          * @return builder
          * 
@@ -379,7 +381,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         /**
          * @param desiredPostureId This is an output only optional field which will be filled in case when
          * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-         * It denotes the desired Posture to be deployed.
+         * It denotes the desired posture to be deployed.
          * 
          * @return builder
          * 
@@ -391,7 +393,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         /**
          * @param desiredPostureRevisionId This is an output only optional field which will be filled in case when
          * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-         * It denotes the desired Posture revision_id to be deployed.
+         * It denotes the desired posture revision_id to be deployed.
          * 
          * @return builder
          * 
@@ -404,7 +406,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         /**
          * @param desiredPostureRevisionId This is an output only optional field which will be filled in case when
          * PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-         * It denotes the desired Posture revision_id to be deployed.
+         * It denotes the desired posture revision_id to be deployed.
          * 
          * @return builder
          * 
@@ -551,7 +553,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
         /**
          * @param postureId Relative name of the posture which needs to be deployed. It should be in the format:
-         * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+         * organizations/{organization_id}/locations/{location}/postures/{posture_id}
          * 
          * @return builder
          * 
@@ -563,7 +565,7 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
         /**
          * @param postureId Relative name of the posture which needs to be deployed. It should be in the format:
-         * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+         * organizations/{organization_id}/locations/{location}/postures/{posture_id}
          * 
          * @return builder
          * 
@@ -615,7 +617,8 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param state State of the posture deployment.
+         * @param state State of the posture deployment. A posture deployment can be in the following terminal states:
+         * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
          * 
          * @return builder
          * 
@@ -626,7 +629,8 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param state State of the posture deployment.
+         * @param state State of the posture deployment. A posture deployment can be in the following terminal states:
+         * ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
          * 
          * @return builder
          * 
@@ -637,9 +641,9 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
         /**
          * @param targetResource The resource on which the posture should be deployed. This can be in one of the following formats:
-         * projects/&lt;project_number&gt;
-         * folders/&lt;folder_number&gt;
-         * organizations/&lt;organization_id&gt;
+         * projects/{project_number},
+         * folders/{folder_number},
+         * organizations/{organization_id}
          * 
          * @return builder
          * 
@@ -651,9 +655,9 @@ public final class PostureDeploymentState extends com.pulumi.resources.ResourceA
 
         /**
          * @param targetResource The resource on which the posture should be deployed. This can be in one of the following formats:
-         * projects/&lt;project_number&gt;
-         * folders/&lt;folder_number&gt;
-         * organizations/&lt;organization_id&gt;
+         * projects/{project_number},
+         * folders/{folder_number},
+         * organizations/{organization_id}
          * 
          * @return builder
          * 

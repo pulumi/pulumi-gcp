@@ -6,10 +6,7 @@ package com.pulumi.gcp.firebase.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -39,13 +36,13 @@ public final class HostingCustomDomainIssueArgs extends com.pulumi.resources.Res
      * 
      */
     @Import(name="details")
-    private @Nullable Output<List<Map<String,Object>>> details;
+    private @Nullable Output<String> details;
 
     /**
      * @return A list of messages that carry the error details.
      * 
      */
-    public Optional<Output<List<Map<String,Object>>>> details() {
+    public Optional<Output<String>> details() {
         return Optional.ofNullable(this.details);
     }
 
@@ -117,7 +114,7 @@ public final class HostingCustomDomainIssueArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder details(@Nullable Output<List<Map<String,Object>>> details) {
+        public Builder details(@Nullable Output<String> details) {
             $.details = details;
             return this;
         }
@@ -128,18 +125,8 @@ public final class HostingCustomDomainIssueArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder details(List<Map<String,Object>> details) {
+        public Builder details(String details) {
             return details(Output.of(details));
-        }
-
-        /**
-         * @param details A list of messages that carry the error details.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder details(Map<String,Object>... details) {
-            return details(List.of(details));
         }
 
         /**

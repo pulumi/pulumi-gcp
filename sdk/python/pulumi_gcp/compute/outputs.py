@@ -6155,7 +6155,9 @@ class InstanceConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableConfidentialCompute":
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+        elif key == "enableConfidentialCompute":
             suggest = "enable_confidential_compute"
 
         if suggest:
@@ -6170,17 +6172,30 @@ class InstanceConfidentialInstanceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_confidential_compute: bool):
+                 confidential_instance_type: Optional[str] = None,
+                 enable_confidential_compute: Optional[bool] = None):
         """
-        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
-        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[str]:
+        """
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
-    def enable_confidential_compute(self) -> bool:
+    def enable_confidential_compute(self) -> Optional[bool]:
         """
-        Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -6611,7 +6626,9 @@ class InstanceFromMachineImageConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableConfidentialCompute":
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+        elif key == "enableConfidentialCompute":
             suggest = "enable_confidential_compute"
 
         if suggest:
@@ -6626,17 +6643,34 @@ class InstanceFromMachineImageConfidentialInstanceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_confidential_compute: bool):
+                 confidential_instance_type: Optional[str] = None,
+                 enable_confidential_compute: Optional[bool] = None):
         """
-        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled.
+        :param str confidential_instance_type: Specifies which confidential computing technology to use.
+               								This could be one of the following values: SEV, SEV_SNP.
+               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
-        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[str]:
+        """
+        Specifies which confidential computing technology to use.
+        								This could be one of the following values: SEV, SEV_SNP.
+        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
-    def enable_confidential_compute(self) -> bool:
+    def enable_confidential_compute(self) -> Optional[bool]:
         """
-        Defines whether the instance should have confidential compute enabled.
+        Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -8134,7 +8168,9 @@ class InstanceFromTemplateConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableConfidentialCompute":
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+        elif key == "enableConfidentialCompute":
             suggest = "enable_confidential_compute"
 
         if suggest:
@@ -8149,17 +8185,34 @@ class InstanceFromTemplateConfidentialInstanceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_confidential_compute: bool):
+                 confidential_instance_type: Optional[str] = None,
+                 enable_confidential_compute: Optional[bool] = None):
         """
-        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled.
+        :param str confidential_instance_type: Specifies which confidential computing technology to use.
+               								This could be one of the following values: SEV, SEV_SNP.
+               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
-        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[str]:
+        """
+        Specifies which confidential computing technology to use.
+        								This could be one of the following values: SEV, SEV_SNP.
+        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
-    def enable_confidential_compute(self) -> bool:
+    def enable_confidential_compute(self) -> Optional[bool]:
         """
-        Defines whether the instance should have confidential compute enabled.
+        Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -11421,7 +11474,9 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableConfidentialCompute":
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+        elif key == "enableConfidentialCompute":
             suggest = "enable_confidential_compute"
 
         if suggest:
@@ -11436,17 +11491,30 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_confidential_compute: bool):
+                 confidential_instance_type: Optional[str] = None,
+                 enable_confidential_compute: Optional[bool] = None):
         """
-        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
-        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[str]:
+        """
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
-    def enable_confidential_compute(self) -> bool:
+    def enable_confidential_compute(self) -> Optional[bool]:
         """
-        Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -19230,7 +19298,9 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableConfidentialCompute":
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+        elif key == "enableConfidentialCompute":
             suggest = "enable_confidential_compute"
 
         if suggest:
@@ -19245,17 +19315,30 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_confidential_compute: bool):
+                 confidential_instance_type: Optional[str] = None,
+                 enable_confidential_compute: Optional[bool] = None):
         """
-        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled on AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
-        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> Optional[str]:
+        """
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
-    def enable_confidential_compute(self) -> bool:
+    def enable_confidential_compute(self) -> Optional[bool]:
         """
-        Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        Defines whether the instance should have confidential compute enabled on AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -40967,17 +41050,32 @@ class GetInstanceBootDiskInitializeParamResult(dict):
 @pulumi.output_type
 class GetInstanceConfidentialInstanceConfigResult(dict):
     def __init__(__self__, *,
+                 confidential_instance_type: str,
                  enable_confidential_compute: bool):
         """
-        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled.
+        :param str confidential_instance_type: Specifies which confidential computing technology to use.
+               								This could be one of the following values: SEV, SEV_SNP.
+               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
+        pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> str:
+        """
+        Specifies which confidential computing technology to use.
+        								This could be one of the following values: SEV, SEV_SNP.
+        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> bool:
         """
-        Defines whether the instance should have confidential compute enabled.
+        Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -42354,11 +42452,26 @@ class GetInstanceTemplateAdvancedMachineFeatureResult(dict):
 @pulumi.output_type
 class GetInstanceTemplateConfidentialInstanceConfigResult(dict):
     def __init__(__self__, *,
+                 confidential_instance_type: str,
                  enable_confidential_compute: bool):
         """
+        :param str confidential_instance_type: Specifies which confidential computing technology to use.
+               								This could be one of the following values: SEV, SEV_SNP.
+               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
+        pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> str:
+        """
+        Specifies which confidential computing technology to use.
+        								This could be one of the following values: SEV, SEV_SNP.
+        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
@@ -43972,11 +44085,26 @@ class GetRegionInstanceTemplateAdvancedMachineFeatureResult(dict):
 @pulumi.output_type
 class GetRegionInstanceTemplateConfidentialInstanceConfigResult(dict):
     def __init__(__self__, *,
+                 confidential_instance_type: str,
                  enable_confidential_compute: bool):
         """
+        :param str confidential_instance_type: Specifies which confidential computing technology to use.
+               								This could be one of the following values: SEV, SEV_SNP.
+               								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
+        pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> str:
+        """
+        Specifies which confidential computing technology to use.
+        								This could be one of the following values: SEV, SEV_SNP.
+        								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")

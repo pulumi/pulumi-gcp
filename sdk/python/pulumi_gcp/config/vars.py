@@ -33,6 +33,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('activeDirectoryCustomEndpoint')
 
     @property
+    def add_terraform_attribution_label(self) -> Optional[bool]:
+        return __config__.get_bool('addTerraformAttributionLabel')
+
+    @property
     def alloydb_custom_endpoint(self) -> Optional[str]:
         return __config__.get('alloydbCustomEndpoint')
 
@@ -329,6 +333,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('filestoreCustomEndpoint')
 
     @property
+    def firebase_app_check_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseAppCheckCustomEndpoint')
+
+    @property
     def firebase_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firebaseCustomEndpoint')
 
@@ -615,6 +623,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def tags_location_custom_endpoint(self) -> Optional[str]:
         return __config__.get('tagsLocationCustomEndpoint')
+
+    @property
+    def terraform_attribution_label_addition_strategy(self) -> Optional[str]:
+        return __config__.get('terraformAttributionLabelAdditionStrategy')
 
     @property
     def tpu_custom_endpoint(self) -> Optional[str]:

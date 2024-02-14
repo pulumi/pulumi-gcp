@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceTemplateConfidentialInstanceConfig
     {
         /// <summary>
-        /// Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        /// Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         /// </summary>
-        public readonly bool EnableConfidentialCompute;
+        public readonly string? ConfidentialInstanceType;
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled with AMD SEV. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        /// </summary>
+        public readonly bool? EnableConfidentialCompute;
 
         [OutputConstructor]
-        private InstanceTemplateConfidentialInstanceConfig(bool enableConfidentialCompute)
+        private InstanceTemplateConfidentialInstanceConfig(
+            string? confidentialInstanceType,
+
+            bool? enableConfidentialCompute)
         {
+            ConfidentialInstanceType = confidentialInstanceType;
             EnableConfidentialCompute = enableConfidentialCompute;
         }
     }

@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.SecurityPosture
         /// <summary>
         /// This is an output only optional field which will be filled in case when
         /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        /// It denotes the desired Posture to be deployed.
+        /// It denotes the desired posture to be deployed.
         /// </summary>
         [Output("desiredPostureId")]
         public Output<string> DesiredPostureId { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.SecurityPosture
         /// <summary>
         /// This is an output only optional field which will be filled in case when
         /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        /// It denotes the desired Posture revision_id to be deployed.
+        /// It denotes the desired posture revision_id to be deployed.
         /// </summary>
         [Output("desiredPostureRevisionId")]
         public Output<string> DesiredPostureRevisionId { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// Relative name of the posture which needs to be deployed. It should be in the format:
-        /// organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+        /// organizations/{organization_id}/locations/{location}/postures/{posture_id}
         /// </summary>
         [Output("postureId")]
         public Output<string> PostureId { get; private set; } = null!;
@@ -189,16 +189,17 @@ namespace Pulumi.Gcp.SecurityPosture
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
-        /// State of the posture deployment.
+        /// State of the posture deployment. A posture deployment can be in the following terminal states:
+        /// ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
         /// The resource on which the posture should be deployed. This can be in one of the following formats:
-        /// projects/&lt;project_number&gt;
-        /// folders/&lt;folder_number&gt;
-        /// organizations/&lt;organization_id&gt;
+        /// projects/{project_number},
+        /// folders/{folder_number},
+        /// organizations/{organization_id}
         /// </summary>
         [Output("targetResource")]
         public Output<string> TargetResource { get; private set; } = null!;
@@ -284,7 +285,7 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// Relative name of the posture which needs to be deployed. It should be in the format:
-        /// organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+        /// organizations/{organization_id}/locations/{location}/postures/{posture_id}
         /// </summary>
         [Input("postureId", required: true)]
         public Input<string> PostureId { get; set; } = null!;
@@ -297,9 +298,9 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// The resource on which the posture should be deployed. This can be in one of the following formats:
-        /// projects/&lt;project_number&gt;
-        /// folders/&lt;folder_number&gt;
-        /// organizations/&lt;organization_id&gt;
+        /// projects/{project_number},
+        /// folders/{folder_number},
+        /// organizations/{organization_id}
         /// </summary>
         [Input("targetResource", required: true)]
         public Input<string> TargetResource { get; set; } = null!;
@@ -327,7 +328,7 @@ namespace Pulumi.Gcp.SecurityPosture
         /// <summary>
         /// This is an output only optional field which will be filled in case when
         /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        /// It denotes the desired Posture to be deployed.
+        /// It denotes the desired posture to be deployed.
         /// </summary>
         [Input("desiredPostureId")]
         public Input<string>? DesiredPostureId { get; set; }
@@ -335,7 +336,7 @@ namespace Pulumi.Gcp.SecurityPosture
         /// <summary>
         /// This is an output only optional field which will be filled in case when
         /// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-        /// It denotes the desired Posture revision_id to be deployed.
+        /// It denotes the desired posture revision_id to be deployed.
         /// </summary>
         [Input("desiredPostureRevisionId")]
         public Input<string>? DesiredPostureRevisionId { get; set; }
@@ -384,7 +385,7 @@ namespace Pulumi.Gcp.SecurityPosture
 
         /// <summary>
         /// Relative name of the posture which needs to be deployed. It should be in the format:
-        /// organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+        /// organizations/{organization_id}/locations/{location}/postures/{posture_id}
         /// </summary>
         [Input("postureId")]
         public Input<string>? PostureId { get; set; }
@@ -402,16 +403,17 @@ namespace Pulumi.Gcp.SecurityPosture
         public Input<bool>? Reconciling { get; set; }
 
         /// <summary>
-        /// State of the posture deployment.
+        /// State of the posture deployment. A posture deployment can be in the following terminal states:
+        /// ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
         /// The resource on which the posture should be deployed. This can be in one of the following formats:
-        /// projects/&lt;project_number&gt;
-        /// folders/&lt;folder_number&gt;
-        /// organizations/&lt;organization_id&gt;
+        /// projects/{project_number},
+        /// folders/{folder_number},
+        /// organizations/{organization_id}
         /// </summary>
         [Input("targetResource")]
         public Input<string>? TargetResource { get; set; }

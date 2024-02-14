@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .android_app import *
+from .app_check_service_config import *
 from .apple_app import *
 from .database_instance import *
 from .extensions_instance import *

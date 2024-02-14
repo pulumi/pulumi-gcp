@@ -5,10 +5,7 @@ package com.pulumi.gcp.firebase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
-import java.lang.Object;
 import java.lang.String;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,7 +21,7 @@ public final class HostingCustomDomainIssue {
      * @return A list of messages that carry the error details.
      * 
      */
-    private @Nullable List<Map<String,Object>> details;
+    private @Nullable String details;
     /**
      * @return Error message
      * 
@@ -43,8 +40,8 @@ public final class HostingCustomDomainIssue {
      * @return A list of messages that carry the error details.
      * 
      */
-    public List<Map<String,Object>> details() {
-        return this.details == null ? List.of() : this.details;
+    public Optional<String> details() {
+        return Optional.ofNullable(this.details);
     }
     /**
      * @return Error message
@@ -64,7 +61,7 @@ public final class HostingCustomDomainIssue {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer code;
-        private @Nullable List<Map<String,Object>> details;
+        private @Nullable String details;
         private @Nullable String message;
         public Builder() {}
         public Builder(HostingCustomDomainIssue defaults) {
@@ -81,7 +78,7 @@ public final class HostingCustomDomainIssue {
             return this;
         }
         @CustomType.Setter
-        public Builder details(@Nullable List<Map<String,Object>> details) {
+        public Builder details(@Nullable String details) {
 
             this.details = details;
             return this;

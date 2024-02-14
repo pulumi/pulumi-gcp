@@ -82,7 +82,7 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Relative name of the posture which needs to be deployed. It should be in the format:
-     * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+     * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      * 
      */
     @Import(name="postureId", required=true)
@@ -90,7 +90,7 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Relative name of the posture which needs to be deployed. It should be in the format:
-     * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+     * organizations/{organization_id}/locations/{location}/postures/{posture_id}
      * 
      */
     public Output<String> postureId() {
@@ -114,9 +114,9 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The resource on which the posture should be deployed. This can be in one of the following formats:
-     * projects/&lt;project_number&gt;
-     * folders/&lt;folder_number&gt;
-     * organizations/&lt;organization_id&gt;
+     * projects/{project_number},
+     * folders/{folder_number},
+     * organizations/{organization_id}
      * 
      */
     @Import(name="targetResource", required=true)
@@ -124,9 +124,9 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The resource on which the posture should be deployed. This can be in one of the following formats:
-     * projects/&lt;project_number&gt;
-     * folders/&lt;folder_number&gt;
-     * organizations/&lt;organization_id&gt;
+     * projects/{project_number},
+     * folders/{folder_number},
+     * organizations/{organization_id}
      * 
      */
     public Output<String> targetResource() {
@@ -253,7 +253,7 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param postureId Relative name of the posture which needs to be deployed. It should be in the format:
-         * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+         * organizations/{organization_id}/locations/{location}/postures/{posture_id}
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param postureId Relative name of the posture which needs to be deployed. It should be in the format:
-         * organizations/&lt;ORG_ID&gt;/locations/&lt;LOCATION&gt;/postures/&lt;postureID&gt;
+         * organizations/{organization_id}/locations/{location}/postures/{posture_id}
          * 
          * @return builder
          * 
@@ -297,9 +297,9 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param targetResource The resource on which the posture should be deployed. This can be in one of the following formats:
-         * projects/&lt;project_number&gt;
-         * folders/&lt;folder_number&gt;
-         * organizations/&lt;organization_id&gt;
+         * projects/{project_number},
+         * folders/{folder_number},
+         * organizations/{organization_id}
          * 
          * @return builder
          * 
@@ -311,9 +311,9 @@ public final class PostureDeploymentArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param targetResource The resource on which the posture should be deployed. This can be in one of the following formats:
-         * projects/&lt;project_number&gt;
-         * folders/&lt;folder_number&gt;
-         * organizations/&lt;organization_id&gt;
+         * projects/{project_number},
+         * folders/{folder_number},
+         * organizations/{organization_id}
          * 
          * @return builder
          * 

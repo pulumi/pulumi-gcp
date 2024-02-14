@@ -18,17 +18,11 @@ namespace Pulumi.Gcp.Firebase.Inputs
         [Input("code")]
         public Input<int>? Code { get; set; }
 
-        [Input("details")]
-        private InputList<ImmutableDictionary<string, object>>? _details;
-
         /// <summary>
         /// A list of messages that carry the error details.
         /// </summary>
-        public InputList<ImmutableDictionary<string, object>> Details
-        {
-            get => _details ?? (_details = new InputList<ImmutableDictionary<string, object>>());
-            set => _details = value;
-        }
+        [Input("details")]
+        public Input<string>? Details { get; set; }
 
         /// <summary>
         /// Error message

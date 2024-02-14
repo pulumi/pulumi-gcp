@@ -27,6 +27,9 @@ public final class Config {
     public Optional<String> activeDirectoryCustomEndpoint() {
         return Codegen.stringProp("activeDirectoryCustomEndpoint").config(config).get();
     }
+    public Optional<Boolean> addTerraformAttributionLabel() {
+        return Codegen.booleanProp("addTerraformAttributionLabel").config(config).get();
+    }
     public Optional<String> alloydbCustomEndpoint() {
         return Codegen.stringProp("alloydbCustomEndpoint").config(config).get();
     }
@@ -249,6 +252,9 @@ public final class Config {
     public Optional<String> filestoreCustomEndpoint() {
         return Codegen.stringProp("filestoreCustomEndpoint").config(config).get();
     }
+    public Optional<String> firebaseAppCheckCustomEndpoint() {
+        return Codegen.stringProp("firebaseAppCheckCustomEndpoint").config(config).get();
+    }
     public Optional<String> firebaseCustomEndpoint() {
         return Codegen.stringProp("firebaseCustomEndpoint").config(config).get();
     }
@@ -464,6 +470,9 @@ public final class Config {
     }
     public Optional<String> tagsLocationCustomEndpoint() {
         return Codegen.stringProp("tagsLocationCustomEndpoint").config(config).get();
+    }
+    public Optional<String> terraformAttributionLabelAdditionStrategy() {
+        return Codegen.stringProp("terraformAttributionLabelAdditionStrategy").config(config).get();
     }
     public Optional<String> tpuCustomEndpoint() {
         return Codegen.stringProp("tpuCustomEndpoint").config(config).get();

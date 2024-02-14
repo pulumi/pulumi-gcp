@@ -107,11 +107,11 @@ type PostureDeployment struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// This is an output only optional field which will be filled in case when
 	// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-	// It denotes the desired Posture to be deployed.
+	// It denotes the desired posture to be deployed.
 	DesiredPostureId pulumi.StringOutput `pulumi:"desiredPostureId"`
 	// This is an output only optional field which will be filled in case when
 	// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-	// It denotes the desired Posture revisionId to be deployed.
+	// It denotes the desired posture revisionId to be deployed.
 	DesiredPostureRevisionId pulumi.StringOutput `pulumi:"desiredPostureRevisionId"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -131,18 +131,19 @@ type PostureDeployment struct {
 	// ***
 	PostureDeploymentId pulumi.StringOutput `pulumi:"postureDeploymentId"`
 	// Relative name of the posture which needs to be deployed. It should be in the format:
-	// organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
 	PostureId pulumi.StringOutput `pulumi:"postureId"`
 	// Revision_id the posture which needs to be deployed.
 	PostureRevisionId pulumi.StringOutput `pulumi:"postureRevisionId"`
 	// If set, there are currently changes in flight to the posture deployment.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// State of the posture deployment.
+	// State of the posture deployment. A posture deployment can be in the following terminal states:
+	// ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The resource on which the posture should be deployed. This can be in one of the following formats:
-	// projects/<project_number>
-	// folders/<folder_number>
-	// organizations/<organization_id>
+	// projects/{project_number},
+	// folders/{folder_number},
+	// organizations/{organization_id}
 	TargetResource pulumi.StringOutput `pulumi:"targetResource"`
 	// Time the posture deployment was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -202,11 +203,11 @@ type postureDeploymentState struct {
 	Description *string `pulumi:"description"`
 	// This is an output only optional field which will be filled in case when
 	// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-	// It denotes the desired Posture to be deployed.
+	// It denotes the desired posture to be deployed.
 	DesiredPostureId *string `pulumi:"desiredPostureId"`
 	// This is an output only optional field which will be filled in case when
 	// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-	// It denotes the desired Posture revisionId to be deployed.
+	// It denotes the desired posture revisionId to be deployed.
 	DesiredPostureRevisionId *string `pulumi:"desiredPostureRevisionId"`
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag *string `pulumi:"etag"`
@@ -226,18 +227,19 @@ type postureDeploymentState struct {
 	// ***
 	PostureDeploymentId *string `pulumi:"postureDeploymentId"`
 	// Relative name of the posture which needs to be deployed. It should be in the format:
-	// organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
 	PostureId *string `pulumi:"postureId"`
 	// Revision_id the posture which needs to be deployed.
 	PostureRevisionId *string `pulumi:"postureRevisionId"`
 	// If set, there are currently changes in flight to the posture deployment.
 	Reconciling *bool `pulumi:"reconciling"`
-	// State of the posture deployment.
+	// State of the posture deployment. A posture deployment can be in the following terminal states:
+	// ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
 	State *string `pulumi:"state"`
 	// The resource on which the posture should be deployed. This can be in one of the following formats:
-	// projects/<project_number>
-	// folders/<folder_number>
-	// organizations/<organization_id>
+	// projects/{project_number},
+	// folders/{folder_number},
+	// organizations/{organization_id}
 	TargetResource *string `pulumi:"targetResource"`
 	// Time the posture deployment was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -250,11 +252,11 @@ type PostureDeploymentState struct {
 	Description pulumi.StringPtrInput
 	// This is an output only optional field which will be filled in case when
 	// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-	// It denotes the desired Posture to be deployed.
+	// It denotes the desired posture to be deployed.
 	DesiredPostureId pulumi.StringPtrInput
 	// This is an output only optional field which will be filled in case when
 	// PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-	// It denotes the desired Posture revisionId to be deployed.
+	// It denotes the desired posture revisionId to be deployed.
 	DesiredPostureRevisionId pulumi.StringPtrInput
 	// For Resource freshness validation (https://google.aip.dev/154)
 	Etag pulumi.StringPtrInput
@@ -274,18 +276,19 @@ type PostureDeploymentState struct {
 	// ***
 	PostureDeploymentId pulumi.StringPtrInput
 	// Relative name of the posture which needs to be deployed. It should be in the format:
-	// organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
 	PostureId pulumi.StringPtrInput
 	// Revision_id the posture which needs to be deployed.
 	PostureRevisionId pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the posture deployment.
 	Reconciling pulumi.BoolPtrInput
-	// State of the posture deployment.
+	// State of the posture deployment. A posture deployment can be in the following terminal states:
+	// ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
 	State pulumi.StringPtrInput
 	// The resource on which the posture should be deployed. This can be in one of the following formats:
-	// projects/<project_number>
-	// folders/<folder_number>
-	// organizations/<organization_id>
+	// projects/{project_number},
+	// folders/{folder_number},
+	// organizations/{organization_id}
 	TargetResource pulumi.StringPtrInput
 	// Time the posture deployment was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
@@ -307,14 +310,14 @@ type postureDeploymentArgs struct {
 	// ***
 	PostureDeploymentId string `pulumi:"postureDeploymentId"`
 	// Relative name of the posture which needs to be deployed. It should be in the format:
-	// organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
 	PostureId string `pulumi:"postureId"`
 	// Revision_id the posture which needs to be deployed.
 	PostureRevisionId string `pulumi:"postureRevisionId"`
 	// The resource on which the posture should be deployed. This can be in one of the following formats:
-	// projects/<project_number>
-	// folders/<folder_number>
-	// organizations/<organization_id>
+	// projects/{project_number},
+	// folders/{folder_number},
+	// organizations/{organization_id}
 	TargetResource string `pulumi:"targetResource"`
 }
 
@@ -331,14 +334,14 @@ type PostureDeploymentArgs struct {
 	// ***
 	PostureDeploymentId pulumi.StringInput
 	// Relative name of the posture which needs to be deployed. It should be in the format:
-	// organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+	// organizations/{organization_id}/locations/{location}/postures/{posture_id}
 	PostureId pulumi.StringInput
 	// Revision_id the posture which needs to be deployed.
 	PostureRevisionId pulumi.StringInput
 	// The resource on which the posture should be deployed. This can be in one of the following formats:
-	// projects/<project_number>
-	// folders/<folder_number>
-	// organizations/<organization_id>
+	// projects/{project_number},
+	// folders/{folder_number},
+	// organizations/{organization_id}
 	TargetResource pulumi.StringInput
 }
 
@@ -441,14 +444,14 @@ func (o PostureDeploymentOutput) Description() pulumi.StringPtrOutput {
 
 // This is an output only optional field which will be filled in case when
 // PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-// It denotes the desired Posture to be deployed.
+// It denotes the desired posture to be deployed.
 func (o PostureDeploymentOutput) DesiredPostureId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostureDeployment) pulumi.StringOutput { return v.DesiredPostureId }).(pulumi.StringOutput)
 }
 
 // This is an output only optional field which will be filled in case when
 // PostureDeployment state is UPDATE_FAILED or CREATE_FAILED or DELETE_FAILED.
-// It denotes the desired Posture revisionId to be deployed.
+// It denotes the desired posture revisionId to be deployed.
 func (o PostureDeploymentOutput) DesiredPostureRevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostureDeployment) pulumi.StringOutput { return v.DesiredPostureRevisionId }).(pulumi.StringOutput)
 }
@@ -489,7 +492,7 @@ func (o PostureDeploymentOutput) PostureDeploymentId() pulumi.StringOutput {
 }
 
 // Relative name of the posture which needs to be deployed. It should be in the format:
-// organizations/<ORG_ID>/locations/<LOCATION>/postures/<postureID>
+// organizations/{organization_id}/locations/{location}/postures/{posture_id}
 func (o PostureDeploymentOutput) PostureId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostureDeployment) pulumi.StringOutput { return v.PostureId }).(pulumi.StringOutput)
 }
@@ -504,15 +507,16 @@ func (o PostureDeploymentOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PostureDeployment) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// State of the posture deployment.
+// State of the posture deployment. A posture deployment can be in the following terminal states:
+// ACTIVE, CREATE_FAILED, UPDATE_FAILED, DELETE_FAILED.
 func (o PostureDeploymentOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostureDeployment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 // The resource on which the posture should be deployed. This can be in one of the following formats:
-// projects/<project_number>
-// folders/<folder_number>
-// organizations/<organization_id>
+// projects/{project_number},
+// folders/{folder_number},
+// organizations/{organization_id}
 func (o PostureDeploymentOutput) TargetResource() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostureDeployment) pulumi.StringOutput { return v.TargetResource }).(pulumi.StringOutput)
 }

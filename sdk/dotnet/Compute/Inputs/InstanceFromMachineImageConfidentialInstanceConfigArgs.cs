@@ -13,10 +13,18 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class InstanceFromMachineImageConfidentialInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines whether the instance should have confidential compute enabled.
+        /// Specifies which confidential computing technology to use.
+        /// 								This could be one of the following values: SEV, SEV_SNP.
+        /// 								If SEV_SNP, min_cpu_platform = "AMD Milan" is currently required.
         /// </summary>
-        [Input("enableConfidentialCompute", required: true)]
-        public Input<bool> EnableConfidentialCompute { get; set; } = null!;
+        [Input("confidentialInstanceType")]
+        public Input<string>? ConfidentialInstanceType { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
 
         public InstanceFromMachineImageConfidentialInstanceConfigArgs()
         {

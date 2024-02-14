@@ -11419,6 +11419,18 @@ export namespace clouddeploy {
         status: boolean;
     }
 
+    export interface DeliveryPipelineIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface DeliveryPipelineIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface DeliveryPipelineSerialPipeline {
         /**
          * Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
@@ -20603,7 +20615,13 @@ export namespace compute {
 
     export interface GetInstanceConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled.
+         * Specifies which confidential computing technology to use.
+         * 								This could be one of the following values: SEV, SEV_SNP.
+         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         */
+        confidentialInstanceType: string;
+        /**
+         * Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
          */
         enableConfidentialCompute: boolean;
     }
@@ -21120,6 +21138,12 @@ export namespace compute {
     }
 
     export interface GetInstanceTemplateConfidentialInstanceConfig {
+        /**
+         * Specifies which confidential computing technology to use.
+         * 								This could be one of the following values: SEV, SEV_SNP.
+         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         */
+        confidentialInstanceType: string;
         /**
          * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          */
@@ -21745,6 +21769,12 @@ export namespace compute {
     }
 
     export interface GetRegionInstanceTemplateConfidentialInstanceConfig {
+        /**
+         * Specifies which confidential computing technology to use.
+         * 								This could be one of the following values: SEV, SEV_SNP.
+         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         */
+        confidentialInstanceType: string;
         /**
          * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          */
@@ -23487,9 +23517,13 @@ export namespace compute {
 
     export interface InstanceConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
-        enableConfidentialCompute: boolean;
+        confidentialInstanceType?: string;
+        /**
+         * Defines whether the instance should have confidential compute enabled with AMD SEV. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
+        enableConfidentialCompute?: boolean;
     }
 
     export interface InstanceFromMachineImageAdvancedMachineFeatures {
@@ -23606,7 +23640,13 @@ export namespace compute {
 
     export interface InstanceFromMachineImageConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled.
+         * Specifies which confidential computing technology to use.
+         * 								This could be one of the following values: SEV, SEV_SNP.
+         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         */
+        confidentialInstanceType: string;
+        /**
+         * Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
          */
         enableConfidentialCompute: boolean;
     }
@@ -24018,7 +24058,13 @@ export namespace compute {
 
     export interface InstanceFromTemplateConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled.
+         * Specifies which confidential computing technology to use.
+         * 								This could be one of the following values: SEV, SEV_SNP.
+         * 								If SEV_SNP, minCpuPlatform = "AMD Milan" is currently required.
+         */
+        confidentialInstanceType: string;
+        /**
+         * Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
          */
         enableConfidentialCompute: boolean;
     }
@@ -24955,9 +25001,13 @@ export namespace compute {
 
     export interface InstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
-        enableConfidentialCompute: boolean;
+        confidentialInstanceType?: string;
+        /**
+         * Defines whether the instance should have confidential compute enabled with AMD SEV. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
+        enableConfidentialCompute?: boolean;
     }
 
     export interface InstanceTemplateDisk {
@@ -27347,9 +27397,13 @@ export namespace compute {
 
     export interface RegionInstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. One of the following values: `SEV`, `SEV_SNP`. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
-        enableConfidentialCompute: boolean;
+        confidentialInstanceType?: string;
+        /**
+         * Defines whether the instance should have confidential compute enabled on AMD SEV. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
+        enableConfidentialCompute?: boolean;
     }
 
     export interface RegionInstanceTemplateDisk {
@@ -53588,7 +53642,7 @@ export namespace firebase {
         /**
          * A list of messages that carry the error details.
          */
-        details?: {[key: string]: any}[];
+        details?: string;
         /**
          * Error message
          */
