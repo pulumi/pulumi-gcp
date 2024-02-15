@@ -43,6 +43,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// The sample data comes from the following link:
+//			// https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
 //			_, err = storage.NewBucketObject(ctx, "data", &storage.BucketObjectArgs{
 //				Bucket:  bucket.Name,
 //				Content: pulumi.String("{\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}\n{\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}\n"),
@@ -108,6 +110,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// The sample data comes from the following link:
+//			// https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
 //			_, err = storage.NewBucketObject(ctx, "data", &storage.BucketObjectArgs{
 //				Bucket:  bucket.Name,
 //				Content: pulumi.String("{\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}\n{\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}\n"),

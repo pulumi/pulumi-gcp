@@ -64,6 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Cloud Functions Example
 //			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "functionNegRegionNetworkEndpointGroup", &compute.RegionNetworkEndpointGroupArgs{
 //				NetworkEndpointType: pulumi.String("SERVERLESS"),
 //				Region:              pulumi.String("us-central1"),
@@ -115,6 +116,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Cloud Run Example
 //			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "cloudrunNegRegionNetworkEndpointGroup", &compute.RegionNetworkEndpointGroupArgs{
 //				NetworkEndpointType: pulumi.String("SERVERLESS"),
 //				Region:              pulumi.String("us-central1"),
@@ -209,6 +211,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// App Engine Example
 //			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "appengineNegRegionNetworkEndpointGroup", &compute.RegionNetworkEndpointGroupArgs{
 //				NetworkEndpointType: pulumi.String("SERVERLESS"),
 //				Region:              pulumi.String("us-central1"),
