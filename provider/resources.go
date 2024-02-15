@@ -360,9 +360,9 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 			"GCLOUD_PROJECT",
 			"CLOUDSDK_CORE_PROJECT",
 		})
-		// host is nil in tests.
-		if project == "" && host != nil {
+		if project == "" {
 			host.Log(ctx, diag.Warning, "", noProjectErr) // the URN will default to the root stack name which is exactly what we want
+			return nil
 		}
 
 		config := tpg_transport.Config{
@@ -404,10 +404,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {
 			regionList, err := getRegionsList(ctx, config.Project, gcpClientOpts)
 			if err != nil {
-				// host is nil in tests.
-				if host != nil {
-					_ = host.Log(ctx, diag.Warning, "", fmt.Sprintf("failed to get regions list: %v", err))
-				}
+				_ = host.Log(ctx, diag.Warning, "", fmt.Sprintf("failed to get regions list: %v", err))
 				return nil
 			}
 			for _, region := range regionList {
@@ -415,7 +412,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 					return nil
 				}
 			}
-			return fmt.Errorf(wrongRegionErr, config.Region, config.Project)
+			_ = host.Log(ctx, diag.Warning, "",fmt.Sprintf(wrongRegionErr, config.Region, config.Project))
 		}
 
 		return nil
