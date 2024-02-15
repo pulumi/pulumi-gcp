@@ -112,8 +112,8 @@ func TestTopicIamBinding(t *testing.T) {
 }
 
 func TestWrongRegionWarning(t *testing.T) {
-	if !testing.Short() {
-		t.Skip("Only run in short mode, since we want to NOT have credentials.")
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
 	t.Setenv("GOOGLE_REGION", "westus")
 
