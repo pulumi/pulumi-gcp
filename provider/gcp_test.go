@@ -52,7 +52,7 @@ func TestPreConfigureCallbackNoErrWhenRegionMatches(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func TestPreConfigureCallbackErrWhenRegionDifferent(t *testing.T) {
+func TestPreConfigureCallbackNoErrWhenRegionDifferent(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
@@ -71,8 +71,7 @@ func TestPreConfigureCallbackErrWhenRegionDifferent(t *testing.T) {
 	)
 
 	err := preConfigureCall(context.Background(), nil, nil, nil)
-	require.Error(t, err)
-	require.Contains(t, err.Error(), `region "region2" is not available for project "myproject"`)
+	require.NoError(t, err)
 }
 
 func TestPreConfigureCallbackNoErrWhenRegionCheckSkipped(t *testing.T) {
