@@ -24,7 +24,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/pulumi/providertest/pulumitest"
+	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
+	"github.com/stretchr/testify/require"
 )
 
 func TestDNSRecordSetUpgrade(t *testing.T) {
@@ -106,6 +109,47 @@ func TestTopicIamBinding(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
 	testProviderUpgrade(t, "test-programs/topic-iam-binding", "7.0.0")
+}
+
+func TestWrongRegionWarning(t *testing.T) {
+	if !testing.Short() {
+		t.Skip("Only run in short mode, since we want to NOT have credentials.")
+	}
+	t.Setenv("GOOGLE_REGION", "westus")
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+
+	test := pulumitest.NewPulumiTest(t, "test-programs/storage-bucket",
+	opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
+
+	proj := os.Getenv("GOOGLE_PROJECT")
+	test.SetConfig("gcp:project", proj)
+	res := test.Up()
+	require.Contains(
+		t, res.StdOut, 
+		"region \"westus\" is not available for project \""+proj,
+	)
+}
+
+func TestNoGlobalProjectWarning(t *testing.T) {
+	if !testing.Short() {
+		t.Skip("Only run in short mode, since we want to NOT have credentials.")
+	}
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	proj := os.Getenv("GOOGLE_PROJECT")
+	t.Setenv("GOOGLE_PROJECT", "")
+
+	test := pulumitest.NewPulumiTest(t, "test-programs/project-bucket",
+	opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
+
+	test.SetConfig("gcpProj", proj)
+	res := test.Up()
+	require.Contains(
+		t, res.StdOut, 
+		"unable to detect a global setting for GCP Project.",
+	)
 }
 
 // Test programs that were automatically extracted from examples without autocorrection.
@@ -402,7 +446,6 @@ func TestCheckConfigNoCredentials(t *testing.T) {
 	}
 	t.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "")
 	t.Setenv("GOOGLE_GHA_CREDS_PATH", "")
-	t.Setenv("GOOGLE_PROJECT", "")
 	t.Setenv("GOOGLE_ZONE", "")
 	t.Setenv("GOOGLE_REGION", "")
 	replay.Replay(t, providerServer(t), strings.ReplaceAll(`
@@ -429,37 +472,6 @@ func TestCheckConfigNoCredentials(t *testing.T) {
 	)
 }
 
-func TestCheckConfigWrongRegion(t *testing.T) {
-	if testing.Short() {
-		t.Skip("Only run in long mode, since we want credentials.")
-	}
-	t.Setenv("GOOGLE_REGION", "")
-	t.Setenv("GOOGLE_ZONE", "")
-	proj := os.Getenv("GOOGLE_PROJECT")
-	replay.Replay(t, providerServer(t), `
-	{
-		"method": "/pulumirpc.ResourceProvider/CheckConfig",
-		"request": {
-			"urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
-			"olds": {
-			},
-			"news": {
-				"region": "westus",
-				"version": "7.6.0"
-			}
-		},
-		"errors": [
-			"region \"westus\" is not available for project \"`+proj+`\".\nPlease see https://cloud.google.com/compute/docs/regions-zones/viewing-regions-zones#viewing_a_list_of_available_regions for a list of available regions"
-		],
-		"metadata": {
-			"kind": "resource",
-			"mode": "client",
-			"name": "gcp"
-		}
-	}
-`,
-	)
-}
 
 func TestRegress1488(t *testing.T) {
 	if testing.Short() {

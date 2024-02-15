@@ -5,6 +5,7 @@ package gcp
 import (
 	"context"
 	"fmt"
+	"log"
 	"path"
 	"strings"
 	"sync/atomic"
@@ -347,6 +348,16 @@ var wrongRegionErr string
 //go:embed errors/no_project.txt
 var noProjectErr string
 
+func logOrPrint(ctx context.Context, host *provider.HostClient, msg string) {
+	// host is unavailable in tests, so we revert to normal logging.
+	if host != nil {
+		// the URN will default to the root stack name which is exactly what we want
+		_ = host.Log(ctx, diag.Warning, "", msg)
+	} else {
+		log.Print(msg)
+	}
+}
+
 func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpClientOpts []option.ClientOption) func(
 	ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig,
 ) error {
@@ -361,7 +372,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 			"CLOUDSDK_CORE_PROJECT",
 		})
 		if project == "" {
-			host.Log(ctx, diag.Warning, "", noProjectErr) // the URN will default to the root stack name which is exactly what we want
+			logOrPrint(ctx, host, noProjectErr)
 			return nil
 		}
 
@@ -404,7 +415,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {
 			regionList, err := getRegionsList(ctx, config.Project, gcpClientOpts)
 			if err != nil {
-				_ = host.Log(ctx, diag.Warning, "", fmt.Sprintf("failed to get regions list: %v", err))
+				logOrPrint(ctx, host, fmt.Sprintf("failed to get regions list: %v", err))
 				return nil
 			}
 			for _, region := range regionList {
@@ -412,7 +423,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 					return nil
 				}
 			}
-			_ = host.Log(ctx, diag.Warning, "",fmt.Sprintf(wrongRegionErr, config.Region, config.Project))
+			logOrPrint(ctx, host, fmt.Sprintf(wrongRegionErr, config.Region, config.Project))
 		}
 
 		return nil

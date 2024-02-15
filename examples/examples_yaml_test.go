@@ -7,6 +7,7 @@ package examples
 import (
 	"bytes"
 	"encoding/json"
+	"os"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -54,4 +55,12 @@ func TestWarningsNotDuplicated(t *testing.T) {
 		},
 	}
 	integration.ProgramTest(t, &opts)
+}
+
+func TestInvalidExplicitProviderProject(t *testing.T) {
+	gcpProject := os.Getenv("GCP_PROJECT")
+	integration.ProgramTest(t, &integration.ProgramTestOptions{
+		Dir: filepath.Join(getCwd(t), "non-existent-project"),
+		Config: map[string]string{"gcpProj": gcpProject},
+	})
 }
