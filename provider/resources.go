@@ -358,6 +358,7 @@ func logOrPrint(ctx context.Context, host *provider.HostClient, msg string) {
 	}
 }
 
+// gcpClientOpts is used to pass in options during testing.
 func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpClientOpts []option.ClientOption) func(
 	ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig,
 ) error {
