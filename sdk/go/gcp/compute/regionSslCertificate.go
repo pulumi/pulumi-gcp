@@ -97,6 +97,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// You may also want to control name generation explicitly:
 //			_, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
 //				Region:      pulumi.String("us-central1"),
 //				PrivateKey:  readFileOrPanic("path/to/private.key"),

@@ -68,6 +68,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// note this requires the terraform to be run regularly
 //			mykeyRotation, err := time.NewRotating(ctx, "mykeyRotation", &time.RotatingArgs{
 //				RotationDays: pulumi.Int(30),
 //			})
