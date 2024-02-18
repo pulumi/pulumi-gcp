@@ -185,6 +185,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Allow SA service account use the default GCE account
 //			_, err = serviceaccount.NewIAMMember(ctx, "gce-default-account-iam", &serviceaccount.IAMMemberArgs{
 //				ServiceAccountId: *pulumi.String(_default.Name),
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
