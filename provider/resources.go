@@ -503,12 +503,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		IgnoreMappings: []string{
-			// There is a resource and data source, identically named. The outputs of the data source share identical
-			// types with the resource.
-			// See: https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/data_source_dataproc_metastore_service
-			"google_dataproc_metastore_service",
-		},
 		PreConfigureCallbackWithLogger: preConfigureCallbackWithLogger(&credentialsValidationRun, nil),
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Access Context Manager

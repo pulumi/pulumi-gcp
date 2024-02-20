@@ -17,6 +17,7 @@ from .get_autoscaling_policy_iam_policy import *
 from .get_cluster_iam_policy import *
 from .get_job_iam_policy import *
 from .get_metastore_federation_iam_policy import *
+from .get_metastore_service import *
 from .get_metastore_service_iam_policy import *
 from .job import *
 from .job_iam_binding import *

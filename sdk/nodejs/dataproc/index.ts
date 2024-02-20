@@ -65,6 +65,11 @@ export const getMetastoreFederationIamPolicy: typeof import("./getMetastoreFeder
 export const getMetastoreFederationIamPolicyOutput: typeof import("./getMetastoreFederationIamPolicy").getMetastoreFederationIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getMetastoreFederationIamPolicy","getMetastoreFederationIamPolicyOutput"], () => require("./getMetastoreFederationIamPolicy"));
 
+export { GetMetastoreServiceArgs, GetMetastoreServiceResult, GetMetastoreServiceOutputArgs } from "./getMetastoreService";
+export const getMetastoreService: typeof import("./getMetastoreService").getMetastoreService = null as any;
+export const getMetastoreServiceOutput: typeof import("./getMetastoreService").getMetastoreServiceOutput = null as any;
+utilities.lazyLoad(exports, ["getMetastoreService","getMetastoreServiceOutput"], () => require("./getMetastoreService"));
+
 export { GetMetastoreServiceIamPolicyArgs, GetMetastoreServiceIamPolicyResult, GetMetastoreServiceIamPolicyOutputArgs } from "./getMetastoreServiceIamPolicy";
 export const getMetastoreServiceIamPolicy: typeof import("./getMetastoreServiceIamPolicy").getMetastoreServiceIamPolicy = null as any;
 export const getMetastoreServiceIamPolicyOutput: typeof import("./getMetastoreServiceIamPolicy").getMetastoreServiceIamPolicyOutput = null as any;

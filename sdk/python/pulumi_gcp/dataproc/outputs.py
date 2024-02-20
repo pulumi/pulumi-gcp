@@ -154,6 +154,18 @@ __all__ = [
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig',
     'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfig',
+    'GetMetastoreServiceEncryptionConfigResult',
+    'GetMetastoreServiceHiveMetastoreConfigResult',
+    'GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionResult',
+    'GetMetastoreServiceHiveMetastoreConfigKerberosConfigResult',
+    'GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabResult',
+    'GetMetastoreServiceMaintenanceWindowResult',
+    'GetMetastoreServiceMetadataIntegrationResult',
+    'GetMetastoreServiceMetadataIntegrationDataCatalogConfigResult',
+    'GetMetastoreServiceNetworkConfigResult',
+    'GetMetastoreServiceNetworkConfigConsumerResult',
+    'GetMetastoreServiceScalingConfigResult',
+    'GetMetastoreServiceTelemetryConfigResult',
 ]
 
 @pulumi.output_type
@@ -10121,5 +10133,373 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfi
         Output only. The name of the Instance Template used for the Managed Instance Group.
         """
         return pulumi.get(self, "instance_template_name")
+
+
+@pulumi.output_type
+class GetMetastoreServiceEncryptionConfigResult(dict):
+    def __init__(__self__, *,
+                 kms_key: str):
+        """
+        :param str kms_key: The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+               Use the following format: 'projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)'
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+        Use the following format: 'projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)'
+        """
+        return pulumi.get(self, "kms_key")
+
+
+@pulumi.output_type
+class GetMetastoreServiceHiveMetastoreConfigResult(dict):
+    def __init__(__self__, *,
+                 auxiliary_versions: Sequence['outputs.GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionResult'],
+                 config_overrides: Mapping[str, str],
+                 endpoint_protocol: str,
+                 kerberos_configs: Sequence['outputs.GetMetastoreServiceHiveMetastoreConfigKerberosConfigResult'],
+                 version: str):
+        """
+        :param Sequence['GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs'] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration.
+               When specified, a secondary Hive metastore service is created along with the primary service.
+               All auxiliary versions must be less than the service's primary version.
+               The key is the auxiliary service name and it must match the regular expression a-z?.
+               This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+               The mappings override system defaults (some keys cannot be overridden)
+        :param str endpoint_protocol: The protocol to use for the metastore service endpoint. If unspecified, defaults to 'THRIFT'. Default value: "THRIFT" Possible values: ["THRIFT", "GRPC"]
+        :param Sequence['GetMetastoreServiceHiveMetastoreConfigKerberosConfigArgs'] kerberos_configs: Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+        :param str version: The Hive metastore schema version.
+        """
+        pulumi.set(__self__, "auxiliary_versions", auxiliary_versions)
+        pulumi.set(__self__, "config_overrides", config_overrides)
+        pulumi.set(__self__, "endpoint_protocol", endpoint_protocol)
+        pulumi.set(__self__, "kerberos_configs", kerberos_configs)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="auxiliaryVersions")
+    def auxiliary_versions(self) -> Sequence['outputs.GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionResult']:
+        """
+        A mapping of Hive metastore version to the auxiliary version configuration.
+        When specified, a secondary Hive metastore service is created along with the primary service.
+        All auxiliary versions must be less than the service's primary version.
+        The key is the auxiliary service name and it must match the regular expression a-z?.
+        This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        """
+        return pulumi.get(self, "auxiliary_versions")
+
+    @property
+    @pulumi.getter(name="configOverrides")
+    def config_overrides(self) -> Mapping[str, str]:
+        """
+        A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+        The mappings override system defaults (some keys cannot be overridden)
+        """
+        return pulumi.get(self, "config_overrides")
+
+    @property
+    @pulumi.getter(name="endpointProtocol")
+    def endpoint_protocol(self) -> str:
+        """
+        The protocol to use for the metastore service endpoint. If unspecified, defaults to 'THRIFT'. Default value: "THRIFT" Possible values: ["THRIFT", "GRPC"]
+        """
+        return pulumi.get(self, "endpoint_protocol")
+
+    @property
+    @pulumi.getter(name="kerberosConfigs")
+    def kerberos_configs(self) -> Sequence['outputs.GetMetastoreServiceHiveMetastoreConfigKerberosConfigResult']:
+        """
+        Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+        """
+        return pulumi.get(self, "kerberos_configs")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The Hive metastore schema version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionResult(dict):
+    def __init__(__self__, *,
+                 config_overrides: Mapping[str, str],
+                 key: str,
+                 version: str):
+        """
+        :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+               If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+        :param str version: The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+        """
+        pulumi.set(__self__, "config_overrides", config_overrides)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="configOverrides")
+    def config_overrides(self) -> Mapping[str, str]:
+        """
+        A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+        If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+        """
+        return pulumi.get(self, "config_overrides")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetMetastoreServiceHiveMetastoreConfigKerberosConfigResult(dict):
+    def __init__(__self__, *,
+                 keytabs: Sequence['outputs.GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabResult'],
+                 krb5_config_gcs_uri: str,
+                 principal: str):
+        """
+        :param Sequence['GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs'] keytabs: A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+        :param str krb5_config_gcs_uri: A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+        :param str principal: A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+        """
+        pulumi.set(__self__, "keytabs", keytabs)
+        pulumi.set(__self__, "krb5_config_gcs_uri", krb5_config_gcs_uri)
+        pulumi.set(__self__, "principal", principal)
+
+    @property
+    @pulumi.getter
+    def keytabs(self) -> Sequence['outputs.GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabResult']:
+        """
+        A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+        """
+        return pulumi.get(self, "keytabs")
+
+    @property
+    @pulumi.getter(name="krb5ConfigGcsUri")
+    def krb5_config_gcs_uri(self) -> str:
+        """
+        A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+        """
+        return pulumi.get(self, "krb5_config_gcs_uri")
+
+    @property
+    @pulumi.getter
+    def principal(self) -> str:
+        """
+        A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+        """
+        return pulumi.get(self, "principal")
+
+
+@pulumi.output_type
+class GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabResult(dict):
+    def __init__(__self__, *,
+                 cloud_secret: str):
+        """
+        :param str cloud_secret: The relative resource name of a Secret Manager secret version, in the following form:
+               
+               "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+        """
+        pulumi.set(__self__, "cloud_secret", cloud_secret)
+
+    @property
+    @pulumi.getter(name="cloudSecret")
+    def cloud_secret(self) -> str:
+        """
+        The relative resource name of a Secret Manager secret version, in the following form:
+
+        "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+        """
+        return pulumi.get(self, "cloud_secret")
+
+
+@pulumi.output_type
+class GetMetastoreServiceMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 hour_of_day: int):
+        """
+        :param str day_of_week: The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        :param int hour_of_day: The hour of day (0-23) when the window starts.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        """
+        The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        """
+        The hour of day (0-23) when the window starts.
+        """
+        return pulumi.get(self, "hour_of_day")
+
+
+@pulumi.output_type
+class GetMetastoreServiceMetadataIntegrationResult(dict):
+    def __init__(__self__, *,
+                 data_catalog_configs: Sequence['outputs.GetMetastoreServiceMetadataIntegrationDataCatalogConfigResult']):
+        """
+        :param Sequence['GetMetastoreServiceMetadataIntegrationDataCatalogConfigArgs'] data_catalog_configs: The integration config for the Data Catalog service.
+        """
+        pulumi.set(__self__, "data_catalog_configs", data_catalog_configs)
+
+    @property
+    @pulumi.getter(name="dataCatalogConfigs")
+    def data_catalog_configs(self) -> Sequence['outputs.GetMetastoreServiceMetadataIntegrationDataCatalogConfigResult']:
+        """
+        The integration config for the Data Catalog service.
+        """
+        return pulumi.get(self, "data_catalog_configs")
+
+
+@pulumi.output_type
+class GetMetastoreServiceMetadataIntegrationDataCatalogConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetMetastoreServiceNetworkConfigResult(dict):
+    def __init__(__self__, *,
+                 consumers: Sequence['outputs.GetMetastoreServiceNetworkConfigConsumerResult'],
+                 custom_routes_enabled: bool):
+        """
+        :param Sequence['GetMetastoreServiceNetworkConfigConsumerArgs'] consumers: The consumer-side network configuration for the Dataproc Metastore instance.
+        :param bool custom_routes_enabled: Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+        """
+        pulumi.set(__self__, "consumers", consumers)
+        pulumi.set(__self__, "custom_routes_enabled", custom_routes_enabled)
+
+    @property
+    @pulumi.getter
+    def consumers(self) -> Sequence['outputs.GetMetastoreServiceNetworkConfigConsumerResult']:
+        """
+        The consumer-side network configuration for the Dataproc Metastore instance.
+        """
+        return pulumi.get(self, "consumers")
+
+    @property
+    @pulumi.getter(name="customRoutesEnabled")
+    def custom_routes_enabled(self) -> bool:
+        """
+        Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+        """
+        return pulumi.get(self, "custom_routes_enabled")
+
+
+@pulumi.output_type
+class GetMetastoreServiceNetworkConfigConsumerResult(dict):
+    def __init__(__self__, *,
+                 endpoint_uri: str,
+                 subnetwork: str):
+        """
+        :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
+        :param str subnetwork: The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+               It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+               There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+               'projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+        """
+        pulumi.set(__self__, "endpoint_uri", endpoint_uri)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="endpointUri")
+    def endpoint_uri(self) -> str:
+        """
+        The URI of the endpoint used to access the metastore service.
+        """
+        return pulumi.get(self, "endpoint_uri")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+        It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+        There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+        'projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+        """
+        return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class GetMetastoreServiceScalingConfigResult(dict):
+    def __init__(__self__, *,
+                 instance_size: str,
+                 scaling_factor: float):
+        """
+        :param str instance_size: Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
+        :param float scaling_factor: Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        pulumi.set(__self__, "instance_size", instance_size)
+        pulumi.set(__self__, "scaling_factor", scaling_factor)
+
+    @property
+    @pulumi.getter(name="instanceSize")
+    def instance_size(self) -> str:
+        """
+        Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
+        """
+        return pulumi.get(self, "instance_size")
+
+    @property
+    @pulumi.getter(name="scalingFactor")
+    def scaling_factor(self) -> float:
+        """
+        Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        return pulumi.get(self, "scaling_factor")
+
+
+@pulumi.output_type
+class GetMetastoreServiceTelemetryConfigResult(dict):
+    def __init__(__self__, *,
+                 log_format: str):
+        """
+        :param str log_format: The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
+        """
+        pulumi.set(__self__, "log_format", log_format)
+
+    @property
+    @pulumi.getter(name="logFormat")
+    def log_format(self) -> str:
+        """
+        The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
+        """
+        return pulumi.get(self, "log_format")
 
 

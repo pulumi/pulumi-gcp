@@ -26505,6 +26505,1323 @@ func (o WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupCon
 	}).(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput)
 }
 
+type GetMetastoreServiceEncryptionConfig struct {
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+	// Use the following format: 'projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)'
+	KmsKey string `pulumi:"kmsKey"`
+}
+
+// GetMetastoreServiceEncryptionConfigInput is an input type that accepts GetMetastoreServiceEncryptionConfigArgs and GetMetastoreServiceEncryptionConfigOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceEncryptionConfigInput` via:
+//
+//	GetMetastoreServiceEncryptionConfigArgs{...}
+type GetMetastoreServiceEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceEncryptionConfigOutput() GetMetastoreServiceEncryptionConfigOutput
+	ToGetMetastoreServiceEncryptionConfigOutputWithContext(context.Context) GetMetastoreServiceEncryptionConfigOutput
+}
+
+type GetMetastoreServiceEncryptionConfigArgs struct {
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+	// Use the following format: 'projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)'
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+}
+
+func (GetMetastoreServiceEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceEncryptionConfigArgs) ToGetMetastoreServiceEncryptionConfigOutput() GetMetastoreServiceEncryptionConfigOutput {
+	return i.ToGetMetastoreServiceEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceEncryptionConfigArgs) ToGetMetastoreServiceEncryptionConfigOutputWithContext(ctx context.Context) GetMetastoreServiceEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceEncryptionConfigOutput)
+}
+
+// GetMetastoreServiceEncryptionConfigArrayInput is an input type that accepts GetMetastoreServiceEncryptionConfigArray and GetMetastoreServiceEncryptionConfigArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceEncryptionConfigArrayInput` via:
+//
+//	GetMetastoreServiceEncryptionConfigArray{ GetMetastoreServiceEncryptionConfigArgs{...} }
+type GetMetastoreServiceEncryptionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceEncryptionConfigArrayOutput() GetMetastoreServiceEncryptionConfigArrayOutput
+	ToGetMetastoreServiceEncryptionConfigArrayOutputWithContext(context.Context) GetMetastoreServiceEncryptionConfigArrayOutput
+}
+
+type GetMetastoreServiceEncryptionConfigArray []GetMetastoreServiceEncryptionConfigInput
+
+func (GetMetastoreServiceEncryptionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceEncryptionConfigArray) ToGetMetastoreServiceEncryptionConfigArrayOutput() GetMetastoreServiceEncryptionConfigArrayOutput {
+	return i.ToGetMetastoreServiceEncryptionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceEncryptionConfigArray) ToGetMetastoreServiceEncryptionConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceEncryptionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceEncryptionConfigArrayOutput)
+}
+
+type GetMetastoreServiceEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceEncryptionConfigOutput) ToGetMetastoreServiceEncryptionConfigOutput() GetMetastoreServiceEncryptionConfigOutput {
+	return o
+}
+
+func (o GetMetastoreServiceEncryptionConfigOutput) ToGetMetastoreServiceEncryptionConfigOutputWithContext(ctx context.Context) GetMetastoreServiceEncryptionConfigOutput {
+	return o
+}
+
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+// Use the following format: 'projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)'
+func (o GetMetastoreServiceEncryptionConfigOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceEncryptionConfig) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+type GetMetastoreServiceEncryptionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceEncryptionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceEncryptionConfigArrayOutput) ToGetMetastoreServiceEncryptionConfigArrayOutput() GetMetastoreServiceEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceEncryptionConfigArrayOutput) ToGetMetastoreServiceEncryptionConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceEncryptionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceEncryptionConfig {
+		return vs[0].([]GetMetastoreServiceEncryptionConfig)[vs[1].(int)]
+	}).(GetMetastoreServiceEncryptionConfigOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfig struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration.
+	// When specified, a secondary Hive metastore service is created along with the primary service.
+	// All auxiliary versions must be less than the service's primary version.
+	// The key is the auxiliary service name and it must match the regular expression a-z?.
+	// This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	AuxiliaryVersions []GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion `pulumi:"auxiliaryVersions"`
+	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+	// The mappings override system defaults (some keys cannot be overridden)
+	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to 'THRIFT'. Default value: "THRIFT" Possible values: ["THRIFT", "GRPC"]
+	EndpointProtocol string `pulumi:"endpointProtocol"`
+	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+	KerberosConfigs []GetMetastoreServiceHiveMetastoreConfigKerberosConfig `pulumi:"kerberosConfigs"`
+	// The Hive metastore schema version.
+	Version string `pulumi:"version"`
+}
+
+// GetMetastoreServiceHiveMetastoreConfigInput is an input type that accepts GetMetastoreServiceHiveMetastoreConfigArgs and GetMetastoreServiceHiveMetastoreConfigOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceHiveMetastoreConfigInput` via:
+//
+//	GetMetastoreServiceHiveMetastoreConfigArgs{...}
+type GetMetastoreServiceHiveMetastoreConfigInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceHiveMetastoreConfigOutput() GetMetastoreServiceHiveMetastoreConfigOutput
+	ToGetMetastoreServiceHiveMetastoreConfigOutputWithContext(context.Context) GetMetastoreServiceHiveMetastoreConfigOutput
+}
+
+type GetMetastoreServiceHiveMetastoreConfigArgs struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration.
+	// When specified, a secondary Hive metastore service is created along with the primary service.
+	// All auxiliary versions must be less than the service's primary version.
+	// The key is the auxiliary service name and it must match the regular expression a-z?.
+	// This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	AuxiliaryVersions GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput `pulumi:"auxiliaryVersions"`
+	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+	// The mappings override system defaults (some keys cannot be overridden)
+	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to 'THRIFT'. Default value: "THRIFT" Possible values: ["THRIFT", "GRPC"]
+	EndpointProtocol pulumi.StringInput `pulumi:"endpointProtocol"`
+	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+	KerberosConfigs GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayInput `pulumi:"kerberosConfigs"`
+	// The Hive metastore schema version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetMetastoreServiceHiveMetastoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigArgs) ToGetMetastoreServiceHiveMetastoreConfigOutput() GetMetastoreServiceHiveMetastoreConfigOutput {
+	return i.ToGetMetastoreServiceHiveMetastoreConfigOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigArgs) ToGetMetastoreServiceHiveMetastoreConfigOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceHiveMetastoreConfigOutput)
+}
+
+// GetMetastoreServiceHiveMetastoreConfigArrayInput is an input type that accepts GetMetastoreServiceHiveMetastoreConfigArray and GetMetastoreServiceHiveMetastoreConfigArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceHiveMetastoreConfigArrayInput` via:
+//
+//	GetMetastoreServiceHiveMetastoreConfigArray{ GetMetastoreServiceHiveMetastoreConfigArgs{...} }
+type GetMetastoreServiceHiveMetastoreConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceHiveMetastoreConfigArrayOutput() GetMetastoreServiceHiveMetastoreConfigArrayOutput
+	ToGetMetastoreServiceHiveMetastoreConfigArrayOutputWithContext(context.Context) GetMetastoreServiceHiveMetastoreConfigArrayOutput
+}
+
+type GetMetastoreServiceHiveMetastoreConfigArray []GetMetastoreServiceHiveMetastoreConfigInput
+
+func (GetMetastoreServiceHiveMetastoreConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceHiveMetastoreConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigArray) ToGetMetastoreServiceHiveMetastoreConfigArrayOutput() GetMetastoreServiceHiveMetastoreConfigArrayOutput {
+	return i.ToGetMetastoreServiceHiveMetastoreConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigArray) ToGetMetastoreServiceHiveMetastoreConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceHiveMetastoreConfigArrayOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceHiveMetastoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigOutput) ToGetMetastoreServiceHiveMetastoreConfigOutput() GetMetastoreServiceHiveMetastoreConfigOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigOutput) ToGetMetastoreServiceHiveMetastoreConfigOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigOutput {
+	return o
+}
+
+// A mapping of Hive metastore version to the auxiliary version configuration.
+// When specified, a secondary Hive metastore service is created along with the primary service.
+// All auxiliary versions must be less than the service's primary version.
+// The key is the auxiliary service name and it must match the regular expression a-z?.
+// This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+func (o GetMetastoreServiceHiveMetastoreConfigOutput) AuxiliaryVersions() GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfig) []GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
+		return v.AuxiliaryVersions
+	}).(GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput)
+}
+
+// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+// The mappings override system defaults (some keys cannot be overridden)
+func (o GetMetastoreServiceHiveMetastoreConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
+}
+
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to 'THRIFT'. Default value: "THRIFT" Possible values: ["THRIFT", "GRPC"]
+func (o GetMetastoreServiceHiveMetastoreConfigOutput) EndpointProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfig) string { return v.EndpointProtocol }).(pulumi.StringOutput)
+}
+
+// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+func (o GetMetastoreServiceHiveMetastoreConfigOutput) KerberosConfigs() GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfig) []GetMetastoreServiceHiveMetastoreConfigKerberosConfig {
+		return v.KerberosConfigs
+	}).(GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput)
+}
+
+// The Hive metastore schema version.
+func (o GetMetastoreServiceHiveMetastoreConfigOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfig) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceHiveMetastoreConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceHiveMetastoreConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigArrayOutput) ToGetMetastoreServiceHiveMetastoreConfigArrayOutput() GetMetastoreServiceHiveMetastoreConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigArrayOutput) ToGetMetastoreServiceHiveMetastoreConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceHiveMetastoreConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceHiveMetastoreConfig {
+		return vs[0].([]GetMetastoreServiceHiveMetastoreConfig)[vs[1].(int)]
+	}).(GetMetastoreServiceHiveMetastoreConfigOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion struct {
+	// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+	// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	Key             string            `pulumi:"key"`
+	// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+	Version string `pulumi:"version"`
+}
+
+// GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput is an input type that accepts GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs and GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput` via:
+//
+//	GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs{...}
+type GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput() GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput
+	ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(context.Context) GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput
+}
+
+type GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs struct {
+	// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+	// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
+	Key             pulumi.StringInput    `pulumi:"key"`
+	// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs) ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput() GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return i.ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs) ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput)
+}
+
+// GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput is an input type that accepts GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray and GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput` via:
+//
+//	GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray{ GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs{...} }
+type GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput() GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput
+	ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(context.Context) GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput
+}
+
+type GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray []GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput
+
+func (GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray) ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput() GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return i.ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray) ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput() GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return o
+}
+
+// A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+// If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+func (o GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) ConfigOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion) map[string]string {
+		return v.ConfigOverrides
+	}).(pulumi.StringMapOutput)
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+func (o GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput() GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) ToGetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
+		return vs[0].([]GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion)[vs[1].(int)]
+	}).(GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfig struct {
+	// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+	Keytabs []GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab `pulumi:"keytabs"`
+	// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+	Krb5ConfigGcsUri string `pulumi:"krb5ConfigGcsUri"`
+	// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+	Principal string `pulumi:"principal"`
+}
+
+// GetMetastoreServiceHiveMetastoreConfigKerberosConfigInput is an input type that accepts GetMetastoreServiceHiveMetastoreConfigKerberosConfigArgs and GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceHiveMetastoreConfigKerberosConfigInput` via:
+//
+//	GetMetastoreServiceHiveMetastoreConfigKerberosConfigArgs{...}
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput
+	ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigOutputWithContext(context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigArgs struct {
+	// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+	Keytabs GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayInput `pulumi:"keytabs"`
+	// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+	Krb5ConfigGcsUri pulumi.StringInput `pulumi:"krb5ConfigGcsUri"`
+	// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+	Principal pulumi.StringInput `pulumi:"principal"`
+}
+
+func (GetMetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigKerberosConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return i.ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput)
+}
+
+// GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayInput is an input type that accepts GetMetastoreServiceHiveMetastoreConfigKerberosConfigArray and GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayInput` via:
+//
+//	GetMetastoreServiceHiveMetastoreConfigKerberosConfigArray{ GetMetastoreServiceHiveMetastoreConfigKerberosConfigArgs{...} }
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput
+	ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutputWithContext(context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigArray []GetMetastoreServiceHiveMetastoreConfigKerberosConfigInput
+
+func (GetMetastoreServiceHiveMetastoreConfigKerberosConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceHiveMetastoreConfigKerberosConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigKerberosConfigArray) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput {
+	return i.ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigKerberosConfigArray) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigKerberosConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return o
+}
+
+// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput) Keytabs() GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfigKerberosConfig) []GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+		return v.Keytabs
+	}).(GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput)
+}
+
+// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput) Krb5ConfigGcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfigKerberosConfig) string { return v.Krb5ConfigGcsUri }).(pulumi.StringOutput)
+}
+
+// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfigKerberosConfig) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceHiveMetastoreConfigKerberosConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceHiveMetastoreConfigKerberosConfig {
+		return vs[0].([]GetMetastoreServiceHiveMetastoreConfigKerberosConfig)[vs[1].(int)]
+	}).(GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab struct {
+	// The relative resource name of a Secret Manager secret version, in the following form:
+	//
+	// "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+	CloudSecret string `pulumi:"cloudSecret"`
+}
+
+// GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput is an input type that accepts GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs and GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput` via:
+//
+//	GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs{...}
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput
+	ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutputWithContext(context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs struct {
+	// The relative resource name of a Secret Manager secret version, in the following form:
+	//
+	// "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+	CloudSecret pulumi.StringInput `pulumi:"cloudSecret"`
+}
+
+func (GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return i.ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput)
+}
+
+// GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayInput is an input type that accepts GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArray and GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayInput` via:
+//
+//	GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArray{ GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs{...} }
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput
+	ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutputWithContext(context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArray []GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput
+
+func (GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArray) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput {
+	return i.ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArray) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return o
+}
+
+// The relative resource name of a Secret Manager secret version, in the following form:
+//
+// "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) CloudSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab) string { return v.CloudSecret }).(pulumi.StringOutput)
+}
+
+type GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput() GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput) ToGetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutputWithContext(ctx context.Context) GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+		return vs[0].([]GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab)[vs[1].(int)]
+	}).(GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput)
+}
+
+type GetMetastoreServiceMaintenanceWindow struct {
+	// The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// The hour of day (0-23) when the window starts.
+	HourOfDay int `pulumi:"hourOfDay"`
+}
+
+// GetMetastoreServiceMaintenanceWindowInput is an input type that accepts GetMetastoreServiceMaintenanceWindowArgs and GetMetastoreServiceMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceMaintenanceWindowInput` via:
+//
+//	GetMetastoreServiceMaintenanceWindowArgs{...}
+type GetMetastoreServiceMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceMaintenanceWindowOutput() GetMetastoreServiceMaintenanceWindowOutput
+	ToGetMetastoreServiceMaintenanceWindowOutputWithContext(context.Context) GetMetastoreServiceMaintenanceWindowOutput
+}
+
+type GetMetastoreServiceMaintenanceWindowArgs struct {
+	// The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// The hour of day (0-23) when the window starts.
+	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
+}
+
+func (GetMetastoreServiceMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceMaintenanceWindowArgs) ToGetMetastoreServiceMaintenanceWindowOutput() GetMetastoreServiceMaintenanceWindowOutput {
+	return i.ToGetMetastoreServiceMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceMaintenanceWindowArgs) ToGetMetastoreServiceMaintenanceWindowOutputWithContext(ctx context.Context) GetMetastoreServiceMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceMaintenanceWindowOutput)
+}
+
+// GetMetastoreServiceMaintenanceWindowArrayInput is an input type that accepts GetMetastoreServiceMaintenanceWindowArray and GetMetastoreServiceMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceMaintenanceWindowArrayInput` via:
+//
+//	GetMetastoreServiceMaintenanceWindowArray{ GetMetastoreServiceMaintenanceWindowArgs{...} }
+type GetMetastoreServiceMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceMaintenanceWindowArrayOutput() GetMetastoreServiceMaintenanceWindowArrayOutput
+	ToGetMetastoreServiceMaintenanceWindowArrayOutputWithContext(context.Context) GetMetastoreServiceMaintenanceWindowArrayOutput
+}
+
+type GetMetastoreServiceMaintenanceWindowArray []GetMetastoreServiceMaintenanceWindowInput
+
+func (GetMetastoreServiceMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceMaintenanceWindowArray) ToGetMetastoreServiceMaintenanceWindowArrayOutput() GetMetastoreServiceMaintenanceWindowArrayOutput {
+	return i.ToGetMetastoreServiceMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceMaintenanceWindowArray) ToGetMetastoreServiceMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetMetastoreServiceMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceMaintenanceWindowArrayOutput)
+}
+
+type GetMetastoreServiceMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceMaintenanceWindowOutput) ToGetMetastoreServiceMaintenanceWindowOutput() GetMetastoreServiceMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetMetastoreServiceMaintenanceWindowOutput) ToGetMetastoreServiceMaintenanceWindowOutputWithContext(ctx context.Context) GetMetastoreServiceMaintenanceWindowOutput {
+	return o
+}
+
+// The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+func (o GetMetastoreServiceMaintenanceWindowOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceMaintenanceWindow) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// The hour of day (0-23) when the window starts.
+func (o GetMetastoreServiceMaintenanceWindowOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMetastoreServiceMaintenanceWindow) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+type GetMetastoreServiceMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceMaintenanceWindowArrayOutput) ToGetMetastoreServiceMaintenanceWindowArrayOutput() GetMetastoreServiceMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceMaintenanceWindowArrayOutput) ToGetMetastoreServiceMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetMetastoreServiceMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceMaintenanceWindow {
+		return vs[0].([]GetMetastoreServiceMaintenanceWindow)[vs[1].(int)]
+	}).(GetMetastoreServiceMaintenanceWindowOutput)
+}
+
+type GetMetastoreServiceMetadataIntegration struct {
+	// The integration config for the Data Catalog service.
+	DataCatalogConfigs []GetMetastoreServiceMetadataIntegrationDataCatalogConfig `pulumi:"dataCatalogConfigs"`
+}
+
+// GetMetastoreServiceMetadataIntegrationInput is an input type that accepts GetMetastoreServiceMetadataIntegrationArgs and GetMetastoreServiceMetadataIntegrationOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceMetadataIntegrationInput` via:
+//
+//	GetMetastoreServiceMetadataIntegrationArgs{...}
+type GetMetastoreServiceMetadataIntegrationInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceMetadataIntegrationOutput() GetMetastoreServiceMetadataIntegrationOutput
+	ToGetMetastoreServiceMetadataIntegrationOutputWithContext(context.Context) GetMetastoreServiceMetadataIntegrationOutput
+}
+
+type GetMetastoreServiceMetadataIntegrationArgs struct {
+	// The integration config for the Data Catalog service.
+	DataCatalogConfigs GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayInput `pulumi:"dataCatalogConfigs"`
+}
+
+func (GetMetastoreServiceMetadataIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceMetadataIntegration)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceMetadataIntegrationArgs) ToGetMetastoreServiceMetadataIntegrationOutput() GetMetastoreServiceMetadataIntegrationOutput {
+	return i.ToGetMetastoreServiceMetadataIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceMetadataIntegrationArgs) ToGetMetastoreServiceMetadataIntegrationOutputWithContext(ctx context.Context) GetMetastoreServiceMetadataIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceMetadataIntegrationOutput)
+}
+
+// GetMetastoreServiceMetadataIntegrationArrayInput is an input type that accepts GetMetastoreServiceMetadataIntegrationArray and GetMetastoreServiceMetadataIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceMetadataIntegrationArrayInput` via:
+//
+//	GetMetastoreServiceMetadataIntegrationArray{ GetMetastoreServiceMetadataIntegrationArgs{...} }
+type GetMetastoreServiceMetadataIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceMetadataIntegrationArrayOutput() GetMetastoreServiceMetadataIntegrationArrayOutput
+	ToGetMetastoreServiceMetadataIntegrationArrayOutputWithContext(context.Context) GetMetastoreServiceMetadataIntegrationArrayOutput
+}
+
+type GetMetastoreServiceMetadataIntegrationArray []GetMetastoreServiceMetadataIntegrationInput
+
+func (GetMetastoreServiceMetadataIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceMetadataIntegration)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceMetadataIntegrationArray) ToGetMetastoreServiceMetadataIntegrationArrayOutput() GetMetastoreServiceMetadataIntegrationArrayOutput {
+	return i.ToGetMetastoreServiceMetadataIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceMetadataIntegrationArray) ToGetMetastoreServiceMetadataIntegrationArrayOutputWithContext(ctx context.Context) GetMetastoreServiceMetadataIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceMetadataIntegrationArrayOutput)
+}
+
+type GetMetastoreServiceMetadataIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceMetadataIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceMetadataIntegration)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceMetadataIntegrationOutput) ToGetMetastoreServiceMetadataIntegrationOutput() GetMetastoreServiceMetadataIntegrationOutput {
+	return o
+}
+
+func (o GetMetastoreServiceMetadataIntegrationOutput) ToGetMetastoreServiceMetadataIntegrationOutputWithContext(ctx context.Context) GetMetastoreServiceMetadataIntegrationOutput {
+	return o
+}
+
+// The integration config for the Data Catalog service.
+func (o GetMetastoreServiceMetadataIntegrationOutput) DataCatalogConfigs() GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput {
+	return o.ApplyT(func(v GetMetastoreServiceMetadataIntegration) []GetMetastoreServiceMetadataIntegrationDataCatalogConfig {
+		return v.DataCatalogConfigs
+	}).(GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput)
+}
+
+type GetMetastoreServiceMetadataIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceMetadataIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceMetadataIntegration)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceMetadataIntegrationArrayOutput) ToGetMetastoreServiceMetadataIntegrationArrayOutput() GetMetastoreServiceMetadataIntegrationArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceMetadataIntegrationArrayOutput) ToGetMetastoreServiceMetadataIntegrationArrayOutputWithContext(ctx context.Context) GetMetastoreServiceMetadataIntegrationArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceMetadataIntegrationArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceMetadataIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceMetadataIntegration {
+		return vs[0].([]GetMetastoreServiceMetadataIntegration)[vs[1].(int)]
+	}).(GetMetastoreServiceMetadataIntegrationOutput)
+}
+
+type GetMetastoreServiceMetadataIntegrationDataCatalogConfig struct {
+	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetMetastoreServiceMetadataIntegrationDataCatalogConfigInput is an input type that accepts GetMetastoreServiceMetadataIntegrationDataCatalogConfigArgs and GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceMetadataIntegrationDataCatalogConfigInput` via:
+//
+//	GetMetastoreServiceMetadataIntegrationDataCatalogConfigArgs{...}
+type GetMetastoreServiceMetadataIntegrationDataCatalogConfigInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput() GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput
+	ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigOutputWithContext(context.Context) GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput
+}
+
+type GetMetastoreServiceMetadataIntegrationDataCatalogConfigArgs struct {
+	// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetMetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceMetadataIntegrationDataCatalogConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput() GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return i.ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceMetadataIntegrationDataCatalogConfigArgs) ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigOutputWithContext(ctx context.Context) GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput)
+}
+
+// GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayInput is an input type that accepts GetMetastoreServiceMetadataIntegrationDataCatalogConfigArray and GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayInput` via:
+//
+//	GetMetastoreServiceMetadataIntegrationDataCatalogConfigArray{ GetMetastoreServiceMetadataIntegrationDataCatalogConfigArgs{...} }
+type GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput() GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput
+	ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutputWithContext(context.Context) GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput
+}
+
+type GetMetastoreServiceMetadataIntegrationDataCatalogConfigArray []GetMetastoreServiceMetadataIntegrationDataCatalogConfigInput
+
+func (GetMetastoreServiceMetadataIntegrationDataCatalogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceMetadataIntegrationDataCatalogConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceMetadataIntegrationDataCatalogConfigArray) ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput() GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput {
+	return i.ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceMetadataIntegrationDataCatalogConfigArray) ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput)
+}
+
+type GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceMetadataIntegrationDataCatalogConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput() GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return o
+}
+
+func (o GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput) ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigOutputWithContext(ctx context.Context) GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return o
+}
+
+// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+func (o GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMetastoreServiceMetadataIntegrationDataCatalogConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceMetadataIntegrationDataCatalogConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput) ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput() GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput) ToGetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceMetadataIntegrationDataCatalogConfig {
+		return vs[0].([]GetMetastoreServiceMetadataIntegrationDataCatalogConfig)[vs[1].(int)]
+	}).(GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput)
+}
+
+type GetMetastoreServiceNetworkConfig struct {
+	// The consumer-side network configuration for the Dataproc Metastore instance.
+	Consumers []GetMetastoreServiceNetworkConfigConsumer `pulumi:"consumers"`
+	// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+	CustomRoutesEnabled bool `pulumi:"customRoutesEnabled"`
+}
+
+// GetMetastoreServiceNetworkConfigInput is an input type that accepts GetMetastoreServiceNetworkConfigArgs and GetMetastoreServiceNetworkConfigOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceNetworkConfigInput` via:
+//
+//	GetMetastoreServiceNetworkConfigArgs{...}
+type GetMetastoreServiceNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceNetworkConfigOutput() GetMetastoreServiceNetworkConfigOutput
+	ToGetMetastoreServiceNetworkConfigOutputWithContext(context.Context) GetMetastoreServiceNetworkConfigOutput
+}
+
+type GetMetastoreServiceNetworkConfigArgs struct {
+	// The consumer-side network configuration for the Dataproc Metastore instance.
+	Consumers GetMetastoreServiceNetworkConfigConsumerArrayInput `pulumi:"consumers"`
+	// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+	CustomRoutesEnabled pulumi.BoolInput `pulumi:"customRoutesEnabled"`
+}
+
+func (GetMetastoreServiceNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceNetworkConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceNetworkConfigArgs) ToGetMetastoreServiceNetworkConfigOutput() GetMetastoreServiceNetworkConfigOutput {
+	return i.ToGetMetastoreServiceNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceNetworkConfigArgs) ToGetMetastoreServiceNetworkConfigOutputWithContext(ctx context.Context) GetMetastoreServiceNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceNetworkConfigOutput)
+}
+
+// GetMetastoreServiceNetworkConfigArrayInput is an input type that accepts GetMetastoreServiceNetworkConfigArray and GetMetastoreServiceNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceNetworkConfigArrayInput` via:
+//
+//	GetMetastoreServiceNetworkConfigArray{ GetMetastoreServiceNetworkConfigArgs{...} }
+type GetMetastoreServiceNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceNetworkConfigArrayOutput() GetMetastoreServiceNetworkConfigArrayOutput
+	ToGetMetastoreServiceNetworkConfigArrayOutputWithContext(context.Context) GetMetastoreServiceNetworkConfigArrayOutput
+}
+
+type GetMetastoreServiceNetworkConfigArray []GetMetastoreServiceNetworkConfigInput
+
+func (GetMetastoreServiceNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceNetworkConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceNetworkConfigArray) ToGetMetastoreServiceNetworkConfigArrayOutput() GetMetastoreServiceNetworkConfigArrayOutput {
+	return i.ToGetMetastoreServiceNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceNetworkConfigArray) ToGetMetastoreServiceNetworkConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceNetworkConfigArrayOutput)
+}
+
+type GetMetastoreServiceNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceNetworkConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceNetworkConfigOutput) ToGetMetastoreServiceNetworkConfigOutput() GetMetastoreServiceNetworkConfigOutput {
+	return o
+}
+
+func (o GetMetastoreServiceNetworkConfigOutput) ToGetMetastoreServiceNetworkConfigOutputWithContext(ctx context.Context) GetMetastoreServiceNetworkConfigOutput {
+	return o
+}
+
+// The consumer-side network configuration for the Dataproc Metastore instance.
+func (o GetMetastoreServiceNetworkConfigOutput) Consumers() GetMetastoreServiceNetworkConfigConsumerArrayOutput {
+	return o.ApplyT(func(v GetMetastoreServiceNetworkConfig) []GetMetastoreServiceNetworkConfigConsumer {
+		return v.Consumers
+	}).(GetMetastoreServiceNetworkConfigConsumerArrayOutput)
+}
+
+// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+func (o GetMetastoreServiceNetworkConfigOutput) CustomRoutesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMetastoreServiceNetworkConfig) bool { return v.CustomRoutesEnabled }).(pulumi.BoolOutput)
+}
+
+type GetMetastoreServiceNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceNetworkConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceNetworkConfigArrayOutput) ToGetMetastoreServiceNetworkConfigArrayOutput() GetMetastoreServiceNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceNetworkConfigArrayOutput) ToGetMetastoreServiceNetworkConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceNetworkConfig {
+		return vs[0].([]GetMetastoreServiceNetworkConfig)[vs[1].(int)]
+	}).(GetMetastoreServiceNetworkConfigOutput)
+}
+
+type GetMetastoreServiceNetworkConfigConsumer struct {
+	// The URI of the endpoint used to access the metastore service.
+	EndpointUri string `pulumi:"endpointUri"`
+	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+	// It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+	// There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+	// 'projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// GetMetastoreServiceNetworkConfigConsumerInput is an input type that accepts GetMetastoreServiceNetworkConfigConsumerArgs and GetMetastoreServiceNetworkConfigConsumerOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceNetworkConfigConsumerInput` via:
+//
+//	GetMetastoreServiceNetworkConfigConsumerArgs{...}
+type GetMetastoreServiceNetworkConfigConsumerInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceNetworkConfigConsumerOutput() GetMetastoreServiceNetworkConfigConsumerOutput
+	ToGetMetastoreServiceNetworkConfigConsumerOutputWithContext(context.Context) GetMetastoreServiceNetworkConfigConsumerOutput
+}
+
+type GetMetastoreServiceNetworkConfigConsumerArgs struct {
+	// The URI of the endpoint used to access the metastore service.
+	EndpointUri pulumi.StringInput `pulumi:"endpointUri"`
+	// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+	// It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+	// There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+	// 'projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (GetMetastoreServiceNetworkConfigConsumerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceNetworkConfigConsumer)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceNetworkConfigConsumerArgs) ToGetMetastoreServiceNetworkConfigConsumerOutput() GetMetastoreServiceNetworkConfigConsumerOutput {
+	return i.ToGetMetastoreServiceNetworkConfigConsumerOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceNetworkConfigConsumerArgs) ToGetMetastoreServiceNetworkConfigConsumerOutputWithContext(ctx context.Context) GetMetastoreServiceNetworkConfigConsumerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceNetworkConfigConsumerOutput)
+}
+
+// GetMetastoreServiceNetworkConfigConsumerArrayInput is an input type that accepts GetMetastoreServiceNetworkConfigConsumerArray and GetMetastoreServiceNetworkConfigConsumerArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceNetworkConfigConsumerArrayInput` via:
+//
+//	GetMetastoreServiceNetworkConfigConsumerArray{ GetMetastoreServiceNetworkConfigConsumerArgs{...} }
+type GetMetastoreServiceNetworkConfigConsumerArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceNetworkConfigConsumerArrayOutput() GetMetastoreServiceNetworkConfigConsumerArrayOutput
+	ToGetMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(context.Context) GetMetastoreServiceNetworkConfigConsumerArrayOutput
+}
+
+type GetMetastoreServiceNetworkConfigConsumerArray []GetMetastoreServiceNetworkConfigConsumerInput
+
+func (GetMetastoreServiceNetworkConfigConsumerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceNetworkConfigConsumer)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceNetworkConfigConsumerArray) ToGetMetastoreServiceNetworkConfigConsumerArrayOutput() GetMetastoreServiceNetworkConfigConsumerArrayOutput {
+	return i.ToGetMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceNetworkConfigConsumerArray) ToGetMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(ctx context.Context) GetMetastoreServiceNetworkConfigConsumerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceNetworkConfigConsumerArrayOutput)
+}
+
+type GetMetastoreServiceNetworkConfigConsumerOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceNetworkConfigConsumerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceNetworkConfigConsumer)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceNetworkConfigConsumerOutput) ToGetMetastoreServiceNetworkConfigConsumerOutput() GetMetastoreServiceNetworkConfigConsumerOutput {
+	return o
+}
+
+func (o GetMetastoreServiceNetworkConfigConsumerOutput) ToGetMetastoreServiceNetworkConfigConsumerOutputWithContext(ctx context.Context) GetMetastoreServiceNetworkConfigConsumerOutput {
+	return o
+}
+
+// The URI of the endpoint used to access the metastore service.
+func (o GetMetastoreServiceNetworkConfigConsumerOutput) EndpointUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceNetworkConfigConsumer) string { return v.EndpointUri }).(pulumi.StringOutput)
+}
+
+// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+// It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+// There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+// 'projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+func (o GetMetastoreServiceNetworkConfigConsumerOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceNetworkConfigConsumer) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type GetMetastoreServiceNetworkConfigConsumerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceNetworkConfigConsumerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceNetworkConfigConsumer)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceNetworkConfigConsumerArrayOutput) ToGetMetastoreServiceNetworkConfigConsumerArrayOutput() GetMetastoreServiceNetworkConfigConsumerArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceNetworkConfigConsumerArrayOutput) ToGetMetastoreServiceNetworkConfigConsumerArrayOutputWithContext(ctx context.Context) GetMetastoreServiceNetworkConfigConsumerArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceNetworkConfigConsumerArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceNetworkConfigConsumerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceNetworkConfigConsumer {
+		return vs[0].([]GetMetastoreServiceNetworkConfigConsumer)[vs[1].(int)]
+	}).(GetMetastoreServiceNetworkConfigConsumerOutput)
+}
+
+type GetMetastoreServiceScalingConfig struct {
+	// Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
+	InstanceSize string `pulumi:"instanceSize"`
+	// Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor float64 `pulumi:"scalingFactor"`
+}
+
+// GetMetastoreServiceScalingConfigInput is an input type that accepts GetMetastoreServiceScalingConfigArgs and GetMetastoreServiceScalingConfigOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceScalingConfigInput` via:
+//
+//	GetMetastoreServiceScalingConfigArgs{...}
+type GetMetastoreServiceScalingConfigInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceScalingConfigOutput() GetMetastoreServiceScalingConfigOutput
+	ToGetMetastoreServiceScalingConfigOutputWithContext(context.Context) GetMetastoreServiceScalingConfigOutput
+}
+
+type GetMetastoreServiceScalingConfigArgs struct {
+	// Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
+	InstanceSize pulumi.StringInput `pulumi:"instanceSize"`
+	// Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor pulumi.Float64Input `pulumi:"scalingFactor"`
+}
+
+func (GetMetastoreServiceScalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceScalingConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceScalingConfigArgs) ToGetMetastoreServiceScalingConfigOutput() GetMetastoreServiceScalingConfigOutput {
+	return i.ToGetMetastoreServiceScalingConfigOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceScalingConfigArgs) ToGetMetastoreServiceScalingConfigOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceScalingConfigOutput)
+}
+
+// GetMetastoreServiceScalingConfigArrayInput is an input type that accepts GetMetastoreServiceScalingConfigArray and GetMetastoreServiceScalingConfigArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceScalingConfigArrayInput` via:
+//
+//	GetMetastoreServiceScalingConfigArray{ GetMetastoreServiceScalingConfigArgs{...} }
+type GetMetastoreServiceScalingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceScalingConfigArrayOutput() GetMetastoreServiceScalingConfigArrayOutput
+	ToGetMetastoreServiceScalingConfigArrayOutputWithContext(context.Context) GetMetastoreServiceScalingConfigArrayOutput
+}
+
+type GetMetastoreServiceScalingConfigArray []GetMetastoreServiceScalingConfigInput
+
+func (GetMetastoreServiceScalingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceScalingConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceScalingConfigArray) ToGetMetastoreServiceScalingConfigArrayOutput() GetMetastoreServiceScalingConfigArrayOutput {
+	return i.ToGetMetastoreServiceScalingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceScalingConfigArray) ToGetMetastoreServiceScalingConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceScalingConfigArrayOutput)
+}
+
+type GetMetastoreServiceScalingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceScalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceScalingConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceScalingConfigOutput) ToGetMetastoreServiceScalingConfigOutput() GetMetastoreServiceScalingConfigOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScalingConfigOutput) ToGetMetastoreServiceScalingConfigOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigOutput {
+	return o
+}
+
+// Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
+func (o GetMetastoreServiceScalingConfigOutput) InstanceSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceScalingConfig) string { return v.InstanceSize }).(pulumi.StringOutput)
+}
+
+// Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+func (o GetMetastoreServiceScalingConfigOutput) ScalingFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v GetMetastoreServiceScalingConfig) float64 { return v.ScalingFactor }).(pulumi.Float64Output)
+}
+
+type GetMetastoreServiceScalingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceScalingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceScalingConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceScalingConfigArrayOutput) ToGetMetastoreServiceScalingConfigArrayOutput() GetMetastoreServiceScalingConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScalingConfigArrayOutput) ToGetMetastoreServiceScalingConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceScalingConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceScalingConfigArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceScalingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceScalingConfig {
+		return vs[0].([]GetMetastoreServiceScalingConfig)[vs[1].(int)]
+	}).(GetMetastoreServiceScalingConfigOutput)
+}
+
+type GetMetastoreServiceTelemetryConfig struct {
+	// The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
+	LogFormat string `pulumi:"logFormat"`
+}
+
+// GetMetastoreServiceTelemetryConfigInput is an input type that accepts GetMetastoreServiceTelemetryConfigArgs and GetMetastoreServiceTelemetryConfigOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceTelemetryConfigInput` via:
+//
+//	GetMetastoreServiceTelemetryConfigArgs{...}
+type GetMetastoreServiceTelemetryConfigInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceTelemetryConfigOutput() GetMetastoreServiceTelemetryConfigOutput
+	ToGetMetastoreServiceTelemetryConfigOutputWithContext(context.Context) GetMetastoreServiceTelemetryConfigOutput
+}
+
+type GetMetastoreServiceTelemetryConfigArgs struct {
+	// The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
+	LogFormat pulumi.StringInput `pulumi:"logFormat"`
+}
+
+func (GetMetastoreServiceTelemetryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceTelemetryConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceTelemetryConfigArgs) ToGetMetastoreServiceTelemetryConfigOutput() GetMetastoreServiceTelemetryConfigOutput {
+	return i.ToGetMetastoreServiceTelemetryConfigOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceTelemetryConfigArgs) ToGetMetastoreServiceTelemetryConfigOutputWithContext(ctx context.Context) GetMetastoreServiceTelemetryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceTelemetryConfigOutput)
+}
+
+// GetMetastoreServiceTelemetryConfigArrayInput is an input type that accepts GetMetastoreServiceTelemetryConfigArray and GetMetastoreServiceTelemetryConfigArrayOutput values.
+// You can construct a concrete instance of `GetMetastoreServiceTelemetryConfigArrayInput` via:
+//
+//	GetMetastoreServiceTelemetryConfigArray{ GetMetastoreServiceTelemetryConfigArgs{...} }
+type GetMetastoreServiceTelemetryConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetMetastoreServiceTelemetryConfigArrayOutput() GetMetastoreServiceTelemetryConfigArrayOutput
+	ToGetMetastoreServiceTelemetryConfigArrayOutputWithContext(context.Context) GetMetastoreServiceTelemetryConfigArrayOutput
+}
+
+type GetMetastoreServiceTelemetryConfigArray []GetMetastoreServiceTelemetryConfigInput
+
+func (GetMetastoreServiceTelemetryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceTelemetryConfig)(nil)).Elem()
+}
+
+func (i GetMetastoreServiceTelemetryConfigArray) ToGetMetastoreServiceTelemetryConfigArrayOutput() GetMetastoreServiceTelemetryConfigArrayOutput {
+	return i.ToGetMetastoreServiceTelemetryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetMetastoreServiceTelemetryConfigArray) ToGetMetastoreServiceTelemetryConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceTelemetryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMetastoreServiceTelemetryConfigArrayOutput)
+}
+
+type GetMetastoreServiceTelemetryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceTelemetryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMetastoreServiceTelemetryConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceTelemetryConfigOutput) ToGetMetastoreServiceTelemetryConfigOutput() GetMetastoreServiceTelemetryConfigOutput {
+	return o
+}
+
+func (o GetMetastoreServiceTelemetryConfigOutput) ToGetMetastoreServiceTelemetryConfigOutputWithContext(ctx context.Context) GetMetastoreServiceTelemetryConfigOutput {
+	return o
+}
+
+// The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
+func (o GetMetastoreServiceTelemetryConfigOutput) LogFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMetastoreServiceTelemetryConfig) string { return v.LogFormat }).(pulumi.StringOutput)
+}
+
+type GetMetastoreServiceTelemetryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMetastoreServiceTelemetryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMetastoreServiceTelemetryConfig)(nil)).Elem()
+}
+
+func (o GetMetastoreServiceTelemetryConfigArrayOutput) ToGetMetastoreServiceTelemetryConfigArrayOutput() GetMetastoreServiceTelemetryConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceTelemetryConfigArrayOutput) ToGetMetastoreServiceTelemetryConfigArrayOutputWithContext(ctx context.Context) GetMetastoreServiceTelemetryConfigArrayOutput {
+	return o
+}
+
+func (o GetMetastoreServiceTelemetryConfigArrayOutput) Index(i pulumi.IntInput) GetMetastoreServiceTelemetryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMetastoreServiceTelemetryConfig {
+		return vs[0].([]GetMetastoreServiceTelemetryConfig)[vs[1].(int)]
+	}).(GetMetastoreServiceTelemetryConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyBasicAlgorithmInput)(nil)).Elem(), AutoscalingPolicyBasicAlgorithmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyBasicAlgorithmPtrInput)(nil)).Elem(), AutoscalingPolicyBasicAlgorithmArgs{})
@@ -26792,6 +28109,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayInput)(nil)).Elem(), WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceEncryptionConfigInput)(nil)).Elem(), GetMetastoreServiceEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceEncryptionConfigArrayInput)(nil)).Elem(), GetMetastoreServiceEncryptionConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigInput)(nil)).Elem(), GetMetastoreServiceHiveMetastoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigArrayInput)(nil)).Elem(), GetMetastoreServiceHiveMetastoreConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionInput)(nil)).Elem(), GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput)(nil)).Elem(), GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigKerberosConfigInput)(nil)).Elem(), GetMetastoreServiceHiveMetastoreConfigKerberosConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayInput)(nil)).Elem(), GetMetastoreServiceHiveMetastoreConfigKerberosConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput)(nil)).Elem(), GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayInput)(nil)).Elem(), GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceMaintenanceWindowInput)(nil)).Elem(), GetMetastoreServiceMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceMaintenanceWindowArrayInput)(nil)).Elem(), GetMetastoreServiceMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceMetadataIntegrationInput)(nil)).Elem(), GetMetastoreServiceMetadataIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceMetadataIntegrationArrayInput)(nil)).Elem(), GetMetastoreServiceMetadataIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceMetadataIntegrationDataCatalogConfigInput)(nil)).Elem(), GetMetastoreServiceMetadataIntegrationDataCatalogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayInput)(nil)).Elem(), GetMetastoreServiceMetadataIntegrationDataCatalogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceNetworkConfigInput)(nil)).Elem(), GetMetastoreServiceNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceNetworkConfigArrayInput)(nil)).Elem(), GetMetastoreServiceNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceNetworkConfigConsumerInput)(nil)).Elem(), GetMetastoreServiceNetworkConfigConsumerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceNetworkConfigConsumerArrayInput)(nil)).Elem(), GetMetastoreServiceNetworkConfigConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigInput)(nil)).Elem(), GetMetastoreServiceScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceScalingConfigArrayInput)(nil)).Elem(), GetMetastoreServiceScalingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceTelemetryConfigInput)(nil)).Elem(), GetMetastoreServiceTelemetryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMetastoreServiceTelemetryConfigArrayInput)(nil)).Elem(), GetMetastoreServiceTelemetryConfigArray{})
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmYarnConfigOutput{})
@@ -27078,4 +28419,28 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceEncryptionConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceHiveMetastoreConfigOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceHiveMetastoreConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceHiveMetastoreConfigKerberosConfigOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceHiveMetastoreConfigKerberosConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceMetadataIntegrationOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceMetadataIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceMetadataIntegrationDataCatalogConfigOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceMetadataIntegrationDataCatalogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceNetworkConfigConsumerOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceNetworkConfigConsumerArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceScalingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceTelemetryConfigOutput{})
+	pulumi.RegisterOutputType(GetMetastoreServiceTelemetryConfigArrayOutput{})
 }

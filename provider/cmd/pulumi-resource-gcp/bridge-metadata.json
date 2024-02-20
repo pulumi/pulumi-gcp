@@ -26858,6 +26858,64 @@
                 "current": "gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy",
                 "majorVersion": 7
             },
+            "google_dataproc_metastore_service": {
+                "current": "gcp:dataproc/getMetastoreService:getMetastoreService",
+                "majorVersion": 7,
+                "fields": {
+                    "encryption_config": {
+                        "maxItemsOne": false
+                    },
+                    "hive_metastore_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "auxiliary_versions": {
+                                    "maxItemsOne": false
+                                },
+                                "kerberos_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "keytab": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "maintenance_window": {
+                        "maxItemsOne": false
+                    },
+                    "metadata_integration": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data_catalog_config": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "network_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "consumers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "scaling_config": {
+                        "maxItemsOne": false
+                    },
+                    "telemetry_config": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_dataproc_metastore_service_iam_policy": {
                 "current": "gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy",
                 "majorVersion": 7
@@ -29609,6 +29667,7 @@
             "gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy": 0,
             "gcp:dataproc/getJobIamPolicy:getJobIamPolicy": 0,
             "gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy": 0,
+            "gcp:dataproc/getMetastoreService:getMetastoreService": 0,
             "gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy": 0,
             "gcp:datastream/getStaticIps:getStaticIps": 0,
             "gcp:dns/getKeys:getKeys": 1,
@@ -30766,6 +30825,7 @@
             "gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy": "google_dataproc_cluster_iam_policy",
             "gcp:dataproc/getJobIamPolicy:getJobIamPolicy": "google_dataproc_job_iam_policy",
             "gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy": "google_dataproc_metastore_federation_iam_policy",
+            "gcp:dataproc/getMetastoreService:getMetastoreService": "google_dataproc_metastore_service",
             "gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy": "google_dataproc_metastore_service_iam_policy",
             "gcp:datastream/getStaticIps:getStaticIps": "google_datastream_static_ips",
             "gcp:dns/getKeys:getKeys": "google_dns_keys",
@@ -43413,9 +43473,65 @@
                 "federationId": "federation_id",
                 "policyData": "policy_data"
             },
+            "gcp:dataproc/getMetastoreService:getMetastoreService": {
+                "artifactGcsUri": "artifact_gcs_uri",
+                "databaseType": "database_type",
+                "effectiveLabels": "effective_labels",
+                "encryptionConfigs": "encryption_config",
+                "endpointUri": "endpoint_uri",
+                "hiveMetastoreConfigs": "hive_metastore_config",
+                "maintenanceWindows": "maintenance_window",
+                "metadataIntegrations": "metadata_integration",
+                "networkConfigs": "network_config",
+                "pulumiLabels": "terraform_labels",
+                "releaseChannel": "release_channel",
+                "scalingConfigs": "scaling_config",
+                "serviceId": "service_id",
+                "stateMessage": "state_message",
+                "telemetryConfigs": "telemetry_config"
+            },
+            "gcp:dataproc/getMetastoreServiceEncryptionConfig:getMetastoreServiceEncryptionConfig": {
+                "kmsKey": "kms_key"
+            },
+            "gcp:dataproc/getMetastoreServiceHiveMetastoreConfig:getMetastoreServiceHiveMetastoreConfig": {
+                "auxiliaryVersions": "auxiliary_versions",
+                "configOverrides": "config_overrides",
+                "endpointProtocol": "endpoint_protocol",
+                "kerberosConfigs": "kerberos_config"
+            },
+            "gcp:dataproc/getMetastoreServiceHiveMetastoreConfigAuxiliaryVersion:getMetastoreServiceHiveMetastoreConfigAuxiliaryVersion": {
+                "configOverrides": "config_overrides"
+            },
+            "gcp:dataproc/getMetastoreServiceHiveMetastoreConfigKerberosConfig:getMetastoreServiceHiveMetastoreConfigKerberosConfig": {
+                "keytabs": "keytab",
+                "krb5ConfigGcsUri": "krb5_config_gcs_uri"
+            },
+            "gcp:dataproc/getMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab:getMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab": {
+                "cloudSecret": "cloud_secret"
+            },
             "gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy": {
                 "policyData": "policy_data",
                 "serviceId": "service_id"
+            },
+            "gcp:dataproc/getMetastoreServiceMaintenanceWindow:getMetastoreServiceMaintenanceWindow": {
+                "dayOfWeek": "day_of_week",
+                "hourOfDay": "hour_of_day"
+            },
+            "gcp:dataproc/getMetastoreServiceMetadataIntegration:getMetastoreServiceMetadataIntegration": {
+                "dataCatalogConfigs": "data_catalog_config"
+            },
+            "gcp:dataproc/getMetastoreServiceNetworkConfig:getMetastoreServiceNetworkConfig": {
+                "customRoutesEnabled": "custom_routes_enabled"
+            },
+            "gcp:dataproc/getMetastoreServiceNetworkConfigConsumer:getMetastoreServiceNetworkConfigConsumer": {
+                "endpointUri": "endpoint_uri"
+            },
+            "gcp:dataproc/getMetastoreServiceScalingConfig:getMetastoreServiceScalingConfig": {
+                "instanceSize": "instance_size",
+                "scalingFactor": "scaling_factor"
+            },
+            "gcp:dataproc/getMetastoreServiceTelemetryConfig:getMetastoreServiceTelemetryConfig": {
+                "logFormat": "log_format"
             },
             "gcp:dataproc/job:Job": {
                 "driverControlsFilesUri": "driver_controls_files_uri",
