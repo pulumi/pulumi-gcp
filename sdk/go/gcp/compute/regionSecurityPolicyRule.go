@@ -139,6 +139,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// First activate advanced network DDoS protection for the desired region
 //			policyddosprotection, err := compute.NewRegionSecurityPolicy(ctx, "policyddosprotection", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("us-west2"),
 //				Description: pulumi.String("policy for activating network DDoS protection for the desired region"),
@@ -158,6 +159,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Add the desired policy and custom rule.
 //			policynetworkmatch, err := compute.NewRegionSecurityPolicy(ctx, "policynetworkmatch", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("us-west2"),
 //				Description: pulumi.String("region security policy for network match"),
