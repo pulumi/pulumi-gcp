@@ -37,6 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Submit an example spark job to a dataproc cluster
 //			spark, err := dataproc.NewJob(ctx, "spark", &dataproc.JobArgs{
 //				Region:      mycluster.Region,
 //				ForceDelete: pulumi.Bool(true),
@@ -64,6 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Submit an example pyspark job to a dataproc cluster
 //			pyspark, err := dataproc.NewJob(ctx, "pyspark", &dataproc.JobArgs{
 //				Region:      mycluster.Region,
 //				ForceDelete: pulumi.Bool(true),
