@@ -604,6 +604,7 @@
         "dataproc/getClusterIamPolicy.ts",
         "dataproc/getJobIamPolicy.ts",
         "dataproc/getMetastoreFederationIamPolicy.ts",
+        "dataproc/getMetastoreService.ts",
         "dataproc/getMetastoreServiceIamPolicy.ts",
         "dataproc/index.ts",
         "dataproc/job.ts",

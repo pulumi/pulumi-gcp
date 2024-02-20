@@ -46859,6 +46859,147 @@ export namespace dataproc {
         properties: {[key: string]: string};
     }
 
+    export interface GetMetastoreServiceEncryptionConfig {
+        /**
+         * The fully qualified customer provided Cloud KMS key name to use for customer data encryption.
+         * Use the following format: 'projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)'
+         */
+        kmsKey: string;
+    }
+
+    export interface GetMetastoreServiceHiveMetastoreConfig {
+        /**
+         * A mapping of Hive metastore version to the auxiliary version configuration.
+         * When specified, a secondary Hive metastore service is created along with the primary service.
+         * All auxiliary versions must be less than the service's primary version.
+         * The key is the auxiliary service name and it must match the regular expression a-z?.
+         * This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+         */
+        auxiliaryVersions: outputs.dataproc.GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion[];
+        /**
+         * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+         * The mappings override system defaults (some keys cannot be overridden)
+         */
+        configOverrides: {[key: string]: string};
+        /**
+         * The protocol to use for the metastore service endpoint. If unspecified, defaults to 'THRIFT'. Default value: "THRIFT" Possible values: ["THRIFT", "GRPC"]
+         */
+        endpointProtocol: string;
+        /**
+         * Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+         */
+        kerberosConfigs: outputs.dataproc.GetMetastoreServiceHiveMetastoreConfigKerberosConfig[];
+        /**
+         * The Hive metastore schema version.
+         */
+        version: string;
+    }
+
+    export interface GetMetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
+        /**
+         * A mapping of Hive metastore configuration key-value pairs to apply to the auxiliary Hive metastore (configured in hive-site.xml) in addition to the primary version's overrides.
+         * If keys are present in both the auxiliary version's overrides and the primary version's overrides, the value from the auxiliary version's overrides takes precedence.
+         */
+        configOverrides: {[key: string]: string};
+        key: string;
+        /**
+         * The Hive metastore version of the auxiliary service. It must be less than the primary Hive metastore service's version.
+         */
+        version: string;
+    }
+
+    export interface GetMetastoreServiceHiveMetastoreConfigKerberosConfig {
+        /**
+         * A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+         */
+        keytabs: outputs.dataproc.GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab[];
+        /**
+         * A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+         */
+        krb5ConfigGcsUri: string;
+        /**
+         * A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+         */
+        principal: string;
+    }
+
+    export interface GetMetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+        /**
+         * The relative resource name of a Secret Manager secret version, in the following form:
+         *
+         * "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+         */
+        cloudSecret: string;
+    }
+
+    export interface GetMetastoreServiceMaintenanceWindow {
+        /**
+         * The day of week, when the window starts. Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+         */
+        dayOfWeek: string;
+        /**
+         * The hour of day (0-23) when the window starts.
+         */
+        hourOfDay: number;
+    }
+
+    export interface GetMetastoreServiceMetadataIntegration {
+        /**
+         * The integration config for the Data Catalog service.
+         */
+        dataCatalogConfigs: outputs.dataproc.GetMetastoreServiceMetadataIntegrationDataCatalogConfig[];
+    }
+
+    export interface GetMetastoreServiceMetadataIntegrationDataCatalogConfig {
+        /**
+         * Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetMetastoreServiceNetworkConfig {
+        /**
+         * The consumer-side network configuration for the Dataproc Metastore instance.
+         */
+        consumers: outputs.dataproc.GetMetastoreServiceNetworkConfigConsumer[];
+        /**
+         * Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+         */
+        customRoutesEnabled: boolean;
+    }
+
+    export interface GetMetastoreServiceNetworkConfigConsumer {
+        /**
+         * The URI of the endpoint used to access the metastore service.
+         */
+        endpointUri: string;
+        /**
+         * The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
+         * It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network.
+         * There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:
+         * 'projects/{projectNumber}/regions/{region_id}/subnetworks/{subnetwork_id}
+         */
+        subnetwork: string;
+    }
+
+    export interface GetMetastoreServiceScalingConfig {
+        /**
+         * Metastore instance sizes. Possible values: ["EXTRA_SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA_LARGE"]
+         */
+        instanceSize: string;
+        /**
+         * Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+         */
+        scalingFactor: number;
+    }
+
+    export interface GetMetastoreServiceTelemetryConfig {
+        /**
+         * The output format of the Dataproc Metastore service's logs. Default value: "JSON" Possible values: ["LEGACY", "JSON"]
+         */
+        logFormat: string;
+    }
+
     export interface JobHadoopConfig {
         /**
          * HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
