@@ -18,7 +18,15 @@ func GetAccessContextManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:accessContextManagerCustomEndpoint")
 }
 func GetAccessToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:accessToken")
+	v, err := config.Try(ctx, "gcp:accessToken")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_OAUTH_ACCESS_TOKEN"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetActiveDirectoryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:activeDirectoryCustomEndpoint")
@@ -168,7 +176,15 @@ func GetCoreBillingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:coreBillingCustomEndpoint")
 }
 func GetCredentials(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:credentials")
+	v, err := config.Try(ctx, "gcp:credentials")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetDataCatalogCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataCatalogCustomEndpoint")

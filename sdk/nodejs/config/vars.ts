@@ -28,7 +28,7 @@ Object.defineProperty(exports, "accessContextManagerCustomEndpoint", {
 export declare const accessToken: string | undefined;
 Object.defineProperty(exports, "accessToken", {
     get() {
-        return __config.get("accessToken");
+        return __config.get("accessToken") ?? utilities.getEnv("GOOGLE_OAUTH_ACCESS_TOKEN");
     },
     enumerable: true,
 });
@@ -428,7 +428,7 @@ Object.defineProperty(exports, "coreBillingCustomEndpoint", {
 export declare const credentials: string | undefined;
 Object.defineProperty(exports, "credentials", {
     get() {
-        return __config.get("credentials");
+        return __config.get("credentials") ?? utilities.getEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
     },
     enumerable: true,
 });

@@ -1026,6 +1026,8 @@ namespace Pulumi.Gcp
 
         public ProviderArgs()
         {
+            AccessToken = Utilities.GetEnv("GOOGLE_OAUTH_ACCESS_TOKEN");
+            Credentials = Utilities.GetEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
             Project = Utilities.GetEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
             Region = Utilities.GetEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
             Zone = Utilities.GetEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");

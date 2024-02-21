@@ -404,7 +404,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 		}
 
 		// validate the gcloud config
-		err := config.LoadAndValidate(context.Background())
+		err := config.LoadAndValidate(ctx)
 		if err != nil {
 			return fmt.Errorf(noCredentialsErr, err)
 		}
@@ -485,6 +485,20 @@ func Provider() tfbridge.ProviderInfo {
 						"GOOGLE_ZONE",
 						"GCLOUD_ZONE",
 						"CLOUDSDK_COMPUTE_ZONE",
+					},
+				},
+			},
+			"access_token": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"GOOGLE_OAUTH_ACCESS_TOKEN"},
+				},
+			},
+			"credentials": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{
+						"GOOGLE_CREDENTIALS",
+						"GOOGLE_CLOUD_KEYFILE_JSON",
+						"GCLOUD_KEYFILE_JSON",
 					},
 				},
 			},

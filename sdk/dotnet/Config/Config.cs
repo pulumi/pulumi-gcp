@@ -46,7 +46,7 @@ namespace Pulumi.Gcp
             set => _accessContextManagerCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _accessToken = new __Value<string?>(() => __config.Get("accessToken"));
+        private static readonly __Value<string?> _accessToken = new __Value<string?>(() => __config.Get("accessToken") ?? Utilities.GetEnv("GOOGLE_OAUTH_ACCESS_TOKEN"));
         public static string? AccessToken
         {
             get => _accessToken.Get();
@@ -396,7 +396,7 @@ namespace Pulumi.Gcp
             set => _coreBillingCustomEndpoint.Set(value);
         }
 
-        private static readonly __Value<string?> _credentials = new __Value<string?>(() => __config.Get("credentials"));
+        private static readonly __Value<string?> _credentials = new __Value<string?>(() => __config.Get("credentials") ?? Utilities.GetEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON"));
         public static string? Credentials
         {
             get => _credentials.Get();
