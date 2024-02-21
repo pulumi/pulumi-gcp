@@ -155,7 +155,7 @@ index 5a62364bc..cbebdfdce 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index ad9bde671..3e338c6c3 100644
+index 9d5e5fa35..9a512f867 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
 @@ -717,8 +717,8 @@ The following arguments are supported:
@@ -323,7 +323,7 @@ index b7253bb12..2d53f143b 100644
  
  * `column_family` - (Optional) A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 diff --git a/website/docs/r/bigtable_table_iam.html.markdown b/website/docs/r/bigtable_table_iam.html.markdown
-index 160329c40..f77bc8434 100644
+index 1bcfb5f93..ed6b3dc10 100644
 --- a/website/docs/r/bigtable_table_iam.html.markdown
 +++ b/website/docs/r/bigtable_table_iam.html.markdown
 @@ -89,7 +89,7 @@ For `google_bigtable_table_iam_member` or `google_bigtable_table_iam_binding`:
@@ -405,7 +405,7 @@ index 254b457a0..24a306322 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 60a05dd7c..920f50a4c 100644
+index eb8702bd4..a16ab7fb0 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,8 +31,63 @@ To get more information about Service, see:
@@ -482,7 +482,7 @@ index 60a05dd7c..920f50a4c 100644
        }
      }
    }
-@@ -342,7 +397,7 @@ The following arguments are supported:
+@@ -343,7 +398,7 @@ The following arguments are supported:
    may be set by external tools to store and retrieve arbitrary metadata. More
    info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -491,7 +491,7 @@ index 60a05dd7c..920f50a4c 100644
    or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
    Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
    keys to configure features on a Revision template:
-@@ -495,7 +550,8 @@ The following arguments are supported:
+@@ -496,7 +551,8 @@ The following arguments are supported:
  
  * `liveness_probe` -
    (Optional)
@@ -501,7 +501,7 @@ index 60a05dd7c..920f50a4c 100644
    Structure is [documented below](#nested_liveness_probe).
  
  
-@@ -955,7 +1011,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -980,7 +1036,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata. More
    info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -524,7 +524,7 @@ index 1f417a763..f743a3fdd 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 2e2737c5a..34e9f6558 100644
+index 61e961b78..69229f5c5 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -27,18 +27,18 @@ To get more information about Environments, see:
@@ -548,7 +548,7 @@ index 2e2737c5a..34e9f6558 100644
 +  problems.***
  
  ## Example Usage
-
+ 
 diff --git a/website/docs/r/compute_attached_disk.html.markdown b/website/docs/r/compute_attached_disk.html.markdown
 index 73e155093..f928963c9 100644
 --- a/website/docs/r/compute_attached_disk.html.markdown
@@ -571,7 +571,7 @@ index 73e155093..f928963c9 100644
 -* [Resource: google_compute_disk](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk)
  * How-to Guides
      * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
-
+ 
 diff --git a/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown b/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown
 index 9bce1ba3a..f937568e0 100644
 --- a/website/docs/r/compute_backend_bucket_signed_url_key.html.markdown
@@ -589,7 +589,7 @@ index 9bce1ba3a..f937568e0 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 07e776730..025685511 100644
+index ecab11280..4ff62b377 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -34,9 +34,8 @@ To get more information about BackendService, see:
@@ -604,7 +604,6 @@ index 07e776730..025685511 100644
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=backend_service_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
-
 diff --git a/website/docs/r/compute_backend_service_signed_url_key.html.markdown b/website/docs/r/compute_backend_service_signed_url_key.html.markdown
 index af6522a4f..a1fef9b4e 100644
 --- a/website/docs/r/compute_backend_service_signed_url_key.html.markdown
@@ -622,7 +621,7 @@ index af6522a4f..a1fef9b4e 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index b261d1c3d..03b634c05 100644
+index 2daca63a1..7b3a56b7b 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -43,9 +43,6 @@ To get more information about Disk, see:
@@ -686,7 +685,7 @@ index c3c7a08e5..afe1e7197 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index afafbfd43..6cccabb24 100644
+index 4e124eb7a..f7d19b1aa 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -87,7 +87,7 @@ The following arguments are supported:
@@ -839,14 +838,14 @@ index 3f6b49891..6044e7982 100644
 +  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
    consider it to be an entirely different resource and will treat it as such.
  ## Attributes Reference
-
+ 
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index bf3dcb2cd..ab09dde68 100644
+index 52fcffb76..d2ea24574 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
  ## Using with Instance Group Manager
-
+ 
  Instance Templates cannot be updated after creation with the Google
 -Cloud Platform API. In order to update an Instance Template, Terraform will
 -destroy the existing resource and create a replacement. In order to effectively
@@ -858,20 +857,20 @@ index bf3dcb2cd..ab09dde68 100644
  Either omit the Instance Template `name` attribute, or specify a partial name
 -with `name_prefix`.  Example:
 +with `name_prefix`. Example:
-
+ 
  ```hcl
  resource "google_compute_instance_template" "instance_template" {
 @@ -220,7 +219,7 @@ resource "google_compute_instance_group_manager" "instance_group_manager" {
  }
  ```
-
+ 
 -With this setup Terraform generates a unique name for your Instance
 +With this setup, this provider generates a unique name for your Instance
  Template and can then update the Instance Group manager without conflict before
  destroying the previous Instance Template.
-
+ 
 @@ -228,17 +227,17 @@ destroying the previous Instance Template.
-
+ 
  A common way to use instance templates and managed instance groups is to deploy the
  latest image in a family, usually the latest build of your application. There are two
 -ways to do this in Terraform, and they have their pros and cons. The difference ends
@@ -881,7 +880,7 @@ index bf3dcb2cd..ab09dde68 100644
 +when the provider runs, or you can have each instance check what the latest image is when
  it's being created, either as part of a scaling event or being rebuilt by the instance
  group manager.
-
+ 
 -If you're not sure, we recommend deploying the latest image available when Terraform runs,
 +If you're not sure, we recommend deploying the latest image available when the provider runs,
  because this means all the instances in your group will be based on the same image, always,
@@ -892,17 +891,17 @@ index bf3dcb2cd..ab09dde68 100644
 +You can achieve this by using the `google_compute_image`
 +data source, which will retrieve the latest image on every `pulumi apply`, and will update
  the template to use that specific image:
-
+ 
  ```tf
 @@ -291,8 +290,9 @@ The following arguments are supported:
      To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
-
+ 
  - - -
 +
  * `name` - (Optional) The name of the instance template. If you leave
 -  this blank, Terraform will auto-generate a unique name.
 +  this blank, the provider will auto-generate a unique name.
-
+ 
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`.
 @@ -501,7 +501,7 @@ The following arguments are supported:
@@ -913,7 +912,7 @@ index bf3dcb2cd..ab09dde68 100644
 +    not work unless you can send traffic to the instance's
      network (e.g. via tunnel or because it is running on another cloud instance
      on that network). This block can be repeated multiple times. Structure [documented below](#nested_access_config).
-
+ 
 diff --git a/website/docs/r/compute_machine_image.html.markdown b/website/docs/r/compute_machine_image.html.markdown
 index 0662b159b..c77f3690a 100644
 --- a/website/docs/r/compute_machine_image.html.markdown
@@ -1104,7 +1103,7 @@ index 221b8025a..023da8055 100644
  
  ## Example Usage
 diff --git a/website/docs/r/compute_region_disk.html.markdown b/website/docs/r/compute_region_disk.html.markdown
-index f9c8d1281..98aced933 100644
+index f9c8d1281..8b9968d06 100644
 --- a/website/docs/r/compute_region_disk.html.markdown
 +++ b/website/docs/r/compute_region_disk.html.markdown
 @@ -43,9 +43,8 @@ To get more information about RegionDisk, see:
@@ -1158,12 +1157,12 @@ index 0a16ac30b..8bb918a45 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index d9af4946a..384920e51 100644
+index 18a41f981..872bd6235 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
 @@ -21,11 +21,6 @@ description: |-
  
- A regional NEG that can support Serverless Products.
+ A regional NEG that can support Serverless Products and proxying traffic to external backends.
  
 -Recreating a region network endpoint group that's in use by another resource will give a
 -`resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
@@ -1477,7 +1476,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 98af03c92..cc5a976a6 100644
+index 92d2b5ab5..0d6c57d5c 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -10,7 +10,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1566,7 +1565,7 @@ index eb5da7961..64556a5d4 100644
 +  identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
    consider it to be an entirely different resource and will treat it as such.
  ## Attributes Reference
-
+ 
 diff --git a/website/docs/r/compute_target_pool.html.markdown b/website/docs/r/compute_target_pool.html.markdown
 index d282b9178..376d46e33 100644
 --- a/website/docs/r/compute_target_pool.html.markdown
@@ -1597,7 +1596,7 @@ index 20ce807e7..1cf3cbdbb 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=vpn_tunnel_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 7107d81fc..6107ca7c6 100644
+index d35c3df76..2db27a1c2 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -6,12 +6,6 @@ description: |-
@@ -1692,8 +1691,8 @@ index 7107d81fc..6107ca7c6 100644
 +field from your config will cause the provider to stop managing your cluster's
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
-
-@@ -845,8 +860,6 @@ gvnic {
+ 
+@@ -846,8 +861,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -1702,7 +1701,7 @@ index 7107d81fc..6107ca7c6 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -867,7 +880,7 @@ gvnic {
+@@ -868,7 +881,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1711,7 +1710,7 @@ index 7107d81fc..6107ca7c6 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -892,10 +905,7 @@ gvnic {
+@@ -893,10 +906,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1723,7 +1722,7 @@ index 7107d81fc..6107ca7c6 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -905,13 +915,15 @@ gvnic {
+@@ -906,13 +916,15 @@ gvnic {
  * `tags` - (Optional) The list of instance tags applied to all nodes. Tags are used to identify
      valid sources or targets for network firewalls.
  
@@ -1746,7 +1745,7 @@ index 7107d81fc..6107ca7c6 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -960,12 +972,20 @@ sole_tenant_config {
+@@ -961,12 +973,20 @@ sole_tenant_config {
  
  * `threads_per_core` - (Required) The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
  
@@ -1768,7 +1767,7 @@ index 7107d81fc..6107ca7c6 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -998,7 +1018,7 @@ sole_tenant_config {
+@@ -999,7 +1019,7 @@ sole_tenant_config {
  * `count` (Required) - The number of the guest accelerator cards exposed to this instance.
  
  * `gpu_driver_installation_config` (Optional) - Configuration for auto installation of GPU driver. Structure is [documented below](#nested_gpu_driver_installation_config).
@@ -1777,7 +1776,7 @@ index 7107d81fc..6107ca7c6 100644
  * `gpu_partition_size` (Optional) - Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
  
  * `gpu_sharing_config` (Optional) - Configuration for GPU sharing. Structure is [documented below](#nested_gpu_sharing_config).
-@@ -1111,7 +1131,7 @@ for more details. This field only applies to private clusters, when
+@@ -1112,7 +1132,7 @@ for more details. This field only applies to private clusters, when
  `enable_private_nodes` is `true`.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1786,7 +1785,7 @@ index 7107d81fc..6107ca7c6 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1214,9 +1234,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1215,9 +1235,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -1799,7 +1798,7 @@ index 7107d81fc..6107ca7c6 100644
  
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
-@@ -1345,7 +1365,7 @@ exported:
+@@ -1346,7 +1366,7 @@ exported:
  
  * `node_config.0.effective_taints` - List of kubernetes taints applied to each node. Structure is [documented above](#nested_taint).
  
@@ -2119,7 +2118,7 @@ index 7b53d1baf..9dcaf6e43 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/dns_managed_zone.html.markdown b/website/docs/r/dns_managed_zone.html.markdown
-index 6ed95ccb9..7161ac335 100644
+index 6ed95ccb9..0e83be566 100644
 --- a/website/docs/r/dns_managed_zone.html.markdown
 +++ b/website/docs/r/dns_managed_zone.html.markdown
 @@ -42,16 +42,12 @@ To get more information about ManagedZone, see:
@@ -2455,7 +2454,7 @@ index 000000000..0be906773
 +-> **Custom Roles**: If you're importing a IAM binding with a custom role, make sure to use the
 + full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 diff --git a/website/docs/r/google_kms_crypto_key_iam.html.markdown b/website/docs/r/google_kms_crypto_key_iam.html.markdown
-index 875cc2938..df83b0214 100644
+index 99cedffde..40176cafc 100644
 --- a/website/docs/r/google_kms_crypto_key_iam.html.markdown
 +++ b/website/docs/r/google_kms_crypto_key_iam.html.markdown
 @@ -48,7 +48,7 @@ resource "google_kms_crypto_key_iam_policy" "crypto_key" {
@@ -3082,7 +3081,7 @@ index d29264f82..aa3a631ce 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index 90d9b93c9..d51c118a5 100644
+index 1d789c658..f3434142c 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -23,9 +23,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat
@@ -3124,7 +3123,7 @@ index 764dcf5f1..e369505cb 100644
  
  
 diff --git a/website/docs/r/kms_secret_ciphertext.html.markdown b/website/docs/r/kms_secret_ciphertext.html.markdown
-index cf5898150..1cdc9297a 100644
+index 134890141..47c0dfda4 100644
 --- a/website/docs/r/kms_secret_ciphertext.html.markdown
 +++ b/website/docs/r/kms_secret_ciphertext.html.markdown
 @@ -34,9 +34,7 @@ To get more information about SecretCiphertext, see:
@@ -3217,7 +3216,7 @@ index 539daa01d..116aa9e04 100644
  ## Example Usage
  
 diff --git a/website/docs/r/logging_project_bucket_config.html.markdown b/website/docs/r/logging_project_bucket_config.html.markdown
-index f9781d543..90ec1f79d 100644
+index f0f3ecf80..aeab7db0f 100644
 --- a/website/docs/r/logging_project_bucket_config.html.markdown
 +++ b/website/docs/r/logging_project_bucket_config.html.markdown
 @@ -10,7 +10,7 @@ Manages a project-level logging bucket config. For more information see
@@ -3364,10 +3363,10 @@ index eb593594c..929f171ae 100644
  ## Example Usage - Uptime Check Config Http
  
 diff --git a/website/docs/r/notebooks_instance.html.markdown b/website/docs/r/notebooks_instance.html.markdown
-index 6e8bbeeb8..c141c2217 100644
+index 18066af23..2a3720dbb 100644
 --- a/website/docs/r/notebooks_instance.html.markdown
 +++ b/website/docs/r/notebooks_instance.html.markdown
-@@ -67,7 +67,6 @@ resource "google_notebooks_instance" "instance" {
+@@ -88,7 +88,6 @@ resource "google_notebooks_instance" "instance" {
    machine_type = "e2-medium"
    metadata = {
      proxy-mode = "service_account"
@@ -3375,17 +3374,6 @@ index 6e8bbeeb8..c141c2217 100644
    }
    container_image {
      repository = "gcr.io/deeplearning-platform-release/base-cpu"
-@@ -130,10 +129,6 @@ resource "google_notebooks_instance" "instance" {
-   labels = {
-     k = "val"
-   }
--
--  metadata = {
--    terraform = "true"
--  }
- }
- 
- data "google_compute_network" "my_network" {
 diff --git a/website/docs/r/os_config_guest_policies.html.markdown b/website/docs/r/os_config_guest_policies.html.markdown
 index b87c9bcc3..ac8e8027c 100644
 --- a/website/docs/r/os_config_guest_policies.html.markdown

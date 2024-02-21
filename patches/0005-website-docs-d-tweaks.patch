@@ -47,7 +47,7 @@ index 1e2a68c24..99f557204 100644
 -See [google_compute_global_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_forwarding_rule) resource for details of the available attributes.
 +See google_compute_global_forwarding_rule resource for details of the available attributes.
 diff --git a/website/docs/d/compute_instance.html.markdown b/website/docs/d/compute_instance.html.markdown
-index 1d3e8dc06..d2da6cbb6 100644
+index afe83f89f..e0b49763c 100644
 --- a/website/docs/d/compute_instance.html.markdown
 +++ b/website/docs/d/compute_instance.html.markdown
 @@ -11,7 +11,6 @@ Get information about a VM instance resource within GCE. For more information se
@@ -89,7 +89,7 @@ index 1d3e8dc06..d2da6cbb6 100644
  
  * `network_ip` - The private IP address assigned to the instance.
  
-@@ -195,7 +194,7 @@ The following arguments are supported:
+@@ -197,7 +196,7 @@ The following arguments are supported:
      
  * `provisioning_model` - Describe the type of preemptible VM.
  
@@ -223,7 +223,7 @@ index f1f5de3ab..6dc15a243 100644
  releases. Since this is just a string match, it's recommended that you append a
  `.` after minor versions to ensure that prefixes such as `1.1` don't match
 diff --git a/website/docs/d/dns_managed_zone.html.markdown b/website/docs/d/dns_managed_zone.html.markdown
-index fa2b314b0..eb24558e0 100644
+index 10110e090..12d77a317 100644
 --- a/website/docs/d/dns_managed_zone.html.markdown
 +++ b/website/docs/d/dns_managed_zone.html.markdown
 @@ -38,7 +38,7 @@ resource "google_dns_record_set" "dns" {
