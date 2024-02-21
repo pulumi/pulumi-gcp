@@ -377,7 +377,7 @@ jobs:
           env.GOOGLE_CI_WORKLOAD_IDENTITY_POOL }}/providers/${{
           env.GOOGLE_CI_WORKLOAD_IDENTITY_PROVIDER }}
     - name: Setup gcloud auth
-      uses: google-github-actions/setup-gcloud@v0
+      uses: google-github-actions/setup-gcloud@v2
       with:
         install_components: gke-gcloud-auth-plugin
     - name: Install dependencies
