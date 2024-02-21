@@ -14,15 +14,18 @@ namespace Pulumi.Gcp.CloudBuildV2.Outputs
     public sealed class ConnectionInstallationState
     {
         /// <summary>
+        /// (Output)
         /// Output only. Link to follow for next action. Empty string if the installation is already complete.
         /// </summary>
         public readonly string? ActionUri;
         /// <summary>
+        /// (Output)
         /// Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
         /// </summary>
         public readonly string? Message;
         /// <summary>
-        /// Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+        /// (Output)
+        /// Output only. Current step of the installation process.
         /// </summary>
         public readonly string? Stage;
 

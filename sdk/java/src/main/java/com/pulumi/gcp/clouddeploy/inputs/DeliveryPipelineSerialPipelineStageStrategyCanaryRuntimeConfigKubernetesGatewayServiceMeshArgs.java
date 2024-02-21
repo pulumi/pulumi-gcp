@@ -76,6 +76,21 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         return this.service;
     }
 
+    /**
+     * Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+     * 
+     */
+    @Import(name="stableCutbackDuration")
+    private @Nullable Output<String> stableCutbackDuration;
+
+    /**
+     * @return Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+     * 
+     */
+    public Optional<Output<String>> stableCutbackDuration() {
+        return Optional.ofNullable(this.stableCutbackDuration);
+    }
+
     private DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs() {}
 
     private DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs $) {
@@ -83,6 +98,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         this.httpRoute = $.httpRoute;
         this.routeUpdateWaitTime = $.routeUpdateWaitTime;
         this.service = $.service;
+        this.stableCutbackDuration = $.stableCutbackDuration;
     }
 
     public static Builder builder() {
@@ -185,6 +201,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
          */
         public Builder service(String service) {
             return service(Output.of(service));
+        }
+
+        /**
+         * @param stableCutbackDuration Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stableCutbackDuration(@Nullable Output<String> stableCutbackDuration) {
+            $.stableCutbackDuration = stableCutbackDuration;
+            return this;
+        }
+
+        /**
+         * @param stableCutbackDuration Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stableCutbackDuration(String stableCutbackDuration) {
+            return stableCutbackDuration(Output.of(stableCutbackDuration));
         }
 
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs build() {

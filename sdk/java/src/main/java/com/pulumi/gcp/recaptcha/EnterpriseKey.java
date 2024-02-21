@@ -404,14 +404,14 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The resource name for the Key in the format &#34;projects/{project}/keys/{key}&#34;.
+     * The resource id for the Key, which is the same as the Site Key itself.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The resource name for the Key in the format &#34;projects/{project}/keys/{key}&#34;.
+     * @return The resource id for the Key, which is the same as the Site Key itself.
      * 
      */
     public Output<String> name() {

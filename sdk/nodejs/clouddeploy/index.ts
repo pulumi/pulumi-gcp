@@ -10,6 +10,11 @@ export type Automation = import("./automation").Automation;
 export const Automation: typeof import("./automation").Automation = null as any;
 utilities.lazyLoad(exports, ["Automation"], () => require("./automation"));
 
+export { CustomTargetTypeArgs, CustomTargetTypeState } from "./customTargetType";
+export type CustomTargetType = import("./customTargetType").CustomTargetType;
+export const CustomTargetType: typeof import("./customTargetType").CustomTargetType = null as any;
+utilities.lazyLoad(exports, ["CustomTargetType"], () => require("./customTargetType"));
+
 export { DeliveryPipelineArgs, DeliveryPipelineState } from "./deliveryPipeline";
 export type DeliveryPipeline = import("./deliveryPipeline").DeliveryPipeline;
 export const DeliveryPipeline: typeof import("./deliveryPipeline").DeliveryPipeline = null as any;
@@ -47,6 +52,8 @@ const _module = {
         switch (type) {
             case "gcp:clouddeploy/automation:Automation":
                 return new Automation(name, <any>undefined, { urn })
+            case "gcp:clouddeploy/customTargetType:CustomTargetType":
+                return new CustomTargetType(name, <any>undefined, { urn })
             case "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline":
                 return new DeliveryPipeline(name, <any>undefined, { urn })
             case "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding":
@@ -63,6 +70,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/automation", _module)
+pulumi.runtime.registerResourceModule("gcp", "clouddeploy/customTargetType", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipeline", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipelineIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "clouddeploy/deliveryPipelineIamMember", _module)

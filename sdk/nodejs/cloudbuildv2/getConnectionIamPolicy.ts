@@ -34,6 +34,9 @@ export function getConnectionIamPolicy(args: GetConnectionIamPolicyArgs, opts?: 
  * A collection of arguments for invoking getConnectionIamPolicy.
  */
 export interface GetConnectionIamPolicyArgs {
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     */
     location?: string;
     /**
      * Used to find the parent resource to bind the IAM policy to
@@ -91,6 +94,9 @@ export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputA
  * A collection of arguments for invoking getConnectionIamPolicy.
  */
 export interface GetConnectionIamPolicyOutputArgs {
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     */
     location?: pulumi.Input<string>;
     /**
      * Used to find the parent resource to bind the IAM policy to

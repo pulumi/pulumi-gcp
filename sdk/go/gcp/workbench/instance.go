@@ -78,7 +78,7 @@ import (
 //	}
 //
 // ```
-// ### Workbench Instance Labels
+// ### Workbench Instance Labels Stopped
 //
 // ```go
 // package main
@@ -93,6 +93,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := workbench.NewInstance(ctx, "instance", &workbench.InstanceArgs{
+//				DesiredState: pulumi.String("STOPPED"),
 //				GceSetup: &workbench.InstanceGceSetupArgs{
 //					MachineType: pulumi.String("e2-standard-4"),
 //					Metadata: pulumi.StringMap{
@@ -168,13 +169,13 @@ import (
 //					BootDisk: &workbench.InstanceGceSetupBootDiskArgs{
 //						DiskSizeGb:     pulumi.String("310"),
 //						DiskType:       pulumi.String("PD_SSD"),
-//						DiskEncryption: pulumi.String("GMEK"),
+//						DiskEncryption: pulumi.String("CMEK"),
 //						KmsKey:         pulumi.String("my-crypto-key"),
 //					},
 //					DataDisks: &workbench.InstanceGceSetupDataDisksArgs{
 //						DiskSizeGb:     pulumi.String("330"),
 //						DiskType:       pulumi.String("PD_SSD"),
-//						DiskEncryption: pulumi.String("GMEK"),
+//						DiskEncryption: pulumi.String("CMEK"),
 //						KmsKey:         pulumi.String("my-crypto-key"),
 //					},
 //					NetworkInterfaces: workbench.InstanceGceSetupNetworkInterfaceArray{
@@ -200,6 +201,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),
 //				},
+//				DesiredState: pulumi.String("ACTIVE"),
 //			})
 //			if err != nil {
 //				return err
@@ -241,6 +243,8 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. Email address of entity that sent original CreateInstance request.
 	Creator pulumi.StringOutput `pulumi:"creator"`
+	// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// Optional. If true, the workbench instance will not register with the proxy.
 	DisableProxyAccess pulumi.BoolPtrOutput `pulumi:"disableProxyAccess"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -334,6 +338,8 @@ type instanceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. Email address of entity that sent original CreateInstance request.
 	Creator *string `pulumi:"creator"`
+	// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState *string `pulumi:"desiredState"`
 	// Optional. If true, the workbench instance will not register with the proxy.
 	DisableProxyAccess *bool `pulumi:"disableProxyAccess"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -390,6 +396,8 @@ type InstanceState struct {
 	CreateTime pulumi.StringPtrInput
 	// Output only. Email address of entity that sent original CreateInstance request.
 	Creator pulumi.StringPtrInput
+	// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState pulumi.StringPtrInput
 	// Optional. If true, the workbench instance will not register with the proxy.
 	DisableProxyAccess pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -445,6 +453,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState *string `pulumi:"desiredState"`
 	// Optional. If true, the workbench instance will not register with the proxy.
 	DisableProxyAccess *bool `pulumi:"disableProxyAccess"`
 	// The definition of how to configure a VM instance outside of Resources and Identity.
@@ -475,6 +485,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState pulumi.StringPtrInput
 	// Optional. If true, the workbench instance will not register with the proxy.
 	DisableProxyAccess pulumi.BoolPtrInput
 	// The definition of how to configure a VM instance outside of Resources and Identity.
@@ -599,6 +611,11 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 // Output only. Email address of entity that sent original CreateInstance request.
 func (o InstanceOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
+}
+
+// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+func (o InstanceOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
 }
 
 // Optional. If true, the workbench instance will not register with the proxy.

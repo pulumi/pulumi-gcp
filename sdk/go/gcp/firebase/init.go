@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:firebase/androidApp:AndroidApp":
 		r = &AndroidApp{}
+	case "gcp:firebase/appCheckDebugToken:AppCheckDebugToken":
+		r = &AppCheckDebugToken{}
 	case "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig":
 		r = &AppCheckServiceConfig{}
 	case "gcp:firebase/appleApp:AppleApp":
@@ -63,6 +65,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firebase/androidApp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/appCheckDebugToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

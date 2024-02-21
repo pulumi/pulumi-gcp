@@ -1709,7 +1709,7 @@ class GetManagedZonesManagedZoneArgs:
         :param int managed_zone_id: Unique identifier for the resource; defined by the server.
         :param str name: A unique name for the resource.
         :param Sequence[str] name_servers: The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
-        :param str project: The ID of the project for the Google Cloud.
+        :param str project: The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
         :param str visibility: The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
         """
         pulumi.set(__self__, "description", description)
@@ -1797,7 +1797,7 @@ class GetManagedZonesManagedZoneArgs:
     @pulumi.getter
     def project(self) -> str:
         """
-        The ID of the project for the Google Cloud.
+        The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
         """
         return pulumi.get(self, "project")
 

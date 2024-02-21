@@ -338,6 +338,13 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<bool?> TriggerHttp { get; private set; } = null!;
 
         /// <summary>
+        /// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+        /// created.
+        /// </summary>
+        [Output("versionId")]
+        public Output<string> VersionId { get; private set; } = null!;
+
+        /// <summary>
         /// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         /// </summary>
         [Output("vpcConnector")]
@@ -869,6 +876,13 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("triggerHttp")]
         public Input<bool>? TriggerHttp { get; set; }
+
+        /// <summary>
+        /// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+        /// created.
+        /// </summary>
+        [Input("versionId")]
+        public Input<string>? VersionId { get; set; }
 
         /// <summary>
         /// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.

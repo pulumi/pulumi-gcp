@@ -14,6 +14,14 @@ __all__ = [
     'ConfigBlockingFunctions',
     'ConfigBlockingFunctionsForwardInboundCredentials',
     'ConfigBlockingFunctionsTrigger',
+    'ConfigClient',
+    'ConfigClientPermissions',
+    'ConfigMfa',
+    'ConfigMfaProviderConfig',
+    'ConfigMfaProviderConfigTotpProviderConfig',
+    'ConfigMonitoring',
+    'ConfigMonitoringRequestLogging',
+    'ConfigMultiTenant',
     'ConfigQuota',
     'ConfigQuotaSignUpQuotaConfig',
     'ConfigSignIn',
@@ -216,6 +224,395 @@ class ConfigBlockingFunctionsTrigger(dict):
         When the trigger was changed.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class ConfigClient(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiKey":
+            suggest = "api_key"
+        elif key == "firebaseSubdomain":
+            suggest = "firebase_subdomain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigClient. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigClient.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigClient.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_key: Optional[str] = None,
+                 firebase_subdomain: Optional[str] = None,
+                 permissions: Optional['outputs.ConfigClientPermissions'] = None):
+        """
+        :param str api_key: (Output)
+               API key that can be used when making requests for this project.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param str firebase_subdomain: (Output)
+               Firebase subdomain.
+        :param 'ConfigClientPermissionsArgs' permissions: Configuration related to restricting a user's ability to affect their account.
+               Structure is documented below.
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if firebase_subdomain is not None:
+            pulumi.set(__self__, "firebase_subdomain", firebase_subdomain)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[str]:
+        """
+        (Output)
+        API key that can be used when making requests for this project.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="firebaseSubdomain")
+    def firebase_subdomain(self) -> Optional[str]:
+        """
+        (Output)
+        Firebase subdomain.
+        """
+        return pulumi.get(self, "firebase_subdomain")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional['outputs.ConfigClientPermissions']:
+        """
+        Configuration related to restricting a user's ability to affect their account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class ConfigClientPermissions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disabledUserDeletion":
+            suggest = "disabled_user_deletion"
+        elif key == "disabledUserSignup":
+            suggest = "disabled_user_signup"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigClientPermissions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigClientPermissions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigClientPermissions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disabled_user_deletion: Optional[bool] = None,
+                 disabled_user_signup: Optional[bool] = None):
+        """
+        :param bool disabled_user_deletion: When true, end users cannot delete their account on the associated project through any of our API methods
+        :param bool disabled_user_signup: When true, end users cannot sign up for a new account on the associated project through any of our API methods
+        """
+        if disabled_user_deletion is not None:
+            pulumi.set(__self__, "disabled_user_deletion", disabled_user_deletion)
+        if disabled_user_signup is not None:
+            pulumi.set(__self__, "disabled_user_signup", disabled_user_signup)
+
+    @property
+    @pulumi.getter(name="disabledUserDeletion")
+    def disabled_user_deletion(self) -> Optional[bool]:
+        """
+        When true, end users cannot delete their account on the associated project through any of our API methods
+        """
+        return pulumi.get(self, "disabled_user_deletion")
+
+    @property
+    @pulumi.getter(name="disabledUserSignup")
+    def disabled_user_signup(self) -> Optional[bool]:
+        """
+        When true, end users cannot sign up for a new account on the associated project through any of our API methods
+        """
+        return pulumi.get(self, "disabled_user_signup")
+
+
+@pulumi.output_type
+class ConfigMfa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledProviders":
+            suggest = "enabled_providers"
+        elif key == "providerConfigs":
+            suggest = "provider_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigMfa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigMfa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigMfa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled_providers: Optional[Sequence[str]] = None,
+                 provider_configs: Optional[Sequence['outputs.ConfigMfaProviderConfig']] = None,
+                 state: Optional[str] = None):
+        """
+        :param Sequence[str] enabled_providers: A list of usable second factors for this project.
+               Each value may be one of: `PHONE_SMS`.
+        :param Sequence['ConfigMfaProviderConfigArgs'] provider_configs: A list of usable second factors for this project along with their configurations.
+               This field does not support phone based MFA, for that use the 'enabledProviders' field.
+               Structure is documented below.
+        :param str state: Whether MultiFactor Authentication has been enabled for this project.
+               Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+        """
+        if enabled_providers is not None:
+            pulumi.set(__self__, "enabled_providers", enabled_providers)
+        if provider_configs is not None:
+            pulumi.set(__self__, "provider_configs", provider_configs)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="enabledProviders")
+    def enabled_providers(self) -> Optional[Sequence[str]]:
+        """
+        A list of usable second factors for this project.
+        Each value may be one of: `PHONE_SMS`.
+        """
+        return pulumi.get(self, "enabled_providers")
+
+    @property
+    @pulumi.getter(name="providerConfigs")
+    def provider_configs(self) -> Optional[Sequence['outputs.ConfigMfaProviderConfig']]:
+        """
+        A list of usable second factors for this project along with their configurations.
+        This field does not support phone based MFA, for that use the 'enabledProviders' field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "provider_configs")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        Whether MultiFactor Authentication has been enabled for this project.
+        Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class ConfigMfaProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totpProviderConfig":
+            suggest = "totp_provider_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigMfaProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigMfaProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigMfaProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 state: Optional[str] = None,
+                 totp_provider_config: Optional['outputs.ConfigMfaProviderConfigTotpProviderConfig'] = None):
+        """
+        :param str state: Whether MultiFactor Authentication has been enabled for this project.
+               Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+        :param 'ConfigMfaProviderConfigTotpProviderConfigArgs' totp_provider_config: TOTP MFA provider config for this project.
+               Structure is documented below.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if totp_provider_config is not None:
+            pulumi.set(__self__, "totp_provider_config", totp_provider_config)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        Whether MultiFactor Authentication has been enabled for this project.
+        Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="totpProviderConfig")
+    def totp_provider_config(self) -> Optional['outputs.ConfigMfaProviderConfigTotpProviderConfig']:
+        """
+        TOTP MFA provider config for this project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "totp_provider_config")
+
+
+@pulumi.output_type
+class ConfigMfaProviderConfigTotpProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adjacentIntervals":
+            suggest = "adjacent_intervals"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigMfaProviderConfigTotpProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigMfaProviderConfigTotpProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigMfaProviderConfigTotpProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 adjacent_intervals: Optional[int] = None):
+        """
+        :param int adjacent_intervals: The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+        """
+        if adjacent_intervals is not None:
+            pulumi.set(__self__, "adjacent_intervals", adjacent_intervals)
+
+    @property
+    @pulumi.getter(name="adjacentIntervals")
+    def adjacent_intervals(self) -> Optional[int]:
+        """
+        The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+        """
+        return pulumi.get(self, "adjacent_intervals")
+
+
+@pulumi.output_type
+class ConfigMonitoring(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestLogging":
+            suggest = "request_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigMonitoring. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigMonitoring.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigMonitoring.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 request_logging: Optional['outputs.ConfigMonitoringRequestLogging'] = None):
+        """
+        :param 'ConfigMonitoringRequestLoggingArgs' request_logging: Configuration for logging requests made to this project to Stackdriver Logging
+               Structure is documented below.
+        """
+        if request_logging is not None:
+            pulumi.set(__self__, "request_logging", request_logging)
+
+    @property
+    @pulumi.getter(name="requestLogging")
+    def request_logging(self) -> Optional['outputs.ConfigMonitoringRequestLogging']:
+        """
+        Configuration for logging requests made to this project to Stackdriver Logging
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_logging")
+
+
+@pulumi.output_type
+class ConfigMonitoringRequestLogging(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether logging is enabled for this project or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether logging is enabled for this project or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ConfigMultiTenant(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowTenants":
+            suggest = "allow_tenants"
+        elif key == "defaultTenantLocation":
+            suggest = "default_tenant_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigMultiTenant. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigMultiTenant.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigMultiTenant.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_tenants: Optional[bool] = None,
+                 default_tenant_location: Optional[str] = None):
+        """
+        :param bool allow_tenants: Whether this project can have tenants or not.
+        :param str default_tenant_location: The default cloud parent org or folder that the tenant project should be created under.
+               The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+               If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+        """
+        if allow_tenants is not None:
+            pulumi.set(__self__, "allow_tenants", allow_tenants)
+        if default_tenant_location is not None:
+            pulumi.set(__self__, "default_tenant_location", default_tenant_location)
+
+    @property
+    @pulumi.getter(name="allowTenants")
+    def allow_tenants(self) -> Optional[bool]:
+        """
+        Whether this project can have tenants or not.
+        """
+        return pulumi.get(self, "allow_tenants")
+
+    @property
+    @pulumi.getter(name="defaultTenantLocation")
+    def default_tenant_location(self) -> Optional[str]:
+        """
+        The default cloud parent org or folder that the tenant project should be created under.
+        The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+        If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+        """
+        return pulumi.get(self, "default_tenant_location")
 
 
 @pulumi.output_type

@@ -139,6 +139,9 @@ export class ConnectionIAMBinding extends pulumi.CustomResource {
      * (Computed) The etag of the IAM policy.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     */
     public readonly location!: pulumi.Output<string>;
     public readonly members!: pulumi.Output<string[]>;
     /**
@@ -219,6 +222,9 @@ export interface ConnectionIAMBindingState {
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     */
     location?: pulumi.Input<string>;
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -255,6 +261,9 @@ export interface ConnectionIAMBindingState {
  */
 export interface ConnectionIAMBindingArgs {
     condition?: pulumi.Input<inputs.cloudbuildv2.ConnectionIAMBindingCondition>;
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     */
     location?: pulumi.Input<string>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**

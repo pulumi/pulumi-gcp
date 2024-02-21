@@ -1164,6 +1164,8 @@ type WorkstationConfigHostGceInstance struct {
 	ConfidentialInstanceConfig *WorkstationConfigHostGceInstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Whether instances have no public IP address.
 	DisablePublicIpAddresses *bool `pulumi:"disablePublicIpAddresses"`
+	// Whether to disable SSH access to the VM.
+	DisableSsh *bool `pulumi:"disableSsh"`
 	// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
 	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
@@ -1204,6 +1206,8 @@ type WorkstationConfigHostGceInstanceArgs struct {
 	ConfidentialInstanceConfig WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
 	// Whether instances have no public IP address.
 	DisablePublicIpAddresses pulumi.BoolPtrInput `pulumi:"disablePublicIpAddresses"`
+	// Whether to disable SSH access to the VM.
+	DisableSsh pulumi.BoolPtrInput `pulumi:"disableSsh"`
 	// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
 	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
@@ -1325,6 +1329,11 @@ func (o WorkstationConfigHostGceInstanceOutput) DisablePublicIpAddresses() pulum
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *bool { return v.DisablePublicIpAddresses }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to disable SSH access to the VM.
+func (o WorkstationConfigHostGceInstanceOutput) DisableSsh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *bool { return v.DisableSsh }).(pulumi.BoolPtrOutput)
+}
+
 // Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
 // See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 func (o WorkstationConfigHostGceInstanceOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
@@ -1427,6 +1436,16 @@ func (o WorkstationConfigHostGceInstancePtrOutput) DisablePublicIpAddresses() pu
 			return nil
 		}
 		return v.DisablePublicIpAddresses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to disable SSH access to the VM.
+func (o WorkstationConfigHostGceInstancePtrOutput) DisableSsh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableSsh
 	}).(pulumi.BoolPtrOutput)
 }
 

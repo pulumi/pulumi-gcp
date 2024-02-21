@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.eventarc.inputs.TriggerDestinationCloudRunServiceArgs;
 import com.pulumi.gcp.eventarc.inputs.TriggerDestinationGkeArgs;
+import com.pulumi.gcp.eventarc.inputs.TriggerDestinationHttpEndpointArgs;
+import com.pulumi.gcp.eventarc.inputs.TriggerDestinationNetworkConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -63,6 +65,36 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * An HTTP endpoint destination described by an URI.
+     * 
+     */
+    @Import(name="httpEndpoint")
+    private @Nullable Output<TriggerDestinationHttpEndpointArgs> httpEndpoint;
+
+    /**
+     * @return An HTTP endpoint destination described by an URI.
+     * 
+     */
+    public Optional<Output<TriggerDestinationHttpEndpointArgs>> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
+    }
+
+    /**
+     * Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+     * 
+     */
+    @Import(name="networkConfig")
+    private @Nullable Output<TriggerDestinationNetworkConfigArgs> networkConfig;
+
+    /**
+     * @return Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+     * 
+     */
+    public Optional<Output<TriggerDestinationNetworkConfigArgs>> networkConfig() {
+        return Optional.ofNullable(this.networkConfig);
+    }
+
+    /**
      * The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
      * 
      */
@@ -83,6 +115,8 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
         this.cloudFunction = $.cloudFunction;
         this.cloudRunService = $.cloudRunService;
         this.gke = $.gke;
+        this.httpEndpoint = $.httpEndpoint;
+        this.networkConfig = $.networkConfig;
         this.workflow = $.workflow;
     }
 
@@ -165,6 +199,48 @@ public final class TriggerDestinationArgs extends com.pulumi.resources.ResourceA
          */
         public Builder gke(TriggerDestinationGkeArgs gke) {
             return gke(Output.of(gke));
+        }
+
+        /**
+         * @param httpEndpoint An HTTP endpoint destination described by an URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(@Nullable Output<TriggerDestinationHttpEndpointArgs> httpEndpoint) {
+            $.httpEndpoint = httpEndpoint;
+            return this;
+        }
+
+        /**
+         * @param httpEndpoint An HTTP endpoint destination described by an URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(TriggerDestinationHttpEndpointArgs httpEndpoint) {
+            return httpEndpoint(Output.of(httpEndpoint));
+        }
+
+        /**
+         * @param networkConfig Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(@Nullable Output<TriggerDestinationNetworkConfigArgs> networkConfig) {
+            $.networkConfig = networkConfig;
+            return this;
+        }
+
+        /**
+         * @param networkConfig Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfig(TriggerDestinationNetworkConfigArgs networkConfig) {
+            return networkConfig(Output.of(networkConfig));
         }
 
         /**

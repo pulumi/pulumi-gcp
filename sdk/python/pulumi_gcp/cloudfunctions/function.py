@@ -550,6 +550,7 @@ class _FunctionState:
                  status: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  trigger_http: Optional[pulumi.Input[bool]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
                  vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None):
         """
@@ -593,6 +594,8 @@ class _FunctionState:
         :param pulumi.Input[str] status: Describes the current stage of a deployment.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
+        :param pulumi.Input[str] version_id: The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+               created.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
         """
@@ -658,6 +661,8 @@ class _FunctionState:
             pulumi.set(__self__, "timeout", timeout)
         if trigger_http is not None:
             pulumi.set(__self__, "trigger_http", trigger_http)
+        if version_id is not None:
+            pulumi.set(__self__, "version_id", version_id)
         if vpc_connector is not None:
             pulumi.set(__self__, "vpc_connector", vpc_connector)
         if vpc_connector_egress_settings is not None:
@@ -1044,6 +1049,19 @@ class _FunctionState:
         pulumi.set(self, "trigger_http", value)
 
     @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+        created.
+        """
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_id", value)
+
+    @property
     @pulumi.getter(name="vpcConnector")
     def vpc_connector(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1426,6 +1444,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["version_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Function, __self__).__init__(
@@ -1469,6 +1488,7 @@ class Function(pulumi.CustomResource):
             status: Optional[pulumi.Input[str]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
             trigger_http: Optional[pulumi.Input[bool]] = None,
+            version_id: Optional[pulumi.Input[str]] = None,
             vpc_connector: Optional[pulumi.Input[str]] = None,
             vpc_connector_egress_settings: Optional[pulumi.Input[str]] = None) -> 'Function':
         """
@@ -1517,6 +1537,8 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] status: Describes the current stage of a deployment.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
+        :param pulumi.Input[str] version_id: The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+               created.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[str] vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
         """
@@ -1555,6 +1577,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["timeout"] = timeout
         __props__.__dict__["trigger_http"] = trigger_http
+        __props__.__dict__["version_id"] = version_id
         __props__.__dict__["vpc_connector"] = vpc_connector
         __props__.__dict__["vpc_connector_egress_settings"] = vpc_connector_egress_settings
         return Function(resource_name, opts=opts, __props__=__props__)
@@ -1814,6 +1837,15 @@ class Function(pulumi.CustomResource):
         Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         """
         return pulumi.get(self, "trigger_http")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Output[str]:
+        """
+        The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+        created.
+        """
+        return pulumi.get(self, "version_id")
 
     @property
     @pulumi.getter(name="vpcConnector")

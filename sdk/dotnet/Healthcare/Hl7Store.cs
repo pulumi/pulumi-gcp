@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.Healthcare
     ///     var store = new Gcp.Healthcare.Hl7Store("store", new()
     ///     {
     ///         Dataset = dataset.Id,
+    ///         RejectDuplicateMessage = true,
     ///         NotificationConfigs = new[]
     ///         {
     ///             new Gcp.Healthcare.Inputs.Hl7StoreNotificationConfigsArgs
@@ -296,6 +297,12 @@ namespace Pulumi.Gcp.Healthcare
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Determines whether duplicate messages are allowed.
+        /// </summary>
+        [Output("rejectDuplicateMessage")]
+        public Output<bool?> RejectDuplicateMessage { get; private set; } = null!;
+
+        /// <summary>
         /// The fully qualified name of this dataset
         /// </summary>
         [Output("selfLink")]
@@ -423,6 +430,12 @@ namespace Pulumi.Gcp.Healthcare
         [Input("parserConfig")]
         public Input<Inputs.Hl7StoreParserConfigArgs>? ParserConfig { get; set; }
 
+        /// <summary>
+        /// Determines whether duplicate messages are allowed.
+        /// </summary>
+        [Input("rejectDuplicateMessage")]
+        public Input<bool>? RejectDuplicateMessage { get; set; }
+
         public Hl7StoreArgs()
         {
         }
@@ -534,6 +547,12 @@ namespace Pulumi.Gcp.Healthcare
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Determines whether duplicate messages are allowed.
+        /// </summary>
+        [Input("rejectDuplicateMessage")]
+        public Input<bool>? RejectDuplicateMessage { get; set; }
 
         /// <summary>
         /// The fully qualified name of this dataset

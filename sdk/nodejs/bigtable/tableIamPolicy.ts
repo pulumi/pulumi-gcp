@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  *
  *  IAM policy imports use the `table` identifier of the Bigtable Table resource only. For example:
  *
- *  * `"projects/{project}/tables/{table}"`
+ *  * `"projects/{project}/instances/{instance}/tables/{table}"`
  *
  *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  *
@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  *
  *  import {
  *
- *  id = "projects/{project}/tables/{table}"
+ *  id = "projects/{project}/instances/{instance}/tables/{table}"
  *
  *  to = google_bigtable_table_iam_policy.default
  *
@@ -86,7 +86,7 @@ import * as utilities from "../utilities";
  *  The `pulumi import` command can also be used:
  *
  * ```sh
- * $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy default projects/{project}/tables/{table}
+ * $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy default projects/{project}/instances/{instance}/tables/{table}
  * ```
  */
 export class TableIamPolicy extends pulumi.CustomResource {

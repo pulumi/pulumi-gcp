@@ -65,14 +65,14 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
     }
 
     /**
-     * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
      */
     @Import(name="provisionedIops")
     private @Nullable Output<Integer> provisionedIops;
 
     /**
-     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
      */
     public Optional<Output<Integer>> provisionedIops() {
@@ -80,14 +80,14 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
     }
 
     /**
-     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
      * 
      */
     @Import(name="provisionedThroughput")
     private @Nullable Output<Integer> provisionedThroughput;
 
     /**
-     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
      * 
      */
     public Optional<Output<Integer>> provisionedThroughput() {
@@ -234,7 +234,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         }
 
         /**
-         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         }
 
         /**
-         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         * @param provisionedIops Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         }
 
         /**
-         * @param provisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         }
 
         /**
-         * @param provisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          * 
          * @return builder
          * 

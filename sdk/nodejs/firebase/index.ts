@@ -10,6 +10,11 @@ export type AndroidApp = import("./androidApp").AndroidApp;
 export const AndroidApp: typeof import("./androidApp").AndroidApp = null as any;
 utilities.lazyLoad(exports, ["AndroidApp"], () => require("./androidApp"));
 
+export { AppCheckDebugTokenArgs, AppCheckDebugTokenState } from "./appCheckDebugToken";
+export type AppCheckDebugToken = import("./appCheckDebugToken").AppCheckDebugToken;
+export const AppCheckDebugToken: typeof import("./appCheckDebugToken").AppCheckDebugToken = null as any;
+utilities.lazyLoad(exports, ["AppCheckDebugToken"], () => require("./appCheckDebugToken"));
+
 export { AppCheckServiceConfigArgs, AppCheckServiceConfigState } from "./appCheckServiceConfig";
 export type AppCheckServiceConfig = import("./appCheckServiceConfig").AppCheckServiceConfig;
 export const AppCheckServiceConfig: typeof import("./appCheckServiceConfig").AppCheckServiceConfig = null as any;
@@ -112,6 +117,8 @@ const _module = {
         switch (type) {
             case "gcp:firebase/androidApp:AndroidApp":
                 return new AndroidApp(name, <any>undefined, { urn })
+            case "gcp:firebase/appCheckDebugToken:AppCheckDebugToken":
+                return new AppCheckDebugToken(name, <any>undefined, { urn })
             case "gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig":
                 return new AppCheckServiceConfig(name, <any>undefined, { urn })
             case "gcp:firebase/appleApp:AppleApp":
@@ -142,6 +149,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "firebase/androidApp", _module)
+pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckDebugToken", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appCheckServiceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/appleApp", _module)
 pulumi.runtime.registerResourceModule("gcp", "firebase/databaseInstance", _module)

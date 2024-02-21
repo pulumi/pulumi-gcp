@@ -6,6 +6,10 @@ package com.pulumi.gcp.identityplatform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsArgs;
+import com.pulumi.gcp.identityplatform.inputs.ConfigClientArgs;
+import com.pulumi.gcp.identityplatform.inputs.ConfigMfaArgs;
+import com.pulumi.gcp.identityplatform.inputs.ConfigMonitoringArgs;
+import com.pulumi.gcp.identityplatform.inputs.ConfigMultiTenantArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigSignInArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigSmsRegionConfigArgs;
@@ -66,6 +70,74 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ConfigBlockingFunctionsArgs>> blockingFunctions() {
         return Optional.ofNullable(this.blockingFunctions);
+    }
+
+    /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="client")
+    private @Nullable Output<ConfigClientArgs> client;
+
+    /**
+     * @return Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConfigClientArgs>> client() {
+        return Optional.ofNullable(this.client);
+    }
+
+    /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="mfa")
+    private @Nullable Output<ConfigMfaArgs> mfa;
+
+    /**
+     * @return Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConfigMfaArgs>> mfa() {
+        return Optional.ofNullable(this.mfa);
+    }
+
+    /**
+     * Configuration related to monitoring project activity.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="monitoring")
+    private @Nullable Output<ConfigMonitoringArgs> monitoring;
+
+    /**
+     * @return Configuration related to monitoring project activity.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConfigMonitoringArgs>> monitoring() {
+        return Optional.ofNullable(this.monitoring);
+    }
+
+    /**
+     * Configuration related to multi-tenant functionality.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="multiTenant")
+    private @Nullable Output<ConfigMultiTenantArgs> multiTenant;
+
+    /**
+     * @return Configuration related to multi-tenant functionality.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConfigMultiTenantArgs>> multiTenant() {
+        return Optional.ofNullable(this.multiTenant);
     }
 
     /**
@@ -157,6 +229,10 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
         this.authorizedDomains = $.authorizedDomains;
         this.autodeleteAnonymousUsers = $.autodeleteAnonymousUsers;
         this.blockingFunctions = $.blockingFunctions;
+        this.client = $.client;
+        this.mfa = $.mfa;
+        this.monitoring = $.monitoring;
+        this.multiTenant = $.multiTenant;
         this.name = $.name;
         this.project = $.project;
         this.quota = $.quota;
@@ -255,6 +331,98 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder blockingFunctions(ConfigBlockingFunctionsArgs blockingFunctions) {
             return blockingFunctions(Output.of(blockingFunctions));
+        }
+
+        /**
+         * @param client Options related to how clients making requests on behalf of a project should be configured.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder client(@Nullable Output<ConfigClientArgs> client) {
+            $.client = client;
+            return this;
+        }
+
+        /**
+         * @param client Options related to how clients making requests on behalf of a project should be configured.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder client(ConfigClientArgs client) {
+            return client(Output.of(client));
+        }
+
+        /**
+         * @param mfa Options related to how clients making requests on behalf of a project should be configured.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfa(@Nullable Output<ConfigMfaArgs> mfa) {
+            $.mfa = mfa;
+            return this;
+        }
+
+        /**
+         * @param mfa Options related to how clients making requests on behalf of a project should be configured.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mfa(ConfigMfaArgs mfa) {
+            return mfa(Output.of(mfa));
+        }
+
+        /**
+         * @param monitoring Configuration related to monitoring project activity.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitoring(@Nullable Output<ConfigMonitoringArgs> monitoring) {
+            $.monitoring = monitoring;
+            return this;
+        }
+
+        /**
+         * @param monitoring Configuration related to monitoring project activity.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder monitoring(ConfigMonitoringArgs monitoring) {
+            return monitoring(Output.of(monitoring));
+        }
+
+        /**
+         * @param multiTenant Configuration related to multi-tenant functionality.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiTenant(@Nullable Output<ConfigMultiTenantArgs> multiTenant) {
+            $.multiTenant = multiTenant;
+            return this;
+        }
+
+        /**
+         * @param multiTenant Configuration related to multi-tenant functionality.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multiTenant(ConfigMultiTenantArgs multiTenant) {
+            return multiTenant(Output.of(multiTenant));
         }
 
         /**

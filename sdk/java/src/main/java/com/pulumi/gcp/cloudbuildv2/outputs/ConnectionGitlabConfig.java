@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class ConnectionGitlabConfig {
     /**
      * @return Required. A GitLab personal access token with the `api` scope access.
+     * Structure is documented below.
      * 
      */
     private ConnectionGitlabConfigAuthorizerCredential authorizerCredential;
@@ -27,16 +28,19 @@ public final class ConnectionGitlabConfig {
     private @Nullable String hostUri;
     /**
      * @return Required. A GitLab personal access token with the minimum `read_api` scope access.
+     * Structure is documented below.
      * 
      */
     private ConnectionGitlabConfigReadAuthorizerCredential readAuthorizerCredential;
     /**
-     * @return Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * @return (Output)
+     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
      * 
      */
     private @Nullable String serverVersion;
     /**
      * @return Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+     * Structure is documented below.
      * 
      */
     private @Nullable ConnectionGitlabConfigServiceDirectoryConfig serviceDirectoryConfig;
@@ -54,6 +58,7 @@ public final class ConnectionGitlabConfig {
     private ConnectionGitlabConfig() {}
     /**
      * @return Required. A GitLab personal access token with the `api` scope access.
+     * Structure is documented below.
      * 
      */
     public ConnectionGitlabConfigAuthorizerCredential authorizerCredential() {
@@ -68,13 +73,15 @@ public final class ConnectionGitlabConfig {
     }
     /**
      * @return Required. A GitLab personal access token with the minimum `read_api` scope access.
+     * Structure is documented below.
      * 
      */
     public ConnectionGitlabConfigReadAuthorizerCredential readAuthorizerCredential() {
         return this.readAuthorizerCredential;
     }
     /**
-     * @return Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * @return (Output)
+     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
      * 
      */
     public Optional<String> serverVersion() {
@@ -82,6 +89,7 @@ public final class ConnectionGitlabConfig {
     }
     /**
      * @return Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+     * Structure is documented below.
      * 
      */
     public Optional<ConnectionGitlabConfigServiceDirectoryConfig> serviceDirectoryConfig() {

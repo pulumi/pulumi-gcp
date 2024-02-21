@@ -11,10 +11,12 @@ from .address_group_iam_member import *
 from .address_group_iam_policy import *
 from .authorization_policy import *
 from .client_tls_policy import *
+from .firewall_endpoint import *
 from .gateway_security_policy import *
 from .gateway_security_policy_rule import *
 from .get_address_group_iam_policy import *
 from .security_profile import *
+from .security_profile_group import *
 from .server_tls_policy import *
 from .tls_inspection_policy import *
 from .url_list import *

@@ -18972,7 +18972,11 @@ func (o ClusterMonitoringConfigPtrOutput) ManagedPrometheus() ClusterMonitoringC
 type ClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
 	// Whether or not to enable advanced datapath metrics.
 	EnableMetrics bool `pulumi:"enableMetrics"`
+	// Whether or not Relay is enabled.
+	EnableRelay *bool `pulumi:"enableRelay"`
 	// Mode used to make Relay available.
+	//
+	// Deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.
 	RelayMode *string `pulumi:"relayMode"`
 }
 
@@ -18990,7 +18994,11 @@ type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput interface {
 type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
 	// Whether or not to enable advanced datapath metrics.
 	EnableMetrics pulumi.BoolInput `pulumi:"enableMetrics"`
+	// Whether or not Relay is enabled.
+	EnableRelay pulumi.BoolPtrInput `pulumi:"enableRelay"`
 	// Mode used to make Relay available.
+	//
+	// Deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.
 	RelayMode pulumi.StringPtrInput `pulumi:"relayMode"`
 }
 
@@ -19050,7 +19058,14 @@ func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) Enable
 	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) bool { return v.EnableMetrics }).(pulumi.BoolOutput)
 }
 
+// Whether or not Relay is enabled.
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableRelay() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *bool { return v.EnableRelay }).(pulumi.BoolPtrOutput)
+}
+
 // Mode used to make Relay available.
+//
+// Deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.
 func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) RelayMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *string { return v.RelayMode }).(pulumi.StringPtrOutput)
 }
@@ -46241,6 +46256,8 @@ func (o GetClusterMonitoringConfigArrayOutput) Index(i pulumi.IntInput) GetClust
 type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
 	// Whether or not the advanced datapath metrics are enabled.
 	EnableMetrics bool `pulumi:"enableMetrics"`
+	// Whether or not Relay is enabled.
+	EnableRelay bool `pulumi:"enableRelay"`
 	// Mode used to make Relay available.
 	RelayMode string `pulumi:"relayMode"`
 }
@@ -46259,6 +46276,8 @@ type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput interfac
 type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
 	// Whether or not the advanced datapath metrics are enabled.
 	EnableMetrics pulumi.BoolInput `pulumi:"enableMetrics"`
+	// Whether or not Relay is enabled.
+	EnableRelay pulumi.BoolInput `pulumi:"enableRelay"`
 	// Mode used to make Relay available.
 	RelayMode pulumi.StringInput `pulumi:"relayMode"`
 }
@@ -46317,6 +46336,11 @@ func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ToG
 // Whether or not the advanced datapath metrics are enabled.
 func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableMetrics() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig) bool { return v.EnableMetrics }).(pulumi.BoolOutput)
+}
+
+// Whether or not Relay is enabled.
+func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableRelay() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig) bool { return v.EnableRelay }).(pulumi.BoolOutput)
 }
 
 // Mode used to make Relay available.

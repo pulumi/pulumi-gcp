@@ -11,9 +11,55 @@ namespace Pulumi.Gcp.Dns
 {
     public static class GetManagedZones
     {
+        /// <summary>
+        /// Provides access to a list of zones within Google Cloud DNS.
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/dns/zones/)
+        /// and
+        /// [API](https://cloud.google.com/dns/api/v1/managedZones).
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var zones = Gcp.Dns.GetManagedZones.Invoke(new()
+        ///     {
+        ///         Project = "my-project-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetManagedZonesResult> InvokeAsync(GetManagedZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetManagedZonesResult>("gcp:dns/getManagedZones:getManagedZones", args ?? new GetManagedZonesArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Provides access to a list of zones within Google Cloud DNS.
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/dns/zones/)
+        /// and
+        /// [API](https://cloud.google.com/dns/api/v1/managedZones).
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var zones = Gcp.Dns.GetManagedZones.Invoke(new()
+        ///     {
+        ///         Project = "my-project-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetManagedZonesResult> Invoke(GetManagedZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagedZonesResult>("gcp:dns/getManagedZones:getManagedZones", args ?? new GetManagedZonesInvokeArgs(), options.WithDefaults());
     }
@@ -23,12 +69,19 @@ namespace Pulumi.Gcp.Dns
     {
         [Input("managedZones")]
         private List<Inputs.GetManagedZonesManagedZoneArgs>? _managedZones;
+
+        /// <summary>
+        /// A list of managed zones.
+        /// </summary>
         public List<Inputs.GetManagedZonesManagedZoneArgs> ManagedZones
         {
             get => _managedZones ?? (_managedZones = new List<Inputs.GetManagedZonesManagedZoneArgs>());
             set => _managedZones = value;
         }
 
+        /// <summary>
+        /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
+        /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
@@ -42,12 +95,19 @@ namespace Pulumi.Gcp.Dns
     {
         [Input("managedZones")]
         private InputList<Inputs.GetManagedZonesManagedZoneInputArgs>? _managedZones;
+
+        /// <summary>
+        /// A list of managed zones.
+        /// </summary>
         public InputList<Inputs.GetManagedZonesManagedZoneInputArgs> ManagedZones
         {
             get => _managedZones ?? (_managedZones = new InputList<Inputs.GetManagedZonesManagedZoneInputArgs>());
             set => _managedZones = value;
         }
 
+        /// <summary>
+        /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -62,6 +122,9 @@ namespace Pulumi.Gcp.Dns
     public sealed class GetManagedZonesResult
     {
         public readonly string Id;
+        /// <summary>
+        /// A list of managed zones.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetManagedZonesManagedZoneResult> ManagedZones;
         public readonly string? Project;
 

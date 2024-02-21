@@ -12,10 +12,48 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Cloudbuildv2 Connection resource
+// A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.
+//
+// To get more information about Connection, see:
+//
+// * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/build/docs)
 //
 // ## Example Usage
-// ### Ghe
+// ### Cloudbuildv2 Connection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudbuildv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
+//				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
+//					AppInstallationId: pulumi.Int(0),
+//					AuthorizerCredential: &cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs{
+//						OauthTokenSecretVersion: pulumi.String("projects/gcb-terraform-creds/secrets/github-pat/versions/1"),
+//					},
+//				},
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudbuildv2 Connection Ghe
+//
 // ```go
 // package main
 //
@@ -121,8 +159,8 @@ import (
 //	}
 //
 // ```
-// ### GitHub Connection
-// Creates a Connection to github.com
+// ### Cloudbuildv2 Connection Github
+//
 // ```go
 // package main
 //
@@ -184,7 +222,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
-//				Location: pulumi.String("us-west1"),
+//				Location: pulumi.String("us-central1"),
 //				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
 //					AppInstallationId: pulumi.Int(123123),
 //					AuthorizerCredential: &cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs{
@@ -211,6 +249,8 @@ import (
 //
 //   - `{{location}}/{{name}}`
 //
+//   - `{{name}}`
+//
 //     When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 //
 // ```sh
@@ -224,11 +264,14 @@ import (
 // ```sh
 // $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
 // ```
+//
+// ```sh
+// $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
@@ -238,22 +281,29 @@ type Connection struct {
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Configuration for connections to github.com.
+	// Structure is documented below.
 	GithubConfig ConnectionGithubConfigPtrOutput `pulumi:"githubConfig"`
 	// Configuration for connections to an instance of GitHub Enterprise.
+	// Structure is documented below.
 	GithubEnterpriseConfig ConnectionGithubEnterpriseConfigPtrOutput `pulumi:"githubEnterpriseConfig"`
 	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	// Structure is documented below.
 	GitlabConfig ConnectionGitlabConfigPtrOutput `pulumi:"gitlabConfig"`
 	// Output only. Installation state of the Connection.
+	// Structure is documented below.
 	InstallationStates ConnectionInstallationStateArrayOutput `pulumi:"installationStates"`
 	// The location for the resource
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	// Immutable. The resource name of the connection.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. Set to true when the connection is being set up or updated in the background.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
@@ -295,7 +345,6 @@ func GetConnection(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
@@ -305,22 +354,29 @@ type connectionState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
-	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Configuration for connections to github.com.
+	// Structure is documented below.
 	GithubConfig *ConnectionGithubConfig `pulumi:"githubConfig"`
 	// Configuration for connections to an instance of GitHub Enterprise.
+	// Structure is documented below.
 	GithubEnterpriseConfig *ConnectionGithubEnterpriseConfig `pulumi:"githubEnterpriseConfig"`
 	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	// Structure is documented below.
 	GitlabConfig *ConnectionGitlabConfig `pulumi:"gitlabConfig"`
 	// Output only. Installation state of the Connection.
+	// Structure is documented below.
 	InstallationStates []ConnectionInstallationState `pulumi:"installationStates"`
 	// The location for the resource
+	//
+	// ***
 	Location *string `pulumi:"location"`
-	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	// Immutable. The resource name of the connection.
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Output only. Set to true when the connection is being set up or updated in the background.
 	Reconciling *bool `pulumi:"reconciling"`
@@ -330,7 +386,6 @@ type connectionState struct {
 
 type ConnectionState struct {
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
@@ -340,22 +395,29 @@ type ConnectionState struct {
 	Disabled pulumi.BoolPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapInput
+	EffectiveAnnotations pulumi.StringMapInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Configuration for connections to github.com.
+	// Structure is documented below.
 	GithubConfig ConnectionGithubConfigPtrInput
 	// Configuration for connections to an instance of GitHub Enterprise.
+	// Structure is documented below.
 	GithubEnterpriseConfig ConnectionGithubEnterpriseConfigPtrInput
 	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	// Structure is documented below.
 	GitlabConfig ConnectionGitlabConfigPtrInput
 	// Output only. Installation state of the Connection.
+	// Structure is documented below.
 	InstallationStates ConnectionInstallationStateArrayInput
 	// The location for the resource
+	//
+	// ***
 	Location pulumi.StringPtrInput
-	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	// Immutable. The resource name of the connection.
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Output only. Set to true when the connection is being set up or updated in the background.
 	Reconciling pulumi.BoolPtrInput
@@ -369,46 +431,56 @@ func (ConnectionState) ElementType() reflect.Type {
 
 type connectionArgs struct {
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled *bool `pulumi:"disabled"`
 	// Configuration for connections to github.com.
+	// Structure is documented below.
 	GithubConfig *ConnectionGithubConfig `pulumi:"githubConfig"`
 	// Configuration for connections to an instance of GitHub Enterprise.
+	// Structure is documented below.
 	GithubEnterpriseConfig *ConnectionGithubEnterpriseConfig `pulumi:"githubEnterpriseConfig"`
 	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	// Structure is documented below.
 	GitlabConfig *ConnectionGitlabConfig `pulumi:"gitlabConfig"`
 	// The location for the resource
+	//
+	// ***
 	Location string `pulumi:"location"`
-	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	// Immutable. The resource name of the connection.
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
 	// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled pulumi.BoolPtrInput
 	// Configuration for connections to github.com.
+	// Structure is documented below.
 	GithubConfig ConnectionGithubConfigPtrInput
 	// Configuration for connections to an instance of GitHub Enterprise.
+	// Structure is documented below.
 	GithubEnterpriseConfig ConnectionGithubEnterpriseConfigPtrInput
 	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	// Structure is documented below.
 	GitlabConfig ConnectionGitlabConfigPtrInput
 	// The location for the resource
+	//
+	// ***
 	Location pulumi.StringInput
-	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	// Immutable. The resource name of the connection.
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -500,7 +572,6 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 }
 
 // Allows clients to store small amounts of arbitrary data.
-//
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ConnectionOutput) Annotations() pulumi.StringMapOutput {
@@ -519,8 +590,8 @@ func (o ConnectionOutput) Disabled() pulumi.BoolPtrOutput {
 
 // All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 // Terraform, other clients and services.
-func (o ConnectionOutput) EffectiveAnnotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Connection) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
+func (o ConnectionOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -529,36 +600,43 @@ func (o ConnectionOutput) Etag() pulumi.StringOutput {
 }
 
 // Configuration for connections to github.com.
+// Structure is documented below.
 func (o ConnectionOutput) GithubConfig() ConnectionGithubConfigPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionGithubConfigPtrOutput { return v.GithubConfig }).(ConnectionGithubConfigPtrOutput)
 }
 
 // Configuration for connections to an instance of GitHub Enterprise.
+// Structure is documented below.
 func (o ConnectionOutput) GithubEnterpriseConfig() ConnectionGithubEnterpriseConfigPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionGithubEnterpriseConfigPtrOutput { return v.GithubEnterpriseConfig }).(ConnectionGithubEnterpriseConfigPtrOutput)
 }
 
 // Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+// Structure is documented below.
 func (o ConnectionOutput) GitlabConfig() ConnectionGitlabConfigPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionGitlabConfigPtrOutput { return v.GitlabConfig }).(ConnectionGitlabConfigPtrOutput)
 }
 
 // Output only. Installation state of the Connection.
+// Structure is documented below.
 func (o ConnectionOutput) InstallationStates() ConnectionInstallationStateArrayOutput {
 	return o.ApplyT(func(v *Connection) ConnectionInstallationStateArrayOutput { return v.InstallationStates }).(ConnectionInstallationStateArrayOutput)
 }
 
 // The location for the resource
+//
+// ***
 func (o ConnectionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+// Immutable. The resource name of the connection.
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

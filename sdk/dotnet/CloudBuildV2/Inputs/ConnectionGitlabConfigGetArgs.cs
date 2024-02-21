@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
     {
         /// <summary>
         /// Required. A GitLab personal access token with the `api` scope access.
+        /// Structure is documented below.
         /// </summary>
         [Input("authorizerCredential", required: true)]
         public Input<Inputs.ConnectionGitlabConfigAuthorizerCredentialGetArgs> AuthorizerCredential { get; set; } = null!;
@@ -26,11 +27,13 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
 
         /// <summary>
         /// Required. A GitLab personal access token with the minimum `read_api` scope access.
+        /// Structure is documented below.
         /// </summary>
         [Input("readAuthorizerCredential", required: true)]
         public Input<Inputs.ConnectionGitlabConfigReadAuthorizerCredentialGetArgs> ReadAuthorizerCredential { get; set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// Output only. Version of the GitLab Enterprise server running on the `host_uri`.
         /// </summary>
         [Input("serverVersion")]
@@ -38,6 +41,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
 
         /// <summary>
         /// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+        /// Structure is documented below.
         /// </summary>
         [Input("serviceDirectoryConfig")]
         public Input<Inputs.ConnectionGitlabConfigServiceDirectoryConfigGetArgs>? ServiceDirectoryConfig { get; set; }

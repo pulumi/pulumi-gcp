@@ -502,6 +502,17 @@ import (
 //						&cloudrunv2.ServiceTemplateContainerArgs{
 //							Name:  pulumi.String("hello-2"),
 //							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							Envs: cloudrunv2.ServiceTemplateContainerEnvArray{
+//								&cloudrunv2.ServiceTemplateContainerEnvArgs{
+//									Name:  pulumi.String("PORT"),
+//									Value: pulumi.String("8081"),
+//								},
+//							},
+//							StartupProbe: &cloudrunv2.ServiceTemplateContainerStartupProbeArgs{
+//								HttpGet: &cloudrunv2.ServiceTemplateContainerStartupProbeHttpGetArgs{
+//									Port: pulumi.Int(8081),
+//								},
+//							},
 //						},
 //					},
 //					Volumes: cloudrunv2.ServiceTemplateVolumeArray{

@@ -31,6 +31,18 @@ namespace Pulumi.Gcp.Eventarc.Inputs
         public Input<Inputs.TriggerDestinationGkeArgs>? Gke { get; set; }
 
         /// <summary>
+        /// An HTTP endpoint destination described by an URI.
+        /// </summary>
+        [Input("httpEndpoint")]
+        public Input<Inputs.TriggerDestinationHttpEndpointArgs>? HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.TriggerDestinationNetworkConfigArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
         /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         /// </summary>
         [Input("workflow")]

@@ -11,6 +11,10 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.identityplatform.ConfigArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigState;
 import com.pulumi.gcp.identityplatform.outputs.ConfigBlockingFunctions;
+import com.pulumi.gcp.identityplatform.outputs.ConfigClient;
+import com.pulumi.gcp.identityplatform.outputs.ConfigMfa;
+import com.pulumi.gcp.identityplatform.outputs.ConfigMonitoring;
+import com.pulumi.gcp.identityplatform.outputs.ConfigMultiTenant;
 import com.pulumi.gcp.identityplatform.outputs.ConfigQuota;
 import com.pulumi.gcp.identityplatform.outputs.ConfigSignIn;
 import com.pulumi.gcp.identityplatform.outputs.ConfigSmsRegionConfig;
@@ -205,6 +209,70 @@ public class Config extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ConfigBlockingFunctions>> blockingFunctions() {
         return Codegen.optional(this.blockingFunctions);
+    }
+    /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="client", refs={ConfigClient.class}, tree="[0]")
+    private Output<ConfigClient> client;
+
+    /**
+     * @return Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ConfigClient> client() {
+        return this.client;
+    }
+    /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="mfa", refs={ConfigMfa.class}, tree="[0]")
+    private Output<ConfigMfa> mfa;
+
+    /**
+     * @return Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ConfigMfa> mfa() {
+        return this.mfa;
+    }
+    /**
+     * Configuration related to monitoring project activity.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="monitoring", refs={ConfigMonitoring.class}, tree="[0]")
+    private Output<ConfigMonitoring> monitoring;
+
+    /**
+     * @return Configuration related to monitoring project activity.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ConfigMonitoring> monitoring() {
+        return this.monitoring;
+    }
+    /**
+     * Configuration related to multi-tenant functionality.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="multiTenant", refs={ConfigMultiTenant.class}, tree="[0]")
+    private Output</* @Nullable */ ConfigMultiTenant> multiTenant;
+
+    /**
+     * @return Configuration related to multi-tenant functionality.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConfigMultiTenant>> multiTenant() {
+        return Codegen.optional(this.multiTenant);
     }
     /**
      * The name of the Config resource

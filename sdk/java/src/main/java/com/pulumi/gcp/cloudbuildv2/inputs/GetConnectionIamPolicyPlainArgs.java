@@ -15,9 +15,17 @@ public final class GetConnectionIamPolicyPlainArgs extends com.pulumi.resources.
 
     public static final GetConnectionIamPolicyPlainArgs Empty = new GetConnectionIamPolicyPlainArgs();
 
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="location")
     private @Nullable String location;
 
+    /**
+     * @return The location for the resource Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
@@ -80,6 +88,12 @@ public final class GetConnectionIamPolicyPlainArgs extends com.pulumi.resources.
             $ = new GetConnectionIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param location The location for the resource Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable String location) {
             $.location = location;
             return this;

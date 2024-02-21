@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.Hl7StoreNotificationConfigArgs;
 import com.pulumi.gcp.healthcare.inputs.Hl7StoreNotificationConfigsArgs;
 import com.pulumi.gcp.healthcare.inputs.Hl7StoreParserConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -163,6 +164,21 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parserConfig);
     }
 
+    /**
+     * Determines whether duplicate messages are allowed.
+     * 
+     */
+    @Import(name="rejectDuplicateMessage")
+    private @Nullable Output<Boolean> rejectDuplicateMessage;
+
+    /**
+     * @return Determines whether duplicate messages are allowed.
+     * 
+     */
+    public Optional<Output<Boolean>> rejectDuplicateMessage() {
+        return Optional.ofNullable(this.rejectDuplicateMessage);
+    }
+
     private Hl7StoreArgs() {}
 
     private Hl7StoreArgs(Hl7StoreArgs $) {
@@ -172,6 +188,7 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
         this.notificationConfig = $.notificationConfig;
         this.notificationConfigs = $.notificationConfigs;
         this.parserConfig = $.parserConfig;
+        this.rejectDuplicateMessage = $.rejectDuplicateMessage;
     }
 
     public static Builder builder() {
@@ -381,6 +398,27 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder parserConfig(Hl7StoreParserConfigArgs parserConfig) {
             return parserConfig(Output.of(parserConfig));
+        }
+
+        /**
+         * @param rejectDuplicateMessage Determines whether duplicate messages are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectDuplicateMessage(@Nullable Output<Boolean> rejectDuplicateMessage) {
+            $.rejectDuplicateMessage = rejectDuplicateMessage;
+            return this;
+        }
+
+        /**
+         * @param rejectDuplicateMessage Determines whether duplicate messages are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rejectDuplicateMessage(Boolean rejectDuplicateMessage) {
+            return rejectDuplicateMessage(Output.of(rejectDuplicateMessage));
         }
 
         public Hl7StoreArgs build() {

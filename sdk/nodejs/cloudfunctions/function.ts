@@ -266,6 +266,11 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly triggerHttp!: pulumi.Output<boolean | undefined>;
     /**
+     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+     * created.
+     */
+    public /*out*/ readonly versionId!: pulumi.Output<string>;
+    /**
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */
     public readonly vpcConnector!: pulumi.Output<string | undefined>;
@@ -318,6 +323,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
             resourceInputs["triggerHttp"] = state ? state.triggerHttp : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
             resourceInputs["vpcConnector"] = state ? state.vpcConnector : undefined;
             resourceInputs["vpcConnectorEgressSettings"] = state ? state.vpcConnectorEgressSettings : undefined;
         } else {
@@ -358,6 +364,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
@@ -502,6 +509,11 @@ export interface FunctionState {
      * Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
      */
     triggerHttp?: pulumi.Input<boolean>;
+    /**
+     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+     * created.
+     */
+    versionId?: pulumi.Input<string>;
     /**
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*&#47;locations/*&#47;connectors/*`.
      */

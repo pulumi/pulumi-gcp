@@ -1639,6 +1639,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "clouddeploy/customTargetType",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/customTargetType:CustomTargetType": "CustomTargetType"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "clouddeploy/deliveryPipeline",
   "fqn": "pulumi_gcp.clouddeploy",
   "classes": {
@@ -4191,6 +4199,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/appCheckDebugToken",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/appCheckDebugToken:AppCheckDebugToken": "AppCheckDebugToken"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/appCheckServiceConfig",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
@@ -5647,6 +5663,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networksecurity/firewallEndpoint",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/firewallEndpoint:FirewallEndpoint": "FirewallEndpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networksecurity/gatewaySecurityPolicy",
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
@@ -5667,6 +5691,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/securityProfile:SecurityProfile": "SecurityProfile"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/securityProfileGroup",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/securityProfileGroup:SecurityProfileGroup": "SecurityProfileGroup"
   }
  },
  {

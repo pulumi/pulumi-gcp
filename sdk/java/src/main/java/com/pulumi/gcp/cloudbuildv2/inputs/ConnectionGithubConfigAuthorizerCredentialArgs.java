@@ -31,6 +31,7 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
     }
 
     /**
+     * (Output)
      * Output only. The username associated to this token.
      * 
      */
@@ -38,7 +39,8 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
     private @Nullable Output<String> username;
 
     /**
-     * @return Output only. The username associated to this token.
+     * @return (Output)
+     * Output only. The username associated to this token.
      * 
      */
     public Optional<Output<String>> username() {
@@ -92,7 +94,8 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
         }
 
         /**
-         * @param username Output only. The username associated to this token.
+         * @param username (Output)
+         * Output only. The username associated to this token.
          * 
          * @return builder
          * 
@@ -103,7 +106,8 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
         }
 
         /**
-         * @param username Output only. The username associated to this token.
+         * @param username (Output)
+         * Output only. The username associated to this token.
          * 
          * @return builder
          * 

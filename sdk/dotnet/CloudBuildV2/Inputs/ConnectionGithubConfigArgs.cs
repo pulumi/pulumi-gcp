@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
 
         /// <summary>
         /// OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+        /// Structure is documented below.
         /// </summary>
         [Input("authorizerCredential")]
         public Input<Inputs.ConnectionGithubConfigAuthorizerCredentialArgs>? AuthorizerCredential { get; set; }

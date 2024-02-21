@@ -506,6 +506,23 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+     * created.
+     * 
+     */
+    @Import(name="versionId")
+    private @Nullable Output<String> versionId;
+
+    /**
+     * @return The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+     * created.
+     * 
+     */
+    public Optional<Output<String>> versionId() {
+        return Optional.ofNullable(this.versionId);
+    }
+
+    /**
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*{@literal /}locations/*{@literal /}connectors/*`.
      * 
      */
@@ -569,6 +586,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         this.status = $.status;
         this.timeout = $.timeout;
         this.triggerHttp = $.triggerHttp;
+        this.versionId = $.versionId;
         this.vpcConnector = $.vpcConnector;
         this.vpcConnectorEgressSettings = $.vpcConnectorEgressSettings;
     }
@@ -1276,6 +1294,29 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder triggerHttp(Boolean triggerHttp) {
             return triggerHttp(Output.of(triggerHttp));
+        }
+
+        /**
+         * @param versionId The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+         * created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(@Nullable Output<String> versionId) {
+            $.versionId = versionId;
+            return this;
+        }
+
+        /**
+         * @param versionId The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+         * created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionId(String versionId) {
+            return versionId(Output.of(versionId));
         }
 
         /**

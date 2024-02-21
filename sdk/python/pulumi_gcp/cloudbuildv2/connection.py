@@ -27,16 +27,22 @@ class ConnectionArgs:
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
                
+               
+               - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
+               Structure is documented below.
         :param pulumi.Input['ConnectionGithubEnterpriseConfigArgs'] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+               Structure is documented below.
         :param pulumi.Input['ConnectionGitlabConfigArgs'] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
-        :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-        :param pulumi.Input[str] project: The project for the resource
+               Structure is documented below.
+        :param pulumi.Input[str] name: Immutable. The resource name of the connection.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "location", location)
         if annotations is not None:
@@ -59,6 +65,9 @@ class ConnectionArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -71,7 +80,6 @@ class ConnectionArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Allows clients to store small amounts of arbitrary data.
-
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -98,6 +106,7 @@ class ConnectionArgs:
     def github_config(self) -> Optional[pulumi.Input['ConnectionGithubConfigArgs']]:
         """
         Configuration for connections to github.com.
+        Structure is documented below.
         """
         return pulumi.get(self, "github_config")
 
@@ -110,6 +119,7 @@ class ConnectionArgs:
     def github_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]:
         """
         Configuration for connections to an instance of GitHub Enterprise.
+        Structure is documented below.
         """
         return pulumi.get(self, "github_enterprise_config")
 
@@ -122,6 +132,7 @@ class ConnectionArgs:
     def gitlab_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigArgs']]:
         """
         Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        Structure is documented below.
         """
         return pulumi.get(self, "gitlab_config")
 
@@ -133,7 +144,7 @@ class ConnectionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+        Immutable. The resource name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -145,7 +156,8 @@ class ConnectionArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -160,7 +172,7 @@ class _ConnectionState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
                  github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
@@ -174,21 +186,28 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
+               Structure is documented below.
         :param pulumi.Input['ConnectionGithubEnterpriseConfigArgs'] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+               Structure is documented below.
         :param pulumi.Input['ConnectionGitlabConfigArgs'] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Output only. Installation state of the Connection.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-        :param pulumi.Input[str] project: The project for the resource
+               
+               
+               - - -
+        :param pulumi.Input[str] name: Immutable. The resource name of the connection.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the background.
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
         """
@@ -226,7 +245,6 @@ class _ConnectionState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Allows clients to store small amounts of arbitrary data.
-
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -262,7 +280,7 @@ class _ConnectionState:
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
         Terraform, other clients and services.
@@ -270,7 +288,7 @@ class _ConnectionState:
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @property
@@ -290,6 +308,7 @@ class _ConnectionState:
     def github_config(self) -> Optional[pulumi.Input['ConnectionGithubConfigArgs']]:
         """
         Configuration for connections to github.com.
+        Structure is documented below.
         """
         return pulumi.get(self, "github_config")
 
@@ -302,6 +321,7 @@ class _ConnectionState:
     def github_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]:
         """
         Configuration for connections to an instance of GitHub Enterprise.
+        Structure is documented below.
         """
         return pulumi.get(self, "github_enterprise_config")
 
@@ -314,6 +334,7 @@ class _ConnectionState:
     def gitlab_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigArgs']]:
         """
         Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        Structure is documented below.
         """
         return pulumi.get(self, "gitlab_config")
 
@@ -326,6 +347,7 @@ class _ConnectionState:
     def installation_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]]:
         """
         Output only. Installation state of the Connection.
+        Structure is documented below.
         """
         return pulumi.get(self, "installation_states")
 
@@ -338,6 +360,9 @@ class _ConnectionState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -349,7 +374,7 @@ class _ConnectionState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+        Immutable. The resource name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -361,7 +386,8 @@ class _ConnectionState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -409,10 +435,32 @@ class Connection(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Cloudbuildv2 Connection resource
+        A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.
+
+        To get more information about Connection, see:
+
+        * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/build/docs)
 
         ## Example Usage
-        ### Ghe
+        ### Cloudbuildv2 Connection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=0,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/gcb-terraform-creds/secrets/github-pat/versions/1",
+                ),
+            ),
+            location="us-central1")
+        ```
+        ### Cloudbuildv2 Connection Ghe
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -458,8 +506,8 @@ class Connection(pulumi.CustomResource):
                     policy_whs,
                 ]))
         ```
-        ### GitHub Connection
-        Creates a Connection to github.com
+        ### Cloudbuildv2 Connection Github
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -480,7 +528,7 @@ class Connection(pulumi.CustomResource):
             secret_id=github_token_secret.secret_id,
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
-            location="us-west1",
+            location="us-central1",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
                 app_installation_id=123123,
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
@@ -499,6 +547,8 @@ class Connection(pulumi.CustomResource):
 
          * `{{location}}/{{name}}`
 
+         * `{{name}}`
+
          When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 
         ```sh
@@ -513,19 +563,29 @@ class Connection(pulumi.CustomResource):
         $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
         ```
 
+        ```sh
+        $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']] github_config: Configuration for connections to github.com.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-        :param pulumi.Input[str] project: The project for the resource
+               
+               
+               - - -
+        :param pulumi.Input[str] name: Immutable. The resource name of the connection.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -534,10 +594,32 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Cloudbuildv2 Connection resource
+        A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.
+
+        To get more information about Connection, see:
+
+        * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/build/docs)
 
         ## Example Usage
-        ### Ghe
+        ### Cloudbuildv2 Connection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.cloudbuildv2.Connection("my-connection",
+            github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
+                app_installation_id=0,
+                authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
+                    oauth_token_secret_version="projects/gcb-terraform-creds/secrets/github-pat/versions/1",
+                ),
+            ),
+            location="us-central1")
+        ```
+        ### Cloudbuildv2 Connection Ghe
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -583,8 +665,8 @@ class Connection(pulumi.CustomResource):
                     policy_whs,
                 ]))
         ```
-        ### GitHub Connection
-        Creates a Connection to github.com
+        ### Cloudbuildv2 Connection Github
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -605,7 +687,7 @@ class Connection(pulumi.CustomResource):
             secret_id=github_token_secret.secret_id,
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
-            location="us-west1",
+            location="us-central1",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
                 app_installation_id=123123,
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
@@ -624,6 +706,8 @@ class Connection(pulumi.CustomResource):
 
          * `{{location}}/{{name}}`
 
+         * `{{name}}`
+
          When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
 
         ```sh
@@ -636,6 +720,10 @@ class Connection(pulumi.CustomResource):
 
         ```sh
         $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
+        ```
+
+        ```sh
+        $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -699,7 +787,7 @@ class Connection(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             github_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']]] = None,
             github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']]] = None,
@@ -718,21 +806,28 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']] github_config: Configuration for connections to github.com.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionInstallationStateArgs']]]] installation_states: Output only. Installation state of the Connection.
+               Structure is documented below.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-        :param pulumi.Input[str] project: The project for the resource
+               
+               
+               - - -
+        :param pulumi.Input[str] name: Immutable. The resource name of the connection.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the background.
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
         """
@@ -761,7 +856,6 @@ class Connection(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Allows clients to store small amounts of arbitrary data.
-
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -785,7 +879,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
         Terraform, other clients and services.
@@ -805,6 +899,7 @@ class Connection(pulumi.CustomResource):
     def github_config(self) -> pulumi.Output[Optional['outputs.ConnectionGithubConfig']]:
         """
         Configuration for connections to github.com.
+        Structure is documented below.
         """
         return pulumi.get(self, "github_config")
 
@@ -813,6 +908,7 @@ class Connection(pulumi.CustomResource):
     def github_enterprise_config(self) -> pulumi.Output[Optional['outputs.ConnectionGithubEnterpriseConfig']]:
         """
         Configuration for connections to an instance of GitHub Enterprise.
+        Structure is documented below.
         """
         return pulumi.get(self, "github_enterprise_config")
 
@@ -821,6 +917,7 @@ class Connection(pulumi.CustomResource):
     def gitlab_config(self) -> pulumi.Output[Optional['outputs.ConnectionGitlabConfig']]:
         """
         Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        Structure is documented below.
         """
         return pulumi.get(self, "gitlab_config")
 
@@ -829,6 +926,7 @@ class Connection(pulumi.CustomResource):
     def installation_states(self) -> pulumi.Output[Sequence['outputs.ConnectionInstallationState']]:
         """
         Output only. Installation state of the Connection.
+        Structure is documented below.
         """
         return pulumi.get(self, "installation_states")
 
@@ -837,6 +935,9 @@ class Connection(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -844,7 +945,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+        Immutable. The resource name of the connection.
         """
         return pulumi.get(self, "name")
 
@@ -852,7 +953,8 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 

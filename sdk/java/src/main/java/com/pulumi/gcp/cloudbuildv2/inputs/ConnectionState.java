@@ -10,7 +10,6 @@ import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGitlabConfigArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionInstallationStateArgs;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +24,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -35,7 +33,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -80,14 +77,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="effectiveAnnotations")
-    private @Nullable Output<Map<String,Object>> effectiveAnnotations;
+    private @Nullable Output<Map<String,String>> effectiveAnnotations;
 
     /**
      * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
      * 
      */
-    public Optional<Output<Map<String,Object>>> effectiveAnnotations() {
+    public Optional<Output<Map<String,String>>> effectiveAnnotations() {
         return Optional.ofNullable(this.effectiveAnnotations);
     }
 
@@ -108,6 +105,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configuration for connections to github.com.
+     * Structure is documented below.
      * 
      */
     @Import(name="githubConfig")
@@ -115,6 +113,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configuration for connections to github.com.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ConnectionGithubConfigArgs>> githubConfig() {
@@ -123,6 +122,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
      * 
      */
     @Import(name="githubEnterpriseConfig")
@@ -130,6 +130,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ConnectionGithubEnterpriseConfigArgs>> githubEnterpriseConfig() {
@@ -138,6 +139,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * Structure is documented below.
      * 
      */
     @Import(name="gitlabConfig")
@@ -145,6 +147,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ConnectionGitlabConfigArgs>> gitlabConfig() {
@@ -153,6 +156,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Output only. Installation state of the Connection.
+     * Structure is documented below.
      * 
      */
     @Import(name="installationStates")
@@ -160,6 +164,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Output only. Installation state of the Connection.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<ConnectionInstallationStateArgs>>> installationStates() {
@@ -169,6 +174,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
@@ -176,20 +183,22 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The location for the resource
      * 
+     * ***
+     * 
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
 
     /**
-     * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * Immutable. The resource name of the connection.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * @return Immutable. The resource name of the connection.
      * 
      */
     public Optional<Output<String>> name() {
@@ -197,14 +206,16 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -280,7 +291,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Allows clients to store small amounts of arbitrary data.
-         * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -294,7 +304,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Allows clients to store small amounts of arbitrary data.
-         * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -354,7 +363,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder effectiveAnnotations(@Nullable Output<Map<String,Object>> effectiveAnnotations) {
+        public Builder effectiveAnnotations(@Nullable Output<Map<String,String>> effectiveAnnotations) {
             $.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
@@ -366,7 +375,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder effectiveAnnotations(Map<String,Object> effectiveAnnotations) {
+        public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
             return effectiveAnnotations(Output.of(effectiveAnnotations));
         }
 
@@ -393,6 +402,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param githubConfig Configuration for connections to github.com.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -404,6 +414,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param githubConfig Configuration for connections to github.com.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -414,6 +425,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param githubEnterpriseConfig Configuration for connections to an instance of GitHub Enterprise.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -425,6 +437,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param githubEnterpriseConfig Configuration for connections to an instance of GitHub Enterprise.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -435,6 +448,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gitlabConfig Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -446,6 +460,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gitlabConfig Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -456,6 +471,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param installationStates Output only. Installation state of the Connection.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -467,6 +483,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param installationStates Output only. Installation state of the Connection.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -477,6 +494,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param installationStates Output only. Installation state of the Connection.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -487,6 +505,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the resource
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -499,6 +519,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -507,7 +529,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+         * @param name Immutable. The resource name of the connection.
          * 
          * @return builder
          * 
@@ -518,7 +540,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+         * @param name Immutable. The resource name of the connection.
          * 
          * @return builder
          * 
@@ -528,7 +550,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -539,7 +562,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

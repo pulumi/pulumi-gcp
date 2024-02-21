@@ -111,6 +111,131 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Featureonlinestore Featureview Feature Registry
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var featureonlinestore = new Gcp.Vertex.AiFeatureOnlineStore("featureonlinestore", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Region = "us-central1",
+    ///         Bigtable = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableArgs
+    ///         {
+    ///             AutoScaling = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs
+    ///             {
+    ///                 MinNodeCount = 1,
+    ///                 MaxNodeCount = 2,
+    ///                 CpuUtilizationTarget = 80,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var sampleDataset = new Gcp.BigQuery.Dataset("sampleDataset", new()
+    ///     {
+    ///         DatasetId = "example_feature_view_feature_registry",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var sampleTable = new Gcp.BigQuery.Table("sampleTable", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         DatasetId = sampleDataset.DatasetId,
+    ///         TableId = "example_feature_view_feature_registry",
+    ///         Schema = @"[
+    ///     {
+    ///         ""name"": ""feature_id"",
+    ///         ""type"": ""STRING"",
+    ///         ""mode"": ""NULLABLE""
+    ///     },
+    ///     {
+    ///         ""name"": ""example_feature_view_feature_registry"",
+    ///         ""type"": ""STRING"",
+    ///         ""mode"": ""NULLABLE""
+    ///     },
+    ///     {
+    ///         ""name"": ""feature_timestamp"",
+    ///         ""type"": ""TIMESTAMP"",
+    ///         ""mode"": ""NULLABLE""
+    ///     }
+    /// ]
+    /// ",
+    ///     });
+    /// 
+    ///     var sampleFeatureGroup = new Gcp.Vertex.AiFeatureGroup("sampleFeatureGroup", new()
+    ///     {
+    ///         Description = "A sample feature group",
+    ///         Region = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         BigQuery = new Gcp.Vertex.Inputs.AiFeatureGroupBigQueryArgs
+    ///         {
+    ///             BigQuerySource = new Gcp.Vertex.Inputs.AiFeatureGroupBigQueryBigQuerySourceArgs
+    ///             {
+    ///                 InputUri = Output.Tuple(sampleTable.Project, sampleTable.DatasetId, sampleTable.TableId).Apply(values =&gt;
+    ///                 {
+    ///                     var project = values.Item1;
+    ///                     var datasetId = values.Item2;
+    ///                     var tableId = values.Item3;
+    ///                     return $"bq://{project}.{datasetId}.{tableId}";
+    ///                 }),
+    ///             },
+    ///             EntityIdColumns = new[]
+    ///             {
+    ///                 "feature_id",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var sampleFeature = new Gcp.Vertex.AiFeatureGroupFeature("sampleFeature", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         FeatureGroup = sampleFeatureGroup.Name,
+    ///         Description = "A sample feature",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    ///     var featureviewFeatureregistry = new Gcp.Vertex.AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         FeatureOnlineStore = featureonlinestore.Name,
+    ///         SyncConfig = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs
+    ///         {
+    ///             Cron = "0 0 * * *",
+    ///         },
+    ///         FeatureRegistrySource = new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs
+    ///         {
+    ///             FeatureGroups = new[]
+    ///             {
+    ///                 new Gcp.Vertex.Inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs
+    ///                 {
+    ///                     FeatureGroupId = sampleFeatureGroup.Name,
+    ///                     FeatureIds = new[]
+    ///                     {
+    ///                         sampleFeature.Name,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Vertex Ai Featureonlinestore Featureview With Vector Search
     /// 
     /// ```csharp
@@ -318,6 +443,13 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> FeatureOnlineStore { get; private set; } = null!;
 
         /// <summary>
+        /// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("featureRegistrySource")]
+        public Output<Outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?> FeatureRegistrySource { get; private set; } = null!;
+
+        /// <summary>
         /// A set of key/value label pairs to assign to this FeatureView.
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -439,6 +571,13 @@ namespace Pulumi.Gcp.Vertex
         [Input("featureOnlineStore", required: true)]
         public Input<string> FeatureOnlineStore { get; set; } = null!;
 
+        /// <summary>
+        /// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("featureRegistrySource")]
+        public Input<Inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs>? FeatureRegistrySource { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -532,6 +671,13 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("featureOnlineStore")]
         public Input<string>? FeatureOnlineStore { get; set; }
+
+        /// <summary>
+        /// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("featureRegistrySource")]
+        public Input<Inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceGetArgs>? FeatureRegistrySource { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

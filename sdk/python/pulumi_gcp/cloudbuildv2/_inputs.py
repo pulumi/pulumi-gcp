@@ -31,6 +31,7 @@ class ConnectionGithubConfigArgs:
         """
         :param pulumi.Input[int] app_installation_id: GitHub App installation id.
         :param pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs'] authorizer_credential: OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+               Structure is documented below.
         """
         if app_installation_id is not None:
             pulumi.set(__self__, "app_installation_id", app_installation_id)
@@ -54,6 +55,7 @@ class ConnectionGithubConfigArgs:
     def authorizer_credential(self) -> Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']]:
         """
         OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+        Structure is documented below.
         """
         return pulumi.get(self, "authorizer_credential")
 
@@ -69,7 +71,8 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] oauth_token_secret_version: A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-        :param pulumi.Input[str] username: Output only. The username associated to this token.
+        :param pulumi.Input[str] username: (Output)
+               Output only. The username associated to this token.
         """
         if oauth_token_secret_version is not None:
             pulumi.set(__self__, "oauth_token_secret_version", oauth_token_secret_version)
@@ -92,6 +95,7 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The username associated to this token.
         """
         return pulumi.get(self, "username")
@@ -119,6 +123,7 @@ class ConnectionGithubEnterpriseConfigArgs:
         :param pulumi.Input[str] app_slug: The URL-friendly name of the GitHub App.
         :param pulumi.Input[str] private_key_secret_version: SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
         :param pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs'] service_directory_config: Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+               Structure is documented below.
         :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to GitHub Enterprise.
         :param pulumi.Input[str] webhook_secret_secret_version: SecretManager resource containing the webhook secret of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
         """
@@ -203,6 +208,7 @@ class ConnectionGithubEnterpriseConfigArgs:
     def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]:
         """
         Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+        Structure is documented below.
         """
         return pulumi.get(self, "service_directory_config")
 
@@ -269,11 +275,15 @@ class ConnectionGitlabConfigArgs:
                  ssl_ca: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs'] authorizer_credential: Required. A GitLab personal access token with the `api` scope access.
+               Structure is documented below.
         :param pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs'] read_authorizer_credential: Required. A GitLab personal access token with the minimum `read_api` scope access.
+               Structure is documented below.
         :param pulumi.Input[str] webhook_secret_secret_version: Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[str] host_uri: The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
-        :param pulumi.Input[str] server_version: Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+        :param pulumi.Input[str] server_version: (Output)
+               Output only. Version of the GitLab Enterprise server running on the `host_uri`.
         :param pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs'] service_directory_config: Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+               Structure is documented below.
         :param pulumi.Input[str] ssl_ca: SSL certificate to use for requests to GitLab Enterprise.
         """
         pulumi.set(__self__, "authorizer_credential", authorizer_credential)
@@ -293,6 +303,7 @@ class ConnectionGitlabConfigArgs:
     def authorizer_credential(self) -> pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs']:
         """
         Required. A GitLab personal access token with the `api` scope access.
+        Structure is documented below.
         """
         return pulumi.get(self, "authorizer_credential")
 
@@ -305,6 +316,7 @@ class ConnectionGitlabConfigArgs:
     def read_authorizer_credential(self) -> pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs']:
         """
         Required. A GitLab personal access token with the minimum `read_api` scope access.
+        Structure is documented below.
         """
         return pulumi.get(self, "read_authorizer_credential")
 
@@ -340,6 +352,7 @@ class ConnectionGitlabConfigArgs:
     @pulumi.getter(name="serverVersion")
     def server_version(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. Version of the GitLab Enterprise server running on the `host_uri`.
         """
         return pulumi.get(self, "server_version")
@@ -353,6 +366,7 @@ class ConnectionGitlabConfigArgs:
     def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigServiceDirectoryConfigArgs']]:
         """
         Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+        Structure is documented below.
         """
         return pulumi.get(self, "service_directory_config")
 
@@ -380,7 +394,8 @@ class ConnectionGitlabConfigAuthorizerCredentialArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-        :param pulumi.Input[str] username: Output only. The username associated to this token.
+        :param pulumi.Input[str] username: (Output)
+               Output only. The username associated to this token.
         """
         pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
         if username is not None:
@@ -402,6 +417,7 @@ class ConnectionGitlabConfigAuthorizerCredentialArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The username associated to this token.
         """
         return pulumi.get(self, "username")
@@ -418,9 +434,8 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-        :param pulumi.Input[str] username: Output only. The username associated to this token.
-               
-               - - -
+        :param pulumi.Input[str] username: (Output)
+               Output only. The username associated to this token.
         """
         pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
         if username is not None:
@@ -442,9 +457,8 @@ class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. The username associated to this token.
-
-        - - -
         """
         return pulumi.get(self, "username")
 
@@ -560,9 +574,12 @@ class ConnectionInstallationStateArgs:
                  message: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] action_uri: Output only. Link to follow for next action. Empty string if the installation is already complete.
-        :param pulumi.Input[str] message: Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
-        :param pulumi.Input[str] stage: Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+        :param pulumi.Input[str] action_uri: (Output)
+               Output only. Link to follow for next action. Empty string if the installation is already complete.
+        :param pulumi.Input[str] message: (Output)
+               Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+        :param pulumi.Input[str] stage: (Output)
+               Output only. Current step of the installation process.
         """
         if action_uri is not None:
             pulumi.set(__self__, "action_uri", action_uri)
@@ -575,6 +592,7 @@ class ConnectionInstallationStateArgs:
     @pulumi.getter(name="actionUri")
     def action_uri(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. Link to follow for next action. Empty string if the installation is already complete.
         """
         return pulumi.get(self, "action_uri")
@@ -587,6 +605,7 @@ class ConnectionInstallationStateArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
+        (Output)
         Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
         """
         return pulumi.get(self, "message")
@@ -599,7 +618,8 @@ class ConnectionInstallationStateArgs:
     @pulumi.getter
     def stage(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+        (Output)
+        Output only. Current step of the installation process.
         """
         return pulumi.get(self, "stage")
 

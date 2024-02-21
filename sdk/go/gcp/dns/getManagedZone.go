@@ -68,7 +68,7 @@ func LookupManagedZone(ctx *pulumi.Context, args *LookupManagedZoneArgs, opts ..
 type LookupManagedZoneArgs struct {
 	// A unique name for the resource.
 	Name string `pulumi:"name"`
-	// The ID of the project for the Google Cloud DNS zone.
+	// The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
 	Project *string `pulumi:"project"`
 }
 
@@ -108,7 +108,7 @@ func LookupManagedZoneOutput(ctx *pulumi.Context, args LookupManagedZoneOutputAr
 type LookupManagedZoneOutputArgs struct {
 	// A unique name for the resource.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the project for the Google Cloud DNS zone.
+	// The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 

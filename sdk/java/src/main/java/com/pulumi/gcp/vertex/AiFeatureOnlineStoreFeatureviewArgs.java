@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs;
+import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs;
 import java.lang.String;
@@ -50,6 +51,23 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
      */
     public Output<String> featureOnlineStore() {
         return this.featureOnlineStore;
+    }
+
+    /**
+     * Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="featureRegistrySource")
+    private @Nullable Output<AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs> featureRegistrySource;
+
+    /**
+     * @return Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs>> featureRegistrySource() {
+        return Optional.ofNullable(this.featureRegistrySource);
     }
 
     /**
@@ -163,6 +181,7 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
     private AiFeatureOnlineStoreFeatureviewArgs(AiFeatureOnlineStoreFeatureviewArgs $) {
         this.bigQuerySource = $.bigQuerySource;
         this.featureOnlineStore = $.featureOnlineStore;
+        this.featureRegistrySource = $.featureRegistrySource;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
@@ -231,6 +250,29 @@ public final class AiFeatureOnlineStoreFeatureviewArgs extends com.pulumi.resour
          */
         public Builder featureOnlineStore(String featureOnlineStore) {
             return featureOnlineStore(Output.of(featureOnlineStore));
+        }
+
+        /**
+         * @param featureRegistrySource Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureRegistrySource(@Nullable Output<AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs> featureRegistrySource) {
+            $.featureRegistrySource = featureRegistrySource;
+            return this;
+        }
+
+        /**
+         * @param featureRegistrySource Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder featureRegistrySource(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs featureRegistrySource) {
+            return featureRegistrySource(Output.of(featureRegistrySource));
         }
 
         /**

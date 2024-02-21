@@ -19,6 +19,10 @@ class ConfigArgs:
                  authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
                  blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
+                 client: Optional[pulumi.Input['ConfigClientArgs']] = None,
+                 mfa: Optional[pulumi.Input['ConfigMfaArgs']] = None,
+                 monitoring: Optional[pulumi.Input['ConfigMonitoringArgs']] = None,
+                 multi_tenant: Optional[pulumi.Input['ConfigMultiTenantArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
                  sign_in: Optional[pulumi.Input['ConfigSignInArgs']] = None,
@@ -28,6 +32,14 @@ class ConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
         :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
+               Structure is documented below.
+        :param pulumi.Input['ConfigClientArgs'] client: Options related to how clients making requests on behalf of a project should be configured.
+               Structure is documented below.
+        :param pulumi.Input['ConfigMfaArgs'] mfa: Options related to how clients making requests on behalf of a project should be configured.
+               Structure is documented below.
+        :param pulumi.Input['ConfigMonitoringArgs'] monitoring: Configuration related to monitoring project activity.
+               Structure is documented below.
+        :param pulumi.Input['ConfigMultiTenantArgs'] multi_tenant: Configuration related to multi-tenant functionality.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -44,6 +56,14 @@ class ConfigArgs:
             pulumi.set(__self__, "autodelete_anonymous_users", autodelete_anonymous_users)
         if blocking_functions is not None:
             pulumi.set(__self__, "blocking_functions", blocking_functions)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
+        if mfa is not None:
+            pulumi.set(__self__, "mfa", mfa)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if multi_tenant is not None:
+            pulumi.set(__self__, "multi_tenant", multi_tenant)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if quota is not None:
@@ -89,6 +109,58 @@ class ConfigArgs:
     @blocking_functions.setter
     def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]):
         pulumi.set(self, "blocking_functions", value)
+
+    @property
+    @pulumi.getter
+    def client(self) -> Optional[pulumi.Input['ConfigClientArgs']]:
+        """
+        Options related to how clients making requests on behalf of a project should be configured.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client")
+
+    @client.setter
+    def client(self, value: Optional[pulumi.Input['ConfigClientArgs']]):
+        pulumi.set(self, "client", value)
+
+    @property
+    @pulumi.getter
+    def mfa(self) -> Optional[pulumi.Input['ConfigMfaArgs']]:
+        """
+        Options related to how clients making requests on behalf of a project should be configured.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mfa")
+
+    @mfa.setter
+    def mfa(self, value: Optional[pulumi.Input['ConfigMfaArgs']]):
+        pulumi.set(self, "mfa", value)
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[pulumi.Input['ConfigMonitoringArgs']]:
+        """
+        Configuration related to monitoring project activity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @monitoring.setter
+    def monitoring(self, value: Optional[pulumi.Input['ConfigMonitoringArgs']]):
+        pulumi.set(self, "monitoring", value)
+
+    @property
+    @pulumi.getter(name="multiTenant")
+    def multi_tenant(self) -> Optional[pulumi.Input['ConfigMultiTenantArgs']]:
+        """
+        Configuration related to multi-tenant functionality.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multi_tenant")
+
+    @multi_tenant.setter
+    def multi_tenant(self, value: Optional[pulumi.Input['ConfigMultiTenantArgs']]):
+        pulumi.set(self, "multi_tenant", value)
 
     @property
     @pulumi.getter
@@ -149,6 +221,10 @@ class _ConfigState:
                  authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
                  blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
+                 client: Optional[pulumi.Input['ConfigClientArgs']] = None,
+                 mfa: Optional[pulumi.Input['ConfigMfaArgs']] = None,
+                 monitoring: Optional[pulumi.Input['ConfigMonitoringArgs']] = None,
+                 multi_tenant: Optional[pulumi.Input['ConfigMultiTenantArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None,
@@ -159,6 +235,14 @@ class _ConfigState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
         :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
+               Structure is documented below.
+        :param pulumi.Input['ConfigClientArgs'] client: Options related to how clients making requests on behalf of a project should be configured.
+               Structure is documented below.
+        :param pulumi.Input['ConfigMfaArgs'] mfa: Options related to how clients making requests on behalf of a project should be configured.
+               Structure is documented below.
+        :param pulumi.Input['ConfigMonitoringArgs'] monitoring: Configuration related to monitoring project activity.
+               Structure is documented below.
+        :param pulumi.Input['ConfigMultiTenantArgs'] multi_tenant: Configuration related to multi-tenant functionality.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the Config resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -176,6 +260,14 @@ class _ConfigState:
             pulumi.set(__self__, "autodelete_anonymous_users", autodelete_anonymous_users)
         if blocking_functions is not None:
             pulumi.set(__self__, "blocking_functions", blocking_functions)
+        if client is not None:
+            pulumi.set(__self__, "client", client)
+        if mfa is not None:
+            pulumi.set(__self__, "mfa", mfa)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if multi_tenant is not None:
+            pulumi.set(__self__, "multi_tenant", multi_tenant)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -223,6 +315,58 @@ class _ConfigState:
     @blocking_functions.setter
     def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]):
         pulumi.set(self, "blocking_functions", value)
+
+    @property
+    @pulumi.getter
+    def client(self) -> Optional[pulumi.Input['ConfigClientArgs']]:
+        """
+        Options related to how clients making requests on behalf of a project should be configured.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client")
+
+    @client.setter
+    def client(self, value: Optional[pulumi.Input['ConfigClientArgs']]):
+        pulumi.set(self, "client", value)
+
+    @property
+    @pulumi.getter
+    def mfa(self) -> Optional[pulumi.Input['ConfigMfaArgs']]:
+        """
+        Options related to how clients making requests on behalf of a project should be configured.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mfa")
+
+    @mfa.setter
+    def mfa(self, value: Optional[pulumi.Input['ConfigMfaArgs']]):
+        pulumi.set(self, "mfa", value)
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional[pulumi.Input['ConfigMonitoringArgs']]:
+        """
+        Configuration related to monitoring project activity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @monitoring.setter
+    def monitoring(self, value: Optional[pulumi.Input['ConfigMonitoringArgs']]):
+        pulumi.set(self, "monitoring", value)
+
+    @property
+    @pulumi.getter(name="multiTenant")
+    def multi_tenant(self) -> Optional[pulumi.Input['ConfigMultiTenantArgs']]:
+        """
+        Configuration related to multi-tenant functionality.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multi_tenant")
+
+    @multi_tenant.setter
+    def multi_tenant(self, value: Optional[pulumi.Input['ConfigMultiTenantArgs']]):
+        pulumi.set(self, "multi_tenant", value)
 
     @property
     @pulumi.getter
@@ -297,6 +441,10 @@ class Config(pulumi.CustomResource):
                  authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
                  blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
+                 client: Optional[pulumi.Input[pulumi.InputType['ConfigClientArgs']]] = None,
+                 mfa: Optional[pulumi.Input[pulumi.InputType['ConfigMfaArgs']]] = None,
+                 monitoring: Optional[pulumi.Input[pulumi.InputType['ConfigMonitoringArgs']]] = None,
+                 multi_tenant: Optional[pulumi.Input[pulumi.InputType['ConfigMultiTenantArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
                  sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArgs']]] = None,
@@ -414,6 +562,14 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
         :param pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']] blocking_functions: Configuration related to blocking functions.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigClientArgs']] client: Options related to how clients making requests on behalf of a project should be configured.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigMfaArgs']] mfa: Options related to how clients making requests on behalf of a project should be configured.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigMonitoringArgs']] monitoring: Configuration related to monitoring project activity.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigMultiTenantArgs']] multi_tenant: Configuration related to multi-tenant functionality.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -555,6 +711,10 @@ class Config(pulumi.CustomResource):
                  authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
                  blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
+                 client: Optional[pulumi.Input[pulumi.InputType['ConfigClientArgs']]] = None,
+                 mfa: Optional[pulumi.Input[pulumi.InputType['ConfigMfaArgs']]] = None,
+                 monitoring: Optional[pulumi.Input[pulumi.InputType['ConfigMonitoringArgs']]] = None,
+                 multi_tenant: Optional[pulumi.Input[pulumi.InputType['ConfigMultiTenantArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
                  sign_in: Optional[pulumi.Input[pulumi.InputType['ConfigSignInArgs']]] = None,
@@ -571,6 +731,10 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["authorized_domains"] = authorized_domains
             __props__.__dict__["autodelete_anonymous_users"] = autodelete_anonymous_users
             __props__.__dict__["blocking_functions"] = blocking_functions
+            __props__.__dict__["client"] = client
+            __props__.__dict__["mfa"] = mfa
+            __props__.__dict__["monitoring"] = monitoring
+            __props__.__dict__["multi_tenant"] = multi_tenant
             __props__.__dict__["project"] = project
             __props__.__dict__["quota"] = quota
             __props__.__dict__["sign_in"] = sign_in
@@ -589,6 +753,10 @@ class Config(pulumi.CustomResource):
             authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
             blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
+            client: Optional[pulumi.Input[pulumi.InputType['ConfigClientArgs']]] = None,
+            mfa: Optional[pulumi.Input[pulumi.InputType['ConfigMfaArgs']]] = None,
+            monitoring: Optional[pulumi.Input[pulumi.InputType['ConfigMonitoringArgs']]] = None,
+            multi_tenant: Optional[pulumi.Input[pulumi.InputType['ConfigMultiTenantArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
@@ -604,6 +772,14 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
         :param pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']] blocking_functions: Configuration related to blocking functions.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigClientArgs']] client: Options related to how clients making requests on behalf of a project should be configured.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigMfaArgs']] mfa: Options related to how clients making requests on behalf of a project should be configured.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigMonitoringArgs']] monitoring: Configuration related to monitoring project activity.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ConfigMultiTenantArgs']] multi_tenant: Configuration related to multi-tenant functionality.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the Config resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -622,6 +798,10 @@ class Config(pulumi.CustomResource):
         __props__.__dict__["authorized_domains"] = authorized_domains
         __props__.__dict__["autodelete_anonymous_users"] = autodelete_anonymous_users
         __props__.__dict__["blocking_functions"] = blocking_functions
+        __props__.__dict__["client"] = client
+        __props__.__dict__["mfa"] = mfa
+        __props__.__dict__["monitoring"] = monitoring
+        __props__.__dict__["multi_tenant"] = multi_tenant
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["quota"] = quota
@@ -653,6 +833,42 @@ class Config(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "blocking_functions")
+
+    @property
+    @pulumi.getter
+    def client(self) -> pulumi.Output['outputs.ConfigClient']:
+        """
+        Options related to how clients making requests on behalf of a project should be configured.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client")
+
+    @property
+    @pulumi.getter
+    def mfa(self) -> pulumi.Output['outputs.ConfigMfa']:
+        """
+        Options related to how clients making requests on behalf of a project should be configured.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mfa")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> pulumi.Output['outputs.ConfigMonitoring']:
+        """
+        Configuration related to monitoring project activity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter(name="multiTenant")
+    def multi_tenant(self) -> pulumi.Output[Optional['outputs.ConfigMultiTenant']]:
+        """
+        Configuration related to multi-tenant functionality.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "multi_tenant")
 
     @property
     @pulumi.getter

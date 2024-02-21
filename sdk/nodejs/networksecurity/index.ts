@@ -35,6 +35,11 @@ export type ClientTlsPolicy = import("./clientTlsPolicy").ClientTlsPolicy;
 export const ClientTlsPolicy: typeof import("./clientTlsPolicy").ClientTlsPolicy = null as any;
 utilities.lazyLoad(exports, ["ClientTlsPolicy"], () => require("./clientTlsPolicy"));
 
+export { FirewallEndpointArgs, FirewallEndpointState } from "./firewallEndpoint";
+export type FirewallEndpoint = import("./firewallEndpoint").FirewallEndpoint;
+export const FirewallEndpoint: typeof import("./firewallEndpoint").FirewallEndpoint = null as any;
+utilities.lazyLoad(exports, ["FirewallEndpoint"], () => require("./firewallEndpoint"));
+
 export { GatewaySecurityPolicyArgs, GatewaySecurityPolicyState } from "./gatewaySecurityPolicy";
 export type GatewaySecurityPolicy = import("./gatewaySecurityPolicy").GatewaySecurityPolicy;
 export const GatewaySecurityPolicy: typeof import("./gatewaySecurityPolicy").GatewaySecurityPolicy = null as any;
@@ -54,6 +59,11 @@ export { SecurityProfileArgs, SecurityProfileState } from "./securityProfile";
 export type SecurityProfile = import("./securityProfile").SecurityProfile;
 export const SecurityProfile: typeof import("./securityProfile").SecurityProfile = null as any;
 utilities.lazyLoad(exports, ["SecurityProfile"], () => require("./securityProfile"));
+
+export { SecurityProfileGroupArgs, SecurityProfileGroupState } from "./securityProfileGroup";
+export type SecurityProfileGroup = import("./securityProfileGroup").SecurityProfileGroup;
+export const SecurityProfileGroup: typeof import("./securityProfileGroup").SecurityProfileGroup = null as any;
+utilities.lazyLoad(exports, ["SecurityProfileGroup"], () => require("./securityProfileGroup"));
 
 export { ServerTlsPolicyArgs, ServerTlsPolicyState } from "./serverTlsPolicy";
 export type ServerTlsPolicy = import("./serverTlsPolicy").ServerTlsPolicy;
@@ -87,12 +97,16 @@ const _module = {
                 return new AuthorizationPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
                 return new ClientTlsPolicy(name, <any>undefined, { urn })
+            case "gcp:networksecurity/firewallEndpoint:FirewallEndpoint":
+                return new FirewallEndpoint(name, <any>undefined, { urn })
             case "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy":
                 return new GatewaySecurityPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
                 return new GatewaySecurityPolicyRule(name, <any>undefined, { urn })
             case "gcp:networksecurity/securityProfile:SecurityProfile":
                 return new SecurityProfile(name, <any>undefined, { urn })
+            case "gcp:networksecurity/securityProfileGroup:SecurityProfileGroup":
+                return new SecurityProfileGroup(name, <any>undefined, { urn })
             case "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy":
                 return new ServerTlsPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy":
@@ -110,9 +124,11 @@ pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamMem
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/authorizationPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/clientTlsPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/firewallEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfile", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfileGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/serverTlsPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/tlsInspectionPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/urlList", _module)

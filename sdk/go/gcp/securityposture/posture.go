@@ -51,6 +51,11 @@ import (
 //										CannedConstraintId: pulumi.String("storage.uniformBucketLevelAccess"),
 //										PolicyRules: securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArray{
 //											&securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs{
+//												Condition: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs{
+//													Description: pulumi.String("condition description"),
+//													Expression:  pulumi.String("resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')"),
+//													Title:       pulumi.String("a CEL condition"),
+//												},
 //												Enforce: pulumi.Bool(true),
 //											},
 //										},
@@ -77,6 +82,11 @@ import (
 //										},
 //										PolicyRules: securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArray{
 //											&securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs{
+//												Condition: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs{
+//													Description: pulumi.String("condition description"),
+//													Expression:  pulumi.String("resource.matchTagId('tagKeys/key_id','tagValues/value_id')"),
+//													Title:       pulumi.String("a CEL condition"),
+//												},
 //												Enforce: pulumi.Bool(true),
 //											},
 //										},
@@ -126,7 +136,7 @@ import (
 //											},
 //											Severity: pulumi.String("LOW"),
 //										},
-//										DisplayName:           pulumi.String("custom SHA policy"),
+//										DisplayName:           pulumi.String("custom_SHA_policy"),
 //										ModuleEnablementState: pulumi.String("ENABLED"),
 //									},
 //								},

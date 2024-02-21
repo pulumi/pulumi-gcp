@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Workbench Instance Labels
+ * ### Workbench Instance Labels Stopped
  * ```java
  * package generated_program;
  * 
@@ -119,6 +119,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .desiredState(&#34;STOPPED&#34;)
  *             .gceSetup(InstanceGceSetupArgs.builder()
  *                 .machineType(&#34;e2-standard-4&#34;)
  *                 .metadata(Map.of(&#34;terraform&#34;, &#34;true&#34;))
@@ -188,13 +189,13 @@ import javax.annotation.Nullable;
  *                 .bootDisk(InstanceGceSetupBootDiskArgs.builder()
  *                     .diskSizeGb(310)
  *                     .diskType(&#34;PD_SSD&#34;)
- *                     .diskEncryption(&#34;GMEK&#34;)
+ *                     .diskEncryption(&#34;CMEK&#34;)
  *                     .kmsKey(&#34;my-crypto-key&#34;)
  *                     .build())
  *                 .dataDisks(InstanceGceSetupDataDisksArgs.builder()
  *                     .diskSizeGb(330)
  *                     .diskType(&#34;PD_SSD&#34;)
- *                     .diskEncryption(&#34;GMEK&#34;)
+ *                     .diskEncryption(&#34;CMEK&#34;)
  *                     .kmsKey(&#34;my-crypto-key&#34;)
  *                     .build())
  *                 .networkInterfaces(InstanceGceSetupNetworkInterfaceArgs.builder()
@@ -211,6 +212,7 @@ import javax.annotation.Nullable;
  *             .disableProxyAccess(&#34;true&#34;)
  *             .instanceOwners(&#34;my@service-account.com&#34;)
  *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
+ *             .desiredState(&#34;ACTIVE&#34;)
  *             .build());
  * 
  *     }
@@ -273,6 +275,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creator() {
         return this.creator;
+    }
+    /**
+     * Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     * 
+     */
+    @Export(name="desiredState", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> desiredState;
+
+    /**
+     * @return Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     * 
+     */
+    public Output<Optional<String>> desiredState() {
+        return Codegen.optional(this.desiredState);
     }
     /**
      * Optional. If true, the workbench instance will not register with the proxy.

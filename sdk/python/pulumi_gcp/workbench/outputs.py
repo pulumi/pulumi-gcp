@@ -307,7 +307,7 @@ class InstanceGceSetupBootDisk(dict):
                recommended value of 150GB.
         :param str disk_type: Optional. Indicates the type of the disk.
                Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-        :param str kms_key: 'Optional. Input only. The KMS key used to encrypt the disks, only
+        :param str kms_key: 'Optional. The KMS key used to encrypt the disks, only
                applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
                Learn more about using your own encryption keys.'
         """
@@ -353,7 +353,7 @@ class InstanceGceSetupBootDisk(dict):
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[str]:
         """
-        'Optional. Input only. The KMS key used to encrypt the disks, only
+        'Optional. The KMS key used to encrypt the disks, only
         applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
         Learn more about using your own encryption keys.'
         """
@@ -399,7 +399,7 @@ class InstanceGceSetupDataDisks(dict):
                100.
         :param str disk_type: Optional. Input only. Indicates the type of the disk.
                Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-        :param str kms_key: 'Optional. Input only. The KMS key used to encrypt the disks,
+        :param str kms_key: 'Optional. The KMS key used to encrypt the disks,
                only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
                Learn more about using your own encryption keys.'
         """
@@ -445,7 +445,7 @@ class InstanceGceSetupDataDisks(dict):
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[str]:
         """
-        'Optional. Input only. The KMS key used to encrypt the disks,
+        'Optional. The KMS key used to encrypt the disks,
         only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
         Learn more about using your own encryption keys.'
         """

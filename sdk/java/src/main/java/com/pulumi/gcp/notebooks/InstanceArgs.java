@@ -170,6 +170,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     * 
+     */
+    @Import(name="desiredState")
+    private @Nullable Output<String> desiredState;
+
+    /**
+     * @return Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     * 
+     */
+    public Optional<Output<String>> desiredState() {
+        return Optional.ofNullable(this.desiredState);
+    }
+
+    /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      * 
@@ -604,6 +619,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.customGpuDriverPath = $.customGpuDriverPath;
         this.dataDiskSizeGb = $.dataDiskSizeGb;
         this.dataDiskType = $.dataDiskType;
+        this.desiredState = $.desiredState;
         this.diskEncryption = $.diskEncryption;
         this.installGpuDriver = $.installGpuDriver;
         this.instanceOwners = $.instanceOwners;
@@ -838,6 +854,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataDiskType(String dataDiskType) {
             return dataDiskType(Output.of(dataDiskType));
+        }
+
+        /**
+         * @param desiredState Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(@Nullable Output<String> desiredState) {
+            $.desiredState = desiredState;
+            return this;
+        }
+
+        /**
+         * @param desiredState Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(String desiredState) {
+            return desiredState(Output.of(desiredState));
         }
 
         /**

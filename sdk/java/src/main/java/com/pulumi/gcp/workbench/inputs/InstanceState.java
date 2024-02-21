@@ -54,6 +54,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     * 
+     */
+    @Import(name="desiredState")
+    private @Nullable Output<String> desiredState;
+
+    /**
+     * @return Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     * 
+     */
+    public Optional<Output<String>> desiredState() {
+        return Optional.ofNullable(this.desiredState);
+    }
+
+    /**
      * Optional. If true, the workbench instance will not register with the proxy.
      * 
      */
@@ -330,6 +345,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.createTime = $.createTime;
         this.creator = $.creator;
+        this.desiredState = $.desiredState;
         this.disableProxyAccess = $.disableProxyAccess;
         this.effectiveLabels = $.effectiveLabels;
         this.gceSetup = $.gceSetup;
@@ -408,6 +424,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder creator(String creator) {
             return creator(Output.of(creator));
+        }
+
+        /**
+         * @param desiredState Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(@Nullable Output<String> desiredState) {
+            $.desiredState = desiredState;
+            return this;
+        }
+
+        /**
+         * @param desiredState Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredState(String desiredState) {
+            return desiredState(Output.of(desiredState));
         }
 
         /**

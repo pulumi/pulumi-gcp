@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Dns
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project for the Google Cloud DNS zone.
+        /// The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Dns
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project for the Google Cloud DNS zone.
+        /// The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

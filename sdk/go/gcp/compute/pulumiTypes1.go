@@ -9213,9 +9213,9 @@ type GetInstanceBootDiskInitializeParam struct {
 	Image string `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
 	Labels map[string]interface{} `pulumi:"labels"`
-	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops int `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
@@ -9243,9 +9243,9 @@ type GetInstanceBootDiskInitializeParamArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
 	Labels pulumi.MapInput `pulumi:"labels"`
-	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
-	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
@@ -9321,12 +9321,12 @@ func (o GetInstanceBootDiskInitializeParamOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
 }
 
-// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.ProvisionedIops }).(pulumi.IntOutput)
 }
 
-// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
 func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedThroughput() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }

@@ -234,6 +234,9 @@ type Function struct {
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
 	TriggerHttp pulumi.BoolPtrOutput `pulumi:"triggerHttp"`
+	// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+	// created.
+	VersionId pulumi.StringOutput `pulumi:"versionId"`
 	// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector pulumi.StringPtrOutput `pulumi:"vpcConnector"`
 	// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
@@ -348,6 +351,9 @@ type functionState struct {
 	Timeout *int `pulumi:"timeout"`
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
 	TriggerHttp *bool `pulumi:"triggerHttp"`
+	// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+	// created.
+	VersionId *string `pulumi:"versionId"`
 	// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector *string `pulumi:"vpcConnector"`
 	// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
@@ -425,6 +431,9 @@ type FunctionState struct {
 	Timeout pulumi.IntPtrInput
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
 	TriggerHttp pulumi.BoolPtrInput
+	// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+	// created.
+	VersionId pulumi.StringPtrInput
 	// The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
 	VpcConnector pulumi.StringPtrInput
 	// The egress settings for the connector, controlling what traffic is diverted through it. Allowed values are `ALL_TRAFFIC` and `PRIVATE_RANGES_ONLY`. Defaults to `PRIVATE_RANGES_ONLY`. If unset, this field preserves the previously set value.
@@ -826,6 +835,12 @@ func (o FunctionOutput) Timeout() pulumi.IntPtrOutput {
 // Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
 func (o FunctionOutput) TriggerHttp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.BoolPtrOutput { return v.TriggerHttp }).(pulumi.BoolPtrOutput)
+}
+
+// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+// created.
+func (o FunctionOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }
 
 // The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.

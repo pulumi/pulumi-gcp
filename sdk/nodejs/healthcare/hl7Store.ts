@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
  * const store = new gcp.healthcare.Hl7Store("store", {
  *     dataset: dataset.id,
+ *     rejectDuplicateMessage: true,
  *     notificationConfigs: [{
  *         pubsubTopic: topic.id,
  *     }],
@@ -259,6 +260,10 @@ export class Hl7Store extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Determines whether duplicate messages are allowed.
+     */
+    public readonly rejectDuplicateMessage!: pulumi.Output<boolean | undefined>;
+    /**
      * The fully qualified name of this dataset
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -284,6 +289,7 @@ export class Hl7Store extends pulumi.CustomResource {
             resourceInputs["notificationConfigs"] = state ? state.notificationConfigs : undefined;
             resourceInputs["parserConfig"] = state ? state.parserConfig : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["rejectDuplicateMessage"] = state ? state.rejectDuplicateMessage : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as Hl7StoreArgs | undefined;
@@ -296,6 +302,7 @@ export class Hl7Store extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["notificationConfigs"] = args ? args.notificationConfigs : undefined;
             resourceInputs["parserConfig"] = args ? args.parserConfig : undefined;
+            resourceInputs["rejectDuplicateMessage"] = args ? args.rejectDuplicateMessage : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -370,6 +377,10 @@ export interface Hl7StoreState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Determines whether duplicate messages are allowed.
+     */
+    rejectDuplicateMessage?: pulumi.Input<boolean>;
+    /**
      * The fully qualified name of this dataset
      */
     selfLink?: pulumi.Input<string>;
@@ -428,4 +439,8 @@ export interface Hl7StoreArgs {
      * Structure is documented below.
      */
     parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
+    /**
+     * Determines whether duplicate messages are allowed.
+     */
+    rejectDuplicateMessage?: pulumi.Input<boolean>;
 }

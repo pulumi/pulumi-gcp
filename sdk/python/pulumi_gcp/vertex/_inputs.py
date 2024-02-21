@@ -28,6 +28,8 @@ __all__ = [
     'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs',
     'AiFeatureOnlineStoreEmbeddingManagementArgs',
     'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs',
+    'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs',
+    'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs',
     'AiFeatureOnlineStoreFeatureviewSyncConfigArgs',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs',
@@ -1015,6 +1017,67 @@ class AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs:
     @uri.setter
     def uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs:
+    def __init__(__self__, *,
+                 feature_groups: pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]] feature_groups: List of features that need to be synced to Online Store.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "feature_groups", feature_groups)
+
+    @property
+    @pulumi.getter(name="featureGroups")
+    def feature_groups(self) -> pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]]:
+        """
+        List of features that need to be synced to Online Store.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "feature_groups")
+
+    @feature_groups.setter
+    def feature_groups(self, value: pulumi.Input[Sequence[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs']]]):
+        pulumi.set(self, "feature_groups", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs:
+    def __init__(__self__, *,
+                 feature_group_id: pulumi.Input[str],
+                 feature_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] feature_group_id: Identifier of the feature group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] feature_ids: Identifiers of features under the feature group.
+        """
+        pulumi.set(__self__, "feature_group_id", feature_group_id)
+        pulumi.set(__self__, "feature_ids", feature_ids)
+
+    @property
+    @pulumi.getter(name="featureGroupId")
+    def feature_group_id(self) -> pulumi.Input[str]:
+        """
+        Identifier of the feature group.
+        """
+        return pulumi.get(self, "feature_group_id")
+
+    @feature_group_id.setter
+    def feature_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "feature_group_id", value)
+
+    @property
+    @pulumi.getter(name="featureIds")
+    def feature_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Identifiers of features under the feature group.
+        """
+        return pulumi.get(self, "feature_ids")
+
+    @feature_ids.setter
+    def feature_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "feature_ids", value)
 
 
 @pulumi.input_type

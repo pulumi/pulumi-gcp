@@ -86,6 +86,21 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
     }
 
     /**
+     * Whether to disable SSH access to the VM.
+     * 
+     */
+    @Import(name="disableSsh")
+    private @Nullable Output<Boolean> disableSsh;
+
+    /**
+     * @return Whether to disable SSH access to the VM.
+     * 
+     */
+    public Optional<Output<Boolean>> disableSsh() {
+        return Optional.ofNullable(this.disableSsh);
+    }
+
+    /**
      * Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
      * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
@@ -201,6 +216,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
         this.bootDiskSizeGb = $.bootDiskSizeGb;
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.disablePublicIpAddresses = $.disablePublicIpAddresses;
+        this.disableSsh = $.disableSsh;
         this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.machineType = $.machineType;
         this.poolSize = $.poolSize;
@@ -325,6 +341,27 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
          */
         public Builder disablePublicIpAddresses(Boolean disablePublicIpAddresses) {
             return disablePublicIpAddresses(Output.of(disablePublicIpAddresses));
+        }
+
+        /**
+         * @param disableSsh Whether to disable SSH access to the VM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableSsh(@Nullable Output<Boolean> disableSsh) {
+            $.disableSsh = disableSsh;
+            return this;
+        }
+
+        /**
+         * @param disableSsh Whether to disable SSH access to the VM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableSsh(Boolean disableSsh) {
+            return disableSsh(Output.of(disableSsh));
         }
 
         /**

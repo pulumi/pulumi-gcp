@@ -18,6 +18,42 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         [Input("automaticTrafficControl")]
         public Input<bool>? AutomaticTrafficControl { get; set; }
 
+        [Input("canaryRevisionTags")]
+        private InputList<string>? _canaryRevisionTags;
+
+        /// <summary>
+        /// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+        /// </summary>
+        public InputList<string> CanaryRevisionTags
+        {
+            get => _canaryRevisionTags ?? (_canaryRevisionTags = new InputList<string>());
+            set => _canaryRevisionTags = value;
+        }
+
+        [Input("priorRevisionTags")]
+        private InputList<string>? _priorRevisionTags;
+
+        /// <summary>
+        /// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+        /// </summary>
+        public InputList<string> PriorRevisionTags
+        {
+            get => _priorRevisionTags ?? (_priorRevisionTags = new InputList<string>());
+            set => _priorRevisionTags = value;
+        }
+
+        [Input("stableRevisionTags")]
+        private InputList<string>? _stableRevisionTags;
+
+        /// <summary>
+        /// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+        /// </summary>
+        public InputList<string> StableRevisionTags
+        {
+            get => _stableRevisionTags ?? (_stableRevisionTags = new InputList<string>());
+            set => _stableRevisionTags = value;
+        }
+
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunGetArgs()
         {
         }

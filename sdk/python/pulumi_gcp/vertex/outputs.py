@@ -29,6 +29,8 @@ __all__ = [
     'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig',
     'AiFeatureOnlineStoreEmbeddingManagement',
     'AiFeatureOnlineStoreFeatureviewBigQuerySource',
+    'AiFeatureOnlineStoreFeatureviewFeatureRegistrySource',
+    'AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup',
     'AiFeatureOnlineStoreFeatureviewSyncConfig',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfig',
     'AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfig',
@@ -1126,6 +1128,91 @@ class AiFeatureOnlineStoreFeatureviewBigQuerySource(dict):
         The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "featureGroups":
+            suggest = "feature_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreFeatureviewFeatureRegistrySource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 feature_groups: Sequence['outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup']):
+        """
+        :param Sequence['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs'] feature_groups: List of features that need to be synced to Online Store.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "feature_groups", feature_groups)
+
+    @property
+    @pulumi.getter(name="featureGroups")
+    def feature_groups(self) -> Sequence['outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup']:
+        """
+        List of features that need to be synced to Online Store.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "feature_groups")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "featureGroupId":
+            suggest = "feature_group_id"
+        elif key == "featureIds":
+            suggest = "feature_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 feature_group_id: str,
+                 feature_ids: Sequence[str]):
+        """
+        :param str feature_group_id: Identifier of the feature group.
+        :param Sequence[str] feature_ids: Identifiers of features under the feature group.
+        """
+        pulumi.set(__self__, "feature_group_id", feature_group_id)
+        pulumi.set(__self__, "feature_ids", feature_ids)
+
+    @property
+    @pulumi.getter(name="featureGroupId")
+    def feature_group_id(self) -> str:
+        """
+        Identifier of the feature group.
+        """
+        return pulumi.get(self, "feature_group_id")
+
+    @property
+    @pulumi.getter(name="featureIds")
+    def feature_ids(self) -> Sequence[str]:
+        """
+        Identifiers of features under the feature group.
+        """
+        return pulumi.get(self, "feature_ids")
 
 
 @pulumi.output_type

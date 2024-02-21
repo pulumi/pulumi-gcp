@@ -80,6 +80,89 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * ### Vertex Ai Featureonlinestore Featureview Feature Registry
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const featureonlinestore = new gcp.vertex.AiFeatureOnlineStore("featureonlinestore", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ *     bigtable: {
+ *         autoScaling: {
+ *             minNodeCount: 1,
+ *             maxNodeCount: 2,
+ *             cpuUtilizationTarget: 80,
+ *         },
+ *     },
+ * });
+ * const sampleDataset = new gcp.bigquery.Dataset("sampleDataset", {
+ *     datasetId: "example_feature_view_feature_registry",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ * });
+ * const sampleTable = new gcp.bigquery.Table("sampleTable", {
+ *     deletionProtection: false,
+ *     datasetId: sampleDataset.datasetId,
+ *     tableId: "example_feature_view_feature_registry",
+ *     schema: `[
+ *     {
+ *         "name": "feature_id",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
+ *     },
+ *     {
+ *         "name": "example_feature_view_feature_registry",
+ *         "type": "STRING",
+ *         "mode": "NULLABLE"
+ *     },
+ *     {
+ *         "name": "feature_timestamp",
+ *         "type": "TIMESTAMP",
+ *         "mode": "NULLABLE"
+ *     }
+ * ]
+ * `,
+ * });
+ * const sampleFeatureGroup = new gcp.vertex.AiFeatureGroup("sampleFeatureGroup", {
+ *     description: "A sample feature group",
+ *     region: "us-central1",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     bigQuery: {
+ *         bigQuerySource: {
+ *             inputUri: pulumi.interpolate`bq://${sampleTable.project}.${sampleTable.datasetId}.${sampleTable.tableId}`,
+ *         },
+ *         entityIdColumns: ["feature_id"],
+ *     },
+ * });
+ * const sampleFeature = new gcp.vertex.AiFeatureGroupFeature("sampleFeature", {
+ *     region: "us-central1",
+ *     featureGroup: sampleFeatureGroup.name,
+ *     description: "A sample feature",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * const featureviewFeatureregistry = new gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry", {
+ *     region: "us-central1",
+ *     featureOnlineStore: featureonlinestore.name,
+ *     syncConfig: {
+ *         cron: "0 0 * * *",
+ *     },
+ *     featureRegistrySource: {
+ *         featureGroups: [{
+ *             featureGroupId: sampleFeatureGroup.name,
+ *             featureIds: [sampleFeature.name],
+ *         }],
+ *     },
+ * });
+ * ```
  * ### Vertex Ai Featureonlinestore Featureview With Vector Search
  *
  * ```typescript
@@ -266,6 +349,11 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
      */
     public readonly featureOnlineStore!: pulumi.Output<string>;
     /**
+     * Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+     * Structure is documented below.
+     */
+    public readonly featureRegistrySource!: pulumi.Output<outputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource | undefined>;
+    /**
      * A set of key/value label pairs to assign to this FeatureView.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -325,6 +413,7 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["featureOnlineStore"] = state ? state.featureOnlineStore : undefined;
+            resourceInputs["featureRegistrySource"] = state ? state.featureRegistrySource : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -343,6 +432,7 @@ export class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
             }
             resourceInputs["bigQuerySource"] = args ? args.bigQuerySource : undefined;
             resourceInputs["featureOnlineStore"] = args ? args.featureOnlineStore : undefined;
+            resourceInputs["featureRegistrySource"] = args ? args.featureRegistrySource : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -382,6 +472,11 @@ export interface AiFeatureOnlineStoreFeatureviewState {
      * The name of the FeatureOnlineStore to use for the featureview.
      */
     featureOnlineStore?: pulumi.Input<string>;
+    /**
+     * Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+     * Structure is documented below.
+     */
+    featureRegistrySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource>;
     /**
      * A set of key/value label pairs to assign to this FeatureView.
      *
@@ -439,6 +534,11 @@ export interface AiFeatureOnlineStoreFeatureviewArgs {
      * The name of the FeatureOnlineStore to use for the featureview.
      */
     featureOnlineStore: pulumi.Input<string>;
+    /**
+     * Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+     * Structure is documented below.
+     */
+    featureRegistrySource?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource>;
     /**
      * A set of key/value label pairs to assign to this FeatureView.
      *

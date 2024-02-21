@@ -20,6 +20,10 @@ type TriggerDestination struct {
 	CloudRunService *TriggerDestinationCloudRunService `pulumi:"cloudRunService"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke *TriggerDestinationGke `pulumi:"gke"`
+	// An HTTP endpoint destination described by an URI.
+	HttpEndpoint *TriggerDestinationHttpEndpoint `pulumi:"httpEndpoint"`
+	// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+	NetworkConfig *TriggerDestinationNetworkConfig `pulumi:"networkConfig"`
 	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 	Workflow *string `pulumi:"workflow"`
 }
@@ -42,6 +46,10 @@ type TriggerDestinationArgs struct {
 	CloudRunService TriggerDestinationCloudRunServicePtrInput `pulumi:"cloudRunService"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke TriggerDestinationGkePtrInput `pulumi:"gke"`
+	// An HTTP endpoint destination described by an URI.
+	HttpEndpoint TriggerDestinationHttpEndpointPtrInput `pulumi:"httpEndpoint"`
+	// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+	NetworkConfig TriggerDestinationNetworkConfigPtrInput `pulumi:"networkConfig"`
 	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 	Workflow pulumi.StringPtrInput `pulumi:"workflow"`
 }
@@ -138,6 +146,16 @@ func (o TriggerDestinationOutput) Gke() TriggerDestinationGkePtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationGke { return v.Gke }).(TriggerDestinationGkePtrOutput)
 }
 
+// An HTTP endpoint destination described by an URI.
+func (o TriggerDestinationOutput) HttpEndpoint() TriggerDestinationHttpEndpointPtrOutput {
+	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationHttpEndpoint { return v.HttpEndpoint }).(TriggerDestinationHttpEndpointPtrOutput)
+}
+
+// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+func (o TriggerDestinationOutput) NetworkConfig() TriggerDestinationNetworkConfigPtrOutput {
+	return o.ApplyT(func(v TriggerDestination) *TriggerDestinationNetworkConfig { return v.NetworkConfig }).(TriggerDestinationNetworkConfigPtrOutput)
+}
+
 // The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
 func (o TriggerDestinationOutput) Workflow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerDestination) *string { return v.Workflow }).(pulumi.StringPtrOutput)
@@ -195,6 +213,26 @@ func (o TriggerDestinationPtrOutput) Gke() TriggerDestinationGkePtrOutput {
 		}
 		return v.Gke
 	}).(TriggerDestinationGkePtrOutput)
+}
+
+// An HTTP endpoint destination described by an URI.
+func (o TriggerDestinationPtrOutput) HttpEndpoint() TriggerDestinationHttpEndpointPtrOutput {
+	return o.ApplyT(func(v *TriggerDestination) *TriggerDestinationHttpEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.HttpEndpoint
+	}).(TriggerDestinationHttpEndpointPtrOutput)
+}
+
+// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+func (o TriggerDestinationPtrOutput) NetworkConfig() TriggerDestinationNetworkConfigPtrOutput {
+	return o.ApplyT(func(v *TriggerDestination) *TriggerDestinationNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkConfig
+	}).(TriggerDestinationNetworkConfigPtrOutput)
 }
 
 // The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
@@ -592,6 +630,280 @@ func (o TriggerDestinationGkePtrOutput) Service() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerDestinationHttpEndpoint struct {
+	// Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+	Uri string `pulumi:"uri"`
+}
+
+// TriggerDestinationHttpEndpointInput is an input type that accepts TriggerDestinationHttpEndpointArgs and TriggerDestinationHttpEndpointOutput values.
+// You can construct a concrete instance of `TriggerDestinationHttpEndpointInput` via:
+//
+//	TriggerDestinationHttpEndpointArgs{...}
+type TriggerDestinationHttpEndpointInput interface {
+	pulumi.Input
+
+	ToTriggerDestinationHttpEndpointOutput() TriggerDestinationHttpEndpointOutput
+	ToTriggerDestinationHttpEndpointOutputWithContext(context.Context) TriggerDestinationHttpEndpointOutput
+}
+
+type TriggerDestinationHttpEndpointArgs struct {
+	// Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (TriggerDestinationHttpEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDestinationHttpEndpoint)(nil)).Elem()
+}
+
+func (i TriggerDestinationHttpEndpointArgs) ToTriggerDestinationHttpEndpointOutput() TriggerDestinationHttpEndpointOutput {
+	return i.ToTriggerDestinationHttpEndpointOutputWithContext(context.Background())
+}
+
+func (i TriggerDestinationHttpEndpointArgs) ToTriggerDestinationHttpEndpointOutputWithContext(ctx context.Context) TriggerDestinationHttpEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationHttpEndpointOutput)
+}
+
+func (i TriggerDestinationHttpEndpointArgs) ToTriggerDestinationHttpEndpointPtrOutput() TriggerDestinationHttpEndpointPtrOutput {
+	return i.ToTriggerDestinationHttpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerDestinationHttpEndpointArgs) ToTriggerDestinationHttpEndpointPtrOutputWithContext(ctx context.Context) TriggerDestinationHttpEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationHttpEndpointOutput).ToTriggerDestinationHttpEndpointPtrOutputWithContext(ctx)
+}
+
+// TriggerDestinationHttpEndpointPtrInput is an input type that accepts TriggerDestinationHttpEndpointArgs, TriggerDestinationHttpEndpointPtr and TriggerDestinationHttpEndpointPtrOutput values.
+// You can construct a concrete instance of `TriggerDestinationHttpEndpointPtrInput` via:
+//
+//	        TriggerDestinationHttpEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerDestinationHttpEndpointPtrInput interface {
+	pulumi.Input
+
+	ToTriggerDestinationHttpEndpointPtrOutput() TriggerDestinationHttpEndpointPtrOutput
+	ToTriggerDestinationHttpEndpointPtrOutputWithContext(context.Context) TriggerDestinationHttpEndpointPtrOutput
+}
+
+type triggerDestinationHttpEndpointPtrType TriggerDestinationHttpEndpointArgs
+
+func TriggerDestinationHttpEndpointPtr(v *TriggerDestinationHttpEndpointArgs) TriggerDestinationHttpEndpointPtrInput {
+	return (*triggerDestinationHttpEndpointPtrType)(v)
+}
+
+func (*triggerDestinationHttpEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDestinationHttpEndpoint)(nil)).Elem()
+}
+
+func (i *triggerDestinationHttpEndpointPtrType) ToTriggerDestinationHttpEndpointPtrOutput() TriggerDestinationHttpEndpointPtrOutput {
+	return i.ToTriggerDestinationHttpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerDestinationHttpEndpointPtrType) ToTriggerDestinationHttpEndpointPtrOutputWithContext(ctx context.Context) TriggerDestinationHttpEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationHttpEndpointPtrOutput)
+}
+
+type TriggerDestinationHttpEndpointOutput struct{ *pulumi.OutputState }
+
+func (TriggerDestinationHttpEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDestinationHttpEndpoint)(nil)).Elem()
+}
+
+func (o TriggerDestinationHttpEndpointOutput) ToTriggerDestinationHttpEndpointOutput() TriggerDestinationHttpEndpointOutput {
+	return o
+}
+
+func (o TriggerDestinationHttpEndpointOutput) ToTriggerDestinationHttpEndpointOutputWithContext(ctx context.Context) TriggerDestinationHttpEndpointOutput {
+	return o
+}
+
+func (o TriggerDestinationHttpEndpointOutput) ToTriggerDestinationHttpEndpointPtrOutput() TriggerDestinationHttpEndpointPtrOutput {
+	return o.ToTriggerDestinationHttpEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerDestinationHttpEndpointOutput) ToTriggerDestinationHttpEndpointPtrOutputWithContext(ctx context.Context) TriggerDestinationHttpEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDestinationHttpEndpoint) *TriggerDestinationHttpEndpoint {
+		return &v
+	}).(TriggerDestinationHttpEndpointPtrOutput)
+}
+
+// Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+func (o TriggerDestinationHttpEndpointOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerDestinationHttpEndpoint) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type TriggerDestinationHttpEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerDestinationHttpEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDestinationHttpEndpoint)(nil)).Elem()
+}
+
+func (o TriggerDestinationHttpEndpointPtrOutput) ToTriggerDestinationHttpEndpointPtrOutput() TriggerDestinationHttpEndpointPtrOutput {
+	return o
+}
+
+func (o TriggerDestinationHttpEndpointPtrOutput) ToTriggerDestinationHttpEndpointPtrOutputWithContext(ctx context.Context) TriggerDestinationHttpEndpointPtrOutput {
+	return o
+}
+
+func (o TriggerDestinationHttpEndpointPtrOutput) Elem() TriggerDestinationHttpEndpointOutput {
+	return o.ApplyT(func(v *TriggerDestinationHttpEndpoint) TriggerDestinationHttpEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerDestinationHttpEndpoint
+		return ret
+	}).(TriggerDestinationHttpEndpointOutput)
+}
+
+// Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+func (o TriggerDestinationHttpEndpointPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDestinationHttpEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type TriggerDestinationNetworkConfig struct {
+	// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+	NetworkAttachment string `pulumi:"networkAttachment"`
+}
+
+// TriggerDestinationNetworkConfigInput is an input type that accepts TriggerDestinationNetworkConfigArgs and TriggerDestinationNetworkConfigOutput values.
+// You can construct a concrete instance of `TriggerDestinationNetworkConfigInput` via:
+//
+//	TriggerDestinationNetworkConfigArgs{...}
+type TriggerDestinationNetworkConfigInput interface {
+	pulumi.Input
+
+	ToTriggerDestinationNetworkConfigOutput() TriggerDestinationNetworkConfigOutput
+	ToTriggerDestinationNetworkConfigOutputWithContext(context.Context) TriggerDestinationNetworkConfigOutput
+}
+
+type TriggerDestinationNetworkConfigArgs struct {
+	// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+}
+
+func (TriggerDestinationNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDestinationNetworkConfig)(nil)).Elem()
+}
+
+func (i TriggerDestinationNetworkConfigArgs) ToTriggerDestinationNetworkConfigOutput() TriggerDestinationNetworkConfigOutput {
+	return i.ToTriggerDestinationNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i TriggerDestinationNetworkConfigArgs) ToTriggerDestinationNetworkConfigOutputWithContext(ctx context.Context) TriggerDestinationNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationNetworkConfigOutput)
+}
+
+func (i TriggerDestinationNetworkConfigArgs) ToTriggerDestinationNetworkConfigPtrOutput() TriggerDestinationNetworkConfigPtrOutput {
+	return i.ToTriggerDestinationNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TriggerDestinationNetworkConfigArgs) ToTriggerDestinationNetworkConfigPtrOutputWithContext(ctx context.Context) TriggerDestinationNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationNetworkConfigOutput).ToTriggerDestinationNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// TriggerDestinationNetworkConfigPtrInput is an input type that accepts TriggerDestinationNetworkConfigArgs, TriggerDestinationNetworkConfigPtr and TriggerDestinationNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `TriggerDestinationNetworkConfigPtrInput` via:
+//
+//	        TriggerDestinationNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggerDestinationNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToTriggerDestinationNetworkConfigPtrOutput() TriggerDestinationNetworkConfigPtrOutput
+	ToTriggerDestinationNetworkConfigPtrOutputWithContext(context.Context) TriggerDestinationNetworkConfigPtrOutput
+}
+
+type triggerDestinationNetworkConfigPtrType TriggerDestinationNetworkConfigArgs
+
+func TriggerDestinationNetworkConfigPtr(v *TriggerDestinationNetworkConfigArgs) TriggerDestinationNetworkConfigPtrInput {
+	return (*triggerDestinationNetworkConfigPtrType)(v)
+}
+
+func (*triggerDestinationNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDestinationNetworkConfig)(nil)).Elem()
+}
+
+func (i *triggerDestinationNetworkConfigPtrType) ToTriggerDestinationNetworkConfigPtrOutput() TriggerDestinationNetworkConfigPtrOutput {
+	return i.ToTriggerDestinationNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *triggerDestinationNetworkConfigPtrType) ToTriggerDestinationNetworkConfigPtrOutputWithContext(ctx context.Context) TriggerDestinationNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerDestinationNetworkConfigPtrOutput)
+}
+
+type TriggerDestinationNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (TriggerDestinationNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerDestinationNetworkConfig)(nil)).Elem()
+}
+
+func (o TriggerDestinationNetworkConfigOutput) ToTriggerDestinationNetworkConfigOutput() TriggerDestinationNetworkConfigOutput {
+	return o
+}
+
+func (o TriggerDestinationNetworkConfigOutput) ToTriggerDestinationNetworkConfigOutputWithContext(ctx context.Context) TriggerDestinationNetworkConfigOutput {
+	return o
+}
+
+func (o TriggerDestinationNetworkConfigOutput) ToTriggerDestinationNetworkConfigPtrOutput() TriggerDestinationNetworkConfigPtrOutput {
+	return o.ToTriggerDestinationNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TriggerDestinationNetworkConfigOutput) ToTriggerDestinationNetworkConfigPtrOutputWithContext(ctx context.Context) TriggerDestinationNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggerDestinationNetworkConfig) *TriggerDestinationNetworkConfig {
+		return &v
+	}).(TriggerDestinationNetworkConfigPtrOutput)
+}
+
+// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+func (o TriggerDestinationNetworkConfigOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggerDestinationNetworkConfig) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+type TriggerDestinationNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TriggerDestinationNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggerDestinationNetworkConfig)(nil)).Elem()
+}
+
+func (o TriggerDestinationNetworkConfigPtrOutput) ToTriggerDestinationNetworkConfigPtrOutput() TriggerDestinationNetworkConfigPtrOutput {
+	return o
+}
+
+func (o TriggerDestinationNetworkConfigPtrOutput) ToTriggerDestinationNetworkConfigPtrOutputWithContext(ctx context.Context) TriggerDestinationNetworkConfigPtrOutput {
+	return o
+}
+
+func (o TriggerDestinationNetworkConfigPtrOutput) Elem() TriggerDestinationNetworkConfigOutput {
+	return o.ApplyT(func(v *TriggerDestinationNetworkConfig) TriggerDestinationNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TriggerDestinationNetworkConfig
+		return ret
+	}).(TriggerDestinationNetworkConfigOutput)
+}
+
+// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+func (o TriggerDestinationNetworkConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerDestinationNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkAttachment
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1016,6 +1328,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationCloudRunServicePtrInput)(nil)).Elem(), TriggerDestinationCloudRunServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationGkeInput)(nil)).Elem(), TriggerDestinationGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationGkePtrInput)(nil)).Elem(), TriggerDestinationGkeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationHttpEndpointInput)(nil)).Elem(), TriggerDestinationHttpEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationHttpEndpointPtrInput)(nil)).Elem(), TriggerDestinationHttpEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationNetworkConfigInput)(nil)).Elem(), TriggerDestinationNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggerDestinationNetworkConfigPtrInput)(nil)).Elem(), TriggerDestinationNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaInput)(nil)).Elem(), TriggerMatchingCriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerMatchingCriteriaArrayInput)(nil)).Elem(), TriggerMatchingCriteriaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerTransportInput)(nil)).Elem(), TriggerTransportArgs{})
@@ -1028,6 +1344,10 @@ func init() {
 	pulumi.RegisterOutputType(TriggerDestinationCloudRunServicePtrOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationGkeOutput{})
 	pulumi.RegisterOutputType(TriggerDestinationGkePtrOutput{})
+	pulumi.RegisterOutputType(TriggerDestinationHttpEndpointOutput{})
+	pulumi.RegisterOutputType(TriggerDestinationHttpEndpointPtrOutput{})
+	pulumi.RegisterOutputType(TriggerDestinationNetworkConfigOutput{})
+	pulumi.RegisterOutputType(TriggerDestinationNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(TriggerMatchingCriteriaOutput{})
 	pulumi.RegisterOutputType(TriggerMatchingCriteriaArrayOutput{})
 	pulumi.RegisterOutputType(TriggerTransportOutput{})

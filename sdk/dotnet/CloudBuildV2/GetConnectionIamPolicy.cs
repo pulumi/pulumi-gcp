@@ -71,6 +71,9 @@ namespace Pulumi.Gcp.CloudBuildV2
 
     public sealed class GetConnectionIamPolicyArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The location for the resource Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("location")]
         public string? Location { get; set; }
 
@@ -95,6 +98,9 @@ namespace Pulumi.Gcp.CloudBuildV2
 
     public sealed class GetConnectionIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The location for the resource Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 

@@ -19,6 +19,7 @@ public final class ConnectionGithubConfig {
     private @Nullable Integer appInstallationId;
     /**
      * @return OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+     * Structure is documented below.
      * 
      */
     private @Nullable ConnectionGithubConfigAuthorizerCredential authorizerCredential;
@@ -33,6 +34,7 @@ public final class ConnectionGithubConfig {
     }
     /**
      * @return OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+     * Structure is documented below.
      * 
      */
     public Optional<ConnectionGithubConfigAuthorizerCredential> authorizerCredential() {

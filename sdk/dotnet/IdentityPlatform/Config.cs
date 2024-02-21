@@ -171,6 +171,34 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Output<Outputs.ConfigBlockingFunctions?> BlockingFunctions { get; private set; } = null!;
 
         /// <summary>
+        /// Options related to how clients making requests on behalf of a project should be configured.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("client")]
+        public Output<Outputs.ConfigClient> Client { get; private set; } = null!;
+
+        /// <summary>
+        /// Options related to how clients making requests on behalf of a project should be configured.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("mfa")]
+        public Output<Outputs.ConfigMfa> Mfa { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration related to monitoring project activity.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("monitoring")]
+        public Output<Outputs.ConfigMonitoring> Monitoring { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration related to multi-tenant functionality.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("multiTenant")]
+        public Output<Outputs.ConfigMultiTenant?> MultiTenant { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the Config resource
         /// </summary>
         [Output("name")]
@@ -276,6 +304,34 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<Inputs.ConfigBlockingFunctionsArgs>? BlockingFunctions { get; set; }
 
         /// <summary>
+        /// Options related to how clients making requests on behalf of a project should be configured.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("client")]
+        public Input<Inputs.ConfigClientArgs>? Client { get; set; }
+
+        /// <summary>
+        /// Options related to how clients making requests on behalf of a project should be configured.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mfa")]
+        public Input<Inputs.ConfigMfaArgs>? Mfa { get; set; }
+
+        /// <summary>
+        /// Configuration related to monitoring project activity.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("monitoring")]
+        public Input<Inputs.ConfigMonitoringArgs>? Monitoring { get; set; }
+
+        /// <summary>
+        /// Configuration related to multi-tenant functionality.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("multiTenant")]
+        public Input<Inputs.ConfigMultiTenantArgs>? MultiTenant { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -335,6 +391,34 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Input("blockingFunctions")]
         public Input<Inputs.ConfigBlockingFunctionsGetArgs>? BlockingFunctions { get; set; }
+
+        /// <summary>
+        /// Options related to how clients making requests on behalf of a project should be configured.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("client")]
+        public Input<Inputs.ConfigClientGetArgs>? Client { get; set; }
+
+        /// <summary>
+        /// Options related to how clients making requests on behalf of a project should be configured.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("mfa")]
+        public Input<Inputs.ConfigMfaGetArgs>? Mfa { get; set; }
+
+        /// <summary>
+        /// Configuration related to monitoring project activity.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("monitoring")]
+        public Input<Inputs.ConfigMonitoringGetArgs>? Monitoring { get; set; }
+
+        /// <summary>
+        /// Configuration related to multi-tenant functionality.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("multiTenant")]
+        public Input<Inputs.ConfigMultiTenantGetArgs>? MultiTenant { get; set; }
 
         /// <summary>
         /// The name of the Config resource

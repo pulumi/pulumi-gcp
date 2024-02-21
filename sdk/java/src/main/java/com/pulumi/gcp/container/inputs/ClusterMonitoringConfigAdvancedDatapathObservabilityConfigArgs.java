@@ -33,16 +33,39 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
     }
 
     /**
-     * Mode used to make Relay available.
+     * Whether or not Relay is enabled.
      * 
      */
+    @Import(name="enableRelay")
+    private @Nullable Output<Boolean> enableRelay;
+
+    /**
+     * @return Whether or not Relay is enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> enableRelay() {
+        return Optional.ofNullable(this.enableRelay);
+    }
+
+    /**
+     * Mode used to make Relay available.
+     * 
+     * @deprecated
+     * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
+     * 
+     */
+    @Deprecated /* Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field. */
     @Import(name="relayMode")
     private @Nullable Output<String> relayMode;
 
     /**
      * @return Mode used to make Relay available.
      * 
+     * @deprecated
+     * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
+     * 
      */
+    @Deprecated /* Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field. */
     public Optional<Output<String>> relayMode() {
         return Optional.ofNullable(this.relayMode);
     }
@@ -51,6 +74,7 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
 
     private ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs $) {
         this.enableMetrics = $.enableMetrics;
+        this.enableRelay = $.enableRelay;
         this.relayMode = $.relayMode;
     }
 
@@ -94,11 +118,36 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
         }
 
         /**
-         * @param relayMode Mode used to make Relay available.
+         * @param enableRelay Whether or not Relay is enabled.
          * 
          * @return builder
          * 
          */
+        public Builder enableRelay(@Nullable Output<Boolean> enableRelay) {
+            $.enableRelay = enableRelay;
+            return this;
+        }
+
+        /**
+         * @param enableRelay Whether or not Relay is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableRelay(Boolean enableRelay) {
+            return enableRelay(Output.of(enableRelay));
+        }
+
+        /**
+         * @param relayMode Mode used to make Relay available.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
+         * 
+         */
+        @Deprecated /* Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field. */
         public Builder relayMode(@Nullable Output<String> relayMode) {
             $.relayMode = relayMode;
             return this;
@@ -109,7 +158,11 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
+         * 
          */
+        @Deprecated /* Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field. */
         public Builder relayMode(String relayMode) {
             return relayMode(Output.of(relayMode));
         }

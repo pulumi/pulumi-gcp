@@ -18,6 +18,13 @@ namespace Pulumi.Gcp.SecurityPosture.Outputs
         /// </summary>
         public readonly bool? AllowAll;
         /// <summary>
+        /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        /// This page details the objects and attributes that are used to the build the CEL expressions for
+        /// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition? Condition;
+        /// <summary>
         /// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
         /// </summary>
         public readonly bool? DenyAll;
@@ -26,13 +33,6 @@ namespace Pulumi.Gcp.SecurityPosture.Outputs
         /// This field can be set only in policies for boolean constraints.
         /// </summary>
         public readonly bool? Enforce;
-        /// <summary>
-        /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-        /// This page details the objects and attributes that are used to the build the CEL expressions for
-        /// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-        /// Structure is documented below.
-        /// </summary>
-        public readonly Outputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr? Expr;
         /// <summary>
         /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         /// Structure is documented below.
@@ -43,18 +43,18 @@ namespace Pulumi.Gcp.SecurityPosture.Outputs
         private PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule(
             bool? allowAll,
 
+            Outputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition? condition,
+
             bool? denyAll,
 
             bool? enforce,
 
-            Outputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr? expr,
-
             Outputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues? values)
         {
             AllowAll = allowAll;
+            Condition = condition;
             DenyAll = denyAll;
             Enforce = enforce;
-            Expr = expr;
             Values = values;
         }
     }

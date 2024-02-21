@@ -151,6 +151,9 @@ namespace Pulumi.Gcp.CloudBuildV2
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The location for the resource Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -232,6 +235,9 @@ namespace Pulumi.Gcp.CloudBuildV2
 
     public sealed class ConnectionIAMPolicyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The location for the resource Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -281,6 +287,9 @@ namespace Pulumi.Gcp.CloudBuildV2
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The location for the resource Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 

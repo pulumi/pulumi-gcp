@@ -5440,7 +5440,7 @@ type GetManagedZonesManagedZone struct {
 	Name string `pulumi:"name"`
 	// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
 	NameServers []string `pulumi:"nameServers"`
-	// The ID of the project for the Google Cloud.
+	// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
 	Project string `pulumi:"project"`
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
 	Visibility string `pulumi:"visibility"`
@@ -5470,7 +5470,7 @@ type GetManagedZonesManagedZoneArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The list of nameservers that will be authoritative for this domain. Use NS records to redirect from your DNS provider to these names, thus making Google Cloud DNS authoritative for this zone.
 	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
-	// The ID of the project for the Google Cloud.
+	// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
 	Project pulumi.StringInput `pulumi:"project"`
 	// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
 	Visibility pulumi.StringInput `pulumi:"visibility"`
@@ -5557,7 +5557,7 @@ func (o GetManagedZonesManagedZoneOutput) NameServers() pulumi.StringArrayOutput
 	return o.ApplyT(func(v GetManagedZonesManagedZone) []string { return v.NameServers }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the project for the Google Cloud.
+// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
 func (o GetManagedZonesManagedZoneOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Project }).(pulumi.StringOutput)
 }

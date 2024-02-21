@@ -26,6 +26,14 @@ namespace Pulumi.Gcp.Eventarc.Outputs
         /// </summary>
         public readonly Outputs.TriggerDestinationGke? Gke;
         /// <summary>
+        /// An HTTP endpoint destination described by an URI.
+        /// </summary>
+        public readonly Outputs.TriggerDestinationHttpEndpoint? HttpEndpoint;
+        /// <summary>
+        /// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+        /// </summary>
+        public readonly Outputs.TriggerDestinationNetworkConfig? NetworkConfig;
+        /// <summary>
         /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         /// </summary>
         public readonly string? Workflow;
@@ -38,11 +46,17 @@ namespace Pulumi.Gcp.Eventarc.Outputs
 
             Outputs.TriggerDestinationGke? gke,
 
+            Outputs.TriggerDestinationHttpEndpoint? httpEndpoint,
+
+            Outputs.TriggerDestinationNetworkConfig? networkConfig,
+
             string? workflow)
         {
             CloudFunction = cloudFunction;
             CloudRunService = cloudRunService;
             Gke = gke;
+            HttpEndpoint = httpEndpoint;
+            NetworkConfig = networkConfig;
             Workflow = workflow;
         }
     }

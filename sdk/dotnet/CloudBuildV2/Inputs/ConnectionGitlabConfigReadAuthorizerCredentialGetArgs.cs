@@ -19,9 +19,8 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
         public Input<string> UserTokenSecretVersion { get; set; } = null!;
 
         /// <summary>
+        /// (Output)
         /// Output only. The username associated to this token.
-        /// 
-        /// - - -
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

@@ -6206,6 +6206,8 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
         suggest = None
         if key == "enableMetrics":
             suggest = "enable_metrics"
+        elif key == "enableRelay":
+            suggest = "enable_relay"
         elif key == "relayMode":
             suggest = "relay_mode"
 
@@ -6222,12 +6224,16 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
 
     def __init__(__self__, *,
                  enable_metrics: bool,
+                 enable_relay: Optional[bool] = None,
                  relay_mode: Optional[str] = None):
         """
         :param bool enable_metrics: Whether or not to enable advanced datapath metrics.
+        :param bool enable_relay: Whether or not Relay is enabled.
         :param str relay_mode: Mode used to make Relay available.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
+        if enable_relay is not None:
+            pulumi.set(__self__, "enable_relay", enable_relay)
         if relay_mode is not None:
             pulumi.set(__self__, "relay_mode", relay_mode)
 
@@ -6240,11 +6246,22 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
         return pulumi.get(self, "enable_metrics")
 
     @property
+    @pulumi.getter(name="enableRelay")
+    def enable_relay(self) -> Optional[bool]:
+        """
+        Whether or not Relay is enabled.
+        """
+        return pulumi.get(self, "enable_relay")
+
+    @property
     @pulumi.getter(name="relayMode")
     def relay_mode(self) -> Optional[str]:
         """
         Mode used to make Relay available.
         """
+        warnings.warn("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""", DeprecationWarning)
+        pulumi.log.warn("""relay_mode is deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
+
         return pulumi.get(self, "relay_mode")
 
 
@@ -15096,12 +15113,15 @@ class GetClusterMonitoringConfigResult(dict):
 class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(dict):
     def __init__(__self__, *,
                  enable_metrics: bool,
+                 enable_relay: bool,
                  relay_mode: str):
         """
         :param bool enable_metrics: Whether or not the advanced datapath metrics are enabled.
+        :param bool enable_relay: Whether or not Relay is enabled.
         :param str relay_mode: Mode used to make Relay available.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
+        pulumi.set(__self__, "enable_relay", enable_relay)
         pulumi.set(__self__, "relay_mode", relay_mode)
 
     @property
@@ -15111,6 +15131,14 @@ class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(dict):
         Whether or not the advanced datapath metrics are enabled.
         """
         return pulumi.get(self, "enable_metrics")
+
+    @property
+    @pulumi.getter(name="enableRelay")
+    def enable_relay(self) -> bool:
+        """
+        Whether or not Relay is enabled.
+        """
+        return pulumi.get(self, "enable_relay")
 
     @property
     @pulumi.getter(name="relayMode")

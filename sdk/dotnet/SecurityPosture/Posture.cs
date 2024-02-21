@@ -54,6 +54,12 @@ namespace Pulumi.Gcp.SecurityPosture
     ///                                 {
     ///                                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs
     ///                                     {
+    ///                                         Condition = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs
+    ///                                         {
+    ///                                             Description = "condition description",
+    ///                                             Expression = "resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
+    ///                                             Title = "a CEL condition",
+    ///                                         },
     ///                                         Enforce = true,
     ///                                     },
     ///                                 },
@@ -88,6 +94,12 @@ namespace Pulumi.Gcp.SecurityPosture
     ///                                 {
     ///                                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs
     ///                                     {
+    ///                                         Condition = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs
+    ///                                         {
+    ///                                             Description = "condition description",
+    ///                                             Expression = "resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
+    ///                                             Title = "a CEL condition",
+    ///                                         },
     ///                                         Enforce = true,
     ///                                     },
     ///                                 },
@@ -153,7 +165,7 @@ namespace Pulumi.Gcp.SecurityPosture
     ///                                     },
     ///                                     Severity = "LOW",
     ///                                 },
-    ///                                 DisplayName = "custom SHA policy",
+    ///                                 DisplayName = "custom_SHA_policy",
     ///                                 ModuleEnablementState = "ENABLED",
     ///                             },
     ///                         },

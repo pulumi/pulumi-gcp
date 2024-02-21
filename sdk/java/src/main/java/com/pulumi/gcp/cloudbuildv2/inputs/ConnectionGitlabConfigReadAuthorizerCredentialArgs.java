@@ -32,18 +32,16 @@ public final class ConnectionGitlabConfigReadAuthorizerCredentialArgs extends co
     }
 
     /**
+     * (Output)
      * Output only. The username associated to this token.
-     * 
-     * ***
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Output only. The username associated to this token.
-     * 
-     * ***
+     * @return (Output)
+     * Output only. The username associated to this token.
      * 
      */
     public Optional<Output<String>> username() {
@@ -97,9 +95,8 @@ public final class ConnectionGitlabConfigReadAuthorizerCredentialArgs extends co
         }
 
         /**
-         * @param username Output only. The username associated to this token.
-         * 
-         * ***
+         * @param username (Output)
+         * Output only. The username associated to this token.
          * 
          * @return builder
          * 
@@ -110,9 +107,8 @@ public final class ConnectionGitlabConfigReadAuthorizerCredentialArgs extends co
         }
 
         /**
-         * @param username Output only. The username associated to this token.
-         * 
-         * ***
+         * @param username (Output)
+         * Output only. The username associated to this token.
          * 
          * @return builder
          * 

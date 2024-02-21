@@ -190,9 +190,17 @@ public class ConnectionIAMPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
+    /**
+     * @return The location for the resource Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }

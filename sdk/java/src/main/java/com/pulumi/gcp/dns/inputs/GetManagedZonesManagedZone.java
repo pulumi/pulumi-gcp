@@ -106,14 +106,14 @@ public final class GetManagedZonesManagedZone extends com.pulumi.resources.Invok
     }
 
     /**
-     * The ID of the project for the Google Cloud.
+     * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The ID of the project for the Google Cloud.
+     * @return The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
      * 
      */
     public String project() {
@@ -243,7 +243,7 @@ public final class GetManagedZonesManagedZone extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param project The ID of the project for the Google Cloud.
+         * @param project The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
          * 
          * @return builder
          * 

@@ -31,14 +31,14 @@ public final class GetManagedZonePlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The ID of the project for the Google Cloud DNS zone.
+     * The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
      * 
      */
     @Import(name="project")
     private @Nullable String project;
 
     /**
-     * @return The ID of the project for the Google Cloud DNS zone.
+     * @return The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
      * 
      */
     public Optional<String> project() {
@@ -82,7 +82,7 @@ public final class GetManagedZonePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param project The ID of the project for the Google Cloud DNS zone.
+         * @param project The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
          * 
          * @return builder
          * 
