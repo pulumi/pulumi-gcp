@@ -270,15 +270,15 @@ class WebApp(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         default_bucket_object = gcp.storage.BucketObject("defaultBucketObject",
             bucket=default_bucket.name,
-            content=pulumi.Output.all(basic_web_app.app_id, basic_web_app_config, basic_web_app_config, (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], "")).apply(lambda app_id, basic_web_app_config, basic_web_app_config1, s, s1, s2, s3: json.dumps({
-                "appId": app_id,
+            content=pulumi.Output.json_dumps({
+                "appId": basic_web_app.app_id,
                 "apiKey": basic_web_app_config.api_key,
-                "authDomain": basic_web_app_config1.auth_domain,
-                "databaseURL": s,
-                "storageBucket": s1,
-                "messagingSenderId": s2,
-                "measurementId": s3,
-            })),
+                "authDomain": basic_web_app_config.auth_domain,
+                "databaseURL": (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""),
+                "storageBucket": (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""),
+                "messagingSenderId": (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""),
+                "measurementId": (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], ""),
+            }),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Firebase Web App Custom Api Key
@@ -386,15 +386,15 @@ class WebApp(pulumi.CustomResource):
         opts=pulumi.ResourceOptions(provider=google_beta))
         default_bucket_object = gcp.storage.BucketObject("defaultBucketObject",
             bucket=default_bucket.name,
-            content=pulumi.Output.all(basic_web_app.app_id, basic_web_app_config, basic_web_app_config, (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""), (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], "")).apply(lambda app_id, basic_web_app_config, basic_web_app_config1, s, s1, s2, s3: json.dumps({
-                "appId": app_id,
+            content=pulumi.Output.json_dumps({
+                "appId": basic_web_app.app_id,
                 "apiKey": basic_web_app_config.api_key,
-                "authDomain": basic_web_app_config1.auth_domain,
-                "databaseURL": s,
-                "storageBucket": s1,
-                "messagingSenderId": s2,
-                "measurementId": s3,
-            })),
+                "authDomain": basic_web_app_config.auth_domain,
+                "databaseURL": (lambda v, def: v if v is not None else def)(basic_web_app_config["database_url"], ""),
+                "storageBucket": (lambda v, def: v if v is not None else def)(basic_web_app_config["storage_bucket"], ""),
+                "messagingSenderId": (lambda v, def: v if v is not None else def)(basic_web_app_config["messaging_sender_id"], ""),
+                "measurementId": (lambda v, def: v if v is not None else def)(basic_web_app_config["measurement_id"], ""),
+            }),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Firebase Web App Custom Api Key
