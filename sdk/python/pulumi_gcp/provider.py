@@ -186,6 +186,8 @@ class ProviderArgs:
             pulumi.set(__self__, "access_approval_custom_endpoint", access_approval_custom_endpoint)
         if access_context_manager_custom_endpoint is not None:
             pulumi.set(__self__, "access_context_manager_custom_endpoint", access_context_manager_custom_endpoint)
+        if access_token is None:
+            access_token = _utilities.get_env('GOOGLE_OAUTH_ACCESS_TOKEN')
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
         if active_directory_custom_endpoint is not None:
@@ -286,6 +288,8 @@ class ProviderArgs:
             pulumi.set(__self__, "container_custom_endpoint", container_custom_endpoint)
         if core_billing_custom_endpoint is not None:
             pulumi.set(__self__, "core_billing_custom_endpoint", core_billing_custom_endpoint)
+        if credentials is None:
+            credentials = _utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
         if data_catalog_custom_endpoint is not None:
@@ -2375,6 +2379,8 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["access_approval_custom_endpoint"] = access_approval_custom_endpoint
             __props__.__dict__["access_context_manager_custom_endpoint"] = access_context_manager_custom_endpoint
+            if access_token is None:
+                access_token = _utilities.get_env('GOOGLE_OAUTH_ACCESS_TOKEN')
             __props__.__dict__["access_token"] = access_token
             __props__.__dict__["active_directory_custom_endpoint"] = active_directory_custom_endpoint
             __props__.__dict__["add_terraform_attribution_label"] = pulumi.Output.from_input(add_terraform_attribution_label).apply(pulumi.runtime.to_json) if add_terraform_attribution_label is not None else None
@@ -2425,6 +2431,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["container_azure_custom_endpoint"] = container_azure_custom_endpoint
             __props__.__dict__["container_custom_endpoint"] = container_custom_endpoint
             __props__.__dict__["core_billing_custom_endpoint"] = core_billing_custom_endpoint
+            if credentials is None:
+                credentials = _utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
             __props__.__dict__["credentials"] = credentials
             __props__.__dict__["data_catalog_custom_endpoint"] = data_catalog_custom_endpoint
             __props__.__dict__["data_fusion_custom_endpoint"] = data_fusion_custom_endpoint
