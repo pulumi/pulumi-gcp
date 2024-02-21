@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  * 
  *  IAM policy imports use the `table` identifier of the Bigtable Table resource only. For example:
  * 
- *  * `&#34;projects/{project}/tables/{table}&#34;`
+ *  * `&#34;projects/{project}/instances/{instance}/tables/{table}&#34;`
  * 
  *  An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
  * 
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  * 
  *  import {
  * 
- *  id = &#34;projects/{project}/tables/{table}&#34;
+ *  id = &#34;projects/{project}/instances/{instance}/tables/{table}&#34;
  * 
  *  to = google_bigtable_table_iam_policy.default
  * 
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *  The `pulumi import` command can also be used:
  * 
  * ```sh
- * $ pulumi import gcp:bigtable/tableIamMember:TableIamMember default projects/{project}/tables/{table}
+ * $ pulumi import gcp:bigtable/tableIamMember:TableIamMember default projects/{project}/instances/{instance}/tables/{table}
  * ```
  * 
  */

@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool EnableMetrics;
         /// <summary>
+        /// Whether or not Relay is enabled.
+        /// </summary>
+        public readonly bool EnableRelay;
+        /// <summary>
         /// Mode used to make Relay available.
         /// </summary>
         public readonly string RelayMode;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(
             bool enableMetrics,
 
+            bool enableRelay,
+
             string relayMode)
         {
             EnableMetrics = enableMetrics;
+            EnableRelay = enableRelay;
             RelayMode = relayMode;
         }
     }

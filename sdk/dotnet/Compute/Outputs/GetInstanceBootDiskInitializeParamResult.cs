@@ -26,11 +26,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object> Labels;
         /// <summary>
-        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         /// </summary>
         public readonly int ProvisionedIops;
         /// <summary>
-        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         /// </summary>
         public readonly int ProvisionedThroughput;
         /// <summary>

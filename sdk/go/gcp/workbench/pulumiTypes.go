@@ -505,7 +505,7 @@ type InstanceGceSetupBootDisk struct {
 	// Optional. Indicates the type of the disk.
 	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DiskType *string `pulumi:"diskType"`
-	// 'Optional. Input only. The KMS key used to encrypt the disks, only
+	// 'Optional. The KMS key used to encrypt the disks, only
 	// applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 	// Learn more about using your own encryption keys.'
 	KmsKey *string `pulumi:"kmsKey"`
@@ -534,7 +534,7 @@ type InstanceGceSetupBootDiskArgs struct {
 	// Optional. Indicates the type of the disk.
 	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// 'Optional. Input only. The KMS key used to encrypt the disks, only
+	// 'Optional. The KMS key used to encrypt the disks, only
 	// applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 	// Learn more about using your own encryption keys.'
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
@@ -637,7 +637,7 @@ func (o InstanceGceSetupBootDiskOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetupBootDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// 'Optional. Input only. The KMS key used to encrypt the disks, only
+// 'Optional. The KMS key used to encrypt the disks, only
 // applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 // Learn more about using your own encryption keys.'
 func (o InstanceGceSetupBootDiskOutput) KmsKey() pulumi.StringPtrOutput {
@@ -703,7 +703,7 @@ func (o InstanceGceSetupBootDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// 'Optional. Input only. The KMS key used to encrypt the disks, only
+// 'Optional. The KMS key used to encrypt the disks, only
 // applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 // Learn more about using your own encryption keys.'
 func (o InstanceGceSetupBootDiskPtrOutput) KmsKey() pulumi.StringPtrOutput {
@@ -727,7 +727,7 @@ type InstanceGceSetupDataDisks struct {
 	// Optional. Input only. Indicates the type of the disk.
 	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DiskType *string `pulumi:"diskType"`
-	// 'Optional. Input only. The KMS key used to encrypt the disks,
+	// 'Optional. The KMS key used to encrypt the disks,
 	// only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 	// Learn more about using your own encryption keys.'
 	KmsKey *string `pulumi:"kmsKey"`
@@ -756,7 +756,7 @@ type InstanceGceSetupDataDisksArgs struct {
 	// Optional. Input only. Indicates the type of the disk.
 	// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// 'Optional. Input only. The KMS key used to encrypt the disks,
+	// 'Optional. The KMS key used to encrypt the disks,
 	// only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 	// Learn more about using your own encryption keys.'
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
@@ -859,7 +859,7 @@ func (o InstanceGceSetupDataDisksOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetupDataDisks) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// 'Optional. Input only. The KMS key used to encrypt the disks,
+// 'Optional. The KMS key used to encrypt the disks,
 // only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 // Learn more about using your own encryption keys.'
 func (o InstanceGceSetupDataDisksOutput) KmsKey() pulumi.StringPtrOutput {
@@ -925,7 +925,7 @@ func (o InstanceGceSetupDataDisksPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// 'Optional. Input only. The KMS key used to encrypt the disks,
+// 'Optional. The KMS key used to encrypt the disks,
 // only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 // Learn more about using your own encryption keys.'
 func (o InstanceGceSetupDataDisksPtrOutput) KmsKey() pulumi.StringPtrOutput {

@@ -45,6 +45,12 @@ namespace Pulumi.Gcp.Workstations.Inputs
         public Input<bool>? DisablePublicIpAddresses { get; set; }
 
         /// <summary>
+        /// Whether to disable SSH access to the VM.
+        /// </summary>
+        [Input("disableSsh")]
+        public Input<bool>? DisableSsh { get; set; }
+
+        /// <summary>
         /// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
         /// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         /// </summary>

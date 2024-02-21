@@ -18,10 +18,10 @@ __all__ = [
     'PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs',
     'PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs',
     'PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs',
-    'PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs',
+    'PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs',
     'PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs',
     'PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs',
-    'PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs',
+    'PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs',
     'PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs',
     'PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs',
     'PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigArgs',
@@ -481,30 +481,30 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintA
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
     def __init__(__self__, *,
                  allow_all: Optional[pulumi.Input[bool]] = None,
+                 condition: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']] = None,
                  deny_all: Optional[pulumi.Input[bool]] = None,
                  enforce: Optional[pulumi.Input[bool]] = None,
-                 expr: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs']] = None,
                  values: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']] = None):
         """
         :param pulumi.Input[bool] allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
-        :param pulumi.Input[bool] deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
-        :param pulumi.Input[bool] enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
-               This field can be set only in policies for boolean constraints.
-        :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs'] expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs'] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
                custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
                Structure is documented below.
+        :param pulumi.Input[bool] deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+        :param pulumi.Input[bool] enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
+               This field can be set only in policies for boolean constraints.
         :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs'] values: List of values to be used for this policy rule. This field can be set only in policies for list constraints.
                Structure is documented below.
         """
         if allow_all is not None:
             pulumi.set(__self__, "allow_all", allow_all)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
         if deny_all is not None:
             pulumi.set(__self__, "deny_all", deny_all)
         if enforce is not None:
             pulumi.set(__self__, "enforce", enforce)
-        if expr is not None:
-            pulumi.set(__self__, "expr", expr)
         if values is not None:
             pulumi.set(__self__, "values", values)
 
@@ -519,6 +519,21 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
     @allow_all.setter
     def allow_all(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_all", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']]:
+        """
+        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        This page details the objects and attributes that are used to the build the CEL expressions for
+        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']]):
+        pulumi.set(self, "condition", value)
 
     @property
     @pulumi.getter(name="denyAll")
@@ -547,21 +562,6 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
 
     @property
     @pulumi.getter
-    def expr(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs']]:
-        """
-        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-        This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "expr")
-
-    @expr.setter
-    def expr(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs']]):
-        pulumi.set(self, "expr", value)
-
-    @property
-    @pulumi.getter
     def values(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']]:
         """
         List of values to be used for this policy rule. This field can be set only in policies for list constraints.
@@ -575,7 +575,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs:
 
 
 @pulumi.input_type
-class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs:
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -687,30 +687,30 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesA
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
     def __init__(__self__, *,
                  allow_all: Optional[pulumi.Input[bool]] = None,
+                 condition: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']] = None,
                  deny_all: Optional[pulumi.Input[bool]] = None,
                  enforce: Optional[pulumi.Input[bool]] = None,
-                 expr: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs']] = None,
                  values: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']] = None):
         """
         :param pulumi.Input[bool] allow_all: Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
-        :param pulumi.Input[bool] deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
-        :param pulumi.Input[bool] enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
-               This field can be set only in policies for boolean constraints.
-        :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs'] expr: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs'] condition: Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
                This page details the objects and attributes that are used to the build the CEL expressions for
                custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
                Structure is documented below.
+        :param pulumi.Input[bool] deny_all: Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
+        :param pulumi.Input[bool] enforce: If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
+               This field can be set only in policies for boolean constraints.
         :param pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs'] values: List of values to be used for this policy rule. This field can be set only in policies for list constraints.
                Structure is documented below.
         """
         if allow_all is not None:
             pulumi.set(__self__, "allow_all", allow_all)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
         if deny_all is not None:
             pulumi.set(__self__, "deny_all", deny_all)
         if enforce is not None:
             pulumi.set(__self__, "enforce", enforce)
-        if expr is not None:
-            pulumi.set(__self__, "expr", expr)
         if values is not None:
             pulumi.set(__self__, "values", values)
 
@@ -725,6 +725,21 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
     @allow_all.setter
     def allow_all(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_all", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']]:
+        """
+        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+        This page details the objects and attributes that are used to the build the CEL expressions for
+        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']]):
+        pulumi.set(self, "condition", value)
 
     @property
     @pulumi.getter(name="denyAll")
@@ -753,21 +768,6 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
 
     @property
     @pulumi.getter
-    def expr(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs']]:
-        """
-        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-        This page details the objects and attributes that are used to the build the CEL expressions for
-        custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "expr")
-
-    @expr.setter
-    def expr(self, value: Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs']]):
-        pulumi.set(self, "expr", value)
-
-    @property
-    @pulumi.getter
     def values(self) -> Optional[pulumi.Input['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']]:
         """
         List of values to be used for this policy rule. This field can be set only in policies for list constraints.
@@ -781,7 +781,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs:
 
 
 @pulumi.input_type
-class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs:
+class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,

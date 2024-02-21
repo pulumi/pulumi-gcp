@@ -37,6 +37,11 @@ import * as utilities from "../utilities";
  *                         orgPolicyConstraint: {
  *                             cannedConstraintId: "storage.uniformBucketLevelAccess",
  *                             policyRules: [{
+ *                                 condition: {
+ *                                     description: "condition description",
+ *                                     expression: "resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
+ *                                     title: "a CEL condition",
+ *                                 },
  *                                 enforce: true,
  *                             }],
  *                         },
@@ -59,6 +64,11 @@ import * as utilities from "../utilities";
  *                                 resourceTypes: ["container.googleapis.com/NodePool"],
  *                             },
  *                             policyRules: [{
+ *                                 condition: {
+ *                                     description: "condition description",
+ *                                     expression: "resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
+ *                                     title: "a CEL condition",
+ *                                 },
  *                                 enforce: true,
  *                             }],
  *                         },
@@ -103,7 +113,7 @@ import * as utilities from "../utilities";
  *                                 },
  *                                 severity: "LOW",
  *                             },
- *                             displayName: "custom SHA policy",
+ *                             displayName: "custom_SHA_policy",
  *                             moduleEnablementState: "ENABLED",
  *                         },
  *                     },

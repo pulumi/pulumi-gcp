@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly bool? DisablePublicIpAddresses;
         /// <summary>
+        /// Whether to disable SSH access to the VM.
+        /// </summary>
+        public readonly bool? DisableSsh;
+        /// <summary>
         /// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
         /// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         /// </summary>
@@ -72,6 +76,8 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
             bool? disablePublicIpAddresses,
 
+            bool? disableSsh,
+
             bool? enableNestedVirtualization,
 
             string? machineType,
@@ -90,6 +96,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
             BootDiskSizeGb = bootDiskSizeGb;
             ConfidentialInstanceConfig = confidentialInstanceConfig;
             DisablePublicIpAddresses = disablePublicIpAddresses;
+            DisableSsh = disableSsh;
             EnableNestedVirtualization = enableNestedVirtualization;
             MachineType = machineType;
             PoolSize = poolSize;

@@ -13,6 +13,14 @@ __all__ = [
     'ConfigBlockingFunctionsArgs',
     'ConfigBlockingFunctionsForwardInboundCredentialsArgs',
     'ConfigBlockingFunctionsTriggerArgs',
+    'ConfigClientArgs',
+    'ConfigClientPermissionsArgs',
+    'ConfigMfaArgs',
+    'ConfigMfaProviderConfigArgs',
+    'ConfigMfaProviderConfigTotpProviderConfigArgs',
+    'ConfigMonitoringArgs',
+    'ConfigMonitoringRequestLoggingArgs',
+    'ConfigMultiTenantArgs',
     'ConfigQuotaArgs',
     'ConfigQuotaSignUpQuotaConfigArgs',
     'ConfigSignInArgs',
@@ -188,6 +196,328 @@ class ConfigBlockingFunctionsTriggerArgs:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class ConfigClientArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[pulumi.Input[str]] = None,
+                 firebase_subdomain: Optional[pulumi.Input[str]] = None,
+                 permissions: Optional[pulumi.Input['ConfigClientPermissionsArgs']] = None):
+        """
+        :param pulumi.Input[str] api_key: (Output)
+               API key that can be used when making requests for this project.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] firebase_subdomain: (Output)
+               Firebase subdomain.
+        :param pulumi.Input['ConfigClientPermissionsArgs'] permissions: Configuration related to restricting a user's ability to affect their account.
+               Structure is documented below.
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if firebase_subdomain is not None:
+            pulumi.set(__self__, "firebase_subdomain", firebase_subdomain)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        API key that can be used when making requests for this project.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key", value)
+
+    @property
+    @pulumi.getter(name="firebaseSubdomain")
+    def firebase_subdomain(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Firebase subdomain.
+        """
+        return pulumi.get(self, "firebase_subdomain")
+
+    @firebase_subdomain.setter
+    def firebase_subdomain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firebase_subdomain", value)
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[pulumi.Input['ConfigClientPermissionsArgs']]:
+        """
+        Configuration related to restricting a user's ability to affect their account.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "permissions")
+
+    @permissions.setter
+    def permissions(self, value: Optional[pulumi.Input['ConfigClientPermissionsArgs']]):
+        pulumi.set(self, "permissions", value)
+
+
+@pulumi.input_type
+class ConfigClientPermissionsArgs:
+    def __init__(__self__, *,
+                 disabled_user_deletion: Optional[pulumi.Input[bool]] = None,
+                 disabled_user_signup: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] disabled_user_deletion: When true, end users cannot delete their account on the associated project through any of our API methods
+        :param pulumi.Input[bool] disabled_user_signup: When true, end users cannot sign up for a new account on the associated project through any of our API methods
+        """
+        if disabled_user_deletion is not None:
+            pulumi.set(__self__, "disabled_user_deletion", disabled_user_deletion)
+        if disabled_user_signup is not None:
+            pulumi.set(__self__, "disabled_user_signup", disabled_user_signup)
+
+    @property
+    @pulumi.getter(name="disabledUserDeletion")
+    def disabled_user_deletion(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, end users cannot delete their account on the associated project through any of our API methods
+        """
+        return pulumi.get(self, "disabled_user_deletion")
+
+    @disabled_user_deletion.setter
+    def disabled_user_deletion(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled_user_deletion", value)
+
+    @property
+    @pulumi.getter(name="disabledUserSignup")
+    def disabled_user_signup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, end users cannot sign up for a new account on the associated project through any of our API methods
+        """
+        return pulumi.get(self, "disabled_user_signup")
+
+    @disabled_user_signup.setter
+    def disabled_user_signup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled_user_signup", value)
+
+
+@pulumi.input_type
+class ConfigMfaArgs:
+    def __init__(__self__, *,
+                 enabled_providers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 provider_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigMfaProviderConfigArgs']]]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_providers: A list of usable second factors for this project.
+               Each value may be one of: `PHONE_SMS`.
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigMfaProviderConfigArgs']]] provider_configs: A list of usable second factors for this project along with their configurations.
+               This field does not support phone based MFA, for that use the 'enabledProviders' field.
+               Structure is documented below.
+        :param pulumi.Input[str] state: Whether MultiFactor Authentication has been enabled for this project.
+               Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+        """
+        if enabled_providers is not None:
+            pulumi.set(__self__, "enabled_providers", enabled_providers)
+        if provider_configs is not None:
+            pulumi.set(__self__, "provider_configs", provider_configs)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="enabledProviders")
+    def enabled_providers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of usable second factors for this project.
+        Each value may be one of: `PHONE_SMS`.
+        """
+        return pulumi.get(self, "enabled_providers")
+
+    @enabled_providers.setter
+    def enabled_providers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "enabled_providers", value)
+
+    @property
+    @pulumi.getter(name="providerConfigs")
+    def provider_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigMfaProviderConfigArgs']]]]:
+        """
+        A list of usable second factors for this project along with their configurations.
+        This field does not support phone based MFA, for that use the 'enabledProviders' field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "provider_configs")
+
+    @provider_configs.setter
+    def provider_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigMfaProviderConfigArgs']]]]):
+        pulumi.set(self, "provider_configs", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether MultiFactor Authentication has been enabled for this project.
+        Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class ConfigMfaProviderConfigArgs:
+    def __init__(__self__, *,
+                 state: Optional[pulumi.Input[str]] = None,
+                 totp_provider_config: Optional[pulumi.Input['ConfigMfaProviderConfigTotpProviderConfigArgs']] = None):
+        """
+        :param pulumi.Input[str] state: Whether MultiFactor Authentication has been enabled for this project.
+               Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+        :param pulumi.Input['ConfigMfaProviderConfigTotpProviderConfigArgs'] totp_provider_config: TOTP MFA provider config for this project.
+               Structure is documented below.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if totp_provider_config is not None:
+            pulumi.set(__self__, "totp_provider_config", totp_provider_config)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether MultiFactor Authentication has been enabled for this project.
+        Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="totpProviderConfig")
+    def totp_provider_config(self) -> Optional[pulumi.Input['ConfigMfaProviderConfigTotpProviderConfigArgs']]:
+        """
+        TOTP MFA provider config for this project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "totp_provider_config")
+
+    @totp_provider_config.setter
+    def totp_provider_config(self, value: Optional[pulumi.Input['ConfigMfaProviderConfigTotpProviderConfigArgs']]):
+        pulumi.set(self, "totp_provider_config", value)
+
+
+@pulumi.input_type
+class ConfigMfaProviderConfigTotpProviderConfigArgs:
+    def __init__(__self__, *,
+                 adjacent_intervals: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] adjacent_intervals: The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+        """
+        if adjacent_intervals is not None:
+            pulumi.set(__self__, "adjacent_intervals", adjacent_intervals)
+
+    @property
+    @pulumi.getter(name="adjacentIntervals")
+    def adjacent_intervals(self) -> Optional[pulumi.Input[int]]:
+        """
+        The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+        """
+        return pulumi.get(self, "adjacent_intervals")
+
+    @adjacent_intervals.setter
+    def adjacent_intervals(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "adjacent_intervals", value)
+
+
+@pulumi.input_type
+class ConfigMonitoringArgs:
+    def __init__(__self__, *,
+                 request_logging: Optional[pulumi.Input['ConfigMonitoringRequestLoggingArgs']] = None):
+        """
+        :param pulumi.Input['ConfigMonitoringRequestLoggingArgs'] request_logging: Configuration for logging requests made to this project to Stackdriver Logging
+               Structure is documented below.
+        """
+        if request_logging is not None:
+            pulumi.set(__self__, "request_logging", request_logging)
+
+    @property
+    @pulumi.getter(name="requestLogging")
+    def request_logging(self) -> Optional[pulumi.Input['ConfigMonitoringRequestLoggingArgs']]:
+        """
+        Configuration for logging requests made to this project to Stackdriver Logging
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_logging")
+
+    @request_logging.setter
+    def request_logging(self, value: Optional[pulumi.Input['ConfigMonitoringRequestLoggingArgs']]):
+        pulumi.set(self, "request_logging", value)
+
+
+@pulumi.input_type
+class ConfigMonitoringRequestLoggingArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether logging is enabled for this project or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether logging is enabled for this project or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class ConfigMultiTenantArgs:
+    def __init__(__self__, *,
+                 allow_tenants: Optional[pulumi.Input[bool]] = None,
+                 default_tenant_location: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_tenants: Whether this project can have tenants or not.
+        :param pulumi.Input[str] default_tenant_location: The default cloud parent org or folder that the tenant project should be created under.
+               The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+               If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+        """
+        if allow_tenants is not None:
+            pulumi.set(__self__, "allow_tenants", allow_tenants)
+        if default_tenant_location is not None:
+            pulumi.set(__self__, "default_tenant_location", default_tenant_location)
+
+    @property
+    @pulumi.getter(name="allowTenants")
+    def allow_tenants(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this project can have tenants or not.
+        """
+        return pulumi.get(self, "allow_tenants")
+
+    @allow_tenants.setter
+    def allow_tenants(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_tenants", value)
+
+    @property
+    @pulumi.getter(name="defaultTenantLocation")
+    def default_tenant_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default cloud parent org or folder that the tenant project should be created under.
+        The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+        If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+        """
+        return pulumi.get(self, "default_tenant_location")
+
+    @default_tenant_location.setter
+    def default_tenant_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_tenant_location", value)
 
 
 @pulumi.input_type

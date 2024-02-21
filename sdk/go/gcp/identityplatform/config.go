@@ -154,6 +154,18 @@ type Config struct {
 	// Configuration related to blocking functions.
 	// Structure is documented below.
 	BlockingFunctions ConfigBlockingFunctionsPtrOutput `pulumi:"blockingFunctions"`
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Client ConfigClientOutput `pulumi:"client"`
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Mfa ConfigMfaOutput `pulumi:"mfa"`
+	// Configuration related to monitoring project activity.
+	// Structure is documented below.
+	Monitoring ConfigMonitoringOutput `pulumi:"monitoring"`
+	// Configuration related to multi-tenant functionality.
+	// Structure is documented below.
+	MultiTenant ConfigMultiTenantPtrOutput `pulumi:"multiTenant"`
 	// The name of the Config resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -207,6 +219,18 @@ type configState struct {
 	// Configuration related to blocking functions.
 	// Structure is documented below.
 	BlockingFunctions *ConfigBlockingFunctions `pulumi:"blockingFunctions"`
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Client *ConfigClient `pulumi:"client"`
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Mfa *ConfigMfa `pulumi:"mfa"`
+	// Configuration related to monitoring project activity.
+	// Structure is documented below.
+	Monitoring *ConfigMonitoring `pulumi:"monitoring"`
+	// Configuration related to multi-tenant functionality.
+	// Structure is documented below.
+	MultiTenant *ConfigMultiTenant `pulumi:"multiTenant"`
 	// The name of the Config resource
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -231,6 +255,18 @@ type ConfigState struct {
 	// Configuration related to blocking functions.
 	// Structure is documented below.
 	BlockingFunctions ConfigBlockingFunctionsPtrInput
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Client ConfigClientPtrInput
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Mfa ConfigMfaPtrInput
+	// Configuration related to monitoring project activity.
+	// Structure is documented below.
+	Monitoring ConfigMonitoringPtrInput
+	// Configuration related to multi-tenant functionality.
+	// Structure is documented below.
+	MultiTenant ConfigMultiTenantPtrInput
 	// The name of the Config resource
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -259,6 +295,18 @@ type configArgs struct {
 	// Configuration related to blocking functions.
 	// Structure is documented below.
 	BlockingFunctions *ConfigBlockingFunctions `pulumi:"blockingFunctions"`
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Client *ConfigClient `pulumi:"client"`
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Mfa *ConfigMfa `pulumi:"mfa"`
+	// Configuration related to monitoring project activity.
+	// Structure is documented below.
+	Monitoring *ConfigMonitoring `pulumi:"monitoring"`
+	// Configuration related to multi-tenant functionality.
+	// Structure is documented below.
+	MultiTenant *ConfigMultiTenant `pulumi:"multiTenant"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -282,6 +330,18 @@ type ConfigArgs struct {
 	// Configuration related to blocking functions.
 	// Structure is documented below.
 	BlockingFunctions ConfigBlockingFunctionsPtrInput
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Client ConfigClientPtrInput
+	// Options related to how clients making requests on behalf of a project should be configured.
+	// Structure is documented below.
+	Mfa ConfigMfaPtrInput
+	// Configuration related to monitoring project activity.
+	// Structure is documented below.
+	Monitoring ConfigMonitoringPtrInput
+	// Configuration related to multi-tenant functionality.
+	// Structure is documented below.
+	MultiTenant ConfigMultiTenantPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -397,6 +457,30 @@ func (o ConfigOutput) AutodeleteAnonymousUsers() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o ConfigOutput) BlockingFunctions() ConfigBlockingFunctionsPtrOutput {
 	return o.ApplyT(func(v *Config) ConfigBlockingFunctionsPtrOutput { return v.BlockingFunctions }).(ConfigBlockingFunctionsPtrOutput)
+}
+
+// Options related to how clients making requests on behalf of a project should be configured.
+// Structure is documented below.
+func (o ConfigOutput) Client() ConfigClientOutput {
+	return o.ApplyT(func(v *Config) ConfigClientOutput { return v.Client }).(ConfigClientOutput)
+}
+
+// Options related to how clients making requests on behalf of a project should be configured.
+// Structure is documented below.
+func (o ConfigOutput) Mfa() ConfigMfaOutput {
+	return o.ApplyT(func(v *Config) ConfigMfaOutput { return v.Mfa }).(ConfigMfaOutput)
+}
+
+// Configuration related to monitoring project activity.
+// Structure is documented below.
+func (o ConfigOutput) Monitoring() ConfigMonitoringOutput {
+	return o.ApplyT(func(v *Config) ConfigMonitoringOutput { return v.Monitoring }).(ConfigMonitoringOutput)
+}
+
+// Configuration related to multi-tenant functionality.
+// Structure is documented below.
+func (o ConfigOutput) MultiTenant() ConfigMultiTenantPtrOutput {
+	return o.ApplyT(func(v *Config) ConfigMultiTenantPtrOutput { return v.MultiTenant }).(ConfigMultiTenantPtrOutput)
 }
 
 // The name of the Config resource

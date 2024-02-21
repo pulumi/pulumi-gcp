@@ -4,7 +4,7 @@
 package com.pulumi.gcp.securityposture.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.gcp.securityposture.outputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr;
+import com.pulumi.gcp.securityposture.outputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition;
 import com.pulumi.gcp.securityposture.outputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -19,6 +19,14 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule
      */
     private @Nullable Boolean allowAll;
     /**
+     * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+     * This page details the objects and attributes that are used to the build the CEL expressions for
+     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition condition;
+    /**
      * @return Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
      * 
      */
@@ -29,14 +37,6 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule
      * 
      */
     private @Nullable Boolean enforce;
-    /**
-     * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-     * This page details the objects and attributes that are used to the build the CEL expressions for
-     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-     * Structure is documented below.
-     * 
-     */
-    private @Nullable PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr expr;
     /**
      * @return List of values to be used for this policy rule. This field can be set only in policies for list constraints.
      * Structure is documented below.
@@ -53,6 +53,16 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule
         return Optional.ofNullable(this.allowAll);
     }
     /**
+     * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+     * This page details the objects and attributes that are used to the build the CEL expressions for
+     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition> condition() {
+        return Optional.ofNullable(this.condition);
+    }
+    /**
      * @return Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
      * 
      */
@@ -66,16 +76,6 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule
      */
     public Optional<Boolean> enforce() {
         return Optional.ofNullable(this.enforce);
-    }
-    /**
-     * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-     * This page details the objects and attributes that are used to the build the CEL expressions for
-     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-     * Structure is documented below.
-     * 
-     */
-    public Optional<PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr> expr() {
-        return Optional.ofNullable(this.expr);
     }
     /**
      * @return List of values to be used for this policy rule. This field can be set only in policies for list constraints.
@@ -96,17 +96,17 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowAll;
+        private @Nullable PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition condition;
         private @Nullable Boolean denyAll;
         private @Nullable Boolean enforce;
-        private @Nullable PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr expr;
         private @Nullable PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues values;
         public Builder() {}
         public Builder(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowAll = defaults.allowAll;
+    	      this.condition = defaults.condition;
     	      this.denyAll = defaults.denyAll;
     	      this.enforce = defaults.enforce;
-    	      this.expr = defaults.expr;
     	      this.values = defaults.values;
         }
 
@@ -114,6 +114,12 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule
         public Builder allowAll(@Nullable Boolean allowAll) {
 
             this.allowAll = allowAll;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder condition(@Nullable PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition condition) {
+
+            this.condition = condition;
             return this;
         }
         @CustomType.Setter
@@ -129,12 +135,6 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule
             return this;
         }
         @CustomType.Setter
-        public Builder expr(@Nullable PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr expr) {
-
-            this.expr = expr;
-            return this;
-        }
-        @CustomType.Setter
         public Builder values(@Nullable PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues values) {
 
             this.values = values;
@@ -143,9 +143,9 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule
         public PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule build() {
             final var _resultValue = new PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule();
             _resultValue.allowAll = allowAll;
+            _resultValue.condition = condition;
             _resultValue.denyAll = denyAll;
             _resultValue.enforce = enforce;
-            _resultValue.expr = expr;
             _resultValue.values = values;
             return _resultValue;
         }

@@ -30,12 +30,12 @@ public final class GetInstanceBootDiskInitializeParam {
      */
     private Map<String,Object> labels;
     /**
-     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
      */
     private Integer provisionedIops;
     /**
-     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
      * 
      */
     private Integer provisionedThroughput;
@@ -78,14 +78,14 @@ public final class GetInstanceBootDiskInitializeParam {
         return this.labels;
     }
     /**
-     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+     * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
      */
     public Integer provisionedIops() {
         return this.provisionedIops;
     }
     /**
-     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     * @return Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
      * 
      */
     public Integer provisionedThroughput() {

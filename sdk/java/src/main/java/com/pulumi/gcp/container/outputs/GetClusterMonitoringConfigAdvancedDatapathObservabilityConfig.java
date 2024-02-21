@@ -17,6 +17,11 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
      */
     private Boolean enableMetrics;
     /**
+     * @return Whether or not Relay is enabled.
+     * 
+     */
+    private Boolean enableRelay;
+    /**
      * @return Mode used to make Relay available.
      * 
      */
@@ -29,6 +34,13 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
      */
     public Boolean enableMetrics() {
         return this.enableMetrics;
+    }
+    /**
+     * @return Whether or not Relay is enabled.
+     * 
+     */
+    public Boolean enableRelay() {
+        return this.enableRelay;
     }
     /**
      * @return Mode used to make Relay available.
@@ -48,11 +60,13 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
     @CustomType.Builder
     public static final class Builder {
         private Boolean enableMetrics;
+        private Boolean enableRelay;
         private String relayMode;
         public Builder() {}
         public Builder(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableMetrics = defaults.enableMetrics;
+    	      this.enableRelay = defaults.enableRelay;
     	      this.relayMode = defaults.relayMode;
         }
 
@@ -62,6 +76,14 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
               throw new MissingRequiredPropertyException("GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig", "enableMetrics");
             }
             this.enableMetrics = enableMetrics;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableRelay(Boolean enableRelay) {
+            if (enableRelay == null) {
+              throw new MissingRequiredPropertyException("GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig", "enableRelay");
+            }
+            this.enableRelay = enableRelay;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +97,7 @@ public final class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig
         public GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig build() {
             final var _resultValue = new GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig();
             _resultValue.enableMetrics = enableMetrics;
+            _resultValue.enableRelay = enableRelay;
             _resultValue.relayMode = relayMode;
             return _resultValue;
         }

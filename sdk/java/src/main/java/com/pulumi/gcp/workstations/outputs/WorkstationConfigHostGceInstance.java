@@ -40,6 +40,11 @@ public final class WorkstationConfigHostGceInstance {
      */
     private @Nullable Boolean disablePublicIpAddresses;
     /**
+     * @return Whether to disable SSH access to the VM.
+     * 
+     */
+    private @Nullable Boolean disableSsh;
+    /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
      * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
@@ -109,6 +114,13 @@ public final class WorkstationConfigHostGceInstance {
         return Optional.ofNullable(this.disablePublicIpAddresses);
     }
     /**
+     * @return Whether to disable SSH access to the VM.
+     * 
+     */
+    public Optional<Boolean> disableSsh() {
+        return Optional.ofNullable(this.disableSsh);
+    }
+    /**
      * @return Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
      * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
      * 
@@ -173,6 +185,7 @@ public final class WorkstationConfigHostGceInstance {
         private @Nullable Integer bootDiskSizeGb;
         private @Nullable WorkstationConfigHostGceInstanceConfidentialInstanceConfig confidentialInstanceConfig;
         private @Nullable Boolean disablePublicIpAddresses;
+        private @Nullable Boolean disableSsh;
         private @Nullable Boolean enableNestedVirtualization;
         private @Nullable String machineType;
         private @Nullable Integer poolSize;
@@ -187,6 +200,7 @@ public final class WorkstationConfigHostGceInstance {
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
     	      this.confidentialInstanceConfig = defaults.confidentialInstanceConfig;
     	      this.disablePublicIpAddresses = defaults.disablePublicIpAddresses;
+    	      this.disableSsh = defaults.disableSsh;
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.machineType = defaults.machineType;
     	      this.poolSize = defaults.poolSize;
@@ -221,6 +235,12 @@ public final class WorkstationConfigHostGceInstance {
         public Builder disablePublicIpAddresses(@Nullable Boolean disablePublicIpAddresses) {
 
             this.disablePublicIpAddresses = disablePublicIpAddresses;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableSsh(@Nullable Boolean disableSsh) {
+
+            this.disableSsh = disableSsh;
             return this;
         }
         @CustomType.Setter
@@ -277,6 +297,7 @@ public final class WorkstationConfigHostGceInstance {
             _resultValue.bootDiskSizeGb = bootDiskSizeGb;
             _resultValue.confidentialInstanceConfig = confidentialInstanceConfig;
             _resultValue.disablePublicIpAddresses = disablePublicIpAddresses;
+            _resultValue.disableSsh = disableSsh;
             _resultValue.enableNestedVirtualization = enableNestedVirtualization;
             _resultValue.machineType = machineType;
             _resultValue.poolSize = poolSize;

@@ -123,14 +123,14 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The resource name for the Key in the format &#34;projects/{project}/keys/{key}&#34;.
+     * The resource id for the Key, which is the same as the Site Key itself.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The resource name for the Key in the format &#34;projects/{project}/keys/{key}&#34;.
+     * @return The resource id for the Key, which is the same as the Site Key itself.
      * 
      */
     public Optional<Output<String>> name() {
@@ -384,7 +384,7 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The resource name for the Key in the format &#34;projects/{project}/keys/{key}&#34;.
+         * @param name The resource id for the Key, which is the same as the Site Key itself.
          * 
          * @return builder
          * 
@@ -395,7 +395,7 @@ public final class EnterpriseKeyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The resource name for the Key in the format &#34;projects/{project}/keys/{key}&#34;.
+         * @param name The resource id for the Key, which is the same as the Site Key itself.
          * 
          * @return builder
          * 

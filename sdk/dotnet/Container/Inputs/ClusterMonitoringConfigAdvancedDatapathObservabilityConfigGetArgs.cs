@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool> EnableMetrics { get; set; } = null!;
 
         /// <summary>
+        /// Whether or not Relay is enabled.
+        /// </summary>
+        [Input("enableRelay")]
+        public Input<bool>? EnableRelay { get; set; }
+
+        /// <summary>
         /// Mode used to make Relay available.
         /// </summary>
         [Input("relayMode")]

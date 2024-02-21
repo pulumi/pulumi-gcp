@@ -299,6 +299,15 @@ import * as utilities from "../utilities";
  *             {
  *                 name: "hello-2",
  *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 envs: [{
+ *                     name: "PORT",
+ *                     value: "8081",
+ *                 }],
+ *                 startupProbe: {
+ *                     httpGet: {
+ *                         port: 8081,
+ *                     },
+ *                 },
  *             },
  *         ],
  *         volumes: [{

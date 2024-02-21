@@ -144,7 +144,7 @@ def get_managed_zone(name: Optional[str] = None,
 
 
     :param str name: A unique name for the resource.
-    :param str project: The ID of the project for the Google Cloud DNS zone.
+    :param str project: The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -189,6 +189,6 @@ def get_managed_zone_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: A unique name for the resource.
-    :param str project: The ID of the project for the Google Cloud DNS zone.
+    :param str project: The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
     """
     ...

@@ -36,6 +36,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+        /// </summary>
+        [Input("stableCutbackDuration")]
+        public Input<string>? StableCutbackDuration { get; set; }
+
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs()
         {
         }

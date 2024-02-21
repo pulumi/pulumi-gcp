@@ -749,6 +749,643 @@ func (o AutomationSelectorTargetArrayOutput) Index(i pulumi.IntInput) Automation
 	}).(AutomationSelectorTargetOutput)
 }
 
+type CustomTargetTypeCustomActions struct {
+	// The Skaffold custom action responsible for deploy operations.
+	DeployAction string `pulumi:"deployAction"`
+	// List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+	// Structure is documented below.
+	IncludeSkaffoldModules []CustomTargetTypeCustomActionsIncludeSkaffoldModule `pulumi:"includeSkaffoldModules"`
+	// The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+	RenderAction *string `pulumi:"renderAction"`
+}
+
+// CustomTargetTypeCustomActionsInput is an input type that accepts CustomTargetTypeCustomActionsArgs and CustomTargetTypeCustomActionsOutput values.
+// You can construct a concrete instance of `CustomTargetTypeCustomActionsInput` via:
+//
+//	CustomTargetTypeCustomActionsArgs{...}
+type CustomTargetTypeCustomActionsInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeCustomActionsOutput() CustomTargetTypeCustomActionsOutput
+	ToCustomTargetTypeCustomActionsOutputWithContext(context.Context) CustomTargetTypeCustomActionsOutput
+}
+
+type CustomTargetTypeCustomActionsArgs struct {
+	// The Skaffold custom action responsible for deploy operations.
+	DeployAction pulumi.StringInput `pulumi:"deployAction"`
+	// List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+	// Structure is documented below.
+	IncludeSkaffoldModules CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayInput `pulumi:"includeSkaffoldModules"`
+	// The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+	RenderAction pulumi.StringPtrInput `pulumi:"renderAction"`
+}
+
+func (CustomTargetTypeCustomActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeCustomActions)(nil)).Elem()
+}
+
+func (i CustomTargetTypeCustomActionsArgs) ToCustomTargetTypeCustomActionsOutput() CustomTargetTypeCustomActionsOutput {
+	return i.ToCustomTargetTypeCustomActionsOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeCustomActionsArgs) ToCustomTargetTypeCustomActionsOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsOutput)
+}
+
+func (i CustomTargetTypeCustomActionsArgs) ToCustomTargetTypeCustomActionsPtrOutput() CustomTargetTypeCustomActionsPtrOutput {
+	return i.ToCustomTargetTypeCustomActionsPtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeCustomActionsArgs) ToCustomTargetTypeCustomActionsPtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsOutput).ToCustomTargetTypeCustomActionsPtrOutputWithContext(ctx)
+}
+
+// CustomTargetTypeCustomActionsPtrInput is an input type that accepts CustomTargetTypeCustomActionsArgs, CustomTargetTypeCustomActionsPtr and CustomTargetTypeCustomActionsPtrOutput values.
+// You can construct a concrete instance of `CustomTargetTypeCustomActionsPtrInput` via:
+//
+//	        CustomTargetTypeCustomActionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetTypeCustomActionsPtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeCustomActionsPtrOutput() CustomTargetTypeCustomActionsPtrOutput
+	ToCustomTargetTypeCustomActionsPtrOutputWithContext(context.Context) CustomTargetTypeCustomActionsPtrOutput
+}
+
+type customTargetTypeCustomActionsPtrType CustomTargetTypeCustomActionsArgs
+
+func CustomTargetTypeCustomActionsPtr(v *CustomTargetTypeCustomActionsArgs) CustomTargetTypeCustomActionsPtrInput {
+	return (*customTargetTypeCustomActionsPtrType)(v)
+}
+
+func (*customTargetTypeCustomActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeCustomActions)(nil)).Elem()
+}
+
+func (i *customTargetTypeCustomActionsPtrType) ToCustomTargetTypeCustomActionsPtrOutput() CustomTargetTypeCustomActionsPtrOutput {
+	return i.ToCustomTargetTypeCustomActionsPtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetTypeCustomActionsPtrType) ToCustomTargetTypeCustomActionsPtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsPtrOutput)
+}
+
+type CustomTargetTypeCustomActionsOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeCustomActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeCustomActions)(nil)).Elem()
+}
+
+func (o CustomTargetTypeCustomActionsOutput) ToCustomTargetTypeCustomActionsOutput() CustomTargetTypeCustomActionsOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsOutput) ToCustomTargetTypeCustomActionsOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsOutput) ToCustomTargetTypeCustomActionsPtrOutput() CustomTargetTypeCustomActionsPtrOutput {
+	return o.ToCustomTargetTypeCustomActionsPtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetTypeCustomActionsOutput) ToCustomTargetTypeCustomActionsPtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTargetTypeCustomActions) *CustomTargetTypeCustomActions {
+		return &v
+	}).(CustomTargetTypeCustomActionsPtrOutput)
+}
+
+// The Skaffold custom action responsible for deploy operations.
+func (o CustomTargetTypeCustomActionsOutput) DeployAction() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActions) string { return v.DeployAction }).(pulumi.StringOutput)
+}
+
+// List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+// Structure is documented below.
+func (o CustomTargetTypeCustomActionsOutput) IncludeSkaffoldModules() CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActions) []CustomTargetTypeCustomActionsIncludeSkaffoldModule {
+		return v.IncludeSkaffoldModules
+	}).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput)
+}
+
+// The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+func (o CustomTargetTypeCustomActionsOutput) RenderAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActions) *string { return v.RenderAction }).(pulumi.StringPtrOutput)
+}
+
+type CustomTargetTypeCustomActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeCustomActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeCustomActions)(nil)).Elem()
+}
+
+func (o CustomTargetTypeCustomActionsPtrOutput) ToCustomTargetTypeCustomActionsPtrOutput() CustomTargetTypeCustomActionsPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsPtrOutput) ToCustomTargetTypeCustomActionsPtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsPtrOutput) Elem() CustomTargetTypeCustomActionsOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActions) CustomTargetTypeCustomActions {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTargetTypeCustomActions
+		return ret
+	}).(CustomTargetTypeCustomActionsOutput)
+}
+
+// The Skaffold custom action responsible for deploy operations.
+func (o CustomTargetTypeCustomActionsPtrOutput) DeployAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeployAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+// Structure is documented below.
+func (o CustomTargetTypeCustomActionsPtrOutput) IncludeSkaffoldModules() CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActions) []CustomTargetTypeCustomActionsIncludeSkaffoldModule {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeSkaffoldModules
+	}).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput)
+}
+
+// The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+func (o CustomTargetTypeCustomActionsPtrOutput) RenderAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RenderAction
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModule struct {
+	// The Skaffold Config modules to use from the specified source.
+	Configs []string `pulumi:"configs"`
+	// Remote git repository containing the Skaffold Config modules.
+	// Structure is documented below.
+	Git *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit `pulumi:"git"`
+	// Cloud Storage bucket containing Skaffold Config modules.
+	// Structure is documented below.
+	GoogleCloudStorage *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage `pulumi:"googleCloudStorage"`
+}
+
+// CustomTargetTypeCustomActionsIncludeSkaffoldModuleInput is an input type that accepts CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs and CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput values.
+// You can construct a concrete instance of `CustomTargetTypeCustomActionsIncludeSkaffoldModuleInput` via:
+//
+//	CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs{...}
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleOutputWithContext(context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs struct {
+	// The Skaffold Config modules to use from the specified source.
+	Configs pulumi.StringArrayInput `pulumi:"configs"`
+	// Remote git repository containing the Skaffold Config modules.
+	// Structure is documented below.
+	Git CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrInput `pulumi:"git"`
+	// Cloud Storage bucket containing Skaffold Config modules.
+	// Structure is documented below.
+	GoogleCloudStorage CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrInput `pulumi:"googleCloudStorage"`
+}
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModule)(nil)).Elem()
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput {
+	return i.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput)
+}
+
+// CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayInput is an input type that accepts CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray and CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput values.
+// You can construct a concrete instance of `CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayInput` via:
+//
+//	CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray{ CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs{...} }
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutputWithContext(context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray []CustomTargetTypeCustomActionsIncludeSkaffoldModuleInput
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomTargetTypeCustomActionsIncludeSkaffoldModule)(nil)).Elem()
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput {
+	return i.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput)
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModule)(nil)).Elem()
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput {
+	return o
+}
+
+// The Skaffold Config modules to use from the specified source.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput) Configs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActionsIncludeSkaffoldModule) []string { return v.Configs }).(pulumi.StringArrayOutput)
+}
+
+// Remote git repository containing the Skaffold Config modules.
+// Structure is documented below.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput) Git() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActionsIncludeSkaffoldModule) *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit {
+		return v.Git
+	}).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput)
+}
+
+// Cloud Storage bucket containing Skaffold Config modules.
+// Structure is documented below.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput) GoogleCloudStorage() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActionsIncludeSkaffoldModule) *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage {
+		return v.GoogleCloudStorage
+	}).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput)
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomTargetTypeCustomActionsIncludeSkaffoldModule)(nil)).Elem()
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput) Index(i pulumi.IntInput) CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomTargetTypeCustomActionsIncludeSkaffoldModule {
+		return vs[0].([]CustomTargetTypeCustomActionsIncludeSkaffoldModule)[vs[1].(int)]
+	}).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput)
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit struct {
+	// Relative path from the repository root to the Skaffold file.
+	Path *string `pulumi:"path"`
+	// Git ref the package should be cloned from.
+	Ref *string `pulumi:"ref"`
+	// Git repository the package should be cloned from.
+	Repo string `pulumi:"repo"`
+}
+
+// CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitInput is an input type that accepts CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs and CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput values.
+// You can construct a concrete instance of `CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitInput` via:
+//
+//	CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs{...}
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutputWithContext(context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs struct {
+	// Relative path from the repository root to the Skaffold file.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Git ref the package should be cloned from.
+	Ref pulumi.StringPtrInput `pulumi:"ref"`
+	// Git repository the package should be cloned from.
+	Repo pulumi.StringInput `pulumi:"repo"`
+}
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit)(nil)).Elem()
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput {
+	return i.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput)
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput {
+	return i.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput).ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutputWithContext(ctx)
+}
+
+// CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrInput is an input type that accepts CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs, CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtr and CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput values.
+// You can construct a concrete instance of `CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrInput` via:
+//
+//	        CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutputWithContext(context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput
+}
+
+type customTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrType CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs
+
+func CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtr(v *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrInput {
+	return (*customTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrType)(v)
+}
+
+func (*customTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit)(nil)).Elem()
+}
+
+func (i *customTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrType) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput {
+	return i.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrType) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput)
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit)(nil)).Elem()
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput {
+	return o.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit) *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit {
+		return &v
+	}).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput)
+}
+
+// Relative path from the repository root to the Skaffold file.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Git ref the package should be cloned from.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit) *string { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+// Git repository the package should be cloned from.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput) Repo() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit) string { return v.Repo }).(pulumi.StringOutput)
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit)(nil)).Elem()
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput) Elem() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit
+		return ret
+	}).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput)
+}
+
+// Relative path from the repository root to the Skaffold file.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git ref the package should be cloned from.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ref
+	}).(pulumi.StringPtrOutput)
+}
+
+// Git repository the package should be cloned from.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Repo
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage struct {
+	// Relative path from the source to the Skaffold file.
+	Path *string `pulumi:"path"`
+	// Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
+	Source string `pulumi:"source"`
+}
+
+// CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageInput is an input type that accepts CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs and CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput values.
+// You can construct a concrete instance of `CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageInput` via:
+//
+//	CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs{...}
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutputWithContext(context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs struct {
+	// Relative path from the source to the Skaffold file.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage)(nil)).Elem()
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput {
+	return i.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput)
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput {
+	return i.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutputWithContext(context.Background())
+}
+
+func (i CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput).ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutputWithContext(ctx)
+}
+
+// CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrInput is an input type that accepts CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs, CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtr and CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput values.
+// You can construct a concrete instance of `CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrInput` via:
+//
+//	        CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrInput interface {
+	pulumi.Input
+
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput
+	ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutputWithContext(context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput
+}
+
+type customTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrType CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs
+
+func CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtr(v *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrInput {
+	return (*customTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrType)(v)
+}
+
+func (*customTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage)(nil)).Elem()
+}
+
+func (i *customTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrType) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput {
+	return i.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *customTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrType) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput)
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage)(nil)).Elem()
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput {
+	return o.ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutputWithContext(context.Background())
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage) *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage {
+		return &v
+	}).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput)
+}
+
+// Relative path from the source to the Skaffold file.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage)(nil)).Elem()
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput) ToCustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutputWithContext(ctx context.Context) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput {
+	return o
+}
+
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput) Elem() CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage) CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage {
+		if v != nil {
+			return *v
+		}
+		var ret CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage
+		return ret
+	}).(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput)
+}
+
+// Relative path from the source to the Skaffold file.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
+func (o CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
 type DeliveryPipelineCondition struct {
 	// Details around the Pipeline's overall status.
 	PipelineReadyConditions []DeliveryPipelineConditionPipelineReadyCondition `pulumi:"pipelineReadyConditions"`
@@ -3453,6 +4090,12 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput)
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun struct {
 	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
 	AutomaticTrafficControl *bool `pulumi:"automaticTrafficControl"`
+	// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+	CanaryRevisionTags []string `pulumi:"canaryRevisionTags"`
+	// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+	PriorRevisionTags []string `pulumi:"priorRevisionTags"`
+	// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+	StableRevisionTags []string `pulumi:"stableRevisionTags"`
 }
 
 // DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput values.
@@ -3469,6 +4112,12 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunInput
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs struct {
 	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
 	AutomaticTrafficControl pulumi.BoolPtrInput `pulumi:"automaticTrafficControl"`
+	// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+	CanaryRevisionTags pulumi.StringArrayInput `pulumi:"canaryRevisionTags"`
+	// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+	PriorRevisionTags pulumi.StringArrayInput `pulumi:"priorRevisionTags"`
+	// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+	StableRevisionTags pulumi.StringArrayInput `pulumi:"stableRevisionTags"`
 }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs) ElementType() reflect.Type {
@@ -3555,6 +4204,27 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) CanaryRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) []string {
+		return v.CanaryRevisionTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) PriorRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) []string {
+		return v.PriorRevisionTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput) StableRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) []string {
+		return v.StableRevisionTags
+	}).(pulumi.StringArrayOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) ElementType() reflect.Type {
@@ -3587,6 +4257,36 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPt
 		}
 		return v.AutomaticTrafficControl
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) CanaryRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CanaryRevisionTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) PriorRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PriorRevisionTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunPtrOutput) StableRevisionTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StableRevisionTags
+	}).(pulumi.StringArrayOutput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes struct {
@@ -3758,6 +4458,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGat
 	RouteUpdateWaitTime *string `pulumi:"routeUpdateWaitTime"`
 	// Required. Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
+	// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+	StableCutbackDuration *string `pulumi:"stableCutbackDuration"`
 }
 
 // DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput values.
@@ -3780,6 +4482,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGat
 	RouteUpdateWaitTime pulumi.StringPtrInput `pulumi:"routeUpdateWaitTime"`
 	// Required. Name of the Kubernetes Service.
 	Service pulumi.StringInput `pulumi:"service"`
+	// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+	StableCutbackDuration pulumi.StringPtrInput `pulumi:"stableCutbackDuration"`
 }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs) ElementType() reflect.Type {
@@ -3887,6 +4591,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	}).(pulumi.StringOutput)
 }
 
+// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) StableCutbackDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
+		return v.StableCutbackDuration
+	}).(pulumi.StringPtrOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput struct{ *pulumi.OutputState }
 
 func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) ElementType() reflect.Type {
@@ -3948,6 +4659,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 			return nil
 		}
 		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) StableCutbackDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StableCutbackDuration
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5296,6 +6017,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorPtrInput)(nil)).Elem(), AutomationSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorTargetInput)(nil)).Elem(), AutomationSelectorTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorTargetArrayInput)(nil)).Elem(), AutomationSelectorTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeCustomActionsInput)(nil)).Elem(), CustomTargetTypeCustomActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeCustomActionsPtrInput)(nil)).Elem(), CustomTargetTypeCustomActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleInput)(nil)).Elem(), CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayInput)(nil)).Elem(), CustomTargetTypeCustomActionsIncludeSkaffoldModuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitInput)(nil)).Elem(), CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrInput)(nil)).Elem(), CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageInput)(nil)).Elem(), CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrInput)(nil)).Elem(), CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionInput)(nil)).Elem(), DeliveryPipelineConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionArrayInput)(nil)).Elem(), DeliveryPipelineConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionPipelineReadyConditionInput)(nil)).Elem(), DeliveryPipelineConditionPipelineReadyConditionArgs{})
@@ -5368,6 +6097,14 @@ func init() {
 	pulumi.RegisterOutputType(AutomationSelectorPtrOutput{})
 	pulumi.RegisterOutputType(AutomationSelectorTargetOutput{})
 	pulumi.RegisterOutputType(AutomationSelectorTargetArrayOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeCustomActionsOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeCustomActionsPtrOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeCustomActionsIncludeSkaffoldModuleOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeCustomActionsIncludeSkaffoldModuleArrayOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitPtrOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageOutput{})
+	pulumi.RegisterOutputType(CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStoragePtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionPipelineReadyConditionOutput{})

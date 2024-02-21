@@ -21,6 +21,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * Required. A GitLab personal access token with the `api` scope access.
+     * Structure is documented below.
      * 
      */
     @Import(name="authorizerCredential", required=true)
@@ -28,6 +29,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Required. A GitLab personal access token with the `api` scope access.
+     * Structure is documented below.
      * 
      */
     public Output<ConnectionGitlabConfigAuthorizerCredentialArgs> authorizerCredential() {
@@ -51,6 +53,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * Required. A GitLab personal access token with the minimum `read_api` scope access.
+     * Structure is documented below.
      * 
      */
     @Import(name="readAuthorizerCredential", required=true)
@@ -58,6 +61,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Required. A GitLab personal access token with the minimum `read_api` scope access.
+     * Structure is documented below.
      * 
      */
     public Output<ConnectionGitlabConfigReadAuthorizerCredentialArgs> readAuthorizerCredential() {
@@ -65,6 +69,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Output)
      * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
      * 
      */
@@ -72,7 +77,8 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
     private @Nullable Output<String> serverVersion;
 
     /**
-     * @return Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+     * @return (Output)
+     * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
      * 
      */
     public Optional<Output<String>> serverVersion() {
@@ -81,6 +87,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+     * Structure is documented below.
      * 
      */
     @Import(name="serviceDirectoryConfig")
@@ -88,6 +95,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ConnectionGitlabConfigServiceDirectoryConfigArgs>> serviceDirectoryConfig() {
@@ -156,6 +164,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param authorizerCredential Required. A GitLab personal access token with the `api` scope access.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -167,6 +176,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param authorizerCredential Required. A GitLab personal access token with the `api` scope access.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -198,6 +208,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param readAuthorizerCredential Required. A GitLab personal access token with the minimum `read_api` scope access.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -209,6 +220,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param readAuthorizerCredential Required. A GitLab personal access token with the minimum `read_api` scope access.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -218,7 +230,8 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param serverVersion Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+         * @param serverVersion (Output)
+         * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
          * 
          * @return builder
          * 
@@ -229,7 +242,8 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param serverVersion Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+         * @param serverVersion (Output)
+         * Output only. Version of the GitLab Enterprise server running on the `host_uri`.
          * 
          * @return builder
          * 
@@ -240,6 +254,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param serviceDirectoryConfig Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -251,6 +266,7 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param serviceDirectoryConfig Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -38,8 +38,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Indicates how many IOPS to provision for the disk.
         /// This sets the number of I/O operations per second that the disk can handle.
-        /// Values must be between 10,000 and 120,000. For more details,see the
-        /// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        /// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         /// Note: Updating currently is only supported for hyperdisk skus via disk update
         /// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
         /// for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
@@ -49,10 +48,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Indicates how much throughput to provision for the disk.
         /// This sets the number of throughput mb per second that the disk can handle.
-        /// Values must be between 1 and 7,124. Note: Updating currently is only supported
-        /// for hyperdisk skus via disk update api/gcloud without the need to delete and
-        /// recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
-        /// To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+        /// For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        /// Note: Updating currently is only supported for hyperdisk skus via disk update
+        /// api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+        /// for an update of throughput every 4 hours. To update your hyperdisk more
+        /// frequently, you'll need to manually delete and recreate it.
         /// </summary>
         public readonly int? ProvisionedThroughput;
         /// <summary>

@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Workbench
     /// 
     /// });
     /// ```
-    /// ### Workbench Instance Labels
+    /// ### Workbench Instance Labels Stopped
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -76,6 +76,7 @@ namespace Pulumi.Gcp.Workbench
     /// {
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
+    ///         DesiredState = "STOPPED",
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
     ///             MachineType = "e2-standard-4",
@@ -152,14 +153,14 @@ namespace Pulumi.Gcp.Workbench
     ///             {
     ///                 DiskSizeGb = "310",
     ///                 DiskType = "PD_SSD",
-    ///                 DiskEncryption = "GMEK",
+    ///                 DiskEncryption = "CMEK",
     ///                 KmsKey = "my-crypto-key",
     ///             },
     ///             DataDisks = new Gcp.Workbench.Inputs.InstanceGceSetupDataDisksArgs
     ///             {
     ///                 DiskSizeGb = "330",
     ///                 DiskType = "PD_SSD",
-    ///                 DiskEncryption = "GMEK",
+    ///                 DiskEncryption = "CMEK",
     ///                 KmsKey = "my-crypto-key",
     ///             },
     ///             NetworkInterfaces = new[]
@@ -191,6 +192,7 @@ namespace Pulumi.Gcp.Workbench
     ///         {
     ///             { "k", "val" },
     ///         },
+    ///         DesiredState = "ACTIVE",
     ///     });
     /// 
     /// });
@@ -235,6 +237,12 @@ namespace Pulumi.Gcp.Workbench
         /// </summary>
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
+
+        /// <summary>
+        /// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        /// </summary>
+        [Output("desiredState")]
+        public Output<string?> DesiredState { get; private set; } = null!;
 
         /// <summary>
         /// Optional. If true, the workbench instance will not register with the proxy.
@@ -401,6 +409,12 @@ namespace Pulumi.Gcp.Workbench
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
+
+        /// <summary>
         /// Optional. If true, the workbench instance will not register with the proxy.
         /// </summary>
         [Input("disableProxyAccess")]
@@ -491,6 +505,12 @@ namespace Pulumi.Gcp.Workbench
         /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
+
+        /// <summary>
+        /// Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
 
         /// <summary>
         /// Optional. If true, the workbench instance will not register with the proxy.

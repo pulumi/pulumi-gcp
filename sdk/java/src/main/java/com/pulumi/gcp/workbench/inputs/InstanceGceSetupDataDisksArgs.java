@@ -71,7 +71,7 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * &#39;Optional. Input only. The KMS key used to encrypt the disks,
+     * &#39;Optional. The KMS key used to encrypt the disks,
      * only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
      * Learn more about using your own encryption keys.&#39;
      * 
@@ -80,7 +80,7 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> kmsKey;
 
     /**
-     * @return &#39;Optional. Input only. The KMS key used to encrypt the disks,
+     * @return &#39;Optional. The KMS key used to encrypt the disks,
      * only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
      * Learn more about using your own encryption keys.&#39;
      * 
@@ -190,7 +190,7 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param kmsKey &#39;Optional. Input only. The KMS key used to encrypt the disks,
+         * @param kmsKey &#39;Optional. The KMS key used to encrypt the disks,
          * only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
          * Learn more about using your own encryption keys.&#39;
          * 
@@ -203,7 +203,7 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param kmsKey &#39;Optional. Input only. The KMS key used to encrypt the disks,
+         * @param kmsKey &#39;Optional. The KMS key used to encrypt the disks,
          * only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
          * Learn more about using your own encryption keys.&#39;
          * 

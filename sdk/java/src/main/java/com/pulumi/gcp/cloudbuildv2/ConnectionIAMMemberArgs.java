@@ -24,9 +24,17 @@ public final class ConnectionIAMMemberArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.condition);
     }
 
+    /**
+     * The location for the resource Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     @Import(name="location")
     private @Nullable Output<String> location;
 
+    /**
+     * @return The location for the resource Used to find the parent resource to bind the IAM policy to
+     * 
+     */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
@@ -151,11 +159,23 @@ public final class ConnectionIAMMemberArgs extends com.pulumi.resources.Resource
             return condition(Output.of(condition));
         }
 
+        /**
+         * @param location The location for the resource Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location The location for the resource Used to find the parent resource to bind the IAM policy to
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }

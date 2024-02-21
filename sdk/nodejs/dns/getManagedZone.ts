@@ -45,7 +45,7 @@ export interface GetManagedZoneArgs {
      */
     name: string;
     /**
-     * The ID of the project for the Google Cloud DNS zone.
+     * The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
      */
     project?: string;
 }
@@ -114,7 +114,7 @@ export interface GetManagedZoneOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The ID of the project for the Google Cloud DNS zone.
+     * The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
      */
     project?: pulumi.Input<string>;
 }

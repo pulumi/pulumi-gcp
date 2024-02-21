@@ -16,16 +16,32 @@ public final class GetManagedZonesPlainArgs extends com.pulumi.resources.InvokeA
 
     public static final GetManagedZonesPlainArgs Empty = new GetManagedZonesPlainArgs();
 
+    /**
+     * A list of managed zones.
+     * 
+     */
     @Import(name="managedZones")
     private @Nullable List<GetManagedZonesManagedZone> managedZones;
 
+    /**
+     * @return A list of managed zones.
+     * 
+     */
     public Optional<List<GetManagedZonesManagedZone>> managedZones() {
         return Optional.ofNullable(this.managedZones);
     }
 
+    /**
+     * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -55,15 +71,33 @@ public final class GetManagedZonesPlainArgs extends com.pulumi.resources.InvokeA
             $ = new GetManagedZonesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param managedZones A list of managed zones.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedZones(@Nullable List<GetManagedZonesManagedZone> managedZones) {
             $.managedZones = managedZones;
             return this;
         }
 
+        /**
+         * @param managedZones A list of managed zones.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedZones(GetManagedZonesManagedZone... managedZones) {
             return managedZones(List.of(managedZones));
         }
 
+        /**
+         * @param project The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;

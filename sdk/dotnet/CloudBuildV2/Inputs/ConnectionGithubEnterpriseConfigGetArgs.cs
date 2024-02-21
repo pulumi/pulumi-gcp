@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
 
         /// <summary>
         /// Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+        /// Structure is documented below.
         /// </summary>
         [Input("serviceDirectoryConfig")]
         public Input<Inputs.ConnectionGithubEnterpriseConfigServiceDirectoryConfigGetArgs>? ServiceDirectoryConfig { get; set; }

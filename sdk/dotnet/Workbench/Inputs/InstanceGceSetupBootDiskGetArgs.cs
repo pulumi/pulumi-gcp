@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Workbench.Inputs
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// 'Optional. Input only. The KMS key used to encrypt the disks, only
+        /// 'Optional. The KMS key used to encrypt the disks, only
         /// applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
         /// Learn more about using your own encryption keys.'
         /// </summary>

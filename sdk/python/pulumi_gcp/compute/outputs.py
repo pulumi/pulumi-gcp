@@ -6028,18 +6028,18 @@ class InstanceBootDiskInitializeParams(dict):
                field is only applicable for persistent disks.
         :param int provisioned_iops: Indicates how many IOPS to provision for the disk.
                This sets the number of I/O operations per second that the disk can handle.
-               Values must be between 10,000 and 120,000. For more details,see the
-               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+               For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
                Note: Updating currently is only supported for hyperdisk skus via disk update
                api/gcloud without the need to delete and recreate the disk, hyperdisk allows
                for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
                you'll need to manually delete and recreate it.
         :param int provisioned_throughput: Indicates how much throughput to provision for the disk.
                This sets the number of throughput mb per second that the disk can handle.
-               Values must be between 1 and 7,124. Note: Updating currently is only supported
-               for hyperdisk skus via disk update api/gcloud without the need to delete and
-               recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
-               To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+               For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+               Note: Updating currently is only supported for hyperdisk skus via disk update
+               api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+               for an update of throughput every 4 hours. To update your hyperdisk more
+               frequently, you'll need to manually delete and recreate it.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
@@ -6102,8 +6102,7 @@ class InstanceBootDiskInitializeParams(dict):
         """
         Indicates how many IOPS to provision for the disk.
         This sets the number of I/O operations per second that the disk can handle.
-        Values must be between 10,000 and 120,000. For more details,see the
-        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         Note: Updating currently is only supported for hyperdisk skus via disk update
         api/gcloud without the need to delete and recreate the disk, hyperdisk allows
         for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
@@ -6117,10 +6116,11 @@ class InstanceBootDiskInitializeParams(dict):
         """
         Indicates how much throughput to provision for the disk.
         This sets the number of throughput mb per second that the disk can handle.
-        Values must be between 1 and 7,124. Note: Updating currently is only supported
-        for hyperdisk skus via disk update api/gcloud without the need to delete and
-        recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
-        To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+        For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        Note: Updating currently is only supported for hyperdisk skus via disk update
+        api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+        for an update of throughput every 4 hours. To update your hyperdisk more
+        frequently, you'll need to manually delete and recreate it.
         """
         return pulumi.get(self, "provisioned_throughput")
 
@@ -6533,8 +6533,8 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
         :param bool enable_confidential_compute: A flag to enable confidential compute mode on boot disk
         :param str image: The image from which this disk was initialised.
         :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk.
-        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
-        :param int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param int size: The size of the image in gigabytes.
         :param str type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
@@ -6584,7 +6584,7 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[int]:
         """
-        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -6592,7 +6592,7 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> Optional[int]:
         """
-        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         """
         return pulumi.get(self, "provisioned_throughput")
 
@@ -8075,8 +8075,8 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
         :param bool enable_confidential_compute: A flag to enable confidential compute mode on boot disk
         :param str image: The image from which this disk was initialised.
         :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk.
-        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
-        :param int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param int size: The size of the image in gigabytes.
         :param str type: The Google Compute Engine disk type. Such as pd-standard, pd-ssd or pd-balanced.
@@ -8126,7 +8126,7 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[int]:
         """
-        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -8134,7 +8134,7 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> Optional[int]:
         """
-        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         """
         return pulumi.get(self, "provisioned_throughput")
 
@@ -40967,8 +40967,8 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         :param bool enable_confidential_compute: A flag to enable confidential compute mode on boot disk
         :param str image: The image from which this disk was initialised.
         :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk.
-        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
-        :param int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        :param int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param Mapping[str, Any] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param int size: The size of the image in gigabytes.
         :param str type: The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -41010,7 +41010,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> int:
         """
-        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -41018,7 +41018,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
     @pulumi.getter(name="provisionedThroughput")
     def provisioned_throughput(self) -> int:
         """
-        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         """
         return pulumi.get(self, "provisioned_throughput")
 

@@ -192,7 +192,7 @@ class _EnterpriseKeyState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
+        :param pulumi.Input[str] name: The resource id for the Key, which is the same as the Site Key itself.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
@@ -307,7 +307,7 @@ class _EnterpriseKeyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name for the Key in the format "projects/{project}/keys/{key}".
+        The resource id for the Key, which is the same as the Site Key itself.
         """
         return pulumi.get(self, "name")
 
@@ -816,7 +816,7 @@ class EnterpriseKey(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] name: The resource name for the Key in the format "projects/{project}/keys/{key}".
+        :param pulumi.Input[str] name: The resource id for the Key, which is the same as the Site Key itself.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
@@ -900,7 +900,7 @@ class EnterpriseKey(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name for the Key in the format "projects/{project}/keys/{key}".
+        The resource id for the Key, which is the same as the Site Key itself.
         """
         return pulumi.get(self, "name")
 

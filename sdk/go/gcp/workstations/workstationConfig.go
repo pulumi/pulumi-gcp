@@ -78,6 +78,7 @@ import (
 //						MachineType:              pulumi.String("e2-standard-4"),
 //						BootDiskSizeGb:           pulumi.Int(35),
 //						DisablePublicIpAddresses: pulumi.Bool(true),
+//						DisableSsh:               pulumi.Bool(false),
 //					},
 //				},
 //			}, pulumi.Provider(google_beta))

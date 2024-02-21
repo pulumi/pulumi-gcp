@@ -33,6 +33,7 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+     * Structure is documented below.
      * 
      */
     @Import(name="authorizerCredential")
@@ -40,6 +41,7 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * @return OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ConnectionGithubConfigAuthorizerCredentialArgs>> authorizerCredential() {
@@ -94,6 +96,7 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param authorizerCredential OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -105,6 +108,7 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param authorizerCredential OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+         * Structure is documented below.
          * 
          * @return builder
          * 

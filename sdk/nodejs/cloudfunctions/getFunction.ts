@@ -141,6 +141,7 @@ export interface GetFunctionResult {
      * If function is triggered by HTTP, this boolean is set.
      */
     readonly triggerHttp: boolean;
+    readonly versionId: string;
     /**
      * The VPC Network Connector that this cloud function can connect to.
      */

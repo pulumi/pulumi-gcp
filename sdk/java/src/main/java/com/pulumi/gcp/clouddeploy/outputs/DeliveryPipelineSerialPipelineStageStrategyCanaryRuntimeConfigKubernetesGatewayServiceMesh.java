@@ -32,6 +32,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
      * 
      */
     private String service;
+    /**
+     * @return Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+     * 
+     */
+    private @Nullable String stableCutbackDuration;
 
     private DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh() {}
     /**
@@ -62,6 +67,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     public String service() {
         return this.service;
     }
+    /**
+     * @return Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+     * 
+     */
+    public Optional<String> stableCutbackDuration() {
+        return Optional.ofNullable(this.stableCutbackDuration);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,6 +88,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         private String httpRoute;
         private @Nullable String routeUpdateWaitTime;
         private String service;
+        private @Nullable String stableCutbackDuration;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,6 +96,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     	      this.httpRoute = defaults.httpRoute;
     	      this.routeUpdateWaitTime = defaults.routeUpdateWaitTime;
     	      this.service = defaults.service;
+    	      this.stableCutbackDuration = defaults.stableCutbackDuration;
         }
 
         @CustomType.Setter
@@ -115,12 +129,19 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             this.service = service;
             return this;
         }
+        @CustomType.Setter
+        public Builder stableCutbackDuration(@Nullable String stableCutbackDuration) {
+
+            this.stableCutbackDuration = stableCutbackDuration;
+            return this;
+        }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh build() {
             final var _resultValue = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh();
             _resultValue.deployment = deployment;
             _resultValue.httpRoute = httpRoute;
             _resultValue.routeUpdateWaitTime = routeUpdateWaitTime;
             _resultValue.service = service;
+            _resultValue.stableCutbackDuration = stableCutbackDuration;
             return _resultValue;
         }
     }

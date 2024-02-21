@@ -114,7 +114,8 @@ type LookupFunctionResult struct {
 	// Function execution timeout (in seconds).
 	Timeout int `pulumi:"timeout"`
 	// If function is triggered by HTTP, this boolean is set.
-	TriggerHttp bool `pulumi:"triggerHttp"`
+	TriggerHttp bool   `pulumi:"triggerHttp"`
+	VersionId   string `pulumi:"versionId"`
 	// The VPC Network Connector that this cloud function can connect to.
 	VpcConnector string `pulumi:"vpcConnector"`
 	// The egress settings for the connector, controlling what traffic is diverted through it.
@@ -312,6 +313,10 @@ func (o LookupFunctionResultOutput) Timeout() pulumi.IntOutput {
 // If function is triggered by HTTP, this boolean is set.
 func (o LookupFunctionResultOutput) TriggerHttp() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFunctionResult) bool { return v.TriggerHttp }).(pulumi.BoolOutput)
+}
+
+func (o LookupFunctionResultOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.VersionId }).(pulumi.StringOutput)
 }
 
 // The VPC Network Connector that this cloud function can connect to.

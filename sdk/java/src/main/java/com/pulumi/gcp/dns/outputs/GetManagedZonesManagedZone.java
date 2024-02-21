@@ -43,7 +43,7 @@ public final class GetManagedZonesManagedZone {
      */
     private List<String> nameServers;
     /**
-     * @return The ID of the project for the Google Cloud.
+     * @return The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
      * 
      */
     private String project;
@@ -97,7 +97,7 @@ public final class GetManagedZonesManagedZone {
         return this.nameServers;
     }
     /**
-     * @return The ID of the project for the Google Cloud.
+     * @return The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
      * 
      */
     public String project() {

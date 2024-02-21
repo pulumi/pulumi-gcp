@@ -39,13 +39,14 @@ import * as utilities from "../utilities";
  *     location: "us-central1-a",
  * });
  * ```
- * ### Workbench Instance Labels
+ * ### Workbench Instance Labels Stopped
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.workbench.Instance("instance", {
+ *     desiredState: "STOPPED",
  *     gceSetup: {
  *         machineType: "e2-standard-4",
  *         metadata: {
@@ -89,13 +90,13 @@ import * as utilities from "../utilities";
  *         bootDisk: {
  *             diskSizeGb: "310",
  *             diskType: "PD_SSD",
- *             diskEncryption: "GMEK",
+ *             diskEncryption: "CMEK",
  *             kmsKey: "my-crypto-key",
  *         },
  *         dataDisks: {
  *             diskSizeGb: "330",
  *             diskType: "PD_SSD",
- *             diskEncryption: "GMEK",
+ *             diskEncryption: "CMEK",
  *             kmsKey: "my-crypto-key",
  *         },
  *         networkInterfaces: [{
@@ -117,6 +118,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         k: "val",
  *     },
+ *     desiredState: "ACTIVE",
  * });
  * ```
  *
@@ -181,6 +183,10 @@ export class Instance extends pulumi.CustomResource {
      * Output only. Email address of entity that sent original CreateInstance request.
      */
     public /*out*/ readonly creator!: pulumi.Output<string>;
+    /**
+     * Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     */
+    public readonly desiredState!: pulumi.Output<string | undefined>;
     /**
      * Optional. If true, the workbench instance will not register with the proxy.
      */
@@ -278,6 +284,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["creator"] = state ? state.creator : undefined;
+            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
             resourceInputs["disableProxyAccess"] = state ? state.disableProxyAccess : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gceSetup"] = state ? state.gceSetup : undefined;
@@ -299,6 +306,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
             resourceInputs["disableProxyAccess"] = args ? args.disableProxyAccess : undefined;
             resourceInputs["gceSetup"] = args ? args.gceSetup : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
@@ -338,6 +346,10 @@ export interface InstanceState {
      * Output only. Email address of entity that sent original CreateInstance request.
      */
     creator?: pulumi.Input<string>;
+    /**
+     * Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     */
+    desiredState?: pulumi.Input<string>;
     /**
      * Optional. If true, the workbench instance will not register with the proxy.
      */
@@ -425,6 +437,10 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     */
+    desiredState?: pulumi.Input<string>;
     /**
      * Optional. If true, the workbench instance will not register with the proxy.
      */

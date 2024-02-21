@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureviewArgs;
 import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewState;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreFeatureviewBigQuerySource;
+import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreFeatureviewSyncConfig;
 import com.pulumi.gcp.vertex.outputs.AiFeatureOnlineStoreFeatureviewVectorSearchConfig;
 import java.lang.String;
@@ -128,6 +129,129 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
+ * ```
+ * ### Vertex Ai Featureonlinestore Featureview Feature Registry
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStore;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreBigtableAutoScalingArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureGroup;
+ * import com.pulumi.gcp.vertex.AiFeatureGroupArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureGroupBigQueryArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureGroupBigQueryBigQuerySourceArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureGroupFeature;
+ * import com.pulumi.gcp.vertex.AiFeatureGroupFeatureArgs;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureview;
+ * import com.pulumi.gcp.vertex.AiFeatureOnlineStoreFeatureviewArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewSyncConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var featureonlinestore = new AiFeatureOnlineStore(&#34;featureonlinestore&#34;, AiFeatureOnlineStoreArgs.builder()        
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .region(&#34;us-central1&#34;)
+ *             .bigtable(AiFeatureOnlineStoreBigtableArgs.builder()
+ *                 .autoScaling(AiFeatureOnlineStoreBigtableAutoScalingArgs.builder()
+ *                     .minNodeCount(1)
+ *                     .maxNodeCount(2)
+ *                     .cpuUtilizationTarget(80)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var sampleDataset = new Dataset(&#34;sampleDataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;example_feature_view_feature_registry&#34;)
+ *             .friendlyName(&#34;test&#34;)
+ *             .description(&#34;This is a test description&#34;)
+ *             .location(&#34;US&#34;)
+ *             .build());
+ * 
+ *         var sampleTable = new Table(&#34;sampleTable&#34;, TableArgs.builder()        
+ *             .deletionProtection(false)
+ *             .datasetId(sampleDataset.datasetId())
+ *             .tableId(&#34;example_feature_view_feature_registry&#34;)
+ *             .schema(&#34;&#34;&#34;
+ * [
+ *     {
+ *         &#34;name&#34;: &#34;feature_id&#34;,
+ *         &#34;type&#34;: &#34;STRING&#34;,
+ *         &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     },
+ *     {
+ *         &#34;name&#34;: &#34;example_feature_view_feature_registry&#34;,
+ *         &#34;type&#34;: &#34;STRING&#34;,
+ *         &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     },
+ *     {
+ *         &#34;name&#34;: &#34;feature_timestamp&#34;,
+ *         &#34;type&#34;: &#34;TIMESTAMP&#34;,
+ *         &#34;mode&#34;: &#34;NULLABLE&#34;
+ *     }
+ * ]
+ *             &#34;&#34;&#34;)
+ *             .build());
+ * 
+ *         var sampleFeatureGroup = new AiFeatureGroup(&#34;sampleFeatureGroup&#34;, AiFeatureGroupArgs.builder()        
+ *             .description(&#34;A sample feature group&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .bigQuery(AiFeatureGroupBigQueryArgs.builder()
+ *                 .bigQuerySource(AiFeatureGroupBigQueryBigQuerySourceArgs.builder()
+ *                     .inputUri(Output.tuple(sampleTable.project(), sampleTable.datasetId(), sampleTable.tableId()).applyValue(values -&gt; {
+ *                         var project = values.t1;
+ *                         var datasetId = values.t2;
+ *                         var tableId = values.t3;
+ *                         return String.format(&#34;bq://%s.%s.%s&#34;, project,datasetId,tableId);
+ *                     }))
+ *                     .build())
+ *                 .entityIdColumns(&#34;feature_id&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var sampleFeature = new AiFeatureGroupFeature(&#34;sampleFeature&#34;, AiFeatureGroupFeatureArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .featureGroup(sampleFeatureGroup.name())
+ *             .description(&#34;A sample feature&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .build());
+ * 
+ *         var featureviewFeatureregistry = new AiFeatureOnlineStoreFeatureview(&#34;featureviewFeatureregistry&#34;, AiFeatureOnlineStoreFeatureviewArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .featureOnlineStore(featureonlinestore.name())
+ *             .syncConfig(AiFeatureOnlineStoreFeatureviewSyncConfigArgs.builder()
+ *                 .cron(&#34;0 0 * * *&#34;)
+ *                 .build())
+ *             .featureRegistrySource(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs.builder()
+ *                 .featureGroups(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs.builder()
+ *                     .featureGroupId(sampleFeatureGroup.name())
+ *                     .featureIds(sampleFeature.name())
+ *                     .build())
+ *                 .build())
+ *             .build());
  * 
  *     }
  * }
@@ -375,6 +499,22 @@ public class AiFeatureOnlineStoreFeatureview extends com.pulumi.resources.Custom
      */
     public Output<String> featureOnlineStore() {
         return this.featureOnlineStore;
+    }
+    /**
+     * Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="featureRegistrySource", refs={AiFeatureOnlineStoreFeatureviewFeatureRegistrySource.class}, tree="[0]")
+    private Output</* @Nullable */ AiFeatureOnlineStoreFeatureviewFeatureRegistrySource> featureRegistrySource;
+
+    /**
+     * @return Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource>> featureRegistrySource() {
+        return Codegen.optional(this.featureRegistrySource);
     }
     /**
      * A set of key/value label pairs to assign to this FeatureView.

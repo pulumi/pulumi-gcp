@@ -282,7 +282,7 @@ type EnterpriseKey struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name for the Key in the format "projects/{project}/keys/{key}".
+	// The resource id for the Key, which is the same as the Site Key itself.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -351,7 +351,7 @@ type enterpriseKeyState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name for the Key in the format "projects/{project}/keys/{key}".
+	// The resource id for the Key, which is the same as the Site Key itself.
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -383,7 +383,7 @@ type EnterpriseKeyState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The resource name for the Key in the format "projects/{project}/keys/{key}".
+	// The resource id for the Key, which is the same as the Site Key itself.
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -572,7 +572,7 @@ func (o EnterpriseKeyOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The resource name for the Key in the format "projects/{project}/keys/{key}".
+// The resource id for the Key, which is the same as the Site Key itself.
 func (o EnterpriseKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnterpriseKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

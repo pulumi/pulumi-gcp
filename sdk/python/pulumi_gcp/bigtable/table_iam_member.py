@@ -353,7 +353,7 @@ class TableIamMember(pulumi.CustomResource):
 
          IAM policy imports use the `table` identifier of the Bigtable Table resource only. For example:
 
-         * `"projects/{project}/tables/{table}"`
+         * `"projects/{project}/instances/{instance}/tables/{table}"`
 
          An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
@@ -361,7 +361,7 @@ class TableIamMember(pulumi.CustomResource):
 
          import {
 
-         id = "projects/{project}/tables/{table}"
+         id = "projects/{project}/instances/{instance}/tables/{table}"
 
          to = google_bigtable_table_iam_policy.default
 
@@ -370,7 +370,7 @@ class TableIamMember(pulumi.CustomResource):
          The `pulumi import` command can also be used:
 
         ```sh
-        $ pulumi import gcp:bigtable/tableIamMember:TableIamMember default projects/{project}/tables/{table}
+        $ pulumi import gcp:bigtable/tableIamMember:TableIamMember default projects/{project}/instances/{instance}/tables/{table}
         ```
 
         :param str resource_name: The name of the resource.
@@ -462,7 +462,7 @@ class TableIamMember(pulumi.CustomResource):
 
          IAM policy imports use the `table` identifier of the Bigtable Table resource only. For example:
 
-         * `"projects/{project}/tables/{table}"`
+         * `"projects/{project}/instances/{instance}/tables/{table}"`
 
          An `import` block (Terraform v1.5.0 and later) can be used to import IAM policies:
 
@@ -470,7 +470,7 @@ class TableIamMember(pulumi.CustomResource):
 
          import {
 
-         id = "projects/{project}/tables/{table}"
+         id = "projects/{project}/instances/{instance}/tables/{table}"
 
          to = google_bigtable_table_iam_policy.default
 
@@ -479,7 +479,7 @@ class TableIamMember(pulumi.CustomResource):
          The `pulumi import` command can also be used:
 
         ```sh
-        $ pulumi import gcp:bigtable/tableIamMember:TableIamMember default projects/{project}/tables/{table}
+        $ pulumi import gcp:bigtable/tableIamMember:TableIamMember default projects/{project}/instances/{instance}/tables/{table}
         ```
 
         :param str resource_name: The name of the resource.

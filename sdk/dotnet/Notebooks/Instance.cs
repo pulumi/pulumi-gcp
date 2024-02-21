@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks
 {
     /// <summary>
+    /// &gt; **Warning:** `google_notebook_instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+    /// 
     /// A Cloud AI Platform Notebook instance.
     /// 
     /// &gt; **Note:** Due to limitations of the Notebooks Instance API, many fields
@@ -35,6 +37,30 @@ namespace Pulumi.Gcp.Notebooks
     /// {
     ///     var instance = new Gcp.Notebooks.Instance("instance", new()
     ///     {
+    ///         Location = "us-west1-a",
+    ///         MachineType = "e2-medium",
+    ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    ///         {
+    ///             ImageFamily = "tf-latest-cpu",
+    ///             Project = "deeplearning-platform-release",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Notebook Instance Basic Stopped
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.Notebooks.Instance("instance", new()
+    ///     {
+    ///         DesiredState = "STOPPED",
     ///         Location = "us-west1-a",
     ///         MachineType = "e2-medium",
     ///         VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
@@ -148,6 +174,20 @@ namespace Pulumi.Gcp.Notebooks
     ///         {
     ///             { "k", "val" },
     ///         },
+    ///         Metadata = 
+    ///         {
+    ///             { "terraform", "true" },
+    ///         },
+    ///         ServiceAccountScopes = new[]
+    ///         {
+    ///             "https://www.googleapis.com/auth/bigquery",
+    ///             "https://www.googleapis.com/auth/devstorage.read_write",
+    ///             "https://www.googleapis.com/auth/cloud-platform",
+    ///             "https://www.googleapis.com/auth/userinfo.email",
+    ///         },
+    ///         DiskEncryption = "CMEK",
+    ///         KmsKey = "my-crypto-key",
+    ///         DesiredState = "ACTIVE",
     ///     });
     /// 
     /// });
@@ -241,11 +281,17 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string?> DataDiskType { get; private set; } = null!;
 
         /// <summary>
+        /// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        /// </summary>
+        [Output("desiredState")]
+        public Output<string?> DesiredState { get; private set; } = null!;
+
+        /// <summary>
         /// Disk encryption method used on the boot and data disks, defaults to GMEK.
         /// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         /// </summary>
         [Output("diskEncryption")]
-        public Output<string?> DiskEncryption { get; private set; } = null!;
+        public Output<string> DiskEncryption { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -557,6 +603,12 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? DataDiskType { get; set; }
 
         /// <summary>
+        /// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
+
+        /// <summary>
         /// Disk encryption method used on the boot and data disks, defaults to GMEK.
         /// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         /// </summary>
@@ -830,6 +882,12 @@ namespace Pulumi.Gcp.Notebooks
         /// </summary>
         [Input("dataDiskType")]
         public Input<string>? DataDiskType { get; set; }
+
+        /// <summary>
+        /// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        /// </summary>
+        [Input("desiredState")]
+        public Input<string>? DesiredState { get; set; }
 
         /// <summary>
         /// Disk encryption method used on the boot and data disks, defaults to GMEK.

@@ -29,6 +29,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// Required. Name of the Kubernetes Service.
         /// </summary>
         public readonly string Service;
+        /// <summary>
+        /// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+        /// </summary>
+        public readonly string? StableCutbackDuration;
 
         [OutputConstructor]
         private DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh(
@@ -38,12 +42,15 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
 
             string? routeUpdateWaitTime,
 
-            string service)
+            string service,
+
+            string? stableCutbackDuration)
         {
             Deployment = deployment;
             HttpRoute = httpRoute;
             RouteUpdateWaitTime = routeUpdateWaitTime;
             Service = service;
+            StableCutbackDuration = stableCutbackDuration;
         }
     }
 }

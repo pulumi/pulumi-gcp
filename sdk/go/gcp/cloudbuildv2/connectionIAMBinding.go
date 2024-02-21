@@ -170,7 +170,8 @@ type ConnectionIAMBinding struct {
 
 	Condition ConnectionIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag     pulumi.StringOutput      `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The location for the resource Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringOutput      `pulumi:"location"`
 	Members  pulumi.StringArrayOutput `pulumi:"members"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -234,7 +235,8 @@ func GetConnectionIAMBinding(ctx *pulumi.Context,
 type connectionIAMBindingState struct {
 	Condition *ConnectionIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag     *string  `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// The location for the resource Used to find the parent resource to bind the IAM policy to
 	Location *string  `pulumi:"location"`
 	Members  []string `pulumi:"members"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -263,7 +265,8 @@ type connectionIAMBindingState struct {
 type ConnectionIAMBindingState struct {
 	Condition ConnectionIAMBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag     pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// The location for the resource Used to find the parent resource to bind the IAM policy to
 	Location pulumi.StringPtrInput
 	Members  pulumi.StringArrayInput
 	// Used to find the parent resource to bind the IAM policy to
@@ -295,8 +298,9 @@ func (ConnectionIAMBindingState) ElementType() reflect.Type {
 
 type connectionIAMBindingArgs struct {
 	Condition *ConnectionIAMBindingCondition `pulumi:"condition"`
-	Location  *string                        `pulumi:"location"`
-	Members   []string                       `pulumi:"members"`
+	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	Location *string  `pulumi:"location"`
+	Members  []string `pulumi:"members"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -323,8 +327,9 @@ type connectionIAMBindingArgs struct {
 // The set of arguments for constructing a ConnectionIAMBinding resource.
 type ConnectionIAMBindingArgs struct {
 	Condition ConnectionIAMBindingConditionPtrInput
-	Location  pulumi.StringPtrInput
-	Members   pulumi.StringArrayInput
+	// The location for the resource Used to find the parent resource to bind the IAM policy to
+	Location pulumi.StringPtrInput
+	Members  pulumi.StringArrayInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -444,6 +449,7 @@ func (o ConnectionIAMBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionIAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// The location for the resource Used to find the parent resource to bind the IAM policy to
 func (o ConnectionIAMBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionIAMBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

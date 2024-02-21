@@ -17,6 +17,7 @@ type ConnectionGithubConfig struct {
 	// GitHub App installation id.
 	AppInstallationId *int `pulumi:"appInstallationId"`
 	// OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+	// Structure is documented below.
 	AuthorizerCredential *ConnectionGithubConfigAuthorizerCredential `pulumi:"authorizerCredential"`
 }
 
@@ -35,6 +36,7 @@ type ConnectionGithubConfigArgs struct {
 	// GitHub App installation id.
 	AppInstallationId pulumi.IntPtrInput `pulumi:"appInstallationId"`
 	// OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+	// Structure is documented below.
 	AuthorizerCredential ConnectionGithubConfigAuthorizerCredentialPtrInput `pulumi:"authorizerCredential"`
 }
 
@@ -121,6 +123,7 @@ func (o ConnectionGithubConfigOutput) AppInstallationId() pulumi.IntPtrOutput {
 }
 
 // OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+// Structure is documented below.
 func (o ConnectionGithubConfigOutput) AuthorizerCredential() ConnectionGithubConfigAuthorizerCredentialPtrOutput {
 	return o.ApplyT(func(v ConnectionGithubConfig) *ConnectionGithubConfigAuthorizerCredential {
 		return v.AuthorizerCredential
@@ -162,6 +165,7 @@ func (o ConnectionGithubConfigPtrOutput) AppInstallationId() pulumi.IntPtrOutput
 }
 
 // OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+// Structure is documented below.
 func (o ConnectionGithubConfigPtrOutput) AuthorizerCredential() ConnectionGithubConfigAuthorizerCredentialPtrOutput {
 	return o.ApplyT(func(v *ConnectionGithubConfig) *ConnectionGithubConfigAuthorizerCredential {
 		if v == nil {
@@ -174,6 +178,7 @@ func (o ConnectionGithubConfigPtrOutput) AuthorizerCredential() ConnectionGithub
 type ConnectionGithubConfigAuthorizerCredential struct {
 	// A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	OauthTokenSecretVersion *string `pulumi:"oauthTokenSecretVersion"`
+	// (Output)
 	// Output only. The username associated to this token.
 	Username *string `pulumi:"username"`
 }
@@ -192,6 +197,7 @@ type ConnectionGithubConfigAuthorizerCredentialInput interface {
 type ConnectionGithubConfigAuthorizerCredentialArgs struct {
 	// A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	OauthTokenSecretVersion pulumi.StringPtrInput `pulumi:"oauthTokenSecretVersion"`
+	// (Output)
 	// Output only. The username associated to this token.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -278,6 +284,7 @@ func (o ConnectionGithubConfigAuthorizerCredentialOutput) OauthTokenSecretVersio
 	return o.ApplyT(func(v ConnectionGithubConfigAuthorizerCredential) *string { return v.OauthTokenSecretVersion }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The username associated to this token.
 func (o ConnectionGithubConfigAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGithubConfigAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -317,6 +324,7 @@ func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) OauthTokenSecretVer
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The username associated to this token.
 func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGithubConfigAuthorizerCredential) *string {
@@ -339,6 +347,7 @@ type ConnectionGithubEnterpriseConfig struct {
 	// SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
 	PrivateKeySecretVersion *string `pulumi:"privateKeySecretVersion"`
 	// Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+	// Structure is documented below.
 	ServiceDirectoryConfig *ConnectionGithubEnterpriseConfigServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
 	// SSL certificate to use for requests to GitHub Enterprise.
 	SslCa *string `pulumi:"sslCa"`
@@ -369,6 +378,7 @@ type ConnectionGithubEnterpriseConfigArgs struct {
 	// SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
 	PrivateKeySecretVersion pulumi.StringPtrInput `pulumi:"privateKeySecretVersion"`
 	// Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+	// Structure is documented below.
 	ServiceDirectoryConfig ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
 	// SSL certificate to use for requests to GitHub Enterprise.
 	SslCa pulumi.StringPtrInput `pulumi:"sslCa"`
@@ -479,6 +489,7 @@ func (o ConnectionGithubEnterpriseConfigOutput) PrivateKeySecretVersion() pulumi
 }
 
 // Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+// Structure is documented below.
 func (o ConnectionGithubEnterpriseConfigOutput) ServiceDirectoryConfig() ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput {
 	return o.ApplyT(func(v ConnectionGithubEnterpriseConfig) *ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
 		return v.ServiceDirectoryConfig
@@ -570,6 +581,7 @@ func (o ConnectionGithubEnterpriseConfigPtrOutput) PrivateKeySecretVersion() pul
 }
 
 // Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+// Structure is documented below.
 func (o ConnectionGithubEnterpriseConfigPtrOutput) ServiceDirectoryConfig() ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput {
 	return o.ApplyT(func(v *ConnectionGithubEnterpriseConfig) *ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
 		if v == nil {
@@ -738,14 +750,18 @@ func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput) Service
 
 type ConnectionGitlabConfig struct {
 	// Required. A GitLab personal access token with the `api` scope access.
+	// Structure is documented below.
 	AuthorizerCredential ConnectionGitlabConfigAuthorizerCredential `pulumi:"authorizerCredential"`
 	// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
 	HostUri *string `pulumi:"hostUri"`
 	// Required. A GitLab personal access token with the minimum `readApi` scope access.
+	// Structure is documented below.
 	ReadAuthorizerCredential ConnectionGitlabConfigReadAuthorizerCredential `pulumi:"readAuthorizerCredential"`
+	// (Output)
 	// Output only. Version of the GitLab Enterprise server running on the `hostUri`.
 	ServerVersion *string `pulumi:"serverVersion"`
 	// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+	// Structure is documented below.
 	ServiceDirectoryConfig *ConnectionGitlabConfigServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
 	// SSL certificate to use for requests to GitLab Enterprise.
 	SslCa *string `pulumi:"sslCa"`
@@ -766,14 +782,18 @@ type ConnectionGitlabConfigInput interface {
 
 type ConnectionGitlabConfigArgs struct {
 	// Required. A GitLab personal access token with the `api` scope access.
+	// Structure is documented below.
 	AuthorizerCredential ConnectionGitlabConfigAuthorizerCredentialInput `pulumi:"authorizerCredential"`
 	// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
 	HostUri pulumi.StringPtrInput `pulumi:"hostUri"`
 	// Required. A GitLab personal access token with the minimum `readApi` scope access.
+	// Structure is documented below.
 	ReadAuthorizerCredential ConnectionGitlabConfigReadAuthorizerCredentialInput `pulumi:"readAuthorizerCredential"`
+	// (Output)
 	// Output only. Version of the GitLab Enterprise server running on the `hostUri`.
 	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
 	// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+	// Structure is documented below.
 	ServiceDirectoryConfig ConnectionGitlabConfigServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
 	// SSL certificate to use for requests to GitLab Enterprise.
 	SslCa pulumi.StringPtrInput `pulumi:"sslCa"`
@@ -859,6 +879,7 @@ func (o ConnectionGitlabConfigOutput) ToConnectionGitlabConfigPtrOutputWithConte
 }
 
 // Required. A GitLab personal access token with the `api` scope access.
+// Structure is documented below.
 func (o ConnectionGitlabConfigOutput) AuthorizerCredential() ConnectionGitlabConfigAuthorizerCredentialOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfig) ConnectionGitlabConfigAuthorizerCredential {
 		return v.AuthorizerCredential
@@ -871,18 +892,21 @@ func (o ConnectionGitlabConfigOutput) HostUri() pulumi.StringPtrOutput {
 }
 
 // Required. A GitLab personal access token with the minimum `readApi` scope access.
+// Structure is documented below.
 func (o ConnectionGitlabConfigOutput) ReadAuthorizerCredential() ConnectionGitlabConfigReadAuthorizerCredentialOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfig) ConnectionGitlabConfigReadAuthorizerCredential {
 		return v.ReadAuthorizerCredential
 	}).(ConnectionGitlabConfigReadAuthorizerCredentialOutput)
 }
 
+// (Output)
 // Output only. Version of the GitLab Enterprise server running on the `hostUri`.
 func (o ConnectionGitlabConfigOutput) ServerVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfig) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
 }
 
 // Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+// Structure is documented below.
 func (o ConnectionGitlabConfigOutput) ServiceDirectoryConfig() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfig) *ConnectionGitlabConfigServiceDirectoryConfig {
 		return v.ServiceDirectoryConfig
@@ -924,6 +948,7 @@ func (o ConnectionGitlabConfigPtrOutput) Elem() ConnectionGitlabConfigOutput {
 }
 
 // Required. A GitLab personal access token with the `api` scope access.
+// Structure is documented below.
 func (o ConnectionGitlabConfigPtrOutput) AuthorizerCredential() ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabConfig) *ConnectionGitlabConfigAuthorizerCredential {
 		if v == nil {
@@ -944,6 +969,7 @@ func (o ConnectionGitlabConfigPtrOutput) HostUri() pulumi.StringPtrOutput {
 }
 
 // Required. A GitLab personal access token with the minimum `readApi` scope access.
+// Structure is documented below.
 func (o ConnectionGitlabConfigPtrOutput) ReadAuthorizerCredential() ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabConfig) *ConnectionGitlabConfigReadAuthorizerCredential {
 		if v == nil {
@@ -953,6 +979,7 @@ func (o ConnectionGitlabConfigPtrOutput) ReadAuthorizerCredential() ConnectionGi
 	}).(ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput)
 }
 
+// (Output)
 // Output only. Version of the GitLab Enterprise server running on the `hostUri`.
 func (o ConnectionGitlabConfigPtrOutput) ServerVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabConfig) *string {
@@ -964,6 +991,7 @@ func (o ConnectionGitlabConfigPtrOutput) ServerVersion() pulumi.StringPtrOutput 
 }
 
 // Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+// Structure is documented below.
 func (o ConnectionGitlabConfigPtrOutput) ServiceDirectoryConfig() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabConfig) *ConnectionGitlabConfigServiceDirectoryConfig {
 		if v == nil {
@@ -996,6 +1024,7 @@ func (o ConnectionGitlabConfigPtrOutput) WebhookSecretSecretVersion() pulumi.Str
 type ConnectionGitlabConfigAuthorizerCredential struct {
 	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
+	// (Output)
 	// Output only. The username associated to this token.
 	Username *string `pulumi:"username"`
 }
@@ -1014,6 +1043,7 @@ type ConnectionGitlabConfigAuthorizerCredentialInput interface {
 type ConnectionGitlabConfigAuthorizerCredentialArgs struct {
 	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
+	// (Output)
 	// Output only. The username associated to this token.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -1100,6 +1130,7 @@ func (o ConnectionGitlabConfigAuthorizerCredentialOutput) UserTokenSecretVersion
 	return o.ApplyT(func(v ConnectionGitlabConfigAuthorizerCredential) string { return v.UserTokenSecretVersion }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Output only. The username associated to this token.
 func (o ConnectionGitlabConfigAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfigAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
@@ -1139,6 +1170,7 @@ func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) UserTokenSecretVers
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The username associated to this token.
 func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabConfigAuthorizerCredential) *string {
@@ -1152,9 +1184,8 @@ func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) Username() pulumi.S
 type ConnectionGitlabConfigReadAuthorizerCredential struct {
 	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
+	// (Output)
 	// Output only. The username associated to this token.
-	//
-	// ***
 	Username *string `pulumi:"username"`
 }
 
@@ -1172,9 +1203,8 @@ type ConnectionGitlabConfigReadAuthorizerCredentialInput interface {
 type ConnectionGitlabConfigReadAuthorizerCredentialArgs struct {
 	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
 	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
+	// (Output)
 	// Output only. The username associated to this token.
-	//
-	// ***
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -1260,9 +1290,8 @@ func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) UserTokenSecretVer
 	return o.ApplyT(func(v ConnectionGitlabConfigReadAuthorizerCredential) string { return v.UserTokenSecretVersion }).(pulumi.StringOutput)
 }
 
+// (Output)
 // Output only. The username associated to this token.
-//
-// ***
 func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGitlabConfigReadAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -1301,9 +1330,8 @@ func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) UserTokenSecret
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. The username associated to this token.
-//
-// ***
 func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGitlabConfigReadAuthorizerCredential) *string {
 		if v == nil {
@@ -1777,11 +1805,14 @@ func (o ConnectionIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type ConnectionInstallationState struct {
+	// (Output)
 	// Output only. Link to follow for next action. Empty string if the installation is already complete.
 	ActionUri *string `pulumi:"actionUri"`
+	// (Output)
 	// Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
 	Message *string `pulumi:"message"`
-	// Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+	// (Output)
+	// Output only. Current step of the installation process.
 	Stage *string `pulumi:"stage"`
 }
 
@@ -1797,11 +1828,14 @@ type ConnectionInstallationStateInput interface {
 }
 
 type ConnectionInstallationStateArgs struct {
+	// (Output)
 	// Output only. Link to follow for next action. Empty string if the installation is already complete.
 	ActionUri pulumi.StringPtrInput `pulumi:"actionUri"`
+	// (Output)
 	// Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
 	Message pulumi.StringPtrInput `pulumi:"message"`
-	// Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+	// (Output)
+	// Output only. Current step of the installation process.
 	Stage pulumi.StringPtrInput `pulumi:"stage"`
 }
 
@@ -1856,17 +1890,20 @@ func (o ConnectionInstallationStateOutput) ToConnectionInstallationStateOutputWi
 	return o
 }
 
+// (Output)
 // Output only. Link to follow for next action. Empty string if the installation is already complete.
 func (o ConnectionInstallationStateOutput) ActionUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionInstallationState) *string { return v.ActionUri }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
 // Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
 func (o ConnectionInstallationStateOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionInstallationState) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+// (Output)
+// Output only. Current step of the installation process.
 func (o ConnectionInstallationStateOutput) Stage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionInstallationState) *string { return v.Stage }).(pulumi.StringPtrOutput)
 }

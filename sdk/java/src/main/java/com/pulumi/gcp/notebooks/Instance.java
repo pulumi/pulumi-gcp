@@ -24,6 +24,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `google_notebook_instance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ * 
  * A Cloud AI Platform Notebook instance.
  * 
  * &gt; **Note:** Due to limitations of the Notebooks Instance API, many fields
@@ -61,6 +63,42 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .location(&#34;us-west1-a&#34;)
+ *             .machineType(&#34;e2-medium&#34;)
+ *             .vmImage(InstanceVmImageArgs.builder()
+ *                 .imageFamily(&#34;tf-latest-cpu&#34;)
+ *                 .project(&#34;deeplearning-platform-release&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Notebook Instance Basic Stopped
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.notebooks.Instance;
+ * import com.pulumi.gcp.notebooks.InstanceArgs;
+ * import com.pulumi.gcp.notebooks.inputs.InstanceVmImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *             .desiredState(&#34;STOPPED&#34;)
  *             .location(&#34;us-west1-a&#34;)
  *             .machineType(&#34;e2-medium&#34;)
  *             .vmImage(InstanceVmImageArgs.builder()
@@ -201,6 +239,15 @@ import javax.annotation.Nullable;
  *             .network(myNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .subnet(mySubnetwork.applyValue(getSubnetworkResult -&gt; getSubnetworkResult.id()))
  *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
+ *             .metadata(Map.of(&#34;terraform&#34;, &#34;true&#34;))
+ *             .serviceAccountScopes(            
+ *                 &#34;https://www.googleapis.com/auth/bigquery&#34;,
+ *                 &#34;https://www.googleapis.com/auth/devstorage.read_write&#34;,
+ *                 &#34;https://www.googleapis.com/auth/cloud-platform&#34;,
+ *                 &#34;https://www.googleapis.com/auth/userinfo.email&#34;)
+ *             .diskEncryption(&#34;CMEK&#34;)
+ *             .kmsKey(&#34;my-crypto-key&#34;)
+ *             .desiredState(&#34;ACTIVE&#34;)
  *             .build());
  * 
  *     }
@@ -371,20 +418,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataDiskType);
     }
     /**
+     * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     * 
+     */
+    @Export(name="desiredState", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> desiredState;
+
+    /**
+     * @return Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     * 
+     */
+    public Output<Optional<String>> desiredState() {
+        return Codegen.optional(this.desiredState);
+    }
+    /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      * 
      */
     @Export(name="diskEncryption", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> diskEncryption;
+    private Output<String> diskEncryption;
 
     /**
      * @return Disk encryption method used on the boot and data disks, defaults to GMEK.
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      * 
      */
-    public Output<Optional<String>> diskEncryption() {
-        return Codegen.optional(this.diskEncryption);
+    public Output<String> diskEncryption() {
+        return this.diskEncryption;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -730,7 +791,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="serviceAccountScopes", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> serviceAccountScopes;
+    private Output<List<String>> serviceAccountScopes;
 
     /**
      * @return Optional. The URIs of service account scopes to be included in Compute Engine instances.
@@ -739,8 +800,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - https://www.googleapis.com/auth/userinfo.email
      * 
      */
-    public Output<Optional<List<String>>> serviceAccountScopes() {
-        return Codegen.optional(this.serviceAccountScopes);
+    public Output<List<String>> serviceAccountScopes() {
+        return this.serviceAccountScopes;
     }
     /**
      * A set of Shielded Instance options. Check [Images using supported Shielded VM features]

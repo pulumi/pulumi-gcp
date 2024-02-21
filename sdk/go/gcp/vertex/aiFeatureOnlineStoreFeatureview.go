@@ -125,6 +125,135 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Featureonlinestore Featureview Feature Registry
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			featureonlinestore, err := vertex.NewAiFeatureOnlineStore(ctx, "featureonlinestore", &vertex.AiFeatureOnlineStoreArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Region: pulumi.String("us-central1"),
+//				Bigtable: &vertex.AiFeatureOnlineStoreBigtableArgs{
+//					AutoScaling: &vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs{
+//						MinNodeCount:         pulumi.Int(1),
+//						MaxNodeCount:         pulumi.Int(2),
+//						CpuUtilizationTarget: pulumi.Int(80),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sampleDataset, err := bigquery.NewDataset(ctx, "sampleDataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("example_feature_view_feature_registry"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sampleTable, err := bigquery.NewTable(ctx, "sampleTable", &bigquery.TableArgs{
+//				DeletionProtection: pulumi.Bool(false),
+//				DatasetId:          sampleDataset.DatasetId,
+//				TableId:            pulumi.String("example_feature_view_feature_registry"),
+//				Schema: pulumi.String(`[
+//	    {
+//	        "name": "feature_id",
+//	        "type": "STRING",
+//	        "mode": "NULLABLE"
+//	    },
+//	    {
+//	        "name": "example_feature_view_feature_registry",
+//	        "type": "STRING",
+//	        "mode": "NULLABLE"
+//	    },
+//	    {
+//	        "name": "feature_timestamp",
+//	        "type": "TIMESTAMP",
+//	        "mode": "NULLABLE"
+//	    }
+//
+// ]
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sampleFeatureGroup, err := vertex.NewAiFeatureGroup(ctx, "sampleFeatureGroup", &vertex.AiFeatureGroupArgs{
+//				Description: pulumi.String("A sample feature group"),
+//				Region:      pulumi.String("us-central1"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				BigQuery: &vertex.AiFeatureGroupBigQueryArgs{
+//					BigQuerySource: &vertex.AiFeatureGroupBigQueryBigQuerySourceArgs{
+//						InputUri: pulumi.All(sampleTable.Project, sampleTable.DatasetId, sampleTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//							project := _args[0].(string)
+//							datasetId := _args[1].(string)
+//							tableId := _args[2].(string)
+//							return fmt.Sprintf("bq://%v.%v.%v", project, datasetId, tableId), nil
+//						}).(pulumi.StringOutput),
+//					},
+//					EntityIdColumns: pulumi.StringArray{
+//						pulumi.String("feature_id"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sampleFeature, err := vertex.NewAiFeatureGroupFeature(ctx, "sampleFeature", &vertex.AiFeatureGroupFeatureArgs{
+//				Region:       pulumi.String("us-central1"),
+//				FeatureGroup: sampleFeatureGroup.Name,
+//				Description:  pulumi.String("A sample feature"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vertex.NewAiFeatureOnlineStoreFeatureview(ctx, "featureviewFeatureregistry", &vertex.AiFeatureOnlineStoreFeatureviewArgs{
+//				Region:             pulumi.String("us-central1"),
+//				FeatureOnlineStore: featureonlinestore.Name,
+//				SyncConfig: &vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs{
+//					Cron: pulumi.String("0 0 * * *"),
+//				},
+//				FeatureRegistrySource: &vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs{
+//					FeatureGroups: vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray{
+//						&vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs{
+//							FeatureGroupId: sampleFeatureGroup.Name,
+//							FeatureIds: pulumi.StringArray{
+//								sampleFeature.Name,
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Vertex Ai Featureonlinestore Featureview With Vector Search
 //
 // ```go
@@ -317,6 +446,9 @@ type AiFeatureOnlineStoreFeatureview struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The name of the FeatureOnlineStore to use for the featureview.
 	FeatureOnlineStore pulumi.StringOutput `pulumi:"featureOnlineStore"`
+	// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+	// Structure is documented below.
+	FeatureRegistrySource AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput `pulumi:"featureRegistrySource"`
 	// A set of key/value label pairs to assign to this FeatureView.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -394,6 +526,9 @@ type aiFeatureOnlineStoreFeatureviewState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The name of the FeatureOnlineStore to use for the featureview.
 	FeatureOnlineStore *string `pulumi:"featureOnlineStore"`
+	// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+	// Structure is documented below.
+	FeatureRegistrySource *AiFeatureOnlineStoreFeatureviewFeatureRegistrySource `pulumi:"featureRegistrySource"`
 	// A set of key/value label pairs to assign to this FeatureView.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -431,6 +566,9 @@ type AiFeatureOnlineStoreFeatureviewState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// The name of the FeatureOnlineStore to use for the featureview.
 	FeatureOnlineStore pulumi.StringPtrInput
+	// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+	// Structure is documented below.
+	FeatureRegistrySource AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrInput
 	// A set of key/value label pairs to assign to this FeatureView.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -468,6 +606,9 @@ type aiFeatureOnlineStoreFeatureviewArgs struct {
 	BigQuerySource *AiFeatureOnlineStoreFeatureviewBigQuerySource `pulumi:"bigQuerySource"`
 	// The name of the FeatureOnlineStore to use for the featureview.
 	FeatureOnlineStore string `pulumi:"featureOnlineStore"`
+	// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+	// Structure is documented below.
+	FeatureRegistrySource *AiFeatureOnlineStoreFeatureviewFeatureRegistrySource `pulumi:"featureRegistrySource"`
 	// A set of key/value label pairs to assign to this FeatureView.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -497,6 +638,9 @@ type AiFeatureOnlineStoreFeatureviewArgs struct {
 	BigQuerySource AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput
 	// The name of the FeatureOnlineStore to use for the featureview.
 	FeatureOnlineStore pulumi.StringInput
+	// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+	// Structure is documented below.
+	FeatureRegistrySource AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrInput
 	// A set of key/value label pairs to assign to this FeatureView.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -627,6 +771,14 @@ func (o AiFeatureOnlineStoreFeatureviewOutput) EffectiveLabels() pulumi.StringMa
 // The name of the FeatureOnlineStore to use for the featureview.
 func (o AiFeatureOnlineStoreFeatureviewOutput) FeatureOnlineStore() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) pulumi.StringOutput { return v.FeatureOnlineStore }).(pulumi.StringOutput)
+}
+
+// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+// Structure is documented below.
+func (o AiFeatureOnlineStoreFeatureviewOutput) FeatureRegistrySource() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureview) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+		return v.FeatureRegistrySource
+	}).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput)
 }
 
 // A set of key/value label pairs to assign to this FeatureView.

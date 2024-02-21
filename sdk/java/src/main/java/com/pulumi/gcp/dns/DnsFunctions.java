@@ -606,21 +606,237 @@ public final class DnsFunctions {
     public static CompletableFuture<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyPlain(GetManagedZoneIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", TypeShape.of(GetManagedZoneIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides access to a list of zones within Google Cloud DNS.
+     * For more information see
+     * [the official documentation](https://cloud.google.com/dns/zones/)
+     * and
+     * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
+     *             .project(&#34;my-project-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetManagedZonesResult> getManagedZones() {
         return getManagedZones(GetManagedZonesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides access to a list of zones within Google Cloud DNS.
+     * For more information see
+     * [the official documentation](https://cloud.google.com/dns/zones/)
+     * and
+     * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
+     *             .project(&#34;my-project-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetManagedZonesResult> getManagedZonesPlain() {
         return getManagedZonesPlain(GetManagedZonesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * Provides access to a list of zones within Google Cloud DNS.
+     * For more information see
+     * [the official documentation](https://cloud.google.com/dns/zones/)
+     * and
+     * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
+     *             .project(&#34;my-project-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetManagedZonesResult> getManagedZones(GetManagedZonesArgs args) {
         return getManagedZones(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides access to a list of zones within Google Cloud DNS.
+     * For more information see
+     * [the official documentation](https://cloud.google.com/dns/zones/)
+     * and
+     * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
+     *             .project(&#34;my-project-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetManagedZonesResult> getManagedZonesPlain(GetManagedZonesPlainArgs args) {
         return getManagedZonesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides access to a list of zones within Google Cloud DNS.
+     * For more information see
+     * [the official documentation](https://cloud.google.com/dns/zones/)
+     * and
+     * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
+     *             .project(&#34;my-project-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetManagedZonesResult> getManagedZones(GetManagedZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:dns/getManagedZones:getManagedZones", TypeShape.of(GetManagedZonesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides access to a list of zones within Google Cloud DNS.
+     * For more information see
+     * [the official documentation](https://cloud.google.com/dns/zones/)
+     * and
+     * [API](https://cloud.google.com/dns/api/v1/managedZones).
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var zones = DnsFunctions.getManagedZones(GetManagedZonesArgs.builder()
+     *             .project(&#34;my-project-id&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetManagedZonesResult> getManagedZonesPlain(GetManagedZonesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dns/getManagedZones:getManagedZones", TypeShape.of(GetManagedZonesResult.class), args, Utilities.withVersion(options));
     }

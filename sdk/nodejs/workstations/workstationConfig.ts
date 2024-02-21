@@ -59,6 +59,7 @@ import * as utilities from "../utilities";
  *             machineType: "e2-standard-4",
  *             bootDiskSizeGb: 35,
  *             disablePublicIpAddresses: true,
+ *             disableSsh: false,
  *         },
  *     },
  * }, {

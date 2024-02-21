@@ -1182,6 +1182,15 @@ class Service(pulumi.CustomResource):
                     gcp.cloudrunv2.ServiceTemplateContainerArgs(
                         name="hello-2",
                         image="us-docker.pkg.dev/cloudrun/container/hello",
+                        envs=[gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
+                            name="PORT",
+                            value="8081",
+                        )],
+                        startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
+                            http_get=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeHttpGetArgs(
+                                port=8081,
+                            ),
+                        ),
                     ),
                 ],
                 volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
@@ -1608,6 +1617,15 @@ class Service(pulumi.CustomResource):
                     gcp.cloudrunv2.ServiceTemplateContainerArgs(
                         name="hello-2",
                         image="us-docker.pkg.dev/cloudrun/container/hello",
+                        envs=[gcp.cloudrunv2.ServiceTemplateContainerEnvArgs(
+                            name="PORT",
+                            value="8081",
+                        )],
+                        startup_probe=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeArgs(
+                            http_get=gcp.cloudrunv2.ServiceTemplateContainerStartupProbeHttpGetArgs(
+                                port=8081,
+                            ),
+                        ),
                     ),
                 ],
                 volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(

@@ -26,6 +26,7 @@ class InstanceArgs:
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  data_disk_type: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -75,6 +76,7 @@ class InstanceArgs:
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        :param pulumi.Input[str] desired_state: Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
@@ -146,6 +148,8 @@ class InstanceArgs:
             pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
         if data_disk_type is not None:
             pulumi.set(__self__, "data_disk_type", data_disk_type)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if disk_encryption is not None:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
         if install_gpu_driver is not None:
@@ -325,6 +329,18 @@ class InstanceArgs:
     @data_disk_type.setter
     def data_disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data_disk_type", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_state", value)
 
     @property
     @pulumi.getter(name="diskEncryption")
@@ -632,6 +648,7 @@ class _InstanceState:
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  data_disk_type: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
@@ -682,6 +699,7 @@ class _InstanceState:
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        :param pulumi.Input[str] desired_state: Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -764,6 +782,8 @@ class _InstanceState:
             pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
         if data_disk_type is not None:
             pulumi.set(__self__, "data_disk_type", data_disk_type)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if disk_encryption is not None:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
         if effective_labels is not None:
@@ -928,6 +948,18 @@ class _InstanceState:
     @data_disk_type.setter
     def data_disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data_disk_type", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_state", value)
 
     @property
     @pulumi.getter(name="diskEncryption")
@@ -1316,6 +1348,7 @@ class Instance(pulumi.CustomResource):
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  data_disk_type: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1342,6 +1375,8 @@ class Instance(pulumi.CustomResource):
                  vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArgs']]] = None,
                  __props__=None):
         """
+        > **Warning:** `google_notebook_instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         A Cloud AI Platform Notebook instance.
 
         > **Note:** Due to limitations of the Notebooks Instance API, many fields
@@ -1362,6 +1397,21 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.notebooks.Instance("instance",
+            location="us-west1-a",
+            machine_type="e2-medium",
+            vm_image=gcp.notebooks.InstanceVmImageArgs(
+                image_family="tf-latest-cpu",
+                project="deeplearning-platform-release",
+            ))
+        ```
+        ### Notebook Instance Basic Stopped
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.notebooks.Instance("instance",
+            desired_state="STOPPED",
             location="us-west1-a",
             machine_type="e2-medium",
             vm_image=gcp.notebooks.InstanceVmImageArgs(
@@ -1432,7 +1482,19 @@ class Instance(pulumi.CustomResource):
             subnet=my_subnetwork.id,
             labels={
                 "k": "val",
-            })
+            },
+            metadata={
+                "terraform": "true",
+            },
+            service_account_scopes=[
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/devstorage.read_write",
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/userinfo.email",
+            ],
+            disk_encryption="CMEK",
+            kms_key="my-crypto-key",
+            desired_state="ACTIVE")
         ```
 
         ## Import
@@ -1481,6 +1543,7 @@ class Instance(pulumi.CustomResource):
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        :param pulumi.Input[str] desired_state: Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver
@@ -1546,6 +1609,8 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `google_notebook_instance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+
         A Cloud AI Platform Notebook instance.
 
         > **Note:** Due to limitations of the Notebooks Instance API, many fields
@@ -1566,6 +1631,21 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.notebooks.Instance("instance",
+            location="us-west1-a",
+            machine_type="e2-medium",
+            vm_image=gcp.notebooks.InstanceVmImageArgs(
+                image_family="tf-latest-cpu",
+                project="deeplearning-platform-release",
+            ))
+        ```
+        ### Notebook Instance Basic Stopped
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.notebooks.Instance("instance",
+            desired_state="STOPPED",
             location="us-west1-a",
             machine_type="e2-medium",
             vm_image=gcp.notebooks.InstanceVmImageArgs(
@@ -1636,7 +1716,19 @@ class Instance(pulumi.CustomResource):
             subnet=my_subnetwork.id,
             labels={
                 "k": "val",
-            })
+            },
+            metadata={
+                "terraform": "true",
+            },
+            service_account_scopes=[
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/devstorage.read_write",
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/userinfo.email",
+            ],
+            disk_encryption="CMEK",
+            kms_key="my-crypto-key",
+            desired_state="ACTIVE")
         ```
 
         ## Import
@@ -1686,6 +1778,7 @@ class Instance(pulumi.CustomResource):
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  data_disk_type: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1727,6 +1820,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["custom_gpu_driver_path"] = custom_gpu_driver_path
             __props__.__dict__["data_disk_size_gb"] = data_disk_size_gb
             __props__.__dict__["data_disk_type"] = data_disk_type
+            __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["disk_encryption"] = disk_encryption
             __props__.__dict__["install_gpu_driver"] = install_gpu_driver
             __props__.__dict__["instance_owners"] = instance_owners
@@ -1779,6 +1873,7 @@ class Instance(pulumi.CustomResource):
             custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
             data_disk_size_gb: Optional[pulumi.Input[int]] = None,
             data_disk_type: Optional[pulumi.Input[str]] = None,
+            desired_state: Optional[pulumi.Input[str]] = None,
             disk_encryption: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             install_gpu_driver: Optional[pulumi.Input[bool]] = None,
@@ -1834,6 +1929,7 @@ class Instance(pulumi.CustomResource):
                If not specified, this defaults to 100.
         :param pulumi.Input[str] data_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        :param pulumi.Input[str] desired_state: Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1912,6 +2008,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["custom_gpu_driver_path"] = custom_gpu_driver_path
         __props__.__dict__["data_disk_size_gb"] = data_disk_size_gb
         __props__.__dict__["data_disk_type"] = data_disk_type
+        __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["install_gpu_driver"] = install_gpu_driver
@@ -2019,8 +2116,16 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "data_disk_type")
 
     @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Output[Optional[str]]:
+        """
+        Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> pulumi.Output[Optional[str]]:
+    def disk_encryption(self) -> pulumi.Output[str]:
         """
         Disk encryption method used on the boot and data disks, defaults to GMEK.
         Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
@@ -2218,7 +2323,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serviceAccountScopes")
-    def service_account_scopes(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def service_account_scopes(self) -> pulumi.Output[Sequence[str]]:
         """
         Optional. The URIs of service account scopes to be included in Compute Engine instances.
         If not specified, the following scopes are defined:

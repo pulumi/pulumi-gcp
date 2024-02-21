@@ -13,6 +13,8 @@ __all__ = [
     'TriggerDestinationArgs',
     'TriggerDestinationCloudRunServiceArgs',
     'TriggerDestinationGkeArgs',
+    'TriggerDestinationHttpEndpointArgs',
+    'TriggerDestinationNetworkConfigArgs',
     'TriggerMatchingCriteriaArgs',
     'TriggerTransportArgs',
     'TriggerTransportPubsubArgs',
@@ -24,11 +26,15 @@ class TriggerDestinationArgs:
                  cloud_function: Optional[pulumi.Input[str]] = None,
                  cloud_run_service: Optional[pulumi.Input['TriggerDestinationCloudRunServiceArgs']] = None,
                  gke: Optional[pulumi.Input['TriggerDestinationGkeArgs']] = None,
+                 http_endpoint: Optional[pulumi.Input['TriggerDestinationHttpEndpointArgs']] = None,
+                 network_config: Optional[pulumi.Input['TriggerDestinationNetworkConfigArgs']] = None,
                  workflow: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         :param pulumi.Input['TriggerDestinationCloudRunServiceArgs'] cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         :param pulumi.Input['TriggerDestinationGkeArgs'] gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        :param pulumi.Input['TriggerDestinationHttpEndpointArgs'] http_endpoint: An HTTP endpoint destination described by an URI.
+        :param pulumi.Input['TriggerDestinationNetworkConfigArgs'] network_config: Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
         :param pulumi.Input[str] workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         if cloud_function is not None:
@@ -37,6 +43,10 @@ class TriggerDestinationArgs:
             pulumi.set(__self__, "cloud_run_service", cloud_run_service)
         if gke is not None:
             pulumi.set(__self__, "gke", gke)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if workflow is not None:
             pulumi.set(__self__, "workflow", workflow)
 
@@ -75,6 +85,30 @@ class TriggerDestinationArgs:
     @gke.setter
     def gke(self, value: Optional[pulumi.Input['TriggerDestinationGkeArgs']]):
         pulumi.set(self, "gke", value)
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input['TriggerDestinationHttpEndpointArgs']]:
+        """
+        An HTTP endpoint destination described by an URI.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input['TriggerDestinationHttpEndpointArgs']]):
+        pulumi.set(self, "http_endpoint", value)
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['TriggerDestinationNetworkConfigArgs']]:
+        """
+        Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['TriggerDestinationNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
 
     @property
     @pulumi.getter
@@ -224,6 +258,50 @@ class TriggerDestinationGkeArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class TriggerDestinationHttpEndpointArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] uri: Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class TriggerDestinationNetworkConfigArgs:
+    def __init__(__self__, *,
+                 network_attachment: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] network_attachment: Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> pulumi.Input[str]:
+        """
+        Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_attachment", value)
 
 
 @pulumi.input_type

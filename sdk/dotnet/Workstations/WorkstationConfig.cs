@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.Workstations
     ///                 MachineType = "e2-standard-4",
     ///                 BootDiskSizeGb = 35,
     ///                 DisablePublicIpAddresses = true,
+    ///                 DisableSsh = false,
     ///             },
     ///         },
     ///     }, new CustomResourceOptions

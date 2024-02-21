@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Dns.Inputs
         }
 
         /// <summary>
-        /// The ID of the project for the Google Cloud.
+        /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

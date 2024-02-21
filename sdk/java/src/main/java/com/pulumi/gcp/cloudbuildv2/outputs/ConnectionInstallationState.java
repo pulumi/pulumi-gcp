@@ -12,38 +12,44 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionInstallationState {
     /**
-     * @return Output only. Link to follow for next action. Empty string if the installation is already complete.
+     * @return (Output)
+     * Output only. Link to follow for next action. Empty string if the installation is already complete.
      * 
      */
     private @Nullable String actionUri;
     /**
-     * @return Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+     * @return (Output)
+     * Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
      * 
      */
     private @Nullable String message;
     /**
-     * @return Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+     * @return (Output)
+     * Output only. Current step of the installation process.
      * 
      */
     private @Nullable String stage;
 
     private ConnectionInstallationState() {}
     /**
-     * @return Output only. Link to follow for next action. Empty string if the installation is already complete.
+     * @return (Output)
+     * Output only. Link to follow for next action. Empty string if the installation is already complete.
      * 
      */
     public Optional<String> actionUri() {
         return Optional.ofNullable(this.actionUri);
     }
     /**
-     * @return Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
+     * @return (Output)
+     * Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
      * 
      */
     public Optional<String> message() {
         return Optional.ofNullable(this.message);
     }
     /**
-     * @return Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+     * @return (Output)
+     * Output only. Current step of the installation process.
      * 
      */
     public Optional<String> stage() {

@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `googleNotebookInstance` is deprecated and will be removed in a future major release. Use `workbench.Instance` instead.
+//
 // A Cloud AI Platform Notebook instance.
 //
 // > **Note:** Due to limitations of the Notebooks Instance API, many fields
@@ -42,6 +44,37 @@ import (
 //			_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
 //				Location:    pulumi.String("us-west1-a"),
 //				MachineType: pulumi.String("e2-medium"),
+//				VmImage: &notebooks.InstanceVmImageArgs{
+//					ImageFamily: pulumi.String("tf-latest-cpu"),
+//					Project:     pulumi.String("deeplearning-platform-release"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Notebook Instance Basic Stopped
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/notebooks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := notebooks.NewInstance(ctx, "instance", &notebooks.InstanceArgs{
+//				DesiredState: pulumi.String("STOPPED"),
+//				Location:     pulumi.String("us-west1-a"),
+//				MachineType:  pulumi.String("e2-medium"),
 //				VmImage: &notebooks.InstanceVmImageArgs{
 //					ImageFamily: pulumi.String("tf-latest-cpu"),
 //					Project:     pulumi.String("deeplearning-platform-release"),
@@ -172,6 +205,18 @@ import (
 //				Labels: pulumi.StringMap{
 //					"k": pulumi.String("val"),
 //				},
+//				Metadata: pulumi.StringMap{
+//					"terraform": pulumi.String("true"),
+//				},
+//				ServiceAccountScopes: pulumi.StringArray{
+//					pulumi.String("https://www.googleapis.com/auth/bigquery"),
+//					pulumi.String("https://www.googleapis.com/auth/devstorage.read_write"),
+//					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+//					pulumi.String("https://www.googleapis.com/auth/userinfo.email"),
+//				},
+//				DiskEncryption: pulumi.String("CMEK"),
+//				KmsKey:         pulumi.String("my-crypto-key"),
+//				DesiredState:   pulumi.String("ACTIVE"),
 //			})
 //			if err != nil {
 //				return err
@@ -236,9 +281,11 @@ type Instance struct {
 	// Possible disk types for notebook instances.
 	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType pulumi.StringPtrOutput `pulumi:"dataDiskType"`
+	// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
-	DiskEncryption pulumi.StringPtrOutput `pulumi:"diskEncryption"`
+	DiskEncryption pulumi.StringOutput `pulumi:"diskEncryption"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether the end user authorizes Google Cloud to install GPU driver
@@ -399,6 +446,8 @@ type instanceState struct {
 	// Possible disk types for notebook instances.
 	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType *string `pulumi:"dataDiskType"`
+	// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState *string `pulumi:"desiredState"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
@@ -522,6 +571,8 @@ type InstanceState struct {
 	// Possible disk types for notebook instances.
 	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType pulumi.StringPtrInput
+	// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
@@ -649,6 +700,8 @@ type instanceArgs struct {
 	// Possible disk types for notebook instances.
 	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType *string `pulumi:"dataDiskType"`
+	// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState *string `pulumi:"desiredState"`
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption *string `pulumi:"diskEncryption"`
@@ -761,6 +814,8 @@ type InstanceArgs struct {
 	// Possible disk types for notebook instances.
 	// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
 	DataDiskType pulumi.StringPtrInput
+	// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+	DesiredState pulumi.StringPtrInput
 	// Disk encryption method used on the boot and data disks, defaults to GMEK.
 	// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
 	DiskEncryption pulumi.StringPtrInput
@@ -982,10 +1037,15 @@ func (o InstanceOutput) DataDiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DataDiskType }).(pulumi.StringPtrOutput)
 }
 
+// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+func (o InstanceOutput) DesiredState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
+}
+
 // Disk encryption method used on the boot and data disks, defaults to GMEK.
 // Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
-func (o InstanceOutput) DiskEncryption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DiskEncryption }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) DiskEncryption() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DiskEncryption }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

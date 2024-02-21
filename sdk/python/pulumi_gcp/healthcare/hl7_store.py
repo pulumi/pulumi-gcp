@@ -21,7 +21,8 @@ class Hl7StoreArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
-                 parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None):
+                 parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
+                 reject_duplicate_message: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Hl7Store resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
@@ -53,6 +54,7 @@ class Hl7StoreArgs:
                Structure is documented below.
         :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource
                Structure is documented below.
+        :param pulumi.Input[bool] reject_duplicate_message: Determines whether duplicate messages are allowed.
         """
         pulumi.set(__self__, "dataset", dataset)
         if labels is not None:
@@ -68,6 +70,8 @@ class Hl7StoreArgs:
             pulumi.set(__self__, "notification_configs", notification_configs)
         if parser_config is not None:
             pulumi.set(__self__, "parser_config", parser_config)
+        if reject_duplicate_message is not None:
+            pulumi.set(__self__, "reject_duplicate_message", reject_duplicate_message)
 
     @property
     @pulumi.getter
@@ -167,6 +171,18 @@ class Hl7StoreArgs:
     def parser_config(self, value: Optional[pulumi.Input['Hl7StoreParserConfigArgs']]):
         pulumi.set(self, "parser_config", value)
 
+    @property
+    @pulumi.getter(name="rejectDuplicateMessage")
+    def reject_duplicate_message(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether duplicate messages are allowed.
+        """
+        return pulumi.get(self, "reject_duplicate_message")
+
+    @reject_duplicate_message.setter
+    def reject_duplicate_message(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reject_duplicate_message", value)
+
 
 @pulumi.input_type
 class _Hl7StoreState:
@@ -179,6 +195,7 @@ class _Hl7StoreState:
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]]] = None,
                  parser_config: Optional[pulumi.Input['Hl7StoreParserConfigArgs']] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 reject_duplicate_message: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Hl7Store resources.
@@ -214,6 +231,7 @@ class _Hl7StoreState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[bool] reject_duplicate_message: Determines whether duplicate messages are allowed.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
         """
         if dataset is not None:
@@ -235,6 +253,8 @@ class _Hl7StoreState:
             pulumi.set(__self__, "parser_config", parser_config)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if reject_duplicate_message is not None:
+            pulumi.set(__self__, "reject_duplicate_message", reject_duplicate_message)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
 
@@ -362,6 +382,18 @@ class _Hl7StoreState:
         pulumi.set(self, "pulumi_labels", value)
 
     @property
+    @pulumi.getter(name="rejectDuplicateMessage")
+    def reject_duplicate_message(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines whether duplicate messages are allowed.
+        """
+        return pulumi.get(self, "reject_duplicate_message")
+
+    @reject_duplicate_message.setter
+    def reject_duplicate_message(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reject_duplicate_message", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -385,6 +417,7 @@ class Hl7Store(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
                  parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
+                 reject_duplicate_message: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         A Hl7V2Store is a datastore inside a Healthcare dataset that conforms to the FHIR (https://www.hl7.org/hl7V2/STU3/)
@@ -407,6 +440,7 @@ class Hl7Store(pulumi.CustomResource):
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
+            reject_duplicate_message=True,
             notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
                 pubsub_topic=topic.id,
             )],
@@ -576,6 +610,7 @@ class Hl7Store(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']] parser_config: A nested object resource
                Structure is documented below.
+        :param pulumi.Input[bool] reject_duplicate_message: Determines whether duplicate messages are allowed.
         """
         ...
     @overload
@@ -604,6 +639,7 @@ class Hl7Store(pulumi.CustomResource):
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
+            reject_duplicate_message=True,
             notification_configs=[gcp.healthcare.Hl7StoreNotificationConfigsArgs(
                 pubsub_topic=topic.id,
             )],
@@ -763,6 +799,7 @@ class Hl7Store(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']]] = None,
                  notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
                  parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
+                 reject_duplicate_message: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -780,6 +817,7 @@ class Hl7Store(pulumi.CustomResource):
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
             __props__.__dict__["parser_config"] = parser_config
+            __props__.__dict__["reject_duplicate_message"] = reject_duplicate_message
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
@@ -803,6 +841,7 @@ class Hl7Store(pulumi.CustomResource):
             notification_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]]] = None,
             parser_config: Optional[pulumi.Input[pulumi.InputType['Hl7StoreParserConfigArgs']]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            reject_duplicate_message: Optional[pulumi.Input[bool]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'Hl7Store':
         """
         Get an existing Hl7Store resource's state with the given name, id, and optional extra
@@ -843,6 +882,7 @@ class Hl7Store(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[bool] reject_duplicate_message: Determines whether duplicate messages are allowed.
         :param pulumi.Input[str] self_link: The fully qualified name of this dataset
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -857,6 +897,7 @@ class Hl7Store(pulumi.CustomResource):
         __props__.__dict__["notification_configs"] = notification_configs
         __props__.__dict__["parser_config"] = parser_config
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["reject_duplicate_message"] = reject_duplicate_message
         __props__.__dict__["self_link"] = self_link
         return Hl7Store(resource_name, opts=opts, __props__=__props__)
 
@@ -950,6 +991,14 @@ class Hl7Store(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="rejectDuplicateMessage")
+    def reject_duplicate_message(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Determines whether duplicate messages are allowed.
+        """
+        return pulumi.get(self, "reject_duplicate_message")
 
     @property
     @pulumi.getter(name="selfLink")

@@ -19,6 +19,7 @@ class AiFeatureOnlineStoreFeatureviewArgs:
                  feature_online_store: pulumi.Input[str],
                  region: pulumi.Input[str],
                  big_query_source: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']] = None,
+                 feature_registry_source: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,8 @@ class AiFeatureOnlineStoreFeatureviewArgs:
                
                - - -
         :param pulumi.Input['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs'] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
+               Structure is documented below.
+        :param pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs'] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this FeatureView.
                
@@ -49,6 +52,8 @@ class AiFeatureOnlineStoreFeatureviewArgs:
         pulumi.set(__self__, "region", region)
         if big_query_source is not None:
             pulumi.set(__self__, "big_query_source", big_query_source)
+        if feature_registry_source is not None:
+            pulumi.set(__self__, "feature_registry_source", feature_registry_source)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -99,6 +104,19 @@ class AiFeatureOnlineStoreFeatureviewArgs:
     @big_query_source.setter
     def big_query_source(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']]):
         pulumi.set(self, "big_query_source", value)
+
+    @property
+    @pulumi.getter(name="featureRegistrySource")
+    def feature_registry_source(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]:
+        """
+        Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "feature_registry_source")
+
+    @feature_registry_source.setter
+    def feature_registry_source(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]):
+        pulumi.set(self, "feature_registry_source", value)
 
     @property
     @pulumi.getter
@@ -174,6 +192,7 @@ class _AiFeatureOnlineStoreFeatureviewState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  feature_online_store: Optional[pulumi.Input[str]] = None,
+                 feature_registry_source: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -189,6 +208,8 @@ class _AiFeatureOnlineStoreFeatureviewState:
         :param pulumi.Input[str] create_time: The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
+        :param pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs'] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this FeatureView.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -216,6 +237,8 @@ class _AiFeatureOnlineStoreFeatureviewState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if feature_online_store is not None:
             pulumi.set(__self__, "feature_online_store", feature_online_store)
+        if feature_registry_source is not None:
+            pulumi.set(__self__, "feature_registry_source", feature_registry_source)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -281,6 +304,19 @@ class _AiFeatureOnlineStoreFeatureviewState:
     @feature_online_store.setter
     def feature_online_store(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "feature_online_store", value)
+
+    @property
+    @pulumi.getter(name="featureRegistrySource")
+    def feature_registry_source(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]:
+        """
+        Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "feature_registry_source")
+
+    @feature_registry_source.setter
+    def feature_registry_source(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]):
+        pulumi.set(self, "feature_registry_source", value)
 
     @property
     @pulumi.getter
@@ -396,6 +432,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  big_query_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']]] = None,
                  feature_online_store: Optional[pulumi.Input[str]] = None,
+                 feature_registry_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -472,6 +509,83 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 entity_id_columns=["test_entity_column"],
             ))
         project = gcp.organizations.get_project()
+        ```
+        ### Vertex Ai Featureonlinestore Featureview Feature Registry
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
+                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
+                    min_node_count=1,
+                    max_node_count=2,
+                    cpu_utilization_target=80,
+                ),
+            ))
+        sample_dataset = gcp.bigquery.Dataset("sampleDataset",
+            dataset_id="example_feature_view_feature_registry",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        sample_table = gcp.bigquery.Table("sampleTable",
+            deletion_protection=False,
+            dataset_id=sample_dataset.dataset_id,
+            table_id="example_feature_view_feature_registry",
+            schema=\"\"\"[
+            {
+                "name": "feature_id",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "example_feature_view_feature_registry",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "feature_timestamp",
+                "type": "TIMESTAMP",
+                "mode": "NULLABLE"
+            }
+        ]
+        \"\"\")
+        sample_feature_group = gcp.vertex.AiFeatureGroup("sampleFeatureGroup",
+            description="A sample feature group",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
+                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
+                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                ),
+                entity_id_columns=["feature_id"],
+            ))
+        sample_feature = gcp.vertex.AiFeatureGroupFeature("sampleFeature",
+            region="us-central1",
+            feature_group=sample_feature_group.name,
+            description="A sample feature",
+            labels={
+                "label-one": "value-one",
+            })
+        featureview_featureregistry = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry",
+            region="us-central1",
+            feature_online_store=featureonlinestore.name,
+            sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
+                cron="0 0 * * *",
+            ),
+            feature_registry_source=gcp.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs(
+                feature_groups=[gcp.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs(
+                    feature_group_id=sample_feature_group.name,
+                    feature_ids=[sample_feature.name],
+                )],
+            ))
         ```
         ### Vertex Ai Featureonlinestore Featureview With Vector Search
 
@@ -610,6 +724,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']] big_query_source: Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
                Structure is documented below.
         :param pulumi.Input[str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
+        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this FeatureView.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -701,6 +817,83 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                 entity_id_columns=["test_entity_column"],
             ))
         project = gcp.organizations.get_project()
+        ```
+        ### Vertex Ai Featureonlinestore Featureview Feature Registry
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        featureonlinestore = gcp.vertex.AiFeatureOnlineStore("featureonlinestore",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1",
+            bigtable=gcp.vertex.AiFeatureOnlineStoreBigtableArgs(
+                auto_scaling=gcp.vertex.AiFeatureOnlineStoreBigtableAutoScalingArgs(
+                    min_node_count=1,
+                    max_node_count=2,
+                    cpu_utilization_target=80,
+                ),
+            ))
+        sample_dataset = gcp.bigquery.Dataset("sampleDataset",
+            dataset_id="example_feature_view_feature_registry",
+            friendly_name="test",
+            description="This is a test description",
+            location="US")
+        sample_table = gcp.bigquery.Table("sampleTable",
+            deletion_protection=False,
+            dataset_id=sample_dataset.dataset_id,
+            table_id="example_feature_view_feature_registry",
+            schema=\"\"\"[
+            {
+                "name": "feature_id",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "example_feature_view_feature_registry",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "feature_timestamp",
+                "type": "TIMESTAMP",
+                "mode": "NULLABLE"
+            }
+        ]
+        \"\"\")
+        sample_feature_group = gcp.vertex.AiFeatureGroup("sampleFeatureGroup",
+            description="A sample feature group",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            big_query=gcp.vertex.AiFeatureGroupBigQueryArgs(
+                big_query_source=gcp.vertex.AiFeatureGroupBigQueryBigQuerySourceArgs(
+                    input_uri=pulumi.Output.all(sample_table.project, sample_table.dataset_id, sample_table.table_id).apply(lambda project, dataset_id, table_id: f"bq://{project}.{dataset_id}.{table_id}"),
+                ),
+                entity_id_columns=["feature_id"],
+            ))
+        sample_feature = gcp.vertex.AiFeatureGroupFeature("sampleFeature",
+            region="us-central1",
+            feature_group=sample_feature_group.name,
+            description="A sample feature",
+            labels={
+                "label-one": "value-one",
+            })
+        featureview_featureregistry = gcp.vertex.AiFeatureOnlineStoreFeatureview("featureviewFeatureregistry",
+            region="us-central1",
+            feature_online_store=featureonlinestore.name,
+            sync_config=gcp.vertex.AiFeatureOnlineStoreFeatureviewSyncConfigArgs(
+                cron="0 0 * * *",
+            ),
+            feature_registry_source=gcp.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs(
+                feature_groups=[gcp.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs(
+                    feature_group_id=sample_feature_group.name,
+                    feature_ids=[sample_feature.name],
+                )],
+            ))
         ```
         ### Vertex Ai Featureonlinestore Featureview With Vector Search
 
@@ -851,6 +1044,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  big_query_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs']]] = None,
                  feature_online_store: Optional[pulumi.Input[str]] = None,
+                 feature_registry_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -870,6 +1064,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             if feature_online_store is None and not opts.urn:
                 raise TypeError("Missing required property 'feature_online_store'")
             __props__.__dict__["feature_online_store"] = feature_online_store
+            __props__.__dict__["feature_registry_source"] = feature_registry_source
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -898,6 +1093,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             feature_online_store: Optional[pulumi.Input[str]] = None,
+            feature_registry_source: Optional[pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -918,6 +1114,8 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The timestamp of when the featureOnlinestore was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] feature_online_store: The name of the FeatureOnlineStore to use for the featureview.
+        :param pulumi.Input[pulumi.InputType['AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs']] feature_registry_source: Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this FeatureView.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -945,6 +1143,7 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["feature_online_store"] = feature_online_store
+        __props__.__dict__["feature_registry_source"] = feature_registry_source
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -987,6 +1186,15 @@ class AiFeatureOnlineStoreFeatureview(pulumi.CustomResource):
         The name of the FeatureOnlineStore to use for the featureview.
         """
         return pulumi.get(self, "feature_online_store")
+
+    @property
+    @pulumi.getter(name="featureRegistrySource")
+    def feature_registry_source(self) -> pulumi.Output[Optional['outputs.AiFeatureOnlineStoreFeatureviewFeatureRegistrySource']]:
+        """
+        Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "feature_registry_source")
 
     @property
     @pulumi.getter

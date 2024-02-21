@@ -285,7 +285,7 @@ class InstanceGceSetupBootDiskArgs:
                recommended value of 150GB.
         :param pulumi.Input[str] disk_type: Optional. Indicates the type of the disk.
                Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-        :param pulumi.Input[str] kms_key: 'Optional. Input only. The KMS key used to encrypt the disks, only
+        :param pulumi.Input[str] kms_key: 'Optional. The KMS key used to encrypt the disks, only
                applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
                Learn more about using your own encryption keys.'
         """
@@ -343,7 +343,7 @@ class InstanceGceSetupBootDiskArgs:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[str]]:
         """
-        'Optional. Input only. The KMS key used to encrypt the disks, only
+        'Optional. The KMS key used to encrypt the disks, only
         applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
         Learn more about using your own encryption keys.'
         """
@@ -370,7 +370,7 @@ class InstanceGceSetupDataDisksArgs:
                100.
         :param pulumi.Input[str] disk_type: Optional. Input only. Indicates the type of the disk.
                Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-        :param pulumi.Input[str] kms_key: 'Optional. Input only. The KMS key used to encrypt the disks,
+        :param pulumi.Input[str] kms_key: 'Optional. The KMS key used to encrypt the disks,
                only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
                Learn more about using your own encryption keys.'
         """
@@ -428,7 +428,7 @@ class InstanceGceSetupDataDisksArgs:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[str]]:
         """
-        'Optional. Input only. The KMS key used to encrypt the disks,
+        'Optional. The KMS key used to encrypt the disks,
         only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
         Learn more about using your own encryption keys.'
         """

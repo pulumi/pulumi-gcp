@@ -220,6 +220,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// If function is triggered by HTTP, this boolean is set.
         /// </summary>
         public readonly bool TriggerHttp;
+        public readonly string VersionId;
         /// <summary>
         /// The VPC Network Connector that this cloud function can connect to.
         /// </summary>
@@ -295,6 +296,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             bool triggerHttp,
 
+            string versionId,
+
             string vpcConnector,
 
             string vpcConnectorEgressSettings)
@@ -331,6 +334,7 @@ namespace Pulumi.Gcp.CloudFunctions
             Status = status;
             Timeout = timeout;
             TriggerHttp = triggerHttp;
+            VersionId = versionId;
             VpcConnector = vpcConnector;
             VpcConnectorEgressSettings = vpcConnectorEgressSettings;
         }

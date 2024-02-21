@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `googleNotebookInstance` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
+ *
  * A Cloud AI Platform Notebook instance.
  *
  * > **Note:** Due to limitations of the Notebooks Instance API, many fields
@@ -27,6 +29,22 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.notebooks.Instance("instance", {
+ *     location: "us-west1-a",
+ *     machineType: "e2-medium",
+ *     vmImage: {
+ *         imageFamily: "tf-latest-cpu",
+ *         project: "deeplearning-platform-release",
+ *     },
+ * });
+ * ```
+ * ### Notebook Instance Basic Stopped
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.notebooks.Instance("instance", {
+ *     desiredState: "STOPPED",
  *     location: "us-west1-a",
  *     machineType: "e2-medium",
  *     vmImage: {
@@ -105,6 +123,18 @@ import * as utilities from "../utilities";
  *     labels: {
  *         k: "val",
  *     },
+ *     metadata: {
+ *         terraform: "true",
+ *     },
+ *     serviceAccountScopes: [
+ *         "https://www.googleapis.com/auth/bigquery",
+ *         "https://www.googleapis.com/auth/devstorage.read_write",
+ *         "https://www.googleapis.com/auth/cloud-platform",
+ *         "https://www.googleapis.com/auth/userinfo.email",
+ *     ],
+ *     diskEncryption: "CMEK",
+ *     kmsKey: "my-crypto-key",
+ *     desiredState: "ACTIVE",
  * });
  * ```
  *
@@ -205,10 +235,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dataDiskType!: pulumi.Output<string | undefined>;
     /**
+     * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     */
+    public readonly desiredState!: pulumi.Output<string | undefined>;
+    /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
      */
-    public readonly diskEncryption!: pulumi.Output<string | undefined>;
+    public readonly diskEncryption!: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -324,7 +358,7 @@ export class Instance extends pulumi.CustomResource {
      * - https://www.googleapis.com/auth/cloud-platform
      * - https://www.googleapis.com/auth/userinfo.email
      */
-    public readonly serviceAccountScopes!: pulumi.Output<string[] | undefined>;
+    public readonly serviceAccountScopes!: pulumi.Output<string[]>;
     /**
      * A set of Shielded Instance options. Check [Images using supported Shielded VM features]
      * Not all combinations are valid
@@ -375,6 +409,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["customGpuDriverPath"] = state ? state.customGpuDriverPath : undefined;
             resourceInputs["dataDiskSizeGb"] = state ? state.dataDiskSizeGb : undefined;
             resourceInputs["dataDiskType"] = state ? state.dataDiskType : undefined;
+            resourceInputs["desiredState"] = state ? state.desiredState : undefined;
             resourceInputs["diskEncryption"] = state ? state.diskEncryption : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["installGpuDriver"] = state ? state.installGpuDriver : undefined;
@@ -419,6 +454,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["customGpuDriverPath"] = args ? args.customGpuDriverPath : undefined;
             resourceInputs["dataDiskSizeGb"] = args ? args.dataDiskSizeGb : undefined;
             resourceInputs["dataDiskType"] = args ? args.dataDiskType : undefined;
+            resourceInputs["desiredState"] = args ? args.desiredState : undefined;
             resourceInputs["diskEncryption"] = args ? args.diskEncryption : undefined;
             resourceInputs["installGpuDriver"] = args ? args.installGpuDriver : undefined;
             resourceInputs["instanceOwners"] = args ? args.instanceOwners : undefined;
@@ -503,6 +539,10 @@ export interface InstanceState {
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     dataDiskType?: pulumi.Input<string>;
+    /**
+     * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     */
+    desiredState?: pulumi.Input<string>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
@@ -702,6 +742,10 @@ export interface InstanceArgs {
      * Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
      */
     dataDiskType?: pulumi.Input<string>;
+    /**
+     * Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+     */
+    desiredState?: pulumi.Input<string>;
     /**
      * Disk encryption method used on the boot and data disks, defaults to GMEK.
      * Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.

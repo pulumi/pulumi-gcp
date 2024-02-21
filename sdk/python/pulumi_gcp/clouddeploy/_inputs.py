@@ -15,6 +15,10 @@ __all__ = [
     'AutomationRulePromoteReleaseRuleArgs',
     'AutomationSelectorArgs',
     'AutomationSelectorTargetArgs',
+    'CustomTargetTypeCustomActionsArgs',
+    'CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs',
+    'CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs',
+    'CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs',
     'DeliveryPipelineConditionArgs',
     'DeliveryPipelineConditionPipelineReadyConditionArgs',
     'DeliveryPipelineConditionTargetsPresentConditionArgs',
@@ -280,6 +284,213 @@ class AutomationSelectorTargetArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+
+@pulumi.input_type
+class CustomTargetTypeCustomActionsArgs:
+    def __init__(__self__, *,
+                 deploy_action: pulumi.Input[str],
+                 include_skaffold_modules: Optional[pulumi.Input[Sequence[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs']]]] = None,
+                 render_action: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] deploy_action: The Skaffold custom action responsible for deploy operations.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs']]] include_skaffold_modules: List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+               Structure is documented below.
+        :param pulumi.Input[str] render_action: The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+        """
+        pulumi.set(__self__, "deploy_action", deploy_action)
+        if include_skaffold_modules is not None:
+            pulumi.set(__self__, "include_skaffold_modules", include_skaffold_modules)
+        if render_action is not None:
+            pulumi.set(__self__, "render_action", render_action)
+
+    @property
+    @pulumi.getter(name="deployAction")
+    def deploy_action(self) -> pulumi.Input[str]:
+        """
+        The Skaffold custom action responsible for deploy operations.
+        """
+        return pulumi.get(self, "deploy_action")
+
+    @deploy_action.setter
+    def deploy_action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deploy_action", value)
+
+    @property
+    @pulumi.getter(name="includeSkaffoldModules")
+    def include_skaffold_modules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs']]]]:
+        """
+        List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_skaffold_modules")
+
+    @include_skaffold_modules.setter
+    def include_skaffold_modules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs']]]]):
+        pulumi.set(self, "include_skaffold_modules", value)
+
+    @property
+    @pulumi.getter(name="renderAction")
+    def render_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+        """
+        return pulumi.get(self, "render_action")
+
+    @render_action.setter
+    def render_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "render_action", value)
+
+
+@pulumi.input_type
+class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs:
+    def __init__(__self__, *,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 git: Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs']] = None,
+                 google_cloud_storage: Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] configs: The Skaffold Config modules to use from the specified source.
+        :param pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs'] git: Remote git repository containing the Skaffold Config modules.
+               Structure is documented below.
+        :param pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs'] google_cloud_storage: Cloud Storage bucket containing Skaffold Config modules.
+               Structure is documented below.
+        """
+        if configs is not None:
+            pulumi.set(__self__, "configs", configs)
+        if git is not None:
+            pulumi.set(__self__, "git", git)
+        if google_cloud_storage is not None:
+            pulumi.set(__self__, "google_cloud_storage", google_cloud_storage)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Skaffold Config modules to use from the specified source.
+        """
+        return pulumi.get(self, "configs")
+
+    @configs.setter
+    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "configs", value)
+
+    @property
+    @pulumi.getter
+    def git(self) -> Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs']]:
+        """
+        Remote git repository containing the Skaffold Config modules.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "git")
+
+    @git.setter
+    def git(self, value: Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs']]):
+        pulumi.set(self, "git", value)
+
+    @property
+    @pulumi.getter(name="googleCloudStorage")
+    def google_cloud_storage(self) -> Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs']]:
+        """
+        Cloud Storage bucket containing Skaffold Config modules.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_cloud_storage")
+
+    @google_cloud_storage.setter
+    def google_cloud_storage(self, value: Optional[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs']]):
+        pulumi.set(self, "google_cloud_storage", value)
+
+
+@pulumi.input_type
+class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs:
+    def __init__(__self__, *,
+                 repo: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None,
+                 ref: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] repo: Git repository the package should be cloned from.
+        :param pulumi.Input[str] path: Relative path from the repository root to the Skaffold file.
+        :param pulumi.Input[str] ref: Git ref the package should be cloned from.
+        """
+        pulumi.set(__self__, "repo", repo)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+
+    @property
+    @pulumi.getter
+    def repo(self) -> pulumi.Input[str]:
+        """
+        Git repository the package should be cloned from.
+        """
+        return pulumi.get(self, "repo")
+
+    @repo.setter
+    def repo(self, value: pulumi.Input[str]):
+        pulumi.set(self, "repo", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Relative path from the repository root to the Skaffold file.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Git ref the package should be cloned from.
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ref", value)
+
+
+@pulumi.input_type
+class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs:
+    def __init__(__self__, *,
+                 source: pulumi.Input[str],
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] source: Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
+        :param pulumi.Input[str] path: Relative path from the source to the Skaffold file.
+        """
+        pulumi.set(__self__, "source", source)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input[str]:
+        """
+        Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Relative path from the source to the Skaffold file.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
 
 
 @pulumi.input_type
@@ -1105,12 +1316,24 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs:
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs:
     def __init__(__self__, *,
-                 automatic_traffic_control: Optional[pulumi.Input[bool]] = None):
+                 automatic_traffic_control: Optional[pulumi.Input[bool]] = None,
+                 canary_revision_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 prior_revision_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 stable_revision_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[bool] automatic_traffic_control: Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] canary_revision_tags: Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] prior_revision_tags: Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] stable_revision_tags: Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
         """
         if automatic_traffic_control is not None:
             pulumi.set(__self__, "automatic_traffic_control", automatic_traffic_control)
+        if canary_revision_tags is not None:
+            pulumi.set(__self__, "canary_revision_tags", canary_revision_tags)
+        if prior_revision_tags is not None:
+            pulumi.set(__self__, "prior_revision_tags", prior_revision_tags)
+        if stable_revision_tags is not None:
+            pulumi.set(__self__, "stable_revision_tags", stable_revision_tags)
 
     @property
     @pulumi.getter(name="automaticTrafficControl")
@@ -1123,6 +1346,42 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs
     @automatic_traffic_control.setter
     def automatic_traffic_control(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_traffic_control", value)
+
+    @property
+    @pulumi.getter(name="canaryRevisionTags")
+    def canary_revision_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+        """
+        return pulumi.get(self, "canary_revision_tags")
+
+    @canary_revision_tags.setter
+    def canary_revision_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "canary_revision_tags", value)
+
+    @property
+    @pulumi.getter(name="priorRevisionTags")
+    def prior_revision_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+        """
+        return pulumi.get(self, "prior_revision_tags")
+
+    @prior_revision_tags.setter
+    def prior_revision_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "prior_revision_tags", value)
+
+    @property
+    @pulumi.getter(name="stableRevisionTags")
+    def stable_revision_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+        """
+        return pulumi.get(self, "stable_revision_tags")
+
+    @stable_revision_tags.setter
+    def stable_revision_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "stable_revision_tags", value)
 
 
 @pulumi.input_type
@@ -1170,18 +1429,22 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
                  deployment: pulumi.Input[str],
                  http_route: pulumi.Input[str],
                  service: pulumi.Input[str],
-                 route_update_wait_time: Optional[pulumi.Input[str]] = None):
+                 route_update_wait_time: Optional[pulumi.Input[str]] = None,
+                 stable_cutback_duration: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] deployment: Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
         :param pulumi.Input[str] http_route: Required. Name of the Gateway API HTTPRoute.
         :param pulumi.Input[str] service: Required. Name of the Kubernetes Service.
         :param pulumi.Input[str] route_update_wait_time: Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+        :param pulumi.Input[str] stable_cutback_duration: Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "http_route", http_route)
         pulumi.set(__self__, "service", service)
         if route_update_wait_time is not None:
             pulumi.set(__self__, "route_update_wait_time", route_update_wait_time)
+        if stable_cutback_duration is not None:
+            pulumi.set(__self__, "stable_cutback_duration", stable_cutback_duration)
 
     @property
     @pulumi.getter
@@ -1230,6 +1493,18 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
     @route_update_wait_time.setter
     def route_update_wait_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "route_update_wait_time", value)
+
+    @property
+    @pulumi.getter(name="stableCutbackDuration")
+    def stable_cutback_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+        """
+        return pulumi.get(self, "stable_cutback_duration")
+
+    @stable_cutback_duration.setter
+    def stable_cutback_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stable_cutback_duration", value)
 
 
 @pulumi.input_type

@@ -869,6 +869,7 @@ class WorkstationConfig(pulumi.CustomResource):
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
+                    disable_ssh=False,
                 ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -1267,6 +1268,7 @@ class WorkstationConfig(pulumi.CustomResource):
                     machine_type="e2-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
+                    disable_ssh=False,
                 ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))

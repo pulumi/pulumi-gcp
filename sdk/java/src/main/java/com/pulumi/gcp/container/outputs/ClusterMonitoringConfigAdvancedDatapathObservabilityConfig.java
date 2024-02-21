@@ -19,9 +19,18 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
      */
     private Boolean enableMetrics;
     /**
-     * @return Mode used to make Relay available.
+     * @return Whether or not Relay is enabled.
      * 
      */
+    private @Nullable Boolean enableRelay;
+    /**
+     * @return Mode used to make Relay available.
+     * 
+     * @deprecated
+     * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
+     * 
+     */
+    @Deprecated /* Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field. */
     private @Nullable String relayMode;
 
     private ClusterMonitoringConfigAdvancedDatapathObservabilityConfig() {}
@@ -33,9 +42,20 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
         return this.enableMetrics;
     }
     /**
-     * @return Mode used to make Relay available.
+     * @return Whether or not Relay is enabled.
      * 
      */
+    public Optional<Boolean> enableRelay() {
+        return Optional.ofNullable(this.enableRelay);
+    }
+    /**
+     * @return Mode used to make Relay available.
+     * 
+     * @deprecated
+     * Deprecated in favor of enable_relay field. Remove this attribute&#39;s configuration as this field will be removed in the next major release and enable_relay will become a required field.
+     * 
+     */
+    @Deprecated /* Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field. */
     public Optional<String> relayMode() {
         return Optional.ofNullable(this.relayMode);
     }
@@ -50,11 +70,13 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enableMetrics;
+        private @Nullable Boolean enableRelay;
         private @Nullable String relayMode;
         public Builder() {}
         public Builder(ClusterMonitoringConfigAdvancedDatapathObservabilityConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableMetrics = defaults.enableMetrics;
+    	      this.enableRelay = defaults.enableRelay;
     	      this.relayMode = defaults.relayMode;
         }
 
@@ -67,6 +89,12 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder enableRelay(@Nullable Boolean enableRelay) {
+
+            this.enableRelay = enableRelay;
+            return this;
+        }
+        @CustomType.Setter
         public Builder relayMode(@Nullable String relayMode) {
 
             this.relayMode = relayMode;
@@ -75,6 +103,7 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
         public ClusterMonitoringConfigAdvancedDatapathObservabilityConfig build() {
             final var _resultValue = new ClusterMonitoringConfigAdvancedDatapathObservabilityConfig();
             _resultValue.enableMetrics = enableMetrics;
+            _resultValue.enableRelay = enableRelay;
             _resultValue.relayMode = relayMode;
             return _resultValue;
         }

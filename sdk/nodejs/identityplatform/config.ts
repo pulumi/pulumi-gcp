@@ -158,6 +158,26 @@ export class Config extends pulumi.CustomResource {
      */
     public readonly blockingFunctions!: pulumi.Output<outputs.identityplatform.ConfigBlockingFunctions | undefined>;
     /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     */
+    public readonly client!: pulumi.Output<outputs.identityplatform.ConfigClient>;
+    /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     */
+    public readonly mfa!: pulumi.Output<outputs.identityplatform.ConfigMfa>;
+    /**
+     * Configuration related to monitoring project activity.
+     * Structure is documented below.
+     */
+    public readonly monitoring!: pulumi.Output<outputs.identityplatform.ConfigMonitoring>;
+    /**
+     * Configuration related to multi-tenant functionality.
+     * Structure is documented below.
+     */
+    public readonly multiTenant!: pulumi.Output<outputs.identityplatform.ConfigMultiTenant | undefined>;
+    /**
      * The name of the Config resource
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -198,6 +218,10 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["authorizedDomains"] = state ? state.authorizedDomains : undefined;
             resourceInputs["autodeleteAnonymousUsers"] = state ? state.autodeleteAnonymousUsers : undefined;
             resourceInputs["blockingFunctions"] = state ? state.blockingFunctions : undefined;
+            resourceInputs["client"] = state ? state.client : undefined;
+            resourceInputs["mfa"] = state ? state.mfa : undefined;
+            resourceInputs["monitoring"] = state ? state.monitoring : undefined;
+            resourceInputs["multiTenant"] = state ? state.multiTenant : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["quota"] = state ? state.quota : undefined;
@@ -208,6 +232,10 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["authorizedDomains"] = args ? args.authorizedDomains : undefined;
             resourceInputs["autodeleteAnonymousUsers"] = args ? args.autodeleteAnonymousUsers : undefined;
             resourceInputs["blockingFunctions"] = args ? args.blockingFunctions : undefined;
+            resourceInputs["client"] = args ? args.client : undefined;
+            resourceInputs["mfa"] = args ? args.mfa : undefined;
+            resourceInputs["monitoring"] = args ? args.monitoring : undefined;
+            resourceInputs["multiTenant"] = args ? args.multiTenant : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["quota"] = args ? args.quota : undefined;
             resourceInputs["signIn"] = args ? args.signIn : undefined;
@@ -236,6 +264,26 @@ export interface ConfigState {
      * Structure is documented below.
      */
     blockingFunctions?: pulumi.Input<inputs.identityplatform.ConfigBlockingFunctions>;
+    /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     */
+    client?: pulumi.Input<inputs.identityplatform.ConfigClient>;
+    /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     */
+    mfa?: pulumi.Input<inputs.identityplatform.ConfigMfa>;
+    /**
+     * Configuration related to monitoring project activity.
+     * Structure is documented below.
+     */
+    monitoring?: pulumi.Input<inputs.identityplatform.ConfigMonitoring>;
+    /**
+     * Configuration related to multi-tenant functionality.
+     * Structure is documented below.
+     */
+    multiTenant?: pulumi.Input<inputs.identityplatform.ConfigMultiTenant>;
     /**
      * The name of the Config resource
      */
@@ -279,6 +327,26 @@ export interface ConfigArgs {
      * Structure is documented below.
      */
     blockingFunctions?: pulumi.Input<inputs.identityplatform.ConfigBlockingFunctions>;
+    /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     */
+    client?: pulumi.Input<inputs.identityplatform.ConfigClient>;
+    /**
+     * Options related to how clients making requests on behalf of a project should be configured.
+     * Structure is documented below.
+     */
+    mfa?: pulumi.Input<inputs.identityplatform.ConfigMfa>;
+    /**
+     * Configuration related to monitoring project activity.
+     * Structure is documented below.
+     */
+    monitoring?: pulumi.Input<inputs.identityplatform.ConfigMonitoring>;
+    /**
+     * Configuration related to multi-tenant functionality.
+     * Structure is documented below.
+     */
+    multiTenant?: pulumi.Input<inputs.identityplatform.ConfigMultiTenant>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .automation import *
+from .custom_target_type import *
 from .delivery_pipeline import *
 from .delivery_pipeline_iam_binding import *
 from .delivery_pipeline_iam_member import *

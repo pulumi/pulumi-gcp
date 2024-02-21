@@ -13,6 +13,7 @@ import com.pulumi.gcp.healthcare.inputs.Hl7StoreState;
 import com.pulumi.gcp.healthcare.outputs.Hl7StoreNotificationConfig;
 import com.pulumi.gcp.healthcare.outputs.Hl7StoreNotificationConfigs;
 import com.pulumi.gcp.healthcare.outputs.Hl7StoreParserConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +65,7 @@ import javax.annotation.Nullable;
  * 
  *         var store = new Hl7Store(&#34;store&#34;, Hl7StoreArgs.builder()        
  *             .dataset(dataset.id())
+ *             .rejectDuplicateMessage(true)
  *             .notificationConfigs(Hl7StoreNotificationConfigsArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .build())
@@ -427,6 +429,20 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * Determines whether duplicate messages are allowed.
+     * 
+     */
+    @Export(name="rejectDuplicateMessage", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> rejectDuplicateMessage;
+
+    /**
+     * @return Determines whether duplicate messages are allowed.
+     * 
+     */
+    public Output<Optional<Boolean>> rejectDuplicateMessage() {
+        return Codegen.optional(this.rejectDuplicateMessage);
     }
     /**
      * The fully qualified name of this dataset

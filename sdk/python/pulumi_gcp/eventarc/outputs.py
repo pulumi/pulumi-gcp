@@ -14,6 +14,8 @@ __all__ = [
     'TriggerDestination',
     'TriggerDestinationCloudRunService',
     'TriggerDestinationGke',
+    'TriggerDestinationHttpEndpoint',
+    'TriggerDestinationNetworkConfig',
     'TriggerMatchingCriteria',
     'TriggerTransport',
     'TriggerTransportPubsub',
@@ -28,6 +30,10 @@ class TriggerDestination(dict):
             suggest = "cloud_function"
         elif key == "cloudRunService":
             suggest = "cloud_run_service"
+        elif key == "httpEndpoint":
+            suggest = "http_endpoint"
+        elif key == "networkConfig":
+            suggest = "network_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TriggerDestination. Access the value via the '{suggest}' property getter instead.")
@@ -44,11 +50,15 @@ class TriggerDestination(dict):
                  cloud_function: Optional[str] = None,
                  cloud_run_service: Optional['outputs.TriggerDestinationCloudRunService'] = None,
                  gke: Optional['outputs.TriggerDestinationGke'] = None,
+                 http_endpoint: Optional['outputs.TriggerDestinationHttpEndpoint'] = None,
+                 network_config: Optional['outputs.TriggerDestinationNetworkConfig'] = None,
                  workflow: Optional[str] = None):
         """
         :param str cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         :param 'TriggerDestinationCloudRunServiceArgs' cloud_run_service: Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         :param 'TriggerDestinationGkeArgs' gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        :param 'TriggerDestinationHttpEndpointArgs' http_endpoint: An HTTP endpoint destination described by an URI.
+        :param 'TriggerDestinationNetworkConfigArgs' network_config: Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
         :param str workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         if cloud_function is not None:
@@ -57,6 +67,10 @@ class TriggerDestination(dict):
             pulumi.set(__self__, "cloud_run_service", cloud_run_service)
         if gke is not None:
             pulumi.set(__self__, "gke", gke)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if workflow is not None:
             pulumi.set(__self__, "workflow", workflow)
 
@@ -83,6 +97,22 @@ class TriggerDestination(dict):
         A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
         return pulumi.get(self, "gke")
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional['outputs.TriggerDestinationHttpEndpoint']:
+        """
+        An HTTP endpoint destination described by an URI.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional['outputs.TriggerDestinationNetworkConfig']:
+        """
+        Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+        """
+        return pulumi.get(self, "network_config")
 
     @property
     @pulumi.getter
@@ -196,6 +226,59 @@ class TriggerDestinationGke(dict):
         Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class TriggerDestinationHttpEndpoint(dict):
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        :param str uri: Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class TriggerDestinationNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkAttachment":
+            suggest = "network_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerDestinationNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerDestinationNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerDestinationNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_attachment: str):
+        """
+        :param str network_attachment: Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> str:
+        """
+        Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+        """
+        return pulumi.get(self, "network_attachment")
 
 
 @pulumi.output_type

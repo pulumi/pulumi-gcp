@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// </summary>
         public readonly ImmutableArray<string> NameServers;
         /// <summary>
-        /// The ID of the project for the Google Cloud.
+        /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
         /// </summary>
         public readonly string Project;
         /// <summary>

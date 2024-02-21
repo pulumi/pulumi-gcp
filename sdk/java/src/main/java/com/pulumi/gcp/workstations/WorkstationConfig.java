@@ -97,6 +97,7 @@ import javax.annotation.Nullable;
  *                     .machineType(&#34;e2-standard-4&#34;)
  *                     .bootDiskSizeGb(35)
  *                     .disablePublicIpAddresses(true)
+ *                     .disableSsh(false)
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

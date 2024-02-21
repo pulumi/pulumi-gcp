@@ -380,6 +380,11 @@ class Posture(pulumi.CustomResource):
                                 org_policy_constraint=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs(
                                     canned_constraint_id="storage.uniformBucketLevelAccess",
                                     policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs(
+                                        condition=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs(
+                                            description="condition description",
+                                            expression="resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
+                                            title="a CEL condition",
+                                        ),
                                         enforce=True,
                                     )],
                                 ),
@@ -402,6 +407,11 @@ class Posture(pulumi.CustomResource):
                                         resource_types=["container.googleapis.com/NodePool"],
                                     ),
                                     policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs(
+                                        condition=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs(
+                                            description="condition description",
+                                            expression="resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
+                                            title="a CEL condition",
+                                        ),
                                         enforce=True,
                                     )],
                                 ),
@@ -446,7 +456,7 @@ class Posture(pulumi.CustomResource):
                                         ),
                                         severity="LOW",
                                     ),
-                                    display_name="custom SHA policy",
+                                    display_name="custom_SHA_policy",
                                     module_enablement_state="ENABLED",
                                 ),
                             ),
@@ -524,6 +534,11 @@ class Posture(pulumi.CustomResource):
                                 org_policy_constraint=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs(
                                     canned_constraint_id="storage.uniformBucketLevelAccess",
                                     policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs(
+                                        condition=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs(
+                                            description="condition description",
+                                            expression="resource.matchTag('org_id/tag_key_short_name,'tag_value_short_name')",
+                                            title="a CEL condition",
+                                        ),
                                         enforce=True,
                                     )],
                                 ),
@@ -546,6 +561,11 @@ class Posture(pulumi.CustomResource):
                                         resource_types=["container.googleapis.com/NodePool"],
                                     ),
                                     policy_rules=[gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs(
+                                        condition=gcp.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs(
+                                            description="condition description",
+                                            expression="resource.matchTagId('tagKeys/key_id','tagValues/value_id')",
+                                            title="a CEL condition",
+                                        ),
                                         enforce=True,
                                     )],
                                 ),
@@ -590,7 +610,7 @@ class Posture(pulumi.CustomResource):
                                         ),
                                         severity="LOW",
                                     ),
-                                    display_name="custom SHA policy",
+                                    display_name="custom_SHA_policy",
                                     module_enablement_state="ENABLED",
                                 ),
                             ),

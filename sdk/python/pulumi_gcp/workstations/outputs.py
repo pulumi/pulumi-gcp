@@ -435,6 +435,8 @@ class WorkstationConfigHostGceInstance(dict):
             suggest = "confidential_instance_config"
         elif key == "disablePublicIpAddresses":
             suggest = "disable_public_ip_addresses"
+        elif key == "disableSsh":
+            suggest = "disable_ssh"
         elif key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
         elif key == "machineType":
@@ -464,6 +466,7 @@ class WorkstationConfigHostGceInstance(dict):
                  boot_disk_size_gb: Optional[int] = None,
                  confidential_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig'] = None,
                  disable_public_ip_addresses: Optional[bool] = None,
+                 disable_ssh: Optional[bool] = None,
                  enable_nested_virtualization: Optional[bool] = None,
                  machine_type: Optional[str] = None,
                  pool_size: Optional[int] = None,
@@ -478,6 +481,7 @@ class WorkstationConfigHostGceInstance(dict):
         :param 'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs' confidential_instance_config: A set of Compute Engine Confidential VM instance options.
                Structure is documented below.
         :param bool disable_public_ip_addresses: Whether instances have no public IP address.
+        :param bool disable_ssh: Whether to disable SSH access to the VM.
         :param bool enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
                See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         :param str machine_type: The name of a Compute Engine machine type.
@@ -496,6 +500,8 @@ class WorkstationConfigHostGceInstance(dict):
             pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if disable_public_ip_addresses is not None:
             pulumi.set(__self__, "disable_public_ip_addresses", disable_public_ip_addresses)
+        if disable_ssh is not None:
+            pulumi.set(__self__, "disable_ssh", disable_ssh)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if machine_type is not None:
@@ -544,6 +550,14 @@ class WorkstationConfigHostGceInstance(dict):
         Whether instances have no public IP address.
         """
         return pulumi.get(self, "disable_public_ip_addresses")
+
+    @property
+    @pulumi.getter(name="disableSsh")
+    def disable_ssh(self) -> Optional[bool]:
+        """
+        Whether to disable SSH access to the VM.
+        """
+        return pulumi.get(self, "disable_ssh")
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")

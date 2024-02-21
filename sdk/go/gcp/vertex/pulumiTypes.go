@@ -2744,6 +2744,257 @@ func (o AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput) Uri() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySource struct {
+	// List of features that need to be synced to Online Store.
+	// Structure is documented below.
+	FeatureGroups []AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup `pulumi:"featureGroups"`
+}
+
+// AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceInput is an input type that accepts AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs and AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs{...}
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput
+	ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs struct {
+	// List of features that need to be synced to Online Store.
+	// Structure is documented below.
+	FeatureGroups AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayInput `pulumi:"featureGroups"`
+}
+
+func (AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySource)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput)
+}
+
+func (i AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput).ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrInput is an input type that accepts AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs, AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtr and AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrInput` via:
+//
+//	        AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput
+	ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput
+}
+
+type aiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrType AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs
+
+func AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtr(v *AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrInput {
+	return (*aiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewFeatureRegistrySource)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrType) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrType) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySource)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+	return o.ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreFeatureviewFeatureRegistrySource) *AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
+		return &v
+	}).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput)
+}
+
+// List of features that need to be synced to Online Store.
+// Structure is documented below.
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput) FeatureGroups() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewFeatureRegistrySource) []AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
+		return v.FeatureGroups
+	}).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewFeatureRegistrySource)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput) Elem() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewFeatureRegistrySource) AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreFeatureviewFeatureRegistrySource
+		return ret
+	}).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput)
+}
+
+// List of features that need to be synced to Online Store.
+// Structure is documented below.
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput) FeatureGroups() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewFeatureRegistrySource) []AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureGroups
+	}).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup struct {
+	// Identifier of the feature group.
+	FeatureGroupId string `pulumi:"featureGroupId"`
+	// Identifiers of features under the feature group.
+	FeatureIds []string `pulumi:"featureIds"`
+}
+
+// AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupInput is an input type that accepts AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs and AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs{...}
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput
+	ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs struct {
+	// Identifier of the feature group.
+	FeatureGroupId pulumi.StringInput `pulumi:"featureGroupId"`
+	// Identifiers of features under the feature group.
+	FeatureIds pulumi.StringArrayInput `pulumi:"featureIds"`
+}
+
+func (AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput)
+}
+
+// AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayInput is an input type that accepts AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray and AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray{ AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs{...} }
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput
+	ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray []AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupInput
+
+func (AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput {
+	return o
+}
+
+// Identifier of the feature group.
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput) FeatureGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup) string {
+		return v.FeatureGroupId
+	}).(pulumi.StringOutput)
+}
+
+// Identifiers of features under the feature group.
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput) FeatureIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup) []string { return v.FeatureIds }).(pulumi.StringArrayOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput() AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput) ToAiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput) Index(i pulumi.IntInput) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
+		return vs[0].([]AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup)[vs[1].(int)]
+	}).(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput)
+}
+
 type AiFeatureOnlineStoreFeatureviewSyncConfig struct {
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
@@ -8103,6 +8354,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreEmbeddingManagementPtrInput)(nil)).Elem(), AiFeatureOnlineStoreEmbeddingManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewBigQuerySourceInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewSyncConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewSyncConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewVectorSearchConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgs{})
@@ -8209,6 +8464,10 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreEmbeddingManagementPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourcePtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroupArrayOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewSyncConfigOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewVectorSearchConfigOutput{})

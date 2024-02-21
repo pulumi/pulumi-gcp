@@ -5497,12 +5497,19 @@ class ClusterMonitoringConfigArgs:
 class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
     def __init__(__self__, *,
                  enable_metrics: pulumi.Input[bool],
+                 enable_relay: Optional[pulumi.Input[bool]] = None,
                  relay_mode: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enable_metrics: Whether or not to enable advanced datapath metrics.
+        :param pulumi.Input[bool] enable_relay: Whether or not Relay is enabled.
         :param pulumi.Input[str] relay_mode: Mode used to make Relay available.
         """
         pulumi.set(__self__, "enable_metrics", enable_metrics)
+        if enable_relay is not None:
+            pulumi.set(__self__, "enable_relay", enable_relay)
+        if relay_mode is not None:
+            warnings.warn("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""", DeprecationWarning)
+            pulumi.log.warn("""relay_mode is deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
         if relay_mode is not None:
             pulumi.set(__self__, "relay_mode", relay_mode)
 
@@ -5519,11 +5526,26 @@ class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs:
         pulumi.set(self, "enable_metrics", value)
 
     @property
+    @pulumi.getter(name="enableRelay")
+    def enable_relay(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not Relay is enabled.
+        """
+        return pulumi.get(self, "enable_relay")
+
+    @enable_relay.setter
+    def enable_relay(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_relay", value)
+
+    @property
     @pulumi.getter(name="relayMode")
     def relay_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Mode used to make Relay available.
         """
+        warnings.warn("""Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""", DeprecationWarning)
+        pulumi.log.warn("""relay_mode is deprecated: Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.""")
+
         return pulumi.get(self, "relay_mode")
 
     @relay_mode.setter

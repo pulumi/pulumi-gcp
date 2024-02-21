@@ -22,7 +22,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, pulumi_labels=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, effective_labels=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, pulumi_labels=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, version_id=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -119,6 +119,9 @@ class GetFunctionResult:
         if trigger_http and not isinstance(trigger_http, bool):
             raise TypeError("Expected argument 'trigger_http' to be a bool")
         pulumi.set(__self__, "trigger_http", trigger_http)
+        if version_id and not isinstance(version_id, str):
+            raise TypeError("Expected argument 'version_id' to be a str")
+        pulumi.set(__self__, "version_id", version_id)
         if vpc_connector and not isinstance(vpc_connector, str):
             raise TypeError("Expected argument 'vpc_connector' to be a str")
         pulumi.set(__self__, "vpc_connector", vpc_connector)
@@ -338,6 +341,11 @@ class GetFunctionResult:
         return pulumi.get(self, "trigger_http")
 
     @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> str:
+        return pulumi.get(self, "version_id")
+
+    @property
     @pulumi.getter(name="vpcConnector")
     def vpc_connector(self) -> str:
         """
@@ -392,6 +400,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             status=self.status,
             timeout=self.timeout,
             trigger_http=self.trigger_http,
+            version_id=self.version_id,
             vpc_connector=self.vpc_connector,
             vpc_connector_egress_settings=self.vpc_connector_egress_settings)
 
@@ -463,6 +472,7 @@ def get_function(name: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         timeout=pulumi.get(__ret__, 'timeout'),
         trigger_http=pulumi.get(__ret__, 'trigger_http'),
+        version_id=pulumi.get(__ret__, 'version_id'),
         vpc_connector=pulumi.get(__ret__, 'vpc_connector'),
         vpc_connector_egress_settings=pulumi.get(__ret__, 'vpc_connector_egress_settings'))
 

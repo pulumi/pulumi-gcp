@@ -472,6 +472,1237 @@ func (o ConfigBlockingFunctionsTriggerArrayOutput) Index(i pulumi.IntInput) Conf
 	}).(ConfigBlockingFunctionsTriggerOutput)
 }
 
+type ConfigClient struct {
+	// (Output)
+	// API key that can be used when making requests for this project.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ApiKey *string `pulumi:"apiKey"`
+	// (Output)
+	// Firebase subdomain.
+	FirebaseSubdomain *string `pulumi:"firebaseSubdomain"`
+	// Configuration related to restricting a user's ability to affect their account.
+	// Structure is documented below.
+	Permissions *ConfigClientPermissions `pulumi:"permissions"`
+}
+
+// ConfigClientInput is an input type that accepts ConfigClientArgs and ConfigClientOutput values.
+// You can construct a concrete instance of `ConfigClientInput` via:
+//
+//	ConfigClientArgs{...}
+type ConfigClientInput interface {
+	pulumi.Input
+
+	ToConfigClientOutput() ConfigClientOutput
+	ToConfigClientOutputWithContext(context.Context) ConfigClientOutput
+}
+
+type ConfigClientArgs struct {
+	// (Output)
+	// API key that can be used when making requests for this project.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// (Output)
+	// Firebase subdomain.
+	FirebaseSubdomain pulumi.StringPtrInput `pulumi:"firebaseSubdomain"`
+	// Configuration related to restricting a user's ability to affect their account.
+	// Structure is documented below.
+	Permissions ConfigClientPermissionsPtrInput `pulumi:"permissions"`
+}
+
+func (ConfigClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigClient)(nil)).Elem()
+}
+
+func (i ConfigClientArgs) ToConfigClientOutput() ConfigClientOutput {
+	return i.ToConfigClientOutputWithContext(context.Background())
+}
+
+func (i ConfigClientArgs) ToConfigClientOutputWithContext(ctx context.Context) ConfigClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigClientOutput)
+}
+
+func (i ConfigClientArgs) ToConfigClientPtrOutput() ConfigClientPtrOutput {
+	return i.ToConfigClientPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigClientArgs) ToConfigClientPtrOutputWithContext(ctx context.Context) ConfigClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigClientOutput).ToConfigClientPtrOutputWithContext(ctx)
+}
+
+// ConfigClientPtrInput is an input type that accepts ConfigClientArgs, ConfigClientPtr and ConfigClientPtrOutput values.
+// You can construct a concrete instance of `ConfigClientPtrInput` via:
+//
+//	        ConfigClientArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigClientPtrInput interface {
+	pulumi.Input
+
+	ToConfigClientPtrOutput() ConfigClientPtrOutput
+	ToConfigClientPtrOutputWithContext(context.Context) ConfigClientPtrOutput
+}
+
+type configClientPtrType ConfigClientArgs
+
+func ConfigClientPtr(v *ConfigClientArgs) ConfigClientPtrInput {
+	return (*configClientPtrType)(v)
+}
+
+func (*configClientPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigClient)(nil)).Elem()
+}
+
+func (i *configClientPtrType) ToConfigClientPtrOutput() ConfigClientPtrOutput {
+	return i.ToConfigClientPtrOutputWithContext(context.Background())
+}
+
+func (i *configClientPtrType) ToConfigClientPtrOutputWithContext(ctx context.Context) ConfigClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigClientPtrOutput)
+}
+
+type ConfigClientOutput struct{ *pulumi.OutputState }
+
+func (ConfigClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigClient)(nil)).Elem()
+}
+
+func (o ConfigClientOutput) ToConfigClientOutput() ConfigClientOutput {
+	return o
+}
+
+func (o ConfigClientOutput) ToConfigClientOutputWithContext(ctx context.Context) ConfigClientOutput {
+	return o
+}
+
+func (o ConfigClientOutput) ToConfigClientPtrOutput() ConfigClientPtrOutput {
+	return o.ToConfigClientPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigClientOutput) ToConfigClientPtrOutputWithContext(ctx context.Context) ConfigClientPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigClient) *ConfigClient {
+		return &v
+	}).(ConfigClientPtrOutput)
+}
+
+// (Output)
+// API key that can be used when making requests for this project.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConfigClientOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigClient) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Firebase subdomain.
+func (o ConfigClientOutput) FirebaseSubdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigClient) *string { return v.FirebaseSubdomain }).(pulumi.StringPtrOutput)
+}
+
+// Configuration related to restricting a user's ability to affect their account.
+// Structure is documented below.
+func (o ConfigClientOutput) Permissions() ConfigClientPermissionsPtrOutput {
+	return o.ApplyT(func(v ConfigClient) *ConfigClientPermissions { return v.Permissions }).(ConfigClientPermissionsPtrOutput)
+}
+
+type ConfigClientPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigClientPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigClient)(nil)).Elem()
+}
+
+func (o ConfigClientPtrOutput) ToConfigClientPtrOutput() ConfigClientPtrOutput {
+	return o
+}
+
+func (o ConfigClientPtrOutput) ToConfigClientPtrOutputWithContext(ctx context.Context) ConfigClientPtrOutput {
+	return o
+}
+
+func (o ConfigClientPtrOutput) Elem() ConfigClientOutput {
+	return o.ApplyT(func(v *ConfigClient) ConfigClient {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigClient
+		return ret
+	}).(ConfigClientOutput)
+}
+
+// (Output)
+// API key that can be used when making requests for this project.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o ConfigClientPtrOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigClient) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Firebase subdomain.
+func (o ConfigClientPtrOutput) FirebaseSubdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigClient) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FirebaseSubdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration related to restricting a user's ability to affect their account.
+// Structure is documented below.
+func (o ConfigClientPtrOutput) Permissions() ConfigClientPermissionsPtrOutput {
+	return o.ApplyT(func(v *ConfigClient) *ConfigClientPermissions {
+		if v == nil {
+			return nil
+		}
+		return v.Permissions
+	}).(ConfigClientPermissionsPtrOutput)
+}
+
+type ConfigClientPermissions struct {
+	// When true, end users cannot delete their account on the associated project through any of our API methods
+	DisabledUserDeletion *bool `pulumi:"disabledUserDeletion"`
+	// When true, end users cannot sign up for a new account on the associated project through any of our API methods
+	DisabledUserSignup *bool `pulumi:"disabledUserSignup"`
+}
+
+// ConfigClientPermissionsInput is an input type that accepts ConfigClientPermissionsArgs and ConfigClientPermissionsOutput values.
+// You can construct a concrete instance of `ConfigClientPermissionsInput` via:
+//
+//	ConfigClientPermissionsArgs{...}
+type ConfigClientPermissionsInput interface {
+	pulumi.Input
+
+	ToConfigClientPermissionsOutput() ConfigClientPermissionsOutput
+	ToConfigClientPermissionsOutputWithContext(context.Context) ConfigClientPermissionsOutput
+}
+
+type ConfigClientPermissionsArgs struct {
+	// When true, end users cannot delete their account on the associated project through any of our API methods
+	DisabledUserDeletion pulumi.BoolPtrInput `pulumi:"disabledUserDeletion"`
+	// When true, end users cannot sign up for a new account on the associated project through any of our API methods
+	DisabledUserSignup pulumi.BoolPtrInput `pulumi:"disabledUserSignup"`
+}
+
+func (ConfigClientPermissionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigClientPermissions)(nil)).Elem()
+}
+
+func (i ConfigClientPermissionsArgs) ToConfigClientPermissionsOutput() ConfigClientPermissionsOutput {
+	return i.ToConfigClientPermissionsOutputWithContext(context.Background())
+}
+
+func (i ConfigClientPermissionsArgs) ToConfigClientPermissionsOutputWithContext(ctx context.Context) ConfigClientPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigClientPermissionsOutput)
+}
+
+func (i ConfigClientPermissionsArgs) ToConfigClientPermissionsPtrOutput() ConfigClientPermissionsPtrOutput {
+	return i.ToConfigClientPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigClientPermissionsArgs) ToConfigClientPermissionsPtrOutputWithContext(ctx context.Context) ConfigClientPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigClientPermissionsOutput).ToConfigClientPermissionsPtrOutputWithContext(ctx)
+}
+
+// ConfigClientPermissionsPtrInput is an input type that accepts ConfigClientPermissionsArgs, ConfigClientPermissionsPtr and ConfigClientPermissionsPtrOutput values.
+// You can construct a concrete instance of `ConfigClientPermissionsPtrInput` via:
+//
+//	        ConfigClientPermissionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigClientPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToConfigClientPermissionsPtrOutput() ConfigClientPermissionsPtrOutput
+	ToConfigClientPermissionsPtrOutputWithContext(context.Context) ConfigClientPermissionsPtrOutput
+}
+
+type configClientPermissionsPtrType ConfigClientPermissionsArgs
+
+func ConfigClientPermissionsPtr(v *ConfigClientPermissionsArgs) ConfigClientPermissionsPtrInput {
+	return (*configClientPermissionsPtrType)(v)
+}
+
+func (*configClientPermissionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigClientPermissions)(nil)).Elem()
+}
+
+func (i *configClientPermissionsPtrType) ToConfigClientPermissionsPtrOutput() ConfigClientPermissionsPtrOutput {
+	return i.ToConfigClientPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (i *configClientPermissionsPtrType) ToConfigClientPermissionsPtrOutputWithContext(ctx context.Context) ConfigClientPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigClientPermissionsPtrOutput)
+}
+
+type ConfigClientPermissionsOutput struct{ *pulumi.OutputState }
+
+func (ConfigClientPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigClientPermissions)(nil)).Elem()
+}
+
+func (o ConfigClientPermissionsOutput) ToConfigClientPermissionsOutput() ConfigClientPermissionsOutput {
+	return o
+}
+
+func (o ConfigClientPermissionsOutput) ToConfigClientPermissionsOutputWithContext(ctx context.Context) ConfigClientPermissionsOutput {
+	return o
+}
+
+func (o ConfigClientPermissionsOutput) ToConfigClientPermissionsPtrOutput() ConfigClientPermissionsPtrOutput {
+	return o.ToConfigClientPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigClientPermissionsOutput) ToConfigClientPermissionsPtrOutputWithContext(ctx context.Context) ConfigClientPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigClientPermissions) *ConfigClientPermissions {
+		return &v
+	}).(ConfigClientPermissionsPtrOutput)
+}
+
+// When true, end users cannot delete their account on the associated project through any of our API methods
+func (o ConfigClientPermissionsOutput) DisabledUserDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigClientPermissions) *bool { return v.DisabledUserDeletion }).(pulumi.BoolPtrOutput)
+}
+
+// When true, end users cannot sign up for a new account on the associated project through any of our API methods
+func (o ConfigClientPermissionsOutput) DisabledUserSignup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigClientPermissions) *bool { return v.DisabledUserSignup }).(pulumi.BoolPtrOutput)
+}
+
+type ConfigClientPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigClientPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigClientPermissions)(nil)).Elem()
+}
+
+func (o ConfigClientPermissionsPtrOutput) ToConfigClientPermissionsPtrOutput() ConfigClientPermissionsPtrOutput {
+	return o
+}
+
+func (o ConfigClientPermissionsPtrOutput) ToConfigClientPermissionsPtrOutputWithContext(ctx context.Context) ConfigClientPermissionsPtrOutput {
+	return o
+}
+
+func (o ConfigClientPermissionsPtrOutput) Elem() ConfigClientPermissionsOutput {
+	return o.ApplyT(func(v *ConfigClientPermissions) ConfigClientPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigClientPermissions
+		return ret
+	}).(ConfigClientPermissionsOutput)
+}
+
+// When true, end users cannot delete their account on the associated project through any of our API methods
+func (o ConfigClientPermissionsPtrOutput) DisabledUserDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigClientPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisabledUserDeletion
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When true, end users cannot sign up for a new account on the associated project through any of our API methods
+func (o ConfigClientPermissionsPtrOutput) DisabledUserSignup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigClientPermissions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisabledUserSignup
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConfigMfa struct {
+	// A list of usable second factors for this project.
+	// Each value may be one of: `PHONE_SMS`.
+	EnabledProviders []string `pulumi:"enabledProviders"`
+	// A list of usable second factors for this project along with their configurations.
+	// This field does not support phone based MFA, for that use the 'enabledProviders' field.
+	// Structure is documented below.
+	ProviderConfigs []ConfigMfaProviderConfig `pulumi:"providerConfigs"`
+	// Whether MultiFactor Authentication has been enabled for this project.
+	// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+	State *string `pulumi:"state"`
+}
+
+// ConfigMfaInput is an input type that accepts ConfigMfaArgs and ConfigMfaOutput values.
+// You can construct a concrete instance of `ConfigMfaInput` via:
+//
+//	ConfigMfaArgs{...}
+type ConfigMfaInput interface {
+	pulumi.Input
+
+	ToConfigMfaOutput() ConfigMfaOutput
+	ToConfigMfaOutputWithContext(context.Context) ConfigMfaOutput
+}
+
+type ConfigMfaArgs struct {
+	// A list of usable second factors for this project.
+	// Each value may be one of: `PHONE_SMS`.
+	EnabledProviders pulumi.StringArrayInput `pulumi:"enabledProviders"`
+	// A list of usable second factors for this project along with their configurations.
+	// This field does not support phone based MFA, for that use the 'enabledProviders' field.
+	// Structure is documented below.
+	ProviderConfigs ConfigMfaProviderConfigArrayInput `pulumi:"providerConfigs"`
+	// Whether MultiFactor Authentication has been enabled for this project.
+	// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (ConfigMfaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMfa)(nil)).Elem()
+}
+
+func (i ConfigMfaArgs) ToConfigMfaOutput() ConfigMfaOutput {
+	return i.ToConfigMfaOutputWithContext(context.Background())
+}
+
+func (i ConfigMfaArgs) ToConfigMfaOutputWithContext(ctx context.Context) ConfigMfaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMfaOutput)
+}
+
+func (i ConfigMfaArgs) ToConfigMfaPtrOutput() ConfigMfaPtrOutput {
+	return i.ToConfigMfaPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigMfaArgs) ToConfigMfaPtrOutputWithContext(ctx context.Context) ConfigMfaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMfaOutput).ToConfigMfaPtrOutputWithContext(ctx)
+}
+
+// ConfigMfaPtrInput is an input type that accepts ConfigMfaArgs, ConfigMfaPtr and ConfigMfaPtrOutput values.
+// You can construct a concrete instance of `ConfigMfaPtrInput` via:
+//
+//	        ConfigMfaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigMfaPtrInput interface {
+	pulumi.Input
+
+	ToConfigMfaPtrOutput() ConfigMfaPtrOutput
+	ToConfigMfaPtrOutputWithContext(context.Context) ConfigMfaPtrOutput
+}
+
+type configMfaPtrType ConfigMfaArgs
+
+func ConfigMfaPtr(v *ConfigMfaArgs) ConfigMfaPtrInput {
+	return (*configMfaPtrType)(v)
+}
+
+func (*configMfaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMfa)(nil)).Elem()
+}
+
+func (i *configMfaPtrType) ToConfigMfaPtrOutput() ConfigMfaPtrOutput {
+	return i.ToConfigMfaPtrOutputWithContext(context.Background())
+}
+
+func (i *configMfaPtrType) ToConfigMfaPtrOutputWithContext(ctx context.Context) ConfigMfaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMfaPtrOutput)
+}
+
+type ConfigMfaOutput struct{ *pulumi.OutputState }
+
+func (ConfigMfaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMfa)(nil)).Elem()
+}
+
+func (o ConfigMfaOutput) ToConfigMfaOutput() ConfigMfaOutput {
+	return o
+}
+
+func (o ConfigMfaOutput) ToConfigMfaOutputWithContext(ctx context.Context) ConfigMfaOutput {
+	return o
+}
+
+func (o ConfigMfaOutput) ToConfigMfaPtrOutput() ConfigMfaPtrOutput {
+	return o.ToConfigMfaPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigMfaOutput) ToConfigMfaPtrOutputWithContext(ctx context.Context) ConfigMfaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMfa) *ConfigMfa {
+		return &v
+	}).(ConfigMfaPtrOutput)
+}
+
+// A list of usable second factors for this project.
+// Each value may be one of: `PHONE_SMS`.
+func (o ConfigMfaOutput) EnabledProviders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConfigMfa) []string { return v.EnabledProviders }).(pulumi.StringArrayOutput)
+}
+
+// A list of usable second factors for this project along with their configurations.
+// This field does not support phone based MFA, for that use the 'enabledProviders' field.
+// Structure is documented below.
+func (o ConfigMfaOutput) ProviderConfigs() ConfigMfaProviderConfigArrayOutput {
+	return o.ApplyT(func(v ConfigMfa) []ConfigMfaProviderConfig { return v.ProviderConfigs }).(ConfigMfaProviderConfigArrayOutput)
+}
+
+// Whether MultiFactor Authentication has been enabled for this project.
+// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+func (o ConfigMfaOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigMfa) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type ConfigMfaPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigMfaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMfa)(nil)).Elem()
+}
+
+func (o ConfigMfaPtrOutput) ToConfigMfaPtrOutput() ConfigMfaPtrOutput {
+	return o
+}
+
+func (o ConfigMfaPtrOutput) ToConfigMfaPtrOutputWithContext(ctx context.Context) ConfigMfaPtrOutput {
+	return o
+}
+
+func (o ConfigMfaPtrOutput) Elem() ConfigMfaOutput {
+	return o.ApplyT(func(v *ConfigMfa) ConfigMfa {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMfa
+		return ret
+	}).(ConfigMfaOutput)
+}
+
+// A list of usable second factors for this project.
+// Each value may be one of: `PHONE_SMS`.
+func (o ConfigMfaPtrOutput) EnabledProviders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConfigMfa) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledProviders
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of usable second factors for this project along with their configurations.
+// This field does not support phone based MFA, for that use the 'enabledProviders' field.
+// Structure is documented below.
+func (o ConfigMfaPtrOutput) ProviderConfigs() ConfigMfaProviderConfigArrayOutput {
+	return o.ApplyT(func(v *ConfigMfa) []ConfigMfaProviderConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ProviderConfigs
+	}).(ConfigMfaProviderConfigArrayOutput)
+}
+
+// Whether MultiFactor Authentication has been enabled for this project.
+// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+func (o ConfigMfaPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigMfa) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConfigMfaProviderConfig struct {
+	// Whether MultiFactor Authentication has been enabled for this project.
+	// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+	State *string `pulumi:"state"`
+	// TOTP MFA provider config for this project.
+	// Structure is documented below.
+	TotpProviderConfig *ConfigMfaProviderConfigTotpProviderConfig `pulumi:"totpProviderConfig"`
+}
+
+// ConfigMfaProviderConfigInput is an input type that accepts ConfigMfaProviderConfigArgs and ConfigMfaProviderConfigOutput values.
+// You can construct a concrete instance of `ConfigMfaProviderConfigInput` via:
+//
+//	ConfigMfaProviderConfigArgs{...}
+type ConfigMfaProviderConfigInput interface {
+	pulumi.Input
+
+	ToConfigMfaProviderConfigOutput() ConfigMfaProviderConfigOutput
+	ToConfigMfaProviderConfigOutputWithContext(context.Context) ConfigMfaProviderConfigOutput
+}
+
+type ConfigMfaProviderConfigArgs struct {
+	// Whether MultiFactor Authentication has been enabled for this project.
+	// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// TOTP MFA provider config for this project.
+	// Structure is documented below.
+	TotpProviderConfig ConfigMfaProviderConfigTotpProviderConfigPtrInput `pulumi:"totpProviderConfig"`
+}
+
+func (ConfigMfaProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMfaProviderConfig)(nil)).Elem()
+}
+
+func (i ConfigMfaProviderConfigArgs) ToConfigMfaProviderConfigOutput() ConfigMfaProviderConfigOutput {
+	return i.ToConfigMfaProviderConfigOutputWithContext(context.Background())
+}
+
+func (i ConfigMfaProviderConfigArgs) ToConfigMfaProviderConfigOutputWithContext(ctx context.Context) ConfigMfaProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMfaProviderConfigOutput)
+}
+
+// ConfigMfaProviderConfigArrayInput is an input type that accepts ConfigMfaProviderConfigArray and ConfigMfaProviderConfigArrayOutput values.
+// You can construct a concrete instance of `ConfigMfaProviderConfigArrayInput` via:
+//
+//	ConfigMfaProviderConfigArray{ ConfigMfaProviderConfigArgs{...} }
+type ConfigMfaProviderConfigArrayInput interface {
+	pulumi.Input
+
+	ToConfigMfaProviderConfigArrayOutput() ConfigMfaProviderConfigArrayOutput
+	ToConfigMfaProviderConfigArrayOutputWithContext(context.Context) ConfigMfaProviderConfigArrayOutput
+}
+
+type ConfigMfaProviderConfigArray []ConfigMfaProviderConfigInput
+
+func (ConfigMfaProviderConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigMfaProviderConfig)(nil)).Elem()
+}
+
+func (i ConfigMfaProviderConfigArray) ToConfigMfaProviderConfigArrayOutput() ConfigMfaProviderConfigArrayOutput {
+	return i.ToConfigMfaProviderConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigMfaProviderConfigArray) ToConfigMfaProviderConfigArrayOutputWithContext(ctx context.Context) ConfigMfaProviderConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMfaProviderConfigArrayOutput)
+}
+
+type ConfigMfaProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (ConfigMfaProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMfaProviderConfig)(nil)).Elem()
+}
+
+func (o ConfigMfaProviderConfigOutput) ToConfigMfaProviderConfigOutput() ConfigMfaProviderConfigOutput {
+	return o
+}
+
+func (o ConfigMfaProviderConfigOutput) ToConfigMfaProviderConfigOutputWithContext(ctx context.Context) ConfigMfaProviderConfigOutput {
+	return o
+}
+
+// Whether MultiFactor Authentication has been enabled for this project.
+// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+func (o ConfigMfaProviderConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigMfaProviderConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// TOTP MFA provider config for this project.
+// Structure is documented below.
+func (o ConfigMfaProviderConfigOutput) TotpProviderConfig() ConfigMfaProviderConfigTotpProviderConfigPtrOutput {
+	return o.ApplyT(func(v ConfigMfaProviderConfig) *ConfigMfaProviderConfigTotpProviderConfig {
+		return v.TotpProviderConfig
+	}).(ConfigMfaProviderConfigTotpProviderConfigPtrOutput)
+}
+
+type ConfigMfaProviderConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigMfaProviderConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigMfaProviderConfig)(nil)).Elem()
+}
+
+func (o ConfigMfaProviderConfigArrayOutput) ToConfigMfaProviderConfigArrayOutput() ConfigMfaProviderConfigArrayOutput {
+	return o
+}
+
+func (o ConfigMfaProviderConfigArrayOutput) ToConfigMfaProviderConfigArrayOutputWithContext(ctx context.Context) ConfigMfaProviderConfigArrayOutput {
+	return o
+}
+
+func (o ConfigMfaProviderConfigArrayOutput) Index(i pulumi.IntInput) ConfigMfaProviderConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigMfaProviderConfig {
+		return vs[0].([]ConfigMfaProviderConfig)[vs[1].(int)]
+	}).(ConfigMfaProviderConfigOutput)
+}
+
+type ConfigMfaProviderConfigTotpProviderConfig struct {
+	// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+	AdjacentIntervals *int `pulumi:"adjacentIntervals"`
+}
+
+// ConfigMfaProviderConfigTotpProviderConfigInput is an input type that accepts ConfigMfaProviderConfigTotpProviderConfigArgs and ConfigMfaProviderConfigTotpProviderConfigOutput values.
+// You can construct a concrete instance of `ConfigMfaProviderConfigTotpProviderConfigInput` via:
+//
+//	ConfigMfaProviderConfigTotpProviderConfigArgs{...}
+type ConfigMfaProviderConfigTotpProviderConfigInput interface {
+	pulumi.Input
+
+	ToConfigMfaProviderConfigTotpProviderConfigOutput() ConfigMfaProviderConfigTotpProviderConfigOutput
+	ToConfigMfaProviderConfigTotpProviderConfigOutputWithContext(context.Context) ConfigMfaProviderConfigTotpProviderConfigOutput
+}
+
+type ConfigMfaProviderConfigTotpProviderConfigArgs struct {
+	// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+	AdjacentIntervals pulumi.IntPtrInput `pulumi:"adjacentIntervals"`
+}
+
+func (ConfigMfaProviderConfigTotpProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMfaProviderConfigTotpProviderConfig)(nil)).Elem()
+}
+
+func (i ConfigMfaProviderConfigTotpProviderConfigArgs) ToConfigMfaProviderConfigTotpProviderConfigOutput() ConfigMfaProviderConfigTotpProviderConfigOutput {
+	return i.ToConfigMfaProviderConfigTotpProviderConfigOutputWithContext(context.Background())
+}
+
+func (i ConfigMfaProviderConfigTotpProviderConfigArgs) ToConfigMfaProviderConfigTotpProviderConfigOutputWithContext(ctx context.Context) ConfigMfaProviderConfigTotpProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMfaProviderConfigTotpProviderConfigOutput)
+}
+
+func (i ConfigMfaProviderConfigTotpProviderConfigArgs) ToConfigMfaProviderConfigTotpProviderConfigPtrOutput() ConfigMfaProviderConfigTotpProviderConfigPtrOutput {
+	return i.ToConfigMfaProviderConfigTotpProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigMfaProviderConfigTotpProviderConfigArgs) ToConfigMfaProviderConfigTotpProviderConfigPtrOutputWithContext(ctx context.Context) ConfigMfaProviderConfigTotpProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMfaProviderConfigTotpProviderConfigOutput).ToConfigMfaProviderConfigTotpProviderConfigPtrOutputWithContext(ctx)
+}
+
+// ConfigMfaProviderConfigTotpProviderConfigPtrInput is an input type that accepts ConfigMfaProviderConfigTotpProviderConfigArgs, ConfigMfaProviderConfigTotpProviderConfigPtr and ConfigMfaProviderConfigTotpProviderConfigPtrOutput values.
+// You can construct a concrete instance of `ConfigMfaProviderConfigTotpProviderConfigPtrInput` via:
+//
+//	        ConfigMfaProviderConfigTotpProviderConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigMfaProviderConfigTotpProviderConfigPtrInput interface {
+	pulumi.Input
+
+	ToConfigMfaProviderConfigTotpProviderConfigPtrOutput() ConfigMfaProviderConfigTotpProviderConfigPtrOutput
+	ToConfigMfaProviderConfigTotpProviderConfigPtrOutputWithContext(context.Context) ConfigMfaProviderConfigTotpProviderConfigPtrOutput
+}
+
+type configMfaProviderConfigTotpProviderConfigPtrType ConfigMfaProviderConfigTotpProviderConfigArgs
+
+func ConfigMfaProviderConfigTotpProviderConfigPtr(v *ConfigMfaProviderConfigTotpProviderConfigArgs) ConfigMfaProviderConfigTotpProviderConfigPtrInput {
+	return (*configMfaProviderConfigTotpProviderConfigPtrType)(v)
+}
+
+func (*configMfaProviderConfigTotpProviderConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMfaProviderConfigTotpProviderConfig)(nil)).Elem()
+}
+
+func (i *configMfaProviderConfigTotpProviderConfigPtrType) ToConfigMfaProviderConfigTotpProviderConfigPtrOutput() ConfigMfaProviderConfigTotpProviderConfigPtrOutput {
+	return i.ToConfigMfaProviderConfigTotpProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *configMfaProviderConfigTotpProviderConfigPtrType) ToConfigMfaProviderConfigTotpProviderConfigPtrOutputWithContext(ctx context.Context) ConfigMfaProviderConfigTotpProviderConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMfaProviderConfigTotpProviderConfigPtrOutput)
+}
+
+type ConfigMfaProviderConfigTotpProviderConfigOutput struct{ *pulumi.OutputState }
+
+func (ConfigMfaProviderConfigTotpProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMfaProviderConfigTotpProviderConfig)(nil)).Elem()
+}
+
+func (o ConfigMfaProviderConfigTotpProviderConfigOutput) ToConfigMfaProviderConfigTotpProviderConfigOutput() ConfigMfaProviderConfigTotpProviderConfigOutput {
+	return o
+}
+
+func (o ConfigMfaProviderConfigTotpProviderConfigOutput) ToConfigMfaProviderConfigTotpProviderConfigOutputWithContext(ctx context.Context) ConfigMfaProviderConfigTotpProviderConfigOutput {
+	return o
+}
+
+func (o ConfigMfaProviderConfigTotpProviderConfigOutput) ToConfigMfaProviderConfigTotpProviderConfigPtrOutput() ConfigMfaProviderConfigTotpProviderConfigPtrOutput {
+	return o.ToConfigMfaProviderConfigTotpProviderConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigMfaProviderConfigTotpProviderConfigOutput) ToConfigMfaProviderConfigTotpProviderConfigPtrOutputWithContext(ctx context.Context) ConfigMfaProviderConfigTotpProviderConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMfaProviderConfigTotpProviderConfig) *ConfigMfaProviderConfigTotpProviderConfig {
+		return &v
+	}).(ConfigMfaProviderConfigTotpProviderConfigPtrOutput)
+}
+
+// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+func (o ConfigMfaProviderConfigTotpProviderConfigOutput) AdjacentIntervals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigMfaProviderConfigTotpProviderConfig) *int { return v.AdjacentIntervals }).(pulumi.IntPtrOutput)
+}
+
+type ConfigMfaProviderConfigTotpProviderConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigMfaProviderConfigTotpProviderConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMfaProviderConfigTotpProviderConfig)(nil)).Elem()
+}
+
+func (o ConfigMfaProviderConfigTotpProviderConfigPtrOutput) ToConfigMfaProviderConfigTotpProviderConfigPtrOutput() ConfigMfaProviderConfigTotpProviderConfigPtrOutput {
+	return o
+}
+
+func (o ConfigMfaProviderConfigTotpProviderConfigPtrOutput) ToConfigMfaProviderConfigTotpProviderConfigPtrOutputWithContext(ctx context.Context) ConfigMfaProviderConfigTotpProviderConfigPtrOutput {
+	return o
+}
+
+func (o ConfigMfaProviderConfigTotpProviderConfigPtrOutput) Elem() ConfigMfaProviderConfigTotpProviderConfigOutput {
+	return o.ApplyT(func(v *ConfigMfaProviderConfigTotpProviderConfig) ConfigMfaProviderConfigTotpProviderConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMfaProviderConfigTotpProviderConfig
+		return ret
+	}).(ConfigMfaProviderConfigTotpProviderConfigOutput)
+}
+
+// The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+func (o ConfigMfaProviderConfigTotpProviderConfigPtrOutput) AdjacentIntervals() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConfigMfaProviderConfigTotpProviderConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AdjacentIntervals
+	}).(pulumi.IntPtrOutput)
+}
+
+type ConfigMonitoring struct {
+	// Configuration for logging requests made to this project to Stackdriver Logging
+	// Structure is documented below.
+	RequestLogging *ConfigMonitoringRequestLogging `pulumi:"requestLogging"`
+}
+
+// ConfigMonitoringInput is an input type that accepts ConfigMonitoringArgs and ConfigMonitoringOutput values.
+// You can construct a concrete instance of `ConfigMonitoringInput` via:
+//
+//	ConfigMonitoringArgs{...}
+type ConfigMonitoringInput interface {
+	pulumi.Input
+
+	ToConfigMonitoringOutput() ConfigMonitoringOutput
+	ToConfigMonitoringOutputWithContext(context.Context) ConfigMonitoringOutput
+}
+
+type ConfigMonitoringArgs struct {
+	// Configuration for logging requests made to this project to Stackdriver Logging
+	// Structure is documented below.
+	RequestLogging ConfigMonitoringRequestLoggingPtrInput `pulumi:"requestLogging"`
+}
+
+func (ConfigMonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMonitoring)(nil)).Elem()
+}
+
+func (i ConfigMonitoringArgs) ToConfigMonitoringOutput() ConfigMonitoringOutput {
+	return i.ToConfigMonitoringOutputWithContext(context.Background())
+}
+
+func (i ConfigMonitoringArgs) ToConfigMonitoringOutputWithContext(ctx context.Context) ConfigMonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMonitoringOutput)
+}
+
+func (i ConfigMonitoringArgs) ToConfigMonitoringPtrOutput() ConfigMonitoringPtrOutput {
+	return i.ToConfigMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigMonitoringArgs) ToConfigMonitoringPtrOutputWithContext(ctx context.Context) ConfigMonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMonitoringOutput).ToConfigMonitoringPtrOutputWithContext(ctx)
+}
+
+// ConfigMonitoringPtrInput is an input type that accepts ConfigMonitoringArgs, ConfigMonitoringPtr and ConfigMonitoringPtrOutput values.
+// You can construct a concrete instance of `ConfigMonitoringPtrInput` via:
+//
+//	        ConfigMonitoringArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigMonitoringPtrInput interface {
+	pulumi.Input
+
+	ToConfigMonitoringPtrOutput() ConfigMonitoringPtrOutput
+	ToConfigMonitoringPtrOutputWithContext(context.Context) ConfigMonitoringPtrOutput
+}
+
+type configMonitoringPtrType ConfigMonitoringArgs
+
+func ConfigMonitoringPtr(v *ConfigMonitoringArgs) ConfigMonitoringPtrInput {
+	return (*configMonitoringPtrType)(v)
+}
+
+func (*configMonitoringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMonitoring)(nil)).Elem()
+}
+
+func (i *configMonitoringPtrType) ToConfigMonitoringPtrOutput() ConfigMonitoringPtrOutput {
+	return i.ToConfigMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i *configMonitoringPtrType) ToConfigMonitoringPtrOutputWithContext(ctx context.Context) ConfigMonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMonitoringPtrOutput)
+}
+
+type ConfigMonitoringOutput struct{ *pulumi.OutputState }
+
+func (ConfigMonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMonitoring)(nil)).Elem()
+}
+
+func (o ConfigMonitoringOutput) ToConfigMonitoringOutput() ConfigMonitoringOutput {
+	return o
+}
+
+func (o ConfigMonitoringOutput) ToConfigMonitoringOutputWithContext(ctx context.Context) ConfigMonitoringOutput {
+	return o
+}
+
+func (o ConfigMonitoringOutput) ToConfigMonitoringPtrOutput() ConfigMonitoringPtrOutput {
+	return o.ToConfigMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigMonitoringOutput) ToConfigMonitoringPtrOutputWithContext(ctx context.Context) ConfigMonitoringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMonitoring) *ConfigMonitoring {
+		return &v
+	}).(ConfigMonitoringPtrOutput)
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+// Structure is documented below.
+func (o ConfigMonitoringOutput) RequestLogging() ConfigMonitoringRequestLoggingPtrOutput {
+	return o.ApplyT(func(v ConfigMonitoring) *ConfigMonitoringRequestLogging { return v.RequestLogging }).(ConfigMonitoringRequestLoggingPtrOutput)
+}
+
+type ConfigMonitoringPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigMonitoringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMonitoring)(nil)).Elem()
+}
+
+func (o ConfigMonitoringPtrOutput) ToConfigMonitoringPtrOutput() ConfigMonitoringPtrOutput {
+	return o
+}
+
+func (o ConfigMonitoringPtrOutput) ToConfigMonitoringPtrOutputWithContext(ctx context.Context) ConfigMonitoringPtrOutput {
+	return o
+}
+
+func (o ConfigMonitoringPtrOutput) Elem() ConfigMonitoringOutput {
+	return o.ApplyT(func(v *ConfigMonitoring) ConfigMonitoring {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMonitoring
+		return ret
+	}).(ConfigMonitoringOutput)
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+// Structure is documented below.
+func (o ConfigMonitoringPtrOutput) RequestLogging() ConfigMonitoringRequestLoggingPtrOutput {
+	return o.ApplyT(func(v *ConfigMonitoring) *ConfigMonitoringRequestLogging {
+		if v == nil {
+			return nil
+		}
+		return v.RequestLogging
+	}).(ConfigMonitoringRequestLoggingPtrOutput)
+}
+
+type ConfigMonitoringRequestLogging struct {
+	// Whether logging is enabled for this project or not.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ConfigMonitoringRequestLoggingInput is an input type that accepts ConfigMonitoringRequestLoggingArgs and ConfigMonitoringRequestLoggingOutput values.
+// You can construct a concrete instance of `ConfigMonitoringRequestLoggingInput` via:
+//
+//	ConfigMonitoringRequestLoggingArgs{...}
+type ConfigMonitoringRequestLoggingInput interface {
+	pulumi.Input
+
+	ToConfigMonitoringRequestLoggingOutput() ConfigMonitoringRequestLoggingOutput
+	ToConfigMonitoringRequestLoggingOutputWithContext(context.Context) ConfigMonitoringRequestLoggingOutput
+}
+
+type ConfigMonitoringRequestLoggingArgs struct {
+	// Whether logging is enabled for this project or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ConfigMonitoringRequestLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMonitoringRequestLogging)(nil)).Elem()
+}
+
+func (i ConfigMonitoringRequestLoggingArgs) ToConfigMonitoringRequestLoggingOutput() ConfigMonitoringRequestLoggingOutput {
+	return i.ToConfigMonitoringRequestLoggingOutputWithContext(context.Background())
+}
+
+func (i ConfigMonitoringRequestLoggingArgs) ToConfigMonitoringRequestLoggingOutputWithContext(ctx context.Context) ConfigMonitoringRequestLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMonitoringRequestLoggingOutput)
+}
+
+func (i ConfigMonitoringRequestLoggingArgs) ToConfigMonitoringRequestLoggingPtrOutput() ConfigMonitoringRequestLoggingPtrOutput {
+	return i.ToConfigMonitoringRequestLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigMonitoringRequestLoggingArgs) ToConfigMonitoringRequestLoggingPtrOutputWithContext(ctx context.Context) ConfigMonitoringRequestLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMonitoringRequestLoggingOutput).ToConfigMonitoringRequestLoggingPtrOutputWithContext(ctx)
+}
+
+// ConfigMonitoringRequestLoggingPtrInput is an input type that accepts ConfigMonitoringRequestLoggingArgs, ConfigMonitoringRequestLoggingPtr and ConfigMonitoringRequestLoggingPtrOutput values.
+// You can construct a concrete instance of `ConfigMonitoringRequestLoggingPtrInput` via:
+//
+//	        ConfigMonitoringRequestLoggingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigMonitoringRequestLoggingPtrInput interface {
+	pulumi.Input
+
+	ToConfigMonitoringRequestLoggingPtrOutput() ConfigMonitoringRequestLoggingPtrOutput
+	ToConfigMonitoringRequestLoggingPtrOutputWithContext(context.Context) ConfigMonitoringRequestLoggingPtrOutput
+}
+
+type configMonitoringRequestLoggingPtrType ConfigMonitoringRequestLoggingArgs
+
+func ConfigMonitoringRequestLoggingPtr(v *ConfigMonitoringRequestLoggingArgs) ConfigMonitoringRequestLoggingPtrInput {
+	return (*configMonitoringRequestLoggingPtrType)(v)
+}
+
+func (*configMonitoringRequestLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMonitoringRequestLogging)(nil)).Elem()
+}
+
+func (i *configMonitoringRequestLoggingPtrType) ToConfigMonitoringRequestLoggingPtrOutput() ConfigMonitoringRequestLoggingPtrOutput {
+	return i.ToConfigMonitoringRequestLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *configMonitoringRequestLoggingPtrType) ToConfigMonitoringRequestLoggingPtrOutputWithContext(ctx context.Context) ConfigMonitoringRequestLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMonitoringRequestLoggingPtrOutput)
+}
+
+type ConfigMonitoringRequestLoggingOutput struct{ *pulumi.OutputState }
+
+func (ConfigMonitoringRequestLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMonitoringRequestLogging)(nil)).Elem()
+}
+
+func (o ConfigMonitoringRequestLoggingOutput) ToConfigMonitoringRequestLoggingOutput() ConfigMonitoringRequestLoggingOutput {
+	return o
+}
+
+func (o ConfigMonitoringRequestLoggingOutput) ToConfigMonitoringRequestLoggingOutputWithContext(ctx context.Context) ConfigMonitoringRequestLoggingOutput {
+	return o
+}
+
+func (o ConfigMonitoringRequestLoggingOutput) ToConfigMonitoringRequestLoggingPtrOutput() ConfigMonitoringRequestLoggingPtrOutput {
+	return o.ToConfigMonitoringRequestLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigMonitoringRequestLoggingOutput) ToConfigMonitoringRequestLoggingPtrOutputWithContext(ctx context.Context) ConfigMonitoringRequestLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMonitoringRequestLogging) *ConfigMonitoringRequestLogging {
+		return &v
+	}).(ConfigMonitoringRequestLoggingPtrOutput)
+}
+
+// Whether logging is enabled for this project or not.
+func (o ConfigMonitoringRequestLoggingOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigMonitoringRequestLogging) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ConfigMonitoringRequestLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigMonitoringRequestLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMonitoringRequestLogging)(nil)).Elem()
+}
+
+func (o ConfigMonitoringRequestLoggingPtrOutput) ToConfigMonitoringRequestLoggingPtrOutput() ConfigMonitoringRequestLoggingPtrOutput {
+	return o
+}
+
+func (o ConfigMonitoringRequestLoggingPtrOutput) ToConfigMonitoringRequestLoggingPtrOutputWithContext(ctx context.Context) ConfigMonitoringRequestLoggingPtrOutput {
+	return o
+}
+
+func (o ConfigMonitoringRequestLoggingPtrOutput) Elem() ConfigMonitoringRequestLoggingOutput {
+	return o.ApplyT(func(v *ConfigMonitoringRequestLogging) ConfigMonitoringRequestLogging {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMonitoringRequestLogging
+		return ret
+	}).(ConfigMonitoringRequestLoggingOutput)
+}
+
+// Whether logging is enabled for this project or not.
+func (o ConfigMonitoringRequestLoggingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigMonitoringRequestLogging) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConfigMultiTenant struct {
+	// Whether this project can have tenants or not.
+	AllowTenants *bool `pulumi:"allowTenants"`
+	// The default cloud parent org or folder that the tenant project should be created under.
+	// The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+	// If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+	DefaultTenantLocation *string `pulumi:"defaultTenantLocation"`
+}
+
+// ConfigMultiTenantInput is an input type that accepts ConfigMultiTenantArgs and ConfigMultiTenantOutput values.
+// You can construct a concrete instance of `ConfigMultiTenantInput` via:
+//
+//	ConfigMultiTenantArgs{...}
+type ConfigMultiTenantInput interface {
+	pulumi.Input
+
+	ToConfigMultiTenantOutput() ConfigMultiTenantOutput
+	ToConfigMultiTenantOutputWithContext(context.Context) ConfigMultiTenantOutput
+}
+
+type ConfigMultiTenantArgs struct {
+	// Whether this project can have tenants or not.
+	AllowTenants pulumi.BoolPtrInput `pulumi:"allowTenants"`
+	// The default cloud parent org or folder that the tenant project should be created under.
+	// The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+	// If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+	DefaultTenantLocation pulumi.StringPtrInput `pulumi:"defaultTenantLocation"`
+}
+
+func (ConfigMultiTenantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMultiTenant)(nil)).Elem()
+}
+
+func (i ConfigMultiTenantArgs) ToConfigMultiTenantOutput() ConfigMultiTenantOutput {
+	return i.ToConfigMultiTenantOutputWithContext(context.Background())
+}
+
+func (i ConfigMultiTenantArgs) ToConfigMultiTenantOutputWithContext(ctx context.Context) ConfigMultiTenantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMultiTenantOutput)
+}
+
+func (i ConfigMultiTenantArgs) ToConfigMultiTenantPtrOutput() ConfigMultiTenantPtrOutput {
+	return i.ToConfigMultiTenantPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigMultiTenantArgs) ToConfigMultiTenantPtrOutputWithContext(ctx context.Context) ConfigMultiTenantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMultiTenantOutput).ToConfigMultiTenantPtrOutputWithContext(ctx)
+}
+
+// ConfigMultiTenantPtrInput is an input type that accepts ConfigMultiTenantArgs, ConfigMultiTenantPtr and ConfigMultiTenantPtrOutput values.
+// You can construct a concrete instance of `ConfigMultiTenantPtrInput` via:
+//
+//	        ConfigMultiTenantArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigMultiTenantPtrInput interface {
+	pulumi.Input
+
+	ToConfigMultiTenantPtrOutput() ConfigMultiTenantPtrOutput
+	ToConfigMultiTenantPtrOutputWithContext(context.Context) ConfigMultiTenantPtrOutput
+}
+
+type configMultiTenantPtrType ConfigMultiTenantArgs
+
+func ConfigMultiTenantPtr(v *ConfigMultiTenantArgs) ConfigMultiTenantPtrInput {
+	return (*configMultiTenantPtrType)(v)
+}
+
+func (*configMultiTenantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMultiTenant)(nil)).Elem()
+}
+
+func (i *configMultiTenantPtrType) ToConfigMultiTenantPtrOutput() ConfigMultiTenantPtrOutput {
+	return i.ToConfigMultiTenantPtrOutputWithContext(context.Background())
+}
+
+func (i *configMultiTenantPtrType) ToConfigMultiTenantPtrOutputWithContext(ctx context.Context) ConfigMultiTenantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigMultiTenantPtrOutput)
+}
+
+type ConfigMultiTenantOutput struct{ *pulumi.OutputState }
+
+func (ConfigMultiTenantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigMultiTenant)(nil)).Elem()
+}
+
+func (o ConfigMultiTenantOutput) ToConfigMultiTenantOutput() ConfigMultiTenantOutput {
+	return o
+}
+
+func (o ConfigMultiTenantOutput) ToConfigMultiTenantOutputWithContext(ctx context.Context) ConfigMultiTenantOutput {
+	return o
+}
+
+func (o ConfigMultiTenantOutput) ToConfigMultiTenantPtrOutput() ConfigMultiTenantPtrOutput {
+	return o.ToConfigMultiTenantPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigMultiTenantOutput) ToConfigMultiTenantPtrOutputWithContext(ctx context.Context) ConfigMultiTenantPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigMultiTenant) *ConfigMultiTenant {
+		return &v
+	}).(ConfigMultiTenantPtrOutput)
+}
+
+// Whether this project can have tenants or not.
+func (o ConfigMultiTenantOutput) AllowTenants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigMultiTenant) *bool { return v.AllowTenants }).(pulumi.BoolPtrOutput)
+}
+
+// The default cloud parent org or folder that the tenant project should be created under.
+// The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+// If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+func (o ConfigMultiTenantOutput) DefaultTenantLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigMultiTenant) *string { return v.DefaultTenantLocation }).(pulumi.StringPtrOutput)
+}
+
+type ConfigMultiTenantPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigMultiTenantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigMultiTenant)(nil)).Elem()
+}
+
+func (o ConfigMultiTenantPtrOutput) ToConfigMultiTenantPtrOutput() ConfigMultiTenantPtrOutput {
+	return o
+}
+
+func (o ConfigMultiTenantPtrOutput) ToConfigMultiTenantPtrOutputWithContext(ctx context.Context) ConfigMultiTenantPtrOutput {
+	return o
+}
+
+func (o ConfigMultiTenantPtrOutput) Elem() ConfigMultiTenantOutput {
+	return o.ApplyT(func(v *ConfigMultiTenant) ConfigMultiTenant {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigMultiTenant
+		return ret
+	}).(ConfigMultiTenantOutput)
+}
+
+// Whether this project can have tenants or not.
+func (o ConfigMultiTenantPtrOutput) AllowTenants() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigMultiTenant) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowTenants
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The default cloud parent org or folder that the tenant project should be created under.
+// The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+// If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+func (o ConfigMultiTenantPtrOutput) DefaultTenantLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigMultiTenant) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTenantLocation
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConfigQuota struct {
 	// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
 	// Structure is documented below.
@@ -4097,6 +5328,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigBlockingFunctionsForwardInboundCredentialsPtrInput)(nil)).Elem(), ConfigBlockingFunctionsForwardInboundCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigBlockingFunctionsTriggerInput)(nil)).Elem(), ConfigBlockingFunctionsTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigBlockingFunctionsTriggerArrayInput)(nil)).Elem(), ConfigBlockingFunctionsTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigClientInput)(nil)).Elem(), ConfigClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigClientPtrInput)(nil)).Elem(), ConfigClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigClientPermissionsInput)(nil)).Elem(), ConfigClientPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigClientPermissionsPtrInput)(nil)).Elem(), ConfigClientPermissionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMfaInput)(nil)).Elem(), ConfigMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMfaPtrInput)(nil)).Elem(), ConfigMfaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMfaProviderConfigInput)(nil)).Elem(), ConfigMfaProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMfaProviderConfigArrayInput)(nil)).Elem(), ConfigMfaProviderConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMfaProviderConfigTotpProviderConfigInput)(nil)).Elem(), ConfigMfaProviderConfigTotpProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMfaProviderConfigTotpProviderConfigPtrInput)(nil)).Elem(), ConfigMfaProviderConfigTotpProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMonitoringInput)(nil)).Elem(), ConfigMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMonitoringPtrInput)(nil)).Elem(), ConfigMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMonitoringRequestLoggingInput)(nil)).Elem(), ConfigMonitoringRequestLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMonitoringRequestLoggingPtrInput)(nil)).Elem(), ConfigMonitoringRequestLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMultiTenantInput)(nil)).Elem(), ConfigMultiTenantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigMultiTenantPtrInput)(nil)).Elem(), ConfigMultiTenantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigQuotaInput)(nil)).Elem(), ConfigQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigQuotaPtrInput)(nil)).Elem(), ConfigQuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigQuotaSignUpQuotaConfigInput)(nil)).Elem(), ConfigQuotaSignUpQuotaConfigArgs{})
@@ -4149,6 +5396,22 @@ func init() {
 	pulumi.RegisterOutputType(ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(ConfigBlockingFunctionsTriggerOutput{})
 	pulumi.RegisterOutputType(ConfigBlockingFunctionsTriggerArrayOutput{})
+	pulumi.RegisterOutputType(ConfigClientOutput{})
+	pulumi.RegisterOutputType(ConfigClientPtrOutput{})
+	pulumi.RegisterOutputType(ConfigClientPermissionsOutput{})
+	pulumi.RegisterOutputType(ConfigClientPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(ConfigMfaOutput{})
+	pulumi.RegisterOutputType(ConfigMfaPtrOutput{})
+	pulumi.RegisterOutputType(ConfigMfaProviderConfigOutput{})
+	pulumi.RegisterOutputType(ConfigMfaProviderConfigArrayOutput{})
+	pulumi.RegisterOutputType(ConfigMfaProviderConfigTotpProviderConfigOutput{})
+	pulumi.RegisterOutputType(ConfigMfaProviderConfigTotpProviderConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConfigMonitoringOutput{})
+	pulumi.RegisterOutputType(ConfigMonitoringPtrOutput{})
+	pulumi.RegisterOutputType(ConfigMonitoringRequestLoggingOutput{})
+	pulumi.RegisterOutputType(ConfigMonitoringRequestLoggingPtrOutput{})
+	pulumi.RegisterOutputType(ConfigMultiTenantOutput{})
+	pulumi.RegisterOutputType(ConfigMultiTenantPtrOutput{})
 	pulumi.RegisterOutputType(ConfigQuotaOutput{})
 	pulumi.RegisterOutputType(ConfigQuotaPtrOutput{})
 	pulumi.RegisterOutputType(ConfigQuotaSignUpQuotaConfigOutput{})

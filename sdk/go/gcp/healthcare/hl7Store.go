@@ -48,7 +48,8 @@ import (
 //				return err
 //			}
 //			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
-//				Dataset: dataset.ID(),
+//				Dataset:                dataset.ID(),
+//				RejectDuplicateMessage: pulumi.Bool(true),
 //				NotificationConfigs: healthcare.Hl7StoreNotificationConfigsArray{
 //					&healthcare.Hl7StoreNotificationConfigsArgs{
 //						PubsubTopic: topic.ID(),
@@ -280,6 +281,8 @@ type Hl7Store struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Determines whether duplicate messages are allowed.
+	RejectDuplicateMessage pulumi.BoolPtrOutput `pulumi:"rejectDuplicateMessage"`
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 }
@@ -363,6 +366,8 @@ type hl7StoreState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Determines whether duplicate messages are allowed.
+	RejectDuplicateMessage *bool `pulumi:"rejectDuplicateMessage"`
 	// The fully qualified name of this dataset
 	SelfLink *string `pulumi:"selfLink"`
 }
@@ -409,6 +414,8 @@ type Hl7StoreState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Determines whether duplicate messages are allowed.
+	RejectDuplicateMessage pulumi.BoolPtrInput
 	// The fully qualified name of this dataset
 	SelfLink pulumi.StringPtrInput
 }
@@ -454,6 +461,8 @@ type hl7StoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
+	// Determines whether duplicate messages are allowed.
+	RejectDuplicateMessage *bool `pulumi:"rejectDuplicateMessage"`
 }
 
 // The set of arguments for constructing a Hl7Store resource.
@@ -494,6 +503,8 @@ type Hl7StoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
+	// Determines whether duplicate messages are allowed.
+	RejectDuplicateMessage pulumi.BoolPtrInput
 }
 
 func (Hl7StoreArgs) ElementType() reflect.Type {
@@ -646,6 +657,11 @@ func (o Hl7StoreOutput) ParserConfig() Hl7StoreParserConfigOutput {
 // and default labels configured on the provider.
 func (o Hl7StoreOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Hl7Store) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Determines whether duplicate messages are allowed.
+func (o Hl7StoreOutput) RejectDuplicateMessage() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Hl7Store) pulumi.BoolPtrOutput { return v.RejectDuplicateMessage }).(pulumi.BoolPtrOutput)
 }
 
 // The fully qualified name of this dataset

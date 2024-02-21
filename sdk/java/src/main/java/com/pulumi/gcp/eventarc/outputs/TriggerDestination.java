@@ -6,6 +6,8 @@ package com.pulumi.gcp.eventarc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.eventarc.outputs.TriggerDestinationCloudRunService;
 import com.pulumi.gcp.eventarc.outputs.TriggerDestinationGke;
+import com.pulumi.gcp.eventarc.outputs.TriggerDestinationHttpEndpoint;
+import com.pulumi.gcp.eventarc.outputs.TriggerDestinationNetworkConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +30,16 @@ public final class TriggerDestination {
      * 
      */
     private @Nullable TriggerDestinationGke gke;
+    /**
+     * @return An HTTP endpoint destination described by an URI.
+     * 
+     */
+    private @Nullable TriggerDestinationHttpEndpoint httpEndpoint;
+    /**
+     * @return Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+     * 
+     */
+    private @Nullable TriggerDestinationNetworkConfig networkConfig;
     /**
      * @return The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
      * 
@@ -57,6 +69,20 @@ public final class TriggerDestination {
         return Optional.ofNullable(this.gke);
     }
     /**
+     * @return An HTTP endpoint destination described by an URI.
+     * 
+     */
+    public Optional<TriggerDestinationHttpEndpoint> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
+    }
+    /**
+     * @return Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+     * 
+     */
+    public Optional<TriggerDestinationNetworkConfig> networkConfig() {
+        return Optional.ofNullable(this.networkConfig);
+    }
+    /**
      * @return The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
      * 
      */
@@ -76,6 +102,8 @@ public final class TriggerDestination {
         private @Nullable String cloudFunction;
         private @Nullable TriggerDestinationCloudRunService cloudRunService;
         private @Nullable TriggerDestinationGke gke;
+        private @Nullable TriggerDestinationHttpEndpoint httpEndpoint;
+        private @Nullable TriggerDestinationNetworkConfig networkConfig;
         private @Nullable String workflow;
         public Builder() {}
         public Builder(TriggerDestination defaults) {
@@ -83,6 +111,8 @@ public final class TriggerDestination {
     	      this.cloudFunction = defaults.cloudFunction;
     	      this.cloudRunService = defaults.cloudRunService;
     	      this.gke = defaults.gke;
+    	      this.httpEndpoint = defaults.httpEndpoint;
+    	      this.networkConfig = defaults.networkConfig;
     	      this.workflow = defaults.workflow;
         }
 
@@ -105,6 +135,18 @@ public final class TriggerDestination {
             return this;
         }
         @CustomType.Setter
+        public Builder httpEndpoint(@Nullable TriggerDestinationHttpEndpoint httpEndpoint) {
+
+            this.httpEndpoint = httpEndpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder networkConfig(@Nullable TriggerDestinationNetworkConfig networkConfig) {
+
+            this.networkConfig = networkConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder workflow(@Nullable String workflow) {
 
             this.workflow = workflow;
@@ -115,6 +157,8 @@ public final class TriggerDestination {
             _resultValue.cloudFunction = cloudFunction;
             _resultValue.cloudRunService = cloudRunService;
             _resultValue.gke = gke;
+            _resultValue.httpEndpoint = httpEndpoint;
+            _resultValue.networkConfig = networkConfig;
             _resultValue.workflow = workflow;
             return _resultValue;
         }

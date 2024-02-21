@@ -5,7 +5,7 @@ package com.pulumi.gcp.securityposture.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs;
+import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs;
 import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -30,6 +30,27 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPoli
      */
     public Optional<Output<Boolean>> allowAll() {
         return Optional.ofNullable(this.allowAll);
+    }
+
+    /**
+     * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+     * This page details the objects and attributes that are used to the build the CEL expressions for
+     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="condition")
+    private @Nullable Output<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs> condition;
+
+    /**
+     * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+     * This page details the objects and attributes that are used to the build the CEL expressions for
+     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs>> condition() {
+        return Optional.ofNullable(this.condition);
     }
 
     /**
@@ -65,27 +86,6 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPoli
     }
 
     /**
-     * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-     * This page details the objects and attributes that are used to the build the CEL expressions for
-     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-     * Structure is documented below.
-     * 
-     */
-    @Import(name="expr")
-    private @Nullable Output<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs> expr;
-
-    /**
-     * @return Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-     * This page details the objects and attributes that are used to the build the CEL expressions for
-     * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-     * Structure is documented below.
-     * 
-     */
-    public Optional<Output<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs>> expr() {
-        return Optional.ofNullable(this.expr);
-    }
-
-    /**
      * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
      * Structure is documented below.
      * 
@@ -106,9 +106,9 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPoli
 
     private PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs $) {
         this.allowAll = $.allowAll;
+        this.condition = $.condition;
         this.denyAll = $.denyAll;
         this.enforce = $.enforce;
-        this.expr = $.expr;
         this.values = $.values;
     }
 
@@ -149,6 +149,33 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPoli
          */
         public Builder allowAll(Boolean allowAll) {
             return allowAll(Output.of(allowAll));
+        }
+
+        /**
+         * @param condition Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder condition(@Nullable Output<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs> condition) {
+            $.condition = condition;
+            return this;
+        }
+
+        /**
+         * @param condition Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder condition(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs condition) {
+            return condition(Output.of(condition));
         }
 
         /**
@@ -193,33 +220,6 @@ public final class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPoli
          */
         public Builder enforce(Boolean enforce) {
             return enforce(Output.of(enforce));
-        }
-
-        /**
-         * @param expr Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-         * This page details the objects and attributes that are used to the build the CEL expressions for
-         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder expr(@Nullable Output<PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs> expr) {
-            $.expr = expr;
-            return this;
-        }
-
-        /**
-         * @param expr Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-         * This page details the objects and attributes that are used to the build the CEL expressions for
-         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder expr(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs expr) {
-            return expr(Output.of(expr));
         }
 
         /**

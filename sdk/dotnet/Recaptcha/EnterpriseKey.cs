@@ -277,7 +277,7 @@ namespace Pulumi.Gcp.Recaptcha
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name for the Key in the format "projects/{project}/keys/{key}".
+        /// The resource id for the Key, which is the same as the Site Key itself.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -492,7 +492,7 @@ namespace Pulumi.Gcp.Recaptcha
         }
 
         /// <summary>
-        /// The resource name for the Key in the format "projects/{project}/keys/{key}".
+        /// The resource id for the Key, which is the same as the Site Key itself.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

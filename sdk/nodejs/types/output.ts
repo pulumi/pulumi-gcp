@@ -11150,6 +11150,7 @@ export namespace cloudbuildv2 {
         appInstallationId?: number;
         /**
          * OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+         * Structure is documented below.
          */
         authorizerCredential?: outputs.cloudbuildv2.ConnectionGithubConfigAuthorizerCredential;
     }
@@ -11160,6 +11161,7 @@ export namespace cloudbuildv2 {
          */
         oauthTokenSecretVersion?: string;
         /**
+         * (Output)
          * Output only. The username associated to this token.
          */
         username: string;
@@ -11188,6 +11190,7 @@ export namespace cloudbuildv2 {
         privateKeySecretVersion?: string;
         /**
          * Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+         * Structure is documented below.
          */
         serviceDirectoryConfig?: outputs.cloudbuildv2.ConnectionGithubEnterpriseConfigServiceDirectoryConfig;
         /**
@@ -11210,6 +11213,7 @@ export namespace cloudbuildv2 {
     export interface ConnectionGitlabConfig {
         /**
          * Required. A GitLab personal access token with the `api` scope access.
+         * Structure is documented below.
          */
         authorizerCredential: outputs.cloudbuildv2.ConnectionGitlabConfigAuthorizerCredential;
         /**
@@ -11218,14 +11222,17 @@ export namespace cloudbuildv2 {
         hostUri: string;
         /**
          * Required. A GitLab personal access token with the minimum `readApi` scope access.
+         * Structure is documented below.
          */
         readAuthorizerCredential: outputs.cloudbuildv2.ConnectionGitlabConfigReadAuthorizerCredential;
         /**
+         * (Output)
          * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
          */
         serverVersion: string;
         /**
          * Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+         * Structure is documented below.
          */
         serviceDirectoryConfig?: outputs.cloudbuildv2.ConnectionGitlabConfigServiceDirectoryConfig;
         /**
@@ -11244,6 +11251,7 @@ export namespace cloudbuildv2 {
          */
         userTokenSecretVersion: string;
         /**
+         * (Output)
          * Output only. The username associated to this token.
          */
         username: string;
@@ -11255,9 +11263,8 @@ export namespace cloudbuildv2 {
          */
         userTokenSecretVersion: string;
         /**
+         * (Output)
          * Output only. The username associated to this token.
-         *
-         * - - -
          */
         username: string;
     }
@@ -11283,15 +11290,18 @@ export namespace cloudbuildv2 {
 
     export interface ConnectionInstallationState {
         /**
+         * (Output)
          * Output only. Link to follow for next action. Empty string if the installation is already complete.
          */
         actionUri: string;
         /**
+         * (Output)
          * Output only. Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
          */
         message: string;
         /**
-         * Output only. Current step of the installation process. Possible values: STAGE_UNSPECIFIED, PENDING_CREATE_APP, PENDING_USER_OAUTH, PENDING_INSTALL_APP, COMPLETE
+         * (Output)
+         * Output only. Current step of the installation process.
          */
         stage: string;
     }
@@ -11365,6 +11375,65 @@ export namespace clouddeploy {
          * Target labels.
          */
         labels: {[key: string]: string};
+    }
+
+    export interface CustomTargetTypeCustomActions {
+        /**
+         * The Skaffold custom action responsible for deploy operations.
+         */
+        deployAction: string;
+        /**
+         * List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
+         * Structure is documented below.
+         */
+        includeSkaffoldModules?: outputs.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModule[];
+        /**
+         * The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
+         */
+        renderAction?: string;
+    }
+
+    export interface CustomTargetTypeCustomActionsIncludeSkaffoldModule {
+        /**
+         * The Skaffold Config modules to use from the specified source.
+         */
+        configs?: string[];
+        /**
+         * Remote git repository containing the Skaffold Config modules.
+         * Structure is documented below.
+         */
+        git?: outputs.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit;
+        /**
+         * Cloud Storage bucket containing Skaffold Config modules.
+         * Structure is documented below.
+         */
+        googleCloudStorage?: outputs.clouddeploy.CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage;
+    }
+
+    export interface CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit {
+        /**
+         * Relative path from the repository root to the Skaffold file.
+         */
+        path?: string;
+        /**
+         * Git ref the package should be cloned from.
+         */
+        ref?: string;
+        /**
+         * Git repository the package should be cloned from.
+         */
+        repo: string;
+    }
+
+    export interface CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage {
+        /**
+         * Relative path from the source to the Skaffold file.
+         */
+        path?: string;
+        /**
+         * Cloud Storage source paths to copy recursively. For example, providing `gs://my-bucket/dir/configs/*` will result in Skaffold copying all files within the `dir/configs` directory in the bucket `my-bucket`.
+         */
+        source: string;
     }
 
     export interface DeliveryPipelineCondition {
@@ -11593,6 +11662,18 @@ export namespace clouddeploy {
          * Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
          */
         automaticTrafficControl?: boolean;
+        /**
+         * Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
+         */
+        canaryRevisionTags?: string[];
+        /**
+         * Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
+         */
+        priorRevisionTags?: string[];
+        /**
+         * Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
+         */
+        stableRevisionTags?: string[];
     }
 
     export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes {
@@ -11623,6 +11704,10 @@ export namespace clouddeploy {
          * Required. Name of the Kubernetes Service.
          */
         service: string;
+        /**
+         * Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
+         */
+        stableCutbackDuration?: string;
     }
 
     export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
@@ -20592,11 +20677,11 @@ export namespace compute {
          */
         labels: {[key: string]: any};
         /**
-         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         provisionedIops: number;
         /**
-         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput: number;
         /**
@@ -23483,8 +23568,7 @@ export namespace compute {
         /**
          * Indicates how many IOPS to provision for the disk.
          * This sets the number of I/O operations per second that the disk can handle.
-         * Values must be between 10,000 and 120,000. For more details,see the
-         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
          * Note: Updating currently is only supported for hyperdisk skus via disk update
          * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
          * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
@@ -23494,10 +23578,11 @@ export namespace compute {
         /**
          * Indicates how much throughput to provision for the disk.
          * This sets the number of throughput mb per second that the disk can handle.
-         * Values must be between 1 and 7,124. Note: Updating currently is only supported
-         * for hyperdisk skus via disk update api/gcloud without the need to delete and
-         * recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
-         * To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+         * For more details,see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+         * Note: Updating currently is only supported for hyperdisk skus via disk update
+         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+         * for an update of throughput every 4 hours. To update your hyperdisk more
+         * frequently, you'll need to manually delete and recreate it.
          */
         provisionedThroughput: number;
         /**
@@ -23617,11 +23702,11 @@ export namespace compute {
          */
         labels: {[key: string]: any};
         /**
-         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         provisionedIops: number;
         /**
-         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput: number;
         /**
@@ -24035,11 +24120,11 @@ export namespace compute {
          */
         labels: {[key: string]: any};
         /**
-         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000.
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         provisionedIops: number;
         /**
-         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
          */
         provisionedThroughput: number;
         /**
@@ -34599,7 +34684,13 @@ export namespace container {
          */
         enableMetrics: boolean;
         /**
+         * Whether or not Relay is enabled.
+         */
+        enableRelay?: boolean;
+        /**
          * Mode used to make Relay available.
+         *
+         * @deprecated Deprecated in favor of enable_relay field. Remove this attribute's configuration as this field will be removed in the next major release and enable_relay will become a required field.
          */
         relayMode: string;
     }
@@ -36701,6 +36792,10 @@ export namespace container {
          * Whether or not the advanced datapath metrics are enabled.
          */
         enableMetrics: boolean;
+        /**
+         * Whether or not Relay is enabled.
+         */
+        enableRelay: boolean;
         /**
          * Mode used to make Relay available.
          */
@@ -52091,7 +52186,7 @@ export namespace dns {
          */
         nameServers: string[];
         /**
-         * The ID of the project for the Google Cloud.
+         * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
          */
         project: string;
         /**
@@ -53258,6 +53353,14 @@ export namespace eventarc {
          */
         gke?: outputs.eventarc.TriggerDestinationGke;
         /**
+         * An HTTP endpoint destination described by an URI.
+         */
+        httpEndpoint?: outputs.eventarc.TriggerDestinationHttpEndpoint;
+        /**
+         * Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
+         */
+        networkConfig?: outputs.eventarc.TriggerDestinationNetworkConfig;
+        /**
          * The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
          */
         workflow?: string;
@@ -53299,6 +53402,20 @@ export namespace eventarc {
          * Required. Name of the GKE service.
          */
         service: string;
+    }
+
+    export interface TriggerDestinationHttpEndpoint {
+        /**
+         * Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS.
+         */
+        uri: string;
+    }
+
+    export interface TriggerDestinationNetworkConfig {
+        /**
+         * Required. Name of the NetworkAttachment that allows access to the destination VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
+         */
+        networkAttachment: string;
     }
 
     export interface TriggerMatchingCriteria {
@@ -58449,6 +58566,103 @@ export namespace identityplatform {
          * When the trigger was changed.
          */
         updateTime: string;
+    }
+
+    export interface ConfigClient {
+        /**
+         * (Output)
+         * API key that can be used when making requests for this project.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        apiKey: string;
+        /**
+         * (Output)
+         * Firebase subdomain.
+         */
+        firebaseSubdomain: string;
+        /**
+         * Configuration related to restricting a user's ability to affect their account.
+         * Structure is documented below.
+         */
+        permissions?: outputs.identityplatform.ConfigClientPermissions;
+    }
+
+    export interface ConfigClientPermissions {
+        /**
+         * When true, end users cannot delete their account on the associated project through any of our API methods
+         */
+        disabledUserDeletion?: boolean;
+        /**
+         * When true, end users cannot sign up for a new account on the associated project through any of our API methods
+         */
+        disabledUserSignup?: boolean;
+    }
+
+    export interface ConfigMfa {
+        /**
+         * A list of usable second factors for this project.
+         * Each value may be one of: `PHONE_SMS`.
+         */
+        enabledProviders?: string[];
+        /**
+         * A list of usable second factors for this project along with their configurations.
+         * This field does not support phone based MFA, for that use the 'enabledProviders' field.
+         * Structure is documented below.
+         */
+        providerConfigs?: outputs.identityplatform.ConfigMfaProviderConfig[];
+        /**
+         * Whether MultiFactor Authentication has been enabled for this project.
+         * Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+         */
+        state: string;
+    }
+
+    export interface ConfigMfaProviderConfig {
+        /**
+         * Whether MultiFactor Authentication has been enabled for this project.
+         * Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
+         */
+        state: string;
+        /**
+         * TOTP MFA provider config for this project.
+         * Structure is documented below.
+         */
+        totpProviderConfig?: outputs.identityplatform.ConfigMfaProviderConfigTotpProviderConfig;
+    }
+
+    export interface ConfigMfaProviderConfigTotpProviderConfig {
+        /**
+         * The allowed number of adjacent intervals that will be used for verification to avoid clock skew.
+         */
+        adjacentIntervals?: number;
+    }
+
+    export interface ConfigMonitoring {
+        /**
+         * Configuration for logging requests made to this project to Stackdriver Logging
+         * Structure is documented below.
+         */
+        requestLogging?: outputs.identityplatform.ConfigMonitoringRequestLogging;
+    }
+
+    export interface ConfigMonitoringRequestLogging {
+        /**
+         * Whether logging is enabled for this project or not.
+         */
+        enabled?: boolean;
+    }
+
+    export interface ConfigMultiTenant {
+        /**
+         * Whether this project can have tenants or not.
+         */
+        allowTenants?: boolean;
+        /**
+         * The default cloud parent org or folder that the tenant project should be created under.
+         * The parent resource name should be in the format of "/", such as "folders/123" or "organizations/456".
+         * If the value is not set, the tenant will be created under the same organization or folder as the agent project.
+         */
+        defaultTenantLocation?: string;
     }
 
     export interface ConfigQuota {
@@ -69143,6 +69357,13 @@ export namespace securityposture {
          */
         allowAll?: boolean;
         /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
+         */
+        condition?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition;
+        /**
          * Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
          */
         denyAll?: boolean;
@@ -69152,20 +69373,13 @@ export namespace securityposture {
          */
         enforce?: boolean;
         /**
-         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-         * This page details the objects and attributes that are used to the build the CEL expressions for
-         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-         * Structure is documented below.
-         */
-        expr?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr;
-        /**
          * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
          * Structure is documented below.
          */
         values?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues;
     }
 
-    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr {
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition {
         /**
          * Description of the expression
          */
@@ -69201,6 +69415,13 @@ export namespace securityposture {
          */
         allowAll?: boolean;
         /**
+         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+         * This page details the objects and attributes that are used to the build the CEL expressions for
+         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+         * Structure is documented below.
+         */
+        condition?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition;
+        /**
          * Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
          */
         denyAll?: boolean;
@@ -69210,20 +69431,13 @@ export namespace securityposture {
          */
         enforce?: boolean;
         /**
-         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-         * This page details the objects and attributes that are used to the build the CEL expressions for
-         * custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-         * Structure is documented below.
-         */
-        expr?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr;
-        /**
          * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
          * Structure is documented below.
          */
         values?: outputs.securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues;
     }
 
-    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr {
+    export interface PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition {
         /**
          * Description of the expression
          */
@@ -72561,6 +72775,25 @@ export namespace vertex {
         uri: string;
     }
 
+    export interface AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
+        /**
+         * List of features that need to be synced to Online Store.
+         * Structure is documented below.
+         */
+        featureGroups: outputs.vertex.AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup[];
+    }
+
+    export interface AiFeatureOnlineStoreFeatureviewFeatureRegistrySourceFeatureGroup {
+        /**
+         * Identifier of the feature group.
+         */
+        featureGroupId: string;
+        /**
+         * Identifiers of features under the feature group.
+         */
+        featureIds: string[];
+    }
+
     export interface AiFeatureOnlineStoreFeatureviewSyncConfig {
         /**
          * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -73563,7 +73796,7 @@ export namespace workbench {
          */
         diskType: string;
         /**
-         * 'Optional. Input only. The KMS key used to encrypt the disks, only
+         * 'Optional. The KMS key used to encrypt the disks, only
          * applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
          * Learn more about using your own encryption keys.'
          */
@@ -73589,7 +73822,7 @@ export namespace workbench {
          */
         diskType?: string;
         /**
-         * 'Optional. Input only. The KMS key used to encrypt the disks,
+         * 'Optional. The KMS key used to encrypt the disks,
          * only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
          * Learn more about using your own encryption keys.'
          */
@@ -73839,6 +74072,10 @@ export namespace workstations {
          * Whether instances have no public IP address.
          */
         disablePublicIpAddresses?: boolean;
+        /**
+         * Whether to disable SSH access to the VM.
+         */
+        disableSsh?: boolean;
         /**
          * Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
          * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization

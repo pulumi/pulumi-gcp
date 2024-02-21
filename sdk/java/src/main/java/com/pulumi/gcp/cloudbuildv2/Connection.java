@@ -15,7 +15,6 @@ import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGithubEnterpriseConfig;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGitlabConfig;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionInstallationState;
 import java.lang.Boolean;
-import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -23,10 +22,53 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Cloudbuildv2 Connection resource
+ * A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.
+ * 
+ * To get more information about Connection, see:
+ * 
+ * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/build/docs)
  * 
  * ## Example Usage
- * ### Ghe
+ * ### Cloudbuildv2 Connection
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuildv2.Connection;
+ * import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
+ * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigArgs;
+ * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigAuthorizerCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
+ *             .githubConfig(ConnectionGithubConfigArgs.builder()
+ *                 .appInstallationId(0)
+ *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
+ *                     .oauthTokenSecretVersion(&#34;projects/gcb-terraform-creds/secrets/github-pat/versions/1&#34;)
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloudbuildv2 Connection Ghe
  * ```java
  * package generated_program;
  * 
@@ -120,8 +162,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### GitHub Connection
- * Creates a Connection to github.com
+ * ### Cloudbuildv2 Connection Github
  * ```java
  * package generated_program;
  * 
@@ -180,7 +221,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
- *             .location(&#34;us-west1&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .appInstallationId(123123)
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
@@ -203,6 +244,8 @@ import javax.annotation.Nullable;
  * 
  *  * `{{location}}/{{name}}`
  * 
+ *  * `{{name}}`
+ * 
  *  When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
  * 
  * ```sh
@@ -217,12 +260,15 @@ import javax.annotation.Nullable;
  * $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
  * ```
  * 
+ * ```sh
+ * $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
+ * ```
+ * 
  */
 @ResourceType(type="gcp:cloudbuildv2/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -232,7 +278,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -273,15 +318,15 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Terraform, other clients and services.
      * 
      */
-    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveAnnotations;
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
 
     /**
      * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
      * 
      */
-    public Output<Map<String,Object>> effectiveAnnotations() {
+    public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
     /**
@@ -300,6 +345,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration for connections to github.com.
+     * Structure is documented below.
      * 
      */
     @Export(name="githubConfig", refs={ConnectionGithubConfig.class}, tree="[0]")
@@ -307,6 +353,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration for connections to github.com.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ConnectionGithubConfig>> githubConfig() {
@@ -314,6 +361,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
      * 
      */
     @Export(name="githubEnterpriseConfig", refs={ConnectionGithubEnterpriseConfig.class}, tree="[0]")
@@ -321,6 +369,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ConnectionGithubEnterpriseConfig>> githubEnterpriseConfig() {
@@ -328,6 +377,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * Structure is documented below.
      * 
      */
     @Export(name="gitlabConfig", refs={ConnectionGitlabConfig.class}, tree="[0]")
@@ -335,6 +385,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ConnectionGitlabConfig>> gitlabConfig() {
@@ -342,6 +393,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     }
     /**
      * Output only. Installation state of the Connection.
+     * Structure is documented below.
      * 
      */
     @Export(name="installationStates", refs={List.class,ConnectionInstallationState.class}, tree="[0,1]")
@@ -349,6 +401,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Output only. Installation state of the Connection.
+     * Structure is documented below.
      * 
      */
     public Output<List<ConnectionInstallationState>> installationStates() {
@@ -357,6 +410,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
@@ -364,33 +419,37 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * @return The location for the resource
      * 
+     * ***
+     * 
      */
     public Output<String> location() {
         return this.location;
     }
     /**
-     * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * Immutable. The resource name of the connection.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * @return Immutable. The resource name of the connection.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {

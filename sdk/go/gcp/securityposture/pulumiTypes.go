@@ -1070,16 +1070,16 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstrain
 type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule struct {
 	// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
 	AllowAll *bool `pulumi:"allowAll"`
+	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+	// This page details the objects and attributes that are used to the build the CEL expressions for
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// Structure is documented below.
+	Condition *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition `pulumi:"condition"`
 	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
 	DenyAll *bool `pulumi:"denyAll"`
 	// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
 	// This field can be set only in policies for boolean constraints.
 	Enforce *bool `pulumi:"enforce"`
-	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-	// Structure is documented below.
-	Expr *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr `pulumi:"expr"`
 	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
 	// Structure is documented below.
 	Values *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues `pulumi:"values"`
@@ -1099,16 +1099,16 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleInput in
 type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs struct {
 	// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
 	AllowAll pulumi.BoolPtrInput `pulumi:"allowAll"`
+	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+	// This page details the objects and attributes that are used to the build the CEL expressions for
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// Structure is documented below.
+	Condition PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrInput `pulumi:"condition"`
 	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
 	DenyAll pulumi.BoolPtrInput `pulumi:"denyAll"`
 	// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
 	// This field can be set only in policies for boolean constraints.
 	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
-	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-	// Structure is documented below.
-	Expr PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrInput `pulumi:"expr"`
 	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
 	// Structure is documented below.
 	Values PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesPtrInput `pulumi:"values"`
@@ -1170,6 +1170,16 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutpu
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule) *bool { return v.AllowAll }).(pulumi.BoolPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+// This page details the objects and attributes that are used to the build the CEL expressions for
+// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// Structure is documented below.
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutput) Condition() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule) *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition {
+		return v.Condition
+	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput)
+}
+
 // Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutput) DenyAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule) *bool { return v.DenyAll }).(pulumi.BoolPtrOutput)
@@ -1179,16 +1189,6 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutpu
 // This field can be set only in policies for boolean constraints.
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutput) Enforce() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-// This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-// Structure is documented below.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutput) Expr() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRule) *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr {
-		return v.Expr
-	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput)
 }
 
 // List of values to be used for this policy rule. This field can be set only in policies for list constraints.
@@ -1219,7 +1219,7 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArray
 	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutput)
 }
 
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr struct {
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition struct {
 	// Description of the expression
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -1230,18 +1230,18 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr str
 	Title *string `pulumi:"title"`
 }
 
-// PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprInput is an input type that accepts PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs and PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput values.
-// You can construct a concrete instance of `PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprInput` via:
+// PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionInput is an input type that accepts PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs and PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput values.
+// You can construct a concrete instance of `PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionInput` via:
 //
-//	PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs{...}
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprInput interface {
+//	PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs{...}
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionInput interface {
 	pulumi.Input
 
-	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput
-	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutputWithContext(context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput
+	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput
+	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutputWithContext(context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput
 }
 
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs struct {
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs struct {
 	// Description of the expression
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -1252,138 +1252,138 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs
 	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
-func (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr)(nil)).Elem()
+func (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition)(nil)).Elem()
 }
 
-func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput {
-	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutputWithContext(context.Background())
+func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput {
+	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutputWithContext(context.Background())
 }
 
-func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput)
+func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput)
 }
 
-func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput {
-	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutputWithContext(context.Background())
+func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
+	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutputWithContext(context.Background())
 }
 
-func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput).ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutputWithContext(ctx)
+func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput).ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutputWithContext(ctx)
 }
 
-// PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrInput is an input type that accepts PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs, PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtr and PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput values.
-// You can construct a concrete instance of `PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrInput` via:
+// PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrInput is an input type that accepts PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs, PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtr and PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput values.
+// You can construct a concrete instance of `PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrInput` via:
 //
-//	        PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs{...}
+//	        PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrInput interface {
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrInput interface {
 	pulumi.Input
 
-	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput
-	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutputWithContext(context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput
+	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput
+	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutputWithContext(context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput
 }
 
-type posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrType PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs
+type posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrType PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs
 
-func PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtr(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrInput {
-	return (*posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrType)(v)
+func PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtr(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrInput {
+	return (*posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrType)(v)
 }
 
-func (*posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr)(nil)).Elem()
+func (*posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition)(nil)).Elem()
 }
 
-func (i *posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrType) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput {
-	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutputWithContext(context.Background())
+func (i *posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrType) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
+	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrType) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput)
+func (i *posturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrType) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput)
 }
 
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput struct{ *pulumi.OutputState }
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput struct{ *pulumi.OutputState }
 
-func (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr)(nil)).Elem()
+func (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition)(nil)).Elem()
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput {
 	return o
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput {
 	return o
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput {
-	return o.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutputWithContext(context.Background())
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
+	return o.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutputWithContext(context.Background())
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition {
 		return &v
-	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput)
+	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput)
 }
 
 // Description of the expression
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) *string {
 		return v.Description
 	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) string {
 		return v.Expression
 	}).(pulumi.StringOutput)
 }
 
 // String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) *string {
 		return v.Location
 	}).(pulumi.StringPtrOutput)
 }
 
 // Title for the expression, i.e. a short string describing its purpose.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) *string {
 		return v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput struct{ *pulumi.OutputState }
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr)(nil)).Elem()
+func (PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition)(nil)).Elem()
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
 	return o
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput {
 	return o
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput) Elem() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput) Elem() PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition {
 		if v != nil {
 			return *v
 		}
-		var ret PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr
+		var ret PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition
 		return ret
-	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput)
+	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput)
 }
 
 // Description of the expression
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1392,8 +1392,8 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprP
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1402,8 +1402,8 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprP
 }
 
 // String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1412,8 +1412,8 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprP
 }
 
 // Title for the expression, i.e. a short string describing its purpose.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1584,16 +1584,16 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValue
 type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule struct {
 	// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
 	AllowAll *bool `pulumi:"allowAll"`
+	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+	// This page details the objects and attributes that are used to the build the CEL expressions for
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// Structure is documented below.
+	Condition *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition `pulumi:"condition"`
 	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
 	DenyAll *bool `pulumi:"denyAll"`
 	// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
 	// This field can be set only in policies for boolean constraints.
 	Enforce *bool `pulumi:"enforce"`
-	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-	// Structure is documented below.
-	Expr *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr `pulumi:"expr"`
 	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
 	// Structure is documented below.
 	Values *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues `pulumi:"values"`
@@ -1613,16 +1613,16 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleInput interfac
 type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs struct {
 	// Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
 	AllowAll pulumi.BoolPtrInput `pulumi:"allowAll"`
+	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+	// This page details the objects and attributes that are used to the build the CEL expressions for
+	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+	// Structure is documented below.
+	Condition PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrInput `pulumi:"condition"`
 	// Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
 	DenyAll pulumi.BoolPtrInput `pulumi:"denyAll"`
 	// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
 	// This field can be set only in policies for boolean constraints.
 	Enforce pulumi.BoolPtrInput `pulumi:"enforce"`
-	// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-	// This page details the objects and attributes that are used to the build the CEL expressions for
-	// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-	// Structure is documented below.
-	Expr PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrInput `pulumi:"expr"`
 	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
 	// Structure is documented below.
 	Values PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesPtrInput `pulumi:"values"`
@@ -1684,6 +1684,16 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput) All
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule) *bool { return v.AllowAll }).(pulumi.BoolPtrOutput)
 }
 
+// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
+// This page details the objects and attributes that are used to the build the CEL expressions for
+// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
+// Structure is documented below.
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput) Condition() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule) *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition {
+		return v.Condition
+	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput)
+}
+
 // Setting this to true means that all values are denied. This field can be set only in policies for list constraints.
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput) DenyAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule) *bool { return v.DenyAll }).(pulumi.BoolPtrOutput)
@@ -1693,16 +1703,6 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput) Den
 // This field can be set only in policies for boolean constraints.
 func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput) Enforce() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule) *bool { return v.Enforce }).(pulumi.BoolPtrOutput)
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
-// This page details the objects and attributes that are used to the build the CEL expressions for
-// custom access levels - https://cloud.google.com/access-context-manager/docs/custom-access-level-spec.
-// Structure is documented below.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput) Expr() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRule) *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr {
-		return v.Expr
-	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput)
 }
 
 // List of values to be used for this policy rule. This field can be set only in policies for list constraints.
@@ -1733,7 +1733,7 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArrayOutput
 	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput)
 }
 
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr struct {
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition struct {
 	// Description of the expression
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -1744,18 +1744,18 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr struct {
 	Title *string `pulumi:"title"`
 }
 
-// PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprInput is an input type that accepts PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs and PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput values.
-// You can construct a concrete instance of `PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprInput` via:
+// PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionInput is an input type that accepts PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs and PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput values.
+// You can construct a concrete instance of `PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionInput` via:
 //
-//	PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs{...}
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprInput interface {
+//	PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs{...}
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionInput interface {
 	pulumi.Input
 
-	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput
-	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutputWithContext(context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput
+	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput
+	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutputWithContext(context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput
 }
 
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs struct {
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs struct {
 	// Description of the expression
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -1766,132 +1766,136 @@ type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs struc
 	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
-func (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr)(nil)).Elem()
+func (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition)(nil)).Elem()
 }
 
-func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput {
-	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutputWithContext(context.Background())
+func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput {
+	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutputWithContext(context.Background())
 }
 
-func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput)
+func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput)
 }
 
-func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput {
-	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutputWithContext(context.Background())
+func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
+	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutputWithContext(context.Background())
 }
 
-func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput).ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutputWithContext(ctx)
+func (i PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput).ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutputWithContext(ctx)
 }
 
-// PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrInput is an input type that accepts PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs, PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtr and PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput values.
-// You can construct a concrete instance of `PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrInput` via:
+// PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrInput is an input type that accepts PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs, PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtr and PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput values.
+// You can construct a concrete instance of `PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrInput` via:
 //
-//	        PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs{...}
+//	        PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrInput interface {
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrInput interface {
 	pulumi.Input
 
-	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput
-	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutputWithContext(context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput
+	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput
+	ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutputWithContext(context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput
 }
 
-type posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrType PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs
+type posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrType PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs
 
-func PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtr(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrInput {
-	return (*posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrType)(v)
+func PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtr(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrInput {
+	return (*posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrType)(v)
 }
 
-func (*posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr)(nil)).Elem()
+func (*posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition)(nil)).Elem()
 }
 
-func (i *posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrType) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput {
-	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutputWithContext(context.Background())
+func (i *posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrType) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
+	return i.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrType) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput)
+func (i *posturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrType) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput)
 }
 
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput struct{ *pulumi.OutputState }
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput struct{ *pulumi.OutputState }
 
-func (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr)(nil)).Elem()
+func (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition)(nil)).Elem()
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput {
 	return o
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput {
 	return o
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput {
-	return o.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutputWithContext(context.Background())
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
+	return o.ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutputWithContext(context.Background())
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition {
 		return &v
-	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput)
+	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput)
 }
 
 // Description of the expression
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) *string {
 		return v.Description
 	}).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) string { return v.Expression }).(pulumi.StringOutput)
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) string {
+		return v.Expression
+	}).(pulumi.StringOutput)
 }
 
 // String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) *string {
+		return v.Location
+	}).(pulumi.StringPtrOutput)
 }
 
 // Title for the expression, i.e. a short string describing its purpose.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) *string { return v.Title }).(pulumi.StringPtrOutput)
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput struct{ *pulumi.OutputState }
+type PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr)(nil)).Elem()
+func (PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition)(nil)).Elem()
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
 	return o
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput) ToPosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutputWithContext(ctx context.Context) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput {
 	return o
 }
 
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput) Elem() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput) Elem() PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition {
 		if v != nil {
 			return *v
 		}
-		var ret PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr
+		var ret PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition
 		return ret
-	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput)
+	}).(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput)
 }
 
 // Description of the expression
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1900,8 +1904,8 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutp
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1910,8 +1914,8 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutp
 }
 
 // String indicating the location of the expression for error reporting, e.g. a file name and a position in the file
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1920,8 +1924,8 @@ func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutp
 }
 
 // Title for the expression, i.e. a short string describing its purpose.
-func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExpr) *string {
+func (o PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -3580,14 +3584,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintPtrInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArrayInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesPtrInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArrayInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesPtrInput)(nil)).Elem(), PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleInput)(nil)).Elem(), PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs{})
@@ -3621,14 +3625,14 @@ func init() {
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintPtrOutput{})
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleOutput{})
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArrayOutput{})
-	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprOutput{})
-	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleExprPtrOutput{})
+	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionOutput{})
+	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionPtrOutput{})
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesOutput{})
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesPtrOutput{})
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleOutput{})
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArrayOutput{})
-	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprOutput{})
-	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleExprPtrOutput{})
+	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionOutput{})
+	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionPtrOutput{})
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesOutput{})
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesPtrOutput{})
 	pulumi.RegisterOutputType(PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleOutput{})

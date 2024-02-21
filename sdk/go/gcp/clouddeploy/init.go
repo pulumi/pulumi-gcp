@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:clouddeploy/automation:Automation":
 		r = &Automation{}
+	case "gcp:clouddeploy/customTargetType:CustomTargetType":
+		r = &CustomTargetType{}
 	case "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline":
 		r = &DeliveryPipeline{}
 	case "gcp:clouddeploy/deliveryPipelineIamBinding:DeliveryPipelineIamBinding":
@@ -49,6 +51,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"clouddeploy/automation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"clouddeploy/customTargetType",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

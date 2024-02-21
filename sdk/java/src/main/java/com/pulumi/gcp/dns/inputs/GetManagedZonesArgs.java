@@ -17,16 +17,32 @@ public final class GetManagedZonesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetManagedZonesArgs Empty = new GetManagedZonesArgs();
 
+    /**
+     * A list of managed zones.
+     * 
+     */
     @Import(name="managedZones")
     private @Nullable Output<List<GetManagedZonesManagedZoneArgs>> managedZones;
 
+    /**
+     * @return A list of managed zones.
+     * 
+     */
     public Optional<Output<List<GetManagedZonesManagedZoneArgs>>> managedZones() {
         return Optional.ofNullable(this.managedZones);
     }
 
+    /**
+     * The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -56,24 +72,54 @@ public final class GetManagedZonesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetManagedZonesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param managedZones A list of managed zones.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedZones(@Nullable Output<List<GetManagedZonesManagedZoneArgs>> managedZones) {
             $.managedZones = managedZones;
             return this;
         }
 
+        /**
+         * @param managedZones A list of managed zones.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedZones(List<GetManagedZonesManagedZoneArgs> managedZones) {
             return managedZones(Output.of(managedZones));
         }
 
+        /**
+         * @param managedZones A list of managed zones.
+         * 
+         * @return builder
+         * 
+         */
         public Builder managedZones(GetManagedZonesManagedZoneArgs... managedZones) {
             return managedZones(List.of(managedZones));
         }
 
+        /**
+         * @param project The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

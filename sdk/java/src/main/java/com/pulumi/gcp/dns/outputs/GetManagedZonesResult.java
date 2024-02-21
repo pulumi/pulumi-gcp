@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetManagedZonesResult {
     private String id;
+    /**
+     * @return A list of managed zones.
+     * 
+     */
     private @Nullable List<GetManagedZonesManagedZone> managedZones;
     private @Nullable String project;
 
@@ -22,6 +26,10 @@ public final class GetManagedZonesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return A list of managed zones.
+     * 
+     */
     public List<GetManagedZonesManagedZone> managedZones() {
         return this.managedZones == null ? List.of() : this.managedZones;
     }

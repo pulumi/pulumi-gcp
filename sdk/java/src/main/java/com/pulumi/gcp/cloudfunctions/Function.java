@@ -632,6 +632,22 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.triggerHttp);
     }
     /**
+     * The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+     * created.
+     * 
+     */
+    @Export(name="versionId", refs={String.class}, tree="[0]")
+    private Output<String> versionId;
+
+    /**
+     * @return The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being
+     * created.
+     * 
+     */
+    public Output<String> versionId() {
+        return this.versionId;
+    }
+    /**
      * The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*{@literal /}locations/*{@literal /}connectors/*`.
      * 
      */

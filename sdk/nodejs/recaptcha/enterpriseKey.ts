@@ -228,7 +228,7 @@ export class EnterpriseKey extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The resource name for the Key in the format "projects/{project}/keys/{key}".
+     * The resource id for the Key, which is the same as the Site Key itself.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -338,7 +338,7 @@ export interface EnterpriseKeyState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The resource name for the Key in the format "projects/{project}/keys/{key}".
+     * The resource id for the Key, which is the same as the Site Key itself.
      */
     name?: pulumi.Input<string>;
     /**

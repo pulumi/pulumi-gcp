@@ -7,10 +7,33 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The Cloudbuildv2 Connection resource
+ * A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.
+ *
+ * To get more information about Connection, see:
+ *
+ * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/build/docs)
  *
  * ## Example Usage
- * ### Ghe
+ * ### Cloudbuildv2 Connection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
+ *     githubConfig: {
+ *         appInstallationId: 0,
+ *         authorizerCredential: {
+ *             oauthTokenSecretVersion: "projects/gcb-terraform-creds/secrets/github-pat/versions/1",
+ *         },
+ *     },
+ *     location: "us-central1",
+ * });
+ * ```
+ * ### Cloudbuildv2 Connection Ghe
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -67,8 +90,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * ### GitHub Connection
- * Creates a Connection to github.com
+ * ### Cloudbuildv2 Connection Github
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -95,7 +118,7 @@ import * as utilities from "../utilities";
  *     policyData: p4sa_secretAccessor.then(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
  * });
  * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
- *     location: "us-west1",
+ *     location: "us-central1",
  *     githubConfig: {
  *         appInstallationId: 123123,
  *         authorizerCredential: {
@@ -115,6 +138,8 @@ import * as utilities from "../utilities";
  *
  *  * `{{location}}/{{name}}`
  *
+ *  * `{{name}}`
+ *
  *  When using the `pulumi import` command, Connection can be imported using one of the formats above. For example:
  *
  * ```sh
@@ -127,6 +152,10 @@ import * as utilities from "../utilities";
  *
  * ```sh
  * $ pulumi import gcp:cloudbuildv2/connection:Connection default {{location}}/{{name}}
+ * ```
+ *
+ * ```sh
+ * $ pulumi import gcp:cloudbuildv2/connection:Connection default {{name}}
  * ```
  */
 export class Connection extends pulumi.CustomResource {
@@ -159,7 +188,6 @@ export class Connection extends pulumi.CustomResource {
 
     /**
      * Allows clients to store small amounts of arbitrary data.
-     *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -176,37 +204,45 @@ export class Connection extends pulumi.CustomResource {
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
      */
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * Configuration for connections to github.com.
+     * Structure is documented below.
      */
     public readonly githubConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionGithubConfig | undefined>;
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
      */
     public readonly githubEnterpriseConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionGithubEnterpriseConfig | undefined>;
     /**
      * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * Structure is documented below.
      */
     public readonly gitlabConfig!: pulumi.Output<outputs.cloudbuildv2.ConnectionGitlabConfig | undefined>;
     /**
      * Output only. Installation state of the Connection.
+     * Structure is documented below.
      */
     public /*out*/ readonly installationStates!: pulumi.Output<outputs.cloudbuildv2.ConnectionInstallationState[]>;
     /**
      * The location for the resource
+     *
+     *
+     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * Immutable. The resource name of the connection.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -276,7 +312,6 @@ export class Connection extends pulumi.CustomResource {
 export interface ConnectionState {
     /**
      * Allows clients to store small amounts of arbitrary data.
-     *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -293,37 +328,45 @@ export interface ConnectionState {
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
     /**
      * Configuration for connections to github.com.
+     * Structure is documented below.
      */
     githubConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubConfig>;
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
      */
     githubEnterpriseConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubEnterpriseConfig>;
     /**
      * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * Structure is documented below.
      */
     gitlabConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGitlabConfig>;
     /**
      * Output only. Installation state of the Connection.
+     * Structure is documented below.
      */
     installationStates?: pulumi.Input<pulumi.Input<inputs.cloudbuildv2.ConnectionInstallationState>[]>;
     /**
      * The location for the resource
+     *
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
-     * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * Immutable. The resource name of the connection.
      */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -342,7 +385,6 @@ export interface ConnectionState {
 export interface ConnectionArgs {
     /**
      * Allows clients to store small amounts of arbitrary data.
-     *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -353,26 +395,33 @@ export interface ConnectionArgs {
     disabled?: pulumi.Input<boolean>;
     /**
      * Configuration for connections to github.com.
+     * Structure is documented below.
      */
     githubConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubConfig>;
     /**
      * Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
      */
     githubEnterpriseConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGithubEnterpriseConfig>;
     /**
      * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * Structure is documented below.
      */
     gitlabConfig?: pulumi.Input<inputs.cloudbuildv2.ConnectionGitlabConfig>;
     /**
      * The location for the resource
+     *
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**
-     * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * Immutable. The resource name of the connection.
      */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
 }

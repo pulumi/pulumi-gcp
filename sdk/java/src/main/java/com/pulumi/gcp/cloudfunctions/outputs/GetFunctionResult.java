@@ -121,6 +121,7 @@ public final class GetFunctionResult {
      * 
      */
     private Boolean triggerHttp;
+    private String versionId;
     /**
      * @return The VPC Network Connector that this cloud function can connect to.
      * 
@@ -297,6 +298,9 @@ public final class GetFunctionResult {
     public Boolean triggerHttp() {
         return this.triggerHttp;
     }
+    public String versionId() {
+        return this.versionId;
+    }
     /**
      * @return The VPC Network Connector that this cloud function can connect to.
      * 
@@ -353,6 +357,7 @@ public final class GetFunctionResult {
         private String status;
         private Integer timeout;
         private Boolean triggerHttp;
+        private String versionId;
         private String vpcConnector;
         private String vpcConnectorEgressSettings;
         public Builder() {}
@@ -390,6 +395,7 @@ public final class GetFunctionResult {
     	      this.status = defaults.status;
     	      this.timeout = defaults.timeout;
     	      this.triggerHttp = defaults.triggerHttp;
+    	      this.versionId = defaults.versionId;
     	      this.vpcConnector = defaults.vpcConnector;
     	      this.vpcConnectorEgressSettings = defaults.vpcConnectorEgressSettings;
         }
@@ -659,6 +665,14 @@ public final class GetFunctionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder versionId(String versionId) {
+            if (versionId == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "versionId");
+            }
+            this.versionId = versionId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcConnector(String vpcConnector) {
             if (vpcConnector == null) {
               throw new MissingRequiredPropertyException("GetFunctionResult", "vpcConnector");
@@ -708,6 +722,7 @@ public final class GetFunctionResult {
             _resultValue.status = status;
             _resultValue.timeout = timeout;
             _resultValue.triggerHttp = triggerHttp;
+            _resultValue.versionId = versionId;
             _resultValue.vpcConnector = vpcConnector;
             _resultValue.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
             return _resultValue;

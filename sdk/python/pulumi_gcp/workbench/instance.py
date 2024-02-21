@@ -17,6 +17,7 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
                  gce_setup: Optional[pulumi.Input['InstanceGceSetupArgs']] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -30,6 +31,7 @@ class InstanceArgs:
                
                
                - - -
+        :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input['InstanceGceSetupArgs'] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
@@ -47,6 +49,8 @@ class InstanceArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "location", location)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if disable_proxy_access is not None:
             pulumi.set(__self__, "disable_proxy_access", disable_proxy_access)
         if gce_setup is not None:
@@ -76,6 +80,18 @@ class InstanceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_state", value)
 
     @property
     @pulumi.getter(name="disableProxyAccess")
@@ -175,6 +191,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  gce_setup: Optional[pulumi.Input['InstanceGceSetupArgs']] = None,
@@ -196,6 +213,7 @@ class _InstanceState:
         :param pulumi.Input[str] create_time: An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
                The milliseconds portion (".SSS") is optional.
         :param pulumi.Input[str] creator: Output only. Email address of entity that sent original CreateInstance request.
+        :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['InstanceGceSetupArgs'] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
@@ -234,6 +252,8 @@ class _InstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
         if disable_proxy_access is not None:
             pulumi.set(__self__, "disable_proxy_access", disable_proxy_access)
         if effective_labels is not None:
@@ -291,6 +311,18 @@ class _InstanceState:
     @creator.setter
     def creator(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "creator", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "desired_state", value)
 
     @property
     @pulumi.getter(name="disableProxyAccess")
@@ -507,6 +539,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
                  gce_setup: Optional[pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -548,13 +581,14 @@ class Instance(pulumi.CustomResource):
             ),
             location="us-central1-a")
         ```
-        ### Workbench Instance Labels
+        ### Workbench Instance Labels Stopped
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         instance = gcp.workbench.Instance("instance",
+            desired_state="STOPPED",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
                 machine_type="e2-standard-4",
                 metadata={
@@ -596,13 +630,13 @@ class Instance(pulumi.CustomResource):
                 boot_disk=gcp.workbench.InstanceGceSetupBootDiskArgs(
                     disk_size_gb="310",
                     disk_type="PD_SSD",
-                    disk_encryption="GMEK",
+                    disk_encryption="CMEK",
                     kms_key="my-crypto-key",
                 ),
                 data_disks=gcp.workbench.InstanceGceSetupDataDisksArgs(
                     disk_size_gb="330",
                     disk_type="PD_SSD",
-                    disk_encryption="GMEK",
+                    disk_encryption="CMEK",
                     kms_key="my-crypto-key",
                 ),
                 network_interfaces=[gcp.workbench.InstanceGceSetupNetworkInterfaceArgs(
@@ -623,7 +657,8 @@ class Instance(pulumi.CustomResource):
             instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
-            })
+            },
+            desired_state="ACTIVE")
         ```
 
         ## Import
@@ -652,6 +687,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
                Structure is documented below.
@@ -710,13 +746,14 @@ class Instance(pulumi.CustomResource):
             ),
             location="us-central1-a")
         ```
-        ### Workbench Instance Labels
+        ### Workbench Instance Labels Stopped
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         instance = gcp.workbench.Instance("instance",
+            desired_state="STOPPED",
             gce_setup=gcp.workbench.InstanceGceSetupArgs(
                 machine_type="e2-standard-4",
                 metadata={
@@ -758,13 +795,13 @@ class Instance(pulumi.CustomResource):
                 boot_disk=gcp.workbench.InstanceGceSetupBootDiskArgs(
                     disk_size_gb="310",
                     disk_type="PD_SSD",
-                    disk_encryption="GMEK",
+                    disk_encryption="CMEK",
                     kms_key="my-crypto-key",
                 ),
                 data_disks=gcp.workbench.InstanceGceSetupDataDisksArgs(
                     disk_size_gb="330",
                     disk_type="PD_SSD",
-                    disk_encryption="GMEK",
+                    disk_encryption="CMEK",
                     kms_key="my-crypto-key",
                 ),
                 network_interfaces=[gcp.workbench.InstanceGceSetupNetworkInterfaceArgs(
@@ -785,7 +822,8 @@ class Instance(pulumi.CustomResource):
             instance_owners=["my@service-account.com"],
             labels={
                 "k": "val",
-            })
+            },
+            desired_state="ACTIVE")
         ```
 
         ## Import
@@ -827,6 +865,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 desired_state: Optional[pulumi.Input[str]] = None,
                  disable_proxy_access: Optional[pulumi.Input[bool]] = None,
                  gce_setup: Optional[pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -844,6 +883,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["disable_proxy_access"] = disable_proxy_access
             __props__.__dict__["gce_setup"] = gce_setup
             __props__.__dict__["instance_id"] = instance_id
@@ -878,6 +918,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             creator: Optional[pulumi.Input[str]] = None,
+            desired_state: Optional[pulumi.Input[str]] = None,
             disable_proxy_access: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             gce_setup: Optional[pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']]] = None,
@@ -904,6 +945,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
                The milliseconds portion (".SSS") is optional.
         :param pulumi.Input[str] creator: Output only. Email address of entity that sent original CreateInstance request.
+        :param pulumi.Input[str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[pulumi.InputType['InstanceGceSetupArgs']] gce_setup: The definition of how to configure a VM instance outside of Resources and Identity.
@@ -944,6 +986,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
+        __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["disable_proxy_access"] = disable_proxy_access
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gce_setup"] = gce_setup
@@ -978,6 +1021,14 @@ class Instance(pulumi.CustomResource):
         Output only. Email address of entity that sent original CreateInstance request.
         """
         return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Output[Optional[str]]:
+        """
+        Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
+        """
+        return pulumi.get(self, "desired_state")
 
     @property
     @pulumi.getter(name="disableProxyAccess")
