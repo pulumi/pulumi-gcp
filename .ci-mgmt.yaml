@@ -1,7 +1,6 @@
 provider: gcp
 gcp: true
 major-version: 7
-lint: false
 parallel: 2
 providerVersion: "github.com/hashicorp/terraform-provider-google-beta/version.ProviderVersion"
 generate-nightly-test-workflow: true
@@ -27,16 +26,13 @@ plugins:
     version: "0.0.1"
   - name: time
     version: "0.0.15"
-team: ecosystem
 goBuildParallelism: 2
 skipGoReleaserHooks: true
 actions:
   preTest:
-
     - name: make upstream
       run: |
         make upstream
-
     - name: Run provider tests
       run: |
         cd provider && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt

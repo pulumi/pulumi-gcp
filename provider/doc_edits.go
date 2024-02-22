@@ -26,6 +26,7 @@ var fixupEffectiveLabels = tfbridge.DocsEdit{
 	},
 }
 
+//nolint:lll
 var secretsInPlainTextNoteRegexps = []*regexp.Regexp{
 	regexp.MustCompile(`~?> \*\*Warning:\*\* All arguments including the following potentially sensitive\nvalues will be stored in the raw state as plain text: .*\nRead more about sensitive data in state\.`),
 	regexp.MustCompile(`(?s)~?> \*\*((Warning)|(Note)):\*\* All arguments including .*as plain-text(\.)?( Read more about sensitive data in state\.)?`),

@@ -11,9 +11,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/pulumi/providertest/flags"
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
-	"github.com/stretchr/testify/require"
 )
 
 // Benchmarking Test Tools
@@ -70,7 +71,7 @@ func programTestAsSpanBenchmark(t *testing.T, bench BenchmarkConfig) {
 	require.Nil(t, err)
 	defer benchfile.Close()
 
-	for i, _ := range make([]struct{}, bench.Samples) {
+	for i := range make([]struct{}, bench.Samples) {
 		t.Run(fmt.Sprintf("traced/%d", i), func(t *testing.T) {
 			opts := bench.TracingProgramTestOptions()
 			integration.ProgramTest(t, &opts)
@@ -79,7 +80,8 @@ func programTestAsSpanBenchmark(t *testing.T, bench BenchmarkConfig) {
 				benchLine, err := benchmarkFromSpan(span)
 				require.Nil(t, err)
 				if strings.Contains(benchLine, bench.Provider) {
-					benchfile.WriteString(benchLine)
+					// Ignore the error here.
+					_, _ = benchfile.WriteString(benchLine)
 				}
 				return nil
 			})
@@ -109,8 +111,12 @@ func copyFile(t *testing.T, sourcePath, destPath string) {
 }
 
 // providertest doesn't expose a real flags implementation, so just pretend for now
-var BenchmarkFlag = hardcodedFlag{set: false}       //("benchmark", "Run benchmarks of provider test programs and compare with recorded values")
-var RecordBenchmarkFlag = hardcodedFlag{set: false} //("record-benchmark", "Run benchmarks of provider test programs and record results")
+var (
+	//("benchmark", "Run benchmarks of provider test programs and compare with recorded values")
+	BenchmarkFlag = hardcodedFlag{set: false}
+	//("record-benchmark", "Run benchmarks of provider test programs and record results")
+	RecordBenchmarkFlag = hardcodedFlag{set: false}
+)
 
 type hardcodedFlag struct {
 	set bool
@@ -209,31 +215,31 @@ type BenchmarkConfig struct {
 
 // Computes a list of `K=V` environment variables that will inform
 // `pulumi --tracing` how to tag the data it produces.
-func (benchmark *BenchmarkConfig) Env() []string {
+func (b *BenchmarkConfig) Env() []string {
 	env := []string{}
 
-	if benchmark.Name != "" {
-		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_BENCHMARK_NAME=%s", benchmark.Name))
+	if b.Name != "" {
+		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_BENCHMARK_NAME=%s", b.Name))
 	}
 
-	if benchmark.Repository != "" {
-		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_REPO=%s", benchmark.Repository))
+	if b.Repository != "" {
+		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_REPO=%s", b.Repository))
 	}
 
-	if benchmark.Provider != "" {
-		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_BENCHMARK_PROVIDER=%s", benchmark.Provider))
+	if b.Provider != "" {
+		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_BENCHMARK_PROVIDER=%s", b.Provider))
 	}
 
-	if benchmark.Runtime != "" {
-		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_BENCHMARK_RUNTIME=%s", benchmark.Runtime))
+	if b.Runtime != "" {
+		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_BENCHMARK_RUNTIME=%s", b.Runtime))
 	}
 
-	if benchmark.Language != "" {
-		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_BENCHMARK_LANGUAGE=%s", benchmark.Language))
+	if b.Language != "" {
+		env = append(env, fmt.Sprintf("PULUMI_TRACING_TAG_BENCHMARK_LANGUAGE=%s", b.Language))
 	}
 
-	if benchmark.MemstatsPollInterval > 0 {
-		env = append(env, fmt.Sprintf("PULUMI_TRACING_MEMSTATS_POLL_INTERVAL=%v", benchmark.MemstatsPollInterval))
+	if b.MemstatsPollInterval > 0 {
+		env = append(env, fmt.Sprintf("PULUMI_TRACING_MEMSTATS_POLL_INTERVAL=%v", b.MemstatsPollInterval))
 	}
 
 	return env

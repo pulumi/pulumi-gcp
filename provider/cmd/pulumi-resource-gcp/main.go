@@ -18,10 +18,13 @@ package main
 
 import (
 	"context"
+
+	// Allow embedding a pregenerated schema.
 	_ "embed"
 
-	gcp "github.com/pulumi/pulumi-gcp/provider/v7"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+
+	gcp "github.com/pulumi/pulumi-gcp/provider/v7"
 )
 
 //go:embed schema-embed.json

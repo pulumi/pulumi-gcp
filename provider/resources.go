@@ -11,6 +11,7 @@ import (
 	"sync/atomic"
 	"unicode"
 
+	// Allow embedding metadata in the provider
 	_ "embed"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -198,90 +199,92 @@ var moduleMapping = map[string]string{
 	"data_catalog":                    gcpDataCatalog,
 	"data_fusion":                     gcpDataFusion,
 	"data_loss":                       gcpDataLoss,
-	"data_pipeline":                   gcpDataFlow, // Intentionally the same as "dataflow" since in Google's docs, data pipelines are nested under DataFlow.
-	"database_migration_service":      gcpDatabaseMigrationService,
-	"dataflow":                        gcpDataFlow,
-	"dataform":                        gcpDataform,
-	"dataplex":                        gcpDataPlex,
-	"dataproc":                        gcpDataProc,
-	"datastore":                       gcpDatastore,
-	"datastream":                      gcpDatastream,
-	"deployment_manager":              gcpDeploymentManager,
-	"dialogflow":                      gcpDiagflow,
-	"discovery_engine":                gcpDiscoveryEngine,
-	"dns":                             gcpDNS,
-	"edgecontainer":                   gcpEdgecontainer,
-	"edgenetwork":                     gcpEdgeNetwork,
-	"endpoints":                       gcpEndPoints,
-	"essential_contacts":              gcpEssentialContacts,
-	"eventarc":                        gcpEventarc,
-	"filestore":                       gcpFilestore,
-	"firebase":                        gcpFirebase,
-	"firebaserules":                   gcpFirebaserules,
-	"firestore":                       gcpFirestore,
-	"folder":                          gcpFolder,
-	"game_services":                   gcpGameServices,
-	"gke_backup":                      gcpGkeBackup,
-	"gke_hub":                         gcpGkeHub,
-	"gkeonprem":                       gcpGkeOnPrem,
-	"healthcare":                      gcpHealthcare,
-	"iam":                             gcpIAM,
-	"iap":                             gcpIAP,
-	"identity_platform":               gcpIdentityPlatform,
-	"integration_connectors":          gcpIntegrationConnectors,
-	"kms":                             gcpKMS,
-	"logging":                         gcpLogging,
-	"looker":                          gcpLooker,
-	"memcache":                        gcpMemcache,
-	"migration_center":                gcpMigrationCenter,
-	"ml":                              gcpMachingLearning,
-	"monitoring":                      gcpMonitoring,
-	"netapp":                          gcpNetapp,
-	"network_connectivity":            gcpNetworkConnectivity,
-	"network_management":              gcpNetworkManagement,
-	"network_security":                gcpNetworkSecurity,
-	"network_services":                gcpNetworkServices,
-	"notebooks":                       gcpNotebooks,
-	"org_policy":                      gcpOrgPolicy,
-	"organization":                    gcpOrganization,
-	"os_config":                       gcpOsConfig,
-	"os_login":                        gcpOsLogin,
-	"privateca":                       gcpCertificateAuthority,
-	"project":                         gcpProject,
-	"public":                          gcpCompute,
-	"pubsub":                          gcpPubSub,
-	"recaptcha":                       gcpRecaptcha,
-	"redis":                           gcpRedis,
-	"resource_manager":                gcpResourceManager,
-	"runtimeconfig":                   gcpRuntimeConfig,
-	"scc":                             gcpSecurityCenter,
-	"secret_manager":                  gcpSecretManager,
-	"secure_source_manager":           gcpSecureSourceManager,
-	"securityposture":                 gcpSecurityPosture,
-	"service_account":                 gcpServiceAccount,
-	"service_directory":               gcpServiceDirectory,
-	"service_networking":              gcpServiceNetworking,
-	"service_usage":                   gcpServiceUsage,
-	"sourcerepo":                      gcpSourceRepo,
-	"spanner":                         gcpSpanner,
-	"sql":                             gcpSQL,
-	"storage":                         gcpStorage,
-	"tags":                            gcpTags,
-	"tpu":                             gcpTPU,
-	"vertex":                          gcpVertex,
-	"vmwareengine":                    gcpVMwareEngine,
-	"vpc_access":                      gcpVpcAccess,
-	"workbench":                       gcpWorkbench,
-	"workflows":                       gcpWorkflows,
-	"workstations":                    gcpWorkstations,
+	// Intentionally the same as "dataflow" since in Google's docs, data pipelines are nested under DataFlow.
+	"data_pipeline":              gcpDataFlow,
+	"database_migration_service": gcpDatabaseMigrationService,
+	"dataflow":                   gcpDataFlow,
+	"dataform":                   gcpDataform,
+	"dataplex":                   gcpDataPlex,
+	"dataproc":                   gcpDataProc,
+	"datastore":                  gcpDatastore,
+	"datastream":                 gcpDatastream,
+	"deployment_manager":         gcpDeploymentManager,
+	"dialogflow":                 gcpDiagflow,
+	"discovery_engine":           gcpDiscoveryEngine,
+	"dns":                        gcpDNS,
+	"edgecontainer":              gcpEdgecontainer,
+	"edgenetwork":                gcpEdgeNetwork,
+	"endpoints":                  gcpEndPoints,
+	"essential_contacts":         gcpEssentialContacts,
+	"eventarc":                   gcpEventarc,
+	"filestore":                  gcpFilestore,
+	"firebase":                   gcpFirebase,
+	"firebaserules":              gcpFirebaserules,
+	"firestore":                  gcpFirestore,
+	"folder":                     gcpFolder,
+	"game_services":              gcpGameServices,
+	"gke_backup":                 gcpGkeBackup,
+	"gke_hub":                    gcpGkeHub,
+	"gkeonprem":                  gcpGkeOnPrem,
+	"healthcare":                 gcpHealthcare,
+	"iam":                        gcpIAM,
+	"iap":                        gcpIAP,
+	"identity_platform":          gcpIdentityPlatform,
+	"integration_connectors":     gcpIntegrationConnectors,
+	"kms":                        gcpKMS,
+	"logging":                    gcpLogging,
+	"looker":                     gcpLooker,
+	"memcache":                   gcpMemcache,
+	"migration_center":           gcpMigrationCenter,
+	"ml":                         gcpMachingLearning,
+	"monitoring":                 gcpMonitoring,
+	"netapp":                     gcpNetapp,
+	"network_connectivity":       gcpNetworkConnectivity,
+	"network_management":         gcpNetworkManagement,
+	"network_security":           gcpNetworkSecurity,
+	"network_services":           gcpNetworkServices,
+	"notebooks":                  gcpNotebooks,
+	"org_policy":                 gcpOrgPolicy,
+	"organization":               gcpOrganization,
+	"os_config":                  gcpOsConfig,
+	"os_login":                   gcpOsLogin,
+	"privateca":                  gcpCertificateAuthority,
+	"project":                    gcpProject,
+	"public":                     gcpCompute,
+	"pubsub":                     gcpPubSub,
+	"recaptcha":                  gcpRecaptcha,
+	"redis":                      gcpRedis,
+	"resource_manager":           gcpResourceManager,
+	"runtimeconfig":              gcpRuntimeConfig,
+	"scc":                        gcpSecurityCenter,
+	"secret_manager":             gcpSecretManager,
+	"secure_source_manager":      gcpSecureSourceManager,
+	"securityposture":            gcpSecurityPosture,
+	"service_account":            gcpServiceAccount,
+	"service_directory":          gcpServiceDirectory,
+	"service_networking":         gcpServiceNetworking,
+	"service_usage":              gcpServiceUsage,
+	"sourcerepo":                 gcpSourceRepo,
+	"spanner":                    gcpSpanner,
+	"sql":                        gcpSQL,
+	"storage":                    gcpStorage,
+	"tags":                       gcpTags,
+	"tpu":                        gcpTPU,
+	"vertex":                     gcpVertex,
+	"vmwareengine":               gcpVMwareEngine,
+	"vpc_access":                 gcpVpcAccess,
+	"workbench":                  gcpWorkbench,
+	"workflows":                  gcpWorkflows,
+	"workstations":               gcpWorkstations,
 }
 
 var namespaceMap = map[string]string{
 	"gcp": "Gcp",
 }
 
-// gcpMember manufactures a type token for the GCP package and the given module and type.  It automatically uses the GCP
-// package and names the file by simply lower casing the resource's first character.
+// gcpMember manufactures a type token for the GCP package and the given module and
+// type.  It automatically uses the GCP package and names the file by simply lower
+// casing the resource's first character.
 func gcpMember(moduleTitle string, mem string) tokens.ModuleMember {
 	moduleName := strings.ToLower(moduleTitle)
 	namespaceMap[moduleName] = moduleTitle
@@ -305,8 +308,9 @@ func gcpResource(mod string, res string) tokens.Type {
 	return gcpType(mod, res)
 }
 
-// lowercaseAutoName provides a schema info with autonaming set to lowercase names for resources that don't support capital casing in names.
-// This seems to be the case for many resources where a name ends up being in HTTP URLs.
+// lowercaseAutoName provides a schema info with autonaming set to lowercase names
+// for resources that don't support capital casing in names.  This seems to be the
+// case for many resources where a name ends up being in HTTP URLs.
 func lowercaseAutoName() *tfbridge.SchemaInfo {
 	return tfbridge.AutoNameWithCustomOptions("name", tfbridge.AutoNameOptions{
 		Separator: "-",
@@ -378,13 +382,15 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 		}
 
 		config := tpg_transport.Config{
-			AccessToken: tfbridge.ConfigStringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
+			AccessToken: tfbridge.ConfigStringValue(vars,
+				"accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
 			Credentials: tfbridge.ConfigStringValue(vars, "credentials", []string{
 				"GOOGLE_CREDENTIALS",
 				"GOOGLE_CLOUD_KEYFILE_JSON",
 				"GCLOUD_KEYFILE_JSON",
 			}),
-			ImpersonateServiceAccount: tfbridge.ConfigStringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
+			ImpersonateServiceAccount: tfbridge.ConfigStringValue(vars,
+				"impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
 			Project: tfbridge.ConfigStringValue(vars, "project", []string{
 				"GOOGLE_PROJECT",
 				"GOOGLE_CLOUD_PROJECT",
@@ -435,6 +441,8 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
+//
+//nolint:lll
 func Provider() tfbridge.ProviderInfo {
 	p := pf.MuxShimWithDisjointgPF(
 		context.Background(),

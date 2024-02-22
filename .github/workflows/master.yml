@@ -193,6 +193,10 @@ jobs:
         s3FullURI="s3://${{ secrets.S3_COVERAGE_BUCKET_NAME }}/summaries/${summaryName}"
 
         aws s3 cp "${{ env.COVERAGE_OUTPUT_DIR }}/summary.json" "${s3FullURI}" --acl bucket-owner-full-control
+  lint:
+    name: lint
+    uses: ./.github/workflows/lint.yml
+    secrets: inherit
   license_check:
     name: License Check
     uses: ./.github/workflows/license.yml

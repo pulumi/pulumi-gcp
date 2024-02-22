@@ -24,10 +24,11 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/stretchr/testify/require"
+
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
-	"github.com/stretchr/testify/require"
 )
 
 func TestDNSRecordSetUpgrade(t *testing.T) {
@@ -183,6 +184,8 @@ func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 
 // This used to panic in the Diff on unexpected bool label (expecting string), see
 // pulumi/pulumi-gcp#1377 for more details.
+//
+//nolint:lll
 func TestBucketBooleanLabel(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
@@ -441,6 +444,7 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
 }`)
 }
 
+//nolint:lll
 func TestCheckConfigNoCredentials(t *testing.T) {
 	if !testing.Short() {
 		t.Skip("Only run in short mode, since we want to NOT have credentials.")
@@ -473,6 +477,7 @@ func TestCheckConfigNoCredentials(t *testing.T) {
 	)
 }
 
+//nolint:lll
 func TestRegress1488(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Only run in long mode, since we want credentials.")
