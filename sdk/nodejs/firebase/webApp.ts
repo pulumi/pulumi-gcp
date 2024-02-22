@@ -34,15 +34,15 @@ import * as utilities from "../utilities";
  * });
  * const defaultBucketObject = new gcp.storage.BucketObject("defaultBucketObject", {
  *     bucket: defaultBucket.name,
- *     content: pulumi.all([basicWebApp.appId, basicWebAppConfig, basicWebAppConfig, basicWebAppConfig["database_url"] || "", basicWebAppConfig["storage_bucket"] || "", basicWebAppConfig["messaging_sender_id"] || "", basicWebAppConfig["measurement_id"] || ""]).apply(([appId, basicWebAppConfig, basicWebAppConfig1, s, s1, s2, s3]) => JSON.stringify({
- *         appId: appId,
- *         apiKey: basicWebAppConfig.apiKey,
- *         authDomain: basicWebAppConfig1.authDomain,
- *         databaseURL: s,
- *         storageBucket: s1,
- *         messagingSenderId: s2,
- *         measurementId: s3,
- *     })),
+ *     content: pulumi.jsonStringify({
+ *         appId: basicWebApp.appId,
+ *         apiKey: basicWebAppConfig.apply(basicWebAppConfig => basicWebAppConfig.apiKey),
+ *         authDomain: basicWebAppConfig.apply(basicWebAppConfig => basicWebAppConfig.authDomain),
+ *         databaseURL: basicWebAppConfig["database_url"] || "",
+ *         storageBucket: basicWebAppConfig["storage_bucket"] || "",
+ *         messagingSenderId: basicWebAppConfig["messaging_sender_id"] || "",
+ *         measurementId: basicWebAppConfig["measurement_id"] || "",
+ *     }),
  * }, {
  *     provider: google_beta,
  * });
