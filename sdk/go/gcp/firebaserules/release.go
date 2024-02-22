@@ -77,6 +77,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Provision a non-default Cloud Storage bucket.
 //			bucketBucket, err := storage.NewBucket(ctx, "bucketBucket", &storage.BucketArgs{
 //				Project:  pulumi.String("my-project-name"),
 //				Location: pulumi.String("us-west1"),
@@ -84,6 +85,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
 //			bucketStorageBucket, err := firebase.NewStorageBucket(ctx, "bucketStorageBucket", &firebase.StorageBucketArgs{
 //				Project:  pulumi.String("my-project-name"),
 //				BucketId: bucketBucket.Name,
@@ -91,6 +93,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a ruleset of Firebase Security Rules from a local file.
 //			storage, err := firebaserules.NewRuleset(ctx, "storage", &firebaserules.RulesetArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Source: &firebaserules.RulesetSourceArgs{
