@@ -34,12 +34,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// A host project provides network resources to associated service projects.
 //			host, err := compute.NewSharedVPCHostProject(ctx, "host", &compute.SharedVPCHostProjectArgs{
 //				Project: pulumi.String("host-project-id"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// A service project gains access to network resources provided by its
+//			// associated host project.
 //			_, err = compute.NewSharedVPCServiceProject(ctx, "service1", &compute.SharedVPCServiceProjectArgs{
 //				HostProject:    host.Project,
 //				ServiceProject: pulumi.String("service-project-id-1"),

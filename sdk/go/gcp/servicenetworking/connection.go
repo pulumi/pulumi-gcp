@@ -32,10 +32,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a VPC network
 //			peeringNetwork, err := compute.NewNetwork(ctx, "peeringNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Create an IP address
 //			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
@@ -45,6 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a private connection
 //			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
 //				Network: peeringNetwork.ID(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
@@ -55,6 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// (Optional) Import or export custom routes
 //			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peeringRoutes", &compute.NetworkPeeringRoutesConfigArgs{
 //				Peering:            _default.Peering,
 //				Network:            peeringNetwork.Name,
