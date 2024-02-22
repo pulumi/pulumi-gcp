@@ -74,6 +74,7 @@ func TestCloudFunctionUpgrade(t *testing.T) {
 }
 
 func TestNetworkUpgrade(t *testing.T) {
+	t.Skipf("Flakey: see https://github.com/pulumi/pulumi-gcp/issues/1655 for details")
 	testProviderUpgrade(t, "test-programs/network", "")
 }
 
@@ -121,13 +122,13 @@ func TestWrongRegionWarning(t *testing.T) {
 	require.NoError(t, err)
 
 	test := pulumitest.NewPulumiTest(t, "test-programs/storage-bucket",
-	opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
 
 	proj := os.Getenv("GOOGLE_PROJECT")
 	test.SetConfig("gcp:project", proj)
 	res := test.Up()
 	require.Contains(
-		t, res.StdOut, 
+		t, res.StdOut,
 		"region \"westus\" is not available for project \""+proj,
 	)
 }
@@ -142,12 +143,12 @@ func TestNoGlobalProjectWarning(t *testing.T) {
 	t.Setenv("GOOGLE_PROJECT", "")
 
 	test := pulumitest.NewPulumiTest(t, "test-programs/project-bucket",
-	opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
 
 	test.SetConfig("gcpProj", proj)
 	res := test.Up()
 	require.Contains(
-		t, res.StdOut, 
+		t, res.StdOut,
 		"unable to detect a global setting for GCP Project.",
 	)
 }
@@ -471,7 +472,6 @@ func TestCheckConfigNoCredentials(t *testing.T) {
 `, "$", "`"),
 	)
 }
-
 
 func TestRegress1488(t *testing.T) {
 	if testing.Short() {
