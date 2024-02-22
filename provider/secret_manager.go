@@ -31,7 +31,7 @@ func resourceSecretManagerSecret() *tfbridge.ResourceInfo {
 			return pmCopy
 		}
 		_, gotAuto := replicationCopy["auto"]
-		if automatic.IsBool() && automatic.BoolValue() == true && !gotAuto {
+		if automatic.IsBool() && automatic.BoolValue() && !gotAuto {
 			auto := resource.NewObjectProperty(resource.PropertyMap{})
 			replicationCopy["auto"] = auto
 		}

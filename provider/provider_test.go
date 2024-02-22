@@ -49,10 +49,8 @@ func testProviderUpgradeWithConfig(t *testing.T, dir, baselineVersion string, co
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 	)
 	test.SetConfig("gcp:config:project", testProject)
-	if config != nil {
-		for k, v := range config {
-			test.SetConfig(k, v)
-		}
+	for k, v := range config {
+		test.SetConfig(k, v)
 	}
 	// The SetConfig above does not seem to be working here.
 	t.Setenv("PULUMI_GCP_SKIP_REGION_VALIDATION", "true")

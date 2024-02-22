@@ -30,6 +30,7 @@ func TestEffectiveLabels(t *testing.T) {
 	}
 }
 
+//nolint:lll
 func TestSecretsInPlainTextNote(t *testing.T) {
 	tests := []struct{ text, expected string }{
 		{

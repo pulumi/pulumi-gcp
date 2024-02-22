@@ -19,40 +19,27 @@ import (
 // tools for working with trace spans
 // TODO(pulumi/home#3168): The functions here should be generalized to live in pulumi/pulumi-trace-tool
 
-const span_id_key = "Span.ID"
-const span_start_key = "Span.Start"
-const span_end_key = "Span.End"
-const span_filename_key = "filename"
+const spanIDKey = "Span.ID"
+const spanStartKey = "Span.Start"
+const spanEndKey = "Span.End"
+const spanFilenameKey = "filename"
 
 // Convenience type for attaching helpers to string map that represents a span
 type Span map[string]string
 
-func (s Span) getId() (*appdash.SpanID, error) {
-	spanIdStr, ok := s[span_id_key]
-	if !ok {
-		return nil, fmt.Errorf("'%s' Not found", span_id_key)
-	}
-
-	spanId, err := appdash.ParseSpanID(spanIdStr)
-	if err != nil {
-		return nil, err
-	}
-	return spanId, nil
-}
-
 func (s Span) Start() (time.Time, error) {
-	spanStart, err := parseTime(s[span_start_key])
+	spanStart, err := parseTime(s[spanStartKey])
 	if err != nil {
-		err = fmt.Errorf("Failed to parse %s time: %w", span_start_key, err)
+		err = fmt.Errorf("Failed to parse %s time: %w", spanStartKey, err)
 		return time.Time{}, err
 	}
 	return spanStart, nil
 }
 
 func (s Span) End() (time.Time, error) {
-	spanEnd, err := parseTime(s[span_end_key])
+	spanEnd, err := parseTime(s[spanEndKey])
 	if err != nil {
-		err = fmt.Errorf("Failed to parse %s time: %w", span_end_key, err)
+		err = fmt.Errorf("Failed to parse %s time: %w", spanEndKey, err)
 		return time.Time{}, err
 	}
 	return spanEnd, nil
@@ -79,7 +66,6 @@ func parseTime(str string) (time.Time, error) {
 type SpanIter interface {
 	WalkSpans(onSpan func(x Span) error) error
 }
-
 
 // Convenience type for iterating over multiple SpanIters in sequence
 type MultiSpanIter struct {
@@ -161,7 +147,7 @@ var _ = SpanIter(TraceFileSpanIter{})
 func (i TraceFileSpanIter) WalkSpans(onSpan func(s Span) error) error {
 	return walkTracesFromFile(i.File, func(s *appdash.Span) error {
 		m := s.Annotations.StringMap()
-		m[span_id_key] = s.ID.String()
+		m[spanIDKey] = s.ID.String()
 		return onSpan(m)
 	})
 }
@@ -202,15 +188,6 @@ func walkTracesFromFile(file string, onSpan func(x *appdash.Span) error) error {
 	return walkTraces(traces, onSpan)
 }
 
-func writeMemoryStore(filepath string, memStore *appdash.MemoryStore) error {
-	f, err := os.Create(filepath)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-	return memStore.Write(f)
-}
-
 func readMemoryStore(filePath string) (*appdash.MemoryStore, error) {
 	memStore := appdash.NewMemoryStore()
 
@@ -228,7 +205,7 @@ func readMemoryStore(filePath string) (*appdash.MemoryStore, error) {
 	return memStore, nil
 }
 
-//Iterate over spans from all .trace files in a directory 
+// Iterate over spans from all .trace files in a directory
 type TraceDirSpanIter struct {
 	traceDir string
 }
@@ -244,7 +221,7 @@ func (i TraceDirSpanIter) WalkSpans(onSpan func(s Span) error) error {
 	for _, f := range files {
 		if strings.HasSuffix(f.Name(), ".trace") {
 			onSpanWithFilename := func(s Span) error {
-				s[span_filename_key] = f.Name()
+				s[spanFilenameKey] = f.Name()
 				return onSpan(s)
 			}
 			err := TraceFileSpanIter{File: path.Join(i.traceDir, f.Name())}.WalkSpans(onSpanWithFilename)
