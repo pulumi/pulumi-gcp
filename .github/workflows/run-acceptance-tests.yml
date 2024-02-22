@@ -161,6 +161,12 @@ jobs:
         issue-number: ${{ github.event.client_payload.github.payload.issue.number }}
         repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
+  lint:
+    if: github.event_name == 'repository_dispatch' ||
+      github.event.pull_request.head.repo.full_name == github.repository
+    name: lint
+    uses: ./.github/workflows/lint.yml
+    secrets: inherit
   prerequisites:
     if: github.event_name == 'repository_dispatch' ||
       github.event.pull_request.head.repo.full_name == github.repository
@@ -275,6 +281,7 @@ jobs:
     needs:
     - test
     - license_check
+    - lint
     runs-on: ubuntu-latest
     steps:
     - name: Workflow is not a success
