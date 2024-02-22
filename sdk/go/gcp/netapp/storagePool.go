@@ -47,10 +47,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a network or use datasource to reference existing network
 //			peeringNetwork, err := compute.NewNetwork(ctx, "peeringNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Reserve a CIDR for NetApp Volumes to use
+//			// When using shared-VPCs, this resource needs to be created in host project
 //			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
@@ -60,6 +63,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a Private Service Access connection
+//			// When using shared-VPCs, this resource needs to be created in host project
 //			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
 //				Network: peeringNetwork.ID(),
 //				Service: pulumi.String("netapp.servicenetworking.goog"),
@@ -70,6 +75,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Modify the PSA Connection to allow import/export of custom routes
+//			// When using shared-VPCs, this resource needs to be created in host project
 //			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "routeUpdates", &compute.NetworkPeeringRoutesConfigArgs{
 //				Peering:            _default.Peering,
 //				Network:            peeringNetwork.Name,
@@ -79,6 +86,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a storage pool
+//			// Create this resource in the project which is expected to own the volumes
 //			_, err = netapp.NewStoragePool(ctx, "testPool", &netapp.StoragePoolArgs{
 //				Location:     pulumi.String("us-central1"),
 //				ServiceLevel: pulumi.String("PREMIUM"),

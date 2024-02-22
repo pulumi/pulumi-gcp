@@ -130,6 +130,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// creating certificate_issuance_config to use it in the managed certificate
 //			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
 //				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 //				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
@@ -317,6 +318,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// creating certificate_issuance_config to use it in the managed certificate
 //			issuanceconfig, err := certificatemanager.NewCertificateIssuanceConfig(ctx, "issuanceconfig", &certificatemanager.CertificateIssuanceConfigArgs{
 //				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 //				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{

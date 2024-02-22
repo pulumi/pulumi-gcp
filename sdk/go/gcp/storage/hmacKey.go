@@ -38,12 +38,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new service account
 //			serviceAccount, err := serviceaccount.NewAccount(ctx, "serviceAccount", &serviceaccount.AccountArgs{
 //				AccountId: pulumi.String("my-svc-acc"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			// Create the HMAC key for the associated service account
 //			_, err = storage.NewHmacKey(ctx, "key", &storage.HmacKeyArgs{
 //				ServiceAccountEmail: serviceAccount.Email,
 //			})
