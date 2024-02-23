@@ -44,7 +44,7 @@ const (
 	gcpAccessContextManager = "AccessContextManager" // Access Context Manager resources
 	gcpActiveDirectory      = "ActiveDirectory"      // Active Directory resources
 	gcpAlloydb              = "Alloydb"              // Alloydb resources
-	// nolint:golint
+	// nolint:revive
 	gcpApiGateway               = "ApiGateway"               // ApiGateway resources
 	gcpApigee                   = "Apigee"                   // Apigee resources
 	gcpAppEngine                = "AppEngine"                // AppEngine resources

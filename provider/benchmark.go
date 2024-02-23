@@ -159,7 +159,7 @@ func joinNonEmpty(strs []string, sep string) string {
 			nonEmpty = append(nonEmpty, s)
 		}
 	}
-	return strings.Join(nonEmpty, "/")
+	return strings.Join(nonEmpty, sep)
 }
 
 // Helper for configuring a Benchmark test with defaults
