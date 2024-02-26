@@ -35,7 +35,8 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 			// We only apply this transform for resources
 			if root, ok := ctx.Root.(tfbridge.VisitResourceRoot); ok {
 				toUpdate[root.TfToken] = append(toUpdate[root.TfToken],
-					tfbridge.SchemaPathToPropertyPath(path, ctx.EnclosingSchemaMap(), ctx.EnclosingSchemaInfoMap()))
+					tfbridge.SchemaPathToPropertyPath(path, ctx.EnclosingSchemaMap(),
+						ctx.EnclosingSchemaInfoMap()))
 			}
 
 			ctx.SchemaInfo().Secret = tfbridge.True()
@@ -53,7 +54,27 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 	prov.MustTraverseProperties("fix-label-names", visitor)
 
 	for token, labelPaths := range toUpdate {
-		prov.Resources[token].TransformFromState = ensureLabelPathsExist(labelPaths)
+		prov.Resources[token].TransformFromState =
+			composeTransform(prov.Resources[token].TransformFromState,
+				ensureLabelPathsExist(labelPaths))
+	}
+}
+
+func composeTransform(f1, f2 tfbridge.PropertyTransform) tfbridge.PropertyTransform {
+	switch {
+	case f1 == nil:
+		return f2
+	case f2 == nil:
+		return f1
+	}
+
+	// f1 and f2 are not nil, so apply them both in order.
+	return func(ctx context.Context, m resource.PropertyMap) (resource.PropertyMap, error) {
+		m, err := f1(ctx, m)
+		if err != nil {
+			return m, err
+		}
+		return f2(ctx, m)
 	}
 }
 
