@@ -34,9 +34,11 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 
 			// We only apply this transform for resources
 			if root, ok := ctx.Root.(tfbridge.VisitResourceRoot); ok {
-				toUpdate[root.TfToken] = append(toUpdate[root.TfToken],
-					tfbridge.SchemaPathToPropertyPath(path, ctx.EnclosingSchemaMap(),
-						ctx.EnclosingSchemaInfoMap()))
+				schemaPath := tfbridge.SchemaPathToPropertyPath(path,
+					root.Schema.Schema(),
+					root.Info.Fields)
+
+				toUpdate[root.TfToken] = append(toUpdate[root.TfToken], schemaPath)
 			}
 
 			ctx.SchemaInfo().Secret = tfbridge.True()

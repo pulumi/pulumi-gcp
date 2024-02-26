@@ -28910,6 +28910,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_clouddeploy_custom_target_type": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_clouddeploy_delivery_pipeline": [
                 "effective_labels",
                 "terraform_labels"
@@ -29242,7 +29246,15 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_network_security_firewall_endpoint": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_network_security_security_profile": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_security_security_profile_group": [
                 "effective_labels",
                 "terraform_labels"
             ],
