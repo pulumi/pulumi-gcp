@@ -276,13 +276,16 @@ func TestBucketBooleanLabel(t *testing.T) {
 	    },
 	    "response": {
 	      "changes": "DIFF_SOME",
-	      "diffs": ["labels"],
+	      "diffs": ["labels", "pulumiLabels"],
 	      "stables": "*",
 	      "hasDetailedDiff": true,
 	      "detailedDiff": {
 		"labels.bad-bool": {
 		  "kind": "UPDATE"
-		}
+		},
+                "pulumiLabels": {
+		  "kind": "UPDATE"
+                }
 	      }
 	    }
 	  }

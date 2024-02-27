@@ -40,6 +40,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Top-level folder under an organization.
 //			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
 //				DisplayName: pulumi.String("Department 1"),
 //				Parent:      pulumi.String("organizations/1234567"),
@@ -47,6 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Folder nested under another folder.
 //			_, err = organizations.NewFolder(ctx, "team-abc", &organizations.FolderArgs{
 //				DisplayName: pulumi.String("Team ABC"),
 //				Parent:      department1.Name,
