@@ -209,6 +209,13 @@ func NewProvider(ctx *pulumi.Context,
 			args.Zone = pulumi.StringPtr(d.(string))
 		}
 	}
+	if args.AccessToken != nil {
+		args.AccessToken = pulumi.ToSecret(args.AccessToken).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"accessToken",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:gcp", name, args, &resource, opts...)
